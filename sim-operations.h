@@ -29,8 +29,11 @@ struct TableSize {
 	int num_rows;
 };
 
-/* A heap matrix that contains floating point numbers. dmatrix functions in the
- * file are designed to act on this matrix.*/
+/** A heap matrix that contains floating point numbers. `dmatrix` functions
+ * are designed to act on this matrix.
+ *
+ * Rows make the first index of the matrix and columns the second.
+ */
 typedef struct {
 	double** matrix; // the actual matrix with its contents
 	int rows; // number of rows
@@ -41,12 +44,37 @@ typedef struct {
 /** A type that contains choices of settings for SimData functions that create a 
  * new AlleleMatrix/generation.
  *
+ * The family_size parameter will affect how many offspring are produced.
+ *
+ * The will_name_subjects, will_track_pedigree, and will_allocate_ids parameters
+ * affect how much extra detail about the offspring is generated/saved.
+ *
+ * The will_save_to_simdata toggle allows you the option of generating offspring without
+ * saving them in memory. This may be useful in combination with save-as-you-go toggles 
+ * will_save_pedigree_to_file, will_save_effects_to_file, and will_save_genes_to_file,
+ * to generate a larger number of offspring than will fit in memory.
+ *
  * @param will_name_subjects a boolean representing if subject_names will be 
  * filled or not.
  * @param subject_prefix If `will_name_subjects` is true, subjects are named 
  * [subject_prefix][index].
+ * @param family_size the number of offspring to produce from each cross.
  * @param will_track_pedigree a boolean representing whether to bother to track
  * parentage of individual outcomes of the cross or not.
+ * @param will_allocate_ids a boolean representing whether to allocate individuals
+ * session-unique ids used for pedigree tracking.
+ * @param filename_prefix a string
+ * @param will_save_pedigree_to_file a boolean. If true, the full/recursive pedigrees
+ * of every genotype generated in the cross are saved to "[filename_prefix]-pedigree",
+ * even if the genotypes are not later saved to SimData.
+ * @param will_save_effects_to_file a boolean. If true, the GEBVs
+ * of every genotype generated in the cross are saved to "[filename_prefix]-eff",
+ * even if the genotypes are not later saved to SimData.
+ * @param will_save_genes_to_file a boolean. If true, the set of alleles
+ * of every genotype generated in the cross are saved to "[filename_prefix]-genome",
+ * even if the genotypes are not later saved to SimData.
+ * @param will_save_to_simdata a boolean. If true, the offspring are retained in the 
+ * SimData as a new group. If false, they are discarded after creation.
 */
 typedef struct {
 	int will_name_subjects;
@@ -116,7 +144,7 @@ typedef struct {
  * @param n_subjects the number of subjects currently loaded in `alleles`
  * @param n_markers the number of markers in `alleles`
  * @param pedigrees two lists of integer IDs of the parents of this subject if tracked,
- * or -1 if we don't know/care about this pedigree.
+ * or 0 if we don't know/care about this pedigree.
  * @param next pointer to the next AlleleMatrix in the linked list, or NULL
  * if this entry is the last.
 */
@@ -160,8 +188,6 @@ typedef struct {
  * @param e EffectMatrix containing the effects at all markers.
  * @param current_id integer denoting the highest id that has been allocated to a 
  * subject. Used to track where we are in generating unique ids.
- * @param id_list list of the unique ids of every subject currently in the AlleleMatrixes
- * if id_list is not in use, then the ordering corresponds to the order in AlleleMatrixes
  */
 typedef struct {
 	int n_markers;
@@ -282,10 +308,10 @@ static inline int has_same_alleles(char* p1, char* p2, int i) {
  * because assumes there cannot be more than two alleles at a given marker. For the return value
  * to be true, there must be at least one match at every one of the markers in the window.
  *
- * @param p1 pointer to a character array genotype of the type stored in an AlleleMatrix
+ * @param g1 pointer to a character array genotype of the type stored in an AlleleMatrix
  * (2*n_markers long, representing the two alleles at a marker consecutively) for the first
  * of the genotypes to compare.
- * @param p2 pointer to a character array genotype for the second of the genotypes to compare.
+ * @param g2 pointer to a character array genotype for the second of the genotypes to compare.
  * @param start index of the first marker in the window over which to perform the check
  * @param w length of the window over which to perform the check
  * @returns boolean result of the check

@@ -50,8 +50,6 @@ void* get_malloc(size_t size) {
  * @param n_subjects number of individuals to create. This includes filling the first
  * n_subjects entries of .alleles with heap char* of length n_markers, so that the
  * alleles for these can be added without further memory allocation.
- * @param starting_id pointer to the location where the current highest id tracker
- * is stored. This will be modified to be accurate to the added n_subjects.
  * @returns pointer to the empty created AlleleMatrix
  */
 AlleleMatrix* create_empty_allelematrix(int n_markers, int n_subjects) {
@@ -213,7 +211,7 @@ void set_subject_ids(SimData* d, int from_index, int to_index) {
  * value in this case is arbitrary.
  *
  * @param filename the path/name to the table file whose dimensions we want
- * @param sep the character that separates columns in the file eg '\t'
+ * @param sep the character that separates columns in the file eg tab
  * @returns TableSize struct with .num_columns and .num_rows filled. These
  * counts include header rows/columns and exclude blank rows.
  */
@@ -336,7 +334,7 @@ int get_from_unordered_str_list(char* target, char** list, int list_len) {
  * The index is padded with zeros depending on the size of 
  * `a->n_subjects`.
  *
- * @param pointer to the AlleleMatrix whose `.subject_names` to modify
+ * @param a pointer to the AlleleMatrix whose `.subject_names` to modify
  * @param prefix the prefix to add to the suffix to make the new subject name
  * @param suffix suffixes start at this value and increment for each additional subject_name
  * @param from_index the new names are added to this index and all those following it in this
@@ -2737,11 +2735,11 @@ static inline int has_same_alleles_window(char* g1, char* g2, int start, int w) 
  *
  * ...
  *
- * The output file produced by this function will have format:
+ * The tab-separated output file produced by this function will have format:
  *
- * \t[marker 1 name]\t[marker 2 name]...
+ * 	[marker 1 name]	[marker 2 name]...
  *
- * [target name]\t[tab-separated recombination vector, containing the index at 
+ * [target name]	[tab-separated recombination vector, containing the index at 
  * each marker of the parent the function guesses the target's alleles came from, or
  * 0 if this is unknow]
  *
@@ -3278,10 +3276,10 @@ int cross_random_individuals(SimData* d, int from_group, int n_crosses, GenOptio
  *
  * @param d pointer to the SimData object that includes genetic map data and
  * allele data needed to simulate crossing.
- * @param output_file the filename to which the results are to be saved.
  * @param combinations a 2D array of IDs, with the first dimension being parent 1 or 2,
  * and the second being the IDs of those parents for each combination to cross.
  * @param n_combinations the number of pairs of ids to cross/the length of `combinations`
+ * @param g options for the genotypes created. @see GenOptions
  * @returns the group number of the group to which the produced offspring were allocated.
  */
 int cross_these_combinations(SimData* d, int n_combinations, int combinations[2][n_combinations],  GenOptions g) {	
@@ -4156,7 +4154,6 @@ DecimalMatrix calculate_fitness_metric_of_group(SimData* d, int group) {
  *
  * @param m pointer to the AlleleMatrix object to which the genotypes belong.
  * @param e pointer to the EffectMatrix that effect values have been loaded into.
- * @param group calculate GEBVs for each genotype in the group with this group number.
  * @returns A DecimalMatrix containing the score for each individual in the group.
  */
 DecimalMatrix calculate_fitness_metric( AlleleMatrix* m, EffectMatrix* e) {
@@ -4195,7 +4192,7 @@ DecimalMatrix calculate_fitness_metric( AlleleMatrix* m, EffectMatrix* e) {
  * Returns the result as a DecimalMatrix. Useful for multiplying to effect matrix
  * to calculate GEBVs.
  *
- * @param a pointer to the start of a linked list that contains the alleles 
+ * @param m pointer to the start of a linked list that contains the alleles 
  * of each genotype in `for_ids`.
  * @param for_ids poinder to an array of ids of different genotypes. 
  * @param n_ids number of genotypes to calculate the counts of/length of 
@@ -4236,7 +4233,7 @@ DecimalMatrix calculate_count_matrix_of_allele_for_ids( AlleleMatrix* m, unsigne
  * Returns the result as a DecimalMatrix. Useful for multiplying to effect matrix
  * to calculate GEBVs.
  *
- * @param a pointer to the AlleleMatrix that contains the genotypes to count alleles.
+ * @param m pointer to the AlleleMatrix that contains the genotypes to count alleles.
  * @param allele the single-character allele to be counting.
  * @returns A DecimalMatrix countaining the number of `allele` occurences at 
  * each row/marker for each column/genotype in the AlleleMatrix.
@@ -4399,7 +4396,7 @@ void calculate_group_block_effects(SimData* d, const char* block_file, const cha
 /*--------------------------------Printing-----------------------------------*/
 
 /** Prints the setup data (everything except the actual genotypes) stored inside
- * a SimData to a file. Column separators are '\t'.
+ * a SimData to a file. Column separators are tabs.
  *
  * The printing format is:
  *
@@ -4730,7 +4727,7 @@ void save_transposed_group_alleles(FILE* f, SimData* d, int group_id) {
  *
  * @param f file pointer opened for writing to put the output
  * @param d pointer to the SimData containing the group members.
- * @param group_id group number of the group of individuals to print the 
+ * @param group group number of the group of individuals to print the 
  * immediate parents of.
  */
 void save_group_one_step_pedigree(FILE* f, SimData* d, int group) {
@@ -4867,7 +4864,7 @@ void save_one_step_pedigree(FILE* f, SimData* d) {
  *
  * @param f file pointer opened for writing to put the output
  * @param d pointer to the SimData containing the group members.
- * @param group_id group number of the group of individuals to print the 
+ * @param group group number of the group of individuals to print the 
  * pedigree of.
  */
 void save_group_full_pedigree(FILE* f, SimData* d, int group) {
@@ -5067,7 +5064,7 @@ void save_parents_of(FILE* f, AlleleMatrix* m, unsigned int id) {
  *
  * @param f file pointer opened for writing to put the output
  * @param d pointer to the SimData containing the group members.
- * @param group_id group number of the group of individuals to print the 
+ * @param group group number of the group of individuals to print the 
  * GEBVs of.
  */
 void save_group_fitness(FILE* f, SimData* d, int group) {
@@ -5248,7 +5245,7 @@ void save_count_matrix(FILE* f, SimData* d, char allele) {
  *
  * @param f file pointer opened for writing to put the output
  * @param d pointer to the SimData containing the group members.
- * @param group_id group number of the group of individuals to print the 
+ * @param group group number of the group of individuals to print the 
  * allele count of.
  * @param allele the allele character to count
  */
