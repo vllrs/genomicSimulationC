@@ -1,0 +1,4 @@
+<map id="calculate_min_recombinations_fw1" name="calculate_min_recombinations_fw1">
+<area shape="rect" id="node1" title="Identify markers in the genotype of offspring where recombination from its parents occured." alt="" coords="5,5,228,32"/>
+<area shape="rect" id="node2" href="$sim-operations_8h.html#aa71cdbced90506820ef61bd842ecfa40" title="Simple operator to determine if at marker i, two genotypes share at least one allele." alt="" coords="276,5,403,32"/>
+</map>

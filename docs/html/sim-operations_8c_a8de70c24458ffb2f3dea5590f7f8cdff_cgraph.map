@@ -1,0 +1,9 @@
+<map id="calculate_group_block_effects" name="calculate_group_block_effects">
+<area shape="rect" id="node1" title="Given a set of blocks of markers in a file, for each genotype in a group, calculate the local GEBV fo..." alt="" coords="5,115,156,157"/>
+<area shape="rect" id="node2" href="$sim-operations_8c.html#a392c23248f22e9faf085198dbb1d8711" title="Opens a table file and reads the number of columns and rows (including headers) separated by sep into..." alt="" coords="204,5,340,32"/>
+<area shape="rect" id="node3" href="$sim-operations_8c.html#aed2ae969c3ce4ed1466a885dcc559472" title="Returns the first located index in an array of strings where the string is the same as the string tar..." alt="" coords="204,57,340,98"/>
+<area shape="rect" id="node4" href="$sim-operations_8c.html#ac159a31261e14b325bd623899eefa796" title="Gets a shallow copy of the genes/alleles of each member of the group." alt="" coords="211,224,333,251"/>
+<area shape="rect" id="node5" href="$sim-operations_8c.html#ad6d2b66296cd80f5bfe303e06de7935c" title="Function to count the number of genotypes that currently belong to the specified group." alt="" coords="388,173,499,200"/>
+<area shape="rect" id="node7" href="$sim-operations_8c.html#a3e00f06acc41eb012e99ae46d7a18ccc" title="Gets a shallow copy of the names of each member of the group." alt="" coords="209,173,335,200"/>
+<area shape="rect" id="node6" href="$sim-operations_8c.html#ad1a5b9f3e850da13931ee02fbb170d41" title="Replace calls to malloc direct with this function, which errors and exits with status 2 if memory all..." alt="" coords="401,224,486,251"/>
+</map>

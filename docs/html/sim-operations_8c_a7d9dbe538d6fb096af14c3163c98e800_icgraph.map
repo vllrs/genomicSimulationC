@@ -1,0 +1,14 @@
+<map id="randpoi" name="randpoi">
+<area shape="rect" id="node1" title="Generates randomly a number from the Poisson distribution with parameter lambda, using the Knuth appr..." alt="" coords="661,209,725,235"/>
+<area shape="rect" id="node2" href="$sim-operations_8h.html#aa18b10bcd660dee5213868cc3244f826" title="Get the alleles of the outcome of crossing two subjects." alt="" coords="472,133,583,159"/>
+<area shape="rect" id="node10" href="$sim-operations_8h.html#ac1f46b3de0afb4674ae6d34311e7aea7" title="Get the alleles of the outcome of producing a doubled haploid from a gamete from a given parent." alt="" coords="441,209,613,235"/>
+<area shape="rect" id="node12" href="$sim-operations_8h.html#ae406f4a0266b7480e49899693f1b00da" title="Fills a char* with the simulated result of meiosis (reduction and recombination) from the marker alle..." alt="" coords="466,259,589,286"/>
+<area shape="rect" id="node3" href="$sim-operations_8h.html#a3ea77c76c329625646419a10683669f9" title="Performs random crosses among members of a group." alt="" coords="219,50,390,77"/>
+<area shape="rect" id="node5" href="$sim-operations_8h.html#abb793988799d792dfe4007efdf988068" title="Performs the crosses of pairs of parents whose ids are provided in an array." alt="" coords="216,107,393,134"/>
+<area shape="rect" id="node9" href="$sim-operations_8h.html#adf5beb682ac15fa5a0176e480adc9d91" title="Selfs each member of a group for a certain number of generations." alt="" coords="257,158,352,185"/>
+<area shape="rect" id="node4" href="$sim-operations_8h.html#a68aca99a41527b019316c8243e6fc7a7" title="Find the top m percent of a group and perform random crosses between those top individuals." alt="" coords="10,5,163,47"/>
+<area shape="rect" id="node6" href="$sim-operations_8h.html#a3f1b06b7aa35e6a05918e16d1deabeee" title="Perform crosses between all pairs of parents in the group from_group and allocates the resulting offs..." alt="" coords="8,71,165,112"/>
+<area shape="rect" id="node7" href="$sim-operations_8h.html#a3b67d38c13c7a8bef2d0fc91c0365177" title="Perform crosses between pairs of parents identified by name in a file and allocate the resulting offs..." alt="" coords="5,137,168,163"/>
+<area shape="rect" id="node8" href="$sim-operations_8h.html#aa7c90b4015e4abce750176c6d891cad2" title="Perform crosses between previously&#45;generated offspring of pairs of parents identified by name in a fi..." alt="" coords="11,188,163,229"/>
+<area shape="rect" id="node11" href="$sim-operations_8h.html#af078d6bc1b5d4234a9b960e6132480aa" title="Creates a doubled haploid from each member of a group." alt="" coords="224,209,385,235"/>
+</map>

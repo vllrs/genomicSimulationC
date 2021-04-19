@@ -1,0 +1,21 @@
+<map id="get_group_size" name="get_group_size">
+<area shape="rect" id="node1" title="Function to count the number of genotypes that currently belong to the specified group." alt="" coords="803,455,913,481"/>
+<area shape="rect" id="node2" href="$sim-operations_8h.html#ac297afb7cf2c56f6f3f436090d7962dd" title="Calculates the fitness metric/GEBV for each genotype in the AlleleMatrix in a certain group,..." alt="" coords="409,173,572,214"/>
+<area shape="rect" id="node3" href="$sim-operations_8h.html#a4d37c413cb4c979b4eafa1d0b656edd1" title="Print the GEBV of each genotype in a group to a file." alt="" coords="216,297,348,324"/>
+<area shape="rect" id="node5" href="$sim-operations_8h.html#a68aca99a41527b019316c8243e6fc7a7" title="Find the top m percent of a group and perform random crosses between those top individuals." alt="" coords="5,111,159,153"/>
+<area shape="rect" id="node6" href="$sim-operations_8c.html#a8de70c24458ffb2f3dea5590f7f8cdff" title="Given a set of blocks of markers in a file, for each genotype in a group, calculate the local GEBV fo..." alt="" coords="415,743,566,785"/>
+<area shape="rect" id="node7" href="$sim-operations_8h.html#a3ea77c76c329625646419a10683669f9" title="Performs random crosses among members of a group." alt="" coords="405,692,576,719"/>
+<area shape="rect" id="node8" href="$sim-operations_8h.html#ac159a31261e14b325bd623899eefa796" title="Gets a shallow copy of the genes/alleles of each member of the group." alt="" coords="629,708,750,735"/>
+<area shape="rect" id="node9" href="$sim-operations_8h.html#af078d6bc1b5d4234a9b960e6132480aa" title="Creates a doubled haploid from each member of a group." alt="" coords="410,860,571,887"/>
+<area shape="rect" id="node10" href="$sim-operations_8h.html#a9e43115d9ee4ac406c14161fc6ccb327" title="Prints the genotypes of each individual in a given group to a file, with the following format." alt="" coords="425,575,556,601"/>
+<area shape="rect" id="node11" href="$sim-operations_8h.html#a0f53ee5421c91ca041a1b8d4603238b5" title="Prints the genotypes of each individual in a given group to a file, with the following format." alt="" coords="411,626,570,667"/>
+<area shape="rect" id="node12" href="$sim-operations_8h.html#adf5beb682ac15fa5a0176e480adc9d91" title="Selfs each member of a group for a certain number of generations." alt="" coords="443,809,538,836"/>
+<area shape="rect" id="node13" href="$sim-operations_8h.html#a961042e468630f31a3607dac42f8fa34" title="Gets the ids of each member of the group." alt="" coords="638,505,741,532"/>
+<area shape="rect" id="node14" href="$sim-operations_8h.html#ab732ec2d648a6dc01444ef74f780fc70" title="Print the number of copies of a particular allele at each marker of each genotype in a group to a fil..." alt="" coords="417,458,564,499"/>
+<area shape="rect" id="node15" href="$sim-operations_8h.html#a75e854cbc72b31a5e2eb03c63c33ecc6" title="Print the full known pedigree of each genotype in a group to a file." alt="" coords="407,407,574,433"/>
+<area shape="rect" id="node16" href="$sim-operations_8h.html#a979efe39128de97176da5460cab7dfa7" title="Print the parents of each genotype in a group to a file." alt="" coords="417,290,564,331"/>
+<area shape="rect" id="node17" href="$sim-operations_8h.html#a95aad1344c24e6072e6a50dcc67b60a8" title="Gets the indexes (0&#45;based, from the start of the linked list in the SimData) of each member of the gr..." alt="" coords="624,87,755,113"/>
+<area shape="rect" id="node18" href="$sim-operations_8h.html#a3f1b06b7aa35e6a05918e16d1deabeee" title="Perform crosses between all pairs of parents in the group from_group and allocates the resulting offs..." alt="" coords="412,107,569,149"/>
+<area shape="rect" id="node19" href="$sim-operations_8h.html#a3e00f06acc41eb012e99ae46d7a18ccc" title="Gets a shallow copy of the names of each member of the group." alt="" coords="627,455,752,481"/>
+<area shape="rect" id="node4" href="$sim-operations_8h.html#aa91ffff83cf204fff8baef3790738b7a" title="Takes the top top_n fitness/GEBV individuals in the group and puts them in a new group." alt="" coords="207,119,357,145"/>
+</map>

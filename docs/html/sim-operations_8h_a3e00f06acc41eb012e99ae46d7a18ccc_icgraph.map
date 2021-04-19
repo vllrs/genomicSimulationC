@@ -1,0 +1,10 @@
+<map id="get_group_names" name="get_group_names">
+<area shape="rect" id="node1" title="Gets a shallow copy of the names of each member of the group." alt="" coords="220,187,345,214"/>
+<area shape="rect" id="node2" href="$sim-operations_8c.html#a8de70c24458ffb2f3dea5590f7f8cdff" title="Given a set of blocks of markers in a file, for each genotype in a group, calculate the local GEBV fo..." alt="" coords="13,5,164,47"/>
+<area shape="rect" id="node3" href="$sim-operations_8h.html#ab732ec2d648a6dc01444ef74f780fc70" title="Print the number of copies of a particular allele at each marker of each genotype in a group to a fil..." alt="" coords="15,71,162,112"/>
+<area shape="rect" id="node4" href="$sim-operations_8h.html#a9e43115d9ee4ac406c14161fc6ccb327" title="Prints the genotypes of each individual in a given group to a file, with the following format." alt="" coords="23,137,154,163"/>
+<area shape="rect" id="node5" href="$sim-operations_8h.html#a4d37c413cb4c979b4eafa1d0b656edd1" title="Print the GEBV of each genotype in a group to a file." alt="" coords="23,187,155,214"/>
+<area shape="rect" id="node6" href="$sim-operations_8h.html#a75e854cbc72b31a5e2eb03c63c33ecc6" title="Print the full known pedigree of each genotype in a group to a file." alt="" coords="5,238,172,265"/>
+<area shape="rect" id="node7" href="$sim-operations_8h.html#a979efe39128de97176da5460cab7dfa7" title="Print the parents of each genotype in a group to a file." alt="" coords="15,289,162,331"/>
+<area shape="rect" id="node8" href="$sim-operations_8h.html#a0f53ee5421c91ca041a1b8d4603238b5" title="Prints the genotypes of each individual in a given group to a file, with the following format." alt="" coords="9,355,168,396"/>
+</map>

@@ -1,0 +1,5 @@
+<map id="split_into_individuals" name="split_into_individuals">
+<area shape="rect" id="node1" title="Give every individual in the group a new group number that does not belong to any other existing grou..." alt="" coords="5,5,145,32"/>
+<area shape="rect" id="node2" href="$sim-operations_8c.html#a3305ddcc29138d2d92689f39a7885ca0" title="Identify every group number that currently has members." alt="" coords="193,5,332,32"/>
+<area shape="rect" id="node3" href="$sim-operations_8c.html#adae2e9f7e1061cb20426ba2333b7629b" title="Comparator function for qsort." alt="" coords="380,5,551,32"/>
+</map>

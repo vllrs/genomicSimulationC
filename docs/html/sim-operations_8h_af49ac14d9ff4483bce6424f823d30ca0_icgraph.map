@@ -1,0 +1,9 @@
+<map id="get_genes_of_id" name="get_genes_of_id">
+<area shape="rect" id="node1" title="Returns the alleles at each marker of the genotype with a given id." alt="" coords="820,64,936,91"/>
+<area shape="rect" id="node2" href="$sim-operations_8h.html#ae7797aeac935227749fc6eae09a02a96" title="Calculates the number of times at each marker that a particular allele appears for each genotype is a..." alt="" coords="616,57,772,98"/>
+<area shape="rect" id="node3" href="$sim-operations_8h.html#ac297afb7cf2c56f6f3f436090d7962dd" title="Calculates the fitness metric/GEBV for each genotype in the AlleleMatrix in a certain group,..." alt="" coords="405,23,568,65"/>
+<area shape="rect" id="node7" href="$sim-operations_8h.html#ab732ec2d648a6dc01444ef74f780fc70" title="Print the number of copies of a particular allele at each marker of each genotype in a group to a fil..." alt="" coords="413,89,560,130"/>
+<area shape="rect" id="node4" href="$sim-operations_8h.html#a4d37c413cb4c979b4eafa1d0b656edd1" title="Print the GEBV of each genotype in a group to a file." alt="" coords="216,5,348,32"/>
+<area shape="rect" id="node5" href="$sim-operations_8h.html#aa91ffff83cf204fff8baef3790738b7a" title="Takes the top top_n fitness/GEBV individuals in the group and puts them in a new group." alt="" coords="207,56,357,83"/>
+<area shape="rect" id="node6" href="$sim-operations_8h.html#a68aca99a41527b019316c8243e6fc7a7" title="Find the top m percent of a group and perform random crosses between those top individuals." alt="" coords="5,49,159,90"/>
+</map>

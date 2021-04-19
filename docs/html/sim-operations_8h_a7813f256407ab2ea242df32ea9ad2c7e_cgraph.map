@@ -1,0 +1,11 @@
+<map id="calculate_recombinations_from_file" name="calculate_recombinations_from_file">
+<area shape="rect" id="node1" title="Provides guesses as to the location of recombination events that led to the creation of certain genot..." alt="" coords="5,125,175,166"/>
+<area shape="rect" id="node2" href="$sim-operations_8c.html#aad9cd4248231da3682ba2f08a40cdbe8" title="Identify markers in the genotype of offspring where recombination from its parents occured." alt="" coords="223,5,445,32"/>
+<area shape="rect" id="node4" href="$sim-operations_8c.html#a3627a380ed86ebebe937c953bc3b2339" title="Identify markers in the genotype of offspring where recombination from its parents occured,..." alt="" coords="223,56,445,83"/>
+<area shape="rect" id="node6" href="$sim-operations_8c.html#a392c23248f22e9faf085198dbb1d8711" title="Opens a table file and reads the number of columns and rows (including headers) separated by sep into..." alt="" coords="266,107,402,133"/>
+<area shape="rect" id="node7" href="$sim-operations_8c.html#a309dbf26800ee65e982df2b347980906" title="Get the alleles of a genotype by its index." alt="" coords="265,157,403,184"/>
+<area shape="rect" id="node8" href="$sim-operations_8c.html#a67f649fd36494324e609b06fcc960785" title="Get the id of a genotype by its index." alt="" coords="278,208,390,235"/>
+<area shape="rect" id="node9" href="$sim-operations_8c.html#a93779d37ca9081d07987fd83c27b84af" title="Search for a genotype with a particular name in a linked list of AlleleMatrix, and return its index." alt="" coords="267,259,401,285"/>
+<area shape="rect" id="node3" href="$sim-operations_8h.html#aa71cdbced90506820ef61bd842ecfa40" title="Simple operator to determine if at marker i, two genotypes share at least one allele." alt="" coords="517,5,644,32"/>
+<area shape="rect" id="node5" href="$sim-operations_8h.html#ab88223532880a22dfc966be4cdb4107b" title="Simple operator to determine if at markers with indexes i to i+w inclusive, two genotypes share at le..." alt="" coords="493,56,668,83"/>
+</map>

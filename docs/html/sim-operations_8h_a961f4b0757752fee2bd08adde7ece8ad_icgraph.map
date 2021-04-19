@@ -1,0 +1,5 @@
+<map id="delete_effect_matrix" name="delete_effect_matrix">
+<area shape="rect" id="node1" title="Deletes an EffectMatrix object and frees its memory." alt="" coords="331,5,469,32"/>
+<area shape="rect" id="node2" href="$sim-operations_8h.html#a6fc4a687a2186e9e9dcf3229d9141041" title="Deletes a SimData object and frees its memory." alt="" coords="172,5,283,32"/>
+<area shape="rect" id="node3" href="$sim-operations_8h.html#a54cd625669413c2ef171060e9844d814" title="Populates a SimData combination from scratch with marker allele data, a genetic map,..." alt="" coords="5,5,124,32"/>
+</map>

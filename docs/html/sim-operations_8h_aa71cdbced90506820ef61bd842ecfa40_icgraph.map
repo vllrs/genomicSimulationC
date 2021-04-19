@@ -1,0 +1,5 @@
+<map id="has_same_alleles" name="has_same_alleles">
+<area shape="rect" id="node1" title="Simple operator to determine if at marker i, two genotypes share at least one allele." alt="" coords="493,13,620,39"/>
+<area shape="rect" id="node2" href="$sim-operations_8h.html#aad9cd4248231da3682ba2f08a40cdbe8" title="Identify markers in the genotype of offspring where recombination from its parents occured." alt="" coords="223,13,445,39"/>
+<area shape="rect" id="node3" href="$sim-operations_8h.html#a7813f256407ab2ea242df32ea9ad2c7e" title="Provides guesses as to the location of recombination events that led to the creation of certain genot..." alt="" coords="5,5,175,47"/>
+</map>
