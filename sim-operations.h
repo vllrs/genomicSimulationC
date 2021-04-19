@@ -244,13 +244,16 @@ int _simdata_pos_compare(const void *pp0, const void *pp1);
 int _descending_double_comparer(const void* pp0, const void* pp1);
 int _ascending_double_comparer(const void* pp0, const void* pp1);
 int _ascending_float_comparer(const void* p0, const void* p1);
-
+int _ascending_int_comparer(const void* p0, const void* p1);
+int _ascending_int_dcomparer(const void* pp0, const void* pp1);
 
 
 /* Group Modification */
 int combine_groups( SimData* d, int list_len, int group_ids[list_len]);
 void split_into_individuals( SimData* d, int group_id);
+void split_into_families(SimData* d, int group_id);
 int* get_existing_groups( SimData* d, int* n_groups);
+int** get_existing_group_counts( SimData* d, int* n_groups);
 int split_from_group( SimData* d, int n, int indexes_to_split[n]);
 
 /* Deletors */
@@ -351,6 +354,7 @@ DecimalMatrix calculate_fitness_metric( AlleleMatrix* m, EffectMatrix* e);
 DecimalMatrix calculate_count_matrix_of_allele_for_ids( AlleleMatrix* m, unsigned int* for_ids, unsigned int n_ids, char allele);
 DecimalMatrix calculate_full_count_matrix_of_allele( AlleleMatrix* m, char allele);
 void calculate_group_block_effects(SimData* d, char* block_file, char* output_file, int group);
+void calculate_all_block_effects(SimData* d, const char* block_file, const char* output_file);
 
 /* Savers */
 void save_simdata(FILE* f, SimData* m);
@@ -364,6 +368,7 @@ void save_group_one_step_pedigree(FILE* f, SimData* d, int group);
 void save_one_step_pedigree(FILE* f, SimData* d); 
 void save_group_full_pedigree(FILE* f, SimData* d, int group);
 void save_full_pedigree(FILE* f, AlleleMatrix* m, AlleleMatrix* parents);
+void save_AM_pedigree(FILE* f, AlleleMatrix* m, SimData* parents);
 void save_parents_of(FILE* f, AlleleMatrix* m, unsigned int id);
 
 void save_group_fitness(FILE* f, SimData* d, int group);

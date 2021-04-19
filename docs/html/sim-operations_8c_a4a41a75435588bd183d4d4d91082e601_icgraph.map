@@ -1,8 +1,9 @@
 <map id="save_parents_of" name="save_parents_of">
-<area shape="rect" id="node1" title="Recursively save the parents of a particular id to a file." alt="" coords="819,182,933,209"/>
-<area shape="rect" id="node2" href="$sim-operations_8h.html#aad2fb503b61c909787f62b2a64385557" title="Print the full known pedigree of each genotype in a single AlleleMatrix to a file." alt="" coords="461,133,588,159"/>
-<area shape="rect" id="node11" href="$sim-operations_8h.html#a75e854cbc72b31a5e2eb03c63c33ecc6" title="Print the full known pedigree of each genotype in a group to a file." alt="" coords="441,207,608,234"/>
-<area shape="rect" id="node12" href="$sim-operations_8h.html#a4a41a75435588bd183d4d4d91082e601" title="Recursively save the parents of a particular id to a file." alt="" coords="656,182,771,209"/>
+<area shape="rect" id="node1" title="Recursively save the parents of a particular id to a file." alt="" coords="819,214,933,241"/>
+<area shape="rect" id="node2" href="$sim-operations_8h.html#abf5bc0b61b008aeda217ea9a666ad9cb" title="Print the full known pedigree of each genotype in a single AlleleMatrix to a file." alt="" coords="459,133,590,159"/>
+<area shape="rect" id="node11" href="$sim-operations_8c.html#a40dbed7f680c5c1181a8ed27e616417b" title="Print the full known pedigree of each genotype in the SimData to a file." alt="" coords="461,202,588,229"/>
+<area shape="rect" id="node12" href="$sim-operations_8h.html#a75e854cbc72b31a5e2eb03c63c33ecc6" title="Print the full known pedigree of each genotype in a group to a file." alt="" coords="441,265,608,291"/>
+<area shape="rect" id="node13" href="$sim-operations_8h.html#a4a41a75435588bd183d4d4d91082e601" title="Recursively save the parents of a particular id to a file." alt="" coords="656,189,771,215"/>
 <area shape="rect" id="node3" href="$sim-operations_8h.html#a3ea77c76c329625646419a10683669f9" title="Performs random crosses among members of a group." alt="" coords="219,50,390,77"/>
 <area shape="rect" id="node5" href="$sim-operations_8h.html#abb793988799d792dfe4007efdf988068" title="Performs the crosses of pairs of parents whose ids are provided in an array." alt="" coords="216,107,393,134"/>
 <area shape="rect" id="node9" href="$sim-operations_8h.html#af078d6bc1b5d4234a9b960e6132480aa" title="Creates a doubled haploid from each member of a group." alt="" coords="224,158,385,185"/>

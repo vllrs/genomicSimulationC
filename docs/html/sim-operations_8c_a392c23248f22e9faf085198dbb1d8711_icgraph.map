@@ -1,11 +1,12 @@
 <map id="get_file_dimensions" name="get_file_dimensions">
-<area shape="rect" id="node1" title="Opens a table file and reads the number of columns and rows (including headers) separated by sep into..." alt="" coords="393,209,529,235"/>
-<area shape="rect" id="node2" href="$sim-operations_8c.html#a8de70c24458ffb2f3dea5590f7f8cdff" title="Given a set of blocks of markers in a file, for each genotype in a group, calculate the local GEBV fo..." alt="" coords="183,5,334,47"/>
-<area shape="rect" id="node3" href="$sim-operations_8h.html#a7813f256407ab2ea242df32ea9ad2c7e" title="Provides guesses as to the location of recombination events that led to the creation of certain genot..." alt="" coords="174,71,343,112"/>
-<area shape="rect" id="node4" href="$sim-operations_8h.html#a8bd85cb47ec8e0c4049f937ef40ae102" title="Appends genotype data from a file to an existing SimData." alt="" coords="182,136,335,177"/>
-<area shape="rect" id="node5" href="$sim-operations_8h.html#ad5863641a67355c2c1523e1a23b6f581" title="Populates a SimData combination with marker allele data." alt="" coords="172,201,345,243"/>
-<area shape="rect" id="node6" href="$sim-operations_8h.html#a156666e21151a9f267e31598574366a6" title="Populates a SimData combination with marker allele data." alt="" coords="179,267,338,308"/>
-<area shape="rect" id="node8" href="$sim-operations_8h.html#a3b67d38c13c7a8bef2d0fc91c0365177" title="Perform crosses between pairs of parents identified by name in a file and allocate the resulting offs..." alt="" coords="177,333,340,359"/>
-<area shape="rect" id="node9" href="$sim-operations_8h.html#aa7c90b4015e4abce750176c6d891cad2" title="Perform crosses between previously&#45;generated offspring of pairs of parents identified by name in a fi..." alt="" coords="183,384,335,425"/>
-<area shape="rect" id="node7" href="$sim-operations_8h.html#a54cd625669413c2ef171060e9844d814" title="Populates a SimData combination from scratch with marker allele data, a genetic map,..." alt="" coords="5,274,124,301"/>
+<area shape="rect" id="node1" title="Opens a table file and reads the number of columns and rows (including headers) separated by sep into..." alt="" coords="393,242,529,269"/>
+<area shape="rect" id="node2" href="$sim-operations_8h.html#a273f36bbf8893e5d74e2a71b41ffd1fa" title="Given a set of blocks of markers in a file, for each genotype saved, calculate the local GEBV for the..." alt="" coords="193,5,325,47"/>
+<area shape="rect" id="node3" href="$sim-operations_8c.html#a8de70c24458ffb2f3dea5590f7f8cdff" title="Given a set of blocks of markers in a file, for each genotype in a group, calculate the local GEBV fo..." alt="" coords="183,71,334,112"/>
+<area shape="rect" id="node4" href="$sim-operations_8h.html#a7813f256407ab2ea242df32ea9ad2c7e" title="Provides guesses as to the location of recombination events that led to the creation of certain genot..." alt="" coords="174,136,343,177"/>
+<area shape="rect" id="node5" href="$sim-operations_8h.html#a8bd85cb47ec8e0c4049f937ef40ae102" title="Appends genotype data from a file to an existing SimData." alt="" coords="182,201,335,243"/>
+<area shape="rect" id="node6" href="$sim-operations_8h.html#ad5863641a67355c2c1523e1a23b6f581" title="Populates a SimData combination with marker allele data." alt="" coords="172,267,345,308"/>
+<area shape="rect" id="node7" href="$sim-operations_8h.html#a156666e21151a9f267e31598574366a6" title="Populates a SimData combination with marker allele data." alt="" coords="179,332,338,373"/>
+<area shape="rect" id="node9" href="$sim-operations_8h.html#a3b67d38c13c7a8bef2d0fc91c0365177" title="Perform crosses between pairs of parents identified by name in a file and allocate the resulting offs..." alt="" coords="177,398,340,425"/>
+<area shape="rect" id="node10" href="$sim-operations_8h.html#aa7c90b4015e4abce750176c6d891cad2" title="Perform crosses between previously&#45;generated offspring of pairs of parents identified by name in a fi..." alt="" coords="183,449,335,491"/>
+<area shape="rect" id="node8" href="$sim-operations_8h.html#a54cd625669413c2ef171060e9844d814" title="Populates a SimData combination from scratch with marker allele data, a genetic map,..." alt="" coords="5,339,124,366"/>
 </map>

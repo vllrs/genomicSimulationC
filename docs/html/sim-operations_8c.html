@@ -139,6 +139,9 @@ Functions</h2></td></tr>
 <tr class="memitem:adae2e9f7e1061cb20426ba2333b7629b"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="sim-operations_8c.html#adae2e9f7e1061cb20426ba2333b7629b">_ascending_int_comparer</a> (const void *p0, const void *p1)</td></tr>
 <tr class="memdesc:adae2e9f7e1061cb20426ba2333b7629b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Comparator function for qsort.  <a href="sim-operations_8c.html#adae2e9f7e1061cb20426ba2333b7629b">More...</a><br /></td></tr>
 <tr class="separator:adae2e9f7e1061cb20426ba2333b7629b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acda79ff4e2a3229d13c5393d006136db"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="sim-operations_8c.html#acda79ff4e2a3229d13c5393d006136db">_ascending_int_dcomparer</a> (const void *pp0, const void *pp1)</td></tr>
+<tr class="memdesc:acda79ff4e2a3229d13c5393d006136db"><td class="mdescLeft">&#160;</td><td class="mdescRight">Comparator function for qsort.  <a href="sim-operations_8c.html#acda79ff4e2a3229d13c5393d006136db">More...</a><br /></td></tr>
+<tr class="separator:acda79ff4e2a3229d13c5393d006136db"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a887027349503be24b1a847c9b833aaac"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="sim-operations_8c.html#a887027349503be24b1a847c9b833aaac">condense_allele_matrix</a> (<a class="el" href="struct_sim_data.html">SimData</a> *d)</td></tr>
 <tr class="memdesc:a887027349503be24b1a847c9b833aaac"><td class="mdescLeft">&#160;</td><td class="mdescRight">A function to tidy the internal storage of genotypes after addition or deletion of genotypes in the <a class="el" href="struct_sim_data.html" title="Composite type that is used to run crossing simulations.">SimData</a>.  <a href="sim-operations_8c.html#a887027349503be24b1a847c9b833aaac">More...</a><br /></td></tr>
 <tr class="separator:a887027349503be24b1a847c9b833aaac"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -175,9 +178,15 @@ Functions</h2></td></tr>
 <tr class="memitem:ad5a61d77e05e6bb0d8f4235d21b8b1f3"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="sim-operations_8c.html#ad5a61d77e05e6bb0d8f4235d21b8b1f3">split_into_individuals</a> (<a class="el" href="struct_sim_data.html">SimData</a> *d, int group_id)</td></tr>
 <tr class="memdesc:ad5a61d77e05e6bb0d8f4235d21b8b1f3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Give every individual in the group a new group number that does not belong to any other existing group (thereby allocating each genotype in the group to a new group of 1).  <a href="sim-operations_8c.html#ad5a61d77e05e6bb0d8f4235d21b8b1f3">More...</a><br /></td></tr>
 <tr class="separator:ad5a61d77e05e6bb0d8f4235d21b8b1f3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab200978e019c73771fd80fcc53c6a598"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="sim-operations_8c.html#ab200978e019c73771fd80fcc53c6a598">split_into_families</a> (<a class="el" href="struct_sim_data.html">SimData</a> *d, int group_id)</td></tr>
+<tr class="memdesc:ab200978e019c73771fd80fcc53c6a598"><td class="mdescLeft">&#160;</td><td class="mdescRight">Split a group into a set of smaller groups, each of which contains the genotypes in the original group that share a particular pair of parents.  <a href="sim-operations_8c.html#ab200978e019c73771fd80fcc53c6a598">More...</a><br /></td></tr>
+<tr class="separator:ab200978e019c73771fd80fcc53c6a598"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3305ddcc29138d2d92689f39a7885ca0"><td class="memItemLeft" align="right" valign="top">int *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="sim-operations_8c.html#a3305ddcc29138d2d92689f39a7885ca0">get_existing_groups</a> (<a class="el" href="struct_sim_data.html">SimData</a> *d, int *n_groups)</td></tr>
 <tr class="memdesc:a3305ddcc29138d2d92689f39a7885ca0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Identify every group number that currently has members.  <a href="sim-operations_8c.html#a3305ddcc29138d2d92689f39a7885ca0">More...</a><br /></td></tr>
 <tr class="separator:a3305ddcc29138d2d92689f39a7885ca0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a23caa19435d6b5d27a7a5b9b6643ff9a"><td class="memItemLeft" align="right" valign="top">int **&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="sim-operations_8c.html#a23caa19435d6b5d27a7a5b9b6643ff9a">get_existing_group_counts</a> (<a class="el" href="struct_sim_data.html">SimData</a> *d, int *n_groups)</td></tr>
+<tr class="memdesc:a23caa19435d6b5d27a7a5b9b6643ff9a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Identify every group number that currently has members and the number of genotypes currently allocated to that group.  <a href="sim-operations_8c.html#a23caa19435d6b5d27a7a5b9b6643ff9a">More...</a><br /></td></tr>
+<tr class="separator:a23caa19435d6b5d27a7a5b9b6643ff9a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af2eda46d016c384b166ce65605952b7c"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="sim-operations_8c.html#af2eda46d016c384b166ce65605952b7c">split_from_group</a> (<a class="el" href="struct_sim_data.html">SimData</a> *d, int n, int indexes_to_split[n])</td></tr>
 <tr class="memdesc:af2eda46d016c384b166ce65605952b7c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Take a list of indexes and allocate the genotypes at those indexes to a new group.  <a href="sim-operations_8c.html#af2eda46d016c384b166ce65605952b7c">More...</a><br /></td></tr>
 <tr class="separator:af2eda46d016c384b166ce65605952b7c"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -316,6 +325,12 @@ Functions</h2></td></tr>
 <tr class="memitem:a8de70c24458ffb2f3dea5590f7f8cdff"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="sim-operations_8c.html#a8de70c24458ffb2f3dea5590f7f8cdff">calculate_group_block_effects</a> (<a class="el" href="struct_sim_data.html">SimData</a> *d, const char *block_file, const char *output_file, int group)</td></tr>
 <tr class="memdesc:a8de70c24458ffb2f3dea5590f7f8cdff"><td class="mdescLeft">&#160;</td><td class="mdescRight">Given a set of blocks of markers in a file, for each genotype in a group, calculate the local GEBV for the first allele at each marker in the block, and the local GEBV for the second allele at each marker in the block, then save the result to a file.  <a href="sim-operations_8c.html#a8de70c24458ffb2f3dea5590f7f8cdff">More...</a><br /></td></tr>
 <tr class="separator:a8de70c24458ffb2f3dea5590f7f8cdff"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a273f36bbf8893e5d74e2a71b41ffd1fa"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="sim-operations_8c.html#a273f36bbf8893e5d74e2a71b41ffd1fa">calculate_all_block_effects</a> (<a class="el" href="struct_sim_data.html">SimData</a> *d, const char *block_file, const char *output_file)</td></tr>
+<tr class="memdesc:a273f36bbf8893e5d74e2a71b41ffd1fa"><td class="mdescLeft">&#160;</td><td class="mdescRight">Given a set of blocks of markers in a file, for each genotype saved, calculate the local GEBV for the first allele at each marker in the block, and the local GEBV for the second allele at each marker in the block, then save the result to a file.  <a href="sim-operations_8c.html#a273f36bbf8893e5d74e2a71b41ffd1fa">More...</a><br /></td></tr>
+<tr class="separator:a273f36bbf8893e5d74e2a71b41ffd1fa"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab569f6043f8d810aee8d8c5ba380abbd"><td class="memItemLeft" align="right" valign="top">char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="sim-operations_8c.html#ab569f6043f8d810aee8d8c5ba380abbd">calculate_ideal_genotype</a> (<a class="el" href="struct_sim_data.html">SimData</a> *d)</td></tr>
+<tr class="memdesc:ab569f6043f8d810aee8d8c5ba380abbd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Takes a look at the currently-loaded effect values and creates a string containing the allele with the highest effect value for each marker as ordered in the <a class="el" href="struct_sim_data.html" title="Composite type that is used to run crossing simulations.">SimData</a>.  <a href="sim-operations_8c.html#ab569f6043f8d810aee8d8c5ba380abbd">More...</a><br /></td></tr>
+<tr class="separator:ab569f6043f8d810aee8d8c5ba380abbd"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4d63cd249222ab25b3112106813f29b2"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="sim-operations_8c.html#a4d63cd249222ab25b3112106813f29b2">save_simdata</a> (FILE *f, <a class="el" href="struct_sim_data.html">SimData</a> *m)</td></tr>
 <tr class="memdesc:a4d63cd249222ab25b3112106813f29b2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Prints the setup data (everything except the actual genotypes) stored inside a <a class="el" href="struct_sim_data.html" title="Composite type that is used to run crossing simulations.">SimData</a> to a file.  <a href="sim-operations_8c.html#a4d63cd249222ab25b3112106813f29b2">More...</a><br /></td></tr>
 <tr class="separator:a4d63cd249222ab25b3112106813f29b2"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -340,9 +355,12 @@ Functions</h2></td></tr>
 <tr class="memitem:a75e854cbc72b31a5e2eb03c63c33ecc6"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="sim-operations_8c.html#a75e854cbc72b31a5e2eb03c63c33ecc6">save_group_full_pedigree</a> (FILE *f, <a class="el" href="struct_sim_data.html">SimData</a> *d, int group)</td></tr>
 <tr class="memdesc:a75e854cbc72b31a5e2eb03c63c33ecc6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Print the full known pedigree of each genotype in a group to a file.  <a href="sim-operations_8c.html#a75e854cbc72b31a5e2eb03c63c33ecc6">More...</a><br /></td></tr>
 <tr class="separator:a75e854cbc72b31a5e2eb03c63c33ecc6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aad2fb503b61c909787f62b2a64385557"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="sim-operations_8c.html#aad2fb503b61c909787f62b2a64385557">save_full_pedigree</a> (FILE *f, <a class="el" href="struct_allele_matrix.html">AlleleMatrix</a> *m, <a class="el" href="struct_allele_matrix.html">AlleleMatrix</a> *parents)</td></tr>
-<tr class="memdesc:aad2fb503b61c909787f62b2a64385557"><td class="mdescLeft">&#160;</td><td class="mdescRight">Print the full known pedigree of each genotype in a single <a class="el" href="struct_allele_matrix.html">AlleleMatrix</a> to a file.  <a href="sim-operations_8c.html#aad2fb503b61c909787f62b2a64385557">More...</a><br /></td></tr>
-<tr class="separator:aad2fb503b61c909787f62b2a64385557"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a40dbed7f680c5c1181a8ed27e616417b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="sim-operations_8c.html#a40dbed7f680c5c1181a8ed27e616417b">save_full_pedigree</a> (FILE *f, <a class="el" href="struct_sim_data.html">SimData</a> *d)</td></tr>
+<tr class="memdesc:a40dbed7f680c5c1181a8ed27e616417b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Print the full known pedigree of each genotype in the <a class="el" href="struct_sim_data.html" title="Composite type that is used to run crossing simulations.">SimData</a> to a file.  <a href="sim-operations_8c.html#a40dbed7f680c5c1181a8ed27e616417b">More...</a><br /></td></tr>
+<tr class="separator:a40dbed7f680c5c1181a8ed27e616417b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abf5bc0b61b008aeda217ea9a666ad9cb"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="sim-operations_8c.html#abf5bc0b61b008aeda217ea9a666ad9cb">save_AM_pedigree</a> (FILE *f, <a class="el" href="struct_allele_matrix.html">AlleleMatrix</a> *m, <a class="el" href="struct_sim_data.html">SimData</a> *parents)</td></tr>
+<tr class="memdesc:abf5bc0b61b008aeda217ea9a666ad9cb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Print the full known pedigree of each genotype in a single <a class="el" href="struct_allele_matrix.html">AlleleMatrix</a> to a file.  <a href="sim-operations_8c.html#abf5bc0b61b008aeda217ea9a666ad9cb">More...</a><br /></td></tr>
+<tr class="separator:abf5bc0b61b008aeda217ea9a666ad9cb"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4a41a75435588bd183d4d4d91082e601"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="sim-operations_8c.html#a4a41a75435588bd183d4d4d91082e601">save_parents_of</a> (FILE *f, <a class="el" href="struct_allele_matrix.html">AlleleMatrix</a> *m, unsigned int id)</td></tr>
 <tr class="memdesc:a4a41a75435588bd183d4d4d91082e601"><td class="mdescLeft">&#160;</td><td class="mdescRight">Recursively save the parents of a particular id to a file.  <a href="sim-operations_8c.html#a4a41a75435588bd183d4d4d91082e601">More...</a><br /></td></tr>
 <tr class="separator:a4a41a75435588bd183d4d4d91082e601"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -361,9 +379,6 @@ Functions</h2></td></tr>
 <tr class="memitem:ab732ec2d648a6dc01444ef74f780fc70"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="sim-operations_8c.html#ab732ec2d648a6dc01444ef74f780fc70">save_count_matrix_of_group</a> (FILE *f, <a class="el" href="struct_sim_data.html">SimData</a> *d, char allele, int group)</td></tr>
 <tr class="memdesc:ab732ec2d648a6dc01444ef74f780fc70"><td class="mdescLeft">&#160;</td><td class="mdescRight">Print the number of copies of a particular allele at each marker of each genotype in a group to a file.  <a href="sim-operations_8c.html#ab732ec2d648a6dc01444ef74f780fc70">More...</a><br /></td></tr>
 <tr class="separator:ab732ec2d648a6dc01444ef74f780fc70"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab569f6043f8d810aee8d8c5ba380abbd"><td class="memItemLeft" align="right" valign="top">char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="sim-operations_8c.html#ab569f6043f8d810aee8d8c5ba380abbd">calculate_ideal_genotype</a> (<a class="el" href="struct_sim_data.html">SimData</a> *d)</td></tr>
-<tr class="memdesc:ab569f6043f8d810aee8d8c5ba380abbd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Takes a look at the currently-loaded effect values and creates a string containing the allele with the highest effect value for each marker as ordered in the <a class="el" href="struct_sim_data.html" title="Composite type that is used to run crossing simulations.">SimData</a>.  <a href="sim-operations_8c.html#ab569f6043f8d810aee8d8c5ba380abbd">More...</a><br /></td></tr>
-<tr class="separator:ab569f6043f8d810aee8d8c5ba380abbd"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="var-members"></a>
 Variables</h2></td></tr>
@@ -504,10 +519,11 @@ Here is the caller graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="sim-operations_8c_adae2e9f7e1061cb20426ba2333b7629b_icgraph.png" border="0" usemap="#sim-operations_8c_adae2e9f7e1061cb20426ba2333b7629b_icgraph" alt=""/></div>
 <map name="sim-operations_8c_adae2e9f7e1061cb20426ba2333b7629b_icgraph" id="sim-operations_8c_adae2e9f7e1061cb20426ba2333b7629b_icgraph">
-<area shape="rect" title="Comparator function for qsort." alt="" coords="1027,177,1197,204"/>
-<area shape="rect" href="sim-operations_8h.html#a3305ddcc29138d2d92689f39a7885ca0" title="Identify every group number that currently has members." alt="" coords="840,177,979,204"/>
+<area shape="rect" title="Comparator function for qsort." alt="" coords="1027,203,1197,229"/>
+<area shape="rect" href="sim-operations_8h.html#a3305ddcc29138d2d92689f39a7885ca0" title="Identify every group number that currently has members." alt="" coords="840,203,979,229"/>
 <area shape="rect" href="sim-operations_8h.html#ae974a74145fe876e303e14336d3c5d3a" title="Function to identify the next sequential integer that does not identify a group that currently has me..." alt="" coords="651,152,792,179"/>
-<area shape="rect" href="sim-operations_8h.html#ad5a61d77e05e6bb0d8f4235d21b8b1f3" title="Give every individual in the group a new group number that does not belong to any other existing grou..." alt="" coords="651,203,791,229"/>
+<area shape="rect" href="sim-operations_8h.html#ab200978e019c73771fd80fcc53c6a598" title="Split a group into a set of smaller groups, each of which contains the genotypes in the original grou..." alt="" coords="659,203,784,229"/>
+<area shape="rect" href="sim-operations_8h.html#ad5a61d77e05e6bb0d8f4235d21b8b1f3" title="Give every individual in the group a new group number that does not belong to any other existing grou..." alt="" coords="651,253,791,280"/>
 <area shape="rect" href="sim-operations_8h.html#a3ea77c76c329625646419a10683669f9" title="Performs random crosses among members of a group." alt="" coords="207,5,377,32"/>
 <area shape="rect" href="sim-operations_8h.html#abb793988799d792dfe4007efdf988068" title="Performs the crosses of pairs of parents whose ids are provided in an array." alt="" coords="425,64,603,91"/>
 <area shape="rect" href="sim-operations_8h.html#a8bd85cb47ec8e0c4049f937ef40ae102" title="Appends genotype data from a file to an existing SimData." alt="" coords="437,115,591,157"/>
@@ -519,6 +535,47 @@ Here is the caller graph for this function:</div>
 <area shape="rect" href="sim-operations_8h.html#a3b67d38c13c7a8bef2d0fc91c0365177" title="Perform crosses between pairs of parents identified by name in a file and allocate the resulting offs..." alt="" coords="211,123,373,149"/>
 <area shape="rect" href="sim-operations_8h.html#aa7c90b4015e4abce750176c6d891cad2" title="Perform crosses between previously&#45;generated offspring of pairs of parents identified by name in a fi..." alt="" coords="216,174,368,215"/>
 <area shape="rect" href="sim-operations_8h.html#aa91ffff83cf204fff8baef3790738b7a" title="Takes the top top_n fitness/GEBV individuals in the group and puts them in a new group." alt="" coords="217,261,367,288"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="acda79ff4e2a3229d13c5393d006136db"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acda79ff4e2a3229d13c5393d006136db">&#9670;&nbsp;</a></span>_ascending_int_dcomparer()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int _ascending_int_dcomparer </td>
+          <td>(</td>
+          <td class="paramtype">const void *&#160;</td>
+          <td class="paramname"><em>pp0</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const void *&#160;</td>
+          <td class="paramname"><em>pp1</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Comparator function for qsort. </p>
+<p>Used to compare an array of integers* to sort the integers pointed to in ascending order. </p><dl class="section see"><dt>See also</dt><dd><a class="el" href="sim-operations_8c.html#a23caa19435d6b5d27a7a5b9b6643ff9a" title="Identify every group number that currently has members and the number of genotypes currently allocate...">get_existing_group_counts()</a></dd></dl>
+<p>Sorts lower numbers before higher numbers. If floats are equal, their order after comparison is undefined. </p>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="sim-operations_8c_acda79ff4e2a3229d13c5393d006136db_icgraph.png" border="0" usemap="#sim-operations_8c_acda79ff4e2a3229d13c5393d006136db_icgraph" alt=""/></div>
+<map name="sim-operations_8c_acda79ff4e2a3229d13c5393d006136db_icgraph" id="sim-operations_8c_acda79ff4e2a3229d13c5393d006136db_icgraph">
+<area shape="rect" title="Comparator function for qsort." alt="" coords="184,13,361,39"/>
+<area shape="rect" href="sim-operations_8h.html#a23caa19435d6b5d27a7a5b9b6643ff9a" title="Identify every group number that currently has members and the number of genotypes currently allocate..." alt="" coords="5,5,136,47"/>
 </map>
 </div>
 
@@ -727,6 +784,70 @@ Here is the caller graph for this function:</div>
 <area shape="rect" href="sim-operations_8h.html#a4d37c413cb4c979b4eafa1d0b656edd1" title="Print the GEBV of each genotype in a group to a file." alt="" coords="216,5,348,32"/>
 <area shape="rect" href="sim-operations_8h.html#aa91ffff83cf204fff8baef3790738b7a" title="Takes the top top_n fitness/GEBV individuals in the group and puts them in a new group." alt="" coords="207,56,357,83"/>
 <area shape="rect" href="sim-operations_8h.html#a68aca99a41527b019316c8243e6fc7a7" title="Find the top m percent of a group and perform random crosses between those top individuals." alt="" coords="5,49,159,90"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a273f36bbf8893e5d74e2a71b41ffd1fa"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a273f36bbf8893e5d74e2a71b41ffd1fa">&#9670;&nbsp;</a></span>calculate_all_block_effects()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void calculate_all_block_effects </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="struct_sim_data.html">SimData</a> *&#160;</td>
+          <td class="paramname"><em>d</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>block_file</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>output_file</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Given a set of blocks of markers in a file, for each genotype saved, calculate the local GEBV for the first allele at each marker in the block, and the local GEBV for the second allele at each marker in the block, then save the result to a file. </p>
+<p>This gives block effects for each haplotype of each individual currently saved to the <a class="el" href="struct_sim_data.html" title="Composite type that is used to run crossing simulations.">SimData</a>.</p>
+<p>Note that this function is made to work on HPC, and not fixed to work on a regular device. If an array as long as the number of genotypes cannot fit contiguously into memory, the function will segfault.</p>
+<p>The block file is designed after the output from a call to the R SelectionTools package's <code>st.def.hblocks</code> function. It should have the format (tab-separated):</p>
+<p>Chrom Pos Name Class Markers</p>
+<p>[ignored] [ignored] [ignored] [ignored] [semicolon];[separated];[list] ;[of];[marker];[names];[belonging];[to];[this];[block]</p>
+<p>...</p>
+<p>The output file will have format:</p>
+<p>[genotype name]_1 [effect for first block, first allele] [effect for second block, second allele] ...</p>
+<p>[genotype name]_2 [effect for first block, second allele] [effect for second block, second allele] ...</p>
+<p>[genotype 2 name]_1 ...</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">d</td><td>pointer to the <a class="el" href="struct_sim_data.html" title="Composite type that is used to run crossing simulations.">SimData</a> object to which individuals belong. It must have a marker effect file loaded to successfully run this function. </td></tr>
+    <tr><td class="paramname">block_file</td><td>string containing filename of the file with blocks </td></tr>
+    <tr><td class="paramname">output_file</td><td>string containing the filename of the file to which output block effects/local GEBVs will be saved. </td></tr>
+  </table>
+  </dd>
+</dl>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="sim-operations_8c_a273f36bbf8893e5d74e2a71b41ffd1fa_cgraph.png" border="0" usemap="#sim-operations_8c_a273f36bbf8893e5d74e2a71b41ffd1fa_cgraph" alt=""/></div>
+<map name="sim-operations_8c_a273f36bbf8893e5d74e2a71b41ffd1fa_cgraph" id="sim-operations_8c_a273f36bbf8893e5d74e2a71b41ffd1fa_cgraph">
+<area shape="rect" title="Given a set of blocks of markers in a file, for each genotype saved, calculate the local GEBV for the..." alt="" coords="5,27,137,69"/>
+<area shape="rect" href="sim-operations_8c.html#a392c23248f22e9faf085198dbb1d8711" title="Opens a table file and reads the number of columns and rows (including headers) separated by sep into..." alt="" coords="185,5,321,32"/>
+<area shape="rect" href="sim-operations_8c.html#aed2ae969c3ce4ed1466a885dcc559472" title="Returns the first located index in an array of strings where the string is the same as the string tar..." alt="" coords="185,57,321,98"/>
 </map>
 </div>
 
@@ -1648,38 +1769,38 @@ Here is the call graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="sim-operations_8c_a3ea77c76c329625646419a10683669f9_cgraph.png" border="0" usemap="#sim-operations_8c_a3ea77c76c329625646419a10683669f9_cgraph" alt=""/></div>
 <map name="sim-operations_8c_a3ea77c76c329625646419a10683669f9_cgraph" id="sim-operations_8c_a3ea77c76c329625646419a10683669f9_cgraph">
-<area shape="rect" title="Performs random crosses among members of a group." alt="" coords="5,578,176,605"/>
-<area shape="rect" href="sim-operations_8c.html#a238032359089625f3fd3b4447cdbbdff" title="Calculates the fitness metric/GEBV for each genotype in the AlleleMatrix, and returns the results in ..." alt="" coords="230,173,393,199"/>
-<area shape="rect" href="sim-operations_8c.html#aaf6542d59034f88f9e1ec48e5f053c4a" title="Deletes a DecimalMatrix and frees its memory." alt="" coords="483,274,590,301"/>
-<area shape="rect" href="sim-operations_8c.html#a887027349503be24b1a847c9b833aaac" title="A function to tidy the internal storage of genotypes after addition or deletion of genotypes in the S..." alt="" coords="232,325,391,351"/>
-<area shape="rect" href="sim-operations_8c.html#add4a9c17e8c3e59fc00eee25635b110f" title="Deletes the full AlleleMatrix object and frees its memory." alt="" coords="468,325,605,351"/>
-<area shape="rect" href="sim-operations_8c.html#aac694dd044a29fd93443368a7b9e8d8a" title="Creator for an empty AlleleMatrix object of a given size." alt="" coords="224,477,399,503"/>
-<area shape="rect" href="sim-operations_8c.html#aa18b10bcd660dee5213868cc3244f826" title="Get the alleles of the outcome of crossing two subjects." alt="" coords="256,426,367,453"/>
-<area shape="rect" href="sim-operations_8c.html#ac159a31261e14b325bd623899eefa796" title="Gets a shallow copy of the genes/alleles of each member of the group." alt="" coords="251,578,372,605"/>
-<area shape="rect" href="sim-operations_8c.html#ad6d2b66296cd80f5bfe303e06de7935c" title="Function to count the number of genotypes that currently belong to the specified group." alt="" coords="481,578,592,605"/>
-<area shape="rect" href="sim-operations_8c.html#a961042e468630f31a3607dac42f8fa34" title="Gets the ids of each member of the group." alt="" coords="260,527,363,554"/>
-<area shape="rect" href="sim-operations_8c.html#ae974a74145fe876e303e14336d3c5d3a" title="Function to identify the next sequential integer that does not identify a group that currently has me..." alt="" coords="241,730,382,757"/>
-<area shape="rect" href="sim-operations_8c.html#a89e066191f12e056cebb8d2cd74a2a29" title="Generate an integer randomly between 0 and limit inclusive." alt="" coords="279,781,343,807"/>
-<area shape="rect" href="sim-operations_8c.html#a42a237afba9dc8f3a7339cb97d929cb6" title="Prints all the geneotype data saved in the linked list of AlleleMatrices starting with m to a file." alt="" coords="247,831,375,858"/>
-<area shape="rect" href="sim-operations_8c.html#a8f5320627e7155d6e69e4c3db6208be4" title="Print a set of pre&#45;calculated GEBVs with provided names and ids to a file, with the same format as a ..." alt="" coords="265,882,358,909"/>
-<area shape="rect" href="sim-operations_8c.html#aad2fb503b61c909787f62b2a64385557" title="Print the full known pedigree of each genotype in a single AlleleMatrix to a file." alt="" coords="248,933,375,959"/>
-<area shape="rect" href="sim-operations_8c.html#ab4a5ef571ebeb5e546461398eecfb0ff" title="Fills the designated section of the .subject_names array in an AlleleMatrix with the pattern prefixin..." alt="" coords="244,679,379,706"/>
-<area shape="rect" href="sim-operations_8c.html#ac711a312bddd30d394adda822a7c7679" title="Add the two DecimalMatrix." alt="" coords="483,223,590,250"/>
-<area shape="rect" href="sim-operations_8c.html#abf3f578b0aa59d5b68ccd0738dd6a9d1" title="Generates a matrix of c columns, r rows with all 0." alt="" coords="683,122,837,149"/>
-<area shape="rect" href="sim-operations_8c.html#a42f2398ccb53ffafce9b4a17e3222636" title="Calculates the number of times at each marker that a particular allele appears for each genotype in a..." alt="" coords="469,5,605,47"/>
-<area shape="rect" href="sim-operations_8c.html#a1219ce0fef428e6b5317a034280497b0" title="Perform matrix multiplication on two DecimalMatrix." alt="" coords="471,71,602,98"/>
-<area shape="rect" href="sim-operations_8c.html#abe8da784853a382f703129997ed08996" title="Get a DecimalMatrix composed only of row row_index from m" alt="" coords="467,122,606,149"/>
-<area shape="rect" href="sim-operations_8c.html#ad1a5b9f3e850da13931ee02fbb170d41" title="Replace calls to malloc direct with this function, which errors and exits with status 2 if memory all..." alt="" coords="494,527,579,554"/>
-<area shape="rect" href="sim-operations_8c.html#a3744bc6f3fcb52952d520029055e8af8" title="Comparator function for qsort." alt="" coords="447,375,627,402"/>
-<area shape="rect" href="sim-operations_8c.html#ad4e0f7934e82157e3115f8df7aec01f0" title="Generates randomly one of 0 or 1, by splitting the output of rand() in half." alt="" coords="509,426,564,453"/>
-<area shape="rect" href="sim-operations_8c.html#a7d9dbe538d6fb096af14c3163c98e800" title="Generates randomly a number from the Poisson distribution with parameter lambda, using the Knuth appr..." alt="" coords="505,477,569,503"/>
-<area shape="rect" href="sim-operations_8c.html#a3305ddcc29138d2d92689f39a7885ca0" title="Identify every group number that currently has members." alt="" coords="467,730,606,757"/>
-<area shape="rect" href="sim-operations_8c.html#adae2e9f7e1061cb20426ba2333b7629b" title="Comparator function for qsort." alt="" coords="675,730,845,757"/>
-<area shape="rect" href="sim-operations_8c.html#a6aa75e72bb29725ffe32cd003c547480" title="Returns the name of the genotype with a given id." alt="" coords="703,919,817,946"/>
-<area shape="rect" href="sim-operations_8c.html#a4a41a75435588bd183d4d4d91082e601" title="Recursively save the parents of a particular id to a file." alt="" coords="479,970,594,997"/>
-<area shape="rect" href="sim-operations_8c.html#aa6943b0633c1744bacad62ab2bf68ebd" title="Returns the located index in an array of integers where the integer is target." alt="" coords="893,945,1068,971"/>
-<area shape="rect" href="sim-operations_8c.html#a229c9de94875ea41a23723d337f5f92f" title="Saves the ids of the parents of a genotype with a particular id to the output array output." alt="" coords="698,970,822,997"/>
-<area shape="rect" href="sim-operations_8c.html#ad7d864d43092823ac2ed8a6cbd595e35" title="Count and return the number of digits in i." alt="" coords="475,679,599,706"/>
+<area shape="rect" title="Performs random crosses among members of a group." alt="" coords="5,579,176,605"/>
+<area shape="rect" href="sim-operations_8c.html#a238032359089625f3fd3b4447cdbbdff" title="Calculates the fitness metric/GEBV for each genotype in the AlleleMatrix, and returns the results in ..." alt="" coords="230,165,393,192"/>
+<area shape="rect" href="sim-operations_8c.html#aaf6542d59034f88f9e1ec48e5f053c4a" title="Deletes a DecimalMatrix and frees its memory." alt="" coords="483,275,590,301"/>
+<area shape="rect" href="sim-operations_8c.html#a887027349503be24b1a847c9b833aaac" title="A function to tidy the internal storage of genotypes after addition or deletion of genotypes in the S..." alt="" coords="232,325,391,352"/>
+<area shape="rect" href="sim-operations_8c.html#add4a9c17e8c3e59fc00eee25635b110f" title="Deletes the full AlleleMatrix object and frees its memory." alt="" coords="468,325,605,352"/>
+<area shape="rect" href="sim-operations_8c.html#aac694dd044a29fd93443368a7b9e8d8a" title="Creator for an empty AlleleMatrix object of a given size." alt="" coords="224,477,399,504"/>
+<area shape="rect" href="sim-operations_8c.html#aa18b10bcd660dee5213868cc3244f826" title="Get the alleles of the outcome of crossing two subjects." alt="" coords="256,427,367,453"/>
+<area shape="rect" href="sim-operations_8c.html#ac159a31261e14b325bd623899eefa796" title="Gets a shallow copy of the genes/alleles of each member of the group." alt="" coords="251,579,372,605"/>
+<area shape="rect" href="sim-operations_8c.html#ad6d2b66296cd80f5bfe303e06de7935c" title="Function to count the number of genotypes that currently belong to the specified group." alt="" coords="481,579,592,605"/>
+<area shape="rect" href="sim-operations_8c.html#a961042e468630f31a3607dac42f8fa34" title="Gets the ids of each member of the group." alt="" coords="260,528,363,555"/>
+<area shape="rect" href="sim-operations_8c.html#ae974a74145fe876e303e14336d3c5d3a" title="Function to identify the next sequential integer that does not identify a group that currently has me..." alt="" coords="241,731,382,757"/>
+<area shape="rect" href="sim-operations_8c.html#a89e066191f12e056cebb8d2cd74a2a29" title="Generate an integer randomly between 0 and limit inclusive." alt="" coords="279,781,343,808"/>
+<area shape="rect" href="sim-operations_8c.html#a42a237afba9dc8f3a7339cb97d929cb6" title="Prints all the geneotype data saved in the linked list of AlleleMatrices starting with m to a file." alt="" coords="247,832,375,859"/>
+<area shape="rect" href="sim-operations_8c.html#abf5bc0b61b008aeda217ea9a666ad9cb" title="Print the full known pedigree of each genotype in a single AlleleMatrix to a file." alt="" coords="246,883,377,909"/>
+<area shape="rect" href="sim-operations_8c.html#a8f5320627e7155d6e69e4c3db6208be4" title="Print a set of pre&#45;calculated GEBVs with provided names and ids to a file, with the same format as a ..." alt="" coords="265,933,358,960"/>
+<area shape="rect" href="sim-operations_8c.html#ab4a5ef571ebeb5e546461398eecfb0ff" title="Fills the designated section of the .subject_names array in an AlleleMatrix with the pattern prefixin..." alt="" coords="244,680,379,707"/>
+<area shape="rect" href="sim-operations_8c.html#ac711a312bddd30d394adda822a7c7679" title="Add the two DecimalMatrix." alt="" coords="483,107,590,133"/>
+<area shape="rect" href="sim-operations_8c.html#abf3f578b0aa59d5b68ccd0738dd6a9d1" title="Generates a matrix of c columns, r rows with all 0." alt="" coords="683,81,837,108"/>
+<area shape="rect" href="sim-operations_8c.html#a42f2398ccb53ffafce9b4a17e3222636" title="Calculates the number of times at each marker that a particular allele appears for each genotype in a..." alt="" coords="469,158,605,199"/>
+<area shape="rect" href="sim-operations_8c.html#a1219ce0fef428e6b5317a034280497b0" title="Perform matrix multiplication on two DecimalMatrix." alt="" coords="471,5,602,32"/>
+<area shape="rect" href="sim-operations_8c.html#abe8da784853a382f703129997ed08996" title="Get a DecimalMatrix composed only of row row_index from m" alt="" coords="467,224,606,251"/>
+<area shape="rect" href="sim-operations_8c.html#ad1a5b9f3e850da13931ee02fbb170d41" title="Replace calls to malloc direct with this function, which errors and exits with status 2 if memory all..." alt="" coords="494,528,579,555"/>
+<area shape="rect" href="sim-operations_8c.html#a3744bc6f3fcb52952d520029055e8af8" title="Comparator function for qsort." alt="" coords="447,376,627,403"/>
+<area shape="rect" href="sim-operations_8c.html#ad4e0f7934e82157e3115f8df7aec01f0" title="Generates randomly one of 0 or 1, by splitting the output of rand() in half." alt="" coords="509,427,564,453"/>
+<area shape="rect" href="sim-operations_8c.html#a7d9dbe538d6fb096af14c3163c98e800" title="Generates randomly a number from the Poisson distribution with parameter lambda, using the Knuth appr..." alt="" coords="505,477,569,504"/>
+<area shape="rect" href="sim-operations_8c.html#a3305ddcc29138d2d92689f39a7885ca0" title="Identify every group number that currently has members." alt="" coords="467,731,606,757"/>
+<area shape="rect" href="sim-operations_8c.html#adae2e9f7e1061cb20426ba2333b7629b" title="Comparator function for qsort." alt="" coords="675,731,845,757"/>
+<area shape="rect" href="sim-operations_8c.html#a4a41a75435588bd183d4d4d91082e601" title="Recursively save the parents of a particular id to a file." alt="" coords="479,883,594,909"/>
+<area shape="rect" href="sim-operations_8c.html#a6aa75e72bb29725ffe32cd003c547480" title="Returns the name of the genotype with a given id." alt="" coords="703,857,817,884"/>
+<area shape="rect" href="sim-operations_8c.html#a229c9de94875ea41a23723d337f5f92f" title="Saves the ids of the parents of a genotype with a particular id to the output array output." alt="" coords="698,908,822,935"/>
+<area shape="rect" href="sim-operations_8c.html#aa6943b0633c1744bacad62ab2bf68ebd" title="Returns the located index in an array of integers where the integer is target." alt="" coords="893,883,1068,909"/>
+<area shape="rect" href="sim-operations_8c.html#ad7d864d43092823ac2ed8a6cbd595e35" title="Count and return the number of digits in i." alt="" coords="475,680,599,707"/>
 </map>
 </div>
 <div class="dynheader">
@@ -1751,36 +1872,36 @@ Here is the call graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="sim-operations_8c_abb793988799d792dfe4007efdf988068_cgraph.png" border="0" usemap="#sim-operations_8c_abb793988799d792dfe4007efdf988068_cgraph" alt=""/></div>
 <map name="sim-operations_8c_abb793988799d792dfe4007efdf988068_cgraph" id="sim-operations_8c_abb793988799d792dfe4007efdf988068_cgraph">
-<area shape="rect" title="Performs the crosses of pairs of parents whose ids are provided in an array." alt="" coords="5,505,183,532"/>
-<area shape="rect" href="sim-operations_8c.html#a238032359089625f3fd3b4447cdbbdff" title="Calculates the fitness metric/GEBV for each genotype in the AlleleMatrix, and returns the results in ..." alt="" coords="237,151,399,177"/>
-<area shape="rect" href="sim-operations_8c.html#aaf6542d59034f88f9e1ec48e5f053c4a" title="Deletes a DecimalMatrix and frees its memory." alt="" coords="490,252,597,279"/>
-<area shape="rect" href="sim-operations_8c.html#a887027349503be24b1a847c9b833aaac" title="A function to tidy the internal storage of genotypes after addition or deletion of genotypes in the S..." alt="" coords="239,353,397,380"/>
-<area shape="rect" href="sim-operations_8c.html#add4a9c17e8c3e59fc00eee25635b110f" title="Deletes the full AlleleMatrix object and frees its memory." alt="" coords="475,303,612,329"/>
-<area shape="rect" href="sim-operations_8c.html#aac694dd044a29fd93443368a7b9e8d8a" title="Creator for an empty AlleleMatrix object of a given size." alt="" coords="231,455,405,481"/>
-<area shape="rect" href="sim-operations_8c.html#aa18b10bcd660dee5213868cc3244f826" title="Get the alleles of the outcome of crossing two subjects." alt="" coords="263,404,373,431"/>
-<area shape="rect" href="sim-operations_8c.html#a309dbf26800ee65e982df2b347980906" title="Get the alleles of a genotype by its index." alt="" coords="249,556,387,583"/>
-<area shape="rect" href="sim-operations_8c.html#a67f649fd36494324e609b06fcc960785" title="Get the id of a genotype by its index." alt="" coords="262,607,374,633"/>
-<area shape="rect" href="sim-operations_8c.html#ae974a74145fe876e303e14336d3c5d3a" title="Function to identify the next sequential integer that does not identify a group that currently has me..." alt="" coords="247,657,389,684"/>
-<area shape="rect" href="sim-operations_8c.html#a42a237afba9dc8f3a7339cb97d929cb6" title="Prints all the geneotype data saved in the linked list of AlleleMatrices starting with m to a file." alt="" coords="254,708,382,735"/>
-<area shape="rect" href="sim-operations_8c.html#a8f5320627e7155d6e69e4c3db6208be4" title="Print a set of pre&#45;calculated GEBVs with provided names and ids to a file, with the same format as a ..." alt="" coords="271,759,365,785"/>
-<area shape="rect" href="sim-operations_8c.html#aad2fb503b61c909787f62b2a64385557" title="Print the full known pedigree of each genotype in a single AlleleMatrix to a file." alt="" coords="255,809,381,836"/>
-<area shape="rect" href="sim-operations_8c.html#ab4a5ef571ebeb5e546461398eecfb0ff" title="Fills the designated section of the .subject_names array in an AlleleMatrix with the pattern prefixin..." alt="" coords="251,505,385,532"/>
-<area shape="rect" href="sim-operations_8c.html#ac711a312bddd30d394adda822a7c7679" title="Add the two DecimalMatrix." alt="" coords="490,33,597,60"/>
-<area shape="rect" href="sim-operations_8c.html#abf3f578b0aa59d5b68ccd0738dd6a9d1" title="Generates a matrix of c columns, r rows with all 0." alt="" coords="689,63,844,89"/>
-<area shape="rect" href="sim-operations_8c.html#a42f2398ccb53ffafce9b4a17e3222636" title="Calculates the number of times at each marker that a particular allele appears for each genotype in a..." alt="" coords="475,85,611,126"/>
-<area shape="rect" href="sim-operations_8c.html#a1219ce0fef428e6b5317a034280497b0" title="Perform matrix multiplication on two DecimalMatrix." alt="" coords="478,151,609,177"/>
-<area shape="rect" href="sim-operations_8c.html#abe8da784853a382f703129997ed08996" title="Get a DecimalMatrix composed only of row row_index from m" alt="" coords="474,201,613,228"/>
-<area shape="rect" href="sim-operations_8c.html#ad1a5b9f3e850da13931ee02fbb170d41" title="Replace calls to malloc direct with this function, which errors and exits with status 2 if memory all..." alt="" coords="501,505,586,532"/>
-<area shape="rect" href="sim-operations_8c.html#a3744bc6f3fcb52952d520029055e8af8" title="Comparator function for qsort." alt="" coords="453,353,633,380"/>
-<area shape="rect" href="sim-operations_8c.html#ad4e0f7934e82157e3115f8df7aec01f0" title="Generates randomly one of 0 or 1, by splitting the output of rand() in half." alt="" coords="516,404,571,431"/>
-<area shape="rect" href="sim-operations_8c.html#a7d9dbe538d6fb096af14c3163c98e800" title="Generates randomly a number from the Poisson distribution with parameter lambda, using the Knuth appr..." alt="" coords="511,455,575,481"/>
-<area shape="rect" href="sim-operations_8c.html#a3305ddcc29138d2d92689f39a7885ca0" title="Identify every group number that currently has members." alt="" coords="474,657,613,684"/>
-<area shape="rect" href="sim-operations_8c.html#adae2e9f7e1061cb20426ba2333b7629b" title="Comparator function for qsort." alt="" coords="681,657,852,684"/>
-<area shape="rect" href="sim-operations_8c.html#a6aa75e72bb29725ffe32cd003c547480" title="Returns the name of the genotype with a given id." alt="" coords="710,835,823,861"/>
-<area shape="rect" href="sim-operations_8c.html#a4a41a75435588bd183d4d4d91082e601" title="Recursively save the parents of a particular id to a file." alt="" coords="486,784,601,811"/>
-<area shape="rect" href="sim-operations_8c.html#aa6943b0633c1744bacad62ab2bf68ebd" title="Returns the located index in an array of integers where the integer is target." alt="" coords="900,809,1075,836"/>
-<area shape="rect" href="sim-operations_8c.html#a229c9de94875ea41a23723d337f5f92f" title="Saves the ids of the parents of a genotype with a particular id to the output array output." alt="" coords="705,784,829,811"/>
-<area shape="rect" href="sim-operations_8c.html#ad7d864d43092823ac2ed8a6cbd595e35" title="Count and return the number of digits in i." alt="" coords="481,556,605,583"/>
+<area shape="rect" title="Performs the crosses of pairs of parents whose ids are provided in an array." alt="" coords="5,528,183,555"/>
+<area shape="rect" href="sim-operations_8c.html#a238032359089625f3fd3b4447cdbbdff" title="Calculates the fitness metric/GEBV for each genotype in the AlleleMatrix, and returns the results in ..." alt="" coords="237,173,399,200"/>
+<area shape="rect" href="sim-operations_8c.html#aaf6542d59034f88f9e1ec48e5f053c4a" title="Deletes a DecimalMatrix and frees its memory." alt="" coords="490,275,597,301"/>
+<area shape="rect" href="sim-operations_8c.html#a887027349503be24b1a847c9b833aaac" title="A function to tidy the internal storage of genotypes after addition or deletion of genotypes in the S..." alt="" coords="239,376,397,403"/>
+<area shape="rect" href="sim-operations_8c.html#add4a9c17e8c3e59fc00eee25635b110f" title="Deletes the full AlleleMatrix object and frees its memory." alt="" coords="475,325,612,352"/>
+<area shape="rect" href="sim-operations_8c.html#aac694dd044a29fd93443368a7b9e8d8a" title="Creator for an empty AlleleMatrix object of a given size." alt="" coords="231,477,405,504"/>
+<area shape="rect" href="sim-operations_8c.html#aa18b10bcd660dee5213868cc3244f826" title="Get the alleles of the outcome of crossing two subjects." alt="" coords="263,427,373,453"/>
+<area shape="rect" href="sim-operations_8c.html#a309dbf26800ee65e982df2b347980906" title="Get the alleles of a genotype by its index." alt="" coords="249,579,387,605"/>
+<area shape="rect" href="sim-operations_8c.html#a67f649fd36494324e609b06fcc960785" title="Get the id of a genotype by its index." alt="" coords="262,629,374,656"/>
+<area shape="rect" href="sim-operations_8c.html#ae974a74145fe876e303e14336d3c5d3a" title="Function to identify the next sequential integer that does not identify a group that currently has me..." alt="" coords="247,680,389,707"/>
+<area shape="rect" href="sim-operations_8c.html#a42a237afba9dc8f3a7339cb97d929cb6" title="Prints all the geneotype data saved in the linked list of AlleleMatrices starting with m to a file." alt="" coords="254,731,382,757"/>
+<area shape="rect" href="sim-operations_8c.html#abf5bc0b61b008aeda217ea9a666ad9cb" title="Print the full known pedigree of each genotype in a single AlleleMatrix to a file." alt="" coords="253,781,383,808"/>
+<area shape="rect" href="sim-operations_8c.html#a8f5320627e7155d6e69e4c3db6208be4" title="Print a set of pre&#45;calculated GEBVs with provided names and ids to a file, with the same format as a ..." alt="" coords="271,832,365,859"/>
+<area shape="rect" href="sim-operations_8c.html#ab4a5ef571ebeb5e546461398eecfb0ff" title="Fills the designated section of the .subject_names array in an AlleleMatrix with the pattern prefixin..." alt="" coords="251,528,385,555"/>
+<area shape="rect" href="sim-operations_8c.html#ac711a312bddd30d394adda822a7c7679" title="Add the two DecimalMatrix." alt="" coords="490,5,597,32"/>
+<area shape="rect" href="sim-operations_8c.html#abf3f578b0aa59d5b68ccd0738dd6a9d1" title="Generates a matrix of c columns, r rows with all 0." alt="" coords="689,93,844,120"/>
+<area shape="rect" href="sim-operations_8c.html#a42f2398ccb53ffafce9b4a17e3222636" title="Calculates the number of times at each marker that a particular allele appears for each genotype in a..." alt="" coords="475,57,611,98"/>
+<area shape="rect" href="sim-operations_8c.html#a1219ce0fef428e6b5317a034280497b0" title="Perform matrix multiplication on two DecimalMatrix." alt="" coords="478,123,609,149"/>
+<area shape="rect" href="sim-operations_8c.html#abe8da784853a382f703129997ed08996" title="Get a DecimalMatrix composed only of row row_index from m" alt="" coords="474,173,613,200"/>
+<area shape="rect" href="sim-operations_8c.html#ad1a5b9f3e850da13931ee02fbb170d41" title="Replace calls to malloc direct with this function, which errors and exits with status 2 if memory all..." alt="" coords="501,528,586,555"/>
+<area shape="rect" href="sim-operations_8c.html#a3744bc6f3fcb52952d520029055e8af8" title="Comparator function for qsort." alt="" coords="453,477,633,504"/>
+<area shape="rect" href="sim-operations_8c.html#ad4e0f7934e82157e3115f8df7aec01f0" title="Generates randomly one of 0 or 1, by splitting the output of rand() in half." alt="" coords="516,376,571,403"/>
+<area shape="rect" href="sim-operations_8c.html#a7d9dbe538d6fb096af14c3163c98e800" title="Generates randomly a number from the Poisson distribution with parameter lambda, using the Knuth appr..." alt="" coords="511,427,575,453"/>
+<area shape="rect" href="sim-operations_8c.html#a3305ddcc29138d2d92689f39a7885ca0" title="Identify every group number that currently has members." alt="" coords="474,680,613,707"/>
+<area shape="rect" href="sim-operations_8c.html#adae2e9f7e1061cb20426ba2333b7629b" title="Comparator function for qsort." alt="" coords="681,680,852,707"/>
+<area shape="rect" href="sim-operations_8c.html#a4a41a75435588bd183d4d4d91082e601" title="Recursively save the parents of a particular id to a file." alt="" coords="486,781,601,808"/>
+<area shape="rect" href="sim-operations_8c.html#a6aa75e72bb29725ffe32cd003c547480" title="Returns the name of the genotype with a given id." alt="" coords="710,756,823,783"/>
+<area shape="rect" href="sim-operations_8c.html#a229c9de94875ea41a23723d337f5f92f" title="Saves the ids of the parents of a genotype with a particular id to the output array output." alt="" coords="705,807,829,833"/>
+<area shape="rect" href="sim-operations_8c.html#aa6943b0633c1744bacad62ab2bf68ebd" title="Returns the located index in an array of integers where the integer is target." alt="" coords="900,781,1075,808"/>
+<area shape="rect" href="sim-operations_8c.html#ad7d864d43092823ac2ed8a6cbd595e35" title="Count and return the number of digits in i." alt="" coords="481,579,605,605"/>
 </map>
 </div>
 <div class="dynheader">
@@ -2405,6 +2526,54 @@ Here is the caller graph for this function:</div>
 
 </div>
 </div>
+<a id="a23caa19435d6b5d27a7a5b9b6643ff9a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a23caa19435d6b5d27a7a5b9b6643ff9a">&#9670;&nbsp;</a></span>get_existing_group_counts()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int** get_existing_group_counts </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="struct_sim_data.html">SimData</a> *&#160;</td>
+          <td class="paramname"><em>d</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int *&#160;</td>
+          <td class="paramname"><em>n_groups</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Identify every group number that currently has members and the number of genotypes currently allocated to that group. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">d</td><td>the <a class="el" href="struct_sim_data.html" title="Composite type that is used to run crossing simulations.">SimData</a> struct on which to perform the operation </td></tr>
+    <tr><td class="paramname">n_groups</td><td>a pointer to a location that can be accessed by the calling function. The number of groups/length of the returned array will be saved here. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>a heap array of length [2][value saved at n_groups after this function has run]. The array at the first index contains the group numbers, and the array at the second index contains the number of members of that group, ordered correspondingly. The arrays are sorted in ascending order by group number. All three components of the returned value (2-long first-index array containing the pointers to the toehr 2, and the two data-containing arrays) are allocated from the heap so should be freed by the calling function when it finishes with them. </dd></dl>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="sim-operations_8c_a23caa19435d6b5d27a7a5b9b6643ff9a_cgraph.png" border="0" usemap="#sim-operations_8c_a23caa19435d6b5d27a7a5b9b6643ff9a_cgraph" alt=""/></div>
+<map name="sim-operations_8c_a23caa19435d6b5d27a7a5b9b6643ff9a_cgraph" id="sim-operations_8c_a23caa19435d6b5d27a7a5b9b6643ff9a_cgraph">
+<area shape="rect" title="Identify every group number that currently has members and the number of genotypes currently allocate..." alt="" coords="5,23,136,65"/>
+<area shape="rect" href="sim-operations_8c.html#acda79ff4e2a3229d13c5393d006136db" title="Comparator function for qsort." alt="" coords="184,5,361,32"/>
+<area shape="rect" href="sim-operations_8c.html#ad1a5b9f3e850da13931ee02fbb170d41" title="Replace calls to malloc direct with this function, which errors and exits with status 2 if memory all..." alt="" coords="230,56,315,83"/>
+</map>
+</div>
+
+</div>
+</div>
 <a id="a3305ddcc29138d2d92689f39a7885ca0"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a3305ddcc29138d2d92689f39a7885ca0">&#9670;&nbsp;</a></span>get_existing_groups()</h2>
 
@@ -2454,9 +2623,10 @@ Here is the caller graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="sim-operations_8c_a3305ddcc29138d2d92689f39a7885ca0_icgraph.png" border="0" usemap="#sim-operations_8c_a3305ddcc29138d2d92689f39a7885ca0_icgraph" alt=""/></div>
 <map name="sim-operations_8c_a3305ddcc29138d2d92689f39a7885ca0_icgraph" id="sim-operations_8c_a3305ddcc29138d2d92689f39a7885ca0_icgraph">
-<area shape="rect" title="Identify every group number that currently has members." alt="" coords="840,177,979,204"/>
+<area shape="rect" title="Identify every group number that currently has members." alt="" coords="840,203,979,229"/>
 <area shape="rect" href="sim-operations_8h.html#ae974a74145fe876e303e14336d3c5d3a" title="Function to identify the next sequential integer that does not identify a group that currently has me..." alt="" coords="651,152,792,179"/>
-<area shape="rect" href="sim-operations_8h.html#ad5a61d77e05e6bb0d8f4235d21b8b1f3" title="Give every individual in the group a new group number that does not belong to any other existing grou..." alt="" coords="651,203,791,229"/>
+<area shape="rect" href="sim-operations_8h.html#ab200978e019c73771fd80fcc53c6a598" title="Split a group into a set of smaller groups, each of which contains the genotypes in the original grou..." alt="" coords="659,203,784,229"/>
+<area shape="rect" href="sim-operations_8h.html#ad5a61d77e05e6bb0d8f4235d21b8b1f3" title="Give every individual in the group a new group number that does not belong to any other existing grou..." alt="" coords="651,253,791,280"/>
 <area shape="rect" href="sim-operations_8h.html#a3ea77c76c329625646419a10683669f9" title="Performs random crosses among members of a group." alt="" coords="207,5,377,32"/>
 <area shape="rect" href="sim-operations_8h.html#abb793988799d792dfe4007efdf988068" title="Performs the crosses of pairs of parents whose ids are provided in an array." alt="" coords="425,64,603,91"/>
 <area shape="rect" href="sim-operations_8h.html#a8bd85cb47ec8e0c4049f937ef40ae102" title="Appends genotype data from a file to an existing SimData." alt="" coords="437,115,591,157"/>
@@ -2516,15 +2686,16 @@ Here is the caller graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="sim-operations_8c_a392c23248f22e9faf085198dbb1d8711_icgraph.png" border="0" usemap="#sim-operations_8c_a392c23248f22e9faf085198dbb1d8711_icgraph" alt=""/></div>
 <map name="sim-operations_8c_a392c23248f22e9faf085198dbb1d8711_icgraph" id="sim-operations_8c_a392c23248f22e9faf085198dbb1d8711_icgraph">
-<area shape="rect" title="Opens a table file and reads the number of columns and rows (including headers) separated by sep into..." alt="" coords="393,209,529,235"/>
-<area shape="rect" href="sim-operations_8c.html#a8de70c24458ffb2f3dea5590f7f8cdff" title="Given a set of blocks of markers in a file, for each genotype in a group, calculate the local GEBV fo..." alt="" coords="183,5,334,47"/>
-<area shape="rect" href="sim-operations_8h.html#a7813f256407ab2ea242df32ea9ad2c7e" title="Provides guesses as to the location of recombination events that led to the creation of certain genot..." alt="" coords="174,71,343,112"/>
-<area shape="rect" href="sim-operations_8h.html#a8bd85cb47ec8e0c4049f937ef40ae102" title="Appends genotype data from a file to an existing SimData." alt="" coords="182,136,335,177"/>
-<area shape="rect" href="sim-operations_8h.html#ad5863641a67355c2c1523e1a23b6f581" title="Populates a SimData combination with marker allele data." alt="" coords="172,201,345,243"/>
-<area shape="rect" href="sim-operations_8h.html#a156666e21151a9f267e31598574366a6" title="Populates a SimData combination with marker allele data." alt="" coords="179,267,338,308"/>
-<area shape="rect" href="sim-operations_8h.html#a3b67d38c13c7a8bef2d0fc91c0365177" title="Perform crosses between pairs of parents identified by name in a file and allocate the resulting offs..." alt="" coords="177,333,340,359"/>
-<area shape="rect" href="sim-operations_8h.html#aa7c90b4015e4abce750176c6d891cad2" title="Perform crosses between previously&#45;generated offspring of pairs of parents identified by name in a fi..." alt="" coords="183,384,335,425"/>
-<area shape="rect" href="sim-operations_8h.html#a54cd625669413c2ef171060e9844d814" title="Populates a SimData combination from scratch with marker allele data, a genetic map,..." alt="" coords="5,274,124,301"/>
+<area shape="rect" title="Opens a table file and reads the number of columns and rows (including headers) separated by sep into..." alt="" coords="393,242,529,269"/>
+<area shape="rect" href="sim-operations_8h.html#a273f36bbf8893e5d74e2a71b41ffd1fa" title="Given a set of blocks of markers in a file, for each genotype saved, calculate the local GEBV for the..." alt="" coords="193,5,325,47"/>
+<area shape="rect" href="sim-operations_8c.html#a8de70c24458ffb2f3dea5590f7f8cdff" title="Given a set of blocks of markers in a file, for each genotype in a group, calculate the local GEBV fo..." alt="" coords="183,71,334,112"/>
+<area shape="rect" href="sim-operations_8h.html#a7813f256407ab2ea242df32ea9ad2c7e" title="Provides guesses as to the location of recombination events that led to the creation of certain genot..." alt="" coords="174,136,343,177"/>
+<area shape="rect" href="sim-operations_8h.html#a8bd85cb47ec8e0c4049f937ef40ae102" title="Appends genotype data from a file to an existing SimData." alt="" coords="182,201,335,243"/>
+<area shape="rect" href="sim-operations_8h.html#ad5863641a67355c2c1523e1a23b6f581" title="Populates a SimData combination with marker allele data." alt="" coords="172,267,345,308"/>
+<area shape="rect" href="sim-operations_8h.html#a156666e21151a9f267e31598574366a6" title="Populates a SimData combination with marker allele data." alt="" coords="179,332,338,373"/>
+<area shape="rect" href="sim-operations_8h.html#a3b67d38c13c7a8bef2d0fc91c0365177" title="Perform crosses between pairs of parents identified by name in a file and allocate the resulting offs..." alt="" coords="177,398,340,425"/>
+<area shape="rect" href="sim-operations_8h.html#aa7c90b4015e4abce750176c6d891cad2" title="Perform crosses between previously&#45;generated offspring of pairs of parents identified by name in a fi..." alt="" coords="183,449,335,491"/>
+<area shape="rect" href="sim-operations_8h.html#a54cd625669413c2ef171060e9844d814" title="Populates a SimData combination from scratch with marker allele data, a genetic map,..." alt="" coords="5,339,124,366"/>
 </map>
 </div>
 
@@ -2580,28 +2751,29 @@ Here is the caller graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="sim-operations_8c_aa6943b0633c1744bacad62ab2bf68ebd_icgraph.png" border="0" usemap="#sim-operations_8c_aa6943b0633c1744bacad62ab2bf68ebd_icgraph" alt=""/></div>
 <map name="sim-operations_8c_aa6943b0633c1744bacad62ab2bf68ebd_icgraph" id="sim-operations_8c_aa6943b0633c1744bacad62ab2bf68ebd_icgraph">
-<area shape="rect" title="Returns the located index in an array of integers where the integer is target." alt="" coords="1040,240,1215,267"/>
-<area shape="rect" href="sim-operations_8h.html#af49ac14d9ff4483bce6424f823d30ca0" title="Returns the alleles at each marker of the genotype with a given id." alt="" coords="872,147,988,173"/>
-<area shape="rect" href="sim-operations_8h.html#a6aa75e72bb29725ffe32cd003c547480" title="Returns the name of the genotype with a given id." alt="" coords="873,240,987,267"/>
-<area shape="rect" href="sim-operations_8h.html#a229c9de94875ea41a23723d337f5f92f" title="Saves the ids of the parents of a genotype with a particular id to the output array output." alt="" coords="868,292,992,319"/>
-<area shape="rect" href="sim-operations_8h.html#ae7797aeac935227749fc6eae09a02a96" title="Calculates the number of times at each marker that a particular allele appears for each genotype is a..." alt="" coords="660,97,816,138"/>
-<area shape="rect" href="sim-operations_8h.html#ac297afb7cf2c56f6f3f436090d7962dd" title="Calculates the fitness metric/GEBV for each genotype in the AlleleMatrix in a certain group,..." alt="" coords="443,38,606,79"/>
-<area shape="rect" href="sim-operations_8h.html#ab732ec2d648a6dc01444ef74f780fc70" title="Print the number of copies of a particular allele at each marker of each genotype in a group to a fil..." alt="" coords="451,103,598,145"/>
-<area shape="rect" href="sim-operations_8h.html#a4d37c413cb4c979b4eafa1d0b656edd1" title="Print the GEBV of each genotype in a group to a file." alt="" coords="239,5,371,32"/>
-<area shape="rect" href="sim-operations_8h.html#aa91ffff83cf204fff8baef3790738b7a" title="Takes the top top_n fitness/GEBV individuals in the group and puts them in a new group." alt="" coords="229,56,380,83"/>
-<area shape="rect" href="sim-operations_8h.html#a68aca99a41527b019316c8243e6fc7a7" title="Find the top m percent of a group and perform random crosses between those top individuals." alt="" coords="10,89,163,130"/>
-<area shape="rect" href="sim-operations_8h.html#aad2fb503b61c909787f62b2a64385557" title="Print the full known pedigree of each genotype in a single AlleleMatrix to a file." alt="" coords="461,175,588,201"/>
-<area shape="rect" href="sim-operations_8h.html#a979efe39128de97176da5460cab7dfa7" title="Print the parents of each genotype in a group to a file." alt="" coords="665,289,811,330"/>
-<area shape="rect" href="sim-operations_8h.html#a6b87b484064fd373aec0bfa4ce8dbef1" title="Print the parents of each genotype in the SimData to a file." alt="" coords="656,355,820,381"/>
-<area shape="rect" href="sim-operations_8h.html#a4a41a75435588bd183d4d4d91082e601" title="Recursively save the parents of a particular id to a file." alt="" coords="681,237,795,264"/>
-<area shape="rect" href="sim-operations_8h.html#a3ea77c76c329625646419a10683669f9" title="Performs random crosses among members of a group." alt="" coords="219,208,390,235"/>
-<area shape="rect" href="sim-operations_8h.html#abb793988799d792dfe4007efdf988068" title="Performs the crosses of pairs of parents whose ids are provided in an array." alt="" coords="216,259,393,285"/>
-<area shape="rect" href="sim-operations_8h.html#af078d6bc1b5d4234a9b960e6132480aa" title="Creates a doubled haploid from each member of a group." alt="" coords="224,107,385,133"/>
-<area shape="rect" href="sim-operations_8h.html#adf5beb682ac15fa5a0176e480adc9d91" title="Selfs each member of a group for a certain number of generations." alt="" coords="257,157,352,184"/>
-<area shape="rect" href="sim-operations_8h.html#a3f1b06b7aa35e6a05918e16d1deabeee" title="Perform crosses between all pairs of parents in the group from_group and allocates the resulting offs..." alt="" coords="8,193,165,234"/>
-<area shape="rect" href="sim-operations_8h.html#a3b67d38c13c7a8bef2d0fc91c0365177" title="Perform crosses between pairs of parents identified by name in a file and allocate the resulting offs..." alt="" coords="5,259,168,285"/>
-<area shape="rect" href="sim-operations_8h.html#aa7c90b4015e4abce750176c6d891cad2" title="Perform crosses between previously&#45;generated offspring of pairs of parents identified by name in a fi..." alt="" coords="11,310,163,351"/>
-<area shape="rect" href="sim-operations_8h.html#a75e854cbc72b31a5e2eb03c63c33ecc6" title="Print the full known pedigree of each genotype in a group to a file." alt="" coords="441,237,608,264"/>
+<area shape="rect" title="Returns the located index in an array of integers where the integer is target." alt="" coords="1040,213,1215,239"/>
+<area shape="rect" href="sim-operations_8h.html#af49ac14d9ff4483bce6424f823d30ca0" title="Returns the alleles at each marker of the genotype with a given id." alt="" coords="872,133,988,159"/>
+<area shape="rect" href="sim-operations_8h.html#a6aa75e72bb29725ffe32cd003c547480" title="Returns the name of the genotype with a given id." alt="" coords="873,263,987,290"/>
+<area shape="rect" href="sim-operations_8h.html#a229c9de94875ea41a23723d337f5f92f" title="Saves the ids of the parents of a genotype with a particular id to the output array output." alt="" coords="868,213,992,239"/>
+<area shape="rect" href="sim-operations_8h.html#ae7797aeac935227749fc6eae09a02a96" title="Calculates the number of times at each marker that a particular allele appears for each genotype is a..." alt="" coords="660,71,816,112"/>
+<area shape="rect" href="sim-operations_8h.html#ac297afb7cf2c56f6f3f436090d7962dd" title="Calculates the fitness metric/GEBV for each genotype in the AlleleMatrix in a certain group,..." alt="" coords="443,71,606,112"/>
+<area shape="rect" href="sim-operations_8h.html#ab732ec2d648a6dc01444ef74f780fc70" title="Print the number of copies of a particular allele at each marker of each genotype in a group to a fil..." alt="" coords="451,5,598,47"/>
+<area shape="rect" href="sim-operations_8h.html#a4d37c413cb4c979b4eafa1d0b656edd1" title="Print the GEBV of each genotype in a group to a file." alt="" coords="239,27,371,54"/>
+<area shape="rect" href="sim-operations_8h.html#aa91ffff83cf204fff8baef3790738b7a" title="Takes the top top_n fitness/GEBV individuals in the group and puts them in a new group." alt="" coords="229,78,380,105"/>
+<area shape="rect" href="sim-operations_8h.html#a68aca99a41527b019316c8243e6fc7a7" title="Find the top m percent of a group and perform random crosses between those top individuals." alt="" coords="10,111,163,152"/>
+<area shape="rect" href="sim-operations_8h.html#a979efe39128de97176da5460cab7dfa7" title="Print the parents of each genotype in a group to a file." alt="" coords="665,256,811,297"/>
+<area shape="rect" href="sim-operations_8h.html#a6b87b484064fd373aec0bfa4ce8dbef1" title="Print the parents of each genotype in the SimData to a file." alt="" coords="656,322,820,349"/>
+<area shape="rect" href="sim-operations_8h.html#a4a41a75435588bd183d4d4d91082e601" title="Recursively save the parents of a particular id to a file." alt="" coords="681,205,795,231"/>
+<area shape="rect" href="sim-operations_8h.html#abf5bc0b61b008aeda217ea9a666ad9cb" title="Print the full known pedigree of each genotype in a single AlleleMatrix to a file." alt="" coords="459,179,590,206"/>
+<area shape="rect" href="sim-operations_8c.html#a40dbed7f680c5c1181a8ed27e616417b" title="Print the full known pedigree of each genotype in the SimData to a file." alt="" coords="461,230,588,257"/>
+<area shape="rect" href="sim-operations_8h.html#a75e854cbc72b31a5e2eb03c63c33ecc6" title="Print the full known pedigree of each genotype in a group to a file." alt="" coords="441,281,608,307"/>
+<area shape="rect" href="sim-operations_8h.html#a3ea77c76c329625646419a10683669f9" title="Performs random crosses among members of a group." alt="" coords="219,230,390,257"/>
+<area shape="rect" href="sim-operations_8h.html#abb793988799d792dfe4007efdf988068" title="Performs the crosses of pairs of parents whose ids are provided in an array." alt="" coords="216,281,393,307"/>
+<area shape="rect" href="sim-operations_8h.html#af078d6bc1b5d4234a9b960e6132480aa" title="Creates a doubled haploid from each member of a group." alt="" coords="224,129,385,155"/>
+<area shape="rect" href="sim-operations_8h.html#adf5beb682ac15fa5a0176e480adc9d91" title="Selfs each member of a group for a certain number of generations." alt="" coords="257,179,352,206"/>
+<area shape="rect" href="sim-operations_8h.html#a3f1b06b7aa35e6a05918e16d1deabeee" title="Perform crosses between all pairs of parents in the group from_group and allocates the resulting offs..." alt="" coords="8,215,165,256"/>
+<area shape="rect" href="sim-operations_8h.html#a3b67d38c13c7a8bef2d0fc91c0365177" title="Perform crosses between pairs of parents identified by name in a file and allocate the resulting offs..." alt="" coords="5,281,168,307"/>
+<area shape="rect" href="sim-operations_8h.html#aa7c90b4015e4abce750176c6d891cad2" title="Perform crosses between previously&#45;generated offspring of pairs of parents identified by name in a fi..." alt="" coords="11,332,163,373"/>
 </map>
 </div>
 
@@ -2656,12 +2828,13 @@ Here is the caller graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="sim-operations_8c_aed2ae969c3ce4ed1466a885dcc559472_icgraph.png" border="0" usemap="#sim-operations_8c_aed2ae969c3ce4ed1466a885dcc559472_icgraph" alt=""/></div>
 <map name="sim-operations_8c_aed2ae969c3ce4ed1466a885dcc559472_icgraph" id="sim-operations_8c_aed2ae969c3ce4ed1466a885dcc559472_icgraph">
-<area shape="rect" title="Returns the first located index in an array of strings where the string is the same as the string tar..." alt="" coords="391,89,527,131"/>
-<area shape="rect" href="sim-operations_8c.html#a8de70c24458ffb2f3dea5590f7f8cdff" title="Given a set of blocks of markers in a file, for each genotype in a group, calculate the local GEBV fo..." alt="" coords="182,5,333,47"/>
-<area shape="rect" href="sim-operations_8h.html#a9d6b231bd6ddde82af66a5d276a2c739" title="Populates a SimData combination with effect values." alt="" coords="176,71,339,98"/>
-<area shape="rect" href="sim-operations_8h.html#a8edb09b9b9eb27f84ac59cc4342ea855" title="Populates a SimData combination with data from a genetic map." alt="" coords="172,122,343,149"/>
-<area shape="rect" href="sim-operations_8h.html#a8bd85cb47ec8e0c4049f937ef40ae102" title="Appends genotype data from a file to an existing SimData." alt="" coords="181,173,334,215"/>
-<area shape="rect" href="sim-operations_8h.html#a54cd625669413c2ef171060e9844d814" title="Populates a SimData combination from scratch with marker allele data, a genetic map,..." alt="" coords="5,97,124,123"/>
+<area shape="rect" title="Returns the first located index in an array of strings where the string is the same as the string tar..." alt="" coords="391,129,527,171"/>
+<area shape="rect" href="sim-operations_8h.html#a273f36bbf8893e5d74e2a71b41ffd1fa" title="Given a set of blocks of markers in a file, for each genotype saved, calculate the local GEBV for the..." alt="" coords="191,5,323,47"/>
+<area shape="rect" href="sim-operations_8c.html#a8de70c24458ffb2f3dea5590f7f8cdff" title="Given a set of blocks of markers in a file, for each genotype in a group, calculate the local GEBV fo..." alt="" coords="182,71,333,112"/>
+<area shape="rect" href="sim-operations_8h.html#a9d6b231bd6ddde82af66a5d276a2c739" title="Populates a SimData combination with effect values." alt="" coords="176,137,339,163"/>
+<area shape="rect" href="sim-operations_8h.html#a8edb09b9b9eb27f84ac59cc4342ea855" title="Populates a SimData combination with data from a genetic map." alt="" coords="172,187,343,214"/>
+<area shape="rect" href="sim-operations_8h.html#a8bd85cb47ec8e0c4049f937ef40ae102" title="Appends genotype data from a file to an existing SimData." alt="" coords="181,239,334,280"/>
+<area shape="rect" href="sim-operations_8h.html#a54cd625669413c2ef171060e9844d814" title="Populates a SimData combination from scratch with marker allele data, a genetic map,..." alt="" coords="5,162,124,189"/>
 </map>
 </div>
 
@@ -3512,7 +3685,7 @@ Here is the caller graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="sim-operations_8c_ad1a5b9f3e850da13931ee02fbb170d41_icgraph.png" border="0" usemap="#sim-operations_8c_ad1a5b9f3e850da13931ee02fbb170d41_icgraph" alt=""/></div>
 <map name="sim-operations_8c_ad1a5b9f3e850da13931ee02fbb170d41_icgraph" id="sim-operations_8c_ad1a5b9f3e850da13931ee02fbb170d41_icgraph">
-<area shape="rect" title="Replace calls to malloc direct with this function, which errors and exits with status 2 if memory all..." alt="" coords="872,411,957,437"/>
+<area shape="rect" title="Replace calls to malloc direct with this function, which errors and exits with status 2 if memory all..." alt="" coords="872,436,957,463"/>
 <area shape="rect" href="sim-operations_8h.html#ab569f6043f8d810aee8d8c5ba380abbd" title="Takes a look at the currently&#45;loaded effect values and creates a string containing the allele with th..." alt="" coords="649,5,817,32"/>
 <area shape="rect" href="sim-operations_8h.html#aac694dd044a29fd93443368a7b9e8d8a" title="Creator for an empty AlleleMatrix object of a given size." alt="" coords="646,259,821,285"/>
 <area shape="rect" href="sim-operations_8h.html#a8bd85cb47ec8e0c4049f937ef40ae102" title="Appends genotype data from a file to an existing SimData." alt="" coords="429,66,583,107"/>
@@ -3521,14 +3694,15 @@ Here is the caller graph for this function:</div>
 <area shape="rect" href="sim-operations_8h.html#adf5beb682ac15fa5a0176e480adc9d91" title="Selfs each member of a group for a certain number of generations." alt="" coords="459,364,553,391"/>
 <area shape="rect" href="sim-operations_8h.html#aa18b10bcd660dee5213868cc3244f826" title="Get the alleles of the outcome of crossing two subjects." alt="" coords="678,309,789,336"/>
 <area shape="rect" href="sim-operations_8h.html#ac1f46b3de0afb4674ae6d34311e7aea7" title="Get the alleles of the outcome of producing a doubled haploid from a gamete from a given parent." alt="" coords="647,461,819,488"/>
-<area shape="rect" href="sim-operations_8h.html#ae406f4a0266b7480e49899693f1b00da" title="Fills a char* with the simulated result of meiosis (reduction and recombination) from the marker alle..." alt="" coords="672,1151,795,1177"/>
-<area shape="rect" href="sim-operations_8h.html#a5e049945be5700a6d5a5654b6b332842" title="Updates the chr_ends, n_chr and chr_lengths fields in SimData.map." alt="" coords="643,1049,824,1076"/>
+<area shape="rect" href="sim-operations_8h.html#ae406f4a0266b7480e49899693f1b00da" title="Fills a char* with the simulated result of meiosis (reduction and recombination) from the marker alle..." alt="" coords="672,1104,795,1131"/>
+<area shape="rect" href="sim-operations_8h.html#a5e049945be5700a6d5a5654b6b332842" title="Updates the chr_ends, n_chr and chr_lengths fields in SimData.map." alt="" coords="643,1003,824,1029"/>
+<area shape="rect" href="sim-operations_8h.html#a23caa19435d6b5d27a7a5b9b6643ff9a" title="Identify every group number that currently has members and the number of genotypes currently allocate..." alt="" coords="668,1155,799,1197"/>
 <area shape="rect" href="sim-operations_8h.html#ac159a31261e14b325bd623899eefa796" title="Gets a shallow copy of the genes/alleles of each member of the group." alt="" coords="673,512,794,539"/>
-<area shape="rect" href="sim-operations_8h.html#a961042e468630f31a3607dac42f8fa34" title="Gets the ids of each member of the group." alt="" coords="682,597,785,624"/>
+<area shape="rect" href="sim-operations_8h.html#a961042e468630f31a3607dac42f8fa34" title="Gets the ids of each member of the group." alt="" coords="682,563,785,589"/>
 <area shape="rect" href="sim-operations_8h.html#a95aad1344c24e6072e6a50dcc67b60a8" title="Gets the indexes (0&#45;based, from the start of the linked list in the SimData) of each member of the gr..." alt="" coords="441,15,571,41"/>
-<area shape="rect" href="sim-operations_8h.html#a3e00f06acc41eb012e99ae46d7a18ccc" title="Gets a shallow copy of the names of each member of the group." alt="" coords="671,711,796,737"/>
-<area shape="rect" href="sim-operations_8h.html#adebbfa88bf139ddca501ab158f3746c5" title="Takes a SimData object, and sorts its markers, the rows of its parent gen AlleleMatrix (because they ..." alt="" coords="665,1100,802,1127"/>
-<area shape="rect" href="sim-operations_8h.html#a9d6b231bd6ddde82af66a5d276a2c739" title="Populates a SimData combination with effect values." alt="" coords="652,911,815,937"/>
+<area shape="rect" href="sim-operations_8h.html#a3e00f06acc41eb012e99ae46d7a18ccc" title="Gets a shallow copy of the names of each member of the group." alt="" coords="671,655,796,681"/>
+<area shape="rect" href="sim-operations_8h.html#adebbfa88bf139ddca501ab158f3746c5" title="Takes a SimData object, and sorts its markers, the rows of its parent gen AlleleMatrix (because they ..." alt="" coords="665,1053,802,1080"/>
+<area shape="rect" href="sim-operations_8h.html#a9d6b231bd6ddde82af66a5d276a2c739" title="Populates a SimData combination with effect values." alt="" coords="652,788,815,815"/>
 <area shape="rect" href="sim-operations_8h.html#ab4a5ef571ebeb5e546461398eecfb0ff" title="Fills the designated section of the .subject_names array in an AlleleMatrix with the pattern prefixin..." alt="" coords="666,360,801,387"/>
 <area shape="rect" href="sim-operations_8h.html#a3ea77c76c329625646419a10683669f9" title="Performs random crosses among members of a group." alt="" coords="421,313,591,340"/>
 <area shape="rect" href="sim-operations_8h.html#abb793988799d792dfe4007efdf988068" title="Performs the crosses of pairs of parents whose ids are provided in an array." alt="" coords="417,263,595,289"/>
@@ -3537,16 +3711,16 @@ Here is the caller graph for this function:</div>
 <area shape="rect" href="sim-operations_8h.html#a3f1b06b7aa35e6a05918e16d1deabeee" title="Perform crosses between all pairs of parents in the group from_group and allocates the resulting offs..." alt="" coords="209,45,367,86"/>
 <area shape="rect" href="sim-operations_8h.html#a3b67d38c13c7a8bef2d0fc91c0365177" title="Perform crosses between pairs of parents identified by name in a file and allocate the resulting offs..." alt="" coords="207,263,369,289"/>
 <area shape="rect" href="sim-operations_8h.html#aa7c90b4015e4abce750176c6d891cad2" title="Perform crosses between previously&#45;generated offspring of pairs of parents identified by name in a fi..." alt="" coords="212,146,364,187"/>
-<area shape="rect" href="sim-operations_8h.html#a54cd625669413c2ef171060e9844d814" title="Populates a SimData combination from scratch with marker allele data, a genetic map,..." alt="" coords="229,1049,347,1076"/>
-<area shape="rect" href="sim-operations_8h.html#a8edb09b9b9eb27f84ac59cc4342ea855" title="Populates a SimData combination with data from a genetic map." alt="" coords="421,1100,591,1127"/>
-<area shape="rect" href="sim-operations_8c.html#a8de70c24458ffb2f3dea5590f7f8cdff" title="Given a set of blocks of markers in a file, for each genotype in a group, calculate the local GEBV fo..." alt="" coords="431,466,581,507"/>
-<area shape="rect" href="sim-operations_8h.html#a9e43115d9ee4ac406c14161fc6ccb327" title="Prints the genotypes of each individual in a given group to a file, with the following format." alt="" coords="441,597,571,624"/>
-<area shape="rect" href="sim-operations_8h.html#a0f53ee5421c91ca041a1b8d4603238b5" title="Prints the genotypes of each individual in a given group to a file, with the following format." alt="" coords="427,531,585,573"/>
-<area shape="rect" href="sim-operations_8h.html#ac297afb7cf2c56f6f3f436090d7962dd" title="Calculates the fitness metric/GEBV for each genotype in the AlleleMatrix in a certain group,..." alt="" coords="425,649,587,690"/>
-<area shape="rect" href="sim-operations_8h.html#a4d37c413cb4c979b4eafa1d0b656edd1" title="Print the GEBV of each genotype in a group to a file." alt="" coords="222,715,354,741"/>
-<area shape="rect" href="sim-operations_8h.html#ab732ec2d648a6dc01444ef74f780fc70" title="Print the number of copies of a particular allele at each marker of each genotype in a group to a fil..." alt="" coords="433,831,579,873"/>
-<area shape="rect" href="sim-operations_8h.html#a75e854cbc72b31a5e2eb03c63c33ecc6" title="Print the full known pedigree of each genotype in a group to a file." alt="" coords="423,897,589,924"/>
-<area shape="rect" href="sim-operations_8h.html#a979efe39128de97176da5460cab7dfa7" title="Print the parents of each genotype in a group to a file." alt="" coords="433,766,579,807"/>
+<area shape="rect" href="sim-operations_8h.html#a54cd625669413c2ef171060e9844d814" title="Populates a SimData combination from scratch with marker allele data, a genetic map,..." alt="" coords="229,1048,347,1075"/>
+<area shape="rect" href="sim-operations_8h.html#a8edb09b9b9eb27f84ac59cc4342ea855" title="Populates a SimData combination with data from a genetic map." alt="" coords="421,1099,591,1125"/>
+<area shape="rect" href="sim-operations_8c.html#a8de70c24458ffb2f3dea5590f7f8cdff" title="Given a set of blocks of markers in a file, for each genotype in a group, calculate the local GEBV fo..." alt="" coords="431,582,581,623"/>
+<area shape="rect" href="sim-operations_8h.html#a9e43115d9ee4ac406c14161fc6ccb327" title="Prints the genotypes of each individual in a given group to a file, with the following format." alt="" coords="441,465,571,492"/>
+<area shape="rect" href="sim-operations_8h.html#a0f53ee5421c91ca041a1b8d4603238b5" title="Prints the genotypes of each individual in a given group to a file, with the following format." alt="" coords="427,517,585,558"/>
+<area shape="rect" href="sim-operations_8h.html#ac297afb7cf2c56f6f3f436090d7962dd" title="Calculates the fitness metric/GEBV for each genotype in the AlleleMatrix in a certain group,..." alt="" coords="425,647,587,689"/>
+<area shape="rect" href="sim-operations_8h.html#a4d37c413cb4c979b4eafa1d0b656edd1" title="Print the GEBV of each genotype in a group to a file." alt="" coords="222,713,354,740"/>
+<area shape="rect" href="sim-operations_8h.html#ab732ec2d648a6dc01444ef74f780fc70" title="Print the number of copies of a particular allele at each marker of each genotype in a group to a fil..." alt="" coords="433,830,579,871"/>
+<area shape="rect" href="sim-operations_8h.html#a75e854cbc72b31a5e2eb03c63c33ecc6" title="Print the full known pedigree of each genotype in a group to a file." alt="" coords="423,896,589,923"/>
+<area shape="rect" href="sim-operations_8h.html#a979efe39128de97176da5460cab7dfa7" title="Print the parents of each genotype in a group to a file." alt="" coords="433,765,579,806"/>
 <area shape="rect" href="sim-operations_8h.html#aa91ffff83cf204fff8baef3790738b7a" title="Takes the top top_n fitness/GEBV individuals in the group and puts them in a new group." alt="" coords="213,212,363,239"/>
 </map>
 </div>
@@ -3604,12 +3778,14 @@ Here is the caller graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="sim-operations_8c_a6aa75e72bb29725ffe32cd003c547480_icgraph.png" border="0" usemap="#sim-operations_8c_a6aa75e72bb29725ffe32cd003c547480_icgraph" alt=""/></div>
 <map name="sim-operations_8c_a6aa75e72bb29725ffe32cd003c547480_icgraph" id="sim-operations_8c_a6aa75e72bb29725ffe32cd003c547480_icgraph">
-<area shape="rect" title="Returns the name of the genotype with a given id." alt="" coords="868,150,981,177"/>
-<area shape="rect" href="sim-operations_8h.html#aad2fb503b61c909787f62b2a64385557" title="Print the full known pedigree of each genotype in a single AlleleMatrix to a file." alt="" coords="461,133,588,159"/>
-<area shape="rect" href="sim-operations_8h.html#a979efe39128de97176da5460cab7dfa7" title="Print the parents of each genotype in a group to a file." alt="" coords="665,113,811,155"/>
-<area shape="rect" href="sim-operations_8h.html#a6b87b484064fd373aec0bfa4ce8dbef1" title="Print the parents of each genotype in the SimData to a file." alt="" coords="656,179,820,206"/>
-<area shape="rect" href="sim-operations_8h.html#a4a41a75435588bd183d4d4d91082e601" title="Recursively save the parents of a particular id to a file." alt="" coords="681,254,795,281"/>
-<area shape="rect" href="sim-operations_8h.html#a3ea77c76c329625646419a10683669f9" title="Performs random crosses among members of a group." alt="" coords="219,50,390,77"/>
+<area shape="rect" title="Returns the name of the genotype with a given id." alt="" coords="868,109,981,135"/>
+<area shape="rect" href="sim-operations_8h.html#a979efe39128de97176da5460cab7dfa7" title="Print the parents of each genotype in a group to a file." alt="" coords="665,43,811,84"/>
+<area shape="rect" href="sim-operations_8h.html#a6b87b484064fd373aec0bfa4ce8dbef1" title="Print the parents of each genotype in the SimData to a file." alt="" coords="656,109,820,135"/>
+<area shape="rect" href="sim-operations_8h.html#a4a41a75435588bd183d4d4d91082e601" title="Recursively save the parents of a particular id to a file." alt="" coords="681,183,795,210"/>
+<area shape="rect" href="sim-operations_8h.html#abf5bc0b61b008aeda217ea9a666ad9cb" title="Print the full known pedigree of each genotype in a single AlleleMatrix to a file." alt="" coords="459,133,590,159"/>
+<area shape="rect" href="sim-operations_8c.html#a40dbed7f680c5c1181a8ed27e616417b" title="Print the full known pedigree of each genotype in the SimData to a file." alt="" coords="461,183,588,210"/>
+<area shape="rect" href="sim-operations_8h.html#a75e854cbc72b31a5e2eb03c63c33ecc6" title="Print the full known pedigree of each genotype in a group to a file." alt="" coords="441,234,608,261"/>
+<area shape="rect" href="sim-operations_8h.html#a3ea77c76c329625646419a10683669f9" title="Performs random crosses among members of a group." alt="" coords="219,34,390,61"/>
 <area shape="rect" href="sim-operations_8h.html#abb793988799d792dfe4007efdf988068" title="Performs the crosses of pairs of parents whose ids are provided in an array." alt="" coords="216,107,393,134"/>
 <area shape="rect" href="sim-operations_8h.html#af078d6bc1b5d4234a9b960e6132480aa" title="Creates a doubled haploid from each member of a group." alt="" coords="224,158,385,185"/>
 <area shape="rect" href="sim-operations_8h.html#adf5beb682ac15fa5a0176e480adc9d91" title="Selfs each member of a group for a certain number of generations." alt="" coords="257,209,352,235"/>
@@ -3617,7 +3793,6 @@ Here is the caller graph for this function:</div>
 <area shape="rect" href="sim-operations_8h.html#a3f1b06b7aa35e6a05918e16d1deabeee" title="Perform crosses between all pairs of parents in the group from_group and allocates the resulting offs..." alt="" coords="8,71,165,112"/>
 <area shape="rect" href="sim-operations_8h.html#a3b67d38c13c7a8bef2d0fc91c0365177" title="Perform crosses between pairs of parents identified by name in a file and allocate the resulting offs..." alt="" coords="5,137,168,163"/>
 <area shape="rect" href="sim-operations_8h.html#aa7c90b4015e4abce750176c6d891cad2" title="Perform crosses between previously&#45;generated offspring of pairs of parents identified by name in a fi..." alt="" coords="11,188,163,229"/>
-<area shape="rect" href="sim-operations_8h.html#a75e854cbc72b31a5e2eb03c63c33ecc6" title="Print the full known pedigree of each genotype in a group to a file." alt="" coords="441,254,608,281"/>
 </map>
 </div>
 
@@ -3738,12 +3913,13 @@ Here is the caller graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="sim-operations_8c_a229c9de94875ea41a23723d337f5f92f_icgraph.png" border="0" usemap="#sim-operations_8c_a229c9de94875ea41a23723d337f5f92f_icgraph" alt=""/></div>
 <map name="sim-operations_8c_a229c9de94875ea41a23723d337f5f92f_icgraph" id="sim-operations_8c_a229c9de94875ea41a23723d337f5f92f_icgraph">
-<area shape="rect" title="Saves the ids of the parents of a genotype with a particular id to the output array output." alt="" coords="868,83,992,110"/>
-<area shape="rect" href="sim-operations_8h.html#a979efe39128de97176da5460cab7dfa7" title="Print the parents of each genotype in a group to a file." alt="" coords="665,17,811,59"/>
-<area shape="rect" href="sim-operations_8h.html#a6b87b484064fd373aec0bfa4ce8dbef1" title="Print the parents of each genotype in the SimData to a file." alt="" coords="656,83,820,110"/>
-<area shape="rect" href="sim-operations_8h.html#a4a41a75435588bd183d4d4d91082e601" title="Recursively save the parents of a particular id to a file." alt="" coords="681,158,795,185"/>
-<area shape="rect" href="sim-operations_8h.html#aad2fb503b61c909787f62b2a64385557" title="Print the full known pedigree of each genotype in a single AlleleMatrix to a file." alt="" coords="461,133,588,159"/>
-<area shape="rect" href="sim-operations_8h.html#a75e854cbc72b31a5e2eb03c63c33ecc6" title="Print the full known pedigree of each genotype in a group to a file." alt="" coords="441,183,608,210"/>
+<area shape="rect" title="Saves the ids of the parents of a genotype with a particular id to the output array output." alt="" coords="868,109,992,135"/>
+<area shape="rect" href="sim-operations_8h.html#a979efe39128de97176da5460cab7dfa7" title="Print the parents of each genotype in a group to a file." alt="" coords="665,43,811,84"/>
+<area shape="rect" href="sim-operations_8h.html#a6b87b484064fd373aec0bfa4ce8dbef1" title="Print the parents of each genotype in the SimData to a file." alt="" coords="656,109,820,135"/>
+<area shape="rect" href="sim-operations_8h.html#a4a41a75435588bd183d4d4d91082e601" title="Recursively save the parents of a particular id to a file." alt="" coords="681,183,795,210"/>
+<area shape="rect" href="sim-operations_8h.html#abf5bc0b61b008aeda217ea9a666ad9cb" title="Print the full known pedigree of each genotype in a single AlleleMatrix to a file." alt="" coords="459,133,590,159"/>
+<area shape="rect" href="sim-operations_8c.html#a40dbed7f680c5c1181a8ed27e616417b" title="Print the full known pedigree of each genotype in the SimData to a file." alt="" coords="461,183,588,210"/>
+<area shape="rect" href="sim-operations_8h.html#a75e854cbc72b31a5e2eb03c63c33ecc6" title="Print the full known pedigree of each genotype in a group to a file." alt="" coords="441,234,608,261"/>
 <area shape="rect" href="sim-operations_8h.html#a3ea77c76c329625646419a10683669f9" title="Performs random crosses among members of a group." alt="" coords="219,34,390,61"/>
 <area shape="rect" href="sim-operations_8h.html#abb793988799d792dfe4007efdf988068" title="Performs the crosses of pairs of parents whose ids are provided in an array." alt="" coords="216,107,393,134"/>
 <area shape="rect" href="sim-operations_8h.html#af078d6bc1b5d4234a9b960e6132480aa" title="Creates a doubled haploid from each member of a group." alt="" coords="224,158,385,185"/>
@@ -4274,39 +4450,39 @@ Here is the call graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="sim-operations_8c_a3f1b06b7aa35e6a05918e16d1deabeee_cgraph.png" border="0" usemap="#sim-operations_8c_a3f1b06b7aa35e6a05918e16d1deabeee_cgraph" alt=""/></div>
 <map name="sim-operations_8c_a3f1b06b7aa35e6a05918e16d1deabeee_cgraph" id="sim-operations_8c_a3f1b06b7aa35e6a05918e16d1deabeee_cgraph">
-<area shape="rect" title="Perform crosses between all pairs of parents in the group from_group and allocates the resulting offs..." alt="" coords="5,759,163,801"/>
-<area shape="rect" href="sim-operations_8c.html#abb793988799d792dfe4007efdf988068" title="Performs the crosses of pairs of parents whose ids are provided in an array." alt="" coords="211,476,388,503"/>
-<area shape="rect" href="sim-operations_8c.html#a95aad1344c24e6072e6a50dcc67b60a8" title="Gets the indexes (0&#45;based, from the start of the linked list in the SimData) of each member of the gr..." alt="" coords="234,767,365,793"/>
-<area shape="rect" href="sim-operations_8c.html#ad6d2b66296cd80f5bfe303e06de7935c" title="Function to count the number of genotypes that currently belong to the specified group." alt="" coords="468,856,579,883"/>
-<area shape="rect" href="sim-operations_8c.html#a238032359089625f3fd3b4447cdbbdff" title="Calculates the fitness metric/GEBV for each genotype in the AlleleMatrix, and returns the results in ..." alt="" coords="442,299,605,325"/>
-<area shape="rect" href="sim-operations_8c.html#aaf6542d59034f88f9e1ec48e5f053c4a" title="Deletes a DecimalMatrix and frees its memory." alt="" coords="695,451,802,477"/>
-<area shape="rect" href="sim-operations_8c.html#a887027349503be24b1a847c9b833aaac" title="A function to tidy the internal storage of genotypes after addition or deletion of genotypes in the S..." alt="" coords="444,451,603,477"/>
-<area shape="rect" href="sim-operations_8c.html#add4a9c17e8c3e59fc00eee25635b110f" title="Deletes the full AlleleMatrix object and frees its memory." alt="" coords="680,501,817,528"/>
-<area shape="rect" href="sim-operations_8c.html#aac694dd044a29fd93443368a7b9e8d8a" title="Creator for an empty AlleleMatrix object of a given size." alt="" coords="436,603,611,629"/>
-<area shape="rect" href="sim-operations_8c.html#aa18b10bcd660dee5213868cc3244f826" title="Get the alleles of the outcome of crossing two subjects." alt="" coords="468,805,579,832"/>
-<area shape="rect" href="sim-operations_8c.html#a309dbf26800ee65e982df2b347980906" title="Get the alleles of a genotype by its index." alt="" coords="455,653,592,680"/>
-<area shape="rect" href="sim-operations_8c.html#a67f649fd36494324e609b06fcc960785" title="Get the id of a genotype by its index." alt="" coords="467,704,579,731"/>
-<area shape="rect" href="sim-operations_8c.html#ae974a74145fe876e303e14336d3c5d3a" title="Function to identify the next sequential integer that does not identify a group that currently has me..." alt="" coords="453,139,594,165"/>
-<area shape="rect" href="sim-operations_8c.html#a42a237afba9dc8f3a7339cb97d929cb6" title="Prints all the geneotype data saved in the linked list of AlleleMatrices starting with m to a file." alt="" coords="459,88,587,115"/>
+<area shape="rect" title="Perform crosses between all pairs of parents in the group from_group and allocates the resulting offs..." alt="" coords="5,709,163,750"/>
+<area shape="rect" href="sim-operations_8c.html#abb793988799d792dfe4007efdf988068" title="Performs the crosses of pairs of parents whose ids are provided in an array." alt="" coords="211,425,388,452"/>
+<area shape="rect" href="sim-operations_8c.html#a95aad1344c24e6072e6a50dcc67b60a8" title="Gets the indexes (0&#45;based, from the start of the linked list in the SimData) of each member of the gr..." alt="" coords="234,716,365,743"/>
+<area shape="rect" href="sim-operations_8c.html#ad6d2b66296cd80f5bfe303e06de7935c" title="Function to count the number of genotypes that currently belong to the specified group." alt="" coords="468,805,579,832"/>
+<area shape="rect" href="sim-operations_8c.html#a238032359089625f3fd3b4447cdbbdff" title="Calculates the fitness metric/GEBV for each genotype in the AlleleMatrix, and returns the results in ..." alt="" coords="442,248,605,275"/>
+<area shape="rect" href="sim-operations_8c.html#aaf6542d59034f88f9e1ec48e5f053c4a" title="Deletes a DecimalMatrix and frees its memory." alt="" coords="695,400,802,427"/>
+<area shape="rect" href="sim-operations_8c.html#a887027349503be24b1a847c9b833aaac" title="A function to tidy the internal storage of genotypes after addition or deletion of genotypes in the S..." alt="" coords="444,400,603,427"/>
+<area shape="rect" href="sim-operations_8c.html#add4a9c17e8c3e59fc00eee25635b110f" title="Deletes the full AlleleMatrix object and frees its memory." alt="" coords="680,451,817,477"/>
+<area shape="rect" href="sim-operations_8c.html#aac694dd044a29fd93443368a7b9e8d8a" title="Creator for an empty AlleleMatrix object of a given size." alt="" coords="436,552,611,579"/>
+<area shape="rect" href="sim-operations_8c.html#aa18b10bcd660dee5213868cc3244f826" title="Get the alleles of the outcome of crossing two subjects." alt="" coords="468,755,579,781"/>
+<area shape="rect" href="sim-operations_8c.html#a309dbf26800ee65e982df2b347980906" title="Get the alleles of a genotype by its index." alt="" coords="455,603,592,629"/>
+<area shape="rect" href="sim-operations_8c.html#a67f649fd36494324e609b06fcc960785" title="Get the id of a genotype by its index." alt="" coords="467,653,579,680"/>
+<area shape="rect" href="sim-operations_8c.html#ae974a74145fe876e303e14336d3c5d3a" title="Function to identify the next sequential integer that does not identify a group that currently has me..." alt="" coords="453,147,594,173"/>
+<area shape="rect" href="sim-operations_8c.html#a42a237afba9dc8f3a7339cb97d929cb6" title="Prints all the geneotype data saved in the linked list of AlleleMatrices starting with m to a file." alt="" coords="459,96,587,123"/>
+<area shape="rect" href="sim-operations_8c.html#abf5bc0b61b008aeda217ea9a666ad9cb" title="Print the full known pedigree of each genotype in a single AlleleMatrix to a file." alt="" coords="458,197,589,224"/>
 <area shape="rect" href="sim-operations_8c.html#a8f5320627e7155d6e69e4c3db6208be4" title="Print a set of pre&#45;calculated GEBVs with provided names and ids to a file, with the same format as a ..." alt="" coords="477,349,570,376"/>
-<area shape="rect" href="sim-operations_8c.html#aad2fb503b61c909787f62b2a64385557" title="Print the full known pedigree of each genotype in a single AlleleMatrix to a file." alt="" coords="460,189,587,216"/>
-<area shape="rect" href="sim-operations_8c.html#ab4a5ef571ebeb5e546461398eecfb0ff" title="Fills the designated section of the .subject_names array in an AlleleMatrix with the pattern prefixin..." alt="" coords="456,552,591,579"/>
-<area shape="rect" href="sim-operations_8c.html#ac711a312bddd30d394adda822a7c7679" title="Add the two DecimalMatrix." alt="" coords="695,333,802,360"/>
-<area shape="rect" href="sim-operations_8c.html#abf3f578b0aa59d5b68ccd0738dd6a9d1" title="Generates a matrix of c columns, r rows with all 0." alt="" coords="895,308,1049,335"/>
-<area shape="rect" href="sim-operations_8c.html#a42f2398ccb53ffafce9b4a17e3222636" title="Calculates the number of times at each marker that a particular allele appears for each genotype in a..." alt="" coords="681,385,817,426"/>
-<area shape="rect" href="sim-operations_8c.html#a1219ce0fef428e6b5317a034280497b0" title="Perform matrix multiplication on two DecimalMatrix." alt="" coords="683,232,814,259"/>
-<area shape="rect" href="sim-operations_8c.html#abe8da784853a382f703129997ed08996" title="Get a DecimalMatrix composed only of row row_index from m" alt="" coords="679,181,818,208"/>
-<area shape="rect" href="sim-operations_8c.html#ad1a5b9f3e850da13931ee02fbb170d41" title="Replace calls to malloc direct with this function, which errors and exits with status 2 if memory all..." alt="" coords="706,653,791,680"/>
+<area shape="rect" href="sim-operations_8c.html#ab4a5ef571ebeb5e546461398eecfb0ff" title="Fills the designated section of the .subject_names array in an AlleleMatrix with the pattern prefixin..." alt="" coords="456,501,591,528"/>
+<area shape="rect" href="sim-operations_8c.html#ac711a312bddd30d394adda822a7c7679" title="Add the two DecimalMatrix." alt="" coords="695,232,802,259"/>
+<area shape="rect" href="sim-operations_8c.html#abf3f578b0aa59d5b68ccd0738dd6a9d1" title="Generates a matrix of c columns, r rows with all 0." alt="" coords="895,207,1049,233"/>
+<area shape="rect" href="sim-operations_8c.html#a42f2398ccb53ffafce9b4a17e3222636" title="Calculates the number of times at each marker that a particular allele appears for each genotype in a..." alt="" coords="681,334,817,375"/>
+<area shape="rect" href="sim-operations_8c.html#a1219ce0fef428e6b5317a034280497b0" title="Perform matrix multiplication on two DecimalMatrix." alt="" coords="683,131,814,157"/>
+<area shape="rect" href="sim-operations_8c.html#abe8da784853a382f703129997ed08996" title="Get a DecimalMatrix composed only of row row_index from m" alt="" coords="679,283,818,309"/>
+<area shape="rect" href="sim-operations_8c.html#ad1a5b9f3e850da13931ee02fbb170d41" title="Replace calls to malloc direct with this function, which errors and exits with status 2 if memory all..." alt="" coords="706,603,791,629"/>
 <area shape="rect" href="sim-operations_8c.html#a3744bc6f3fcb52952d520029055e8af8" title="Comparator function for qsort." alt="" coords="659,805,839,832"/>
-<area shape="rect" href="sim-operations_8c.html#ad4e0f7934e82157e3115f8df7aec01f0" title="Generates randomly one of 0 or 1, by splitting the output of rand() in half." alt="" coords="721,856,776,883"/>
+<area shape="rect" href="sim-operations_8c.html#ad4e0f7934e82157e3115f8df7aec01f0" title="Generates randomly one of 0 or 1, by splitting the output of rand() in half." alt="" coords="721,704,776,731"/>
 <area shape="rect" href="sim-operations_8c.html#a7d9dbe538d6fb096af14c3163c98e800" title="Generates randomly a number from the Poisson distribution with parameter lambda, using the Knuth appr..." alt="" coords="717,755,781,781"/>
 <area shape="rect" href="sim-operations_8c.html#a3305ddcc29138d2d92689f39a7885ca0" title="Identify every group number that currently has members." alt="" coords="679,5,818,32"/>
 <area shape="rect" href="sim-operations_8c.html#adae2e9f7e1061cb20426ba2333b7629b" title="Comparator function for qsort." alt="" coords="887,5,1057,32"/>
-<area shape="rect" href="sim-operations_8c.html#a6aa75e72bb29725ffe32cd003c547480" title="Returns the name of the genotype with a given id." alt="" coords="915,131,1029,157"/>
 <area shape="rect" href="sim-operations_8c.html#a4a41a75435588bd183d4d4d91082e601" title="Recursively save the parents of a particular id to a file." alt="" coords="691,80,806,107"/>
-<area shape="rect" href="sim-operations_8c.html#aa6943b0633c1744bacad62ab2bf68ebd" title="Returns the located index in an array of integers where the integer is target." alt="" coords="1105,105,1280,132"/>
-<area shape="rect" href="sim-operations_8c.html#a229c9de94875ea41a23723d337f5f92f" title="Saves the ids of the parents of a genotype with a particular id to the output array output." alt="" coords="910,80,1034,107"/>
-<area shape="rect" href="sim-operations_8c.html#ad7d864d43092823ac2ed8a6cbd595e35" title="Count and return the number of digits in i." alt="" coords="687,552,811,579"/>
+<area shape="rect" href="sim-operations_8c.html#a6aa75e72bb29725ffe32cd003c547480" title="Returns the name of the genotype with a given id." alt="" coords="915,119,1029,145"/>
+<area shape="rect" href="sim-operations_8c.html#a229c9de94875ea41a23723d337f5f92f" title="Saves the ids of the parents of a genotype with a particular id to the output array output." alt="" coords="910,68,1034,95"/>
+<area shape="rect" href="sim-operations_8c.html#aa6943b0633c1744bacad62ab2bf68ebd" title="Returns the located index in an array of integers where the integer is target." alt="" coords="1105,93,1280,120"/>
+<area shape="rect" href="sim-operations_8c.html#ad7d864d43092823ac2ed8a6cbd595e35" title="Count and return the number of digits in i." alt="" coords="687,501,811,528"/>
 </map>
 </div>
 
@@ -4366,39 +4542,39 @@ Here is the call graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="sim-operations_8c_a3b67d38c13c7a8bef2d0fc91c0365177_cgraph.png" border="0" usemap="#sim-operations_8c_a3b67d38c13c7a8bef2d0fc91c0365177_cgraph" alt=""/></div>
 <map name="sim-operations_8c_a3b67d38c13c7a8bef2d0fc91c0365177_cgraph" id="sim-operations_8c_a3b67d38c13c7a8bef2d0fc91c0365177_cgraph">
-<area shape="rect" title="Perform crosses between pairs of parents identified by name in a file and allocate the resulting offs..." alt="" coords="5,556,168,583"/>
-<area shape="rect" href="sim-operations_8c.html#abb793988799d792dfe4007efdf988068" title="Performs the crosses of pairs of parents whose ids are provided in an array." alt="" coords="216,505,393,532"/>
-<area shape="rect" href="sim-operations_8c.html#a392c23248f22e9faf085198dbb1d8711" title="Opens a table file and reads the number of columns and rows (including headers) separated by sep into..." alt="" coords="237,556,373,583"/>
-<area shape="rect" href="sim-operations_8c.html#a93779d37ca9081d07987fd83c27b84af" title="Search for a genotype with a particular name in a linked list of AlleleMatrix, and return its index." alt="" coords="237,607,372,633"/>
-<area shape="rect" href="sim-operations_8c.html#a238032359089625f3fd3b4447cdbbdff" title="Calculates the fitness metric/GEBV for each genotype in the AlleleMatrix, and returns the results in ..." alt="" coords="447,151,610,177"/>
-<area shape="rect" href="sim-operations_8c.html#aaf6542d59034f88f9e1ec48e5f053c4a" title="Deletes a DecimalMatrix and frees its memory." alt="" coords="701,252,807,279"/>
-<area shape="rect" href="sim-operations_8c.html#a887027349503be24b1a847c9b833aaac" title="A function to tidy the internal storage of genotypes after addition or deletion of genotypes in the S..." alt="" coords="449,353,608,380"/>
-<area shape="rect" href="sim-operations_8c.html#add4a9c17e8c3e59fc00eee25635b110f" title="Deletes the full AlleleMatrix object and frees its memory." alt="" coords="685,303,823,329"/>
-<area shape="rect" href="sim-operations_8c.html#aac694dd044a29fd93443368a7b9e8d8a" title="Creator for an empty AlleleMatrix object of a given size." alt="" coords="441,455,616,481"/>
-<area shape="rect" href="sim-operations_8c.html#aa18b10bcd660dee5213868cc3244f826" title="Get the alleles of the outcome of crossing two subjects." alt="" coords="473,404,584,431"/>
-<area shape="rect" href="sim-operations_8c.html#a309dbf26800ee65e982df2b347980906" title="Get the alleles of a genotype by its index." alt="" coords="460,556,597,583"/>
-<area shape="rect" href="sim-operations_8c.html#a67f649fd36494324e609b06fcc960785" title="Get the id of a genotype by its index." alt="" coords="473,607,585,633"/>
-<area shape="rect" href="sim-operations_8c.html#ae974a74145fe876e303e14336d3c5d3a" title="Function to identify the next sequential integer that does not identify a group that currently has me..." alt="" coords="458,657,599,684"/>
-<area shape="rect" href="sim-operations_8c.html#a42a237afba9dc8f3a7339cb97d929cb6" title="Prints all the geneotype data saved in the linked list of AlleleMatrices starting with m to a file." alt="" coords="465,708,593,735"/>
-<area shape="rect" href="sim-operations_8c.html#a8f5320627e7155d6e69e4c3db6208be4" title="Print a set of pre&#45;calculated GEBVs with provided names and ids to a file, with the same format as a ..." alt="" coords="482,759,575,785"/>
-<area shape="rect" href="sim-operations_8c.html#aad2fb503b61c909787f62b2a64385557" title="Print the full known pedigree of each genotype in a single AlleleMatrix to a file." alt="" coords="465,809,592,836"/>
-<area shape="rect" href="sim-operations_8c.html#ab4a5ef571ebeb5e546461398eecfb0ff" title="Fills the designated section of the .subject_names array in an AlleleMatrix with the pattern prefixin..." alt="" coords="461,505,596,532"/>
-<area shape="rect" href="sim-operations_8c.html#ac711a312bddd30d394adda822a7c7679" title="Add the two DecimalMatrix." alt="" coords="701,33,807,60"/>
-<area shape="rect" href="sim-operations_8c.html#abf3f578b0aa59d5b68ccd0738dd6a9d1" title="Generates a matrix of c columns, r rows with all 0." alt="" coords="900,63,1055,89"/>
-<area shape="rect" href="sim-operations_8c.html#a42f2398ccb53ffafce9b4a17e3222636" title="Calculates the number of times at each marker that a particular allele appears for each genotype in a..." alt="" coords="686,85,822,126"/>
-<area shape="rect" href="sim-operations_8c.html#a1219ce0fef428e6b5317a034280497b0" title="Perform matrix multiplication on two DecimalMatrix." alt="" coords="689,151,819,177"/>
-<area shape="rect" href="sim-operations_8c.html#abe8da784853a382f703129997ed08996" title="Get a DecimalMatrix composed only of row row_index from m" alt="" coords="685,201,823,228"/>
-<area shape="rect" href="sim-operations_8c.html#ad1a5b9f3e850da13931ee02fbb170d41" title="Replace calls to malloc direct with this function, which errors and exits with status 2 if memory all..." alt="" coords="711,505,797,532"/>
-<area shape="rect" href="sim-operations_8c.html#a3744bc6f3fcb52952d520029055e8af8" title="Comparator function for qsort." alt="" coords="664,353,844,380"/>
-<area shape="rect" href="sim-operations_8c.html#ad4e0f7934e82157e3115f8df7aec01f0" title="Generates randomly one of 0 or 1, by splitting the output of rand() in half." alt="" coords="727,404,781,431"/>
-<area shape="rect" href="sim-operations_8c.html#a7d9dbe538d6fb096af14c3163c98e800" title="Generates randomly a number from the Poisson distribution with parameter lambda, using the Knuth appr..." alt="" coords="722,455,786,481"/>
-<area shape="rect" href="sim-operations_8c.html#a3305ddcc29138d2d92689f39a7885ca0" title="Identify every group number that currently has members." alt="" coords="685,657,823,684"/>
-<area shape="rect" href="sim-operations_8c.html#adae2e9f7e1061cb20426ba2333b7629b" title="Comparator function for qsort." alt="" coords="892,657,1063,684"/>
-<area shape="rect" href="sim-operations_8c.html#a6aa75e72bb29725ffe32cd003c547480" title="Returns the name of the genotype with a given id." alt="" coords="921,835,1034,861"/>
-<area shape="rect" href="sim-operations_8c.html#a4a41a75435588bd183d4d4d91082e601" title="Recursively save the parents of a particular id to a file." alt="" coords="697,784,811,811"/>
-<area shape="rect" href="sim-operations_8c.html#aa6943b0633c1744bacad62ab2bf68ebd" title="Returns the located index in an array of integers where the integer is target." alt="" coords="1111,809,1285,836"/>
-<area shape="rect" href="sim-operations_8c.html#a229c9de94875ea41a23723d337f5f92f" title="Saves the ids of the parents of a genotype with a particular id to the output array output." alt="" coords="915,784,1039,811"/>
-<area shape="rect" href="sim-operations_8c.html#ad7d864d43092823ac2ed8a6cbd595e35" title="Count and return the number of digits in i." alt="" coords="692,556,816,583"/>
+<area shape="rect" title="Perform crosses between pairs of parents identified by name in a file and allocate the resulting offs..." alt="" coords="5,579,168,605"/>
+<area shape="rect" href="sim-operations_8c.html#abb793988799d792dfe4007efdf988068" title="Performs the crosses of pairs of parents whose ids are provided in an array." alt="" coords="216,528,393,555"/>
+<area shape="rect" href="sim-operations_8c.html#a392c23248f22e9faf085198dbb1d8711" title="Opens a table file and reads the number of columns and rows (including headers) separated by sep into..." alt="" coords="237,579,373,605"/>
+<area shape="rect" href="sim-operations_8c.html#a93779d37ca9081d07987fd83c27b84af" title="Search for a genotype with a particular name in a linked list of AlleleMatrix, and return its index." alt="" coords="237,629,372,656"/>
+<area shape="rect" href="sim-operations_8c.html#a238032359089625f3fd3b4447cdbbdff" title="Calculates the fitness metric/GEBV for each genotype in the AlleleMatrix, and returns the results in ..." alt="" coords="447,173,610,200"/>
+<area shape="rect" href="sim-operations_8c.html#aaf6542d59034f88f9e1ec48e5f053c4a" title="Deletes a DecimalMatrix and frees its memory." alt="" coords="701,275,807,301"/>
+<area shape="rect" href="sim-operations_8c.html#a887027349503be24b1a847c9b833aaac" title="A function to tidy the internal storage of genotypes after addition or deletion of genotypes in the S..." alt="" coords="449,376,608,403"/>
+<area shape="rect" href="sim-operations_8c.html#add4a9c17e8c3e59fc00eee25635b110f" title="Deletes the full AlleleMatrix object and frees its memory." alt="" coords="685,325,823,352"/>
+<area shape="rect" href="sim-operations_8c.html#aac694dd044a29fd93443368a7b9e8d8a" title="Creator for an empty AlleleMatrix object of a given size." alt="" coords="441,477,616,504"/>
+<area shape="rect" href="sim-operations_8c.html#aa18b10bcd660dee5213868cc3244f826" title="Get the alleles of the outcome of crossing two subjects." alt="" coords="473,427,584,453"/>
+<area shape="rect" href="sim-operations_8c.html#a309dbf26800ee65e982df2b347980906" title="Get the alleles of a genotype by its index." alt="" coords="460,579,597,605"/>
+<area shape="rect" href="sim-operations_8c.html#a67f649fd36494324e609b06fcc960785" title="Get the id of a genotype by its index." alt="" coords="473,629,585,656"/>
+<area shape="rect" href="sim-operations_8c.html#ae974a74145fe876e303e14336d3c5d3a" title="Function to identify the next sequential integer that does not identify a group that currently has me..." alt="" coords="458,680,599,707"/>
+<area shape="rect" href="sim-operations_8c.html#a42a237afba9dc8f3a7339cb97d929cb6" title="Prints all the geneotype data saved in the linked list of AlleleMatrices starting with m to a file." alt="" coords="465,731,593,757"/>
+<area shape="rect" href="sim-operations_8c.html#abf5bc0b61b008aeda217ea9a666ad9cb" title="Print the full known pedigree of each genotype in a single AlleleMatrix to a file." alt="" coords="463,781,594,808"/>
+<area shape="rect" href="sim-operations_8c.html#a8f5320627e7155d6e69e4c3db6208be4" title="Print a set of pre&#45;calculated GEBVs with provided names and ids to a file, with the same format as a ..." alt="" coords="482,832,575,859"/>
+<area shape="rect" href="sim-operations_8c.html#ab4a5ef571ebeb5e546461398eecfb0ff" title="Fills the designated section of the .subject_names array in an AlleleMatrix with the pattern prefixin..." alt="" coords="461,528,596,555"/>
+<area shape="rect" href="sim-operations_8c.html#ac711a312bddd30d394adda822a7c7679" title="Add the two DecimalMatrix." alt="" coords="701,5,807,32"/>
+<area shape="rect" href="sim-operations_8c.html#abf3f578b0aa59d5b68ccd0738dd6a9d1" title="Generates a matrix of c columns, r rows with all 0." alt="" coords="900,93,1055,120"/>
+<area shape="rect" href="sim-operations_8c.html#a42f2398ccb53ffafce9b4a17e3222636" title="Calculates the number of times at each marker that a particular allele appears for each genotype in a..." alt="" coords="686,57,822,98"/>
+<area shape="rect" href="sim-operations_8c.html#a1219ce0fef428e6b5317a034280497b0" title="Perform matrix multiplication on two DecimalMatrix." alt="" coords="689,123,819,149"/>
+<area shape="rect" href="sim-operations_8c.html#abe8da784853a382f703129997ed08996" title="Get a DecimalMatrix composed only of row row_index from m" alt="" coords="685,173,823,200"/>
+<area shape="rect" href="sim-operations_8c.html#ad1a5b9f3e850da13931ee02fbb170d41" title="Replace calls to malloc direct with this function, which errors and exits with status 2 if memory all..." alt="" coords="711,528,797,555"/>
+<area shape="rect" href="sim-operations_8c.html#a3744bc6f3fcb52952d520029055e8af8" title="Comparator function for qsort." alt="" coords="664,477,844,504"/>
+<area shape="rect" href="sim-operations_8c.html#ad4e0f7934e82157e3115f8df7aec01f0" title="Generates randomly one of 0 or 1, by splitting the output of rand() in half." alt="" coords="727,376,781,403"/>
+<area shape="rect" href="sim-operations_8c.html#a7d9dbe538d6fb096af14c3163c98e800" title="Generates randomly a number from the Poisson distribution with parameter lambda, using the Knuth appr..." alt="" coords="722,427,786,453"/>
+<area shape="rect" href="sim-operations_8c.html#a3305ddcc29138d2d92689f39a7885ca0" title="Identify every group number that currently has members." alt="" coords="685,680,823,707"/>
+<area shape="rect" href="sim-operations_8c.html#adae2e9f7e1061cb20426ba2333b7629b" title="Comparator function for qsort." alt="" coords="892,680,1063,707"/>
+<area shape="rect" href="sim-operations_8c.html#a4a41a75435588bd183d4d4d91082e601" title="Recursively save the parents of a particular id to a file." alt="" coords="697,781,811,808"/>
+<area shape="rect" href="sim-operations_8c.html#a6aa75e72bb29725ffe32cd003c547480" title="Returns the name of the genotype with a given id." alt="" coords="921,756,1034,783"/>
+<area shape="rect" href="sim-operations_8c.html#a229c9de94875ea41a23723d337f5f92f" title="Saves the ids of the parents of a genotype with a particular id to the output array output." alt="" coords="915,807,1039,833"/>
+<area shape="rect" href="sim-operations_8c.html#aa6943b0633c1744bacad62ab2bf68ebd" title="Returns the located index in an array of integers where the integer is target." alt="" coords="1111,781,1285,808"/>
+<area shape="rect" href="sim-operations_8c.html#ad7d864d43092823ac2ed8a6cbd595e35" title="Count and return the number of digits in i." alt="" coords="692,579,816,605"/>
 </map>
 </div>
 
@@ -4460,41 +4636,41 @@ Here is the call graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="sim-operations_8c_aa7c90b4015e4abce750176c6d891cad2_cgraph.png" border="0" usemap="#sim-operations_8c_aa7c90b4015e4abce750176c6d891cad2_cgraph" alt=""/></div>
 <map name="sim-operations_8c_aa7c90b4015e4abce750176c6d891cad2_cgraph" id="sim-operations_8c_aa7c90b4015e4abce750176c6d891cad2_cgraph">
-<area shape="rect" title="Perform crosses between previously&#45;generated offspring of pairs of parents identified by name in a fi..." alt="" coords="5,599,157,641"/>
-<area shape="rect" href="sim-operations_8c.html#abb793988799d792dfe4007efdf988068" title="Performs the crosses of pairs of parents whose ids are provided in an array." alt="" coords="205,505,383,532"/>
-<area shape="rect" href="sim-operations_8c.html#a392c23248f22e9faf085198dbb1d8711" title="Opens a table file and reads the number of columns and rows (including headers) separated by sep into..." alt="" coords="226,556,362,583"/>
-<area shape="rect" href="sim-operations_8c.html#aadec6c1a0fe783461a72ceaee3ccefad" title="Search for a genotype with parentage matching two given parent ids in a linked list of AlleleMatrix,..." alt="" coords="240,607,348,633"/>
-<area shape="rect" href="sim-operations_8c.html#a84037d781b8850f9d90425ad16a0d059" title="Search for genotypes with certain names in a linked list of AlleleMatrix and save the ids of those na..." alt="" coords="231,657,357,684"/>
-<area shape="rect" href="sim-operations_8c.html#a79a381534123851f35f8c5cf1ee35364" title="Search for a genotype with parentage matching two given parent ids in a linked list of AlleleMatrix,..." alt="" coords="229,708,359,735"/>
-<area shape="rect" href="sim-operations_8c.html#a238032359089625f3fd3b4447cdbbdff" title="Calculates the fitness metric/GEBV for each genotype in the AlleleMatrix, and returns the results in ..." alt="" coords="437,151,599,177"/>
-<area shape="rect" href="sim-operations_8c.html#aaf6542d59034f88f9e1ec48e5f053c4a" title="Deletes a DecimalMatrix and frees its memory." alt="" coords="690,252,797,279"/>
-<area shape="rect" href="sim-operations_8c.html#a887027349503be24b1a847c9b833aaac" title="A function to tidy the internal storage of genotypes after addition or deletion of genotypes in the S..." alt="" coords="439,353,597,380"/>
-<area shape="rect" href="sim-operations_8c.html#add4a9c17e8c3e59fc00eee25635b110f" title="Deletes the full AlleleMatrix object and frees its memory." alt="" coords="675,303,812,329"/>
-<area shape="rect" href="sim-operations_8c.html#aac694dd044a29fd93443368a7b9e8d8a" title="Creator for an empty AlleleMatrix object of a given size." alt="" coords="431,455,605,481"/>
-<area shape="rect" href="sim-operations_8c.html#aa18b10bcd660dee5213868cc3244f826" title="Get the alleles of the outcome of crossing two subjects." alt="" coords="463,404,573,431"/>
-<area shape="rect" href="sim-operations_8c.html#a309dbf26800ee65e982df2b347980906" title="Get the alleles of a genotype by its index." alt="" coords="449,556,587,583"/>
-<area shape="rect" href="sim-operations_8c.html#a67f649fd36494324e609b06fcc960785" title="Get the id of a genotype by its index." alt="" coords="462,607,574,633"/>
-<area shape="rect" href="sim-operations_8c.html#ae974a74145fe876e303e14336d3c5d3a" title="Function to identify the next sequential integer that does not identify a group that currently has me..." alt="" coords="447,657,589,684"/>
-<area shape="rect" href="sim-operations_8c.html#a42a237afba9dc8f3a7339cb97d929cb6" title="Prints all the geneotype data saved in the linked list of AlleleMatrices starting with m to a file." alt="" coords="454,708,582,735"/>
-<area shape="rect" href="sim-operations_8c.html#a8f5320627e7155d6e69e4c3db6208be4" title="Print a set of pre&#45;calculated GEBVs with provided names and ids to a file, with the same format as a ..." alt="" coords="471,759,565,785"/>
-<area shape="rect" href="sim-operations_8c.html#aad2fb503b61c909787f62b2a64385557" title="Print the full known pedigree of each genotype in a single AlleleMatrix to a file." alt="" coords="455,809,581,836"/>
-<area shape="rect" href="sim-operations_8c.html#ab4a5ef571ebeb5e546461398eecfb0ff" title="Fills the designated section of the .subject_names array in an AlleleMatrix with the pattern prefixin..." alt="" coords="451,505,585,532"/>
-<area shape="rect" href="sim-operations_8c.html#ac711a312bddd30d394adda822a7c7679" title="Add the two DecimalMatrix." alt="" coords="690,33,797,60"/>
-<area shape="rect" href="sim-operations_8c.html#abf3f578b0aa59d5b68ccd0738dd6a9d1" title="Generates a matrix of c columns, r rows with all 0." alt="" coords="889,63,1044,89"/>
-<area shape="rect" href="sim-operations_8c.html#a42f2398ccb53ffafce9b4a17e3222636" title="Calculates the number of times at each marker that a particular allele appears for each genotype in a..." alt="" coords="675,85,811,126"/>
-<area shape="rect" href="sim-operations_8c.html#a1219ce0fef428e6b5317a034280497b0" title="Perform matrix multiplication on two DecimalMatrix." alt="" coords="678,151,809,177"/>
-<area shape="rect" href="sim-operations_8c.html#abe8da784853a382f703129997ed08996" title="Get a DecimalMatrix composed only of row row_index from m" alt="" coords="674,201,813,228"/>
-<area shape="rect" href="sim-operations_8c.html#ad1a5b9f3e850da13931ee02fbb170d41" title="Replace calls to malloc direct with this function, which errors and exits with status 2 if memory all..." alt="" coords="701,505,786,532"/>
-<area shape="rect" href="sim-operations_8c.html#a3744bc6f3fcb52952d520029055e8af8" title="Comparator function for qsort." alt="" coords="653,353,833,380"/>
-<area shape="rect" href="sim-operations_8c.html#ad4e0f7934e82157e3115f8df7aec01f0" title="Generates randomly one of 0 or 1, by splitting the output of rand() in half." alt="" coords="716,404,771,431"/>
-<area shape="rect" href="sim-operations_8c.html#a7d9dbe538d6fb096af14c3163c98e800" title="Generates randomly a number from the Poisson distribution with parameter lambda, using the Knuth appr..." alt="" coords="711,455,775,481"/>
-<area shape="rect" href="sim-operations_8c.html#a3305ddcc29138d2d92689f39a7885ca0" title="Identify every group number that currently has members." alt="" coords="674,657,813,684"/>
-<area shape="rect" href="sim-operations_8c.html#adae2e9f7e1061cb20426ba2333b7629b" title="Comparator function for qsort." alt="" coords="881,657,1052,684"/>
-<area shape="rect" href="sim-operations_8c.html#a6aa75e72bb29725ffe32cd003c547480" title="Returns the name of the genotype with a given id." alt="" coords="910,835,1023,861"/>
-<area shape="rect" href="sim-operations_8c.html#a4a41a75435588bd183d4d4d91082e601" title="Recursively save the parents of a particular id to a file." alt="" coords="686,784,801,811"/>
-<area shape="rect" href="sim-operations_8c.html#aa6943b0633c1744bacad62ab2bf68ebd" title="Returns the located index in an array of integers where the integer is target." alt="" coords="1100,809,1275,836"/>
-<area shape="rect" href="sim-operations_8c.html#a229c9de94875ea41a23723d337f5f92f" title="Saves the ids of the parents of a genotype with a particular id to the output array output." alt="" coords="905,784,1029,811"/>
-<area shape="rect" href="sim-operations_8c.html#ad7d864d43092823ac2ed8a6cbd595e35" title="Count and return the number of digits in i." alt="" coords="681,556,805,583"/>
+<area shape="rect" title="Perform crosses between previously&#45;generated offspring of pairs of parents identified by name in a fi..." alt="" coords="5,622,157,663"/>
+<area shape="rect" href="sim-operations_8c.html#abb793988799d792dfe4007efdf988068" title="Performs the crosses of pairs of parents whose ids are provided in an array." alt="" coords="205,528,383,555"/>
+<area shape="rect" href="sim-operations_8c.html#a392c23248f22e9faf085198dbb1d8711" title="Opens a table file and reads the number of columns and rows (including headers) separated by sep into..." alt="" coords="226,579,362,605"/>
+<area shape="rect" href="sim-operations_8c.html#aadec6c1a0fe783461a72ceaee3ccefad" title="Search for a genotype with parentage matching two given parent ids in a linked list of AlleleMatrix,..." alt="" coords="240,629,348,656"/>
+<area shape="rect" href="sim-operations_8c.html#a84037d781b8850f9d90425ad16a0d059" title="Search for genotypes with certain names in a linked list of AlleleMatrix and save the ids of those na..." alt="" coords="231,680,357,707"/>
+<area shape="rect" href="sim-operations_8c.html#a79a381534123851f35f8c5cf1ee35364" title="Search for a genotype with parentage matching two given parent ids in a linked list of AlleleMatrix,..." alt="" coords="229,731,359,757"/>
+<area shape="rect" href="sim-operations_8c.html#a238032359089625f3fd3b4447cdbbdff" title="Calculates the fitness metric/GEBV for each genotype in the AlleleMatrix, and returns the results in ..." alt="" coords="437,173,599,200"/>
+<area shape="rect" href="sim-operations_8c.html#aaf6542d59034f88f9e1ec48e5f053c4a" title="Deletes a DecimalMatrix and frees its memory." alt="" coords="690,275,797,301"/>
+<area shape="rect" href="sim-operations_8c.html#a887027349503be24b1a847c9b833aaac" title="A function to tidy the internal storage of genotypes after addition or deletion of genotypes in the S..." alt="" coords="439,376,597,403"/>
+<area shape="rect" href="sim-operations_8c.html#add4a9c17e8c3e59fc00eee25635b110f" title="Deletes the full AlleleMatrix object and frees its memory." alt="" coords="675,325,812,352"/>
+<area shape="rect" href="sim-operations_8c.html#aac694dd044a29fd93443368a7b9e8d8a" title="Creator for an empty AlleleMatrix object of a given size." alt="" coords="431,477,605,504"/>
+<area shape="rect" href="sim-operations_8c.html#aa18b10bcd660dee5213868cc3244f826" title="Get the alleles of the outcome of crossing two subjects." alt="" coords="463,427,573,453"/>
+<area shape="rect" href="sim-operations_8c.html#a309dbf26800ee65e982df2b347980906" title="Get the alleles of a genotype by its index." alt="" coords="449,579,587,605"/>
+<area shape="rect" href="sim-operations_8c.html#a67f649fd36494324e609b06fcc960785" title="Get the id of a genotype by its index." alt="" coords="462,629,574,656"/>
+<area shape="rect" href="sim-operations_8c.html#ae974a74145fe876e303e14336d3c5d3a" title="Function to identify the next sequential integer that does not identify a group that currently has me..." alt="" coords="447,680,589,707"/>
+<area shape="rect" href="sim-operations_8c.html#a42a237afba9dc8f3a7339cb97d929cb6" title="Prints all the geneotype data saved in the linked list of AlleleMatrices starting with m to a file." alt="" coords="454,731,582,757"/>
+<area shape="rect" href="sim-operations_8c.html#abf5bc0b61b008aeda217ea9a666ad9cb" title="Print the full known pedigree of each genotype in a single AlleleMatrix to a file." alt="" coords="453,781,583,808"/>
+<area shape="rect" href="sim-operations_8c.html#a8f5320627e7155d6e69e4c3db6208be4" title="Print a set of pre&#45;calculated GEBVs with provided names and ids to a file, with the same format as a ..." alt="" coords="471,832,565,859"/>
+<area shape="rect" href="sim-operations_8c.html#ab4a5ef571ebeb5e546461398eecfb0ff" title="Fills the designated section of the .subject_names array in an AlleleMatrix with the pattern prefixin..." alt="" coords="451,528,585,555"/>
+<area shape="rect" href="sim-operations_8c.html#ac711a312bddd30d394adda822a7c7679" title="Add the two DecimalMatrix." alt="" coords="690,5,797,32"/>
+<area shape="rect" href="sim-operations_8c.html#abf3f578b0aa59d5b68ccd0738dd6a9d1" title="Generates a matrix of c columns, r rows with all 0." alt="" coords="889,93,1044,120"/>
+<area shape="rect" href="sim-operations_8c.html#a42f2398ccb53ffafce9b4a17e3222636" title="Calculates the number of times at each marker that a particular allele appears for each genotype in a..." alt="" coords="675,57,811,98"/>
+<area shape="rect" href="sim-operations_8c.html#a1219ce0fef428e6b5317a034280497b0" title="Perform matrix multiplication on two DecimalMatrix." alt="" coords="678,123,809,149"/>
+<area shape="rect" href="sim-operations_8c.html#abe8da784853a382f703129997ed08996" title="Get a DecimalMatrix composed only of row row_index from m" alt="" coords="674,173,813,200"/>
+<area shape="rect" href="sim-operations_8c.html#ad1a5b9f3e850da13931ee02fbb170d41" title="Replace calls to malloc direct with this function, which errors and exits with status 2 if memory all..." alt="" coords="701,528,786,555"/>
+<area shape="rect" href="sim-operations_8c.html#a3744bc6f3fcb52952d520029055e8af8" title="Comparator function for qsort." alt="" coords="653,477,833,504"/>
+<area shape="rect" href="sim-operations_8c.html#ad4e0f7934e82157e3115f8df7aec01f0" title="Generates randomly one of 0 or 1, by splitting the output of rand() in half." alt="" coords="716,376,771,403"/>
+<area shape="rect" href="sim-operations_8c.html#a7d9dbe538d6fb096af14c3163c98e800" title="Generates randomly a number from the Poisson distribution with parameter lambda, using the Knuth appr..." alt="" coords="711,427,775,453"/>
+<area shape="rect" href="sim-operations_8c.html#a3305ddcc29138d2d92689f39a7885ca0" title="Identify every group number that currently has members." alt="" coords="674,680,813,707"/>
+<area shape="rect" href="sim-operations_8c.html#adae2e9f7e1061cb20426ba2333b7629b" title="Comparator function for qsort." alt="" coords="881,680,1052,707"/>
+<area shape="rect" href="sim-operations_8c.html#a4a41a75435588bd183d4d4d91082e601" title="Recursively save the parents of a particular id to a file." alt="" coords="686,781,801,808"/>
+<area shape="rect" href="sim-operations_8c.html#a6aa75e72bb29725ffe32cd003c547480" title="Returns the name of the genotype with a given id." alt="" coords="910,756,1023,783"/>
+<area shape="rect" href="sim-operations_8c.html#a229c9de94875ea41a23723d337f5f92f" title="Saves the ids of the parents of a genotype with a particular id to the output array output." alt="" coords="905,807,1029,833"/>
+<area shape="rect" href="sim-operations_8c.html#aa6943b0633c1744bacad62ab2bf68ebd" title="Returns the located index in an array of integers where the integer is target." alt="" coords="1100,781,1275,808"/>
+<area shape="rect" href="sim-operations_8c.html#ad7d864d43092823ac2ed8a6cbd595e35" title="Count and return the number of digits in i." alt="" coords="681,579,805,605"/>
 </map>
 </div>
 
@@ -4550,37 +4726,37 @@ Here is the call graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="sim-operations_8c_af078d6bc1b5d4234a9b960e6132480aa_cgraph.png" border="0" usemap="#sim-operations_8c_af078d6bc1b5d4234a9b960e6132480aa_cgraph" alt=""/></div>
 <map name="sim-operations_8c_af078d6bc1b5d4234a9b960e6132480aa_cgraph" id="sim-operations_8c_af078d6bc1b5d4234a9b960e6132480aa_cgraph">
-<area shape="rect" title="Creates a doubled haploid from each member of a group." alt="" coords="5,553,167,579"/>
-<area shape="rect" href="sim-operations_8c.html#a238032359089625f3fd3b4447cdbbdff" title="Calculates the fitness metric/GEBV for each genotype in the AlleleMatrix, and returns the results in ..." alt="" coords="221,173,383,199"/>
-<area shape="rect" href="sim-operations_8c.html#aaf6542d59034f88f9e1ec48e5f053c4a" title="Deletes a DecimalMatrix and frees its memory." alt="" coords="474,274,581,301"/>
-<area shape="rect" href="sim-operations_8c.html#a887027349503be24b1a847c9b833aaac" title="A function to tidy the internal storage of genotypes after addition or deletion of genotypes in the S..." alt="" coords="223,375,381,402"/>
-<area shape="rect" href="sim-operations_8c.html#add4a9c17e8c3e59fc00eee25635b110f" title="Deletes the full AlleleMatrix object and frees its memory." alt="" coords="459,325,596,351"/>
-<area shape="rect" href="sim-operations_8c.html#aac694dd044a29fd93443368a7b9e8d8a" title="Creator for an empty AlleleMatrix object of a given size." alt="" coords="215,477,389,503"/>
-<area shape="rect" href="sim-operations_8c.html#ac1f46b3de0afb4674ae6d34311e7aea7" title="Get the alleles of the outcome of producing a doubled haploid from a gamete from a given parent." alt="" coords="216,426,388,453"/>
-<area shape="rect" href="sim-operations_8c.html#ac159a31261e14b325bd623899eefa796" title="Gets a shallow copy of the genes/alleles of each member of the group." alt="" coords="241,527,363,554"/>
-<area shape="rect" href="sim-operations_8c.html#ad6d2b66296cd80f5bfe303e06de7935c" title="Function to count the number of genotypes that currently belong to the specified group." alt="" coords="472,578,583,605"/>
-<area shape="rect" href="sim-operations_8c.html#a961042e468630f31a3607dac42f8fa34" title="Gets the ids of each member of the group." alt="" coords="251,578,353,605"/>
-<area shape="rect" href="sim-operations_8c.html#ae974a74145fe876e303e14336d3c5d3a" title="Function to identify the next sequential integer that does not identify a group that currently has me..." alt="" coords="231,730,373,757"/>
-<area shape="rect" href="sim-operations_8c.html#a42a237afba9dc8f3a7339cb97d929cb6" title="Prints all the geneotype data saved in the linked list of AlleleMatrices starting with m to a file." alt="" coords="238,781,366,807"/>
-<area shape="rect" href="sim-operations_8c.html#a8f5320627e7155d6e69e4c3db6208be4" title="Print a set of pre&#45;calculated GEBVs with provided names and ids to a file, with the same format as a ..." alt="" coords="255,831,349,858"/>
-<area shape="rect" href="sim-operations_8c.html#aad2fb503b61c909787f62b2a64385557" title="Print the full known pedigree of each genotype in a single AlleleMatrix to a file." alt="" coords="239,882,365,909"/>
-<area shape="rect" href="sim-operations_8c.html#ab4a5ef571ebeb5e546461398eecfb0ff" title="Fills the designated section of the .subject_names array in an AlleleMatrix with the pattern prefixin..." alt="" coords="235,629,369,655"/>
-<area shape="rect" href="sim-operations_8c.html#ac711a312bddd30d394adda822a7c7679" title="Add the two DecimalMatrix." alt="" coords="474,223,581,250"/>
-<area shape="rect" href="sim-operations_8c.html#abf3f578b0aa59d5b68ccd0738dd6a9d1" title="Generates a matrix of c columns, r rows with all 0." alt="" coords="673,122,828,149"/>
-<area shape="rect" href="sim-operations_8c.html#a42f2398ccb53ffafce9b4a17e3222636" title="Calculates the number of times at each marker that a particular allele appears for each genotype in a..." alt="" coords="459,5,595,47"/>
-<area shape="rect" href="sim-operations_8c.html#a1219ce0fef428e6b5317a034280497b0" title="Perform matrix multiplication on two DecimalMatrix." alt="" coords="462,71,593,98"/>
-<area shape="rect" href="sim-operations_8c.html#abe8da784853a382f703129997ed08996" title="Get a DecimalMatrix composed only of row row_index from m" alt="" coords="458,122,597,149"/>
-<area shape="rect" href="sim-operations_8c.html#ad1a5b9f3e850da13931ee02fbb170d41" title="Replace calls to malloc direct with this function, which errors and exits with status 2 if memory all..." alt="" coords="485,527,570,554"/>
-<area shape="rect" href="sim-operations_8c.html#a3744bc6f3fcb52952d520029055e8af8" title="Comparator function for qsort." alt="" coords="437,375,617,402"/>
-<area shape="rect" href="sim-operations_8c.html#ad4e0f7934e82157e3115f8df7aec01f0" title="Generates randomly one of 0 or 1, by splitting the output of rand() in half." alt="" coords="500,426,555,453"/>
-<area shape="rect" href="sim-operations_8c.html#a7d9dbe538d6fb096af14c3163c98e800" title="Generates randomly a number from the Poisson distribution with parameter lambda, using the Knuth appr..." alt="" coords="495,477,559,503"/>
-<area shape="rect" href="sim-operations_8c.html#a3305ddcc29138d2d92689f39a7885ca0" title="Identify every group number that currently has members." alt="" coords="458,730,597,757"/>
-<area shape="rect" href="sim-operations_8c.html#adae2e9f7e1061cb20426ba2333b7629b" title="Comparator function for qsort." alt="" coords="665,730,836,757"/>
-<area shape="rect" href="sim-operations_8c.html#a6aa75e72bb29725ffe32cd003c547480" title="Returns the name of the genotype with a given id." alt="" coords="694,869,807,895"/>
-<area shape="rect" href="sim-operations_8c.html#a4a41a75435588bd183d4d4d91082e601" title="Recursively save the parents of a particular id to a file." alt="" coords="470,919,585,946"/>
-<area shape="rect" href="sim-operations_8c.html#aa6943b0633c1744bacad62ab2bf68ebd" title="Returns the located index in an array of integers where the integer is target." alt="" coords="884,894,1059,921"/>
-<area shape="rect" href="sim-operations_8c.html#a229c9de94875ea41a23723d337f5f92f" title="Saves the ids of the parents of a genotype with a particular id to the output array output." alt="" coords="689,919,813,946"/>
-<area shape="rect" href="sim-operations_8c.html#ad7d864d43092823ac2ed8a6cbd595e35" title="Count and return the number of digits in i." alt="" coords="465,629,589,655"/>
+<area shape="rect" title="Creates a doubled haploid from each member of a group." alt="" coords="5,553,167,580"/>
+<area shape="rect" href="sim-operations_8c.html#a238032359089625f3fd3b4447cdbbdff" title="Calculates the fitness metric/GEBV for each genotype in the AlleleMatrix, and returns the results in ..." alt="" coords="221,165,383,192"/>
+<area shape="rect" href="sim-operations_8c.html#aaf6542d59034f88f9e1ec48e5f053c4a" title="Deletes a DecimalMatrix and frees its memory." alt="" coords="474,275,581,301"/>
+<area shape="rect" href="sim-operations_8c.html#a887027349503be24b1a847c9b833aaac" title="A function to tidy the internal storage of genotypes after addition or deletion of genotypes in the S..." alt="" coords="223,376,381,403"/>
+<area shape="rect" href="sim-operations_8c.html#add4a9c17e8c3e59fc00eee25635b110f" title="Deletes the full AlleleMatrix object and frees its memory." alt="" coords="459,325,596,352"/>
+<area shape="rect" href="sim-operations_8c.html#aac694dd044a29fd93443368a7b9e8d8a" title="Creator for an empty AlleleMatrix object of a given size." alt="" coords="215,477,389,504"/>
+<area shape="rect" href="sim-operations_8c.html#ac1f46b3de0afb4674ae6d34311e7aea7" title="Get the alleles of the outcome of producing a doubled haploid from a gamete from a given parent." alt="" coords="216,427,388,453"/>
+<area shape="rect" href="sim-operations_8c.html#ac159a31261e14b325bd623899eefa796" title="Gets a shallow copy of the genes/alleles of each member of the group." alt="" coords="241,528,363,555"/>
+<area shape="rect" href="sim-operations_8c.html#ad6d2b66296cd80f5bfe303e06de7935c" title="Function to count the number of genotypes that currently belong to the specified group." alt="" coords="472,579,583,605"/>
+<area shape="rect" href="sim-operations_8c.html#a961042e468630f31a3607dac42f8fa34" title="Gets the ids of each member of the group." alt="" coords="251,579,353,605"/>
+<area shape="rect" href="sim-operations_8c.html#ae974a74145fe876e303e14336d3c5d3a" title="Function to identify the next sequential integer that does not identify a group that currently has me..." alt="" coords="231,731,373,757"/>
+<area shape="rect" href="sim-operations_8c.html#a42a237afba9dc8f3a7339cb97d929cb6" title="Prints all the geneotype data saved in the linked list of AlleleMatrices starting with m to a file." alt="" coords="238,781,366,808"/>
+<area shape="rect" href="sim-operations_8c.html#abf5bc0b61b008aeda217ea9a666ad9cb" title="Print the full known pedigree of each genotype in a single AlleleMatrix to a file." alt="" coords="237,832,367,859"/>
+<area shape="rect" href="sim-operations_8c.html#a8f5320627e7155d6e69e4c3db6208be4" title="Print a set of pre&#45;calculated GEBVs with provided names and ids to a file, with the same format as a ..." alt="" coords="255,883,349,909"/>
+<area shape="rect" href="sim-operations_8c.html#ab4a5ef571ebeb5e546461398eecfb0ff" title="Fills the designated section of the .subject_names array in an AlleleMatrix with the pattern prefixin..." alt="" coords="235,629,369,656"/>
+<area shape="rect" href="sim-operations_8c.html#ac711a312bddd30d394adda822a7c7679" title="Add the two DecimalMatrix." alt="" coords="474,107,581,133"/>
+<area shape="rect" href="sim-operations_8c.html#abf3f578b0aa59d5b68ccd0738dd6a9d1" title="Generates a matrix of c columns, r rows with all 0." alt="" coords="673,81,828,108"/>
+<area shape="rect" href="sim-operations_8c.html#a42f2398ccb53ffafce9b4a17e3222636" title="Calculates the number of times at each marker that a particular allele appears for each genotype in a..." alt="" coords="459,158,595,199"/>
+<area shape="rect" href="sim-operations_8c.html#a1219ce0fef428e6b5317a034280497b0" title="Perform matrix multiplication on two DecimalMatrix." alt="" coords="462,5,593,32"/>
+<area shape="rect" href="sim-operations_8c.html#abe8da784853a382f703129997ed08996" title="Get a DecimalMatrix composed only of row row_index from m" alt="" coords="458,224,597,251"/>
+<area shape="rect" href="sim-operations_8c.html#ad1a5b9f3e850da13931ee02fbb170d41" title="Replace calls to malloc direct with this function, which errors and exits with status 2 if memory all..." alt="" coords="485,528,570,555"/>
+<area shape="rect" href="sim-operations_8c.html#a3744bc6f3fcb52952d520029055e8af8" title="Comparator function for qsort." alt="" coords="437,376,617,403"/>
+<area shape="rect" href="sim-operations_8c.html#ad4e0f7934e82157e3115f8df7aec01f0" title="Generates randomly one of 0 or 1, by splitting the output of rand() in half." alt="" coords="500,427,555,453"/>
+<area shape="rect" href="sim-operations_8c.html#a7d9dbe538d6fb096af14c3163c98e800" title="Generates randomly a number from the Poisson distribution with parameter lambda, using the Knuth appr..." alt="" coords="495,477,559,504"/>
+<area shape="rect" href="sim-operations_8c.html#a3305ddcc29138d2d92689f39a7885ca0" title="Identify every group number that currently has members." alt="" coords="458,731,597,757"/>
+<area shape="rect" href="sim-operations_8c.html#adae2e9f7e1061cb20426ba2333b7629b" title="Comparator function for qsort." alt="" coords="665,731,836,757"/>
+<area shape="rect" href="sim-operations_8c.html#a4a41a75435588bd183d4d4d91082e601" title="Recursively save the parents of a particular id to a file." alt="" coords="470,832,585,859"/>
+<area shape="rect" href="sim-operations_8c.html#a6aa75e72bb29725ffe32cd003c547480" title="Returns the name of the genotype with a given id." alt="" coords="694,807,807,833"/>
+<area shape="rect" href="sim-operations_8c.html#a229c9de94875ea41a23723d337f5f92f" title="Saves the ids of the parents of a genotype with a particular id to the output array output." alt="" coords="689,857,813,884"/>
+<area shape="rect" href="sim-operations_8c.html#aa6943b0633c1744bacad62ab2bf68ebd" title="Returns the located index in an array of integers where the integer is target." alt="" coords="884,832,1059,859"/>
+<area shape="rect" href="sim-operations_8c.html#ad7d864d43092823ac2ed8a6cbd595e35" title="Count and return the number of digits in i." alt="" coords="465,629,589,656"/>
 </map>
 </div>
 
@@ -4653,46 +4829,46 @@ Here is the call graph for this function:</div>
 <area shape="rect" title="Find the top m percent of a group and perform random crosses between those top individuals." alt="" coords="5,637,159,679"/>
 <area shape="rect" href="sim-operations_8c.html#ade6b01bfc6450638a3a341b76e28a97d" title="Combine a set of groups into one group." alt="" coords="223,569,341,595"/>
 <area shape="rect" href="sim-operations_8c.html#a3ea77c76c329625646419a10683669f9" title="Performs random crosses among members of a group." alt="" coords="417,391,588,418"/>
-<area shape="rect" href="sim-operations_8c.html#ad6d2b66296cd80f5bfe303e06de7935c" title="Function to count the number of genotypes that currently belong to the specified group." alt="" coords="905,586,1016,613"/>
-<area shape="rect" href="sim-operations_8c.html#aa91ffff83cf204fff8baef3790738b7a" title="Takes the top top_n fitness/GEBV individuals in the group and puts them in a new group." alt="" coords="207,1147,357,1174"/>
+<area shape="rect" href="sim-operations_8c.html#ad6d2b66296cd80f5bfe303e06de7935c" title="Function to count the number of genotypes that currently belong to the specified group." alt="" coords="905,594,1016,621"/>
+<area shape="rect" href="sim-operations_8c.html#aa91ffff83cf204fff8baef3790738b7a" title="Takes the top top_n fitness/GEBV individuals in the group and puts them in a new group." alt="" coords="207,1109,357,1135"/>
 <area shape="rect" href="sim-operations_8c.html#a238032359089625f3fd3b4447cdbbdff" title="Calculates the fitness metric/GEBV for each genotype in the AlleleMatrix, and returns the results in ..." alt="" coords="654,771,817,798"/>
-<area shape="rect" href="sim-operations_8c.html#aaf6542d59034f88f9e1ec48e5f053c4a" title="Deletes a DecimalMatrix and frees its memory." alt="" coords="907,1025,1014,1051"/>
+<area shape="rect" href="sim-operations_8c.html#aaf6542d59034f88f9e1ec48e5f053c4a" title="Deletes a DecimalMatrix and frees its memory." alt="" coords="907,999,1014,1026"/>
 <area shape="rect" href="sim-operations_8c.html#a887027349503be24b1a847c9b833aaac" title="A function to tidy the internal storage of genotypes after addition or deletion of genotypes in the S..." alt="" coords="656,62,815,89"/>
 <area shape="rect" href="sim-operations_8c.html#add4a9c17e8c3e59fc00eee25635b110f" title="Deletes the full AlleleMatrix object and frees its memory." alt="" coords="892,11,1029,38"/>
-<area shape="rect" href="sim-operations_8c.html#aac694dd044a29fd93443368a7b9e8d8a" title="Creator for an empty AlleleMatrix object of a given size." alt="" coords="648,417,823,443"/>
+<area shape="rect" href="sim-operations_8c.html#aac694dd044a29fd93443368a7b9e8d8a" title="Creator for an empty AlleleMatrix object of a given size." alt="" coords="648,265,823,291"/>
 <area shape="rect" href="sim-operations_8c.html#aa18b10bcd660dee5213868cc3244f826" title="Get the alleles of the outcome of crossing two subjects." alt="" coords="680,113,791,139"/>
 <area shape="rect" href="sim-operations_8c.html#ac159a31261e14b325bd623899eefa796" title="Gets a shallow copy of the genes/alleles of each member of the group." alt="" coords="675,467,796,494"/>
-<area shape="rect" href="sim-operations_8c.html#a961042e468630f31a3607dac42f8fa34" title="Gets the ids of each member of the group." alt="" coords="684,518,787,545"/>
-<area shape="rect" href="sim-operations_8c.html#ae974a74145fe876e303e14336d3c5d3a" title="Function to identify the next sequential integer that does not identify a group that currently has me..." alt="" coords="665,1257,806,1283"/>
-<area shape="rect" href="sim-operations_8c.html#a89e066191f12e056cebb8d2cd74a2a29" title="Generate an integer randomly between 0 and limit inclusive." alt="" coords="703,265,767,291"/>
-<area shape="rect" href="sim-operations_8c.html#a42a237afba9dc8f3a7339cb97d929cb6" title="Prints all the geneotype data saved in the linked list of AlleleMatrices starting with m to a file." alt="" coords="671,315,799,342"/>
-<area shape="rect" href="sim-operations_8c.html#a8f5320627e7155d6e69e4c3db6208be4" title="Print a set of pre&#45;calculated GEBVs with provided names and ids to a file, with the same format as a ..." alt="" coords="689,366,782,393"/>
-<area shape="rect" href="sim-operations_8c.html#aad2fb503b61c909787f62b2a64385557" title="Print the full known pedigree of each genotype in a single AlleleMatrix to a file." alt="" coords="672,163,799,190"/>
+<area shape="rect" href="sim-operations_8c.html#a961042e468630f31a3607dac42f8fa34" title="Gets the ids of each member of the group." alt="" coords="684,569,787,595"/>
+<area shape="rect" href="sim-operations_8c.html#ae974a74145fe876e303e14336d3c5d3a" title="Function to identify the next sequential integer that does not identify a group that currently has me..." alt="" coords="665,1243,806,1270"/>
+<area shape="rect" href="sim-operations_8c.html#a89e066191f12e056cebb8d2cd74a2a29" title="Generate an integer randomly between 0 and limit inclusive." alt="" coords="703,315,767,342"/>
+<area shape="rect" href="sim-operations_8c.html#a42a237afba9dc8f3a7339cb97d929cb6" title="Prints all the geneotype data saved in the linked list of AlleleMatrices starting with m to a file." alt="" coords="671,366,799,393"/>
+<area shape="rect" href="sim-operations_8c.html#abf5bc0b61b008aeda217ea9a666ad9cb" title="Print the full known pedigree of each genotype in a single AlleleMatrix to a file." alt="" coords="670,163,801,190"/>
+<area shape="rect" href="sim-operations_8c.html#a8f5320627e7155d6e69e4c3db6208be4" title="Print a set of pre&#45;calculated GEBVs with provided names and ids to a file, with the same format as a ..." alt="" coords="689,417,782,443"/>
 <area shape="rect" href="sim-operations_8c.html#ab4a5ef571ebeb5e546461398eecfb0ff" title="Fills the designated section of the .subject_names array in an AlleleMatrix with the pattern prefixin..." alt="" coords="668,214,803,241"/>
-<area shape="rect" href="sim-operations_8c.html#ac711a312bddd30d394adda822a7c7679" title="Add the two DecimalMatrix." alt="" coords="907,721,1014,747"/>
-<area shape="rect" href="sim-operations_8c.html#abf3f578b0aa59d5b68ccd0738dd6a9d1" title="Generates a matrix of c columns, r rows with all 0." alt="" coords="1107,797,1261,823"/>
-<area shape="rect" href="sim-operations_8c.html#a42f2398ccb53ffafce9b4a17e3222636" title="Calculates the number of times at each marker that a particular allele appears for each genotype in a..." alt="" coords="893,655,1029,696"/>
-<area shape="rect" href="sim-operations_8c.html#a1219ce0fef428e6b5317a034280497b0" title="Perform matrix multiplication on two DecimalMatrix." alt="" coords="895,822,1026,849"/>
-<area shape="rect" href="sim-operations_8c.html#abe8da784853a382f703129997ed08996" title="Get a DecimalMatrix composed only of row row_index from m" alt="" coords="891,873,1030,899"/>
-<area shape="rect" href="sim-operations_8c.html#ad1a5b9f3e850da13931ee02fbb170d41" title="Replace calls to malloc direct with this function, which errors and exits with status 2 if memory all..." alt="" coords="918,442,1003,469"/>
-<area shape="rect" href="sim-operations_8c.html#a3744bc6f3fcb52952d520029055e8af8" title="Comparator function for qsort." alt="" coords="871,62,1051,89"/>
-<area shape="rect" href="sim-operations_8c.html#ad4e0f7934e82157e3115f8df7aec01f0" title="Generates randomly one of 0 or 1, by splitting the output of rand() in half." alt="" coords="933,113,988,139"/>
-<area shape="rect" href="sim-operations_8c.html#a7d9dbe538d6fb096af14c3163c98e800" title="Generates randomly a number from the Poisson distribution with parameter lambda, using the Knuth appr..." alt="" coords="929,163,993,190"/>
-<area shape="rect" href="sim-operations_8c.html#a3305ddcc29138d2d92689f39a7885ca0" title="Identify every group number that currently has members." alt="" coords="891,1257,1030,1283"/>
-<area shape="rect" href="sim-operations_8c.html#adae2e9f7e1061cb20426ba2333b7629b" title="Comparator function for qsort." alt="" coords="1099,1257,1269,1283"/>
-<area shape="rect" href="sim-operations_8c.html#a6aa75e72bb29725ffe32cd003c547480" title="Returns the name of the genotype with a given id." alt="" coords="1127,289,1241,315"/>
+<area shape="rect" href="sim-operations_8c.html#ac711a312bddd30d394adda822a7c7679" title="Add the two DecimalMatrix." alt="" coords="907,771,1014,798"/>
+<area shape="rect" href="sim-operations_8c.html#abf3f578b0aa59d5b68ccd0738dd6a9d1" title="Generates a matrix of c columns, r rows with all 0." alt="" coords="1107,847,1261,874"/>
+<area shape="rect" href="sim-operations_8c.html#a42f2398ccb53ffafce9b4a17e3222636" title="Calculates the number of times at each marker that a particular allele appears for each genotype in a..." alt="" coords="893,705,1029,747"/>
+<area shape="rect" href="sim-operations_8c.html#a1219ce0fef428e6b5317a034280497b0" title="Perform matrix multiplication on two DecimalMatrix." alt="" coords="895,873,1026,899"/>
+<area shape="rect" href="sim-operations_8c.html#abe8da784853a382f703129997ed08996" title="Get a DecimalMatrix composed only of row row_index from m" alt="" coords="891,923,1030,950"/>
+<area shape="rect" href="sim-operations_8c.html#ad1a5b9f3e850da13931ee02fbb170d41" title="Replace calls to malloc direct with this function, which errors and exits with status 2 if memory all..." alt="" coords="918,403,1003,430"/>
+<area shape="rect" href="sim-operations_8c.html#a3744bc6f3fcb52952d520029055e8af8" title="Comparator function for qsort." alt="" coords="871,163,1051,190"/>
+<area shape="rect" href="sim-operations_8c.html#ad4e0f7934e82157e3115f8df7aec01f0" title="Generates randomly one of 0 or 1, by splitting the output of rand() in half." alt="" coords="933,62,988,89"/>
+<area shape="rect" href="sim-operations_8c.html#a7d9dbe538d6fb096af14c3163c98e800" title="Generates randomly a number from the Poisson distribution with parameter lambda, using the Knuth appr..." alt="" coords="929,113,993,139"/>
+<area shape="rect" href="sim-operations_8c.html#a3305ddcc29138d2d92689f39a7885ca0" title="Identify every group number that currently has members." alt="" coords="891,1243,1030,1270"/>
+<area shape="rect" href="sim-operations_8c.html#adae2e9f7e1061cb20426ba2333b7629b" title="Comparator function for qsort." alt="" coords="1099,1243,1269,1270"/>
 <area shape="rect" href="sim-operations_8c.html#a4a41a75435588bd183d4d4d91082e601" title="Recursively save the parents of a particular id to a file." alt="" coords="903,238,1018,265"/>
+<area shape="rect" href="sim-operations_8c.html#a6aa75e72bb29725ffe32cd003c547480" title="Returns the name of the genotype with a given id." alt="" coords="1127,238,1241,265"/>
+<area shape="rect" href="sim-operations_8c.html#a229c9de94875ea41a23723d337f5f92f" title="Saves the ids of the parents of a genotype with a particular id to the output array output." alt="" coords="1122,289,1246,315"/>
 <area shape="rect" href="sim-operations_8c.html#aa6943b0633c1744bacad62ab2bf68ebd" title="Returns the located index in an array of integers where the integer is target." alt="" coords="1317,289,1492,315"/>
-<area shape="rect" href="sim-operations_8c.html#a229c9de94875ea41a23723d337f5f92f" title="Saves the ids of the parents of a genotype with a particular id to the output array output." alt="" coords="1122,238,1246,265"/>
-<area shape="rect" href="sim-operations_8c.html#ad7d864d43092823ac2ed8a6cbd595e35" title="Count and return the number of digits in i." alt="" coords="899,339,1023,366"/>
-<area shape="rect" href="sim-operations_8c.html#a311381904a1ca73ea26dfede9fcddea2" title="Comparator function for qsort." alt="" coords="405,1198,600,1225"/>
-<area shape="rect" href="sim-operations_8c.html#a2aae9a568cd0cd5313808e458a9fe388" title="Comparator function for qsort." alt="" coords="433,1249,573,1291"/>
+<area shape="rect" href="sim-operations_8c.html#ad7d864d43092823ac2ed8a6cbd595e35" title="Count and return the number of digits in i." alt="" coords="899,289,1023,315"/>
+<area shape="rect" href="sim-operations_8c.html#a311381904a1ca73ea26dfede9fcddea2" title="Comparator function for qsort." alt="" coords="405,1159,600,1186"/>
+<area shape="rect" href="sim-operations_8c.html#a2aae9a568cd0cd5313808e458a9fe388" title="Comparator function for qsort." alt="" coords="433,1211,573,1252"/>
 <area shape="rect" href="sim-operations_8c.html#ac297afb7cf2c56f6f3f436090d7962dd" title="Calculates the fitness metric/GEBV for each genotype in the AlleleMatrix in a certain group,..." alt="" coords="421,967,584,1008"/>
-<area shape="rect" href="sim-operations_8c.html#a95aad1344c24e6072e6a50dcc67b60a8" title="Gets the indexes (0&#45;based, from the start of the linked list in the SimData) of each member of the gr..." alt="" coords="670,569,801,595"/>
-<area shape="rect" href="sim-operations_8c.html#af2eda46d016c384b166ce65605952b7c" title="Take a list of indexes and allocate the genotypes at those indexes to a new group." alt="" coords="444,1315,561,1342"/>
-<area shape="rect" href="sim-operations_8c.html#a2c58c3fef64a20bca3191f343b947933" title="Add the two DecimalMatrix." alt="" coords="680,1025,791,1051"/>
-<area shape="rect" href="sim-operations_8c.html#ae7797aeac935227749fc6eae09a02a96" title="Calculates the number of times at each marker that a particular allele appears for each genotype is a..." alt="" coords="883,1076,1039,1117"/>
-<area shape="rect" href="sim-operations_8c.html#af49ac14d9ff4483bce6424f823d30ca0" title="Returns the alleles at each marker of the genotype with a given id." alt="" coords="1126,978,1242,1005"/>
+<area shape="rect" href="sim-operations_8c.html#a95aad1344c24e6072e6a50dcc67b60a8" title="Gets the indexes (0&#45;based, from the start of the linked list in the SimData) of each member of the gr..." alt="" coords="670,619,801,646"/>
+<area shape="rect" href="sim-operations_8c.html#af2eda46d016c384b166ce65605952b7c" title="Take a list of indexes and allocate the genotypes at those indexes to a new group." alt="" coords="444,1277,561,1303"/>
+<area shape="rect" href="sim-operations_8c.html#a2c58c3fef64a20bca3191f343b947933" title="Add the two DecimalMatrix." alt="" coords="680,974,791,1001"/>
+<area shape="rect" href="sim-operations_8c.html#ae7797aeac935227749fc6eae09a02a96" title="Calculates the number of times at each marker that a particular allele appears for each genotype is a..." alt="" coords="883,1127,1039,1168"/>
+<area shape="rect" href="sim-operations_8c.html#af49ac14d9ff4483bce6424f823d30ca0" title="Returns the alleles at each marker of the genotype with a given id." alt="" coords="1126,1029,1242,1055"/>
 </map>
 </div>
 
@@ -5039,6 +5215,86 @@ Here is the caller graph for this function:</div>
 
 </div>
 </div>
+<a id="abf5bc0b61b008aeda217ea9a666ad9cb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abf5bc0b61b008aeda217ea9a666ad9cb">&#9670;&nbsp;</a></span>save_AM_pedigree()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void save_AM_pedigree </td>
+          <td>(</td>
+          <td class="paramtype">FILE *&#160;</td>
+          <td class="paramname"><em>f</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="struct_allele_matrix.html">AlleleMatrix</a> *&#160;</td>
+          <td class="paramname"><em>m</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="struct_sim_data.html">SimData</a> *&#160;</td>
+          <td class="paramname"><em>parents</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Print the full known pedigree of each genotype in a single <a class="el" href="struct_allele_matrix.html">AlleleMatrix</a> to a file. </p>
+<p>The following tab-separated format is used:</p>
+<p>[id] [name]=([parent 1 pedigree],[parent 2 pedigree])</p>
+<p>[id] [name]=([parent pedigree])</p>
+<p>...</p>
+<p>Note that this pedigree is recursively constructed, so if a genotype's parents are known, [parent pedigree] is replaced with a string of format name=([parent1 pedigree],[parent2 pedigree]) alike. If the two parents of a genotype are the same individual (i.e. it was produced by selfing, the comma and second parent pedigree are ommitted, as in the second line sample in the format above.</p>
+<p>The parents of a genotype are identified by the two ids saved in the genotype's pedigrees field in the <a class="el" href="struct_allele_matrix.html">AlleleMatrix</a> struct.</p>
+<p>If a group member or parent has no name, the name will be replaced in the output file with its session-unique id. If the parent id of an individual is 0, the individual is printed without brackets or parent pedigrees and recursion stops here.</p>
+<p>Note this does not follow through the linked list of <a class="el" href="struct_allele_matrix.html">AlleleMatrix</a>.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">f</td><td>file pointer opened for writing to put the output </td></tr>
+    <tr><td class="paramname">m</td><td>pointer to the <a class="el" href="struct_allele_matrix.html">AlleleMatrix</a> containing the genotypes to print </td></tr>
+    <tr><td class="paramname">parents</td><td>pointer to an <a class="el" href="struct_allele_matrix.html">AlleleMatrix</a> that heads the linked list containing the parents and other ancestry of the given genotypes. </td></tr>
+  </table>
+  </dd>
+</dl>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="sim-operations_8c_abf5bc0b61b008aeda217ea9a666ad9cb_cgraph.png" border="0" usemap="#sim-operations_8c_abf5bc0b61b008aeda217ea9a666ad9cb_cgraph" alt=""/></div>
+<map name="sim-operations_8c_abf5bc0b61b008aeda217ea9a666ad9cb_cgraph" id="sim-operations_8c_abf5bc0b61b008aeda217ea9a666ad9cb_cgraph">
+<area shape="rect" title="Print the full known pedigree of each genotype in a single AlleleMatrix to a file." alt="" coords="5,31,136,57"/>
+<area shape="rect" href="sim-operations_8c.html#a4a41a75435588bd183d4d4d91082e601" title="Recursively save the parents of a particular id to a file." alt="" coords="184,31,299,57"/>
+<area shape="rect" href="sim-operations_8c.html#a6aa75e72bb29725ffe32cd003c547480" title="Returns the name of the genotype with a given id." alt="" coords="352,5,465,32"/>
+<area shape="rect" href="sim-operations_8c.html#a229c9de94875ea41a23723d337f5f92f" title="Saves the ids of the parents of a genotype with a particular id to the output array output." alt="" coords="347,56,471,83"/>
+<area shape="rect" href="sim-operations_8c.html#aa6943b0633c1744bacad62ab2bf68ebd" title="Returns the located index in an array of integers where the integer is target." alt="" coords="519,31,693,57"/>
+</map>
+</div>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="sim-operations_8c_abf5bc0b61b008aeda217ea9a666ad9cb_icgraph.png" border="0" usemap="#sim-operations_8c_abf5bc0b61b008aeda217ea9a666ad9cb_icgraph" alt=""/></div>
+<map name="sim-operations_8c_abf5bc0b61b008aeda217ea9a666ad9cb_icgraph" id="sim-operations_8c_abf5bc0b61b008aeda217ea9a666ad9cb_icgraph">
+<area shape="rect" title="Print the full known pedigree of each genotype in a single AlleleMatrix to a file." alt="" coords="441,143,572,170"/>
+<area shape="rect" href="sim-operations_8h.html#a3ea77c76c329625646419a10683669f9" title="Performs random crosses among members of a group." alt="" coords="219,31,390,58"/>
+<area shape="rect" href="sim-operations_8h.html#abb793988799d792dfe4007efdf988068" title="Performs the crosses of pairs of parents whose ids are provided in an array." alt="" coords="216,118,393,145"/>
+<area shape="rect" href="sim-operations_8h.html#af078d6bc1b5d4234a9b960e6132480aa" title="Creates a doubled haploid from each member of a group." alt="" coords="224,169,385,195"/>
+<area shape="rect" href="sim-operations_8h.html#adf5beb682ac15fa5a0176e480adc9d91" title="Selfs each member of a group for a certain number of generations." alt="" coords="257,219,352,246"/>
+<area shape="rect" href="sim-operations_8h.html#a68aca99a41527b019316c8243e6fc7a7" title="Find the top m percent of a group and perform random crosses between those top individuals." alt="" coords="10,5,163,47"/>
+<area shape="rect" href="sim-operations_8h.html#a3f1b06b7aa35e6a05918e16d1deabeee" title="Perform crosses between all pairs of parents in the group from_group and allocates the resulting offs..." alt="" coords="8,71,165,112"/>
+<area shape="rect" href="sim-operations_8h.html#a3b67d38c13c7a8bef2d0fc91c0365177" title="Perform crosses between pairs of parents identified by name in a file and allocate the resulting offs..." alt="" coords="5,137,168,163"/>
+<area shape="rect" href="sim-operations_8h.html#aa7c90b4015e4abce750176c6d891cad2" title="Perform crosses between previously&#45;generated offspring of pairs of parents identified by name in a fi..." alt="" coords="11,188,163,229"/>
+</map>
+</div>
+
+</div>
+</div>
 <a id="a490906a5bfdb22b90aba5cdf6282fd03"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a490906a5bfdb22b90aba5cdf6282fd03">&#9670;&nbsp;</a></span>save_count_matrix()</h2>
 
@@ -5244,8 +5500,8 @@ Here is the caller graph for this function:</div>
 
 </div>
 </div>
-<a id="aad2fb503b61c909787f62b2a64385557"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aad2fb503b61c909787f62b2a64385557">&#9670;&nbsp;</a></span>save_full_pedigree()</h2>
+<a id="a40dbed7f680c5c1181a8ed27e616417b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a40dbed7f680c5c1181a8ed27e616417b">&#9670;&nbsp;</a></span>save_full_pedigree()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -5259,14 +5515,8 @@ Here is the caller graph for this function:</div>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="struct_allele_matrix.html">AlleleMatrix</a> *&#160;</td>
-          <td class="paramname"><em>m</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype"><a class="el" href="struct_allele_matrix.html">AlleleMatrix</a> *&#160;</td>
-          <td class="paramname"><em>parents</em>&#160;</td>
+          <td class="paramtype"><a class="el" href="struct_sim_data.html">SimData</a> *&#160;</td>
+          <td class="paramname"><em>d</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -5276,7 +5526,7 @@ Here is the caller graph for this function:</div>
       </table>
 </div><div class="memdoc">
 
-<p>Print the full known pedigree of each genotype in a single <a class="el" href="struct_allele_matrix.html">AlleleMatrix</a> to a file. </p>
+<p>Print the full known pedigree of each genotype in the <a class="el" href="struct_sim_data.html" title="Composite type that is used to run crossing simulations.">SimData</a> to a file. </p>
 <p>The following tab-separated format is used:</p>
 <p>[id] [name]=([parent 1 pedigree],[parent 2 pedigree])</p>
 <p>[id] [name]=([parent pedigree])</p>
@@ -5284,41 +5534,23 @@ Here is the caller graph for this function:</div>
 <p>Note that this pedigree is recursively constructed, so if a genotype's parents are known, [parent pedigree] is replaced with a string of format name=([parent1 pedigree],[parent2 pedigree]) alike. If the two parents of a genotype are the same individual (i.e. it was produced by selfing, the comma and second parent pedigree are ommitted, as in the second line sample in the format above.</p>
 <p>The parents of a genotype are identified by the two ids saved in the genotype's pedigrees field in the <a class="el" href="struct_allele_matrix.html">AlleleMatrix</a> struct.</p>
 <p>If a group member or parent has no name, the name will be replaced in the output file with its session-unique id. If the parent id of an individual is 0, the individual is printed without brackets or parent pedigrees and recursion stops here.</p>
-<p>Note this does not follow through the linked list of <a class="el" href="struct_allele_matrix.html">AlleleMatrix</a>.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">f</td><td>file pointer opened for writing to put the output </td></tr>
-    <tr><td class="paramname">m</td><td>pointer to the <a class="el" href="struct_allele_matrix.html">AlleleMatrix</a> containing the genotypes to print </td></tr>
-    <tr><td class="paramname">parents</td><td>pointer to an <a class="el" href="struct_allele_matrix.html">AlleleMatrix</a> that heads the linked list containing the parents and other ancestry of the given genotypes. </td></tr>
+    <tr><td class="paramname">d</td><td>pointer to the <a class="el" href="struct_sim_data.html" title="Composite type that is used to run crossing simulations.">SimData</a> containing all genotypes to print. </td></tr>
   </table>
   </dd>
 </dl>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><img src="sim-operations_8c_aad2fb503b61c909787f62b2a64385557_cgraph.png" border="0" usemap="#sim-operations_8c_aad2fb503b61c909787f62b2a64385557_cgraph" alt=""/></div>
-<map name="sim-operations_8c_aad2fb503b61c909787f62b2a64385557_cgraph" id="sim-operations_8c_aad2fb503b61c909787f62b2a64385557_cgraph">
-<area shape="rect" title="Print the full known pedigree of each genotype in a single AlleleMatrix to a file." alt="" coords="5,19,132,45"/>
+<div class="center"><img src="sim-operations_8c_a40dbed7f680c5c1181a8ed27e616417b_cgraph.png" border="0" usemap="#sim-operations_8c_a40dbed7f680c5c1181a8ed27e616417b_cgraph" alt=""/></div>
+<map name="sim-operations_8c_a40dbed7f680c5c1181a8ed27e616417b_cgraph" id="sim-operations_8c_a40dbed7f680c5c1181a8ed27e616417b_cgraph">
+<area shape="rect" title="Print the full known pedigree of each genotype in the SimData to a file." alt="" coords="5,31,132,57"/>
+<area shape="rect" href="sim-operations_8c.html#a4a41a75435588bd183d4d4d91082e601" title="Recursively save the parents of a particular id to a file." alt="" coords="180,31,295,57"/>
 <area shape="rect" href="sim-operations_8c.html#a6aa75e72bb29725ffe32cd003c547480" title="Returns the name of the genotype with a given id." alt="" coords="348,5,461,32"/>
-<area shape="rect" href="sim-operations_8c.html#a4a41a75435588bd183d4d4d91082e601" title="Recursively save the parents of a particular id to a file." alt="" coords="180,56,295,83"/>
-<area shape="rect" href="sim-operations_8c.html#aa6943b0633c1744bacad62ab2bf68ebd" title="Returns the located index in an array of integers where the integer is target." alt="" coords="515,31,689,57"/>
 <area shape="rect" href="sim-operations_8c.html#a229c9de94875ea41a23723d337f5f92f" title="Saves the ids of the parents of a genotype with a particular id to the output array output." alt="" coords="343,56,467,83"/>
-</map>
-</div>
-<div class="dynheader">
-Here is the caller graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><img src="sim-operations_8c_aad2fb503b61c909787f62b2a64385557_icgraph.png" border="0" usemap="#sim-operations_8c_aad2fb503b61c909787f62b2a64385557_icgraph" alt=""/></div>
-<map name="sim-operations_8c_aad2fb503b61c909787f62b2a64385557_icgraph" id="sim-operations_8c_aad2fb503b61c909787f62b2a64385557_icgraph">
-<area shape="rect" title="Print the full known pedigree of each genotype in a single AlleleMatrix to a file." alt="" coords="441,143,568,170"/>
-<area shape="rect" href="sim-operations_8h.html#a3ea77c76c329625646419a10683669f9" title="Performs random crosses among members of a group." alt="" coords="219,31,390,58"/>
-<area shape="rect" href="sim-operations_8h.html#abb793988799d792dfe4007efdf988068" title="Performs the crosses of pairs of parents whose ids are provided in an array." alt="" coords="216,118,393,145"/>
-<area shape="rect" href="sim-operations_8h.html#af078d6bc1b5d4234a9b960e6132480aa" title="Creates a doubled haploid from each member of a group." alt="" coords="224,169,385,195"/>
-<area shape="rect" href="sim-operations_8h.html#adf5beb682ac15fa5a0176e480adc9d91" title="Selfs each member of a group for a certain number of generations." alt="" coords="257,219,352,246"/>
-<area shape="rect" href="sim-operations_8h.html#a68aca99a41527b019316c8243e6fc7a7" title="Find the top m percent of a group and perform random crosses between those top individuals." alt="" coords="10,5,163,47"/>
-<area shape="rect" href="sim-operations_8h.html#a3f1b06b7aa35e6a05918e16d1deabeee" title="Perform crosses between all pairs of parents in the group from_group and allocates the resulting offs..." alt="" coords="8,71,165,112"/>
-<area shape="rect" href="sim-operations_8h.html#a3b67d38c13c7a8bef2d0fc91c0365177" title="Perform crosses between pairs of parents identified by name in a file and allocate the resulting offs..." alt="" coords="5,137,168,163"/>
-<area shape="rect" href="sim-operations_8h.html#aa7c90b4015e4abce750176c6d891cad2" title="Perform crosses between previously&#45;generated offspring of pairs of parents identified by name in a fi..." alt="" coords="11,188,163,229"/>
+<area shape="rect" href="sim-operations_8c.html#aa6943b0633c1744bacad62ab2bf68ebd" title="Returns the located index in an array of integers where the integer is target." alt="" coords="515,31,689,57"/>
 </map>
 </div>
 
@@ -5706,10 +5938,11 @@ Here is the caller graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="sim-operations_8c_a4a41a75435588bd183d4d4d91082e601_icgraph.png" border="0" usemap="#sim-operations_8c_a4a41a75435588bd183d4d4d91082e601_icgraph" alt=""/></div>
 <map name="sim-operations_8c_a4a41a75435588bd183d4d4d91082e601_icgraph" id="sim-operations_8c_a4a41a75435588bd183d4d4d91082e601_icgraph">
-<area shape="rect" title="Recursively save the parents of a particular id to a file." alt="" coords="819,182,933,209"/>
-<area shape="rect" href="sim-operations_8h.html#aad2fb503b61c909787f62b2a64385557" title="Print the full known pedigree of each genotype in a single AlleleMatrix to a file." alt="" coords="461,133,588,159"/>
-<area shape="rect" href="sim-operations_8h.html#a75e854cbc72b31a5e2eb03c63c33ecc6" title="Print the full known pedigree of each genotype in a group to a file." alt="" coords="441,207,608,234"/>
-<area shape="rect" href="sim-operations_8h.html#a4a41a75435588bd183d4d4d91082e601" title="Recursively save the parents of a particular id to a file." alt="" coords="656,182,771,209"/>
+<area shape="rect" title="Recursively save the parents of a particular id to a file." alt="" coords="819,214,933,241"/>
+<area shape="rect" href="sim-operations_8h.html#abf5bc0b61b008aeda217ea9a666ad9cb" title="Print the full known pedigree of each genotype in a single AlleleMatrix to a file." alt="" coords="459,133,590,159"/>
+<area shape="rect" href="sim-operations_8c.html#a40dbed7f680c5c1181a8ed27e616417b" title="Print the full known pedigree of each genotype in the SimData to a file." alt="" coords="461,202,588,229"/>
+<area shape="rect" href="sim-operations_8h.html#a75e854cbc72b31a5e2eb03c63c33ecc6" title="Print the full known pedigree of each genotype in a group to a file." alt="" coords="441,265,608,291"/>
+<area shape="rect" href="sim-operations_8h.html#a4a41a75435588bd183d4d4d91082e601" title="Recursively save the parents of a particular id to a file." alt="" coords="656,189,771,215"/>
 <area shape="rect" href="sim-operations_8h.html#a3ea77c76c329625646419a10683669f9" title="Performs random crosses among members of a group." alt="" coords="219,50,390,77"/>
 <area shape="rect" href="sim-operations_8h.html#abb793988799d792dfe4007efdf988068" title="Performs the crosses of pairs of parents whose ids are provided in an array." alt="" coords="216,107,393,134"/>
 <area shape="rect" href="sim-operations_8h.html#af078d6bc1b5d4234a9b960e6132480aa" title="Creates a doubled haploid from each member of a group." alt="" coords="224,158,385,185"/>
@@ -5938,37 +6171,37 @@ Here is the call graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="sim-operations_8c_adf5beb682ac15fa5a0176e480adc9d91_cgraph.png" border="0" usemap="#sim-operations_8c_adf5beb682ac15fa5a0176e480adc9d91_cgraph" alt=""/></div>
 <map name="sim-operations_8c_adf5beb682ac15fa5a0176e480adc9d91_cgraph" id="sim-operations_8c_adf5beb682ac15fa5a0176e480adc9d91_cgraph">
-<area shape="rect" title="Selfs each member of a group for a certain number of generations." alt="" coords="5,578,100,605"/>
-<area shape="rect" href="sim-operations_8c.html#a238032359089625f3fd3b4447cdbbdff" title="Calculates the fitness metric/GEBV for each genotype in the AlleleMatrix, and returns the results in ..." alt="" coords="154,173,317,199"/>
-<area shape="rect" href="sim-operations_8c.html#aaf6542d59034f88f9e1ec48e5f053c4a" title="Deletes a DecimalMatrix and frees its memory." alt="" coords="407,274,514,301"/>
-<area shape="rect" href="sim-operations_8c.html#a887027349503be24b1a847c9b833aaac" title="A function to tidy the internal storage of genotypes after addition or deletion of genotypes in the S..." alt="" coords="156,325,315,351"/>
-<area shape="rect" href="sim-operations_8c.html#add4a9c17e8c3e59fc00eee25635b110f" title="Deletes the full AlleleMatrix object and frees its memory." alt="" coords="392,325,529,351"/>
-<area shape="rect" href="sim-operations_8c.html#aac694dd044a29fd93443368a7b9e8d8a" title="Creator for an empty AlleleMatrix object of a given size." alt="" coords="148,477,323,503"/>
-<area shape="rect" href="sim-operations_8c.html#ad1a5b9f3e850da13931ee02fbb170d41" title="Replace calls to malloc direct with this function, which errors and exits with status 2 if memory all..." alt="" coords="418,553,503,579"/>
-<area shape="rect" href="sim-operations_8c.html#aa18b10bcd660dee5213868cc3244f826" title="Get the alleles of the outcome of crossing two subjects." alt="" coords="180,426,291,453"/>
-<area shape="rect" href="sim-operations_8c.html#ac159a31261e14b325bd623899eefa796" title="Gets a shallow copy of the genes/alleles of each member of the group." alt="" coords="175,629,296,655"/>
-<area shape="rect" href="sim-operations_8c.html#ad6d2b66296cd80f5bfe303e06de7935c" title="Function to count the number of genotypes that currently belong to the specified group." alt="" coords="405,629,516,655"/>
-<area shape="rect" href="sim-operations_8c.html#a961042e468630f31a3607dac42f8fa34" title="Gets the ids of each member of the group." alt="" coords="184,578,287,605"/>
-<area shape="rect" href="sim-operations_8c.html#ae974a74145fe876e303e14336d3c5d3a" title="Function to identify the next sequential integer that does not identify a group that currently has me..." alt="" coords="165,781,306,807"/>
-<area shape="rect" href="sim-operations_8c.html#a42a237afba9dc8f3a7339cb97d929cb6" title="Prints all the geneotype data saved in the linked list of AlleleMatrices starting with m to a file." alt="" coords="171,831,299,858"/>
-<area shape="rect" href="sim-operations_8c.html#a8f5320627e7155d6e69e4c3db6208be4" title="Print a set of pre&#45;calculated GEBVs with provided names and ids to a file, with the same format as a ..." alt="" coords="189,882,282,909"/>
-<area shape="rect" href="sim-operations_8c.html#aad2fb503b61c909787f62b2a64385557" title="Print the full known pedigree of each genotype in a single AlleleMatrix to a file." alt="" coords="172,933,299,959"/>
-<area shape="rect" href="sim-operations_8c.html#ab4a5ef571ebeb5e546461398eecfb0ff" title="Fills the designated section of the .subject_names array in an AlleleMatrix with the pattern prefixin..." alt="" coords="168,730,303,757"/>
-<area shape="rect" href="sim-operations_8c.html#ac711a312bddd30d394adda822a7c7679" title="Add the two DecimalMatrix." alt="" coords="407,223,514,250"/>
-<area shape="rect" href="sim-operations_8c.html#abf3f578b0aa59d5b68ccd0738dd6a9d1" title="Generates a matrix of c columns, r rows with all 0." alt="" coords="607,122,761,149"/>
-<area shape="rect" href="sim-operations_8c.html#a42f2398ccb53ffafce9b4a17e3222636" title="Calculates the number of times at each marker that a particular allele appears for each genotype in a..." alt="" coords="393,5,529,47"/>
-<area shape="rect" href="sim-operations_8c.html#a1219ce0fef428e6b5317a034280497b0" title="Perform matrix multiplication on two DecimalMatrix." alt="" coords="395,71,526,98"/>
-<area shape="rect" href="sim-operations_8c.html#abe8da784853a382f703129997ed08996" title="Get a DecimalMatrix composed only of row row_index from m" alt="" coords="391,122,530,149"/>
-<area shape="rect" href="sim-operations_8c.html#a3744bc6f3fcb52952d520029055e8af8" title="Comparator function for qsort." alt="" coords="371,375,551,402"/>
-<area shape="rect" href="sim-operations_8c.html#ad4e0f7934e82157e3115f8df7aec01f0" title="Generates randomly one of 0 or 1, by splitting the output of rand() in half." alt="" coords="433,426,488,453"/>
-<area shape="rect" href="sim-operations_8c.html#a7d9dbe538d6fb096af14c3163c98e800" title="Generates randomly a number from the Poisson distribution with parameter lambda, using the Knuth appr..." alt="" coords="429,477,493,503"/>
-<area shape="rect" href="sim-operations_8c.html#a3305ddcc29138d2d92689f39a7885ca0" title="Identify every group number that currently has members." alt="" coords="391,781,530,807"/>
-<area shape="rect" href="sim-operations_8c.html#adae2e9f7e1061cb20426ba2333b7629b" title="Comparator function for qsort." alt="" coords="599,781,769,807"/>
-<area shape="rect" href="sim-operations_8c.html#a6aa75e72bb29725ffe32cd003c547480" title="Returns the name of the genotype with a given id." alt="" coords="627,919,741,946"/>
-<area shape="rect" href="sim-operations_8c.html#a4a41a75435588bd183d4d4d91082e601" title="Recursively save the parents of a particular id to a file." alt="" coords="403,970,518,997"/>
-<area shape="rect" href="sim-operations_8c.html#aa6943b0633c1744bacad62ab2bf68ebd" title="Returns the located index in an array of integers where the integer is target." alt="" coords="817,945,992,971"/>
-<area shape="rect" href="sim-operations_8c.html#a229c9de94875ea41a23723d337f5f92f" title="Saves the ids of the parents of a genotype with a particular id to the output array output." alt="" coords="622,970,746,997"/>
-<area shape="rect" href="sim-operations_8c.html#ad7d864d43092823ac2ed8a6cbd595e35" title="Count and return the number of digits in i." alt="" coords="399,730,523,757"/>
+<area shape="rect" title="Selfs each member of a group for a certain number of generations." alt="" coords="5,579,100,605"/>
+<area shape="rect" href="sim-operations_8c.html#a238032359089625f3fd3b4447cdbbdff" title="Calculates the fitness metric/GEBV for each genotype in the AlleleMatrix, and returns the results in ..." alt="" coords="154,165,317,192"/>
+<area shape="rect" href="sim-operations_8c.html#aaf6542d59034f88f9e1ec48e5f053c4a" title="Deletes a DecimalMatrix and frees its memory." alt="" coords="407,275,514,301"/>
+<area shape="rect" href="sim-operations_8c.html#a887027349503be24b1a847c9b833aaac" title="A function to tidy the internal storage of genotypes after addition or deletion of genotypes in the S..." alt="" coords="156,325,315,352"/>
+<area shape="rect" href="sim-operations_8c.html#add4a9c17e8c3e59fc00eee25635b110f" title="Deletes the full AlleleMatrix object and frees its memory." alt="" coords="392,325,529,352"/>
+<area shape="rect" href="sim-operations_8c.html#aac694dd044a29fd93443368a7b9e8d8a" title="Creator for an empty AlleleMatrix object of a given size." alt="" coords="148,477,323,504"/>
+<area shape="rect" href="sim-operations_8c.html#ad1a5b9f3e850da13931ee02fbb170d41" title="Replace calls to malloc direct with this function, which errors and exits with status 2 if memory all..." alt="" coords="418,553,503,580"/>
+<area shape="rect" href="sim-operations_8c.html#aa18b10bcd660dee5213868cc3244f826" title="Get the alleles of the outcome of crossing two subjects." alt="" coords="180,427,291,453"/>
+<area shape="rect" href="sim-operations_8c.html#ac159a31261e14b325bd623899eefa796" title="Gets a shallow copy of the genes/alleles of each member of the group." alt="" coords="175,629,296,656"/>
+<area shape="rect" href="sim-operations_8c.html#ad6d2b66296cd80f5bfe303e06de7935c" title="Function to count the number of genotypes that currently belong to the specified group." alt="" coords="405,629,516,656"/>
+<area shape="rect" href="sim-operations_8c.html#a961042e468630f31a3607dac42f8fa34" title="Gets the ids of each member of the group." alt="" coords="184,579,287,605"/>
+<area shape="rect" href="sim-operations_8c.html#ae974a74145fe876e303e14336d3c5d3a" title="Function to identify the next sequential integer that does not identify a group that currently has me..." alt="" coords="165,781,306,808"/>
+<area shape="rect" href="sim-operations_8c.html#a42a237afba9dc8f3a7339cb97d929cb6" title="Prints all the geneotype data saved in the linked list of AlleleMatrices starting with m to a file." alt="" coords="171,832,299,859"/>
+<area shape="rect" href="sim-operations_8c.html#abf5bc0b61b008aeda217ea9a666ad9cb" title="Print the full known pedigree of each genotype in a single AlleleMatrix to a file." alt="" coords="170,883,301,909"/>
+<area shape="rect" href="sim-operations_8c.html#a8f5320627e7155d6e69e4c3db6208be4" title="Print a set of pre&#45;calculated GEBVs with provided names and ids to a file, with the same format as a ..." alt="" coords="189,933,282,960"/>
+<area shape="rect" href="sim-operations_8c.html#ab4a5ef571ebeb5e546461398eecfb0ff" title="Fills the designated section of the .subject_names array in an AlleleMatrix with the pattern prefixin..." alt="" coords="168,731,303,757"/>
+<area shape="rect" href="sim-operations_8c.html#ac711a312bddd30d394adda822a7c7679" title="Add the two DecimalMatrix." alt="" coords="407,107,514,133"/>
+<area shape="rect" href="sim-operations_8c.html#abf3f578b0aa59d5b68ccd0738dd6a9d1" title="Generates a matrix of c columns, r rows with all 0." alt="" coords="607,81,761,108"/>
+<area shape="rect" href="sim-operations_8c.html#a42f2398ccb53ffafce9b4a17e3222636" title="Calculates the number of times at each marker that a particular allele appears for each genotype in a..." alt="" coords="393,158,529,199"/>
+<area shape="rect" href="sim-operations_8c.html#a1219ce0fef428e6b5317a034280497b0" title="Perform matrix multiplication on two DecimalMatrix." alt="" coords="395,5,526,32"/>
+<area shape="rect" href="sim-operations_8c.html#abe8da784853a382f703129997ed08996" title="Get a DecimalMatrix composed only of row row_index from m" alt="" coords="391,224,530,251"/>
+<area shape="rect" href="sim-operations_8c.html#a3744bc6f3fcb52952d520029055e8af8" title="Comparator function for qsort." alt="" coords="371,376,551,403"/>
+<area shape="rect" href="sim-operations_8c.html#ad4e0f7934e82157e3115f8df7aec01f0" title="Generates randomly one of 0 or 1, by splitting the output of rand() in half." alt="" coords="433,427,488,453"/>
+<area shape="rect" href="sim-operations_8c.html#a7d9dbe538d6fb096af14c3163c98e800" title="Generates randomly a number from the Poisson distribution with parameter lambda, using the Knuth appr..." alt="" coords="429,477,493,504"/>
+<area shape="rect" href="sim-operations_8c.html#a3305ddcc29138d2d92689f39a7885ca0" title="Identify every group number that currently has members." alt="" coords="391,781,530,808"/>
+<area shape="rect" href="sim-operations_8c.html#adae2e9f7e1061cb20426ba2333b7629b" title="Comparator function for qsort." alt="" coords="599,781,769,808"/>
+<area shape="rect" href="sim-operations_8c.html#a4a41a75435588bd183d4d4d91082e601" title="Recursively save the parents of a particular id to a file." alt="" coords="403,883,518,909"/>
+<area shape="rect" href="sim-operations_8c.html#a6aa75e72bb29725ffe32cd003c547480" title="Returns the name of the genotype with a given id." alt="" coords="627,857,741,884"/>
+<area shape="rect" href="sim-operations_8c.html#a229c9de94875ea41a23723d337f5f92f" title="Saves the ids of the parents of a genotype with a particular id to the output array output." alt="" coords="622,908,746,935"/>
+<area shape="rect" href="sim-operations_8c.html#aa6943b0633c1744bacad62ab2bf68ebd" title="Returns the located index in an array of integers where the integer is target." alt="" coords="817,883,992,909"/>
+<area shape="rect" href="sim-operations_8c.html#ad7d864d43092823ac2ed8a6cbd595e35" title="Count and return the number of digits in i." alt="" coords="399,731,523,757"/>
 </map>
 </div>
 
@@ -6262,6 +6495,56 @@ Here is the caller graph for this function:</div>
 <map name="sim-operations_8c_aa91ffff83cf204fff8baef3790738b7a_icgraph" id="sim-operations_8c_aa91ffff83cf204fff8baef3790738b7a_icgraph">
 <area shape="rect" title="Takes the top top_n fitness/GEBV individuals in the group and puts them in a new group." alt="" coords="207,13,357,39"/>
 <area shape="rect" href="sim-operations_8h.html#a68aca99a41527b019316c8243e6fc7a7" title="Find the top m percent of a group and perform random crosses between those top individuals." alt="" coords="5,5,159,47"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="ab200978e019c73771fd80fcc53c6a598"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab200978e019c73771fd80fcc53c6a598">&#9670;&nbsp;</a></span>split_into_families()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void split_into_families </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="struct_sim_data.html">SimData</a> *&#160;</td>
+          <td class="paramname"><em>d</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>group_id</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Split a group into a set of smaller groups, each of which contains the genotypes in the original group that share a particular pair of parents. </p>
+<p>The number of new groups produced depends on the number of parent-combinations in the set of genotypes in the provided group.</p>
+<p>Individuals with both parents unknown will be grouped together.</p>
+<p>Note: this does not return the group numbers of all the newly created groups-of-one.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">d</td><td>the <a class="el" href="struct_sim_data.html" title="Composite type that is used to run crossing simulations.">SimData</a> struct on which to perform the operation </td></tr>
+    <tr><td class="paramname">group_id</td><td>the group number of the group to be split </td></tr>
+  </table>
+  </dd>
+</dl>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="sim-operations_8c_ab200978e019c73771fd80fcc53c6a598_cgraph.png" border="0" usemap="#sim-operations_8c_ab200978e019c73771fd80fcc53c6a598_cgraph" alt=""/></div>
+<map name="sim-operations_8c_ab200978e019c73771fd80fcc53c6a598_cgraph" id="sim-operations_8c_ab200978e019c73771fd80fcc53c6a598_cgraph">
+<area shape="rect" title="Split a group into a set of smaller groups, each of which contains the genotypes in the original grou..." alt="" coords="5,5,131,32"/>
+<area shape="rect" href="sim-operations_8c.html#a3305ddcc29138d2d92689f39a7885ca0" title="Identify every group number that currently has members." alt="" coords="179,5,317,32"/>
+<area shape="rect" href="sim-operations_8c.html#adae2e9f7e1061cb20426ba2333b7629b" title="Comparator function for qsort." alt="" coords="365,5,536,32"/>
 </map>
 </div>
 

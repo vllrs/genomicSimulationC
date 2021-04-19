@@ -491,6 +491,23 @@ int _ascending_int_comparer(const void* p0, const void* p1) {
 	}
 }
 
+/** Comparator function for qsort. Used to compare an array of integers* to sort
+ * the integers pointed to in ascending order.
+ * @see get_existing_group_counts()
+ *
+ * Sorts lower numbers before higher numbers. If floats are equal, their
+ * order after comparison is undefined. 
+ */
+int _ascending_int_dcomparer(const void* pp0, const void* pp1) {
+	int f0 = **(int **)pp0;
+	int f1 = **(int **)pp1;
+	if (f0 < f1) {
+		return -1;
+	} else {
+		return (f0 > f1); // 0 if equal, 1 if f0 is greater
+	}
+}
+
 /** A function to tidy the internal storage of genotypes after addition
  * or deletion of genotypes in the SimData. Not intended to be called by an
  * end user - functions which require it should be calling it already.
@@ -1124,6 +1141,80 @@ void split_into_individuals( SimData* d, int group_id) {
 	}
 }
 
+/** Split a group into a set of smaller groups, each of which contains the 
+ * genotypes in the original group that share a particular pair of parents.
+ * The number of new groups produced depends on the number of parent-combinations
+ * in the set of genotypes in the provided group.
+ *
+ * Individuals with both parents unknown will be grouped together.
+ *
+ * Note: this does not return the group numbers of all the newly created 
+ * groups-of-one.
+ *
+ * @param d the SimData struct on which to perform the operation
+ * @param group_id the group number of the group to be split
+ */
+void split_into_families(SimData* d, int group_id) {
+	// get pre-existing numbers
+	int n_groups = 0;
+	int* existing_groups = get_existing_groups( d, &n_groups);
+	// have another variable for the next id we can't allocate so we can still free the original.
+	int level = 0;
+	
+	int families_found = 0;
+	unsigned int family_groups[1000];
+	unsigned int family_identities[2][1000];
+	
+	// looping through all entries
+	AlleleMatrix* m = d->m;
+	int i;
+	int next_id = 0;
+	while (1) {
+		// check all subjects to see if this one belongs to the group.
+		for (i = 0; i < m->n_subjects; ++i) {
+			if (m->groups[i] == group_id) {
+				// First, see if it is a member of a family we already know.
+				for (int j = 0; j < families_found; ++j) {
+					if (m->pedigrees[0][i] == family_identities[0][j] && 
+							m->pedigrees[1][i] == family_identities[1][j]) {
+						m->groups[i] = family_groups[j];
+						break;
+					}
+				}
+				
+				// if the group number has not been updated in the above loop
+				// (so we don't know this family yet)
+				if (m->groups[i] == group_id) {
+					// find the next unused group;
+					++next_id;
+					while (level < n_groups) {
+						if (next_id < existing_groups[level]) {
+							break;
+						}
+						
+						++level;
+						++next_id;
+					}
+					
+					// save this entry as a member of that new group
+					m->groups[i] = next_id;
+					family_groups[families_found] = next_id;
+					family_identities[0][families_found] = m->pedigrees[0][i];
+					family_identities[1][families_found] = m->pedigrees[1][i];
+					++families_found;
+				}
+			}
+		}		
+		
+		if (m->next == NULL) {
+			free(existing_groups);
+			return;
+		} else {
+			m = m->next;
+		}
+	}
+}
+
 /*int get_number_of_subjects( AlleleMatrix* m) {
 	AlleleMatrix* m = m;
 	int total_subjects = m->n_subjects;
@@ -1184,6 +1275,101 @@ int* get_existing_groups( SimData* d, int* n_groups) {
 				exit(1);
 			} else {
 				existing_groups = temp;
+			}
+		}
+	}
+}
+
+/** Identify every group number that currently has members and 
+ * the number of genotypes currently allocated to that group.
+ *
+ * @param d the SimData struct on which to perform the operation
+ * @param n_groups a pointer to a location that can be accessed by the 
+ * calling function. The number of groups/length of the returned array
+ * will be saved here.
+ * @returns a heap array of length [2][value saved at n_groups after this 
+ * function has run]. The array at the first index contains the group numbers, 
+ * and the array at the second index contains the number of members of that group,
+ * ordered correspondingly. The arrays are sorted in ascending order by group number.
+ * All three components of the returned value (2-long first-index array containing
+ * the pointers to the toehr 2, and the two data-containing arrays) are allocated
+ * from the heap so should be freed by the calling function when it finishes with
+ * them.
+ */
+int** get_existing_group_counts( SimData* d, int* n_groups) {
+	int eg_size = 50;
+	int** returnval = get_malloc(sizeof(int*) * 2);
+	int* existing_groups = get_malloc(sizeof(int)* eg_size); // group ids
+	int* existing_group_counts = get_malloc(sizeof(int) * eg_size); // number in that group
+	*n_groups = 0;
+
+	AlleleMatrix* m = d->m;
+	int i, j;
+	int new; // is the group number at this index a new one or not
+	while (1) {
+		for (i = 0; i < m->n_subjects; ++i) {
+			new = 1;
+			for (j = 0; j < *n_groups; ++j) {
+				if (m->groups[i] == existing_groups[j]) {
+					existing_group_counts[j] += 1;
+					new = 0;
+					break;
+				}
+			}
+			
+			if (new) {
+				++ (*n_groups);
+				existing_groups[*n_groups - 1] = m->groups[i];
+				existing_group_counts[*n_groups - 1] = 1;
+				
+			}	
+		}
+		
+		if (m->next == NULL) {
+			if (*n_groups > 0) {
+				int* sorting[*n_groups];
+				for (int i = 0; i < *n_groups; i++) {
+					sorting[i] = &(existing_groups[i]);
+				}
+			
+				qsort(sorting, *n_groups, sizeof(int*), _ascending_int_dcomparer);
+				int location_in_old; 
+				int* location_origin = existing_groups;
+				int* sorted_groups = get_malloc(sizeof(int) * (*n_groups));
+				int* sorted_counts = get_malloc(sizeof(int) * (*n_groups));
+				for (int i = 0; i < *n_groups; ++i) {
+					location_in_old = sorting[i] - location_origin;	
+					sorted_groups[i] = existing_groups[location_in_old];					
+					sorted_counts[i] = existing_group_counts[location_in_old];
+				}
+				
+				free(existing_groups);
+				free(existing_group_counts);
+				returnval[0] = sorted_groups;
+				returnval[1] = sorted_counts;
+				return returnval;
+			} else {
+				return NULL;
+			}
+		} else {
+			m = m->next;
+		}
+		
+		if (*n_groups >= eg_size - 1) {
+			eg_size *= 1.5;
+			int* temp = realloc(existing_groups, eg_size * sizeof(int));
+			if (temp == NULL) {
+				free(existing_groups);
+				error( "Can't get all those groups.\n");
+			} else {
+				existing_groups = temp;
+			}
+			temp = realloc(existing_group_counts, eg_size * sizeof(int));
+			if (temp == NULL) {
+				free(existing_group_counts);
+				error( "Can't get all those groups.\n");
+			} else {
+				existing_group_counts = temp;
 			}
 		}
 	}
@@ -3191,7 +3377,7 @@ int cross_random_individuals(SimData* d, int from_group, int n_crosses, GenOptio
 				
 				// save the subjects to files if appropriate
 				if (g.will_save_pedigree_to_file) {
-					save_full_pedigree( fp, crosses, d->m);
+					save_AM_pedigree( fp, crosses, d->m);
 				}
 				if (g.will_save_effects_to_file) {
 					eff = calculate_fitness_metric( crosses, &(d->e));
@@ -3243,7 +3429,7 @@ int cross_random_individuals(SimData* d, int from_group, int n_crosses, GenOptio
 	
 	// save the subjects to files if appropriate
 	if (g.will_save_pedigree_to_file) {
-		save_full_pedigree( fp, crosses, d->m);
+		save_AM_pedigree( fp, crosses, d->m);
 		fclose(fp);
 	}
 	if (g.will_save_effects_to_file) {
@@ -3359,7 +3545,7 @@ int cross_these_combinations(SimData* d, int n_combinations, int combinations[2]
 					
 					// save the subjects to files if appropriate
 					if (g.will_save_pedigree_to_file) {
-						save_full_pedigree( fp, crosses, d->m);
+						save_AM_pedigree( fp, crosses, d->m);
 					}
 					if (g.will_save_effects_to_file) {
 						eff = calculate_fitness_metric( crosses, &(d->e));
@@ -3408,7 +3594,7 @@ int cross_these_combinations(SimData* d, int n_combinations, int combinations[2]
 	
 	// save the subjects to files if appropriate
 	if (g.will_save_pedigree_to_file) {
-		save_full_pedigree( fp, crosses, d->m);
+		save_AM_pedigree( fp, crosses, d->m);
 		fclose(fp);
 	}
 	if (g.will_save_effects_to_file) {
@@ -3528,7 +3714,7 @@ int self_n_times(SimData* d, int n, int group, GenOptions g) {
 					
 					// save the subjects to files if appropriate
 					if (g.will_save_pedigree_to_file) {
-						save_full_pedigree( fp, outcome, d->m);
+						save_AM_pedigree( fp, outcome, d->m);
 					}
 					if (g.will_save_effects_to_file) {
 						eff = calculate_fitness_metric( outcome, &(d->e));
@@ -3584,7 +3770,7 @@ int self_n_times(SimData* d, int n, int group, GenOptions g) {
 					
 					// save the subjects to files if appropriate
 					if (g.will_save_pedigree_to_file) {
-						save_full_pedigree( fp, outcome, d->m);
+						save_AM_pedigree( fp, outcome, d->m);
 					}
 					if (g.will_save_effects_to_file) {
 						eff = calculate_fitness_metric( outcome, &(d->e));
@@ -3665,7 +3851,7 @@ int self_n_times(SimData* d, int n, int group, GenOptions g) {
 	
 	// save the subjects to files if appropriate
 	if (g.will_save_pedigree_to_file) {
-		save_full_pedigree( fp, outcome, d->m);
+		save_AM_pedigree( fp, outcome, d->m);
 		fclose(fp);
 	}
 	if (g.will_save_effects_to_file) {
@@ -3778,7 +3964,7 @@ int make_doubled_haploids(SimData* d, int group, GenOptions g) {
 				
 				// save the subjects to files if appropriate
 				if (g.will_save_pedigree_to_file) {
-					save_full_pedigree( fp, outcome, d->m);
+					save_AM_pedigree( fp, outcome, d->m);
 				}
 				if (g.will_save_effects_to_file) {
 					eff = calculate_fitness_metric( outcome, &(d->e));
@@ -3829,7 +4015,7 @@ int make_doubled_haploids(SimData* d, int group, GenOptions g) {
 	
 	// save the subjects to files if appropriate
 	if (g.will_save_pedigree_to_file) {
-		save_full_pedigree( fp, outcome, d->m);
+		save_AM_pedigree( fp, outcome, d->m);
 		fclose(fp);
 	}
 	if (g.will_save_effects_to_file) {
@@ -4392,6 +4578,184 @@ void calculate_group_block_effects(SimData* d, const char* block_file, const cha
 	return;
 }
 
+/** Given a set of blocks of markers in a file, for each genotype saved, 
+ * calculate the local GEBV for the first allele at each marker in the block, and 
+ * the local GEBV for the second allele at each marker in the block, then save
+ * the result to a file. This gives block effects for each haplotype of each 
+ * individual currently saved to the SimData.
+ *
+ * Note that this function is made to work on HPC, and not fixed to work on a regular
+ * device. If an array as long as the number of genotypes cannot fit contiguously into
+ * memory, the function will segfault. 
+ * 
+ * The block file is designed after the output from a call to the R SelectionTools
+ * package's `st.def.hblocks` function. It should have the format (tab-separated):
+ *
+ * Chrom	Pos	Name	Class	Markers
+ *
+ * [ignored]	[ignored]	[ignored]	[ignored]	[semicolon];[separated];[list]
+ * ;[of];[marker];[names];[belonging];[to];[this];[block]
+ *
+ * ...
+ *
+ * The output file will have format: 
+ *
+ * [genotype name]_1 [effect for first block, first allele] 
+ * [effect for second block, second allele] ...
+ *
+ * [genotype name]_2 [effect for first block, second allele] [effect for second block,
+ * second allele] ...
+ *
+ * [genotype 2 name]_1 ...
+ *
+ * 
+ * @param d pointer to the SimData object to which individuals belong.
+ * It must have a marker effect file loaded to successfully run this function.
+ * @param block_file string containing filename of the file with blocks
+ * @param output_file string containing the filename of the file to which output 
+ * block effects/local GEBVs will be saved.
+ */
+void calculate_all_block_effects(SimData* d, const char* block_file, const char* output_file) {
+	struct TableSize ts = get_file_dimensions(block_file, '\t');
+	int n_blocks = ts.num_rows - 2;
+  
+	FILE* infile, * outfile;
+	if ((infile = fopen(block_file, "r")) == NULL) {
+		error("Failed to open file %s.\n", block_file);
+	}
+	if ((outfile = fopen(output_file, "w")) == NULL) {
+		error("Failed to open file %s.\n", output_file);
+	}
+  
+	// get the group members by index
+	int gsize = 0;
+	AlleleMatrix* m = d->m;
+	do {
+		gsize += m->n_subjects;
+	} while ((m = m->next) != NULL);
+  
+	int bufferlen = 100;
+	char buffer[bufferlen];
+	//char blockname[bufferlen];
+	char markername[bufferlen];
+  
+	double beffects[gsize*2][n_blocks];
+  
+	// Ignore the first line
+	fscanf(infile, "%*[^\n]\n");
+  
+	// Loop through rows of the file (each row corresponds to a block)
+	//while (fscanf(infile, "%*d %*f %s %*s ", blockname) != EOF) {
+	for (int bi = 0; bi < n_blocks; ++bi) { 
+		// clear effect values
+		for (int i = 0; i < gsize * 2; ++i) {
+			beffects[i][bi] = 0;
+		}
+    
+		fscanf(infile, "%*d %*f %s %*s ", buffer);
+	
+		int c, k = 0;
+		while ((c = fgetc(infile)) != EOF && c !='\n') {
+			if (c == ';') {
+				markername[k] = '\0';
+        
+				// add the effects of that marker to our counts.
+				int markerindex = get_from_unordered_str_list(markername, d->markers, d->n_markers);
+				
+				m = d->m;
+				int total_i = 0;
+				do {
+					for (int i = 0; i < m->n_subjects; ++i, ++total_i) {
+						// add the effect of that allele at that marker.
+						for (int j = 0; j < d->e.effects.rows; ++j) {			
+							if (m->alleles[i][2*markerindex] == d->e.effect_names[j]) {
+								beffects[2*total_i + 0][bi] += d->e.effects.matrix[j][markerindex];
+							}
+							if (m->alleles[i][2*markerindex + 1] == d->e.effect_names[j]) {
+								beffects[2*total_i + 1][bi] += d->e.effects.matrix[j][markerindex];
+							}		
+						}
+					}
+				} while ((m = m->next) != NULL);
+        
+				k = 0;
+			} else {
+				markername[k] = c;
+				++k;
+			}
+		}
+	}
+	
+	// Save those effects to the output file.
+	m = d->m;
+	int total_i = 0;
+	do {
+		for (int i = 0; i < m->n_subjects; ++i, ++total_i) {
+			if (m->subject_names[i] != NULL) {
+				sprintf(buffer, "%s", m->subject_names[i]);
+			} else {
+				sprintf(buffer, "G%d", total_i);
+			}
+			
+			fwrite(buffer, sizeof(char), strlen(buffer), outfile);
+			fprintf(outfile, "_1");
+			for (int j = 0; j < n_blocks; ++j) {
+				fprintf(outfile, " %lf", beffects[2*total_i][j]);
+			}
+			fwrite("\n", sizeof(char), 1, outfile);
+			
+			fwrite(buffer, sizeof(char), strlen(buffer), outfile);
+			fprintf(outfile, "_2");
+			for (int j = 0; j < n_blocks; ++j) {
+				fprintf(outfile, " %lf", beffects[2*total_i + 1][j]);
+			}
+			fwrite("\n", sizeof(char), 1, outfile);
+		}
+	} while ((m = m->next) != NULL);
+  
+	fclose(infile);
+	fflush(outfile);
+	fclose(outfile);
+	return;
+}
+
+/** Takes a look at the currently-loaded effect values and creates a string
+ * containing the allele with the highest effect value for each marker as ordered
+ * in the SimData. Returns this as a null-terminated heap array of characters of 
+ * length d->n_markers + one null byte.
+ *
+ * The return value should be freed when usage is finished!
+ *
+ * The SimData must be initialised with marker effects for this function to succeed.
+ * 
+ * @param d pointer to the SimData containing markers and marker effects.
+ * @returns a heap array filled with a null-terminated string containing the highest
+ * scoring allele at each marker.
+ */
+char* calculate_ideal_genotype(SimData* d) {
+	if (d->e.effects.matrix == NULL || d->e.effects.rows < 1 || d->e.effect_names == NULL) {
+		fprintf(stderr, "No effect values are loaded\n");
+		return NULL;
+	}
+	
+	char* optimal = get_malloc(sizeof(char)* (d->n_markers + 1));
+	char best_allele;
+	int best_score;
+	
+	for (int i = 0; i < d->n_markers; ++i) {
+		best_allele = d->e.effect_names[0];
+		best_score = d->e.effects.matrix[0][i];
+		for (int a = 1; a < d->e.effects.rows; ++a) {
+			if (d->e.effects.matrix[a][i] > best_score) {
+				best_score = d->e.effects.matrix[a][i];
+				best_allele = d->e.effect_names[a];
+			}
+		}
+		optimal[i] = best_allele;
+	}
+	optimal[d->n_markers] = '\0';
+	return optimal;
+}
 
 /*--------------------------------Printing-----------------------------------*/
 
@@ -4888,6 +5252,54 @@ void save_group_full_pedigree(FILE* f, SimData* d, int group) {
 	fflush(f);	
 }
 
+/** Print the full known pedigree of each genotype in the SimData 
+ * to a file. The following
+ * tab-separated format is used:
+ *
+ * [id]	[name]=([parent 1 pedigree],[parent 2 pedigree])
+ *
+ * [id]	[name]=([parent pedigree])
+ *
+ * ...
+ *
+ * Note that this pedigree is recursively constructed, so if a genotype's
+ * parents are known, [parent pedigree] is replaced with a string of format
+ * name=([parent1 pedigree],[parent2 pedigree]) alike. If the two parents of 
+ * a genotype are the same individual (i.e. it was produced by selfing, the 
+ * comma and second parent pedigree are ommitted, as in the second line sample
+ * in the format above. 
+ *
+ * The parents of a genotype are identified by the two ids saved in the 
+ * genotype's pedigrees field in the AlleleMatrix struct. 
+ *
+ * If a group member or parent has no name, the name will be 
+ * replaced in the output file with its session-unique id. If the parent
+ * id of an individual is 0, the individual is printed without brackets or 
+ * parent pedigrees and recursion stops here.
+ *
+ * @param f file pointer opened for writing to put the output
+ * @param d pointer to the SimData containing all genotypes to print.
+ */
+void save_full_pedigree(FILE* f, SimData* d) {
+	const char newline[] = "\n";
+	
+	AlleleMatrix* m = d->m;
+	
+	do {
+		for (int i = 0; i < m->n_subjects; ++i) {
+			/*Group member name*/
+			fprintf(f, "%d\t", m->ids[i]);
+			if (m->subject_names[i] != NULL) {
+				fwrite(m->subject_names[i], sizeof(char), strlen(m->subject_names[i]), f);
+			}
+			
+			save_parents_of(f, d->m, m->ids[i]);
+			fwrite(newline, sizeof(char), 1, f);
+		}
+	} while ((m = m->next) != NULL);
+	fflush(f);
+}
+
 /** Print the full known pedigree of each genotype in a single AlleleMatrix 
  * to a file. The following
  * tab-separated format is used:
@@ -4920,63 +5332,20 @@ void save_group_full_pedigree(FILE* f, SimData* d, int group) {
  * @param parents pointer to an AlleleMatrix that heads the linked list
  * containing the parents and other ancestry of the given genotypes.
  */
-void save_full_pedigree(FILE* f, AlleleMatrix* m, AlleleMatrix* parents) {
+void save_AM_pedigree(FILE* f, AlleleMatrix* m, SimData* parents) {
 	const char newline[] = "\n";
-	const char tab[] = "\t";
 	
-	for (int i = 0; i < m->n_subjects; i++) {
+	for (int i = 0; i < m->n_subjects; ++i) {
 		/*Group member name*/
-		//fwrite(m->ids + i, sizeof(int), 1, f);
-		fprintf(f, "%d", m->ids[i]);
-		fwrite(tab, sizeof(char), 1, f);
+		fprintf(f, "%d\t", m->ids[i]);
 		if (m->subject_names[i] != NULL) {
 			fwrite(m->subject_names[i], sizeof(char), strlen(m->subject_names[i]), f);
 		}
 		
-		// save our parents
-		// open brackets
-		fwrite("=(", sizeof(char), 2, f);
-		char* name;
-		if (m->pedigrees[0][i] == m->pedigrees[1][i]) {
-			// Selfed parent
-			name = get_name_of_id( parents, m->pedigrees[0][i]);
-			if (name != NULL) {
-				fwrite(name, sizeof(char), strlen(name), f);
-			} else if (m->pedigrees[0][i] > 0) {
-				fprintf(f, "%d", m->pedigrees[0][i]);
-				//fwrite(m->pedigrees[0] + i, sizeof(int), 1, f);
-			}	
-			save_parents_of(f, parents, m->pedigrees[0][i]);
-		} else {
-			// Parent 1
-			name = get_name_of_id( parents, m->pedigrees[0][i]);
-			if (name != NULL) {
-				fwrite(name, sizeof(char), strlen(name), f);
-			} else if (m->pedigrees[0][i] > 0) {
-				fprintf(f, "%d", m->pedigrees[0][i]);
-				//fwrite(m->pedigrees[0] + i, sizeof(int), 1, f);
-			}
-			save_parents_of(f, parents, m->pedigrees[0][i]);
-			// separator
-			fwrite(",", sizeof(char), 1, f);
-			
-			
-			// Parent 2
-			name = get_name_of_id( parents, m->pedigrees[1][i]);
-			if (name != NULL) {
-				fwrite(name, sizeof(char), strlen(name), f);
-			} else if (m->pedigrees[1][i] > 0) {
-				fprintf(f, "%d", m->pedigrees[1][i]);
-				//fwrite(m->pedigrees[0] + i + 1, sizeof(int), 1, f);
-			}
-			save_parents_of(f, parents, m->pedigrees[1][i]);
-		}
-		// close brackets
-		fwrite(")", sizeof(char), 1, f);
-		
+		save_parents_of(f, parents->m, m->ids[i]);
 		fwrite(newline, sizeof(char), 1, f);
 	}
-	fflush(f);	
+	fflush(f);
 }
 
 /** Recursively save the parents of a particular id to a file.
@@ -5287,42 +5656,4 @@ void save_count_matrix_of_group(FILE* f, SimData* d, char allele, int group) {
 	free(group_ids);
 	free(group_names);
 	fflush(f);
-}
-
-/** Takes a look at the currently-loaded effect values and creates a string
- * containing the allele with the highest effect value for each marker as ordered
- * in the SimData. Returns this as a null-terminated heap array of characters of 
- * length d->n_markers + one null byte.
- *
- * The return value should be freed when usage is finished!
- *
- * The SimData must be initialised with marker effects for this function to succeed.
- * 
- * @param d pointer to the SimData containing markers and marker effects.
- * @returns a heap array filled with a null-terminated string containing the highest
- * scoring allele at each marker.
- */
-char* calculate_ideal_genotype(SimData* d) {
-	if (d->e.effects.matrix == NULL || d->e.effects.rows < 1 || d->e.effect_names == NULL) {
-		fprintf(stderr, "No effect values are loaded\n");
-		return NULL;
-	}
-	
-	char* optimal = get_malloc(sizeof(char)* (d->n_markers + 1));
-	char best_allele;
-	int best_score;
-	
-	for (int i = 0; i < d->n_markers; ++i) {
-		best_allele = d->e.effect_names[0];
-		best_score = d->e.effects.matrix[0][i];
-		for (int a = 1; a < d->e.effects.rows; ++a) {
-			if (d->e.effects.matrix[a][i] > best_score) {
-				best_score = d->e.effects.matrix[a][i];
-				best_allele = d->e.effect_names[a];
-			}
-		}
-		optimal[i] = best_allele;
-	}
-	optimal[d->n_markers] = '\0';
-	return optimal;
 }

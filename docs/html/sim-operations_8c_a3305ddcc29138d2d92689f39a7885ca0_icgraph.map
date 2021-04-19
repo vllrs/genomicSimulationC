@@ -1,7 +1,8 @@
 <map id="get_existing_groups" name="get_existing_groups">
-<area shape="rect" id="node1" title="Identify every group number that currently has members." alt="" coords="840,177,979,204"/>
+<area shape="rect" id="node1" title="Identify every group number that currently has members." alt="" coords="840,203,979,229"/>
 <area shape="rect" id="node2" href="$sim-operations_8h.html#ae974a74145fe876e303e14336d3c5d3a" title="Function to identify the next sequential integer that does not identify a group that currently has me..." alt="" coords="651,152,792,179"/>
-<area shape="rect" id="node14" href="$sim-operations_8h.html#ad5a61d77e05e6bb0d8f4235d21b8b1f3" title="Give every individual in the group a new group number that does not belong to any other existing grou..." alt="" coords="651,203,791,229"/>
+<area shape="rect" id="node14" href="$sim-operations_8h.html#ab200978e019c73771fd80fcc53c6a598" title="Split a group into a set of smaller groups, each of which contains the genotypes in the original grou..." alt="" coords="659,203,784,229"/>
+<area shape="rect" id="node15" href="$sim-operations_8h.html#ad5a61d77e05e6bb0d8f4235d21b8b1f3" title="Give every individual in the group a new group number that does not belong to any other existing grou..." alt="" coords="651,253,791,280"/>
 <area shape="rect" id="node3" href="$sim-operations_8h.html#a3ea77c76c329625646419a10683669f9" title="Performs random crosses among members of a group." alt="" coords="207,5,377,32"/>
 <area shape="rect" id="node5" href="$sim-operations_8h.html#abb793988799d792dfe4007efdf988068" title="Performs the crosses of pairs of parents whose ids are provided in an array." alt="" coords="425,64,603,91"/>
 <area shape="rect" id="node9" href="$sim-operations_8h.html#a8bd85cb47ec8e0c4049f937ef40ae102" title="Appends genotype data from a file to an existing SimData." alt="" coords="437,115,591,157"/>

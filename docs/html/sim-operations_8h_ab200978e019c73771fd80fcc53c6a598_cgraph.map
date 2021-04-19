@@ -1,0 +1,5 @@
+<map id="split_into_families" name="split_into_families">
+<area shape="rect" id="node1" title="Split a group into a set of smaller groups, each of which contains the genotypes in the original grou..." alt="" coords="5,5,131,32"/>
+<area shape="rect" id="node2" href="$sim-operations_8c.html#a3305ddcc29138d2d92689f39a7885ca0" title="Identify every group number that currently has members." alt="" coords="179,5,317,32"/>
+<area shape="rect" id="node3" href="$sim-operations_8c.html#adae2e9f7e1061cb20426ba2333b7629b" title="Comparator function for qsort." alt="" coords="365,5,536,32"/>
+</map>

@@ -1,0 +1,5 @@
+<map id="calculate_all_block_effects" name="calculate_all_block_effects">
+<area shape="rect" id="node1" title="Given a set of blocks of markers in a file, for each genotype saved, calculate the local GEBV for the..." alt="" coords="5,27,137,69"/>
+<area shape="rect" id="node2" href="$sim-operations_8c.html#a392c23248f22e9faf085198dbb1d8711" title="Opens a table file and reads the number of columns and rows (including headers) separated by sep into..." alt="" coords="185,5,321,32"/>
+<area shape="rect" id="node3" href="$sim-operations_8c.html#aed2ae969c3ce4ed1466a885dcc559472" title="Returns the first located index in an array of strings where the string is the same as the string tar..." alt="" coords="185,57,321,98"/>
+</map>

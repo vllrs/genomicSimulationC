@@ -1,32 +1,32 @@
 <map id="cross_these_combinations" name="cross_these_combinations">
-<area shape="rect" id="node1" title="Performs the crosses of pairs of parents whose ids are provided in an array." alt="" coords="5,505,183,532"/>
-<area shape="rect" id="node2" href="$sim-operations_8c.html#a238032359089625f3fd3b4447cdbbdff" title="Calculates the fitness metric/GEBV for each genotype in the AlleleMatrix, and returns the results in ..." alt="" coords="237,151,399,177"/>
-<area shape="rect" id="node6" href="$sim-operations_8c.html#aaf6542d59034f88f9e1ec48e5f053c4a" title="Deletes a DecimalMatrix and frees its memory." alt="" coords="490,252,597,279"/>
-<area shape="rect" id="node9" href="$sim-operations_8c.html#a887027349503be24b1a847c9b833aaac" title="A function to tidy the internal storage of genotypes after addition or deletion of genotypes in the S..." alt="" coords="239,353,397,380"/>
-<area shape="rect" id="node10" href="$sim-operations_8c.html#add4a9c17e8c3e59fc00eee25635b110f" title="Deletes the full AlleleMatrix object and frees its memory." alt="" coords="475,303,612,329"/>
-<area shape="rect" id="node11" href="$sim-operations_8c.html#aac694dd044a29fd93443368a7b9e8d8a" title="Creator for an empty AlleleMatrix object of a given size." alt="" coords="231,455,405,481"/>
-<area shape="rect" id="node13" href="$sim-operations_8c.html#aa18b10bcd660dee5213868cc3244f826" title="Get the alleles of the outcome of crossing two subjects." alt="" coords="263,404,373,431"/>
-<area shape="rect" id="node17" href="$sim-operations_8c.html#a309dbf26800ee65e982df2b347980906" title="Get the alleles of a genotype by its index." alt="" coords="249,556,387,583"/>
-<area shape="rect" id="node18" href="$sim-operations_8c.html#a67f649fd36494324e609b06fcc960785" title="Get the id of a genotype by its index." alt="" coords="262,607,374,633"/>
-<area shape="rect" id="node19" href="$sim-operations_8c.html#ae974a74145fe876e303e14336d3c5d3a" title="Function to identify the next sequential integer that does not identify a group that currently has me..." alt="" coords="247,657,389,684"/>
-<area shape="rect" id="node22" href="$sim-operations_8c.html#a42a237afba9dc8f3a7339cb97d929cb6" title="Prints all the geneotype data saved in the linked list of AlleleMatrices starting with m to a file." alt="" coords="254,708,382,735"/>
-<area shape="rect" id="node23" href="$sim-operations_8c.html#a8f5320627e7155d6e69e4c3db6208be4" title="Print a set of pre&#45;calculated GEBVs with provided names and ids to a file, with the same format as a ..." alt="" coords="271,759,365,785"/>
-<area shape="rect" id="node24" href="$sim-operations_8c.html#aad2fb503b61c909787f62b2a64385557" title="Print the full known pedigree of each genotype in a single AlleleMatrix to a file." alt="" coords="255,809,381,836"/>
-<area shape="rect" id="node29" href="$sim-operations_8c.html#ab4a5ef571ebeb5e546461398eecfb0ff" title="Fills the designated section of the .subject_names array in an AlleleMatrix with the pattern prefixin..." alt="" coords="251,505,385,532"/>
-<area shape="rect" id="node3" href="$sim-operations_8c.html#ac711a312bddd30d394adda822a7c7679" title="Add the two DecimalMatrix." alt="" coords="490,33,597,60"/>
-<area shape="rect" id="node4" href="$sim-operations_8c.html#abf3f578b0aa59d5b68ccd0738dd6a9d1" title="Generates a matrix of c columns, r rows with all 0." alt="" coords="689,63,844,89"/>
-<area shape="rect" id="node5" href="$sim-operations_8c.html#a42f2398ccb53ffafce9b4a17e3222636" title="Calculates the number of times at each marker that a particular allele appears for each genotype in a..." alt="" coords="475,85,611,126"/>
-<area shape="rect" id="node7" href="$sim-operations_8c.html#a1219ce0fef428e6b5317a034280497b0" title="Perform matrix multiplication on two DecimalMatrix." alt="" coords="478,151,609,177"/>
-<area shape="rect" id="node8" href="$sim-operations_8c.html#abe8da784853a382f703129997ed08996" title="Get a DecimalMatrix composed only of row row_index from m" alt="" coords="474,201,613,228"/>
-<area shape="rect" id="node12" href="$sim-operations_8c.html#ad1a5b9f3e850da13931ee02fbb170d41" title="Replace calls to malloc direct with this function, which errors and exits with status 2 if memory all..." alt="" coords="501,505,586,532"/>
-<area shape="rect" id="node14" href="$sim-operations_8c.html#a3744bc6f3fcb52952d520029055e8af8" title="Comparator function for qsort." alt="" coords="453,353,633,380"/>
-<area shape="rect" id="node15" href="$sim-operations_8c.html#ad4e0f7934e82157e3115f8df7aec01f0" title="Generates randomly one of 0 or 1, by splitting the output of rand() in half." alt="" coords="516,404,571,431"/>
-<area shape="rect" id="node16" href="$sim-operations_8c.html#a7d9dbe538d6fb096af14c3163c98e800" title="Generates randomly a number from the Poisson distribution with parameter lambda, using the Knuth appr..." alt="" coords="511,455,575,481"/>
-<area shape="rect" id="node20" href="$sim-operations_8c.html#a3305ddcc29138d2d92689f39a7885ca0" title="Identify every group number that currently has members." alt="" coords="474,657,613,684"/>
-<area shape="rect" id="node21" href="$sim-operations_8c.html#adae2e9f7e1061cb20426ba2333b7629b" title="Comparator function for qsort." alt="" coords="681,657,852,684"/>
-<area shape="rect" id="node25" href="$sim-operations_8c.html#a6aa75e72bb29725ffe32cd003c547480" title="Returns the name of the genotype with a given id." alt="" coords="710,835,823,861"/>
-<area shape="rect" id="node27" href="$sim-operations_8c.html#a4a41a75435588bd183d4d4d91082e601" title="Recursively save the parents of a particular id to a file." alt="" coords="486,784,601,811"/>
-<area shape="rect" id="node26" href="$sim-operations_8c.html#aa6943b0633c1744bacad62ab2bf68ebd" title="Returns the located index in an array of integers where the integer is target." alt="" coords="900,809,1075,836"/>
-<area shape="rect" id="node28" href="$sim-operations_8c.html#a229c9de94875ea41a23723d337f5f92f" title="Saves the ids of the parents of a genotype with a particular id to the output array output." alt="" coords="705,784,829,811"/>
-<area shape="rect" id="node30" href="$sim-operations_8c.html#ad7d864d43092823ac2ed8a6cbd595e35" title="Count and return the number of digits in i." alt="" coords="481,556,605,583"/>
+<area shape="rect" id="node1" title="Performs the crosses of pairs of parents whose ids are provided in an array." alt="" coords="5,528,183,555"/>
+<area shape="rect" id="node2" href="$sim-operations_8c.html#a238032359089625f3fd3b4447cdbbdff" title="Calculates the fitness metric/GEBV for each genotype in the AlleleMatrix, and returns the results in ..." alt="" coords="237,173,399,200"/>
+<area shape="rect" id="node6" href="$sim-operations_8c.html#aaf6542d59034f88f9e1ec48e5f053c4a" title="Deletes a DecimalMatrix and frees its memory." alt="" coords="490,275,597,301"/>
+<area shape="rect" id="node9" href="$sim-operations_8c.html#a887027349503be24b1a847c9b833aaac" title="A function to tidy the internal storage of genotypes after addition or deletion of genotypes in the S..." alt="" coords="239,376,397,403"/>
+<area shape="rect" id="node10" href="$sim-operations_8c.html#add4a9c17e8c3e59fc00eee25635b110f" title="Deletes the full AlleleMatrix object and frees its memory." alt="" coords="475,325,612,352"/>
+<area shape="rect" id="node11" href="$sim-operations_8c.html#aac694dd044a29fd93443368a7b9e8d8a" title="Creator for an empty AlleleMatrix object of a given size." alt="" coords="231,477,405,504"/>
+<area shape="rect" id="node13" href="$sim-operations_8c.html#aa18b10bcd660dee5213868cc3244f826" title="Get the alleles of the outcome of crossing two subjects." alt="" coords="263,427,373,453"/>
+<area shape="rect" id="node17" href="$sim-operations_8c.html#a309dbf26800ee65e982df2b347980906" title="Get the alleles of a genotype by its index." alt="" coords="249,579,387,605"/>
+<area shape="rect" id="node18" href="$sim-operations_8c.html#a67f649fd36494324e609b06fcc960785" title="Get the id of a genotype by its index." alt="" coords="262,629,374,656"/>
+<area shape="rect" id="node19" href="$sim-operations_8c.html#ae974a74145fe876e303e14336d3c5d3a" title="Function to identify the next sequential integer that does not identify a group that currently has me..." alt="" coords="247,680,389,707"/>
+<area shape="rect" id="node22" href="$sim-operations_8c.html#a42a237afba9dc8f3a7339cb97d929cb6" title="Prints all the geneotype data saved in the linked list of AlleleMatrices starting with m to a file." alt="" coords="254,731,382,757"/>
+<area shape="rect" id="node23" href="$sim-operations_8c.html#abf5bc0b61b008aeda217ea9a666ad9cb" title="Print the full known pedigree of each genotype in a single AlleleMatrix to a file." alt="" coords="253,781,383,808"/>
+<area shape="rect" id="node28" href="$sim-operations_8c.html#a8f5320627e7155d6e69e4c3db6208be4" title="Print a set of pre&#45;calculated GEBVs with provided names and ids to a file, with the same format as a ..." alt="" coords="271,832,365,859"/>
+<area shape="rect" id="node29" href="$sim-operations_8c.html#ab4a5ef571ebeb5e546461398eecfb0ff" title="Fills the designated section of the .subject_names array in an AlleleMatrix with the pattern prefixin..." alt="" coords="251,528,385,555"/>
+<area shape="rect" id="node3" href="$sim-operations_8c.html#ac711a312bddd30d394adda822a7c7679" title="Add the two DecimalMatrix." alt="" coords="490,5,597,32"/>
+<area shape="rect" id="node4" href="$sim-operations_8c.html#abf3f578b0aa59d5b68ccd0738dd6a9d1" title="Generates a matrix of c columns, r rows with all 0." alt="" coords="689,93,844,120"/>
+<area shape="rect" id="node5" href="$sim-operations_8c.html#a42f2398ccb53ffafce9b4a17e3222636" title="Calculates the number of times at each marker that a particular allele appears for each genotype in a..." alt="" coords="475,57,611,98"/>
+<area shape="rect" id="node7" href="$sim-operations_8c.html#a1219ce0fef428e6b5317a034280497b0" title="Perform matrix multiplication on two DecimalMatrix." alt="" coords="478,123,609,149"/>
+<area shape="rect" id="node8" href="$sim-operations_8c.html#abe8da784853a382f703129997ed08996" title="Get a DecimalMatrix composed only of row row_index from m" alt="" coords="474,173,613,200"/>
+<area shape="rect" id="node12" href="$sim-operations_8c.html#ad1a5b9f3e850da13931ee02fbb170d41" title="Replace calls to malloc direct with this function, which errors and exits with status 2 if memory all..." alt="" coords="501,528,586,555"/>
+<area shape="rect" id="node14" href="$sim-operations_8c.html#a3744bc6f3fcb52952d520029055e8af8" title="Comparator function for qsort." alt="" coords="453,477,633,504"/>
+<area shape="rect" id="node15" href="$sim-operations_8c.html#ad4e0f7934e82157e3115f8df7aec01f0" title="Generates randomly one of 0 or 1, by splitting the output of rand() in half." alt="" coords="516,376,571,403"/>
+<area shape="rect" id="node16" href="$sim-operations_8c.html#a7d9dbe538d6fb096af14c3163c98e800" title="Generates randomly a number from the Poisson distribution with parameter lambda, using the Knuth appr..." alt="" coords="511,427,575,453"/>
+<area shape="rect" id="node20" href="$sim-operations_8c.html#a3305ddcc29138d2d92689f39a7885ca0" title="Identify every group number that currently has members." alt="" coords="474,680,613,707"/>
+<area shape="rect" id="node21" href="$sim-operations_8c.html#adae2e9f7e1061cb20426ba2333b7629b" title="Comparator function for qsort." alt="" coords="681,680,852,707"/>
+<area shape="rect" id="node24" href="$sim-operations_8c.html#a4a41a75435588bd183d4d4d91082e601" title="Recursively save the parents of a particular id to a file." alt="" coords="486,781,601,808"/>
+<area shape="rect" id="node25" href="$sim-operations_8c.html#a6aa75e72bb29725ffe32cd003c547480" title="Returns the name of the genotype with a given id." alt="" coords="710,756,823,783"/>
+<area shape="rect" id="node27" href="$sim-operations_8c.html#a229c9de94875ea41a23723d337f5f92f" title="Saves the ids of the parents of a genotype with a particular id to the output array output." alt="" coords="705,807,829,833"/>
+<area shape="rect" id="node26" href="$sim-operations_8c.html#aa6943b0633c1744bacad62ab2bf68ebd" title="Returns the located index in an array of integers where the integer is target." alt="" coords="900,781,1075,808"/>
+<area shape="rect" id="node30" href="$sim-operations_8c.html#ad7d864d43092823ac2ed8a6cbd595e35" title="Count and return the number of digits in i." alt="" coords="481,579,605,605"/>
 </map>

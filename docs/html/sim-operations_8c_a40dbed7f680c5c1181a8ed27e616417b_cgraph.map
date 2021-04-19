@@ -1,0 +1,7 @@
+<map id="save_full_pedigree" name="save_full_pedigree">
+<area shape="rect" id="node1" title="Print the full known pedigree of each genotype in the SimData to a file." alt="" coords="5,31,132,57"/>
+<area shape="rect" id="node2" href="$sim-operations_8c.html#a4a41a75435588bd183d4d4d91082e601" title="Recursively save the parents of a particular id to a file." alt="" coords="180,31,295,57"/>
+<area shape="rect" id="node3" href="$sim-operations_8c.html#a6aa75e72bb29725ffe32cd003c547480" title="Returns the name of the genotype with a given id." alt="" coords="348,5,461,32"/>
+<area shape="rect" id="node5" href="$sim-operations_8c.html#a229c9de94875ea41a23723d337f5f92f" title="Saves the ids of the parents of a genotype with a particular id to the output array output." alt="" coords="343,56,467,83"/>
+<area shape="rect" id="node4" href="$sim-operations_8c.html#aa6943b0633c1744bacad62ab2bf68ebd" title="Returns the located index in an array of integers where the integer is target." alt="" coords="515,31,689,57"/>
+</map>
