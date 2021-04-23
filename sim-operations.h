@@ -29,6 +29,22 @@ struct TableSize {
 	int num_rows;
 };
 
+/** A struct used to store a set of blocks of markers. 
+ *
+ * @param num_blocks the number of blocks whose details are stored here.
+ * @param num_markers_in_block pointer to a heap array of length num_blocks
+ * containing the number of markers that make up each block
+ * @param markers_in_block pointer to a heap array of length num_blocks, each
+ * entry in which is a pointer to a heap array with length corresponding to 
+ * the value of the corresponding entry in num_markers_in_block whose values
+ * are the indexes in the SimData of the markers that make up that block.
+ */
+struct markerBlocks {
+	int num_blocks;
+	int* num_markers_in_block;
+	int** markers_in_block;
+};
+
 /** A heap matrix that contains floating point numbers. `dmatrix` functions
  * are designed to act on this matrix.
  *
@@ -353,7 +369,8 @@ DecimalMatrix calculate_fitness_metric_of_group(SimData* d, int group);
 DecimalMatrix calculate_fitness_metric( AlleleMatrix* m, EffectMatrix* e);
 DecimalMatrix calculate_count_matrix_of_allele_for_ids( AlleleMatrix* m, unsigned int* for_ids, unsigned int n_ids, char allele);
 DecimalMatrix calculate_full_count_matrix_of_allele( AlleleMatrix* m, char allele);
-void calculate_group_block_effects(SimData* d, char* block_file, char* output_file, int group);
+void calculate_group_block_effects(SimData* d, const char* block_file, const char* output_file, int group);
+struct markerBlocks read_block_file(SimData* d, const char* block_file);
 void calculate_all_block_effects(SimData* d, const char* block_file, const char* output_file);
 
 /* Savers */
@@ -367,7 +384,7 @@ void save_transposed_group_alleles(FILE* f, SimData* d, int group_id);
 void save_group_one_step_pedigree(FILE* f, SimData* d, int group); 
 void save_one_step_pedigree(FILE* f, SimData* d); 
 void save_group_full_pedigree(FILE* f, SimData* d, int group);
-void save_full_pedigree(FILE* f, AlleleMatrix* m, AlleleMatrix* parents);
+void save_full_pedigree(FILE* f, SimData* d);
 void save_AM_pedigree(FILE* f, AlleleMatrix* m, SimData* parents);
 void save_parents_of(FILE* f, AlleleMatrix* m, unsigned int id);
 
