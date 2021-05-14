@@ -386,7 +386,7 @@ void save_one_step_pedigree(FILE* f, SimData* d);
 void save_group_full_pedigree(FILE* f, SimData* d, int group);
 void save_full_pedigree(FILE* f, SimData* d);
 void save_AM_pedigree(FILE* f, AlleleMatrix* m, SimData* parents);
-void save_parents_of(FILE* f, AlleleMatrix* m, unsigned int id);
+void save_parents_of(FILE* f, AlleleMatrix* m, unsigned int p1, unsigned int p2);
 
 void save_group_fitness(FILE* f, SimData* d, int group);
 void save_fitness(FILE* f, DecimalMatrix* e, unsigned int* ids, char** names);
@@ -396,4 +396,5 @@ void save_count_matrix(FILE* f, SimData* d, char allele);
 void save_count_matrix_of_group(FILE* f, SimData* d, char allele, int group);
 
 char* calculate_ideal_genotype(SimData* d);
+double calculate_optimal_gebv(SimData* d);
 #endif
