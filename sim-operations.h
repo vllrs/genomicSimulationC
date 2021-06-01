@@ -39,11 +39,12 @@ struct TableSize {
  * the value of the corresponding entry in num_markers_in_block whose values
  * are the indexes in the SimData of the markers that make up that block.
  */
-struct markerBlocks {
+typedef struct {
 	int num_blocks;
 	int* num_markers_in_block;
 	int** markers_in_block;
-};
+} MarkerBlocks;
+
 
 /** A heap matrix that contains floating point numbers. `dmatrix` functions
  * are designed to act on this matrix.
@@ -216,7 +217,7 @@ typedef struct {
 	unsigned int current_id;
 } SimData; 
 
-const SimData EMPTY_SIMDATA;
+//const SimData EMPTY_SIMDATA;
 const GenOptions BASIC_OPT;
 
 int RAND_HALFPOINT;
@@ -226,6 +227,7 @@ int randpoi(double lambda);
 int randlim(int limit);
 
 AlleleMatrix* create_empty_allelematrix(int n_markers, int n_subjects);
+SimData* create_empty_simdata();
 
 /* Supporters */
 struct TableSize get_file_dimensions(const char* filename, char sep);
@@ -278,6 +280,7 @@ void delete_genmap(GeneticMap* m);
 void delete_allele_matrix(AlleleMatrix* m);
 void delete_effect_matrix(EffectMatrix* m);
 void delete_simdata(SimData* m);
+void delete_markerblocks(MarkerBlocks* b);
 
 DecimalMatrix generate_zero_dmatrix(int r, int c);
 DecimalMatrix subset_dmatrix_row(DecimalMatrix* m, int row_index);
@@ -369,12 +372,16 @@ DecimalMatrix calculate_fitness_metric_of_group(SimData* d, int group);
 DecimalMatrix calculate_fitness_metric( AlleleMatrix* m, EffectMatrix* e);
 DecimalMatrix calculate_count_matrix_of_allele_for_ids( AlleleMatrix* m, unsigned int* for_ids, unsigned int n_ids, char allele);
 DecimalMatrix calculate_full_count_matrix_of_allele( AlleleMatrix* m, char allele);
-void calculate_group_block_effects(SimData* d, const char* block_file, const char* output_file, int group);
-struct markerBlocks read_block_file(SimData* d, const char* block_file);
-void calculate_all_block_effects(SimData* d, const char* block_file, const char* output_file);
+
+MarkerBlocks create_n_blocks_by_chr(SimData* d, int n);
+MarkerBlocks read_block_file(SimData* d, const char* block_file);
+void calculate_group_block_effects(SimData* d, MarkerBlocks b, const char* output_file, int group);
+void calculate_all_block_effects(SimData* d, MarkerBlocks b, const char* output_file);
 
 /* Savers */
 void save_simdata(FILE* f, SimData* m);
+
+void save_marker_blocks(FILE* f, SimData* d, MarkerBlocks b);
 
 void save_allele_matrix(FILE* f, AlleleMatrix* m, char** markers);
 void save_transposed_allele_matrix(FILE* f, AlleleMatrix* m, char** markers);

@@ -293,6 +293,61 @@ int test_deletors(SimData *d, int g0) {
 	return 0;
 }
 
+int test_block_generator(SimData *d) {
+	MarkerBlocks b = create_n_blocks_by_chr(d, 2);
+	
+	assert(b.num_blocks == 4);
+	assert(b.num_markers_in_block[0] == 1);
+	assert(b.num_markers_in_block[1] == 1);
+	assert(b.num_markers_in_block[2] == 1);
+	assert(b.num_markers_in_block[3] == 0);
+	assert(b.markers_in_block[0][0] == 0);
+	assert(b.markers_in_block[1][0] == 1);
+	assert(b.markers_in_block[2][0] == 2);
+	assert(b.markers_in_block[3] == NULL);
+	
+	printf("...chr slicer correctly deals with multi-marker and single-marker chrs\n");
+	
+	/*printf("\nNum blocks: %d", b.num_blocks);
+	for (int i = 0; i < b.num_blocks; ++i) {
+		printf("\n%d: ", b.num_markers_in_block[i]);
+		for (int j = 0; j < b.num_markers_in_block[i]; ++j) {
+			printf("%d ", b.markers_in_block[i][j]);
+		}
+	}
+	fflush(stdout);*/
+	
+	delete_markerblocks(&b);
+	
+	printf("...MarkerBlocks deletor works\n");
+	
+	b = create_n_blocks_by_chr(d, 4);
+	
+	assert(b.num_blocks == 8);
+	assert(b.num_markers_in_block[0] == 1);
+	assert(b.num_markers_in_block[1] == 0);
+	assert(b.num_markers_in_block[2] == 0);
+	assert(b.num_markers_in_block[3] == 1);
+	assert(b.num_markers_in_block[4] == 1);
+	assert(b.num_markers_in_block[5] == 0);
+	assert(b.num_markers_in_block[6] == 0);
+	assert(b.num_markers_in_block[7] == 0);
+	assert(b.markers_in_block[0][0] == 0);
+	assert(b.markers_in_block[1] == NULL);
+	assert(b.markers_in_block[2] == NULL);
+	assert(b.markers_in_block[3][0] == 1);
+	assert(b.markers_in_block[4][0] == 2);
+	assert(b.markers_in_block[5] == NULL);
+	assert(b.markers_in_block[6] == NULL);
+	assert(b.markers_in_block[7] == NULL);
+	
+	printf("...chr slicer correctly deals with empty blocks\n");
+	
+	delete_markerblocks(&b);
+	
+	return 0;
+}
+
 /* main, for testing. Only uses a small dataset. */
 int main(int argc, char* argv[]) {
 	printf("Testing functionality ...");
@@ -303,24 +358,29 @@ int main(int argc, char* argv[]) {
 
 	// test SimData loaders
 	printf("\nNow testing loader functions:\n");
-	SimData sd = EMPTY_SIMDATA;
-	int g0 = test_loaders(&sd);
+	SimData* d = create_empty_simdata();
+	int g0 = test_loaders(d);
 	printf("\t\t-> Loader functions all clear\n");
 	
 	// test effect calculators
 	printf("\nNow testing GEBV calculator:\n");
-	test_effect_calculators(&sd, g0);
-	test_optimal_calculators(&sd);
+	test_effect_calculators(d, g0);
+	test_optimal_calculators(d);
 	printf("\t\t-> GEBV calculators all clear\n");
 	
 	// test crossers
 	printf("\nNow testing crossing functions:\n");
-	test_crossing(&sd, g0);
+	test_crossing(d, g0);
 	printf("\t\t-> Crossing functions all clear\n");
+	
+	//test blocking
+	printf("\nNow testing blocking functions:\n");
+	test_block_generator(d);
+	printf("\t\t-> Blocking functions all clear\n");
 	
 	// test SimData deletors.
 	printf("\nNow testing deletor functions:\n");
-	test_deletors(&sd, g0);
+	test_deletors(d, g0);
 	printf("\t\t-> Deletor functions all clear\n");
 	
 	printf("\n------- All tests passed. -------\n");

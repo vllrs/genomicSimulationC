@@ -14,15 +14,15 @@ const GenOptions BASIC_OPT = {
 	.will_save_to_simdata = TRUE
 };
 
-/** Creator for an empty SimData object */
-const SimData EMPTY_SIMDATA = {
+/* Creator for an empty SimData object */
+/*const SimData EMPTY_SIMDATA = {
 	.n_markers = 0,
 	.markers = NULL,
 	.map = {.n_chr = 0, .chr_ends = NULL, .positions = NULL},
 	.m = NULL,
 	.e = {.effects = {.matrix = NULL, .rows = 0, .cols = 0}, .effect_names = NULL},
 	.current_id = 0
-};
+};*/
 
 int RAND_HALFPOINT = (RAND_MAX/2);
 
@@ -82,6 +82,28 @@ AlleleMatrix* create_empty_allelematrix(int n_markers, int n_subjects) {
 	return m;
 }
 
+/** Creator for an empty SimData object on the heap. This is the main struct
+ * that will contain/manage simulation data.
+ *
+ * @returns pointer to the empty created SimData
+ */
+SimData* create_empty_simdata() {
+	SimData* d = get_malloc(sizeof(SimData));
+	d->n_markers = 0;
+	d->markers = NULL;
+	d->map.n_chr = 0; 
+	d->map.chr_ends = NULL;
+	d->map.chr_lengths = NULL;
+	d->map.positions = NULL;
+	d->m = NULL;
+	d->e.effects.rows = 0;
+	d->e.effects.cols = 0;
+	d->e.effects.matrix = NULL;
+	d->e.effect_names = NULL;
+	d->current_id = 0;
+	return d;
+}
+
 /*-------------------------Random generators---------------------------------*/
 /** Generates a double from the normal distribution N(0,1) based on rand() and 
  * the Box-Muller algorithm. 
@@ -106,7 +128,7 @@ int randb(void) {
 https://en.wikipedia.org/wiki/Poisson_distribution#Generating_Poisson-distributed_random_variables
 */
 /** Generates randomly a number from the Poisson distribution with parameter
- * `lambda`, using the Knuth approach.
+ * `lambda`, using the Knuth approach. Returns 0 if parameter is invalid (<= 0)
  *
  * This approach is known to run slow for larger values of lambda.
  *
@@ -115,6 +137,12 @@ https://en.wikipedia.org/wiki/Poisson_distribution#Generating_Poisson-distribute
  * @returns a random integer generated from the Poisson distribution with parameter lambda.
 */
 int randpoi(double lambda) {
+	if (lambda <= 0) { // invalid parameter. 
+		//In this case we use the function to generate number of crossovers
+		// so if parameter/length passed in is invalid, we just want no crossovers
+		return 0;
+	}
+	
 	int k = 0;
 	double target = exp(-lambda);
 	double p = (double)rand() / (double)RAND_MAX; // from U[0,1). Could improve later
@@ -1914,12 +1942,14 @@ void delete_effect_matrix(EffectMatrix* m) {
 	m->effect_names = NULL;
 }
 
-/** Deletes a SimData object and frees its memory. m will now refer 
- * to an empty matrix, with every pointer set to null and dimensions set to 0. 
+/** Deletes a SimData object and frees its memory.
  *
- * @param m pointer to the matrix whose data is to be cleared and memory freed.
+ * @param m pointer to the struct whose data is to be cleared and memory freed.
  */
 void delete_simdata(SimData* m) {
+	if (m == NULL) {
+		return;
+	}
 	// free markers
 	if (m->markers != NULL) {
 		for (int i = 0; i < m->n_markers; i++) {
@@ -1930,7 +1960,7 @@ void delete_simdata(SimData* m) {
 		free(m->markers);
 		m->markers = NULL;
 	}
-	m->n_markers = 0;
+	//m->n_markers = 0;
 	
 	// free genetic map and effects
 	delete_genmap(&(m->map));
@@ -1939,10 +1969,27 @@ void delete_simdata(SimData* m) {
 	// free tables of alleles across generations
 	delete_allele_matrix(m->m);
 	
-	m->current_id = 0;
-
+	//m->current_id = 0;
+	free(m);
 }
 
+/** Deletes a MarkerBlocks object and frees its associated memory. b will now refer 
+ * to an empty struct, with every pointer set to null and number of markers set to 0. 
+ *
+ * @param b pointer to the struct whose data is to be cleared and memory freed.
+ */
+void delete_markerblocks(MarkerBlocks* b) {
+	for (int i = 0; i < b->num_blocks; ++i) {
+		free(b->markers_in_block[i]);
+	}
+	free(b->markers_in_block);
+	b->markers_in_block = NULL;
+	free(b->num_markers_in_block);
+	b->num_markers_in_block = NULL;
+	b->num_blocks = 0;
+	
+	return;
+}
 
 /*-------------------------------SimData loaders-----------------------------*/
 
@@ -2575,6 +2622,10 @@ void get_sorted_markers(SimData* d, int actual_n_markers) {
  * The function loops over all MarkerPosition in SimData.map.positions
  * twice, for flexible and minimal memory usage rather than maximum speed.
  *
+ * Chromosome lengths are intialised to 0 for chromosomes that contain 
+ * no markers, and to a flat (meaningless) value of 1 for chromosomes that
+ * contain exactly one marker.
+ *
  * @param d pointer to the SimData object for which the fields under `map` 
  * need to be initialised or updated.
  */
@@ -2619,8 +2670,15 @@ void get_chromosome_locations(SimData *d) {
 	
 	// calculate lengths
 	for (int i = 0; i < d->map.n_chr; i++) {
-		d->map.chr_lengths[i] = d->map.positions[d->map.chr_ends[i+1] - 1].position 
-				- d->map.positions[d->map.chr_ends[i]].position;
+		if (d->map.chr_ends[i+1] - 1 > d->map.chr_ends[i]) { //more than 1 marker in chr
+			d->map.chr_lengths[i] = d->map.positions[d->map.chr_ends[i+1] - 1].position 
+					- d->map.positions[d->map.chr_ends[i]].position;
+					
+		} else if (d->map.chr_ends[i+1] - 1 == d->map.chr_ends[i]) { // exactly 1 marker in chr
+			d->map.chr_lengths[i] = 1; //pretty much arbitrary, won't affect crossing anyway
+		} else { // no markers tracked at this chr
+			d->map.chr_lengths[i] = 0;
+		}
 	}
 	
 	srand(time(NULL)); //seed the random generator so we're ready to start crossing.
@@ -2740,6 +2798,7 @@ void load_effects_to_simdata(SimData* d, const char* filename) {
 */
 int load_all_simdata(SimData* d, const char* data_file, const char* map_file, const char* effect_file) {
 	delete_simdata(d); // make this empty.
+	d = create_empty_simdata();
 	int gp = load_transposed_genes_to_simdata(d, data_file);
 	
 	load_genmap_to_simdata(d, map_file);
@@ -4450,15 +4509,103 @@ DecimalMatrix calculate_full_count_matrix_of_allele( AlleleMatrix* m, char allel
 	return counts;
 }
 
-/** Given a set of blocks of markers in a file, for each genotype in a group, 
- * calculate the local GEBV for the first allele at each marker in the block, and 
- * the local GEBV for the second allele at each marker in the block, then save
- * the result to a file. This gives block effects for each haplotype of each 
- * individual in the group.
+/** Divide the genotype into blocks where each block contains all markers within
+ * a 1/n length section of each chromosome in the map, and return the resulting
+ * blocks in a struct.
  *
- * Note that this function is made to work on HPC, and not fixed to work on a regular
- * device. If an array as long as the number of genotypes cannot fit contiguously into
- * memory, the function will segfault. 
+ * Chromosomes where there are no markers tracked are excluded/no blocks are created
+ * in those chromosomes.
+ *
+ * Chromosomes where only one marker is tracked put the marker in the first block, and 
+ * have all other blocks empty.
+ *
+ * Empty blocks have blocks.num_markers_in_block[index] equal to 0 and contain a null pointer 
+ * at blocks.markers_in_block[index]. 
+ *
+ * Remember to call the MarkerBlocks destructor delete_markerblocks() on the returned
+ * struct.
+ *
+ * @param d pointer to the SimData object to which the groups and individuals belong.
+ * It must have a marker effect file loaded to successfully run this function.
+ * @param n number of blocks into which to split each chromosome.
+ * @returns a struct containing the markers identified as belonging to each block.
+ */
+MarkerBlocks create_n_blocks_by_chr(SimData* d, int n) {
+	MarkerBlocks blocks;
+	
+	// count the number of chromosomes where we have markers to be allocated to blocks
+	int chrs_with_contents = 0;
+	for (int chr = 0; chr < d->map.n_chr; ++chr) {
+		if (d->map.chr_lengths[chr] > 0) {
+			++chrs_with_contents;
+		}
+	}
+	
+	blocks.num_blocks = n * chrs_with_contents;
+	blocks.num_markers_in_block = get_malloc(sizeof(int) * blocks.num_blocks);
+	blocks.markers_in_block = get_malloc(sizeof(int*) * blocks.num_blocks);
+	for (int i = 0; i < blocks.num_blocks; ++i) {
+		blocks.num_markers_in_block[i] = 0;
+		blocks.markers_in_block[i] = NULL;
+	}
+	
+	int b = 0; //index of the current block in the struct
+
+	for (int chr = 0; chr < d->map.n_chr; ++chr) {
+		if (d->map.chr_lengths[chr] <= 0) {
+			// chromosome has invalid length, so we have no markers from here
+			continue;
+		}
+		
+		int blocks_this_chr = 1; //counter of how many blocks we have in this chr so far
+		float blen = d->map.chr_lengths[chr] / n; //length of each of the n blocks
+		float bend = d->map.positions[d->map.chr_ends[chr]].position + blen; // end position of the first block
+		int mfirst = d->map.chr_ends[chr]; //index of first marker in the block
+		
+		// loop through each marker in this chromosome
+		for (int i = d->map.chr_ends[chr]; i < d->map.chr_ends[chr + 1]; ++i) {
+			
+			// are we up to the next block yet?
+			if (blocks_this_chr < n && d->map.positions[i].position > bend) {
+				// save the previous block now.		
+				blocks.markers_in_block[b] = get_malloc(sizeof(int) * blocks.num_markers_in_block[b]);
+				for (int m = 0; m < blocks.num_markers_in_block[b]; ++m) {
+					blocks.markers_in_block[b][m] = mfirst + m;
+				}
+				
+				// start new block
+				++blocks_this_chr;
+				++b;
+				bend += blen;
+				// check if there's any empty blocks in between previous one and this one
+				while (blocks_this_chr < n && d->map.positions[i].position > bend) {
+					++blocks_this_chr;
+					++b;
+					bend += blen;
+				}
+				
+				mfirst = i;
+			}
+			
+			// save marker to block
+			++blocks.num_markers_in_block[b];
+
+		}
+		
+		// save the last block of this chr
+		blocks.markers_in_block[b] = get_malloc(sizeof(int) * blocks.num_markers_in_block[b]);
+		for (int m = 0; m < blocks.num_markers_in_block[b]; ++m) {
+			blocks.markers_in_block[b][m] = mfirst + m;
+		}
+		++b;
+
+	}
+	
+	return blocks;
+}
+
+/** Given a file containing definitions of blocks of markers, process that file 
+ * and return a struct containing the definitions of those blocks.
  * 
  * The block file is designed after the output from a call to the R SelectionTools
  * package's `st.def.hblocks` function. It should have the format (tab-separated):
@@ -4466,9 +4613,87 @@ DecimalMatrix calculate_full_count_matrix_of_allele( AlleleMatrix* m, char allel
  * Chrom	Pos	Name	Class	Markers
  *
  * [ignored]	[ignored]	[ignored]	[ignored]	[semicolon];[separated];[list]
- * ;[of];[marker];[names];[belonging];[to];[this];[block]
+ * ;[of];[marker];[names];[belonging];[to];[this];[block];
  *
  * ...
+ *
+ * @param d pointer to the SimData object to which the groups and individuals belong.
+ * It must have a marker effect file loaded to successfully run this function.
+ * @param block_file string containing filename of the file with blocks
+ * @returns a struct containing the markers identified as belonging to each block
+ * according to their definitions in the file.
+ */
+MarkerBlocks read_block_file(SimData* d, const char* block_file) {
+	struct TableSize ts = get_file_dimensions(block_file, '\t');
+	
+	MarkerBlocks blocks;
+	blocks.num_blocks = ts.num_rows - 1;
+	blocks.num_markers_in_block = get_malloc(sizeof(int) * blocks.num_blocks);
+	blocks.markers_in_block = get_malloc(sizeof(int*) * blocks.num_blocks);
+	
+	FILE* infile;
+	if ((infile = fopen(block_file, "r")) == NULL) {
+		fprintf(stderr, "Failed to open file %s.\n", block_file);
+		return blocks;
+	}
+	
+	int bufferlen = d->n_markers;
+	char markername[bufferlen];
+	int markerbuffer[bufferlen];
+	int bi = 0; // block number
+	
+	// Ignore the first line
+	fscanf(infile, "%*[^\n]\n");
+  
+	// Loop through rows of the file (each row corresponds to a block)
+	while (fscanf(infile, "%*d %*f %*s %*s ") != EOF) {
+	//for (int bi = 0; bi < n_blocks; ++bi) { 
+	
+		// Indexes in play:
+		//		bi: index in the blocks struct's arrays of the current block/line in the file
+		//		ni: number of characters so far in the name of the next marker being read from the file
+		//		mi: number of markers that have so far been read from the file for this block
+		blocks.num_markers_in_block[bi] = 0;
+		int c, ni = 0, mi = 0;
+		
+		memset(markerbuffer, 0, sizeof(int) * bufferlen);
+		while ((c = fgetc(infile)) != EOF && c !='\n') {
+			if (c == ';') {
+				markername[ni] = '\0';
+        
+				// identify the index of this marker and save it in the temporary marker buffer `markerbuffer`
+				int markerindex = get_from_unordered_str_list(markername, d->markers, d->n_markers);
+				if (markerindex >= 0) {
+					++(blocks.num_markers_in_block[bi]);
+					markerbuffer[mi] = markerindex;
+					++mi;
+				}
+        
+				ni = 0;
+			} else {
+				markername[ni] = c;
+				++ni;
+			}
+		}
+		
+		// copy the markers belonging to this block into the struct
+		blocks.markers_in_block[bi] = get_malloc(sizeof(int) * mi);
+		for (int i = 0; i < mi; ++i) {
+			blocks.markers_in_block[bi][i] = markerbuffer[i];
+		}
+		
+		++bi;
+	}
+
+	fclose(infile);
+	return blocks;
+}
+
+/** Given a set of blocks of markers in a file, for each genotype in a group, 
+ * calculate the local GEBV for the first allele at each marker in the block, and 
+ * the local GEBV for the second allele at each marker in the block, then save
+ * the result to a file. This gives block effects for each haplotype of each 
+ * individual in the group.
  *
  * The output file will have format: 
  *
@@ -4483,13 +4708,12 @@ DecimalMatrix calculate_full_count_matrix_of_allele( AlleleMatrix* m, char allel
  * 
  * @param d pointer to the SimData object to which the groups and individuals belong.
  * It must have a marker effect file loaded to successfully run this function.
- * @param block_file string containing filename of the file with blocks
+ * @param b struct containing the blocks to use
  * @param output_file string containing the filename of the file to which output 
  * block effects/local GEBVs will be saved.
  * @param group group number from which to split the top individuals.
  */
-void calculate_group_block_effects(SimData* d, const char* block_file, const char* output_file, int group) {
-	struct markerBlocks b = read_block_file(d, block_file);
+void calculate_group_block_effects(SimData* d, MarkerBlocks b, const char* output_file, int group) {
 	
 	FILE* outfile;
 	if ((outfile = fopen(output_file, "w")) == NULL) {
@@ -4554,102 +4778,10 @@ void calculate_group_block_effects(SimData* d, const char* block_file, const cha
 	
 	free(ggenos);
 	free(gnames);
-	for (int i = 0; i < b.num_blocks; ++i) {
-		free(b.markers_in_block[i]);
-	}
-	free(b.markers_in_block);
-	free(b.num_markers_in_block);
 	
 	fflush(outfile);
 	fclose(outfile);
 	return;
-}
-
-/** Given a file containing definitions of blocks of markers, process that file 
- * and return a struct containing the definitions of those blocks.
- * 
- * The block file is designed after the output from a call to the R SelectionTools
- * package's `st.def.hblocks` function. It should have the format (tab-separated):
- *
- * Chrom	Pos	Name	Class	Markers
- *
- * [ignored]	[ignored]	[ignored]	[ignored]	[semicolon];[separated];[list]
- * ;[of];[marker];[names];[belonging];[to];[this];[block];
- *
- * ...
- *
- * @param d pointer to the SimData object to which the groups and individuals belong.
- * It must have a marker effect file loaded to successfully run this function.
- * @param block_file string containing filename of the file with blocks
- * @returns a struct containing the markers identified as belonging to each block
- * according to their definitions in the file.
- */
-struct markerBlocks read_block_file(SimData* d, const char* block_file) {
-	struct TableSize ts = get_file_dimensions(block_file, '\t');
-	
-	struct markerBlocks blocks;
-	blocks.num_blocks = ts.num_rows - 1;
-	blocks.num_markers_in_block = get_malloc(sizeof(int) * blocks.num_blocks);
-	blocks.markers_in_block = get_malloc(sizeof(int*) * blocks.num_blocks);
-	
-	FILE* infile;
-	if ((infile = fopen(block_file, "r")) == NULL) {
-		fprintf(stderr, "Failed to open file %s.\n", block_file);
-		blocks.num_blocks = 0;
-		free(blocks.num_markers_in_block);
-		free(blocks.markers_in_block);
-	}
-  
-	int bufferlen = 100;
-	char markername[bufferlen];
-	int markerbuffer[bufferlen];
-	int bi = 0; // block number
-	
-	// Ignore the first line
-	fscanf(infile, "%*[^\n]\n");
-  
-	// Loop through rows of the file (each row corresponds to a block)
-	while (fscanf(infile, "%*d %*f %*s %*s ") != EOF) {
-	//for (int bi = 0; bi < n_blocks; ++bi) { 
-	
-		// Indexes in play:
-		//		bi: index in the blocks struct's arrays of the current block/line in the file
-		//		ni: number of characters so far in the name of the next marker being read from the file
-		//		mi: number of markers that have so far been read from the file for this block
-		blocks.num_markers_in_block[bi] = 0;
-		int c, ni = 0, mi = 0;
-		
-		memset(markerbuffer, 0, sizeof(int) * bufferlen);
-		while ((c = fgetc(infile)) != EOF && c !='\n') {
-			if (c == ';') {
-				markername[ni] = '\0';
-        
-				// identify the index of this marker and save it in the temporary marker buffer `markerbuffer`
-				int markerindex = get_from_unordered_str_list(markername, d->markers, d->n_markers);
-				if (markerindex >= 0) {
-					++(blocks.num_markers_in_block[bi]);
-					markerbuffer[mi] = markerindex;
-					++mi;
-				}
-        
-				ni = 0;
-			} else {
-				markername[ni] = c;
-				++ni;
-			}
-		}
-		
-		// copy the markers belonging to this block into the struct
-		blocks.markers_in_block[bi] = get_malloc(sizeof(int) * mi);
-		for (int i = 0; i < mi; ++i) {
-			blocks.markers_in_block[bi][i] = markerbuffer[i];
-		}
-		
-		++bi;
-	}
-
-	fclose(infile);
-	return blocks;
 }
 
 /** Given a set of blocks of markers in a file, for each genotype saved, 
@@ -4657,20 +4789,6 @@ struct markerBlocks read_block_file(SimData* d, const char* block_file) {
  * the local GEBV for the second allele at each marker in the block, then save
  * the result to a file. This gives block effects for each haplotype of each 
  * individual currently saved to the SimData.
- *
- * Note that this function is made to work on HPC, and not fixed to work on a regular
- * device. If an array as long as the number of genotypes cannot fit contiguously into
- * memory, the function will segfault. 
- * 
- * The block file is designed after the output from a call to the R SelectionTools
- * package's `st.def.hblocks` function. It should have the format (tab-separated):
- *
- * Chrom	Pos	Name	Class	Markers
- *
- * [ignored]	[ignored]	[ignored]	[ignored]	[semicolon];[separated];[list]
- * ;[of];[marker];[names];[belonging];[to];[this];[block]
- *
- * ...
  *
  * The output file will have format: 
  *
@@ -4685,13 +4803,11 @@ struct markerBlocks read_block_file(SimData* d, const char* block_file) {
  * 
  * @param d pointer to the SimData object to which individuals belong.
  * It must have a marker effect file loaded to successfully run this function.
- * @param block_file string containing filename of the file with blocks
+ * @param b struct containing the blocks to use
  * @param output_file string containing the filename of the file to which output 
  * block effects/local GEBVs will be saved.
  */
-void calculate_all_block_effects(SimData* d, const char* block_file, const char* output_file) {
-	struct markerBlocks b = read_block_file(d, block_file);
-	
+void calculate_all_block_effects(SimData* d, MarkerBlocks b, const char* output_file) {
 	FILE* outfile;
 	if ((outfile = fopen(output_file, "w")) == NULL) {
 		fprintf(stderr, "Failed to open file %s.\n", output_file);
@@ -4758,12 +4874,6 @@ void calculate_all_block_effects(SimData* d, const char* block_file, const char*
 			fwrite("\n", sizeof(char), 1, outfile);
 		}
 	} while ((m = m->next) != NULL);
-
-	for (int i = 0; i < b.num_blocks; ++i) {
-		free(b.markers_in_block[i]);
-	}
-	free(b.markers_in_block);
-	free(b.num_markers_in_block);
 	
 	fflush(outfile);
 	fclose(outfile);
@@ -4914,6 +5024,50 @@ void save_simdata(FILE* f, SimData* m) {
 		fwrite("\n", sizeof(char), 1, f);
 	}
 	fflush(f);
+}
+
+/** Prints the markers contained in a set of blocks to a file. Column separators are tabs.
+ *
+ * The printing format is:
+ *
+ * Chrom	Pos	Name	Class	Markers
+ *
+ * 0	0	b0	b	m1;m2;m3;m4;
+ *
+ * 0	0	b0	b	m7;m9;
+ *
+ * ...
+ *
+ * where m1, m2, m3, m4 are the names of the markers in the first block and 
+ * m7 and m9 are the names of the markers in the second block.
+ *
+ * @param f file pointer opened for writing to put the output
+ * @param d pointer to the SimData whose data we print
+ * @param b MarkerBlocks struct containing the groupings of markers to print.
+*/
+void save_marker_blocks(FILE* f, SimData* d, MarkerBlocks b) {
+	const char header[] = "Chrom\tPos\tName\tClass\tMarkers\n";
+	fwrite(header, sizeof(char)*strlen(header), 1, f);
+	
+	// for the moment we do not name or give locations of different blocks
+	const char unspecified[] = "0\t0\tb0\tb\t";
+	const int unspeci_length = strlen(unspecified);
+	
+	for (int i = 0; i < b.num_blocks; ++i) {
+		fwrite(unspecified, sizeof(char)*unspeci_length, 1, f);
+		
+		for (int j = 0; j < b.num_markers_in_block[i]; ++j) {
+			int k = b.markers_in_block[i][j];
+			
+			fwrite(d->markers[k], sizeof(char)*strlen(d->markers[k]), 1, f);
+		}
+		
+		fwrite("\n", sizeof(char), 1, f);
+	}
+	
+	fflush(f);
+	return;
+	
 }
 
 /** Prints all the geneotype data saved in the linked list of AlleleMatrices
