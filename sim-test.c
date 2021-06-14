@@ -5,7 +5,7 @@ float calculate_heterozygosity(SimData* d, int group_number) {
 	int hetcount = 0;
 	int gn = get_group_size(d, group_number);
 	char** galleles = get_group_genes(d, group_number, gn);
-	
+
 	// uses subjects as the first index
 	for (int i = 0; i < gn; i++) {
 		for (int j = 0; j < d->n_markers; j += 2) {
@@ -14,13 +14,13 @@ float calculate_heterozygosity(SimData* d, int group_number) {
 			}
 		}
 	}
-	
+
 	free(galleles);
 	return (float) hetcount / (gn * d->n_markers);
 }
 
 int test_loaders(SimData* d) {
-	FILE* fp; 
+	FILE* fp;
 	if ((fp = fopen("a-test.txt", "w")) == NULL) {
 		fprintf(stderr, "Failed to create file.\n");
 		exit(1);
@@ -39,13 +39,13 @@ int test_loaders(SimData* d) {
 	}
 	fwrite(HELPER_EFF, sizeof(char), strlen(HELPER_EFF), fp);
 	fclose(fp);
-	
+
 	int g0 = load_all_simdata(d, "a-test.txt", "a-test-map.txt", "a-test-eff.txt");
-	
+
 	remove("a-test.txt");
 	remove("a-test-map.txt");
 	remove("a-test-eff.txt");
-	
+
 	assert(d->n_markers == 3); // all markers loaded
 	assert(strcmp(d->markers[0], "m1") == 0); // all markers ordered right
 	assert(strcmp(d->markers[1], "m2") == 0);
@@ -65,7 +65,7 @@ int test_loaders(SimData* d) {
 	assert(abs(d->map.positions[2].position - 15) < TOL);
 	assert(d->map.positions[2].chromosome == 3);
 	printf("...genome map loaded correctly\n");
-	
+
 	assert(d->e.effects.rows == 2);
 	assert(d->e.effects.cols == 3);
 	// don't mind which order the effects are in so just figure it out, then check based on that.
@@ -86,7 +86,7 @@ int test_loaders(SimData* d) {
 	assert(abs(d->e.effects.matrix[tpos][1] - (-0.5)) < TOL);
 	assert(abs(d->e.effects.matrix[tpos][2] - (-0.1)) < TOL);
 	printf("...effect values loaded correctly\n");
-	
+
 	assert(d->m != NULL);
 	assert(d->current_id == 6);
 	assert(d->m->n_markers == 3);
@@ -111,7 +111,7 @@ int test_loaders(SimData* d) {
 	assert(d->m->groups[5] == g0);
 	assert(g0 > 0);
 
-	// might not be important that thele load in this order but we'll ask for it anyway. 
+	// might not be important that thele load in this order but we'll ask for it anyway.
 	assert(strcmp(d->m->subject_names[0], "G01") == 0);
 	assert(strcmp(d->m->subject_names[1], "G02") == 0);
 	assert(strcmp(d->m->subject_names[2], "G03") == 0);
@@ -125,13 +125,13 @@ int test_loaders(SimData* d) {
 	assert(strncmp(d->m->alleles[4],"TTTTTT", 6) == 0); // G05
 	assert(strncmp(d->m->alleles[5],"ATAATT", 6) == 0); // G06
 	printf("...genotypes loaded correctly\n");
-	
+
 	return g0;
 }
 
 int test_effect_calculators(SimData *d, int g0) {
 	DecimalMatrix dec = calculate_fitness_metric_of_group(d, g0);
-	
+
 	assert(dec.rows == 1);
 	assert(dec.cols == 6);
 	assert(abs(dec.matrix[0][0] - 1.4) < TOL);
@@ -141,7 +141,7 @@ int test_effect_calculators(SimData *d, int g0) {
 	assert(abs(dec.matrix[0][4] - 0.6) < TOL);
 	assert(abs(dec.matrix[0][5] - (-0.3)) < TOL);
 	printf("...GEBVs calculated correctly\n");
-	
+
 	delete_dmatrix(&dec);
 	return 0;
 }
@@ -152,17 +152,17 @@ int test_optimal_calculators(SimData *d) {
 	assert(ig[1] == 'A');
 	assert(ig[2] == 'A');
 	free(ig);
-	
+
 	double optimal = calculate_optimal_gebv(d);
 	assert(abs(optimal - 1.8) < TOL);
 	printf("...Optimal genotype and GEBV calculated correctly\n");
-	
+
 	return 0;
 }
 
 int test_crossing(SimData *d, int g0) {
 	int gall = test_crossing_unidirectional(d, g0);
-	
+
 	FILE* fp;
 	if ((fp = fopen("a-test-plan.txt", "w")) == NULL) {
 		fprintf(stderr, "Failed to create file.\n");
@@ -172,12 +172,12 @@ int test_crossing(SimData *d, int g0) {
 	fclose(fp);
 	int gfile = test_crossing_from_file(d, "a-test-plan.txt");
 	remove("a-test-plan.txt");
-	
+
 	int gselfed = test_crossing_selfing(d, gall);
-	
+
 	assert(gselfed != g0 && gfile != gall && gfile != g0 && gfile != gselfed);
 	printf("...group number allocations are correct\n");
-	
+
 	return 0;
 }
 
@@ -190,7 +190,7 @@ int test_crossing_unidirectional(SimData *d, int g0) {
 	//AlleleMatrix* a = make_all_unidirectional_crosses(&sd, 0, g);
 	//sd.m->next_gen = a;
 	int g1 = make_all_unidirectional_crosses(d, g0, g);
-	
+
 	assert(g1 != g0);
 	assert(d->m->n_subjects == 21);
 	assert(d->m->n_markers == 3);
@@ -227,10 +227,16 @@ int test_crossing_unidirectional(SimData *d, int g0) {
 	assert(d->m->pedigrees[0][20] == 5 && d->m->pedigrees[1][20] == 6);
 	assert(strncmp(d->m->alleles[6], "TTAATT", 6) == 0); // G01 x G02
 	assert(strncmp(d->m->alleles[9], "TTATTT", 6) == 0); // G01 x G05
-	assert(strncmp(d->m->alleles[11], "TTAATT", 6) == 0 || strncmp(d->m->alleles[11], "TTAATA", 6) == 0); 
+	assert(strncmp(d->m->alleles[11], "TTAATT", 6) == 0 || strncmp(d->m->alleles[11], "TTAATA", 6) == 0);
 	printf("...crossed all pairs correctly\n");
 	// does not check that crossing over is happening.
-	
+
+
+	// @should check that the saved files are correct too before deleting them
+    remove("atestF1-eff.txt");
+	remove("atestF1-genome.txt");
+	remove("atestF1-pedigree.txt");
+
 	return g1;
 }
 
@@ -251,7 +257,7 @@ int test_crossing_from_file(SimData *d, char* fname) {
 	assert(d->m->n_subjects == 27);
 	assert(d->m->n_markers == 3);
 	printf("...crossed combinations from file correctly\n");
-	
+
 	return bp;
 }
 
@@ -259,25 +265,25 @@ int test_crossing_selfing(SimData *d, int g1) {
 	float h1 = calculate_heterozygosity(d, g1);
 	int g1selfed = self_n_times(d, 5, g1, BASIC_OPT);
 	float h2 = calculate_heterozygosity(d,  g1selfed);
-	
+
 	assert(g1selfed != g1);
 	//printf("Heterozygousity reduction from selfing: %f %f\n", h2, h1);
 	assert(h1 - h2 > 0);
 	assert(d->m->n_subjects == 42);
 	assert(d->m->n_markers == 3);
 	printf("...selfing function correctly reduced heterozygosity by %f%%\n", (h2-h1)*100);
-	
+
 	return g1selfed;
 }
 
 int test_deletors(SimData *d, int g0) {
 	int ngroups1;
 	int* groups1 = get_existing_groups(d, &ngroups1);
-	
+
 	delete_group(d, g0);
 	int ngroups2;
 	int* groups2 = get_existing_groups(d, &ngroups2);
-	
+
 	assert(ngroups1 - ngroups2 == 1);
 	for (int i = 0; i < ngroups1; ++i) {
 		if (i == ngroups1 - 1 || groups1[i] != groups2[i]) {
@@ -286,16 +292,16 @@ int test_deletors(SimData *d, int g0) {
 		}
 	}
 	printf("...group of genotypes cleared correctly\n");
-	
+
 	delete_simdata(d);
 	printf("...SimData cleared correctly\n");
-	
+
 	return 0;
 }
 
 int test_block_generator(SimData *d) {
 	MarkerBlocks b = create_n_blocks_by_chr(d, 2);
-	
+
 	assert(b.num_blocks == 4);
 	assert(b.num_markers_in_block[0] == 1);
 	assert(b.num_markers_in_block[1] == 1);
@@ -305,9 +311,9 @@ int test_block_generator(SimData *d) {
 	assert(b.markers_in_block[1][0] == 1);
 	assert(b.markers_in_block[2][0] == 2);
 	assert(b.markers_in_block[3] == NULL);
-	
+
 	printf("...chr slicer correctly deals with multi-marker and single-marker chrs\n");
-	
+
 	/*printf("\nNum blocks: %d", b.num_blocks);
 	for (int i = 0; i < b.num_blocks; ++i) {
 		printf("\n%d: ", b.num_markers_in_block[i]);
@@ -316,13 +322,13 @@ int test_block_generator(SimData *d) {
 		}
 	}
 	fflush(stdout);*/
-	
+
 	delete_markerblocks(&b);
-	
+
 	printf("...MarkerBlocks deletor works\n");
-	
+
 	b = create_n_blocks_by_chr(d, 4);
-	
+
 	assert(b.num_blocks == 8);
 	assert(b.num_markers_in_block[0] == 1);
 	assert(b.num_markers_in_block[1] == 0);
@@ -340,11 +346,11 @@ int test_block_generator(SimData *d) {
 	assert(b.markers_in_block[5] == NULL);
 	assert(b.markers_in_block[6] == NULL);
 	assert(b.markers_in_block[7] == NULL);
-	
+
 	printf("...chr slicer correctly deals with empty blocks\n");
-	
+
 	delete_markerblocks(&b);
-	
+
 	return 0;
 }
 
@@ -361,28 +367,28 @@ int main(int argc, char* argv[]) {
 	SimData* d = create_empty_simdata();
 	int g0 = test_loaders(d);
 	printf("\t\t-> Loader functions all clear\n");
-	
+
 	// test effect calculators
 	printf("\nNow testing GEBV calculator:\n");
 	test_effect_calculators(d, g0);
 	test_optimal_calculators(d);
 	printf("\t\t-> GEBV calculators all clear\n");
-	
+
 	// test crossers
 	printf("\nNow testing crossing functions:\n");
 	test_crossing(d, g0);
 	printf("\t\t-> Crossing functions all clear\n");
-	
+
 	//test blocking
 	printf("\nNow testing blocking functions:\n");
 	test_block_generator(d);
 	printf("\t\t-> Blocking functions all clear\n");
-	
+
 	// test SimData deletors.
 	printf("\nNow testing deletor functions:\n");
 	test_deletors(d, g0);
 	printf("\t\t-> Deletor functions all clear\n");
-	
+
 	printf("\n------- All tests passed. -------\n");
 	return 0;
 }
