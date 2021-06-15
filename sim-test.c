@@ -233,9 +233,9 @@ int test_crossing_unidirectional(SimData *d, int g0) {
 
 
 	// @should check that the saved files are correct too before deleting them
-    remove("atestF1-eff.txt");
-	remove("atestF1-genome.txt");
-	remove("atestF1-pedigree.txt");
+    remove("atestF1-eff");
+	remove("atestF1-genome");
+	remove("atestF1-pedigree");
 
 	return g1;
 }
