@@ -13,6 +13,10 @@
 #define TRUE 1
 #define FALSE 0
 
+/* The largest contiguous block of memory requested in the process of simulation 
+will be CONTIGW integers in size.*/
+#define CONTIGW 1000
+
 /** A struct representing a single marker location. the attribute 
  * `chromosome` represents the chromosome number, and `position` the 
  * position on the chromosome in centiMorgans. 
@@ -152,7 +156,7 @@ typedef struct {
  * @param alleles a matrix of SNP markers by subjects containing pairs of alleles
  * eg TT, TA. Use `alleles[subject index][marker index * 2]` to get the first allele
  * and `alleles[subject index][marker index * 2 + 1]` to get the second. In usual use
- * the char** alleles will point to an 1000-ptr-long piece of heap memory, and if you
+ * the char** alleles will point to an CONTIGW-ptr-long piece of heap memory, and if you
  * need to add more than 100 subjects you will add another AlleleMatrix to the linked list
  * @param subject_names array of strings containing the names of the lines/subjects
  * whose data is stored in `alleles`. NULL if they do not have names.
@@ -168,14 +172,14 @@ typedef struct {
 typedef struct AlleleMatrix AlleleMatrix;
 struct AlleleMatrix {
 	
-	char* alleles[1000];
-	char* subject_names[1000];
-	unsigned int ids[1000];
+	char* alleles[CONTIGW];
+	char* subject_names[CONTIGW];
+	unsigned int ids[CONTIGW];
 	int n_subjects;
 	int n_markers; // slight redundancy but allows this to stand alone
 	
-	unsigned int pedigrees[2][1000]; 
-	unsigned int groups[1000];
+	unsigned int pedigrees[2][CONTIGW]; 
+	unsigned int groups[CONTIGW];
 	AlleleMatrix* next;
 };
 

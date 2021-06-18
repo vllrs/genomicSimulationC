@@ -57,21 +57,21 @@ AlleleMatrix* create_empty_allelematrix(int n_markers, int n_subjects) {
 
 	m->n_subjects = n_subjects;
 	m->n_markers = n_markers;
-	//m->alleles = get_malloc(sizeof(char*) * 1000);
+	//m->alleles = get_malloc(sizeof(char*) * CONTIGW);
 	for (int i = 0; i < n_subjects; ++i) {
 		m->alleles[i] = get_malloc(sizeof(char) * (n_markers<<1));
 		memset(m->alleles[i], 0, sizeof(char) * (n_markers<<1));
 		//m->ids[i] = 0;
 	}
 
-	memset(m->ids, 0, sizeof(unsigned int) * 1000);
-	memset(m->pedigrees[0], 0, sizeof(unsigned int) * 1000);
-	memset(m->pedigrees[1], 0, sizeof(unsigned int) * 1000);
-	memset(m->groups, 0, sizeof(unsigned int) * 1000);
-	memset(m->subject_names, 0, sizeof(char*) * 1000); // setting the pointers to NULL
-	memset(m->alleles + n_subjects, 0, sizeof(char*) * (1000 - n_subjects + 1)); // setting the pointers to NULL
+	memset(m->ids, 0, sizeof(unsigned int) * CONTIGW);
+	memset(m->pedigrees[0], 0, sizeof(unsigned int) * CONTIGW);
+	memset(m->pedigrees[1], 0, sizeof(unsigned int) * CONTIGW);
+	memset(m->groups, 0, sizeof(unsigned int) * CONTIGW);
+	memset(m->subject_names, 0, sizeof(char*) * CONTIGW); // setting the pointers to NULL
+	memset(m->alleles + n_subjects, 0, sizeof(char*) * (CONTIGW - n_subjects + 1)); // setting the pointers to NULL
 
-	/*for (int i = 0; i < 1000; ++i) {
+	/*for (int i = 0; i < CONTIGW; ++i) {
 		m->subject_names[i] = NULL;
 		m->pedigrees[0][i] = 0;
 		m->pedigrees[1][i] = 0;
@@ -541,8 +541,8 @@ int _ascending_int_dcomparer(const void* pp0, const void* pp1) {
  * end user - functions which require it should be calling it already.
  *
  * Ideally, we want all AlleleMatrix structs in the SimData's linked list
- * to have no gaps. That is, if there are more than 1000 genotypes, the
- * first AM should be full/contain 1000 genotypes, and so forth, and the
+ * to have no gaps. That is, if there are more than CONTIGW genotypes, the
+ * first AM should be full/contain CONTIGW genotypes, and so forth, and the
  * AM at the end should have its n genotypes having indexes < n (so all at
  * the start of the AM with no gaps in-between).
  *
@@ -559,14 +559,14 @@ void condense_allele_matrix( SimData* d) {
 
 	// find the first empty space with filler
 	while (1) {
-		if (filler_m->n_subjects < 1000) {
-			for (filler = 0; filler < 1000; ++filler) {
+		if (filler_m->n_subjects < CONTIGW) {
+			for (filler = 0; filler < CONTIGW; ++filler) {
 				// an individual is considered to not exist if it has no genome.
 				if (filler_m->alleles[filler] == NULL) {
 					break; // escape for loop
 				}
 			}
-			// assume we've found one, since n_subjects < 1000.
+			// assume we've found one, since n_subjects < CONTIGW.
 			break; // escape while loop
 		}
 
@@ -580,12 +580,12 @@ void condense_allele_matrix( SimData* d) {
 
 	// loop through all subjects with checker, shifting them back when we find them.
 	while (1) {
-		for (checker = 0; checker < 1000; ++checker) {
+		for (checker = 0; checker < CONTIGW; ++checker) {
 			if (checker_m->alleles[checker] == NULL) {
 				// check our filler has a substitute
 				while (filler_m->alleles[filler] == NULL) {
 					++filler;
-					if (filler >= 1000) {
+					if (filler >= CONTIGW) {
 						// move to the next AM
 						if (filler_m->next != NULL) {
 							filler_m = filler_m->next;
@@ -1190,8 +1190,8 @@ void split_into_families(SimData* d, int group_id) {
 	int level = 0;
 
 	int families_found = 0;
-	unsigned int family_groups[1000];
-	unsigned int family_identities[2][1000];
+	unsigned int family_groups[CONTIGW];
+	unsigned int family_identities[2][CONTIGW];
 
 	// looping through all entries
 	AlleleMatrix* m = d->m;
@@ -2052,22 +2052,22 @@ int load_transposed_genes_to_simdata(SimData* d, const char* filename) {
 	// this will also create our unique ids
 	AlleleMatrix* current_am;
 	int n_to_go = t.num_columns - 1;
-	if (n_to_go < 1000) {
+	if (n_to_go < CONTIGW) {
 		current_am = create_empty_allelematrix(t.num_rows - 1, n_to_go);
 		d->m = current_am;
 		n_to_go = 0;
 	} else {
-		current_am = create_empty_allelematrix(t.num_rows - 1, 1000);
+		current_am = create_empty_allelematrix(t.num_rows - 1, CONTIGW);
 		d->m = current_am;
-		n_to_go -= 1000;
+		n_to_go -= CONTIGW;
 		while (n_to_go) {
-			if (n_to_go < 1000) {
+			if (n_to_go < CONTIGW) {
 				current_am->next = create_empty_allelematrix(t.num_rows - 1, n_to_go);
 				n_to_go = 0;
 			} else {
-				current_am->next = create_empty_allelematrix(t.num_rows - 1, 1000);
+				current_am->next = create_empty_allelematrix(t.num_rows - 1, CONTIGW);
 				current_am = current_am->next;
-				n_to_go -= 1000;
+				n_to_go -= CONTIGW;
 			}
 		}
 		current_am = d->m;
@@ -2202,22 +2202,22 @@ int load_transposed_encoded_genes_to_simdata(SimData* d, const char* filename) {
 	// this will also create our unique ids
 	AlleleMatrix* current_am;
 	int n_to_go = t.num_columns - 1;
-	if (n_to_go < 1000) {
+	if (n_to_go < CONTIGW) {
 		current_am = create_empty_allelematrix(t.num_rows - 1, n_to_go);
 		d->m = current_am;
 		n_to_go = 0;
 	} else {
-		current_am = create_empty_allelematrix(t.num_rows - 1, 1000);
+		current_am = create_empty_allelematrix(t.num_rows - 1, CONTIGW);
 		d->m = current_am;
-		n_to_go -= 1000;
+		n_to_go -= CONTIGW;
 		while (n_to_go) {
-			if (n_to_go < 1000) {
+			if (n_to_go < CONTIGW) {
 				current_am->next = create_empty_allelematrix(t.num_rows - 1, n_to_go);
 				n_to_go = 0;
 			} else {
-				current_am->next = create_empty_allelematrix(t.num_rows - 1, 1000);
+				current_am->next = create_empty_allelematrix(t.num_rows - 1, CONTIGW);
 				current_am = current_am->next;
-				n_to_go -= 1000;
+				n_to_go -= CONTIGW;
 			}
 		}
 		current_am = d->m;
@@ -2375,22 +2375,22 @@ int load_more_transposed_genes_to_simdata(SimData* d, const char* filename) {
 	// Create new AMs that will be populated from the file.
 	AlleleMatrix* current_am;
 	int n_to_go = t.num_columns - 1;
-	if (n_to_go < 1000) {
+	if (n_to_go < CONTIGW) {
 		current_am = create_empty_allelematrix(d->n_markers, n_to_go);
 		last_am->next = current_am;
 		n_to_go = 0;
 	} else {
-		current_am = create_empty_allelematrix(d->n_markers, 1000);
+		current_am = create_empty_allelematrix(d->n_markers, CONTIGW);
 		last_am->next = current_am;
-		n_to_go -= 1000;
+		n_to_go -= CONTIGW;
 		while (n_to_go) {
-			if (n_to_go <= 1000) {
+			if (n_to_go <= CONTIGW) {
 				current_am->next = create_empty_allelematrix(d->n_markers, n_to_go);
 				n_to_go = 0;
 			} else {
-				current_am->next = create_empty_allelematrix(d->n_markers, 1000);
+				current_am->next = create_empty_allelematrix(d->n_markers, CONTIGW);
 				current_am = current_am->next;
-				n_to_go -= 1000;
+				n_to_go -= CONTIGW;
 			}
 		}
 		current_am = last_am->next;
@@ -3386,12 +3386,12 @@ int cross_random_individuals(SimData* d, int from_group, int n_crosses, GenOptio
 	AlleleMatrix* crosses;
 	int n_combinations = n_crosses * g.family_size;
 	int n_to_go = n_combinations;
-	if (n_to_go < 1000) {
+	if (n_to_go < CONTIGW) {
 		crosses = create_empty_allelematrix(d->n_markers, n_to_go);
 		n_to_go = 0;
 	} else {
-		crosses = create_empty_allelematrix(d->n_markers, 1000);
-		n_to_go -= 1000;
+		crosses = create_empty_allelematrix(d->n_markers, CONTIGW);
+		n_to_go -= CONTIGW;
 	}
 	int fullness = 0;
 	int parent1;
@@ -3449,13 +3449,13 @@ int cross_random_individuals(SimData* d, int from_group, int n_crosses, GenOptio
 
 		for (int f = 0; f < g.family_size; ++f, ++fullness) {
 			// when cross buffer is full, save these outcomes to the file.
-			if (fullness >= 1000) {
-				crosses->n_subjects = 1000;
+			if (fullness >= CONTIGW) {
+				crosses->n_subjects = CONTIGW;
 				// give the subjects their ids and names
 				if (g.will_name_subjects) {
 					set_subject_names(crosses, g.subject_prefix, *cross_current_id, 0);
 				}
-				for (int j = 0; j < 1000; ++j) {
+				for (int j = 0; j < CONTIGW; ++j) {
 					++ *cross_current_id;
 					crosses->ids[j] = *cross_current_id;
 				}
@@ -3476,12 +3476,12 @@ int cross_random_individuals(SimData* d, int from_group, int n_crosses, GenOptio
 				if (g.will_save_to_simdata) {
 					last->next = crosses;
 					last = last->next;
-					if (n_to_go < 1000) {
+					if (n_to_go < CONTIGW) {
 						crosses = create_empty_allelematrix(d->n_markers, n_to_go);
 						n_to_go = 0;
 					} else {
-						crosses = create_empty_allelematrix(d->n_markers, 1000);
-						n_to_go -= 1000;
+						crosses = create_empty_allelematrix(d->n_markers, CONTIGW);
+						n_to_go -= CONTIGW;
 					}
 				}
 
@@ -3557,12 +3557,12 @@ int cross_these_combinations(SimData* d, int n_combinations, int combinations[2]
 	// create the buffer we'll use to save the output crosses before they're printed.
 	AlleleMatrix* crosses;
 	int n_to_go = n_combinations * g.family_size;
-	if (n_to_go < 1000) {
+	if (n_to_go < CONTIGW) {
 		crosses = create_empty_allelematrix(d->n_markers, n_to_go);
 		n_to_go = 0;
 	} else {
-		crosses = create_empty_allelematrix(d->n_markers, 1000);
-		n_to_go -= 1000;
+		crosses = create_empty_allelematrix(d->n_markers, CONTIGW);
+		n_to_go -= CONTIGW;
 	}
 	int fullness = 0, parent1id, parent2id;
 	char* parent1genes, * parent2genes;
@@ -3618,12 +3618,12 @@ int cross_these_combinations(SimData* d, int n_combinations, int combinations[2]
 
 			for (int f = 0; f < g.family_size; ++f, ++fullness) {
 				// when cross buffer is full, save these outcomes to the file.
-				if (fullness >= 1000) {
+				if (fullness >= CONTIGW) {
 					// give the subjects their ids and names
 					if (g.will_name_subjects) {
 						set_subject_names(crosses, g.subject_prefix, *cross_current_id, 0);
 					}
-					for (int j = 0; j < 1000; ++j) {
+					for (int j = 0; j < CONTIGW; ++j) {
 						++ *cross_current_id;
 						crosses->ids[j] = *cross_current_id;
 					}
@@ -3645,12 +3645,12 @@ int cross_these_combinations(SimData* d, int n_combinations, int combinations[2]
 						last->next = crosses;
 						last = last->next;
 						// get the new crosses matrix, of the right size.
-						if (n_to_go < 1000) {
+						if (n_to_go < CONTIGW) {
 							crosses = create_empty_allelematrix(d->n_markers, n_to_go);
 							n_to_go = 0;
 						} else {
-							crosses = create_empty_allelematrix(d->n_markers, 1000);
-							n_to_go -= 1000;
+							crosses = create_empty_allelematrix(d->n_markers, CONTIGW);
+							n_to_go -= CONTIGW;
 						}
 					}
 					fullness = 0; //reset the count and start refilling the matrix
@@ -3725,12 +3725,12 @@ int self_n_times(SimData* d, int n, int group, GenOptions g) {
 	int group_size = get_group_size( d, group);
 	AlleleMatrix* outcome;
 	int n_to_go = group_size * g.family_size;
-	if (n_to_go < 1000) {
+	if (n_to_go < CONTIGW) {
 		outcome = create_empty_allelematrix(d->n_markers, n_to_go);
 		n_to_go = 0;
 	} else {
-		outcome = create_empty_allelematrix(d->n_markers, 1000);
-		n_to_go -= 1000;
+		outcome = create_empty_allelematrix(d->n_markers, CONTIGW);
+		n_to_go -= CONTIGW;
 	}
 	char** group_genes = get_group_genes( d, group, group_size);
 	int i, j, f, fullness = 0;
@@ -3786,13 +3786,13 @@ int self_n_times(SimData* d, int n, int group, GenOptions g) {
 			for (f = 0; f < g.family_size; ++f, ++fullness) {
 
 				// when cross buffer is full, save these outcomes to the file.
-				if (fullness >= 1000) {
-					outcome->n_subjects = 1000;
+				if (fullness >= CONTIGW) {
+					outcome->n_subjects = CONTIGW;
 					// give the subjects their ids and names
 					if (g.will_name_subjects) {
 						set_subject_names(outcome, g.subject_prefix, *cross_current_id, 0);
 					}
-					for (int j = 0; j < 1000; ++j) {
+					for (int j = 0; j < CONTIGW; ++j) {
 						++ *cross_current_id;
 						outcome->ids[j] = *cross_current_id;
 					}
@@ -3813,12 +3813,12 @@ int self_n_times(SimData* d, int n, int group, GenOptions g) {
 					if (g.will_save_to_simdata) {
 						last->next = outcome;
 						last = last->next;
-						if (n_to_go < 1000) {
+						if (n_to_go < CONTIGW) {
 							outcome = create_empty_allelematrix(d->n_markers, n_to_go);
 							n_to_go = 0;
 						} else {
-							outcome = create_empty_allelematrix(d->n_markers, 1000);
-							n_to_go -= 1000;
+							outcome = create_empty_allelematrix(d->n_markers, CONTIGW);
+							n_to_go -= CONTIGW;
 						}
 					}
 					fullness = 0; //reset the count and start refilling the matrix
@@ -3842,13 +3842,13 @@ int self_n_times(SimData* d, int n, int group, GenOptions g) {
 
 			for (f = 0; f < g.family_size; ++f, ++fullness) {
 				// when cross buffer is full, save these outcomes to the file.
-				if (fullness >= 1000) {
-					outcome->n_subjects = 1000;
+				if (fullness >= CONTIGW) {
+					outcome->n_subjects = CONTIGW;
 					// give the subjects their ids and names
 					if (g.will_name_subjects) {
 						set_subject_names(outcome, g.subject_prefix, *cross_current_id, 0);
 					}
-					for (int j = 0; j < 1000; ++j) {
+					for (int j = 0; j < CONTIGW; ++j) {
 						++ *cross_current_id;
 						outcome->ids[j] = *cross_current_id;
 					}
@@ -3869,12 +3869,12 @@ int self_n_times(SimData* d, int n, int group, GenOptions g) {
 					if (g.will_save_to_simdata) {
 						last->next = outcome;
 						last = last->next;
-						if (n_to_go < 1000) {
+						if (n_to_go < CONTIGW) {
 							outcome = create_empty_allelematrix(d->n_markers, n_to_go);
 							n_to_go = 0;
 						} else {
-							outcome = create_empty_allelematrix(d->n_markers, 1000);
-							n_to_go -= 1000;
+							outcome = create_empty_allelematrix(d->n_markers, CONTIGW);
+							n_to_go -= CONTIGW;
 						}
 					}
 					fullness = 0; //reset the count and start refilling the matrix
@@ -3976,12 +3976,12 @@ int make_doubled_haploids(SimData* d, int group, GenOptions g) {
 	int group_size = get_group_size( d, group);
 	AlleleMatrix* outcome;
 	int n_to_go = group_size * g.family_size;
-	if (n_to_go < 1000) {
+	if (n_to_go < CONTIGW) {
 		outcome = create_empty_allelematrix(d->n_markers, n_to_go);
 		n_to_go = 0;
 	} else {
-		outcome = create_empty_allelematrix(d->n_markers, 1000);
-		n_to_go -= 1000;
+		outcome = create_empty_allelematrix(d->n_markers, CONTIGW);
+		n_to_go -= CONTIGW;
 	}
 	char** group_genes = get_group_genes( d, group, group_size);
 	int i, f, fullness = 0;
@@ -4035,13 +4035,13 @@ int make_doubled_haploids(SimData* d, int group, GenOptions g) {
 		int id = group_ids[i];
 		for (f = 0; f < g.family_size; ++f, ++fullness) {
 			// when cross buffer is full, save these outcomes to the file.
-			if (fullness >= 1000) {
-				outcome->n_subjects = 1000;
+			if (fullness >= CONTIGW) {
+				outcome->n_subjects = CONTIGW;
 				// give the subjects their ids and names
 				if (g.will_name_subjects) {
 					set_subject_names(outcome, g.subject_prefix, *cross_current_id, 0);
 				}
-				for (int j = 0; j < 1000; ++j) {
+				for (int j = 0; j < CONTIGW; ++j) {
 					++ *cross_current_id;
 					outcome->ids[j] = *cross_current_id;
 				}
@@ -4062,12 +4062,12 @@ int make_doubled_haploids(SimData* d, int group, GenOptions g) {
 				if (g.will_save_to_simdata) {
 					last->next = outcome;
 					last = last->next;
-					if (n_to_go < 1000) {
+					if (n_to_go < CONTIGW) {
 						outcome = create_empty_allelematrix(d->n_markers, n_to_go);
 						n_to_go = 0;
 					} else {
-						outcome = create_empty_allelematrix(d->n_markers, 1000);
-						n_to_go -= 1000;
+						outcome = create_empty_allelematrix(d->n_markers, CONTIGW);
+						n_to_go -= CONTIGW;
 					}
 				}
 				fullness = 0; //reset the count and start refilling the matrix
