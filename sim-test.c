@@ -364,7 +364,9 @@ int main(int argc, char* argv[]) {
 
 	// test SimData loaders
 	printf("\nNow testing loader functions:\n");
-	SimData* d = create_empty_simdata();
+	//SimData* d = create_empty_simdata();
+	SimData* d = create_default_empty_simdata();
+	//SimData* d = create_custom_empty_simdata(create_simulation_settings(2000,0));
 	int g0 = test_loaders(d);
 	printf("\t\t-> Loader functions all clear\n");
 

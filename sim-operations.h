@@ -17,6 +17,22 @@
 will be CONTIGW integers in size.*/
 #define CONTIGW 1000
 
+/** A struct representing simulation parameters. 
+ *
+ * @param contig_width The largest contiguous block of memory requested 
+ * in the process of simulation will be CONTIGW integers in size. Increasing
+ * this may provide some speed gain. Decrease this for long simulations or 
+ * lower-end machines. Default is 1000.
+ * @param name_length The maximum number of characters allowed in a name field.
+ * This includes names of SNPs, names of loaded genotypes, and names of generated
+ * genotypes. Increase this if you wish for any of these names to be allowed to 
+ * be longer. Default is 30.
+ */
+typedef struct {
+	unsigned int contig_width;
+	unsigned int name_length;
+} SimParams;
+
 /** A struct representing a single marker location. the attribute 
  * `chromosome` represents the chromosome number, and `position` the 
  * position on the chromosome in centiMorgans. 
@@ -200,6 +216,8 @@ typedef struct {
  * The core of this type is a list of markers. These are used to index the rows
  * of the allele matrix and the position map, and the cols of the effect matrix.
  * 
+ * @param settings Settings for running the simulation. Cannot be modified after
+ * creation.
  * @param n_markers the number of markers/length of `markers`
  * @param markers an array of strings containing the names of markers
  * @param map GeneticMap with positions of markers on chromosomes. If this is 
@@ -211,6 +229,8 @@ typedef struct {
  * subject. Used to track where we are in generating unique ids.
  */
 typedef struct {
+	const SimParams settings;
+	
 	int n_markers;
 	char** markers; // marker names
 	
@@ -231,7 +251,10 @@ int randpoi(double lambda);
 int randlim(int limit);
 
 AlleleMatrix* create_empty_allelematrix(int n_markers, int n_subjects);
-SimData* create_empty_simdata();
+const SimParams create_simulation_settings(unsigned int set_contig_width, unsigned int set_name_length);
+//SimData* create_empty_simdata();
+SimData* create_default_empty_simdata();
+SimData* create_custom_empty_simdata(const SimParams custom_settings);
 
 /* Supporters */
 struct TableSize get_file_dimensions(const char* filename, char sep);

@@ -82,13 +82,24 @@ AlleleMatrix* create_empty_allelematrix(int n_markers, int n_subjects) {
 	return m;
 }
 
+//@@
+const SimParams create_simulation_settings(unsigned int set_contig_width, unsigned int set_name_length) {
+	const SimParams s = {.contig_width = set_contig_width ? set_contig_width : 1000,
+						 .name_length = set_name_length ? set_name_length : 30};
+	return s;
+}
+
 /** Creator for an empty SimData object on the heap. This is the main struct
  * that will contain/manage simulation data.
  *
+ * Uses default simulation settings
+ *
  * @returns pointer to the empty created SimData
  */
-SimData* create_empty_simdata() {
-	SimData* d = get_malloc(sizeof(SimData));
+SimData* create_default_empty_simdata() {
+	/*SimData* d = get_malloc(sizeof(SimData));
+	const SimParams defaults = create_simulation_settings(0,0);
+	memcpy(&d->settings, &defaults, sizeof(SimParams));
 	d->n_markers = 0;
 	d->markers = NULL;
 	d->map.n_chr = 0;
@@ -101,6 +112,44 @@ SimData* create_empty_simdata() {
 	d->e.effects.matrix = NULL;
 	d->e.effect_names = NULL;
 	d->current_id = 0;
+	return d;*/
+	SimData* d = get_malloc(sizeof(SimData));
+	const SimParams defaults = create_simulation_settings(0,0);
+	SimData td = {.settings = defaults, .n_markers = 0, .markers=NULL, .map.n_chr = 0,
+        .map.chr_ends = NULL, .map.positions = NULL, .m = NULL, .e.effects.rows = 0,
+        .e.effects.cols = 0, .e.effects.matrix=NULL, .e.effect_names = NULL, .current_id = 0}; //temp D
+	memcpy(d, &td, sizeof(SimData));
+	return d;
+}
+
+/** Creator for an empty SimData object on the heap. This is the main struct
+ * that will contain/manage simulation data.
+ *
+ * Uses the provided simulation settings
+ *
+ * @param custom_settings Simulation settings to use in the SimData
+ * @returns pointer to the empty created SimData
+ */
+SimData* create_custom_empty_simdata(const SimParams custom_settings) {
+	/*SimData* d = get_malloc(sizeof(SimData));
+	memcpy(&d->settings, &custom_settings, sizeof(SimParams));
+	d->n_markers = 0;
+	d->markers = NULL;
+	d->map.n_chr = 0;
+	d->map.chr_ends = NULL;
+	d->map.chr_lengths = NULL;
+	d->map.positions = NULL;
+	d->m = NULL;
+	d->e.effects.rows = 0;
+	d->e.effects.cols = 0;
+	d->e.effects.matrix = NULL;
+	d->e.effect_names = NULL;
+	d->current_id = 0;*/
+    SimData* d = get_malloc(sizeof(SimData));
+	SimData td = {.settings = custom_settings, .n_markers = 0, .markers=NULL, .map.n_chr = 0,
+        .map.chr_ends = NULL, .map.positions = NULL, .m = NULL, .e.effects.rows = 0,
+        .e.effects.cols = 0, .e.effects.matrix=NULL, .e.effect_names = NULL, .current_id = 0}; //temp D
+	memcpy(d, &td, sizeof(SimData));
 	return d;
 }
 
@@ -661,8 +710,8 @@ void condense_allele_matrix( SimData* d) {
  * @see get_from_ordered_uint_list()
  *
  * This function assumes that ids are never reshuffled in the SimData. This is true
- * as long as condense_allele_matrix's process of moving genotypes while retaining 
- * their order is the only genotype-rearranging function in use. 
+ * as long as condense_allele_matrix's process of moving genotypes while retaining
+ * their order is the only genotype-rearranging function in use.
  * This function's algorithm will need to
  * be revisited if different genotype-rearranging processes are implemented.
  *
@@ -720,8 +769,8 @@ char* get_name_of_id( AlleleMatrix* start, unsigned int id) {
  * @see get_from_ordered_uint_list()
  *
  * This function assumes that ids are never reshuffled in the SimData. This is true
- * as long as condense_allele_matrix's process of moving genotypes while retaining 
- * their order is the only genotype-rearranging function in use. 
+ * as long as condense_allele_matrix's process of moving genotypes while retaining
+ * their order is the only genotype-rearranging function in use.
  * This function's algorithm will need to
  * be revisited if different genotype-rearranging processes are implemented.
  *
@@ -731,7 +780,7 @@ char* get_name_of_id( AlleleMatrix* start, unsigned int id) {
  * @returns the alleles of the genotype that has id `id`, as a copy of the pointer
  * to the heap memory where the genotype is saved (so *don't* free the pointer returned
  * from this function). It points to a sequence of characters, ordered according to
- * the markers in the SimData to which the AlleleMatrix belongs. Returns NULL if the 
+ * the markers in the SimData to which the AlleleMatrix belongs. Returns NULL if the
  * ID does not exist.
  */
 char* get_genes_of_id ( AlleleMatrix* start, unsigned int id) {
@@ -783,8 +832,8 @@ char* get_genes_of_id ( AlleleMatrix* start, unsigned int id) {
  * @see get_from_ordered_uint_list()
  *
  * This function assumes that ids are never reshuffled in the SimData. This is true
- * as long as condense_allele_matrix's process of moving genotypes while retaining 
- * their order is the only genotype-rearranging function in use. 
+ * as long as condense_allele_matrix's process of moving genotypes while retaining
+ * their order is the only genotype-rearranging function in use.
  * This function's algorithm will need to
  * be revisited if different genotype-rearranging processes are implemented.
  *
@@ -794,7 +843,7 @@ char* get_genes_of_id ( AlleleMatrix* start, unsigned int id) {
  * @param output An array which the calling function can access where this function
  * will put its results.
  * @returns 0 when the id is successfully identified and at least one parent's
- * id is known, 1 if neither parent is known, and 2 if the ID passed in does 
+ * id is known, 1 if neither parent is known, and 2 if the ID passed in does
  * not exist. The ids of both parents if at least one parent is
  * known/nonzero are saved to the array `output`.
  */
@@ -2833,8 +2882,11 @@ void load_effects_to_simdata(SimData* d, const char* filename) {
  * @param effect_file string name/path of file containing effect values.
 */
 int load_all_simdata(SimData* d, const char* data_file, const char* map_file, const char* effect_file) {
+	const SimParams settings = d->settings;
 	delete_simdata(d); // make this empty.
-	d = create_empty_simdata();
+	d = create_custom_empty_simdata(settings);
+
+	//d = create_empty_simdata();
 	int gp = load_transposed_genes_to_simdata(d, data_file);
 
 	load_genmap_to_simdata(d, map_file);
