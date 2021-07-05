@@ -13,25 +13,7 @@
 #define TRUE 1
 #define FALSE 0
 
-/* The largest contiguous block of memory requested in the process of simulation 
-will be CONTIGW integers in size.*/
-#define CONTIGW 1000
-
-/** A struct representing simulation parameters. 
- *
- * @param contig_width The largest contiguous block of memory requested 
- * in the process of simulation will be CONTIGW integers in size. Increasing
- * this may provide some speed gain. Decrease this for long simulations or 
- * lower-end machines. Default is 1000.
- * @param name_length The maximum number of characters allowed in a name field.
- * This includes names of SNPs, names of loaded genotypes, and names of generated
- * genotypes. Increase this if you wish for any of these names to be allowed to 
- * be longer. Default is 30.
- */
-typedef struct {
-	unsigned int contig_width;
-	unsigned int name_length;
-} SimParams;
+#include "sim-settings.h"
 
 /** A struct representing a single marker location. the attribute 
  * `chromosome` represents the chromosome number, and `position` the 
@@ -171,9 +153,8 @@ typedef struct {
  *
  * @param alleles a matrix of SNP markers by subjects containing pairs of alleles
  * eg TT, TA. Use `alleles[subject index][marker index * 2]` to get the first allele
- * and `alleles[subject index][marker index * 2 + 1]` to get the second. In usual use
- * the char** alleles will point to an CONTIGW-ptr-long piece of heap memory, and if you
- * need to add more than 100 subjects you will add another AlleleMatrix to the linked list
+ * and `alleles[subject index][marker index * 2 + 1]` to get the second. If 
+ * CONTIG_WIDTH genotypes are saved here, another AlleleMatrix is added to the linked list.
  * @param subject_names array of strings containing the names of the lines/subjects
  * whose data is stored in `alleles`. NULL if they do not have names.
  * @param ids unique ids for each subject in the matrix. If you use a creator function,
@@ -188,14 +169,14 @@ typedef struct {
 typedef struct AlleleMatrix AlleleMatrix;
 struct AlleleMatrix {
 	
-	char* alleles[CONTIGW];
-	char* subject_names[CONTIGW];
-	unsigned int ids[CONTIGW];
+	char* alleles[CONTIG_WIDTH];
+	char* subject_names[CONTIG_WIDTH];
+	unsigned int ids[CONTIG_WIDTH];
 	int n_subjects;
 	int n_markers; // slight redundancy but allows this to stand alone
 	
-	unsigned int pedigrees[2][CONTIGW]; 
-	unsigned int groups[CONTIGW];
+	unsigned int pedigrees[2][CONTIG_WIDTH]; 
+	unsigned int groups[CONTIG_WIDTH];
 	AlleleMatrix* next;
 };
 
@@ -216,8 +197,6 @@ typedef struct {
  * The core of this type is a list of markers. These are used to index the rows
  * of the allele matrix and the position map, and the cols of the effect matrix.
  * 
- * @param settings Settings for running the simulation. Cannot be modified after
- * creation.
  * @param n_markers the number of markers/length of `markers`
  * @param markers an array of strings containing the names of markers
  * @param map GeneticMap with positions of markers on chromosomes. If this is 
@@ -229,8 +208,6 @@ typedef struct {
  * subject. Used to track where we are in generating unique ids.
  */
 typedef struct {
-	const SimParams settings;
-	
 	int n_markers;
 	char** markers; // marker names
 	
@@ -251,10 +228,7 @@ int randpoi(double lambda);
 int randlim(int limit);
 
 AlleleMatrix* create_empty_allelematrix(int n_markers, int n_subjects);
-const SimParams create_simulation_settings(unsigned int set_contig_width, unsigned int set_name_length);
-//SimData* create_empty_simdata();
-SimData* create_default_empty_simdata();
-SimData* create_custom_empty_simdata(const SimParams custom_settings);
+SimData* create_empty_simdata();
 
 /* Supporters */
 struct TableSize get_file_dimensions(const char* filename, char sep);
