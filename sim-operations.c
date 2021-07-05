@@ -660,16 +660,18 @@ void condense_allele_matrix( SimData* d) {
  * found. Searching by id is therefore fast.
  * @see get_from_ordered_uint_list()
  *
- * This function assumes that ids are never reshuffled in the SimData. As of
- * 2021.04.12 this condition is always true, but this function will need to
- * be revisited if this is no longer the case.
+ * This function assumes that ids are never reshuffled in the SimData. This is true
+ * as long as condense_allele_matrix's process of moving genotypes while retaining 
+ * their order is the only genotype-rearranging function in use. 
+ * This function's algorithm will need to
+ * be revisited if different genotype-rearranging processes are implemented.
  *
  * @param start Pointer to the first of a linked list of AlleleMatrixes in which
  * the genotype with the provided id is assumed to be found.
  * @param id the id of the genotype whose name is sought
  * @returns the name of the genotype that has id `id`, as a copy of the pointer
  * to the heap memory where the name is saved (so *don't* free the pointer returned
- * from this function)
+ * from this function). Returns NULL if the ID does not exist.
  */
 char* get_name_of_id( AlleleMatrix* start, unsigned int id) {
 	if (id <= 0) {
@@ -691,8 +693,8 @@ char* get_name_of_id( AlleleMatrix* start, unsigned int id) {
 			if (index < 0) {
 				// search failed
 				if (m->next == NULL) {
-					fprintf(stderr, "Could not find the ID %d\n", id);
-					exit(1);
+					fprintf(stderr, "Could not find the ID %d: did you prematurely delete this genotype?\n", id);
+					return NULL;
 				} else {
 					m = m->next;
 				}
@@ -703,8 +705,8 @@ char* get_name_of_id( AlleleMatrix* start, unsigned int id) {
 		}
 
 		if (m->next == NULL) {
-			fprintf(stderr, "Could not find the ID %d\n", id);
-			exit(1);
+			fprintf(stderr, "Could not find the ID %d: did you prematurely delete this genotype?\n", id);
+			return NULL;
 		} else {
 			m = m->next;
 		}
@@ -717,9 +719,11 @@ char* get_name_of_id( AlleleMatrix* start, unsigned int id) {
  * found. Searching by id is therefore fast.
  * @see get_from_ordered_uint_list()
  *
- * This function assumes that ids are never reshuffled in the SimData. As of
- * 2021.04.12 this condition is always true, but this function will need to
- * be revisited if this is no longer the case.
+ * This function assumes that ids are never reshuffled in the SimData. This is true
+ * as long as condense_allele_matrix's process of moving genotypes while retaining 
+ * their order is the only genotype-rearranging function in use. 
+ * This function's algorithm will need to
+ * be revisited if different genotype-rearranging processes are implemented.
  *
  * @param start Pointer to the first of a linked list of AlleleMatrixes in which
  * the genotype with the provided id is assumed to be found.
@@ -727,7 +731,8 @@ char* get_name_of_id( AlleleMatrix* start, unsigned int id) {
  * @returns the alleles of the genotype that has id `id`, as a copy of the pointer
  * to the heap memory where the genotype is saved (so *don't* free the pointer returned
  * from this function). It points to a sequence of characters, ordered according to
- * the markers in the SimData to which the AlleleMatrix belongs.
+ * the markers in the SimData to which the AlleleMatrix belongs. Returns NULL if the 
+ * ID does not exist.
  */
 char* get_genes_of_id ( AlleleMatrix* start, unsigned int id) {
 	if (id <= 0) {
@@ -749,8 +754,8 @@ char* get_genes_of_id ( AlleleMatrix* start, unsigned int id) {
 			if (index < 0) {
 				// search failed
 				if (m->next == NULL) {
-					fprintf(stderr, "Could not find the ID %d\n", id);
-					exit(1);
+					fprintf(stderr, "Could not find the ID %d: did you prematurely delete this genotype?\n", id);
+					return NULL;
 				} else {
 					m = m->next;
 					continue;
@@ -762,8 +767,8 @@ char* get_genes_of_id ( AlleleMatrix* start, unsigned int id) {
 		}
 
 		if (m->next == NULL) {
-			fprintf(stderr, "Could not find the ID %d\n", id);
-			exit(1);
+			fprintf(stderr, "Could not find the ID %d: did you prematurely delete this genotype?\n", id);
+			return NULL;
 		} else {
 			m = m->next;
 		}
@@ -777,9 +782,11 @@ char* get_genes_of_id ( AlleleMatrix* start, unsigned int id) {
  * found. Searching by id is therefore fast.
  * @see get_from_ordered_uint_list()
  *
- * This function assumes that ids are never reshuffled in the SimData. As of
- * 2021.04.12 this condition is always true, but this function will need to
- * be revisited if this is no longer the case.
+ * This function assumes that ids are never reshuffled in the SimData. This is true
+ * as long as condense_allele_matrix's process of moving genotypes while retaining 
+ * their order is the only genotype-rearranging function in use. 
+ * This function's algorithm will need to
+ * be revisited if different genotype-rearranging processes are implemented.
  *
  * @param start Pointer to the first of a linked list of AlleleMatrixes in which
  * the genotype with the provided id is assumed to be found.
@@ -787,7 +794,8 @@ char* get_genes_of_id ( AlleleMatrix* start, unsigned int id) {
  * @param output An array which the calling function can access where this function
  * will put its results.
  * @returns 0 when the id is successfully identified and at least one parent's
- * id is known, 1 otherwise. The ids of both parents if at least one parent is
+ * id is known, 1 if neither parent is known, and 2 if the ID passed in does 
+ * not exist. The ids of both parents if at least one parent is
  * known/nonzero are saved to the array `output`.
  */
 int get_parents_of_id( AlleleMatrix* start, unsigned int id, unsigned int output[2]) {
@@ -808,8 +816,8 @@ int get_parents_of_id( AlleleMatrix* start, unsigned int id, unsigned int output
 			if (index < 0) {
 				// search failed
 				if (m->next == NULL) {
-					fprintf(stderr, "Could not find the ID %d\n", id);
-					exit(1);
+					fprintf(stderr, "Could not find the ID %d: did you prematurely delete this genotype?\n", id);
+					return 2;
 				} else {
 					m = m->next;
 				}
@@ -825,8 +833,8 @@ int get_parents_of_id( AlleleMatrix* start, unsigned int id, unsigned int output
 		}
 
 		if (m->next == NULL) {
-			fprintf(stderr, "Could not find the ID %d\n", id);
-			exit(1);
+			fprintf(stderr, "Could not find the ID %d: did you prematurely delete this genotype?\n", id);
+			return 2;
 		} else {
 			m = m->next;
 		}
@@ -2769,6 +2777,7 @@ void load_effects_to_simdata(SimData* d, const char* filename) {
 		sscanf(buffer, "%s %c %lf\n", marker_name, &allele, &effect);
 
 		if ((location = get_from_unordered_str_list(  marker_name, d->markers, d->n_markers)) >= 0) {
+			// if the marker exists (at index `location`) find the allele index
 			int symbol_index;
 			char* symbol_location = strchr(alleles_loaded, allele);
 			if (symbol_location == NULL) {
@@ -2779,7 +2788,8 @@ void load_effects_to_simdata(SimData* d, const char* filename) {
 				symbol_index = symbol_location - alleles_loaded; // difference between the pointers
 			}
 
-			// the marker is in our list and the allele value is valid
+			// now the marker is in our list and the allele value is valid
+			// so save the effect value in effects_loaded.
 			if (effects_loaded[symbol_index] == NULL) {
 				effects_loaded[symbol_index] = calloc(d->n_markers, sizeof(double) * d->n_markers);
 			}
