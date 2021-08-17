@@ -4932,7 +4932,7 @@ void calculate_all_block_effects(SimData* d, MarkerBlocks b, const char* output_
  * @returns a heap array filled with a null-terminated string containing the highest
  * scoring allele at each marker.
  */
-char* calculate_ideal_genotype(SimData* d) {
+char* calculate_optimal_alleles(SimData* d) {
 	if (d->e.effects.matrix == NULL || d->e.effects.rows < 1 || d->e.effect_names == NULL) {
 		fprintf(stderr, "No effect values are loaded\n");
 		return NULL;
@@ -4940,7 +4940,7 @@ char* calculate_ideal_genotype(SimData* d) {
 
 	char* optimal = get_malloc(sizeof(char)* (d->n_markers + 1));
 	char best_allele;
-	int best_score;
+	double best_score;
 
 	for (int i = 0; i < d->n_markers; ++i) {
 		best_allele = d->e.effect_names[0];
@@ -4957,7 +4957,7 @@ char* calculate_ideal_genotype(SimData* d) {
 	return optimal;
 }
 
-/** Takes a look at the currently-loaded effect values returns the highest possible
+/** Takes a look at the currently-loaded effect values and returns the highest possible
  * GEBV any genotype could score using those effect values.
  *
  * The SimData must be initialised with marker effects for this function to succeed.
@@ -4966,35 +4966,51 @@ char* calculate_ideal_genotype(SimData* d) {
  * @returns the GEBV of the best/ideal genotype.
  */
 double calculate_optimal_gebv(SimData* d) {
-	char* best_alleles = calculate_ideal_genotype(d);
 	double best_gebv = 0;
+	double best_score;
 
-	DecimalMatrix counts = generate_zero_dmatrix(d->n_markers, 1);
-	DecimalMatrix effect_row, product;
-
-	for (int i = 0; i < d->e.effects.rows; ++i) {
-		// fill the count matrix for this allele.
-		for (int j = 0; j < d->n_markers; ++j) {
-			if (best_alleles[j] == d->e.effect_names[i]) {
-				counts.matrix[j][0] = 2;
-			} else {
-				counts.matrix[j][0] = 0;
+	for (int i = 0; i < d->n_markers; ++i) {
+		// Find the allele with the highest effect
+		best_score = d->e.effects.matrix[0][i];
+		for (int a = 1; a < d->e.effects.rows; ++a) {
+			if (d->e.effects.matrix[a][i] > best_score) {
+				best_score = d->e.effects.matrix[a][i];
 			}
 		}
 
-		// calculate the GEBV contribution from this allele
-		effect_row = subset_dmatrix_row(&(d->e.effects), i);
-		product = multiply_dmatrices(&effect_row, &counts);
-
-		best_gebv += product.matrix[0][0];
-		delete_dmatrix(&effect_row);
-		delete_dmatrix(&product);
+		// add that highest allele to the score twice over
+		best_gebv += (2*best_score);
 	}
 
-	delete_dmatrix(&counts);
-	free(best_alleles);
-
 	return best_gebv;
+}
+
+/** Takes a look at the currently-loaded effect values and returns the lowest possible
+ * GEBV any genotype could score using those effect values.
+ *
+ * The SimData must be initialised with marker effects for this function to succeed.
+ *
+ * @param d pointer to the SimData containing markers and marker effects.
+ * @returns the GEBV of the worst genotype.
+ */
+double calculate_minimum_gebv(SimData* d) {
+	double worst_gebv = 0;
+	double worst_score;
+
+	for (int i = 0; i < d->n_markers; ++i) {
+		// Find the allele with the highest effect
+		worst_score = d->e.effects.matrix[0][i];
+		for (int a = 1; a < d->e.effects.rows; ++a) {
+			if (d->e.effects.matrix[a][i] < worst_score) {
+				worst_score = d->e.effects.matrix[a][i];
+			}
+		}
+
+		// add that highest allele to the score twice over
+		worst_gebv += (2*worst_score);
+	}
+
+	return worst_gebv;
 }
 
 /*--------------------------------Printing-----------------------------------*/

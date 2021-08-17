@@ -9,15 +9,15 @@
 #include <math.h>
 
 #define PI 3.1415926535897932384626433832795028841971693993751
-#define TOL 0.00001 
+#define TOL 0.00001
 #define TRUE 1
 #define FALSE 0
 
 #include "sim-settings.h"
 
-/** A struct representing a single marker location. the attribute 
- * `chromosome` represents the chromosome number, and `position` the 
- * position on the chromosome in centiMorgans. 
+/** A struct representing a single marker location. the attribute
+ * `chromosome` represents the chromosome number, and `position` the
+ * position on the chromosome in centiMorgans.
  * This should probably be used in an array indexed by marker.
  */
 typedef struct {
@@ -31,13 +31,13 @@ struct TableSize {
 	int num_rows;
 };
 
-/** A struct used to store a set of blocks of markers. 
+/** A struct used to store a set of blocks of markers.
  *
  * @param num_blocks the number of blocks whose details are stored here.
  * @param num_markers_in_block pointer to a heap array of length num_blocks
  * containing the number of markers that make up each block
  * @param markers_in_block pointer to a heap array of length num_blocks, each
- * entry in which is a pointer to a heap array with length corresponding to 
+ * entry in which is a pointer to a heap array with length corresponding to
  * the value of the corresponding entry in num_markers_in_block whose values
  * are the indexes in the SimData of the markers that make up that block.
  */
@@ -60,7 +60,7 @@ typedef struct {
 } DecimalMatrix;
 
 
-/** A type that contains choices of settings for SimData functions that create a 
+/** A type that contains choices of settings for SimData functions that create a
  * new AlleleMatrix/generation.
  *
  * The family_size parameter will affect how many offspring are produced.
@@ -69,13 +69,13 @@ typedef struct {
  * affect how much extra detail about the offspring is generated/saved.
  *
  * The will_save_to_simdata toggle allows you the option of generating offspring without
- * saving them in memory. This may be useful in combination with save-as-you-go toggles 
+ * saving them in memory. This may be useful in combination with save-as-you-go toggles
  * will_save_pedigree_to_file, will_save_effects_to_file, and will_save_genes_to_file,
  * to generate a larger number of offspring than will fit in memory.
  *
- * @param will_name_subjects a boolean representing if subject_names will be 
+ * @param will_name_subjects a boolean representing if subject_names will be
  * filled or not.
- * @param subject_prefix If `will_name_subjects` is true, subjects are named 
+ * @param subject_prefix If `will_name_subjects` is true, subjects are named
  * [subject_prefix][index].
  * @param family_size the number of offspring to produce from each cross.
  * @param will_track_pedigree a boolean representing whether to bother to track
@@ -92,18 +92,18 @@ typedef struct {
  * @param will_save_genes_to_file a boolean. If true, the set of alleles
  * of every genotype generated in the cross are saved to "[filename_prefix]-genome",
  * even if the genotypes are not later saved to SimData.
- * @param will_save_to_simdata a boolean. If true, the offspring are retained in the 
+ * @param will_save_to_simdata a boolean. If true, the offspring are retained in the
  * SimData as a new group. If false, they are discarded after creation.
 */
 typedef struct {
 	int will_name_subjects;
 	char* subject_prefix;
-	
+
 	int family_size;
-	
+
 	int will_track_pedigree;
 	int will_allocate_ids;
-	
+
 	char* filename_prefix;
 	int will_save_pedigree_to_file;
 	int will_save_effects_to_file;
@@ -119,7 +119,7 @@ typedef struct {
  * but not including the marker at index chr_ends[n]
  *
  * @param n_chr the number of chromosomes represented in the map.
- * @param chr_ends An array of ints. The entry at index i is the index in 
+ * @param chr_ends An array of ints. The entry at index i is the index in
  * `positions` of the first marker that belongs to Chr(i + 1). The array is
  * n_chr + 1 integers long.
  * @param chr_lengths An array of floats. The entry at index i is the length
@@ -131,13 +131,13 @@ typedef struct {
 	int n_chr;
 	int* chr_ends;
 	float* chr_lengths;
-	
+
 	MarkerPosition* positions;
 } GeneticMap;
 
 /** A type used for containing the basic genotype and parentage of a new cross.
  *
- * @param gametes the alleles inherited from each parent as character sequences 
+ * @param gametes the alleles inherited from each parent as character sequences
  * whose order matches the order of the markers in the main SimData object that they
  * are alleles for. There are two of these sequences, one from each parent.
  * @param p_index the indexes/column numbers of each parent. The generation AlleleMatrix
@@ -153,7 +153,7 @@ typedef struct {
  *
  * @param alleles a matrix of SNP markers by subjects containing pairs of alleles
  * eg TT, TA. Use `alleles[subject index][marker index * 2]` to get the first allele
- * and `alleles[subject index][marker index * 2 + 1]` to get the second. If 
+ * and `alleles[subject index][marker index * 2 + 1]` to get the second. If
  * CONTIG_WIDTH genotypes are saved here, another AlleleMatrix is added to the linked list.
  * @param subject_names array of strings containing the names of the lines/subjects
  * whose data is stored in `alleles`. NULL if they do not have names.
@@ -168,14 +168,14 @@ typedef struct {
 */
 typedef struct AlleleMatrix AlleleMatrix;
 struct AlleleMatrix {
-	
+
 	char* alleles[CONTIG_WIDTH];
 	char* subject_names[CONTIG_WIDTH];
 	unsigned int ids[CONTIG_WIDTH];
 	int n_subjects;
 	int n_markers; // slight redundancy but allows this to stand alone
-	
-	unsigned int pedigrees[2][CONTIG_WIDTH]; 
+
+	unsigned int pedigrees[2][CONTIG_WIDTH];
 	unsigned int groups[CONTIG_WIDTH];
 	AlleleMatrix* next;
 };
@@ -196,27 +196,27 @@ typedef struct {
  *
  * The core of this type is a list of markers. These are used to index the rows
  * of the allele matrix and the position map, and the cols of the effect matrix.
- * 
+ *
  * @param n_markers the number of markers/length of `markers`
  * @param markers an array of strings containing the names of markers
- * @param map GeneticMap with positions of markers on chromosomes. If this is 
+ * @param map GeneticMap with positions of markers on chromosomes. If this is
   * set, then `markers` will be ordered and all markers have a known position.
  * @param m pointer to an AlleleMatrix containing data for the parent generation.
  * Successive generations are added to the end of the linked list that starts here.
  * @param e EffectMatrix containing the effects at all markers.
- * @param current_id integer denoting the highest id that has been allocated to a 
+ * @param current_id integer denoting the highest id that has been allocated to a
  * subject. Used to track where we are in generating unique ids.
  */
 typedef struct {
 	int n_markers;
 	char** markers; // marker names
-	
+
 	GeneticMap map;
 	AlleleMatrix* m;
 	EffectMatrix e;
-	
+
 	unsigned int current_id;
-} SimData; 
+} SimData;
 
 //const SimData EMPTY_SIMDATA;
 const GenOptions BASIC_OPT;
@@ -255,8 +255,8 @@ void set_subject_names(AlleleMatrix* a, char* prefix, int suffix, int from_index
 void set_subject_ids(SimData* d, int from_index, int to_index);
 int get_integer_digits(int i);
 int get_new_group_num( SimData* d);
-void set_group_list( SimData* d, int by_n, int new_group); 
-void condense_allele_matrix( SimData* d); 
+void set_group_list( SimData* d, int by_n, int new_group);
+void condense_allele_matrix( SimData* d);
 void* get_malloc(size_t size);
 
 int _simdata_pos_compare(const void *pp0, const void *pp1);
@@ -303,11 +303,11 @@ void load_effects_to_simdata(SimData* d, const char* filename);
 int load_all_simdata(SimData* d, const char* data_file, const char* map_file, const char* effect_file);
 
 /* Recombination calculators */
-int* calculate_min_recombinations_fw1(SimData* d, char* parent1, unsigned int p1num, char* parent2, 
+int* calculate_min_recombinations_fw1(SimData* d, char* parent1, unsigned int p1num, char* parent2,
 		unsigned int p2num, char* offspring, int certain); // forward filling, window size 1
-int* calculate_min_recombinations_fwn(SimData* d, char* parent1, unsigned int p1num, char* parent2, 
+int* calculate_min_recombinations_fwn(SimData* d, char* parent1, unsigned int p1num, char* parent2,
 		unsigned int p2num, char* offspring, int window_size, int certain); // forward filling, window size n
-		
+
 
 // int has_same_alleles(char* p1, char* p2, int i);
 // int has_same_alleles_window(char* g1, char* g2, int start, int w);
@@ -326,8 +326,8 @@ static inline int has_same_alleles(char* p1, char* p2, int i) {
 	return (p1[i<<1] == p2[i<<1] || p1[(i<<1) + 1] == p2[i] || p1[i] == p2[(i<<1) + 1]);
 }
 // w is window length, i is start value
-/** Simple operator to determine if at markers with indexes i to i+w inclusive, two genotypes 
- * share at least one allele. Checks only 3 of four possible permutations at each marker 
+/** Simple operator to determine if at markers with indexes i to i+w inclusive, two genotypes
+ * share at least one allele. Checks only 3 of four possible permutations at each marker
  * because assumes there cannot be more than two alleles at a given marker. For the return value
  * to be true, there must be at least one match at every one of the markers in the window.
  *
@@ -349,9 +349,9 @@ static inline int has_same_alleles_window(char* g1, char* g2, int start, int w) 
 	return same;
 }
 
-int calculate_recombinations_from_file(SimData* d, const char* input_file, const char* output_file, 
+int calculate_recombinations_from_file(SimData* d, const char* input_file, const char* output_file,
 		int window_len, int certain);
-		
+
 /* Crossers */
 void generate_gamete(SimData* d, char* parent_genome, char* output);
 void generate_cross(SimData* d, char* parent1_genome, char* parent2_genome, char* output);
@@ -389,8 +389,8 @@ void save_transposed_allele_matrix(FILE* f, AlleleMatrix* m, char** markers);
 void save_group_alleles(FILE* f, SimData* d, int group_id);
 void save_transposed_group_alleles(FILE* f, SimData* d, int group_id);
 
-void save_group_one_step_pedigree(FILE* f, SimData* d, int group); 
-void save_one_step_pedigree(FILE* f, SimData* d); 
+void save_group_one_step_pedigree(FILE* f, SimData* d, int group);
+void save_one_step_pedigree(FILE* f, SimData* d);
 void save_group_full_pedigree(FILE* f, SimData* d, int group);
 void save_full_pedigree(FILE* f, SimData* d);
 void save_AM_pedigree(FILE* f, AlleleMatrix* m, SimData* parents);
@@ -403,6 +403,7 @@ void save_all_fitness(FILE* f, SimData* d);
 void save_count_matrix(FILE* f, SimData* d, char allele);
 void save_count_matrix_of_group(FILE* f, SimData* d, char allele, int group);
 
-char* calculate_ideal_genotype(SimData* d);
+char* calculate_optimal_alleles(SimData* d);
 double calculate_optimal_gebv(SimData* d);
+double calculate_minimum_gebv(SimData* d);
 #endif

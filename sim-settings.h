@@ -14,7 +14,7 @@
  
  /** The maximum number of characters allowed in a name field.
  * These include names of SNPs, names of genotypes loaded from files, 
- * and names of generated genotypes. Default is 30.
+ * names of generated genotypes, and save-as-you-go filenames. Default is 30.
  *
  * Increase this if there is a risk some names may be longer than 
  * this value.

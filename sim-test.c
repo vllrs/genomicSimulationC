@@ -147,7 +147,7 @@ int test_effect_calculators(SimData *d, int g0) {
 }
 
 int test_optimal_calculators(SimData *d) {
-	char* ig = calculate_ideal_genotype(d);
+	char* ig = calculate_optimal_alleles(d);
 	assert(ig[0] == 'T');
 	assert(ig[1] == 'A');
 	assert(ig[2] == 'A');
@@ -155,6 +155,10 @@ int test_optimal_calculators(SimData *d) {
 
 	double optimal = calculate_optimal_gebv(d);
 	assert(abs(optimal - 1.8) < TOL);
+
+	double unoptimal = calculate_minimum_gebv(d);
+	assert(abs(unoptimal + 2.8) < TOL);
+
 	printf("...Optimal genotype and GEBV calculated correctly\n");
 
 	return 0;
@@ -390,5 +394,56 @@ int main(int argc, char* argv[]) {
 	printf("\t\t-> Deletor functions all clear\n");
 
 	printf("\n------- All tests passed. -------\n");
+
+
+	/*printf("\n--------Timing tests--------------\n");
+	clock_t c;
+	c = clock();
+	SimData* sd = create_empty_simdata();
+	int fg0 = load_all_simdata(sd, "C:/Users/JV/Documents/KV QAAFI/input/gt_parents_mr2_50-trimto-5000.txt",
+			 "C:/Users/JV/Documents/KV QAAFI/input/genetic-map_5112-trimto5000-M.txt",
+			 "C:/Users/JV/Documents/KV QAAFI/input/qtl_mr2.eff-processed.txt");
+    c = clock() - c;
+	printf("Loading took %f seconds to run\n", (double)c / CLOCKS_PER_SEC);
+
+	c = clock();
+	GenOptions g = {.will_name_subjects=FALSE, .subject_prefix=NULL, .family_size=1,
+		.will_track_pedigree=TRUE, .will_allocate_ids=TRUE,
+		.filename_prefix="testcross", .will_save_pedigree_to_file=FALSE,
+		.will_save_effects_to_file=FALSE, .will_save_genes_to_file=FALSE,
+		.will_save_to_simdata=FALSE};
+    cross_random_individuals(sd, fg0, 100000, g);
+	c = clock() - c;
+	printf("Random crossing took %f seconds to run\n", (double)c / CLOCKS_PER_SEC);
+
+	c = clock();
+	GenOptions g1 = {.will_name_subjects=FALSE, .subject_prefix=NULL, .family_size=1,
+		.will_track_pedigree=TRUE, .will_allocate_ids=TRUE,
+		.filename_prefix="tmptiming", .will_save_pedigree_to_file=FALSE,
+		.will_save_effects_to_file=FALSE, .will_save_genes_to_file=TRUE,
+		.will_save_to_simdata=FALSE};
+    cross_random_individuals(sd, fg0, 100000, g1);
+	c = clock() - c;
+	printf("Random crossing took %f seconds to run\n", (double)c / CLOCKS_PER_SEC);
+
+	delete_simdata(sd);
+
+	sd = create_empty_simdata();
+	fg0 = load_all_simdata(sd, "C:/Users/JV/Documents/KV QAAFI/input/gt_parents_mr2_50-trimto-5000.txt",
+			 "C:/Users/JV/Documents/KV QAAFI/input/genetic-map_5112-trimto5000-M.txt",
+			 "C:/Users/JV/Documents/KV QAAFI/input/qtl_mr2.eff-processed.txt");
+
+	c = clock();
+	GenOptions g2 = {.will_name_subjects=TRUE, .subject_prefix="tmp", .family_size=1,
+		.will_track_pedigree=TRUE, .will_allocate_ids=TRUE,
+		.filename_prefix="tmptiming", .will_save_pedigree_to_file=TRUE,
+		.will_save_effects_to_file=FALSE, .will_save_genes_to_file=TRUE,
+		.will_save_to_simdata=FALSE};
+    cross_random_individuals(sd, fg0, 100000, g2);
+	c = clock() - c;
+	printf("Random crossing took %f seconds to run\n", (double)c / CLOCKS_PER_SEC);
+
+	delete_simdata(sd);*/
+
 	return 0;
 }
