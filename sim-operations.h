@@ -250,6 +250,10 @@ char** get_group_genes( SimData* d, int group_id, int group_size);
 char** get_group_names( SimData* d, int group_id, int group_size);
 unsigned int* get_group_ids( SimData* d, int group_id, int group_size);
 unsigned int* get_group_indexes(SimData* d, int group_id, int group_size);
+double* get_group_bvs( SimData* d, int group_id, int group_size);
+unsigned int* get_group_parent_ids( SimData* d, int group_id, int group_size, int parent);
+char** get_group_parent_names( SimData* d, int group_id, int group_size, int parent);
+char** get_group_pedigrees( SimData* d, int group_id, int group_size);
 
 void set_subject_names(AlleleMatrix* a, char* prefix, int suffix, int from_index);
 void set_subject_ids(SimData* d, int from_index, int to_index);
@@ -360,7 +364,7 @@ void generate_doubled_haploid(SimData* d, char* parent_genome, char* output);
 int cross_random_individuals(SimData* d, int from_group, int n_crosses, GenOptions g);
 int cross_these_combinations(SimData* d, int n_combinations, int combinations[2][n_combinations],  GenOptions g);
 int self_n_times(SimData* d, int n, int group, GenOptions g);
-int make_doubled_haploids(SimData* d, int group, GenOptions g); //@add
+int make_doubled_haploids(SimData* d, int group, GenOptions g);
 
 int make_all_unidirectional_crosses(SimData* d, int from_group, GenOptions g);
 int make_n_crosses_from_top_m_percent(SimData* d, int n, int m, int group, GenOptions g);

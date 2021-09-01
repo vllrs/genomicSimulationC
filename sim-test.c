@@ -358,6 +358,47 @@ int test_block_generator(SimData *d) {
 	return 0;
 }
 
+int test_data_access(SimData* d, int gp) {
+    assert(get_group_size(d, gp) == 6);
+    char** alleles = get_group_genes(d, gp, 6);
+	assert(strncmp(alleles[0],"TTAATT", 6) == 0); // G01
+	assert(strncmp(alleles[1],"TTAATT", 6) == 0); // G02
+	assert(strncmp(alleles[2],"TTAATA", 6) == 0); // G03
+	assert(strncmp(alleles[3],"TAAATA", 6) == 0); // G04
+	assert(strncmp(alleles[4],"TTTTTT", 6) == 0); // G05
+	assert(strncmp(alleles[5],"ATAATT", 6) == 0); // G06
+
+    char** names = get_group_names(d, gp, -1);
+    assert(strcmp(names[0], "G01") == 0);
+	assert(strcmp(names[1], "G02") == 0);
+	assert(strcmp(names[2], "G03") == 0);
+	assert(strcmp(names[3], "G04") == 0);
+	assert(strcmp(names[4], "G05") == 0);
+	assert(strcmp(names[5], "G06") == 0);
+
+    unsigned int* ids = get_group_ids(d, gp, -1);
+    for (int i = 0; i < 6; ++i) {
+        assert(ids[i] == i+1);
+    }
+
+    unsigned int* indexes = get_group_indexes(d, gp, 6);
+    for (int i = 0; i < 6; ++i) {
+        assert(indexes[i] == i);
+    }
+
+    double* bvs = get_group_bvs(d, gp, 6);
+	assert(abs(bvs[0] - 1.4) < TOL);
+	assert(abs(bvs[1] - 1.4) < TOL);
+	assert(abs(bvs[2] - 1.6) < TOL);
+	assert(abs(bvs[3] - (-0.1)) < TOL);
+	assert(abs(bvs[4] - 0.6) < TOL);
+	assert(abs(bvs[5] - (-0.3)) < TOL);
+
+	// missing the parent and pedigree checks but this group doesn't have info for that anyway
+
+    return 0;
+}
+
 /* main, for testing. Only uses a small dataset. */
 int main(int argc, char* argv[]) {
 	printf("Testing functionality ...");
@@ -387,6 +428,15 @@ int main(int argc, char* argv[]) {
 	printf("\nNow testing blocking functions:\n");
 	test_block_generator(d);
 	printf("\t\t-> Blocking functions all clear\n");
+
+	//test file savers
+	printf("\nNow testing saver functions:\n");
+	printf("TODO Saver tests not implemented yet\n");
+
+	//test data access functions
+	printf("\nNow testing data access functions:\n");
+	test_data_access(d, g0);
+	printf("TODO Data access tests not fully implemented yet\n");
 
 	// test SimData deletors.
 	printf("\nNow testing deletor functions:\n");

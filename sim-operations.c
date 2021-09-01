@@ -672,7 +672,8 @@ void condense_allele_matrix( SimData* d) {
  * @param id the id of the genotype whose name is sought
  * @returns the name of the genotype that has id `id`, as a copy of the pointer
  * to the heap memory where the name is saved (so *don't* free the pointer returned
- * from this function). Returns NULL if the ID does not exist.
+ * from this function). Returns NULL if the ID does not exist. Note the return value
+ * might also be NULL if the genotype of this ID has no name.
  */
 char* get_name_of_id( AlleleMatrix* start, unsigned int id) {
 	if (id <= 0) {
@@ -1478,14 +1479,21 @@ int get_new_group_num( SimData* d) {
 	return gn;
 }
 
+
+//-----------------------------------Data Access-----------------------------------
+
 /** Function to count the number of genotypes that currently belong to
  * the specified group.
  * @see get_group_genes()
  * @see get_group_names()
  * @see get_group_ids()
  * @see get_group_indexes()
+ * @see get_group_bvs()
+ * @see get_group_parent_IDs()
+ * @see get_group_parent_names()
+ * @see get_group_pedigrees()
  *
- * This goes through and checks every genotype in the SimData, because
+ * This goes through and checks every genotype in the SimData, because 
  * there is currently no centralised tracking of groups.
  *
  * @param d the SimData struct on which to perform the operation
@@ -1502,8 +1510,8 @@ int get_group_size( SimData* d, int group_id) {
 			if (m->groups[i] == group_id) {
 				++size;
 			}
-		}
-
+		}		
+		
 		if (m->next == NULL) {
 			return size;
 		} else {
@@ -1512,11 +1520,16 @@ int get_group_size( SimData* d, int group_id) {
 	}
 }
 
-/** Gets a shallow copy of the genes/alleles of each member of the group.
+/** Gets a shallow copy of the genes/alleles of each member of the group. Not 
+ * guaranteed to be null-terminated. 
  * @see get_group_size()
  * @see get_group_names()
  * @see get_group_ids()
  * @see get_group_indexes()
+ * @see get_group_bvs()
+ * @see get_group_parent_IDs()
+ * @see get_group_parent_names()
+ * @see get_group_pedigrees()
  *
  * @param d the SimData struct on which to perform the operation
  * @param group_id the group number of the group we want data from
@@ -1524,8 +1537,8 @@ int get_group_size( SimData* d, int group_id) {
  * put in -1. This enables fewer calls to get_group_size when using multiple
  * group-data-getter functions.
  * @returns a vector containing pointers to the genes of each member of the group.
- * the vector itself is on the heap and should be freed, but its contents are only
- * shallow copies so should not be freed.
+ * The vector itself is on the heap and should be freed, but its contents are only
+ * shallow copies that should not be freed.
  */
 char** get_group_genes( SimData* d, int group_id, int group_size) {
 	AlleleMatrix* m = d->m;
@@ -1542,14 +1555,14 @@ char** get_group_genes( SimData* d, int group_id, int group_size) {
 				genes[genes_i] = m->alleles[i];
 				++genes_i;
 			}
-		}
-
+		}		
+		
 		if (m->next == NULL) {
 			return genes;
 		} else {
 			m = m->next;
 		}
-	}
+	}	
 }
 
 /** Gets a shallow copy of the names of each member of the group.
@@ -1557,6 +1570,10 @@ char** get_group_genes( SimData* d, int group_id, int group_size) {
  * @see get_group_genes()
  * @see get_group_ids()
  * @see get_group_indexes()
+ * @see get_group_bvs()
+ * @see get_group_parent_IDs()
+ * @see get_group_parent_names()
+ * @see get_group_pedigrees()
  *
  * @param d the SimData struct on which to perform the operation
  * @param group_id the group number of the group you want data from
@@ -1564,8 +1581,8 @@ char** get_group_genes( SimData* d, int group_id, int group_size) {
  * put in -1. This enables fewer calls to get_group_size when using multiple
  * group-data-getter functions.
  * @returns a vector containing pointers to the names of each member of the group.
- * the vector itself is on the heap and should be freed, but its contents are only
- * shallow copies so should not be freed.
+ * The vector itself is on the heap and should be freed, but its contents are only
+ * shallow copies that should not be freed.
  */
 char** get_group_names( SimData* d, int group_id, int group_size) {
 	AlleleMatrix* m = d->m;
@@ -1582,14 +1599,14 @@ char** get_group_names( SimData* d, int group_id, int group_size) {
 				names[names_i] = m->subject_names[i];
 				++names_i;
 			}
-		}
-
+		}		
+		
 		if (m->next == NULL) {
 			return names;
 		} else {
 			m = m->next;
 		}
-	}
+	}	
 }
 
 /** Gets the ids of each member of the group.
@@ -1597,14 +1614,18 @@ char** get_group_names( SimData* d, int group_id, int group_size) {
  * @see get_group_genes()
  * @see get_group_names()
  * @see get_group_indexes()
+ * @see get_group_bvs()
+ * @see get_group_parent_IDs()
+ * @see get_group_parent_names()
+ * @see get_group_pedigrees()
  *
  * @param d the SimData struct on which to perform the operation
  * @param group_id the group number of the group you want data from
  * @param group_size if group_size has already been calculated, pass it too, otherwise
  * put in -1. This enables fewer calls to get_group_size when using multiple
  * group-data-getter functions.
- * @returns a vector containing the ids of each memmber of the group.
- * the vector itself is on the heap and should be freed.
+ * @returns a vector containing the ids of each member of the group.
+ * The vector itself is on the heap and should be freed.
  */
 unsigned int* get_group_ids( SimData* d, int group_id, int group_size) {
 	AlleleMatrix* m = d->m;
@@ -1621,14 +1642,14 @@ unsigned int* get_group_ids( SimData* d, int group_id, int group_size) {
 				gids[ids_i] = m->ids[i];
 				++ids_i;
 			}
-		}
-
+		}		
+		
 		if (m->next == NULL) {
 			return gids;
 		} else {
 			m = m->next;
 		}
-	}
+	}	
 }
 
 /** Gets the indexes (0-based, from the start of the linked list in the SimData)
@@ -1637,6 +1658,10 @@ unsigned int* get_group_ids( SimData* d, int group_id, int group_size) {
  * @see get_group_genes()
  * @see get_group_names()
  * @see get_group_ids()
+ * @see get_group_bvs()
+ * @see get_group_parent_IDs()
+ * @see get_group_parent_names()
+ * @see get_group_pedigrees()
  *
  * @param d the SimData struct on which to perform the operation
  * @param group_id the group number of the group you want data from
@@ -1644,7 +1669,7 @@ unsigned int* get_group_ids( SimData* d, int group_id, int group_size) {
  * put in -1. This enables fewer calls to get_group_size when using multiple
  * group-data-getter functions.
  * @returns a vector containing the indexes of each member of the group.
- * the vector itself is on the heap and should be freed.
+ * The vector itself is on the heap and should be freed.
  */
 unsigned int* get_group_indexes(SimData* d, int group_id, int group_size) {
 	AlleleMatrix* m = d->m;
@@ -1661,16 +1686,257 @@ unsigned int* get_group_indexes(SimData* d, int group_id, int group_size) {
 				gis[ids_i] = total_i;
 				++ids_i;
 			}
-		}
-
+		}		
+		
 		if (m->next == NULL) {
 			return gis;
 		} else {
 			m = m->next;
 		}
-	}
+	}	
 }
 
+/** Gets the breeding values/GEBVs/fitnesses of each member of the group
+ * @see get_group_size()
+ * @see get_group_genes()
+ * @see get_group_names()
+ * @see get_group_ids()
+ * @see get_group_indexes()
+ * @see get_group_parent_IDs()
+ * @see get_group_parent_names()
+ * @see get_group_pedigrees()
+ *
+ * @param d the SimData struct on which to perform the operation
+ * @param group_id the group number of the group you want data from
+ * @param group_size if group_size has already been calculated, pass it too, otherwise
+ * put in -1. This enables fewer calls to get_group_size when using multiple
+ * group-data-getter functions.
+ * @returns a vector containing the breeding values of each member of the group.
+ * The vector itself is on the heap and should be freed.
+ */
+double* get_group_bvs( SimData* d, int group_id, int group_size) {
+	double* bvs;
+	if (group_size > 0) {
+		bvs = get_malloc(sizeof(double) * group_size);
+	} else {
+		bvs = get_malloc(sizeof(double) * get_group_size( d, group_id ));
+	}
+	
+	DecimalMatrix dm_bvs = calculate_fitness_metric_of_group(d, group_id);
+	
+	for (int i = 0; i < dm_bvs.cols; ++i) {
+		bvs[i] = dm_bvs.matrix[0][i];
+	}
+	
+	delete_dmatrix(&dm_bvs);
+	
+	return bvs;
+}
+
+/** Gets the ids of either the first or second parent of each member
+ * of the group.
+ * @see get_group_size()
+ * @see get_group_genes()
+ * @see get_group_names()
+ * @see get_group_ids()
+ * @see get_group_indexes()
+ * @see get_group_bvs()
+ * @see get_group_parent_names()
+ * @see get_group_pedigrees()
+ *
+ * @param d the SimData struct on which to perform the operation
+ * @param group_id the group number of the group you want data from
+ * @param group_size if group_size has already been calculated, pass it too, otherwise
+ * put in -1. This enables fewer calls to get_group_size when using multiple
+ * group-data-getter functions.
+ * @param parent 1 to get the first parent of each group member, 2 to get the second.
+ * Raises an error and returns NULL if this parameter is not either of those values.
+ * @returns a vector containing the id of either the first or second parent of
+ * each member of the group.
+ * The vector itself is on the heap and should be freed.
+ */
+unsigned int* get_group_parent_ids( SimData* d, int group_id, int group_size, int parent) {
+	if (!(parent == 1 || parent == 2)) {
+		fprintf(stderr, "Value error: `parent` must be 1 or 2.");
+		return NULL;
+	}
+	--parent;
+	
+	AlleleMatrix* m = d->m;
+	unsigned int* pids;
+	if (group_size > 0) {
+		pids = get_malloc(sizeof(unsigned int) * group_size);
+	} else {
+		pids = get_malloc(sizeof(unsigned int) * get_group_size( d, group_id ));
+	}
+	int i, ids_i = 0;
+	while (1) {
+		for (i = 0; i < m->n_subjects; ++i) {
+			if (m->groups[i] == group_id) {
+				pids[ids_i] = m->pedigrees[parent][i];
+				++ids_i;
+			}
+		}		
+		
+		if (m->next == NULL) {
+			return pids;
+		} else {
+			m = m->next;
+		}
+	}		
+}
+ 
+/** Gets the names of either the first or second parent of each member
+ * of the group. Names may be NULL.
+ * @see get_group_size()
+ * @see get_group_genes()
+ * @see get_group_names()
+ * @see get_group_ids()
+ * @see get_group_indexes()
+ * @see get_group_bvs()
+ * @see get_group_parent_IDs()
+ * @see get_group_pedigrees()
+ *
+ * @param d the SimData struct on which to perform the operation
+ * @param group_id the group number of the group you want data from
+ * @param group_size if group_size has already been calculated, pass it too, otherwise
+ * put in -1. This enables fewer calls to get_group_size when using multiple
+ * group-data-getter functions.
+ * @param parent 1 to get the first parent of each group member, 2 to get the second.
+ * Raises an error and returns NULL if this parameter is not either of those values.
+ * @returns  a vector containing pointers to the names either the first or second
+ * parent of each member of the group. The vector itself is on the heap and should be 
+ * freed, but its contents are only shallow copies that should not be freed.
+ */
+char** get_group_parent_names( SimData* d, int group_id, int group_size, int parent) {
+	if (!(parent == 1 || parent == 2)) {
+		fprintf(stderr, "Value error: `parent` must be 1 or 2.");
+		return NULL;
+	}
+	--parent;
+	
+	AlleleMatrix* m = d->m;
+	char** pnames;
+	if (group_size > 0) {
+		pnames = get_malloc(sizeof(char*) * group_size);
+	} else {
+		pnames = get_malloc(sizeof(char*) * get_group_size( d, group_id ));
+	}
+	int i, ids_i = 0;
+	while (1) {
+		for (i = 0; i < m->n_subjects; ++i) {
+			if (m->groups[i] == group_id) {
+				pnames[ids_i] = get_name_of_id(d->m, m->pedigrees[parent][i]);
+				++ids_i;
+			}
+		}		
+		
+		if (m->next == NULL) {
+			return pnames;
+		} else {
+			m = m->next;
+		}
+	}	
+}
+
+/** Gets the full pedigree string (as per save_group_full_pedigree() )
+ * of each member of the group.
+ *
+ * This function is not fast, or particularly memory-efficient. To avoid recursive
+ * string-building/concatenation because that's pretty tricky in C, this just 
+ * calls save_group_full_pedigree() to a temporary file, then reads that file 
+ * back in to make a list of strings. Contact the package maintainers if you'd 
+ * benefit from a faster version of this function, otherwise I probably won't bother 
+ * improving this. 
+ *
+ * If you just want to have the full pedigrees for further analysis, consider
+ * save_group_full_pedigree(). With the current implementation that one will 
+ * be faster than this anyway.
+ *
+ * @see get_group_size()
+ * @see get_group_genes()
+ * @see get_group_names()
+ * @see get_group_ids()
+ * @see get_group_indexes()
+ * @see get_group_bvs()
+ * @see get_group_parent_IDs()
+ * @see get_group_parent_names()
+ * @see save_group_full_pedigree()
+ *
+ * @param d the SimData struct on which to perform the operation
+ * @param group_id the group number of the group you want data from
+ * @param group_size if group_size has already been calculated, pass it too, otherwise
+ * put in -1. This enables fewer calls to get_group_size when using multiple
+ * group-data-getter functions.
+ * @returns  a vector containing pointers to the full pedigree string of each 
+ * member of the group. Both the vector and its contents are dynamically 
+ * allocated on the heap, and so should both be freed. This is because, unlike
+ * other data-getter functions, this data is not stored but must be generated 
+ * specifically to answer this function call. If it failed to write to and 
+ * read from the temporary file, then it returns NULL;
+ */
+char** get_group_pedigrees( SimData* d, int group_id, int group_size) {
+	char* fname = "gS_gpptmp";
+	FILE* fp = fopen(fname, "w");
+	save_group_full_pedigree(fp, d, group_id);
+	fclose(fp);
+	
+	FILE* fp2;
+	if ((fp2 = fopen(fname, "r")) == NULL) {
+		fprintf(stderr, "Failed to use temporary file.\n");
+		return NULL;
+	}
+	
+	// Create the list that we will return
+	if (group_size <= 0) {
+		group_size = get_group_size( d, group_id );
+	}
+	char** gp_ped = get_malloc(sizeof(char*) * group_size);
+	
+	// read one line at a time
+	//size_t n;
+	//int line_len;
+	unsigned int size;
+	unsigned int index;
+	int nextc;
+	for (int i = 0; i < group_size; ++i) {
+		// getline is not available in MinGW it looks like (AUG 2021)
+		/*gp_ped[i] = NULL;
+		if ((line_len = getline(&(gp_ped[i]), &n, fp2)) == -1) {
+			error("Failed to get %d th pedigree\n", i);
+		} 
+		// remove the newline character
+		if (gp_ped[i][line_len - 1] == '\n') {
+			gp_ped[i][line_len - 1] = '\0';
+		}*/
+		
+		// a not-very-size-efficient, fgets-based line getter
+		size = 50;
+		index = 0;
+		gp_ped[i] = get_malloc(sizeof(char) * size);
+		while ((nextc = fgetc(fp)) != '\n' && nextc != EOF) {
+			gp_ped[i][index] = nextc;
+			++index;
+
+			if (index >= size) {
+				size *= 2;
+				char* temp = realloc(gp_ped[i], size);
+				if (temp == NULL) {
+					free(gp_ped[i]);
+					fprintf(stderr, "Memory allocation of size %u failed.\n", size);
+				} else {
+					gp_ped[i] = temp;
+				}
+			}
+		}
+		gp_ped[i][index] = '\0';
+	}
+	
+	fclose(fp2);
+	remove(fname);
+	
+	return gp_ped;
+}
 
 
 /*------------------------------------------------------------------------*/
@@ -3838,6 +4104,7 @@ int self_n_times(SimData* d, int n, int group, GenOptions g) {
 				}
 
 				generate_cross( d, genes, genes, outcome->alleles[fullness] );
+				outcome->groups[fullness] = output_group;
 				/*outcome->groups[fullness] = output_group;
 				if (g.will_track_pedigree) {
 					outcome->pedigrees[0][fullness] = id;
@@ -5674,8 +5941,8 @@ void save_AM_pedigree(FILE* f, AlleleMatrix* m, SimData* parents) {
  * @param f file pointer opened for writing to put the output
  * @param m pointer to an AlleleMatrix that heads the linked list
  * containing the parents and other ancestry of the given id.
- * @param id the session-unique id of the genotype whose parents
- * we wish to recursively save.
+ * @param p1 the session-unique id of the first parent to be saved.
+ * @param p2 the session-unique id of the second parent to be saved.
  */
 void save_parents_of(FILE* f, AlleleMatrix* m, unsigned int p1, unsigned int p2) {
 	unsigned int pedigree[2];
