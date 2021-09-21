@@ -1,0 +1,12 @@
+<map id="get_group_pedigrees" name="get_group_pedigrees">
+<area shape="rect" id="node1" title="Gets the full pedigree string (as per save_group_full_pedigree() ) of each member of the group." alt="" coords="5,163,148,189"/>
+<area shape="rect" id="node2" href="$sim-operations_8c.html#ad6d2b66296cd80f5bfe303e06de7935c" title="Function to count the number of genotypes that currently belong to the specified group." alt="" coords="591,239,701,265"/>
+<area shape="rect" id="node3" href="$sim-operations_8c.html#ad1a5b9f3e850da13931ee02fbb170d41" title="Replace calls to malloc direct with this function, which errors and exits with status 2 if memory all..." alt="" coords="603,163,689,189"/>
+<area shape="rect" id="node4" href="$sim-operations_8c.html#a75e854cbc72b31a5e2eb03c63c33ecc6" title="Print the full known pedigree of each genotype in a group to a file." alt="" coords="196,163,363,189"/>
+<area shape="rect" id="node5" href="$sim-operations_8c.html#a961042e468630f31a3607dac42f8fa34" title="Gets the ids of each member of the group." alt="" coords="422,163,525,189"/>
+<area shape="rect" id="node6" href="$sim-operations_8c.html#a3e00f06acc41eb012e99ae46d7a18ccc" title="Gets a shallow copy of the names of each member of the group." alt="" coords="411,213,536,240"/>
+<area shape="rect" id="node7" href="$sim-operations_8c.html#a229c9de94875ea41a23723d337f5f92f" title="Saves the ids of the parents of a genotype with a particular id to the output array output." alt="" coords="584,11,708,37"/>
+<area shape="rect" id="node9" href="$sim-operations_8c.html#abc1307a944deb18e0aef315783ab123e" title="Recursively save the parents of a particular id to a file." alt="" coords="416,61,531,88"/>
+<area shape="rect" id="node8" href="$sim-operations_8c.html#aa6943b0633c1744bacad62ab2bf68ebd" title="Returns the located index in an array of integers where the integer is target." alt="" coords="756,36,931,63"/>
+<area shape="rect" id="node10" href="$sim-operations_8c.html#a6aa75e72bb29725ffe32cd003c547480" title="Returns the name of the genotype with a given id." alt="" coords="589,61,703,88"/>
+</map>

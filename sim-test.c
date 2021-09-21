@@ -130,7 +130,7 @@ int test_loaders(SimData* d) {
 }
 
 int test_effect_calculators(SimData *d, int g0) {
-	DecimalMatrix dec = calculate_fitness_metric_of_group(d, g0);
+	DecimalMatrix dec = calculate_group_bvs(d, g0);
 
 	assert(dec.rows == 1);
 	assert(dec.cols == 6);
@@ -153,10 +153,10 @@ int test_optimal_calculators(SimData *d) {
 	assert(ig[2] == 'A');
 	free(ig);
 
-	double optimal = calculate_optimal_gebv(d);
+	double optimal = calculate_optimum_bv(d);
 	assert(abs(optimal - 1.8) < TOL);
 
-	double unoptimal = calculate_minimum_gebv(d);
+	double unoptimal = calculate_minimum_bv(d);
 	assert(abs(unoptimal + 2.8) < TOL);
 
 	printf("...Optimal genotype and GEBV calculated correctly\n");

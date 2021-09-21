@@ -86,7 +86,7 @@ typedef struct {
  * @param will_save_pedigree_to_file a boolean. If true, the full/recursive pedigrees
  * of every genotype generated in the cross are saved to "[filename_prefix]-pedigree",
  * even if the genotypes are not later saved to SimData.
- * @param will_save_effects_to_file a boolean. If true, the GEBVs
+ * @param will_save_effects_to_file a boolean. If true, the breeding values
  * of every genotype generated in the cross are saved to "[filename_prefix]-eff",
  * even if the genotypes are not later saved to SimData.
  * @param will_save_genes_to_file a boolean. If true, the set of alleles
@@ -372,16 +372,16 @@ int make_crosses_from_file(SimData* d, const char* input_file, GenOptions g);
 int make_double_crosses_from_file(SimData* d, const char* input_file, GenOptions g);
 
 /* Fitness calculators */
-int split_group_by_fitness(SimData* d, int group, int top_n, int lowIsBest);
-DecimalMatrix calculate_fitness_metric_of_group(SimData* d, int group);
-DecimalMatrix calculate_fitness_metric( AlleleMatrix* m, EffectMatrix* e);
+int split_by_bv(SimData* d, int group, int top_n, int lowIsBest);
+DecimalMatrix calculate_group_bvs(SimData* d, int group);
+DecimalMatrix calculate_bvs( AlleleMatrix* m, EffectMatrix* e);
 DecimalMatrix calculate_count_matrix_of_allele_for_ids( AlleleMatrix* m, unsigned int* for_ids, unsigned int n_ids, char allele);
 DecimalMatrix calculate_full_count_matrix_of_allele( AlleleMatrix* m, char allele);
 
 MarkerBlocks create_n_blocks_by_chr(SimData* d, int n);
 MarkerBlocks read_block_file(SimData* d, const char* block_file);
-void calculate_group_block_effects(SimData* d, MarkerBlocks b, const char* output_file, int group);
-void calculate_all_block_effects(SimData* d, MarkerBlocks b, const char* output_file);
+void calculate_group_local_bvs(SimData* d, MarkerBlocks b, const char* output_file, int group);
+void calculate_local_bvs(SimData* d, MarkerBlocks b, const char* output_file);
 
 /* Savers */
 void save_simdata(FILE* f, SimData* m);
@@ -400,14 +400,14 @@ void save_full_pedigree(FILE* f, SimData* d);
 void save_AM_pedigree(FILE* f, AlleleMatrix* m, SimData* parents);
 void save_parents_of(FILE* f, AlleleMatrix* m, unsigned int p1, unsigned int p2);
 
-void save_group_fitness(FILE* f, SimData* d, int group);
-void save_fitness(FILE* f, DecimalMatrix* e, unsigned int* ids, char** names);
-void save_all_fitness(FILE* f, SimData* d);
+void save_group_bvs(FILE* f, SimData* d, int group);
+void save_manual_bvs(FILE* f, DecimalMatrix* e, unsigned int* ids, char** names);
+void save_bvs(FILE* f, SimData* d);
 
 void save_count_matrix(FILE* f, SimData* d, char allele);
 void save_count_matrix_of_group(FILE* f, SimData* d, char allele, int group);
 
 char* calculate_optimal_alleles(SimData* d);
-double calculate_optimal_gebv(SimData* d);
-double calculate_minimum_gebv(SimData* d);
+double calculate_optimum_bv(SimData* d);
+double calculate_minimum_bv(SimData* d);
 #endif

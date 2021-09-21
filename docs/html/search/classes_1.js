@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['decimalmatrix_161',['DecimalMatrix',['../struct_decimal_matrix.html',1,'']]]
+  ['decimalmatrix_198',['DecimalMatrix',['../struct_decimal_matrix.html',1,'']]]
 ];

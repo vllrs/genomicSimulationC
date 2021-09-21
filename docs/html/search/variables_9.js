@@ -1,7 +1,11 @@
 var searchData=
 [
-  ['p_5findex_300',['p_index',['../struct_new_cross.html#a9196f40a71804be47e0c43bbcec05d9b',1,'NewCross']]],
-  ['pedigrees_301',['pedigrees',['../struct_allele_matrix.html#abba64a91f2c86ae8d18d9c67571ebeac',1,'AlleleMatrix']]],
-  ['position_302',['position',['../struct_marker_position.html#ab696daacb855d48cdee790c1712d1dcc',1,'MarkerPosition']]],
-  ['positions_303',['positions',['../struct_genetic_map.html#aaa524d5daadddfad254208ef6bb23791',1,'GeneticMap']]]
+  ['n_5fchr_364',['n_chr',['../struct_genetic_map.html#afd4a97262832e3f7c82c739290aa5e31',1,'GeneticMap']]],
+  ['n_5fmarkers_365',['n_markers',['../struct_allele_matrix.html#abe54d751c98bca248601301132295907',1,'AlleleMatrix::n_markers()'],['../struct_sim_data.html#af91c67baf2824ded2ff130500c29ab36',1,'SimData::n_markers()']]],
+  ['n_5fsubjects_366',['n_subjects',['../struct_allele_matrix.html#ac652dbde841e1a15b1c76813d77ff26e',1,'AlleleMatrix']]],
+  ['next_367',['next',['../struct_allele_matrix.html#aca3941327ee78ef135afdee6ad0a5b2f',1,'AlleleMatrix']]],
+  ['num_5fblocks_368',['num_blocks',['../struct_marker_blocks.html#afe2371521213af6d994edfdbf36cfccc',1,'MarkerBlocks']]],
+  ['num_5fcolumns_369',['num_columns',['../struct_table_size.html#a34e87d794ae5be21e24999d5072b2641',1,'TableSize']]],
+  ['num_5fmarkers_5fin_5fblock_370',['num_markers_in_block',['../struct_marker_blocks.html#a05bc16cd7262d5513b07ae8086c4a0de',1,'MarkerBlocks']]],
+  ['num_5frows_371',['num_rows',['../struct_table_size.html#a28dfd1ee14fc332ab779ed5e8f47ea62',1,'TableSize']]]
 ];

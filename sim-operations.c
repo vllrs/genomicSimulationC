@@ -1696,7 +1696,7 @@ unsigned int* get_group_indexes(SimData* d, int group_id, int group_size) {
 	}	
 }
 
-/** Gets the breeding values/GEBVs/fitnesses of each member of the group
+/** Gets the breeding values/breeding values/fitnesses of each member of the group
  * @see get_group_size()
  * @see get_group_genes()
  * @see get_group_names()
@@ -1722,7 +1722,7 @@ double* get_group_bvs( SimData* d, int group_id, int group_size) {
 		bvs = get_malloc(sizeof(double) * get_group_size( d, group_id ));
 	}
 	
-	DecimalMatrix dm_bvs = calculate_fitness_metric_of_group(d, group_id);
+	DecimalMatrix dm_bvs = calculate_group_bvs(d, group_id);
 	
 	for (int i = 0; i < dm_bvs.cols; ++i) {
 		bvs[i] = dm_bvs.matrix[0][i];
@@ -3744,8 +3744,8 @@ int cross_random_individuals(SimData* d, int from_group, int n_crosses, GenOptio
 					save_AM_pedigree( fp, crosses, d);
 				}
 				if (g.will_save_effects_to_file) {
-					eff = calculate_fitness_metric( crosses, &(d->e));
-					save_fitness( fe, &eff, crosses->ids, crosses->subject_names);
+					eff = calculate_bvs( crosses, &(d->e));
+					save_manual_bvs( fe, &eff, crosses->ids, crosses->subject_names);
 					delete_dmatrix( &eff);
 				}
 				if (g.will_save_genes_to_file) {
@@ -3797,8 +3797,8 @@ int cross_random_individuals(SimData* d, int from_group, int n_crosses, GenOptio
 		fclose(fp);
 	}
 	if (g.will_save_effects_to_file) {
-		eff = calculate_fitness_metric( crosses, &(d->e));
-		save_fitness( fe, &eff, crosses->ids, crosses->subject_names);
+		eff = calculate_bvs( crosses, &(d->e));
+		save_manual_bvs( fe, &eff, crosses->ids, crosses->subject_names);
 		delete_dmatrix( &eff);
 		fclose(fe);
 	}
@@ -3912,8 +3912,8 @@ int cross_these_combinations(SimData* d, int n_combinations, int combinations[2]
 						save_AM_pedigree( fp, crosses, d);
 					}
 					if (g.will_save_effects_to_file) {
-						eff = calculate_fitness_metric( crosses, &(d->e));
-						save_fitness( fe, &eff, crosses->ids, crosses->subject_names);
+						eff = calculate_bvs( crosses, &(d->e));
+						save_manual_bvs( fe, &eff, crosses->ids, crosses->subject_names);
 						delete_dmatrix( &eff);
 					}
 					if (g.will_save_genes_to_file) {
@@ -3962,8 +3962,8 @@ int cross_these_combinations(SimData* d, int n_combinations, int combinations[2]
 		fclose(fp);
 	}
 	if (g.will_save_effects_to_file) {
-		eff = calculate_fitness_metric( crosses, &(d->e));
-		save_fitness( fe, &eff, crosses->ids, crosses->subject_names);
+		eff = calculate_bvs( crosses, &(d->e));
+		save_manual_bvs( fe, &eff, crosses->ids, crosses->subject_names);
 		delete_dmatrix( &eff);
 		fclose(fe);
 	}
@@ -4081,8 +4081,8 @@ int self_n_times(SimData* d, int n, int group, GenOptions g) {
 						save_AM_pedigree( fp, outcome, d);
 					}
 					if (g.will_save_effects_to_file) {
-						eff = calculate_fitness_metric( outcome, &(d->e));
-						save_fitness( fe, &eff, outcome->ids, outcome->subject_names);
+						eff = calculate_bvs( outcome, &(d->e));
+						save_manual_bvs( fe, &eff, outcome->ids, outcome->subject_names);
 						delete_dmatrix( &eff);
 					}
 					if (g.will_save_genes_to_file) {
@@ -4138,8 +4138,8 @@ int self_n_times(SimData* d, int n, int group, GenOptions g) {
 						save_AM_pedigree( fp, outcome, d);
 					}
 					if (g.will_save_effects_to_file) {
-						eff = calculate_fitness_metric( outcome, &(d->e));
-						save_fitness( fe, &eff, outcome->ids, outcome->subject_names);
+						eff = calculate_bvs( outcome, &(d->e));
+						save_manual_bvs( fe, &eff, outcome->ids, outcome->subject_names);
 						delete_dmatrix( &eff);
 					}
 					if (g.will_save_genes_to_file) {
@@ -4219,8 +4219,8 @@ int self_n_times(SimData* d, int n, int group, GenOptions g) {
 		fclose(fp);
 	}
 	if (g.will_save_effects_to_file) {
-		eff = calculate_fitness_metric( outcome, &(d->e));
-		save_fitness( fe, &eff, outcome->ids, outcome->subject_names);
+		eff = calculate_bvs( outcome, &(d->e));
+		save_manual_bvs( fe, &eff, outcome->ids, outcome->subject_names);
 		delete_dmatrix( &eff);
 		fclose(fe);
 	}
@@ -4331,8 +4331,8 @@ int make_doubled_haploids(SimData* d, int group, GenOptions g) {
 					save_AM_pedigree( fp, outcome, d);
 				}
 				if (g.will_save_effects_to_file) {
-					eff = calculate_fitness_metric( outcome, &(d->e));
-					save_fitness( fe, &eff, outcome->ids, outcome->subject_names);
+					eff = calculate_bvs( outcome, &(d->e));
+					save_manual_bvs( fe, &eff, outcome->ids, outcome->subject_names);
 					delete_dmatrix( &eff);
 				}
 				if (g.will_save_genes_to_file) {
@@ -4383,8 +4383,8 @@ int make_doubled_haploids(SimData* d, int group, GenOptions g) {
 		fclose(fp);
 	}
 	if (g.will_save_effects_to_file) {
-		eff = calculate_fitness_metric( outcome, &(d->e));
-		save_fitness( fe, &eff, outcome->ids, outcome->subject_names);
+		eff = calculate_bvs( outcome, &(d->e));
+		save_manual_bvs( fe, &eff, outcome->ids, outcome->subject_names);
 		delete_dmatrix( &eff);
 		fclose(fe);
 	}
@@ -4458,7 +4458,7 @@ int make_n_crosses_from_top_m_percent(SimData* d, int n, int m, int group, GenOp
 	int n_top_group = group_size * m / 100; //@integer division?
 	printf("There are %d lines in the top %d%%\n", n_top_group, m);
 
-	int topgroup = split_group_by_fitness(d, group, n_top_group, FALSE);
+	int topgroup = split_by_bv(d, group, n_top_group, FALSE);
 
 	// do the random crosses
 	int gp = cross_random_individuals(d, topgroup, n, g);
@@ -4599,21 +4599,21 @@ int make_double_crosses_from_file(SimData* d, const char* input_file, GenOptions
 
 /*--------------------------------Fitness------------------------------------*/
 
-/** Takes the top `top_n` fitness/GEBV individuals in the group and puts them in a new group.
- * The new group number is returned.
+/** Takes the `top_n` individuals in the group with the best breeding values/fitnesses
+ * and puts them in a new group. The new group number is returned.
  *
  * @param d pointer to the SimData object to which the groups and individuals belong.
  * It must have a marker effect file loaded to successfully run this function.
  * @param group group number from which to split the top individuals.
  * @param top_n The number of individuals to put in the new group.
- * @param lowIsBest boolean, if TRUE the `top_n` with the lowest fitness/GEBV score
- * will be selected, if false the `top_n` with the highest fitness/GEBV score are.
+ * @param lowIsBest boolean, if TRUE the `top_n` with the lowest breeding value
+ * will be selected, if false the `top_n` with the highest breeding value are.
  * @returns the group number of the newly-created split-off group
  */
-int split_group_by_fitness(SimData* d, int group, int top_n, int lowIsBest) {
+int split_by_bv(SimData* d, int group, int top_n, int lowIsBest) {
 	// get fitnesses
 	unsigned int* group_contents = get_group_indexes( d, group, -1); // should be ordered same as next line would get
-	DecimalMatrix fits = calculate_fitness_metric_of_group( d, group );
+	DecimalMatrix fits = calculate_group_bvs( d, group );
 
 	// get an array of pointers to those fitnesses
 	double* p_fits[fits.cols];
@@ -4640,10 +4640,10 @@ int split_group_by_fitness(SimData* d, int group, int top_n, int lowIsBest) {
 	return split_from_group(d, top_n, top_subjects);
 }
 
-/** Calculates the fitness metric/GEBV for each genotype in the AlleleMatrix
+/** Calculates the fitness metric/breeding value for each genotype in the AlleleMatrix
 * in a certain group, and returns the results in a DecimalMatrix struct.
 *
-* The GEBV is calculated for each genotype by taking the sum of (number of
+* The breeding value is calculated for each genotype by taking the sum of (number of
 * copies of this allele at this marker times this allele's effect at this marker)
 * for each marker for each different allele. To do
 * this, the vector containing each allele's effect values is multiplied by a matrix
@@ -4653,10 +4653,10 @@ int split_group_by_fitness(SimData* d, int group, int top_n, int lowIsBest) {
 *
 * @param d pointer to the SimData object to which the groups and individuals belong.
 * It must have a marker effect file loaded to successfully run this function.
-* @param group calculate GEBVs for each genotype in the group with this group number.
+* @param group calculate breeding values for each genotype in the group with this group number.
 * @returns A DecimalMatrix containing the score for each individual in the group.
 */
-DecimalMatrix calculate_fitness_metric_of_group(SimData* d, int group) {
+DecimalMatrix calculate_group_bvs(SimData* d, int group) {
 	// check that both of the items to be multiplied exist.
 	if (d->e.effects.rows < 1 || d->m->alleles == NULL) {
 		fprintf(stderr, "Either effect matrix or allele matrix does not exist\n");
@@ -4679,7 +4679,7 @@ DecimalMatrix calculate_fitness_metric_of_group(SimData* d, int group) {
 		delete_dmatrix(&counts);
 		delete_dmatrix(&effect_row);
 
-		// add it to the total effect GEBV sum
+		// add it to the total effect breeding value sum
 		add_to_dmatrix(&sum, &product);
 		///counts = sum; // use counts as a temp
 		//sum = add_dmatrices(&counts, &product);
@@ -4691,10 +4691,10 @@ DecimalMatrix calculate_fitness_metric_of_group(SimData* d, int group) {
 	return sum;
 }
 
-/** Calculates the fitness metric/GEBV for each genotype in the AlleleMatrix,
+/** Calculates the fitness metric/breeding value for each genotype in the AlleleMatrix,
  * and returns the results in a DecimalMatrix struct.
  *
- * The GEBV is calculated for each genotype by taking the sum of (number of
+ * The breeding value is calculated for each genotype by taking the sum of (number of
  * copies of this allele at this marker times this allele's effect at this marker)
  * for each marker for each different allele. To do
  * this, the vector containing each allele's effect values is multiplied by a matrix
@@ -4706,7 +4706,7 @@ DecimalMatrix calculate_fitness_metric_of_group(SimData* d, int group) {
  * @param e pointer to the EffectMatrix that effect values have been loaded into.
  * @returns A DecimalMatrix containing the score for each individual in the group.
  */
-DecimalMatrix calculate_fitness_metric( AlleleMatrix* m, EffectMatrix* e) {
+DecimalMatrix calculate_bvs( AlleleMatrix* m, EffectMatrix* e) {
 	// check that both of the items to be multiplied exist.
 	if (e->effects.rows < 1 || m->alleles == NULL) {
 		fprintf(stderr, "Either effect matrix or allele matrix does not exist\n");
@@ -4727,7 +4727,7 @@ DecimalMatrix calculate_fitness_metric( AlleleMatrix* m, EffectMatrix* e) {
 		delete_dmatrix(&counts);
 		delete_dmatrix(&effect_row);
 
-		// add it to the total effect GEBV sum
+		// add it to the total effect BV sum
 		counts = sum; // use counts as a temp
 		sum = add_dmatrices(&counts, &product);
 		delete_dmatrix(&counts);
@@ -4740,7 +4740,7 @@ DecimalMatrix calculate_fitness_metric( AlleleMatrix* m, EffectMatrix* e) {
 /** Calculates the number of times at each marker that a particular allele appears
  * for each genotype is a set of given genotype.
  * Returns the result as a DecimalMatrix. Useful for multiplying to effect matrix
- * to calculate GEBVs.
+ * to calculate breeding values.
  *
  * @param m pointer to the start of a linked list that contains the alleles
  * of each genotype in `for_ids`.
@@ -4781,7 +4781,7 @@ DecimalMatrix calculate_count_matrix_of_allele_for_ids( AlleleMatrix* m, unsigne
 /** Calculates the number of times at each marker that a particular allele appears
  * for each genotype in a particular AlleleMatrix.
  * Returns the result as a DecimalMatrix. Useful for multiplying to effect matrix
- * to calculate GEBVs.
+ * to calculate breeding values.
  *
  * @param m pointer to the AlleleMatrix that contains the genotypes to count alleles.
  * @param allele the single-character allele to be counting.
@@ -4996,9 +4996,10 @@ MarkerBlocks read_block_file(SimData* d, const char* block_file) {
 }
 
 /** Given a set of blocks of markers in a file, for each genotype in a group,
- * calculate the local GEBV for the first allele at each marker in the block, and
- * the local GEBV for the second allele at each marker in the block, then save
- * the result to a file. This gives block effects for each haplotype of each
+ * calculate the local fitness metric/breeding value for the first allele at 
+ * each marker in the block, and the local fitness metric/breeding value
+ * for the second allele at each marker in the block, then save
+ * the result to a file. This gives block effects/local BVs for each haplotype of each
  * individual in the group.
  *
  * The output file will have format:
@@ -5016,10 +5017,10 @@ MarkerBlocks read_block_file(SimData* d, const char* block_file) {
  * It must have a marker effect file loaded to successfully run this function.
  * @param b struct containing the blocks to use
  * @param output_file string containing the filename of the file to which output
- * block effects/local GEBVs will be saved.
+ * block effects/local BVs will be saved.
  * @param group group number from which to split the top individuals.
  */
-void calculate_group_block_effects(SimData* d, MarkerBlocks b, const char* output_file, int group) {
+void calculate_group_local_bvs(SimData* d, MarkerBlocks b, const char* output_file, int group) {
 
 	FILE* outfile;
 	if ((outfile = fopen(output_file, "w")) == NULL) {
@@ -5046,7 +5047,7 @@ void calculate_group_block_effects(SimData* d, MarkerBlocks b, const char* outpu
 		for (int j = 0; j < b.num_blocks; ++j) {
 			beffect = 0;
 
-			// calculate the local GEBV
+			// calculate the local BV
 			for (int k = 0; k < b.num_markers_in_block[j]; ++k) {
 				for (int q = 0; q < d->e.effects.rows; ++q) {
 					if (ggenos[i][2 * b.markers_in_block[j][k]] == d->e.effect_names[q]) {
@@ -5055,7 +5056,7 @@ void calculate_group_block_effects(SimData* d, MarkerBlocks b, const char* outpu
 				}
 			}
 
-			// print the local GEBV
+			// print the local BV
 			fprintf(outfile, " %lf", beffect);
 			fflush(outfile);
 		}
@@ -5066,7 +5067,7 @@ void calculate_group_block_effects(SimData* d, MarkerBlocks b, const char* outpu
 		// for each block for the second haplotype
 		for (int j = 0; j < b.num_blocks; ++j) {
 			beffect = 0;
-			// calculate the local GEBV
+			// calculate the local BV
 			for (int k = 0; k < b.num_markers_in_block[j]; ++k) {
 				for (int q = 0; q < d->e.effects.rows; ++q) {
 					if (ggenos[i][2 * b.markers_in_block[j][k] + 1] == d->e.effect_names[q]) {
@@ -5075,7 +5076,7 @@ void calculate_group_block_effects(SimData* d, MarkerBlocks b, const char* outpu
 				}
 			}
 
-			// print the local GEBV
+			// print the local BV
 			fprintf(outfile, " %lf", beffect);
 			fflush(outfile);
 		}
@@ -5091,8 +5092,8 @@ void calculate_group_block_effects(SimData* d, MarkerBlocks b, const char* outpu
 }
 
 /** Given a set of blocks of markers in a file, for each genotype saved,
- * calculate the local GEBV for the first allele at each marker in the block, and
- * the local GEBV for the second allele at each marker in the block, then save
+ * calculate the local BV for the first allele at each marker in the block, and
+ * the local BV for the second allele at each marker in the block, then save
  * the result to a file. This gives block effects for each haplotype of each
  * individual currently saved to the SimData.
  *
@@ -5111,9 +5112,9 @@ void calculate_group_block_effects(SimData* d, MarkerBlocks b, const char* outpu
  * It must have a marker effect file loaded to successfully run this function.
  * @param b struct containing the blocks to use
  * @param output_file string containing the filename of the file to which output
- * block effects/local GEBVs will be saved.
+ * block effects/local BV will be saved.
  */
-void calculate_all_block_effects(SimData* d, MarkerBlocks b, const char* output_file) {
+void calculate_local_bvs(SimData* d, MarkerBlocks b, const char* output_file) {
 	FILE* outfile;
 	if ((outfile = fopen(output_file, "w")) == NULL) {
 		fprintf(stderr, "Failed to open file %s.\n", output_file);
@@ -5144,7 +5145,7 @@ void calculate_all_block_effects(SimData* d, MarkerBlocks b, const char* output_
 			for (int j = 0; j < b.num_blocks; ++j) {
 				beffect = 0;
 
-				// calculate the local GEBV
+				// calculate the local BV
 				for (int k = 0; k < b.num_markers_in_block[j]; ++k) {
 					for (int q = 0; q < d->e.effects.rows; ++q) {
 						if (m->alleles[i][2 * b.markers_in_block[j][k]] == d->e.effect_names[q]) {
@@ -5153,7 +5154,7 @@ void calculate_all_block_effects(SimData* d, MarkerBlocks b, const char* output_
 					}
 				}
 
-				// print the local GEBV
+				// print the local BV
 				fprintf(outfile, " %lf", beffect);
 				fflush(outfile);
 			}
@@ -5164,7 +5165,7 @@ void calculate_all_block_effects(SimData* d, MarkerBlocks b, const char* output_
 			// for each block for the second haplotype
 			for (int j = 0; j < b.num_blocks; ++j) {
 				beffect = 0;
-				// calculate the local GEBV
+				// calculate the local BV
 				for (int k = 0; k < b.num_markers_in_block[j]; ++k) {
 					for (int q = 0; q < d->e.effects.rows; ++q) {
 						if (m->alleles[i][2 * b.markers_in_block[j][k] + 1] == d->e.effect_names[q]) {
@@ -5173,7 +5174,7 @@ void calculate_all_block_effects(SimData* d, MarkerBlocks b, const char* output_
 					}
 				}
 
-				// print the local GEBV
+				// print the local BV
 				fprintf(outfile, " %lf", beffect);
 				fflush(outfile);
 			}
@@ -5225,14 +5226,14 @@ char* calculate_optimal_alleles(SimData* d) {
 }
 
 /** Takes a look at the currently-loaded effect values and returns the highest possible
- * GEBV any genotype could score using those effect values.
+ * breeding value any (diploid) genotype could have using those effect values.
  *
  * The SimData must be initialised with marker effects for this function to succeed.
  *
  * @param d pointer to the SimData containing markers and marker effects.
- * @returns the GEBV of the best/ideal genotype.
+ * @returns the fitness metric/breeding value of the best/ideal genotype.
  */
-double calculate_optimal_gebv(SimData* d) {
+double calculate_optimum_bv(SimData* d) {
 	double best_gebv = 0;
 	double best_score;
 
@@ -5253,14 +5254,14 @@ double calculate_optimal_gebv(SimData* d) {
 }
 
 /** Takes a look at the currently-loaded effect values and returns the lowest possible
- * GEBV any genotype could score using those effect values.
+ * breeding value any (diploid) genotype could score using those effect values.
  *
  * The SimData must be initialised with marker effects for this function to succeed.
  *
  * @param d pointer to the SimData containing markers and marker effects.
- * @returns the GEBV of the worst genotype.
+ * @returns the fitness metric/breeding value of the worst genotype.
  */
-double calculate_minimum_gebv(SimData* d) {
+double calculate_minimum_bv(SimData* d) {
 	double worst_gebv = 0;
 	double worst_score;
 
@@ -6007,12 +6008,12 @@ void save_parents_of(FILE* f, AlleleMatrix* m, unsigned int p1, unsigned int p2)
 	fwrite(")", sizeof(char), 1, f);
 }
 
-/** Print the GEBV of each genotype in a group to a file. The following
+/** Print the breeding value of each genotype in a group to a file. The following
  * tab-separated format is used:
  *
- * [group member id]	[group member name]	[GEBV]
+ * [group member id]	[group member name]	[BV]
  *
- * [group member id]	[group member name]	[GEBV]
+ * [group member id]	[group member name]	[BV]
  *
  * ...
  *
@@ -6021,13 +6022,13 @@ void save_parents_of(FILE* f, AlleleMatrix* m, unsigned int p1, unsigned int p2)
  * @param f file pointer opened for writing to put the output
  * @param d pointer to the SimData containing the group members.
  * @param group group number of the group of individuals to print the
- * GEBVs of.
+ * breeding values of.
  */
-void save_group_fitness(FILE* f, SimData* d, int group) {
+void save_group_bvs(FILE* f, SimData* d, int group) {
 	int group_size = get_group_size( d, group);
 	unsigned int* group_contents = get_group_ids( d, group, group_size);
 	char** group_names = get_group_names( d, group, group_size);
-	DecimalMatrix effects = calculate_fitness_metric_of_group(d, group);
+	DecimalMatrix effects = calculate_group_bvs(d, group);
 	const char newline[] = "\n";
 	const char tab[] = "\t";
 
@@ -6050,12 +6051,12 @@ void save_group_fitness(FILE* f, SimData* d, int group) {
 	fflush(f);
 }
 
-/** Print the GEBV of each genotype in the SimData to a file. The following
+/** Print the breeding value of each genotype in the SimData to a file. The following
  * tab-separated format is used:
  *
- * [id]	[name]	[GEBV]
+ * [id]	[name]	[BV]
  *
- * [id]	[name]	[GEBV]
+ * [id]	[name]	[BV]
  *
  * ...
  *
@@ -6064,14 +6065,14 @@ void save_group_fitness(FILE* f, SimData* d, int group) {
  * @param f file pointer opened for writing to put the output
  * @param d pointer to the SimData containing the group members.
  */
-void save_all_fitness(FILE* f, SimData* d) {
+void save_bvs(FILE* f, SimData* d) {
 	AlleleMatrix* am = d->m;
 	const char newline[] = "\n";
 	const char tab[] = "\t";
 	DecimalMatrix effects;
 
 	do {
-		effects = calculate_fitness_metric(am, &(d->e));
+		effects = calculate_bvs(am, &(d->e));
 		for (int i = 0; i < effects.cols; ++i) {
 			/*Group member name*/
 			//fwrite(group_contents + i, sizeof(int), 1, f);
@@ -6090,26 +6091,27 @@ void save_all_fitness(FILE* f, SimData* d) {
 	fflush(f);
 }
 
-/** Print a set of pre-calculated GEBVs with provided names and ids to a file,
- * with the same format as a regular call to `save_all_fitness` or `save_group_fitness`.
+/** Print the provided breeding values of each provided name and id to a file,
+ * with the same format as a regular call to `save_bvs` or `save_group_bvs`.
  * The following tab-separated format is used:
  *
- * [id]	[name]	[GEBV]
+ * [id]	[name]	[BV]
  *
- * [id]	[name]	[GEBV]
+ * [id]	[name]	[BV]
  *
  * ...
  *
  * The function assumes the array of ids, array of names, and columns of the
  * DecimalMatrix are ordered the same, so a single index produces the corresponding
- * value from each.
+ * value from each. It is used by as-you-go savers within crossing functions. For 
+ * general use consider `save_bvs` or `save_group_bvs` instead.
  *
  * @param f file pointer opened for writing to put the output
- * @param e pointer to the DecimalMatrix containing the GEBVs in the first row.
- * @param ids array of ids to print alongside the GEBVs.
- * @param names array of names to print alongside the GEBVs.
+ * @param e pointer to the DecimalMatrix containing the BVs in the first row.
+ * @param ids array of ids to print alongside the BVs.
+ * @param names array of names to print alongside the BVs.
  */
-void save_fitness(FILE* f, DecimalMatrix* e, unsigned int* ids, char** names) {
+void save_manual_bvs(FILE* f, DecimalMatrix* e, unsigned int* ids, char** names) {
 	char sep[] = "\t";
 	char newline[] = "\n";
 

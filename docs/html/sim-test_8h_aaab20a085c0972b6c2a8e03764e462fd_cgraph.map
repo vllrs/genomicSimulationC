@@ -1,0 +1,7 @@
+<map id="test_optimal_calculators" name="test_optimal_calculators">
+<area shape="rect" id="node1" title=" " alt="" coords="5,56,168,83"/>
+<area shape="rect" id="node2" href="$sim-operations_8c.html#acef164c7781f3aa15928b482c3845418" title="Takes a look at the currently&#45;loaded effect values and returns the lowest possible breeding value any..." alt="" coords="223,5,376,32"/>
+<area shape="rect" id="node3" href="$sim-operations_8c.html#adf9a424cc9474272059ff328bfadf755" title="Takes a look at the currently&#45;loaded effect values and creates a string containing the allele with th..." alt="" coords="216,56,383,83"/>
+<area shape="rect" id="node5" href="$sim-operations_8c.html#a67d98ae97e5352f32380c8b89b1e4047" title="Takes a look at the currently&#45;loaded effect values and returns the highest possible breeding value an..." alt="" coords="224,107,375,133"/>
+<area shape="rect" id="node4" href="$sim-operations_8c.html#ad1a5b9f3e850da13931ee02fbb170d41" title="Replace calls to malloc direct with this function, which errors and exits with status 2 if memory all..." alt="" coords="431,56,516,83"/>
+</map>

@@ -1,10 +1,13 @@
 var searchData=
 [
-  ['n_5fchr_101',['n_chr',['../struct_genetic_map.html#afd4a97262832e3f7c82c739290aa5e31',1,'GeneticMap']]],
-  ['n_5fmarkers_102',['n_markers',['../struct_allele_matrix.html#abe54d751c98bca248601301132295907',1,'AlleleMatrix::n_markers()'],['../struct_sim_data.html#af91c67baf2824ded2ff130500c29ab36',1,'SimData::n_markers()']]],
-  ['n_5fsubjects_103',['n_subjects',['../struct_allele_matrix.html#ac652dbde841e1a15b1c76813d77ff26e',1,'AlleleMatrix']]],
-  ['newcross_104',['NewCross',['../struct_new_cross.html',1,'']]],
-  ['next_105',['next',['../struct_allele_matrix.html#aca3941327ee78ef135afdee6ad0a5b2f',1,'AlleleMatrix']]],
-  ['num_5fcolumns_106',['num_columns',['../struct_table_size.html#a34e87d794ae5be21e24999d5072b2641',1,'TableSize']]],
-  ['num_5frows_107',['num_rows',['../struct_table_size.html#a28dfd1ee14fc332ab779ed5e8f47ea62',1,'TableSize']]]
+  ['n_5fchr_119',['n_chr',['../struct_genetic_map.html#afd4a97262832e3f7c82c739290aa5e31',1,'GeneticMap']]],
+  ['n_5fmarkers_120',['n_markers',['../struct_allele_matrix.html#abe54d751c98bca248601301132295907',1,'AlleleMatrix::n_markers()'],['../struct_sim_data.html#af91c67baf2824ded2ff130500c29ab36',1,'SimData::n_markers()']]],
+  ['n_5fsubjects_121',['n_subjects',['../struct_allele_matrix.html#ac652dbde841e1a15b1c76813d77ff26e',1,'AlleleMatrix']]],
+  ['name_5flength_122',['NAME_LENGTH',['../sim-settings_8h.html#af71324c57f05ff9e24bd384925dd6b17',1,'sim-settings.h']]],
+  ['newcross_123',['NewCross',['../struct_new_cross.html',1,'']]],
+  ['next_124',['next',['../struct_allele_matrix.html#aca3941327ee78ef135afdee6ad0a5b2f',1,'AlleleMatrix']]],
+  ['num_5fblocks_125',['num_blocks',['../struct_marker_blocks.html#afe2371521213af6d994edfdbf36cfccc',1,'MarkerBlocks']]],
+  ['num_5fcolumns_126',['num_columns',['../struct_table_size.html#a34e87d794ae5be21e24999d5072b2641',1,'TableSize']]],
+  ['num_5fmarkers_5fin_5fblock_127',['num_markers_in_block',['../struct_marker_blocks.html#a05bc16cd7262d5513b07ae8086c4a0de',1,'MarkerBlocks']]],
+  ['num_5frows_128',['num_rows',['../struct_table_size.html#a28dfd1ee14fc332ab779ed5e8f47ea62',1,'TableSize']]]
 ];

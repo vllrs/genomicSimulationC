@@ -1,6 +1,11 @@
 <map id="cross_these_combinations" name="cross_these_combinations">
-<area shape="rect" id="node1" title="Performs the crosses of pairs of parents whose ids are provided in an array." alt="" coords="216,71,393,98"/>
-<area shape="rect" id="node2" href="$sim-operations_8h.html#a3f1b06b7aa35e6a05918e16d1deabeee" title="Perform crosses between all pairs of parents in the group from_group and allocates the resulting offs..." alt="" coords="8,5,165,47"/>
-<area shape="rect" id="node3" href="$sim-operations_8h.html#a3b67d38c13c7a8bef2d0fc91c0365177" title="Perform crosses between pairs of parents identified by name in a file and allocate the resulting offs..." alt="" coords="5,71,168,98"/>
-<area shape="rect" id="node4" href="$sim-operations_8h.html#aa7c90b4015e4abce750176c6d891cad2" title="Perform crosses between previously&#45;generated offspring of pairs of parents identified by name in a fi..." alt="" coords="11,123,163,164"/>
+<area shape="rect" id="node1" title="Performs the crosses of pairs of parents whose ids are provided in an array." alt="" coords="693,71,871,98"/>
+<area shape="rect" id="node2" href="$sim-operations_8h.html#a3f1b06b7aa35e6a05918e16d1deabeee" title="Perform crosses between all pairs of parents in the group from_group and allocates the resulting offs..." alt="" coords="485,5,643,47"/>
+<area shape="rect" id="node7" href="$sim-operations_8h.html#a3b67d38c13c7a8bef2d0fc91c0365177" title="Perform crosses between pairs of parents identified by name in a file and allocate the resulting offs..." alt="" coords="483,71,645,98"/>
+<area shape="rect" id="node8" href="$sim-operations_8h.html#aa7c90b4015e4abce750176c6d891cad2" title="Perform crosses between previously&#45;generated offspring of pairs of parents identified by name in a fi..." alt="" coords="488,123,640,164"/>
+<area shape="rect" id="node3" href="$sim_8c.html#a0ddf1224851353fc92bfbff6f499fa97" title=" " alt="" coords="318,13,369,39"/>
+<area shape="rect" id="node4" href="$sim-test_8h.html#a62c63a7e5ed5542fc454926025c662cd" title=" " alt="" coords="252,67,435,94"/>
+<area shape="rect" id="node5" href="$sim-test_8h.html#a61a1136d2ec4643a72bd9e50635edf2e" title=" " alt="" coords="104,101,204,127"/>
+<area shape="rect" id="node6" href="$sim-test_8c.html#a0ddf1224851353fc92bfbff6f499fa97" title=" " alt="" coords="5,101,56,127"/>
+<area shape="rect" id="node9" href="$sim-test_8h.html#a2f2f1d4ce8de1e53af237fca415e9b8c" title=" " alt="" coords="266,126,421,153"/>
 </map>

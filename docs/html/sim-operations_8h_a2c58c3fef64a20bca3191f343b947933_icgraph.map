@@ -1,7 +1,11 @@
 <map id="add_to_dmatrix" name="add_to_dmatrix">
-<area shape="rect" id="node1" title="Add the two DecimalMatrix." alt="" coords="616,31,727,57"/>
-<area shape="rect" id="node2" href="$sim-operations_8h.html#ac297afb7cf2c56f6f3f436090d7962dd" title="Calculates the fitness metric/GEBV for each genotype in the AlleleMatrix in a certain group,..." alt="" coords="405,23,568,65"/>
-<area shape="rect" id="node3" href="$sim-operations_8h.html#a4d37c413cb4c979b4eafa1d0b656edd1" title="Print the GEBV of each genotype in a group to a file." alt="" coords="216,5,348,32"/>
-<area shape="rect" id="node4" href="$sim-operations_8h.html#aa91ffff83cf204fff8baef3790738b7a" title="Takes the top top_n fitness/GEBV individuals in the group and puts them in a new group." alt="" coords="207,56,357,83"/>
-<area shape="rect" id="node5" href="$sim-operations_8h.html#a68aca99a41527b019316c8243e6fc7a7" title="Find the top m percent of a group and perform random crosses between those top individuals." alt="" coords="5,49,159,90"/>
+<area shape="rect" id="node1" title="Add the two DecimalMatrix." alt="" coords="653,81,764,108"/>
+<area shape="rect" id="node2" href="$sim-operations_8h.html#a955d1b1f461fcc6d5e8c33623164ad6e" title="Calculates the fitness metric/breeding value for each genotype in the AlleleMatrix in a certain group..." alt="" coords="467,81,605,108"/>
+<area shape="rect" id="node3" href="$sim-operations_8h.html#aacbc190e8ea144de14b586e5fe3ae865" title="Gets the breeding values/breeding values/fitnesses of each member of the group." alt="" coords="309,5,415,32"/>
+<area shape="rect" id="node6" href="$sim-operations_8h.html#a0da46978e8e546af5eb3b2635902a82b" title="Print the breeding value of each genotype in a group to a file." alt="" coords="305,56,419,83"/>
+<area shape="rect" id="node7" href="$sim-operations_8h.html#ae34db60faf62b898d0572ea6c039b96a" title="Takes the top_n individuals in the group with the best breeding values/fitnesses and puts them in a n..." alt="" coords="319,107,405,133"/>
+<area shape="rect" id="node9" href="$sim-test_8h.html#a44f8cfe71aaca7ff941ef613acc63655" title=" " alt="" coords="105,157,257,184"/>
+<area shape="rect" id="node4" href="$sim-test_8c.html#a962ba6c4db51544cbac7dcff1ff646eb" title=" " alt="" coords="118,23,243,49"/>
+<area shape="rect" id="node5" href="$sim-test_8c.html#a0ddf1224851353fc92bfbff6f499fa97" title=" " alt="" coords="5,99,56,125"/>
+<area shape="rect" id="node8" href="$sim-operations_8h.html#a68aca99a41527b019316c8243e6fc7a7" title="Find the top m percent of a group and perform random crosses between those top individuals." alt="" coords="104,91,257,133"/>
 </map>

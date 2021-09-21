@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['subject_5fnames_306',['subject_names',['../struct_allele_matrix.html#aa282e69928507e5e465fd05bdc9ea330',1,'AlleleMatrix']]],
-  ['subject_5fprefix_307',['subject_prefix',['../struct_gen_options.html#a427515e665828e96923d93aea91b1330',1,'GenOptions']]]
+  ['rand_5fhalfpoint_376',['RAND_HALFPOINT',['../sim-operations_8c.html#a6db8fbe9028cc259012cbdf075c222b2',1,'RAND_HALFPOINT():&#160;sim-operations.c'],['../sim-operations_8h.html#a6db8fbe9028cc259012cbdf075c222b2',1,'RAND_HALFPOINT():&#160;sim-operations.h']]],
+  ['rows_377',['rows',['../struct_decimal_matrix.html#a7a80ff4671b6ea3fba3a9ecd9e66a028',1,'DecimalMatrix']]]
 ];

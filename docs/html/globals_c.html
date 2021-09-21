@@ -22,7 +22,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">genomicSimulationC
-   &#160;<span id="projectnumber">0.1-3</span>
+   &#160;<span id="projectnumber">0.1-4</span>
    </div>
   </td>
  </tr>
@@ -65,33 +65,33 @@ $(function() {
 <div class="textblock">Here is a list of all functions, variables, defines, enums, and typedefs with links to the files they belong to:</div>
 
 <h3><a id="index_c"></a>- c -</h3><ul>
-<li>calculate_all_block_effects()
-: <a class="el" href="sim-operations_8c.html#a273f36bbf8893e5d74e2a71b41ffd1fa">sim-operations.c</a>
-, <a class="el" href="sim-operations_8h.html#a273f36bbf8893e5d74e2a71b41ffd1fa">sim-operations.h</a>
+<li>calculate_bvs()
+: <a class="el" href="sim-operations_8c.html#ab5b177cf40a7e28276c460d60a3ecbb5">sim-operations.c</a>
+, <a class="el" href="sim-operations_8h.html#ab5b177cf40a7e28276c460d60a3ecbb5">sim-operations.h</a>
 </li>
 <li>calculate_count_matrix_of_allele_for_ids()
 : <a class="el" href="sim-operations_8h.html#ae7797aeac935227749fc6eae09a02a96">sim-operations.h</a>
 , <a class="el" href="sim-operations_8c.html#ae7797aeac935227749fc6eae09a02a96">sim-operations.c</a>
 </li>
-<li>calculate_fitness_metric()
-: <a class="el" href="sim-operations_8c.html#a238032359089625f3fd3b4447cdbbdff">sim-operations.c</a>
-, <a class="el" href="sim-operations_8h.html#a238032359089625f3fd3b4447cdbbdff">sim-operations.h</a>
-</li>
-<li>calculate_fitness_metric_of_group()
-: <a class="el" href="sim-operations_8h.html#ac297afb7cf2c56f6f3f436090d7962dd">sim-operations.h</a>
-, <a class="el" href="sim-operations_8c.html#ac297afb7cf2c56f6f3f436090d7962dd">sim-operations.c</a>
-</li>
 <li>calculate_full_count_matrix_of_allele()
 : <a class="el" href="sim-operations_8c.html#a42f2398ccb53ffafce9b4a17e3222636">sim-operations.c</a>
 , <a class="el" href="sim-operations_8h.html#a42f2398ccb53ffafce9b4a17e3222636">sim-operations.h</a>
 </li>
-<li>calculate_group_block_effects()
-: <a class="el" href="sim-operations_8c.html#a8de70c24458ffb2f3dea5590f7f8cdff">sim-operations.c</a>
-, <a class="el" href="sim-operations_8h.html#a4f233b73d31da864cdf803b52231e555">sim-operations.h</a>
+<li>calculate_group_bvs()
+: <a class="el" href="sim-operations_8h.html#a955d1b1f461fcc6d5e8c33623164ad6e">sim-operations.h</a>
+, <a class="el" href="sim-operations_8c.html#a955d1b1f461fcc6d5e8c33623164ad6e">sim-operations.c</a>
 </li>
-<li>calculate_ideal_genotype()
-: <a class="el" href="sim-operations_8c.html#ab569f6043f8d810aee8d8c5ba380abbd">sim-operations.c</a>
-, <a class="el" href="sim-operations_8h.html#ab569f6043f8d810aee8d8c5ba380abbd">sim-operations.h</a>
+<li>calculate_group_local_bvs()
+: <a class="el" href="sim-operations_8c.html#a8fdd3011c2ce5228c8c8d6486533369b">sim-operations.c</a>
+, <a class="el" href="sim-operations_8h.html#a8fdd3011c2ce5228c8c8d6486533369b">sim-operations.h</a>
+</li>
+<li>calculate_heterozygosity()
+: <a class="el" href="sim-test_8c.html#a01a63fc90d4b55e355ea2dcee2a050c9">sim-test.c</a>
+, <a class="el" href="sim-test_8h.html#a01a63fc90d4b55e355ea2dcee2a050c9">sim-test.h</a>
+</li>
+<li>calculate_local_bvs()
+: <a class="el" href="sim-operations_8c.html#a7c6e2c2f4447accd4a30031256c1610a">sim-operations.c</a>
+, <a class="el" href="sim-operations_8h.html#a7c6e2c2f4447accd4a30031256c1610a">sim-operations.h</a>
 </li>
 <li>calculate_min_recombinations_fw1()
 : <a class="el" href="sim-operations_8h.html#aad9cd4248231da3682ba2f08a40cdbe8">sim-operations.h</a>
@@ -101,29 +101,52 @@ $(function() {
 : <a class="el" href="sim-operations_8c.html#a3627a380ed86ebebe937c953bc3b2339">sim-operations.c</a>
 , <a class="el" href="sim-operations_8h.html#a3627a380ed86ebebe937c953bc3b2339">sim-operations.h</a>
 </li>
+<li>calculate_minimum_bv()
+: <a class="el" href="sim-operations_8c.html#acef164c7781f3aa15928b482c3845418">sim-operations.c</a>
+, <a class="el" href="sim-operations_8h.html#acef164c7781f3aa15928b482c3845418">sim-operations.h</a>
+</li>
+<li>calculate_optimal_alleles()
+: <a class="el" href="sim-operations_8c.html#adf9a424cc9474272059ff328bfadf755">sim-operations.c</a>
+, <a class="el" href="sim-operations_8h.html#adf9a424cc9474272059ff328bfadf755">sim-operations.h</a>
+</li>
+<li>calculate_optimum_bv()
+: <a class="el" href="sim-operations_8c.html#a67d98ae97e5352f32380c8b89b1e4047">sim-operations.c</a>
+, <a class="el" href="sim-operations_8h.html#a67d98ae97e5352f32380c8b89b1e4047">sim-operations.h</a>
+</li>
 <li>calculate_recombinations_from_file()
-: <a class="el" href="sim-operations_8h.html#a7813f256407ab2ea242df32ea9ad2c7e">sim-operations.h</a>
-, <a class="el" href="sim-operations_8c.html#a7813f256407ab2ea242df32ea9ad2c7e">sim-operations.c</a>
+: <a class="el" href="sim-operations_8c.html#a7813f256407ab2ea242df32ea9ad2c7e">sim-operations.c</a>
+, <a class="el" href="sim-operations_8h.html#a7813f256407ab2ea242df32ea9ad2c7e">sim-operations.h</a>
 </li>
 <li>combine_groups()
 : <a class="el" href="sim-operations_8c.html#ade6b01bfc6450638a3a341b76e28a97d">sim-operations.c</a>
 , <a class="el" href="sim-operations_8h.html#ade6b01bfc6450638a3a341b76e28a97d">sim-operations.h</a>
 </li>
 <li>condense_allele_matrix()
-: <a class="el" href="sim-operations_8c.html#a887027349503be24b1a847c9b833aaac">sim-operations.c</a>
-, <a class="el" href="sim-operations_8h.html#a887027349503be24b1a847c9b833aaac">sim-operations.h</a>
+: <a class="el" href="sim-operations_8h.html#a887027349503be24b1a847c9b833aaac">sim-operations.h</a>
+, <a class="el" href="sim-operations_8c.html#a887027349503be24b1a847c9b833aaac">sim-operations.c</a>
+</li>
+<li>CONTIG_WIDTH
+: <a class="el" href="sim-settings_8h.html#af5eaa46085f7cc2b20091cdf17eea54a">sim-settings.h</a>
 </li>
 <li>create_empty_allelematrix()
 : <a class="el" href="sim-operations_8c.html#aac694dd044a29fd93443368a7b9e8d8a">sim-operations.c</a>
 , <a class="el" href="sim-operations_8h.html#aac694dd044a29fd93443368a7b9e8d8a">sim-operations.h</a>
 </li>
+<li>create_empty_simdata()
+: <a class="el" href="sim-operations_8c.html#ade7f44243415336a463877ff8d60490d">sim-operations.c</a>
+, <a class="el" href="sim-operations_8h.html#ade7f44243415336a463877ff8d60490d">sim-operations.h</a>
+</li>
+<li>create_n_blocks_by_chr()
+: <a class="el" href="sim-operations_8h.html#a2f61debfc95036e86953f6111236026f">sim-operations.h</a>
+, <a class="el" href="sim-operations_8c.html#a2f61debfc95036e86953f6111236026f">sim-operations.c</a>
+</li>
 <li>cross_random_individuals()
-: <a class="el" href="sim-operations_8h.html#a3ea77c76c329625646419a10683669f9">sim-operations.h</a>
-, <a class="el" href="sim-operations_8c.html#a3ea77c76c329625646419a10683669f9">sim-operations.c</a>
+: <a class="el" href="sim-operations_8c.html#a3ea77c76c329625646419a10683669f9">sim-operations.c</a>
+, <a class="el" href="sim-operations_8h.html#a3ea77c76c329625646419a10683669f9">sim-operations.h</a>
 </li>
 <li>cross_these_combinations()
-: <a class="el" href="sim-operations_8c.html#abb793988799d792dfe4007efdf988068">sim-operations.c</a>
-, <a class="el" href="sim-operations_8h.html#abb793988799d792dfe4007efdf988068">sim-operations.h</a>
+: <a class="el" href="sim-operations_8h.html#abb793988799d792dfe4007efdf988068">sim-operations.h</a>
+, <a class="el" href="sim-operations_8c.html#abb793988799d792dfe4007efdf988068">sim-operations.c</a>
 </li>
 </ul>
 </div><!-- contents -->

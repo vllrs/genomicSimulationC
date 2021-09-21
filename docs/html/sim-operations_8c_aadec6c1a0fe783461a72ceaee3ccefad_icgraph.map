@@ -1,4 +1,7 @@
 <map id="get_id_of_child" name="get_id_of_child">
-<area shape="rect" id="node1" title="Search for a genotype with parentage matching two given parent ids in a linked list of AlleleMatrix,..." alt="" coords="205,13,313,39"/>
-<area shape="rect" id="node2" href="$sim-operations_8h.html#aa7c90b4015e4abce750176c6d891cad2" title="Perform crosses between previously&#45;generated offspring of pairs of parents identified by name in a fi..." alt="" coords="5,5,157,47"/>
+<area shape="rect" id="node1" title="Search for a genotype with parentage matching two given parent ids in a linked list of AlleleMatrix,..." alt="" coords="655,13,763,39"/>
+<area shape="rect" id="node2" href="$sim-operations_8h.html#aa7c90b4015e4abce750176c6d891cad2" title="Perform crosses between previously&#45;generated offspring of pairs of parents identified by name in a fi..." alt="" coords="455,5,607,47"/>
+<area shape="rect" id="node3" href="$sim-test_8h.html#a2f2f1d4ce8de1e53af237fca415e9b8c" title=" " alt="" coords="252,13,407,39"/>
+<area shape="rect" id="node4" href="$sim-test_8h.html#a61a1136d2ec4643a72bd9e50635edf2e" title=" " alt="" coords="104,13,204,39"/>
+<area shape="rect" id="node5" href="$sim-test_8c.html#a0ddf1224851353fc92bfbff6f499fa97" title=" " alt="" coords="5,13,56,39"/>
 </map>
