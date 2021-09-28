@@ -17,17 +17,17 @@ int main(int argc, char* argv[]) {
 
 	// prepare to perform a cross by selecting the options we want
 	// (macros TRUE and FALSE map to 1 and 0 and are defined in sim-operations.h)
-	GenOptions g = {.will_name_subjects=TRUE, .subject_prefix="F1", .family_size=100,
+	GenOptions g = {.will_name_offspring=TRUE, .offspring_name_prefix="F1", .family_size=100,
 		.will_track_pedigree=TRUE, .will_allocate_ids=TRUE,
 		.filename_prefix="testcross", .will_save_pedigree_to_file=FALSE,
-		.will_save_effects_to_file=FALSE, .will_save_genes_to_file=FALSE,
+		.will_save_bvs_to_file=FALSE, .will_save_alleles_to_file=FALSE,
 		.will_save_to_simdata=TRUE};
 	// rather than defining all options manually, the option exists to use the constant
 	// BASIC_OPT, which has the following definition:
-	//	{.will_name_subjects=FALSE, .subject_prefix=NULL, .family_size=1,
+	//	{.will_name_offspring=FALSE, .offspring_name_prefix=NULL, .family_size=1,
 	//	.will_track_pedigree=FALSE, .will_allocate_ids=TRUE,
 	//	.filename_prefix=NULL, .will_save_pedigree_to_file=FALSE,
-	//	.will_save_effects_to_file=FALSE, .will_save_genes_to_file=FALSE,
+	//	.will_save_bvs_to_file=FALSE, .will_save_alleles_to_file=FALSE,
 	//	.will_save_to_simdata=TRUE};
 
 	// perform your cross. Multiple crossing functions are available for different

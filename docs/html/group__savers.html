@@ -81,7 +81,7 @@ Functions</h2></td></tr>
 <tr class="memdesc:ga2d795d5594b914eac4e5f6fcee3afbda"><td class="mdescLeft">&#160;</td><td class="mdescRight">Prints the markers contained in a set of blocks to a file.  <a href="group__savers.html#ga2d795d5594b914eac4e5f6fcee3afbda">More...</a><br /></td></tr>
 <tr class="separator:ga2d795d5594b914eac4e5f6fcee3afbda"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga42a237afba9dc8f3a7339cb97d929cb6"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__savers.html#ga42a237afba9dc8f3a7339cb97d929cb6">save_allele_matrix</a> (FILE *f, <a class="el" href="struct_allele_matrix.html">AlleleMatrix</a> *m, char **markers)</td></tr>
-<tr class="memdesc:ga42a237afba9dc8f3a7339cb97d929cb6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Prints all the geneotype data saved in the linked list of AlleleMatrices starting with <code>m</code> to a file.  <a href="group__savers.html#ga42a237afba9dc8f3a7339cb97d929cb6">More...</a><br /></td></tr>
+<tr class="memdesc:ga42a237afba9dc8f3a7339cb97d929cb6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Prints all the genotype data saved in the linked list of AlleleMatrices starting with <code>m</code> to a file.  <a href="group__savers.html#ga42a237afba9dc8f3a7339cb97d929cb6">More...</a><br /></td></tr>
 <tr class="separator:ga42a237afba9dc8f3a7339cb97d929cb6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gaadf131f9f90546d6ab9355cbaa1cf6e1"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__savers.html#gaadf131f9f90546d6ab9355cbaa1cf6e1">save_transposed_allele_matrix</a> (FILE *f, <a class="el" href="struct_allele_matrix.html">AlleleMatrix</a> *m, char **markers)</td></tr>
 <tr class="memdesc:gaadf131f9f90546d6ab9355cbaa1cf6e1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Prints all the gene data saved in the linked list starting with <code>m</code> to the file.  <a href="group__savers.html#gaadf131f9f90546d6ab9355cbaa1cf6e1">More...</a><br /></td></tr>
@@ -161,12 +161,12 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Prints all the geneotype data saved in the linked list of AlleleMatrices starting with <code>m</code> to a file. </p>
+<p>Prints all the genotype data saved in the linked list of AlleleMatrices starting with <code>m</code> to a file. </p>
 <p>Uses the following format: </p><pre class="fragment">    [marker name]   [marker name]
-</pre><p>[subject id]OR[subject name] [allele pairs for each marker]</p>
-<p>[subject id]OR[subject name] [allele pairs for each marker]</p>
+</pre><p>[id]OR[name] [allele pairs for each marker]</p>
+<p>[id]OR[name] [allele pairs for each marker]</p>
 <p>...</p>
-<p>Subject id will be printed if the genotype does not have a name saved</p>
+<p>ID will be printed if the genotype does not have a name saved</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">f</td><td>file pointer opened for writing to put the output </td></tr>
@@ -181,7 +181,7 @@ Here is the caller graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="group__savers_ga42a237afba9dc8f3a7339cb97d929cb6_icgraph.png" border="0" usemap="#group__savers_ga42a237afba9dc8f3a7339cb97d929cb6_icgraph" alt=""/></div>
 <map name="group__savers_ga42a237afba9dc8f3a7339cb97d929cb6_icgraph" id="group__savers_ga42a237afba9dc8f3a7339cb97d929cb6_icgraph">
-<area shape="rect" title="Prints all the geneotype data saved in the linked list of AlleleMatrices starting with m to a file." alt="" coords="441,143,569,170"/>
+<area shape="rect" title="Prints all the genotype data saved in the linked list of AlleleMatrices starting with m to a file." alt="" coords="441,143,569,170"/>
 <area shape="rect" href="group__crossers.html#ga3ea77c76c329625646419a10683669f9" title="Performs random crosses among members of a group." alt="" coords="219,31,390,58"/>
 <area shape="rect" href="group__crossers.html#gabb793988799d792dfe4007efdf988068" title="Performs the crosses of pairs of parents whose ids are provided in an array." alt="" coords="216,118,393,145"/>
 <area shape="rect" href="group__crossers.html#gaf078d6bc1b5d4234a9b960e6132480aa" title="Creates a doubled haploid from each member of a group." alt="" coords="224,169,385,195"/>
@@ -365,11 +365,11 @@ Here is the call graph for this function:</div>
 </div><div class="memdoc">
 
 <p>Print the number of copies of a particular allele at each marker of each genotype in the <a class="el" href="struct_sim_data.html" title="Composite type that is used to run crossing simulations.">SimData</a> to a file. </p>
-<p>The following tab-separated format is used: </p><pre class="fragment">    [subject id]OR[subject name]    [subject id]OR[subject name] ...
+<p>The following tab-separated format is used: </p><pre class="fragment">    [id]OR[name]    [id]OR[name] ...
 </pre><p>[marker name] [allele count for each marker]</p>
 <p>[marker name] [allele count for each marker]</p>
 <p>...</p>
-<p>Subject id will be printed if the genotype does not have a name saved.</p>
+<p>ID will be printed if the genotype does not have a name saved.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">f</td><td>file pointer opened for writing to put the output </td></tr>
@@ -431,11 +431,11 @@ Here is the call graph for this function:</div>
 </div><div class="memdoc">
 
 <p>Print the number of copies of a particular allele at each marker of each genotype in a group to a file. </p>
-<p>The following tab-separated format is used: </p><pre class="fragment">    [subject id]OR[subject name]    [subject id]OR[subject name] ...
+<p>The following tab-separated format is used: </p><pre class="fragment">    [id]OR[name]    [id]OR[name] ...
 </pre><p>[marker name] [allele count for each marker]</p>
 <p>[marker name] [allele count for each marker]</p>
 <p>...</p>
-<p>Subject id will be printed if the genotype does not have a name saved.</p>
+<p>ID will be printed if the genotype does not have a name saved.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">f</td><td>file pointer opened for writing to put the output </td></tr>
@@ -555,10 +555,10 @@ Here is the call graph for this function:</div>
 
 <p>Prints the genotypes of each individual in a given group to a file, with the following format. </p>
 <pre class="fragment">    [marker name]   [marker name]
-</pre><p>[subject id]OR[subject name] [allele pairs for each marker]</p>
-<p>[subject id]OR[subject name] [allele pairs for each marker]</p>
+</pre><p>[id]OR[name] [allele pairs for each marker]</p>
+<p>[id]OR[name] [allele pairs for each marker]</p>
 <p>...</p>
-<p>Subject id will be printed if the genotype does not have a name saved</p>
+<p>ID will be printed if the genotype does not have a name saved</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">f</td><td>file pointer opened for writing to put the output </td></tr>
@@ -1137,11 +1137,11 @@ Here is the caller graph for this function:</div>
 </div><div class="memdoc">
 
 <p>Prints all the gene data saved in the linked list starting with <code>m</code> to the file. </p>
-<p>Uses the following format: </p><pre class="fragment">    [subject id]OR[subject name]    [subject id]OR[subject name] ...
+<p>Uses the following format: </p><pre class="fragment">    [id]OR[name]    [id]OR[name] ...
 </pre><p>[marker name] [allele pairs for each marker]</p>
 <p>[marker name] [allele pairs for each marker]</p>
 <p>...</p>
-<p>Subject id will be printed if the genotype does not have a name saved</p>
+<p>ID will be printed if the genotype does not have a name saved</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">f</td><td>file pointer opened for writing to put the output </td></tr>
@@ -1186,11 +1186,11 @@ Here is the caller graph for this function:</div>
 </div><div class="memdoc">
 
 <p>Prints the genotypes of each individual in a given group to a file, with the following format. </p>
-<pre class="fragment">[subject id]OR[subject name]    [subject id]OR[subject name] ...
+<pre class="fragment">[id]OR[name]    [id]OR[name] ...
 </pre><p>[marker name] [allele pairs for each marker]</p>
 <p>[marker name] [allele pairs for each marker]</p>
 <p>...</p>
-<p>Subject id will be printed if the genotype does not have a name saved</p>
+<p>ID will be printed if the genotype does not have a name saved</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">f</td><td>file pointer opened for writing to put the output </td></tr>

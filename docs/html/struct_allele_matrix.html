@@ -84,20 +84,20 @@ Data Fields</h2></td></tr>
 <tr class="memitem:a73ada185d7dfa790f3f460ebd96eeb90"><td class="memItemLeft" align="right" valign="top">char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_allele_matrix.html#a73ada185d7dfa790f3f460ebd96eeb90">alleles</a> [CONTIG_WIDTH]</td></tr>
 <tr class="memdesc:a73ada185d7dfa790f3f460ebd96eeb90"><td class="mdescLeft">&#160;</td><td class="mdescRight">A matrix of SNP markers by lines/genotypes containing pairs of alleles eg TT, TA.  <a href="struct_allele_matrix.html#a73ada185d7dfa790f3f460ebd96eeb90">More...</a><br /></td></tr>
 <tr class="separator:a73ada185d7dfa790f3f460ebd96eeb90"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aac734f2284237bccad79bffea0a773c9"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_allele_matrix.html#aac734f2284237bccad79bffea0a773c9">n_lines</a></td></tr>
-<tr class="memdesc:aac734f2284237bccad79bffea0a773c9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Number of genotypes currently loaded in this matrix.  <a href="struct_allele_matrix.html#aac734f2284237bccad79bffea0a773c9">More...</a><br /></td></tr>
-<tr class="separator:aac734f2284237bccad79bffea0a773c9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af4c83a2b9421b9ea10576c51df97499d"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_allele_matrix.html#af4c83a2b9421b9ea10576c51df97499d">n_genotypes</a></td></tr>
+<tr class="memdesc:af4c83a2b9421b9ea10576c51df97499d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Number of genotypes currently loaded in this matrix.  <a href="struct_allele_matrix.html#af4c83a2b9421b9ea10576c51df97499d">More...</a><br /></td></tr>
+<tr class="separator:af4c83a2b9421b9ea10576c51df97499d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:abe54d751c98bca248601301132295907"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_allele_matrix.html#abe54d751c98bca248601301132295907">n_markers</a></td></tr>
 <tr class="memdesc:abe54d751c98bca248601301132295907"><td class="mdescLeft">&#160;</td><td class="mdescRight">Number of markers across which genotypes are tracked.  <a href="struct_allele_matrix.html#abe54d751c98bca248601301132295907">More...</a><br /></td></tr>
 <tr class="separator:abe54d751c98bca248601301132295907"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:afcb8e5235701ee2fe2599597ef3cd719"><td class="memItemLeft" align="right" valign="top">char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_allele_matrix.html#afcb8e5235701ee2fe2599597ef3cd719">line_names</a> [CONTIG_WIDTH]</td></tr>
-<tr class="memdesc:afcb8e5235701ee2fe2599597ef3cd719"><td class="mdescLeft">&#160;</td><td class="mdescRight">Array of dynamically allocated strings containing the names of the lines/genotypes in this matrix.  <a href="struct_allele_matrix.html#afcb8e5235701ee2fe2599597ef3cd719">More...</a><br /></td></tr>
-<tr class="separator:afcb8e5235701ee2fe2599597ef3cd719"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7161aa1a99fed07850afd9fdc4886168"><td class="memItemLeft" align="right" valign="top">char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_allele_matrix.html#a7161aa1a99fed07850afd9fdc4886168">names</a> [CONTIG_WIDTH]</td></tr>
+<tr class="memdesc:a7161aa1a99fed07850afd9fdc4886168"><td class="mdescLeft">&#160;</td><td class="mdescRight">Array of dynamically allocated strings containing the names of the lines/genotypes in this matrix.  <a href="struct_allele_matrix.html#a7161aa1a99fed07850afd9fdc4886168">More...</a><br /></td></tr>
+<tr class="separator:a7161aa1a99fed07850afd9fdc4886168"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a84a371ded20b00d177dd6dbf5877d85a"><td class="memItemLeft" align="right" valign="top">unsigned int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_allele_matrix.html#a84a371ded20b00d177dd6dbf5877d85a">ids</a> [CONTIG_WIDTH]</td></tr>
 <tr class="memdesc:a84a371ded20b00d177dd6dbf5877d85a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Unique ID for each genotype.  <a href="struct_allele_matrix.html#a84a371ded20b00d177dd6dbf5877d85a">More...</a><br /></td></tr>
 <tr class="separator:a84a371ded20b00d177dd6dbf5877d85a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a789948354e752963b4585980a76c5126"><td class="memItemLeft" align="right" valign="top">unsigned int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_allele_matrix.html#a789948354e752963b4585980a76c5126">pedigrees</a> [2][CONTIG_WIDTH]</td></tr>
-<tr class="memdesc:a789948354e752963b4585980a76c5126"><td class="mdescLeft">&#160;</td><td class="mdescRight">Two lists of integer IDs of the parents of this subject (if tracked), or 0 if we don't know/care.  <a href="struct_allele_matrix.html#a789948354e752963b4585980a76c5126">More...</a><br /></td></tr>
+<tr class="memdesc:a789948354e752963b4585980a76c5126"><td class="mdescLeft">&#160;</td><td class="mdescRight">Two lists of integer IDs of the parents of this genotype (if tracked), or 0 if we don't know/care.  <a href="struct_allele_matrix.html#a789948354e752963b4585980a76c5126">More...</a><br /></td></tr>
 <tr class="separator:a789948354e752963b4585980a76c5126"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a30bb226acbee9ac11970d7c4bdabe9e1"><td class="memItemLeft" align="right" valign="top">unsigned int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_allele_matrix.html#a30bb226acbee9ac11970d7c4bdabe9e1">groups</a> [CONTIG_WIDTH]</td></tr>
 <tr class="memdesc:a30bb226acbee9ac11970d7c4bdabe9e1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Group allocation of each genotype.  <a href="struct_allele_matrix.html#a30bb226acbee9ac11970d7c4bdabe9e1">More...</a><br /></td></tr>
@@ -156,31 +156,14 @@ Data Fields</h2></td></tr>
 
 </div>
 </div>
-<a id="afcb8e5235701ee2fe2599597ef3cd719"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#afcb8e5235701ee2fe2599597ef3cd719">&#9670;&nbsp;</a></span>line_names</h2>
+<a id="af4c83a2b9421b9ea10576c51df97499d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af4c83a2b9421b9ea10576c51df97499d">&#9670;&nbsp;</a></span>n_genotypes</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">char* AlleleMatrix::line_names[CONTIG_WIDTH]</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Array of dynamically allocated strings containing the names of the lines/genotypes in this matrix. </p>
-<p>Guaranteed to be NULL if they do not have names. </p>
-
-</div>
-</div>
-<a id="aac734f2284237bccad79bffea0a773c9"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aac734f2284237bccad79bffea0a773c9">&#9670;&nbsp;</a></span>n_lines</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">int AlleleMatrix::n_lines</td>
+          <td class="memname">int AlleleMatrix::n_genotypes</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -203,6 +186,23 @@ Data Fields</h2></td></tr>
 
 <p>Number of markers across which genotypes are tracked. </p>
 <p>This has redundancy with <a class="el" href="struct_sim_data.html" title="Composite type that is used to run crossing simulations.">SimData</a> and other members of its linked list but it's good to know how big your own <code>alleles</code> array is. </p>
+
+</div>
+</div>
+<a id="a7161aa1a99fed07850afd9fdc4886168"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7161aa1a99fed07850afd9fdc4886168">&#9670;&nbsp;</a></span>names</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">char* AlleleMatrix::names[CONTIG_WIDTH]</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Array of dynamically allocated strings containing the names of the lines/genotypes in this matrix. </p>
+<p>Guaranteed to be NULL if they do not have names. </p>
 
 </div>
 </div>
@@ -234,7 +234,7 @@ Data Fields</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Two lists of integer IDs of the parents of this subject (if tracked), or 0 if we don't know/care. </p>
+<p>Two lists of integer IDs of the parents of this genotype (if tracked), or 0 if we don't know/care. </p>
 
 </div>
 </div>

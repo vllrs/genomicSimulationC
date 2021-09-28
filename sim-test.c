@@ -90,7 +90,7 @@ int test_loaders(SimData* d) {
 	assert(d->m != NULL);
 	assert(d->current_id == 6);
 	assert(d->m->n_markers == 3);
-	assert(d->m->n_subjects == 6);
+	assert(d->m->n_genotypes == 6);
 	assert(d->m->ids[0] == 1);
 	assert(d->m->ids[1] == 2);
 	assert(d->m->ids[2] == 3);
@@ -112,12 +112,12 @@ int test_loaders(SimData* d) {
 	assert(g0 > 0);
 
 	// might not be important that thele load in this order but we'll ask for it anyway.
-	assert(strcmp(d->m->subject_names[0], "G01") == 0);
-	assert(strcmp(d->m->subject_names[1], "G02") == 0);
-	assert(strcmp(d->m->subject_names[2], "G03") == 0);
-	assert(strcmp(d->m->subject_names[3], "G04") == 0);
-	assert(strcmp(d->m->subject_names[4], "G05") == 0);
-	assert(strcmp(d->m->subject_names[5], "G06") == 0);
+	assert(strcmp(d->m->names[0], "G01") == 0);
+	assert(strcmp(d->m->names[1], "G02") == 0);
+	assert(strcmp(d->m->names[2], "G03") == 0);
+	assert(strcmp(d->m->names[3], "G04") == 0);
+	assert(strcmp(d->m->names[4], "G05") == 0);
+	assert(strcmp(d->m->names[5], "G06") == 0);
 	assert(strncmp(d->m->alleles[0],"TTAATT", 6) == 0); // G01
 	assert(strncmp(d->m->alleles[1],"TTAATT", 6) == 0); // G02
 	assert(strncmp(d->m->alleles[2],"TTAATA", 6) == 0); // G03
@@ -186,34 +186,34 @@ int test_crossing(SimData *d, int g0) {
 }
 
 int test_crossing_unidirectional(SimData *d, int g0) {
-	GenOptions g = {.will_name_subjects=TRUE, .subject_prefix="F1", .family_size=1,
+	GenOptions g = {.will_name_offspring=TRUE, .offspring_name_prefix="F1", .family_size=1,
 		.will_track_pedigree=TRUE, .will_allocate_ids=TRUE,
 		.filename_prefix="atestF1", .will_save_pedigree_to_file=TRUE,
-		.will_save_effects_to_file=TRUE, .will_save_genes_to_file=TRUE,
+		.will_save_bvs_to_file=TRUE, .will_save_alleles_to_file=TRUE,
 		.will_save_to_simdata=TRUE};
 	//AlleleMatrix* a = make_all_unidirectional_crosses(&sd, 0, g);
 	//sd.m->next_gen = a;
 	int g1 = make_all_unidirectional_crosses(d, g0, g);
 
 	assert(g1 != g0);
-	assert(d->m->n_subjects == 21);
+	assert(d->m->n_genotypes == 21);
 	assert(d->m->n_markers == 3);
 	//assert(strcmp(sd.m->name, "F1g") == 0);
-	assert(strcmp(d->m->subject_names[6], "F107") == 0);
-	assert(strcmp(d->m->subject_names[7], "F108") == 0);
-	assert(strcmp(d->m->subject_names[8], "F109") == 0);
-	assert(strcmp(d->m->subject_names[9], "F110") == 0);
-	assert(strcmp(d->m->subject_names[10], "F111") == 0);
-	assert(strcmp(d->m->subject_names[11], "F112") == 0);
-	assert(strcmp(d->m->subject_names[12], "F113") == 0);
-	assert(strcmp(d->m->subject_names[13], "F114") == 0);
-	assert(strcmp(d->m->subject_names[14], "F115") == 0);
-	assert(strcmp(d->m->subject_names[15], "F116") == 0);
-	assert(strcmp(d->m->subject_names[16], "F117") == 0);
-	assert(strcmp(d->m->subject_names[17], "F118") == 0);
-	assert(strcmp(d->m->subject_names[18], "F119") == 0);
-	assert(strcmp(d->m->subject_names[19], "F120") == 0);
-	assert(strcmp(d->m->subject_names[20], "F121") == 0);
+	assert(strcmp(d->m->names[6], "F107") == 0);
+	assert(strcmp(d->m->names[7], "F108") == 0);
+	assert(strcmp(d->m->names[8], "F109") == 0);
+	assert(strcmp(d->m->names[9], "F110") == 0);
+	assert(strcmp(d->m->names[10], "F111") == 0);
+	assert(strcmp(d->m->names[11], "F112") == 0);
+	assert(strcmp(d->m->names[12], "F113") == 0);
+	assert(strcmp(d->m->names[13], "F114") == 0);
+	assert(strcmp(d->m->names[14], "F115") == 0);
+	assert(strcmp(d->m->names[15], "F116") == 0);
+	assert(strcmp(d->m->names[16], "F117") == 0);
+	assert(strcmp(d->m->names[17], "F118") == 0);
+	assert(strcmp(d->m->names[18], "F119") == 0);
+	assert(strcmp(d->m->names[19], "F120") == 0);
+	assert(strcmp(d->m->names[20], "F121") == 0);
 	assert(d->m->pedigrees[0][6] == 1 && d->m->pedigrees[1][6] == 2); //assumes you're doing the top triangle of crosses
 	assert(d->m->pedigrees[0][7] == 1 && d->m->pedigrees[1][7] == 3);
 	assert(d->m->pedigrees[0][8] == 1 && d->m->pedigrees[1][8] == 4);
@@ -237,9 +237,9 @@ int test_crossing_unidirectional(SimData *d, int g0) {
 
 
 	// @should check that the saved files are correct too before deleting them
-    remove("atestF1-eff");
-	remove("atestF1-genome");
-	remove("atestF1-pedigree");
+    remove("atestF1-bv.txt");
+	remove("atestF1-genotype.txt");
+	remove("atestF1-pedigree.txt");
 
 	return g1;
 }
@@ -258,7 +258,7 @@ int test_crossing_from_file(SimData *d, char* fname) {
 	assert(d->m->pedigrees[0][22] == 7 && d->m->pedigrees[1][22] == 17);
 	assert(d->m->pedigrees[0][24] == 8 && d->m->pedigrees[1][24] == 21);
 	assert(d->m->pedigrees[0][26] == 21 && d->m->pedigrees[1][26] == 9);
-	assert(d->m->n_subjects == 27);
+	assert(d->m->n_genotypes == 27);
 	assert(d->m->n_markers == 3);
 	printf("...crossed combinations from file correctly\n");
 
@@ -273,7 +273,7 @@ int test_crossing_selfing(SimData *d, int g1) {
 	assert(g1selfed != g1);
 	//printf("Heterozygousity reduction from selfing: %f %f\n", h2, h1);
 	assert(h1 - h2 > 0);
-	assert(d->m->n_subjects == 42);
+	assert(d->m->n_genotypes == 42);
 	assert(d->m->n_markers == 3);
 	printf("...selfing function correctly reduced heterozygosity by %f%%\n", (h2-h1)*100);
 
@@ -457,20 +457,20 @@ int main(int argc, char* argv[]) {
 	printf("Loading took %f seconds to run\n", (double)c / CLOCKS_PER_SEC);
 
 	c = clock();
-	GenOptions g = {.will_name_subjects=FALSE, .subject_prefix=NULL, .family_size=1,
+	GenOptions g = {.will_name_offspring=FALSE, .offspring_name_prefix=NULL, .family_size=1,
 		.will_track_pedigree=TRUE, .will_allocate_ids=TRUE,
 		.filename_prefix="testcross", .will_save_pedigree_to_file=FALSE,
-		.will_save_effects_to_file=FALSE, .will_save_genes_to_file=FALSE,
+		.will_save_effects_to_file=FALSE, .will_save_alleles_to_file=FALSE,
 		.will_save_to_simdata=FALSE};
     cross_random_individuals(sd, fg0, 100000, g);
 	c = clock() - c;
 	printf("Random crossing took %f seconds to run\n", (double)c / CLOCKS_PER_SEC);
 
 	c = clock();
-	GenOptions g1 = {.will_name_subjects=FALSE, .subject_prefix=NULL, .family_size=1,
+	GenOptions g1 = {.will_name_offspring=FALSE, .offspring_name_prefix=NULL, .family_size=1,
 		.will_track_pedigree=TRUE, .will_allocate_ids=TRUE,
 		.filename_prefix="tmptiming", .will_save_pedigree_to_file=FALSE,
-		.will_save_effects_to_file=FALSE, .will_save_genes_to_file=TRUE,
+		.will_save_effects_to_file=FALSE, .will_save_alleles_to_file=TRUE,
 		.will_save_to_simdata=FALSE};
     cross_random_individuals(sd, fg0, 100000, g1);
 	c = clock() - c;
@@ -484,10 +484,10 @@ int main(int argc, char* argv[]) {
 			 "C:/Users/JV/Documents/KV QAAFI/input/qtl_mr2.eff-processed.txt");
 
 	c = clock();
-	GenOptions g2 = {.will_name_subjects=TRUE, .subject_prefix="tmp", .family_size=1,
+	GenOptions g2 = {.will_name_offspring=TRUE, .offspring_name_prefix="tmp", .family_size=1,
 		.will_track_pedigree=TRUE, .will_allocate_ids=TRUE,
 		.filename_prefix="tmptiming", .will_save_pedigree_to_file=TRUE,
-		.will_save_effects_to_file=FALSE, .will_save_genes_to_file=TRUE,
+		.will_save_effects_to_file=FALSE, .will_save_alleles_to_file=TRUE,
 		.will_save_to_simdata=FALSE};
     cross_random_individuals(sd, fg0, 100000, g2);
 	c = clock() - c;

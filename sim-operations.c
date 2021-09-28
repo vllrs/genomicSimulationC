@@ -2,15 +2,15 @@
 
 /** Options parameter to run SimData functions in their bare-bones form.*/
 const GenOptions BASIC_OPT = {
-	.will_name_subjects = FALSE,
-	.subject_prefix = NULL,
+	.will_name_offspring = FALSE,
+	.offspring_name_prefix = NULL,
 	.family_size = 1,
 	.will_track_pedigree = FALSE,
 	.will_allocate_ids = TRUE,
 	.filename_prefix = NULL,
 	.will_save_pedigree_to_file = FALSE,
-	.will_save_effects_to_file = FALSE,
-	.will_save_genes_to_file = FALSE,
+	.will_save_bvs_to_file = FALSE,
+	.will_save_alleles_to_file = FALSE,
 	.will_save_to_simdata = TRUE
 };
 
@@ -44,38 +44,32 @@ void* get_malloc(size_t size) {
 
 
 /** Creator for an empty AlleleMatrix object of a given size. Includes memory
- * allocation for `n_subjects` worth of `.alleles`.
+ * allocation for `n_genotypes` worth of `.alleles`.
  *
  * @param n_markers number of rows/markers to create
- * @param n_subjects number of individuals to create. This includes filling the first
- * n_subjects entries of .alleles with heap char* of length n_markers, so that the
+ * @param n_genotypes number of individuals to create. This includes filling the first
+ * n_genotypes entries of .alleles with heap char* of length n_markers, so that the
  * alleles for these can be added without further memory allocation.
  * @returns pointer to the empty created AlleleMatrix
  */
-AlleleMatrix* create_empty_allelematrix(int n_markers, int n_subjects) {
+AlleleMatrix* create_empty_allelematrix(int n_markers, int n_genotypes) {
 	AlleleMatrix* m = get_malloc(sizeof(AlleleMatrix));
 
-	m->n_subjects = n_subjects;
+	m->n_genotypes = n_genotypes;
 	m->n_markers = n_markers;
 	//m->alleles = get_malloc(sizeof(char*) * CONTIG_WIDTH);
-	for (int i = 0; i < n_subjects; ++i) {
+	for (int i = 0; i < n_genotypes; ++i) {
 		m->alleles[i] = get_malloc(sizeof(char) * (n_markers<<1));
 		memset(m->alleles[i], 0, sizeof(char) * (n_markers<<1));
 		//m->ids[i] = 0;
 	}
+	memset(m->alleles + n_genotypes, 0, sizeof(char*) * (CONTIG_WIDTH - n_genotypes)); // setting the pointers to NULL
 
 	memset(m->ids, 0, sizeof(unsigned int) * CONTIG_WIDTH);
 	memset(m->pedigrees[0], 0, sizeof(unsigned int) * CONTIG_WIDTH);
 	memset(m->pedigrees[1], 0, sizeof(unsigned int) * CONTIG_WIDTH);
 	memset(m->groups, 0, sizeof(unsigned int) * CONTIG_WIDTH);
-	memset(m->subject_names, 0, sizeof(char*) * CONTIG_WIDTH); // setting the pointers to NULL
-	memset(m->alleles + n_subjects, 0, sizeof(char*) * (CONTIG_WIDTH - n_subjects + 1)); // setting the pointers to NULL
-
-	/*for (int i = 0; i < CONTIG_WIDTH; ++i) {
-		m->subject_names[i] = NULL;
-		m->pedigrees[0][i] = 0;
-		m->pedigrees[1][i] = 0;
-	}*/
+	memset(m->names, 0, sizeof(char*) * CONTIG_WIDTH); // setting the pointers to NULL
 
 	m->next = NULL;
 
@@ -182,7 +176,7 @@ int randlim(int limit) {
  * @param from_index the starting 0-based index of the range to allocate ids
  * @param to_index the last 0-based index in the range to allocate ids
  */
-void set_subject_ids(SimData* d, int from_index, int to_index) {
+void set_ids(SimData* d, int from_index, int to_index) {
 	if (to_index < from_index) {
 		fprintf(stderr, "Bad range for setting ids\n");
 		exit(1);
@@ -191,12 +185,12 @@ void set_subject_ids(SimData* d, int from_index, int to_index) {
 	AlleleMatrix* m = d->m;
 	int i, total_i = 0;
 	// find the AlleleMatrix from_index belongs to
-	while (total_i + m->n_subjects <= from_index) {
+	while (total_i + m->n_genotypes <= from_index) {
 		if (m->next == NULL) {
 			fprintf(stderr, "That index does not exist.");
 			exit(1);
 		} else {
-			total_i += m->n_subjects;
+			total_i += m->n_genotypes;
 			m = m->next;
 		}
 	}
@@ -209,7 +203,7 @@ void set_subject_ids(SimData* d, int from_index, int to_index) {
 
 	// allocate the ids
 	while (1) {
-		for (i = 0; i < m->n_subjects; ++i, ++total_i) {
+		for (i = 0; i < m->n_genotypes; ++i, ++total_i) {
 			++ d->current_id;
 			m->ids[i] = d->current_id;
 			if (total_i >= to_index) {
@@ -354,22 +348,22 @@ int get_from_unordered_str_list(char* target, char** list, int list_len) {
 	return -1; // did not find a match.
 }
 
-/** Fills the designated section of the `.subject_names` array in an
+/** Fills the designated section of the `.names` array in an
  * AlleleMatrix with the pattern `prefix`index. This function is not intended
  * to be called by an end user.
  *
  * In future this function could be expanded to allow for different naming formats.
  *
  * The index is padded with zeros depending on the size of
- * `a->n_subjects`.
+ * `a->n_genotypes`.
  *
- * @param a pointer to the AlleleMatrix whose `.subject_names` to modify
- * @param prefix the prefix to add to the suffix to make the new subject name
- * @param suffix suffixes start at this value and increment for each additional subject_name
+ * @param a pointer to the AlleleMatrix whose `.names` to modify
+ * @param prefix the prefix to add to the suffix to make the new genotype name
+ * @param suffix suffixes start at this value and increment for each additional name
  * @param from_index the new names are added to this index and all those following it in this
  * AlleleMatrix.
 */
-void set_subject_names(AlleleMatrix* a, char* prefix, int suffix, int from_index) {
+void set_names(AlleleMatrix* a, char* prefix, int suffix, int from_index) {
 	char sname[NAME_LENGTH];
 	char format[NAME_LENGTH];
 	if (prefix == NULL) {
@@ -377,20 +371,20 @@ void set_subject_names(AlleleMatrix* a, char* prefix, int suffix, int from_index
 		prefix = "";
 	}
 	// use sname to save the number of digits to pad by:
-	sprintf(sname, "%%0%dd", get_integer_digits(a->n_subjects - from_index));  // Creates: %0[n]d
+	sprintf(sname, "%%0%dd", get_integer_digits(a->n_genotypes - from_index));  // Creates: %0[n]d
 	sprintf(format, "%s%s", prefix, sname);
 
 	++suffix;
-	for (int i = from_index; i < a->n_subjects; ++i) {
-		// clear subject name if it's pre-existing
-		if (a->subject_names[i] != NULL) {
-			free(a->subject_names[i]);
+	for (int i = from_index; i < a->n_genotypes; ++i) {
+		// clear name if it's pre-existing
+		if (a->names[i] != NULL) {
+			free(a->names[i]);
 		}
 
 		// save new name
 		sprintf(sname, format, suffix);
-		a->subject_names[i] = get_malloc(sizeof(char) * (strlen(sname) + 1));
-		strcpy(a->subject_names[i], sname);
+		a->names[i] = get_malloc(sizeof(char) * (strlen(sname) + 1));
+		strcpy(a->names[i], sname);
 
 		++suffix;
 	}
@@ -454,7 +448,7 @@ int _simdata_pos_compare(const void *pp0, const void *pp1) {
 
 /** Comparator function for qsort. Used to compare an array of doubles* to sort
  * them in descending order of the doubles they point to.
- * @see get_top_n_fitness_subject_indexes()
+ * @see split_by_bv()
  *
  * Sorts higher numbers before lower numbers. If they are equal, their
  * order after comparison is undefined.
@@ -471,7 +465,7 @@ int _descending_double_comparer(const void* pp0, const void* pp1) {
 
 /** Comparator function for qsort. Used to compare an array of doubles* to sort
  * them in ascending order of the doubles they point to.
- * @see get_top_n_fitness_subject_indexes()
+ * @see split_by_bv()
  *
  * Sorts lower numbers before higher numbers. If they are equal, their
  * order after comparison is undefined.
@@ -560,14 +554,14 @@ void condense_allele_matrix( SimData* d) {
 
 	// find the first empty space with filler
 	while (1) {
-		if (filler_m->n_subjects < CONTIG_WIDTH) {
+		if (filler_m->n_genotypes < CONTIG_WIDTH) {
 			for (filler = 0; filler < CONTIG_WIDTH; ++filler) {
 				// an individual is considered to not exist if it has no genome.
 				if (filler_m->alleles[filler] == NULL) {
 					break; // escape for loop
 				}
 			}
-			// assume we've found one, since n_subjects < CONTIG_WIDTH.
+			// assume we've found one, since n_genotypes < CONTIG_WIDTH.
 			break; // escape while loop
 		}
 
@@ -579,7 +573,7 @@ void condense_allele_matrix( SimData* d) {
 		}
 	}
 
-	// loop through all subjects with checker, shifting them back when we find them.
+	// loop through all genotypes with checker, shifting them back when we find them.
 	while (1) {
 		for (checker = 0; checker < CONTIG_WIDTH; ++checker) {
 			if (checker_m->alleles[checker] == NULL) {
@@ -600,8 +594,8 @@ void condense_allele_matrix( SimData* d) {
 				// put in the substitute
 				checker_m->alleles[checker] = filler_m->alleles[filler];
 				filler_m->alleles[filler] = NULL;
-				checker_m->subject_names[checker] = filler_m->subject_names[filler];
-				filler_m->subject_names[filler] = NULL;
+				checker_m->names[checker] = filler_m->names[filler];
+				filler_m->names[filler] = NULL;
 				checker_m->ids[checker] = filler_m->ids[filler];
 				filler_m->ids[filler] = -1;
 				checker_m->pedigrees[0][checker] = filler_m->pedigrees[0][filler];
@@ -611,10 +605,10 @@ void condense_allele_matrix( SimData* d) {
 				checker_m->groups[checker] = filler_m->groups[filler];
 				filler_m->groups[filler] = 0;
 				if (checker_m != filler_m) {
-					++ checker_m->n_subjects;
-					-- filler_m->n_subjects;
+					++ checker_m->n_genotypes;
+					-- filler_m->n_genotypes;
 
-					if (filler_m->n_subjects == 0) {
+					if (filler_m->n_genotypes == 0) {
 						// find the previous matrix in the linked list
 						AlleleMatrix* previous = checker_m;
 						while (previous->next != filler_m) {
@@ -688,9 +682,9 @@ char* get_name_of_id( AlleleMatrix* start, unsigned int id) {
 
 	while (1) {
 		// try to find our id. Does this AM have the right range for it?
-		if (m->n_subjects != 0 && id >= m->ids[0] && id <= m->ids[m->n_subjects - 1]) {
+		if (m->n_genotypes != 0 && id >= m->ids[0] && id <= m->ids[m->n_genotypes - 1]) {
 			// perform binary search to find the exact index.
-			int index = get_from_ordered_uint_list(id, m->ids, m->n_subjects);
+			int index = get_from_ordered_uint_list(id, m->ids, m->n_genotypes);
 
 			if (index < 0) {
 				// search failed
@@ -702,7 +696,7 @@ char* get_name_of_id( AlleleMatrix* start, unsigned int id) {
 				}
 			}
 
-			return m->subject_names[index];
+			return m->names[index];
 
 		}
 
@@ -749,9 +743,9 @@ char* get_genes_of_id ( AlleleMatrix* start, unsigned int id) {
 
 	while (1) {
 		// try to find our id. Does this AM have the right range for it?
-		if (m->n_subjects != 0 && id >= m->ids[0] && id <= m->ids[m->n_subjects - 1]) {
+		if (m->n_genotypes != 0 && id >= m->ids[0] && id <= m->ids[m->n_genotypes - 1]) {
 			// perform binary search to find the exact index.
-			int index = get_from_ordered_uint_list(id, m->ids, m->n_subjects);
+			int index = get_from_ordered_uint_list(id, m->ids, m->n_genotypes);
 
 			if (index < 0) {
 				// search failed
@@ -811,9 +805,9 @@ int get_parents_of_id( AlleleMatrix* start, unsigned int id, unsigned int output
 	AlleleMatrix* m = start;
 	while (1) {
 		// try to find our id. Does this AM have the right range for it?
-		if (m->n_subjects != 0 && id >= m->ids[0] && id <= m->ids[m->n_subjects - 1]) {
+		if (m->n_genotypes != 0 && id >= m->ids[0] && id <= m->ids[m->n_genotypes - 1]) {
 			// perform binary search to find the exact index.
-			int index = get_from_ordered_uint_list(id, m->ids, m->n_subjects);
+			int index = get_from_ordered_uint_list(id, m->ids, m->n_genotypes);
 
 			if (index < 0) {
 				// search failed
@@ -868,8 +862,8 @@ void get_ids_of_names( AlleleMatrix* start, int n_names, char* names[n_names], u
 		output[i] = -1;
 		while (1) {
 			// try to identify the name in this AM
-			for (j = 0; j < m->n_subjects; ++j) {
-				if (strcmp(m->subject_names[j], names[i]) == 0) {
+			for (j = 0; j < m->n_genotypes; ++j) {
+				if (strcmp(m->names[j], names[i]) == 0) {
 					found = TRUE;
 					output[i] = m->ids[j];
 					break;
@@ -906,7 +900,7 @@ unsigned int get_id_of_child( AlleleMatrix* start, unsigned int parent1id, unsig
 
 	while (1) {
 		// try to identify the child in this AM
-		for (j = 0; j < m->n_subjects; ++j) {
+		for (j = 0; j < m->n_genotypes; ++j) {
 			if ((parent1id == m->pedigrees[0][j] && parent2id == m->pedigrees[1][j]) ||
 					(parent1id == m->pedigrees[1][j] && parent2id == m->pedigrees[0][j])) {
 				return m->ids[j];
@@ -939,7 +933,7 @@ int get_index_of_child( AlleleMatrix* start, unsigned int parent1id, unsigned in
 
 	while (1) {
 		// try to identify the child in this AM
-		for (j = 0; j < m->n_subjects; ++j, ++total_j) {
+		for (j = 0; j < m->n_genotypes; ++j, ++total_j) {
 			if ((parent1id == m->pedigrees[0][j] && parent2id == m->pedigrees[1][j]) ||
 					(parent1id == m->pedigrees[1][j] && parent2id == m->pedigrees[0][j])) {
 				return total_j;
@@ -961,7 +955,7 @@ int get_index_of_child( AlleleMatrix* start, unsigned int parent1id, unsigned in
  *
  * @param start Pointer to the first of a linked list of AlleleMatrixes in which
  * the genotype is assumed to be found.
- * @param name a string to match to the subject_name of the target
+ * @param name a string to match to the name of the target
  * @returns the index (0-based, starting at the start of `start`) of the first sequentially
  * located genotype whose name is the same as the provided name.
  */
@@ -971,8 +965,8 @@ int get_index_of_name( AlleleMatrix* start, char* name) {
 
 	while (1) {
 		// try to identify the child in this AM
-		for (j = 0; j < m->n_subjects; ++j, ++total_j) {
-			if (strcmp(m->subject_names[j], name) == 0) {
+		for (j = 0; j < m->n_genotypes; ++j, ++total_j) {
+			if (strcmp(m->names[j], name) == 0) {
 				return total_j;
 			}
 		}
@@ -1002,10 +996,10 @@ unsigned int get_id_of_index( AlleleMatrix* start, int index) {
 	while (1) {
 		if (total_j == index) {
 			return m->ids[0];
-		} else if (total_j < index && total_j + m->n_subjects > index) {
+		} else if (total_j < index && total_j + m->n_genotypes > index) {
 			return m->ids[index - total_j];
 		}
-		total_j += m->n_subjects;
+		total_j += m->n_genotypes;
 
 		if ((m = m->next) == NULL) {
 			fprintf(stderr, "Didn't find the index %d\n", index);
@@ -1043,10 +1037,10 @@ char* get_genes_of_index( AlleleMatrix* start, int index) {
 	while (1) {
 		if (total_j == index) {
 			return m->alleles[0];
-		} else if (total_j < index && total_j + m->n_subjects > index) {
+		} else if (total_j < index && total_j + m->n_genotypes > index) {
 			return m->alleles[index - total_j];
 		}
-		total_j += m->n_subjects;
+		total_j += m->n_genotypes;
 
 		if ((m = m->next) == NULL) {
 			fprintf(stderr, "Didn't find the index %d\n", index);
@@ -1078,8 +1072,8 @@ int combine_groups( SimData* d, int list_len, int group_ids[list_len]) {
 		AlleleMatrix* m = d->m;
 		int i;
 		while (1) {
-			// for each subject, check all group numbers.
-			for (i = 0; i < m->n_subjects; ++i) {
+			// for each genotype, check all group numbers.
+			for (i = 0; i < m->n_genotypes; ++i) {
 				if (m->groups[i] == group_ids[1]) {
 					m->groups[i] = outGroup;
 				}
@@ -1097,8 +1091,8 @@ int combine_groups( SimData* d, int list_len, int group_ids[list_len]) {
 		AlleleMatrix* m = d->m;
 		int i, j;
 		while (1) {
-			// for each subject, check all group numbers.
-			for (i = 0; i < m->n_subjects; ++i) {
+			// for each genotype, check all group numbers.
+			for (i = 0; i < m->n_genotypes; ++i) {
 
 				// check the group number against all of those in our list
 				for (j = 1; j < list_len; ++j) {
@@ -1139,8 +1133,8 @@ void split_into_individuals( SimData* d, int group_id) {
 	int i;
 	int next_id = 0;
 	while (1) {
-		// check all subjects to see if this one belongs to the group.
-		for (i = 0; i < m->n_subjects; ++i) {
+		// check all lines to see if this one belongs to the group.
+		for (i = 0; i < m->n_genotypes; ++i) {
 			if (m->groups[i] == group_id) {
 				// change it to a new unique group
 				// first, find the next unused group;
@@ -1208,8 +1202,8 @@ void split_into_families(SimData* d, int group_id) {
 	int i;
 	int next_id = 0;
 	while (1) {
-		// check all subjects to see if this one belongs to the group.
-		for (i = 0; i < m->n_subjects; ++i) {
+		// check all genotypes to see if this one belongs to the group.
+		for (i = 0; i < m->n_genotypes; ++i) {
 			if (m->groups[i] == group_id) {
 				// First, see if it is a member of a family we already know.
 				for (int j = 0; j < families_found; ++j) {
@@ -1253,16 +1247,6 @@ void split_into_families(SimData* d, int group_id) {
 	}
 }
 
-/*int get_number_of_subjects( AlleleMatrix* m) {
-	AlleleMatrix* m = m;
-	int total_subjects = m->n_subjects;
-	while (m->next != NULL) {
-		m = m->next;
-		total_subjects += m->n_subjects;
-	}
-	return total_subjects;
-}*/
-
 /** Identify every group number that currently has members.
  *
  * @param d the SimData struct on which to perform the operation
@@ -1282,7 +1266,7 @@ int* get_existing_groups( SimData* d, int* n_groups) {
 	int i, j;
 	int new; // is the group number at this index a new one or not
 	while (1) {
-		for (i = 0; i < m->n_subjects; ++i) {
+		for (i = 0; i < m->n_genotypes; ++i) {
 			new = 1;
 			for (j = 0; j < *n_groups; ++j) {
 				if (m->groups[i] == existing_groups[j]) {
@@ -1345,7 +1329,7 @@ int** get_existing_group_counts( SimData* d, int* n_groups) {
 	int i, j;
 	int new; // is the group number at this index a new one or not
 	while (1) {
-		for (i = 0; i < m->n_subjects; ++i) {
+		for (i = 0; i < m->n_genotypes; ++i) {
 			new = 1;
 			for (j = 0; j < *n_groups; ++j) {
 				if (m->groups[i] == existing_groups[j]) {
@@ -1434,9 +1418,9 @@ int split_from_group( SimData* d, int n, int indexes_to_split[n]) {
 	AlleleMatrix* m = d->m;
 	int i, total_i = 0;
 	while (1) {
-		// for each subject, check all group numbers.
+		// for each genotype, check all group numbers.
 		for (i = 0; i < n; ++i) {
-			if (indexes_to_split[i] >= total_i && indexes_to_split[i] < total_i + m->n_subjects) {
+			if (indexes_to_split[i] >= total_i && indexes_to_split[i] < total_i + m->n_genotypes) {
 				m->groups[indexes_to_split[i] - total_i] = new_group;
 			}
 		}
@@ -1444,7 +1428,7 @@ int split_from_group( SimData* d, int n, int indexes_to_split[n]) {
 		if (m->next == NULL) {
 			return new_group;
 		} else {
-			total_i += m->n_subjects;
+			total_i += m->n_genotypes;
 			m = m->next;
 		}
 	}
@@ -1506,7 +1490,7 @@ int get_group_size( SimData* d, int group_id) {
 	int size = 0;
 	int i;
 	while (1) {
-		for (i = 0; i < m->n_subjects; ++i) {
+		for (i = 0; i < m->n_genotypes; ++i) {
 			if (m->groups[i] == group_id) {
 				++size;
 			}
@@ -1550,7 +1534,7 @@ char** get_group_genes( SimData* d, int group_id, int group_size) {
 	}
 	int i, genes_i = 0;
 	while (1) {
-		for (i = 0; i < m->n_subjects; ++i) {
+		for (i = 0; i < m->n_genotypes; ++i) {
 			if (m->groups[i] == group_id) {
 				genes[genes_i] = m->alleles[i];
 				++genes_i;
@@ -1594,9 +1578,9 @@ char** get_group_names( SimData* d, int group_id, int group_size) {
 	}
 	int i, names_i = 0;
 	while (1) {
-		for (i = 0; i < m->n_subjects; ++i) {
+		for (i = 0; i < m->n_genotypes; ++i) {
 			if (m->groups[i] == group_id) {
-				names[names_i] = m->subject_names[i];
+				names[names_i] = m->names[i];
 				++names_i;
 			}
 		}		
@@ -1637,7 +1621,7 @@ unsigned int* get_group_ids( SimData* d, int group_id, int group_size) {
 	}
 	int i, ids_i = 0;
 	while (1) {
-		for (i = 0; i < m->n_subjects; ++i) {
+		for (i = 0; i < m->n_genotypes; ++i) {
 			if (m->groups[i] == group_id) {
 				gids[ids_i] = m->ids[i];
 				++ids_i;
@@ -1681,7 +1665,7 @@ unsigned int* get_group_indexes(SimData* d, int group_id, int group_size) {
 	}
 	int i, total_i = 0, ids_i = 0;
 	while (1) {
-		for (i = 0; i < m->n_subjects; ++i, ++total_i) {
+		for (i = 0; i < m->n_genotypes; ++i, ++total_i) {
 			if (m->groups[i] == group_id) {
 				gis[ids_i] = total_i;
 				++ids_i;
@@ -1771,7 +1755,7 @@ unsigned int* get_group_parent_ids( SimData* d, int group_id, int group_size, in
 	}
 	int i, ids_i = 0;
 	while (1) {
-		for (i = 0; i < m->n_subjects; ++i) {
+		for (i = 0; i < m->n_genotypes; ++i) {
 			if (m->groups[i] == group_id) {
 				pids[ids_i] = m->pedigrees[parent][i];
 				++ids_i;
@@ -1824,7 +1808,7 @@ char** get_group_parent_names( SimData* d, int group_id, int group_size, int par
 	}
 	int i, ids_i = 0;
 	while (1) {
-		for (i = 0; i < m->n_subjects; ++i) {
+		for (i = 0; i < m->n_genotypes; ++i) {
 			if (m->groups[i] == group_id) {
 				pnames[ids_i] = get_name_of_id(d->m, m->pedigrees[parent][i]);
 				++ids_i;
@@ -2112,12 +2096,12 @@ void delete_group(SimData* d, int group_id) {
 	int i, deleted, total_deleted = 0;
 	while (1) {
 
-		for (i = 0, deleted = 0; i < m->n_subjects; ++i) {
+		for (i = 0, deleted = 0; i < m->n_genotypes; ++i) {
 			if (m->groups[i] == group_id) {
 				// delete data
-				if (m->subject_names[i] != NULL) {
-					free(m->subject_names[i]);
-					m->subject_names[i] = NULL;
+				if (m->names[i] != NULL) {
+					free(m->names[i]);
+					m->names[i] = NULL;
 				}
 				if (m->alleles[i] != NULL) {
 					free(m->alleles[i]);
@@ -2130,7 +2114,7 @@ void delete_group(SimData* d, int group_id) {
 				++deleted;
 			}
 		}
-		m->n_subjects -= deleted;
+		m->n_genotypes -= deleted;
 		total_deleted += deleted;
 
 		if (m->next == NULL) {
@@ -2182,7 +2166,7 @@ void delete_allele_matrix(AlleleMatrix* m) {
 	do {
 		/* free the big data matrix */
 		if (m->alleles != NULL) {
-			for (int i = 0; i < m->n_subjects; i++) {
+			for (int i = 0; i < m->n_genotypes; i++) {
 				if (m->alleles[i] != NULL) {
 					free(m->alleles[i]);
 				}
@@ -2190,11 +2174,11 @@ void delete_allele_matrix(AlleleMatrix* m) {
 			}
 		}
 
-		// free subject names
-		if (m->subject_names != NULL) {
-			for (int i = 0; i < m->n_subjects; i++) {
-				if (m->subject_names[i] != NULL) {
-					free(m->subject_names[i]);
+		// free names
+		if (m->names != NULL) {
+			for (int i = 0; i < m->n_genotypes; i++) {
+				if (m->names[i] != NULL) {
+					free(m->names[i]);
 				}
 			}
 		}
@@ -2348,25 +2332,29 @@ int load_transposed_genes_to_simdata(SimData* d, const char* filename) {
 		current_am = d->m;
 	}
 
-	// load in the subject names from the header
+	// load in the genotype names from the header
 	for (int i = 0, i_am = 0; i < (t.num_columns-1); ++i, ++i_am) {
 		fscanf(fp, cell, word);
 
-		if (i_am >= current_am->n_subjects) {
+		if (i_am >= current_am->n_genotypes) {
 			i_am = 0;
 			current_am = current_am->next;
 		}
+		
+		if (current_am == NULL) { 
+			fprintf(stderr, "Something went wrong during setup\n"); // will occur if there's some bug in create_empty_allelematrix again
+		}
 
-		current_am->subject_names[i_am] = get_malloc(sizeof(char) * strlen(word) + 1);
-		strcpy(current_am->subject_names[i_am], word);
+		current_am->names[i_am] = get_malloc(sizeof(char) * strlen(word) + 1);
+		strcpy(current_am->names[i_am], word);
 
 	}
 
 	// get the rest of the line, to be clean
 	fscanf(fp, "%*[^\n]\n");
 
-	// set the ids for the subjects we loaded
-	set_subject_ids(d, 0, t.num_columns - 2);
+	// set the ids for the genotypes we loaded
+	set_ids(d, 0, t.num_columns - 2);
 
 	// get space to put marker names and data we gathered
 	d->n_markers = t.num_rows - 1;
@@ -2385,7 +2373,7 @@ int load_transposed_genes_to_simdata(SimData* d, const char* filename) {
 		strncpy(d->markers[j], word, strlen(word) + 1);
 
 		current_am = d->m;
-		//d->m->alleles[j] = get_malloc(sizeof(char) * d->m[0].n_subjects * 2);
+		//d->m->alleles[j] = get_malloc(sizeof(char) * d->m[0].n_genotypes * 2);
 		for (int i = 0, i_am = 0; i < (t.num_columns - 1); ++i, ++i_am) {
 			// looping through the remaining columns in this row.
 			fscanf(fp, cell, word2);
@@ -2396,7 +2384,7 @@ int load_transposed_genes_to_simdata(SimData* d, const char* filename) {
 				//warning("This file is invalid, but nothing will be done about it.\n");
 			}
 
-			if (i_am >= current_am->n_subjects) {
+			if (i_am >= CONTIG_WIDTH) {//current_am->n_genotypes) {
 				i_am = 0;
 				current_am = current_am->next;
 			}
@@ -2499,24 +2487,24 @@ int load_transposed_encoded_genes_to_simdata(SimData* d, const char* filename) {
 	}
 
 
-	// load in the subject names from the header
+	// load in the genotypes' names from the header
 	for (int i = 0, i_am = 0; i < (t.num_columns-1); ++i, ++i_am) {
 		fscanf(fp, cell, word);
 
-		if (i_am >= current_am->n_subjects) {
+		if (i_am >= current_am->n_genotypes) {
 			i_am = 0;
 			current_am = current_am->next;
 		}
 
-		current_am->subject_names[i_am] = get_malloc(sizeof(char) * strlen(word) + 1);
-		strcpy(current_am->subject_names[i_am], word);
+		current_am->names[i_am] = get_malloc(sizeof(char) * strlen(word) + 1);
+		strcpy(current_am->names[i_am], word);
 	}
 
 	// get the rest of the line, to be clean
 	fscanf(fp, "%*[^\n]\n");
 
-	// set the ids for the subjects we loaded
-	set_subject_ids(d, 0, t.num_columns - 2);
+	// set the ids for the genotypes we loaded
+	set_ids(d, 0, t.num_columns - 2);
 
 	// get space to put marker names and data we gathered
 	d->n_markers = t.num_rows - 1;
@@ -2536,12 +2524,12 @@ int load_transposed_encoded_genes_to_simdata(SimData* d, const char* filename) {
 		strncpy(d->markers[j], word, strlen(word) + 1);
 
 		current_am = d->m;
-		//d->m->alleles[j] = get_malloc(sizeof(char) * d->m[0].n_subjects * 2);
+		//d->m->alleles[j] = get_malloc(sizeof(char) * d->m[0].n_genotypes * 2);
 		for (int i = 0, i_am = 0; i < (t.num_columns - 1); ++i, ++i_am) {
 			// looping through the remaining columns in this row.
 			fscanf(fp, cell, &c);
 
-			if (i_am >= current_am->n_subjects) {
+			if (i_am >= current_am->n_genotypes) {
 				i_am = 0;
 				current_am = current_am->next;
 			}
@@ -2642,10 +2630,10 @@ int load_more_transposed_genes_to_simdata(SimData* d, const char* filename) {
 
 	// find the end of the AM chain so far
 	AlleleMatrix* last_am = d->m;
-	int last_n_subjects = last_am->n_subjects;
+	int last_n_genotypes = last_am->n_genotypes;
 	while (last_am->next != NULL) {
 		last_am = last_am->next;
-		last_n_subjects += last_am->n_subjects;
+		last_n_genotypes += last_am->n_genotypes;
 	}
 	// Create new AMs that will be populated from the file.
 	AlleleMatrix* current_am;
@@ -2671,20 +2659,20 @@ int load_more_transposed_genes_to_simdata(SimData* d, const char* filename) {
 		current_am = last_am->next;
 	}
 
-	// set the ids for the subjects we loaded
-	set_subject_ids(d, last_n_subjects, last_n_subjects + t.num_columns - 2);
+	// set the ids for the genotypes we loaded
+	set_ids(d, last_n_genotypes, last_n_genotypes + t.num_columns - 2);
 
-	// load in the subject names from the header
+	// load in the genotypes' names from the header
 	for (int i = 0, i_am = 0; i < (t.num_columns-1); ++i, ++i_am) {
 		fscanf(fp, cell, word);
 
-		if (i_am >= current_am->n_subjects) {
+		if (i_am >= current_am->n_genotypes) {
 			i_am = 0;
 			current_am = current_am->next;
 		}
 
-		current_am->subject_names[i_am] = get_malloc(sizeof(char) * strlen(word) + 1);
-		strcpy(current_am->subject_names[i_am], word);
+		current_am->names[i_am] = get_malloc(sizeof(char) * strlen(word) + 1);
+		strcpy(current_am->names[i_am], word);
 	}
 
 	// get the rest of the line, to be clean
@@ -2712,7 +2700,7 @@ int load_more_transposed_genes_to_simdata(SimData* d, const char* filename) {
 					fprintf(stderr, "This file is invalid, but nothing will be done about it.\n");
 				}
 
-				if (i_am >= current_am->n_subjects) {
+				if (i_am >= current_am->n_genotypes) {
 					i_am = 0;
 					current_am = current_am->next;
 				}
@@ -2868,7 +2856,7 @@ void get_sorted_markers(SimData* d, int actual_n_markers) {
 		AlleleMatrix* am = d->m;
 
 		do {
-			for (int i = 0; i < am->n_subjects; ++i) {
+			for (int i = 0; i < am->n_genotypes; ++i) {
 				//strncpy(temp, am->alleles[i], sizeof(char) * ((am->n_markers * 2)));
 				temp = get_malloc(sizeof(char) * ((actual_n_markers * 2)));
 
@@ -3455,7 +3443,7 @@ void generate_gamete(SimData* d, char* parent_genome, char* output) {
 	return;
 }
 
-/** Get the alleles of the outcome of crossing two subjects
+/** Get the alleles of the outcome of crossing two genotypes
  *
  * Gametes are generated at the same time but are independent.
  *
@@ -3704,17 +3692,17 @@ int cross_random_individuals(SimData* d, int from_group, int n_crosses, GenOptio
 	DecimalMatrix eff;
 	if (g.will_save_pedigree_to_file) {
 		strcpy(fname, g.filename_prefix);
-		strcat(fname, "-pedigree");
+		strcat(fname, "-pedigree.txt");
 		fp = fopen(fname, "w");
 	}
-	if (g.will_save_effects_to_file) {
+	if (g.will_save_bvs_to_file) {
 		strcpy(fname, g.filename_prefix);
-		strcat(fname, "-eff");
+		strcat(fname, "-bv.txt");
 		fe = fopen(fname, "w");
 	}
-	if (g.will_save_genes_to_file) {
+	if (g.will_save_alleles_to_file) {
 		strcpy(fname, g.filename_prefix);
-		strcat(fname, "-genome");
+		strcat(fname, "-genotype.txt");
 		fg = fopen(fname, "w");
 	}
 
@@ -3729,26 +3717,26 @@ int cross_random_individuals(SimData* d, int from_group, int n_crosses, GenOptio
 		for (int f = 0; f < g.family_size; ++f, ++fullness) {
 			// when cross buffer is full, save these outcomes to the file.
 			if (fullness >= CONTIG_WIDTH) {
-				crosses->n_subjects = CONTIG_WIDTH;
-				// give the subjects their ids and names
-				if (g.will_name_subjects) {
-					set_subject_names(crosses, g.subject_prefix, *cross_current_id, 0);
+				crosses->n_genotypes = CONTIG_WIDTH;
+				// give the offspring their ids and names
+				if (g.will_name_offspring) {
+					set_names(crosses, g.offspring_name_prefix, *cross_current_id, 0);
 				}
 				for (int j = 0; j < CONTIG_WIDTH; ++j) {
 					++ *cross_current_id;
 					crosses->ids[j] = *cross_current_id;
 				}
 
-				// save the subjects to files if appropriate
+				// save the offspring to files if appropriate
 				if (g.will_save_pedigree_to_file) {
 					save_AM_pedigree( fp, crosses, d);
 				}
-				if (g.will_save_effects_to_file) {
+				if (g.will_save_bvs_to_file) {
 					eff = calculate_bvs( crosses, &(d->e));
-					save_manual_bvs( fe, &eff, crosses->ids, crosses->subject_names);
+					save_manual_bvs( fe, &eff, crosses->ids, crosses->names);
 					delete_dmatrix( &eff);
 				}
-				if (g.will_save_genes_to_file) {
+				if (g.will_save_alleles_to_file) {
 					save_allele_matrix( fg, crosses, d->markers);
 				}
 
@@ -3779,9 +3767,9 @@ int cross_random_individuals(SimData* d, int from_group, int n_crosses, GenOptio
 
 	// save the rest of the crosses to the file.
 	free(group_genes);
-	// give the subjects their ids and names
-	if (g.will_name_subjects) {
-		set_subject_names(crosses, g.subject_prefix, *cross_current_id, 0);
+	// give the offsprings their ids and names
+	if (g.will_name_offspring) {
+		set_names(crosses, g.offspring_name_prefix, *cross_current_id, 0);
 	}
 	for (int j = 0; j < fullness; ++j) {
 		++ *cross_current_id;
@@ -3791,18 +3779,18 @@ int cross_random_individuals(SimData* d, int from_group, int n_crosses, GenOptio
 		free(group_ids);
 	}
 
-	// save the subjects to files if appropriate
+	// save the offsprings to files if appropriate
 	if (g.will_save_pedigree_to_file) {
 		save_AM_pedigree( fp, crosses, d);
 		fclose(fp);
 	}
-	if (g.will_save_effects_to_file) {
+	if (g.will_save_bvs_to_file) {
 		eff = calculate_bvs( crosses, &(d->e));
-		save_manual_bvs( fe, &eff, crosses->ids, crosses->subject_names);
+		save_manual_bvs( fe, &eff, crosses->ids, crosses->names);
 		delete_dmatrix( &eff);
 		fclose(fe);
 	}
-	if (g.will_save_genes_to_file) {
+	if (g.will_save_alleles_to_file) {
 		save_allele_matrix( fg, crosses, d->markers);
 		fclose(fg);
 	}
@@ -3870,17 +3858,17 @@ int cross_these_combinations(SimData* d, int n_combinations, int combinations[2]
 	DecimalMatrix eff;
 	if (g.will_save_pedigree_to_file) {
 		strcpy(fname, g.filename_prefix);
-		strcat(fname, "-pedigree");
+		strcat(fname, "-pedigree.txt");
 		fp = fopen(fname, "w");
 	}
-	if (g.will_save_effects_to_file) {
+	if (g.will_save_bvs_to_file) {
 		strcpy(fname, g.filename_prefix);
-		strcat(fname, "-eff");
+		strcat(fname, "-bv.txt");
 		fe = fopen(fname, "w");
 	}
-	if (g.will_save_genes_to_file) {
+	if (g.will_save_alleles_to_file) {
 		strcpy(fname, g.filename_prefix);
-		strcat(fname, "-genome");
+		strcat(fname, "-genotype.txt");
 		fg = fopen(fname, "w");
 	}
 
@@ -3898,25 +3886,25 @@ int cross_these_combinations(SimData* d, int n_combinations, int combinations[2]
 			for (int f = 0; f < g.family_size; ++f, ++fullness) {
 				// when cross buffer is full, save these outcomes to the file.
 				if (fullness >= CONTIG_WIDTH) {
-					// give the subjects their ids and names
-					if (g.will_name_subjects) {
-						set_subject_names(crosses, g.subject_prefix, *cross_current_id, 0);
+					// give the offsprings their ids and names
+					if (g.will_name_offspring) {
+						set_names(crosses, g.offspring_name_prefix, *cross_current_id, 0);
 					}
 					for (int j = 0; j < CONTIG_WIDTH; ++j) {
 						++ *cross_current_id;
 						crosses->ids[j] = *cross_current_id;
 					}
 
-					// save the subjects to files if appropriate
+					// save the offsprings to files if appropriate
 					if (g.will_save_pedigree_to_file) {
 						save_AM_pedigree( fp, crosses, d);
 					}
-					if (g.will_save_effects_to_file) {
+					if (g.will_save_bvs_to_file) {
 						eff = calculate_bvs( crosses, &(d->e));
-						save_manual_bvs( fe, &eff, crosses->ids, crosses->subject_names);
+						save_manual_bvs( fe, &eff, crosses->ids, crosses->names);
 						delete_dmatrix( &eff);
 					}
-					if (g.will_save_genes_to_file) {
+					if (g.will_save_alleles_to_file) {
 						save_allele_matrix( fg, crosses, d->markers);
 					}
 
@@ -3947,27 +3935,27 @@ int cross_these_combinations(SimData* d, int n_combinations, int combinations[2]
 	}
 
 	// save the rest of the crosses to the file.
-	// give the subjects their ids and names
-	if (g.will_name_subjects) {
-		set_subject_names(crosses, g.subject_prefix, *cross_current_id, 0);
+	// give the offsprings their ids and names
+	if (g.will_name_offspring) {
+		set_names(crosses, g.offspring_name_prefix, *cross_current_id, 0);
 	}
 	for (int j = 0; j < fullness; ++j) {
 		++ *cross_current_id;
 		crosses->ids[j] = *cross_current_id;
 	}
 
-	// save the subjects to files if appropriate
+	// save the offsprings to files if appropriate
 	if (g.will_save_pedigree_to_file) {
 		save_AM_pedigree( fp, crosses, d);
 		fclose(fp);
 	}
-	if (g.will_save_effects_to_file) {
+	if (g.will_save_bvs_to_file) {
 		eff = calculate_bvs( crosses, &(d->e));
-		save_manual_bvs( fe, &eff, crosses->ids, crosses->subject_names);
+		save_manual_bvs( fe, &eff, crosses->ids, crosses->names);
 		delete_dmatrix( &eff);
 		fclose(fe);
 	}
-	if (g.will_save_genes_to_file) {
+	if (g.will_save_alleles_to_file) {
 		save_allele_matrix( fg, crosses, d->markers);
 		fclose(fg);
 	}
@@ -4042,17 +4030,17 @@ int self_n_times(SimData* d, int n, int group, GenOptions g) {
 	DecimalMatrix eff;
 	if (g.will_save_pedigree_to_file) {
 		strcpy(fname, g.filename_prefix);
-		strcat(fname, "-pedigree");
+		strcat(fname, "-pedigree.txt");
 		fp = fopen(fname, "w");
 	}
-	if (g.will_save_effects_to_file) {
+	if (g.will_save_bvs_to_file) {
 		strcpy(fname, g.filename_prefix);
-		strcat(fname, "-eff");
+		strcat(fname, "-bv.txt");
 		fe = fopen(fname, "w");
 	}
-	if (g.will_save_genes_to_file) {
+	if (g.will_save_alleles_to_file) {
 		strcpy(fname, g.filename_prefix);
-		strcat(fname, "-genome");
+		strcat(fname, "-genotype.txt");
 		fg = fopen(fname, "w");
 	}
 
@@ -4066,26 +4054,26 @@ int self_n_times(SimData* d, int n, int group, GenOptions g) {
 
 				// when cross buffer is full, save these outcomes to the file.
 				if (fullness >= CONTIG_WIDTH) {
-					outcome->n_subjects = CONTIG_WIDTH;
-					// give the subjects their ids and names
-					if (g.will_name_subjects) {
-						set_subject_names(outcome, g.subject_prefix, *cross_current_id, 0);
+					outcome->n_genotypes = CONTIG_WIDTH;
+					// give the offspring their ids and names
+					if (g.will_name_offspring) {
+						set_names(outcome, g.offspring_name_prefix, *cross_current_id, 0);
 					}
 					for (int j = 0; j < CONTIG_WIDTH; ++j) {
 						++ *cross_current_id;
 						outcome->ids[j] = *cross_current_id;
 					}
 
-					// save the subjects to files if appropriate
+					// save the offspring to files if appropriate
 					if (g.will_save_pedigree_to_file) {
 						save_AM_pedigree( fp, outcome, d);
 					}
-					if (g.will_save_effects_to_file) {
+					if (g.will_save_bvs_to_file) {
 						eff = calculate_bvs( outcome, &(d->e));
-						save_manual_bvs( fe, &eff, outcome->ids, outcome->subject_names);
+						save_manual_bvs( fe, &eff, outcome->ids, outcome->names);
 						delete_dmatrix( &eff);
 					}
-					if (g.will_save_genes_to_file) {
+					if (g.will_save_alleles_to_file) {
 						save_allele_matrix( fg, outcome, d->markers);
 					}
 
@@ -4123,26 +4111,26 @@ int self_n_times(SimData* d, int n, int group, GenOptions g) {
 			for (f = 0; f < g.family_size; ++f, ++fullness) {
 				// when cross buffer is full, save these outcomes to the file.
 				if (fullness >= CONTIG_WIDTH) {
-					outcome->n_subjects = CONTIG_WIDTH;
-					// give the subjects their ids and names
-					if (g.will_name_subjects) {
-						set_subject_names(outcome, g.subject_prefix, *cross_current_id, 0);
+					outcome->n_genotypes = CONTIG_WIDTH;
+					// give the offspring their ids and names
+					if (g.will_name_offspring) {
+						set_names(outcome, g.offspring_name_prefix, *cross_current_id, 0);
 					}
 					for (int j = 0; j < CONTIG_WIDTH; ++j) {
 						++ *cross_current_id;
 						outcome->ids[j] = *cross_current_id;
 					}
 
-					// save the subjects to files if appropriate
+					// save the offspring to files if appropriate
 					if (g.will_save_pedigree_to_file) {
 						save_AM_pedigree( fp, outcome, d);
 					}
-					if (g.will_save_effects_to_file) {
+					if (g.will_save_bvs_to_file) {
 						eff = calculate_bvs( outcome, &(d->e));
-						save_manual_bvs( fe, &eff, outcome->ids, outcome->subject_names);
+						save_manual_bvs( fe, &eff, outcome->ids, outcome->names);
 						delete_dmatrix( &eff);
 					}
-					if (g.will_save_genes_to_file) {
+					if (g.will_save_alleles_to_file) {
 						save_allele_matrix( fg, outcome, d->markers);
 					}
 
@@ -4200,10 +4188,10 @@ int self_n_times(SimData* d, int n, int group, GenOptions g) {
 
 	free(group_genes);
 	// save the rest of the crosses to the file.
-	outcome->n_subjects = fullness;
-	// give the subjects their ids and names
-	if (g.will_name_subjects) {
-		set_subject_names(outcome, g.subject_prefix, *cross_current_id, 0);
+	outcome->n_genotypes = fullness;
+	// give the offspring their ids and names
+	if (g.will_name_offspring) {
+		set_names(outcome, g.offspring_name_prefix, *cross_current_id, 0);
 	}
 	for (int j = 0; j < fullness; ++j) {
 		++ *cross_current_id;
@@ -4213,18 +4201,18 @@ int self_n_times(SimData* d, int n, int group, GenOptions g) {
 		free(group_ids);
 	}
 
-	// save the subjects to files if appropriate
+	// save the offspring to files if appropriate
 	if (g.will_save_pedigree_to_file) {
 		save_AM_pedigree( fp, outcome, d);
 		fclose(fp);
 	}
-	if (g.will_save_effects_to_file) {
+	if (g.will_save_bvs_to_file) {
 		eff = calculate_bvs( outcome, &(d->e));
-		save_manual_bvs( fe, &eff, outcome->ids, outcome->subject_names);
+		save_manual_bvs( fe, &eff, outcome->ids, outcome->names);
 		delete_dmatrix( &eff);
 		fclose(fe);
 	}
-	if (g.will_save_genes_to_file) {
+	if (g.will_save_alleles_to_file) {
 		save_allele_matrix( fg, outcome, d->markers);
 		fclose(fg);
 	}
@@ -4294,17 +4282,17 @@ int make_doubled_haploids(SimData* d, int group, GenOptions g) {
 	DecimalMatrix eff;
 	if (g.will_save_pedigree_to_file) {
 		strcpy(fname, g.filename_prefix);
-		strcat(fname, "-pedigree");
+		strcat(fname, "-pedigree.txt");
 		fp = fopen(fname, "w");
 	}
-	if (g.will_save_effects_to_file) {
+	if (g.will_save_bvs_to_file) {
 		strcpy(fname, g.filename_prefix);
-		strcat(fname, "-eff");
+		strcat(fname, "-bv.txt");
 		fe = fopen(fname, "w");
 	}
-	if (g.will_save_genes_to_file) {
+	if (g.will_save_alleles_to_file) {
 		strcpy(fname, g.filename_prefix);
-		strcat(fname, "-genome");
+		strcat(fname, "-genotype.txt");
 		fg = fopen(fname, "w");
 	}
 
@@ -4316,26 +4304,26 @@ int make_doubled_haploids(SimData* d, int group, GenOptions g) {
 		for (f = 0; f < g.family_size; ++f, ++fullness) {
 			// when cross buffer is full, save these outcomes to the file.
 			if (fullness >= CONTIG_WIDTH) {
-				outcome->n_subjects = CONTIG_WIDTH;
-				// give the subjects their ids and names
-				if (g.will_name_subjects) {
-					set_subject_names(outcome, g.subject_prefix, *cross_current_id, 0);
+				outcome->n_genotypes = CONTIG_WIDTH;
+				// give the offspring their ids and names
+				if (g.will_name_offspring) {
+					set_names(outcome, g.offspring_name_prefix, *cross_current_id, 0);
 				}
 				for (int j = 0; j < CONTIG_WIDTH; ++j) {
 					++ *cross_current_id;
 					outcome->ids[j] = *cross_current_id;
 				}
 
-				// save the subjects to files if appropriate
+				// save the offspring to files if appropriate
 				if (g.will_save_pedigree_to_file) {
 					save_AM_pedigree( fp, outcome, d);
 				}
-				if (g.will_save_effects_to_file) {
+				if (g.will_save_bvs_to_file) {
 					eff = calculate_bvs( outcome, &(d->e));
-					save_manual_bvs( fe, &eff, outcome->ids, outcome->subject_names);
+					save_manual_bvs( fe, &eff, outcome->ids, outcome->names);
 					delete_dmatrix( &eff);
 				}
-				if (g.will_save_genes_to_file) {
+				if (g.will_save_alleles_to_file) {
 					save_allele_matrix( fg, outcome, d->markers);
 				}
 
@@ -4364,10 +4352,10 @@ int make_doubled_haploids(SimData* d, int group, GenOptions g) {
 
 	free(group_genes);
 	// save the rest of the crosses to the file.
-	outcome->n_subjects = fullness;
-	// give the subjects their ids and names
-	if (g.will_name_subjects) {
-		set_subject_names(outcome, g.subject_prefix, *cross_current_id, 0);
+	outcome->n_genotypes = fullness;
+	// give the offspring their ids and names
+	if (g.will_name_offspring) {
+		set_names(outcome, g.offspring_name_prefix, *cross_current_id, 0);
 	}
 	for (int j = 0; j < fullness; ++j) {
 		++ *cross_current_id;
@@ -4377,18 +4365,18 @@ int make_doubled_haploids(SimData* d, int group, GenOptions g) {
 		free(group_ids);
 	}
 
-	// save the subjects to files if appropriate
+	// save the offspring to files if appropriate
 	if (g.will_save_pedigree_to_file) {
 		save_AM_pedigree( fp, outcome, d);
 		fclose(fp);
 	}
-	if (g.will_save_effects_to_file) {
+	if (g.will_save_bvs_to_file) {
 		eff = calculate_bvs( outcome, &(d->e));
-		save_manual_bvs( fe, &eff, outcome->ids, outcome->subject_names);
+		save_manual_bvs( fe, &eff, outcome->ids, outcome->names);
 		delete_dmatrix( &eff);
 		fclose(fe);
 	}
-	if (g.will_save_genes_to_file) {
+	if (g.will_save_alleles_to_file) {
 		save_allele_matrix( fg, outcome, d->markers);
 		fclose(fg);
 	}
@@ -4629,15 +4617,15 @@ int split_by_bv(SimData* d, int group, int top_n, int lowIsBest) {
 	}
 
 	// save the indexes of the best n
-	int top_subjects[top_n];
+	int top_individuals[top_n];
 	for (int i = 0; i < top_n; i++) {
-		top_subjects[i] = group_contents[p_fits[i] - fits.matrix[0]];
+		top_individuals[i] = group_contents[p_fits[i] - fits.matrix[0]];
 	}
 	delete_dmatrix(&fits);
 	free(group_contents);
 
 	// send those n to a new group
-	return split_from_group(d, top_n, top_subjects);
+	return split_from_group(d, top_n, top_individuals);
 }
 
 /** Calculates the fitness metric/breeding value for each genotype in the AlleleMatrix
@@ -4717,7 +4705,7 @@ DecimalMatrix calculate_bvs( AlleleMatrix* m, EffectMatrix* e) {
 	// sum is the sum of the product across all alleles.
 	// Its dimensions are the same as those from multiplying a row of d->e.effects by
 	// a counts matrix the size of d->m.alleles
-	sum = generate_zero_dmatrix(1, m->n_subjects);
+	sum = generate_zero_dmatrix(1, m->n_genotypes);
 
 	for (int i = 0; i < e->effects.rows; i++) {
 		// get the product for this allele
@@ -4789,11 +4777,11 @@ DecimalMatrix calculate_count_matrix_of_allele_for_ids( AlleleMatrix* m, unsigne
  * each row/marker for each column/genotype in the AlleleMatrix.
  * */
 DecimalMatrix calculate_full_count_matrix_of_allele( AlleleMatrix* m, char allele) {
-	DecimalMatrix counts = generate_zero_dmatrix(m->n_markers, m->n_subjects);
+	DecimalMatrix counts = generate_zero_dmatrix(m->n_markers, m->n_genotypes);
 	double cell_sum;
 	char* genes;
 
-	for (int i = 0; i < m->n_subjects; i++) {
+	for (int i = 0; i < m->n_genotypes; i++) {
 		genes = m->alleles[i];
 
 		cell_sum = 0;
@@ -5127,7 +5115,7 @@ void calculate_local_bvs(SimData* d, MarkerBlocks b, const char* output_file) {
 	int gsize = 0;
 	AlleleMatrix* m = d->m;
 	do {
-		gsize += m->n_subjects;
+		gsize += m->n_genotypes;
 	} while ((m = m->next) != NULL);
 
 	double beffect;
@@ -5136,9 +5124,9 @@ void calculate_local_bvs(SimData* d, MarkerBlocks b, const char* output_file) {
 	m = d->m;
 	int total_i = 0;
 	do {
-		for (int i = 0; i < m->n_subjects; ++i, ++total_i) {
+		for (int i = 0; i < m->n_genotypes; ++i, ++total_i) {
 			// for each block
-			sprintf(buffer, "%s_1", m->subject_names[i]);
+			sprintf(buffer, "%s_1", m->names[i]);
 			fwrite(buffer, sizeof(char), strlen(buffer), outfile);
 
 			// for each block
@@ -5159,7 +5147,7 @@ void calculate_local_bvs(SimData* d, MarkerBlocks b, const char* output_file) {
 				fflush(outfile);
 			}
 
-			sprintf(buffer, "\n%s_2", m->subject_names[i]);
+			sprintf(buffer, "\n%s_2", m->names[i]);
 			fwrite(buffer, sizeof(char), strlen(buffer), outfile);
 
 			// for each block for the second haplotype
@@ -5393,18 +5381,18 @@ void save_marker_blocks(FILE* f, SimData* d, MarkerBlocks b) {
 
 }
 
-/** Prints all the geneotype data saved in the linked list of AlleleMatrices
+/** Prints all the genotype data saved in the linked list of AlleleMatrices
  * starting with `m` to a file. Uses the following format:
  *
  * 		[marker name]	[marker name]
  *
- * [subject id]OR[subject name]	[allele pairs for each marker]
+ * [id]OR[name]	[allele pairs for each marker]
  *
- * [subject id]OR[subject name]	[allele pairs for each marker]
+ * [id]OR[name]	[allele pairs for each marker]
  *
  * ...
  *
- * Subject id will be printed if the genotype does not have a name saved
+ * ID will be printed if the genotype does not have a name saved
  *
  * @param f file pointer opened for writing to put the output
  * @param m pointer to the AlleleMatrix whose data we print
@@ -5425,10 +5413,10 @@ void save_allele_matrix(FILE* f, AlleleMatrix* m, char** markers) {
 
 	do {
 		/* Print the body */
-		for (int i = 0; i < m->n_subjects; ++i) {
+		for (int i = 0; i < m->n_genotypes; ++i) {
 			// print the name or ID of the individual.
-			if (m->subject_names[i] != NULL) {
-				fwrite(m->subject_names[i], sizeof(char), strlen(m->subject_names[i]), f);
+			if (m->names[i] != NULL) {
+				fwrite(m->names[i], sizeof(char), strlen(m->names[i]), f);
 			} else {
 				//fwrite(group_contents + i, sizeof(int), 1, f);
 				fprintf(f, "%d", m->ids[i]);
@@ -5453,7 +5441,7 @@ void save_allele_matrix(FILE* f, AlleleMatrix* m, char** markers) {
 /** Prints all the gene data saved in the linked list starting with `m` to the
  * file. Uses the following format:
  *
- * 		[subject id]OR[subject name]	[subject id]OR[subject name] ...
+ * 		[id]OR[name]	[id]OR[name] ...
  *
  * [marker name]	[allele pairs for each marker]
  *
@@ -5461,7 +5449,7 @@ void save_allele_matrix(FILE* f, AlleleMatrix* m, char** markers) {
  *
  * ...
  *
- * Subject id will be printed if the genotype does not have a name saved
+ * ID will be printed if the genotype does not have a name saved
  *
  * @param f file pointer opened for writing to put the output
  * @param m pointer to the AlleleMatrix whose data we print
@@ -5470,23 +5458,23 @@ void save_allele_matrix(FILE* f, AlleleMatrix* m, char** markers) {
 void save_transposed_allele_matrix(FILE* f, AlleleMatrix* m, char** markers) {
 	// Count number of genotypes in the AM
 	AlleleMatrix* currentm = m; // current matrix
-	int tn_subjects = 0;
+	int tn_genotypes = 0;
 	do {
-		tn_subjects += currentm->n_subjects;
+		tn_genotypes += currentm->n_genotypes;
 	} while ((currentm = currentm->next) != NULL);
 
 	currentm = m;
 
 	/* Print header */
-	for (int i = 0, currenti = 0; i < tn_subjects; ++i, ++currenti) {
-		if (currenti >= currentm->n_subjects) {
+	for (int i = 0, currenti = 0; i < tn_genotypes; ++i, ++currenti) {
+		if (currenti >= currentm->n_genotypes) {
 			currenti = 0;
 			currentm = currentm->next;
 		}
-		if (currentm->subject_names[currenti] != NULL) { // assume all-or-nothing with marker names
+		if (currentm->names[currenti] != NULL) { // assume all-or-nothing with marker names
 			//fprintf(f, "\t%s", markers[i]);
 			fwrite("\t", sizeof(char), 1, f);
-			fwrite(currentm->subject_names[currenti], sizeof(char), strlen(currentm->subject_names[currenti]), f);
+			fwrite(currentm->names[currenti], sizeof(char), strlen(currentm->names[currenti]), f);
 		} else {
 			fprintf(f, "%d", currentm->ids[currenti]);
 		}
@@ -5502,8 +5490,8 @@ void save_transposed_allele_matrix(FILE* f, AlleleMatrix* m, char** markers) {
 
 		currentm = m;
 
-		for (int i = 0, currenti = 0; i < tn_subjects; ++i, ++currenti) {
-			if (currenti >= currentm->n_subjects) {
+		for (int i = 0, currenti = 0; i < tn_genotypes; ++i, ++currenti) {
+			if (currenti >= currentm->n_genotypes) {
 				currenti = 0;
 				currentm = currentm->next;
 			}
@@ -5524,13 +5512,13 @@ void save_transposed_allele_matrix(FILE* f, AlleleMatrix* m, char** markers) {
  *
  * 		[marker name]	[marker name]
  *
- * [subject id]OR[subject name]	[allele pairs for each marker]
+ * [id]OR[name]	[allele pairs for each marker]
  *
- * [subject id]OR[subject name]	[allele pairs for each marker]
+ * [id]OR[name]	[allele pairs for each marker]
  *
  * ...
  *
- * Subject id will be printed if the genotype does not have a name saved
+ * ID will be printed if the genotype does not have a name saved
  *
  * @param f file pointer opened for writing to put the output
  * @param d pointer to the SimData containing the genotypes of the group and
@@ -5587,7 +5575,7 @@ void save_group_alleles(FILE* f, SimData* d, int group_id) {
 /** Prints the genotypes of each individual in a given group to a file, with
  * the following format.
  *
-* 		[subject id]OR[subject name]	[subject id]OR[subject name] ...
+* 		[id]OR[name]	[id]OR[name] ...
  *
  * [marker name]	[allele pairs for each marker]
  *
@@ -5595,7 +5583,7 @@ void save_group_alleles(FILE* f, SimData* d, int group_id) {
  *
  * ...
  *
- * Subject id will be printed if the genotype does not have a name saved
+ * ID will be printed if the genotype does not have a name saved
  *
  * @param f file pointer opened for writing to put the output
  * @param d pointer to the SimData containing the genotypes of the group and
@@ -5733,10 +5721,10 @@ void save_one_step_pedigree(FILE* f, SimData* d) {
 	AlleleMatrix* m = d->m;
 
 	do {
-		for (int i = 0; i < m->n_subjects; ++i) {
+		for (int i = 0; i < m->n_genotypes; ++i) {
 			/*Group member name*/
-			if (m->subject_names[i] != NULL) {
-				fwrite(m->subject_names[i], sizeof(char), strlen(m->subject_names[i]), f);
+			if (m->names[i] != NULL) {
+				fwrite(m->names[i], sizeof(char), strlen(m->names[i]), f);
 			} else {
 				fprintf(f, "%d", m->ids[i]);
 			}
@@ -5857,11 +5845,11 @@ void save_full_pedigree(FILE* f, SimData* d) {
 	AlleleMatrix* m = d->m;
 
 	do {
-		for (int i = 0; i < m->n_subjects; ++i) {
+		for (int i = 0; i < m->n_genotypes; ++i) {
 			/*Group member name*/
 			fprintf(f, "%d\t", m->ids[i]);
-			if (m->subject_names[i] != NULL) {
-				fwrite(m->subject_names[i], sizeof(char), strlen(m->subject_names[i]), f);
+			if (m->names[i] != NULL) {
+				fwrite(m->names[i], sizeof(char), strlen(m->names[i]), f);
 			}
 
 			if (m->pedigrees[0][i] != 0 || m->pedigrees[1][i] != 0) {
@@ -5908,11 +5896,11 @@ void save_full_pedigree(FILE* f, SimData* d) {
 void save_AM_pedigree(FILE* f, AlleleMatrix* m, SimData* parents) {
 	const char newline[] = "\n";
 
-	for (int i = 0; i < m->n_subjects; ++i) {
+	for (int i = 0; i < m->n_genotypes; ++i) {
 		/*Group member name*/
 		fprintf(f, "%d\t", m->ids[i]);
-		if (m->subject_names[i] != NULL) {
-			fwrite(m->subject_names[i], sizeof(char), strlen(m->subject_names[i]), f);
+		if (m->names[i] != NULL) {
+			fwrite(m->names[i], sizeof(char), strlen(m->names[i]), f);
 		}
 
         if (m->pedigrees[0][i] != 0 || m->pedigrees[1][i] != 0) {
@@ -6078,8 +6066,8 @@ void save_bvs(FILE* f, SimData* d) {
 			//fwrite(group_contents + i, sizeof(int), 1, f);
 			fprintf(f, "%d", am->ids[i]);
 			fwrite(tab, sizeof(char), 1, f);
-			if (am->subject_names[i] != NULL) {
-				fwrite(am->subject_names[i], sizeof(char), strlen(am->subject_names[i]), f);
+			if (am->names[i] != NULL) {
+				fwrite(am->names[i], sizeof(char), strlen(am->names[i]), f);
 			}
 			fwrite(tab, sizeof(char), 1, f);
 			//fwrite(effects.matrix[0], sizeof(float), 1, f);
@@ -6135,7 +6123,7 @@ void save_manual_bvs(FILE* f, DecimalMatrix* e, unsigned int* ids, char** names)
 /** Print the number of copies of a particular allele at each marker of each genotype
  * in the SimData to a file. The following tab-separated format is used:
  *
- * 		[subject id]OR[subject name]	[subject id]OR[subject name] ...
+ * 		[id]OR[name]	[id]OR[name] ...
  *
  * [marker name]	[allele count for each marker]
  *
@@ -6143,7 +6131,7 @@ void save_manual_bvs(FILE* f, DecimalMatrix* e, unsigned int* ids, char** names)
  *
  * ...
  *
- * Subject id will be printed if the genotype does not have a name saved.
+ * ID will be printed if the genotype does not have a name saved.
  *
  * @param f file pointer opened for writing to put the output
  * @param d pointer to the SimData containing the group members.
@@ -6155,13 +6143,13 @@ void save_count_matrix(FILE* f, SimData* d, char allele) {
 	AlleleMatrix* currentm = d->m;
 	// print the header
 	for (int i = 0, currenti = 0; i < counts.cols; ++i, ++currenti) {
-		if (currenti >= currentm->n_subjects) {
+		if (currenti >= currentm->n_genotypes) {
 			currenti = 0;
 			currentm = currentm->next;
 		}
 		fwrite("\t", sizeof(char), 1, f);
-		if (currentm->subject_names[currenti] != NULL) {
-			fwrite(currentm->subject_names[currenti], sizeof(char), strlen(currentm->subject_names[currenti]), f);
+		if (currentm->names[currenti] != NULL) {
+			fwrite(currentm->names[currenti], sizeof(char), strlen(currentm->names[currenti]), f);
 		}
 	}
 
@@ -6174,7 +6162,7 @@ void save_count_matrix(FILE* f, SimData* d, char allele) {
 		}
 		fwrite("\t", sizeof(char), 1, f);
 
-		for (int j = 0; j < counts.cols; ++j) { // loop through subjects
+		for (int j = 0; j < counts.cols; ++j) { // loop through genotypes
 			// print the matrix entries
 			fprintf(f, "%f ", counts.matrix[i][j]);
 		}
@@ -6191,7 +6179,7 @@ void save_count_matrix(FILE* f, SimData* d, char allele) {
 /** Print the number of copies of a particular allele at each marker of each genotype
  * in a group to a file. The following tab-separated format is used:
  *
- * 		[subject id]OR[subject name]	[subject id]OR[subject name] ...
+ * 		[id]OR[name]	[id]OR[name] ...
  *
  * [marker name]	[allele count for each marker]
  *
@@ -6199,7 +6187,7 @@ void save_count_matrix(FILE* f, SimData* d, char allele) {
  *
  * ...
  *
- * Subject id will be printed if the genotype does not have a name saved.
+ * ID will be printed if the genotype does not have a name saved.
  *
  * @param f file pointer opened for writing to put the output
  * @param d pointer to the SimData containing the group members.
@@ -6231,7 +6219,7 @@ void save_count_matrix_of_group(FILE* f, SimData* d, char allele, int group) {
 		}
 		fwrite("\t", sizeof(char), 1, f);
 
-		for (int j = 0; j < counts.cols; ++j) { // loop through subjects
+		for (int j = 0; j < counts.cols; ++j) { // loop through genotypes
 			// print the matrix entries
 			fprintf(f, "%f ", counts.matrix[i][j]);
 		}

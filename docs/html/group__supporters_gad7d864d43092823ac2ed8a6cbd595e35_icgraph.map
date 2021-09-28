@@ -1,6 +1,6 @@
 <map id="get_integer_digits" name="get_integer_digits">
-<area shape="rect" id="node1" title="Count and return the number of digits in i." alt="" coords="603,143,727,170"/>
-<area shape="rect" id="node2" href="$group__supporters.html#ga05fcac586b6c215bb69fcdf79944d52b" title="Fills the designated section of the .line_names array in an AlleleMatrix with the pattern prefixindex..." alt="" coords="441,143,555,170"/>
+<area shape="rect" id="node1" title="Count and return the number of digits in i." alt="" coords="576,143,700,170"/>
+<area shape="rect" id="node2" href="$group__supporters.html#gab751e196194afd414e942f0900adba72" title="Fills the designated section of the .names array in an AlleleMatrix with the pattern prefixindex." alt="" coords="441,143,528,170"/>
 <area shape="rect" id="node3" href="$group__crossers.html#ga3ea77c76c329625646419a10683669f9" title="Performs random crosses among members of a group." alt="" coords="219,31,390,58"/>
 <area shape="rect" id="node5" href="$group__crossers.html#gabb793988799d792dfe4007efdf988068" title="Performs the crosses of pairs of parents whose ids are provided in an array." alt="" coords="216,118,393,145"/>
 <area shape="rect" id="node9" href="$group__crossers.html#gaf078d6bc1b5d4234a9b960e6132480aa" title="Creates a doubled haploid from each member of a group." alt="" coords="224,169,385,195"/>
