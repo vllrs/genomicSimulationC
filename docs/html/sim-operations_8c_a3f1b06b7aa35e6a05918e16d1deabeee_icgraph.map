@@ -1,7 +1,0 @@
-<map id="make_all_unidirectional_crosses" name="make_all_unidirectional_crosses">
-<area shape="rect" id="node1" title="Perform crosses between all pairs of parents in the group from_group and allocates the resulting offs..." alt="" coords="483,23,640,65"/>
-<area shape="rect" id="node2" href="$sim_8c.html#a0ddf1224851353fc92bfbff6f499fa97" title=" " alt="" coords="318,5,369,32"/>
-<area shape="rect" id="node3" href="$sim-test_8h.html#a62c63a7e5ed5542fc454926025c662cd" title=" " alt="" coords="252,56,435,83"/>
-<area shape="rect" id="node4" href="$sim-test_8h.html#a61a1136d2ec4643a72bd9e50635edf2e" title=" " alt="" coords="104,56,204,83"/>
-<area shape="rect" id="node5" href="$sim-test_8c.html#a0ddf1224851353fc92bfbff6f499fa97" title=" " alt="" coords="5,56,56,83"/>
-</map>

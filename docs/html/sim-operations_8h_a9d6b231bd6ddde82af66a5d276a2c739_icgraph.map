@@ -1,4 +1,0 @@
-<map id="load_effects_to_simdata" name="load_effects_to_simdata">
-<area shape="rect" id="node1" title="Populates a SimData combination with effect values." alt="" coords="172,5,335,32"/>
-<area shape="rect" id="node2" href="$sim-operations_8h.html#a54cd625669413c2ef171060e9844d814" title="Populates a SimData combination from scratch with marker allele data, a genetic map,..." alt="" coords="5,5,124,32"/>
-</map>

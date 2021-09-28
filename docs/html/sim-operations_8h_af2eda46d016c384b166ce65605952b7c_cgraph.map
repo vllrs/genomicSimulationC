@@ -1,6 +1,0 @@
-<map id="split_from_group" name="split_from_group">
-<area shape="rect" id="node1" title="Take a list of indexes and allocate the genotypes at those indexes to a new group." alt="" coords="5,5,123,32"/>
-<area shape="rect" id="node2" href="$sim-operations_8c.html#ae974a74145fe876e303e14336d3c5d3a" title="Function to identify the next sequential integer that does not identify a group that currently has me..." alt="" coords="171,5,312,32"/>
-<area shape="rect" id="node3" href="$sim-operations_8c.html#a3305ddcc29138d2d92689f39a7885ca0" title="Identify every group number that currently has members." alt="" coords="360,5,499,32"/>
-<area shape="rect" id="node4" href="$sim-operations_8c.html#adae2e9f7e1061cb20426ba2333b7629b" title="Comparator function for qsort." alt="" coords="547,5,717,32"/>
-</map>

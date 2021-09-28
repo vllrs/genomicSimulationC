@@ -1,4 +1,0 @@
-<map id="split_group_by_fitness" name="split_group_by_fitness">
-<area shape="rect" id="node1" title="Takes the top top_n fitness/GEBV individuals in the group and puts them in a new group." alt="" coords="207,13,357,39"/>
-<area shape="rect" id="node2" href="$sim-operations_8h.html#a68aca99a41527b019316c8243e6fc7a7" title="Find the top m percent of a group and perform random crosses between those top individuals." alt="" coords="5,5,159,47"/>
-</map>

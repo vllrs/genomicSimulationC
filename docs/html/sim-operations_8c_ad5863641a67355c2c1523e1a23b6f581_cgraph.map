@@ -1,8 +1,0 @@
-<map id="load_transposed_encoded_genes_to_simdata" name="load_transposed_encoded_genes_to_simdata">
-<area shape="rect" id="node1" title="Populates a SimData combination with marker allele data." alt="" coords="5,99,179,141"/>
-<area shape="rect" id="node2" href="$sim-operations_8c.html#aac694dd044a29fd93443368a7b9e8d8a" title="Creator for an empty AlleleMatrix object of a given size." alt="" coords="227,5,401,32"/>
-<area shape="rect" id="node3" href="$sim-operations_8c.html#ad1a5b9f3e850da13931ee02fbb170d41" title="Replace calls to malloc direct with this function, which errors and exits with status 2 if memory all..." alt="" coords="449,31,535,57"/>
-<area shape="rect" id="node4" href="$sim-operations_8c.html#a392c23248f22e9faf085198dbb1d8711" title="Opens a table file and reads the number of columns and rows (including headers) separated by sep into..." alt="" coords="246,107,382,133"/>
-<area shape="rect" id="node5" href="$sim-operations_8c.html#ad4e0f7934e82157e3115f8df7aec01f0" title="Generates randomly one of 0 or 1, by splitting the output of rand() in half." alt="" coords="287,157,341,184"/>
-<area shape="rect" id="node6" href="$sim-operations_8c.html#ac5f92e5e4bd9d414392a2f022fdc5596" title="Allocate lifetime&#45;unique ids to each genotype in the range of whole SimData indexes from_index to to_..." alt="" coords="257,208,371,235"/>
-</map>

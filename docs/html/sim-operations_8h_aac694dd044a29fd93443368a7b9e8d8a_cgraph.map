@@ -1,4 +1,0 @@
-<map id="create_empty_allelematrix" name="create_empty_allelematrix">
-<area shape="rect" id="node1" title="Creator for an empty AlleleMatrix object of a given size." alt="" coords="5,5,180,32"/>
-<area shape="rect" id="node2" href="$sim-operations_8c.html#ad1a5b9f3e850da13931ee02fbb170d41" title="Replace calls to malloc direct with this function, which errors and exits with status 2 if memory all..." alt="" coords="228,5,313,32"/>
-</map>

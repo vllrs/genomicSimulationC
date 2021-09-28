@@ -1,6 +1,0 @@
-<map id="test_block_generator" name="test_block_generator">
-<area shape="rect" id="node1" title=" " alt="" coords="5,31,148,57"/>
-<area shape="rect" id="node2" href="$sim-operations_8c.html#a2f61debfc95036e86953f6111236026f" title="Divide the genotype into blocks where each block contains all markers within a 1/n length section of ..." alt="" coords="196,5,359,32"/>
-<area shape="rect" id="node4" href="$sim-operations_8c.html#aea2a41cc103e8d11bedff564f93a4759" title="Deletes a MarkerBlocks object and frees its associated memory." alt="" coords="206,56,349,83"/>
-<area shape="rect" id="node3" href="$sim-operations_8c.html#ad1a5b9f3e850da13931ee02fbb170d41" title="Replace calls to malloc direct with this function, which errors and exits with status 2 if memory all..." alt="" coords="407,5,492,32"/>
-</map>

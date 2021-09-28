@@ -1,5 +1,0 @@
-<map id="split_from_group" name="split_from_group">
-<area shape="rect" id="node1" title="Take a list of indexes and allocate the genotypes at those indexes to a new group." alt="" coords="341,13,459,39"/>
-<area shape="rect" id="node2" href="$sim-operations_8h.html#ae34db60faf62b898d0572ea6c039b96a" title="Takes the top_n individuals in the group with the best breeding values/fitnesses and puts them in a n..." alt="" coords="207,13,293,39"/>
-<area shape="rect" id="node3" href="$sim-operations_8h.html#a68aca99a41527b019316c8243e6fc7a7" title="Find the top m percent of a group and perform random crosses between those top individuals." alt="" coords="5,5,159,47"/>
-</map>

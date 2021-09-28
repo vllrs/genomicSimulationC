@@ -1,9 +1,0 @@
-<map id="calculate_fitness_metric" name="calculate_fitness_metric">
-<area shape="rect" id="node1" title="Calculates the fitness metric/GEBV for each genotype in the AlleleMatrix, and returns the results in ..." alt="" coords="5,144,168,171"/>
-<area shape="rect" id="node2" href="$sim-operations_8c.html#ac711a312bddd30d394adda822a7c7679" title="Add the two DecimalMatrix." alt="" coords="232,5,339,32"/>
-<area shape="rect" id="node3" href="$sim-operations_8c.html#abf3f578b0aa59d5b68ccd0738dd6a9d1" title="Generates a matrix of c columns, r rows with all 0." alt="" coords="403,85,557,112"/>
-<area shape="rect" id="node4" href="$sim-operations_8c.html#a42f2398ccb53ffafce9b4a17e3222636" title="Calculates the number of times at each marker that a particular allele appears for each genotype in a..." alt="" coords="217,107,353,149"/>
-<area shape="rect" id="node5" href="$sim-operations_8c.html#aaf6542d59034f88f9e1ec48e5f053c4a" title="Deletes a DecimalMatrix and frees its memory." alt="" coords="232,173,339,200"/>
-<area shape="rect" id="node6" href="$sim-operations_8c.html#a1219ce0fef428e6b5317a034280497b0" title="Perform matrix multiplication on two DecimalMatrix." alt="" coords="220,224,351,251"/>
-<area shape="rect" id="node7" href="$sim-operations_8c.html#abe8da784853a382f703129997ed08996" title="Get a DecimalMatrix composed only of row row_index from m" alt="" coords="216,275,355,301"/>
-</map>

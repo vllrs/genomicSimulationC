@@ -1,5 +1,0 @@
-<map id="get_existing_group_counts" name="get_existing_group_counts">
-<area shape="rect" id="node1" title="Identify every group number that currently has members and the number of genotypes currently allocate..." alt="" coords="5,23,136,65"/>
-<area shape="rect" id="node2" href="$sim-operations_8c.html#acda79ff4e2a3229d13c5393d006136db" title="Comparator function for qsort." alt="" coords="184,5,361,32"/>
-<area shape="rect" id="node3" href="$sim-operations_8c.html#ad1a5b9f3e850da13931ee02fbb170d41" title="Replace calls to malloc direct with this function, which errors and exits with status 2 if memory all..." alt="" coords="230,56,315,83"/>
-</map>

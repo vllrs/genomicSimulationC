@@ -1,6 +1,0 @@
-<map id="calculate_heterozygosity" name="calculate_heterozygosity">
-<area shape="rect" id="node1" title=" " alt="" coords="5,31,172,57"/>
-<area shape="rect" id="node2" href="$sim-operations_8c.html#ac159a31261e14b325bd623899eefa796" title="Gets a shallow copy of the genes/alleles of each member of the group." alt="" coords="220,56,341,83"/>
-<area shape="rect" id="node3" href="$sim-operations_8c.html#ad6d2b66296cd80f5bfe303e06de7935c" title="Function to count the number of genotypes that currently belong to the specified group." alt="" coords="389,5,500,32"/>
-<area shape="rect" id="node4" href="$sim-operations_8c.html#ad1a5b9f3e850da13931ee02fbb170d41" title="Replace calls to malloc direct with this function, which errors and exits with status 2 if memory all..." alt="" coords="402,56,487,83"/>
-</map>

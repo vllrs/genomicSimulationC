@@ -1,7 +1,0 @@
-<map id="calculate_group_local_bvs" name="calculate_group_local_bvs">
-<area shape="rect" id="node1" title="Given a set of blocks of markers in a file, for each genotype in a group, calculate the local fitness..." alt="" coords="5,22,179,49"/>
-<area shape="rect" id="node2" href="$sim-operations_8c.html#ac159a31261e14b325bd623899eefa796" title="Gets a shallow copy of the genes/alleles of each member of the group." alt="" coords="229,73,350,99"/>
-<area shape="rect" id="node3" href="$sim-operations_8c.html#ad6d2b66296cd80f5bfe303e06de7935c" title="Function to count the number of genotypes that currently belong to the specified group." alt="" coords="400,22,511,49"/>
-<area shape="rect" id="node5" href="$sim-operations_8c.html#a3e00f06acc41eb012e99ae46d7a18ccc" title="Gets a shallow copy of the names of each member of the group." alt="" coords="227,22,352,49"/>
-<area shape="rect" id="node4" href="$sim-operations_8c.html#ad1a5b9f3e850da13931ee02fbb170d41" title="Replace calls to malloc direct with this function, which errors and exits with status 2 if memory all..." alt="" coords="413,73,498,99"/>
-</map>
