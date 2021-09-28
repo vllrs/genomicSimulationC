@@ -1,0 +1,13 @@
+<map id="load_more_transposed_genes_to_simdata" name="load_more_transposed_genes_to_simdata">
+<area shape="rect" id="node1" title="Appends genotype data from a file to an existing SimData." alt="" coords="5,150,159,191"/>
+<area shape="rect" id="node2" href="$group__supporters.html#ga887027349503be24b1a847c9b833aaac" title="A function to tidy the internal storage of genotypes after addition or deletion of genotypes in the S..." alt="" coords="215,5,373,32"/>
+<area shape="rect" id="node4" href="$group__loaders.html#gabf20e2c007dd2fb33d0e9413d34e9d6a" title="Creator for an empty AlleleMatrix object of a given size." alt="" coords="207,56,381,83"/>
+<area shape="rect" id="node5" href="$group__supporters.html#gad1a5b9f3e850da13931ee02fbb170d41" title="Replace calls to malloc direct with this function, which errors and exits with status 2 if memory all..." alt="" coords="456,81,541,108"/>
+<area shape="rect" id="node6" href="$group__supporters.html#ga392c23248f22e9faf085198dbb1d8711" title="Opens a table file and reads the number of columns and rows (including headers) separated by sep into..." alt="" coords="226,157,362,184"/>
+<area shape="rect" id="node7" href="$group__supporters.html#gaed2ae969c3ce4ed1466a885dcc559472" title="Returns the first located index in an array of strings where the string is the same as the string tar..." alt="" coords="226,209,362,250"/>
+<area shape="rect" id="node8" href="$group__supporters.html#gae974a74145fe876e303e14336d3c5d3a" title="Function to identify the next sequential integer that does not identify a group that currently has me..." alt="" coords="223,275,365,301"/>
+<area shape="rect" id="node11" href="$group__supporters.html#gac5f92e5e4bd9d414392a2f022fdc5596" title="Allocate lifetime&#45;unique ids to each genotype in the range of whole SimData indexes from_index to to_..." alt="" coords="237,325,351,352"/>
+<area shape="rect" id="node3" href="$group__deletors.html#gadd4a9c17e8c3e59fc00eee25635b110f" title="Deletes the full AlleleMatrix object and frees its memory." alt="" coords="430,5,567,32"/>
+<area shape="rect" id="node9" href="$group__getters.html#ga3305ddcc29138d2d92689f39a7885ca0" title="Identify every group number that currently has members." alt="" coords="429,275,568,301"/>
+<area shape="rect" id="node10" href="$group__supporters.html#gadae2e9f7e1061cb20426ba2333b7629b" title="Comparator function for qsort." alt="" coords="616,275,787,301"/>
+</map>

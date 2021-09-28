@@ -65,7 +65,7 @@ $(function() {
   <div class="summary">
 <a href="#pub-attribs">Data Fields</a>  </div>
   <div class="headertitle">
-<div class="title">GeneticMap Struct Reference</div>  </div>
+<div class="title">GeneticMap Struct Reference<div class="ingroups"><a class="el" href="group__structs.html">Data Structures</a></div></div>  </div>
 </div><!--header-->
 <div class="contents">
 
@@ -86,26 +86,22 @@ Collaboration diagram for GeneticMap:</div>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
 Data Fields</h2></td></tr>
 <tr class="memitem:afd4a97262832e3f7c82c739290aa5e31"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_genetic_map.html#afd4a97262832e3f7c82c739290aa5e31">n_chr</a></td></tr>
+<tr class="memdesc:afd4a97262832e3f7c82c739290aa5e31"><td class="mdescLeft">&#160;</td><td class="mdescRight">The number of chromosomes represented in the map.  <a href="struct_genetic_map.html#afd4a97262832e3f7c82c739290aa5e31">More...</a><br /></td></tr>
 <tr class="separator:afd4a97262832e3f7c82c739290aa5e31"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a664a9cf01704f765d18728bee31f8f96"><td class="memItemLeft" align="right" valign="top">int *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_genetic_map.html#a664a9cf01704f765d18728bee31f8f96">chr_ends</a></td></tr>
+<tr class="memdesc:a664a9cf01704f765d18728bee31f8f96"><td class="mdescLeft">&#160;</td><td class="mdescRight">An array of ints.  <a href="struct_genetic_map.html#a664a9cf01704f765d18728bee31f8f96">More...</a><br /></td></tr>
 <tr class="separator:a664a9cf01704f765d18728bee31f8f96"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad53139955070266a5cc280a7a34c7056"><td class="memItemLeft" align="right" valign="top">float *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_genetic_map.html#ad53139955070266a5cc280a7a34c7056">chr_lengths</a></td></tr>
+<tr class="memdesc:ad53139955070266a5cc280a7a34c7056"><td class="mdescLeft">&#160;</td><td class="mdescRight">An array of floats.  <a href="struct_genetic_map.html#ad53139955070266a5cc280a7a34c7056">More...</a><br /></td></tr>
 <tr class="separator:ad53139955070266a5cc280a7a34c7056"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aaa524d5daadddfad254208ef6bb23791"><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_marker_position.html">MarkerPosition</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_genetic_map.html#aaa524d5daadddfad254208ef6bb23791">positions</a></td></tr>
+<tr class="memdesc:aaa524d5daadddfad254208ef6bb23791"><td class="mdescLeft">&#160;</td><td class="mdescRight">An array of MarkerPositions, ordered from lowest to highest.  <a href="struct_genetic_map.html#aaa524d5daadddfad254208ef6bb23791">More...</a><br /></td></tr>
 <tr class="separator:aaa524d5daadddfad254208ef6bb23791"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>A type that stores the genetic map for a set of markers. </p>
 <p>To get all markers belonging to a particular chromosome, use the following rule: Chr n includes all markers in <code>positions</code> starting at index chr_ends[n-1] up but not including the marker at index chr_ends[n]</p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">n_chr</td><td>the number of chromosomes represented in the map. </td></tr>
-    <tr><td class="paramname">chr_ends</td><td>An array of ints. The entry at index i is the index in <code>positions</code> of the first marker that belongs to Chr(i + 1). The array is n_chr + 1 integers long. </td></tr>
-    <tr><td class="paramname">chr_lengths</td><td>An array of floats. The entry at index i is the length of Chr(i + 1), calculated by <code>position of last marker - position of first marker</code>. The array is n_chr entries long. </td></tr>
-    <tr><td class="paramname">positions</td><td>An array of MarkerPositions, ordered from lowest to highest. </td></tr>
-  </table>
-  </dd>
-</dl>
+<p>Chromosomes must be numbered. All chromosomes from 1 up to and including the highest chromosome number found in the loaded map are represented in these arrays. </p>
 </div><h2 class="groupheader">Field Documentation</h2>
 <a id="a664a9cf01704f765d18728bee31f8f96"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a664a9cf01704f765d18728bee31f8f96">&#9670;&nbsp;</a></span>chr_ends</h2>
@@ -118,6 +114,9 @@ Data Fields</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>An array of ints. </p>
+<p>The entry at index i is the index in <code>positions</code> of the first marker that belongs to Chr(i + 1). The array is n_chr + 1 integers long. </p>
 
 </div>
 </div>
@@ -133,6 +132,9 @@ Data Fields</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>An array of floats. </p>
+<p>The entry at index i is the length of Chr(i + 1), calculated by <code>position of last marker - position of first marker</code>. The array is n_chr entries long. </p>
+
 </div>
 </div>
 <a id="afd4a97262832e3f7c82c739290aa5e31"></a>
@@ -147,6 +149,9 @@ Data Fields</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>The number of chromosomes represented in the map. </p>
+<p>This corresponds to the highest numbered chromosome with a tracked marker (some chromosomes in between may be empty) </p>
+
 </div>
 </div>
 <a id="aaa524d5daadddfad254208ef6bb23791"></a>
@@ -160,6 +165,8 @@ Data Fields</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>An array of MarkerPositions, ordered from lowest to highest. </p>
 
 </div>
 </div>

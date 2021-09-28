@@ -1,5 +1,6 @@
 var searchData=
 [
-  ['rand_5fhalfpoint_376',['RAND_HALFPOINT',['../sim-operations_8c.html#a6db8fbe9028cc259012cbdf075c222b2',1,'RAND_HALFPOINT():&#160;sim-operations.c'],['../sim-operations_8h.html#a6db8fbe9028cc259012cbdf075c222b2',1,'RAND_HALFPOINT():&#160;sim-operations.h']]],
-  ['rows_377',['rows',['../struct_decimal_matrix.html#a7a80ff4671b6ea3fba3a9ecd9e66a028',1,'DecimalMatrix']]]
+  ['pedigrees_339',['pedigrees',['../struct_allele_matrix.html#a789948354e752963b4585980a76c5126',1,'AlleleMatrix']]],
+  ['position_340',['position',['../struct_marker_position.html#ab696daacb855d48cdee790c1712d1dcc',1,'MarkerPosition']]],
+  ['positions_341',['positions',['../struct_genetic_map.html#aaa524d5daadddfad254208ef6bb23791',1,'GeneticMap']]]
 ];

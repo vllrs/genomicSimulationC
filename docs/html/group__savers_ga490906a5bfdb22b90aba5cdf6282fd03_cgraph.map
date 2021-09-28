@@ -1,0 +1,6 @@
+<map id="save_count_matrix" name="save_count_matrix">
+<area shape="rect" id="node1" title="Print the number of copies of a particular allele at each marker of each genotype in the SimData to a..." alt="" coords="5,42,136,69"/>
+<area shape="rect" id="node2" href="$group__calculators.html#ga42f2398ccb53ffafce9b4a17e3222636" title="Calculates the number of times at each marker that a particular allele appears for each genotype in a..." alt="" coords="184,5,320,47"/>
+<area shape="rect" id="node4" href="$group__deletors.html#gaaf6542d59034f88f9e1ec48e5f053c4a" title="Deletes a DecimalMatrix and frees its memory." alt="" coords="199,71,305,98"/>
+<area shape="rect" id="node3" href="$group__maths.html#gabf3f578b0aa59d5b68ccd0738dd6a9d1" title="Generates a matrix of c columns, r rows with all 0." alt="" coords="368,13,523,39"/>
+</map>

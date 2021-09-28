@@ -65,7 +65,7 @@ $(function() {
   <div class="summary">
 <a href="#pub-attribs">Data Fields</a>  </div>
   <div class="headertitle">
-<div class="title">GenOptions Struct Reference</div>  </div>
+<div class="title">GenOptions Struct Reference<div class="ingroups"><a class="el" href="group__structs.html">Data Structures</a></div></div>  </div>
 </div><!--header-->
 <div class="contents">
 
@@ -76,47 +76,42 @@ $(function() {
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
 Data Fields</h2></td></tr>
-<tr class="memitem:a033f6f0bd2cdbc1d39801f3baac2b5f6"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_gen_options.html#a033f6f0bd2cdbc1d39801f3baac2b5f6">will_name_subjects</a></td></tr>
-<tr class="separator:a033f6f0bd2cdbc1d39801f3baac2b5f6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a427515e665828e96923d93aea91b1330"><td class="memItemLeft" align="right" valign="top">char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_gen_options.html#a427515e665828e96923d93aea91b1330">subject_prefix</a></td></tr>
-<tr class="separator:a427515e665828e96923d93aea91b1330"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8b345355c2f0c8b0429380b3e8ef01b7"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_gen_options.html#a8b345355c2f0c8b0429380b3e8ef01b7">will_name_offspring</a></td></tr>
+<tr class="memdesc:a8b345355c2f0c8b0429380b3e8ef01b7"><td class="mdescLeft">&#160;</td><td class="mdescRight">A boolean: whether generated offspring should be given names.  <a href="struct_gen_options.html#a8b345355c2f0c8b0429380b3e8ef01b7">More...</a><br /></td></tr>
+<tr class="separator:a8b345355c2f0c8b0429380b3e8ef01b7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af694017af1601a89dce6da121a1b0fa4"><td class="memItemLeft" align="right" valign="top">char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_gen_options.html#af694017af1601a89dce6da121a1b0fa4">offspring_name_prefix</a></td></tr>
+<tr class="memdesc:af694017af1601a89dce6da121a1b0fa4"><td class="mdescLeft">&#160;</td><td class="mdescRight">If <code>will_name_offspring</code> is true, generated offspring are named [offspring_name_prefix][index].  <a href="struct_gen_options.html#af694017af1601a89dce6da121a1b0fa4">More...</a><br /></td></tr>
+<tr class="separator:af694017af1601a89dce6da121a1b0fa4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a76fff8d868300904c232812b3331ef46"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_gen_options.html#a76fff8d868300904c232812b3331ef46">family_size</a></td></tr>
+<tr class="memdesc:a76fff8d868300904c232812b3331ef46"><td class="mdescLeft">&#160;</td><td class="mdescRight">The number of offspring to produce from each cross.  <a href="struct_gen_options.html#a76fff8d868300904c232812b3331ef46">More...</a><br /></td></tr>
 <tr class="separator:a76fff8d868300904c232812b3331ef46"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8fcbb7d4350ed4bad273508a0f012318"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_gen_options.html#a8fcbb7d4350ed4bad273508a0f012318">will_track_pedigree</a></td></tr>
+<tr class="memdesc:a8fcbb7d4350ed4bad273508a0f012318"><td class="mdescLeft">&#160;</td><td class="mdescRight">A boolean: whether to track parentage of generated offspring.  <a href="struct_gen_options.html#a8fcbb7d4350ed4bad273508a0f012318">More...</a><br /></td></tr>
 <tr class="separator:a8fcbb7d4350ed4bad273508a0f012318"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a94f2ff2580f319ff7d27ba81ced1412a"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_gen_options.html#a94f2ff2580f319ff7d27ba81ced1412a">will_allocate_ids</a></td></tr>
+<tr class="memdesc:a94f2ff2580f319ff7d27ba81ced1412a"><td class="mdescLeft">&#160;</td><td class="mdescRight">A boolean: whether to allocate generated offspring session- unique IDs.  <a href="struct_gen_options.html#a94f2ff2580f319ff7d27ba81ced1412a">More...</a><br /></td></tr>
 <tr class="separator:a94f2ff2580f319ff7d27ba81ced1412a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab14bcd1fed6e64b57679dbf8789ae277"><td class="memItemLeft" align="right" valign="top">char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_gen_options.html#ab14bcd1fed6e64b57679dbf8789ae277">filename_prefix</a></td></tr>
+<tr class="memdesc:ab14bcd1fed6e64b57679dbf8789ae277"><td class="mdescLeft">&#160;</td><td class="mdescRight">A string used in save-as-you-go file names.  <a href="struct_gen_options.html#ab14bcd1fed6e64b57679dbf8789ae277">More...</a><br /></td></tr>
 <tr class="separator:ab14bcd1fed6e64b57679dbf8789ae277"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a06c720c1ed82d8154e441a4499c3b7bd"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_gen_options.html#a06c720c1ed82d8154e441a4499c3b7bd">will_save_pedigree_to_file</a></td></tr>
+<tr class="memdesc:a06c720c1ed82d8154e441a4499c3b7bd"><td class="mdescLeft">&#160;</td><td class="mdescRight">A boolean.  <a href="struct_gen_options.html#a06c720c1ed82d8154e441a4499c3b7bd">More...</a><br /></td></tr>
 <tr class="separator:a06c720c1ed82d8154e441a4499c3b7bd"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad1bc93bf24bfed6b8181578fdc3fa101"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_gen_options.html#ad1bc93bf24bfed6b8181578fdc3fa101">will_save_effects_to_file</a></td></tr>
-<tr class="separator:ad1bc93bf24bfed6b8181578fdc3fa101"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a66cb387414db5ae8a80a6aeb75eb826d"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_gen_options.html#a66cb387414db5ae8a80a6aeb75eb826d">will_save_genes_to_file</a></td></tr>
-<tr class="separator:a66cb387414db5ae8a80a6aeb75eb826d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2b33ec8a6faeb963d87716cce444e47d"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_gen_options.html#a2b33ec8a6faeb963d87716cce444e47d">will_save_bvs_to_file</a></td></tr>
+<tr class="memdesc:a2b33ec8a6faeb963d87716cce444e47d"><td class="mdescLeft">&#160;</td><td class="mdescRight">A boolean.  <a href="struct_gen_options.html#a2b33ec8a6faeb963d87716cce444e47d">More...</a><br /></td></tr>
+<tr class="separator:a2b33ec8a6faeb963d87716cce444e47d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a03a4d5e32968ee1adfa4956a876c9f4a"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_gen_options.html#a03a4d5e32968ee1adfa4956a876c9f4a">will_save_alleles_to_file</a></td></tr>
+<tr class="memdesc:a03a4d5e32968ee1adfa4956a876c9f4a"><td class="mdescLeft">&#160;</td><td class="mdescRight">A boolean.  <a href="struct_gen_options.html#a03a4d5e32968ee1adfa4956a876c9f4a">More...</a><br /></td></tr>
+<tr class="separator:a03a4d5e32968ee1adfa4956a876c9f4a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aee8b41969b7908c8e4d899718ec8c801"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_gen_options.html#aee8b41969b7908c8e4d899718ec8c801">will_save_to_simdata</a></td></tr>
+<tr class="memdesc:aee8b41969b7908c8e4d899718ec8c801"><td class="mdescLeft">&#160;</td><td class="mdescRight">A boolean.  <a href="struct_gen_options.html#aee8b41969b7908c8e4d899718ec8c801">More...</a><br /></td></tr>
 <tr class="separator:aee8b41969b7908c8e4d899718ec8c801"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>A type that contains choices of settings for <a class="el" href="struct_sim_data.html" title="Composite type that is used to run crossing simulations.">SimData</a> functions that create a new AlleleMatrix/generation. </p>
 <p>The family_size parameter will affect how many offspring are produced.</p>
-<p>The will_name_subjects, will_track_pedigree, and will_allocate_ids parameters affect how much extra detail about the offspring is generated/saved.</p>
-<p>The will_save_to_simdata toggle allows you the option of generating offspring without saving them in memory. This may be useful in combination with save-as-you-go toggles will_save_pedigree_to_file, will_save_effects_to_file, and will_save_genes_to_file, to generate a larger number of offspring than will fit in memory.</p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">will_name_subjects</td><td>a boolean representing if subject_names will be filled or not. </td></tr>
-    <tr><td class="paramname">subject_prefix</td><td>If <code>will_name_subjects</code> is true, subjects are named [subject_prefix][index]. </td></tr>
-    <tr><td class="paramname">family_size</td><td>the number of offspring to produce from each cross. </td></tr>
-    <tr><td class="paramname">will_track_pedigree</td><td>a boolean representing whether to bother to track parentage of individual outcomes of the cross or not. </td></tr>
-    <tr><td class="paramname">will_allocate_ids</td><td>a boolean representing whether to allocate individuals session-unique ids used for pedigree tracking. </td></tr>
-    <tr><td class="paramname">filename_prefix</td><td>a string </td></tr>
-    <tr><td class="paramname">will_save_pedigree_to_file</td><td>a boolean. If true, the full/recursive pedigrees of every genotype generated in the cross are saved to "[filename_prefix]-pedigree", even if the genotypes are not later saved to <a class="el" href="struct_sim_data.html" title="Composite type that is used to run crossing simulations.">SimData</a>. </td></tr>
-    <tr><td class="paramname">will_save_effects_to_file</td><td>a boolean. If true, the breeding values of every genotype generated in the cross are saved to "[filename_prefix]-eff", even if the genotypes are not later saved to <a class="el" href="struct_sim_data.html" title="Composite type that is used to run crossing simulations.">SimData</a>. </td></tr>
-    <tr><td class="paramname">will_save_genes_to_file</td><td>a boolean. If true, the set of alleles of every genotype generated in the cross are saved to "[filename_prefix]-genome", even if the genotypes are not later saved to <a class="el" href="struct_sim_data.html" title="Composite type that is used to run crossing simulations.">SimData</a>. </td></tr>
-    <tr><td class="paramname">will_save_to_simdata</td><td>a boolean. If true, the offspring are retained in the <a class="el" href="struct_sim_data.html" title="Composite type that is used to run crossing simulations.">SimData</a> as a new group. If false, they are discarded after creation. </td></tr>
-  </table>
-  </dd>
-</dl>
+<p>The will_name_offspring, will_track_pedigree, and will_allocate_ids parameters affect how much extra detail about the offspring is generated/saved.</p>
+<p>The will_save_to_simdata toggle allows you the option of generating offspring without saving them in memory. This may be useful in combination with save-as-you-go toggles will_save_pedigree_to_file, will_save_bvs_to_file, and will_save_alleles_to_file, to generate a larger number of offspring than will fit in memory. </p>
 </div><h2 class="groupheader">Field Documentation</h2>
 <a id="a76fff8d868300904c232812b3331ef46"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a76fff8d868300904c232812b3331ef46">&#9670;&nbsp;</a></span>family_size</h2>
@@ -129,6 +124,8 @@ Data Fields</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>The number of offspring to produce from each cross. </p>
 
 </div>
 </div>
@@ -144,19 +141,23 @@ Data Fields</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>A string used in save-as-you-go file names. </p>
+
 </div>
 </div>
-<a id="a427515e665828e96923d93aea91b1330"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a427515e665828e96923d93aea91b1330">&#9670;&nbsp;</a></span>subject_prefix</h2>
+<a id="af694017af1601a89dce6da121a1b0fa4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af694017af1601a89dce6da121a1b0fa4">&#9670;&nbsp;</a></span>offspring_name_prefix</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">char* GenOptions::subject_prefix</td>
+          <td class="memname">char* GenOptions::offspring_name_prefix</td>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>If <code>will_name_offspring</code> is true, generated offspring are named [offspring_name_prefix][index]. </p>
 
 </div>
 </div>
@@ -172,47 +173,58 @@ Data Fields</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>A boolean: whether to allocate generated offspring session- unique IDs. </p>
+<p>IDs are used for pedigree tracking. The offspring of an anonymous individual (one without an ID) cannot identify that individual as their parent. </p>
+
 </div>
 </div>
-<a id="a033f6f0bd2cdbc1d39801f3baac2b5f6"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a033f6f0bd2cdbc1d39801f3baac2b5f6">&#9670;&nbsp;</a></span>will_name_subjects</h2>
+<a id="a8b345355c2f0c8b0429380b3e8ef01b7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8b345355c2f0c8b0429380b3e8ef01b7">&#9670;&nbsp;</a></span>will_name_offspring</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">int GenOptions::will_name_subjects</td>
+          <td class="memname">int GenOptions::will_name_offspring</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
+<p>A boolean: whether generated offspring should be given names. </p>
+
 </div>
 </div>
-<a id="ad1bc93bf24bfed6b8181578fdc3fa101"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ad1bc93bf24bfed6b8181578fdc3fa101">&#9670;&nbsp;</a></span>will_save_effects_to_file</h2>
+<a id="a03a4d5e32968ee1adfa4956a876c9f4a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a03a4d5e32968ee1adfa4956a876c9f4a">&#9670;&nbsp;</a></span>will_save_alleles_to_file</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">int GenOptions::will_save_effects_to_file</td>
+          <td class="memname">int GenOptions::will_save_alleles_to_file</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
+<p>A boolean. </p>
+<p>If true, the set of alleles of every offspring generated in the cross are saved to "[filename_prefix}-genotype.txt", even if <code>will_save_to_simdata</code> is false. Genotypes are saved in the format of <a class="el" href="group__savers.html#ga9e43115d9ee4ac406c14161fc6ccb327" title="Prints the genotypes of each individual in a given group to a file, with the following format.">save_group_alleles()</a> </p>
+
 </div>
 </div>
-<a id="a66cb387414db5ae8a80a6aeb75eb826d"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a66cb387414db5ae8a80a6aeb75eb826d">&#9670;&nbsp;</a></span>will_save_genes_to_file</h2>
+<a id="a2b33ec8a6faeb963d87716cce444e47d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2b33ec8a6faeb963d87716cce444e47d">&#9670;&nbsp;</a></span>will_save_bvs_to_file</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">int GenOptions::will_save_genes_to_file</td>
+          <td class="memname">int GenOptions::will_save_bvs_to_file</td>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>A boolean. </p>
+<p>If true, the breeding values of every offspring generated in the cross are saved to "[filename_prefix}-bv.txt", even if <code>will_save_to_simdata</code> is false. BVs are saved in the format of <a class="el" href="group__savers.html#ga6024d629560199d7c97d86bda15f55fc" title="Print the breeding value of each genotype in the SimData to a file.">save_bvs()</a> </p>
 
 </div>
 </div>
@@ -228,6 +240,9 @@ Data Fields</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>A boolean. </p>
+<p>If true, the full/recursive pedigrees of every offspring generated in the cross are saved to "[filename_prefix}-pedigree.txt", even if <code>will_save_to_simdata</code> is false. Pedigrees are saved in the format of <a class="el" href="group__savers.html#ga40dbed7f680c5c1181a8ed27e616417b" title="Print the full known pedigree of each genotype in the SimData to a file.">save_full_pedigree()</a> </p>
+
 </div>
 </div>
 <a id="aee8b41969b7908c8e4d899718ec8c801"></a>
@@ -242,6 +257,9 @@ Data Fields</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>A boolean. </p>
+<p>If true, the generated offspring exist in the <a class="el" href="struct_sim_data.html" title="Composite type that is used to run crossing simulations.">SimData</a> struct after the function executes. If false, they are discarded after creation. </p>
+
 </div>
 </div>
 <a id="a8fcbb7d4350ed4bad273508a0f012318"></a>
@@ -255,6 +273,8 @@ Data Fields</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>A boolean: whether to track parentage of generated offspring. </p>
 
 </div>
 </div>

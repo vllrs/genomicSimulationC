@@ -1,0 +1,7 @@
+<map id="calculate_group_bvs" name="calculate_group_bvs">
+<area shape="rect" id="node1" title="Calculates the fitness metric/breeding value for each genotype in the AlleleMatrix in a certain group..." alt="" coords="368,56,507,83"/>
+<area shape="rect" id="node2" href="$group__getters.html#gaacbc190e8ea144de14b586e5fe3ae865" title="Gets the breeding values/breeding values/fitnesses of each member of the group." alt="" coords="211,5,316,32"/>
+<area shape="rect" id="node3" href="$group__savers.html#ga0da46978e8e546af5eb3b2635902a82b" title="Print the breeding value of each genotype in a group to a file." alt="" coords="207,56,320,83"/>
+<area shape="rect" id="node4" href="$group__calculators.html#gae34db60faf62b898d0572ea6c039b96a" title="Takes the top_n individuals in the group with the best breeding values/fitnesses and puts them in a n..." alt="" coords="220,107,307,133"/>
+<area shape="rect" id="node5" href="$group__crossers.html#ga68aca99a41527b019316c8243e6fc7a7" title="Find the top m percent of a group and perform random crosses between those top individuals." alt="" coords="5,99,159,141"/>
+</map>

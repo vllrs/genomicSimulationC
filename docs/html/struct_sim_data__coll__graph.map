@@ -1,7 +1,7 @@
 <map id="SimData" name="SimData">
 <area shape="rect" id="node1" title="Composite type that is used to run crossing simulations." alt="" coords="150,184,222,211"/>
 <area shape="rect" id="node2" href="$struct_effect_matrix.html" title="A type that stores a matrix of effect values and their names." alt="" coords="17,95,107,121"/>
-<area shape="rect" id="node3" href="$struct_decimal_matrix.html" title="A heap matrix that contains floating point numbers." alt="" coords="5,5,111,32"/>
+<area shape="rect" id="node3" href="$struct_decimal_matrix.html" title="A row&#45;major heap matrix that contains floating point numbers." alt="" coords="5,5,111,32"/>
 <area shape="rect" id="node4" href="$struct_genetic_map.html" title="A type that stores the genetic map for a set of markers." alt="" coords="140,95,232,121"/>
 <area shape="rect" id="node5" href="$struct_marker_position.html" title="A struct representing a single marker location." alt="" coords="135,5,245,32"/>
 <area shape="rect" id="node6" href="$struct_allele_matrix.html" title=" " alt="" coords="257,95,347,121"/>

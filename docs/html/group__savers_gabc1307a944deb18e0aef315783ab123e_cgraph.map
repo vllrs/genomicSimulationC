@@ -1,0 +1,6 @@
+<map id="save_parents_of" name="save_parents_of">
+<area shape="rect" id="node1" title="Recursively save the parents of a particular id to a file." alt="" coords="5,31,120,57"/>
+<area shape="rect" id="node2" href="$group__getters.html#ga6aa75e72bb29725ffe32cd003c547480" title="Returns the name of the genotype with a given id." alt="" coords="173,5,287,32"/>
+<area shape="rect" id="node4" href="$group__getters.html#ga229c9de94875ea41a23723d337f5f92f" title="Saves the ids of the parents of a genotype with a particular id to the output array output." alt="" coords="168,56,292,83"/>
+<area shape="rect" id="node3" href="$group__supporters.html#gaa6943b0633c1744bacad62ab2bf68ebd" title="Returns the located index in an array of integers where the integer is target." alt="" coords="340,31,515,57"/>
+</map>

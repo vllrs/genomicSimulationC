@@ -1,0 +1,10 @@
+<map id="save_bvs" name="save_bvs">
+<area shape="rect" id="node1" title="Print the breeding value of each genotype in the SimData to a file." alt="" coords="5,224,80,251"/>
+<area shape="rect" id="node2" href="$group__calculators.html#gab5b177cf40a7e28276c460d60a3ecbb5" title="Calculates the fitness metric/breeding value for each genotype in the AlleleMatrix,..." alt="" coords="128,173,228,200"/>
+<area shape="rect" id="node6" href="$group__deletors.html#gaaf6542d59034f88f9e1ec48e5f053c4a" title="Deletes a DecimalMatrix and frees its memory." alt="" coords="292,275,399,301"/>
+<area shape="rect" id="node3" href="$group__maths.html#gac711a312bddd30d394adda822a7c7679" title="Add the two DecimalMatrix." alt="" coords="292,5,399,32"/>
+<area shape="rect" id="node4" href="$group__maths.html#gabf3f578b0aa59d5b68ccd0738dd6a9d1" title="Generates a matrix of c columns, r rows with all 0." alt="" coords="463,85,617,112"/>
+<area shape="rect" id="node5" href="$group__calculators.html#ga42f2398ccb53ffafce9b4a17e3222636" title="Calculates the number of times at each marker that a particular allele appears for each genotype in a..." alt="" coords="277,107,413,149"/>
+<area shape="rect" id="node7" href="$group__maths.html#ga1219ce0fef428e6b5317a034280497b0" title="Perform matrix multiplication on two DecimalMatrix." alt="" coords="280,173,411,200"/>
+<area shape="rect" id="node8" href="$group__maths.html#gabe8da784853a382f703129997ed08996" title="Get a DecimalMatrix composed only of row row_index from m" alt="" coords="276,224,415,251"/>
+</map>

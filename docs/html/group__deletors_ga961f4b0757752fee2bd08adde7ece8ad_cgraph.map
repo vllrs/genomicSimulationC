@@ -1,0 +1,4 @@
+<map id="delete_effect_matrix" name="delete_effect_matrix">
+<area shape="rect" id="node1" title="Deletes an EffectMatrix object and frees its memory." alt="" coords="5,5,144,32"/>
+<area shape="rect" id="node2" href="$group__deletors.html#gaaf6542d59034f88f9e1ec48e5f053c4a" title="Deletes a DecimalMatrix and frees its memory." alt="" coords="192,5,299,32"/>
+</map>

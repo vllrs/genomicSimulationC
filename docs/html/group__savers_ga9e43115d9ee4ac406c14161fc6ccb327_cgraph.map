@@ -1,0 +1,8 @@
+<map id="save_group_alleles" name="save_group_alleles">
+<area shape="rect" id="node1" title="Prints the genotypes of each individual in a given group to a file, with the following format." alt="" coords="5,50,136,77"/>
+<area shape="rect" id="node2" href="$group__getters.html#gac159a31261e14b325bd623899eefa796" title="Gets a shallow copy of the genes/alleles of each member of the group." alt="" coords="186,25,307,51"/>
+<area shape="rect" id="node3" href="$group__getters.html#gad6d2b66296cd80f5bfe303e06de7935c" title="Function to count the number of genotypes that currently belong to the specified group." alt="" coords="357,25,468,51"/>
+<area shape="rect" id="node5" href="$group__getters.html#ga961042e468630f31a3607dac42f8fa34" title="Gets the ids of each member of the group." alt="" coords="195,75,298,102"/>
+<area shape="rect" id="node6" href="$group__getters.html#ga3e00f06acc41eb012e99ae46d7a18ccc" title="Gets a shallow copy of the names of each member of the group." alt="" coords="184,126,309,153"/>
+<area shape="rect" id="node4" href="$group__supporters.html#gad1a5b9f3e850da13931ee02fbb170d41" title="Replace calls to malloc direct with this function, which errors and exits with status 2 if memory all..." alt="" coords="370,75,455,102"/>
+</map>

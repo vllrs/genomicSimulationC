@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['allelematrix_387',['AlleleMatrix',['../sim-operations_8h.html#a210a64911b3ec2ed32894e3969365e7f',1,'sim-operations.h']]]
+  ['allelematrix_351',['AlleleMatrix',['../group__structs.html#ga210a64911b3ec2ed32894e3969365e7f',1,'sim-operations.h']]]
 ];

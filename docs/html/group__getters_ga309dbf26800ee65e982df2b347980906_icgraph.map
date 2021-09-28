@@ -1,0 +1,8 @@
+<map id="get_genes_of_index" name="get_genes_of_index">
+<area shape="rect" id="node1" title="Get the alleles of a genotype by its index." alt="" coords="441,42,579,69"/>
+<area shape="rect" id="node2" href="$group__recomb.html#ga7813f256407ab2ea242df32ea9ad2c7e" title="Provides guesses as to the location of recombination events that led to the creation of certain genot..." alt="" coords="220,5,389,47"/>
+<area shape="rect" id="node3" href="$group__crossers.html#gabb793988799d792dfe4007efdf988068" title="Performs the crosses of pairs of parents whose ids are provided in an array." alt="" coords="216,71,393,98"/>
+<area shape="rect" id="node4" href="$group__crossers.html#ga3f1b06b7aa35e6a05918e16d1deabeee" title="Perform crosses between all pairs of parents in the group from_group and allocates the resulting offs..." alt="" coords="8,5,165,47"/>
+<area shape="rect" id="node5" href="$group__crossers.html#ga3b67d38c13c7a8bef2d0fc91c0365177" title="Perform crosses between pairs of parents identified by name in a file and allocate the resulting offs..." alt="" coords="5,71,168,98"/>
+<area shape="rect" id="node6" href="$group__crossers.html#gaa7c90b4015e4abce750176c6d891cad2" title="Perform crosses between previously&#45;generated offspring of pairs of parents identified by name in a fi..." alt="" coords="11,123,163,164"/>
+</map>

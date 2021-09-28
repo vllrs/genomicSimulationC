@@ -65,7 +65,7 @@ $(function() {
   <div class="summary">
 <a href="#pub-attribs">Data Fields</a>  </div>
   <div class="headertitle">
-<div class="title">MarkerBlocks Struct Reference</div>  </div>
+<div class="title">MarkerBlocks Struct Reference<div class="ingroups"><a class="el" href="group__structs.html">Data Structures</a></div></div>  </div>
 </div><!--header-->
 <div class="contents">
 
@@ -77,22 +77,17 @@ $(function() {
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
 Data Fields</h2></td></tr>
 <tr class="memitem:afe2371521213af6d994edfdbf36cfccc"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_marker_blocks.html#afe2371521213af6d994edfdbf36cfccc">num_blocks</a></td></tr>
+<tr class="memdesc:afe2371521213af6d994edfdbf36cfccc"><td class="mdescLeft">&#160;</td><td class="mdescRight">The number of blocks whose details are stored here.  <a href="struct_marker_blocks.html#afe2371521213af6d994edfdbf36cfccc">More...</a><br /></td></tr>
 <tr class="separator:afe2371521213af6d994edfdbf36cfccc"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a05bc16cd7262d5513b07ae8086c4a0de"><td class="memItemLeft" align="right" valign="top">int *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_marker_blocks.html#a05bc16cd7262d5513b07ae8086c4a0de">num_markers_in_block</a></td></tr>
+<tr class="memdesc:a05bc16cd7262d5513b07ae8086c4a0de"><td class="mdescLeft">&#160;</td><td class="mdescRight">Pointer to a heap array of length num_blocks containing the number of markers that make up each block.  <a href="struct_marker_blocks.html#a05bc16cd7262d5513b07ae8086c4a0de">More...</a><br /></td></tr>
 <tr class="separator:a05bc16cd7262d5513b07ae8086c4a0de"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9db677d2c96cd8199e634107a1e669eb"><td class="memItemLeft" align="right" valign="top">int **&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_marker_blocks.html#a9db677d2c96cd8199e634107a1e669eb">markers_in_block</a></td></tr>
+<tr class="memdesc:a9db677d2c96cd8199e634107a1e669eb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Pointer to a heap array of length num_blocks, each entry in which is a pointer to a heap array with length corresponding to the value of the corresponding entry in num_markers_in_block whose values are the indexes in the <a class="el" href="struct_sim_data.html" title="Composite type that is used to run crossing simulations.">SimData</a> of the markers that make up that block.  <a href="struct_marker_blocks.html#a9db677d2c96cd8199e634107a1e669eb">More...</a><br /></td></tr>
 <tr class="separator:a9db677d2c96cd8199e634107a1e669eb"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>A struct used to store a set of blocks of markers. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">num_blocks</td><td>the number of blocks whose details are stored here. </td></tr>
-    <tr><td class="paramname">num_markers_in_block</td><td>pointer to a heap array of length num_blocks containing the number of markers that make up each block </td></tr>
-    <tr><td class="paramname">markers_in_block</td><td>pointer to a heap array of length num_blocks, each entry in which is a pointer to a heap array with length corresponding to the value of the corresponding entry in num_markers_in_block whose values are the indexes in the <a class="el" href="struct_sim_data.html" title="Composite type that is used to run crossing simulations.">SimData</a> of the markers that make up that block. </td></tr>
-  </table>
-  </dd>
-</dl>
 </div><h2 class="groupheader">Field Documentation</h2>
 <a id="a9db677d2c96cd8199e634107a1e669eb"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a9db677d2c96cd8199e634107a1e669eb">&#9670;&nbsp;</a></span>markers_in_block</h2>
@@ -105,6 +100,8 @@ Data Fields</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Pointer to a heap array of length num_blocks, each entry in which is a pointer to a heap array with length corresponding to the value of the corresponding entry in num_markers_in_block whose values are the indexes in the <a class="el" href="struct_sim_data.html" title="Composite type that is used to run crossing simulations.">SimData</a> of the markers that make up that block. </p>
 
 </div>
 </div>
@@ -120,6 +117,8 @@ Data Fields</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>The number of blocks whose details are stored here. </p>
+
 </div>
 </div>
 <a id="a05bc16cd7262d5513b07ae8086c4a0de"></a>
@@ -133,6 +132,8 @@ Data Fields</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Pointer to a heap array of length num_blocks containing the number of markers that make up each block. </p>
 
 </div>
 </div>

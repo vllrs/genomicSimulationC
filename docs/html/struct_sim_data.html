@@ -65,7 +65,7 @@ $(function() {
   <div class="summary">
 <a href="#pub-attribs">Data Fields</a>  </div>
   <div class="headertitle">
-<div class="title">SimData Struct Reference</div>  </div>
+<div class="title">SimData Struct Reference<div class="ingroups"><a class="el" href="group__structs.html">Data Structures</a></div></div>  </div>
 </div><!--header-->
 <div class="contents">
 
@@ -80,7 +80,7 @@ Collaboration diagram for SimData:</div>
 <map name="_sim_data_coll__map" id="_sim_data_coll__map">
 <area shape="rect" title="Composite type that is used to run crossing simulations." alt="" coords="150,184,222,211"/>
 <area shape="rect" href="struct_effect_matrix.html" title="A type that stores a matrix of effect values and their names." alt="" coords="17,95,107,121"/>
-<area shape="rect" href="struct_decimal_matrix.html" title="A heap matrix that contains floating point numbers." alt="" coords="5,5,111,32"/>
+<area shape="rect" href="struct_decimal_matrix.html" title="A row&#45;major heap matrix that contains floating point numbers." alt="" coords="5,5,111,32"/>
 <area shape="rect" href="struct_genetic_map.html" title="A type that stores the genetic map for a set of markers." alt="" coords="140,95,232,121"/>
 <area shape="rect" href="struct_marker_position.html" title="A struct representing a single marker location." alt="" coords="135,5,245,32"/>
 <area shape="rect" href="struct_allele_matrix.html" title=" " alt="" coords="257,95,347,121"/>
@@ -90,32 +90,27 @@ Collaboration diagram for SimData:</div>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
 Data Fields</h2></td></tr>
 <tr class="memitem:af91c67baf2824ded2ff130500c29ab36"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_sim_data.html#af91c67baf2824ded2ff130500c29ab36">n_markers</a></td></tr>
+<tr class="memdesc:af91c67baf2824ded2ff130500c29ab36"><td class="mdescLeft">&#160;</td><td class="mdescRight">The number of markers/length of <code>markers</code>.  <a href="struct_sim_data.html#af91c67baf2824ded2ff130500c29ab36">More...</a><br /></td></tr>
 <tr class="separator:af91c67baf2824ded2ff130500c29ab36"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:afaf6ca10aa3f661d7fccc335a5de2af8"><td class="memItemLeft" align="right" valign="top">char **&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_sim_data.html#afaf6ca10aa3f661d7fccc335a5de2af8">markers</a></td></tr>
+<tr class="memdesc:afaf6ca10aa3f661d7fccc335a5de2af8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Array of strings containing the names of markers.  <a href="struct_sim_data.html#afaf6ca10aa3f661d7fccc335a5de2af8">More...</a><br /></td></tr>
 <tr class="separator:afaf6ca10aa3f661d7fccc335a5de2af8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae1ae6d192937ca2edaba69edf8308711"><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_genetic_map.html">GeneticMap</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_sim_data.html#ae1ae6d192937ca2edaba69edf8308711">map</a></td></tr>
+<tr class="memdesc:ae1ae6d192937ca2edaba69edf8308711"><td class="mdescLeft">&#160;</td><td class="mdescRight">A <a class="el" href="struct_genetic_map.html" title="A type that stores the genetic map for a set of markers.">GeneticMap</a>.  <a href="struct_sim_data.html#ae1ae6d192937ca2edaba69edf8308711">More...</a><br /></td></tr>
 <tr class="separator:ae1ae6d192937ca2edaba69edf8308711"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0a3c4152d86786884939add509bfa325"><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_allele_matrix.html">AlleleMatrix</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_sim_data.html#a0a3c4152d86786884939add509bfa325">m</a></td></tr>
+<tr class="memdesc:a0a3c4152d86786884939add509bfa325"><td class="mdescLeft">&#160;</td><td class="mdescRight">Pointer to an <a class="el" href="struct_allele_matrix.html">AlleleMatrix</a>, which stores data and metadata of founders and simulated offspring.  <a href="struct_sim_data.html#a0a3c4152d86786884939add509bfa325">More...</a><br /></td></tr>
 <tr class="separator:a0a3c4152d86786884939add509bfa325"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a74a7cb588285022d6300b21484d8ba44"><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_effect_matrix.html">EffectMatrix</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_sim_data.html#a74a7cb588285022d6300b21484d8ba44">e</a></td></tr>
+<tr class="memdesc:a74a7cb588285022d6300b21484d8ba44"><td class="mdescLeft">&#160;</td><td class="mdescRight">An <a class="el" href="struct_effect_matrix.html" title="A type that stores a matrix of effect values and their names.">EffectMatrix</a>, optional for the use of the simulation.  <a href="struct_sim_data.html#a74a7cb588285022d6300b21484d8ba44">More...</a><br /></td></tr>
 <tr class="separator:a74a7cb588285022d6300b21484d8ba44"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a829aa46d12728427def242e7884dc560"><td class="memItemLeft" align="right" valign="top">unsigned int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_sim_data.html#a829aa46d12728427def242e7884dc560">current_id</a></td></tr>
+<tr class="memdesc:a829aa46d12728427def242e7884dc560"><td class="mdescLeft">&#160;</td><td class="mdescRight">Highest SimData-unique ID that has been generated so far.  <a href="struct_sim_data.html#a829aa46d12728427def242e7884dc560">More...</a><br /></td></tr>
 <tr class="separator:a829aa46d12728427def242e7884dc560"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Composite type that is used to run crossing simulations. </p>
-<p>The core of this type is a list of markers. These are used to index the rows of the allele matrix and the position map, and the cols of the effect matrix.</p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">n_markers</td><td>the number of markers/length of <code>markers</code> </td></tr>
-    <tr><td class="paramname">markers</td><td>an array of strings containing the names of markers </td></tr>
-    <tr><td class="paramname">map</td><td><a class="el" href="struct_genetic_map.html" title="A type that stores the genetic map for a set of markers.">GeneticMap</a> with positions of markers on chromosomes. If this is set, then <code>markers</code> will be ordered and all markers have a known position. </td></tr>
-    <tr><td class="paramname">m</td><td>pointer to an <a class="el" href="struct_allele_matrix.html">AlleleMatrix</a> containing data for the parent generation. Successive generations are added to the end of the linked list that starts here. </td></tr>
-    <tr><td class="paramname">e</td><td><a class="el" href="struct_effect_matrix.html" title="A type that stores a matrix of effect values and their names.">EffectMatrix</a> containing the effects at all markers. </td></tr>
-    <tr><td class="paramname">current_id</td><td>integer denoting the highest id that has been allocated to a subject. Used to track where we are in generating unique ids. </td></tr>
-  </table>
-  </dd>
-</dl>
+<p>The core of this type is a list of markers. These are used to index the rows of the allele matrix and the position map, and the columns of the effect matrix. </p>
 </div><h2 class="groupheader">Field Documentation</h2>
 <a id="a829aa46d12728427def242e7884dc560"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a829aa46d12728427def242e7884dc560">&#9670;&nbsp;</a></span>current_id</h2>
@@ -128,6 +123,9 @@ Data Fields</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Highest SimData-unique ID that has been generated so far. </p>
+<p>Used to track which IDs have already been given out. </p>
 
 </div>
 </div>
@@ -143,6 +141,9 @@ Data Fields</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>An <a class="el" href="struct_effect_matrix.html" title="A type that stores a matrix of effect values and their names.">EffectMatrix</a>, optional for the use of the simulation. </p>
+<p>Used for calculating breeding values from which alleles a genotype has at each marker. </p>
+
 </div>
 </div>
 <a id="a0a3c4152d86786884939add509bfa325"></a>
@@ -156,6 +157,9 @@ Data Fields</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Pointer to an <a class="el" href="struct_allele_matrix.html">AlleleMatrix</a>, which stores data and metadata of founders and simulated offspring. </p>
+<p>The <a class="el" href="struct_allele_matrix.html">AlleleMatrix</a> is start of a linked list if there are many genotypes. </p>
 
 </div>
 </div>
@@ -171,6 +175,9 @@ Data Fields</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>A <a class="el" href="struct_genetic_map.html" title="A type that stores the genetic map for a set of markers.">GeneticMap</a>. </p>
+<p>If this is set, then <code>markers</code> will be ordered and all markers have a known position. </p>
+
 </div>
 </div>
 <a id="afaf6ca10aa3f661d7fccc335a5de2af8"></a>
@@ -185,6 +192,8 @@ Data Fields</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>Array of strings containing the names of markers. </p>
+
 </div>
 </div>
 <a id="af91c67baf2824ded2ff130500c29ab36"></a>
@@ -198,6 +207,8 @@ Data Fields</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>The number of markers/length of <code>markers</code>. </p>
 
 </div>
 </div>

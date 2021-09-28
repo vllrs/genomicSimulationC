@@ -65,11 +65,11 @@ $(function() {
   <div class="summary">
 <a href="#pub-attribs">Data Fields</a>  </div>
   <div class="headertitle">
-<div class="title">DecimalMatrix Struct Reference</div>  </div>
+<div class="title">DecimalMatrix Struct Reference<div class="ingroups"><a class="el" href="group__structs.html">Data Structures</a></div></div>  </div>
 </div><!--header-->
 <div class="contents">
 
-<p>A heap matrix that contains floating point numbers.  
+<p>A row-major heap matrix that contains floating point numbers.  
  <a href="struct_decimal_matrix.html#details">More...</a></p>
 
 <p><code>#include &lt;<a class="el" href="sim-operations_8h_source.html">sim-operations.h</a>&gt;</code></p>
@@ -77,14 +77,17 @@ $(function() {
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
 Data Fields</h2></td></tr>
 <tr class="memitem:ad53ead42947e6ac7ec961379aa685585"><td class="memItemLeft" align="right" valign="top">double **&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_decimal_matrix.html#ad53ead42947e6ac7ec961379aa685585">matrix</a></td></tr>
+<tr class="memdesc:ad53ead42947e6ac7ec961379aa685585"><td class="mdescLeft">&#160;</td><td class="mdescRight">The actual matrix and contents.  <a href="struct_decimal_matrix.html#ad53ead42947e6ac7ec961379aa685585">More...</a><br /></td></tr>
 <tr class="separator:ad53ead42947e6ac7ec961379aa685585"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7a80ff4671b6ea3fba3a9ecd9e66a028"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_decimal_matrix.html#a7a80ff4671b6ea3fba3a9ecd9e66a028">rows</a></td></tr>
+<tr class="memdesc:a7a80ff4671b6ea3fba3a9ecd9e66a028"><td class="mdescLeft">&#160;</td><td class="mdescRight">Number of rows in the matrix.  <a href="struct_decimal_matrix.html#a7a80ff4671b6ea3fba3a9ecd9e66a028">More...</a><br /></td></tr>
 <tr class="separator:a7a80ff4671b6ea3fba3a9ecd9e66a028"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae787fd4f660acf3c9241571f92f9b8f3"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_decimal_matrix.html#ae787fd4f660acf3c9241571f92f9b8f3">cols</a></td></tr>
+<tr class="memdesc:ae787fd4f660acf3c9241571f92f9b8f3"><td class="mdescLeft">&#160;</td><td class="mdescRight">number of columns in the matrix  <a href="struct_decimal_matrix.html#ae787fd4f660acf3c9241571f92f9b8f3">More...</a><br /></td></tr>
 <tr class="separator:ae787fd4f660acf3c9241571f92f9b8f3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>A heap matrix that contains floating point numbers. </p>
+<div class="textblock"><p>A row-major heap matrix that contains floating point numbers. </p>
 <p><code>dmatrix</code> functions are designed to act on this matrix.</p>
 <p>Rows make the first index of the matrix and columns the second. </p>
 </div><h2 class="groupheader">Field Documentation</h2>
@@ -100,6 +103,8 @@ Data Fields</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>number of columns in the matrix </p>
+
 </div>
 </div>
 <a id="ad53ead42947e6ac7ec961379aa685585"></a>
@@ -114,6 +119,8 @@ Data Fields</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>The actual matrix and contents. </p>
+
 </div>
 </div>
 <a id="a7a80ff4671b6ea3fba3a9ecd9e66a028"></a>
@@ -127,6 +134,8 @@ Data Fields</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Number of rows in the matrix. </p>
 
 </div>
 </div>

@@ -1,0 +1,7 @@
+<map id="generate_gamete" name="generate_gamete">
+<area shape="rect" id="node1" title="Fills a char* with the simulated result of meiosis (reduction and recombination) from the marker alle..." alt="" coords="5,81,128,108"/>
+<area shape="rect" id="node2" href="$group__supporters.html#ga3744bc6f3fcb52952d520029055e8af8" title="Comparator function for qsort." alt="" coords="176,5,356,32"/>
+<area shape="rect" id="node3" href="$group__supporters.html#gad1a5b9f3e850da13931ee02fbb170d41" title="Replace calls to malloc direct with this function, which errors and exits with status 2 if memory all..." alt="" coords="223,56,309,83"/>
+<area shape="rect" id="node4" href="$group__maths.html#gad4e0f7934e82157e3115f8df7aec01f0" title="Generates randomly one of 0 or 1, by splitting the output of rand() in half." alt="" coords="239,107,293,133"/>
+<area shape="rect" id="node5" href="$group__maths.html#ga7d9dbe538d6fb096af14c3163c98e800" title="Generates randomly a number from the Poisson distribution with parameter lambda, using the Knuth appr..." alt="" coords="234,157,298,184"/>
+</map>

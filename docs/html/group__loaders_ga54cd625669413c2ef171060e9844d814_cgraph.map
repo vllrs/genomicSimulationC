@@ -1,0 +1,21 @@
+<map id="load_all_simdata" name="load_all_simdata">
+<area shape="rect" id="node1" title="Populates a SimData combination from scratch with marker allele data, a genetic map,..." alt="" coords="5,335,124,361"/>
+<area shape="rect" id="node2" href="$group__loaders.html#gade7f44243415336a463877ff8d60490d" title="Creator for an empty SimData object on the heap." alt="" coords="180,208,335,235"/>
+<area shape="rect" id="node4" href="$group__deletors.html#ga6fc4a687a2186e9e9dcf3229d9141041" title="Deletes a SimData object and frees its memory." alt="" coords="202,579,313,605"/>
+<area shape="rect" id="node9" href="$group__supporters.html#ga5e049945be5700a6d5a5654b6b332842" title="Updates the chr_ends, n_chr and chr_lengths fields in SimData.map." alt="" coords="391,259,572,285"/>
+<area shape="rect" id="node10" href="$group__supporters.html#gadebbfa88bf139ddca501ab158f3746c5" title="Takes a SimData object, and sorts its markers, the rows of its parent gen AlleleMatrix (because they ..." alt="" coords="413,360,550,387"/>
+<area shape="rect" id="node13" href="$group__loaders.html#ga9d6b231bd6ddde82af66a5d276a2c739" title="Populates a SimData combination with effect values." alt="" coords="176,440,339,467"/>
+<area shape="rect" id="node15" href="$group__loaders.html#ga8edb09b9b9eb27f84ac59cc4342ea855" title="Populates a SimData combination with data from a genetic map." alt="" coords="172,385,343,412"/>
+<area shape="rect" id="node16" href="$group__loaders.html#ga156666e21151a9f267e31598574366a6" title="Populates a SimData combination with marker allele data." alt="" coords="178,99,337,141"/>
+<area shape="rect" id="node3" href="$group__supporters.html#gad1a5b9f3e850da13931ee02fbb170d41" title="Replace calls to malloc direct with this function, which errors and exits with status 2 if memory all..." alt="" coords="657,233,743,260"/>
+<area shape="rect" id="node5" href="$group__deletors.html#gadd4a9c17e8c3e59fc00eee25635b110f" title="Deletes the full AlleleMatrix object and frees its memory." alt="" coords="413,680,550,707"/>
+<area shape="rect" id="node6" href="$group__deletors.html#ga961f4b0757752fee2bd08adde7ece8ad" title="Deletes an EffectMatrix object and frees its memory." alt="" coords="412,629,551,656"/>
+<area shape="rect" id="node8" href="$group__deletors.html#gaaf7e12b92ec0f93bb3bc2ec67155bc94" title="Deletes a GeneticMap object and frees its memory." alt="" coords="645,411,755,437"/>
+<area shape="rect" id="node7" href="$group__deletors.html#gaaf6542d59034f88f9e1ec48e5f053c4a" title="Deletes a DecimalMatrix and frees its memory." alt="" coords="647,579,753,605"/>
+<area shape="rect" id="node11" href="$group__supporters.html#ga80cab739edbd12bbd2ad1f9b77b27548" title="Comparator function for qsort." alt="" coords="620,360,780,387"/>
+<area shape="rect" id="node12" href="$group__maths.html#gabf3f578b0aa59d5b68ccd0738dd6a9d1" title="Generates a matrix of c columns, r rows with all 0." alt="" coords="623,309,777,336"/>
+<area shape="rect" id="node14" href="$group__supporters.html#gaed2ae969c3ce4ed1466a885dcc559472" title="Returns the first located index in an array of strings where the string is the same as the string tar..." alt="" coords="413,462,549,503"/>
+<area shape="rect" id="node17" href="$group__loaders.html#gabf20e2c007dd2fb33d0e9413d34e9d6a" title="Creator for an empty AlleleMatrix object of a given size." alt="" coords="394,157,569,184"/>
+<area shape="rect" id="node18" href="$group__supporters.html#ga392c23248f22e9faf085198dbb1d8711" title="Opens a table file and reads the number of columns and rows (including headers) separated by sep into..." alt="" coords="413,107,549,133"/>
+<area shape="rect" id="node19" href="$group__supporters.html#gac5f92e5e4bd9d414392a2f022fdc5596" title="Allocate lifetime&#45;unique ids to each genotype in the range of whole SimData indexes from_index to to_..." alt="" coords="425,5,538,32"/>
+</map>
