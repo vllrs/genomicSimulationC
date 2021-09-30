@@ -78,7 +78,6 @@ $(function() {
 <code>#include &lt;stdio.h&gt;</code><br />
 <code>#include &lt;time.h&gt;</code><br />
 <code>#include &lt;math.h&gt;</code><br />
-<code>#include &quot;sim-settings.h&quot;</code><br />
 </div>
 <p><a href="sim-operations_8h_source.html">Go to the source code of this file.</a></p>
 <table class="memberdecls">
@@ -115,12 +114,16 @@ Data Structures</h2></td></tr>
 Macros</h2></td></tr>
 <tr class="memitem:a598a3330b3c21701223ee0ca14316eca"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="sim-operations_8h.html#a598a3330b3c21701223ee0ca14316eca">PI</a>&#160;&#160;&#160;3.1415926535897932384626433832795028841971693993751</td></tr>
 <tr class="separator:a598a3330b3c21701223ee0ca14316eca"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a156b862ebf6d213f5da19b9e3ccb779e"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="sim-operations_8h.html#a156b862ebf6d213f5da19b9e3ccb779e">TOL</a>&#160;&#160;&#160;0.00001</td></tr>
-<tr class="separator:a156b862ebf6d213f5da19b9e3ccb779e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa8cecfc5c5c054d2875c03e77b7be15d"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="sim-operations_8h.html#aa8cecfc5c5c054d2875c03e77b7be15d">TRUE</a>&#160;&#160;&#160;1</td></tr>
 <tr class="separator:aa8cecfc5c5c054d2875c03e77b7be15d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa93f0eb578d23995850d61f7d61c55c1"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="sim-operations_8h.html#aa93f0eb578d23995850d61f7d61c55c1">FALSE</a>&#160;&#160;&#160;0</td></tr>
 <tr class="separator:aa93f0eb578d23995850d61f7d61c55c1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af5eaa46085f7cc2b20091cdf17eea54a"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="sim-operations_8h.html#af5eaa46085f7cc2b20091cdf17eea54a">CONTIG_WIDTH</a>&#160;&#160;&#160;1000</td></tr>
+<tr class="memdesc:af5eaa46085f7cc2b20091cdf17eea54a"><td class="mdescLeft">&#160;</td><td class="mdescRight">The largest contiguous block of memory that could be requested in the process of simulation is CONTIG_WIDTH integers.  <a href="sim-operations_8h.html#af5eaa46085f7cc2b20091cdf17eea54a">More...</a><br /></td></tr>
+<tr class="separator:af5eaa46085f7cc2b20091cdf17eea54a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af71324c57f05ff9e24bd384925dd6b17"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="sim-operations_8h.html#af71324c57f05ff9e24bd384925dd6b17">NAME_LENGTH</a>&#160;&#160;&#160;30</td></tr>
+<tr class="memdesc:af71324c57f05ff9e24bd384925dd6b17"><td class="mdescLeft">&#160;</td><td class="mdescRight">The maximum number of characters allowed in a name field.  <a href="sim-operations_8h.html#af71324c57f05ff9e24bd384925dd6b17">More...</a><br /></td></tr>
+<tr class="separator:af71324c57f05ff9e24bd384925dd6b17"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="typedef-members"></a>
 Typedefs</h2></td></tr>
@@ -475,6 +478,24 @@ Variables</h2></td></tr>
 <tr class="separator:ga6db8fbe9028cc259012cbdf075c222b2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Macro Definition Documentation</h2>
+<a id="af5eaa46085f7cc2b20091cdf17eea54a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af5eaa46085f7cc2b20091cdf17eea54a">&#9670;&nbsp;</a></span>CONTIG_WIDTH</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define CONTIG_WIDTH&#160;&#160;&#160;1000</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>The largest contiguous block of memory that could be requested in the process of simulation is CONTIG_WIDTH integers. </p>
+<p>This setting's default value is 1000.</p>
+<p>This could be decreased to help long simulations or lower-end machines. Increasing this may provide some speed gain. </p>
+
+</div>
+</div>
 <a id="aa93f0eb578d23995850d61f7d61c55c1"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#aa93f0eb578d23995850d61f7d61c55c1">&#9670;&nbsp;</a></span>FALSE</h2>
 
@@ -489,6 +510,24 @@ Variables</h2></td></tr>
 
 </div>
 </div>
+<a id="af71324c57f05ff9e24bd384925dd6b17"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af71324c57f05ff9e24bd384925dd6b17">&#9670;&nbsp;</a></span>NAME_LENGTH</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define NAME_LENGTH&#160;&#160;&#160;30</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>The maximum number of characters allowed in a name field. </p>
+<p>These include names of SNPs, names of genotypes loaded from files, names of generated genotypes, and save-as-you-go filenames. Default is 30.</p>
+<p>Increase this if there is a risk some names may be longer than this value. </p>
+
+</div>
+</div>
 <a id="a598a3330b3c21701223ee0ca14316eca"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a598a3330b3c21701223ee0ca14316eca">&#9670;&nbsp;</a></span>PI</h2>
 
@@ -497,20 +536,6 @@ Variables</h2></td></tr>
       <table class="memname">
         <tr>
           <td class="memname">#define PI&#160;&#160;&#160;3.1415926535897932384626433832795028841971693993751</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="a156b862ebf6d213f5da19b9e3ccb779e"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a156b862ebf6d213f5da19b9e3ccb779e">&#9670;&nbsp;</a></span>TOL</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define TOL&#160;&#160;&#160;0.00001</td>
         </tr>
       </table>
 </div><div class="memdoc">

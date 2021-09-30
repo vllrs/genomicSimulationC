@@ -4,6 +4,8 @@
 
 #include <assert.h>
 
+#define TOL 0.00001
+
 const char HELPER_GENOTYPES[] = "name\tG01\tG02\tG03\tG04\tG05\tG06\n"
 	"m1\tTT\tTT\tTT\tTA\tTT\tAT\n"
 	"m3\tTT\tTT\tTA\tTA\tTT\tTT\n"

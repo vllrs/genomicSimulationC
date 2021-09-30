@@ -126,6 +126,30 @@ int test_loaders(SimData* d) {
 	assert(strncmp(d->m->alleles[5],"ATAATT", 6) == 0); // G06
 	printf("...genotypes loaded correctly\n");
 
+	/*unsigned int g1 = load_more_transposed_genes_to_simdata(d, "a-test.txt");
+
+	assert(d->m != NULL);
+	assert(d->current_id == 12);
+	assert(d->m->n_markers == 3);
+	assert(d->m->n_genotypes == 12);
+	assert(d->m->groups[0] == g0);
+	assert(d->m->groups[1] == g0);
+	assert(d->m->groups[2] == g0);
+	assert(d->m->groups[3] == g0);
+	assert(d->m->groups[4] == g0);
+	assert(d->m->groups[5] == g0);
+	assert(g0 > 0);
+	assert(d->m->groups[6] == g1);
+	assert(d->m->groups[7] == g1);
+	assert(d->m->groups[8] == g1);
+	assert(d->m->groups[9] == g1);
+	assert(d->m->groups[10] == g1);
+	assert(d->m->groups[11] == g1);
+	assert(g1 > 0);
+	assert(g1 != g0);
+
+	delete_group(d, g1);*/
+
 	return g0;
 }
 

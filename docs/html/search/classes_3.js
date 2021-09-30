@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['geneticmap_188',['GeneticMap',['../struct_genetic_map.html',1,'']]],
-  ['genoptions_189',['GenOptions',['../struct_gen_options.html',1,'']]]
+  ['geneticmap_189',['GeneticMap',['../struct_genetic_map.html',1,'']]],
+  ['genoptions_190',['GenOptions',['../struct_gen_options.html',1,'']]]
 ];
