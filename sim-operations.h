@@ -280,6 +280,9 @@ DecimalMatrix subset_dmatrix_row(DecimalMatrix* m, int row_index);
 DecimalMatrix add_dmatrices(DecimalMatrix* a, DecimalMatrix* b);
 void add_to_dmatrix(DecimalMatrix* a, DecimalMatrix* b);
 DecimalMatrix multiply_dmatrices(DecimalMatrix* a, DecimalMatrix* b);
+
+int add_matrixvector_product_to_dmatrix(DecimalMatrix* result, DecimalMatrix* a, double* b);
+int add_doublematrixvector_product_to_dmatrix(DecimalMatrix* result, DecimalMatrix* amat, double* avec, DecimalMatrix* bmat, double* bvec);
 /** @} */
 
 /** @defgroup supporters Utils/Supporting Functions
@@ -482,9 +485,13 @@ int make_double_crosses_from_file(SimData* d, const char* input_file, GenOptions
  */
 int split_by_bv(SimData* d, int group, int top_n, int lowIsBest);
 DecimalMatrix calculate_group_bvs(SimData* d, int group);
+DecimalMatrix calculate_group_bvs2(SimData* d, unsigned int group);
+DecimalMatrix calculate_group_bvs3(SimData* d, unsigned int group);
 DecimalMatrix calculate_bvs( AlleleMatrix* m, EffectMatrix* e);
 DecimalMatrix calculate_count_matrix_of_allele_for_ids( AlleleMatrix* m, unsigned int* for_ids, unsigned int n_ids, char allele);
-DecimalMatrix calculate_full_count_matrix_of_allele( AlleleMatrix* m, char allele);
+int calculate_group_count_matrix_of_allele( SimData* d, unsigned int group, char allele, DecimalMatrix* counts);
+int calculate_group_doublecount_matrix_of_allele( SimData* d, unsigned int group, char allele, DecimalMatrix* counts, char allele2, DecimalMatrix* counts2);
+DecimalMatrix calculate_full_count_matrix_of_allele( AlleleMatrix* m, char allele); //@@
 
 MarkerBlocks create_n_blocks_by_chr(SimData* d, int n);
 MarkerBlocks read_block_file(SimData* d, const char* block_file);
@@ -519,6 +526,8 @@ void save_AM_pedigree(FILE* f, AlleleMatrix* m, SimData* parents);
 void save_parents_of(FILE* f, AlleleMatrix* m, unsigned int p1, unsigned int p2);
 
 void save_group_bvs(FILE* f, SimData* d, int group);
+void save_group_bvs2(FILE* f, SimData* d, int group); 
+void save_group_bvs3(FILE* f, SimData* d, int group); 
 void save_manual_bvs(FILE* f, DecimalMatrix* e, unsigned int* ids, char** names);
 void save_bvs(FILE* f, SimData* d);
 
