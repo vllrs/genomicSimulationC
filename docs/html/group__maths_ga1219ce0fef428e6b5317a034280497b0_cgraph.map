@@ -1,4 +1,0 @@
-<map id="multiply_dmatrices" name="multiply_dmatrices">
-<area shape="rect" id="node1" title="Perform matrix multiplication on two DecimalMatrix." alt="" coords="5,5,136,32"/>
-<area shape="rect" id="node2" href="$group__maths.html#gabf3f578b0aa59d5b68ccd0738dd6a9d1" title="Generates a matrix of c columns, r rows with all 0." alt="" coords="184,5,339,32"/>
-</map>

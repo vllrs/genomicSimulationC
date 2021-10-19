@@ -1,5 +1,5 @@
-<map id="add_dmatrices" name="add_dmatrices">
-<area shape="rect" id="node1" title="Add the two DecimalMatrix." alt="" coords="589,169,696,195"/>
+<map id="calculate_doublecount_matrix_of_allele" name="calculate_doublecount_matrix_of_allele">
+<area shape="rect" id="node1" title="Calculates the number of times at each marker that two particular alleles appear for each genotype in..." alt="" coords="589,161,740,203"/>
 <area shape="rect" id="node2" href="$group__calculators.html#gab5b177cf40a7e28276c460d60a3ecbb5" title="Calculates the fitness metric/breeding value for each genotype in the AlleleMatrix,..." alt="" coords="441,169,541,195"/>
 <area shape="rect" id="node3" href="$group__crossers.html#ga3ea77c76c329625646419a10683669f9" title="Performs random crosses among members of a group." alt="" coords="219,31,390,58"/>
 <area shape="rect" id="node5" href="$group__crossers.html#gabb793988799d792dfe4007efdf988068" title="Performs the crosses of pairs of parents whose ids are provided in an array." alt="" coords="216,118,393,145"/>

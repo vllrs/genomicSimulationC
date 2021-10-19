@@ -558,19 +558,24 @@ int main(int argc, char* argv[]) {
 	delete_simdata(sd);*/
 
 	// matrix calculation tests
-	SimData* sdmt = create_empty_simdata();
+	/*SimData* sdmt = create_empty_simdata();
 	int g0mt = load_all_simdata(sdmt, "./gt_parents_mr2_50-trimto-5000.txt",
 			 "./genetic-map_5112-trimto5000.txt",
 			 "./qtl_mr2.eff-processed.txt");
 	// accuracy
 	printf("Testing accuracy of bv calculation\n");
 	FILE* fp = fopen("g0mt-bvs.txt","w");
-	save_group_bvs3(fp, sdmt, g0mt);
+	save_group_bvs(fp, sdmt, g0mt);
 	fclose(fp);
 	assert(compareFiles("./gt5000_refbvs.txt","./g0mt-bvs.txt") == 0);
-	printf("Satisfied!\n");
 
 	remove("g0mt-bvs.txt");
+
+	fp = fopen("g0mt-counts.txt","w");
+	save_count_matrix(fp, sdmt, 'A');
+	fclose(fp);
+	printf("Satisfied!\n");
+
 
 	// timing
 	printf("Calculating speed of bv calculation\n");
@@ -580,32 +585,16 @@ int main(int argc, char* argv[]) {
 	char mtprefix[30];
 	for (int i = 0; i < 8; ++i) {
 		sprintf(mtprefix,"tmpti%d-bv.txt", i);
-
-		c = clock();
-		//GenOptions g2 = {.will_name_offspring=TRUE, .offspring_name_prefix="tmp", .family_size=1,
-		//	.will_track_pedigree=TRUE, .will_allocate_ids=TRUE,
-		//	.filename_prefix=mtprefix, .will_save_pedigree_to_file=TRUE,
-		//	.will_save_bvs_to_file=TRUE, .will_save_alleles_to_file=FALSE,
-		//	.will_save_to_simdata=FALSE};
-		//f1mt = cross_random_individuals(sdmt, g0mt, geno, g2);
-		f1mt = cross_random_individuals(sdmt, g0mt, geno, BASIC_OPT);
-		fpmt = fopen(mtprefix,"w");
-		save_group_bvs2(fpmt, sdmt, f1mt);
-		fclose(fpmt);
-		c = clock() - c;
-		printf("2\tn=5000\tgeno=%d\t%lf\n", geno, (double)c / CLOCKS_PER_SEC);
-		delete_group(sdmt, f1mt);
-
 		c = clock();
 		f1mt = cross_random_individuals(sdmt, g0mt, geno, BASIC_OPT);
 		fpmt = fopen(mtprefix,"w");
-		save_group_bvs3(fpmt, sdmt, f1mt);
+		save_group_bvs(fpmt, sdmt, f1mt);
 		fclose(fpmt);
 		c = clock() - c;
 		printf("3\tn=5000\tgeno=%d\t%lf\n", geno, (double)c / CLOCKS_PER_SEC);
 		delete_group(sdmt, f1mt);
 		remove(mtprefix);
-	}
+	}*/
 
 
 	/*sd = create_empty_simdata();

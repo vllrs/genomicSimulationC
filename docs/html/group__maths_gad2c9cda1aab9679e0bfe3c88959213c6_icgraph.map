@@ -1,7 +1,7 @@
-<map id="multiply_dmatrices" name="multiply_dmatrices">
-<area shape="rect" id="node1" title="Perform matrix multiplication on two DecimalMatrix." alt="" coords="628,233,759,260"/>
+<map id="add_doublematrixvector_product_to_dmatrix" name="add_doublematrixvector_product_to_dmatrix">
+<area shape="rect" id="node1" title="Multiply two sets of a DecimalMatrix and vector, and add both products to the first column of a provi..." alt="" coords="628,226,787,267"/>
 <area shape="rect" id="node2" href="$group__calculators.html#gab5b177cf40a7e28276c460d60a3ecbb5" title="Calculates the fitness metric/breeding value for each genotype in the AlleleMatrix,..." alt="" coords="461,132,561,159"/>
-<area shape="rect" id="node12" href="$group__calculators.html#ga955d1b1f461fcc6d5e8c33623164ad6e" title="Calculates the fitness metric/breeding value for each genotype in the AlleleMatrix in a certain group..." alt="" coords="441,284,580,311"/>
+<area shape="rect" id="node12" href="$group__calculators.html#ga7f80905718ac87e9da1c30a2cec77ea6" title="Calculates the fitness metric/breeding value for each genotype in the AlleleMatrix in a certain group..." alt="" coords="441,284,580,311"/>
 <area shape="rect" id="node3" href="$group__crossers.html#ga3ea77c76c329625646419a10683669f9" title="Performs random crosses among members of a group." alt="" coords="219,208,390,235"/>
 <area shape="rect" id="node5" href="$group__crossers.html#gabb793988799d792dfe4007efdf988068" title="Performs the crosses of pairs of parents whose ids are provided in an array." alt="" coords="216,157,393,184"/>
 <area shape="rect" id="node9" href="$group__crossers.html#gaf078d6bc1b5d4234a9b960e6132480aa" title="Creates a doubled haploid from each member of a group." alt="" coords="224,5,385,32"/>

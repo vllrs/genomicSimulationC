@@ -1,12 +1,10 @@
 <map id="save_count_matrix_of_group" name="save_count_matrix_of_group">
-<area shape="rect" id="node1" title="Print the number of copies of a particular allele at each marker of each genotype in a group to a fil..." alt="" coords="5,133,152,174"/>
-<area shape="rect" id="node2" href="$group__calculators.html#gae7797aeac935227749fc6eae09a02a96" title="Calculates the number of times at each marker that a particular allele appears for each genotype is a..." alt="" coords="200,23,356,65"/>
-<area shape="rect" id="node6" href="$group__deletors.html#gaaf6542d59034f88f9e1ec48e5f053c4a" title="Deletes a DecimalMatrix and frees its memory." alt="" coords="225,89,331,116"/>
-<area shape="rect" id="node7" href="$group__getters.html#ga961042e468630f31a3607dac42f8fa34" title="Gets the ids of each member of the group." alt="" coords="227,241,329,268"/>
-<area shape="rect" id="node8" href="$group__getters.html#gad6d2b66296cd80f5bfe303e06de7935c" title="Function to count the number of genotypes that currently belong to the specified group." alt="" coords="426,191,537,217"/>
-<area shape="rect" id="node10" href="$group__getters.html#ga3e00f06acc41eb012e99ae46d7a18ccc" title="Gets a shallow copy of the names of each member of the group." alt="" coords="215,191,341,217"/>
-<area shape="rect" id="node3" href="$group__maths.html#gabf3f578b0aa59d5b68ccd0738dd6a9d1" title="Generates a matrix of c columns, r rows with all 0." alt="" coords="404,5,559,32"/>
-<area shape="rect" id="node4" href="$group__getters.html#gaf49ac14d9ff4483bce6424f823d30ca0" title="Returns the alleles at each marker of the genotype with a given id." alt="" coords="423,56,539,83"/>
-<area shape="rect" id="node5" href="$group__supporters.html#gaa6943b0633c1744bacad62ab2bf68ebd" title="Returns the located index in an array of integers where the integer is target." alt="" coords="607,56,781,83"/>
-<area shape="rect" id="node9" href="$group__supporters.html#gad1a5b9f3e850da13931ee02fbb170d41" title="Replace calls to malloc direct with this function, which errors and exits with status 2 if memory all..." alt="" coords="439,241,524,268"/>
+<area shape="rect" id="node1" title="Print the number of copies of a particular allele at each marker of each genotype in a group to a fil..." alt="" coords="5,98,152,139"/>
+<area shape="rect" id="node2" href="$group__calculators.html#gad86ea5492e6c1cf918d6449a9eb530de" title="Calculates the number of times at each marker that a particular allele appears for each genotype in a..." alt="" coords="201,39,353,80"/>
+<area shape="rect" id="node4" href="$group__getters.html#gad6d2b66296cd80f5bfe303e06de7935c" title="Function to count the number of genotypes that currently belong to the specified group." alt="" coords="576,46,687,73"/>
+<area shape="rect" id="node6" href="$group__deletors.html#gaaf6542d59034f88f9e1ec48e5f053c4a" title="Deletes a DecimalMatrix and frees its memory." alt="" coords="224,156,331,182"/>
+<area shape="rect" id="node7" href="$group__maths.html#gabf3f578b0aa59d5b68ccd0738dd6a9d1" title="Generates a matrix of c columns, r rows with all 0." alt="" coords="200,206,355,233"/>
+<area shape="rect" id="node8" href="$group__getters.html#ga3e00f06acc41eb012e99ae46d7a18ccc" title="Gets a shallow copy of the names of each member of the group." alt="" coords="403,122,528,149"/>
+<area shape="rect" id="node3" href="$group__getters.html#gac159a31261e14b325bd623899eefa796" title="Gets a shallow copy of the genes/alleles of each member of the group." alt="" coords="405,72,526,98"/>
+<area shape="rect" id="node5" href="$group__supporters.html#gad1a5b9f3e850da13931ee02fbb170d41" title="Replace calls to malloc direct with this function, which errors and exits with status 2 if memory all..." alt="" coords="589,97,674,124"/>
 </map>
