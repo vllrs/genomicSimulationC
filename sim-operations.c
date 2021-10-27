@@ -613,8 +613,7 @@ void condense_allele_matrix( SimData* d) {
 						while (previous->next != filler_m) {
 							previous = previous->next;
 							if (previous == NULL) {
-								fprintf(stderr, "Error: filler got somewhere checker can't go.\n");
-								exit(1);
+								fprintf(stderr, "Error: filler got somewhere checker can't go.\n"); exit(1);
 							}
 						}
 						// delete this one and cut it out of the list
@@ -636,7 +635,7 @@ void condense_allele_matrix( SimData* d) {
 
 		// We're done with the AM, move on to the next one.
 		if (checker_m->next == NULL) {
-			fprintf(stderr, "During allele matrix condensing, checker got ahead of filler somehow\n");exit(1);
+			fprintf(stderr, "During allele matrix condensing, checker got ahead of filler somehow\n"); exit(1);
 		} else {
 			checker_m = checker_m->next;
 		}

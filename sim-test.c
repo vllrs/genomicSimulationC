@@ -489,9 +489,9 @@ int main(int argc, char* argv[]) {
 
 	printf("\n------- All tests passed. -------\n");
 
-	clock_t c;
+	/*clock_t c;
 
-	/*printf("\n--------Timing tests--------------\n");
+	printf("\n--------Timing tests--------------\n");
 	c = clock();
 	SimData* sd = create_empty_simdata();
 	int fg0 = load_all_simdata(sd, "./gt_parents_mr2_50-trimto-5000.txt",
@@ -531,104 +531,10 @@ int main(int argc, char* argv[]) {
 	save_group_bvs(fp, sd, f);
 	fclose(fp);
 	c = clock() - c;
-	printf("Saving GEBVs to file took %f seconds to run\n", (double)c / CLOCKS_PER_SEC);
+	printf("Saving GEBVs to file took %f seconds to run\n", (double)c / CLOCKS_PER_SEC);*/
 
-	delete_group(sd, f);
+	delete_simdata(sd);
 
-	c = clock();
-	GenOptions g1 = {.will_name_offspring=FALSE, .offspring_name_prefix=NULL, .family_size=1,
-		.will_track_pedigree=TRUE, .will_allocate_ids=TRUE,
-		.filename_prefix="tmptiming", .will_save_pedigree_to_file=FALSE,
-		.will_save_bvs_to_file=FALSE, .will_save_alleles_to_file=TRUE,
-		.will_save_to_simdata=FALSE};
-    f = cross_random_individuals(sd, fg0, 100000, g1);
-	c = clock() - c;
-	printf("Random crossing and saving genotypes to file took %f seconds to run\n", (double)c / CLOCKS_PER_SEC);
-
-	c = clock();
-	GenOptions g2 = {.will_name_offspring=TRUE, .offspring_name_prefix="tmp", .family_size=1,
-		.will_track_pedigree=TRUE, .will_allocate_ids=TRUE,
-		.filename_prefix="tmptiming", .will_save_pedigree_to_file=TRUE,
-		.will_save_bvs_to_file=TRUE, .will_save_alleles_to_file=FALSE,
-		.will_save_to_simdata=FALSE};
-    f = cross_random_individuals(sd, fg0, 100000, g2);
-	c = clock() - c;
-	printf("Random crossing and saving bvs to file took %f seconds to run\n", (double)c / CLOCKS_PER_SEC);
-
-	delete_simdata(sd);*/
-
-	// matrix calculation tests
-	/*SimData* sdmt = create_empty_simdata();
-	int g0mt = load_all_simdata(sdmt, "./gt_parents_mr2_50-trimto-5000.txt",
-			 "./genetic-map_5112-trimto5000.txt",
-			 "./qtl_mr2.eff-processed.txt");
-	// accuracy
-	printf("Testing accuracy of bv calculation\n");
-	FILE* fp = fopen("g0mt-bvs.txt","w");
-	save_group_bvs(fp, sdmt, g0mt);
-	fclose(fp);
-	assert(compareFiles("./gt5000_refbvs.txt","./g0mt-bvs.txt") == 0);
-
-	remove("g0mt-bvs.txt");
-
-	fp = fopen("g0mt-counts.txt","w");
-	save_count_matrix(fp, sdmt, 'A');
-	fclose(fp);
-	printf("Satisfied!\n");
-
-
-	// timing
-	printf("Calculating speed of bv calculation\n");
-	int geno = 1000;
-	int f1mt;
-	FILE* fpmt;
-	char mtprefix[30];
-	for (int i = 0; i < 8; ++i) {
-		sprintf(mtprefix,"tmpti%d-bv.txt", i);
-		c = clock();
-		f1mt = cross_random_individuals(sdmt, g0mt, geno, BASIC_OPT);
-		fpmt = fopen(mtprefix,"w");
-		save_group_bvs(fpmt, sdmt, f1mt);
-		fclose(fpmt);
-		c = clock() - c;
-		printf("3\tn=5000\tgeno=%d\t%lf\n", geno, (double)c / CLOCKS_PER_SEC);
-		delete_group(sdmt, f1mt);
-		remove(mtprefix);
-	}*/
-
-
-	/*sd = create_empty_simdata();
-	fg0 = load_all_simdata(sd, "C:/Users/JV/Documents/KV QAAFI/input/gt_parents_mr2_50-trimto-5000.txt",
-			 "C:/Users/JV/Documents/KV QAAFI/input/genetic-map_5112-trimto5000-M.txt",
-			 "C:/Users/JV/Documents/KV QAAFI/input/qtl_mr2.eff-processed.txt");
-
-	c = clock();
-	GenOptions g2 = {.will_name_offspring=TRUE, .offspring_name_prefix="tmp", .family_size=1,
-		.will_track_pedigree=TRUE, .will_allocate_ids=TRUE,
-		.filename_prefix="tmptiming", .will_save_pedigree_to_file=TRUE,
-		.will_save_effects_to_file=FALSE, .will_save_alleles_to_file=TRUE,
-		.will_save_to_simdata=FALSE};
-    cross_random_individuals(sd, fg0, 100000, g2);
-	c = clock() - c;
-	printf("Random crossing took %f seconds to run\n", (double)c / CLOCKS_PER_SEC);
-
-	delete_simdata(sd);*/
-
-	//VALIDITY TESTS
-	// loading data
-
-	// replacing loaded effects
-
-	// loading more genotypes
-
-
-
-	// SHOULD NOT CRASH TESTS
-	// loading long data
-
-	// loading wide data (>2000 lines)
-
-	// loading additional wide dat
 
 	return 0;
 }

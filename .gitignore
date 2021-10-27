@@ -1,6 +1,7 @@
 *.cbp
 *.depend
 *.layout
+*.txt
 main.c
 bin/
 obj/

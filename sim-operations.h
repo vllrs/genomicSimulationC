@@ -276,11 +276,6 @@ int randpoi(double lambda);
 int randlim(int limit);
 
 DecimalMatrix generate_zero_dmatrix(int r, int c);
-/*DecimalMatrix subset_dmatrix_row(DecimalMatrix* m, int row_index);
-DecimalMatrix add_dmatrices(DecimalMatrix* a, DecimalMatrix* b);
-void add_to_dmatrix(DecimalMatrix* a, DecimalMatrix* b);
-DecimalMatrix multiply_dmatrices(DecimalMatrix* a, DecimalMatrix* b);*/
-
 int add_matrixvector_product_to_dmatrix(DecimalMatrix* result, DecimalMatrix* a, double* b);
 int add_doublematrixvector_product_to_dmatrix(DecimalMatrix* result, DecimalMatrix* amat, double* avec, DecimalMatrix* bmat, double* bvec);
 /** @} */
