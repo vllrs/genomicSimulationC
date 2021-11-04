@@ -489,6 +489,76 @@ int main(int argc, char* argv[]) {
 
 	printf("\n------- All tests passed. -------\n");
 
+
+	//testing new grouping functions
+	d = create_empty_simdata();
+	g0 = load_all_simdata(d, "./gt_parents_mr2_50-trimto-5000.txt",
+			 "./genetic-map_5112-trimto5000.txt",
+			 "./qtl_mr2.eff-processed.txt");
+
+	/*printf("\nNow testing split into individuals\n");
+	assert(get_group_size(d, g0) == 50);
+	int results[50];
+	split_into_individuals(d, g0, &results);
+	assert(results[0] == 2);
+	assert(results[49] == 51);
+	assert(get_group_size(d, results[23]) == 1);*/
+
+	// split into families
+	/*int nc = 23;
+	int crosses[2][nc];
+	for (int i = 0; i < nc; ++i) {
+        crosses[0][i] = i % 50;
+        crosses[1][i] = 3*(i+1) % 50;
+	}
+	GenOptions gens =  {.will_name_offspring=FALSE, .offspring_name_prefix=NULL, .family_size=243,
+		.will_track_pedigree=TRUE, .will_allocate_ids=TRUE,
+		.filename_prefix="testcross", .will_save_pedigree_to_file=FALSE,
+		.will_save_bvs_to_file=FALSE, .will_save_alleles_to_file=FALSE,
+		.will_save_to_simdata=TRUE};
+	int g1 = cross_these_combinations(d,nc,crosses,gens);
+
+    assert(get_group_size(d, g1) == nc*243);
+	int results[nc];
+	//split_into_families(d, g1, results);
+	split_into_halfsib_families(d,g1,2, results);
+	int r1;
+	int** r2 = get_existing_group_counts(d, &r1);
+
+    assert(results[0] == 3);
+	assert(get_group_size(d, results[r1 - 2]) == 243);
+	//assert(get_group_size(d, results[0]) == 2*243);*/
+
+    int gns[6];
+    get_n_new_group_nums(d,6,gns);
+
+    /*int sequence[100];
+    for (int i = 0; i < 100; ++i) {
+        sequence[i] = i;
+    }
+    shuffle_up_to(sequence,100,20);*/
+
+    //int g0b = split_randomly_into_two(d, g0);
+    //int g0b = split_evenly_into_two(d, g0);
+    int g0bs[50];
+    //split_randomly_into_n(d,g0,5,g0bs);
+    //split_evenly_into_n(d,g0,3,g0bs);
+    double probs[3];
+    probs[0] = 0.1;
+    probs[1] = 0.3;
+    split_by_probabilities_into_n(d,g0,3,probs,g0bs);
+
+    //int a = get_group_size(d, g0);
+    //a = get_group_size(d,g0b);
+    int a = 0;
+    for (int i = 0; i < 5; ++i) {
+        a += get_group_size(d, g0bs[i]);
+    }
+
+
+	printf("\nAll done\n");
+	delete_simdata(d);
+
 	/*clock_t c;
 
 	printf("\n--------Timing tests--------------\n");
@@ -533,7 +603,7 @@ int main(int argc, char* argv[]) {
 	c = clock() - c;
 	printf("Saving GEBVs to file took %f seconds to run\n", (double)c / CLOCKS_PER_SEC);*/
 
-	delete_simdata(sd);
+	//delete_simdata(sd);
 
 
 	return 0;

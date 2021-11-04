@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['allelematrix_187',['AlleleMatrix',['../struct_allele_matrix.html',1,'']]]
+  ['allelematrix_196',['AlleleMatrix',['../struct_allele_matrix.html',1,'']]]
 ];

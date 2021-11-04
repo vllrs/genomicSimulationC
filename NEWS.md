@@ -1,0 +1,14 @@
+- Functions split_into_individuals and split_into_families now return the groups they create.
+- Added more functions for splitting groups:
+    - split_into_halfsib_families
+    - split_evenly_into_two
+    - split_evenly_into_n
+    - split_by_specific_counts_into_n
+    - split_randomly_into_two
+    - split_randomly_into_n
+    - split_by_probabilities_into_n
+- Added two new helper functions: get_n_new_group_nums and shuffle_up_to
+
+# genomicSimulationC 0.2
+
+- State corresponding to [genomicSimulation R package v0.2](https://github.com/vllrs/genomicSimulation/releases/tag/v0.2) release.

@@ -1,0 +1,5 @@
+<map id="get_n_new_group_nums" name="get_n_new_group_nums">
+<area shape="rect" id="node1" title="Function to identify the next n sequential integers that do not identify a group that currently has m..." alt="" coords="5,5,168,32"/>
+<area shape="rect" id="node2" href="$group__getters.html#ga3305ddcc29138d2d92689f39a7885ca0" title="Identify every group number that currently has members." alt="" coords="216,5,355,32"/>
+<area shape="rect" id="node3" href="$group__supporters.html#gadae2e9f7e1061cb20426ba2333b7629b" title="Comparator function for qsort." alt="" coords="403,5,573,32"/>
+</map>
