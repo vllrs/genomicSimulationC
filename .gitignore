@@ -1,7 +1,4 @@
-*.cbp
-*.depend
-*.layout
+genomicSimulationC.*
 *.txt
-main.c
-bin/
-obj/
+*.o
+*.exe

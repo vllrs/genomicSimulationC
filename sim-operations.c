@@ -1557,7 +1557,7 @@ void split_evenly_into_n(SimData* d, int group_id, int n, int* results) {
  * the number of group members, a warning is raised, and the group numbers for
  * which the cumulative sum of counts is greater than the group size will not
  * be allocated members. That is, the group capacities are filled from first to
- * last, leaving later groups unfilled there are not enough group members to
+ * last, leaving later groups unfilled if there are not enough group members to
  * occupy all capacities.
  *
  * @param d the SimData struct on which to perform the operation
@@ -1721,7 +1721,8 @@ void split_randomly_into_n(SimData* d, int group_id, int n, int* results) {
 	int i, randgroup;
 	while (1) {
 		for (i = 0; i < m->n_genotypes; ++i) {
-			if (m->groups[i] == group_id && (randgroup = randlim(n-1))) {
+			randgroup = randlim(n-1);
+			if (m->groups[i] == group_id && randgroup) {
 				m->groups[i] = new_groups[randgroup - 1];
 			}
 		}

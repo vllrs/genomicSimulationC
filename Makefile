@@ -7,7 +7,7 @@ all: sim sim-operations.o
 debug: gsim gsim-operations.o sim-test
 test: sim-test
 
-osim: sim.c sim.h sim-operations.c sim-operations.h
+osim: sim.c sim-operations.c sim-operations.h
 	gcc -std=c99 -lm sim.c sim-operations.c -O3 -o sim
 
 sim: sim.o sim-operations.o
@@ -16,10 +16,10 @@ sim: sim.o sim-operations.o
 gsim: gsim.o gsim-operations.o
 	gcc -lm sim.o sim-operations.o -g -o sim
 	
-sim.o: sim.c sim.h
+sim.o: sim.c
 	gcc $(CFLAGS) -c sim.c
 	
-gsim.o: sim.c sim.h
+gsim.o: sim.c
 	gcc $(CFLAGS) -g -c sim.c
 
 sim-operations.o: sim-operations.c sim-operations.h
@@ -36,5 +36,3 @@ sim-test.o: sim-test.c sim-test.h
 
 clean:
 	rm sim-operations.o sim.o sim sim-test sim-test.o
-cleantest:
-	rm sim-test sim-test.o
