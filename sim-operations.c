@@ -359,8 +359,9 @@ int get_from_unordered_str_list(char* target, char** list, int list_len) {
  */
 void shuffle_up_to(int* sequence, size_t total_n, size_t n_to_shuffle) {
 	if (n_to_shuffle > 1) {
+        size_t maxi = total_n > n_to_shuffle ? n_to_shuffle - 1 : total_n - 1;
 		size_t i;
-		for (i = 0; i < n_to_shuffle - 1; ++i) {
+        for (i = 0; i < maxi; ++i) {
 			// items before i are already shuffled
 			size_t j = i + rand() / (RAND_MAX / (total_n - i) + 1);
 
@@ -1516,7 +1517,7 @@ int split_evenly_into_two(SimData* d, int group_id) {
  * n identifiers.
  */
 void split_evenly_into_n(SimData* d, int group_id, int n, int* results) {
-	if (n <= 0) {
+    if (n <= 1) {
 		fprintf(stderr, "Cannot distribute between %d groups\n", n);
 		return;
 	}
@@ -1573,7 +1574,7 @@ void split_evenly_into_n(SimData* d, int group_id, int n, int* results) {
  * n identifiers.
  */
 void split_by_specific_counts_into_n(SimData* d, int group_id, int n, int* counts, int* results) {
-	if (n <= 0) {
+    if (n <= 1) {
 		fprintf(stderr, "Cannot distribute between %d groups\n", n);
 		return;
 	}
@@ -1586,7 +1587,7 @@ void split_by_specific_counts_into_n(SimData* d, int group_id, int n, int* count
 		sum += counts[j];
 		cumulative_counts[j] = sum;
 		if (cumulative_counts[j] >= size) {
-			fprintf(stderr, "Desired sizes are larger than actual group: some groups will not be filled\n");
+            fprintf(stderr, "Provided capacities are larger than actual group: some buckets will not be filled\n");
 			//don't bother to calculate more
 			break;
 		}
@@ -1596,7 +1597,7 @@ void split_by_specific_counts_into_n(SimData* d, int group_id, int n, int* count
 	for (int i = 0; i < size; ++i) {
 		allocations[i] = i;
 	}
-	shuffle_up_to(allocations, size, cumulative_counts[n-2]);
+    shuffle_up_to(allocations, size, cumulative_counts[n-2]);
 
 	int new_group[n-1];
 	get_n_new_group_nums(d,n-1, new_group);
@@ -1702,7 +1703,7 @@ int split_randomly_into_two(SimData* d, int group_id) {
  * n identifiers.
  */
 void split_randomly_into_n(SimData* d, int group_id, int n, int* results) {
-	if (n <= 0) {
+    if (n <= 1) {
 		fprintf(stderr, "Cannot distribute between %d groups\n", n);
 		return;
 	}
@@ -1765,7 +1766,7 @@ void split_randomly_into_n(SimData* d, int group_id, int n, int* results) {
  * n identifiers.
  */
 void split_by_probabilities_into_n(SimData* d, int group_id, int n, double* probs, int* results) {
-	if (n <= 0) {
+    if (n <= 1) {
 		fprintf(stderr, "Cannot distribute between %d groups\n", n);
 		return;
 	}
@@ -1777,7 +1778,7 @@ void split_by_probabilities_into_n(SimData* d, int group_id, int n, double* prob
 		sum += probs[j];
 		cumulative_probs[j] = sum;
 		if (cumulative_probs[j] >= 1) {
-			fprintf(stderr, "Probabilities add up to more than 1: are your inputs correct?\n");
+            fprintf(stderr, "Provided probabilities add up to 1 or more: some buckets will not be filled\n");
 			//don't bother to calculate more
 			break;
 		}

@@ -529,8 +529,8 @@ int main(int argc, char* argv[]) {
 	assert(get_group_size(d, results[r1 - 2]) == 243);
 	//assert(get_group_size(d, results[0]) == 2*243);*/
 
-    int gns[6];
-    get_n_new_group_nums(d,6,gns);
+    //int gns[6];
+    //get_n_new_group_nums(d,6,gns);
 
     /*int sequence[100];
     for (int i = 0; i < 100; ++i) {
@@ -543,10 +543,14 @@ int main(int argc, char* argv[]) {
     int g0bs[50];
     //split_randomly_into_n(d,g0,5,g0bs);
     //split_evenly_into_n(d,g0,3,g0bs);
-    double probs[3];
+    /*double probs[3];
     probs[0] = 0.1;
-    probs[1] = 0.3;
-    split_by_probabilities_into_n(d,g0,3,probs,g0bs);
+    probs[1] = 0.95;
+    split_by_probabilities_into_n(d,g0,3,probs,g0bs);*/
+    int buckets[3];
+    buckets[0] = 46;
+    buckets[1] = 13;
+    split_by_specific_counts_into_n(d,g0,3,buckets,g0bs);
 
     //int a = get_group_size(d, g0);
     //a = get_group_size(d,g0b);
