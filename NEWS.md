@@ -1,3 +1,4 @@
+- Fix segfault when trying to select more individuals by GEBV than exist in the group (e.g. asking for the best 5 members of a group of 2). Now, it just moves all group members to the new selected group, and doesn't worry about the missing requested remainder.
 - Functions split_into_individuals and split_into_families now return the groups they create.
 - Added more functions for splitting groups:
     - split_into_halfsib_families

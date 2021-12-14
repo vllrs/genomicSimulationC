@@ -405,7 +405,7 @@ int test_data_access(SimData* d, int gp) {
         assert(ids[i] == i+1);
     }
 
-    unsigned int* indexes = get_group_indexes(d, gp, 6);
+    int* indexes = get_group_indexes(d, gp, 6);
     for (int i = 0; i < 6; ++i) {
         assert(indexes[i] == i);
     }
@@ -540,24 +540,31 @@ int main(int argc, char* argv[]) {
 
     //int g0b = split_randomly_into_two(d, g0);
     //int g0b = split_evenly_into_two(d, g0);
-    int g0bs[50];
+    //int g0bs[50];
     //split_randomly_into_n(d,g0,5,g0bs);
     //split_evenly_into_n(d,g0,3,g0bs);
     /*double probs[3];
     probs[0] = 0.1;
     probs[1] = 0.95;
     split_by_probabilities_into_n(d,g0,3,probs,g0bs);*/
+
+    /*// there's too little for my buckets~
     int buckets[3];
     buckets[0] = 46;
     buckets[1] = 13;
-    split_by_specific_counts_into_n(d,g0,3,buckets,g0bs);
+    split_by_specific_counts_into_n(d,g0,3,buckets,g0bs);*/
 
     //int a = get_group_size(d, g0);
     //a = get_group_size(d,g0b);
+    /*// all genotypes transferred check
     int a = 0;
     for (int i = 0; i < 5; ++i) {
         a += get_group_size(d, g0bs[i]);
-    }
+    }*/
+
+    // This should not segfault
+    int m = split_by_bv(d, g0, 55, 1);
+    assert(get_group_size(d, m) == 50);
 
 
 	printf("\nAll done\n");
