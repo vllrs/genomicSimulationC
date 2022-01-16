@@ -56,13 +56,13 @@ int test_loaders(SimData* d) {
 	assert(d->map.chr_ends[0] == 0);
 	assert(d->map.chr_ends[1] == 2);
 	assert(d->map.chr_ends[2] == 2);
-	assert(abs(d->map.chr_lengths[0] - 3.1) < TOL);
+    assert(fabs(d->map.chr_lengths[0] - 3.1) < TOL);
 	// @other lengths don't matter?
-	assert(abs(d->map.positions[0].position - 5.2) < TOL);
+    assert(fabs(d->map.positions[0].position - 5.2) < TOL);
 	assert(d->map.positions[0].chromosome == 1);
-	assert(abs(d->map.positions[1].position - 8.3) < TOL);
+    assert(fabs(d->map.positions[1].position - 8.3) < TOL);
 	assert(d->map.positions[1].chromosome == 1);
-	assert(abs(d->map.positions[2].position - 15) < TOL);
+    assert(fabs(d->map.positions[2].position - 15) < TOL);
 	assert(d->map.positions[2].chromosome == 3);
 	printf("...genome map loaded correctly\n");
 
@@ -78,17 +78,17 @@ int test_loaders(SimData* d) {
 		assert(d->e.effect_names[0] == 'T');
 		assert(d->e.effect_names[1] == 'A');
 	}
-	assert(abs(d->e.effects.matrix[apos][0] - (-0.8)) < TOL);
-	assert(abs(d->e.effects.matrix[apos][1] - (-0.1)) < TOL);
-	assert(abs(d->e.effects.matrix[apos][2] - (0.1)) < TOL);
+    assert(fabs(d->e.effects.matrix[apos][0] - (-0.8)) < TOL);
+    assert(fabs(d->e.effects.matrix[apos][1] - (-0.1)) < TOL);
+    assert(fabs(d->e.effects.matrix[apos][2] - (0.1)) < TOL);
 	int tpos = 1 - apos;
-	assert(abs(d->e.effects.matrix[tpos][0] - (0.9)) < TOL);
-	assert(abs(d->e.effects.matrix[tpos][1] - (-0.5)) < TOL);
-	assert(abs(d->e.effects.matrix[tpos][2] - (-0.1)) < TOL);
+    assert(fabs(d->e.effects.matrix[tpos][0] - (0.9)) < TOL);
+    assert(fabs(d->e.effects.matrix[tpos][1] - (-0.5)) < TOL);
+    assert(fabs(d->e.effects.matrix[tpos][2] - (-0.1)) < TOL);
 	printf("...effect values loaded correctly\n");
 
-	assert(d->m != NULL);
 	assert(d->current_id == 6);
+    assert(d->m); // != NULL
 	assert(d->m->n_markers == 3);
 	assert(d->m->n_genotypes == 6);
 	assert(d->m->ids[0] == 1);
@@ -158,12 +158,12 @@ int test_effect_calculators(SimData *d, int g0) {
 
 	assert(dec.rows == 1);
 	assert(dec.cols == 6);
-	assert(abs(dec.matrix[0][0] - 1.4) < TOL);
-	assert(abs(dec.matrix[0][1] - 1.4) < TOL);
-	assert(abs(dec.matrix[0][2] - 1.6) < TOL);
-	assert(abs(dec.matrix[0][3] - (-0.1)) < TOL);
-	assert(abs(dec.matrix[0][4] - 0.6) < TOL);
-	assert(abs(dec.matrix[0][5] - (-0.3)) < TOL);
+    assert(fabs(dec.matrix[0][0] - 1.4) < TOL);
+    assert(fabs(dec.matrix[0][1] - 1.4) < TOL);
+    assert(fabs(dec.matrix[0][2] - 1.6) < TOL);
+    assert(fabs(dec.matrix[0][3] - (-0.1)) < TOL);
+    assert(fabs(dec.matrix[0][4] - 0.6) < TOL);
+    assert(fabs(dec.matrix[0][5] - (-0.3)) < TOL);
 	printf("...GEBVs calculated correctly\n");
 
 	delete_dmatrix(&dec);
@@ -178,10 +178,10 @@ int test_optimal_calculators(SimData *d) {
 	free(ig);
 
 	double optimal = calculate_optimum_bv(d);
-	assert(abs(optimal - 1.8) < TOL);
+    assert(fabs(optimal - 1.8) < TOL);
 
 	double unoptimal = calculate_minimum_bv(d);
-	assert(abs(unoptimal + 2.8) < TOL);
+    assert(fabs(unoptimal + 2.8) < TOL);
 
 	printf("...Optimal genotype and GEBV calculated correctly\n");
 
@@ -411,12 +411,12 @@ int test_data_access(SimData* d, int gp) {
     }
 
     double* bvs = get_group_bvs(d, gp, 6);
-	assert(abs(bvs[0] - 1.4) < TOL);
-	assert(abs(bvs[1] - 1.4) < TOL);
-	assert(abs(bvs[2] - 1.6) < TOL);
-	assert(abs(bvs[3] - (-0.1)) < TOL);
-	assert(abs(bvs[4] - 0.6) < TOL);
-	assert(abs(bvs[5] - (-0.3)) < TOL);
+    assert(fabs(bvs[0] - 1.4) < TOL);
+    assert(fabs(bvs[1] - 1.4) < TOL);
+    assert(fabs(bvs[2] - 1.6) < TOL);
+    assert(fabs(bvs[3] - (-0.1)) < TOL);
+    assert(fabs(bvs[4] - 0.6) < TOL);
+    assert(fabs(bvs[5] - (-0.3)) < TOL);
 
 	// missing the parent and pedigree checks but this group doesn't have info for that anyway
 

@@ -34,6 +34,10 @@ int RAND_HALFPOINT = (RAND_MAX/2);
  * @returns pointer to the allocated space.
  */
 void* get_malloc(size_t size) {
+    if (size == 0) {
+        fprintf(stderr, "0 memory allocation requested. The maintainer isn't sure why that would happen.\n");
+        return NULL;
+    }
 	void* v = malloc(size);
 	if (v == NULL) {
 		fprintf(stderr, "Memory allocation failed. Exiting.\n"); exit(2);
@@ -2715,23 +2719,19 @@ void delete_allele_matrix(AlleleMatrix* m) {
 	AlleleMatrix* next;
 	do {
 		/* free the big data matrix */
-		if (m->alleles != NULL) {
-			for (int i = 0; i < m->n_genotypes; i++) {
-				if (m->alleles[i] != NULL) {
-					free(m->alleles[i]);
-				}
+        for (int i = 0; i < m->n_genotypes; i++) {
+            if (m->alleles[i] != NULL) {
+                free(m->alleles[i]);
+            }
 
-			}
-		}
+        }
 
 		// free names
-		if (m->names != NULL) {
-			for (int i = 0; i < m->n_genotypes; i++) {
-				if (m->names[i] != NULL) {
-					free(m->names[i]);
-				}
-			}
-		}
+        for (int i = 0; i < m->n_genotypes; i++) {
+            if (m->names[i] != NULL) {
+                free(m->names[i]);
+            }
+        }
 
 		next = m->next;
 		free(m);
@@ -3412,7 +3412,7 @@ void get_sorted_markers(SimData* d, int actual_n_markers) {
 	}
 
 	char* temp;
-	if (d->m != NULL && d->m->alleles != NULL) {
+    if (d->m != NULL) {
 		//temp = get_malloc(sizeof(char) * ((actual_n_markers * 2)));
 		AlleleMatrix* am = d->m;
 
@@ -5277,7 +5277,7 @@ int split_by_bv(SimData* d, int group, int top_n, int lowIsBest) {
 */
 DecimalMatrix calculate_group_bvs(SimData* d, unsigned int group) {
 	// check that both of the items to be multiplied exist.
-	if (d->e.effects.rows < 1 || d->m->alleles == NULL) {
+    if (d->e.effects.rows < 1 || d->m == NULL) {
 		fprintf(stderr, "Either effect matrix or allele matrix does not exist\n"); exit(1);
 	}
 
@@ -5323,7 +5323,7 @@ DecimalMatrix calculate_group_bvs(SimData* d, unsigned int group) {
  */
 DecimalMatrix calculate_bvs( AlleleMatrix* m, EffectMatrix* e) {
 	// check that both of the items to be multiplied exist.
-	if (e->effects.rows < 1 || m->alleles == NULL) {
+    if (e->effects.rows < 1 || m == NULL) {
 		fprintf(stderr, "Either effect matrix or allele matrix does not exist\n"); exit(1);
 	}
 
