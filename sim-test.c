@@ -191,6 +191,8 @@ int test_optimal_calculators(SimData *d) {
 int test_crossing(SimData *d, int g0) {
 	int gall = test_crossing_unidirectional(d, g0);
 
+    test_crossing_randomly(d, g0);
+
 	FILE* fp;
 	if ((fp = fopen("a-test-plan.txt", "w")) == NULL) {
 		fprintf(stderr, "Failed to create file.\n");
@@ -302,6 +304,69 @@ int test_crossing_selfing(SimData *d, int g1) {
 	printf("...selfing function correctly reduced heterozygosity by %f%%\n", (h2-h1)*100);
 
 	return g1selfed;
+}
+
+void test_crossing_randomly(SimData *d, int g1) {
+    // we test it correctly does its crossing randomly (requiring a bit of human input)
+    // we do not test that the genes were correctly crossed
+    // created 7 Apr 2022
+
+    GenOptions gopt = BASIC_OPT;
+    gopt.will_track_pedigree = TRUE;
+    // Test random crossing seems about right
+    int g2 = cross_random_individuals( d , g1, 4, gopt);
+    int* g2ixs = get_group_indexes(d, g2, -1);
+
+    assert(get_group_size(d, g2) == 4);
+    int g2minid = d->m->ids[g2ixs[0]];
+    int g2maxid = d->m->ids[g2ixs[3]];
+    fprintf(stdout, "Should be random parents: %d, %d, %d, %d\n",
+            d->m->pedigrees[0][g2ixs[0]], d->m->pedigrees[0][g2ixs[1]],
+            d->m->pedigrees[0][g2ixs[2]], d->m->pedigrees[0][g2ixs[3]]);
+    fprintf(stdout, "Should be random parents: %d, %d, %d, %d\n\n",
+            d->m->pedigrees[1][g2ixs[0]], d->m->pedigrees[1][g2ixs[1]],
+            d->m->pedigrees[1][g2ixs[2]], d->m->pedigrees[1][g2ixs[3]]);
+
+    // Test random crossing between two groups seems about right.
+    gopt.family_size = 2;
+    int g3 = cross_randomly_between( d, g1, g2, 3, 0, 0, gopt);
+
+    assert(get_group_size(d, g3) == 6);
+    assert(d->m->pedigrees[0][g2ixs[3] + 1] == d->m->pedigrees[0][g2ixs[3] + 2]); // family size works
+    assert(d->m->pedigrees[1][g2ixs[3] + 1] == d->m->pedigrees[1][g2ixs[3] + 2]); // family size works
+    assert(d->m->pedigrees[1][g2ixs[3] + 3] >= g2minid && d->m->pedigrees[1][g2ixs[3] + 3] <= g2maxid ); //right parent groupings
+    assert(d->m->pedigrees[0][g2ixs[3] + 3] < g2minid); //right parent groupings
+    fprintf(stdout, "Should be random parents: %d, %d, %d\n",
+            d->m->pedigrees[0][g2ixs[3] + 1], d->m->pedigrees[0][g2ixs[3] + 3],
+            d->m->pedigrees[0][g2ixs[3] + 5]);
+    fprintf(stdout, "Should be random parents: %d, %d, %d\n",
+            d->m->pedigrees[1][g2ixs[3] + 1], d->m->pedigrees[1][g2ixs[3] + 3],
+            d->m->pedigrees[1][g2ixs[3] + 5]);
+
+    delete_group(d, g3);
+
+    gopt.family_size = 1;
+    int g4 = cross_randomly_between( d, g1, g2ixs[1], 3, 0, 1, gopt );
+
+    assert(get_group_size(d, g4) == 3);
+    assert(d->m->pedigrees[1][g2ixs[3] + 1] == d->m->pedigrees[1][g2ixs[3] + 2] &&
+           d->m->pedigrees[1][g2ixs[3] + 1] == d->m->pedigrees[1][g2ixs[3] + 3] ); //right parent repetition
+    fprintf(stdout, "Should be random parents: %d, %d, %d\n",
+            d->m->pedigrees[0][g2ixs[3] + 1], d->m->pedigrees[0][g2ixs[3] + 2],
+            d->m->pedigrees[0][g2ixs[3] + 3]);
+
+    delete_group( d, g4 );
+
+    int g5 = cross_randomly_between( d, g2ixs[1], g2ixs[2], 2000, 1, 1, gopt);
+    assert(get_group_size(d, g5) == 2000);
+    assert(d->m->pedigrees[1][g2ixs[3] + 1] == d->m->pedigrees[1][g2ixs[3] + 200] &&
+           d->m->pedigrees[0][g2ixs[3] + 1] == d->m->pedigrees[0][g2ixs[3] + 200] ); //right parent repetition
+    assert(d->m->pedigrees[0][g2ixs[3] + 1] == get_id_of_index(d->m, g2ixs[1]) &&
+           d->m->pedigrees[1][g2ixs[3] + 1] == get_id_of_index(d->m, g2ixs[2]) ); // right parents
+
+    delete_group( d, g5 );
+    delete_group( d, g2 );
+    free( g2ixs );
 }
 
 int test_deletors(SimData *d, int g0) {

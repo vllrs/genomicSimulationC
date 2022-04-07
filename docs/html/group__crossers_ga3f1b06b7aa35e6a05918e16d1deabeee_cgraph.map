@@ -1,7 +1,7 @@
 <map id="make_all_unidirectional_crosses" name="make_all_unidirectional_crosses">
 <area shape="rect" id="node1" title="Perform crosses between all pairs of parents in the group from_group and allocates the resulting offs..." alt="" coords="5,754,163,795"/>
 <area shape="rect" id="node2" href="$group__crossers.html#gabb793988799d792dfe4007efdf988068" title="Performs the crosses of pairs of parents whose ids are provided in an array." alt="" coords="211,471,388,497"/>
-<area shape="rect" id="node32" href="$group__getters.html#ga95aad1344c24e6072e6a50dcc67b60a8" title="Gets the indexes (0&#45;based, from the start of the linked list in the SimData) of each member of the gr..." alt="" coords="234,761,365,788"/>
+<area shape="rect" id="node32" href="$group__getters.html#gad9ba7de2a9960161e8417c1a611d87a6" title="Gets the indexes (0&#45;based, from the start of the linked list in the SimData) of each member of the gr..." alt="" coords="234,761,365,788"/>
 <area shape="rect" id="node33" href="$group__getters.html#gad6d2b66296cd80f5bfe303e06de7935c" title="Function to count the number of genotypes that currently belong to the specified group." alt="" coords="468,851,579,877"/>
 <area shape="rect" id="node3" href="$group__calculators.html#gab5b177cf40a7e28276c460d60a3ecbb5" title="Calculates the fitness metric/breeding value for each genotype in the AlleleMatrix,..." alt="" coords="473,293,573,320"/>
 <area shape="rect" id="node8" href="$group__deletors.html#gaaf6542d59034f88f9e1ec48e5f053c4a" title="Deletes a DecimalMatrix and frees its memory." alt="" coords="695,445,802,472"/>

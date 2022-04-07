@@ -22,7 +22,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">genomicSimulationC
-   &#160;<span id="projectnumber">0.1-4</span>
+   &#160;<span id="projectnumber">0.2</span>
    </div>
   </td>
  </tr>
@@ -285,7 +285,7 @@ Here is the call graph for this function:</div>
 <p>Split a group into n groups of equal size (or size differing only by one, if n does not perfectly divide the group size), using a random permutation of the group members to determine which goes where. </p>
 <p>Of the split groups produced, the first has the same group number as the original group (parameter group_id).</p>
 <p>The number of members staying in the old group (group_id) is counts[0]. The number going to the first new group is counts[1], etc.. The number going to the nth group is group_id's group size - sum(counts).</p>
-<p>The function calculates a random permutation of the group members, then uses cumulative sums to determine to which group the group member is allocated. If the sum of the desired group sizes adds up to more than the number of group members, a warning is raised, and the group numbers for which the cumulative sum of counts is greater than the group size will not be allocated members. That is, the group capacities are filled from first to last, leaving later groups unfilled there are not enough group members to occupy all capacities.</p>
+<p>The function calculates a random permutation of the group members, then uses cumulative sums to determine to which group the group member is allocated. If the sum of the desired group sizes adds up to more than the number of group members, a warning is raised, and the group numbers for which the cumulative sum of counts is greater than the group size will not be allocated members. That is, the group capacities are filled from first to last, leaving later groups unfilled if there are not enough group members to occupy all capacities.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">d</td><td>the <a class="el" href="struct_sim_data.html" title="Composite type that is used to run crossing simulations.">SimData</a> struct on which to perform the operation </td></tr>

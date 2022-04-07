@@ -22,7 +22,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">genomicSimulationC
-   &#160;<span id="projectnumber">0.1-4</span>
+   &#160;<span id="projectnumber">0.2</span>
    </div>
   </td>
  </tr>
@@ -252,9 +252,9 @@ Functions</h2></td></tr>
 <tr class="memitem:ga961042e468630f31a3607dac42f8fa34"><td class="memItemLeft" align="right" valign="top">unsigned int *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__getters.html#ga961042e468630f31a3607dac42f8fa34">get_group_ids</a> (<a class="el" href="struct_sim_data.html">SimData</a> *d, int group_id, int group_size)</td></tr>
 <tr class="memdesc:ga961042e468630f31a3607dac42f8fa34"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the ids of each member of the group.  <a href="group__getters.html#ga961042e468630f31a3607dac42f8fa34">More...</a><br /></td></tr>
 <tr class="separator:ga961042e468630f31a3607dac42f8fa34"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga95aad1344c24e6072e6a50dcc67b60a8"><td class="memItemLeft" align="right" valign="top">unsigned int *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__getters.html#ga95aad1344c24e6072e6a50dcc67b60a8">get_group_indexes</a> (<a class="el" href="struct_sim_data.html">SimData</a> *d, int group_id, int group_size)</td></tr>
-<tr class="memdesc:ga95aad1344c24e6072e6a50dcc67b60a8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the indexes (0-based, from the start of the linked list in the <a class="el" href="struct_sim_data.html" title="Composite type that is used to run crossing simulations.">SimData</a>) of each member of the group.  <a href="group__getters.html#ga95aad1344c24e6072e6a50dcc67b60a8">More...</a><br /></td></tr>
-<tr class="separator:ga95aad1344c24e6072e6a50dcc67b60a8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gad9ba7de2a9960161e8417c1a611d87a6"><td class="memItemLeft" align="right" valign="top">int *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__getters.html#gad9ba7de2a9960161e8417c1a611d87a6">get_group_indexes</a> (<a class="el" href="struct_sim_data.html">SimData</a> *d, int group_id, int group_size)</td></tr>
+<tr class="memdesc:gad9ba7de2a9960161e8417c1a611d87a6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the indexes (0-based, from the start of the linked list in the <a class="el" href="struct_sim_data.html" title="Composite type that is used to run crossing simulations.">SimData</a>) of each member of the group.  <a href="group__getters.html#gad9ba7de2a9960161e8417c1a611d87a6">More...</a><br /></td></tr>
+<tr class="separator:gad9ba7de2a9960161e8417c1a611d87a6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gaacbc190e8ea144de14b586e5fe3ae865"><td class="memItemLeft" align="right" valign="top">double *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__getters.html#gaacbc190e8ea144de14b586e5fe3ae865">get_group_bvs</a> (<a class="el" href="struct_sim_data.html">SimData</a> *d, int group_id, int group_size)</td></tr>
 <tr class="memdesc:gaacbc190e8ea144de14b586e5fe3ae865"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the breeding values/breeding values/fitnesses of each member of the group.  <a href="group__getters.html#gaacbc190e8ea144de14b586e5fe3ae865">More...</a><br /></td></tr>
 <tr class="separator:gaacbc190e8ea144de14b586e5fe3ae865"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -382,6 +382,9 @@ Functions</h2></td></tr>
 <tr class="memitem:ga3ea77c76c329625646419a10683669f9"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__crossers.html#ga3ea77c76c329625646419a10683669f9">cross_random_individuals</a> (<a class="el" href="struct_sim_data.html">SimData</a> *d, int from_group, int n_crosses, <a class="el" href="struct_gen_options.html">GenOptions</a> g)</td></tr>
 <tr class="memdesc:ga3ea77c76c329625646419a10683669f9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Performs random crosses among members of a group.  <a href="group__crossers.html#ga3ea77c76c329625646419a10683669f9">More...</a><br /></td></tr>
 <tr class="separator:ga3ea77c76c329625646419a10683669f9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga021cf90b7cf336a9551bf93cd9246441"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__crossers.html#ga021cf90b7cf336a9551bf93cd9246441">cross_randomly_between</a> (<a class="el" href="struct_sim_data.html">SimData</a> *d, int group1, int group2, int n_crosses, int set_parent_gp1, int set_parent_gp2, <a class="el" href="struct_gen_options.html">GenOptions</a> g)</td></tr>
+<tr class="memdesc:ga021cf90b7cf336a9551bf93cd9246441"><td class="mdescLeft">&#160;</td><td class="mdescRight">Performs random crosses where the first parent comes from one group and the second from another.  <a href="group__crossers.html#ga021cf90b7cf336a9551bf93cd9246441">More...</a><br /></td></tr>
+<tr class="separator:ga021cf90b7cf336a9551bf93cd9246441"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gabb793988799d792dfe4007efdf988068"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__crossers.html#gabb793988799d792dfe4007efdf988068">cross_these_combinations</a> (<a class="el" href="struct_sim_data.html">SimData</a> *d, int n_combinations, int combinations[2][n_combinations], <a class="el" href="struct_gen_options.html">GenOptions</a> g)</td></tr>
 <tr class="memdesc:gabb793988799d792dfe4007efdf988068"><td class="mdescLeft">&#160;</td><td class="mdescRight">Performs the crosses of pairs of parents whose ids are provided in an array.  <a href="group__crossers.html#gabb793988799d792dfe4007efdf988068">More...</a><br /></td></tr>
 <tr class="separator:gabb793988799d792dfe4007efdf988068"><td class="memSeparator" colspan="2">&#160;</td></tr>

@@ -27,5 +27,6 @@ int test_crossing(SimData *d, int g0);
 int test_crossing_unidirectional(SimData *d, int g0);
 int test_crossing_from_file(SimData *d, char* fname);
 int test_crossing_selfing(SimData *d, int g1);
+void test_crossing_randomly(SimData *d, int g1);
 int test_deletors(SimData *d, int g0);
 int test_block_generator(SimData *d);

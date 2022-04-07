@@ -9,6 +9,8 @@
     - split_randomly_into_n
     - split_by_probabilities_into_n
 - Added two new helper functions: get_n_new_group_nums and shuffle_up_to
+- Added function to pick parents to randomly cross from separate groups:
+    - cross_randomly_between
 
 # genomicSimulationC 0.2
 
