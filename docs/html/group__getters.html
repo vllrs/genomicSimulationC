@@ -422,7 +422,7 @@ Here is the caller graph for this function:</div>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>a vector containing the breeding values of each member of the group. The vector itself is on the heap and should be freed. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>a vector containing the breeding values of each member of the group. The vector itself is on the heap and should be freed. Returns a null pointer if the group is empty. </dd></dl>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -500,7 +500,7 @@ Here is the call graph for this function:</div>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>a vector containing pointers to the genes of each member of the group. The vector itself is on the heap and should be freed, but its contents are only shallow copies that should not be freed. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>a vector containing pointers to the genes of each member of the group. The vector itself is on the heap and should be freed, but its contents are only shallow copies that should not be freed. Returns a null pointer if the group is empty. </dd></dl>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -593,7 +593,7 @@ Here is the caller graph for this function:</div>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>a vector containing the ids of each member of the group. The vector itself is on the heap and should be freed. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>a vector containing the ids of each member of the group. The vector itself is on the heap and should be freed. Returns a null pointer if the group is empty. </dd></dl>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -682,7 +682,7 @@ Here is the caller graph for this function:</div>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>a vector containing the indexes of each member of the group. The vector itself is on the heap and should be freed. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>a vector containing the indexes of each member of the group. The vector itself is on the heap and should be freed. Returns a null pointer if the group is empty. </dd></dl>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -763,7 +763,7 @@ Here is the caller graph for this function:</div>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>a vector containing pointers to the names of each member of the group. The vector itself is on the heap and should be freed, but its contents are only shallow copies that should not be freed. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>a vector containing pointers to the names of each member of the group. The vector itself is on the heap and should be freed, but its contents are only shallow copies that should not be freed. Returns a null pointer if the group is empty. </dd></dl>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -856,7 +856,7 @@ Here is the caller graph for this function:</div>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>a vector containing the id of either the first or second parent of each member of the group. The vector itself is on the heap and should be freed. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>a vector containing the id of either the first or second parent of each member of the group. The vector itself is on the heap and should be freed. Returns a null pointer if the group is empty. </dd></dl>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -933,7 +933,7 @@ Here is the call graph for this function:</div>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>a vector containing pointers to the names either the first or second parent of each member of the group. The vector itself is on the heap and should be freed, but its contents are only shallow copies that should not be freed. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>a vector containing pointers to the names either the first or second parent of each member of the group. The vector itself is on the heap and should be freed, but its contents are only shallow copies that should not be freed. Returns a null pointer if the group is empty. </dd></dl>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -1009,7 +1009,7 @@ Here is the call graph for this function:</div>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>a vector containing pointers to the full pedigree string of each member of the group. Both the vector and its contents are dynamically allocated on the heap, and so should both be freed. This is because, unlike other data-getter functions, this data is not stored but must be generated specifically to answer this function call. If it failed to write to and read from the temporary file, then it returns NULL; </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>a vector containing pointers to the full pedigree string of each member of the group. Both the vector and its contents are dynamically allocated on the heap, and so should both be freed. This is because, unlike other data-getter functions, this data is not stored but must be generated specifically to answer this function call. If it failed to write to and read from the temporary file, then it returns NULL; Also returns a null pointer if the group is empty. </dd></dl>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">

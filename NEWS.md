@@ -1,3 +1,6 @@
+- Fixed get_group_[data] functions requesting 0-length heap space when they are provided with a nonexistent group. Instead they now stop and return NULL
+- Added function to pick parents to randomly cross from separate groups:
+    - cross_randomly_between
 - Fix segfault when trying to select more individuals by GEBV than exist in the group (e.g. asking for the best 5 members of a group of 2). Now, it just moves all group members to the new selected group, and doesn't worry about the missing requested remainder.
 - Functions split_into_individuals and split_into_families now return the groups they create.
 - Added more functions for splitting groups:
@@ -9,8 +12,7 @@
     - split_randomly_into_n
     - split_by_probabilities_into_n
 - Added two new helper functions: get_n_new_group_nums and shuffle_up_to
-- Added function to pick parents to randomly cross from separate groups:
-    - cross_randomly_between
+
 
 # genomicSimulationC 0.2
 
