@@ -4202,11 +4202,14 @@ void generate_doubled_haploid(SimData* d, char* parent_genome, char* output) {
  * @param d pointer to the SimData object that contains the genetic map and
  * genotypes of the parent group.
  * @param from_group group number from which to draw the parents.
+ * @param cap If set, the maximum number of times each member of from_group can be
+ * used as the parent of a cross. Set to 0 for no restriction on the number of offspring
+ * produced by a given member of from_group
  * @param n_crosses number of random pairs of parents to cross.
  * @param g options for the genotypes created. @see GenOptions
  * @returns the group number of the group to which the produced offspring were allocated.
 */
-int cross_random_individuals(SimData* d, int from_group, int n_crosses, GenOptions g) {
+int cross_random_individuals(SimData* d, int from_group, int cap, int n_crosses, GenOptions g) {
 	int g_size = get_group_size( d, from_group);
 	if (g_size < 2) {
 		if (g_size == 1) {
@@ -4217,6 +4220,18 @@ int cross_random_individuals(SimData* d, int from_group, int n_crosses, GenOptio
 		return 0;
 	}
 	char** group_genes = get_group_genes( d, from_group, g_size);
+
+    if (cap < 0) {
+        fprintf(stderr,"Invalid cap value provided: cap can't be negative.\n");
+    }
+    if (cap > 0 && cap*g_size < n_crosses*2) {
+        fprintf(stderr,"Invalid cap value provided: cap of %d uses on %d parents too small to make %d crosses.\n", cap, g_size, n_crosses);
+    }
+    int* uses_count; // cap = 0 means unlimited uses. Otherwise we need to track number of times each is used.
+    if (cap > 0) {
+        uses_count = get_malloc(sizeof(int)*g_size);
+        memset(uses_count,0,sizeof(int)*g_size);
+    }
 
 	// create the buffer we'll use to save the output crosses before they're printed.
 	AlleleMatrix* crosses;
@@ -4278,11 +4293,21 @@ int cross_random_individuals(SimData* d, int from_group, int n_crosses, GenOptio
 	//RPACKINSERT GetRNGstate();
 	// loop through each combination
 	for (int i = 0; i < n_crosses; ++i) {
-		// get parents, randomly.
-		parent1 = randlim(g_size - 1);
-		do {
-			parent2 = randlim(g_size - 1);
-		} while (parent1 == parent2);
+        // get parents, randomly. Must not be identical or already been used too many times.
+        if (cap > 0) { // n uses of each parent is capped at a number cap
+            do {
+                parent1 = randlim(g_size - 1);
+            } while (uses_count[parent1] >= cap);
+            do {
+                parent2 = randlim(g_size - 1);
+            } while (parent1 == parent2 || uses_count[parent2] >= cap);
+            uses_count[parent1] += 1; uses_count[parent2] += 1;
+        } else { // no cap on usage of each parent.
+            parent1 = randlim(g_size - 1);
+            do {
+                parent2 = randlim(g_size - 1);
+            } while (parent1 == parent2);
+        }
 
 		for (int f = 0; f < g.family_size; ++f, ++fullness) {
 			//RPACKINSERT R_CheckUserInterrupt();
@@ -4339,6 +4364,9 @@ int cross_random_individuals(SimData* d, int from_group, int n_crosses, GenOptio
 
 	// save the rest of the crosses to the file.
 	free(group_genes);
+    if (cap > 0) {
+        free(uses_count);
+    }
 	// give the offsprings their ids and names
 	if (g.will_name_offspring) {
 		set_names(crosses, g.offspring_name_prefix, *cross_current_id, 0);
@@ -4391,45 +4419,68 @@ int cross_random_individuals(SimData* d, int from_group, int n_crosses, GenOptio
  *
  * Parents are drawn uniformly from the group when picking which crosses to make.
  *
+ * Parameters set_parent_gp1 and set_parent_gp2 are deprecated and removed!
+ * Use split_from_group and combine_groups to temporarily move an individual to their own group
+ * if you wish to cross randomly from a group to an individual. Old text:
+ * If falsy/0, random members of group1 (group2) will be crossed, and if truthy, the particular
+ * individual of index `group1` (`group2`) will always be the first parent of the cross.
+ *
  * @param d pointer to the SimData object that contains the genetic map and
  * genotypes of the parent group.
- * @param group1 group number from which to draw the first parent, unless set_parent_gp1 is
- * truthy, in which case it is the index of the set/guaranteed first parent.
- * @param group2 group number from which to draw the second parent, unless set_parent_gp2 is
- * truthy, in which case it is the index of the set/guaranteed second parent.
+ * @param group1 group number from which to draw the first parent.
+ * @param group2 group number from which to draw the second parent.
  * @param n_crosses number of random pairs of parents to cross.
- * @param set_parent_gp1 If falsy/0, random members of group1 will be crossed, and if
- * truthy, the particular individual of index `group1` will always be the first parent of the cross.
- * @param set_parent_gp2 If falsy/0, random members of group2 will be crossed, and if
- * truthy, the particular individual of index `group2` will always be the first parent of the cross.
+ * @param cap1 If set, the maximum number of times each member of group1 can be
+ * used as the parent of a cross. Set to 0 for no restriction on the number of offspring
+ * produced by a given member of group1
+ * @param cap2 If set, the maximum number of times each member of group2 can be
+ * used as the parent of a cross. Set to 0 for no restriction on the number of offspring
+ * produced by a given member of group2
  * @param g options for the genotypes created. @see GenOptions
  * @returns the group number of the group to which the produced offspring were allocated.
 */
-int cross_randomly_between(SimData*d, int group1, int group2, int n_crosses, int set_parent_gp1, int set_parent_gp2, GenOptions g) {
+int cross_randomly_between(SimData*d, int group1, int group2, int n_crosses, int cap1, int cap2, GenOptions g) {
     char* parent1_genes; char* parent2_genes;
     char** group1_genes; char** group2_genes;
     int group1_size; int group2_size;
     int parent1; int parent2;
 
-    if (set_parent_gp1) {
-        parent1_genes = get_genes_of_index( d->m, group1 );
-    } else {
-        group1_size = get_group_size( d, group1 );
-        if (group1_size < 1) {
-            fprintf(stderr,"Group %d does not exist.\n", group1);
-            return 0;
-        }
-        group1_genes = get_group_genes( d, group1, group1_size );
+    group1_size = get_group_size( d, group1 );
+    if (group1_size < 1) {
+        fprintf(stderr,"Group %d does not exist.\n", group1);
+        return 0;
     }
-    if (set_parent_gp2) {
-        parent2_genes = get_genes_of_index( d->m, group2 );
-    } else {
-        group2_size = get_group_size( d, group2 );
-        if (group2_size < 1) {
-            fprintf(stderr,"Group %d does not exist.\n", group2);
-            return 0;
-        }
-        group2_genes = get_group_genes( d, group2, group2_size );
+    group1_genes = get_group_genes( d, group1, group1_size );
+
+    group2_size = get_group_size( d, group2 );
+    if (group2_size < 1) {
+        fprintf(stderr,"Group %d does not exist.\n", group2);
+        return 0;
+    }
+    group2_genes = get_group_genes( d, group2, group2_size );
+
+    if (cap1 < 0) {
+        fprintf(stderr,"Invalid cap1 value provided: cap can't be negative.\n");
+    }
+    if (cap1 > 0 && cap1*group1_size < n_crosses) {
+        fprintf(stderr,"Invalid cap1 value provided: cap of %d uses on %d parents too small to make %d crosses.\n", cap1, group1_size, n_crosses);
+    }
+    int* uses_g1; // cap = 0 means unlimited uses. Otherwise we need to track number of times each is used.
+    if (cap1 > 0) {
+        uses_g1 = get_malloc(sizeof(int)*group1_size);
+        memset(uses_g1,0,sizeof(int)*group1_size);
+    }
+
+    if (cap2 < 0) {
+        fprintf(stderr,"Invalid cap2 value provided: cap can't be negative.\n");
+    }
+    if (cap2 > 0 && cap2*group2_size < n_crosses) {
+        fprintf(stderr,"Invalid cap2 value provided: cap of %d uses on %d parents too small to make %d crosses.\n", cap2, group2_size, n_crosses);
+    }
+    int* uses_g2; // cap = 0 means unlimited uses. Otherwise we need to track number of times each is used.
+    if (cap2 > 0) {
+        uses_g2 = get_malloc(sizeof(int)*group2_size);
+        memset(uses_g2,0,sizeof(int)*group2_size);
     }
 
     // create the buffer we'll use to save the output crosses before they're printed.
@@ -4456,16 +4507,8 @@ int cross_randomly_between(SimData*d, int group1, int group2, int n_crosses, int
     unsigned int parent1_id; unsigned int parent2_id;
     unsigned int* group1_ids = NULL; unsigned int* group2_ids = NULL;
     if (g.will_track_pedigree) {
-        if (set_parent_gp1) {
-            parent1_id = get_id_of_index( d->m, group1 );
-        } else {
-            group1_ids = get_group_ids( d, group1, group1_size );
-        }
-        if (set_parent_gp2) {
-            parent2_id = get_id_of_index( d->m, group2 );
-        } else {
-            group2_ids = get_group_ids( d, group2, group2_size );
-        }
+        group1_ids = get_group_ids( d, group1, group1_size );
+        group2_ids = get_group_ids( d, group2, group2_size );
     }
     AlleleMatrix* last = NULL;
     int output_group = 0;
@@ -4501,16 +4544,27 @@ int cross_randomly_between(SimData*d, int group1, int group2, int n_crosses, int
     // loop through each combination
     for (int i = 0; i < n_crosses; ++i) {
         // get parents, randomly.
-        if (!set_parent_gp1) {
+        if (cap1 > 0) { // usage of parents is capped
+            do {
+                parent1 = randlim(group1_size - 1);
+            } while (uses_g1[parent1] >= cap1);
+            uses_g1[parent1] += 1;
+        } else { // no cap
             parent1 = randlim(group1_size - 1);
-            parent1_genes = group1_genes[parent1];
-            parent1_id = group1_ids[parent1];
         }
-        if (!set_parent_gp2) {
+        parent1_genes = group1_genes[parent1];
+        parent1_id = group1_ids[parent1];
+
+        if (cap2 > 0) { // usage of parents is capped
+            do {
+                parent2 = randlim(group2_size - 1);
+            } while (uses_g2[parent2] >= cap2);
+            uses_g2[parent2] += 1;
+        } else { // no cap
             parent2 = randlim(group2_size - 1);
-            parent2_genes = group2_genes[parent2];
-            parent2_id = group2_ids[parent2];
         }
+        parent2_genes = group2_genes[parent2];
+        parent2_id = group2_ids[parent2];
 
         for (int f = 0; f < g.family_size; ++f, ++fullness) {
             //RPACKINSERT R_CheckUserInterrupt();
@@ -4566,8 +4620,14 @@ int cross_randomly_between(SimData*d, int group1, int group2, int n_crosses, int
     //RPACKINSERT PutRNGstate();
 
     // save the rest of the crosses to the file.
-    if (!set_parent_gp1) { free(group1_genes); }
-    if (!set_parent_gp2) { free(group2_genes); }
+    free(group1_genes);
+    free(group2_genes);
+    if (cap1 > 0) {
+        free(uses_g1);
+    }
+    if (cap2 > 0) {
+        free(uses_g2);
+    }
     // give the offsprings their ids and names
     if (g.will_name_offspring) {
         set_names(crosses, g.offspring_name_prefix, *cross_current_id, 0);
@@ -4577,8 +4637,8 @@ int cross_randomly_between(SimData*d, int group1, int group2, int n_crosses, int
         crosses->ids[j] = *cross_current_id;
     }
     if (g.will_track_pedigree) {
-        if (!set_parent_gp1) { free(group1_ids); }
-        if (!set_parent_gp2) { free(group2_ids); }
+        free(group1_ids);
+        free(group2_ids);
     }
 
     // save the offsprings to files if appropriate
@@ -5289,7 +5349,7 @@ int make_n_crosses_from_top_m_percent(SimData* d, int n, int m, int group, GenOp
 	int topgroup = split_by_bv(d, group, n_top_group, FALSE);
 
 	// do the random crosses
-	int gp = cross_random_individuals(d, topgroup, n, g);
+    int gp = cross_random_individuals(d, topgroup, 0, n, g);
 
 	// unconvert from a group
 	int to_combine[] = {group, topgroup};

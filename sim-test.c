@@ -314,7 +314,7 @@ void test_crossing_randomly(SimData *d, int g1) {
     GenOptions gopt = BASIC_OPT;
     gopt.will_track_pedigree = TRUE;
     // Test random crossing seems about right
-    int g2 = cross_random_individuals( d , g1, 4, gopt);
+    int g2 = cross_random_individuals( d , g1, 0, 4, gopt);
     int* g2ixs = get_group_indexes(d, g2, -1);
 
     assert(get_group_size(d, g2) == 4);
@@ -326,6 +326,8 @@ void test_crossing_randomly(SimData *d, int g1) {
     fprintf(stdout, "Should be random parents: %d, %d, %d, %d\n\n",
             d->m->pedigrees[1][g2ixs[0]], d->m->pedigrees[1][g2ixs[1]],
             d->m->pedigrees[1][g2ixs[2]], d->m->pedigrees[1][g2ixs[3]]);
+
+    printf("...crossed randomly within a group\n");
 
     // Test random crossing between two groups seems about right.
     gopt.family_size = 2;
@@ -346,25 +348,26 @@ void test_crossing_randomly(SimData *d, int g1) {
     delete_group(d, g3);
 
     gopt.family_size = 1;
-    int g4 = cross_randomly_between( d, g1, g2ixs[1], 3, 0, 1, gopt );
+    int tempg = split_from_group( d, 1, g2ixs + 1);
+    assert(get_group_size(d, tempg) == 1);
+    int g4sizetobe = 6;
+    int g4 = cross_randomly_between( d, g1, tempg, g4sizetobe, 1, 0, gopt );
+    assert(get_group_size(d, g4) == g4sizetobe);
+    int combine[2] = {tempg, g2};
+    g2 = combine_groups( d, 2, combine );
 
-    assert(get_group_size(d, g4) == 3);
-    assert(d->m->pedigrees[1][g2ixs[3] + 1] == d->m->pedigrees[1][g2ixs[3] + 2] &&
-           d->m->pedigrees[1][g2ixs[3] + 1] == d->m->pedigrees[1][g2ixs[3] + 3] ); //right parent repetition
-    fprintf(stdout, "Should be random parents: %d, %d, %d\n",
-            d->m->pedigrees[0][g2ixs[3] + 1], d->m->pedigrees[0][g2ixs[3] + 2],
-            d->m->pedigrees[0][g2ixs[3] + 3]);
-
+    assert(get_group_size(d, g4) == g4sizetobe);
+    for (int i = 1; i < g4sizetobe; ++i) {
+        for (int j = i + 1; j <= g4sizetobe; ++j) {
+            assert(d->m->pedigrees[1][g2ixs[3] + i] == d->m->pedigrees[1][g2ixs[3] + j]);// right parent repetition
+            assert(d->m->pedigrees[0][g2ixs[3] + i] != d->m->pedigrees[0][g2ixs[3] + j]); // should be different first parents
+        }
+    }
     delete_group( d, g4 );
 
-    int g5 = cross_randomly_between( d, g2ixs[1], g2ixs[2], 2000, 1, 1, gopt);
-    assert(get_group_size(d, g5) == 2000);
-    assert(d->m->pedigrees[1][g2ixs[3] + 1] == d->m->pedigrees[1][g2ixs[3] + 200] &&
-           d->m->pedigrees[0][g2ixs[3] + 1] == d->m->pedigrees[0][g2ixs[3] + 200] ); //right parent repetition
-    assert(d->m->pedigrees[0][g2ixs[3] + 1] == get_id_of_index(d->m, g2ixs[1]) &&
-           d->m->pedigrees[1][g2ixs[3] + 1] == get_id_of_index(d->m, g2ixs[2]) ); // right parents
-
-    delete_group( d, g5 );
+    //int g5 = cross_randomly_between( d, g1, g2, 2000, 1, 1, gopt); // expect error
+    //delete_group( d, g5 );
+    printf("...crossed randomly between two groups\n");
     delete_group( d, g2 );
     free( g2ixs );
 }
