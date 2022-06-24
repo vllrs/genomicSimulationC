@@ -4221,6 +4221,11 @@ int cross_random_individuals(SimData* d, int from_group, int cap, int n_crosses,
 	}
 	char** group_genes = get_group_genes( d, from_group, g_size);
 
+    if (n_crosses < 1) {
+        fprintf(stderr,"Invalid n_crosses value provided: n_crosses must be greater than 0.\n");
+        return 0;
+    }
+
     if (cap < 0) {
         fprintf(stderr,"Invalid cap value provided: cap can't be negative.\n");
     }
@@ -4459,11 +4464,18 @@ int cross_randomly_between(SimData*d, int group1, int group2, int n_crosses, int
     }
     group2_genes = get_group_genes( d, group2, group2_size );
 
+    if (n_crosses < 1) {
+        fprintf(stderr,"Invalid n_crosses value provided: n_crosses must be greater than 0.\n");
+        return 0;
+    }
+
     if (cap1 < 0) {
         fprintf(stderr,"Invalid cap1 value provided: cap can't be negative.\n");
+        return 0;
     }
     if (cap1 > 0 && cap1*group1_size < n_crosses) {
         fprintf(stderr,"Invalid cap1 value provided: cap of %d uses on %d parents too small to make %d crosses.\n", cap1, group1_size, n_crosses);
+        return 0;
     }
     int* uses_g1; // cap = 0 means unlimited uses. Otherwise we need to track number of times each is used.
     if (cap1 > 0) {
@@ -4473,9 +4485,11 @@ int cross_randomly_between(SimData*d, int group1, int group2, int n_crosses, int
 
     if (cap2 < 0) {
         fprintf(stderr,"Invalid cap2 value provided: cap can't be negative.\n");
+        return 0;
     }
     if (cap2 > 0 && cap2*group2_size < n_crosses) {
         fprintf(stderr,"Invalid cap2 value provided: cap of %d uses on %d parents too small to make %d crosses.\n", cap2, group2_size, n_crosses);
+        return 0;
     }
     int* uses_g2; // cap = 0 means unlimited uses. Otherwise we need to track number of times each is used.
     if (cap2 > 0) {
@@ -4684,6 +4698,7 @@ int cross_randomly_between(SimData*d, int group1, int group2, int n_crosses, int
  */
 int cross_these_combinations(SimData* d, int n_combinations, int combinations[2][n_combinations],  GenOptions g) {
 	if (n_combinations < 1) {
+        fprintf(stderr,"Invalid n_combinations value provided: n_combinations must be greater than 0.\n");
 		return 0;
 	}
 
@@ -4864,7 +4879,8 @@ int self_n_times(SimData* d, int n, int group, GenOptions g) {
 		return 0;
 	}
 	if (n < 1) {
-		fprintf(stderr,"That number of generations cannot be produced.\n"); exit(1);
+        fprintf(stderr,"Invalid n value provided: Number of generations must be positive.\n");
+        return 0;
 	}
 
 	AlleleMatrix* outcome;
@@ -5341,8 +5357,22 @@ int make_all_unidirectional_crosses(SimData* d, int from_group, GenOptions g) {
  * @returns the group number of the group to which the produced offspring were allocated.
  */
 int make_n_crosses_from_top_m_percent(SimData* d, int n, int m, int group, GenOptions g) {
+    if (n < 1) {
+        fprintf(stderr,"Invalid n value provided: Number of crosses must be greater than 0.\n");
+        return 0;
+    }
+    if (m < 1 || m > 100) {
+        fprintf(stderr,"Invalid m value provided: Percent to select must be between 1 and 100.\n");
+        return 0;
+    }
+
 	// move the top m% to a new group
 	int group_size = get_group_size(d, group);
+    if (group_size < 1) {
+        fprintf(stderr,"Group %d does not exist.\n", group);
+        return 0;
+    }
+
 	int n_top_group = group_size * m / 100; //@integer division?
 	printf("There are %d lines in the top %d%%\n", n_top_group, m);
 
