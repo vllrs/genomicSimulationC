@@ -472,7 +472,7 @@ void generate_cross(SimData* d, char* parent1_genome, char* parent2_genome, char
 void generate_doubled_haploid(SimData* d, char* parent_genome, char* output);
     /**@}*/
 
-int cross_random_individuals(SimData* d, int from_group, int cap, int n_crosses, GenOptions g);
+int cross_random_individuals(SimData* d, int from_group, int n_crosses, int cap, GenOptions g);
 int cross_randomly_between(SimData*d, int group1, int group2, int n_crosses, int cap1, int cap2, GenOptions g);
 int cross_these_combinations(SimData* d, int n_combinations, int combinations[2][n_combinations],  GenOptions g);
 int self_n_times(SimData* d, int n, int group, GenOptions g);

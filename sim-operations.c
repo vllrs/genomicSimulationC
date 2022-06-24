@@ -397,10 +397,11 @@ int get_from_unordered_str_list(char* target, char** list, int list_len) {
  * integers in the array will be randomly ordered by a Fischer-Yates shuffle
  */
 void shuffle_up_to(int* sequence, size_t total_n, size_t n_to_shuffle) {
-    if (n_to_shuffle < 1 || total_n < n_to_shuffle) {
+    // Commented out because we assume calling functions know what they're doing.
+    /*if (n_to_shuffle < 1 || total_n < n_to_shuffle) {
         fprintf(stderr,"Invalid array shuffling parameters. Something's wrong, contact package maintainers.\n");
         return;
-    }
+    }*/
 
 	if (n_to_shuffle > 1) {
         size_t maxi = total_n > n_to_shuffle ? n_to_shuffle - 1 : total_n - 1;
@@ -4345,7 +4346,7 @@ void generate_doubled_haploid(SimData* d, char* parent_genome, char* output) {
  * @param g options for the genotypes created. @see GenOptions
  * @returns the group number of the group to which the produced offspring were allocated.
 */
-int cross_random_individuals(SimData* d, int from_group, int cap, int n_crosses, GenOptions g) {
+int cross_random_individuals(SimData* d, int from_group, int n_crosses, int cap, GenOptions g) {
 	int g_size = get_group_size( d, from_group);
 	if (g_size < 2) {
 		if (g_size == 1) {

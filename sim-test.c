@@ -314,7 +314,7 @@ void test_crossing_randomly(SimData *d, int g1) {
     GenOptions gopt = BASIC_OPT;
     gopt.will_track_pedigree = TRUE;
     // Test random crossing seems about right
-    int g2 = cross_random_individuals( d , g1, 0, 4, gopt);
+    int g2 = cross_random_individuals( d , g1, 4, 0, gopt);
     int* g2ixs = get_group_indexes(d, g2, -1);
 
     assert(get_group_size(d, g2) == 4);
