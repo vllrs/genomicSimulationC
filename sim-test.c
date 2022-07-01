@@ -203,7 +203,7 @@ int test_crossing(SimData *d, int g0) {
 	int gfile = test_crossing_from_file(d, "a-test-plan.txt");
 	remove("a-test-plan.txt");
 
-	int gselfed = test_crossing_selfing(d, gall);
+    int gselfed = test_crossing_selfing(d, g0);
 
 	assert(gselfed != g0 && gfile != gall && gfile != g0 && gfile != gselfed);
 	printf("...group number allocations are correct\n");
@@ -292,16 +292,52 @@ int test_crossing_from_file(SimData *d, char* fname) {
 }
 
 int test_crossing_selfing(SimData *d, int g1) {
+    int oldsize = d->m->n_genotypes;
+    GenOptions opt = BASIC_OPT;
+    opt.will_track_pedigree = TRUE;
 	float h1 = calculate_heterozygosity(d, g1);
-	int g1selfed = self_n_times(d, 5, g1, BASIC_OPT);
+    int g1selfed = self_n_times(d, 5, g1, opt);
 	float h2 = calculate_heterozygosity(d,  g1selfed);
 
 	assert(g1selfed != g1);
 	//printf("Heterozygousity reduction from selfing: %f %f\n", h2, h1);
 	assert(h1 - h2 > 0);
-	assert(d->m->n_genotypes == 42);
+    assert(d->m->n_genotypes == oldsize + 6);
 	assert(d->m->n_markers == 3);
+    assert(d->m->groups[oldsize] == g1selfed && d->m->groups[oldsize + 5] == g1selfed && d->m->groups[oldsize + 6] != g1selfed);
+    assert(d->m->pedigrees[0][oldsize + 0] == d->m->ids[0] && d->m->pedigrees[1][oldsize + 0] == d->m->ids[0]);
+    assert(d->m->pedigrees[0][oldsize + 4] == d->m->ids[4] && d->m->pedigrees[1][oldsize + 4] == d->m->ids[4]);
 	printf("...selfing function correctly reduced heterozygosity by %f%%\n", (h2-h1)*100);
+
+    // test doubled haploids
+    int g1dhap = make_doubled_haploids(d, g1, opt);
+    assert(g1dhap != g1);
+    assert(d->m->n_genotypes == oldsize + 2*6);
+    assert(d->m->n_markers == 3);
+    assert(calculate_heterozygosity(d,  g1dhap) == 0);
+    assert(d->m->groups[oldsize + 6] == g1dhap && d->m->groups[oldsize + 11] == g1dhap && d->m->groups[oldsize + 12] != g1dhap);
+    assert(d->m->pedigrees[0][oldsize + 6] == d->m->ids[0] && d->m->pedigrees[1][oldsize + 6] == d->m->ids[0]);
+    assert(d->m->pedigrees[0][oldsize + 10] == d->m->ids[4] && d->m->pedigrees[1][oldsize + 10] == d->m->ids[4]);
+    assert(strcmp(d->m->alleles[oldsize + 6],"TTAATT") == 0);
+    assert(strcmp(d->m->alleles[oldsize + 11],"AAAATT") == 0 || strcmp(d->m->alleles[oldsize + 11],"TTAATT") == 0);
+
+    delete_group(d, g1dhap);
+
+    // test cloning
+    int g1clones = make_clones(d, g1, TRUE, opt);
+    assert(g1clones != g1);
+    assert(d->m->n_genotypes == oldsize + 2*6);
+    assert(d->m->n_markers == 3);
+    assert(fabsf(calculate_heterozygosity(d,  g1clones) - h1) < TOL);
+    assert(d->m->groups[oldsize + 6] == g1clones && d->m->groups[oldsize + 11] == g1clones && d->m->groups[oldsize + 12] != g1clones);
+    assert(d->m->pedigrees[0][oldsize + 6] == d->m->ids[0] && d->m->pedigrees[1][oldsize + 6] == d->m->ids[0]);
+    assert(d->m->pedigrees[0][oldsize + 10] == d->m->ids[4] && d->m->pedigrees[1][oldsize + 10] == d->m->ids[4]);
+    assert(strcmp(d->m->alleles[oldsize + 6],"TTAATT") == 0);
+    assert(strcmp(d->m->alleles[oldsize + 11],"ATAATT") == 0);
+    assert(strcmp(d->m->names[1],d->m->names[oldsize + 7]) == 0);
+    assert(strcmp(d->m->names[3],d->m->names[oldsize + 9]) == 0);
+
+    delete_group(d, g1clones);
 
 	return g1selfed;
 }

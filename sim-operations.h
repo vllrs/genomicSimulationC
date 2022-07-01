@@ -470,6 +470,7 @@ int calculate_recombinations_from_file(SimData* d, const char* input_file, const
 void generate_gamete(SimData* d, char* parent_genome, char* output);
 void generate_cross(SimData* d, char* parent1_genome, char* parent2_genome, char* output);
 void generate_doubled_haploid(SimData* d, char* parent_genome, char* output);
+void generate_clone(SimData* d, char* parent_genome, char* output);
     /**@}*/
 
 int cross_random_individuals(SimData* d, int from_group, int n_crosses, int cap, GenOptions g);
@@ -477,6 +478,7 @@ int cross_randomly_between(SimData*d, int group1, int group2, int n_crosses, int
 int cross_these_combinations(SimData* d, int n_combinations, int combinations[2][n_combinations],  GenOptions g);
 int self_n_times(SimData* d, int n, int group, GenOptions g);
 int make_doubled_haploids(SimData* d, int group, GenOptions g);
+int make_clones(SimData* d, int group, int inherit_names, GenOptions g);
 
 int make_all_unidirectional_crosses(SimData* d, int from_group, GenOptions g);
 int make_n_crosses_from_top_m_percent(SimData* d, int n, int m, int group, GenOptions g);
