@@ -1,3 +1,4 @@
+- Clarify deleted-genotype dead-end warning message in full pedigree output functions.
 - Add function make_clones (and its genotype-generating subfunction generate_clone) to make identical duplicates of members of a group. 
 - Risk of losing reference to SimData object in load_all_simdata fixed.
 - Fixed read from freed memory error in self_n_times, fixed some dereference null pointer risks in other crossing functions.

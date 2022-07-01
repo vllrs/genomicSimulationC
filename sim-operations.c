@@ -360,7 +360,7 @@ int get_from_ordered_uint_list(unsigned int target, unsigned int* list, unsigned
 	}
 
 	if (first > last) {
-		fprintf(stderr, "Search failed: are you sure your list is sorted?\n");
+        return -1;
 	}
 	return index;
 }
@@ -877,7 +877,7 @@ int get_parents_of_id( AlleleMatrix* start, unsigned int id, unsigned int output
 			if (index < 0) {
 				// search failed
 				if (m->next == NULL) {
-					fprintf(stderr, "Could not find the ID %d: did you prematurely delete this genotype?\n", id);
+                    fprintf(stderr, "Unable to locate ID %d in simulation memory (genotype has likely been deleted): pedigree past this point cannot be determined.\n", id);
 					return 2;
 				} else {
 					m = m->next;
@@ -894,7 +894,7 @@ int get_parents_of_id( AlleleMatrix* start, unsigned int id, unsigned int output
 		}
 
 		if (m->next == NULL) {
-			fprintf(stderr, "Could not find the ID %d: did you prematurely delete this genotype?\n", id);
+            fprintf(stderr, "Unable to locate ID %d in simulation memory (genotype has likely been deleted): pedigree past this point cannot be determined.\n", id);
 			return 2;
 		} else {
 			m = m->next;
