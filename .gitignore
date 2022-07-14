@@ -2,3 +2,4 @@ genomicSimulationC.*
 *.txt
 *.o
 *.exe
+.qtc_clangd

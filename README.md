@@ -4,6 +4,8 @@ This project is a set of C functions that run stochastic simulations of genetics
 
 All functions are located in `sim-operations.c` and its header file `sim-operations.h`. A Makefile for the `gcc` compiler [is provided](https://github.com/vllrs/genomicSimulationC/blob/main/Makefile).
 
+[Latest news updates can be found on the page linked here.](NEWS.md)
+
 ### Guide
 Documentation (generated with doxygen) is available at [the GitHub pages site](https://vllrs.github.io/genomicSimulationC/html/index.html) of [the repository](https://github.com/vllrs/genomicSimulationC). Also available there is an explanation of simulation methods and assumptions, a template for setting up a simulation (in the file `sim.c`), and guides to simulating particular crossing designs using the package's functions.
 

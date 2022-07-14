@@ -1,5 +1,6 @@
 #ifndef SIM_OPERATIONS_H
 #define SIM_OPERATIONS_H
+/* genomicSimulationC v0.2.1 - last edit 15 Jul 2022 */
 
 #include <string.h>
 #include <limits.h>
@@ -12,21 +13,6 @@
 #define TRUE 1
 #define FALSE 0
 
-
-/** \page Guides Guides to simulating particular situations
- *
- * To be added
- *
- */
-
- /** \page Methods Simulation Methodology
- *
- * For the moment, please refer to the R package vignette for
- * descriptions of simulation methodologies and assumptions.
- *
- * [genomicSimulation (R package)](https://kiravill.github.io/genomicSimulation/)
- *
- */
 
  /* This section contains settings for the simulation that users can modify if they have the need.
  * To apply the modified settings the simulation tool must be re-compiled.
@@ -105,7 +91,6 @@ typedef struct {
      * are the indexes in the SimData of the markers that make up that block. */
 	int** markers_in_block;
 } MarkerBlocks;
-
 
 /** A row-major heap matrix that contains floating point numbers. `dmatrix` functions
  * are designed to act on this matrix.

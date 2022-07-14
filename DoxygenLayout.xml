@@ -3,9 +3,9 @@
   <!-- Navigation index tabs for HTML output -->
   <navindex>
     <tab type="mainpage" visible="yes" title="Home"/>
-    <tab type="user" url="https://github.com/KiraVill/genomicSimulationC/blob/main/sim.c" title="Template"/>
-    <tab type="user" url="@ref Guides" title="Guides"/>
-    <tab type="user" url="@ref Methods" title="Simulation Methods"/>
+    <tab type="user" url="@ref news" title="News"/>
+    <tab type="user" url="@ref templates" title="Templates"/>
+    <tab type="user" url="@ref concordance" title="Concordance"/>
     <tab type="modules" visible="yes" title="Documentation" intro=""/>
   </navindex>
 

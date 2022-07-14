@@ -1,7 +1,8 @@
 <map id="split_randomly_into_n" name="split_randomly_into_n">
-<area shape="rect" id="node1" title="Allocate each member of the group to one of n groups with equal probability." alt="" coords="5,31,153,57"/>
-<area shape="rect" id="node2" href="$group__supporters.html#ga71dbb7fd0d0317d24aa06b6bbb472367" title="Function to identify the next n sequential integers that do not identify a group that currently has m..." alt="" coords="201,5,364,32"/>
-<area shape="rect" id="node5" href="$group__maths.html#ga89e066191f12e056cebb8d2cd74a2a29" title="Generate an integer randomly between 0 and limit inclusive." alt="" coords="251,56,315,83"/>
-<area shape="rect" id="node3" href="$group__getters.html#ga3305ddcc29138d2d92689f39a7885ca0" title="Identify every group number that currently has members." alt="" coords="412,5,551,32"/>
-<area shape="rect" id="node4" href="$group__supporters.html#gadae2e9f7e1061cb20426ba2333b7629b" title="Comparator function for qsort." alt="" coords="599,5,769,32"/>
+<area shape="rect" id="node1" title="Allocate each member of the group to one of n groups with equal probability." alt="" coords="5,56,153,83"/>
+<area shape="rect" id="node2" href="$group__getters.html#gad6d2b66296cd80f5bfe303e06de7935c" title="Function to count the number of genotypes that currently belong to the specified group." alt="" coords="227,5,338,32"/>
+<area shape="rect" id="node3" href="$group__supporters.html#ga71dbb7fd0d0317d24aa06b6bbb472367" title="Function to identify the next n sequential integers that do not identify a group that currently has m..." alt="" coords="201,56,364,83"/>
+<area shape="rect" id="node6" href="$group__maths.html#ga89e066191f12e056cebb8d2cd74a2a29" title="Generate an integer randomly between 0 and limit inclusive." alt="" coords="251,107,315,133"/>
+<area shape="rect" id="node4" href="$group__getters.html#ga3305ddcc29138d2d92689f39a7885ca0" title="Identify every group number that currently has members." alt="" coords="412,56,551,83"/>
+<area shape="rect" id="node5" href="$group__supporters.html#gadae2e9f7e1061cb20426ba2333b7629b" title="Comparator function for qsort." alt="" coords="599,56,769,83"/>
 </map>

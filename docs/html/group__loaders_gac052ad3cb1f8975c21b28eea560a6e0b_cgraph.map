@@ -1,0 +1,7 @@
+<map id="clear_simdata" name="clear_simdata">
+<area shape="rect" id="node1" title="Clear a SimData object on the heap." alt="" coords="5,56,108,83"/>
+<area shape="rect" id="node2" href="$group__deletors.html#gadd4a9c17e8c3e59fc00eee25635b110f" title="Deletes the full AlleleMatrix object and frees its memory." alt="" coords="157,5,294,32"/>
+<area shape="rect" id="node3" href="$group__deletors.html#ga961f4b0757752fee2bd08adde7ece8ad" title="Deletes an EffectMatrix object and frees its memory." alt="" coords="156,56,295,83"/>
+<area shape="rect" id="node5" href="$group__deletors.html#gaaf7e12b92ec0f93bb3bc2ec67155bc94" title="Deletes a GeneticMap object and frees its memory." alt="" coords="170,107,281,133"/>
+<area shape="rect" id="node4" href="$group__deletors.html#gaaf6542d59034f88f9e1ec48e5f053c4a" title="Deletes a DecimalMatrix and frees its memory." alt="" coords="343,56,449,83"/>
+</map>

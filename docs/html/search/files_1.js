@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['sim_2doperations_2ec_207',['sim-operations.c',['../sim-operations_8c.html',1,'']]],
-  ['sim_2doperations_2eh_208',['sim-operations.h',['../sim-operations_8h.html',1,'']]]
+  ['news_2emd_214',['NEWS.md',['../_n_e_w_s_8md.html',1,'']]]
 ];

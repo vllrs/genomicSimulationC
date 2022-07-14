@@ -1,6 +1,7 @@
 <map id="split_by_probabilities_into_n" name="split_by_probabilities_into_n">
-<area shape="rect" id="node1" title="Allocate each member of the group to one of n groups with custom probabilities for each group." alt="" coords="5,5,148,47"/>
-<area shape="rect" id="node2" href="$group__supporters.html#ga71dbb7fd0d0317d24aa06b6bbb472367" title="Function to identify the next n sequential integers that do not identify a group that currently has m..." alt="" coords="196,13,359,39"/>
-<area shape="rect" id="node3" href="$group__getters.html#ga3305ddcc29138d2d92689f39a7885ca0" title="Identify every group number that currently has members." alt="" coords="407,13,545,39"/>
-<area shape="rect" id="node4" href="$group__supporters.html#gadae2e9f7e1061cb20426ba2333b7629b" title="Comparator function for qsort." alt="" coords="593,13,764,39"/>
+<area shape="rect" id="node1" title="Allocate each member of the group to one of n groups with custom probabilities for each group." alt="" coords="5,23,148,65"/>
+<area shape="rect" id="node2" href="$group__getters.html#gad6d2b66296cd80f5bfe303e06de7935c" title="Function to count the number of genotypes that currently belong to the specified group." alt="" coords="222,5,333,32"/>
+<area shape="rect" id="node3" href="$group__supporters.html#ga71dbb7fd0d0317d24aa06b6bbb472367" title="Function to identify the next n sequential integers that do not identify a group that currently has m..." alt="" coords="196,56,359,83"/>
+<area shape="rect" id="node4" href="$group__getters.html#ga3305ddcc29138d2d92689f39a7885ca0" title="Identify every group number that currently has members." alt="" coords="407,56,545,83"/>
+<area shape="rect" id="node5" href="$group__supporters.html#gadae2e9f7e1061cb20426ba2333b7629b" title="Comparator function for qsort." alt="" coords="593,56,764,83"/>
 </map>

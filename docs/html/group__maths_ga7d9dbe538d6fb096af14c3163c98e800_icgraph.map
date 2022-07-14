@@ -3,8 +3,8 @@
 <area shape="rect" id="node2" href="$group__meiosis.html#gaa18b10bcd660dee5213868cc3244f826" title="Get the alleles of the outcome of crossing two genotypes." alt="" coords="472,130,583,157"/>
 <area shape="rect" id="node11" href="$group__meiosis.html#gac1f46b3de0afb4674ae6d34311e7aea7" title="Get the alleles of the outcome of producing a doubled haploid from a gamete from a given parent." alt="" coords="441,206,613,233"/>
 <area shape="rect" id="node13" href="$group__meiosis.html#gae406f4a0266b7480e49899693f1b00da" title="Fills a char* with the simulated result of meiosis (reduction and recombination) from the marker alle..." alt="" coords="466,257,589,283"/>
-<area shape="rect" id="node3" href="$group__crossers.html#ga3ea77c76c329625646419a10683669f9" title="Performs random crosses among members of a group." alt="" coords="219,18,390,45"/>
-<area shape="rect" id="node5" href="$group__crossers.html#ga021cf90b7cf336a9551bf93cd9246441" title="Performs random crosses where the first parent comes from one group and the second from another." alt="" coords="220,79,389,106"/>
+<area shape="rect" id="node3" href="$group__crossers.html#gae66231fb141a76432d1211e2cf0baf25" title="Performs random crosses among members of a group." alt="" coords="219,18,390,45"/>
+<area shape="rect" id="node5" href="$group__crossers.html#ga3be2cb18d1c722b3a766a7a5663a8f0c" title="Performs random crosses where the first parent comes from one group and the second from another." alt="" coords="220,79,389,106"/>
 <area shape="rect" id="node6" href="$group__crossers.html#gabb793988799d792dfe4007efdf988068" title="Performs the crosses of pairs of parents whose ids are provided in an array." alt="" coords="216,130,393,157"/>
 <area shape="rect" id="node10" href="$group__crossers.html#gadf5beb682ac15fa5a0176e480adc9d91" title="Selfs each member of a group for a certain number of generations." alt="" coords="257,181,352,207"/>
 <area shape="rect" id="node4" href="$group__crossers.html#ga68aca99a41527b019316c8243e6fc7a7" title="Find the top m percent of a group and perform random crosses between those top individuals." alt="" coords="10,5,163,47"/>

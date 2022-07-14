@@ -22,7 +22,7 @@ for the JavaScript code in this file
 */
 var menudata={children:[
 {text:"Home",url:"index.html"},
-{text:"Template",url:"https://github.com/KiraVill/genomicSimulationC/blob/main/sim.c"},
-{text:"Guides",url:"_guides.html"},
-{text:"Simulation Methods",url:"_methods.html"},
+{text:"News",url:"news.html"},
+{text:"Templates",url:"templates.html"},
+{text:"Concordance",url:"concordance.html"},
 {text:"Documentation",url:"modules.html"}]}

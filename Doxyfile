@@ -831,7 +831,10 @@ WARN_LOGFILE           =
 
 INPUT                  = ./sim-operations.c \
                          ./sim-operations.h \
-                         ./README.md
+                         ./README.md \
+                         ./NEWS.md \
+                         ./Concordance.md \
+                         ./Templates.md
 
 # This tag can be used to specify the character encoding of the source files
 # that doxygen parses. Internally doxygen uses the UTF-8 encoding. Doxygen uses
@@ -1316,7 +1319,7 @@ HTML_DYNAMIC_MENUS     = YES
 # The default value is: NO.
 # This tag requires that the tag GENERATE_HTML is set to YES.
 
-HTML_DYNAMIC_SECTIONS  = NO
+HTML_DYNAMIC_SECTIONS  = YES
 
 # With HTML_INDEX_NUM_ENTRIES one can control the preferred number of entries
 # shown in the various tree structured indices initially; the user can expand

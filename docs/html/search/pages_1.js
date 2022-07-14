@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['simulation_20methodology_394',['Simulation Methodology',['../_methods.html',1,'']]]
+  ['genomicsimulation_2c_20c_20version_407',['genomicSimulation, C version',['../index.html',1,'']]]
 ];

@@ -1,20 +1,21 @@
 <map id="get_name_of_id" name="get_name_of_id">
-<area shape="rect" id="node1" title="Returns the name of the genotype with a given id." alt="" coords="872,102,985,129"/>
-<area shape="rect" id="node2" href="$group__getters.html#gad4113b624a908f12d46962bcd93cb95e" title="Gets the names of either the first or second parent of each member of the group." alt="" coords="656,14,824,41"/>
-<area shape="rect" id="node3" href="$group__savers.html#ga979efe39128de97176da5460cab7dfa7" title="Print the parents of each genotype in a group to a file." alt="" coords="667,65,813,107"/>
-<area shape="rect" id="node4" href="$group__savers.html#ga6b87b484064fd373aec0bfa4ce8dbef1" title="Print the parents of each genotype in the SimData to a file." alt="" coords="658,131,822,158"/>
-<area shape="rect" id="node5" href="$group__savers.html#gabc1307a944deb18e0aef315783ab123e" title="Recursively save the parents of a particular id to a file." alt="" coords="683,206,797,233"/>
-<area shape="rect" id="node6" href="$group__savers.html#gabf5bc0b61b008aeda217ea9a666ad9cb" title="Print the full known pedigree of each genotype in a single AlleleMatrix to a file." alt="" coords="459,155,590,182"/>
-<area shape="rect" id="node16" href="$group__savers.html#ga40dbed7f680c5c1181a8ed27e616417b" title="Print the full known pedigree of each genotype in the SimData to a file." alt="" coords="461,206,588,233"/>
-<area shape="rect" id="node17" href="$group__savers.html#ga75e854cbc72b31a5e2eb03c63c33ecc6" title="Print the full known pedigree of each genotype in a group to a file." alt="" coords="441,257,608,283"/>
-<area shape="rect" id="node7" href="$group__crossers.html#ga3ea77c76c329625646419a10683669f9" title="Performs random crosses among members of a group." alt="" coords="219,18,390,45"/>
-<area shape="rect" id="node9" href="$group__crossers.html#ga021cf90b7cf336a9551bf93cd9246441" title="Performs random crosses where the first parent comes from one group and the second from another." alt="" coords="220,79,389,106"/>
+<area shape="rect" id="node1" title="Returns the name of the genotype with a given id." alt="" coords="872,139,985,166"/>
+<area shape="rect" id="node2" href="$group__getters.html#gad4113b624a908f12d46962bcd93cb95e" title="Gets the names of either the first or second parent of each member of the group." alt="" coords="656,51,824,78"/>
+<area shape="rect" id="node3" href="$group__savers.html#ga979efe39128de97176da5460cab7dfa7" title="Print the parents of each genotype in a group to a file." alt="" coords="667,103,813,144"/>
+<area shape="rect" id="node4" href="$group__savers.html#ga6b87b484064fd373aec0bfa4ce8dbef1" title="Print the parents of each genotype in the SimData to a file." alt="" coords="658,169,822,195"/>
+<area shape="rect" id="node5" href="$group__savers.html#gabc1307a944deb18e0aef315783ab123e" title="Recursively save the parents of a particular id to a file." alt="" coords="683,243,797,270"/>
+<area shape="rect" id="node6" href="$group__savers.html#gabf5bc0b61b008aeda217ea9a666ad9cb" title="Print the full known pedigree of each genotype in a single AlleleMatrix to a file." alt="" coords="459,181,590,207"/>
+<area shape="rect" id="node17" href="$group__savers.html#ga40dbed7f680c5c1181a8ed27e616417b" title="Print the full known pedigree of each genotype in the SimData to a file." alt="" coords="461,243,588,270"/>
+<area shape="rect" id="node18" href="$group__savers.html#ga75e854cbc72b31a5e2eb03c63c33ecc6" title="Print the full known pedigree of each genotype in a group to a file." alt="" coords="441,319,608,346"/>
+<area shape="rect" id="node7" href="$group__crossers.html#gae66231fb141a76432d1211e2cf0baf25" title="Performs random crosses among members of a group." alt="" coords="219,18,390,45"/>
+<area shape="rect" id="node9" href="$group__crossers.html#ga3be2cb18d1c722b3a766a7a5663a8f0c" title="Performs random crosses where the first parent comes from one group and the second from another." alt="" coords="220,79,389,106"/>
 <area shape="rect" id="node10" href="$group__crossers.html#gabb793988799d792dfe4007efdf988068" title="Performs the crosses of pairs of parents whose ids are provided in an array." alt="" coords="216,130,393,157"/>
-<area shape="rect" id="node14" href="$group__crossers.html#gaf078d6bc1b5d4234a9b960e6132480aa" title="Creates a doubled haploid from each member of a group." alt="" coords="224,181,385,207"/>
-<area shape="rect" id="node15" href="$group__crossers.html#gadf5beb682ac15fa5a0176e480adc9d91" title="Selfs each member of a group for a certain number of generations." alt="" coords="257,231,352,258"/>
+<area shape="rect" id="node14" href="$group__crossers.html#gaa42e48ab06f9051e5ed6879409cbe2f4" title="Creates an identical copy of each member of a group." alt="" coords="255,181,354,207"/>
+<area shape="rect" id="node15" href="$group__crossers.html#gaf078d6bc1b5d4234a9b960e6132480aa" title="Creates a doubled haploid from each member of a group." alt="" coords="224,231,385,258"/>
+<area shape="rect" id="node16" href="$group__crossers.html#gadf5beb682ac15fa5a0176e480adc9d91" title="Selfs each member of a group for a certain number of generations." alt="" coords="257,282,352,309"/>
 <area shape="rect" id="node8" href="$group__crossers.html#ga68aca99a41527b019316c8243e6fc7a7" title="Find the top m percent of a group and perform random crosses between those top individuals." alt="" coords="10,5,163,47"/>
 <area shape="rect" id="node11" href="$group__crossers.html#ga3f1b06b7aa35e6a05918e16d1deabeee" title="Perform crosses between all pairs of parents in the group from_group and allocates the resulting offs..." alt="" coords="8,71,165,112"/>
 <area shape="rect" id="node12" href="$group__crossers.html#ga3b67d38c13c7a8bef2d0fc91c0365177" title="Perform crosses between pairs of parents identified by name in a file and allocate the resulting offs..." alt="" coords="5,137,168,163"/>
 <area shape="rect" id="node13" href="$group__crossers.html#gaa7c90b4015e4abce750176c6d891cad2" title="Perform crosses between previously&#45;generated offspring of pairs of parents identified by name in a fi..." alt="" coords="11,188,163,229"/>
-<area shape="rect" id="node18" href="$group__getters.html#ga86e56272267b8d4980e5062d6c0fef7c" title="Gets the full pedigree string (as per save_group_full_pedigree() ) of each member of the group." alt="" coords="233,282,376,309"/>
+<area shape="rect" id="node19" href="$group__getters.html#ga86e56272267b8d4980e5062d6c0fef7c" title="Gets the full pedigree string (as per save_group_full_pedigree() ) of each member of the group." alt="" coords="233,333,376,359"/>
 </map>

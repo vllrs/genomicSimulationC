@@ -1,4 +1,5 @@
 #include "sim-operations.h"
+/* genomicSimulationC v0.2.1 - last edit 15 Jul 2022 */
 
 /** Options parameter to run SimData functions in their bare-bones form.*/
 const GenOptions BASIC_OPT = {
@@ -44,7 +45,6 @@ void* get_malloc(size_t size) {
 	}
 	return v;
 }
-
 
 /** Creator for an empty AlleleMatrix object of a given size. Includes memory
  * allocation for `n_genotypes` worth of `.alleles`.
