@@ -5603,7 +5603,9 @@ int make_clones(SimData* d, int group, int inherit_names, GenOptions g) {
     //RPACKINSERT PutRNGstate();
 
     free(group_genes);
-    free(group_names);
+	if (inherit_names) {
+		free(group_names);
+	}
     // save the rest of the crosses to the file.
     outcome->n_genotypes = fullness;
     // give the offspring their ids and names
