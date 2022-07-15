@@ -1,0 +1,36 @@
+digraph "create_empty_allelematrix"
+{
+ // LATEX_PDF_SIZE
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  rankdir="RL";
+  Node1 [label="create_empty_allelematrix",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black",tooltip="Creator for an empty AlleleMatrix object of a given size."];
+  Node1 -> Node2 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node2 [label="cross_random_individuals",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$group__crossers.html#gae66231fb141a76432d1211e2cf0baf25",tooltip="Performs random crosses among members of a group."];
+  Node2 -> Node3 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node3 [label="make_n_crosses_from\l_top_m_percent",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$group__crossers.html#ga68aca99a41527b019316c8243e6fc7a7",tooltip="Find the top m percent of a group and perform random crosses between those top individuals."];
+  Node1 -> Node4 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node4 [label="cross_randomly_between",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$group__crossers.html#ga3be2cb18d1c722b3a766a7a5663a8f0c",tooltip="Performs random crosses where the first parent comes from one group and the second from another."];
+  Node1 -> Node5 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node5 [label="cross_these_combinations",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$group__crossers.html#gabb793988799d792dfe4007efdf988068",tooltip="Performs the crosses of pairs of parents whose ids are provided in an array."];
+  Node5 -> Node6 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node6 [label="make_all_unidirectional\l_crosses",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$group__crossers.html#ga3f1b06b7aa35e6a05918e16d1deabeee",tooltip="Perform crosses between all pairs of parents in the group from_group and allocates the resulting offs..."];
+  Node5 -> Node7 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node7 [label="make_crosses_from_file",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$group__crossers.html#ga3b67d38c13c7a8bef2d0fc91c0365177",tooltip="Perform crosses between pairs of parents identified by name in a file and allocate the resulting offs..."];
+  Node5 -> Node8 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node8 [label="make_double_crosses\l_from_file",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$group__crossers.html#gaa7c90b4015e4abce750176c6d891cad2",tooltip="Perform crosses between previously-generated offspring of pairs of parents identified by name in a fi..."];
+  Node1 -> Node9 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node9 [label="load_more_transposed\l_genes_to_simdata",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$group__loaders.html#ga8bd85cb47ec8e0c4049f937ef40ae102",tooltip="Appends genotype data from a file to an existing SimData."];
+  Node1 -> Node10 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node10 [label="load_transposed_encoded\l_genes_to_simdata",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$group__loaders.html#gad5863641a67355c2c1523e1a23b6f581",tooltip="Populates a SimData combination with marker allele data."];
+  Node1 -> Node11 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node11 [label="load_transposed_genes\l_to_simdata",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$group__loaders.html#ga156666e21151a9f267e31598574366a6",tooltip="Populates a SimData combination with marker allele data."];
+  Node11 -> Node12 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node12 [label="load_all_simdata",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$group__loaders.html#ga54cd625669413c2ef171060e9844d814",tooltip="Populates a SimData combination from scratch with marker allele data, a genetic map,..."];
+  Node1 -> Node13 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node13 [label="make_clones",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$group__crossers.html#gaa42e48ab06f9051e5ed6879409cbe2f4",tooltip="Creates an identical copy of each member of a group."];
+  Node1 -> Node14 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node14 [label="make_doubled_haploids",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$group__crossers.html#gaf078d6bc1b5d4234a9b960e6132480aa",tooltip="Creates a doubled haploid from each member of a group."];
+  Node1 -> Node15 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node15 [label="self_n_times",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$group__crossers.html#gadf5beb682ac15fa5a0176e480adc9d91",tooltip="Selfs each member of a group for a certain number of generations."];
+}

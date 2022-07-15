@@ -1,0 +1,18 @@
+digraph "split_randomly_into_n"
+{
+ // LATEX_PDF_SIZE
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  rankdir="LR";
+  Node1 [label="split_randomly_into_n",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black",tooltip="Allocate each member of the group to one of n groups with equal probability."];
+  Node1 -> Node2 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node2 [label="get_group_size",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$group__getters.html#gad6d2b66296cd80f5bfe303e06de7935c",tooltip="Function to count the number of genotypes that currently belong to the specified group."];
+  Node1 -> Node3 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node3 [label="get_n_new_group_nums",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$group__supporters.html#ga71dbb7fd0d0317d24aa06b6bbb472367",tooltip="Function to identify the next n sequential integers that do not identify a group that currently has m..."];
+  Node3 -> Node4 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node4 [label="get_existing_groups",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$group__getters.html#ga9e5a5fb63d74d84617d91d4ae9acf1ee",tooltip="Identify every group number that currently has members."];
+  Node4 -> Node5 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node5 [label="_ascending_int_comparer",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$group__supporters.html#gadae2e9f7e1061cb20426ba2333b7629b",tooltip="Comparator function for qsort."];
+  Node1 -> Node6 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node6 [label="randlim",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$group__maths.html#ga89e066191f12e056cebb8d2cd74a2a29",tooltip="Generate an integer randomly between 0 and limit inclusive."];
+}

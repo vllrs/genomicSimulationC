@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['latest_20news_408',['Latest News',['../news.html',1,'']]]
+  ['latest_20news_0',['Latest News',['../news.html',1,'']]]
 ];

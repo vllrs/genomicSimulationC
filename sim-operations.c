@@ -408,7 +408,9 @@ void shuffle_up_to(int* sequence, size_t total_n, size_t n_to_shuffle) {
 		size_t i;
         for (i = 0; i < maxi; ++i) {
 			// items before i are already shuffled
-			size_t j = i + rand() / (RAND_MAX / (total_n - i) + 1);
+			// In R version will use the randlim version rather than the upper digits of rand
+            //size_t j = i + rand()/(RAND_MAX/(total_n-i)+1);
+            size_t j = i + randlim(total_n - i - 1);
 
 			// add the next chosen value to the end of the shuffle
 			int t = sequence[j];

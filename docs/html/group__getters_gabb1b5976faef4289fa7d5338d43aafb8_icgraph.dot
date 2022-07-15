@@ -1,0 +1,18 @@
+digraph "get_genes_of_index"
+{
+ // LATEX_PDF_SIZE
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  rankdir="RL";
+  Node1 [label="get_genes_of_index",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black",tooltip="Get the alleles of a genotype by its index."];
+  Node1 -> Node2 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node2 [label="calculate_recombinations\l_from_file",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$group__recomb.html#ga7813f256407ab2ea242df32ea9ad2c7e",tooltip="Provides guesses as to the location of recombination events that led to the creation of certain genot..."];
+  Node1 -> Node3 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node3 [label="cross_these_combinations",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$group__crossers.html#gabb793988799d792dfe4007efdf988068",tooltip="Performs the crosses of pairs of parents whose ids are provided in an array."];
+  Node3 -> Node4 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node4 [label="make_all_unidirectional\l_crosses",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$group__crossers.html#ga3f1b06b7aa35e6a05918e16d1deabeee",tooltip="Perform crosses between all pairs of parents in the group from_group and allocates the resulting offs..."];
+  Node3 -> Node5 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node5 [label="make_crosses_from_file",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$group__crossers.html#ga3b67d38c13c7a8bef2d0fc91c0365177",tooltip="Perform crosses between pairs of parents identified by name in a file and allocate the resulting offs..."];
+  Node3 -> Node6 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node6 [label="make_double_crosses\l_from_file",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$group__crossers.html#gaa7c90b4015e4abce750176c6d891cad2",tooltip="Perform crosses between previously-generated offspring of pairs of parents identified by name in a fi..."];
+}

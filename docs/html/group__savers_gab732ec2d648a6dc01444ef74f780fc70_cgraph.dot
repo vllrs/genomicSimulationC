@@ -1,0 +1,26 @@
+digraph "save_count_matrix_of_group"
+{
+ // LATEX_PDF_SIZE
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  rankdir="LR";
+  Node1 [label="save_count_matrix_of\l_group",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black",tooltip="Print the number of copies of a particular allele at each marker of each genotype in a group to a fil..."];
+  Node1 -> Node2 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node2 [label="calculate_group_count\l_matrix_of_allele",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$group__calculators.html#gad86ea5492e6c1cf918d6449a9eb530de",tooltip="Calculates the number of times at each marker that a particular allele appears for each genotype in a..."];
+  Node2 -> Node3 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node3 [label="get_group_genes",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$group__getters.html#gab6a654922ed92b3a42e3e36ecea50d07",tooltip="Gets a shallow copy of the genes/alleles of each member of the group."];
+  Node3 -> Node4 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node4 [label="get_group_size",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$group__getters.html#gad6d2b66296cd80f5bfe303e06de7935c",tooltip="Function to count the number of genotypes that currently belong to the specified group."];
+  Node3 -> Node5 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node5 [label="get_malloc",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$group__supporters.html#ga08d9e7703e6779d2122baa4309fca0ab",tooltip="Replace calls to malloc direct with this function, which errors and exits with status 2 if memory all..."];
+  Node2 -> Node4 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node1 -> Node6 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node6 [label="delete_dmatrix",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$group__deletors.html#gaaf6542d59034f88f9e1ec48e5f053c4a",tooltip="Deletes a DecimalMatrix and frees its memory."];
+  Node1 -> Node7 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node7 [label="generate_zero_dmatrix",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$group__maths.html#gabf3f578b0aa59d5b68ccd0738dd6a9d1",tooltip="Generates a matrix of c columns, r rows with all 0."];
+  Node1 -> Node8 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node8 [label="get_group_names",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$group__getters.html#gac68da3207f10c75563ffd90f93924d68",tooltip="Gets a shallow copy of the names of each member of the group."];
+  Node8 -> Node4 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node8 -> Node5 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node1 -> Node4 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+}

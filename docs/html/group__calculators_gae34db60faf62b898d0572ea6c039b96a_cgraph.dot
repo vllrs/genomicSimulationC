@@ -1,0 +1,51 @@
+digraph "split_by_bv"
+{
+ // LATEX_PDF_SIZE
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  rankdir="LR";
+  Node1 [label="split_by_bv",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black",tooltip="Takes the top_n individuals in the group with the best breeding values/fitnesses and puts them in a n..."];
+  Node1 -> Node2 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node2 [label="_ascending_double_comparer",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$group__supporters.html#ga311381904a1ca73ea26dfede9fcddea2",tooltip="Comparator function for qsort."];
+  Node1 -> Node3 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node3 [label="_descending_double\l_comparer",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$group__supporters.html#ga2aae9a568cd0cd5313808e458a9fe388",tooltip="Comparator function for qsort."];
+  Node1 -> Node4 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node4 [label="calculate_group_bvs",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$group__calculators.html#ga7f80905718ac87e9da1c30a2cec77ea6",tooltip="Calculates the fitness metric/breeding value for each genotype in the AlleleMatrix in a certain group..."];
+  Node4 -> Node5 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node5 [label="add_doublematrixvector\l_product_to_dmatrix",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$group__maths.html#gad2c9cda1aab9679e0bfe3c88959213c6",tooltip="Multiply two sets of a DecimalMatrix and vector, and add both products to the first column of a provi..."];
+  Node4 -> Node6 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node6 [label="add_matrixvector_product\l_to_dmatrix",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$group__maths.html#gabb8addf721442aecdd7dca3dfd955c3c",tooltip="Multiply a DecimalMatrix to a vector, and add that product to the first column of a provided DecimalM..."];
+  Node4 -> Node7 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node7 [label="calculate_group_count\l_matrix_of_allele",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$group__calculators.html#gad86ea5492e6c1cf918d6449a9eb530de",tooltip="Calculates the number of times at each marker that a particular allele appears for each genotype in a..."];
+  Node7 -> Node8 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node8 [label="get_group_genes",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$group__getters.html#gab6a654922ed92b3a42e3e36ecea50d07",tooltip="Gets a shallow copy of the genes/alleles of each member of the group."];
+  Node8 -> Node9 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node9 [label="get_group_size",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$group__getters.html#gad6d2b66296cd80f5bfe303e06de7935c",tooltip="Function to count the number of genotypes that currently belong to the specified group."];
+  Node8 -> Node10 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node10 [label="get_malloc",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$group__supporters.html#ga08d9e7703e6779d2122baa4309fca0ab",tooltip="Replace calls to malloc direct with this function, which errors and exits with status 2 if memory all..."];
+  Node7 -> Node9 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node4 -> Node11 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node11 [label="calculate_group_doublecount\l_matrix_of_allele",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$group__calculators.html#ga0b2b686b9dde986b549f15d72fa4c919",tooltip="Calculates the number of times at each marker that two particular alleles appear for each genotype in..."];
+  Node11 -> Node8 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node11 -> Node9 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node4 -> Node12 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node12 [label="delete_dmatrix",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$group__deletors.html#gaaf6542d59034f88f9e1ec48e5f053c4a",tooltip="Deletes a DecimalMatrix and frees its memory."];
+  Node4 -> Node13 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node13 [label="generate_zero_dmatrix",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$group__maths.html#gabf3f578b0aa59d5b68ccd0738dd6a9d1",tooltip="Generates a matrix of c columns, r rows with all 0."];
+  Node4 -> Node9 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node1 -> Node12 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node1 -> Node14 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node14 [label="get_group_indexes",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$group__getters.html#ga201ff5b2b875f2f6e12618ace0e9c35b",tooltip="Gets the indexes (0-based, from the start of the linked list in the SimData) of each member of the gr..."];
+  Node14 -> Node9 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node14 -> Node10 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node1 -> Node9 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node1 -> Node15 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node15 [label="split_from_group",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$group__groupmod.html#gaf2eda46d016c384b166ce65605952b7c",tooltip="Take a list of indexes and allocate the genotypes at those indexes to a new group."];
+  Node15 -> Node16 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node16 [label="_ascending_int_comparer",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$group__supporters.html#gadae2e9f7e1061cb20426ba2333b7629b",tooltip="Comparator function for qsort."];
+  Node15 -> Node17 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node17 [label="get_new_group_num",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$group__supporters.html#gae974a74145fe876e303e14336d3c5d3a",tooltip="Function to identify the next sequential integer that does not identify a group that currently has me..."];
+  Node17 -> Node18 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node18 [label="get_existing_groups",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$group__getters.html#ga9e5a5fb63d74d84617d91d4ae9acf1ee",tooltip="Identify every group number that currently has members."];
+  Node18 -> Node16 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+}

@@ -1,0 +1,12 @@
+digraph "set_names"
+{
+ // LATEX_PDF_SIZE
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  rankdir="LR";
+  Node1 [label="set_names",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black",tooltip="Fills the designated section of the .names array in an AlleleMatrix with the pattern prefixindex."];
+  Node1 -> Node2 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node2 [label="get_integer_digits",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$group__supporters.html#gad7d864d43092823ac2ed8a6cbd595e35",tooltip="Count and return the number of digits in i."];
+  Node1 -> Node3 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node3 [label="get_malloc",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$group__supporters.html#ga08d9e7703e6779d2122baa4309fca0ab",tooltip="Replace calls to malloc direct with this function, which errors and exits with status 2 if memory all..."];
+}

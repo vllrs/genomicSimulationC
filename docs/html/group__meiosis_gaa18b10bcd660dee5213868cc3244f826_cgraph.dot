@@ -1,0 +1,16 @@
+digraph "generate_cross"
+{
+ // LATEX_PDF_SIZE
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  rankdir="LR";
+  Node1 [label="generate_cross",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black",tooltip="Get the alleles of the outcome of crossing two genotypes."];
+  Node1 -> Node2 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node2 [label="_ascending_float_comparer",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$group__supporters.html#ga3744bc6f3fcb52952d520029055e8af8",tooltip="Comparator function for qsort."];
+  Node1 -> Node3 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node3 [label="get_malloc",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$group__supporters.html#ga08d9e7703e6779d2122baa4309fca0ab",tooltip="Replace calls to malloc direct with this function, which errors and exits with status 2 if memory all..."];
+  Node1 -> Node4 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node4 [label="randb",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$group__maths.html#gad4e0f7934e82157e3115f8df7aec01f0",tooltip="Generates randomly one of 0 or 1, by splitting the output of rand() in half."];
+  Node1 -> Node5 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node5 [label="randpoi",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$group__maths.html#ga7d9dbe538d6fb096af14c3163c98e800",tooltip="Generates randomly a number from the Poisson distribution with parameter lambda, using the Knuth appr..."];
+}

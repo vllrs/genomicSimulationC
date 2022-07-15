@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['ids_104',['ids',['../struct_allele_matrix.html#a84a371ded20b00d177dd6dbf5877d85a',1,'AlleleMatrix']]]
+  ['ids_0',['ids',['../struct_allele_matrix.html#a84a371ded20b00d177dd6dbf5877d85a',1,'AlleleMatrix']]]
 ];

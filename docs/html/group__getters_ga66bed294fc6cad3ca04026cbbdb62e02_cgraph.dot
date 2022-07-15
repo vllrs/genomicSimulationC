@@ -1,0 +1,12 @@
+digraph "get_existing_group_counts"
+{
+ // LATEX_PDF_SIZE
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  rankdir="LR";
+  Node1 [label="get_existing_group\l_counts",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black",tooltip="Identify every group number that currently has members and the number of genotypes currently allocate..."];
+  Node1 -> Node2 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node2 [label="_ascending_int_dcomparer",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$group__supporters.html#gacda79ff4e2a3229d13c5393d006136db",tooltip="Comparator function for qsort."];
+  Node1 -> Node3 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node3 [label="get_malloc",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$group__supporters.html#ga08d9e7703e6779d2122baa4309fca0ab",tooltip="Replace calls to malloc direct with this function, which errors and exits with status 2 if memory all..."];
+}

@@ -1,0 +1,54 @@
+digraph "generate_zero_dmatrix"
+{
+ // LATEX_PDF_SIZE
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  rankdir="RL";
+  Node1 [label="generate_zero_dmatrix",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black",tooltip="Generates a matrix of c columns, r rows with all 0."];
+  Node1 -> Node2 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node2 [label="calculate_bvs",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$group__calculators.html#gab5b177cf40a7e28276c460d60a3ecbb5",tooltip="Calculates the fitness metric/breeding value for each genotype in the AlleleMatrix,..."];
+  Node2 -> Node3 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node3 [label="cross_random_individuals",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$group__crossers.html#gae66231fb141a76432d1211e2cf0baf25",tooltip="Performs random crosses among members of a group."];
+  Node3 -> Node4 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node4 [label="make_n_crosses_from\l_top_m_percent",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$group__crossers.html#ga68aca99a41527b019316c8243e6fc7a7",tooltip="Find the top m percent of a group and perform random crosses between those top individuals."];
+  Node2 -> Node5 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node5 [label="cross_randomly_between",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$group__crossers.html#ga3be2cb18d1c722b3a766a7a5663a8f0c",tooltip="Performs random crosses where the first parent comes from one group and the second from another."];
+  Node2 -> Node6 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node6 [label="cross_these_combinations",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$group__crossers.html#gabb793988799d792dfe4007efdf988068",tooltip="Performs the crosses of pairs of parents whose ids are provided in an array."];
+  Node6 -> Node7 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node7 [label="make_all_unidirectional\l_crosses",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$group__crossers.html#ga3f1b06b7aa35e6a05918e16d1deabeee",tooltip="Perform crosses between all pairs of parents in the group from_group and allocates the resulting offs..."];
+  Node6 -> Node8 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node8 [label="make_crosses_from_file",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$group__crossers.html#ga3b67d38c13c7a8bef2d0fc91c0365177",tooltip="Perform crosses between pairs of parents identified by name in a file and allocate the resulting offs..."];
+  Node6 -> Node9 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node9 [label="make_double_crosses\l_from_file",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$group__crossers.html#gaa7c90b4015e4abce750176c6d891cad2",tooltip="Perform crosses between previously-generated offspring of pairs of parents identified by name in a fi..."];
+  Node2 -> Node10 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node10 [label="make_clones",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$group__crossers.html#gaa42e48ab06f9051e5ed6879409cbe2f4",tooltip="Creates an identical copy of each member of a group."];
+  Node2 -> Node11 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node11 [label="make_doubled_haploids",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$group__crossers.html#gaf078d6bc1b5d4234a9b960e6132480aa",tooltip="Creates a doubled haploid from each member of a group."];
+  Node2 -> Node12 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node12 [label="save_bvs",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$group__savers.html#ga6024d629560199d7c97d86bda15f55fc",tooltip="Print the breeding value of each genotype in the SimData to a file."];
+  Node2 -> Node13 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node13 [label="self_n_times",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$group__crossers.html#gadf5beb682ac15fa5a0176e480adc9d91",tooltip="Selfs each member of a group for a certain number of generations."];
+  Node1 -> Node14 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node14 [label="calculate_full_count\l_matrix_of_allele",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$group__calculators.html#ga42f2398ccb53ffafce9b4a17e3222636",tooltip="Calculates the number of times at each marker that a particular allele appears for each genotype in t..."];
+  Node14 -> Node15 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node15 [label="save_count_matrix",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$group__savers.html#ga490906a5bfdb22b90aba5cdf6282fd03",tooltip="Print the number of copies of a particular allele at each marker of each genotype in the SimData to a..."];
+  Node1 -> Node16 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node16 [label="calculate_group_bvs",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$group__calculators.html#ga7f80905718ac87e9da1c30a2cec77ea6",tooltip="Calculates the fitness metric/breeding value for each genotype in the AlleleMatrix in a certain group..."];
+  Node16 -> Node17 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node17 [label="get_group_bvs",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$group__getters.html#ga5588ab0e42298444cc56d81cbd07790c",tooltip="Gets the breeding values/breeding values/fitnesses of each member of the group."];
+  Node16 -> Node18 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node18 [label="save_group_bvs",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$group__savers.html#ga0da46978e8e546af5eb3b2635902a82b",tooltip="Print the breeding value of each genotype in a group to a file."];
+  Node16 -> Node19 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node19 [label="split_by_bv",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$group__calculators.html#gae34db60faf62b898d0572ea6c039b96a",tooltip="Takes the top_n individuals in the group with the best breeding values/fitnesses and puts them in a n..."];
+  Node19 -> Node4 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node1 -> Node20 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node20 [label="get_sorted_markers",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$group__supporters.html#gadebbfa88bf139ddca501ab158f3746c5",tooltip="Takes a SimData object, and sorts its markers, the rows of its parent gen AlleleMatrix (because they ..."];
+  Node20 -> Node21 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node21 [label="load_all_simdata",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$group__loaders.html#ga54cd625669413c2ef171060e9844d814",tooltip="Populates a SimData combination from scratch with marker allele data, a genetic map,..."];
+  Node20 -> Node22 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node22 [label="load_genmap_to_simdata",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$group__loaders.html#ga8edb09b9b9eb27f84ac59cc4342ea855",tooltip="Populates a SimData combination with data from a genetic map."];
+  Node22 -> Node21 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node1 -> Node23 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node23 [label="save_count_matrix_of\l_group",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$group__savers.html#gab732ec2d648a6dc01444ef74f780fc70",tooltip="Print the number of copies of a particular allele at each marker of each genotype in a group to a fil..."];
+}
