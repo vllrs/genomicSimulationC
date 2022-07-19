@@ -83,7 +83,7 @@ $(function() {
 </ul>
 </li>
 <li class="level1"><a href="#autotoc_md19">Crossing &amp; Other Ways to Generate New Genotypes: Animal-themed</a><ul><li class="level2"><a href="#autotoc_md20">Split offspring into male and female</a></li>
-<li class="level2"><a href="#autotoc_md21">Introducing fresh blood to separate male and female kernels</a></li>
+<li class="level2"><a href="#autotoc_md21">Introducing fresh blood to male and female kernels</a></li>
 <li class="level2"><a href="#autotoc_md22">Random mating with caps on number of offspring per animal</a></li>
 <li class="level2"><a href="#autotoc_md23">Mating all females to a good male</a></li>
 <li class="level2"><a href="#autotoc_md24">Making specific chosen matings</a></li>
@@ -254,26 +254,211 @@ Crossing &amp; Other Ways to Generate New Genotypes: Plant-themed</h1>
 <p >Templates in this section assume you have loaded a set of founders whose group id is saved in the variable <code>founders</code>.</p>
 <h2><a class="anchor" id="autotoc_md14"></a>
 Single seed descent</h2>
+<table class="doxtable">
+<tr>
+<th>Task </th><th>genomicSimulationC (C) </th><th>genomicSimulation (R) </th></tr>
+<tr>
+<td>For six generations grow a single seed from each plant to maturity. </td><td><div class="fragment"><div class="line"><span class="keywordtype">int</span> f6 = <a class="code hl_function" href="group__crossers.html#gadf5beb682ac15fa5a0176e480adc9d91">self_n_times</a>(d, 6, founders, <a class="code hl_variable" href="sim-operations_8c.html#a5c6b92aede8f29f53476aa78d4e4133a">BASIC_OPT</a>);</div>
+<div class="ttc" id="agroup__crossers_html_gadf5beb682ac15fa5a0176e480adc9d91"><div class="ttname"><a href="group__crossers.html#gadf5beb682ac15fa5a0176e480adc9d91">self_n_times</a></div><div class="ttdeci">int self_n_times(SimData *d, int n, int group, GenOptions g)</div><div class="ttdoc">Selfs each member of a group for a certain number of generations.</div><div class="ttdef"><b>Definition:</b> sim-operations.c:5031</div></div>
+<div class="ttc" id="asim-operations_8c_html_a5c6b92aede8f29f53476aa78d4e4133a"><div class="ttname"><a href="sim-operations_8c.html#a5c6b92aede8f29f53476aa78d4e4133a">BASIC_OPT</a></div><div class="ttdeci">const GenOptions BASIC_OPT</div><div class="ttdoc">Options parameter to run SimData functions in their bare-bones form.</div><div class="ttdef"><b>Definition:</b> sim-operations.c:5</div></div>
+</div><!-- fragment --> </td><td><div class="fragment"><div class="line">f6 &lt;- self.n.times(founders, n=6)</div>
+</div><!-- fragment --> </td></tr>
+</table>
 <h2><a class="anchor" id="autotoc_md15"></a>
 Creating halfsib or fullsib families</h2>
+<table class="doxtable">
+<tr>
+<th>Task </th><th>genomicSimulationC (C) </th><th>genomicSimulation (R) </th></tr>
+<tr>
+<td>Make 20 random crosses and collect families of 6 full siblings from the result of each cross. </td><td><div class="fragment"><div class="line"><a class="code hl_struct" href="struct_gen_options.html">GenOptions</a> opt = {.<a class="code hl_variable" href="struct_gen_options.html#a8b345355c2f0c8b0429380b3e8ef01b7">will_name_offspring</a>=<a class="code hl_define" href="sim-operations_8h.html#aa93f0eb578d23995850d61f7d61c55c1">FALSE</a>, .offspring_name_prefix=NULL, .family_size=6,</div>
+<div class="line">        .will_track_pedigree=<a class="code hl_define" href="sim-operations_8h.html#aa8cecfc5c5c054d2875c03e77b7be15d">TRUE</a>, .will_allocate_ids=<a class="code hl_define" href="sim-operations_8h.html#aa8cecfc5c5c054d2875c03e77b7be15d">TRUE</a>,</div>
+<div class="line">        .filename_prefix=NULL, .will_save_pedigree_to_file=<a class="code hl_define" href="sim-operations_8h.html#aa93f0eb578d23995850d61f7d61c55c1">FALSE</a>,</div>
+<div class="line">        .will_save_bvs_to_file=<a class="code hl_define" href="sim-operations_8h.html#aa93f0eb578d23995850d61f7d61c55c1">FALSE</a>, .will_save_alleles_to_file=<a class="code hl_define" href="sim-operations_8h.html#aa93f0eb578d23995850d61f7d61c55c1">FALSE</a>,</div>
+<div class="line">        .will_save_to_simdata=<a class="code hl_define" href="sim-operations_8h.html#aa8cecfc5c5c054d2875c03e77b7be15d">TRUE</a>};</div>
+<div class="line"><span class="keywordtype">int</span> crosses = <a class="code hl_function" href="group__crossers.html#gae66231fb141a76432d1211e2cf0baf25">cross_random_individuals</a>(d, founders, 20, 0, opt);</div>
+<div class="line"><span class="keywordtype">int</span> families[20];</div>
+<div class="line"><a class="code hl_function" href="group__groupmod.html#ga62aec37e088d85c1df20a53b6d65daa4">split_into_families</a>(d, crosses, families);</div>
+<div class="ttc" id="agroup__crossers_html_gae66231fb141a76432d1211e2cf0baf25"><div class="ttname"><a href="group__crossers.html#gae66231fb141a76432d1211e2cf0baf25">cross_random_individuals</a></div><div class="ttdeci">int cross_random_individuals(SimData *d, int from_group, int n_crosses, int cap, GenOptions g)</div><div class="ttdoc">Performs random crosses among members of a group.</div><div class="ttdef"><b>Definition:</b> sim-operations.c:4369</div></div>
+<div class="ttc" id="agroup__groupmod_html_ga62aec37e088d85c1df20a53b6d65daa4"><div class="ttname"><a href="group__groupmod.html#ga62aec37e088d85c1df20a53b6d65daa4">split_into_families</a></div><div class="ttdeci">void split_into_families(SimData *d, int group_id, int *results)</div><div class="ttdoc">Split a group into a set of smaller groups, each of which contains the genotypes in the original grou...</div><div class="ttdef"><b>Definition:</b> sim-operations.c:1333</div></div>
+<div class="ttc" id="asim-operations_8h_html_aa8cecfc5c5c054d2875c03e77b7be15d"><div class="ttname"><a href="sim-operations_8h.html#aa8cecfc5c5c054d2875c03e77b7be15d">TRUE</a></div><div class="ttdeci">#define TRUE</div><div class="ttdef"><b>Definition:</b> sim-operations.h:13</div></div>
+<div class="ttc" id="asim-operations_8h_html_aa93f0eb578d23995850d61f7d61c55c1"><div class="ttname"><a href="sim-operations_8h.html#aa93f0eb578d23995850d61f7d61c55c1">FALSE</a></div><div class="ttdeci">#define FALSE</div><div class="ttdef"><b>Definition:</b> sim-operations.h:14</div></div>
+<div class="ttc" id="astruct_gen_options_html"><div class="ttname"><a href="struct_gen_options.html">GenOptions</a></div><div class="ttdoc">A type that contains choices of settings for SimData functions that create a new AlleleMatrix/generat...</div><div class="ttdef"><b>Definition:</b> sim-operations.h:120</div></div>
+<div class="ttc" id="astruct_gen_options_html_a8b345355c2f0c8b0429380b3e8ef01b7"><div class="ttname"><a href="struct_gen_options.html#a8b345355c2f0c8b0429380b3e8ef01b7">GenOptions::will_name_offspring</a></div><div class="ttdeci">int will_name_offspring</div><div class="ttdoc">A boolean: whether generated offspring should be given names.</div><div class="ttdef"><b>Definition:</b> sim-operations.h:121</div></div>
+</div><!-- fragment --> </td><td><div class="fragment"><div class="line">crosses &lt;- cross.randomly(founders, n.crosses=20, offspring=6)</div>
+<div class="line">families &lt;- break.group.into.families(crosses)</div>
+</div><!-- fragment --> </td></tr>
+</table>
+<table class="doxtable">
+<tr>
+<th>Task </th><th>genomicSimulationC (C) </th><th>genomicSimulation (R) </th></tr>
+<tr>
+<td>Make 10 random crosses with the second founder genotype, and collect halfsib families of 6 half-siblings from the result of each cross. </td><td><div class="fragment"><div class="line"><span class="keywordtype">int</span> targetparent = 1;</div>
+<div class="line"><span class="keywordtype">int</span> targetparent_group = <a class="code hl_function" href="group__groupmod.html#gaf2eda46d016c384b166ce65605952b7c">split_from_group</a>(d, 1, &amp;targetparent);</div>
+<div class="line"> </div>
+<div class="line"><a class="code hl_struct" href="struct_gen_options.html">GenOptions</a> opt = {.<a class="code hl_variable" href="struct_gen_options.html#a8b345355c2f0c8b0429380b3e8ef01b7">will_name_offspring</a>=<a class="code hl_define" href="sim-operations_8h.html#aa93f0eb578d23995850d61f7d61c55c1">FALSE</a>, .offspring_name_prefix=NULL, .family_size=6,</div>
+<div class="line">        .will_track_pedigree=<a class="code hl_define" href="sim-operations_8h.html#aa8cecfc5c5c054d2875c03e77b7be15d">TRUE</a>, .will_allocate_ids=<a class="code hl_define" href="sim-operations_8h.html#aa8cecfc5c5c054d2875c03e77b7be15d">TRUE</a>,</div>
+<div class="line">        .filename_prefix=NULL, .will_save_pedigree_to_file=<a class="code hl_define" href="sim-operations_8h.html#aa93f0eb578d23995850d61f7d61c55c1">FALSE</a>,</div>
+<div class="line">        .will_save_bvs_to_file=<a class="code hl_define" href="sim-operations_8h.html#aa93f0eb578d23995850d61f7d61c55c1">FALSE</a>, .will_save_alleles_to_file=<a class="code hl_define" href="sim-operations_8h.html#aa93f0eb578d23995850d61f7d61c55c1">FALSE</a>,</div>
+<div class="line">        .will_save_to_simdata=<a class="code hl_define" href="sim-operations_8h.html#aa8cecfc5c5c054d2875c03e77b7be15d">TRUE</a>};</div>
+<div class="line"><span class="keywordtype">int</span> crosses = <a class="code hl_function" href="group__crossers.html#ga3be2cb18d1c722b3a766a7a5663a8f0c">cross_randomly_between</a>(d, targetparent_group, founders, 10, 0, 0, opt);       </div>
+<div class="line"> </div>
+<div class="line"><span class="keywordtype">int</span> families[10];</div>
+<div class="line"><a class="code hl_function" href="group__groupmod.html#ga39c5cb49068858b095acea9385e017ec">split_into_halfsib_families</a>(d, crosses, 1, families);</div>
+<div class="ttc" id="agroup__crossers_html_ga3be2cb18d1c722b3a766a7a5663a8f0c"><div class="ttname"><a href="group__crossers.html#ga3be2cb18d1c722b3a766a7a5663a8f0c">cross_randomly_between</a></div><div class="ttdeci">int cross_randomly_between(SimData *d, int group1, int group2, int n_crosses, int cap1, int cap2, GenOptions g)</div><div class="ttdoc">Performs random crosses where the first parent comes from one group and the second from another.</div><div class="ttdef"><b>Definition:</b> sim-operations.c:4604</div></div>
+<div class="ttc" id="agroup__groupmod_html_ga39c5cb49068858b095acea9385e017ec"><div class="ttname"><a href="group__groupmod.html#ga39c5cb49068858b095acea9385e017ec">split_into_halfsib_families</a></div><div class="ttdeci">void split_into_halfsib_families(SimData *d, int group_id, int parent, int *results)</div><div class="ttdoc">Split a group into a set of smaller groups, each containing the genotypes from the original group tha...</div><div class="ttdef"><b>Definition:</b> sim-operations.c:1449</div></div>
+<div class="ttc" id="agroup__groupmod_html_gaf2eda46d016c384b166ce65605952b7c"><div class="ttname"><a href="group__groupmod.html#gaf2eda46d016c384b166ce65605952b7c">split_from_group</a></div><div class="ttdeci">int split_from_group(SimData *d, int n, int indexes_to_split[n])</div><div class="ttdoc">Take a list of indexes and allocate the genotypes at those indexes to a new group.</div><div class="ttdef"><b>Definition:</b> sim-operations.c:1216</div></div>
+</div><!-- fragment --> </td><td><div class="fragment"><div class="line">targetparent_group &lt;- make.group(c(1L))</div>
+<div class="line"> </div>
+<div class="line">crosses &lt;- cross.randomly.between(targetparent_group, founders, n.crosses=10, offspring=6)</div>
+<div class="line"> </div>
+<div class="line">families &lt;- break.group.into.halfsib.families(crosses)</div>
+</div><!-- fragment --> </td></tr>
+</table>
 <h2><a class="anchor" id="autotoc_md16"></a>
 Updating marker effects</h2>
+<p >Updating the marker effect estimates is a task that must be done outside of genomicSimulation. Export required data from the simulation, run the marker effect re-estimation, then re-import marker effects as in <b>Swap out the set of additive trait effects for another</b>.</p>
 <h2><a class="anchor" id="autotoc_md17"></a>
 Trials and locations</h2>
+<table class="doxtable">
+<tr>
+<th>Task </th><th>genomicSimulationC (C) </th><th>genomicSimulation (R) </th></tr>
+<tr>
+<td>Suppose you want to simulate the success of the founder population in different environments. </td><td><div class="fragment"><div class="line"><span class="keywordtype">int</span> location1 = <a class="code hl_function" href="group__crossers.html#gaa42e48ab06f9051e5ed6879409cbe2f4">make_clones</a>(d, founders, <a class="code hl_define" href="sim-operations_8h.html#aa8cecfc5c5c054d2875c03e77b7be15d">TRUE</a>, <a class="code hl_variable" href="sim-operations_8c.html#a5c6b92aede8f29f53476aa78d4e4133a">BASIC_OPT</a>);</div>
+<div class="line"><span class="keywordtype">int</span> location2 = <a class="code hl_function" href="group__crossers.html#gaa42e48ab06f9051e5ed6879409cbe2f4">make_clones</a>(d, founders, <a class="code hl_define" href="sim-operations_8h.html#aa8cecfc5c5c054d2875c03e77b7be15d">TRUE</a>, <a class="code hl_variable" href="sim-operations_8c.html#a5c6b92aede8f29f53476aa78d4e4133a">BASIC_OPT</a>);</div>
+<div class="ttc" id="agroup__crossers_html_gaa42e48ab06f9051e5ed6879409cbe2f4"><div class="ttname"><a href="group__crossers.html#gaa42e48ab06f9051e5ed6879409cbe2f4">make_clones</a></div><div class="ttdeci">int make_clones(SimData *d, int group, int inherit_names, GenOptions g)</div><div class="ttdoc">Creates an identical copy of each member of a group.</div><div class="ttdef"><b>Definition:</b> sim-operations.c:5469</div></div>
+</div><!-- fragment --> </td><td><div class="fragment"><div class="line">location1 &lt;- make.clones(founders)</div>
+<div class="line">location2 &lt;- make.clones(founders)</div>
+</div><!-- fragment --> </td></tr>
+</table>
+<p >Once separate copies exist for trials at different locations, simulate selection with different intensities or heritabilities for each different location group. Eg <b>Select on phenotype (simulated with a given heritability)</b>.</p>
 <h2><a class="anchor" id="autotoc_md18"></a>
 Backcrossing</h2>
+<table class="doxtable">
+<tr>
+<th>Task </th><th>genomicSimulationC (C) </th><th>genomicSimulation (R) </th></tr>
+<tr>
+<td>Pull out a chosen founder and repeatedly (for 20 generations) cross back to it. </td><td><div class="fragment"><div class="line"><span class="keywordtype">int</span> targetparent = 1;</div>
+<div class="line"><span class="keywordtype">int</span> targetparent_group = <a class="code hl_function" href="group__groupmod.html#gaf2eda46d016c384b166ce65605952b7c">split_from_group</a>(d, 1, &amp;targetparent);</div>
+<div class="line"> </div>
+<div class="line"><span class="keywordtype">int</span> backcross_generations[20];</div>
+<div class="line">backcross_generation[0] = founders;</div>
+<div class="line"><span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 1; i &lt; 20; ++i) {</div>
+<div class="line">    backcross_generations[i] = <a class="code hl_function" href="group__crossers.html#ga3be2cb18d1c722b3a766a7a5663a8f0c">cross_randomly_between</a>(d, targetparent_group, backcross_generations[i-1], 10, 0, 0, <a class="code hl_variable" href="sim-operations_8c.html#a5c6b92aede8f29f53476aa78d4e4133a">BASIC_OPT</a>);</div>
+<div class="line">}   </div>
+</div><!-- fragment --> </td><td><div class="fragment"><div class="line">targetparent_group &lt;- make.group(c(1L))</div>
+<div class="line"> </div>
+<div class="line">backcross_generations &lt;- rep(0L, times=20);</div>
+<div class="line">backcross_generations[1] &lt;- founders</div>
+<div class="line">for (ii in 1:20) {</div>
+<div class="line">    backcross_generations[ii] &lt;- cross.randomly.between(targetparent_group, backcross_generations[ii-1], n.crosses=10)</div>
+<div class="line">}</div>
+</div><!-- fragment --> </td></tr>
+</table>
+<p >For marker-assisted backcrossing, select each loop on presence of the marker and/or the estimated breeding value. See <b>Select on a qualitative trait</b> and <b>Select on a qualitative trait, then a quantitative trait.</b></p>
 <h1><a class="anchor" id="autotoc_md19"></a>
 Crossing &amp; Other Ways to Generate New Genotypes: Animal-themed</h1>
+<p >Templates in this section assume you have loaded two sets of founders whose group id are saved in the variables <code>cows</code> and <code>bulls</code>. See <b>Load a genetic map and several sets of founder genotypes</b>.</p>
 <h2><a class="anchor" id="autotoc_md20"></a>
 Split offspring into male and female</h2>
+<table class="doxtable">
+<tr>
+<th>Task </th><th>genomicSimulationC (C) </th><th>genomicSimulation (R) </th></tr>
+<tr>
+<td>Suppose you randomly cross your founders, then want to identify the male and female calves among the offspring. </td><td><div class="fragment"><div class="line"><span class="keywordtype">int</span> offspring = <a class="code hl_function" href="group__crossers.html#ga3be2cb18d1c722b3a766a7a5663a8f0c">cross_randomly_between</a>(d, cows, bulls, 10, 0, 0, <a class="code hl_variable" href="sim-operations_8c.html#a5c6b92aede8f29f53476aa78d4e4133a">BASIC_OPT</a>);</div>
+<div class="line"> </div>
+<div class="line"><span class="keywordtype">int</span> offspring_f = <a class="code hl_function" href="group__groupmod.html#gacd7e433cf6af229f0d2932b04468e9ca">split_randomly_into_two</a>(d, offspring);</div>
+<div class="line"><span class="keywordtype">int</span> offspring_m = offspring;</div>
+<div class="ttc" id="agroup__groupmod_html_gacd7e433cf6af229f0d2932b04468e9ca"><div class="ttname"><a href="group__groupmod.html#gacd7e433cf6af229f0d2932b04468e9ca">split_randomly_into_two</a></div><div class="ttdeci">int split_randomly_into_two(SimData *d, int group_id)</div><div class="ttdoc">Flip a coin for each member of the group to decide if it should be moved to the new group.</div><div class="ttdef"><b>Definition:</b> sim-operations.c:1784</div></div>
+</div><!-- fragment --> </td><td><div class="fragment"><div class="line">offspring &lt;- cross.randomly.between(cows, bulls, n.crosses=10)</div>
+<div class="line"> </div>
+<div class="line">temporary &lt;- break.group.randomly(offspring, into.n = 2)</div>
+<div class="line">offspring_f &lt;- temporary[1]</div>
+<div class="line">offspring_m &lt;- temporary[2]</div>
+<div class="line">rm(temporary)</div>
+</div><!-- fragment --> </td></tr>
+</table>
+<p >split_randomly_into_two or break.group.randomly can be used to split a group into two sub-groups by flipping a coin on each group member. This may result in two groups that are not quite the same size. To split a group of eg. 10 offspring into two groups of exactly 5 members, the cousin functions of split_evenly_into_two or break.group.evenly can be used instead.</p>
 <h2><a class="anchor" id="autotoc_md21"></a>
-Introducing fresh blood to separate male and female kernels</h2>
+Introducing fresh blood to male and female kernels</h2>
+<p >Suppose the <code>offspring_f</code> and <code>offspring_m</code> groups exist, as created in the previous section <b>Split offspring into male and female</b>.</p>
+<table class="doxtable">
+<tr>
+<th>Task </th><th>genomicSimulationC (C) </th><th>genomicSimulation (R) </th></tr>
+<tr>
+<td>Suppose you want to add your new calves to the breeding kernels from which their parents were chosen. </td><td><div class="fragment"><div class="line"><span class="keywordtype">int</span> cowGroups[2];</div>
+<div class="line">cowGroups[0] = cows;</div>
+<div class="line">cowGroups[1] = offspring_f;</div>
+<div class="line"> </div>
+<div class="line">cows = <a class="code hl_function" href="group__groupmod.html#gade6b01bfc6450638a3a341b76e28a97d">combine_groups</a>(d, 2, cowGroups);</div>
+<div class="line"> </div>
+<div class="line"><span class="keywordtype">int</span> bullGroups[2];</div>
+<div class="line">bullGroups[0] = bulls;</div>
+<div class="line">bullGroups[1] = offspring_m;</div>
+<div class="line"> </div>
+<div class="line">bulls = <a class="code hl_function" href="group__groupmod.html#gade6b01bfc6450638a3a341b76e28a97d">combine_groups</a>(d, 2, bullGroups);</div>
+<div class="ttc" id="agroup__groupmod_html_gade6b01bfc6450638a3a341b76e28a97d"><div class="ttname"><a href="group__groupmod.html#gade6b01bfc6450638a3a341b76e28a97d">combine_groups</a></div><div class="ttdeci">int combine_groups(SimData *d, int list_len, int group_ids[list_len])</div><div class="ttdoc">Combine a set of groups into one group.</div><div class="ttdef"><b>Definition:</b> sim-operations.c:1156</div></div>
+</div><!-- fragment --> </td><td><div class="fragment"><div class="line">cows &lt;- combine.groups(c(cows,offspring_f))</div>
+<div class="line">bulls &lt;- combine.groups(c(bulls,offspring_m))</div>
+</div><!-- fragment --> </td></tr>
+</table>
 <h2><a class="anchor" id="autotoc_md22"></a>
 Random mating with caps on number of offspring per animal</h2>
+<table class="doxtable">
+<tr>
+<th>Task </th><th>genomicSimulationC (C) </th><th>genomicSimulation (R) </th></tr>
+<tr>
+<td>Suppose each cow should only have one calf this generation. </td><td><div class="fragment"><div class="line"><span class="keywordtype">int</span> offspring = <a class="code hl_function" href="group__crossers.html#ga3be2cb18d1c722b3a766a7a5663a8f0c">cross_randomly_between</a>(d, cows, bulls, 10, 1, 0, <a class="code hl_variable" href="sim-operations_8c.html#a5c6b92aede8f29f53476aa78d4e4133a">BASIC_OPT</a>);</div>
+</div><!-- fragment --> </td><td><div class="fragment"><div class="line">offspring &lt;- cross.randomly.between(cows, bulls, cap1=1, n.crosses=10)</div>
+</div><!-- fragment --> </td></tr>
+</table>
 <h2><a class="anchor" id="autotoc_md23"></a>
 Mating all females to a good male</h2>
+<table class="doxtable">
+<tr>
+<th>Task </th><th>genomicSimulationC (C) </th><th>genomicSimulation (R) </th></tr>
+<tr>
+<td>Suppose the best bull in the population is the only one that will father calves under the current breeding strategy. </td><td><div class="fragment"><div class="line"><span class="keywordtype">int</span> bestbull = <a class="code hl_function" href="group__calculators.html#gae34db60faf62b898d0572ea6c039b96a">split_by_bv</a>(d, bulls, 1, <a class="code hl_define" href="sim-operations_8h.html#aa93f0eb578d23995850d61f7d61c55c1">FALSE</a>);</div>
+<div class="line"> </div>
+<div class="line"><span class="keywordtype">int</span> offspring = <a class="code hl_function" href="group__crossers.html#ga3be2cb18d1c722b3a766a7a5663a8f0c">cross_randomly_between</a>(d, cows, bestbull, 10, 1, 0, <a class="code hl_variable" href="sim-operations_8c.html#a5c6b92aede8f29f53476aa78d4e4133a">BASIC_OPT</a>);</div>
+<div class="ttc" id="agroup__calculators_html_gae34db60faf62b898d0572ea6c039b96a"><div class="ttname"><a href="group__calculators.html#gae34db60faf62b898d0572ea6c039b96a">split_by_bv</a></div><div class="ttdeci">int split_by_bv(SimData *d, int group, int top_n, int lowIsBest)</div><div class="ttdoc">Takes the top_n individuals in the group with the best breeding values/fitnesses and puts them in a n...</div><div class="ttdef"><b>Definition:</b> sim-operations.c:5887</div></div>
+</div><!-- fragment --> </td><td><div class="fragment"><div class="line">bestbull &lt;- select.by.gebv(bulls, number=1)</div>
+<div class="line">offspring &lt;- cross.randomly.between(cows, bestbull, cap1=1, n.crosses=10)</div>
+</div><!-- fragment --> </td></tr>
+</table>
 <h2><a class="anchor" id="autotoc_md24"></a>
 Making specific chosen matings</h2>
+<table class="doxtable">
+<tr>
+<th>Task </th><th>genomicSimulationC (C) </th><th>genomicSimulation (R) </th></tr>
+<tr>
+<td>Suppose you want to cross Cow1 to Bull1, Cow2 to Bull2, and Daisy to Bull1 </td><td><div class="fragment"><div class="line"><span class="keywordtype">int</span> namesNeeded[5];</div>
+<div class="line"><span class="keywordtype">int</span> IDsNeeded[5];</div>
+<div class="line">namesNeeded[0] = <span class="stringliteral">&quot;Cow1&quot;</span>;</div>
+<div class="line">namesNeeded[1] = <span class="stringliteral">&quot;Cow2&quot;</span>;</div>
+<div class="line">namesNeeded[2] = <span class="stringliteral">&quot;Daisy&quot;</span>;</div>
+<div class="line">namesNeeded[3] = <span class="stringliteral">&quot;Bull1&quot;</span>;</div>
+<div class="line">namesNeeded[4] = <span class="stringliteral">&quot;Bull2&quot;</span>;</div>
+<div class="line"><a class="code hl_function" href="group__getters.html#ga84037d781b8850f9d90425ad16a0d059">get_ids_of_names</a>(d-&gt;<a class="code hl_variable" href="struct_sim_data.html#a0a3c4152d86786884939add509bfa325">m</a>, 5, namesNeeded, IDsNeeded);</div>
+<div class="line"> </div>
+<div class="line"><span class="keywordtype">int</span> crossingPlan[2][3];</div>
+<div class="line">crossingPlan[0][0] = IDsNeeded[0];</div>
+<div class="line">crossingPlan[0][1] = IDsNeeded[1];</div>
+<div class="line">crossingPlan[0][2] = IDsNeeded[2];</div>
+<div class="line">crossingPlan[1][0] = IDsNeeded[3];</div>
+<div class="line">crossingPlan[1][1] = IDsNeeded[4];</div>
+<div class="line">crossingPlan[1][2] = IDsNeeded[3];</div>
+<div class="line"> </div>
+<div class="line"><span class="keywordtype">int</span> offspring = <a class="code hl_function" href="group__crossers.html#gabb793988799d792dfe4007efdf988068">cross_these_combinations</a>(d, 3, crossingPlan, <a class="code hl_variable" href="sim-operations_8c.html#a5c6b92aede8f29f53476aa78d4e4133a">BASIC_OPT</a>);</div>
+<div class="ttc" id="agroup__crossers_html_gabb793988799d792dfe4007efdf988068"><div class="ttname"><a href="group__crossers.html#gabb793988799d792dfe4007efdf988068">cross_these_combinations</a></div><div class="ttdeci">int cross_these_combinations(SimData *d, int n_combinations, int combinations[2][n_combinations], GenOptions g)</div><div class="ttdoc">Performs the crosses of pairs of parents whose ids are provided in an array.</div><div class="ttdef"><b>Definition:</b> sim-operations.c:4855</div></div>
+<div class="ttc" id="agroup__getters_html_ga84037d781b8850f9d90425ad16a0d059"><div class="ttname"><a href="group__getters.html#ga84037d781b8850f9d90425ad16a0d059">get_ids_of_names</a></div><div class="ttdeci">void get_ids_of_names(AlleleMatrix *start, int n_names, char *names[n_names], unsigned int *output)</div><div class="ttdoc">Search for genotypes with certain names in a linked list of AlleleMatrix and save the ids of those na...</div><div class="ttdef"><b>Definition:</b> sim-operations.c:921</div></div>
+<div class="ttc" id="astruct_sim_data_html_a0a3c4152d86786884939add509bfa325"><div class="ttname"><a href="struct_sim_data.html#a0a3c4152d86786884939add509bfa325">SimData::m</a></div><div class="ttdeci">AlleleMatrix * m</div><div class="ttdoc">Pointer to an AlleleMatrix, which stores data and metadata of founders and simulated offspring.</div><div class="ttdef"><b>Definition:</b> sim-operations.h:230</div></div>
+</div><!-- fragment --> </td><td><div class="fragment"><div class="line">offspring &lt;- cross.combinations(c(&quot;Cow1&quot;, &quot;Cow2&quot;, &quot;Daisy&quot;), c(&quot;Bull1&quot;, &quot;Bull2&quot;, &quot;Bull1&quot;))</div>
+</div><!-- fragment --> </td></tr>
+</table>
+<p >The other option is to create an input file of the following format: </p><div class="fragment"><div class="line">Cow1 Bull1</div>
+<div class="line">Cow2 Bull2</div>
+<div class="line">Daisy Bull1</div>
+</div><!-- fragment --><p> and call <code>make_crosses_from_file</code> or <code>cross.combinations.file</code>.</p>
 <h2><a class="anchor" id="autotoc_md25"></a>
 Tracking age and discarding individuals that are 'too old'</h2>
 <p >Updates to add an age/custom flag to each individual is coming soon.</p>

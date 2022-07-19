@@ -206,26 +206,251 @@ Templates in this section assume you have loaded a set of founders whose group i
 
 ## Single seed descent
 
+<table>
+<tr><th>Task <th>genomicSimulationC (C) <th>genomicSimulation (R)
+<tr><td>For six generations grow a single seed from each plant to maturity.
+<td> 
+```{C}
+int f6 = self_n_times(d, 6, founders, BASIC_OPT);
+```
+<td>
+```{R}
+f6 <- self.n.times(founders, n=6)
+```
+</table>
+
 ## Creating halfsib or fullsib families
+
+<table>
+<tr><th>Task <th>genomicSimulationC (C) <th>genomicSimulation (R)
+<tr><td>Make 20 random crosses and collect families of 6 full siblings from the result of each cross.
+<td> 
+```{C}
+GenOptions opt = {.will_name_offspring=FALSE, .offspring_name_prefix=NULL, .family_size=6,
+		.will_track_pedigree=TRUE, .will_allocate_ids=TRUE,
+		.filename_prefix=NULL, .will_save_pedigree_to_file=FALSE,
+		.will_save_bvs_to_file=FALSE, .will_save_alleles_to_file=FALSE,
+		.will_save_to_simdata=TRUE};
+int crosses = cross_random_individuals(d, founders, 20, 0, opt);
+int families[20];
+split_into_families(d, crosses, families);
+```
+<td>
+```{R}
+crosses <- cross.randomly(founders, n.crosses=20, offspring=6)
+families <- break.group.into.families(crosses)
+```
+</table>
+
+<table>
+<tr><th>Task <th>genomicSimulationC (C) <th>genomicSimulation (R)
+<tr><td>Make 10 random crosses with the second founder genotype, and collect halfsib families of 6 half-siblings from the result of each cross.
+<td> 
+```{C}
+int targetparent = 1;
+int targetparent_group = split_from_group(d, 1, &targetparent);
+
+GenOptions opt = {.will_name_offspring=FALSE, .offspring_name_prefix=NULL, .family_size=6,
+		.will_track_pedigree=TRUE, .will_allocate_ids=TRUE,
+		.filename_prefix=NULL, .will_save_pedigree_to_file=FALSE,
+		.will_save_bvs_to_file=FALSE, .will_save_alleles_to_file=FALSE,
+		.will_save_to_simdata=TRUE};
+int crosses = cross_randomly_between(d, targetparent_group, founders, 10, 0, 0, opt);		
+
+int families[10];
+split_into_halfsib_families(d, crosses, 1, families);
+```
+<td>
+```{R}
+targetparent_group <- make.group(c(1L))
+
+crosses <- cross.randomly.between(targetparent_group, founders, n.crosses=10, offspring=6)
+
+families <- break.group.into.halfsib.families(crosses)
+```
+</table>
 
 ## Updating marker effects
 
+Updating the marker effect estimates is a task that must be done outside of genomicSimulation. Export required data from the simulation, run the marker effect re-estimation, then re-import marker effects as in **Swap out the set of additive trait effects for another**. 
+
 ## Trials and locations
+
+<table>
+<tr><th>Task <th>genomicSimulationC (C) <th>genomicSimulation (R)
+<tr><td>Suppose you want to simulate the success of the founder population in different environments.
+<td> 
+```{C}
+int location1 = make_clones(d, founders, TRUE, BASIC_OPT);
+int location2 = make_clones(d, founders, TRUE, BASIC_OPT);
+```
+<td>
+```{R}
+location1 <- make.clones(founders)
+location2 <- make.clones(founders)
+```
+</table>
+
+Once separate copies exist for trials at different locations, simulate selection with different intensities or heritabilities for each different location group. Eg **Select on phenotype (simulated with a given heritability)**.
 
 ## Backcrossing
 
+<table>
+<tr><th>Task <th>genomicSimulationC (C) <th>genomicSimulation (R)
+<tr><td>Pull out a chosen founder and repeatedly (for 20 generations) cross back to it. 
+<td> 
+```{C}
+int targetparent = 1;
+int targetparent_group = split_from_group(d, 1, &targetparent);
+
+int backcross_generations[20];
+backcross_generation[0] = founders;
+for (int i = 1; i < 20; ++i) {
+	backcross_generations[i] = cross_randomly_between(d, targetparent_group, backcross_generations[i-1], 10, 0, 0, BASIC_OPT);
+}	
+```
+<td>
+```{R}
+targetparent_group <- make.group(c(1L))
+
+backcross_generations <- rep(0L, times=20);
+backcross_generations[1] <- founders
+for (ii in 1:20) {
+	backcross_generations[ii] <- cross.randomly.between(targetparent_group, backcross_generations[ii-1], n.crosses=10)
+}
+```
+</table>
+
+For marker-assisted backcrossing, select each loop on presence of the marker and/or the estimated breeding value. See **Select on a qualitative trait** and **Select on a qualitative trait, then a quantitative trait.**
+
 
 # Crossing & Other Ways to Generate New Genotypes: Animal-themed
+Templates in this section assume you have loaded two sets of founders whose group id are saved in the variables `cows` and `bulls`. See **Load a genetic map and several sets of founder genotypes**.
 
 ## Split offspring into male and female
 
-## Introducing fresh blood to separate male and female kernels
+<table>
+<tr><th>Task <th>genomicSimulationC (C) <th>genomicSimulation (R)
+<tr><td>Suppose you randomly cross your founders, then want to identify the male and female calves among the offspring.
+<td> 
+```{C}
+int offspring = cross_randomly_between(d, cows, bulls, 10, 0, 0, BASIC_OPT);
+
+int offspring_f = split_randomly_into_two(d, offspring);
+int offspring_m = offspring;
+```
+<td>
+```{R}
+offspring <- cross.randomly.between(cows, bulls, n.crosses=10)
+
+temporary <- break.group.randomly(offspring, into.n = 2)
+offspring_f <- temporary[1]
+offspring_m <- temporary[2]
+rm(temporary)
+```
+</table>
+
+split_randomly_into_two or break.group.randomly can be used to split a group into two sub-groups by flipping a coin on each group member. This may result in two groups that are not quite the same size. To split a group of eg. 10 offspring into two groups of exactly 5 members, the cousin functions of split_evenly_into_two or break.group.evenly can be used instead.
+
+## Introducing fresh blood to male and female kernels
+Suppose the `offspring_f` and `offspring_m` groups exist, as created in the previous section **Split offspring into male and female**. 
+
+<table>
+<tr><th>Task <th>genomicSimulationC (C) <th>genomicSimulation (R)
+<tr><td>Suppose you want to add your new calves to the breeding kernels from which their parents were chosen. 
+<td> 
+```{C}
+int cowGroups[2];
+cowGroups[0] = cows;
+cowGroups[1] = offspring_f;
+
+cows = combine_groups(d, 2, cowGroups);
+
+int bullGroups[2];
+bullGroups[0] = bulls;
+bullGroups[1] = offspring_m;
+
+bulls = combine_groups(d, 2, bullGroups);
+```
+<td>
+```{R}
+cows <- combine.groups(c(cows,offspring_f))
+bulls <- combine.groups(c(bulls,offspring_m))
+```
+</table>
 
 ## Random mating with caps on number of offspring per animal
 
+<table>
+<tr><th>Task <th>genomicSimulationC (C) <th>genomicSimulation (R)
+<tr><td>Suppose each cow should only have one calf this generation.
+<td> 
+```{C}
+int offspring = cross_randomly_between(d, cows, bulls, 10, 1, 0, BASIC_OPT);
+```
+<td>
+```{R}
+offspring <- cross.randomly.between(cows, bulls, cap1=1, n.crosses=10)
+```
+</table>
+
 ## Mating all females to a good male
 
+<table>
+<tr><th>Task <th>genomicSimulationC (C) <th>genomicSimulation (R)
+<tr><td>Suppose the best bull in the population is the only one that will father calves under the current breeding strategy.
+<td> 
+```{C}
+int bestbull = split_by_bv(d, bulls, 1, FALSE);
+
+int offspring = cross_randomly_between(d, cows, bestbull, 10, 1, 0, BASIC_OPT);
+```
+<td>
+```{R}
+bestbull <- select.by.gebv(bulls, number=1)
+offspring <- cross.randomly.between(cows, bestbull, cap1=1, n.crosses=10)
+```
+</table>
+
 ## Making specific chosen matings
+
+<table>
+<tr><th>Task <th>genomicSimulationC (C) <th>genomicSimulation (R)
+<tr><td>Suppose you want to cross Cow1 to Bull1, Cow2 to Bull2, and Daisy to Bull1
+<td> 
+```{C}
+int namesNeeded[5];
+int IDsNeeded[5];
+namesNeeded[0] = "Cow1";
+namesNeeded[1] = "Cow2";
+namesNeeded[2] = "Daisy";
+namesNeeded[3] = "Bull1";
+namesNeeded[4] = "Bull2";
+get_ids_of_names(d->m, 5, namesNeeded, IDsNeeded);
+
+int crossingPlan[2][3];
+crossingPlan[0][0] = IDsNeeded[0];
+crossingPlan[0][1] = IDsNeeded[1];
+crossingPlan[0][2] = IDsNeeded[2];
+crossingPlan[1][0] = IDsNeeded[3];
+crossingPlan[1][1] = IDsNeeded[4];
+crossingPlan[1][2] = IDsNeeded[3];
+
+int offspring = cross_these_combinations(d, 3, crossingPlan, BASIC_OPT);
+```
+<td>
+```{R}
+offspring <- cross.combinations(c("Cow1", "Cow2", "Daisy"), c("Bull1", "Bull2", "Bull1"))
+```
+</table>
+
+The other option is to create an input file of the following format:
+```
+Cow1 Bull1
+Cow2 Bull2
+Daisy Bull1
+```
+and call `make_crosses_from_file` or `cross.combinations.file`.
 
 ## Tracking age and discarding individuals that are 'too old'
 Updates to add an age/custom flag to each individual is coming soon.
