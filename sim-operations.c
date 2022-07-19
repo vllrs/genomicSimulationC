@@ -2513,7 +2513,11 @@ char** get_group_parent_names( SimData* d, int group_id, int group_size, int par
 	while (1) {
 		for (i = 0; i < m->n_genotypes; ++i) {
 			if (m->groups[i] == group_id) {
-				pnames[ids_i] = get_name_of_id(d->m, m->pedigrees[parent][i]);
+                if (m->pedigrees[parent][i] > 0) {
+                    pnames[ids_i] = get_name_of_id(d->m, m->pedigrees[parent][i]);
+                } else {
+                    pnames[ids_i] = NULL;
+                }
 				++ids_i;
 			}
 		}
