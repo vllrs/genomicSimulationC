@@ -318,8 +318,10 @@ int test_crossing_selfing(SimData *d, int g1) {
     assert(d->m->groups[oldsize + 6] == g1dhap && d->m->groups[oldsize + 11] == g1dhap && d->m->groups[oldsize + 12] != g1dhap);
     assert(d->m->pedigrees[0][oldsize + 6] == d->m->ids[0] && d->m->pedigrees[1][oldsize + 6] == d->m->ids[0]);
     assert(d->m->pedigrees[0][oldsize + 10] == d->m->ids[4] && d->m->pedigrees[1][oldsize + 10] == d->m->ids[4]);
-    assert(strcmp(d->m->alleles[oldsize + 6],"TTAATT") == 0);
+    //printf("%s -> %s\n", d->m->alleles[0], d->m->alleles[oldsize + 6]);
+    assert(strncmp(d->m->alleles[oldsize + 6],d->m->alleles[0],sizeof(int)*6) == 0);
     assert(strcmp(d->m->alleles[oldsize + 11],"AAAATT") == 0 || strcmp(d->m->alleles[oldsize + 11],"TTAATT") == 0);
+    printf("...doubled haploid function works correctly\n");
 
     delete_group(d, g1dhap);
 
@@ -332,10 +334,11 @@ int test_crossing_selfing(SimData *d, int g1) {
     assert(d->m->groups[oldsize + 6] == g1clones && d->m->groups[oldsize + 11] == g1clones && d->m->groups[oldsize + 12] != g1clones);
     assert(d->m->pedigrees[0][oldsize + 6] == d->m->ids[0] && d->m->pedigrees[1][oldsize + 6] == d->m->ids[0]);
     assert(d->m->pedigrees[0][oldsize + 10] == d->m->ids[4] && d->m->pedigrees[1][oldsize + 10] == d->m->ids[4]);
-    assert(strcmp(d->m->alleles[oldsize + 6],"TTAATT") == 0);
+    assert(strncmp(d->m->alleles[oldsize + 6],d->m->alleles[0],sizeof(int)*6) == 0);
     assert(strcmp(d->m->alleles[oldsize + 11],"ATAATT") == 0);
     assert(strcmp(d->m->names[1],d->m->names[oldsize + 7]) == 0);
     assert(strcmp(d->m->names[3],d->m->names[oldsize + 9]) == 0);
+    printf("...cloning function works correctly\n");
 
     delete_group(d, g1clones);
 

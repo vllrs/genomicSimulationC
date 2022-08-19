@@ -2153,12 +2153,16 @@ void get_n_new_group_nums( SimData* d, int n, int* result) {
 	int existingi = 0;
 	int gn = 0;
 
-	for (int i = 0; i < n; ++i) {
-		++gn;
-		while (existingi < n_groups) {
-			if (gn < existing_groups[i]) {
-				break;
-			}
+    // i: current index of `results` (the array of currently empty group numbers)
+    // gn: group number being checked against existing_groups. if not in there is added to
+    //     the list of results
+    // existingi: current index of existing_groups
+    for (int i = 0; i < n; ++i) {
+        ++gn;
+        while (existingi < n_groups) {
+            if (gn < existing_groups[existingi]) {
+                break;
+            }
 
 			++existingi;
 			++gn;
