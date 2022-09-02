@@ -1,7 +1,7 @@
 Latest News       {#news}
 ===========
 
-# Since last release
+# genomicSimulationC 0.2.2
 
 - Swapped out a custom randlim() in shuffle_up_to for the basic call
 - Removed a "negative ID" warning for get_group_parent_names when the group contains members that have no known parents.

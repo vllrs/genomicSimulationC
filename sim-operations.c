@@ -1,5 +1,5 @@
 #include "sim-operations.h"
-/* genomicSimulationC v0.2.1 - last edit 15 Jul 2022 */
+/* genomicSimulationC v0.2.2 - last edit 2 Sep 2022 */
 
 /** Options parameter to run SimData functions in their bare-bones form.*/
 const GenOptions BASIC_OPT = {

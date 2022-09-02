@@ -1,6 +1,6 @@
 #ifndef SIM_OPERATIONS_H
 #define SIM_OPERATIONS_H
-/* genomicSimulationC v0.2.1 - last edit 15 Jul 2022 */
+/* genomicSimulationC v0.2.2 - last edit 15 Jul 2022 */
 
 #include <string.h>
 #include <limits.h>
