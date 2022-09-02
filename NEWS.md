@@ -7,6 +7,7 @@ Latest News       {#news}
 - Removed a "negative ID" warning for get_group_parent_names when the group contains members that have no known parents.
 - Fixed a bug in get_n_new_group_nums which incorrectly identified some existing groups as empty.
 - Fixed some memory leaks in the tests
+- Fixed an inappropriate memory access bug in crossing functions when will_allocate_ids = FALSE
 
 # genomicSimulationC 0.2.1
 

@@ -327,6 +327,7 @@ int test_crossing_selfing(SimData *d, int g1) {
     delete_group(d, g1dhap);
 
     // test cloning
+    opt.will_allocate_ids = FALSE;
     int g1clones = make_clones(d, g1, TRUE, opt);
     assert(g1clones != g1);
     assert(d->m->n_genotypes == oldsize + 2*6);
@@ -341,10 +342,16 @@ int test_crossing_selfing(SimData *d, int g1) {
     assert(strcmp(d->m->names[3],d->m->names[oldsize + 9]) == 0);
     printf("...cloning function works correctly\n");
 
-    opt.family_size = 40;
-    int g2clones = make_clones(d, g1clones, FALSE, opt);
+    opt.will_allocate_ids = TRUE;
+    int gap = cross_random_individuals(d , g1, 5, 0, opt);
+    int newparents[2];
+    newparents[0] = g1clones;
+    newparents[1] = cross_random_individuals(d , g1, 5, 0, opt);
+    int cloneparents2 = combine_groups(d, 2, newparents);
+    int g2clones = make_clones(d, cloneparents2, FALSE, opt);
 
-    delete_group(d, g1clones);
+    delete_group(d, cloneparents2);
+    delete_group(d, gap);
     delete_group(d, g2clones);
 
 	return g1selfed;
