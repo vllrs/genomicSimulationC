@@ -319,8 +319,9 @@ int test_crossing_selfing(SimData *d, int g1) {
     assert(d->m->pedigrees[0][oldsize + 6] == d->m->ids[0] && d->m->pedigrees[1][oldsize + 6] == d->m->ids[0]);
     assert(d->m->pedigrees[0][oldsize + 10] == d->m->ids[4] && d->m->pedigrees[1][oldsize + 10] == d->m->ids[4]);
     //printf("%s -> %s\n", d->m->alleles[0], d->m->alleles[oldsize + 6]);
-    assert(strncmp(d->m->alleles[oldsize + 6],d->m->alleles[0],sizeof(int)*6) == 0);
-    assert(strcmp(d->m->alleles[oldsize + 11],"AAAATT") == 0 || strcmp(d->m->alleles[oldsize + 11],"TTAATT") == 0);
+    assert(strncmp(d->m->alleles[oldsize + 6],d->m->alleles[0],sizeof(char)*6) == 0);
+    assert(strncmp(d->m->alleles[oldsize + 11],"AAAATT",sizeof(char)*6) == 0 ||
+            strncmp(d->m->alleles[oldsize + 11],"TTAATT",sizeof(char)*6) == 0);
     printf("...doubled haploid function works correctly\n");
 
     delete_group(d, g1dhap);
@@ -334,13 +335,17 @@ int test_crossing_selfing(SimData *d, int g1) {
     assert(d->m->groups[oldsize + 6] == g1clones && d->m->groups[oldsize + 11] == g1clones && d->m->groups[oldsize + 12] != g1clones);
     assert(d->m->pedigrees[0][oldsize + 6] == d->m->ids[0] && d->m->pedigrees[1][oldsize + 6] == d->m->ids[0]);
     assert(d->m->pedigrees[0][oldsize + 10] == d->m->ids[4] && d->m->pedigrees[1][oldsize + 10] == d->m->ids[4]);
-    assert(strncmp(d->m->alleles[oldsize + 6],d->m->alleles[0],sizeof(int)*6) == 0);
-    assert(strcmp(d->m->alleles[oldsize + 11],"ATAATT") == 0);
+    assert(strncmp(d->m->alleles[oldsize + 6],d->m->alleles[0],sizeof(char)*6) == 0);
+    assert(strncmp(d->m->alleles[oldsize + 11],"ATAATT",sizeof(char)*6) == 0);
     assert(strcmp(d->m->names[1],d->m->names[oldsize + 7]) == 0);
     assert(strcmp(d->m->names[3],d->m->names[oldsize + 9]) == 0);
     printf("...cloning function works correctly\n");
 
+    opt.family_size = 40;
+    int g2clones = make_clones(d, g1clones, FALSE, opt);
+
     delete_group(d, g1clones);
+    delete_group(d, g2clones);
 
 	return g1selfed;
 }
@@ -426,6 +431,8 @@ int test_deletors(SimData *d, int g0) {
 			break;
 		}
 	}
+    free(groups1);
+    free(groups2);
 	printf("...group of genotypes cleared correctly\n");
 
 	delete_simdata(d);
@@ -498,6 +505,7 @@ int test_data_access(SimData* d, int gp) {
 	assert(strncmp(alleles[3],"TAAATA", 6) == 0); // G04
 	assert(strncmp(alleles[4],"TTTTTT", 6) == 0); // G05
 	assert(strncmp(alleles[5],"ATAATT", 6) == 0); // G06
+    free(alleles);
 
     char** names = get_group_names(d, gp, -1);
     assert(strcmp(names[0], "G01") == 0);
@@ -506,16 +514,19 @@ int test_data_access(SimData* d, int gp) {
 	assert(strcmp(names[3], "G04") == 0);
 	assert(strcmp(names[4], "G05") == 0);
 	assert(strcmp(names[5], "G06") == 0);
+    free(names);
 
     unsigned int* ids = get_group_ids(d, gp, -1);
     for (int i = 0; i < 6; ++i) {
         assert(ids[i] == i+1);
     }
+    free(ids);
 
     int* indexes = get_group_indexes(d, gp, 6);
     for (int i = 0; i < 6; ++i) {
         assert(indexes[i] == i);
     }
+    free(indexes);
 
     double* bvs = get_group_bvs(d, gp, 6);
     assert(fabs(bvs[0] - 1.4) < TOL);
@@ -524,6 +535,7 @@ int test_data_access(SimData* d, int gp) {
     assert(fabs(bvs[3] - (-0.1)) < TOL);
     assert(fabs(bvs[4] - 0.6) < TOL);
     assert(fabs(bvs[5] - (-0.3)) < TOL);
+    free(bvs);
 
 	// missing the parent and pedigree checks but this group doesn't have info for that anyway
 
