@@ -8,6 +8,7 @@ Latest News       {#news}
 - Fixed a bug in get_n_new_group_nums which incorrectly identified some existing groups as empty.
 - Fixed some memory leaks in the tests
 - Fixed an inappropriate memory access bug in crossing functions when will_allocate_ids = FALSE
+- Fixed an inappropriate memory access bug in make_clones when trying to inherit the name of a parent with no name.
 
 # genomicSimulationC 0.2.1
 

@@ -5587,8 +5587,10 @@ int make_clones(SimData* d, int group, int inherit_names, GenOptions g) {
                     free(outcome->names[fullness]);
                 }
                 // save name
-                outcome->names[fullness] = get_malloc(sizeof(char) * (strlen(group_names[i]) + 1));
-                strcpy(outcome->names[fullness], group_names[i]);
+                if (group_names[i] != NULL) {
+                    outcome->names[fullness] = get_malloc(sizeof(char) * (strlen(group_names[i]) + 1));
+                    strcpy(outcome->names[fullness], group_names[i]);
+                }
             }
         }
     }
