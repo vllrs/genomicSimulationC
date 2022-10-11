@@ -170,22 +170,46 @@ int test_effect_calculators(SimData *d, int g0) {
 	return 0;
 }
 
-int test_optimal_calculators(SimData *d) {
-	char* ig = calculate_optimal_alleles(d);
-	assert(ig[0] == 'T');
-	assert(ig[1] == 'A');
-	assert(ig[2] == 'A');
-	free(ig);
+int test_optimal_calculators(SimData *d, int g0) {
+    char* ig = calculate_optimal_alleles(d);
+    assert(ig[0] == 'T');
+    assert(ig[1] == 'A');
+    assert(ig[2] == 'A');
+    free(ig);
 
-	double optimal = calculate_optimum_bv(d);
+    double optimal = calculate_optimum_bv(d);
     assert(fabs(optimal - 1.8) < TOL);
 
-	double unoptimal = calculate_minimum_bv(d);
+    double unoptimal = calculate_minimum_bv(d);
     assert(fabs(unoptimal + 2.8) < TOL);
 
-	printf("...Optimal genotype and GEBV calculated correctly\n");
+    char* founderhaplo = calculate_optimal_available_alleles(d, g0);
+    assert(founderhaplo[0] == 'T');
+    assert(founderhaplo[1] == 'A');
+    assert(founderhaplo[2] == 'A');
+    free(founderhaplo);
 
-	return 0;
+    double founderoptimal = calculate_optimal_available_bv(d, g0);
+    assert(fabs(founderoptimal - 1.8) < TOL);
+
+    int factorout[2] = {4,5};
+    int g0partial = split_from_group(d,2, factorout);
+    char* founderhaplo2 = calculate_optimal_available_alleles(d, g0partial);
+    assert(founderhaplo2[0] == 'T');
+    assert(founderhaplo2[1] == 'A');
+    assert(founderhaplo2[2] == 'T');
+    free(founderhaplo2);
+
+    double founderoptimal2 = calculate_optimal_available_bv(d, g0partial);
+    assert(fabs(founderoptimal2 - 1.4) < TOL);
+
+    int recombine[2] = {g0,g0partial};
+    int newg0 = combine_groups(d,2,recombine);
+    assert(g0 == newg0); // for validity of further tests
+
+    printf("...Optimal genotype and GEBV calculated correctly\n");
+
+    return 0;
 }
 
 int test_crossing(SimData *d, int g0) {
@@ -586,7 +610,7 @@ int main(int argc, char* argv[]) {
 	// test effect calculators
 	printf("\nNow testing GEBV calculator:\n");
 	test_effect_calculators(d, g0);
-	test_optimal_calculators(d);
+    test_optimal_calculators(d, g0);
 	printf("\t\t-> GEBV calculators all clear\n");
 
 	// test crossers

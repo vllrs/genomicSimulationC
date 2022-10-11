@@ -22,7 +22,7 @@ float calculate_heterozygosity(SimData* d, int group_number);
 
 int test_loaders(SimData* d);
 int test_effect_calculators(SimData *d, int g0);
-int test_optimal_calculators(SimData *d);
+int test_optimal_calculators(SimData *d, int g0);
 int test_crossing(SimData *d, int g0);
 int test_crossing_unidirectional(SimData *d, int g0);
 int test_crossing_from_file(SimData *d, char* fname);

@@ -1,6 +1,10 @@
 Latest News       {#news}
 ===========
 
+# Since last release
+
+- Add functions calculate_optimal_available_alleles and calculate_optimal_available_bv, to calculate the best combination of alleles and best possible breeding value score given the pool of alleles available in a particular group.
+
 # genomicSimulationC 0.2.2
 
 - Swapped out a custom randlim() in shuffle_up_to for the basic call
