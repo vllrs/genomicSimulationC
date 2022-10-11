@@ -6660,11 +6660,12 @@ char* calculate_optimal_available_alleles(SimData* d, unsigned int group) {
     char** ggenes = get_group_genes(d, group, gsize);
 
     char* optimal = get_malloc(sizeof(char)* (d->n_markers + 1));
-    char best_allele = '\0';
+    char best_allele;
     double best_score;
 
     // for each locus
     for (int j = 0; j < d->n_markers; ++j) {
+        best_allele = '\0';
         for (int i = 0; i < gsize; ++i) {
 
             // If the allele is different to the previous best (guaranteed if best_allele is not initialised)
@@ -6675,7 +6676,7 @@ char* calculate_optimal_available_alleles(SimData* d, unsigned int group) {
                     if (d->e.effect_names[a] == ggenes[i][2*j] &&
                             (best_allele == '\0' || d->e.effects.matrix[a][j] > best_score)) { // if it scores better than current best
 
-                        best_allele = ggenes[0][2*j];
+                        best_allele = ggenes[i][2*j];
                         best_score = d->e.effects.matrix[a][j];
 
                         break;
@@ -6692,7 +6693,7 @@ char* calculate_optimal_available_alleles(SimData* d, unsigned int group) {
                     if (d->e.effect_names[a] == ggenes[i][2*j + 1] &&
                             (best_allele == '\0' || d->e.effects.matrix[a][j] > best_score)) { // if it scores better than current best
 
-                        best_allele = ggenes[0][2*j + 1];
+                        best_allele = ggenes[i][2*j + 1];
                         best_score = d->e.effects.matrix[a][j];
 
                         break;
@@ -6758,11 +6759,12 @@ double calculate_optimal_available_bv(SimData* d, unsigned int group) {
     char** ggenes = get_group_genes(d, group, gsize);
 
     double total_score = 0;
-    char best_allele = '\0';
+    char best_allele;
     double best_score;
 
     // for each locus
     for (int j = 0; j < d->n_markers; ++j) {
+        best_allele = '\0';
         for (int i = 0; i < gsize; ++i) {
 
             // If the allele is different to the previous best (guaranteed if best_allele is not initialised)
@@ -6773,7 +6775,7 @@ double calculate_optimal_available_bv(SimData* d, unsigned int group) {
                     if (d->e.effect_names[a] == ggenes[i][2*j] &&
                             (best_allele == '\0' || d->e.effects.matrix[a][j] > best_score)) { // if it scores better than current best
 
-                        best_allele = ggenes[0][2*j];
+                        best_allele = ggenes[i][2*j];
                         best_score = d->e.effects.matrix[a][j];
 
                         break;
@@ -6790,7 +6792,7 @@ double calculate_optimal_available_bv(SimData* d, unsigned int group) {
                     if (d->e.effect_names[a] == ggenes[i][2*j + 1] &&
                             (best_allele == '\0' || d->e.effects.matrix[a][j] > best_score)) { // if it scores better than current best
 
-                        best_allele = ggenes[0][2*j + 1];
+                        best_allele = ggenes[i][2*j + 1];
                         best_score = d->e.effects.matrix[a][j];
 
                         break;
