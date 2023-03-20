@@ -419,22 +419,19 @@ offspring <- cross.randomly.between(cows, bestbull, cap1=1, n.crosses=10)
 <tr><td>Suppose you want to cross Cow1 to Bull1, Cow2 to Bull2, and Daisy to Bull1
 <td> 
 ```{C}
-int namesNeeded[5];
-int IDsNeeded[5];
-namesNeeded[0] = "Cow1";
-namesNeeded[1] = "Cow2";
-namesNeeded[2] = "Daisy";
-namesNeeded[3] = "Bull1";
-namesNeeded[4] = "Bull2";
-get_ids_of_names(d->m, 5, namesNeeded, IDsNeeded);
+cow1_index = get_index_of_name(d->m, "Cow1");
+cow2_index = get_index_of_name(d->m, "Cow2");
+cow3_index = get_index_of_name(d->m, "Daisy");
+bull1_index = get_index_of_name(d->m, "Bull1");
+bull2_index = get_index_of_name(d->m, "Bull2");
 
 int crossingPlan[2][3];
-crossingPlan[0][0] = IDsNeeded[0];
-crossingPlan[0][1] = IDsNeeded[1];
-crossingPlan[0][2] = IDsNeeded[2];
-crossingPlan[1][0] = IDsNeeded[3];
-crossingPlan[1][1] = IDsNeeded[4];
-crossingPlan[1][2] = IDsNeeded[3];
+crossingPlan[0][0] = cow1_index;
+crossingPlan[0][1] = cow2_index;
+crossingPlan[0][2] = cow3_index;
+crossingPlan[1][0] = bull1_index;
+crossingPlan[1][1] = bull2_index;
+crossingPlan[1][2] = bull1_index;
 
 int offspring = cross_these_combinations(d, 3, crossingPlan, BASIC_OPT);
 ```
@@ -451,6 +448,84 @@ Cow2 Bull2
 Daisy Bull1
 ```
 and call `make_crosses_from_file` or `cross.combinations.file`.
+
+## Three-Way Crosses
+
+<table>
+<tr><th>Task <th>genomicSimulationC (C) <th>genomicSimulation (R)
+<tr><td>Suppose you want to make a single Breed1/Breed2//Breed3 cross. That is, cross the F1 of a mating between Breed1 and Breed2 to Breed3. Assumes the genotypes for Breed1, Breed2, and Breed3 have those names.
+<td> 
+```{C}
+breed1_index = get_index_of_name(d->m, "Breed1");
+breed2_index = get_index_of_name(d->m, "Breed2");
+breed3_index = get_index_of_name(d->m, "Breed3");
+
+int crossingPlan[2][1];
+crossingPlan[0][0] = breed1_index;
+crossingPlan[1][0] = breed2_index;
+
+int f1 = cross_these_combinations(d, 1, crossingPlan, BASIC_OPT);
+int* f1_index = get_group_indexes(d, f1, 1); //we know this group has only one member
+
+// Re-use crossingPlan
+crossingPlan[0][0] = breed3_index;
+crossingPlan[1][0] = f1_index[0];
+free(f1_index);
+
+int f3way = cross_these_combinations(d, 1, crossingPlan, BASIC_OPT);
+```
+<td>
+```{R}
+f1 <- cross.combinations(c("Breed1"), c("Breed2"))
+f1_index <- see.group.data(f1, "X")
+f3way <- cross.combinations(c("Breed3"), f1_index)
+```
+</table>
+
+<table>
+<tr><th>Task <th>genomicSimulationC (C) <th>genomicSimulation (R)
+<tr><td>Suppose you want 25 offspring of a Breed1/Breed2//Breed3 cross. Assumes the genotypes for Breed1, Breed2, and Breed3 have those names.
+<td> 
+```{C}
+breed1_index = get_index_of_name(d->m, "Breed1");
+breed2_index = get_index_of_name(d->m, "Breed2");
+breed3_index = get_index_of_name(d->m, "Breed3");
+
+int crossingPlan[2][1];
+crossingPlan[0][0] = breed1_index;
+crossingPlan[1][0] = breed2_index;
+
+GenOptions opt = {.family_size=5,
+		.will_name_offspring=FALSE, .offspring_name_prefix=NULL, 
+		.will_track_pedigree=TRUE, .will_allocate_ids=TRUE,
+		.filename_prefix=NULL, .will_save_pedigree_to_file=FALSE,
+		.will_save_bvs_to_file=FALSE, .will_save_alleles_to_file=FALSE,
+		.will_save_to_simdata=TRUE};
+
+int f1 = cross_these_combinations(d, 1, crossingPlan, opt);
+int f1_indexes = get_group_indexes(d, f1, 5);
+
+int crossingPlanb[2][5];
+crossingPlanb[0][0] = breed3_index; crossingPlanb[0][1] = breed3_index;
+crossingPlanb[0][2] = breed3_index; crossingPlanb[0][3] = breed3_index;
+crossingPlanb[0][4] = breed3_index;
+crossingPlanb[1][0] = f1_indexes[0]; crossingPlanb[1][1] = f1_indexes[1];
+crossingPlanb[1][2] = f1_indexes[2]; crossingPlanb[1][3] = f1_indexes[3];
+crossingPlanb[1][4] = f1_indexes[4];
+free(f1_indexes);
+
+int f3way = cross_these_combinations(d, 5, crossingPlanb, opt); 
+```
+<td>
+```{R}
+f1 <- cross.combinations(c("Breed1"), c("Breed2"), offspring=5)
+# This time, f1 is a group of multiple individuals
+f1_indexes <- see.group.data(f1, "X")
+f3way <- cross.combinations(rep("Breed3", times=length(f1_indexes)), f1_indexes, offspring=5)
+
+```
+</table>
+
 
 ## Tracking age and discarding individuals that are 'too old'
 Updates to add an age/custom flag to each individual is coming soon.
