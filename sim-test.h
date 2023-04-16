@@ -1,5 +1,6 @@
 #ifndef SIM_OPERATIONS_H
 #include "sim-operations.h"
+
 #endif
 
 #include <assert.h>
@@ -19,14 +20,28 @@ const char HELPER_PLAN[] = "G01\tG02\tG03\tG05\n"
 	"G01\tG03\tG05\tG06\n" "G05\tG06\tG01\tG04";
 
 float calculate_heterozygosity(SimData* d, int group_number);
+int compareFiles(char* f1, char* f2); // returns 0 if matching
 
 int test_loaders(SimData* d);
+
+int test_grouping(SimData *d, int g0);
+int test_specific_splits(SimData *d, int g0);
+int test_random_splits(SimData *d, int g0);
+int test_labels(SimData *d, int g0);
+
 int test_effect_calculators(SimData *d, int g0);
 int test_optimal_calculators(SimData *d, int g0);
+
 int test_crossing(SimData *d, int g0);
 int test_crossing_unidirectional(SimData *d, int g0);
 int test_crossing_from_file(SimData *d, char* fname);
 int test_crossing_selfing(SimData *d, int g1);
 void test_crossing_randomly(SimData *d, int g1);
+
 int test_deletors(SimData *d, int g0);
+
 int test_block_generator(SimData *d);
+
+int test_data_access(SimData* d, int gp);
+
+

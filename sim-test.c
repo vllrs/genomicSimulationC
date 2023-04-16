@@ -1,5 +1,4 @@
 #include "sim-test.h"
-//#include <string.h>
 
 float calculate_heterozygosity(SimData* d, int group_number) {
 	int hetcount = 0;
@@ -18,6 +17,71 @@ float calculate_heterozygosity(SimData* d, int group_number) {
 	free(galleles);
 	return (float) hetcount / (gn * d->n_markers);
 }
+
+int test_loaders2(SimData* d) {
+    // Test genotype matrix loading
+    /*
+name g1 g2 g3
+m1 AA AA AA
+m2 AT AA TT
+    */
+    FILE* fp;
+    const char HEADER_TAB[] = "\tg1\tg2\tg3";
+    const char HEADER_SP[] = " g1 g2 g3";
+    const char BODY1_TAB[] = "m1\tAA\tAA\tAA";
+    const char BODY1_SP[] = "m1 AA AA AA";
+    const char BODY2_TAB[] = "m2\tAT\tAA\tTT";
+    const char BODY2_SP[] = "m2 AT AA TT";
+    if ((fp = fopen("1test.txt", "w")) == NULL) {
+        fprintf(stderr, "Failed to create file.\n");
+        exit(1);
+    }
+    fwrite("name", sizeof(char), strlen("name"), fp);
+    fwrite(HEADER_TAB, sizeof(char), strlen(HEADER_TAB), fp);
+    fputc('\n', fp);
+    fwrite(BODY1_TAB, sizeof(char), strlen(BODY1_TAB), fp);
+    fputc('\n', fp);
+    fwrite(BODY2_TAB, sizeof(char), strlen(BODY2_TAB), fp);
+    fclose(fp);
+    //fputc('\n', fp);
+
+    // @@
+
+    // Test replacing tabs with spaces
+    if ((fp = fopen("1test.txt", "w")) == NULL) {
+        fprintf(stderr, "Failed to create file.\n");
+        exit(1);
+    }
+    fwrite("name", sizeof(char), strlen("name"), fp);
+    fwrite(HEADER_SP, sizeof(char), strlen(HEADER_SP), fp);
+    fputc('\n', fp);
+    fwrite(BODY1_SP, sizeof(char), strlen(BODY1_SP), fp);
+    fputc('\n', fp);
+    fwrite(BODY2_SP, sizeof(char), strlen(BODY2_SP), fp);
+    fclose(fp);
+
+    // @@
+
+    // test extra free line at the end
+    if ((fp = fopen("1test.txt", "w")) == NULL) {
+        fprintf(stderr, "Failed to create file.\n");
+        exit(1);
+    }
+    fwrite("1", sizeof(char), strlen("name"), fp);
+    fwrite(HEADER_SP, sizeof(char), strlen(HEADER_SP), fp);
+    fputc('\n', fp);
+    fwrite(BODY1_SP, sizeof(char), strlen(BODY1_SP), fp);
+    fputc('\n', fp);
+    fwrite(BODY2_SP, sizeof(char), strlen(BODY2_SP), fp);
+    fclose(fp);
+    fputc('\n', fp);
+
+    // @@
+
+
+    return 0;
+}
+
 
 int test_loaders(SimData* d) {
 	FILE* fp;
@@ -153,6 +217,495 @@ int test_loaders(SimData* d) {
 	return g0;
 }
 
+int test_labels(SimData *d, int g0) {
+    // g0: contents of "a-test.txt", contains 6 genotypes
+
+    // Can create a first label.
+    assert(d->n_labels == 0);
+    const int label1value = 0;
+    const int label1 = create_new_label(d, label1value);
+    assert(d->n_labels == 1);
+    assert(d->m->n_labels == 1);
+    assert(d->m->labels != NULL);
+    assert(d->m->labels[label1] != NULL);
+    assert(d->m->labels[label1][0] == label1value);
+    assert(d->m->labels[label1][1] == label1value);
+    assert(d->m->labels[label1][2] == label1value);
+    assert(d->m->labels[label1][3] == label1value);
+    assert(d->m->labels[label1][4] == label1value);
+    assert(d->m->labels[label1][5] == label1value);
+
+    // Can create a second label
+    const int label2value = 10;
+    const int label2 = create_new_label(d, label2value);
+    assert(d->n_labels == 2);
+    assert(d->m->n_labels == 2);
+    assert(d->m->labels != NULL);
+    assert(d->m->labels[label1] != NULL);
+    assert(d->m->labels[label2] != NULL);
+    assert(d->m->labels[label1][0] == label1value);
+    assert(d->m->labels[label1][1] == label1value);
+    assert(d->m->labels[label1][2] == label1value);
+    assert(d->m->labels[label1][3] == label1value);
+    assert(d->m->labels[label1][4] == label1value);
+    assert(d->m->labels[label1][5] == label1value);
+
+    assert(d->m->labels[label2][0] == label2value);
+    assert(d->m->labels[label2][1] == label2value);
+    assert(d->m->labels[label2][2] == label2value);
+    assert(d->m->labels[label2][3] == label2value);
+    assert(d->m->labels[label2][4] == label2value);
+    assert(d->m->labels[label2][5] == label2value);
+
+    // Can set values of a label
+    const int newlabel1value = 2;
+    set_labels_to_const(d,g0,label1,newlabel1value);
+    assert(d->n_labels == 2);
+    assert(d->m->n_labels == 2);
+    assert(d->m->labels != NULL);
+    assert(d->m->labels[label1] != NULL);
+    assert(d->m->labels[label2] != NULL);
+    assert(d->m->labels[label1][0] == newlabel1value);
+    assert(d->m->labels[label1][1] == newlabel1value);
+    assert(d->m->labels[label1][2] == newlabel1value);
+    assert(d->m->labels[label1][3] == newlabel1value);
+    assert(d->m->labels[label1][4] == newlabel1value);
+    assert(d->m->labels[label1][5] == newlabel1value);
+
+    // Can set values of a label (more labels than needed)
+    const unsigned int newlabel2values[] = {11, 12, 13, 14, 15, 16, 17};
+    set_labels_to_values(d, g0, 0, label2, 7, newlabel2values);
+    assert(d->n_labels == 2);
+    assert(d->m->n_labels == 2);
+    assert(d->m->labels != NULL);
+    assert(d->m->labels[label1] != NULL);
+    assert(d->m->labels[label2] != NULL);
+    assert(d->m->labels[label2][0] == newlabel2values[0]);
+    assert(d->m->labels[label2][1] == newlabel2values[1]);
+    assert(d->m->labels[label2][2] == newlabel2values[2]);
+    assert(d->m->labels[label2][3] == newlabel2values[3]);
+    assert(d->m->labels[label2][4] == newlabel2values[4]);
+    assert(d->m->labels[label2][5] == newlabel2values[5]);
+
+    // Can set value of a label (only some values set)
+    const unsigned int newerlabel1values[] = {0,1,-1,100};
+    set_labels_to_values(d, g0, 1, label1, 4, newerlabel1values);
+    assert(d->n_labels == 2);
+    assert(d->m->n_labels == 2);
+    assert(d->m->labels != NULL);
+    assert(d->m->labels[label1] != NULL);
+    assert(d->m->labels[label2] != NULL);
+    assert(d->m->labels[label1][0] == newlabel1value);
+    assert(d->m->labels[label1][1] == newerlabel1values[0]);
+    assert(d->m->labels[label1][2] == newerlabel1values[1]);
+    assert(d->m->labels[label1][3] == newerlabel1values[2]);
+    assert(d->m->labels[label1][4] == newerlabel1values[3]);
+    assert(d->m->labels[label1][5] == newlabel1value);
+
+    // Test name-setters here too, they use the same procedure as set_labels_to_values
+    // (Tests when setting whole body not just group)
+    const char* newNames[] = {"name0", "aname", "two", "THR33", "7", "name$$"};
+    set_names_to_values(d,0,0,6,newNames);
+    assert(strncmp(d->m->names[0],newNames[0],strlen(newNames[0])) == 0);
+    assert(strncmp(d->m->names[1],newNames[1],strlen(newNames[1])) == 0);
+    assert(strncmp(d->m->names[2],newNames[2],strlen(newNames[2])) == 0);
+    assert(strncmp(d->m->names[3],newNames[3],strlen(newNames[3])) == 0);
+    assert(strncmp(d->m->names[4],newNames[4],strlen(newNames[4])) == 0);
+    assert(strncmp(d->m->names[5],newNames[5],strlen(newNames[5])) == 0);
+    const char* betterNames[] = {"G01", "G02", "G03", "G04", "G05", "G06"};
+    set_names_to_values(d,g0,0,6,betterNames);
+    assert(strncmp(d->m->names[0],betterNames[0],strlen(betterNames[0])) == 0);
+    assert(strncmp(d->m->names[1],betterNames[1],strlen(betterNames[1])) == 0);
+    assert(strncmp(d->m->names[2],betterNames[2],strlen(betterNames[2])) == 0);
+    assert(strncmp(d->m->names[3],betterNames[3],strlen(betterNames[3])) == 0);
+    assert(strncmp(d->m->names[4],betterNames[4],strlen(betterNames[4])) == 0);
+    assert(strncmp(d->m->names[5],betterNames[5],strlen(betterNames[5])) == 0);
+
+    // Can increment a label
+    const int increment = -4+1;
+    increment_labels(d, g0, label1, 1);
+    increment_labels(d, g0, label1, -4);
+    assert(d->n_labels == 2);
+    assert(d->m->n_labels == 2);
+    assert(d->m->labels != NULL);
+    assert(d->m->labels[label1] != NULL);
+    assert(d->m->labels[label2] != NULL);
+    assert(d->m->labels[label1][0] == newlabel1value + increment);
+    assert(d->m->labels[label1][1] == newerlabel1values[0] + increment);
+    assert(d->m->labels[label1][2] == newerlabel1values[1] + increment);
+    assert(d->m->labels[label1][3] == newerlabel1values[2] + increment);
+    assert(d->m->labels[label1][4] == newerlabel1values[3] + increment);
+    assert(d->m->labels[label1][5] == newlabel1value + increment);
+
+    // test can split from group by label
+    int groupB = split_from_group_by_label(d, label1, newlabel1value + increment);
+    assert(g0 != groupB);
+    assert(get_group_size(d, groupB) == 2);
+    int* Bindexes = get_group_indexes(d, groupB, 2);
+    assert(Bindexes[0] == 0);
+    assert(Bindexes[1] == 5);
+    free(Bindexes);
+    int toCombine[2] = {g0, groupB};
+    int g0b = combine_groups(d, 2, toCombine);
+    assert(get_group_size(d, g0b) == 6);
+    assert(g0 == g0b); // if this fails just need to restructure test cases to return changed vers of g0
+
+    printf("...Label manipulation runs correctly\n");
+
+    return 0;
+}
+
+int test_random_splits(SimData *d, int g0) {
+    // g0: contents of "a-test.txt", contains 6 genotypes
+
+    // Can split into 2; repeat 10x for confidence
+    for (int i = 0; i < 10; ++i) {
+        int grpB = split_evenly_into_two(d, g0);
+        assert(get_group_size(d,g0) == 3);
+        assert(get_group_size(d,grpB) == 3);
+
+        int toMerge[2] = {g0, grpB};
+        g0 = combine_groups(d,2,toMerge);
+        assert(get_group_size(d,g0) == 6);
+    }
+
+    // Can split into 3; repeat 10x for confidence
+    for (int i = 0; i < 10; ++i) {
+        int grpB[3];
+        split_evenly_into_n(d,g0,3,grpB);
+        assert(get_group_size(d,grpB[0]) == 2);
+        assert(get_group_size(d,grpB[1]) == 2);
+        assert(get_group_size(d,grpB[2]) == 2);
+
+        g0 = combine_groups(d,3,grpB);
+        assert(get_group_size(d,g0) == 6);
+    }
+
+    // Can split into bins; repeat 10x for confidence
+    for (int i = 0; i < 10; ++i) {
+        int grpB[3];
+        int grpBsizes[3] = {1,3,2};
+        split_by_specific_counts_into_n(d,g0,3,grpBsizes,grpB);
+        assert(get_group_size(d,grpB[0]) == 1);
+        assert(get_group_size(d,grpB[1]) == 3);
+        assert(get_group_size(d,grpB[2]) == 2);
+
+        g0 = combine_groups(d,3,grpB);
+        assert(get_group_size(d,g0) == 6);
+    }
+
+    // In future replace these with something that uses the random generator seed
+    // Can split by coinflip
+    int grpBsizes = 0;
+    for (int i = 0; i < 10; ++i) {
+        int grpB = split_randomly_into_two(d, g0);
+        int grpBsize = get_group_size(d,grpB);
+        assert(get_group_size(d,g0) + grpBsize == 6);
+        grpBsizes += grpBsize;
+
+        int toMerge[2] = {g0, grpB};
+        g0 = combine_groups(d,2,toMerge);
+        assert(get_group_size(d,g0) == 6);
+    }
+    assert(grpBsizes > 20 && grpBsizes < 40); // about 1.3% chance of failure by random chance
+
+    // Can split by thirds
+    grpBsizes = 0;
+    int grpBsizes2 = 0;
+    for (int i = 0; i < 10; ++i) {
+        int grpB[3];
+        split_randomly_into_n(d,g0,3,grpB);
+        int grpBsize = get_group_size(d,grpB[0]);
+        int grpBsize2 = get_group_size(d,grpB[1]);
+        assert(get_group_size(d,grpB[2]) + grpBsize + grpBsize2 == 6);
+        grpBsizes += grpBsize;
+        grpBsizes2 += grpBsize2;
+
+        g0 = combine_groups(d,3,grpB);
+        assert(get_group_size(d,g0) == 6);
+    }
+    assert(grpBsizes > 9 && grpBsizes < 34); // about 1.3% chance of failure by random chance
+    assert(grpBsizes2 > 9 && grpBsizes2 < 34);
+
+    // Can split by any probability
+    grpBsizes = 0;
+    for (int i = 0; i < 10; ++i) {
+        int grpB[2];
+        double grpBprobs = 3.0/7.0;
+        split_by_probabilities_into_n(d,g0,2,&grpBprobs,grpB);
+        int grpBsize = get_group_size(d,grpB[0]);
+        assert(get_group_size(d,grpB[1]) + grpBsize == 6);
+        grpBsizes += grpBsize;
+
+        g0 = combine_groups(d,2,grpB);
+        assert(get_group_size(d,g0) == 6);
+    }
+    assert(grpBsizes > 16 && grpBsizes < 39); // about 0.75% chance of failure by random chance
+
+    grpBsizes = 0;
+    for (int i = 0; i < 10; ++i) {
+        int grpB[2];
+        double grpBprobs[2] = {1./12.,11./12.};
+        split_by_probabilities_into_n(d,g0,2,grpBprobs,grpB);
+        int grpBsize = get_group_size(d,grpB[0]);
+        assert(get_group_size(d,grpB[1]) + grpBsize == 6);
+        grpBsizes += grpBsize;
+
+        g0 = combine_groups(d,2,grpB);
+        assert(get_group_size(d,g0) == 6);
+    }
+    assert(grpBsizes < 11); // about 1% chance of failure by random chance
+
+    printf("...Random group splitting runs correctly\n");
+
+    return g0;
+}
+
+int test_specific_splits(SimData *d, int g0) {
+    // g0: contents of "a-test.txt", contains 6 genotypes
+    // and there are few enough genotypes they all fit into the first AlleleMatrix
+
+    // Can split into individuals and recombine
+    const int g0size = get_group_size(d, g0);
+    assert(g0size == 6); // pre-test test validity requirement
+    int g0indivs[8];
+    for (int i = 0; i < 8; ++i) {
+        g0indivs[i] = 0;
+    }
+    split_into_individuals(d, g0, g0indivs);
+    assert(g0indivs[0] > 0);
+    assert(g0indivs[1] > 0);
+    assert(g0indivs[1] != g0indivs[0]);
+    assert(g0indivs[2] > 0);
+    assert(g0indivs[2] != g0indivs[0] && g0indivs[2] != g0indivs[1]);
+    assert(g0indivs[3] > 0);
+    assert(g0indivs[3] != g0indivs[0] && g0indivs[3] != g0indivs[1] && g0indivs[3] != g0indivs[2]);
+    assert(g0indivs[4] > 0);
+    assert(g0indivs[4] != g0indivs[0] && g0indivs[4] != g0indivs[1]
+            && g0indivs[4] != g0indivs[2] && g0indivs[4] != g0indivs[3]);
+    assert(g0indivs[5] > 0);
+    assert(g0indivs[5] != g0indivs[0] && g0indivs[5] != g0indivs[1] && g0indivs[5] != g0indivs[2]
+            && g0indivs[5] != g0indivs[3] && g0indivs[5] != g0indivs[4]);
+    assert(g0indivs[6] == 0);
+    assert(g0indivs[7] == 0);
+
+    g0 = combine_groups(d,6,g0indivs);
+    assert(get_group_size(d,g0) == 6);
+
+    // Can split into families
+    GenOptions g = {.family_size = 5,
+                    .will_track_pedigree = TRUE,
+                    .will_name_offspring = FALSE,
+                    .offspring_name_prefix = NULL,
+                    .will_allocate_ids = FALSE,
+                    .filename_prefix = NULL,
+                    .will_save_alleles_to_file = FALSE,
+                    .will_save_bvs_to_file = FALSE,
+                    .will_save_pedigree_to_file = FALSE,
+                    .will_save_to_simdata = TRUE};
+    int f1 = cross_random_individuals(d, g0, 3, 1, g);
+    int f1size = 5*3;
+    int families[f1size];
+    for (int i = 0; i < f1size; ++i) {
+        families[i] = 0;
+    }
+    split_into_families(d,f1,families);
+    assert(families[0] > 0);
+    assert(families[1] > 0);
+    assert(families[2] > 0);
+    for (int i = 3; i < f1size; ++i) {
+        assert(families[i] == 0);
+    }
+    assert(families[0] != families[1] && families[1] != families[2] && families[0] != families[2]);
+    assert(get_group_size(d,families[0]) == 5);
+    assert(get_group_size(d,families[1]) == 5);
+    assert(get_group_size(d,families[2]) == 5);
+    // Check all groups contain families
+    int* f1family1 = get_group_indexes(d,families[0],5);
+    assert(d->m->pedigrees[0][f1family1[0]] == d->m->pedigrees[0][f1family1[1]] &&
+            d->m->pedigrees[0][f1family1[0]] == d->m->pedigrees[0][f1family1[2]] &&
+            d->m->pedigrees[0][f1family1[0]] == d->m->pedigrees[0][f1family1[3]] &&
+            d->m->pedigrees[0][f1family1[0]] == d->m->pedigrees[0][f1family1[4]]);
+    assert(d->m->pedigrees[1][f1family1[0]] == d->m->pedigrees[1][f1family1[1]] &&
+            d->m->pedigrees[1][f1family1[0]] == d->m->pedigrees[1][f1family1[2]] &&
+            d->m->pedigrees[1][f1family1[0]] == d->m->pedigrees[1][f1family1[3]] &&
+            d->m->pedigrees[1][f1family1[0]] == d->m->pedigrees[1][f1family1[4]]);
+
+    int* f1family2 = get_group_indexes(d,families[1],5);
+    assert(d->m->pedigrees[0][f1family1[0]] == d->m->pedigrees[0][f1family1[1]] &&
+            d->m->pedigrees[0][f1family1[0]] == d->m->pedigrees[0][f1family1[2]] &&
+            d->m->pedigrees[0][f1family1[0]] == d->m->pedigrees[0][f1family1[3]] &&
+            d->m->pedigrees[0][f1family1[0]] == d->m->pedigrees[0][f1family1[4]]);
+    assert(d->m->pedigrees[1][f1family1[0]] == d->m->pedigrees[1][f1family1[1]] &&
+            d->m->pedigrees[1][f1family1[0]] == d->m->pedigrees[1][f1family1[2]] &&
+            d->m->pedigrees[1][f1family1[0]] == d->m->pedigrees[1][f1family1[3]] &&
+            d->m->pedigrees[1][f1family1[0]] == d->m->pedigrees[1][f1family1[4]]);
+
+    int* f1family3 = get_group_indexes(d,families[2],5);
+    assert(d->m->pedigrees[0][f1family1[0]] == d->m->pedigrees[0][f1family1[1]] &&
+            d->m->pedigrees[0][f1family1[0]] == d->m->pedigrees[0][f1family1[2]] &&
+            d->m->pedigrees[0][f1family1[0]] == d->m->pedigrees[0][f1family1[3]] &&
+            d->m->pedigrees[0][f1family1[0]] == d->m->pedigrees[0][f1family1[4]]);
+    assert(d->m->pedigrees[1][f1family1[0]] == d->m->pedigrees[1][f1family1[1]] &&
+            d->m->pedigrees[1][f1family1[0]] == d->m->pedigrees[1][f1family1[2]] &&
+            d->m->pedigrees[1][f1family1[0]] == d->m->pedigrees[1][f1family1[3]] &&
+            d->m->pedigrees[1][f1family1[0]] == d->m->pedigrees[1][f1family1[4]]);
+
+    // Check separate groups don't represent the same family
+    assert(d->m->pedigrees[0][f1family1[0]] != d->m->pedigrees[0][f1family2[0]] &&
+            d->m->pedigrees[1][f1family1[0]] != d->m->pedigrees[1][f1family2[0]]);
+    assert(d->m->pedigrees[0][f1family1[0]] != d->m->pedigrees[0][f1family3[0]] &&
+            d->m->pedigrees[1][f1family1[0]] != d->m->pedigrees[1][f1family3[0]]);
+    assert(d->m->pedigrees[0][f1family2[0]] != d->m->pedigrees[0][f1family3[0]] &&
+            d->m->pedigrees[1][f1family2[0]] != d->m->pedigrees[1][f1family3[0]]);
+
+    free(f1family1);
+    free(f1family2);
+    free(f1family3);
+    delete_group(d, families[0]);
+    delete_group(d, families[1]);
+    delete_group(d, families[2]);
+
+    // Can split into halfsib families
+    int combinations[2][4];
+    combinations[0][0] = 0; combinations[1][0] = 1;
+    combinations[0][1] = 0; combinations[1][1] = 2;
+    combinations[0][2] = 3; combinations[1][2] = 1;
+    combinations[0][3] = 4; combinations[1][3] = 5;
+    int fhs = cross_these_combinations(d,4,combinations,g);
+
+    int halfsibfamilies[5];
+    for (int i = 0; i < f1size; ++i) {
+        halfsibfamilies[i] = 0;
+    }
+    split_into_halfsib_families(d,fhs,1,halfsibfamilies);
+    assert(halfsibfamilies[0] > 0);
+    assert(halfsibfamilies[1] > 0);
+    assert(halfsibfamilies[2] > 0);
+    assert(halfsibfamilies[3] == 0);
+    assert(halfsibfamilies[4] == 0);
+
+    // Check all halfsib families share the same parent 1
+    int fhsfamily1size = get_group_size(d,halfsibfamilies[0]); // assumes the largest hsfamily will be the first one seen
+    assert(fhsfamily1size == 10);
+    int* fhsfamily1 = get_group_indexes(d,halfsibfamilies[0],10);
+    assert(d->m->pedigrees[0][fhsfamily1[0]] == d->m->pedigrees[0][fhsfamily1[1]] &&
+            d->m->pedigrees[0][fhsfamily1[0]] == d->m->pedigrees[0][fhsfamily1[2]] &&
+            d->m->pedigrees[0][fhsfamily1[0]] == d->m->pedigrees[0][fhsfamily1[3]] &&
+            d->m->pedigrees[0][fhsfamily1[0]] == d->m->pedigrees[0][fhsfamily1[4]] &&
+            d->m->pedigrees[0][fhsfamily1[0]] == d->m->pedigrees[0][fhsfamily1[5]] &&
+            d->m->pedigrees[0][fhsfamily1[0]] == d->m->pedigrees[0][fhsfamily1[6]] &&
+            d->m->pedigrees[0][fhsfamily1[0]] == d->m->pedigrees[0][fhsfamily1[7]] &&
+            d->m->pedigrees[0][fhsfamily1[0]] == d->m->pedigrees[0][fhsfamily1[8]] &&
+            d->m->pedigrees[0][fhsfamily1[0]] == d->m->pedigrees[0][fhsfamily1[9]]);
+
+    int fhsfamily2size = get_group_size(d,halfsibfamilies[1]);
+    assert(fhsfamily2size == 5);
+    int* fhsfamily2 = get_group_indexes(d,halfsibfamilies[1],5);
+    assert(d->m->pedigrees[0][fhsfamily2[0]] == d->m->pedigrees[0][fhsfamily2[1]] &&
+            d->m->pedigrees[0][fhsfamily2[0]] == d->m->pedigrees[0][fhsfamily2[2]] &&
+            d->m->pedigrees[0][fhsfamily2[0]] == d->m->pedigrees[0][fhsfamily2[3]] &&
+            d->m->pedigrees[0][fhsfamily2[0]] == d->m->pedigrees[0][fhsfamily2[4]]);
+
+    int fhsfamily3size = get_group_size(d,halfsibfamilies[2]);
+    assert(fhsfamily3size == 5);
+    int* fhsfamily3 = get_group_indexes(d,halfsibfamilies[2],5);
+    assert(d->m->pedigrees[0][fhsfamily3[0]] == d->m->pedigrees[0][fhsfamily3[1]] &&
+            d->m->pedigrees[0][fhsfamily3[0]] == d->m->pedigrees[0][fhsfamily3[2]] &&
+            d->m->pedigrees[0][fhsfamily3[0]] == d->m->pedigrees[0][fhsfamily3[3]] &&
+            d->m->pedigrees[0][fhsfamily3[0]] == d->m->pedigrees[0][fhsfamily3[4]]);
+
+    // and that none of the across-groups have the same parent 1
+    assert(d->m->pedigrees[0][fhsfamily1[0]] != d->m->pedigrees[0][fhsfamily2[0]]);
+    assert(d->m->pedigrees[0][fhsfamily1[0]] != d->m->pedigrees[0][fhsfamily3[0]]);
+    assert(d->m->pedigrees[0][fhsfamily2[0]] != d->m->pedigrees[0][fhsfamily3[0]]);
+
+    free(fhsfamily1);
+    free(fhsfamily2);
+    free(fhsfamily3);
+
+    // Then check halfsibs in the other direction
+    fhs = combine_groups(d,3,halfsibfamilies);
+    for (int i = 0; i < f1size; ++i) {
+        halfsibfamilies[i] = 0;
+    }
+    split_into_halfsib_families(d,fhs,2,halfsibfamilies);
+    assert(halfsibfamilies[0] > 0);
+    assert(halfsibfamilies[1] > 0);
+    assert(halfsibfamilies[2] > 0);
+    assert(halfsibfamilies[3] == 0);
+    assert(halfsibfamilies[4] == 0);
+
+    // Check all halfsib families share the same parent 1
+    fhsfamily1size = get_group_size(d,halfsibfamilies[0]); // assumes the largest hsfamily will be the first one seen
+    assert(fhsfamily1size == 10);
+    fhsfamily1 = get_group_indexes(d,halfsibfamilies[0],10);
+    assert(d->m->pedigrees[1][fhsfamily1[0]] == d->m->pedigrees[1][fhsfamily1[1]] &&
+            d->m->pedigrees[1][fhsfamily1[0]] == d->m->pedigrees[1][fhsfamily1[2]] &&
+            d->m->pedigrees[1][fhsfamily1[0]] == d->m->pedigrees[1][fhsfamily1[3]] &&
+            d->m->pedigrees[1][fhsfamily1[0]] == d->m->pedigrees[1][fhsfamily1[4]] &&
+            d->m->pedigrees[1][fhsfamily1[0]] == d->m->pedigrees[1][fhsfamily1[5]] &&
+            d->m->pedigrees[1][fhsfamily1[0]] == d->m->pedigrees[1][fhsfamily1[6]] &&
+            d->m->pedigrees[1][fhsfamily1[0]] == d->m->pedigrees[1][fhsfamily1[7]] &&
+            d->m->pedigrees[1][fhsfamily1[0]] == d->m->pedigrees[1][fhsfamily1[8]] &&
+            d->m->pedigrees[1][fhsfamily1[0]] == d->m->pedigrees[1][fhsfamily1[9]]);
+
+    fhsfamily2size = get_group_size(d,halfsibfamilies[1]);
+    assert(fhsfamily2size == 5);
+    fhsfamily2 = get_group_indexes(d,halfsibfamilies[1],5);
+    assert(d->m->pedigrees[1][fhsfamily2[0]] == d->m->pedigrees[1][fhsfamily2[1]] &&
+            d->m->pedigrees[1][fhsfamily2[0]] == d->m->pedigrees[1][fhsfamily2[2]] &&
+            d->m->pedigrees[1][fhsfamily2[0]] == d->m->pedigrees[1][fhsfamily2[3]] &&
+            d->m->pedigrees[1][fhsfamily2[0]] == d->m->pedigrees[1][fhsfamily2[4]]);
+
+    fhsfamily3size = get_group_size(d,halfsibfamilies[2]);
+    assert(fhsfamily3size == 5);
+    fhsfamily3 = get_group_indexes(d,halfsibfamilies[2],5);
+    assert(d->m->pedigrees[1][fhsfamily3[0]] == d->m->pedigrees[1][fhsfamily3[1]] &&
+            d->m->pedigrees[1][fhsfamily3[0]] == d->m->pedigrees[1][fhsfamily3[2]] &&
+            d->m->pedigrees[1][fhsfamily3[0]] == d->m->pedigrees[1][fhsfamily3[3]] &&
+            d->m->pedigrees[1][fhsfamily3[0]] == d->m->pedigrees[1][fhsfamily3[4]]);
+
+    // and that none of the across-groups have the same parent 1
+    assert(d->m->pedigrees[1][fhsfamily1[0]] != d->m->pedigrees[1][fhsfamily2[0]]);
+    assert(d->m->pedigrees[1][fhsfamily1[0]] != d->m->pedigrees[1][fhsfamily3[0]]);
+    assert(d->m->pedigrees[1][fhsfamily2[0]] != d->m->pedigrees[1][fhsfamily3[0]]);
+
+    free(fhsfamily1);
+    free(fhsfamily2);
+    free(fhsfamily3);
+    fhs = combine_groups(d,3,halfsibfamilies);
+
+    // Can create a group from indexes
+    int splitters[4] = {0, 2, 5, 6};
+    int g0b = split_from_group(d, 4, splitters);
+    assert(get_group_size(d,g0) == 3 && get_group_size(d,g0b) == 4);
+    int* g0bi = get_group_indexes(d,g0b,4);
+    assert(g0bi[0] == 0 && g0bi[1] == 2 && g0bi[2] == 5 && g0bi[3] == 6);
+
+    free(g0bi);
+    int n6 = split_from_group(d, 1, splitters+3);
+    int combiners[2] = {fhs, n6};
+    fhs = combine_groups(d, 2, combiners);
+    delete_group(d, fhs);
+
+    int g0members[6] = {0,1,2,3,4,5};
+    g0 = split_from_group(d,6,g0members);
+
+    printf("...Specified group splitting runs correctly\n");
+
+    return g0;
+}
+
+
+int test_grouping(SimData *d, int g0) {
+    test_labels(d, g0);
+    g0 = test_random_splits(d, g0);
+    g0 = test_specific_splits(d, g0);
+
+    return g0;
+}
+
 int test_effect_calculators(SimData *d, int g0) {
 	DecimalMatrix dec = calculate_group_bvs(d, g0);
 
@@ -236,11 +789,15 @@ int test_crossing(SimData *d, int g0) {
 }
 
 int test_crossing_unidirectional(SimData *d, int g0) {
-	GenOptions g = {.will_name_offspring=TRUE, .offspring_name_prefix="F1", .family_size=1,
-		.will_track_pedigree=TRUE, .will_allocate_ids=TRUE,
-		.filename_prefix="atestF1", .will_save_pedigree_to_file=TRUE,
-		.will_save_bvs_to_file=TRUE, .will_save_alleles_to_file=TRUE,
-		.will_save_to_simdata=TRUE};
+    GenOptions g = {.will_name_offspring=TRUE,
+                    .offspring_name_prefix="F1",
+                    .family_size=1,.will_track_pedigree=TRUE,
+                    .will_allocate_ids=TRUE,
+                    .filename_prefix="atestF1",
+                    .will_save_pedigree_to_file=TRUE,
+                    .will_save_bvs_to_file=TRUE,
+                    .will_save_alleles_to_file=TRUE,
+                    .will_save_to_simdata=TRUE};
 	//AlleleMatrix* a = make_all_unidirectional_crosses(&sd, 0, g);
 	//sd.m->next_gen = a;
 	int g1 = make_all_unidirectional_crosses(d, g0, g);
@@ -595,6 +1152,13 @@ int compareFiles(char* f1, char* f2) {
 
 /* main, for testing. Only uses a small dataset. */
 int main(int argc, char* argv[]) {
+    if (argc > 1) {
+        unsigned int randomSeed = strtol(argv[1], 0, 0);
+        srand(randomSeed);
+    } else {
+        srand(time(NULL));
+    }
+
 	printf("Testing functionality ...");
 
 	// test random number generators
@@ -606,6 +1170,10 @@ int main(int argc, char* argv[]) {
 	SimData* d = create_empty_simdata();
 	int g0 = test_loaders(d);
 	printf("\t\t-> Loader functions all clear\n");
+
+    printf("\nNow testing group manipulation functions:\n");
+    g0 = test_grouping(d, g0);
+    printf("\t\t-> Group manipulation functions all clear\n");
 
 	// test effect calculators
 	printf("\nNow testing GEBV calculator:\n");
@@ -642,9 +1210,18 @@ int main(int argc, char* argv[]) {
 
 	//testing new grouping functions
 	d = create_empty_simdata();
-	g0 = load_all_simdata(d, "./gt_parents_mr2_50-trimto-5000.txt",
+    g0 = load_all_simdata(d, "./gt_parents_mr2_50-trimto-5000.txt",
 			 "./genetic-map_5112-trimto5000.txt",
-			 "./qtl_mr2.eff-processed.txt");
+             "./qtl_mr2.eff-processed.txt");
+
+    /*g0 = load_all_simdata(d, "./gt_parents_mr2_3000x30000.txt",
+                          "./genetic-map_huge30000.txt",
+                          "./eff_huge30000.txt");*/
+
+    /*g0 = load_all_simdata(d, "../../HealthAndHorns/AACo_HD_geno_101122/AACOg2.txt",
+                              "../../HealthAndHorns/AACo_HD_geno_101122/AACo_HD_geno_101122.map",
+                              "./eff_huge30000.txt");
+    fprintf(stdout, "REALLY HERE\n");*/
 
 	/*printf("\nNow testing split into individuals\n");
 	assert(get_group_size(d, g0) == 50);
