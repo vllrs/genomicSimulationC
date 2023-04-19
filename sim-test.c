@@ -224,38 +224,76 @@ int test_labels(SimData *d, int g0) {
     assert(d->n_labels == 0);
     const int label1value = 0;
     const int label1 = create_new_label(d, label1value);
+    const int label1index = get_index_of_label(d, label1);
     assert(d->n_labels == 1);
+    assert(label1 == 1); // expected
+    assert(label1index == 0); // expected
+    assert(d->label_ids != NULL);
+    assert(d->label_ids[label1index] == label1);
+    assert(d->label_defaults != NULL);
+    assert(d->label_defaults[label1index] == label1value);
     assert(d->m->n_labels == 1);
     assert(d->m->labels != NULL);
-    assert(d->m->labels[label1] != NULL);
-    assert(d->m->labels[label1][0] == label1value);
-    assert(d->m->labels[label1][1] == label1value);
-    assert(d->m->labels[label1][2] == label1value);
-    assert(d->m->labels[label1][3] == label1value);
-    assert(d->m->labels[label1][4] == label1value);
-    assert(d->m->labels[label1][5] == label1value);
+    assert(d->m->labels[label1index] != NULL);
+    assert(d->m->labels[label1index][0] == label1value);
+    assert(d->m->labels[label1index][1] == label1value);
+    assert(d->m->labels[label1index][2] == label1value);
+    assert(d->m->labels[label1index][3] == label1value);
+    assert(d->m->labels[label1index][4] == label1value);
+    assert(d->m->labels[label1index][5] == label1value);
 
     // Can create a second label
     const int label2value = 10;
     const int label2 = create_new_label(d, label2value);
+    const int label2index = get_index_of_label(d, label2);
     assert(d->n_labels == 2);
+    assert(label2 == 2); // expected
+    assert(label2index == 1); // expected
+    assert(d->label_ids != NULL);
+    assert(d->label_ids[label1index] == label1);
+    assert(d->label_ids[label2index] == label2);
+    assert(d->label_defaults != NULL);
+    assert(d->label_defaults[label1index] == label1value);
+    assert(d->label_defaults[label2index] == label2value);
     assert(d->m->n_labels == 2);
     assert(d->m->labels != NULL);
-    assert(d->m->labels[label1] != NULL);
-    assert(d->m->labels[label2] != NULL);
-    assert(d->m->labels[label1][0] == label1value);
-    assert(d->m->labels[label1][1] == label1value);
-    assert(d->m->labels[label1][2] == label1value);
-    assert(d->m->labels[label1][3] == label1value);
-    assert(d->m->labels[label1][4] == label1value);
-    assert(d->m->labels[label1][5] == label1value);
+    assert(d->m->labels[label1index] != NULL);
+    assert(d->m->labels[label2index] != NULL);
+    assert(d->m->labels[label1index][0] == label1value);
+    assert(d->m->labels[label1index][1] == label1value);
+    assert(d->m->labels[label1index][2] == label1value);
+    assert(d->m->labels[label1index][3] == label1value);
+    assert(d->m->labels[label1index][4] == label1value);
+    assert(d->m->labels[label1index][5] == label1value);
 
-    assert(d->m->labels[label2][0] == label2value);
-    assert(d->m->labels[label2][1] == label2value);
-    assert(d->m->labels[label2][2] == label2value);
-    assert(d->m->labels[label2][3] == label2value);
-    assert(d->m->labels[label2][4] == label2value);
-    assert(d->m->labels[label2][5] == label2value);
+    assert(d->m->labels[label2index][0] == label2value);
+    assert(d->m->labels[label2index][1] == label2value);
+    assert(d->m->labels[label2index][2] == label2value);
+    assert(d->m->labels[label2index][3] == label2value);
+    assert(d->m->labels[label2index][4] == label2value);
+    assert(d->m->labels[label2index][5] == label2value);
+
+    // Can change a default
+    const int newlabel2default = 8;
+    set_label_default(d,label2,newlabel2default);
+    assert(d->n_labels == 2);
+    assert(d->label_ids != NULL);
+    assert(d->label_ids[label1index] == label1);
+    assert(d->label_ids[label2index] == label2);
+    assert(d->label_defaults != NULL);
+    assert(d->label_defaults[label1index] == label1value);
+    assert(d->label_defaults[label2index] == newlabel2default);
+    assert(d->m->n_labels == 2);
+    assert(d->m->labels != NULL);
+    assert(d->m->labels[label1index] != NULL);
+    assert(d->m->labels[label2index] != NULL);
+    assert(d->m->labels[label2index][0] == label2value);
+    assert(d->m->labels[label2index][1] == label2value);
+    assert(d->m->labels[label2index][2] == label2value);
+    assert(d->m->labels[label2index][3] == label2value);
+    assert(d->m->labels[label2index][4] == label2value);
+    assert(d->m->labels[label2index][5] == label2value);
+
 
     // Can set values of a label
     const int newlabel1value = 2;
@@ -263,14 +301,14 @@ int test_labels(SimData *d, int g0) {
     assert(d->n_labels == 2);
     assert(d->m->n_labels == 2);
     assert(d->m->labels != NULL);
-    assert(d->m->labels[label1] != NULL);
-    assert(d->m->labels[label2] != NULL);
-    assert(d->m->labels[label1][0] == newlabel1value);
-    assert(d->m->labels[label1][1] == newlabel1value);
-    assert(d->m->labels[label1][2] == newlabel1value);
-    assert(d->m->labels[label1][3] == newlabel1value);
-    assert(d->m->labels[label1][4] == newlabel1value);
-    assert(d->m->labels[label1][5] == newlabel1value);
+    assert(d->m->labels[label1index] != NULL);
+    assert(d->m->labels[label2index] != NULL);
+    assert(d->m->labels[label1index][0] == newlabel1value);
+    assert(d->m->labels[label1index][1] == newlabel1value);
+    assert(d->m->labels[label1index][2] == newlabel1value);
+    assert(d->m->labels[label1index][3] == newlabel1value);
+    assert(d->m->labels[label1index][4] == newlabel1value);
+    assert(d->m->labels[label1index][5] == newlabel1value);
 
     // Can set values of a label (more labels than needed)
     const unsigned int newlabel2values[] = {11, 12, 13, 14, 15, 16, 17};
@@ -278,14 +316,14 @@ int test_labels(SimData *d, int g0) {
     assert(d->n_labels == 2);
     assert(d->m->n_labels == 2);
     assert(d->m->labels != NULL);
-    assert(d->m->labels[label1] != NULL);
-    assert(d->m->labels[label2] != NULL);
-    assert(d->m->labels[label2][0] == newlabel2values[0]);
-    assert(d->m->labels[label2][1] == newlabel2values[1]);
-    assert(d->m->labels[label2][2] == newlabel2values[2]);
-    assert(d->m->labels[label2][3] == newlabel2values[3]);
-    assert(d->m->labels[label2][4] == newlabel2values[4]);
-    assert(d->m->labels[label2][5] == newlabel2values[5]);
+    assert(d->m->labels[label1index] != NULL);
+    assert(d->m->labels[label2index] != NULL);
+    assert(d->m->labels[label2index][0] == newlabel2values[0]);
+    assert(d->m->labels[label2index][1] == newlabel2values[1]);
+    assert(d->m->labels[label2index][2] == newlabel2values[2]);
+    assert(d->m->labels[label2index][3] == newlabel2values[3]);
+    assert(d->m->labels[label2index][4] == newlabel2values[4]);
+    assert(d->m->labels[label2index][5] == newlabel2values[5]);
 
     // Can set value of a label (only some values set)
     const unsigned int newerlabel1values[] = {0,1,-1,100};
@@ -293,14 +331,14 @@ int test_labels(SimData *d, int g0) {
     assert(d->n_labels == 2);
     assert(d->m->n_labels == 2);
     assert(d->m->labels != NULL);
-    assert(d->m->labels[label1] != NULL);
-    assert(d->m->labels[label2] != NULL);
-    assert(d->m->labels[label1][0] == newlabel1value);
-    assert(d->m->labels[label1][1] == newerlabel1values[0]);
-    assert(d->m->labels[label1][2] == newerlabel1values[1]);
-    assert(d->m->labels[label1][3] == newerlabel1values[2]);
-    assert(d->m->labels[label1][4] == newerlabel1values[3]);
-    assert(d->m->labels[label1][5] == newlabel1value);
+    assert(d->m->labels[label1index] != NULL);
+    assert(d->m->labels[label2index] != NULL);
+    assert(d->m->labels[label1index][0] == newlabel1value);
+    assert(d->m->labels[label1index][1] == newerlabel1values[0]);
+    assert(d->m->labels[label1index][2] == newerlabel1values[1]);
+    assert(d->m->labels[label1index][3] == newerlabel1values[2]);
+    assert(d->m->labels[label1index][4] == newerlabel1values[3]);
+    assert(d->m->labels[label1index][5] == newlabel1value);
 
     // Test name-setters here too, they use the same procedure as set_labels_to_values
     // (Tests when setting whole body not just group)
@@ -328,31 +366,130 @@ int test_labels(SimData *d, int g0) {
     assert(d->n_labels == 2);
     assert(d->m->n_labels == 2);
     assert(d->m->labels != NULL);
-    assert(d->m->labels[label1] != NULL);
-    assert(d->m->labels[label2] != NULL);
-    assert(d->m->labels[label1][0] == newlabel1value + increment);
-    assert(d->m->labels[label1][1] == newerlabel1values[0] + increment);
-    assert(d->m->labels[label1][2] == newerlabel1values[1] + increment);
-    assert(d->m->labels[label1][3] == newerlabel1values[2] + increment);
-    assert(d->m->labels[label1][4] == newerlabel1values[3] + increment);
-    assert(d->m->labels[label1][5] == newlabel1value + increment);
+    assert(d->m->labels[label1index] != NULL);
+    assert(d->m->labels[label2index] != NULL);
+    assert(d->m->labels[label1index][0] == newlabel1value + increment);
+    assert(d->m->labels[label1index][1] == newerlabel1values[0] + increment);
+    assert(d->m->labels[label1index][2] == newerlabel1values[1] + increment);
+    assert(d->m->labels[label1index][3] == newerlabel1values[2] + increment);
+    assert(d->m->labels[label1index][4] == newerlabel1values[3] + increment);
+    assert(d->m->labels[label1index][5] == newlabel1value + increment);
 
-    // test can split from group by label
-    int groupB = split_from_group_by_label(d, label1, newlabel1value + increment);
-    assert(g0 != groupB);
-    assert(get_group_size(d, groupB) == 2);
-    int* Bindexes = get_group_indexes(d, groupB, 2);
+    // Need a second group just for testing purposes
+    GenOptions g = {.family_size = 1,
+                    .will_track_pedigree = FALSE,
+                    .will_name_offspring = FALSE,
+                    .offspring_name_prefix = NULL,
+                    .will_allocate_ids = FALSE,
+                    .filename_prefix = NULL,
+                    .will_save_alleles_to_file = FALSE,
+                    .will_save_bvs_to_file = FALSE,
+                    .will_save_pedigree_to_file = FALSE,
+                    .will_save_to_simdata = TRUE};
+    int f1 = cross_random_individuals(d,g0,4,0,g);
+    // Check that the labels are set to their defaults
+    assert(d->m->labels[label1index][6+0] == label1value);
+    assert(d->m->labels[label1index][6+1] == label1value);
+    assert(d->m->labels[label1index][6+2] == label1value);
+    assert(d->m->labels[label1index][6+3] == label1value);
+    assert(d->m->labels[label2index][6+0] == newlabel2default);
+    assert(d->m->labels[label2index][6+1] == newlabel2default);
+    assert(d->m->labels[label2index][6+2] == newlabel2default);
+    assert(d->m->labels[label2index][6+3] == newlabel2default);
+
+    set_labels_to_const(d,f1,label1,newlabel1value + increment);
+    set_labels_to_values(d,f1,0,label2,4,newerlabel1values);
+
+    // test can split by label (across groups)
+    int groupB = split_by_label_value(d, 0, label1, newlabel1value + increment);
+    assert(g0 != groupB && f1 != groupB);
+    assert(get_group_size(d, groupB) == 2+4);
+    int* Bindexes = get_group_indexes(d, groupB, 2+4);
     assert(Bindexes[0] == 0);
     assert(Bindexes[1] == 5);
+    assert(Bindexes[2] == 6 && Bindexes[3] == 7 && Bindexes[4] == 8 && Bindexes[5] == 9);
+
     free(Bindexes);
-    int toCombine[2] = {g0, groupB};
-    int g0b = combine_groups(d, 2, toCombine);
-    assert(get_group_size(d, g0b) == 6);
-    assert(g0 == g0b); // if this fails just need to restructure test cases to return changed vers of g0
+    int outtakes[4] = {6,7,8,9};
+    int f1outtakes = split_from_group(d,4,outtakes);
+    int toCombine[2] = {f1, f1outtakes};
+    f1 = combine_groups(d, 2, toCombine);
+    assert(get_group_size(d, f1) == 4);
+    toCombine[0] = g0;
+    toCombine[1] = groupB;
+    g0 = combine_groups(d, 2, toCombine);
+    assert(get_group_size(d, g0) == 6);
+
+    // test can split by label range (across groups)
+    groupB = split_by_label_range(d, 0, label2, 1, 15);
+    assert(g0 != groupB && f1 != groupB);
+    assert(get_group_size(d, groupB) == 6);
+    Bindexes = get_group_indexes(d, groupB, 6);
+    assert(Bindexes[0] == 0);
+    assert(Bindexes[1] == 1);
+    assert(Bindexes[2] == 2);
+    assert(Bindexes[3] == 3);
+    assert(Bindexes[4] == 4);
+    assert(Bindexes[5] == 7);
+
+    free(Bindexes);
+    outtakes[0] = 7;
+    f1outtakes = split_from_group(d,1,outtakes);
+    toCombine[0] = f1;
+    toCombine[1] = f1outtakes;
+    f1 = combine_groups(d, 2, toCombine);
+    assert(get_group_size(d, f1) == 4);
+    toCombine[0] = g0;
+    toCombine[1] = groupB;
+    g0 = combine_groups(d, 2, toCombine);
+    assert(get_group_size(d, g0) == 6);
+
+    // and can split from group (within group)
+    groupB = split_by_label_value(d, g0, label1, newlabel1value + increment);
+    assert(g0 != groupB && f1 != groupB);
+    assert(get_group_size(d, groupB) == 2);
+    Bindexes = get_group_indexes(d, groupB, 2);
+    assert(Bindexes[0] == 0);
+    assert(Bindexes[1] == 5);
+
+    free(Bindexes);
+    toCombine[0] = g0;
+    toCombine[1] = groupB;
+    g0 = combine_groups(d, 2, toCombine);
+    assert(get_group_size(d, g0) == 6);
+    assert(get_group_size(d, f1) == 4);
+
+
+    // and can split from group by label range (within group)
+    groupB = split_by_label_range(d, g0, label2, 1, 15);
+    assert(g0 != groupB && f1 != groupB);
+    assert(get_group_size(d, groupB) == 5);
+    Bindexes = get_group_indexes(d, groupB, 5);
+    assert(Bindexes[0] == 0);
+    assert(Bindexes[1] == 1);
+    assert(Bindexes[2] == 2);
+    assert(Bindexes[3] == 3);
+    assert(Bindexes[4] == 4);
+
+    free(Bindexes);
+    toCombine[0] = g0;
+    toCombine[1] = groupB;
+    g0 = combine_groups(d, 2, toCombine);
+    assert(get_group_size(d, g0) == 6);
+    assert(get_group_size(d, f1) == 4);
+    delete_group(d,f1);
+
+    // Check label deletion works
+    delete_label(d,label1);
+    assert(d->n_labels == 1);
+    assert(d->m->n_labels == 1);
+    assert(d->label_ids[0] == label2);
+    assert(d->label_defaults[0] == newlabel2default);
+    assert(d->m->labels[0][0] == 11);
 
     printf("...Label manipulation runs correctly\n");
 
-    return 0;
+    return g0;
 }
 
 int test_random_splits(SimData *d, int g0) {
@@ -699,7 +836,7 @@ int test_specific_splits(SimData *d, int g0) {
 
 
 int test_grouping(SimData *d, int g0) {
-    test_labels(d, g0);
+    g0 = test_labels(d, g0);
     g0 = test_random_splits(d, g0);
     g0 = test_specific_splits(d, g0);
 

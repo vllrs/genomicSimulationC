@@ -13,6 +13,7 @@ This can also be interpreted as the list of user-facing functions in genomicSimu
 | calculate_minimum_bv | see.minimum.GEBV |
 | calculate_optimum_bv | see.optimal.GEBV |
 | calculate_optimal_alleles | see.optimal.haplotype |
+| create_new_label | make.label |
 | ~ ||
 | make_all_unidirectional_crosses | cross.all.pairs |
 | make_crosses_from_file | cross.combinations.file |
@@ -34,6 +35,13 @@ This can also be interpreted as the list of user-facing functions in genomicSimu
 | get_group_parent_names(parent=2) | see.group.data(data.type="P2") |
 | get_group_pedigrees | see.group.data(data.type="ped") |
 | ~ ||
+| set_names_to_values | change.names.to.values |
+| set_labels_to_values | change.label.to.values |
+| set_labels_to_const | change.label.to.this |
+| increment_labels | change.label.by.amount |
+| set_label_default | change.label.default |
+| delete_label | delete.label | 
+| ~ ||
 | split_evenly_into_two | break.group.evenly(into.n=2) |
 | split_evenly_into_n   | break.group.evenly |
 | split_by_specific_counts_into_n  | break.group.into.buckets |
@@ -45,6 +53,8 @@ This can also be interpreted as the list of user-facing functions in genomicSimu
 | split_into_halfsib_families | break.group.into.halfsib.families |
 | split_into_individuals | break.group.into.individuals |
 | split_from_group | make.group |
+| split_by_label_value | make.group.from.label |
+| split_by_label_range | make.group.from.label.range |
 | combine_groups | combine.groups |
 | delete_group | delete.group  |
 | ~ ||

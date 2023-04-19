@@ -2,6 +2,7 @@
 
 /* main, as a simple guide to library functions. */
 int main(int argc, char* argv[]) {
+    srand(time(NULL));
 
 	// To show you the speed of the library the function calls are wrapped by
 	// this clock call.
