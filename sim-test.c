@@ -3,7 +3,8 @@
 float calculate_heterozygosity(SimData* d, int group_number) {
 	int hetcount = 0;
 	int gn = get_group_size(d, group_number);
-	char** galleles = get_group_genes(d, group_number, gn);
+    char* galleles[gn];
+    get_group_genes(d, group_number, gn, galleles);
 
 	// uses subjects as the first index
 	for (int i = 0; i < gn; i++) {
@@ -14,7 +15,6 @@ float calculate_heterozygosity(SimData* d, int group_number) {
 		}
 	}
 
-	free(galleles);
 	return (float) hetcount / (gn * d->n_markers);
 }
 
@@ -404,12 +404,12 @@ int test_labels(SimData *d, int g0) {
     int groupB = split_by_label_value(d, 0, label1, newlabel1value + increment);
     assert(g0 != groupB && f1 != groupB);
     assert(get_group_size(d, groupB) == 2+4);
-    int* Bindexes = get_group_indexes(d, groupB, 2+4);
+    int Bindexes[2+4];
+    get_group_indexes(d, groupB, 2+4, Bindexes);
     assert(Bindexes[0] == 0);
     assert(Bindexes[1] == 5);
     assert(Bindexes[2] == 6 && Bindexes[3] == 7 && Bindexes[4] == 8 && Bindexes[5] == 9);
 
-    free(Bindexes);
     int outtakes[4] = {6,7,8,9};
     int f1outtakes = split_from_group(d,4,outtakes);
     int toCombine[2] = {f1, f1outtakes};
@@ -424,7 +424,7 @@ int test_labels(SimData *d, int g0) {
     groupB = split_by_label_range(d, 0, label2, 1, 15);
     assert(g0 != groupB && f1 != groupB);
     assert(get_group_size(d, groupB) == 6);
-    Bindexes = get_group_indexes(d, groupB, 6);
+    get_group_indexes(d, groupB, 6, Bindexes);
     assert(Bindexes[0] == 0);
     assert(Bindexes[1] == 1);
     assert(Bindexes[2] == 2);
@@ -432,7 +432,6 @@ int test_labels(SimData *d, int g0) {
     assert(Bindexes[4] == 4);
     assert(Bindexes[5] == 7);
 
-    free(Bindexes);
     outtakes[0] = 7;
     f1outtakes = split_from_group(d,1,outtakes);
     toCombine[0] = f1;
@@ -448,11 +447,10 @@ int test_labels(SimData *d, int g0) {
     groupB = split_by_label_value(d, g0, label1, newlabel1value + increment);
     assert(g0 != groupB && f1 != groupB);
     assert(get_group_size(d, groupB) == 2);
-    Bindexes = get_group_indexes(d, groupB, 2);
+    get_group_indexes(d, groupB, 2, Bindexes);
     assert(Bindexes[0] == 0);
     assert(Bindexes[1] == 5);
 
-    free(Bindexes);
     toCombine[0] = g0;
     toCombine[1] = groupB;
     g0 = combine_groups(d, 2, toCombine);
@@ -464,14 +462,13 @@ int test_labels(SimData *d, int g0) {
     groupB = split_by_label_range(d, g0, label2, 1, 15);
     assert(g0 != groupB && f1 != groupB);
     assert(get_group_size(d, groupB) == 5);
-    Bindexes = get_group_indexes(d, groupB, 5);
+    get_group_indexes(d, groupB, 5, Bindexes);
     assert(Bindexes[0] == 0);
     assert(Bindexes[1] == 1);
     assert(Bindexes[2] == 2);
     assert(Bindexes[3] == 3);
     assert(Bindexes[4] == 4);
 
-    free(Bindexes);
     toCombine[0] = g0;
     toCombine[1] = groupB;
     g0 = combine_groups(d, 2, toCombine);
@@ -658,7 +655,8 @@ int test_specific_splits(SimData *d, int g0) {
     assert(get_group_size(d,families[1]) == 5);
     assert(get_group_size(d,families[2]) == 5);
     // Check all groups contain families
-    int* f1family1 = get_group_indexes(d,families[0],5);
+    int f1family1[5];
+    assert(get_group_indexes(d,families[0],5,f1family1) == 5);
     assert(d->m->pedigrees[0][f1family1[0]] == d->m->pedigrees[0][f1family1[1]] &&
             d->m->pedigrees[0][f1family1[0]] == d->m->pedigrees[0][f1family1[2]] &&
             d->m->pedigrees[0][f1family1[0]] == d->m->pedigrees[0][f1family1[3]] &&
@@ -668,7 +666,8 @@ int test_specific_splits(SimData *d, int g0) {
             d->m->pedigrees[1][f1family1[0]] == d->m->pedigrees[1][f1family1[3]] &&
             d->m->pedigrees[1][f1family1[0]] == d->m->pedigrees[1][f1family1[4]]);
 
-    int* f1family2 = get_group_indexes(d,families[1],5);
+    int f1family2[5];
+    assert(get_group_indexes(d,families[1],5,f1family2) == 5);
     assert(d->m->pedigrees[0][f1family1[0]] == d->m->pedigrees[0][f1family1[1]] &&
             d->m->pedigrees[0][f1family1[0]] == d->m->pedigrees[0][f1family1[2]] &&
             d->m->pedigrees[0][f1family1[0]] == d->m->pedigrees[0][f1family1[3]] &&
@@ -678,7 +677,8 @@ int test_specific_splits(SimData *d, int g0) {
             d->m->pedigrees[1][f1family1[0]] == d->m->pedigrees[1][f1family1[3]] &&
             d->m->pedigrees[1][f1family1[0]] == d->m->pedigrees[1][f1family1[4]]);
 
-    int* f1family3 = get_group_indexes(d,families[2],5);
+    int f1family3[5];
+    assert(get_group_indexes(d,families[2],5,f1family3) == 5);
     assert(d->m->pedigrees[0][f1family1[0]] == d->m->pedigrees[0][f1family1[1]] &&
             d->m->pedigrees[0][f1family1[0]] == d->m->pedigrees[0][f1family1[2]] &&
             d->m->pedigrees[0][f1family1[0]] == d->m->pedigrees[0][f1family1[3]] &&
@@ -696,9 +696,6 @@ int test_specific_splits(SimData *d, int g0) {
     assert(d->m->pedigrees[0][f1family2[0]] != d->m->pedigrees[0][f1family3[0]] &&
             d->m->pedigrees[1][f1family2[0]] != d->m->pedigrees[1][f1family3[0]]);
 
-    free(f1family1);
-    free(f1family2);
-    free(f1family3);
     delete_group(d, families[0]);
     delete_group(d, families[1]);
     delete_group(d, families[2]);
@@ -725,7 +722,8 @@ int test_specific_splits(SimData *d, int g0) {
     // Check all halfsib families share the same parent 1
     int fhsfamily1size = get_group_size(d,halfsibfamilies[0]); // assumes the largest hsfamily will be the first one seen
     assert(fhsfamily1size == 10);
-    int* fhsfamily1 = get_group_indexes(d,halfsibfamilies[0],10);
+    int fhsfamily1[10];
+    assert(get_group_indexes(d,halfsibfamilies[0],10,fhsfamily1) == fhsfamily1size);
     assert(d->m->pedigrees[0][fhsfamily1[0]] == d->m->pedigrees[0][fhsfamily1[1]] &&
             d->m->pedigrees[0][fhsfamily1[0]] == d->m->pedigrees[0][fhsfamily1[2]] &&
             d->m->pedigrees[0][fhsfamily1[0]] == d->m->pedigrees[0][fhsfamily1[3]] &&
@@ -738,7 +736,8 @@ int test_specific_splits(SimData *d, int g0) {
 
     int fhsfamily2size = get_group_size(d,halfsibfamilies[1]);
     assert(fhsfamily2size == 5);
-    int* fhsfamily2 = get_group_indexes(d,halfsibfamilies[1],5);
+    int fhsfamily2[5];
+    assert(get_group_indexes(d,halfsibfamilies[1],5,fhsfamily2) == fhsfamily2size);
     assert(d->m->pedigrees[0][fhsfamily2[0]] == d->m->pedigrees[0][fhsfamily2[1]] &&
             d->m->pedigrees[0][fhsfamily2[0]] == d->m->pedigrees[0][fhsfamily2[2]] &&
             d->m->pedigrees[0][fhsfamily2[0]] == d->m->pedigrees[0][fhsfamily2[3]] &&
@@ -746,7 +745,8 @@ int test_specific_splits(SimData *d, int g0) {
 
     int fhsfamily3size = get_group_size(d,halfsibfamilies[2]);
     assert(fhsfamily3size == 5);
-    int* fhsfamily3 = get_group_indexes(d,halfsibfamilies[2],5);
+    int fhsfamily3[fhsfamily3size];
+    assert(get_group_indexes(d,halfsibfamilies[2],5,fhsfamily3) == fhsfamily3size);
     assert(d->m->pedigrees[0][fhsfamily3[0]] == d->m->pedigrees[0][fhsfamily3[1]] &&
             d->m->pedigrees[0][fhsfamily3[0]] == d->m->pedigrees[0][fhsfamily3[2]] &&
             d->m->pedigrees[0][fhsfamily3[0]] == d->m->pedigrees[0][fhsfamily3[3]] &&
@@ -756,10 +756,6 @@ int test_specific_splits(SimData *d, int g0) {
     assert(d->m->pedigrees[0][fhsfamily1[0]] != d->m->pedigrees[0][fhsfamily2[0]]);
     assert(d->m->pedigrees[0][fhsfamily1[0]] != d->m->pedigrees[0][fhsfamily3[0]]);
     assert(d->m->pedigrees[0][fhsfamily2[0]] != d->m->pedigrees[0][fhsfamily3[0]]);
-
-    free(fhsfamily1);
-    free(fhsfamily2);
-    free(fhsfamily3);
 
     // Then check halfsibs in the other direction
     fhs = combine_groups(d,3,halfsibfamilies);
@@ -776,7 +772,7 @@ int test_specific_splits(SimData *d, int g0) {
     // Check all halfsib families share the same parent 1
     fhsfamily1size = get_group_size(d,halfsibfamilies[0]); // assumes the largest hsfamily will be the first one seen
     assert(fhsfamily1size == 10);
-    fhsfamily1 = get_group_indexes(d,halfsibfamilies[0],10);
+    assert(get_group_indexes(d,halfsibfamilies[0],10,fhsfamily1) == fhsfamily1size);
     assert(d->m->pedigrees[1][fhsfamily1[0]] == d->m->pedigrees[1][fhsfamily1[1]] &&
             d->m->pedigrees[1][fhsfamily1[0]] == d->m->pedigrees[1][fhsfamily1[2]] &&
             d->m->pedigrees[1][fhsfamily1[0]] == d->m->pedigrees[1][fhsfamily1[3]] &&
@@ -789,7 +785,7 @@ int test_specific_splits(SimData *d, int g0) {
 
     fhsfamily2size = get_group_size(d,halfsibfamilies[1]);
     assert(fhsfamily2size == 5);
-    fhsfamily2 = get_group_indexes(d,halfsibfamilies[1],5);
+    assert(get_group_indexes(d,halfsibfamilies[1],5,fhsfamily2) == fhsfamily2size);
     assert(d->m->pedigrees[1][fhsfamily2[0]] == d->m->pedigrees[1][fhsfamily2[1]] &&
             d->m->pedigrees[1][fhsfamily2[0]] == d->m->pedigrees[1][fhsfamily2[2]] &&
             d->m->pedigrees[1][fhsfamily2[0]] == d->m->pedigrees[1][fhsfamily2[3]] &&
@@ -797,7 +793,7 @@ int test_specific_splits(SimData *d, int g0) {
 
     fhsfamily3size = get_group_size(d,halfsibfamilies[2]);
     assert(fhsfamily3size == 5);
-    fhsfamily3 = get_group_indexes(d,halfsibfamilies[2],5);
+    assert(get_group_indexes(d,halfsibfamilies[2],5,fhsfamily3) == fhsfamily3size);
     assert(d->m->pedigrees[1][fhsfamily3[0]] == d->m->pedigrees[1][fhsfamily3[1]] &&
             d->m->pedigrees[1][fhsfamily3[0]] == d->m->pedigrees[1][fhsfamily3[2]] &&
             d->m->pedigrees[1][fhsfamily3[0]] == d->m->pedigrees[1][fhsfamily3[3]] &&
@@ -808,19 +804,16 @@ int test_specific_splits(SimData *d, int g0) {
     assert(d->m->pedigrees[1][fhsfamily1[0]] != d->m->pedigrees[1][fhsfamily3[0]]);
     assert(d->m->pedigrees[1][fhsfamily2[0]] != d->m->pedigrees[1][fhsfamily3[0]]);
 
-    free(fhsfamily1);
-    free(fhsfamily2);
-    free(fhsfamily3);
     fhs = combine_groups(d,3,halfsibfamilies);
 
     // Can create a group from indexes
     int splitters[4] = {0, 2, 5, 6};
     int g0b = split_from_group(d, 4, splitters);
     assert(get_group_size(d,g0) == 3 && get_group_size(d,g0b) == 4);
-    int* g0bi = get_group_indexes(d,g0b,4);
+    int g0bi[4];
+    assert(get_group_indexes(d,g0b,4,g0bi) == 4);
     assert(g0bi[0] == 0 && g0bi[1] == 2 && g0bi[2] == 5 && g0bi[3] == 6);
 
-    free(g0bi);
     int n6 = split_from_group(d, 1, splitters+3);
     int combiners[2] = {fhs, n6};
     fhs = combine_groups(d, 2, combiners);
@@ -1084,7 +1077,8 @@ void test_crossing_randomly(SimData *d, int g1) {
     gopt.will_track_pedigree = TRUE;
     // Test random crossing seems about right
     int g2 = cross_random_individuals( d , g1, 4, 0, gopt);
-    int* g2ixs = get_group_indexes(d, g2, -1);
+    int g2ixs[4];
+    assert(get_group_indexes(d, g2, -1, g2ixs) == 4);
 
     assert(get_group_size(d, g2) == 4);
     int g2minid = d->m->ids[g2ixs[0]];
@@ -1138,26 +1132,33 @@ void test_crossing_randomly(SimData *d, int g1) {
     //delete_group( d, g5 );
     printf("...crossed randomly between two groups\n");
     delete_group( d, g2 );
-    free( g2ixs );
 }
 
 int test_deletors(SimData *d, int g0) {
-	int ngroups1;
-	int* groups1 = get_existing_groups(d, &ngroups1);
+    int groups1[50];
+    int ngroups1 = get_existing_groups(d, 50, groups1);
+
+    int groups1b[50];
+    int groupcounts1b[50];
+    int ngroups1b = get_existing_group_counts(d, 40, groups1b, groupcounts1b);
+    assert(ngroups1b == ngroups1);
+    for (int i = 0; i < ngroups1; ++i) {
+        assert(groups1[i] == groups1b[i]);
+    }
 
 	delete_group(d, g0);
-	int ngroups2;
-	int* groups2 = get_existing_groups(d, &ngroups2);
+    int groups2[50];
+    int ngroups2 = get_existing_groups(d, 50, groups2);
 
 	assert(ngroups1 - ngroups2 == 1);
 	for (int i = 0; i < ngroups1; ++i) {
 		if (i == ngroups1 - 1 || groups1[i] != groups2[i]) {
 			assert(groups1[i] == g0);
+            assert(groups1b[i] == g0);
+            assert(groupcounts1b[i] == 6);
 			break;
 		}
 	}
-    free(groups1);
-    free(groups2);
 	printf("...group of genotypes cleared correctly\n");
 
 	delete_simdata(d);
@@ -1317,44 +1318,44 @@ int test_iterators(SimData* d, int gp) {
 
 int test_getters(SimData* d, int gp) {
     assert(get_group_size(d, gp) == 6);
-    char** alleles = get_group_genes(d, gp, 6);
+    char* alleles[6];
+    assert(get_group_genes(d, gp, 6, alleles) == 6);
     assert(strncmp(alleles[0],"TTAATT", 6) == 0); // G01
     assert(strncmp(alleles[1],"TTAATT", 6) == 0); // G02
     assert(strncmp(alleles[2],"TTAATA", 6) == 0); // G03
     assert(strncmp(alleles[3],"TAAATA", 6) == 0); // G04
     assert(strncmp(alleles[4],"TTTTTT", 6) == 0); // G05
     assert(strncmp(alleles[5],"ATAATT", 6) == 0); // G06
-    free(alleles);
 
-    char** names = get_group_names(d, gp, -1);
+    char* names[6];
+    assert(get_group_names(d, gp, -1, names) == 6);
     assert(strcmp(names[0], "G01") == 0);
     assert(strcmp(names[1], "G02") == 0);
     assert(strcmp(names[2], "G03") == 0);
     assert(strcmp(names[3], "G04") == 0);
     assert(strcmp(names[4], "G05") == 0);
     assert(strcmp(names[5], "G06") == 0);
-    free(names);
 
-    unsigned int* ids = get_group_ids(d, gp, -1);
+    unsigned int ids[10];
+    assert(get_group_ids(d, gp, -1, ids) == 6);
     for (int i = 0; i < 6; ++i) {
         assert(ids[i] == i+1);
     }
-    free(ids);
 
-    int* indexes = get_group_indexes(d, gp, 6);
+    int indexes[6];
+    assert(get_group_indexes(d, gp, 6, indexes) == 6);
     for (int i = 0; i < 6; ++i) {
         assert(indexes[i] == i);
     }
-    free(indexes);
 
-    double* bvs = get_group_bvs(d, gp, 6);
+    double bvs[6];
+    assert(get_group_bvs(d, gp, 6, bvs) == 6);
     assert(fabs(bvs[0] - 1.4) < TOL);
     assert(fabs(bvs[1] - 1.4) < TOL);
     assert(fabs(bvs[2] - 1.6) < TOL);
     assert(fabs(bvs[3] - (-0.1)) < TOL);
     assert(fabs(bvs[4] - 0.6) < TOL);
     assert(fabs(bvs[5] - (-0.3)) < TOL);
-    free(bvs);
 
     int combos[2][3];
     combos[0][0] = 0; combos[1][0] = 0;
@@ -1374,27 +1375,25 @@ int test_getters(SimData* d, int gp) {
     };
     int f1 = cross_these_combinations(d,3,combos,g);
 
-    unsigned int* p1s = get_group_parent_ids(d, f1, UNINITIALISED, 1);
-    unsigned int* p2s = get_group_parent_ids(d, f1, 3, 2);
+    unsigned int p1s[3]; unsigned int p2s[6];
+    assert(get_group_parent_ids(d, f1, UNINITIALISED, 1, p1s) == 3);
+    assert(get_group_parent_ids(d, f1, 3, 2, p2s) == 3);
     assert(p1s[0] == 1);
     assert(p1s[1] == 2);
     assert(p1s[2] == 2);
     assert(p2s[0] == 1);
     assert(p2s[1] == 3);
     assert(p2s[2] == 6);
-    free(p1s);
-    free(p2s);
 
-    char** p1ns = get_group_parent_names(d, f1, 3, 1);
-    char** p2ns = get_group_parent_names(d, f1, UNINITIALISED, 2);
+    char* p1ns[3]; char* p2ns[3];
+    assert(get_group_parent_names(d, f1, 3, 1, p1ns) == 3);
+    assert(get_group_parent_names(d, f1, UNINITIALISED, 2, p2ns) == 3);
     assert(strncmp(p1ns[0],"G01",sizeof(char)*5)==0);
     assert(strncmp(p1ns[1],"G02",sizeof(char)*5)==0);
     assert(strncmp(p1ns[2],"G02",sizeof(char)*5)==0);
     assert(strncmp(p2ns[0],"G01",sizeof(char)*5)==0);
     assert(strncmp(p2ns[1],"G03",sizeof(char)*5)==0);
     assert(strncmp(p2ns[2],"G06",sizeof(char)*5)==0);
-    free(p1ns);
-    free(p2ns);
 
     delete_group(d,f1);
 

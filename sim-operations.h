@@ -322,6 +322,15 @@ int _ascending_int_dcomparer(const void* pp0, const void* pp1);
  * @{
  */
 
+    /** @defgroup iterators Genotype Iterators
+     *
+     * For iterating through the genotypes in the simulation.
+     * It is possible to iterate through one group or through
+     * every genotype in the simulation.
+     *
+     * @{
+     */
+
 /** An AlleleMatrix/AlleleMatrix index coordinate of a particular
  *  genotype in the simulation. To be used to look up details of
  *  that genotype using the `get_` family of functions.
@@ -415,7 +424,19 @@ GenoLocation set_bidirectional_iter_to_end(BidirectionalIterator* it);
 GenoLocation next_forwards(BidirectionalIterator* it);
 GenoLocation next_backwards(BidirectionalIterator* it);
 GenoLocation next_get_nth(RandomAccessIterator* it, unsigned long int n);
+    /**@}*/
 
+    /** @defgroup liteget Getting data from an Iterator
+     *
+     * These functions take as a parameter a GenoLocation (the output
+     * of iterators), and access the data for the single genotype that
+     * the iterator has found.
+     *
+     * They are very lightweight: they have no error-checking and
+     * implemented inline.
+     *
+     * @{
+     */
 /** Get the name of a genotype
  *
  * @param loc location of the relevant genotype
@@ -496,7 +517,17 @@ static inline unsigned int get_group(GenoLocation loc) {
 static inline int get_label_value(GenoLocation loc, int labelIndex) {
     return loc.localAM->labels[labelIndex][loc.localPos];
 }
+    /**@}*/
 
+    /** @defgroup search Data Searching Functions
+     *
+     * These functions search the simulation data for the genotype
+     * that matches a particular known piece of information, eg a
+     * name, id, global index, or set of parents. Depending on
+     * the size of the simulation, they may not be fast.
+     *
+     * @{
+     */
 char* get_name_of_id( AlleleMatrix* start, unsigned int id);
 char* get_genes_of_id ( AlleleMatrix* start, unsigned int id);
 int get_parents_of_id( AlleleMatrix* start, unsigned int id, unsigned int output[2]);
@@ -506,19 +537,32 @@ int get_index_of_child( AlleleMatrix* start, unsigned int parent1id, unsigned in
 int get_index_of_name( AlleleMatrix* start, char* name);
 unsigned int get_id_of_index( AlleleMatrix* start, int index);
 char* get_genes_of_index( AlleleMatrix* start, int index);
+    /**@}*/
 
+    /** @defgroup collgetters Collective Data Access Functions
+     *
+     * These functions return vector data, rather than data on
+     * a single genotype or single group.
+     *
+     * The `get_group_` family are left here for legacy purposes: using an
+     * iterator is the new and less memory intensive way to do the tasks
+     * these were used for.
+     *
+     * @{
+     */
 int get_group_size( SimData* d, int group_id);
-char** get_group_genes( SimData* d, int group_id, int group_size);
-char** get_group_names( SimData* d, int group_id, int group_size);
-unsigned int* get_group_ids( SimData* d, int group_id, int group_size);
-int* get_group_indexes(SimData* d, int group_id, int group_size);
-double* get_group_bvs( SimData* d, int group_id, int group_size);
-unsigned int* get_group_parent_ids( SimData* d, int group_id, int group_size, int parent);
-char** get_group_parent_names( SimData* d, int group_id, int group_size, int parent);
-char** get_group_pedigrees( SimData* d, int group_id, int group_size);
+int get_group_genes( SimData* d, int group_id, int group_size, char** output);
+int get_group_names( SimData* d, int group_id, int group_size, char** output);
+int get_group_ids( SimData* d, int group_id, int group_size, unsigned int* output);
+int get_group_indexes(SimData* d, int group_id, int group_size, int* output);
+int get_group_bvs( SimData* d, int group_id, int group_size, double* output);
+int get_group_parent_ids( SimData* d, int group_id, int group_size, int parent, unsigned int* output);
+int get_group_parent_names( SimData* d, int group_id, int group_size, int parent, char** output);
+int get_group_pedigrees( SimData* d, int group_id, int group_size, char** output);
 
-int* get_existing_groups( SimData* d, int* n_groups);
-int** get_existing_group_counts( SimData* d, int* n_groups);
+int get_existing_groups( SimData* d, int n_groups, int* output);
+int get_existing_group_counts( SimData* d, int n_groups, int* output_groups, int* output_sizes);
+    /**@}*/
 /**@}*/
 
 /** @defgroup groupmod Seletion/Group Modification Functions

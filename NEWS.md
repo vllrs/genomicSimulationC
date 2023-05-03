@@ -16,6 +16,7 @@ Latest News       {#news}
 	- Deleting: delete_bidirectional_iter; delete_randomaccess_iter
 - Iterators return GenoLocation values. A new family of get_ functions has been added to access the data of the genotype at a particular GenoLocation.
 	- get_name; get_alleles; get_first_parent; get_second_parent; get_id; get_group; get_label_value
+- Collective data access functions (get_group_\* family, get_existing_groups and get_existing_group_counts) now use parameter modification (save their results to an array passed as a parameter) rather than by returning a heap array.
 
 # genomicSimulationC 0.2.2
 

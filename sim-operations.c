@@ -2547,8 +2547,18 @@ void split_into_individuals( SimData* d, int group_id, int* results) {
     }
 
 	// get pre-existing numbers
-	int n_groups = 0;
-	int* existing_groups = get_existing_groups( d, &n_groups);
+    int n_groups;
+    int eg_length = 5;
+    int* existing_groups = get_malloc(sizeof(int)*eg_length);
+    n_groups = get_existing_groups(d, eg_length, existing_groups);
+    while (n_groups == eg_length) {
+        free(existing_groups);
+        eg_length = eg_length << 1;
+        existing_groups = get_malloc(sizeof(int)*eg_length);
+        n_groups = get_existing_groups(d, eg_length, existing_groups);
+    }
+    // n_groups is now less than eg_length, so we have found all the groups.
+
 	// have another variable for the next id we can't allocate so we can still free the original.
 	int level = 0;
 
@@ -2613,8 +2623,16 @@ void split_into_families(SimData* d, int group_id, int* results) {
     }
 
 	// get pre-existing numbers
-	int n_groups = 0;
-	int* existing_groups = get_existing_groups( d, &n_groups);
+    int n_groups;
+    int eg_length = 5;
+    int* existing_groups = get_malloc(sizeof(int)*eg_length);
+    n_groups = get_existing_groups(d, eg_length, existing_groups);
+    while (n_groups == eg_length) {
+        free(existing_groups);
+        eg_length = eg_length << 1;
+        existing_groups = get_malloc(sizeof(int)*eg_length);
+        n_groups = get_existing_groups(d, eg_length, existing_groups);
+    }
 	// have another variable for the next id we can't allocate so we can still free the original.
 	int level = 0;
 
@@ -2622,13 +2640,14 @@ void split_into_families(SimData* d, int group_id, int* results) {
 	// but this could be greater than our maximum allocation, so we
 	// will have to go through in batches
 	int families_found = 0;
-	unsigned int family_groups[CONTIG_WIDTH];
-	unsigned int family_identities[2][CONTIG_WIDTH];
+    int family_bookmarks_len = 50;
+    unsigned int* family_groups = get_malloc(sizeof(unsigned int)*family_bookmarks_len);
+    unsigned int* family_identities[2] = {get_malloc(sizeof(unsigned int)*family_bookmarks_len),
+                                          get_malloc(sizeof(unsigned int)*family_bookmarks_len)};
 
 
 	// looping through all entries
 	AlleleMatrix* m = d->m;
-	AlleleMatrix* bookmarkm = NULL;
 	int n_found = 0; // number of groups created, for saving results
 	int next_id = 0;
 	while (1) {
@@ -2647,53 +2666,56 @@ void split_into_families(SimData* d, int group_id, int* results) {
 				// if the group number has not been updated in the above loop
 				// (so we don't know this family yet)
 				if (m->groups[i] == group_id) {
-					if (families_found < CONTIG_WIDTH) {
-						// find the next unused group;
-						++next_id;
-						while (level < n_groups) {
-							if (next_id < existing_groups[level]) {
-								break;
-							}
+                    if (families_found >= family_bookmarks_len) {
+                        int old_size = family_bookmarks_len;
+                        unsigned int* old_groups = family_groups;
+                        unsigned int* old_ident0 = family_identities[0];
+                        unsigned int* old_ident1 = family_identities[1];
 
-							++level;
-							++next_id;
-						}
+                        family_bookmarks_len = family_bookmarks_len << 1;
+                        family_groups = get_malloc(sizeof(unsigned int)*family_bookmarks_len);
+                        memcpy(family_groups,old_groups,sizeof(unsigned int)*old_size);
+                        free(old_groups);
+                        family_identities[0] = get_malloc(sizeof(unsigned int)*family_bookmarks_len);
+                        memcpy(family_identities[0],old_ident0,sizeof(unsigned int)*old_size);
+                        free(old_ident0);
+                        family_identities[1] = get_malloc(sizeof(unsigned int)*family_bookmarks_len);
+                        memcpy(family_identities[1],old_ident1,sizeof(unsigned int)*old_size);
+                        free(old_ident1);
+                    }
 
-						// save this entry as a member of that new group
-						m->groups[i] = next_id;
-						family_groups[families_found] = next_id;
-						family_identities[0][families_found] = m->pedigrees[0][i];
-						family_identities[1][families_found] = m->pedigrees[1][i];
-						++families_found;
+                    // find the next unused group;
+                    ++next_id;
+                    while (level < n_groups) {
+                        if (next_id < existing_groups[level]) {
+                            break;
+                        }
 
-						if (results != NULL) {
-							results[n_found] = next_id;
-							++n_found;
-						}
+                        ++level;
+                        ++next_id;
+                    }
 
-					} else if (bookmarkm == NULL) {
-						// if we are here, then there are more families than we
-						// can track at a time. Save the place and come back for the
-						// extra families later.
-						bookmarkm = m;
-					} // else we have a bookmark already and so will be coming back here
+                    // save this entry as a member of that new group
+                    m->groups[i] = next_id;
+                    family_groups[families_found] = next_id;
+                    family_identities[0][families_found] = m->pedigrees[0][i];
+                    family_identities[1][families_found] = m->pedigrees[1][i];
+                    ++families_found;
+
+                    if (results != NULL) {
+                        results[n_found] = next_id;
+                        ++n_found;
+                    }
 				}
 			}
 		}
 
 		if (m->next == NULL) {
 			free(existing_groups);
-			if (bookmarkm == NULL) {
-				// we have processed all members of the original group
-				return;
-			} else {
-				// we need to go back and process remaining members of the group
-				m = bookmarkm;
-				families_found = 0;
-				existing_groups = get_existing_groups( d, &n_groups);
-				level = 0;
-				next_id = 0;
-			}
+            free(family_groups);
+            free(family_identities[0]);
+            free(family_identities[1]);
+            return;
 		} else {
 			m = m->next;
 		}
@@ -2731,18 +2753,26 @@ void split_into_halfsib_families( SimData* d, int group_id, int parent, int* res
 	--parent;
 
 	// get pre-existing numbers
-	int n_groups = 0;
-	int* existing_groups = get_existing_groups( d, &n_groups);
+    int n_groups;
+    int eg_length = 5;
+    int* existing_groups = get_malloc(sizeof(int)*eg_length);
+    n_groups = get_existing_groups(d, eg_length, existing_groups);
+    while (n_groups == eg_length) {
+        free(existing_groups);
+        eg_length = eg_length << 1;
+        existing_groups = get_malloc(sizeof(int)*eg_length);
+        n_groups = get_existing_groups(d, eg_length, existing_groups);
+    }
 	// have another variable for the next id we can't allocate so we can still free the original.
 	int level = 0;
 
 	int families_found = 0;
-	unsigned int family_groups[CONTIG_WIDTH];
-	unsigned int family_identities[CONTIG_WIDTH];
+    int family_bookmarks_len = 50;
+    unsigned int* family_groups = get_malloc(sizeof(unsigned int)*family_bookmarks_len);
+    unsigned int* family_identities = get_malloc(sizeof(unsigned int)*family_bookmarks_len);
 
 	// looping through all entries
 	AlleleMatrix* m = d->m;
-	AlleleMatrix* bookmarkm = NULL;
 	int n_found = 0; // number of families, for saving to results
 	int next_id = 0;
 	while (1) {
@@ -2760,52 +2790,50 @@ void split_into_halfsib_families( SimData* d, int group_id, int parent, int* res
 				// if the group number has not been updated in the above loop
 				// (so we don't know this family yet)
 				if (m->groups[i] == group_id) {
-					if (families_found < CONTIG_WIDTH) {
-						// find the next unused group;
-						++next_id;
-						while (level < n_groups) {
-							if (next_id < existing_groups[level]) {
-								break;
-							}
+                    if (families_found >= family_bookmarks_len) {
+                        int old_size = family_bookmarks_len;
+                        unsigned int* old_groups = family_groups;
+                        unsigned int* old_ident = family_identities;
 
-							++level;
-							++next_id;
-						}
+                        family_bookmarks_len = family_bookmarks_len << 1;
+                        family_groups = get_malloc(sizeof(unsigned int)*family_bookmarks_len);
+                        memcpy(family_groups,old_groups,sizeof(unsigned int)*old_size);
+                        free(old_groups);
+                        family_identities = get_malloc(sizeof(unsigned int)*family_bookmarks_len);
+                        memcpy(family_identities,old_ident,sizeof(unsigned int)*old_size);
+                        free(old_ident);
+                    }
 
-						// save this entry as a member of that new group
-						m->groups[i] = next_id;
-						family_groups[families_found] = next_id;
-						family_identities[families_found] = m->pedigrees[parent][i];
-						++families_found;
+                    // find the next unused group;
+                    ++next_id;
+                    while (level < n_groups) {
+                        if (next_id < existing_groups[level]) {
+                            break;
+                        }
 
-						if (results != NULL) {
-							results[n_found] = next_id;
-							++n_found;
-						}
+                        ++level;
+                        ++next_id;
+                    }
 
-					} else if (bookmarkm == NULL) {
-						// if we are here, then there are more families than we
-						// can track at a time. Save the place and come back for the
-						// extra families later.
-						bookmarkm = m;
-					} // else we have a bookmark already and so will be coming back here
+                    // save this entry as a member of that new group
+                    m->groups[i] = next_id;
+                    family_groups[families_found] = next_id;
+                    family_identities[families_found] = m->pedigrees[parent][i];
+                    ++families_found;
+
+                    if (results != NULL) {
+                        results[n_found] = next_id;
+                        ++n_found;
+                    }
 				}
 			}
 		}
 
 		if (m->next == NULL) {
 			free(existing_groups);
-			if (bookmarkm == NULL) {
-				// we have processed all members of the original group
-				return;
-			} else {
-				// we need to go back and process remaining members of the group
-				m = bookmarkm;
-				families_found = 0;
-				existing_groups = get_existing_groups( d, &n_groups);
-				level = 0;
-				next_id = 0;
-			}
+            free(family_groups);
+            free(family_identities);
+            return;
 		} else {
 			m = m->next;
 		}
@@ -3239,82 +3267,81 @@ void split_by_probabilities_into_n(SimData* d, int group_id, int n, double* prob
 	}
 }
 
-/** Identify every group number that currently has members.
+/** Identify group numbers that currently have members.
  *
  * @param d the SimData struct on which to perform the operation
- * @param n_groups a pointer to a location that can be accessed by the
- * calling function. The number of groups/length of the returned array
- * will be saved here.
- * @returns a heap array of length [value saved at n_groups after this
- * function has run] containing the group numbers that appear in the
- * group memberships in `d`, sorted in ascending order.
+ * @param n_groups Maximum number of groups to identify. Set this
+ * to the length of `output`, or set it as -1 (UNINITIALISED) to risk
+ * your memory safety entirely.
+ * @param output The function will fill this vector with the group numbers
+ * of the groups discovered in `d`, sorted in ascending order. These will
+ * not necessarily be the groups with the lowest group numbers, if the
+ * `n_groups` cap was lower than the total number of groups; rather,
+ * they will be the first `n_groups` group numbers encountered when
+ * scanning genotypes in the simulation from lowest simulation index to highest.
+ * @returns The number of entries of `output` that have been filled. Equal to `n_groups`
+ * if `n_groups` was set and at least `n_groups` groups existed; equal to the true number
+ * of groups if `n_groups` was UNINITIALISED or if the actual number of groups
+ * was smaller than `n_groups`.
  */
-int* get_existing_groups( SimData* d, int* n_groups) {
-	int eg_size = 50;
-	int* existing_groups = malloc(sizeof(int)* eg_size);
-	*n_groups = 0;
+int get_existing_groups( SimData* d, int n_groups, int* output) {
+    int eg_size = 0;
 
 	AlleleMatrix* m = d->m;
 	int i, j;
 	int new; // is the group number at this index a new one or not
-	while (1) {
+    // cap the number of groups to find at n_groups if n_groups initialised
+    while (n_groups < 0 || eg_size < n_groups) {
 		for (i = 0; i < m->n_genotypes; ++i) {
 			new = 1;
-			for (j = 0; j < *n_groups; ++j) {
-				if (m->groups[i] == existing_groups[j]) {
+            for (j = 0; j < eg_size; ++j) {
+                if (m->groups[i] == output[j]) {
 					new = 0;
 					break;
 				}
 			}
 
 			if (new) {
-				++ (*n_groups);
-				existing_groups[*n_groups - 1] = m->groups[i];
+                ++eg_size;
+                output[eg_size - 1] = m->groups[i];
 			}
 		}
 
 		if (m->next == NULL) {
-			qsort(existing_groups, *n_groups, sizeof(int), _ascending_int_comparer);
-			return existing_groups;
+            qsort(output, eg_size, sizeof(int), _ascending_int_comparer);
+            return eg_size;
 		} else {
 			m = m->next;
 		}
 
-		if (*n_groups >= eg_size - 1) {
-			eg_size *= 1.5;
-			int* temp = realloc(existing_groups, eg_size * sizeof(int));
-			if (temp == NULL) {
-				free(existing_groups);
-				fprintf(stderr, "Can't get all those groups.\n"); exit(1);
-			} else {
-				existing_groups = temp;
-			}
-		}
 	}
+    qsort(output, eg_size, sizeof(int), _ascending_int_comparer);
+    return eg_size;
 }
 
-/** Identify every group number that currently has members and
- * the number of genotypes currently allocated to that group.
+/** Identify group numbers that currently has members and
+ * the number of genotypes currently allocated to those groups.
  *
  * @param d the SimData struct on which to perform the operation
- * @param n_groups a pointer to a location that can be accessed by the
- * calling function. The number of groups/length of the returned array
- * will be saved here.
- * @returns a heap array of length [2][value saved at n_groups after this
- * function has run]. The array at the first index contains the group numbers,
- * and the array at the second index contains the number of members of that group,
- * ordered correspondingly. The arrays are sorted in ascending order by group number.
- * All three components of the returned value (2-long first-index array containing
- * the pointers to the toehr 2, and the two data-containing arrays) are allocated
- * from the heap so should be freed by the calling function when it finishes with
- * them.
+ * @param n_groups Maximum number of groups to identify. Set this
+ * to the length of `output`, or set it as -1 (UNINITIALISED) to risk
+ * your memory safety entirely.
+ * @param output_groups The function will fill this vector with the group numbers
+ * of the groups discovered in `d`, sorted in ascending order. These will
+ * not necessarily be the groups with the lowest group numbers, if the
+ * `n_groups` cap was lower than the total number of groups; rather,
+ * they will be the first `n_groups` group numbers encountered when
+ * scanning genotypes in the simulation from lowest simulation index to highest.
+ * @param output_sizes The number of genotypes in the corresponding group number in
+ * `output_groups`.
+ * @returns The number of entries of the output vectors that have been filled.
+ * Equal to `n_groups`
+ * if `n_groups` was set and at least `n_groups` groups existed; equal to the true number
+ * of groups if `n_groups` was UNINITIALISED or if the actual number of groups
+ * was smaller than `n_groups`.
  */
-int** get_existing_group_counts( SimData* d, int* n_groups) {
-	int eg_size = 50;
-	int** returnval = get_malloc(sizeof(int*) * 2);
-	int* existing_groups = get_malloc(sizeof(int)* eg_size); // group ids
-	int* existing_group_counts = get_malloc(sizeof(int) * eg_size); // number in that group
-	*n_groups = 0;
+int get_existing_group_counts( SimData* d, int n_groups, int* output_groups, int* output_sizes) {
+    int eg_size = 0;
 
 	AlleleMatrix* m = d->m;
 	int i, j;
@@ -3322,68 +3349,56 @@ int** get_existing_group_counts( SimData* d, int* n_groups) {
 	while (1) {
 		for (i = 0; i < m->n_genotypes; ++i) {
 			new = 1;
-			for (j = 0; j < *n_groups; ++j) {
-				if (m->groups[i] == existing_groups[j]) {
-					existing_group_counts[j] += 1;
+            for (j = 0; j < eg_size; ++j) {
+                if (m->groups[i] == output_groups[j]) {
+                    output_sizes[j] += 1;
 					new = 0;
 					break;
 				}
 			}
 
-			if (new) {
-				++ (*n_groups);
-				existing_groups[*n_groups - 1] = m->groups[i];
-				existing_group_counts[*n_groups - 1] = 1;
+            if (new && (n_groups < 0 || eg_size < n_groups)) {
+                ++ eg_size;
+                output_groups[eg_size - 1] = m->groups[i];
+                output_sizes[eg_size - 1] = 1;
 
 			}
 		}
 
 		if (m->next == NULL) {
-			if (*n_groups > 0) {
-				int* sorting[*n_groups];
-				for (int i = 0; i < *n_groups; i++) {
-					sorting[i] = &(existing_groups[i]);
+            if (eg_size > 0) {
+                // Sorting two together is a pain.
+
+                int* sorting[eg_size];
+                for (int i = 0; i < eg_size; i++) {
+                    sorting[i] = &(output_groups[i]);
 				}
 
-				qsort(sorting, *n_groups, sizeof(int*), _ascending_int_dcomparer);
+                qsort(sorting, eg_size, sizeof(int*), _ascending_int_dcomparer);
 				int location_in_old;
-				int* location_origin = existing_groups;
-				int* sorted_groups = get_malloc(sizeof(int) * (*n_groups));
-				int* sorted_counts = get_malloc(sizeof(int) * (*n_groups));
-				for (int i = 0; i < *n_groups; ++i) {
-					location_in_old = sorting[i] - location_origin;
-					sorted_groups[i] = existing_groups[location_in_old];
-					sorted_counts[i] = existing_group_counts[location_in_old];
+                int* location_origin_g = output_groups;
+                int sorted[eg_size];
+                for (int i = 0; i < eg_size; ++i) {
+                    location_in_old = sorting[i] - location_origin_g;
+                    sorted[i] = output_groups[location_in_old];
+                }
+                for (int i = 0; i < eg_size; ++i) {
+                    output_groups[i] = sorted[i];
+                }
+                for (int i = 0; i < eg_size; ++i) {
+                    location_in_old = sorting[i] - location_origin_g;
+                    sorted[i] = output_sizes[location_in_old];
 				}
+                for (int i = 0; i < eg_size; ++i) {
+                    output_sizes[i] = sorted[i];
+                }
 
-				free(existing_groups);
-				free(existing_group_counts);
-				returnval[0] = sorted_groups;
-				returnval[1] = sorted_counts;
-				return returnval;
+                return eg_size;
 			} else {
-				return NULL;
+                return 0;
 			}
 		} else {
 			m = m->next;
-		}
-
-		if (*n_groups >= eg_size - 1) {
-			eg_size *= 1.5;
-			int* temp = realloc(existing_groups, eg_size * sizeof(int));
-			if (temp == NULL) {
-				free(existing_groups);
-				fprintf(stderr, "Can't get all those groups.\n"); exit(1);
-			} else {
-				existing_groups = temp;
-			}
-			temp = realloc(existing_group_counts, eg_size * sizeof(int));
-			if (temp == NULL) {
-				free(existing_group_counts);
-				fprintf(stderr, "Can't get all those groups.\n"); exit(1);
-			} else {
-				existing_group_counts = temp;
-			}
 		}
 	}
 }
@@ -3403,8 +3418,18 @@ int** get_existing_group_counts( SimData* d, int* n_groups) {
  * an integer greater than 0.
  */
 int get_new_group_num( SimData* d) {
-	int n_groups = 0;
-	int* existing_groups = get_existing_groups( d, &n_groups);
+    // Make sure we get all existing groups
+    int n_groups;
+    int eg_length = 10;
+    int* existing_groups = get_malloc(sizeof(int)*eg_length);
+    n_groups = get_existing_groups(d, eg_length, existing_groups);
+    while (n_groups == eg_length) {
+        free(existing_groups);
+        eg_length = eg_length << 1;
+        existing_groups = get_malloc(sizeof(int)*eg_length);
+        n_groups = get_existing_groups(d, eg_length, existing_groups);
+    }
+
 	int i = 0;
 	int gn = 1;
 
@@ -3487,8 +3512,18 @@ int get_new_label_id( SimData* d ) {
  * the new group numbers generated can be saved.
  */
 void get_n_new_group_nums( SimData* d, int n, int* result) {
-	int n_groups = 0;
-	int* existing_groups = get_existing_groups( d, &n_groups);
+    // Make sure we get all existing groups
+    int n_groups;
+    int eg_length = 10;
+    int* existing_groups = get_malloc(sizeof(int)*eg_length);
+    n_groups = get_existing_groups(d, eg_length, existing_groups);
+    while (n_groups == eg_length) {
+        free(existing_groups);
+        eg_length = eg_length << 1;
+        existing_groups = get_malloc(sizeof(int)*eg_length);
+        n_groups = get_existing_groups(d, eg_length, existing_groups);
+    }
+
 	int existingi = 0;
 	int gn = 0;
 
@@ -3572,28 +3607,30 @@ int get_group_size( SimData* d, int group_id) {
  * @param group_size if group_size has already been calculated, pass it too, otherwise
  * put in -1 (UNINITIALISED). This enables fewer calls to get_group_size when using multiple
  * group-data-getter functions.
- * @returns a vector containing pointers to the genes of each member of the group.
- * The vector itself is on the heap and should be freed, but its contents are only
- * shallow copies that should not be freed. Returns a null pointer if the group is empty.
+ * @param output a char** vector with length at least large enough to fit the whole group.
+ * The function will fill this vector with pointers to the allele strings of each member
+ * of the group. The vector's contents are only
+ * shallow copies that should not be freed.
+ * @returns The number of entries of `output` that have been filled. Equal to `group_size`
+ * if group size was set; equal to the actual size of the group if `group_size` was -1.
  */
-char** get_group_genes( SimData* d, int group_id, int group_size) {
+int get_group_genes( SimData* d, int group_id, int group_size, char** output) {
 	AlleleMatrix* m = d->m;
     if (group_size <= 0) { // group_size == UNINITIALISED
         group_size = get_group_size( d, group_id );
-        if (group_size == 0) { fprintf(stderr,"Group does not exist\n"); return 0; }
+        if (group_size == 0) { return 0; }
 	}
-    char** genes = get_malloc(sizeof(char*) * group_size);
 	int i, genes_i = 0;
 	while (1) {
 		for (i = 0; i < m->n_genotypes; ++i) {
 			if (m->groups[i] == group_id) {
-				genes[genes_i] = m->alleles[i];
+                output[genes_i] = m->alleles[i];
 				++genes_i;
 			}
 		}
 
 		if (m->next == NULL) {
-			return genes;
+            return group_size;
 		} else {
 			m = m->next;
 		}
@@ -3615,28 +3652,30 @@ char** get_group_genes( SimData* d, int group_id, int group_size) {
  * @param group_size if group_size has already been calculated, pass it too, otherwise
  * put in -1 (UNINITIALISED). This enables fewer calls to get_group_size when using multiple
  * group-data-getter functions.
- * @returns a vector containing pointers to the names of each member of the group.
- * The vector itself is on the heap and should be freed, but its contents are only
- * shallow copies that should not be freed. Returns a null pointer if the group is empty.
+ * @param output a char** vector with length at least large enough to fit the whole group.
+ * The function will fill this vector with pointers to the names of each member
+ * of the group. The vector's contents are only
+ * shallow copies that should not be freed.
+ * @returns The number of entries of `output` that have been filled. Equal to `group_size`
+ * if group size was set; equal to the actual size of the group if `group_size` was -1.
  */
-char** get_group_names( SimData* d, int group_id, int group_size) {
+int get_group_names( SimData* d, int group_id, int group_size, char** output) {
 	AlleleMatrix* m = d->m;
     if (group_size <= 0) { // group_size == UNINITIALISED
         group_size = get_group_size( d, group_id );
-        if (group_size == 0) { fprintf(stderr,"Group does not exist\n"); return 0; }
+        if (group_size == 0) { return 0; }
     }
-    char** names = get_malloc(sizeof(char*) * group_size);
 	int i, names_i = 0;
 	while (1) {
 		for (i = 0; i < m->n_genotypes; ++i) {
 			if (m->groups[i] == group_id) {
-				names[names_i] = m->names[i];
+                output[names_i] = m->names[i];
 				++names_i;
 			}
 		}
 
 		if (m->next == NULL) {
-			return names;
+            return group_size;
 		} else {
 			m = m->next;
 		}
@@ -3658,27 +3697,28 @@ char** get_group_names( SimData* d, int group_id, int group_size) {
  * @param group_size if group_size has already been calculated, pass it too, otherwise
  * put in -1 (UNINITIALISED). This enables fewer calls to get_group_size when using multiple
  * group-data-getter functions.
- * @returns a vector containing the ids of each member of the group.
- * The vector itself is on the heap and should be freed. Returns a null pointer if the group is empty.
+ * @param output a vector with length at least large enough to fit the whole group.
+ * The function will fill this vector with the ids of each member of the group.
+ * @returns The number of entries of `output` that have been filled. Equal to `group_size`
+ * if group size was set; equal to the actual size of the group if `group_size` was -1.
  */
-unsigned int* get_group_ids( SimData* d, int group_id, int group_size) {
+int get_group_ids( SimData* d, int group_id, int group_size, unsigned int *output) {
     AlleleMatrix* m = d->m;
     if (group_size <= 0) { // group_size == UNINITIALISED
         group_size = get_group_size( d, group_id );
-        if (group_size == 0) { fprintf(stderr,"Group does not exist\n"); return 0; }
+        if (group_size == 0) { return 0; }
     }
-    unsigned int* gids = get_malloc(sizeof(unsigned int) * group_size);
 	int i, ids_i = 0;
 	while (1) {
 		for (i = 0; i < m->n_genotypes; ++i) {
 			if (m->groups[i] == group_id) {
-				gids[ids_i] = m->ids[i];
+                output[ids_i] = m->ids[i];
 				++ids_i;
 			}
 		}
 
 		if (m->next == NULL) {
-			return gids;
+            return group_size;
 		} else {
 			m = m->next;
 		}
@@ -3701,27 +3741,28 @@ unsigned int* get_group_ids( SimData* d, int group_id, int group_size) {
  * @param group_size if group_size has already been calculated, pass it too, otherwise
  * put in -1 (UNINITIALISED). This enables fewer calls to get_group_size when using multiple
  * group-data-getter functions.
- * @returns a vector containing the indexes of each member of the group.
- * The vector itself is on the heap and should be freed. Returns a null pointer if the group is empty.
+ * @param output a vector with length at least large enough to fit the whole group.
+ * The function will fill this vector with the indexes of each member of the group.
+ * @returns The number of entries of `output` that have been filled. Equal to `group_size`
+ * if group size was set; equal to the actual size of the group if `group_size` was -1.
  */
-int* get_group_indexes(SimData* d, int group_id, int group_size) {
+int get_group_indexes(SimData* d, int group_id, int group_size, int* output) {
 	AlleleMatrix* m = d->m;
     if (group_size <= 0) { // group_size == UNINITIALISED
         group_size = get_group_size( d, group_id );
-        if (group_size == 0) { fprintf(stderr,"Group does not exist\n"); return 0; }
+        if (group_size == 0) { return 0; }
     }
-    int* gis = get_malloc(sizeof(int) * group_size);
 	int i, total_i = 0, ids_i = 0;
 	while (1) {
 		for (i = 0; i < m->n_genotypes; ++i, ++total_i) {
 			if (m->groups[i] == group_id) {
-				gis[ids_i] = total_i;
+                output[ids_i] = total_i;
 				++ids_i;
 			}
 		}
 
 		if (m->next == NULL) {
-			return gis;
+            return group_size;
 		} else {
 			m = m->next;
 		}
@@ -3743,25 +3784,26 @@ int* get_group_indexes(SimData* d, int group_id, int group_size) {
  * @param group_size if group_size has already been calculated, pass it too, otherwise
  * put in -1 (UNINITIALISED). This enables fewer calls to get_group_size when using multiple
  * group-data-getter functions.
- * @returns a vector containing the breeding values of each member of the group.
- * The vector itself is on the heap and should be freed. Returns a null pointer if the group is empty.
+ * @param output a vector with length at least large enough to fit the whole group.
+ * The function will fill this vector with the breeding values of each member of the group.
+ * @returns The number of entries of `output` that have been filled. Equal to `group_size`
+ * if group size was set; equal to the actual size of the group if `group_size` was -1.
  */
-double* get_group_bvs( SimData* d, int group_id, int group_size) {
+int get_group_bvs( SimData* d, int group_id, int group_size, double* output) {
     if (group_size <= 0) { // group_size == UNINITIALISED
         group_size = get_group_size( d, group_id );
-        if (group_size == 0) { fprintf(stderr,"Group does not exist\n"); return 0; }
+        if (group_size == 0) { return 0; }
     }
-    double* bvs = get_malloc(sizeof(double) * group_size);
 
 	DecimalMatrix dm_bvs = calculate_group_bvs(d, (unsigned int) group_id);
 
 	for (int i = 0; i < dm_bvs.cols; ++i) {
-		bvs[i] = dm_bvs.matrix[0][i];
+        output[i] = dm_bvs.matrix[0][i];
 	}
 
 	delete_dmatrix(&dm_bvs);
 
-	return bvs;
+    return group_size;
 }
 
 /** Gets the ids of either the first or second parent of each member
@@ -3775,6 +3817,7 @@ double* get_group_bvs( SimData* d, int group_id, int group_size) {
  * @see get_group_parent_names()
  * @see get_group_pedigrees()
  *
+ *
  * @param d the SimData struct on which to perform the operation
  * @param group_id the group number of the group you want data from
  * @param group_size if group_size has already been calculated, pass it too, otherwise
@@ -3782,34 +3825,35 @@ double* get_group_bvs( SimData* d, int group_id, int group_size) {
  * group-data-getter functions.
  * @param parent 1 to get the first parent of each group member, 2 to get the second.
  * Raises an error and returns NULL if this parameter is not either of those values.
- * @returns a vector containing the id of either the first or second parent of
- * each member of the group.
- * The vector itself is on the heap and should be freed. Returns a null pointer if the group is empty.
+ * @param output a vector with length at least large enough to fit the whole group.
+ * The function will fill this vector with the ids the chosen parent of each member of the group.
+ * @returns UNINITIALISED if `parent`'s value is incorrect; otherwise the number of entries of `output`
+ * that have been filled. This is to `group_size`
+ * if group size was set; equal to the actual size of the group if `group_size` was -1.
  */
-unsigned int* get_group_parent_ids( SimData* d, int group_id, int group_size, int parent) {
+int get_group_parent_ids( SimData* d, int group_id, int group_size, int parent, unsigned int* output) {
 	if (!(parent == 1 || parent == 2)) {
 		fprintf(stderr, "Value error: `parent` must be 1 or 2.");
-		return NULL;
+        return UNINITIALISED;
 	}
 	--parent;
 
 	AlleleMatrix* m = d->m;
     if (group_size <= 0) { // group_size == UNINITIALISED
         group_size = get_group_size( d, group_id );
-        if (group_size == 0) { fprintf(stderr,"Group does not exist\n"); return 0; }
+        if (group_size == 0) { return 0; }
     }
-    unsigned int* pids = get_malloc(sizeof(unsigned int) * group_size);
 	int i, ids_i = 0;
 	while (1) {
 		for (i = 0; i < m->n_genotypes; ++i) {
 			if (m->groups[i] == group_id) {
-				pids[ids_i] = m->pedigrees[parent][i];
+                output[ids_i] = m->pedigrees[parent][i];
 				++ids_i;
 			}
 		}
 
 		if (m->next == NULL) {
-			return pids;
+            return group_size;
 		} else {
 			m = m->next;
 		}
@@ -3834,39 +3878,42 @@ unsigned int* get_group_parent_ids( SimData* d, int group_id, int group_size, in
  * group-data-getter functions.
  * @param parent 1 to get the first parent of each group member, 2 to get the second.
  * Raises an error and returns NULL if this parameter is not either of those values.
- * @returns  a vector containing pointers to the names either the first or second
- * parent of each member of the group. The vector itself is on the heap and should be
- * freed, but its contents are only shallow copies that should not be freed. Returns a null pointer if the group is empty.
+ * @param output a char** vector with length at least large enough to fit the whole group.
+ * The function will fill this vector with pointers to the names of the chosen parent
+ * of each member of the group. The vector's contents are only
+ * shallow copies that should not be freed.
+ * @returns UNINITIALISED if `parent`'s value is incorrect; otherwise the number of entries of `output`
+ * that have been filled. This is to `group_size`
+ * if group size was set; equal to the actual size of the group if `group_size` was -1.
  */
-char** get_group_parent_names( SimData* d, int group_id, int group_size, int parent) {
+int get_group_parent_names( SimData* d, int group_id, int group_size, int parent, char** output) {
     if (!(parent == 1 || parent == 2)) {
         fprintf(stderr, "Value error: `parent` must be 1 or 2.");
-        return NULL;
+        return UNINITIALISED;
     }
     --parent;
 
     AlleleMatrix* m = d->m;
     if (group_size <= 0) { // group_size == UNINITIALISED
         group_size = get_group_size( d, group_id );
-        if (group_size == 0) { fprintf(stderr,"Group does not exist\n"); return 0; }
+        if (group_size == 0) { return 0; }
     }
-    char** pnames = get_malloc(sizeof(char*) * group_size);
 
     int i, ids_i = 0;
     while (1) {
         for (i = 0; i < m->n_genotypes; ++i) {
             if (m->groups[i] == group_id) {
                 if (m->pedigrees[parent][i] > 0) {
-                    pnames[ids_i] = get_name_of_id(d->m, m->pedigrees[parent][i]);
+                    output[ids_i] = get_name_of_id(d->m, m->pedigrees[parent][i]);
                 } else {
-                    pnames[ids_i] = NULL;
+                    output[ids_i] = NULL;
                 }
                 ++ids_i;
             }
         }
 
         if (m->next == NULL) {
-            return pnames;
+            return group_size;
         } else {
             m = m->next;
         }
@@ -3902,14 +3949,19 @@ char** get_group_parent_names( SimData* d, int group_id, int group_size, int par
  * @param group_size if group_size has already been calculated, pass it too, otherwise
  * put in -1 (UNINITIALISED). This enables fewer calls to get_group_size when using multiple
  * group-data-getter functions.
- * @returns  a vector containing pointers to the full pedigree string of each
- * member of the group. Both the vector and its contents are dynamically
- * allocated on the heap, and so should both be freed. This is because, unlike
- * other data-getter functions, this data is not stored but must be generated
- * specifically to answer this function call. If it failed to write to and
- * read from the temporary file, then it returns NULL; Also returns a null pointer if the group is empty.
+ * @param output a char** vector with length at least large enough to fit the whole group.
+ * The function will fill this vector with pointers to strings containing the full pedigree
+ * of each member of the group. The pedigree strings are dynamically
+ * allocated on the heap, and so should be freed once finished using them. This is because,
+ * unlike other data-getter functions, full pedigree data is not stored in the simulation
+ * but must be generated specifically to answer this function call.
+ * @returns UNINITIALISED if there are no genotypes in the group or if reading/writing
+ * to the temporary file failed; 0 otherwise.
+ * @returns UNINITIALISED if reading/writing to the temporary file failed;
+ * otherwise the number of entries of `output` that have been filled. This is to `group_size`
+ * if group size was set; equal to the actual size of the group if `group_size` was -1.
  */
-char** get_group_pedigrees( SimData* d, int group_id, int group_size) {
+int get_group_pedigrees( SimData* d, int group_id, int group_size, char** output) {
 	char* fname = "gS_gpptmp";
 	FILE* fp = fopen(fname, "w");
 	save_group_full_pedigree(fp, d, group_id);
@@ -3918,15 +3970,14 @@ char** get_group_pedigrees( SimData* d, int group_id, int group_size) {
 	FILE* fp2;
 	if ((fp2 = fopen(fname, "r")) == NULL) {
 		fprintf(stderr, "Failed to use temporary file.\n");
-		return NULL;
+        return UNINITIALISED;
 	}
 
 	// Create the list that we will return
     if (group_size <= 0) { // group_size == UNINITIALISED
         group_size = get_group_size( d, group_id );
-        if (group_size == 0) { fprintf(stderr,"Group does not exist\n"); return 0; }
+        if (group_size == 0) { return 0; }
     }
-	char** gp_ped = get_malloc(sizeof(char*) * group_size);
 
 	// read one line at a time
 	//size_t n;
@@ -3948,29 +3999,30 @@ char** get_group_pedigrees( SimData* d, int group_id, int group_size) {
 		// a not-very-size-efficient, fgets-based line getter
 		size = 50;
 		index = 0;
-		gp_ped[i] = get_malloc(sizeof(char) * size);
+        output[i] = get_malloc(sizeof(char) * size);
 		while ((nextc = fgetc(fp)) != '\n' && nextc != EOF) {
-			gp_ped[i][index] = nextc;
+            output[i][index] = nextc;
 			++index;
 
 			if (index >= size) {
 				size *= 2;
-				char* temp = realloc(gp_ped[i], size);
+                char* temp = realloc(output[i], size);
 				if (temp == NULL) {
-					free(gp_ped[i]);
+                    free(output[i]);
 					fprintf(stderr, "Memory allocation of size %u failed.\n", size);
+                    output[i] = NULL;
 				} else {
-					gp_ped[i] = temp;
+                    output[i] = temp;
 				}
 			}
 		}
-		gp_ped[i][index] = '\0';
+        output[i][index] = '\0';
 	}
 
 	fclose(fp2);
 	remove(fname);
 
-	return gp_ped;
+    return group_size;
 }
 
 
@@ -5870,7 +5922,8 @@ int cross_random_individuals(SimData* d, int from_group, int n_crosses, int cap,
 		}
 		return 0;
 	}
-	char** group_genes = get_group_genes( d, from_group, g_size);
+    char* group_genes[g_size];
+    get_group_genes( d, from_group, g_size, group_genes);
 
     if (n_crosses < 1) {
         fprintf(stderr,"Invalid n_crosses value provided: n_crosses must be greater than 0.\n");
@@ -5905,9 +5958,9 @@ int cross_random_individuals(SimData* d, int from_group, int n_crosses, int cap,
 	int parent2;
 
 	// set up pedigree/id allocation, if applicable
-	unsigned int* group_ids = NULL;
+    unsigned int group_ids[g_size];
 	if (g.will_track_pedigree) {
-		group_ids = get_group_ids( d, from_group, g_size);
+        get_group_ids( d, from_group, g_size, group_ids);
 	}
 	AlleleMatrix* last = NULL;
 	int output_group = 0;
@@ -6014,7 +6067,6 @@ int cross_random_individuals(SimData* d, int from_group, int n_crosses, int cap,
 	//RPACKINSERT PutRNGstate();
 
 	// save the rest of the crosses to the file.
-	free(group_genes);
     if (cap > 0) {
         free(uses_count);
     }
@@ -6028,10 +6080,6 @@ int cross_random_individuals(SimData* d, int from_group, int n_crosses, int cap,
             crosses->ids[j] = d->current_id;
         }
     } // else already zeroed by create_empty_allelematrix
-
-	if (g.will_track_pedigree) {
-		free(group_ids);
-	}
 
 	// save the offsprings to files if appropriate
 	if (g.will_save_pedigree_to_file) {
@@ -6095,7 +6143,6 @@ int cross_random_individuals(SimData* d, int from_group, int n_crosses, int cap,
 */
 int cross_randomly_between(SimData*d, int group1, int group2, int n_crosses, int cap1, int cap2, GenOptions g) {
     char* parent1_genes; char* parent2_genes;
-    char** group1_genes; char** group2_genes;
     int group1_size; int group2_size;
     int parent1; int parent2;
 
@@ -6104,14 +6151,16 @@ int cross_randomly_between(SimData*d, int group1, int group2, int n_crosses, int
         fprintf(stderr,"Group %d does not exist.\n", group1);
         return 0;
     }
-    group1_genes = get_group_genes( d, group1, group1_size );
+    char* group1_genes[group1_size];
+    get_group_genes( d, group1, group1_size, group1_genes );
 
     group2_size = get_group_size( d, group2 );
     if (group2_size < 1) {
         fprintf(stderr,"Group %d does not exist.\n", group2);
         return 0;
     }
-    group2_genes = get_group_genes( d, group2, group2_size );
+    char* group2_genes[group2_size];
+    get_group_genes( d, group2, group2_size, group2_genes );
 
     if (n_crosses < 1) {
         fprintf(stderr,"Invalid n_crosses value provided: n_crosses must be greater than 0.\n");
@@ -6161,10 +6210,10 @@ int cross_randomly_between(SimData*d, int group1, int group2, int n_crosses, int
     int fullness = 0;
 
     // set up pedigree/id allocation, if applicable
-    unsigned int* group1_ids = NULL; unsigned int* group2_ids = NULL;
+    unsigned int group1_ids[group1_size]; unsigned int group2_ids[group2_size];
     if (g.will_track_pedigree) {
-        group1_ids = get_group_ids( d, group1, group1_size );
-        group2_ids = get_group_ids( d, group2, group2_size );
+        get_group_ids( d, group1, group1_size, group1_ids );
+        get_group_ids( d, group2, group2_size, group2_ids );
     }
     AlleleMatrix* last = NULL;
     int output_group = 0;
@@ -6276,8 +6325,6 @@ int cross_randomly_between(SimData*d, int group1, int group2, int n_crosses, int
     //RPACKINSERT PutRNGstate();
 
     // save the rest of the crosses to the file.
-    free(group1_genes);
-    free(group2_genes);
     if (cap1 > 0) {
         free(uses_g1);
     }
@@ -6294,11 +6341,6 @@ int cross_randomly_between(SimData*d, int group1, int group2, int n_crosses, int
             crosses->ids[j] = d->current_id;
         }
     } // else already zeroed by create_empty_allelematrix
-
-    if (g.will_track_pedigree) {
-        free(group1_ids);
-        free(group2_ids);
-    }
 
     // save the offsprings to files if appropriate
     if (g.will_save_pedigree_to_file) {
@@ -6534,13 +6576,14 @@ int self_n_times(SimData* d, int n, int group, GenOptions g) {
         outcome = create_empty_allelematrix(d->n_markers, d->n_labels, d->label_defaults, CONTIG_WIDTH);
 		n_to_go -= CONTIG_WIDTH;
 	}
-	char** group_genes = get_group_genes( d, group, group_size);
+    char* group_genes[group_size];
+    get_group_genes( d, group, group_size, group_genes );
 	int i, j, f, fullness = 0;
 
 	// set up pedigree/id allocation, if applicable
-	unsigned int* group_ids = NULL;
+    unsigned int group_ids[group_size];
 	if (g.will_track_pedigree) {
-		group_ids = get_group_ids( d, group, group_size);
+        get_group_ids( d, group, group_size, group_ids );
 	}
 	AlleleMatrix* last = NULL;
 	int output_group = 0;
@@ -6715,7 +6758,6 @@ int self_n_times(SimData* d, int n, int group, GenOptions g) {
 	}
 	//RPACKINSERT PutRNGstate();
 
-	free(group_genes);
 	// save the rest of the crosses to the file.
 	outcome->n_genotypes = fullness;
     // give the offspring their ids and names
@@ -6728,10 +6770,6 @@ int self_n_times(SimData* d, int n, int group, GenOptions g) {
             outcome->ids[j] = d->current_id;
         }
     } // else already zeroed by create_empty_allelematrix
-
-	if (g.will_track_pedigree) {
-		free(group_ids);
-	}
 
 	// save the offspring to files if appropriate
 	if (g.will_save_pedigree_to_file) {
@@ -6788,14 +6826,15 @@ int make_doubled_haploids(SimData* d, int group, GenOptions g) {
         outcome = create_empty_allelematrix(d->n_markers, d->n_labels, d->label_defaults, CONTIG_WIDTH);
 		n_to_go -= CONTIG_WIDTH;
 	}
-	char** group_genes = get_group_genes( d, group, group_size);
+    char* group_genes[group_size];
+    get_group_genes( d, group, group_size, group_genes );
 	int i, f, fullness = 0;
 
 	// set up pedigree/id allocation, if applicable
-	unsigned int* group_ids = NULL;
+    unsigned int group_ids[group_size];
     int id;
 	if (g.will_track_pedigree) {
-		group_ids = get_group_ids( d, group, group_size);
+        get_group_ids( d, group, group_size, group_ids );
 	}
 	AlleleMatrix* last = NULL;
 	int output_group = 0;
@@ -6889,7 +6928,6 @@ int make_doubled_haploids(SimData* d, int group, GenOptions g) {
 	}
 	//RPACKINSERT PutRNGstate();
 
-	free(group_genes);
 	// save the rest of the crosses to the file.
 	outcome->n_genotypes = fullness;
     // give the offspring their ids and names
@@ -6902,10 +6940,6 @@ int make_doubled_haploids(SimData* d, int group, GenOptions g) {
             outcome->ids[j] = d->current_id;
         }
     } // else already zeroed by create_empty_allelematrix
-
-	if (g.will_track_pedigree) {
-		free(group_ids);
-	}
 
 	// save the offspring to files if appropriate
 	if (g.will_save_pedigree_to_file) {
@@ -6968,13 +7002,14 @@ int make_clones(SimData* d, int group, int inherit_names, GenOptions g) {
         outcome = create_empty_allelematrix(d->n_markers, d->n_labels, d->label_defaults, CONTIG_WIDTH);
         n_to_go -= CONTIG_WIDTH;
     }
-    char** group_genes = get_group_genes( d, group, group_size);
+    char* group_genes[group_size];
+    get_group_genes( d, group, group_size, group_genes );
 
     // set up pedigree/id allocation, if applicable
-    unsigned int* group_ids = NULL;
+    unsigned int group_ids[group_size];
     int parent_id = 0;
     if (g.will_track_pedigree) {
-        group_ids = get_group_ids( d, group, group_size);
+        get_group_ids( d, group, group_size, group_ids );
     }
     AlleleMatrix* last = NULL;
     int output_group = 0;
@@ -6987,10 +7022,10 @@ int make_clones(SimData* d, int group, int inherit_names, GenOptions g) {
     }
 
     // inherit_names overrides GenOptions naming
-    char** group_names;
+    char* group_names[group_size];
     if (inherit_names) {
         g.will_name_offspring = FALSE;
-        group_names = get_group_names(d, group, group_size);
+        get_group_names(d, group, group_size, group_names );
     }
 
     // open the output files, if applicable
@@ -7092,10 +7127,6 @@ int make_clones(SimData* d, int group, int inherit_names, GenOptions g) {
     }
     //RPACKINSERT PutRNGstate();
 
-    free(group_genes);
-	if (inherit_names) {
-		free(group_names);
-	}
     // save the rest of the crosses to the file.
     outcome->n_genotypes = fullness;
     // give the offspring their ids and names
@@ -7108,10 +7139,6 @@ int make_clones(SimData* d, int group, int inherit_names, GenOptions g) {
             outcome->ids[j] = d->current_id;
         }
     } // else already zeroed by create_empty_allelematrix
-
-    if (g.will_track_pedigree) {
-        free(group_ids);
-    }
 
     // save the offspring to files if appropriate
     if (g.will_save_pedigree_to_file) {
@@ -7160,8 +7187,8 @@ int make_all_unidirectional_crosses(SimData* d, int from_group, GenOptions g) {
 		}
 		return 0;
 	}
-	//unsigned int* group_ids = get_group_ids( d, from_group, group_size);
-    int* group_indexes = get_group_indexes( d, from_group, group_size);
+    int group_indexes[group_size];
+    get_group_indexes( d, from_group, group_size, group_indexes );
 
 	// number of crosses = number of entries in upper triangle of matrix
 	//    = half of (n entries in matrix - length of diagonal)
@@ -7179,7 +7206,6 @@ int make_all_unidirectional_crosses(SimData* d, int from_group, GenOptions g) {
 		}
 	}
 
-    free(group_indexes);
 	return cross_these_combinations(d, n_crosses, combinations, g);
 
 }
@@ -7214,7 +7240,7 @@ int make_n_crosses_from_top_m_percent(SimData* d, int n, int m, int group, GenOp
         return 0;
     }
 
-	int n_top_group = group_size * m / 100; //@integer division?
+    int n_top_group = group_size * m / 100;
 	printf("There are %d lines in the top %d%%\n", n_top_group, m);
 
 	int topgroup = split_by_bv(d, group, n_top_group, FALSE);
@@ -7378,12 +7404,12 @@ int make_double_crosses_from_file(SimData* d, const char* input_file, GenOptions
  */
 int split_by_bv(SimData* d, int group, int top_n, int lowIsBest) {	
 	unsigned int group_size = get_group_size( d, group );
-    int* group_contents = get_group_indexes( d, group, group_size);
+    int group_contents[group_size];
+    get_group_indexes( d, group, group_size, group_contents );
 	
 	if (group_size <= top_n) {
 		// well we'll just have to move em all
 		int migration = split_from_group(d, group_size, group_contents);
-		free(group_contents);
 		return migration;
 	}
 	
@@ -7409,7 +7435,6 @@ int split_by_bv(SimData* d, int group, int top_n, int lowIsBest) {
 		top_individuals[i] = group_contents[p_fits[i] - fits.matrix[0]];
 	}
 	delete_dmatrix(&fits);
-	free(group_contents);
 
 	// send those n to a new group
 	return split_from_group(d, top_n, top_individuals);
@@ -7532,7 +7557,8 @@ int calculate_group_count_matrix_of_allele( SimData* d, unsigned int group, char
         return 1;
 	}
 
-	char** genes = get_group_genes(d, group, groupSize);
+    char* genes[groupSize];
+    get_group_genes(d, group, groupSize, genes);
 
 	for (int i = 0; i < groupSize; ++i) {
 		//RPACKINSERT R_CheckUserInterrupt();
@@ -7543,7 +7569,6 @@ int calculate_group_count_matrix_of_allele( SimData* d, unsigned int group, char
 			counts->matrix[i][j] = cell_sum;
 		}
 	}
-    free(genes);
 	return 0;
 }
 
@@ -7580,7 +7605,8 @@ int calculate_group_doublecount_matrix_of_allele( SimData* d, unsigned int group
         return 1;
 	}
 
-	char** genes = get_group_genes(d, group, groupSize);
+    char* genes[groupSize];
+    get_group_genes(d, group, groupSize, genes);
 
 	for (int i = 0; i < groupSize; ++i) {
 		//RPACKINSERT R_CheckUserInterrupt();
@@ -7599,7 +7625,6 @@ int calculate_group_doublecount_matrix_of_allele( SimData* d, unsigned int group
 			counts2->matrix[i][j] = cell_sum2;
 		}
 	}
-    free(genes);
 	return 0;
 }
 
@@ -7617,7 +7642,8 @@ int calculate_group_doublecount_matrix_of_allele( SimData* d, unsigned int group
 int calculate_count_matrix_of_allele( AlleleMatrix* m, char allele, DecimalMatrix* counts) {
 	//DecimalMatrix counts = generate_zero_dmatrix(m->n_markers, m->n_genotypes);
 	if (counts->rows < m->n_genotypes || counts->cols < m->n_markers) {
-        fprintf(stderr, "`counts` is the wrong size to be filled: needs %d by %d but is %d by %d\n", m->n_markers, m->n_genotypes, counts->rows, counts->cols);
+        fprintf(stderr, "`counts` is the wrong size to be filled: needs %d by %d but is %d by %d\n",
+                m->n_markers, m->n_genotypes, counts->rows, counts->cols);
         return 1;
 	}
 
@@ -7657,11 +7683,13 @@ int calculate_count_matrix_of_allele( AlleleMatrix* m, char allele, DecimalMatri
  * */
 int calculate_doublecount_matrix_of_allele( AlleleMatrix* m, char allele, DecimalMatrix* counts, char allele2, DecimalMatrix* counts2) {
 	if (counts->rows < m->n_genotypes || counts->cols < m->n_markers) {
-        fprintf(stderr, "`counts` is the wrong size to be filled: needs %d by %d but is %d by %d\n", m->n_markers, m->n_genotypes, counts->rows, counts->cols);
+        fprintf(stderr, "`counts` is the wrong size to be filled: needs %d by %d but is %d by %d\n",
+                m->n_markers, m->n_genotypes, counts->rows, counts->cols);
         return 1;
 	}
     if (counts2->rows < m->n_genotypes || counts2->cols < m->n_markers) {
-        fprintf(stderr, "`counts2` is the wrong size to be filled: needs %d by %d but is %d by %d\n", m->n_markers, m->n_genotypes, counts2->rows, counts2->cols);
+        fprintf(stderr, "`counts2` is the wrong size to be filled: needs %d by %d but is %d by %d\n",
+                m->n_markers, m->n_genotypes, counts2->rows, counts2->cols);
         return 1;
 	}
 
@@ -7942,8 +7970,9 @@ void calculate_group_local_bvs(SimData* d, MarkerBlocks b, const char* output_fi
 	char buffer[bufferlen];
 
 	int gsize = get_group_size(d, group);
-	char** ggenos = get_group_genes(d, group, gsize);
-	char** gnames = get_group_names(d, group, gsize);
+    char* ggenos[gsize]; char* gnames[gsize];
+    get_group_genes(d, group, gsize, ggenos);
+    get_group_names(d, group, gsize, gnames);
 
 	double beffect;
 
@@ -7992,9 +8021,6 @@ void calculate_group_local_bvs(SimData* d, MarkerBlocks b, const char* output_fi
 		}
 		fwrite("\n", sizeof(char), 1, outfile);
 	}
-
-	free(ggenos);
-	free(gnames);
 
 	fflush(outfile);
 	fclose(outfile);
@@ -8155,7 +8181,8 @@ char* calculate_optimal_available_alleles(SimData* d, unsigned int group) {
     // assumes no alleles in the matrix are spaces.
 
     int gsize = get_group_size(d, group);
-    char** ggenes = get_group_genes(d, group, gsize);
+    char* ggenes[gsize];
+    get_group_genes(d, group, gsize, ggenes);
 
     char* optimal = get_malloc(sizeof(char)* (d->n_markers + 1));
     char best_allele;
@@ -8203,7 +8230,6 @@ char* calculate_optimal_available_alleles(SimData* d, unsigned int group) {
         optimal[j] = best_allele;
     }
 
-    free(ggenes);
     optimal[d->n_markers] = '\0';
     return optimal;
 }
@@ -8254,7 +8280,8 @@ double calculate_optimal_available_bv(SimData* d, unsigned int group) {
     // assumes no alleles in the matrix are spaces.
 
     int gsize = get_group_size(d, group);
-    char** ggenes = get_group_genes(d, group, gsize);
+    char* ggenes[gsize];
+    get_group_genes(d, group, gsize, ggenes);
 
     double total_score = 0;
     char best_allele;
@@ -8302,7 +8329,6 @@ double calculate_optimal_available_bv(SimData* d, unsigned int group) {
         total_score += (2*best_score);
     }
 
-    free(ggenes);
     return total_score;
 }
 
@@ -8597,9 +8623,11 @@ void save_group_alleles(FILE* f, SimData* d, int group_id) {
         fprintf(stderr,"Group %d does not exist: no data saved.\n", group_id);
         return;
     }
-	char** alleles = get_group_genes( d, group_id, group_size);
-	char** names = get_group_names( d, group_id, group_size);
-	unsigned int* ids = get_group_ids( d, group_id, group_size);
+    char* alleles[group_size]; char* names[group_size];
+    unsigned int ids[group_size];
+    get_group_genes( d, group_id, group_size, alleles );
+    get_group_names( d, group_id, group_size, names );
+    get_group_ids( d, group_id, group_size, ids );
 
 	/* Print header */
 	//fwrite(&group_id, sizeof(int), 1, f);
@@ -8634,9 +8662,6 @@ void save_group_alleles(FILE* f, SimData* d, int group_id) {
 		///fprintf(f, "\n");
 		fwrite("\n", sizeof(char), 1, f);
 	}
-	free(alleles);
-	free(names);
-	free(ids);
 	fflush(f);
 
 }
@@ -8666,9 +8691,11 @@ void save_transposed_group_alleles(FILE* f, SimData* d, int group_id) {
         fprintf(stderr,"Group %d does not exist: no data saved.\n", group_id);
         return;
     }
-	char** alleles = get_group_genes( d, group_id, group_size);
-	char** names = get_group_names( d, group_id, group_size);
-	unsigned int* ids = get_group_ids( d, group_id, group_size);
+    char* alleles[group_size]; char* names[group_size];
+    unsigned int ids[group_size];
+    get_group_genes( d, group_id, group_size, alleles );
+    get_group_names( d, group_id, group_size, names );
+    get_group_ids( d, group_id, group_size, ids );
 
 	/* Print header */
 	fprintf(f, "%d", group_id);
@@ -8694,9 +8721,6 @@ void save_transposed_group_alleles(FILE* f, SimData* d, int group_id) {
 		///fprintf(f, "\n");
 		fwrite("\n", sizeof(char), 1, f);
 	}
-	free(alleles);
-	free(names);
-	free(ids);
 	fflush(f);
 
 }
@@ -8729,8 +8753,12 @@ void save_group_one_step_pedigree(FILE* f, SimData* d, int group) {
         fprintf(stderr,"Group %d does not exist: no data saved.\n", group);
         return;
     }
-	unsigned int* group_contents = get_group_ids( d, group, group_size);
-	char** group_names = get_group_names( d, group, group_size);
+
+
+    unsigned int group_contents[group_size];
+    get_group_ids( d, group, group_size, group_contents );
+    char* group_names[group_size];
+    get_group_names( d, group, group_size, group_names );
 	unsigned int pedigree[2];
 	char* name;
 
@@ -8767,8 +8795,6 @@ void save_group_one_step_pedigree(FILE* f, SimData* d, int group) {
 		}
 		fwrite("\n", sizeof(char), 1, f);
 	}
-	free(group_names);
-	free(group_contents);
 	fflush(f);
 }
 
@@ -8871,8 +8897,10 @@ void save_group_full_pedigree(FILE* f, SimData* d, int group) {
         return;
     }
 
-	unsigned int* group_contents = get_group_ids( d, group, group_size);
-	char** group_names = get_group_names( d, group, group_size);
+    unsigned int group_contents[group_size];
+    get_group_ids( d, group, group_size, group_contents );
+    char* group_names[group_size];
+    get_group_names( d, group, group_size, group_names );
 	const char newline[] = "\n";
 	unsigned int pedigree[2];
 
@@ -8888,8 +8916,6 @@ void save_group_full_pedigree(FILE* f, SimData* d, int group) {
 		}
 		fwrite(newline, sizeof(char), 1, f);
 	}
-	free(group_names);
-	free(group_contents);
 	fflush(f);
 }
 
@@ -9100,8 +9126,10 @@ void save_group_bvs(FILE* f, SimData* d, int group) {
         fprintf(stderr,"Group %d does not exist: no data saved.\n", group);
         return;
     }
-	unsigned int* group_contents = get_group_ids( d, group, group_size);
-	char** group_names = get_group_names( d, group, group_size);
+    unsigned int group_contents[group_size];
+    get_group_ids( d, group, group_size, group_contents );
+    char* group_names[group_size];
+    get_group_names( d, group, group_size, group_names );
 	DecimalMatrix effects = calculate_group_bvs(d, group);
 	const char newline[] = "\n";
 	const char tab[] = "\t";
@@ -9121,8 +9149,6 @@ void save_group_bvs(FILE* f, SimData* d, int group) {
 	}
 
 	delete_dmatrix(&effects);
-	free(group_names);
-	free(group_contents);
 	fflush(f);
 }
 
@@ -9288,7 +9314,9 @@ void save_count_matrix_of_group(FILE* f, SimData* d, char allele, int group) {
         fprintf(stderr,"Group %d does not exist: no data saved.\n", group);
         return;
     }
-	char** group_names = get_group_names( d, group, group_size);
+
+    char* group_names[group_size];
+    get_group_names( d, group, group_size, group_names );
 	DecimalMatrix counts = generate_zero_dmatrix(group_size,d->n_markers);
 	calculate_group_count_matrix_of_allele(d,group,allele,&counts);
 
@@ -9321,6 +9349,5 @@ void save_count_matrix_of_group(FILE* f, SimData* d, char allele, int group) {
 	}
 
 	delete_dmatrix(&counts);
-	free(group_names);
 	fflush(f);
 }
