@@ -32,6 +32,10 @@ int test_labels(SimData *d, int g0);
 int test_effect_calculators(SimData *d, int g0);
 int test_optimal_calculators(SimData *d, int g0);
 
+int test_data_access(SimData* d, int gp);
+int test_iterators(SimData* d, int gp);
+int test_getters(SimData* d, int gp);
+
 int test_crossing(SimData *d, int g0);
 int test_crossing_unidirectional(SimData *d, int g0);
 int test_crossing_from_file(SimData *d, char* fname);
@@ -41,7 +45,3 @@ void test_crossing_randomly(SimData *d, int g1);
 int test_deletors(SimData *d, int g0);
 
 int test_block_generator(SimData *d);
-
-int test_data_access(SimData* d, int gp);
-
-

@@ -1221,24 +1221,118 @@ int test_block_generator(SimData *d) {
 	return 0;
 }
 
-int test_data_access(SimData* d, int gp) {
+int test_iterators(SimData* d, int gp) {
+    GenOptions g = {
+        .will_name_offspring = FALSE,
+        .offspring_name_prefix = NULL,
+        .family_size = 1,
+        .will_track_pedigree = TRUE,
+        .will_allocate_ids = FALSE,
+        .filename_prefix = NULL,
+        .will_save_pedigree_to_file = FALSE,
+        .will_save_bvs_to_file = FALSE,
+        .will_save_alleles_to_file = FALSE,
+        .will_save_to_simdata = TRUE
+    };
+    int combos[2][3];
+    combos[0][0] = 0; combos[1][0] = 0;
+    combos[0][1] = 1; combos[1][1] = 2;
+    combos[0][2] = 1; combos[1][2] = 5;
+    int f1 = cross_these_combinations(d, 3, combos, g);
+    const int label1 = create_new_label(d, 0);
+    increment_labels(d,f1,label1,1);
+
+    // Bidirectional global iterator; starting forwards
+    BidirectionalIterator it1 = create_bidirectional_iter(d, 0);
+    int i = 0;
+    for (; i < 6; ++i) {
+        GenoLocation gl = next_forwards(&it1);
+        assert(isValidLocation(gl));
+        assert(get_id(gl) == i+1);
+        assert(get_label_value(gl,get_index_of_label(d,label1)) == 0);
+        assert(get_group(gl) == gp);
+    }
+    for (; i < 6+3; ++i) {
+        GenoLocation gl = next_forwards(&it1);
+        assert(isValidLocation(gl));
+        assert(get_id(gl) == 0);
+        assert(get_label_value(gl,get_index_of_label(d,label1)) == 1);
+        assert(get_group(gl) == f1);
+    }
+    assert(!isValidLocation(next_forwards(&it1)));
+    for (int j = 0; j < 3-1; ++j) {
+        assert(get_id(next_backwards(&it1)) == 0);
+    }
+    assert(get_id(next_backwards(&it1)) == 6);
+
+    delete_bidirectional_iter(&it1);
+
+    // Bidirectional group iterator; starting backwards
+    BidirectionalIterator it2 = create_bidirectional_iter(d, gp);
+    assert(get_id(next_backwards(&it2)) == 6);
+    assert(!isValidLocation(next_forwards(&it2)));
+    assert(get_id(next_backwards(&it2)) == 5);
+    assert(get_id(next_backwards(&it2)) == 4);
+    assert(get_id(next_backwards(&it2)) == 3);
+    assert(get_id(next_backwards(&it2)) == 2);
+    assert(get_id(next_forwards(&it2)) == 3);
+    assert(get_id(next_backwards(&it2)) == 2);
+    assert(get_id(next_backwards(&it2)) == 1);
+    assert(!isValidLocation(next_backwards(&it2)));
+
+    // RandomAccess global iterator
+    RandomAccessIterator it3 = create_randomaccess_iter(d, 0);
+    assert(get_group(next_get_nth(&it3, 6)) == f1);
+    assert(get_group(next_get_nth(&it3, 2)) == gp);
+    assert(get_id(next_get_nth(&it3, 2)) == 3);
+    assert(get_id(next_get_nth(&it3, 5)) == 6);
+    assert(!isValidLocation(next_get_nth(&it3,-1)));
+    assert(!isValidLocation(next_get_nth(&it3,10)));
+
+    delete_randomaccess_iter(&it3);
+
+    // RandomAccess group iterator
+    char* newnames[4] = {"f1a", "f1b", "f1c", "f1d"};
+    set_names_to_values(d,f1,0,4,newnames);
+    RandomAccessIterator it4 = create_randomaccess_iter(d, f1);
+    assert(get_group(next_get_nth(&it4, 0)) == f1);
+    assert(strncmp(get_name(next_get_nth(&it4, 0)),"f1a",5)==0);
+    assert(get_first_parent(next_get_nth(&it4, 0)) == 1);
+    assert(get_first_parent(next_get_nth(&it4, 2)) == 2);
+    assert(get_second_parent(next_get_nth(&it4, 1)) == 3);
+
+    delete_randomaccess_iter(&it4);
+
+    // Empty group iterator
+    RandomAccessIterator it5 = create_randomaccess_iter(d,4);
+    assert(!isValidLocation(next_get_nth(&it5,0)));
+
+    delete_group(d, f1);
+    delete_label(d, get_index_of_label(d, label1));
+
+    printf("...iterators work correctly.\n");
+
+    return 0;
+}
+
+int test_getters(SimData* d, int gp) {
     assert(get_group_size(d, gp) == 6);
     char** alleles = get_group_genes(d, gp, 6);
-	assert(strncmp(alleles[0],"TTAATT", 6) == 0); // G01
-	assert(strncmp(alleles[1],"TTAATT", 6) == 0); // G02
-	assert(strncmp(alleles[2],"TTAATA", 6) == 0); // G03
-	assert(strncmp(alleles[3],"TAAATA", 6) == 0); // G04
-	assert(strncmp(alleles[4],"TTTTTT", 6) == 0); // G05
-	assert(strncmp(alleles[5],"ATAATT", 6) == 0); // G06
+    assert(strncmp(alleles[0],"TTAATT", 6) == 0); // G01
+    assert(strncmp(alleles[1],"TTAATT", 6) == 0); // G02
+    assert(strncmp(alleles[2],"TTAATA", 6) == 0); // G03
+    assert(strncmp(alleles[3],"TAAATA", 6) == 0); // G04
+    assert(strncmp(alleles[4],"TTTTTT", 6) == 0); // G05
+    assert(strncmp(alleles[5],"ATAATT", 6) == 0); // G06
     free(alleles);
 
     char** names = get_group_names(d, gp, -1);
     assert(strcmp(names[0], "G01") == 0);
-	assert(strcmp(names[1], "G02") == 0);
-	assert(strcmp(names[2], "G03") == 0);
-	assert(strcmp(names[3], "G04") == 0);
-	assert(strcmp(names[4], "G05") == 0);
-	assert(strcmp(names[5], "G06") == 0);
+    assert(strcmp(names[1], "G02") == 0);
+    assert(strcmp(names[2], "G03") == 0);
+    assert(strcmp(names[3], "G04") == 0);
+    assert(strcmp(names[4], "G05") == 0);
+    assert(strcmp(names[5], "G06") == 0);
     free(names);
 
     unsigned int* ids = get_group_ids(d, gp, -1);
@@ -1262,7 +1356,59 @@ int test_data_access(SimData* d, int gp) {
     assert(fabs(bvs[5] - (-0.3)) < TOL);
     free(bvs);
 
-	// missing the parent and pedigree checks but this group doesn't have info for that anyway
+    int combos[2][3];
+    combos[0][0] = 0; combos[1][0] = 0;
+    combos[0][1] = 1; combos[1][1] = 2;
+    combos[0][2] = 1; combos[1][2] = 5;
+    GenOptions g = {
+        .will_name_offspring = FALSE,
+        .offspring_name_prefix = NULL,
+        .family_size = 1,
+        .will_track_pedigree = TRUE,
+        .will_allocate_ids = FALSE,
+        .filename_prefix = NULL,
+        .will_save_pedigree_to_file = FALSE,
+        .will_save_bvs_to_file = FALSE,
+        .will_save_alleles_to_file = FALSE,
+        .will_save_to_simdata = TRUE
+    };
+    int f1 = cross_these_combinations(d,3,combos,g);
+
+    unsigned int* p1s = get_group_parent_ids(d, f1, UNINITIALISED, 1);
+    unsigned int* p2s = get_group_parent_ids(d, f1, 3, 2);
+    assert(p1s[0] == 1);
+    assert(p1s[1] == 2);
+    assert(p1s[2] == 2);
+    assert(p2s[0] == 1);
+    assert(p2s[1] == 3);
+    assert(p2s[2] == 6);
+    free(p1s);
+    free(p2s);
+
+    char** p1ns = get_group_parent_names(d, f1, 3, 1);
+    char** p2ns = get_group_parent_names(d, f1, UNINITIALISED, 2);
+    assert(strncmp(p1ns[0],"G01",sizeof(char)*5)==0);
+    assert(strncmp(p1ns[1],"G02",sizeof(char)*5)==0);
+    assert(strncmp(p1ns[2],"G02",sizeof(char)*5)==0);
+    assert(strncmp(p2ns[0],"G01",sizeof(char)*5)==0);
+    assert(strncmp(p2ns[1],"G03",sizeof(char)*5)==0);
+    assert(strncmp(p2ns[2],"G06",sizeof(char)*5)==0);
+    free(p1ns);
+    free(p2ns);
+
+    delete_group(d,f1);
+
+    // Missing full pedigree getter check.
+
+    printf("...legacy getters work correctly.\n");
+
+    return 0;
+}
+
+int test_data_access(SimData* d, int gp) {
+    test_iterators(d,gp);
+
+    test_getters(d,gp);
 
     return 0;
 }
@@ -1312,6 +1458,10 @@ int main(int argc, char* argv[]) {
     g0 = test_grouping(d, g0);
     printf("\t\t-> Group manipulation functions all clear\n");
 
+    //test data access functions
+    printf("\nNow testing data access functions:\n");
+    test_data_access(d, g0);
+
 	// test effect calculators
 	printf("\nNow testing GEBV calculator:\n");
 	test_effect_calculators(d, g0);
@@ -1331,11 +1481,6 @@ int main(int argc, char* argv[]) {
 	//test file savers
 	printf("\nNow testing saver functions:\n");
 	printf("TODO Saver tests not implemented yet\n");
-
-	//test data access functions
-	printf("\nNow testing data access functions:\n");
-	test_data_access(d, g0);
-	printf("TODO Data access tests not fully implemented yet\n");
 
 	// test SimData deletors.
 	printf("\nNow testing deletor functions:\n");

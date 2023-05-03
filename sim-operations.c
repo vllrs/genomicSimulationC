@@ -14,6 +14,10 @@ const GenOptions BASIC_OPT = {
 	.will_save_alleles_to_file = FALSE,
 	.will_save_to_simdata = TRUE
 };
+const GenoLocation INVALID_GENO_LOCATION = {
+   .localAM = NULL,
+   .localPos = UNINITIALISED
+};
 
 /* Creator for an empty SimData object */
 /*const SimData EMPTY_SIMDATA = {
@@ -552,7 +556,7 @@ int create_new_label(SimData* d, int setTo) {
 
     } else {
         fprintf(stderr, "Labels malformed; SimData may be corrupted.\n");
-        return -1;
+        return UNINITIALISED;
     }
     d->n_labels += 1;
 
@@ -1098,7 +1102,7 @@ void condense_allele_matrix( SimData* d) {
 				checker_m->names[checker] = filler_m->names[filler];
 				filler_m->names[filler] = NULL;
 				checker_m->ids[checker] = filler_m->ids[filler];
-				filler_m->ids[filler] = -1;
+                filler_m->ids[filler] = UNINITIALISED;
                 // Assumes n_labels will be consistent across all AlleleMatrix in the linked list
                 // and all labels arrays will be of full CONTIG_WIDTH.
                 // If the AlleleMatrix linked list is valid, this is true.
@@ -1155,6 +1159,718 @@ void condense_allele_matrix( SimData* d) {
 
 /*----------------------------------Locators---------------------------------*/
 
+
+/** Create a bidirectional iterator
+ *
+ *  A bidirectional iterator can be used to loop through members of a particular group
+ *  or all genotypes in the simulation, forwards or backwards.
+ *  The iterator is not initialised to any location at this point. The first call to
+ *  a next* function will initialise it, or you can manually initialise using
+ *  set_bidirectional_iter_to_start or set_bidirectional_iter_to_end. next_forwards will
+ *  initialise it to the first in the group, or call next_backwards to initialise it to the
+ *  last in the group.
+ *
+ *  @warning An initialised iterator is only valid if no genotypes have been added
+ *  to the group and no genotypes in the simulation as a whole have been removed
+ *  since its creation. Discard the old iterator and create a new one when the state
+ *  of the simulation changes.
+ *
+ *  @param d pointer to the SimData containing the genotypes to iterate through
+ *  @param group the group number of the group to iterate through, or 0 to iterate
+ *  through all genotypes.
+ * @returns uninitialised BidirectionalIterator for the provided group.
+ */
+BidirectionalIterator create_bidirectional_iter(SimData* d, unsigned int group) {
+    return (BidirectionalIterator) {
+        .d = d,
+        .group = group,
+        .globalPos = UNINITIALISED,
+
+        .cachedAM = d->m,
+        .cachedAMIndex = 0,
+
+        .atStart = FALSE,
+        .atEnd = FALSE
+    };
+}
+
+/** Create a Random Access Iterator
+ *
+ *  A random access iterator and the function next_get_nth() can be used to
+ *  get any genotype in the simulation by index or any genotype in a group
+ *  by within-group index.
+ *
+ *  The random access iterator gives you access to the (i)th group member in
+ *  O(n) time (n being the number of genotypes in the simulation), but contains
+ *  a persistent cache that allows subsequent O(1) access to group members.
+ *
+ *  The random access iterator created by this function is initialised. If the
+ *  `groupSize` attribute of the returned iterator is set to 0, no members of
+ *  that group could be found in the simulation, so the iterator will never
+ *  return a valid position.
+ *
+ *  @warning An initialised iterator is only valid if no genotypes have been added
+ *  to the group and no genotypes in the simulation as a whole have been removed
+ *  since its creation. Discard the old iterator and create a new one when the state
+ *  of the simulation changes.
+ *
+ *  @param d pointer to the SimData containing the genotypes to iterate through
+ *  @param group the group number of the group to iterate through, or 0 to iterate
+ *  through all genotypes.
+ * @returns initialised Random Access iterator for the provided group.
+*/
+RandomAccessIterator create_randomaccess_iter(SimData* d, unsigned int group) {
+    unsigned long first = 0;
+    AlleleMatrix* firstAM = d->m;
+    char anyExist = TRUE;
+
+    // Want to know:
+    // - is this group empty? (randomAccess should know if group size is 0)
+    // - what is the first genotype index in this group?
+
+    if (group == 0) { // scanning all genotypes
+        while (firstAM->n_genotypes == 0) {
+            if (firstAM->next == NULL) {
+                // SimData is empty. Nowhere to go.
+                anyExist = FALSE;
+
+            } else { // Keep moving forwards through the list. Not polite enough to clean up the blank AM.
+
+                firstAM = firstAM->next;
+            }
+        }
+
+    } else { // scanning a specific group
+
+        char exitNow = FALSE;
+        while (exitNow == FALSE) {
+
+            // Set first, firstAM, firstAMIndex if appropriate
+            for (int i = 0; i < firstAM->n_genotypes; ++i) {
+                if (firstAM->groups[i] == group) {
+                    first = i;
+                    exitNow = TRUE;
+                    break;
+                }
+            }
+
+            // Move along and set anyExist if appropriate
+            if (exitNow == FALSE) {
+                firstAM = firstAM->next;
+                if (firstAM == NULL) {
+                    anyExist = FALSE;
+                    exitNow = TRUE;
+                }
+            }
+        }
+
+    }
+
+    GenoLocation* cache = NULL;
+    unsigned int cacheSize = 0;
+    if (anyExist) {
+        cacheSize = 50;
+        cache = get_malloc((sizeof(GenoLocation)*cacheSize));
+        cache[0] = (GenoLocation) {
+                .localAM= firstAM,
+                .localPos = first,
+        };
+        for (int i = 1; i < cacheSize; ++i) {
+            cache[i] = INVALID_GENO_LOCATION;
+        }
+
+    }
+
+    return (RandomAccessIterator) {
+        .d = d,
+        .group = group,
+
+        .largestCached = anyExist ? 0 : UNINITIALISED,
+        .groupSize = anyExist ? UNINITIALISED : 0,
+        .cacheSize = cacheSize,
+        .cache = cache
+    };
+}
+
+/** Get an AlleleMatrix by index in the linked list
+ *
+ *  listStart is considered the 0th AlleleMatrix (0-based indexing)
+ *
+ *  @param listStart the 0th AlleleMatrix in the linked list
+ *  @param n the index of the desired AlleleMatrix in the linked list
+ *  @returns pointer to the nth AlleleMatrix, if it exists in the list, or
+ *  NULL if the list is shorter than n
+ */
+AlleleMatrix* get_nth_AlleleMatrix(AlleleMatrix* listStart, unsigned int n) {
+    unsigned int currentIndex = 0;
+    AlleleMatrix* am = listStart;
+    while (currentIndex < n) {
+        if (am->next == NULL) {
+            return NULL;
+        } else {
+            am = am->next;
+            currentIndex++;
+        }
+    }
+    return am;
+}
+
+/** Check nothing in the BidirectionalIterator is obviously invalid
+ *
+ * Update the current value of the cachedAM and cachedAMIndex to match the
+ * current global position, if they do not already match.
+ *
+ * Assumes the BidirectionalIterator is initialised. @see create_bidirectional_iter
+ * and set_bidirectional_iter_to_start or set_bidirectional_iterator_to_end.
+ *
+ *  @warning An initialised iterator is only valid if no genotypes have been added
+ *  to the group and no genotypes in the simulation as a whole have been removed
+ *  since its creation. Discard the old iterator and create a new one when the state
+ *  of the simulation changes.
+ *
+ * @param it Bidirectional iterator to check. Contains a reference to the
+ * relevant SimData.
+ * @returns FALSE if the current global position is invalid for the SimData
+ * (has the wrong group number or is larger than the number of genotypes
+ * in the SimData), and TRUE otherwise.
+ */
+int validate_bidirectional_cache(BidirectionalIterator* it) {
+    int currentAMIndex = it->globalPos / CONTIG_WIDTH;
+    if (currentAMIndex != it->cachedAMIndex) { // Seek to find the AM that should be cached
+        if (currentAMIndex > it->cachedAMIndex) {
+            it->cachedAM = it->d->m;
+            it->cachedAMIndex = 0;
+        }
+
+        do {
+            if (it->cachedAM->next == NULL) {
+                // We were unable to even find the current location. Something's wrong.
+                it->atEnd = TRUE;
+                return FALSE;
+            }
+            it->cachedAM = it->cachedAM->next;
+            it->cachedAMIndex++;
+
+        } while (it->cachedAMIndex < currentAMIndex);
+    }
+
+    if (it->group != 0 &&
+            it->cachedAM->groups[it->globalPos - CONTIG_WIDTH * currentAMIndex] != it->group) {
+        // Something is wrong with the iterator
+        return FALSE;
+    }
+
+    return TRUE;
+}
+
+/** Initialise a Bidirectional iterator to the start of its sequence.
+ *
+ *  Can be used to reset a BidirectionalIterator so that it is pointing
+ *  at the very first member of the group it is looping through.
+ *
+ * @param it BidirectioanlIterator to initialise
+ * @return location of the first member of the sequence.
+ */
+GenoLocation set_bidirectional_iter_to_start(BidirectionalIterator* it) {
+    unsigned long first = 0;
+    AlleleMatrix* firstAM = it->d->m;
+    unsigned int firstAMIndex = 0;
+    char anyExist = TRUE;
+
+    // Want to know:
+    // - is this group empty? (iterator should know if it is at the end as well as at the start)
+    // - what is the first genotype index in this group?
+
+    if (it->group == 0) {
+        while (firstAM->n_genotypes == 0) {
+            if (firstAM->next == NULL) {
+                anyExist = FALSE; // SimData is empty.
+
+            } else { // (Not polite enough to clean up the blank AM.)
+                firstAM = firstAM->next;
+                firstAMIndex++;
+                // first += 0;
+            }
+        }
+
+        // After this runs we have set firstAM, first, firstAMIndex, anyExist appropriately
+
+    } else { // scanning a specific group
+
+        char exitNow = FALSE;
+        while (exitNow == FALSE) {
+
+            // Set first, firstAM, firstAMIndex if appropriate
+            for (int i = 0; i < firstAM->n_genotypes; ++i) {
+                if (firstAM->groups[i] == it->group) {
+                    first = first + i;
+                    exitNow = TRUE;
+                }
+            }
+
+            // Move along and set anyExist if appropriate
+            if (exitNow == FALSE) {
+                first += firstAM->n_genotypes;
+                firstAM = firstAM->next;
+                firstAMIndex++;
+                if (firstAM == NULL) {
+                    first = -2; // None exist. -2 != UNINITIALISED
+                    anyExist = FALSE;
+                    exitNow = TRUE;
+                }
+            }
+        }
+    }
+
+    it->globalPos = first;
+    it->atStart = TRUE;
+    it->atEnd = !anyExist;
+    it->cachedAM = firstAM;
+    it->cachedAMIndex = firstAMIndex;
+
+    return (GenoLocation) {
+        .localAM = firstAM,
+        .localPos = first - firstAMIndex * CONTIG_WIDTH
+    };
+}
+
+/** Initialise a Bidirectional iterator to the end of its sequence.
+ *
+ *  Can be used to reset a BidirectionalIterator so that it is pointing
+ *  at the very last member of the group it is looping through.
+ *
+ * @param it BidirectioanlIterator to initialise
+ * @return location of the last member of the sequence.
+ */
+GenoLocation set_bidirectional_iter_to_end(BidirectionalIterator* it) {
+    unsigned long last = 0;
+    AlleleMatrix* lastAM = it->d->m;
+    unsigned int lastAMIndex = 0;
+    char anyExist = TRUE;
+
+    // Want to know:
+    // - is this group empty? (iterator should know if it is at the end as well as at the start)
+    // - what is the first genotype index in this group?
+
+    if (it->group == 0) {
+        while (lastAM->n_genotypes != 0 && lastAM->next != NULL) {
+            last += lastAM->n_genotypes;
+            lastAM = lastAM->next;
+            lastAMIndex++;
+        }
+        if (last <= 0) {
+            anyExist = FALSE;
+        }
+        --last;
+
+    } else { // scanning a specific group
+
+        // Find last AM
+        while (lastAM->n_genotypes != 0 && lastAM->next != NULL) {
+            lastAM = lastAM->next;
+            lastAMIndex++;
+        }
+
+        char exitNow = FALSE;
+        while (exitNow == FALSE) {
+
+            // Set first, firstAM, firstAMIndex if appropriate
+            for (int i = lastAM->n_genotypes - 1; i >= 0; --i) {
+                if (lastAM->groups[i] == it->group) {
+                    last = i + lastAMIndex * CONTIG_WIDTH;
+                    exitNow = TRUE;
+                    break;
+                }
+            }
+
+            // Move along and set anyExist if appropriate
+            if (exitNow == FALSE) {
+                --lastAMIndex;
+                lastAM = get_nth_AlleleMatrix(it->d->m, lastAMIndex);
+                if (lastAM == NULL) {
+                    last = -2; // There are none. -2 != UNINITIALISED
+                    anyExist = FALSE;
+                    exitNow = TRUE;
+                }
+            }
+        }
+    }
+
+    it->globalPos = last;
+    it->atStart = !anyExist;
+    it->atEnd = TRUE;
+    it->cachedAM = lastAM;
+    it->cachedAMIndex = lastAMIndex;
+
+    return (GenoLocation) {
+        .localAM = lastAM,
+        .localPos = last - lastAMIndex * CONTIG_WIDTH
+    };
+}
+
+
+/** Get the next location from a bidirectional iterator
+ *
+ * Moves the pointer of a BidirectionalIterator forwards by
+ * one step, and returns the new location it points to. If
+ * the BidirectionalIterator is not initialised, then initialises
+ * it to the very first element.
+ *
+ * Returns INVALID_GENO_LOCATION
+ * if the BidirectionalIterator is corrupted or if it is at the
+ * end of the sequence. Test the return value of this function
+ * with @see isValidLocation().
+ *
+ * @param it the BidirectionalIterator to iterate forwards
+ * @returns the location of the next genotype in the sequence,
+ * or INVALID_GENO_LOCATION if the iterator is corrupted or
+ * the iterator's pointer is already at the last element.
+ */
+GenoLocation next_forwards(BidirectionalIterator* it) {
+    if (it->globalPos == UNINITIALISED) {
+        return set_bidirectional_iter_to_start(it);
+    }
+
+    if (it->atEnd || validate_bidirectional_cache(it) == FALSE) {
+        return INVALID_GENO_LOCATION;
+    }
+
+    if (it->group == 0) {
+
+        // Search for the next value.
+        if (it->globalPos + 1 - CONTIG_WIDTH * it->cachedAMIndex < it->cachedAM->n_genotypes) {
+            // The next value is in the same AlleleMatrix
+            it->globalPos++;
+            it->atStart = FALSE;
+            return (GenoLocation) {
+                .localAM = it->cachedAM,
+                .localPos = it->globalPos - CONTIG_WIDTH * it->cachedAMIndex
+            };
+
+        } else {
+            // The next value is in the next AlleleMatrix
+            if (it->cachedAM->next == NULL || it->cachedAM->n_genotypes == 0) {
+                // There is no further AlleleMatrix; we are at the end of the iterator.
+                it->atEnd = TRUE;
+                return INVALID_GENO_LOCATION;
+            } else {
+                it->cachedAM = it->cachedAM->next;
+                it->cachedAMIndex++;
+                it->globalPos++;
+                it->atStart = FALSE;
+                return (GenoLocation) {
+                    .localAM = it->cachedAM,
+                    .localPos = 0
+                };
+            }
+        }
+
+    } else { // We are iterating through a specific group
+
+        // Search for the next value
+        int localPos = it->globalPos + 1 - CONTIG_WIDTH * it->cachedAMIndex;
+        while(1) {
+            for (; localPos < it->cachedAM->n_genotypes; ++localPos) {
+                if (it->cachedAM->groups[localPos] == it->group) {
+                    it->globalPos = CONTIG_WIDTH * it->cachedAMIndex + localPos;
+                    it->atStart = FALSE;
+                    return (GenoLocation) {
+                        .localAM = it->cachedAM,
+                        .localPos = localPos
+                    };
+                }
+            }
+
+            if (it->cachedAM->next == NULL || it->cachedAM->next->n_genotypes == 0) {
+                // There is no further AlleleMatrix; we are at the end of the iterator.
+                it->atEnd = TRUE;
+                return INVALID_GENO_LOCATION;
+            } else {
+                it->cachedAM = it->cachedAM->next;
+                it->cachedAMIndex++;
+                localPos = 0;
+            }
+        }
+
+    }
+}
+
+
+/** Get the previous location from a bidirectional iterator
+ *
+ * Moves the pointer of a BidirectionalIterator backwards by
+ * one step, and returns the new location it points to. If
+ * the BidirectionalIterator is not initialised, then initialises
+ * it to the very last element.
+ *
+ * Slightly slower than next_forwards, because the AlleleMatrix linked list
+ * is not bidirectional. To find the preceding AlleleMatrix, it needs to
+ * count forwards from the beginning of the list to find the n-1th AlleleMatrix.
+ *
+ * Returns INVALID_GENO_LOCATION
+ * if the BidirectionalIterator is corrupted or if it is at the
+ * beginning of the sequence. Test the return value of this function
+ * with @see isValidLocation().
+ *
+ * @param it the BidirectionalIterator to iterate backwards
+ * @returns the location of the previous genotype in the sequence,
+ * or INVALID_GENO_LOCATION if the iterator is corrupted or
+ * the iterator's pointer is already at the first element.
+ */
+GenoLocation next_backwards(BidirectionalIterator* it) {
+    if (it->globalPos == UNINITIALISED) {
+        return set_bidirectional_iter_to_end(it);
+    }
+
+    if (it->atStart || validate_bidirectional_cache(it) == FALSE) {
+        return INVALID_GENO_LOCATION;
+    }
+
+    if (it->group == 0) {
+
+        // Search for the previous value.
+        if (it->globalPos - CONTIG_WIDTH * it->cachedAMIndex > 0) {
+            // The previous value is in the same AlleleMatrix
+            it->globalPos--;
+            it->atEnd = FALSE;
+            return (GenoLocation) {
+                .localAM = it->cachedAM,
+                .localPos = it->globalPos - CONTIG_WIDTH * it->cachedAMIndex
+            };
+
+        } else {
+            // The previous value is in the previous AlleleMatrix
+            if (it->cachedAMIndex == 0) {
+                it->atStart = TRUE;
+                return INVALID_GENO_LOCATION;
+            } else {
+                it->cachedAMIndex--;
+                it->cachedAM = get_nth_AlleleMatrix(it->d->m, it->cachedAMIndex);
+                if (it->cachedAM == NULL || it->cachedAM->n_genotypes <= 0) {
+                    // Something went wrong.
+                    // I'd assumed get_nth cannot fail, because iterator is validated,
+                    // n+1th cachedAM exists, and we have checked that n+1 > 0.
+                    it->atStart = TRUE;
+                    return INVALID_GENO_LOCATION;
+                }
+
+                it->globalPos--;
+                it->atEnd = FALSE;
+                return (GenoLocation) {
+                    .localAM = it->cachedAM,
+                    .localPos = it->cachedAM->n_genotypes - 1
+                };
+            }
+        }
+
+    } else { // We are iterating through a specific group
+
+        // Search for the next value
+        int localPos = it->globalPos - 1 - CONTIG_WIDTH * it->cachedAMIndex;
+        while(1) {
+            for (; localPos >= 0; --localPos) {
+                if (it->cachedAM->groups[localPos] == it->group) {
+                    it->globalPos = CONTIG_WIDTH * it->cachedAMIndex + localPos;
+                    it->atEnd = FALSE;
+                    return (GenoLocation) {
+                        .localAM = it->cachedAM,
+                        .localPos = localPos
+                    };
+                }
+            }
+
+            if (it->cachedAMIndex == 0) {
+                it->atStart = TRUE;
+                return INVALID_GENO_LOCATION;
+            } else {
+                it->cachedAMIndex--;
+                it->cachedAM = get_nth_AlleleMatrix(it->d->m, it->cachedAMIndex);
+                if (it->cachedAM == NULL || it->cachedAM->n_genotypes <= 0) {
+                    // Something went wrong.
+                    // I'd assumed get_nth cannot fail, because iterator is validated,
+                    // n+1th cachedAM exists, and we have checked that n+1 > 0.
+                    it->atStart = TRUE;
+                    return INVALID_GENO_LOCATION;
+                }
+                localPos = it->cachedAM->n_genotypes;
+            }
+        }
+    }
+}
+
+
+/** Get a location by index using a RandomAccessIterator
+ *
+ * Gives the location of the provided global index (if `it->group == 0`)
+ * or the location of the provided group index (if `it->group` is not 0),
+ * by first searching the RandomAccessIterator's cache for it and if
+ * not, searching the SimData for it and adding it and its predecessors
+ * to the cache.
+ *
+ * Returns INVALID_GENO_LOCATION
+ * if the iterator is corrupted or the index is invalid. Check the
+ * return value with @see isValidLocation().
+ *
+ * @param it the RandomAccessIterator to read and update the cache of.
+ * @returns the location of the nth genotype/nth group member, or
+ * INVALID_GENO_LOCATION if the index is invalid.
+ */
+GenoLocation next_get_nth(RandomAccessIterator* it, unsigned long int n) {
+    // Step 0: First check n is in our group index range as far as we know it
+    // (If it->groupSize is negative then we don't know the range)
+    if (it->groupSize > 0 && it->groupSize <= n) {
+        return INVALID_GENO_LOCATION;
+    }
+
+    // Step 1: Check if we have it in the cache.
+    if (n < it->cacheSize) {
+        // 'n' is less than or equal to our current furthest cached group member.
+
+        if (isValidLocation(it->cache[n])) {
+            return it->cache[n];
+        }
+
+        // Otherwise we do not have it cached, but we will enter it into the cache in the next section
+
+    } else {
+        // We need to expand the cache to fit it.
+        unsigned int newCacheSize = it->cacheSize;
+        if (it->cacheSize == 0) {
+            newCacheSize = 50;
+        }
+        while (newCacheSize < n+1) {
+            newCacheSize = newCacheSize << 1;
+        }
+        GenoLocation* newCache = get_malloc(sizeof(GenoLocation)*newCacheSize);
+        int i = 0;
+        for (; i < it->cacheSize; ++i) {
+            newCache[i] = it->cache[i];
+        }
+        for (; i < newCacheSize; ++i) {
+            newCache[i] = INVALID_GENO_LOCATION;
+        }
+        it->cacheSize = newCacheSize;
+        it->cache = newCache;
+    }
+
+    // Validity checks for a random access iterator: largestCached must exist,
+    // is indeed cached and belongs to the same group
+    if (it->largestCached < 0 || (!isValidLocation(it->cache[it->largestCached]) &&
+            (it->group == 0 || it->group != get_group(it->cache[it->largestCached])))) {
+        return INVALID_GENO_LOCATION;
+    }
+
+    // Step 2: Actually finding the nth group member.
+    if (it->group == 0) {
+        // Assuming all non-end AlleleMatrix are filled to CONTIG_WIDTH
+        GenoLocation expectedLocation = {
+            .localAM = get_nth_AlleleMatrix(it->d->m, n / CONTIG_WIDTH),
+            .localPos = n % CONTIG_WIDTH
+        };
+        // Check n was not too large
+        if (expectedLocation.localAM == NULL ||
+                expectedLocation.localAM->n_genotypes <= expectedLocation.localPos) {
+            return INVALID_GENO_LOCATION;
+        }
+        return expectedLocation;
+
+    } else { // searching for a particular group
+
+        AlleleMatrix* currentAM;
+        int groupN;
+        int localPos;
+        if (it->largestCached < n) {
+            // Search forwards from largestCached
+            currentAM = it->cache[it->largestCached].localAM;
+            groupN = it->largestCached;
+            localPos = it->cache[it->largestCached].localPos + 1;
+            while (1) {
+                for (; localPos < currentAM->n_genotypes; ++localPos) {
+                    // If we found a group member, cache it and count upwards towards n
+                    if (currentAM->groups[localPos] == it->group) {
+                        it->largestCached = ++groupN;
+                        it->cache[groupN] = (GenoLocation) {
+                            .localAM = currentAM,
+                            .localPos = localPos
+                        };
+                        if (groupN == n) {
+                            return it->cache[n];
+                        }
+                    }
+                }
+
+                if (currentAM->next == NULL || currentAM->next->n_genotypes == 0) {
+                    // We are at the end of the iterator and have not found n
+                    it->groupSize = groupN + 1;
+                    return INVALID_GENO_LOCATION;
+                } else {
+                    currentAM = currentAM->next;
+                    localPos = 0;
+                }
+
+           }
+
+        } else {
+            // With current method of filling cache, this branch will never be taken
+
+            // Search backwards from largestCached for one AlleleMatrix, to take advantage of that pointer
+            if (it->cache[it->largestCached].localAM != it->d->m) {
+                currentAM = it->cache[it->largestCached].localAM;
+                groupN = it->largestCached;
+                localPos = it->cache[it->largestCached].localPos;
+                for (; localPos >= 0; --localPos) {
+                    // If we found a group member, cache it and count down towards n
+                    if (currentAM->groups[localPos] == it->group) {
+                        --groupN;
+                        it->cache[groupN] = (GenoLocation) {
+                            .localAM = currentAM,
+                            .localPos = localPos
+                        };
+                        if (groupN == n) {
+                            return it->cache[n];
+                        }
+                    }
+                }
+            }
+
+            // Then search forwards from start
+            currentAM = it->d->m;
+            localPos = 0;
+            groupN = -1; // overwrite everything
+            while (currentAM != it->cache[it->largestCached].localAM) {
+                for (; localPos < currentAM->n_genotypes; ++localPos) {
+                    // If we found a group member, cache it and count upwards towards n
+                    if (currentAM->groups[localPos] == it->group) {
+                        ++groupN;
+                        it->cache[groupN] = (GenoLocation) {
+                            .localAM = currentAM,
+                            .localPos = localPos
+                        };
+                        if (groupN == n) {
+                            return it->cache[n];
+                        }
+                    }
+                }
+
+                if (currentAM->next == NULL || currentAM->next->n_genotypes == 0) {
+                    // We are at the end of the iterator and have not found n. Also we didn't reach
+                    // 'largestCached' yet. Something is wrong with the iterator
+                    it->groupSize = groupN + 1;
+                    return INVALID_GENO_LOCATION;
+                } else {
+                    currentAM = currentAM->next;
+                    localPos = 0;
+                }
+            }
+
+            // We were somehow unable to find the nth group member. Something is probably wrong
+            // with the iterator
+            return INVALID_GENO_LOCATION;
+
+        }
+    }
+}
+
 /** Returns the name of the genotype with a given id.
  *
  * The function uses a bisection search on the AlleleMatrix where it should be
@@ -1186,32 +1902,27 @@ char* get_name_of_id( AlleleMatrix* start, unsigned int id) {
 	AlleleMatrix* m = start;
 
 	while (1) {
-		// try to find our id. Does this AM have the right range for it?
-		if (m->n_genotypes != 0 && id >= m->ids[0] && id <= m->ids[m->n_genotypes - 1]) {
-			// perform binary search to find the exact index.
-			int index = get_from_ordered_uint_list(id, m->ids, m->n_genotypes);
+        // try to find our id. Does this AM potentially have the right range for it?
+        // If we're not sure, because either of the endpoints does not have its ID tracked,
+        // check anyway
+        if (m->n_genotypes != 0 && (id >= m->ids[0] || m->ids[0] == 0) &&
+                (id <= m->ids[m->n_genotypes - 1] || m->ids[m->n_genotypes - 1] == 0)) {
+            // perform binary search to find the exact index. => can't, because of the possibility of genotypes with unset IDs
+            // Linear search it is.
+            for (int i = 0; i < m->n_genotypes; ++i) {
+                if (m->ids[i] == id) {
+                    return m->names[i];
+                }
+            }
+        }
 
-			if (index < 0) {
-				// search failed
-				if (m->next == NULL) {
-					fprintf(stderr, "Could not find the ID %d: did you prematurely delete this genotype?\n", id);
-					return NULL;
-				} else {
-					m = m->next;
-				}
-			}
-
-			return m->names[index];
-
-		}
-
-		if (m->next == NULL) {
-			fprintf(stderr, "Could not find the ID %d: did you prematurely delete this genotype?\n", id);
-			return NULL;
-		} else {
-			m = m->next;
-		}
-	}
+        if (m->next == NULL) {
+            fprintf(stderr, "Could not find the ID %d: did you prematurely delete this genotype?\n", id);
+            return NULL;
+        } else {
+            m = m->next;
+        }
+    }
 }
 
 /** Returns the alleles at each marker of the genotype with a given id.
@@ -1371,7 +2082,7 @@ void get_ids_of_names( AlleleMatrix* start, int n_names, char* names[n_names], u
 
 	for (i = 0; i < n_names; ++i) {
 		found = FALSE;
-		output[i] = -1;
+        output[i] = UNINITIALISED;
 		m = start;
 		while (1) {
 			// try to identify the name in this AM
@@ -1446,7 +2157,7 @@ unsigned int get_id_of_child( AlleleMatrix* start, unsigned int parent1id, unsig
 int get_index_of_child( AlleleMatrix* start, unsigned int parent1id, unsigned int parent2id) {
     if (start == NULL || (start->n_genotypes <= 0 && start->next == NULL)) {
         fprintf(stderr,"Invalid start parameter: AlleleMatrix* `start` must exist\n");
-        return -1;
+        return UNINITIALISED;
     }
 	AlleleMatrix* m = start;
 	int j, total_j = 0;
@@ -1481,7 +2192,7 @@ int get_index_of_child( AlleleMatrix* start, unsigned int parent1id, unsigned in
 int get_index_of_name( AlleleMatrix* start, char* name) {
     if (start == NULL || (start->n_genotypes <= 0 && start->next == NULL)) {
         fprintf(stderr,"Invalid start parameter: AlleleMatrix* `start` must exist\n");
-        return -1;
+        return UNINITIALISED;
     }
 	AlleleMatrix* m = start;
 	int j, total_j = 0;
@@ -2715,11 +3426,12 @@ int get_new_group_num( SimData* d) {
  * @param label a label id
  * @return the index in d->label_ids, d->label_defaults, and the
  * ->labels table in AlleleMatrix where the data for this label
- * is stored, or -1 if the label with that id could not be found.
+ * is stored, or -1 (UNINITIALISED)
+ * if the label with that id could not be found.
  */
 int get_index_of_label( SimData* d, int label ) {
-    if (d->n_labels <= 0) { return -1; } // immediate fail
-    if (d->n_labels == 1) { return (d->label_ids[0] == label) ? 0 : -1 ; }
+    if (d->n_labels <= 0) { return UNINITIALISED; } // immediate fail
+    if (d->n_labels == 1) { return (d->label_ids[0] == label) ? 0 : UNINITIALISED ; }
 
     // If there's at least two labels then we binary search.
     int first = 0;
@@ -2739,7 +3451,7 @@ int get_index_of_label( SimData* d, int label ) {
 
     }
 
-    return -1;
+    return UNINITIALISED;
 }
 
 /** Function to identify the next sequential integer that is not
@@ -2858,7 +3570,7 @@ int get_group_size( SimData* d, int group_id) {
  * @param d the SimData struct on which to perform the operation
  * @param group_id the group number of the group we want data from
  * @param group_size if group_size has already been calculated, pass it too, otherwise
- * put in -1. This enables fewer calls to get_group_size when using multiple
+ * put in -1 (UNINITIALISED). This enables fewer calls to get_group_size when using multiple
  * group-data-getter functions.
  * @returns a vector containing pointers to the genes of each member of the group.
  * The vector itself is on the heap and should be freed, but its contents are only
@@ -2866,7 +3578,7 @@ int get_group_size( SimData* d, int group_id) {
  */
 char** get_group_genes( SimData* d, int group_id, int group_size) {
 	AlleleMatrix* m = d->m;
-    if (group_size <= 0) {
+    if (group_size <= 0) { // group_size == UNINITIALISED
         group_size = get_group_size( d, group_id );
         if (group_size == 0) { fprintf(stderr,"Group does not exist\n"); return 0; }
 	}
@@ -2901,7 +3613,7 @@ char** get_group_genes( SimData* d, int group_id, int group_size) {
  * @param d the SimData struct on which to perform the operation
  * @param group_id the group number of the group you want data from
  * @param group_size if group_size has already been calculated, pass it too, otherwise
- * put in -1. This enables fewer calls to get_group_size when using multiple
+ * put in -1 (UNINITIALISED). This enables fewer calls to get_group_size when using multiple
  * group-data-getter functions.
  * @returns a vector containing pointers to the names of each member of the group.
  * The vector itself is on the heap and should be freed, but its contents are only
@@ -2909,7 +3621,7 @@ char** get_group_genes( SimData* d, int group_id, int group_size) {
  */
 char** get_group_names( SimData* d, int group_id, int group_size) {
 	AlleleMatrix* m = d->m;
-    if (group_size <= 0) {
+    if (group_size <= 0) { // group_size == UNINITIALISED
         group_size = get_group_size( d, group_id );
         if (group_size == 0) { fprintf(stderr,"Group does not exist\n"); return 0; }
     }
@@ -2944,14 +3656,14 @@ char** get_group_names( SimData* d, int group_id, int group_size) {
  * @param d the SimData struct on which to perform the operation
  * @param group_id the group number of the group you want data from
  * @param group_size if group_size has already been calculated, pass it too, otherwise
- * put in -1. This enables fewer calls to get_group_size when using multiple
+ * put in -1 (UNINITIALISED). This enables fewer calls to get_group_size when using multiple
  * group-data-getter functions.
  * @returns a vector containing the ids of each member of the group.
  * The vector itself is on the heap and should be freed. Returns a null pointer if the group is empty.
  */
 unsigned int* get_group_ids( SimData* d, int group_id, int group_size) {
-	AlleleMatrix* m = d->m;
-    if (group_size <= 0) {
+    AlleleMatrix* m = d->m;
+    if (group_size <= 0) { // group_size == UNINITIALISED
         group_size = get_group_size( d, group_id );
         if (group_size == 0) { fprintf(stderr,"Group does not exist\n"); return 0; }
     }
@@ -2987,14 +3699,14 @@ unsigned int* get_group_ids( SimData* d, int group_id, int group_size) {
  * @param d the SimData struct on which to perform the operation
  * @param group_id the group number of the group you want data from
  * @param group_size if group_size has already been calculated, pass it too, otherwise
- * put in -1. This enables fewer calls to get_group_size when using multiple
+ * put in -1 (UNINITIALISED). This enables fewer calls to get_group_size when using multiple
  * group-data-getter functions.
  * @returns a vector containing the indexes of each member of the group.
  * The vector itself is on the heap and should be freed. Returns a null pointer if the group is empty.
  */
 int* get_group_indexes(SimData* d, int group_id, int group_size) {
 	AlleleMatrix* m = d->m;
-    if (group_size <= 0) {
+    if (group_size <= 0) { // group_size == UNINITIALISED
         group_size = get_group_size( d, group_id );
         if (group_size == 0) { fprintf(stderr,"Group does not exist\n"); return 0; }
     }
@@ -3029,13 +3741,13 @@ int* get_group_indexes(SimData* d, int group_id, int group_size) {
  * @param d the SimData struct on which to perform the operation
  * @param group_id the group number of the group you want data from
  * @param group_size if group_size has already been calculated, pass it too, otherwise
- * put in -1. This enables fewer calls to get_group_size when using multiple
+ * put in -1 (UNINITIALISED). This enables fewer calls to get_group_size when using multiple
  * group-data-getter functions.
  * @returns a vector containing the breeding values of each member of the group.
  * The vector itself is on the heap and should be freed. Returns a null pointer if the group is empty.
  */
 double* get_group_bvs( SimData* d, int group_id, int group_size) {
-    if (group_size <= 0) {
+    if (group_size <= 0) { // group_size == UNINITIALISED
         group_size = get_group_size( d, group_id );
         if (group_size == 0) { fprintf(stderr,"Group does not exist\n"); return 0; }
     }
@@ -3066,7 +3778,7 @@ double* get_group_bvs( SimData* d, int group_id, int group_size) {
  * @param d the SimData struct on which to perform the operation
  * @param group_id the group number of the group you want data from
  * @param group_size if group_size has already been calculated, pass it too, otherwise
- * put in -1. This enables fewer calls to get_group_size when using multiple
+ * put in -1 (UNINITIALISED). This enables fewer calls to get_group_size when using multiple
  * group-data-getter functions.
  * @param parent 1 to get the first parent of each group member, 2 to get the second.
  * Raises an error and returns NULL if this parameter is not either of those values.
@@ -3082,7 +3794,7 @@ unsigned int* get_group_parent_ids( SimData* d, int group_id, int group_size, in
 	--parent;
 
 	AlleleMatrix* m = d->m;
-    if (group_size <= 0) {
+    if (group_size <= 0) { // group_size == UNINITIALISED
         group_size = get_group_size( d, group_id );
         if (group_size == 0) { fprintf(stderr,"Group does not exist\n"); return 0; }
     }
@@ -3118,7 +3830,7 @@ unsigned int* get_group_parent_ids( SimData* d, int group_id, int group_size, in
  * @param d the SimData struct on which to perform the operation
  * @param group_id the group number of the group you want data from
  * @param group_size if group_size has already been calculated, pass it too, otherwise
- * put in -1. This enables fewer calls to get_group_size when using multiple
+ * put in -1 (UNINITIALISED). This enables fewer calls to get_group_size when using multiple
  * group-data-getter functions.
  * @param parent 1 to get the first parent of each group member, 2 to get the second.
  * Raises an error and returns NULL if this parameter is not either of those values.
@@ -3127,38 +3839,38 @@ unsigned int* get_group_parent_ids( SimData* d, int group_id, int group_size, in
  * freed, but its contents are only shallow copies that should not be freed. Returns a null pointer if the group is empty.
  */
 char** get_group_parent_names( SimData* d, int group_id, int group_size, int parent) {
-	if (!(parent == 1 || parent == 2)) {
-		fprintf(stderr, "Value error: `parent` must be 1 or 2.");
-		return NULL;
-	}
-	--parent;
+    if (!(parent == 1 || parent == 2)) {
+        fprintf(stderr, "Value error: `parent` must be 1 or 2.");
+        return NULL;
+    }
+    --parent;
 
-	AlleleMatrix* m = d->m;
-    if (group_size <= 0) {
+    AlleleMatrix* m = d->m;
+    if (group_size <= 0) { // group_size == UNINITIALISED
         group_size = get_group_size( d, group_id );
         if (group_size == 0) { fprintf(stderr,"Group does not exist\n"); return 0; }
     }
     char** pnames = get_malloc(sizeof(char*) * group_size);
 
-	int i, ids_i = 0;
-	while (1) {
-		for (i = 0; i < m->n_genotypes; ++i) {
-			if (m->groups[i] == group_id) {
+    int i, ids_i = 0;
+    while (1) {
+        for (i = 0; i < m->n_genotypes; ++i) {
+            if (m->groups[i] == group_id) {
                 if (m->pedigrees[parent][i] > 0) {
                     pnames[ids_i] = get_name_of_id(d->m, m->pedigrees[parent][i]);
                 } else {
                     pnames[ids_i] = NULL;
                 }
-				++ids_i;
-			}
-		}
+                ++ids_i;
+            }
+        }
 
-		if (m->next == NULL) {
-			return pnames;
-		} else {
-			m = m->next;
-		}
-	}
+        if (m->next == NULL) {
+            return pnames;
+        } else {
+            m = m->next;
+        }
+    }
 }
 
 /** Gets the full pedigree string (as per save_group_full_pedigree() )
@@ -3188,7 +3900,7 @@ char** get_group_parent_names( SimData* d, int group_id, int group_size, int par
  * @param d the SimData struct on which to perform the operation
  * @param group_id the group number of the group you want data from
  * @param group_size if group_size has already been calculated, pass it too, otherwise
- * put in -1. This enables fewer calls to get_group_size when using multiple
+ * put in -1 (UNINITIALISED). This enables fewer calls to get_group_size when using multiple
  * group-data-getter functions.
  * @returns  a vector containing pointers to the full pedigree string of each
  * member of the group. Both the vector and its contents are dynamically
@@ -3210,7 +3922,7 @@ char** get_group_pedigrees( SimData* d, int group_id, int group_size) {
 	}
 
 	// Create the list that we will return
-    if (group_size <= 0) {
+    if (group_size <= 0) { // group_size == UNINITIALISED
         group_size = get_group_size( d, group_id );
         if (group_size == 0) { fprintf(stderr,"Group does not exist\n"); return 0; }
     }
@@ -3406,8 +4118,10 @@ void delete_dmatrix(DecimalMatrix* m) {
 
 /*--------------------------------Deleting-----------------------------------*/
 
-/** Clears memory of all genotypes and associated information belonging
- * to a particular group.
+/** Deletes all genotypes belonging to a particular group.
+ *
+ *  This includes all of their details. Persistent ids (used to track
+ *  pedigree) will not be re-used.
  *
  * Uses a call to condense_allele_matrix() to ensure that the SimData
  * remains valid after deletion.
@@ -3529,7 +4243,9 @@ void delete_label(SimData* d, int whichLabel) {
     }
 }
 
-/** Deletes a GeneticMap object and frees its memory. m will now refer
+/** Deletes a GeneticMap object and frees its memory.
+ *
+ *  m will now refer
  * to an empty matrix, with every pointer set to null and dimensions set to 0.
  *
  * @param m pointer to the matrix whose data is to be cleared and memory freed.
@@ -3550,13 +4266,11 @@ void delete_genmap(GeneticMap* m) {
 	m->positions = NULL;
 }
 
-/** Deletes the full AlleleMatrix object and frees its memory. m will now refer
- * to an empty matrix, with pointers set to null and dimensions set to 0.
+/** Delete the AlleleMatrix linked list from m onwards and frees its memory.
  *
- * freeing its memory includes freeing the AlleleMatrix, which was allocated on the heap
- * by @see create_empty_allelematrix()
- *
- * all subsequent matrixes in the linked list are also deleted.
+ * Freeing its memory includes freeing the AlleleMatrix, which was allocated on the heap
+ * by @see create_empty_allelematrix(). All matrices further along in the linked list chain
+ * (eg pointed to by m->next or a chain of ->next pointers) will be similarly deleted.
  *
  * @param m pointer to the matrix whose data is to be cleared and memory freed.
  */
@@ -3594,7 +4308,9 @@ void delete_allele_matrix(AlleleMatrix* m) {
 	} while ((m = next) != NULL);
 }
 
-/** Deletes an EffectMatrix object and frees its memory. m will now refer
+/** Deletes an EffectMatrix object and frees its memory.
+ *
+ * m will now refer
  * to an empty matrix, with every pointer set to null and dimensions set to 0.
  *
  * @param m pointer to the matrix whose data is to be cleared and memory freed.
@@ -3648,7 +4364,9 @@ void delete_simdata(SimData* m) {
 	free(m);
 }
 
-/** Deletes a MarkerBlocks object and frees its associated memory. b will now refer
+/** Delete a MarkerBlocks struct.
+ *
+ * Deletes a MarkerBlocks object and frees its associated memory. b will now refer
  * to an empty struct, with every pointer set to null and number of markers set to 0.
  *
  * @param b pointer to the struct whose data is to be cleared and memory freed.
@@ -3664,6 +4382,49 @@ void delete_markerblocks(MarkerBlocks* b) {
 	b->num_blocks = 0;
 
 	return;
+}
+
+
+/** Deletes a BidirectionalIterator object.
+ *
+ *  A BidirectionalIterator has no heap memory to free, so calling
+ *  this function is mostly unnecessary. The function will set all
+ *  values in the struct to uninitialised/null values, and will set
+ *  the iterator to think it is both at the start and end of its
+ *  sequence, so that any next_* functions will not attempt to
+ *  search for group member locations.
+ *
+ * @param it pointer to the struct whose data is to be cleared.
+ */
+void delete_bidirectional_iter(BidirectionalIterator* it) {
+    it->d = NULL;
+    it->group = UNINITIALISED;
+    it->globalPos = UNINITIALISED;
+    it->cachedAM = NULL;
+    it->cachedAMIndex = UNINITIALISED;
+    it->atEnd = TRUE;
+    it->atStart = TRUE;
+}
+
+/** Deletes a RandomAccessIterator object and frees its memory.
+ *
+ *  All values in the struct will be set to uninitialised/null values,
+ *  except for groupSize, which will be set to 0 to so that any
+ *  next_* functions called on the iterator will not attempt to
+ *  search for group member locations.
+ *
+ * @param it pointer to the struct whose data is to be cleared and memory freed.
+ */
+void delete_randomaccess_iter(RandomAccessIterator* it) {
+    it->d = NULL;
+    it->group = UNINITIALISED;
+    if (it->cacheSize > 0) {
+        free(it->cache);
+    }
+    it->cache = NULL;
+    it->cacheSize = 0;
+    it->largestCached = UNINITIALISED;
+    it->groupSize = 0;
 }
 
 /*-------------------------------SimData loaders-----------------------------*/
@@ -4240,7 +5001,8 @@ void load_genmap_to_simdata(SimData* d, const char* filename) {
  * matrix sorted. The SimData pointed to by d will be modified by this function.
  * @param actual_n_markers If previously calculated, include the number of
  * markers in `d->markers` that have a position loaded into `d->map.positions`.
- * If this has not been calculated yet, make the value -1 and this function will
+ * If this has not been calculated yet, make the value -1 (UNINITIALISED) and
+ * this function will
  * calculate it. The value is calculated as the number of positions in
  * `d->map.positions` that have a chromosome number of 0.
 */
@@ -4251,7 +5013,7 @@ void get_sorted_markers(SimData* d, int actual_n_markers) {
 	}
 
 	// if this was not pre-calculated do it now.
-	if (actual_n_markers < 0) {
+    if (actual_n_markers < 0) { // actual_n_markers == UNINITIALISED
 		actual_n_markers = d->n_markers;
 		for (int i = 0; i < d->n_markers; i++) {
 			if (d->map.positions[i].chromosome == 0) {
@@ -6565,8 +7327,8 @@ int make_double_crosses_from_file(SimData* d, const char* input_file, GenOptions
 		get_ids_of_names(d->m, 4, to_buffer, g0_id);
 		if (g0_id[0] < 0 || g0_id[1] < 0 || g0_id[2] < 0 || g0_id[3] < 0) {
 			fprintf(stderr, "Could not go ahead with the line %d cross - g0 names not in records\n", i);
-			combinations[0][i] = -1;
-			combinations[1][i] = -1;
+            combinations[0][i] = UNINITIALISED;
+            combinations[1][i] = UNINITIALISED;
 			continue;
 		}
 
@@ -6582,8 +7344,8 @@ int make_double_crosses_from_file(SimData* d, const char* input_file, GenOptions
 				f1_i[1] = get_index_of_child(d->m, g0_id[1], g0_id[2]);
 				if (f1_i[0] < 0 || f1_i[1] < 0) {
 					fprintf(stderr, "Could not go ahead with the line %d cross - f1 children do not exist for this quartet\n", i);
-					combinations[0][i] = -1;
-					combinations[1][i] = -1;
+                    combinations[0][i] = UNINITIALISED;
+                    combinations[1][i] = UNINITIALISED;
 					continue;
 				}
 			}

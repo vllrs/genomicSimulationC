@@ -10,6 +10,12 @@ Latest News       {#news}
 	- Create a new label: create_new_label (every genotype has a value for every label; multiple labels can exist at a time).
 	- Change the values of a label for some or all genotypes: set_labels_to_const; increment_labels; set_labels_to_values
 	- Group manipulation using the values of a label: split_by_label_value; split_by_label_range
+- Added two iterators: BidirectionalIterator and RandomAccessIterator. They can iterate through every genotype in the simulation, or through just the members of a specific group. Iterators need to be reset or destroyed and re-created when genotypes are created or destroyed.
+	- Creating and initialising iterators: create_bidirectional_iter + set_bidirectional_iter_to_start or set_bidirectional_iter_to_end;  create_randomaccess_iter
+	- Iterating: next_forwards; next_backwards; next_get_nth
+	- Deleting: delete_bidirectional_iter; delete_randomaccess_iter
+- Iterators return GenoLocation values. A new family of get_ functions has been added to access the data of the genotype at a particular GenoLocation.
+	- get_name; get_alleles; get_first_parent; get_second_parent; get_id; get_group; get_label_value
 
 # genomicSimulationC 0.2.2
 

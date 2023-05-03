@@ -12,6 +12,7 @@
 #define PI 3.1415926535897932384626433832795028841971693993751
 #define TRUE 1
 #define FALSE 0
+#define UNINITIALISED -1
 
 
  /* This section contains settings for the simulation that users can modify if they have the need.
@@ -320,6 +321,182 @@ int _ascending_int_dcomparer(const void* pp0, const void* pp1);
  *
  * @{
  */
+
+/** An AlleleMatrix/AlleleMatrix index coordinate of a particular
+ *  genotype in the simulation. To be used to look up details of
+ *  that genotype using the `get_` family of functions.
+*/
+typedef struct {
+    AlleleMatrix* localAM; /**< Pointer to the AlleleMatrix in which
+                            * the genotype can be found. */
+    int localPos; /**< Index in the localAM where the genotype can be
+                   * found (min value: 0. Max value: CONTIG_WIDTH-1). */
+} GenoLocation;
+
+/** Constant representing a nonexistent location in the simulation.
+ */
+extern const GenoLocation INVALID_GENO_LOCATION;
+
+/** Identify whether a GenoLocation is INVALID_GENO_LOCATION
+ *
+ * @param g location to check.
+ * @return FALSE if g has either of the attributes of
+ * INVALID_GENO_LOCATION, TRUE otherwise
+ */
+static inline int isValidLocation(GenoLocation g) {
+    // Either entry of INVALID_GENO_LOCATION is inappropriate in a valid GenoLocation
+    return (g.localAM != INVALID_GENO_LOCATION.localAM &&
+            g.localPos != INVALID_GENO_LOCATION.localPos);
+}
+
+/** A structure to iterate forwards and backwards through all
+ *  genotypes in a SimData or through only the members of a group.
+ *  @see create_bidirectional_iter
+ */
+typedef struct {
+    SimData* d; /**< Simulation data through which to iterate */
+    unsigned int group; /**< Group through which to iterate. If it is 0,
+                          * then iterate through all genotypes in the simulation.
+                          * Otherwise, iterate through members of the group with
+                          * this as their group number. */
+    unsigned long int globalPos; /**< Global index of the genotype in the linked list
+                                   * of AlleleMatrix beginning at `d->m` where the
+                                   * iterator's 'cursor' currently sits. */
+
+    AlleleMatrix* cachedAM; /**< Pointer to the AlleleMatrix from the linked list
+                              * of AlleleMatrix beginning at `d->m` where the
+                              * iterator's 'cursor' currently sits. Contains
+                              * the genotype at `globalPos`. */
+    unsigned int cachedAMIndex; /**< Index of `cachedAM` in the linked list of
+                                  * AlleleMatrix beginning at `d->m`. `d->m`
+                                  * is considered to be index 0. */
+
+    char atEnd; /**< Boolean that is TRUE if the iterator's 'cursor' is on
+                  * the last genotype (genotype with the highest index in the
+                  * SimData) that fulfils the `group` critera of this iterator. */
+    char atStart; /**< Boolean that is TRUE if the iterator's 'cursor' is on
+                    * the first genotype (genotype with the lowest index in the
+                    * SimData) that fulfils the `group` critera of this iterator. */
+
+} BidirectionalIterator;
+
+/** A structure to search and cache indexes of all
+ *  genotypes in a SimData or of all the members of a group.
+ *  @see create_randomaccess_iter
+ */
+typedef struct {
+    SimData* d; /**< Simulation data through which to iterate */
+    unsigned int group; /**< Group through which to iterate. If it is 0,
+                          * then iterate through all genotypes in the simulation.
+                          * Otherwise, iterate through members of the group with
+                          * this as their group number. */
+
+    unsigned int cacheSize; /**< Length in GenoLocations of `cache` */
+    GenoLocation* cache; /**< Array iteratively updated with the known
+                           * genotypes in the simulation that fulfil the
+                           * `group` criteria of the iterator as they
+                           * are discovered during calls to next_ functions */
+
+    int largestCached; /**< Local/group index (that is, index in `cache`) of the
+                         * highest cell in `cache` that has been filled. */
+    int groupSize; /**< If the number of genotypes in the simulation that fulfil
+                     * the iterator's `group` criteria is known, it is saved here.
+                     * This value is left uninitialised until then. */
+} RandomAccessIterator;
+
+BidirectionalIterator create_bidirectional_iter(SimData* d, unsigned int group);
+RandomAccessIterator create_randomaccess_iter(SimData* d, unsigned int group);
+
+int validate_bidirectional_cache(BidirectionalIterator* it);
+AlleleMatrix* get_nth_AlleleMatrix(AlleleMatrix* listStart, unsigned int n);
+
+GenoLocation set_bidirectional_iter_to_start(BidirectionalIterator* it);
+GenoLocation set_bidirectional_iter_to_end(BidirectionalIterator* it);
+GenoLocation next_forwards(BidirectionalIterator* it);
+GenoLocation next_backwards(BidirectionalIterator* it);
+GenoLocation next_get_nth(RandomAccessIterator* it, unsigned long int n);
+
+/** Get the name of a genotype
+ *
+ * @param loc location of the relevant genotype
+ * @return shallow copy of the name of the
+ * genotype at location `loc`
+ */
+static inline char* get_name(GenoLocation loc) {
+    return loc.localAM->names[loc.localPos];
+}
+
+/** Get the alleles of a genotype
+ *
+ * @param loc location of the relevant genotype
+ * @return shallow copy of the allele string of the
+ * genotype at location `loc`. The loci are ordered
+ * according to the genetic map (by chromosome, then
+ * by location). The entire string is 2*n characters
+ * long, where n is the number of loci. The two
+ * alleles of each locus are presented side-by-side,
+ * at positions 2i and 2i+1.
+ */
+static inline char* get_alleles(GenoLocation loc) {
+    return loc.localAM->alleles[loc.localPos];
+}
+
+/** Get the first/left parent of a genotype
+ *
+ * @param loc location of the relevant genotype
+ * @return id of the left parent of the genotype
+ * at location `loc`
+ */
+static inline int get_first_parent(GenoLocation loc) {
+    return loc.localAM->pedigrees[0][loc.localPos];
+}
+
+/** Get the second/right parent of a genotype
+ *
+ * @param loc location of the relevant genotype
+ * @return id of the right parent of the genotype
+ * at location `loc`
+ */
+static inline int get_second_parent(GenoLocation loc) {
+    return loc.localAM->pedigrees[1][loc.localPos];
+}
+
+/** Get the persistent id of a genotype
+ *
+ *  The persistent id is the number used in pedigree
+ *  tracing, and is unique for the lifetime of the simulation.
+ *
+ * @param loc location of the relevant genotype
+ * @return id of the genotype
+ * at location `loc`
+ */
+static inline int get_id(GenoLocation loc) {
+    return loc.localAM->ids[loc.localPos];
+}
+
+/** Get the current group membership of a genotype
+ *
+ * @param loc location of the relevant genotype
+ * @return group number of the group affiliation
+ * of the genotype at location `loc`
+ */
+static inline unsigned int get_group(GenoLocation loc) {
+    return loc.localAM->groups[loc.localPos];
+}
+
+//static inline int get_bv(GenotypeLocation loc) {}
+
+/** Get the value of a specific label of a genotype
+ *
+ * @param loc location of the relevant genotype
+ * @param labelIndex index of the relevant label.
+ * @return value of the `labelIndex`th label
+ * of the genotype at location `loc`
+ */
+static inline int get_label_value(GenoLocation loc, int labelIndex) {
+    return loc.localAM->labels[labelIndex][loc.localPos];
+}
+
 char* get_name_of_id( AlleleMatrix* start, unsigned int id);
 char* get_genes_of_id ( AlleleMatrix* start, unsigned int id);
 int get_parents_of_id( AlleleMatrix* start, unsigned int id, unsigned int output[2]);
@@ -381,6 +558,8 @@ void delete_effect_matrix(EffectMatrix* m);
 void delete_simdata(SimData* m);
 void delete_markerblocks(MarkerBlocks* b);
 void delete_dmatrix(DecimalMatrix* m);
+void delete_bidirectional_iter(BidirectionalIterator* it);
+void delete_randomaccess_iter(RandomAccessIterator* it);
 /**@}*/
 
 /** @defgroup loaders Setup Functions
