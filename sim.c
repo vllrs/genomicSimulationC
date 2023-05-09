@@ -2,7 +2,6 @@
 
 /* main, as a simple guide to library functions. */
 int main(int argc, char* argv[]) {
-    srand(time(NULL));
 
 	// To show you the speed of the library the function calls are wrapped by
 	// this clock call.
@@ -10,7 +9,7 @@ int main(int argc, char* argv[]) {
 	c = clock();
 
 	// load our starting data to a SimData struct.
-	SimData* sd = create_empty_simdata();
+    SimData* sd = create_empty_simdata(time(NULL));
 	int g0 = load_all_simdata(sd, "parents.txt",
 			"genetic-map.txt", "qtl.eff.txt");
 	// the genotypes from file `parents.txt` are allocated to the group whose

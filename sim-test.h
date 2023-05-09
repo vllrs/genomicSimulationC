@@ -1,7 +1,4 @@
-#ifndef SIM_OPERATIONS_H
 #include "sim-operations.h"
-
-#endif
 
 #include <assert.h>
 

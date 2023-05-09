@@ -1,3 +1,5 @@
+#ifndef SIM_OPERATIONS
+#define SIM_OPERATIONS
 #include "sim-operations.h"
 /* genomicSimulationC v0.2.2.1 - last edit 11 Nov 2022 */
 
@@ -18,18 +20,6 @@ const GenoLocation INVALID_GENO_LOCATION = {
    .localAM = NULL,
    .localPos = UNINITIALISED
 };
-
-/* Creator for an empty SimData object */
-/*const SimData EMPTY_SIMDATA = {
-	.n_markers = 0,
-	.markers = NULL,
-	.map = {.n_chr = 0, .chr_ends = NULL, .positions = NULL},
-	.m = NULL,
-	.e = {.effects = {.matrix = NULL, .rows = 0, .cols = 0}, .effect_names = NULL},
-	.current_id = 0
-};*/
-
-int RAND_HALFPOINT = (RAND_MAX/2);
 
 /** Replace calls to malloc direct with this function, which errors and exits
  * with status 2 if memory allocation fails.
@@ -107,7 +97,7 @@ AlleleMatrix* create_empty_allelematrix(const int n_markers, const int n_labels,
  *
  * @returns pointer to the empty created SimData
  */
-SimData* create_empty_simdata() {
+SimData* create_empty_simdata(RND_U32 RNGseed) {
 	SimData* d = get_malloc(sizeof(SimData));
 	d->n_markers = 0;
 	d->markers = NULL;
@@ -123,6 +113,7 @@ SimData* create_empty_simdata() {
 	d->e.effects.cols = 0;
 	d->e.effects.matrix = NULL;
 	d->e.effect_names = NULL;
+    rnd_pcg_seed( &d->rng, RNGseed );
 	d->current_id = 0;
 	return d;
 }
@@ -180,24 +171,6 @@ void clear_simdata(SimData* d) {
 
 
 /*-------------------------Random generators---------------------------------*/
-/** Generates a double from the normal distribution N(0,1) based on rand() and
- * the Box-Muller algorithm.
- *
- * @returns a double drawn from the N(0,1) random distribution.
- */
-double randn(void) {
-	double u1 = (double)rand() / RAND_MAX;
-	double u2 = (double)rand() / RAND_MAX;
-	return (sqrt(-2 * log(u1)))*cos(2*PI*u2);
-}
-
-/** Generates randomly one of 0 or 1, by splitting the output of rand() in half.
- *
- * @returns 0 or 1 at random.
- */
-int randb(void) {
-	return (rand() > RAND_HALFPOINT);
-}
 
 /* https://www.everything2.com/title/Generating+random+numbers+with+a+Poisson+distribution
 https://en.wikipedia.org/wiki/Poisson_distribution#Generating_Poisson-distributed_random_variables
@@ -207,11 +180,12 @@ https://en.wikipedia.org/wiki/Poisson_distribution#Generating_Poisson-distribute
  *
  * This approach is known to run slow for larger values of lambda.
  *
+ * @param rng random number generator source
  * @param lambda the parameter of the Poisson distribution. Corresponds to both
  * expected value and variance of the distribution.
  * @returns a random integer generated from the Poisson distribution with parameter lambda.
 */
-int randpoi(double lambda) {
+int randpoi(rnd_pcg_t* rng, double lambda) {
 	if (lambda <= 0) { // invalid parameter.
 		//In this case we use the function to generate number of crossovers
 		// so if parameter/length passed in is invalid, we just want no crossovers
@@ -220,30 +194,14 @@ int randpoi(double lambda) {
 
 	int k = 0;
 	double target = exp(-lambda);
-	double p = (double)rand() / (double)RAND_MAX; // from U[0,1). Could improve later
+    double p = rnd_pcg_nextf(rng);
 	while (p > target) {
 		k += 1;
-		p *= (double)rand() / (double)RAND_MAX;
+        p *= rnd_pcg_nextf(rng);
 	}
 	return k;
 }
 
-/** Generate an integer randomly between 0 and limit inclusive.
- * Written by Jerry Coffin https://stackoverflow.com/questions/2999075/generate-a-random-number-within-range/2999130#2999130
- *
- * @param limit the upper limit of the range to be generated
- * @returns a random integer in the range [0,limit].
-*/
-int randlim(int limit) {
-    int divisor = RAND_MAX/(limit+1);
-    int retval;
-
-    do {
-        retval = rand() / divisor;
-    } while (retval > limit);
-
-    return retval;
-}
 /*end random generators*/
 
 /*------------------------Supporter Functions--------------------------------*/
@@ -433,12 +391,13 @@ int get_from_unordered_str_list(const char* target, const int listLen, const cha
  *
  * Modified from https://benpfaff.org/writings/clc/shuffle.html
  *
+ * @param d SimData, only used for pointer to random number generator
  * @param sequence the array
  * @param total_n length of the array
  * @param n_to_shuffle After calling this function, the first n_to_shuffle
  * integers in the array will be randomly ordered by a Fischer-Yates shuffle
  */
-void shuffle_up_to(int* sequence, const size_t total_n, const size_t n_to_shuffle) {
+void shuffle_up_to(rnd_pcg_t* rng, int* sequence, const size_t total_n, const size_t n_to_shuffle) {
     // Commented out because we assume calling functions know what they're doing.
     /*if (n_to_shuffle < 1 || total_n < n_to_shuffle) {
         fprintf(stderr,"Invalid array shuffling parameters. Something's wrong, contact package maintainers.\n");
@@ -450,9 +409,7 @@ void shuffle_up_to(int* sequence, const size_t total_n, const size_t n_to_shuffl
 		size_t i;
         for (i = 0; i < maxi; ++i) {
 			// items before i are already shuffled
-			// In R version will use the randlim version rather than the upper digits of rand
-            //size_t j = i + rand()/(RAND_MAX/(total_n-i)+1);
-            size_t j = i + randlim(total_n - i - 1);
+            size_t j = i + rnd_pcg_range(rng,0,total_n - i - 1);
 
 			// add the next chosen value to the end of the shuffle
 			int t = sequence[j];
@@ -2882,7 +2839,7 @@ int split_evenly_into_two(SimData* d, const int group_id) {
 	for (int i = 0; i < size; ++i) {
 		allocations[i] = i;
 	}
-	shuffle_up_to(allocations, size, even_half);
+    shuffle_up_to(&d->rng, allocations, size, even_half);
 
 	int new_group = get_new_group_num(d);
 	AlleleMatrix* m = d->m;
@@ -3027,7 +2984,7 @@ void split_by_specific_counts_into_n(SimData* d, const int group_id, const int n
 	for (int i = 0; i < size; ++i) {
 		allocations[i] = i;
 	}
-    shuffle_up_to(allocations, size, cumulative_counts[n-2]);
+    shuffle_up_to(&d->rng, allocations, size, cumulative_counts[n-2]);
 
 	int new_group[n-1];
 	get_n_new_group_nums(d,n-1, new_group);
@@ -3098,7 +3055,7 @@ int split_randomly_into_two(SimData* d, const int group_id) {
 	int i;
 	while (1) {
 		for (i = 0; i < m->n_genotypes; ++i) {
-			if (m->groups[i] == group_id && randb()) {
+            if (m->groups[i] == group_id && rnd_pcg_range(&d->rng,0,1)) {
 				m->groups[i] = new_group;
 			}
 		}
@@ -3162,7 +3119,7 @@ void split_randomly_into_n(SimData* d, const int group_id, const int n, int* res
 	int i, randgroup;
 	while (1) {
 		for (i = 0; i < m->n_genotypes; ++i) {
-			randgroup = randlim(n-1);
+            randgroup = rnd_pcg_range(&d->rng,0,n-1);
 			if (m->groups[i] == group_id && randgroup) {
 				m->groups[i] = new_groups[randgroup - 1];
 			}
@@ -4779,7 +4736,7 @@ int load_transposed_encoded_genes_to_simdata(SimData* d, const char* filename) {
 				current_am->alleles[i_am][(j<<1) + 1] = c;
 			} else {
 				// choose a random order for the two alleles.
-				r = randb();
+                r = rnd_pcg_range(&d->rng,0,1);
 				// identify the two alleles
 				switch (c) {
 					case 'R':
@@ -5636,7 +5593,7 @@ int calculate_recombinations_from_file(SimData* d, const char* input_file, const
  * character, starting at 0, so that calling generate_gamete(..., offspring_genome) &
  * generate_gamete(..., offspring_genome + 1) can be used to generate both halves of its genome.
 */
-void generate_gamete(const SimData* d, const char* parent_genome, char* output) {
+void generate_gamete(SimData* d, const char* parent_genome, char* output) {
 	// assumes rand is already seeded
 	if (parent_genome == NULL) {
 		fprintf(stderr, "Could not generate this gamete\n");
@@ -5650,7 +5607,7 @@ void generate_gamete(const SimData* d, const char* parent_genome, char* output) 
 	// treat each chromosome separately.
 	for (int chr = 1; chr <= d->map.n_chr; ++chr) {
 		// use Poisson distribution to choose the number of crossovers in this chromosome
-		num_crossovers = randpoi(d->map.chr_lengths[chr - 1] / 100);
+        num_crossovers = randpoi(&d->rng,d->map.chr_lengths[chr - 1] / 100);
 
 		// in the rare case where it could be >100, get enough space
 		// to be able to store the crossover positions we're about to create
@@ -5675,7 +5632,7 @@ void generate_gamete(const SimData* d, const char* parent_genome, char* output) 
 		}
 
 		// pick a parent genome half at random
-		which = randb(); // if this is 0, we start with the left.
+        which = rnd_pcg_range(&d->rng,0,1); // if this is 0, we start with the left.
 
 		// TASK 4: Figure out the gamete that those numbers produce.
 		up_to_crossover = 0; // which crossovers we've dealt with
@@ -5714,7 +5671,7 @@ void generate_gamete(const SimData* d, const char* parent_genome, char* output) 
  * @param output a 2x(n_marker) array of chars which will be overwritten
  * with the offspring genome.
 */
-void generate_cross(const SimData* d, const char* parent1_genome, const char* parent2_genome, char* output) {
+void generate_cross(SimData* d, const char* parent1_genome, const char* parent2_genome, char* output) {
 	// assumes rand is already seeded
 	if (parent1_genome == NULL || parent2_genome == NULL) {
 		fprintf(stderr, "Could not generate this cross\n");
@@ -5728,8 +5685,8 @@ void generate_cross(const SimData* d, const char* parent1_genome, const char* pa
 	// treat each chromosome separately.
 	for (int chr = 1; chr <= d->map.n_chr; ++chr) {
 		// use Poisson distribution to choose the number of crossovers in this chromosome
-		num_crossovers[0] = randpoi(d->map.chr_lengths[chr - 1] / 100);
-		num_crossovers[1] = randpoi(d->map.chr_lengths[chr - 1] / 100);
+        num_crossovers[0] = randpoi(&d->rng,d->map.chr_lengths[chr - 1] / 100);
+        num_crossovers[1] = randpoi(&d->rng,d->map.chr_lengths[chr - 1] / 100);
 
 		// in the rare case where it could be >100, get enough space
 		// to be able to store the crossover positions we're about to create
@@ -5768,7 +5725,7 @@ void generate_cross(const SimData* d, const char* parent1_genome, const char* pa
 		}
 
 		// pick a parent genome half at random
-		which[0] = randb(); which[1] = randb(); // if this is 0, we start with the left.
+        which[0] = rnd_pcg_range(&d->rng,0,1); which[1] = rnd_pcg_range(&d->rng,0,1);
 
 		// TASK 4: Figure out the gamete that those numbers produce.
 		up_to_crossover[0] = 0; up_to_crossover[1] = 0; // which crossovers we've dealt with
@@ -5816,7 +5773,7 @@ void generate_cross(const SimData* d, const char* parent1_genome, const char* pa
  * @param output a 2x(n_marker) array of chars which will be overwritten
  * with the offspring genome.
 */
-void generate_doubled_haploid(const SimData* d, const char* parent_genome, char* output) {
+void generate_doubled_haploid(SimData* d, const char* parent_genome, char* output) {
 	// assumes rand is already seeded
 	if (parent_genome == NULL) {
 		fprintf(stderr, "Could not make this doubled haploid\n");
@@ -5830,7 +5787,7 @@ void generate_doubled_haploid(const SimData* d, const char* parent_genome, char*
 	// treat each chromosome separately.
 	for (int chr = 1; chr <= d->map.n_chr; ++chr) {
 		// use Poisson distribution to choose the number of crossovers in this chromosome
-		num_crossovers = randpoi(d->map.chr_lengths[chr - 1] / 100);
+        num_crossovers = randpoi(&d->rng,d->map.chr_lengths[chr - 1] / 100);
 
 		// in the rare case where it could be >100, get enough space
 		// to be able to store the crossover positions we're about to create
@@ -5855,7 +5812,7 @@ void generate_doubled_haploid(const SimData* d, const char* parent_genome, char*
 		}
 
 		// pick a parent genome half at random
-		which = randb(); // if this is 0, we start with the left.
+        which = rnd_pcg_range(&d->rng,0,1); // if this is 0, we start with the left.
 
 		// TASK 4: Figure out the gamete that those numbers produce.
 		up_to_crossover = 0; // which crossovers we've dealt with
@@ -5890,7 +5847,7 @@ void generate_doubled_haploid(const SimData* d, const char* parent_genome, char*
  * @param output a 2x(n_marker) array of chars which will be overwritten
  * with the offspring genome.
 */
-void generate_clone(const SimData* d, const char* parent_genome, char* output) {
+void generate_clone(SimData* d, const char* parent_genome, char* output) {
     for (int j = 0; j < d->n_markers; ++j) {
         output[2*j] = parent_genome[2*j];
         output[2*j + 1] = parent_genome[2*j + 1];
@@ -6004,16 +5961,16 @@ int cross_random_individuals(SimData* d, const int from_group, const int n_cross
         // get parents, randomly. Must not be identical or already been used too many times.
         if (cap > 0) { // n uses of each parent is capped at a number cap
             do {
-                parent1 = randlim(g_size - 1);
+                parent1 = rnd_pcg_range(&d->rng,0,g_size - 1);
             } while (uses_count[parent1] >= cap);
             do {
-                parent2 = randlim(g_size - 1);
+                parent2 = rnd_pcg_range(&d->rng,0,g_size - 1);
             } while (parent1 == parent2 || uses_count[parent2] >= cap);
             uses_count[parent1] += 1; uses_count[parent2] += 1;
         } else { // no cap on usage of each parent.
-            parent1 = randlim(g_size - 1);
+            parent1 = rnd_pcg_range(&d->rng,0,g_size - 1);
             do {
-                parent2 = randlim(g_size - 1);
+                parent2 = rnd_pcg_range(&d->rng,0,g_size - 1);
             } while (parent1 == parent2);
         }
 
@@ -6257,21 +6214,21 @@ int cross_randomly_between(SimData*d, const int group1, const int group2, const 
         // get parents, randomly.
         if (cap1 > 0) { // usage of parents is capped
             do {
-                parent1 = randlim(group1_size - 1);
+                parent1 = rnd_pcg_range(&d->rng,0,group1_size - 1);
             } while (uses_g1[parent1] >= cap1);
             uses_g1[parent1] += 1;
         } else { // no cap
-            parent1 = randlim(group1_size - 1);
+            parent1 = rnd_pcg_range(&d->rng,0,group1_size - 1);
         }
         parent1_genes = group1_genes[parent1];
 
         if (cap2 > 0) { // usage of parents is capped
             do {
-                parent2 = randlim(group2_size - 1);
+                parent2 = rnd_pcg_range(&d->rng,0,group2_size - 1);
             } while (uses_g2[parent2] >= cap2);
             uses_g2[parent2] += 1;
         } else { // no cap
-            parent2 = randlim(group2_size - 1);
+            parent2 = rnd_pcg_range(&d->rng,0,group2_size - 1);
         }
         parent2_genes = group2_genes[parent2];
 
@@ -9365,3 +9322,5 @@ void save_count_matrix_of_group(FILE* f, const SimData* d, const char allele, co
 	delete_dmatrix(&counts);
 	fflush(f);
 }
+
+#endif

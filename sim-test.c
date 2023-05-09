@@ -1434,11 +1434,9 @@ int compareFiles(char* f1, char* f2) {
 
 /* main, for testing. Only uses a small dataset. */
 int main(int argc, char* argv[]) {
+    unsigned int randomSeed = time(NULL);
     if (argc > 1) {
-        unsigned int randomSeed = strtol(argv[1], 0, 0);
-        srand(randomSeed);
-    } else {
-        srand(time(NULL));
+        randomSeed = strtol(argv[1], 0, 0);
     }
 
 	printf("Testing functionality ...");
@@ -1449,7 +1447,7 @@ int main(int argc, char* argv[]) {
 
 	// test SimData loaders
 	printf("\nNow testing loader functions:\n");
-	SimData* d = create_empty_simdata();
+    SimData* d = create_empty_simdata(randomSeed);
 	int g0 = test_loaders(d);
 	printf("\t\t-> Loader functions all clear\n");
 
@@ -1490,7 +1488,7 @@ int main(int argc, char* argv[]) {
 
 
 	//testing new grouping functions
-	d = create_empty_simdata();
+    d = create_empty_simdata(randomSeed);
     g0 = load_all_simdata(d, "./gt_parents_mr2_50-trimto-5000.txt",
 			 "./genetic-map_5112-trimto5000.txt",
              "./qtl_mr2.eff-processed.txt");

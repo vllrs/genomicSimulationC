@@ -2,6 +2,10 @@
 #define SIM_OPERATIONS_H
 /* genomicSimulationC v0.2.2.1 - last edit 11 Nov 2022 */
 
+#ifdef SIM_OPERATIONS
+    #define RND_IMPLEMENTATION
+#endif
+#include "lib/rnd.h"
 #include <string.h>
 #include <limits.h>
 #include <stdlib.h>
@@ -37,7 +41,6 @@
  * this value.
  */
 #define NAME_LENGTH 45
-
 
 /** @defgroup structs Data Structures
  *
@@ -248,6 +251,7 @@ typedef struct {
                      * Used for calculating breeding values from which alleles
                      * a genotype has at each marker.*/
 
+    rnd_pcg_t rng; /**< Random number generator working memory. */
 	unsigned int current_id; /**< Highest SimData-unique ID that has been generated
                               * so far. Used to track which IDs have already been
                               * given out.*/
@@ -266,11 +270,7 @@ extern const GenOptions BASIC_OPT;
  * @{
  */
 
-extern int RAND_HALFPOINT;
-double randn(void);
-int randb(void);
-int randpoi(double lambda);
-int randlim(int limit);
+int randpoi(rnd_pcg_t* rng, double lambda);
 
 DecimalMatrix generate_zero_dmatrix(const int r, const int c);
 int add_matrixvector_product_to_dmatrix(DecimalMatrix* result, const DecimalMatrix* a, const double* b);
@@ -285,7 +285,7 @@ int add_doublematrixvector_product_to_dmatrix(DecimalMatrix* result, const Decim
 struct TableSize get_file_dimensions(const char* filename, const char sep);
 int get_from_ordered_uint_list(const unsigned int target, const unsigned int listLen, const unsigned int list[listLen]);
 int get_from_unordered_str_list(const char* target, const int listLen, const char* list[listLen]);
-void shuffle_up_to(int* sequence, const size_t total_n, const size_t n_to_shuffle);
+void shuffle_up_to(rnd_pcg_t* rng, int* sequence, const size_t total_n, const size_t n_to_shuffle);
 
 int create_new_label(SimData* d, const int setTo);
 void set_label_default(SimData* d, const int whichLabel, const int newDefault);
@@ -614,7 +614,7 @@ void delete_randomaccess_iter(RandomAccessIterator* it);
  * @{
  */
 AlleleMatrix* create_empty_allelematrix(const int n_markers, const int n_labels, const int labelDefaults[n_labels], const int n_genotypes);
-SimData* create_empty_simdata();
+SimData* create_empty_simdata(RND_U32 RNGseed);
 void clear_simdata(SimData* d);
 
 int load_transposed_genes_to_simdata(SimData* d, const char* filename);
@@ -699,10 +699,10 @@ int calculate_recombinations_from_file(SimData* d, const char* input_file, const
      *
      * @{
      */
-void generate_gamete(const SimData* d, const char* parent_genome, char* output);
-void generate_cross(const SimData* d, const char* parent1_genome, const char* parent2_genome, char* output);
-void generate_doubled_haploid(const SimData* d, const char* parent_genome, char* output);
-void generate_clone(const SimData* d, const char* parent_genome, char* output);
+void generate_gamete(SimData* d, const char* parent_genome, char* output);
+void generate_cross(SimData* d, const char* parent1_genome, const char* parent2_genome, char* output);
+void generate_doubled_haploid(SimData* d, const char* parent_genome, char* output);
+void generate_clone(SimData* d, const char* parent_genome, char* output);
     /**@}*/
 
 int cross_random_individuals(SimData* d, const int from_group, const int n_crosses, const int cap, const GenOptions g);

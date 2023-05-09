@@ -18,6 +18,7 @@ Latest News       {#news}
 	- get_name; get_alleles; get_first_parent; get_second_parent; get_id; get_group; get_label_value
 - Collective data access functions (get_group_\* family, get_existing_groups and get_existing_group_counts) now use parameter modification (save their results to an array passed as a parameter) rather than by returning a heap array.
 - Added 'const' to all readonly parameters. Compilation should no longer produce warnings.
+- Swapped to using Mattias Gustavsson's "rnd" implementation of a Permuted Congruential Generator (https://github.com/mattiasgustavsson/libs) for random number generation, rather than the builtin and subpar "rand()".
 
 # genomicSimulationC 0.2.2
 
