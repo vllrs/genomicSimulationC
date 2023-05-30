@@ -337,9 +337,12 @@ struct TableSize get_file_dimensions(const char* filename, const char sep) {
  * is `target`. Returns -1 if no match was found.
  * @see get_from_unordered_str_list()
  *
- * The list is assumed to be sorted in ascending order.
+ * The list is assumed to be sorted in ascending order. Only integers
+ * >0 are considered valid; entries of 0 are considered empty and can
+ * be located at any point in the list.
  *
- * It uses the bisection method to search the list.
+ * It uses a binary search method, but has to widen its search
+ * both directions if the desired midpoint has value 0.
  *
  * @param target the integer to be located
  * @param list the array of integers to search
@@ -348,21 +351,58 @@ struct TableSize get_file_dimensions(const char* filename, const char sep) {
  * `target`, or -1 if no match is found.
  */
 int get_from_ordered_uint_list(const unsigned int target, const unsigned int listLen, const unsigned int list[listLen]) {
-    int first = 0, last = listLen - 1;
-	int index = (first + last) / 2;
-	while (list[index] != target && first <= last) {
-		if (list[index] < target) {
-			first = index + 1;
-		} else {
-			last = index - 1;
-		}
-		index = (first + last) / 2;
-	}
+    unsigned int first = 0, last = listLen - 1;
+    int index = (first + last) / 2;
+    while (list[index] != target && first <= last) {
+        if (list[index] == 0) {
+            int lookahead = 1;
+            while(1) {
+                if (index+lookahead <= last && list[index+lookahead] != 0) {
+                    if (list[index+lookahead] == target) {
+                        return index+lookahead;
+                    } else if (list[index+lookahead] < target) {
+                        first = index+lookahead + 1;
+                        break;
+                    } else {
+                        last = index - 1;
+                        break;
+                    }
+                } else if (index-lookahead <= last && list[index-lookahead] != 0) {
+                    if (list[index-lookahead] == target) {
+                        return index-lookahead;
+                    } else if (list[index-lookahead] < target) {
+                        first = index + 1;
+                        break;
+                    } else {
+                        last = index-lookahead - 1;
+                        break;
+                    }
+                }
+                ++lookahead;
+                if (index+lookahead <= last || index-lookahead >= first) {
+                    // failed to find any nonzeros between first and last
+                    return -1;
+                }
+            }
 
-	if (first > last) {
+        } else { // No need to dodge 0. Normal binary search.
+            if (list[index] == target) {
+                return index;
+            } else if (list[index] < target) {
+                first = index + 1;
+            } else {
+                last = index - 1;
+            }
+
+        }
+        // index has been updated, no matter the branch.
+        index = (first + last) / 2;
+    }
+
+    if (first > last) {
         return -1;
-	}
-	return index;
+    }
+    return index;
 }
 
 /** Returns the first located index in an array of strings where the string
@@ -9244,11 +9284,11 @@ void save_count_matrix(FILE* f, const SimData* d, const char allele) {
 		if (d->markers != NULL && d->markers[i] != NULL) {
 			fwrite(d->markers[i], sizeof(char), strlen(d->markers[i]), f);
 		}
-		fwrite("\t", sizeof(char), 1, f);
 
 		for (int j = 0; j < counts.rows; ++j) { // loop through genotypes
 			// print the matrix entries
-			fprintf(f, "%d ", (int) counts.matrix[j][i]);
+            fwrite("\t", sizeof(char), 1, f);
+            fprintf(f, "%d", (int) counts.matrix[j][i]);
 		}
 		//print the newline
 		if (i + 1 < counts.rows) {
@@ -9307,14 +9347,14 @@ void save_count_matrix_of_group(FILE* f, const SimData* d, const char allele, co
 		if (d->markers != NULL && d->markers[i] != NULL) {
 			fwrite(d->markers[i], sizeof(char), strlen(d->markers[i]), f);
 		}
-		fwrite("\t", sizeof(char), 1, f);
 
 		for (int j = 0; j < group_size; ++j) { // loop through genotypes
 			// print the matrix entries
-			fprintf(f, "%d ", (int) counts.matrix[j][i]);
+            fwrite("\t", sizeof(char), 1, f);
+            fprintf(f, "%d", (int) counts.matrix[j][i]);
 		}
 		//print the newline
-		if (i + 1 < group_size) {
+        if (i + 1 < d->n_markers) {
 			fwrite("\n", sizeof(char), 1, f);
 		}
 	}
