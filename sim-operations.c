@@ -1,7 +1,7 @@
 #ifndef SIM_OPERATIONS
 #define SIM_OPERATIONS
 #include "sim-operations.h"
-/* genomicSimulationC v0.2.2.1 - last edit 11 Nov 2022 */
+/* genomicSimulationC v0.2.2.11 - last edit 8 June 2023 */
 
 /** Options parameter to run SimData functions in their bare-bones form.*/
 const GenOptions BASIC_OPT = {
@@ -4603,8 +4603,9 @@ int load_transposed_genes_to_simdata(SimData* d, const char* filename) {
 
 		// get the row name, store in markers
 		fscanf(fp, "%s", word);
-		d->markers[j] = get_malloc(sizeof(char) * strlen(word) + 1);
-		strncpy(d->markers[j], word, strlen(word) + 1);
+        int wordlen = strlen(word) + 1;
+        d->markers[j] = get_malloc(sizeof(char) * wordlen);
+        strncpy(d->markers[j], word, wordlen);
 
 		current_am = d->m;
 		//d->m->alleles[j] = get_malloc(sizeof(char) * d->m[0].n_genotypes * 2);
@@ -4756,8 +4757,9 @@ int load_transposed_encoded_genes_to_simdata(SimData* d, const char* filename) {
 
 		// get the row name, store in markers
 		fscanf(fp, "%s", word);
-		d->markers[j] = get_malloc(sizeof(char) * strlen(word) + 1);
-		strncpy(d->markers[j], word, strlen(word) + 1);
+        int wordlen = strlen(word) + 1;
+        d->markers[j] = get_malloc(sizeof(char) * wordlen);
+        strncpy(d->markers[j], word, wordlen);
 
 		current_am = d->m;
 		//d->m->alleles[j] = get_malloc(sizeof(char) * d->m[0].n_genotypes * 2);
@@ -5939,7 +5941,7 @@ int cross_random_individuals(SimData* d, const int from_group, const int n_cross
     if (cap > 0 && cap*g_size < n_crosses*2) {
         fprintf(stderr,"Invalid cap value provided: cap of %d uses on %d parents too small to make %d crosses.\n", cap, g_size, n_crosses);
     }
-    int* uses_count; // cap = 0 means unlimited uses. Otherwise we need to track number of times each is used.
+    int* uses_count = NULL; // cap = 0 means unlimited uses. Otherwise we need to track number of times each is used.
     if (cap > 0) {
         uses_count = get_malloc(sizeof(int)*g_size);
         memset(uses_count,0,sizeof(int)*g_size);
@@ -5999,7 +6001,7 @@ int cross_random_individuals(SimData* d, const int from_group, const int n_cross
 	// loop through each combination
 	for (int i = 0; i < n_crosses; ++i) {
         // get parents, randomly. Must not be identical or already been used too many times.
-        if (cap > 0) { // n uses of each parent is capped at a number cap
+        if (cap > 0 && uses_count != NULL) { // n uses of each parent is capped at a number cap. Checks should be equivalent but for safety...
             do {
                 parent1 = rnd_pcg_range(&d->rng,0,g_size - 1);
             } while (uses_count[parent1] >= cap);
@@ -6070,7 +6072,7 @@ int cross_random_individuals(SimData* d, const int from_group, const int n_cross
 	//RPACKINSERT PutRNGstate();
 
 	// save the rest of the crosses to the file.
-    if (cap > 0) {
+    if (uses_count != NULL) {
         free(uses_count);
     }
     // give the offsprings their ids and names
@@ -6188,12 +6190,12 @@ int cross_randomly_between(SimData*d, const int group1, const int group2, const 
         return 0;
     }
 
-    int* uses_g1; // cap = 0 means unlimited uses. Otherwise we need to track number of times each is used.
+    int* uses_g1 = NULL; // cap = 0 means unlimited uses. Otherwise we need to track number of times each is used.
     if (cap1 > 0) {
         uses_g1 = get_malloc(sizeof(int)*group1_size);
         memset(uses_g1,0,sizeof(int)*group1_size);
     }
-    int* uses_g2; // cap = 0 means unlimited uses. Otherwise we need to track number of times each is used.
+    int* uses_g2 = NULL; // cap = 0 means unlimited uses. Otherwise we need to track number of times each is used.
     if (cap2 > 0) {
         uses_g2 = get_malloc(sizeof(int)*group2_size);
         memset(uses_g2,0,sizeof(int)*group2_size);
@@ -6252,7 +6254,7 @@ int cross_randomly_between(SimData*d, const int group1, const int group2, const 
     // loop through each combination
     for (int i = 0; i < n_crosses; ++i) {
         // get parents, randomly.
-        if (cap1 > 0) { // usage of parents is capped
+        if (cap1 > 0 && uses_g1 != NULL) { // usage of parents is capped. checks should be equivalent but for safety...
             do {
                 parent1 = rnd_pcg_range(&d->rng,0,group1_size - 1);
             } while (uses_g1[parent1] >= cap1);
@@ -6262,7 +6264,7 @@ int cross_randomly_between(SimData*d, const int group1, const int group2, const 
         }
         parent1_genes = group1_genes[parent1];
 
-        if (cap2 > 0) { // usage of parents is capped
+        if (cap2 > 0 && uses_g2 != NULL) { // usage of parents is capped. checks should be equivalent but for safety...
             do {
                 parent2 = rnd_pcg_range(&d->rng,0,group2_size - 1);
             } while (uses_g2[parent2] >= cap2);
@@ -6328,10 +6330,10 @@ int cross_randomly_between(SimData*d, const int group1, const int group2, const 
     //RPACKINSERT PutRNGstate();
 
     // save the rest of the crosses to the file.
-    if (cap1 > 0) {
+    if (uses_g1 != NULL) {
         free(uses_g1);
     }
-    if (cap2 > 0) {
+    if (uses_g1 != NULL) {
         free(uses_g2);
     }
     // give the offsprings their ids and names
@@ -6378,15 +6380,22 @@ int cross_randomly_between(SimData*d, const int group1, const int group2, const 
  * in GenOptions allows you to repeat each particular cross a
  * certain number of times.
  *
+ * Previously had a parameter combinations[2][n_combinations] instead of firstParents
+ * and secondParents. This was changed to lower the boilerplate needs of calling this
+ * function: now there is no need to create a 2-wide int* to hold the two separate parent
+ * vectors if they already exist.
+ *
  * @param d pointer to the SimData object that includes genetic map data and
  * allele data needed to simulate crossing.
- * @param combinations a 2D array of indexes, with the first dimension being parent 1 or 2,
- * and the second being the indexes of those parents for each combination to cross.
  * @param n_combinations the number of pairs of ids to cross/the length of `combinations`
+ * @param firstParents a vector of indexes of parents to be the first parent of each cross
+ * @param secondParents a vector of indexes of parents to be the second parent of each cross.
+ * firstParents[0] is crossed to secondParents[0], firstParents[1] is crossed to secondParents[1],
+ * and so forth.
  * @param g options for the genotypes created. @see GenOptions
  * @returns the group number of the group to which the produced offspring were allocated.
  */
-int cross_these_combinations(SimData* d, const int n_combinations, const int combinations[2][n_combinations], const GenOptions g) {
+int cross_these_combinations(SimData* d, const int n_combinations, const int firstParents[n_combinations], const int secondParents[n_combinations], const GenOptions g) {
 	if (n_combinations < 1) {
         fprintf(stderr,"Invalid n_combinations value provided: n_combinations must be greater than 0.\n");
 		return 0;
@@ -6440,12 +6449,12 @@ int cross_these_combinations(SimData* d, const int n_combinations, const int com
 	// loop through each combination
 	for (int i = 0; i < n_combinations; ++i) {
 		// find the parents & do the cross. First ensure parents are valid
-		if (combinations[0][i] >= 0 && combinations[1][i] >= 0) {
-			parent1genes = get_genes_of_index(d->m, combinations[0][i]);
-			parent2genes = get_genes_of_index(d->m, combinations[1][i]);
+        if (firstParents[i] >= 0 && secondParents[i] >= 0) {
+            parent1genes = get_genes_of_index(d->m, firstParents[i]);
+            parent2genes = get_genes_of_index(d->m, secondParents[i]);
 			if (g.will_track_pedigree) {
-				parent1id = get_id_of_index(d->m, combinations[0][i]);
-				parent2id = get_id_of_index(d->m, combinations[1][i]);
+                parent1id = get_id_of_index(d->m, firstParents[i]);
+                parent2id = get_id_of_index(d->m, secondParents[i]);
 			}
 
 			for (int f = 0; f < g.family_size; ++f, ++fullness) {
@@ -7209,7 +7218,7 @@ int make_all_unidirectional_crosses(SimData* d, const int from_group, const GenO
 		}
 	}
 
-	return cross_these_combinations(d, n_crosses, combinations, g);
+    return cross_these_combinations(d, n_crosses, combinations[0], combinations[1], g);
 
 }
 
@@ -7302,7 +7311,7 @@ int make_crosses_from_file(SimData* d, const char* input_file, const GenOptions 
 	}
 
 	fclose(fp);
-	return cross_these_combinations(d, t.num_rows, combinations, g);
+    return cross_these_combinations(d, t.num_rows, combinations[0], combinations[1], g);
 }
 
 /** Perform crosses between previously-generated offspring of pairs of parents
@@ -7387,7 +7396,7 @@ int make_double_crosses_from_file(SimData* d, const char* input_file, const GenO
 	}
 
 	fclose(fp);
-	return cross_these_combinations(d, t.num_rows, combinations, g);
+    return cross_these_combinations(d, t.num_rows, combinations[0], combinations[1], g);
 
 }
 
@@ -7570,8 +7579,10 @@ int calculate_group_count_matrix_of_allele( const SimData* d, const unsigned int
             //RPACKINSERT R_CheckUserInterrupt();
             for (int j = 0; j < d->n_markers; ++j) {
                 int cell_sum = 0;
-                if (genes[i][2*j] == allele)     cell_sum += 1;
-                if (genes[i][2*j + 1] == allele) cell_sum += 1;
+                if (genes[i] != NULL) {
+                    if (genes[i][2*j] == allele)     cell_sum += 1;
+                    if (genes[i][2*j + 1] == allele) cell_sum += 1;
+                }
                 counts->matrix[i][j] = cell_sum;
             }
         }
@@ -8153,12 +8164,10 @@ char* calculate_optimal_alleles(const SimData* d) {
 	}
 
 	char* optimal = get_malloc(sizeof(char)* (d->n_markers + 1));
-	char best_allele;
-	double best_score;
 
 	for (int i = 0; i < d->n_markers; ++i) {
-		best_allele = d->e.effect_names[0];
-		best_score = d->e.effects.matrix[0][i];
+        char best_allele = d->e.effect_names[0];
+        double best_score = d->e.effects.matrix[0][i];
 		for (int a = 1; a < d->e.effects.rows; ++a) {
 			if (d->e.effects.matrix[a][i] > best_score) {
 				best_score = d->e.effects.matrix[a][i];
@@ -8196,12 +8205,11 @@ char* calculate_optimal_available_alleles(const SimData* d, const unsigned int g
     get_group_genes(d, group, gsize, ggenes);
 
     char* optimal = get_malloc(sizeof(char)* (d->n_markers + 1));
-    char best_allele;
-    double best_score;
 
     // for each locus
     for (int j = 0; j < d->n_markers; ++j) {
-        best_allele = '\0';
+        char best_allele = '\0';
+        double best_score;
         for (int i = 0; i < gsize; ++i) {
 
             // If the allele is different to the previous best (guaranteed if best_allele is not initialised)
@@ -8256,11 +8264,10 @@ char* calculate_optimal_available_alleles(const SimData* d, const unsigned int g
  */
 double calculate_optimum_bv(const SimData* d) {
 	double best_gebv = 0;
-	double best_score;
 
 	for (int i = 0; i < d->n_markers; ++i) {
 		// Find the allele with the highest effect
-		best_score = d->e.effects.matrix[0][i];
+        double best_score = d->e.effects.matrix[0][i];
 		for (int a = 1; a < d->e.effects.rows; ++a) {
 			if (d->e.effects.matrix[a][i] > best_score) {
 				best_score = d->e.effects.matrix[a][i];

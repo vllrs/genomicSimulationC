@@ -446,7 +446,7 @@ crossingPlan[1][0] = bull1_index;
 crossingPlan[1][1] = bull2_index;
 crossingPlan[1][2] = bull1_index;
 
-int offspring = cross_these_combinations(d, 3, crossingPlan, BASIC_OPT);
+int offspring = cross_these_combinations(d, 3, crossingPlan[0], crossingPlan[1], BASIC_OPT);
 ```
 <td>
 ```{R}
@@ -477,7 +477,7 @@ int crossingPlan[2][1];
 crossingPlan[0][0] = breed1_index;
 crossingPlan[1][0] = breed2_index;
 
-int f1 = cross_these_combinations(d, 1, crossingPlan, BASIC_OPT);
+int f1 = cross_these_combinations(d, 1, crossingPlan[0], crossingPlan[1] BASIC_OPT);
 int* f1_index = get_group_indexes(d, f1, 1); //we know this group has only one member
 
 // Re-use crossingPlan
@@ -485,7 +485,7 @@ crossingPlan[0][0] = breed3_index;
 crossingPlan[1][0] = f1_index[0];
 free(f1_index);
 
-int f3way = cross_these_combinations(d, 1, crossingPlan, BASIC_OPT);
+int f3way = cross_these_combinations(d, 1, crossingPlan[0], crossingPlan[1], BASIC_OPT);
 ```
 <td>
 ```{R}
@@ -515,7 +515,7 @@ GenOptions opt = {.family_size=5,
 		.will_save_bvs_to_file=FALSE, .will_save_alleles_to_file=FALSE,
 		.will_save_to_simdata=TRUE};
 
-int f1 = cross_these_combinations(d, 1, crossingPlan, opt);
+int f1 = cross_these_combinations(d, 1, crossingPlan[0], crossingPlan[1], opt);
 int f1_indexes = get_group_indexes(d, f1, 5);
 
 int crossingPlanb[2][5];
@@ -527,7 +527,7 @@ crossingPlanb[1][2] = f1_indexes[2]; crossingPlanb[1][3] = f1_indexes[3];
 crossingPlanb[1][4] = f1_indexes[4];
 free(f1_indexes);
 
-int f3way = cross_these_combinations(d, 5, crossingPlanb, opt);
+int f3way = cross_these_combinations(d, 5, crossingPlanb[0], crossingPlanb[1], opt);
 ```
 <td>
 ```{R}

@@ -19,6 +19,9 @@ Latest News       {#news}
 - Collective data access functions (get_group_\* family, get_existing_groups and get_existing_group_counts) now use parameter modification (save their results to an array passed as a parameter) rather than by returning a heap array.
 - Added 'const' to all readonly parameters. Compilation should no longer produce warnings.
 - Swapped to using Mattias Gustavsson's "rnd" implementation of a Permuted Congruential Generator (https://github.com/mattiasgustavsson/libs) for random number generation, rather than the builtin and subpar "rand()".
+- Allow uint ordered search to ignore 0s mid-list, to solve a bug when not all genotypes are allocated IDs
+- Changed function signature of cross_these_combinations to allow for more flexible usage: instead of one `combinations[2][n_crosses]` parameter, there are a pair of `firstParents[n_crosses]` and `secondParents[n_crosses]` parameters.
+
 
 # genomicSimulationC 0.2.2
 

@@ -706,7 +706,7 @@ int test_specific_splits(SimData *d, int g0) {
     combinations[0][1] = 0; combinations[1][1] = 2;
     combinations[0][2] = 3; combinations[1][2] = 1;
     combinations[0][3] = 4; combinations[1][3] = 5;
-    int fhs = cross_these_combinations(d,4,combinations,g);
+    int fhs = cross_these_combinations(d,4,combinations[0], combinations[1],g);
 
     int halfsibfamilies[5];
     for (int i = 0; i < f1size; ++i) {
@@ -1239,7 +1239,7 @@ int test_iterators(SimData* d, int gp) {
     combos[0][0] = 0; combos[1][0] = 0;
     combos[0][1] = 1; combos[1][1] = 2;
     combos[0][2] = 1; combos[1][2] = 5;
-    int f1 = cross_these_combinations(d, 3, combos, g);
+    int f1 = cross_these_combinations(d, 3, combos[0], combos[1], g);
     const int label1 = create_new_label(d, 0);
     increment_labels(d,f1,label1,1);
 
@@ -1373,7 +1373,7 @@ int test_getters(SimData* d, int gp) {
         .will_save_alleles_to_file = FALSE,
         .will_save_to_simdata = TRUE
     };
-    int f1 = cross_these_combinations(d,3,combos,g);
+    int f1 = cross_these_combinations(d,3,combos[0],combos[1],g);
 
     unsigned int p1s[3]; unsigned int p2s[6];
     assert(get_group_parent_ids(d, f1, UNINITIALISED, 1, p1s) == 3);
@@ -1522,7 +1522,7 @@ int main(int argc, char* argv[]) {
 		.filename_prefix="testcross", .will_save_pedigree_to_file=FALSE,
 		.will_save_bvs_to_file=FALSE, .will_save_alleles_to_file=FALSE,
 		.will_save_to_simdata=TRUE};
-	int g1 = cross_these_combinations(d,nc,crosses,gens);
+    int g1 = cross_these_combinations(d,nc,crosses[0],crosses[1],gens);
 
     assert(get_group_size(d, g1) == nc*243);
 	int results[nc];
@@ -1569,6 +1569,16 @@ int main(int argc, char* argv[]) {
     }*/
 
     // This should not segfault
+    GenOptions gens =  {.will_name_offspring=TRUE, .offspring_name_prefix="cr", .family_size=243,
+        .will_track_pedigree=TRUE, .will_allocate_ids=TRUE,
+        .filename_prefix="testcross", .will_save_pedigree_to_file=FALSE,
+        .will_save_bvs_to_file=FALSE, .will_save_alleles_to_file=FALSE,
+        .will_save_to_simdata=TRUE};
+    cross_random_individuals(d, g0, 10, 0, gens);
+    cross_random_individuals(d, g0, 10, 0, gens);
+    cross_random_individuals(d, g0, 10, 0, gens);
+    cross_random_individuals(d, g0, 10, 0, gens);
+    cross_random_individuals(d, g0, 10, 0, gens);
     int m = split_by_bv(d, g0, 55, 1);
     assert(get_group_size(d, m) == 50);
 
