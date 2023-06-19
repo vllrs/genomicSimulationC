@@ -1,8 +1,0 @@
-<map id="split_evenly_into_two" name="split_evenly_into_two">
-<area shape="rect" id="node1" title="Split a group into two groups of equal size (or size differing only by one, if the original group had..." alt="" coords="5,56,149,83"/>
-<area shape="rect" id="node2" href="$group__getters.html#gad6d2b66296cd80f5bfe303e06de7935c" title="Function to count the number of genotypes that currently belong to the specified group." alt="" coords="213,5,323,32"/>
-<area shape="rect" id="node3" href="$group__supporters.html#gae974a74145fe876e303e14336d3c5d3a" title="Function to identify the next sequential integer that does not identify a group that currently has me..." alt="" coords="197,56,339,83"/>
-<area shape="rect" id="node6" href="$group__supporters.html#gaa471b9b9b77c8010dff8d318e9a968a7" title="Produce a random ordering of the first n elements in an array of integers using a (partial) Fisher&#45;Ya..." alt="" coords="219,107,317,133"/>
-<area shape="rect" id="node4" href="$group__getters.html#ga3305ddcc29138d2d92689f39a7885ca0" title="Identify every group number that currently has members." alt="" coords="387,56,525,83"/>
-<area shape="rect" id="node5" href="$group__supporters.html#gadae2e9f7e1061cb20426ba2333b7629b" title="Comparator function for qsort." alt="" coords="573,56,744,83"/>
-</map>

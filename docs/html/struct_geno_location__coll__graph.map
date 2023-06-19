@@ -1,0 +1,4 @@
+<map id="GenoLocation" name="GenoLocation">
+<area shape="rect" id="node1" title="An AlleleMatrix/AlleleMatrix index coordinate of a particular genotype in the simulation." alt="" coords="5,97,107,125"/>
+<area shape="rect" id="node2" href="$struct_allele_matrix.html" title=" " alt="" coords="11,5,101,33"/>
+</map>

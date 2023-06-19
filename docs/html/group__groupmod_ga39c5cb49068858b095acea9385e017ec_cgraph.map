@@ -1,5 +1,0 @@
-<map id="split_into_halfsib_families" name="split_into_halfsib_families">
-<area shape="rect" id="node1" title="Split a group into a set of smaller groups, each containing the genotypes from the original group tha..." alt="" coords="5,5,124,47"/>
-<area shape="rect" id="node2" href="$group__getters.html#ga3305ddcc29138d2d92689f39a7885ca0" title="Identify every group number that currently has members." alt="" coords="172,13,311,39"/>
-<area shape="rect" id="node3" href="$group__supporters.html#gadae2e9f7e1061cb20426ba2333b7629b" title="Comparator function for qsort." alt="" coords="359,13,529,39"/>
-</map>

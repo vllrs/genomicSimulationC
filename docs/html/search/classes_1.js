@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['decimalmatrix_0',['DecimalMatrix',['../struct_decimal_matrix.html',1,'']]]
+  ['bidirectionaliterator_0',['BidirectionalIterator',['../struct_bidirectional_iterator.html',1,'']]]
 ];

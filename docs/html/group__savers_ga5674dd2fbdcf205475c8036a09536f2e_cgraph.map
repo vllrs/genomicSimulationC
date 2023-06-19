@@ -1,0 +1,6 @@
+<map id="save_one_step_pedigree" name="save_one_step_pedigree">
+<area shape="rect" id="node1" title="Print the parents of each genotype in the SimData to a file." alt="" coords="5,32,169,60"/>
+<area shape="rect" id="node2" href="$group__search.html#ga0a9f180e2bff0952bd9e5af26c7ae37d" title="Returns the name of the genotype with a given id." alt="" coords="222,5,335,33"/>
+<area shape="rect" id="node3" href="$group__search.html#gade1706129ba2510f1f1ed496b51efcb6" title="Saves the ids of the parents of a genotype with a particular id to the output array output." alt="" coords="217,57,340,85"/>
+<area shape="rect" id="node4" href="$group__supporters.html#ga98f69379fe6a5cca7fb25ed1fe49e1c7" title="Returns the located index in an array of integers where the integer is target." alt="" coords="388,57,561,85"/>
+</map>

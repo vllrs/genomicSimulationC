@@ -21,7 +21,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">genomicSimulationC<span id="projectnumber">&#160;0.2.1</span>
+   <div id="projectname">genomicSimulationC<span id="projectnumber">&#160;0.2.3</span>
    </div>
   </td>
  </tr>
@@ -79,12 +79,12 @@ $(function() {
 <div id="dynsection-0-content" class="dyncontent" style="display:none;">
 <div class="center"><img src="struct_sim_data__coll__graph.png" border="0" usemap="#a_sim_data_coll__map" alt="Collaboration graph"/></div>
 <map name="a_sim_data_coll__map" id="a_sim_data_coll__map">
-<area shape="rect" title="Composite type that is used to run crossing simulations." alt="" coords="150,184,222,211"/>
-<area shape="rect" href="struct_effect_matrix.html" title="A type that stores a matrix of effect values and their names." alt="" coords="17,95,107,121"/>
-<area shape="rect" href="struct_decimal_matrix.html" title="A row&#45;major heap matrix that contains floating point numbers." alt="" coords="5,5,111,32"/>
-<area shape="rect" href="struct_genetic_map.html" title="A type that stores the genetic map for a set of markers." alt="" coords="140,95,232,121"/>
-<area shape="rect" href="struct_marker_position.html" title="A struct representing a single marker location." alt="" coords="135,5,245,32"/>
-<area shape="rect" href="struct_allele_matrix.html" title=" " alt="" coords="257,95,347,121"/>
+<area shape="rect" title="Composite type that is used to run crossing simulations." alt="" coords="139,189,210,217"/>
+<area shape="rect" href="struct_genetic_map.html" title="A type that stores the genetic map for a set of markers." alt="" coords="14,97,105,125"/>
+<area shape="rect" href="struct_marker_position.html" title="A struct representing a single marker location." alt="" coords="5,5,114,33"/>
+<area shape="rect" href="struct_allele_matrix.html" title=" " alt="" coords="130,97,219,125"/>
+<area shape="rect" href="struct_effect_matrix.html" title="A type that stores a matrix of effect values and their names." alt="" coords="296,97,386,125"/>
+<area shape="rect" href="struct_decimal_matrix.html" title="A row&#45;major heap matrix that contains floating point numbers." alt="" coords="289,5,393,33"/>
 </map>
 <center><span class="legend">[<a href="graph_legend.html">legend</a>]</span></center></div>
 <table class="memberdecls">
@@ -96,6 +96,15 @@ Data Fields</h2></td></tr>
 <tr class="memitem:afaf6ca10aa3f661d7fccc335a5de2af8"><td class="memItemLeft" align="right" valign="top">char **&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_sim_data.html#afaf6ca10aa3f661d7fccc335a5de2af8">markers</a></td></tr>
 <tr class="memdesc:afaf6ca10aa3f661d7fccc335a5de2af8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Array of strings containing the names of markers.  <a href="struct_sim_data.html#afaf6ca10aa3f661d7fccc335a5de2af8">More...</a><br /></td></tr>
 <tr class="separator:afaf6ca10aa3f661d7fccc335a5de2af8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab346eec849e85191356221e2266b6adc"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_sim_data.html#ab346eec849e85191356221e2266b6adc">n_labels</a></td></tr>
+<tr class="memdesc:ab346eec849e85191356221e2266b6adc"><td class="mdescLeft">&#160;</td><td class="mdescRight">The number of custom labels in the simulation.  <a href="struct_sim_data.html#ab346eec849e85191356221e2266b6adc">More...</a><br /></td></tr>
+<tr class="separator:ab346eec849e85191356221e2266b6adc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5443bc9d7d1607bc356f3ad6b1e89242"><td class="memItemLeft" align="right" valign="top">int *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_sim_data.html#a5443bc9d7d1607bc356f3ad6b1e89242">label_ids</a></td></tr>
+<tr class="memdesc:a5443bc9d7d1607bc356f3ad6b1e89242"><td class="mdescLeft">&#160;</td><td class="mdescRight">The identifier number of each label in the simulation, in order of their lookup index.  <a href="struct_sim_data.html#a5443bc9d7d1607bc356f3ad6b1e89242">More...</a><br /></td></tr>
+<tr class="separator:a5443bc9d7d1607bc356f3ad6b1e89242"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4e1157e5fc24ca9f4cd049039315381b"><td class="memItemLeft" align="right" valign="top">int *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_sim_data.html#a4e1157e5fc24ca9f4cd049039315381b">label_defaults</a></td></tr>
+<tr class="memdesc:a4e1157e5fc24ca9f4cd049039315381b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Array containing the default (birth) value of each custom label.  <a href="struct_sim_data.html#a4e1157e5fc24ca9f4cd049039315381b">More...</a><br /></td></tr>
+<tr class="separator:a4e1157e5fc24ca9f4cd049039315381b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae1ae6d192937ca2edaba69edf8308711"><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_genetic_map.html">GeneticMap</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_sim_data.html#ae1ae6d192937ca2edaba69edf8308711">map</a></td></tr>
 <tr class="memdesc:ae1ae6d192937ca2edaba69edf8308711"><td class="mdescLeft">&#160;</td><td class="mdescRight">A <a class="el" href="struct_genetic_map.html" title="A type that stores the genetic map for a set of markers.">GeneticMap</a>.  <a href="struct_sim_data.html#ae1ae6d192937ca2edaba69edf8308711">More...</a><br /></td></tr>
 <tr class="separator:ae1ae6d192937ca2edaba69edf8308711"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -105,6 +114,9 @@ Data Fields</h2></td></tr>
 <tr class="memitem:a74a7cb588285022d6300b21484d8ba44"><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_effect_matrix.html">EffectMatrix</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_sim_data.html#a74a7cb588285022d6300b21484d8ba44">e</a></td></tr>
 <tr class="memdesc:a74a7cb588285022d6300b21484d8ba44"><td class="mdescLeft">&#160;</td><td class="mdescRight">An <a class="el" href="struct_effect_matrix.html" title="A type that stores a matrix of effect values and their names.">EffectMatrix</a>, optional for the use of the simulation.  <a href="struct_sim_data.html#a74a7cb588285022d6300b21484d8ba44">More...</a><br /></td></tr>
 <tr class="separator:a74a7cb588285022d6300b21484d8ba44"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4c08a5f94bfc603957545c6827d7b019"><td class="memItemLeft" align="right" valign="top">rnd_pcg_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_sim_data.html#a4c08a5f94bfc603957545c6827d7b019">rng</a></td></tr>
+<tr class="memdesc:a4c08a5f94bfc603957545c6827d7b019"><td class="mdescLeft">&#160;</td><td class="mdescRight">Random number generator working memory.  <a href="struct_sim_data.html#a4c08a5f94bfc603957545c6827d7b019">More...</a><br /></td></tr>
+<tr class="separator:a4c08a5f94bfc603957545c6827d7b019"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a829aa46d12728427def242e7884dc560"><td class="memItemLeft" align="right" valign="top">unsigned int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_sim_data.html#a829aa46d12728427def242e7884dc560">current_id</a></td></tr>
 <tr class="memdesc:a829aa46d12728427def242e7884dc560"><td class="mdescLeft">&#160;</td><td class="mdescRight">Highest SimData-unique ID that has been generated so far.  <a href="struct_sim_data.html#a829aa46d12728427def242e7884dc560">More...</a><br /></td></tr>
 <tr class="separator:a829aa46d12728427def242e7884dc560"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -144,6 +156,38 @@ Data Fields</h2></td></tr>
 
 <p>An <a class="el" href="struct_effect_matrix.html" title="A type that stores a matrix of effect values and their names.">EffectMatrix</a>, optional for the use of the simulation. </p>
 <p >Used for calculating breeding values from which alleles a genotype has at each marker. </p>
+
+</div>
+</div>
+<a id="a4e1157e5fc24ca9f4cd049039315381b" name="a4e1157e5fc24ca9f4cd049039315381b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4e1157e5fc24ca9f4cd049039315381b">&#9670;&nbsp;</a></span>label_defaults</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int* SimData::label_defaults</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Array containing the default (birth) value of each custom label. </p>
+
+</div>
+</div>
+<a id="a5443bc9d7d1607bc356f3ad6b1e89242" name="a5443bc9d7d1607bc356f3ad6b1e89242"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5443bc9d7d1607bc356f3ad6b1e89242">&#9670;&nbsp;</a></span>label_ids</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int* SimData::label_ids</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>The identifier number of each label in the simulation, in order of their lookup index. </p>
 
 </div>
 </div>
@@ -197,6 +241,22 @@ Data Fields</h2></td></tr>
 
 </div>
 </div>
+<a id="ab346eec849e85191356221e2266b6adc" name="ab346eec849e85191356221e2266b6adc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab346eec849e85191356221e2266b6adc">&#9670;&nbsp;</a></span>n_labels</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int SimData::n_labels</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>The number of custom labels in the simulation. </p>
+
+</div>
+</div>
 <a id="af91c67baf2824ded2ff130500c29ab36" name="af91c67baf2824ded2ff130500c29ab36"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#af91c67baf2824ded2ff130500c29ab36">&#9670;&nbsp;</a></span>n_markers</h2>
 
@@ -210,6 +270,22 @@ Data Fields</h2></td></tr>
 </div><div class="memdoc">
 
 <p>The number of markers/length of <code>markers</code>. </p>
+
+</div>
+</div>
+<a id="a4c08a5f94bfc603957545c6827d7b019" name="a4c08a5f94bfc603957545c6827d7b019"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4c08a5f94bfc603957545c6827d7b019">&#9670;&nbsp;</a></span>rng</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">rnd_pcg_t SimData::rng</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Random number generator working memory. </p>
 
 </div>
 </div>

@@ -1,7 +1,7 @@
 #ifndef SIM_OPERATIONS
 #define SIM_OPERATIONS
 #include "sim-operations.h"
-/* genomicSimulationC v0.2.2.11 - last edit 8 June 2023 */
+/* genomicSimulationC v0.2.3 - last edit 19 June 2023 */
 
 /** Options parameter to run SimData functions in their bare-bones form.*/
 const GenOptions BASIC_OPT = {
@@ -509,7 +509,7 @@ void set_names(AlleleMatrix* a, const char* prefix, const int suffix, const int 
  *
  * @param d pointer to the `SimData` whose child `AlleleMatrix`s will be given the new label.
  * @param setTo the value to which every genotype's label is initialised.
- * @returns the label index of the new label
+ * @returns the label id of the new label
 */
 int create_new_label(SimData* d, const int setTo) {
     // Add new label default
@@ -5897,6 +5897,7 @@ void generate_clone(SimData* d, const char* parent_genome, char* output) {
     return;
 }
 
+
 /** Performs random crosses among members of a group. If the group does not
  * have at least two members, the simulation exits. Selfing/crossing an individual
  * with itself is not permitted. The resulting genotypes are allocated to a new group.
@@ -6373,8 +6374,8 @@ int cross_randomly_between(SimData*d, const int group1, const int group2, const 
     }
 }
 
-/** Performs the crosses of pairs of parents whose indexes are provided in an array. The
- * resulting genotypes are allocated to a new group.
+/** Performs the crosses of pairs of parents whose indexes are provided in an
+ * array. The resulting genotypes are allocated to a new group.
  *
  * Preferences in GenOptions are applied to this cross. The family_size parameter
  * in GenOptions allows you to repeat each particular cross a

@@ -1,7 +1,0 @@
-<map id="split_randomly_into_two" name="split_randomly_into_two">
-<area shape="rect" id="node1" title="Flip a coin for each member of the group to decide if it should be moved to the new group." alt="" coords="5,31,167,57"/>
-<area shape="rect" id="node2" href="$group__supporters.html#gae974a74145fe876e303e14336d3c5d3a" title="Function to identify the next sequential integer that does not identify a group that currently has me..." alt="" coords="215,5,356,32"/>
-<area shape="rect" id="node5" href="$group__maths.html#gad4e0f7934e82157e3115f8df7aec01f0" title="Generates randomly one of 0 or 1, by splitting the output of rand() in half." alt="" coords="258,56,313,83"/>
-<area shape="rect" id="node3" href="$group__getters.html#ga3305ddcc29138d2d92689f39a7885ca0" title="Identify every group number that currently has members." alt="" coords="404,5,543,32"/>
-<area shape="rect" id="node4" href="$group__supporters.html#gadae2e9f7e1061cb20426ba2333b7629b" title="Comparator function for qsort." alt="" coords="591,5,761,32"/>
-</map>

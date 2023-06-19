@@ -1,0 +1,9 @@
+<map id="save_count_matrix_of_group" name="save_count_matrix_of_group">
+<area shape="rect" id="node1" title="Print the number of copies of a particular allele at each marker of each genotype in a group to a fil..." alt="" coords="5,152,152,196"/>
+<area shape="rect" id="node2" href="$group__calculators.html#ga3b7bb854c37c21eaa60ca155ac6e7d86" title="Calculates the number of times at each marker that a particular allele appears for each genotype in a..." alt="" coords="201,40,352,84"/>
+<area shape="rect" id="node4" href="$group__collgetters.html#ga706e640cd2cfb0f390f98c3b8c00a709" title="Function to count the number of genotypes that currently belong to the specified group." alt="" coords="573,83,683,111"/>
+<area shape="rect" id="node5" href="$group__deletors.html#gaaf6542d59034f88f9e1ec48e5f053c4a" title="Deletes a DecimalMatrix and frees its memory." alt="" coords="223,160,330,188"/>
+<area shape="rect" id="node6" href="$group__maths.html#ga26e7ca69aa8bd969e3a781331a0afe27" title="Generates a matrix of c columns, r rows with all 0." alt="" coords="200,212,353,240"/>
+<area shape="rect" id="node7" href="$group__collgetters.html#gabb5a3786c56f6cfc7fa8a363bb1d2149" title="Gets a shallow copy of the names of each member of the group." alt="" coords="401,212,525,240"/>
+<area shape="rect" id="node3" href="$group__collgetters.html#gaf3f95ff569cca762e4de8be67c4d4097" title="Gets a shallow copy of the genes/alleles of each member of the group." alt="" coords="403,5,523,33"/>
+</map>

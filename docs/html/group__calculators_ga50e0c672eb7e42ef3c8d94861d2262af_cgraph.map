@@ -1,0 +1,5 @@
+<map id="calculate_group_doublecount_matrix_of_allele" name="calculate_group_doublecount_matrix_of_allele">
+<area shape="rect" id="node1" title="Calculates the number of times at each marker that two particular alleles appear for each genotype in..." alt="" coords="5,24,195,68"/>
+<area shape="rect" id="node2" href="$group__collgetters.html#gaf3f95ff569cca762e4de8be67c4d4097" title="Gets a shallow copy of the genes/alleles of each member of the group." alt="" coords="243,5,363,33"/>
+<area shape="rect" id="node3" href="$group__collgetters.html#ga706e640cd2cfb0f390f98c3b8c00a709" title="Function to count the number of genotypes that currently belong to the specified group." alt="" coords="411,32,520,60"/>
+</map>

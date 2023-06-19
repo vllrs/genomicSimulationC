@@ -10,14 +10,14 @@ This page provides a set of templates for implementing common breeding project a
 # Setting Up
 
 ## Set the random number generator
-In C, you should manually set the seed for the random number generator at the beginning of the program. The R version borrows R's own random number generator so has no need of this.
+In C, you should manually set the seed for the random number generator when you create the SimData object, before loading data. The R version borrows R's own random number generator so has no need for setting a seed, or for manually creating the simulation data structure before loading data.
 
 <table>
 <tr><th>Task <th>genomicSimulationC (C) <th>genomicSimulation (R)
 <tr><td>
 <td>
 ```{C}
-srand(time(NULL));
+SimData* sd = create_empty_simdata(time(NULL));
 ```
 <td>
 </table>
@@ -48,7 +48,7 @@ m1 1 5.2
 ```
 <td>
 ```{C}
-SimData* d = create_empty_simdata();
+SimData* d = create_empty_simdata(time(NULL));
 int founders = load_all_simdata(d, "genotype-file.txt", "map-file.txt", NULL);
 ```
 <td>
@@ -95,7 +95,7 @@ m1 1 5.2
 ```
 <td>
 ```{C}
-SimData* d = create_empty_simdata();
+SimData* d = create_empty_simdata(time(NULL));
 int founders_a = load_all_simdata(d, "genotype-file.txt", "map-file.txt", NULL);
 int founders_b = load_more_transposed_genes_to_simdata(d, "genotype-file2.txt");
 ```
@@ -143,7 +143,7 @@ m3 T -0.1
 ```
 <td>
 ```{C}
-SimData* d = create_empty_simdata();
+SimData* d = create_empty_simdata(time(NULL));
 int founders = load_all_simdata(d, "genotype-file.txt", "map-file.txt", "eff-file.txt");
 ```
 <td>
@@ -478,7 +478,8 @@ crossingPlan[0][0] = breed1_index;
 crossingPlan[1][0] = breed2_index;
 
 int f1 = cross_these_combinations(d, 1, crossingPlan[0], crossingPlan[1] BASIC_OPT);
-int* f1_index = get_group_indexes(d, f1, 1); //we know this group has only one member
+int* f1_index = malloc(sizeof(int) * 1);
+get_group_indexes(d, f1, 1, f1_index); //we know this group has only one member
 
 // Re-use crossingPlan
 crossingPlan[0][0] = breed3_index;
@@ -516,7 +517,8 @@ GenOptions opt = {.family_size=5,
 		.will_save_to_simdata=TRUE};
 
 int f1 = cross_these_combinations(d, 1, crossingPlan[0], crossingPlan[1], opt);
-int f1_indexes = get_group_indexes(d, f1, 5);
+int* f1_indexes = malloc(sizeof(int) * 5);
+get_group_indexes(d, f1, 5, f1_indexes);
 
 int crossingPlanb[2][5];
 crossingPlanb[0][0] = breed3_index; crossingPlanb[0][1] = breed3_index;
@@ -548,7 +550,7 @@ genomicSimulation's custom labels can be used to track age (or some other known 
 <tr><td>Suppose you only want to breed 3-year-old animals. 
 <td>
 ```{C}
-SimData* d = create_empty_simdata();
+SimData* d = create_empty_simdata(1234567);
 int animals = load_all_simdata(d, "genotype-file.txt", "map-file.txt", NULL);
 
 // Create a new label to represent age, with default/at-birth value of 0.
@@ -655,8 +657,10 @@ The template selection template. This does the exact same thing as `split_by_bv`
 ```{C}
 int select_10_with_best_GEBV(int group) {
   unsigned int group_size = get_group_size( d, group );
-  int* group_indexes = get_group_indexes( d, group, group_size);
-  double* group_bvs = get_group_bvs( d, group, group_size);
+  int* group_indexes = malloc(sizeof(int) * group_size);
+  get_group_indexes( d, group, group_size, group_indexes);
+  double* group_bvs = malloc(sizeof(double) * group_size);
+  get_group_bvs( d, group, group_size, group_bvs);
 
   # A pretty inefficient way of finding the top 10 scores and their corresponding
   # indexes, but it will do for this example.

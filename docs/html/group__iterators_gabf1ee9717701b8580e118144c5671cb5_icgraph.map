@@ -1,0 +1,4 @@
+<map id="set_bidirectional_iter_to_start" name="set_bidirectional_iter_to_start">
+<area shape="rect" id="node1" title="Initialise a Bidirectional iterator to the start of its sequence." alt="" coords="155,5,295,49"/>
+<area shape="rect" id="node2" href="$group__iterators.html#gadff0d81d4ef4fd1f5afcdc7885779389" title="Get the next location from a bidirectional iterator." alt="" coords="5,13,107,41"/>
+</map>

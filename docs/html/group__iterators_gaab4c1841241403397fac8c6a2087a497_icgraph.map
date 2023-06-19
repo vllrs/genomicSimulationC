@@ -1,0 +1,6 @@
+<map id="get_nth_AlleleMatrix" name="get_nth_AlleleMatrix">
+<area shape="rect" id="node1" title="Get an AlleleMatrix by index in the linked list." alt="" coords="357,24,496,52"/>
+<area shape="rect" id="node2" href="$group__iterators.html#ga9431cd1ae9e15331a5464ac1c1204a8d" title="Get the previous location from a bidirectional iterator." alt="" coords="5,28,121,56"/>
+<area shape="rect" id="node3" href="$group__iterators.html#ga0bc5b9ebb0857a471e41630fda00403b" title="Get a location by index using a RandomAccessIterator." alt="" coords="191,24,287,52"/>
+<area shape="rect" id="node4" href="$group__iterators.html#gaa7e9bc9b0ea586369586d01237d30258" title="Initialise a Bidirectional iterator to the end of its sequence." alt="" coords="169,76,309,120"/>
+</map>

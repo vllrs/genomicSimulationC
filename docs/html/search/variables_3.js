@@ -1,6 +1,4 @@
 var searchData=
 [
-  ['e_0',['e',['../struct_sim_data.html#a74a7cb588285022d6300b21484d8ba44',1,'SimData']]],
-  ['effect_5fnames_1',['effect_names',['../struct_effect_matrix.html#a5285a98a6c210db6666b57fa228403cd',1,'EffectMatrix']]],
-  ['effects_2',['effects',['../struct_effect_matrix.html#af477ee135bdaa0898eaf2446ab36b634',1,'EffectMatrix']]]
+  ['d_0',['d',['../struct_bidirectional_iterator.html#aa7b00c5469206a6eb323975cf717708f',1,'BidirectionalIterator::d()'],['../struct_random_access_iterator.html#a2e006769a02ead10c23c0ac4cc3bc612',1,'RandomAccessIterator::d()']]]
 ];

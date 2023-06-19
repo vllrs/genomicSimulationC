@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['effectmatrix_0',['EffectMatrix',['../struct_effect_matrix.html',1,'']]]
+  ['decimalmatrix_0',['DecimalMatrix',['../struct_decimal_matrix.html',1,'']]]
 ];

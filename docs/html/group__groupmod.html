@@ -21,7 +21,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">genomicSimulationC<span id="projectnumber">&#160;0.2.1</span>
+   <div id="projectname">genomicSimulationC<span id="projectnumber">&#160;0.2.3</span>
    </div>
   </td>
  </tr>
@@ -73,45 +73,51 @@ $(function() {
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:gade6b01bfc6450638a3a341b76e28a97d"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__groupmod.html#gade6b01bfc6450638a3a341b76e28a97d">combine_groups</a> (<a class="el" href="struct_sim_data.html">SimData</a> *d, int list_len, int group_ids[list_len])</td></tr>
-<tr class="memdesc:gade6b01bfc6450638a3a341b76e28a97d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Combine a set of groups into one group.  <a href="group__groupmod.html#gade6b01bfc6450638a3a341b76e28a97d">More...</a><br /></td></tr>
-<tr class="separator:gade6b01bfc6450638a3a341b76e28a97d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga4cad3df4dd91ba6d8f8be038e14aa182"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__groupmod.html#ga4cad3df4dd91ba6d8f8be038e14aa182">split_into_individuals</a> (<a class="el" href="struct_sim_data.html">SimData</a> *d, int group_id, int *results)</td></tr>
-<tr class="memdesc:ga4cad3df4dd91ba6d8f8be038e14aa182"><td class="mdescLeft">&#160;</td><td class="mdescRight">Give every individual in the group a new group number that does not belong to any other existing group (thereby allocating each genotype in the group to a new group of 1).  <a href="group__groupmod.html#ga4cad3df4dd91ba6d8f8be038e14aa182">More...</a><br /></td></tr>
-<tr class="separator:ga4cad3df4dd91ba6d8f8be038e14aa182"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga62aec37e088d85c1df20a53b6d65daa4"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__groupmod.html#ga62aec37e088d85c1df20a53b6d65daa4">split_into_families</a> (<a class="el" href="struct_sim_data.html">SimData</a> *d, int group_id, int *results)</td></tr>
-<tr class="memdesc:ga62aec37e088d85c1df20a53b6d65daa4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Split a group into a set of smaller groups, each of which contains the genotypes in the original group that share a particular pair of parents.  <a href="group__groupmod.html#ga62aec37e088d85c1df20a53b6d65daa4">More...</a><br /></td></tr>
-<tr class="separator:ga62aec37e088d85c1df20a53b6d65daa4"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga39c5cb49068858b095acea9385e017ec"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__groupmod.html#ga39c5cb49068858b095acea9385e017ec">split_into_halfsib_families</a> (<a class="el" href="struct_sim_data.html">SimData</a> *d, int group_id, int parent, int *results)</td></tr>
-<tr class="memdesc:ga39c5cb49068858b095acea9385e017ec"><td class="mdescLeft">&#160;</td><td class="mdescRight">Split a group into a set of smaller groups, each containing the genotypes from the original group that share one parent.  <a href="group__groupmod.html#ga39c5cb49068858b095acea9385e017ec">More...</a><br /></td></tr>
-<tr class="separator:ga39c5cb49068858b095acea9385e017ec"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gaf2eda46d016c384b166ce65605952b7c"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__groupmod.html#gaf2eda46d016c384b166ce65605952b7c">split_from_group</a> (<a class="el" href="struct_sim_data.html">SimData</a> *d, int n, int indexes_to_split[n])</td></tr>
-<tr class="memdesc:gaf2eda46d016c384b166ce65605952b7c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Take a list of indexes and allocate the genotypes at those indexes to a new group.  <a href="group__groupmod.html#gaf2eda46d016c384b166ce65605952b7c">More...</a><br /></td></tr>
-<tr class="separator:gaf2eda46d016c384b166ce65605952b7c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga64b60c64209718e14b77ff4f4a991fe0"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__groupmod.html#ga64b60c64209718e14b77ff4f4a991fe0">split_evenly_into_two</a> (<a class="el" href="struct_sim_data.html">SimData</a> *d, int group_id)</td></tr>
-<tr class="memdesc:ga64b60c64209718e14b77ff4f4a991fe0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Split a group into two groups of equal size (or size differing only by one, if the original group had an odd number of members) using a random permutation of the group members to determine which goes where.  <a href="group__groupmod.html#ga64b60c64209718e14b77ff4f4a991fe0">More...</a><br /></td></tr>
-<tr class="separator:ga64b60c64209718e14b77ff4f4a991fe0"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gae4916db977e1014b5a4b163edf37427b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__groupmod.html#gae4916db977e1014b5a4b163edf37427b">split_evenly_into_n</a> (<a class="el" href="struct_sim_data.html">SimData</a> *d, int group_id, int n, int *results)</td></tr>
-<tr class="memdesc:gae4916db977e1014b5a4b163edf37427b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Split a group into n groups of equal size (or size differing only by one, if n does not perfectly divide the group size.), using a random permutation of the group members to determine which goes where.  <a href="group__groupmod.html#gae4916db977e1014b5a4b163edf37427b">More...</a><br /></td></tr>
-<tr class="separator:gae4916db977e1014b5a4b163edf37427b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga8fe9bd972582622c399c8b6a7c81a6d1"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__groupmod.html#ga8fe9bd972582622c399c8b6a7c81a6d1">split_by_specific_counts_into_n</a> (<a class="el" href="struct_sim_data.html">SimData</a> *d, int group_id, int n, int *counts, int *results)</td></tr>
-<tr class="memdesc:ga8fe9bd972582622c399c8b6a7c81a6d1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Split a group into n groups of equal size (or size differing only by one, if n does not perfectly divide the group size), using a random permutation of the group members to determine which goes where.  <a href="group__groupmod.html#ga8fe9bd972582622c399c8b6a7c81a6d1">More...</a><br /></td></tr>
-<tr class="separator:ga8fe9bd972582622c399c8b6a7c81a6d1"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gacd7e433cf6af229f0d2932b04468e9ca"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__groupmod.html#gacd7e433cf6af229f0d2932b04468e9ca">split_randomly_into_two</a> (<a class="el" href="struct_sim_data.html">SimData</a> *d, int group_id)</td></tr>
-<tr class="memdesc:gacd7e433cf6af229f0d2932b04468e9ca"><td class="mdescLeft">&#160;</td><td class="mdescRight">Flip a coin for each member of the group to decide if it should be moved to the new group.  <a href="group__groupmod.html#gacd7e433cf6af229f0d2932b04468e9ca">More...</a><br /></td></tr>
-<tr class="separator:gacd7e433cf6af229f0d2932b04468e9ca"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga38909617537e075fa1bea7cc15ca86df"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__groupmod.html#ga38909617537e075fa1bea7cc15ca86df">split_randomly_into_n</a> (<a class="el" href="struct_sim_data.html">SimData</a> *d, int group_id, int n, int *results)</td></tr>
-<tr class="memdesc:ga38909617537e075fa1bea7cc15ca86df"><td class="mdescLeft">&#160;</td><td class="mdescRight">Allocate each member of the group to one of n groups with equal probability.  <a href="group__groupmod.html#ga38909617537e075fa1bea7cc15ca86df">More...</a><br /></td></tr>
-<tr class="separator:ga38909617537e075fa1bea7cc15ca86df"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga75110a594a4cd6ddfc5f6905a83c422e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__groupmod.html#ga75110a594a4cd6ddfc5f6905a83c422e">split_by_probabilities_into_n</a> (<a class="el" href="struct_sim_data.html">SimData</a> *d, int group_id, int n, double *probs, int *results)</td></tr>
-<tr class="memdesc:ga75110a594a4cd6ddfc5f6905a83c422e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Allocate each member of the group to one of n groups with custom probabilities for each group.  <a href="group__groupmod.html#ga75110a594a4cd6ddfc5f6905a83c422e">More...</a><br /></td></tr>
-<tr class="separator:ga75110a594a4cd6ddfc5f6905a83c422e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga7d44a10248483cf230438e582cf47e28"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__groupmod.html#ga7d44a10248483cf230438e582cf47e28">combine_groups</a> (<a class="el" href="struct_sim_data.html">SimData</a> *d, const int list_len, const int group_ids[list_len])</td></tr>
+<tr class="memdesc:ga7d44a10248483cf230438e582cf47e28"><td class="mdescLeft">&#160;</td><td class="mdescRight">Combine a set of groups into one group.  <a href="group__groupmod.html#ga7d44a10248483cf230438e582cf47e28">More...</a><br /></td></tr>
+<tr class="separator:ga7d44a10248483cf230438e582cf47e28"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga2ffe6f186b1d9309dee151ae06f730b9"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__groupmod.html#ga2ffe6f186b1d9309dee151ae06f730b9">split_into_individuals</a> (<a class="el" href="struct_sim_data.html">SimData</a> *d, const int group_id, int *results)</td></tr>
+<tr class="memdesc:ga2ffe6f186b1d9309dee151ae06f730b9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Give every individual in the group a new group number that does not belong to any other existing group (thereby allocating each genotype in the group to a new group of 1).  <a href="group__groupmod.html#ga2ffe6f186b1d9309dee151ae06f730b9">More...</a><br /></td></tr>
+<tr class="separator:ga2ffe6f186b1d9309dee151ae06f730b9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga938574a9b1c279fc6d8ae9a5d5c14fe0"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__groupmod.html#ga938574a9b1c279fc6d8ae9a5d5c14fe0">split_into_families</a> (<a class="el" href="struct_sim_data.html">SimData</a> *d, const int group_id, int *results)</td></tr>
+<tr class="memdesc:ga938574a9b1c279fc6d8ae9a5d5c14fe0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Split a group into a set of smaller groups, each of which contains the genotypes in the original group that share a particular pair of parents.  <a href="group__groupmod.html#ga938574a9b1c279fc6d8ae9a5d5c14fe0">More...</a><br /></td></tr>
+<tr class="separator:ga938574a9b1c279fc6d8ae9a5d5c14fe0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga7a0e5dbce2c1d0af839712f8215ac4e2"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__groupmod.html#ga7a0e5dbce2c1d0af839712f8215ac4e2">split_into_halfsib_families</a> (<a class="el" href="struct_sim_data.html">SimData</a> *d, const int group_id, const int parent, int *results)</td></tr>
+<tr class="memdesc:ga7a0e5dbce2c1d0af839712f8215ac4e2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Split a group into a set of smaller groups, each containing the genotypes from the original group that share one parent.  <a href="group__groupmod.html#ga7a0e5dbce2c1d0af839712f8215ac4e2">More...</a><br /></td></tr>
+<tr class="separator:ga7a0e5dbce2c1d0af839712f8215ac4e2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga548aadbba9882294ab8241511976b563"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__groupmod.html#ga548aadbba9882294ab8241511976b563">split_from_group</a> (<a class="el" href="struct_sim_data.html">SimData</a> *d, const int n, const int indexes_to_split[n])</td></tr>
+<tr class="memdesc:ga548aadbba9882294ab8241511976b563"><td class="mdescLeft">&#160;</td><td class="mdescRight">Take a list of indexes and allocate the genotypes at those indexes to a new group.  <a href="group__groupmod.html#ga548aadbba9882294ab8241511976b563">More...</a><br /></td></tr>
+<tr class="separator:ga548aadbba9882294ab8241511976b563"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga4d831280c4cf64be337f1bff8bf62d80"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__groupmod.html#ga4d831280c4cf64be337f1bff8bf62d80">split_by_label_value</a> (<a class="el" href="struct_sim_data.html">SimData</a> *d, const int group, const int whichLabel, const int valueToSplit)</td></tr>
+<tr class="memdesc:ga4d831280c4cf64be337f1bff8bf62d80"><td class="mdescLeft">&#160;</td><td class="mdescRight">Allocates the genotypes with a particular value of a label to a new group.  <a href="group__groupmod.html#ga4d831280c4cf64be337f1bff8bf62d80">More...</a><br /></td></tr>
+<tr class="separator:ga4d831280c4cf64be337f1bff8bf62d80"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga9d60310dc0abe90122ada760536e0fe9"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__groupmod.html#ga9d60310dc0abe90122ada760536e0fe9">split_by_label_range</a> (<a class="el" href="struct_sim_data.html">SimData</a> *d, const int group, const int whichLabel, const int valueLowBound, const int valueHighBound)</td></tr>
+<tr class="memdesc:ga9d60310dc0abe90122ada760536e0fe9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Allocates the genotypes with values of a label in a particular range to a new group.  <a href="group__groupmod.html#ga9d60310dc0abe90122ada760536e0fe9">More...</a><br /></td></tr>
+<tr class="separator:ga9d60310dc0abe90122ada760536e0fe9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga02fd183dde037779a2d6b18c84907ba9"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__groupmod.html#ga02fd183dde037779a2d6b18c84907ba9">split_evenly_into_two</a> (<a class="el" href="struct_sim_data.html">SimData</a> *d, const int group_id)</td></tr>
+<tr class="memdesc:ga02fd183dde037779a2d6b18c84907ba9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Split a group into two groups of equal size (or size differing only by one, if the original group had an odd number of members) using a random permutation of the group members to determine which goes where.  <a href="group__groupmod.html#ga02fd183dde037779a2d6b18c84907ba9">More...</a><br /></td></tr>
+<tr class="separator:ga02fd183dde037779a2d6b18c84907ba9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga49e99e674d87de80facffa7bed28393f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__groupmod.html#ga49e99e674d87de80facffa7bed28393f">split_evenly_into_n</a> (<a class="el" href="struct_sim_data.html">SimData</a> *d, const int group_id, const int n, int *results)</td></tr>
+<tr class="memdesc:ga49e99e674d87de80facffa7bed28393f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Split a group into n groups of equal size (or size differing only by one, if n does not perfectly divide the group size.), using a random permutation of the group members to determine which goes where.  <a href="group__groupmod.html#ga49e99e674d87de80facffa7bed28393f">More...</a><br /></td></tr>
+<tr class="separator:ga49e99e674d87de80facffa7bed28393f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga74610483035cee35d81bd24c1a044259"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__groupmod.html#ga74610483035cee35d81bd24c1a044259">split_by_specific_counts_into_n</a> (<a class="el" href="struct_sim_data.html">SimData</a> *d, const int group_id, const int n, const int *counts, int *results)</td></tr>
+<tr class="memdesc:ga74610483035cee35d81bd24c1a044259"><td class="mdescLeft">&#160;</td><td class="mdescRight">Split a group into n groups of equal size (or size differing only by one, if n does not perfectly divide the group size), using a random permutation of the group members to determine which goes where.  <a href="group__groupmod.html#ga74610483035cee35d81bd24c1a044259">More...</a><br /></td></tr>
+<tr class="separator:ga74610483035cee35d81bd24c1a044259"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga28fa0c21827594b777881c45878f4444"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__groupmod.html#ga28fa0c21827594b777881c45878f4444">split_randomly_into_two</a> (<a class="el" href="struct_sim_data.html">SimData</a> *d, const int group_id)</td></tr>
+<tr class="memdesc:ga28fa0c21827594b777881c45878f4444"><td class="mdescLeft">&#160;</td><td class="mdescRight">Flip a coin for each member of the group to decide if it should be moved to the new group.  <a href="group__groupmod.html#ga28fa0c21827594b777881c45878f4444">More...</a><br /></td></tr>
+<tr class="separator:ga28fa0c21827594b777881c45878f4444"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gad4682769497c140c4374d3a8d85350c6"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__groupmod.html#gad4682769497c140c4374d3a8d85350c6">split_randomly_into_n</a> (<a class="el" href="struct_sim_data.html">SimData</a> *d, const int group_id, const int n, int *results)</td></tr>
+<tr class="memdesc:gad4682769497c140c4374d3a8d85350c6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Allocate each member of the group to one of n groups with equal probability.  <a href="group__groupmod.html#gad4682769497c140c4374d3a8d85350c6">More...</a><br /></td></tr>
+<tr class="separator:gad4682769497c140c4374d3a8d85350c6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaedf5b91b00b207a38c6a1a036f3853cf"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__groupmod.html#gaedf5b91b00b207a38c6a1a036f3853cf">split_by_probabilities_into_n</a> (<a class="el" href="struct_sim_data.html">SimData</a> *d, const int group_id, const int n, const double *probs, int *results)</td></tr>
+<tr class="memdesc:gaedf5b91b00b207a38c6a1a036f3853cf"><td class="mdescLeft">&#160;</td><td class="mdescRight">Allocate each member of the group to one of n groups with custom probabilities for each group.  <a href="group__groupmod.html#gaedf5b91b00b207a38c6a1a036f3853cf">More...</a><br /></td></tr>
+<tr class="separator:gaedf5b91b00b207a38c6a1a036f3853cf"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <p >For simulation of selection or structure in breeding programs. </p>
 <h2 class="groupheader">Function Documentation</h2>
-<a id="gade6b01bfc6450638a3a341b76e28a97d" name="gade6b01bfc6450638a3a341b76e28a97d"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#gade6b01bfc6450638a3a341b76e28a97d">&#9670;&nbsp;</a></span>combine_groups()</h2>
+<a id="ga7d44a10248483cf230438e582cf47e28" name="ga7d44a10248483cf230438e582cf47e28"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga7d44a10248483cf230438e582cf47e28">&#9670;&nbsp;</a></span>combine_groups()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -125,13 +131,13 @@ Functions</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">int&#160;</td>
+          <td class="paramtype">const int&#160;</td>
           <td class="paramname"><em>list_len</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">int&#160;</td>
+          <td class="paramtype">const int&#160;</td>
           <td class="paramname"><em>group_ids</em>[list_len]&#160;</td>
         </tr>
         <tr>
@@ -158,17 +164,162 @@ Functions</h2></td></tr>
 <div id="dynsection-0-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-0-content" class="dyncontent" style="display:none;">
-<div class="center"><img src="group__groupmod_gade6b01bfc6450638a3a341b76e28a97d_icgraph.png" border="0" usemap="#agroup__groupmod_gade6b01bfc6450638a3a341b76e28a97d_icgraph" alt=""/></div>
-<map name="agroup__groupmod_gade6b01bfc6450638a3a341b76e28a97d_icgraph" id="agroup__groupmod_gade6b01bfc6450638a3a341b76e28a97d_icgraph">
-<area shape="rect" title="Combine a set of groups into one group." alt="" coords="207,13,324,39"/>
-<area shape="rect" href="group__crossers.html#ga68aca99a41527b019316c8243e6fc7a7" title="Find the top m percent of a group and perform random crosses between those top individuals." alt="" coords="5,5,159,47"/>
+<div class="center"><img src="group__groupmod_ga7d44a10248483cf230438e582cf47e28_icgraph.png" border="0" usemap="#agroup__groupmod_ga7d44a10248483cf230438e582cf47e28_icgraph" alt=""/></div>
+<map name="agroup__groupmod_ga7d44a10248483cf230438e582cf47e28_icgraph" id="agroup__groupmod_ga7d44a10248483cf230438e582cf47e28_icgraph">
+<area shape="rect" title="Combine a set of groups into one group." alt="" coords="206,13,322,41"/>
+<area shape="rect" href="group__crossers.html#gaa41e75da9e6e4f8db5466e8929dec2ee" title="Find the top m percent of a group and perform random crosses between those top individuals." alt="" coords="5,5,158,49"/>
 </map>
 </div>
 
 </div>
 </div>
-<a id="ga75110a594a4cd6ddfc5f6905a83c422e" name="ga75110a594a4cd6ddfc5f6905a83c422e"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ga75110a594a4cd6ddfc5f6905a83c422e">&#9670;&nbsp;</a></span>split_by_probabilities_into_n()</h2>
+<a id="ga9d60310dc0abe90122ada760536e0fe9" name="ga9d60310dc0abe90122ada760536e0fe9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga9d60310dc0abe90122ada760536e0fe9">&#9670;&nbsp;</a></span>split_by_label_range()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int split_by_label_range </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="struct_sim_data.html">SimData</a> *&#160;</td>
+          <td class="paramname"><em>d</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const int&#160;</td>
+          <td class="paramname"><em>group</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const int&#160;</td>
+          <td class="paramname"><em>whichLabel</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const int&#160;</td>
+          <td class="paramname"><em>valueLowBound</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const int&#160;</td>
+          <td class="paramname"><em>valueHighBound</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Allocates the genotypes with values of a label in a particular range to a new group. </p>
+<p >Searches through every genotype (or every member of the group, if a specific group is given) to find all genotypes with value in the <code>whichLabel</code>th label between <code>valueLowBound</code> and <code>valueHighBound</code> inclusive, and puts those genotypes into a new group.</p>
+<p >Returns 0 for invalid parameters, or if no genotypes were found that fit the criteria to be moved to the new group.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">d</td><td>the <a class="el" href="struct_sim_data.html" title="Composite type that is used to run crossing simulations.">SimData</a> struct on which to perform the operation </td></tr>
+    <tr><td class="paramname">group</td><td>If <code>group</code> &gt; 0, then only genotypes with group number <code>group</code> AND <code>whichLabel</code> value <code>valueToSplit</code> will be moved to the new group. Otherwise, all genotypes with <code>whichLabel</code> value <code>valueToSplit</code> will be moved to the next group. </td></tr>
+    <tr><td class="paramname">whichLabel</td><td>the label id of the relevant label. </td></tr>
+    <tr><td class="paramname">valueLowBound</td><td>the minimum value of the label for the genotypes that will be moved to the new group. </td></tr>
+    <tr><td class="paramname">valueHighBound</td><td>the maximum value of the label for the genotypes that will be moved to the new group. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>the group number of the new group to which the genotypes with that value for that label were allocated, or 0 if no genotypes that fit the criteria were found. </dd></dl>
+<div id="dynsection-1" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-1-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
+<div id="dynsection-1-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-1-content" class="dyncontent" style="display:none;">
+<div class="center"><img src="group__groupmod_ga9d60310dc0abe90122ada760536e0fe9_cgraph.png" border="0" usemap="#agroup__groupmod_ga9d60310dc0abe90122ada760536e0fe9_cgraph" alt=""/></div>
+<map name="agroup__groupmod_ga9d60310dc0abe90122ada760536e0fe9_cgraph" id="agroup__groupmod_ga9d60310dc0abe90122ada760536e0fe9_cgraph">
+<area shape="rect" title="Allocates the genotypes with values of a label in a particular range to a new group." alt="" coords="5,32,145,60"/>
+<area shape="rect" href="group__supporters.html#ga835f8472c31ae57a4b826417f3dd7781" title="Function to identify the label lookup index of a label identifier." alt="" coords="199,5,327,33"/>
+<area shape="rect" href="group__supporters.html#ga57da16044e22c5c21e14b45bbef5e9eb" title="Function to identify the next sequential integer that does not identify a group that currently has me..." alt="" coords="193,57,333,85"/>
+<area shape="rect" href="group__collgetters.html#ga6f49e4b90be53f42241fcfb9850f2f29" title="Identify group numbers that currently have members." alt="" coords="381,31,518,59"/>
+<area shape="rect" href="group__supporters.html#ga6072a152b624743eeafb30adaf9b7f17" title="Replace calls to malloc direct with this function, which errors and exits with status 2 if memory all..." alt="" coords="408,83,492,111"/>
+<area shape="rect" href="group__supporters.html#gadae2e9f7e1061cb20426ba2333b7629b" title="Comparator function for qsort." alt="" coords="566,31,736,59"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="ga4d831280c4cf64be337f1bff8bf62d80" name="ga4d831280c4cf64be337f1bff8bf62d80"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga4d831280c4cf64be337f1bff8bf62d80">&#9670;&nbsp;</a></span>split_by_label_value()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int split_by_label_value </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="struct_sim_data.html">SimData</a> *&#160;</td>
+          <td class="paramname"><em>d</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const int&#160;</td>
+          <td class="paramname"><em>group</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const int&#160;</td>
+          <td class="paramname"><em>whichLabel</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const int&#160;</td>
+          <td class="paramname"><em>valueToSplit</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Allocates the genotypes with a particular value of a label to a new group. </p>
+<p >Searches through every genotype (or every member of the group, if a specific group is given) to find all genotypes with value <code>valueToSplit</code> in the <code>whichLabel</code>th label, and puts those genotypes into a new group.</p>
+<p >Returns 0 for invalid parameters, or if no genotypes were found that fit the criteria to be moved to the new group.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">d</td><td>the <a class="el" href="struct_sim_data.html" title="Composite type that is used to run crossing simulations.">SimData</a> struct on which to perform the operation </td></tr>
+    <tr><td class="paramname">group</td><td>If <code>group</code> &gt; 0, then only genotypes with group number <code>group</code> AND <code>whichLabel</code> value <code>valueToSplit</code> will be moved to the new group. Otherwise, all genotypes with <code>whichLabel</code> value <code>valueToSplit</code> will be moved to the next group. </td></tr>
+    <tr><td class="paramname">whichLabel</td><td>the label id of the relevant label. </td></tr>
+    <tr><td class="paramname">valueToSplit</td><td>the value of the label that defines the genotypes that will be moved to the new group. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>the group number of the new group to which the genotypes with that value for that label were allocated, or 0 if no genotypes that fit the criteria were found. </dd></dl>
+<div id="dynsection-2" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-2-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
+<div id="dynsection-2-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-2-content" class="dyncontent" style="display:none;">
+<div class="center"><img src="group__groupmod_ga4d831280c4cf64be337f1bff8bf62d80_cgraph.png" border="0" usemap="#agroup__groupmod_ga4d831280c4cf64be337f1bff8bf62d80_cgraph" alt=""/></div>
+<map name="agroup__groupmod_ga4d831280c4cf64be337f1bff8bf62d80_cgraph" id="agroup__groupmod_ga4d831280c4cf64be337f1bff8bf62d80_cgraph">
+<area shape="rect" title="Allocates the genotypes with a particular value of a label to a new group." alt="" coords="5,32,142,60"/>
+<area shape="rect" href="group__supporters.html#ga835f8472c31ae57a4b826417f3dd7781" title="Function to identify the label lookup index of a label identifier." alt="" coords="196,5,324,33"/>
+<area shape="rect" href="group__supporters.html#ga57da16044e22c5c21e14b45bbef5e9eb" title="Function to identify the next sequential integer that does not identify a group that currently has me..." alt="" coords="190,57,330,85"/>
+<area shape="rect" href="group__collgetters.html#ga6f49e4b90be53f42241fcfb9850f2f29" title="Identify group numbers that currently have members." alt="" coords="378,31,515,59"/>
+<area shape="rect" href="group__supporters.html#ga6072a152b624743eeafb30adaf9b7f17" title="Replace calls to malloc direct with this function, which errors and exits with status 2 if memory all..." alt="" coords="405,83,489,111"/>
+<area shape="rect" href="group__supporters.html#gadae2e9f7e1061cb20426ba2333b7629b" title="Comparator function for qsort." alt="" coords="563,31,733,59"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="gaedf5b91b00b207a38c6a1a036f3853cf" name="gaedf5b91b00b207a38c6a1a036f3853cf"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gaedf5b91b00b207a38c6a1a036f3853cf">&#9670;&nbsp;</a></span>split_by_probabilities_into_n()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -182,19 +333,19 @@ Functions</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">int&#160;</td>
+          <td class="paramtype">const int&#160;</td>
           <td class="paramname"><em>group_id</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">int&#160;</td>
+          <td class="paramtype">const int&#160;</td>
           <td class="paramname"><em>n</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">double *&#160;</td>
+          <td class="paramtype">const double *&#160;</td>
           <td class="paramname"><em>probs</em>, </td>
         </tr>
         <tr>
@@ -225,25 +376,26 @@ Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
-<div id="dynsection-1" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
-  <img id="dynsection-1-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
-<div id="dynsection-1-summary" class="dynsummary" style="display:block;">
+<div id="dynsection-3" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-3-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
+<div id="dynsection-3-summary" class="dynsummary" style="display:block;">
 </div>
-<div id="dynsection-1-content" class="dyncontent" style="display:none;">
-<div class="center"><img src="group__groupmod_ga75110a594a4cd6ddfc5f6905a83c422e_cgraph.png" border="0" usemap="#agroup__groupmod_ga75110a594a4cd6ddfc5f6905a83c422e_cgraph" alt=""/></div>
-<map name="agroup__groupmod_ga75110a594a4cd6ddfc5f6905a83c422e_cgraph" id="agroup__groupmod_ga75110a594a4cd6ddfc5f6905a83c422e_cgraph">
-<area shape="rect" title="Allocate each member of the group to one of n groups with custom probabilities for each group." alt="" coords="5,23,148,65"/>
-<area shape="rect" href="group__getters.html#gad6d2b66296cd80f5bfe303e06de7935c" title="Function to count the number of genotypes that currently belong to the specified group." alt="" coords="222,5,333,32"/>
-<area shape="rect" href="group__supporters.html#ga71dbb7fd0d0317d24aa06b6bbb472367" title="Function to identify the next n sequential integers that do not identify a group that currently has m..." alt="" coords="196,56,359,83"/>
-<area shape="rect" href="group__getters.html#ga3305ddcc29138d2d92689f39a7885ca0" title="Identify every group number that currently has members." alt="" coords="407,56,545,83"/>
-<area shape="rect" href="group__supporters.html#gadae2e9f7e1061cb20426ba2333b7629b" title="Comparator function for qsort." alt="" coords="593,56,764,83"/>
+<div id="dynsection-3-content" class="dyncontent" style="display:none;">
+<div class="center"><img src="group__groupmod_gaedf5b91b00b207a38c6a1a036f3853cf_cgraph.png" border="0" usemap="#agroup__groupmod_gaedf5b91b00b207a38c6a1a036f3853cf_cgraph" alt=""/></div>
+<map name="agroup__groupmod_gaedf5b91b00b207a38c6a1a036f3853cf_cgraph" id="agroup__groupmod_gaedf5b91b00b207a38c6a1a036f3853cf_cgraph">
+<area shape="rect" title="Allocate each member of the group to one of n groups with custom probabilities for each group." alt="" coords="5,24,148,68"/>
+<area shape="rect" href="group__collgetters.html#ga706e640cd2cfb0f390f98c3b8c00a709" title="Function to count the number of genotypes that currently belong to the specified group." alt="" coords="222,5,331,33"/>
+<area shape="rect" href="group__supporters.html#ga5bce9a6f19127aa17d90990dae7e138a" title="Function to identify the next n sequential integers that do not identify a group that currently has m..." alt="" coords="196,57,357,85"/>
+<area shape="rect" href="group__collgetters.html#ga6f49e4b90be53f42241fcfb9850f2f29" title="Identify group numbers that currently have members." alt="" coords="405,31,542,59"/>
+<area shape="rect" href="group__supporters.html#ga6072a152b624743eeafb30adaf9b7f17" title="Replace calls to malloc direct with this function, which errors and exits with status 2 if memory all..." alt="" coords="432,83,516,111"/>
+<area shape="rect" href="group__supporters.html#gadae2e9f7e1061cb20426ba2333b7629b" title="Comparator function for qsort." alt="" coords="590,31,760,59"/>
 </map>
 </div>
 
 </div>
 </div>
-<a id="ga8fe9bd972582622c399c8b6a7c81a6d1" name="ga8fe9bd972582622c399c8b6a7c81a6d1"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ga8fe9bd972582622c399c8b6a7c81a6d1">&#9670;&nbsp;</a></span>split_by_specific_counts_into_n()</h2>
+<a id="ga74610483035cee35d81bd24c1a044259" name="ga74610483035cee35d81bd24c1a044259"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga74610483035cee35d81bd24c1a044259">&#9670;&nbsp;</a></span>split_by_specific_counts_into_n()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -257,19 +409,19 @@ Functions</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">int&#160;</td>
+          <td class="paramtype">const int&#160;</td>
           <td class="paramname"><em>group_id</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">int&#160;</td>
+          <td class="paramtype">const int&#160;</td>
           <td class="paramname"><em>n</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">int *&#160;</td>
+          <td class="paramtype">const int *&#160;</td>
           <td class="paramname"><em>counts</em>, </td>
         </tr>
         <tr>
@@ -300,37 +452,38 @@ Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
-<div id="dynsection-2" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
-  <img id="dynsection-2-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
-<div id="dynsection-2-summary" class="dynsummary" style="display:block;">
+<div id="dynsection-4" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-4-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
+<div id="dynsection-4-summary" class="dynsummary" style="display:block;">
 </div>
-<div id="dynsection-2-content" class="dyncontent" style="display:none;">
-<div class="center"><img src="group__groupmod_ga8fe9bd972582622c399c8b6a7c81a6d1_cgraph.png" border="0" usemap="#agroup__groupmod_ga8fe9bd972582622c399c8b6a7c81a6d1_cgraph" alt=""/></div>
-<map name="agroup__groupmod_ga8fe9bd972582622c399c8b6a7c81a6d1_cgraph" id="agroup__groupmod_ga8fe9bd972582622c399c8b6a7c81a6d1_cgraph">
-<area shape="rect" title="Split a group into n groups of equal size (or size differing only by one, if n does not perfectly div..." alt="" coords="5,49,169,90"/>
-<area shape="rect" href="group__getters.html#gad6d2b66296cd80f5bfe303e06de7935c" title="Function to count the number of genotypes that currently belong to the specified group." alt="" coords="243,5,354,32"/>
-<area shape="rect" href="group__supporters.html#ga71dbb7fd0d0317d24aa06b6bbb472367" title="Function to identify the next n sequential integers that do not identify a group that currently has m..." alt="" coords="217,56,380,83"/>
-<area shape="rect" href="group__supporters.html#gaa471b9b9b77c8010dff8d318e9a968a7" title="Produce a random ordering of the first n elements in an array of integers using a (partial) Fisher&#45;Ya..." alt="" coords="249,107,348,133"/>
-<area shape="rect" href="group__getters.html#ga3305ddcc29138d2d92689f39a7885ca0" title="Identify every group number that currently has members." alt="" coords="428,56,567,83"/>
-<area shape="rect" href="group__supporters.html#gadae2e9f7e1061cb20426ba2333b7629b" title="Comparator function for qsort." alt="" coords="615,56,785,83"/>
+<div id="dynsection-4-content" class="dyncontent" style="display:none;">
+<div class="center"><img src="group__groupmod_ga74610483035cee35d81bd24c1a044259_cgraph.png" border="0" usemap="#agroup__groupmod_ga74610483035cee35d81bd24c1a044259_cgraph" alt=""/></div>
+<map name="agroup__groupmod_ga74610483035cee35d81bd24c1a044259_cgraph" id="agroup__groupmod_ga74610483035cee35d81bd24c1a044259_cgraph">
+<area shape="rect" title="Split a group into n groups of equal size (or size differing only by one, if n does not perfectly div..." alt="" coords="5,49,169,93"/>
+<area shape="rect" href="group__collgetters.html#ga706e640cd2cfb0f390f98c3b8c00a709" title="Function to count the number of genotypes that currently belong to the specified group." alt="" coords="243,5,352,33"/>
+<area shape="rect" href="group__supporters.html#ga5bce9a6f19127aa17d90990dae7e138a" title="Function to identify the next n sequential integers that do not identify a group that currently has m..." alt="" coords="217,57,378,85"/>
+<area shape="rect" href="group__supporters.html#ga575fe459225d6b565a199426f1b5c030" title="Produce a random ordering of the first n elements in an array of integers using a (partial) Fisher&#45;Ya..." alt="" coords="249,109,346,137"/>
+<area shape="rect" href="group__collgetters.html#ga6f49e4b90be53f42241fcfb9850f2f29" title="Identify group numbers that currently have members." alt="" coords="426,32,563,60"/>
+<area shape="rect" href="group__supporters.html#ga6072a152b624743eeafb30adaf9b7f17" title="Replace calls to malloc direct with this function, which errors and exits with status 2 if memory all..." alt="" coords="453,84,537,112"/>
+<area shape="rect" href="group__supporters.html#gadae2e9f7e1061cb20426ba2333b7629b" title="Comparator function for qsort." alt="" coords="611,32,781,60"/>
 </map>
 </div>
-<div id="dynsection-3" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
-  <img id="dynsection-3-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
-<div id="dynsection-3-summary" class="dynsummary" style="display:block;">
+<div id="dynsection-5" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-5-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
+<div id="dynsection-5-summary" class="dynsummary" style="display:block;">
 </div>
-<div id="dynsection-3-content" class="dyncontent" style="display:none;">
-<div class="center"><img src="group__groupmod_ga8fe9bd972582622c399c8b6a7c81a6d1_icgraph.png" border="0" usemap="#agroup__groupmod_ga8fe9bd972582622c399c8b6a7c81a6d1_icgraph" alt=""/></div>
-<map name="agroup__groupmod_ga8fe9bd972582622c399c8b6a7c81a6d1_icgraph" id="agroup__groupmod_ga8fe9bd972582622c399c8b6a7c81a6d1_icgraph">
-<area shape="rect" title="Split a group into n groups of equal size (or size differing only by one, if n does not perfectly div..." alt="" coords="184,5,348,47"/>
-<area shape="rect" href="group__groupmod.html#gae4916db977e1014b5a4b163edf37427b" title="Split a group into n groups of equal size (or size differing only by one, if n does not perfectly div..." alt="" coords="5,13,136,39"/>
+<div id="dynsection-5-content" class="dyncontent" style="display:none;">
+<div class="center"><img src="group__groupmod_ga74610483035cee35d81bd24c1a044259_icgraph.png" border="0" usemap="#agroup__groupmod_ga74610483035cee35d81bd24c1a044259_icgraph" alt=""/></div>
+<map name="agroup__groupmod_ga74610483035cee35d81bd24c1a044259_icgraph" id="agroup__groupmod_ga74610483035cee35d81bd24c1a044259_icgraph">
+<area shape="rect" title="Split a group into n groups of equal size (or size differing only by one, if n does not perfectly div..." alt="" coords="184,5,347,49"/>
+<area shape="rect" href="group__groupmod.html#ga49e99e674d87de80facffa7bed28393f" title="Split a group into n groups of equal size (or size differing only by one, if n does not perfectly div..." alt="" coords="5,13,136,41"/>
 </map>
 </div>
 
 </div>
 </div>
-<a id="gae4916db977e1014b5a4b163edf37427b" name="gae4916db977e1014b5a4b163edf37427b"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#gae4916db977e1014b5a4b163edf37427b">&#9670;&nbsp;</a></span>split_evenly_into_n()</h2>
+<a id="ga49e99e674d87de80facffa7bed28393f" name="ga49e99e674d87de80facffa7bed28393f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga49e99e674d87de80facffa7bed28393f">&#9670;&nbsp;</a></span>split_evenly_into_n()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -344,13 +497,13 @@ Functions</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">int&#160;</td>
+          <td class="paramtype">const int&#160;</td>
           <td class="paramname"><em>group_id</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">int&#160;</td>
+          <td class="paramtype">const int&#160;</td>
           <td class="paramname"><em>n</em>, </td>
         </tr>
         <tr>
@@ -369,7 +522,7 @@ Functions</h2></td></tr>
 
 <p>Split a group into n groups of equal size (or size differing only by one, if n does not perfectly divide the group size.), using a random permutation of the group members to determine which goes where. </p>
 <p >Of the split groups produced, the first has the same group number as the original group (parameter group_id).</p>
-<p >A more general approach to this task: <a class="el" href="group__groupmod.html#ga8fe9bd972582622c399c8b6a7c81a6d1" title="Split a group into n groups of equal size (or size differing only by one, if n does not perfectly div...">split_by_specific_counts_into_n()</a></p>
+<p >A more general approach to this task: <a class="el" href="group__groupmod.html#ga74610483035cee35d81bd24c1a044259" title="Split a group into n groups of equal size (or size differing only by one, if n does not perfectly div...">split_by_specific_counts_into_n()</a></p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">d</td><td>the <a class="el" href="struct_sim_data.html" title="Composite type that is used to run crossing simulations.">SimData</a> struct on which to perform the operation </td></tr>
@@ -379,27 +532,28 @@ Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
-<div id="dynsection-4" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
-  <img id="dynsection-4-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
-<div id="dynsection-4-summary" class="dynsummary" style="display:block;">
+<div id="dynsection-6" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-6-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
+<div id="dynsection-6-summary" class="dynsummary" style="display:block;">
 </div>
-<div id="dynsection-4-content" class="dyncontent" style="display:none;">
-<div class="center"><img src="group__groupmod_gae4916db977e1014b5a4b163edf37427b_cgraph.png" border="0" usemap="#agroup__groupmod_gae4916db977e1014b5a4b163edf37427b_cgraph" alt=""/></div>
-<map name="agroup__groupmod_gae4916db977e1014b5a4b163edf37427b_cgraph" id="agroup__groupmod_gae4916db977e1014b5a4b163edf37427b_cgraph">
-<area shape="rect" title="Split a group into n groups of equal size (or size differing only by one, if n does not perfectly div..." alt="" coords="5,33,136,60"/>
-<area shape="rect" href="group__getters.html#gad6d2b66296cd80f5bfe303e06de7935c" title="Function to count the number of genotypes that currently belong to the specified group." alt="" coords="422,5,533,32"/>
-<area shape="rect" href="group__groupmod.html#ga8fe9bd972582622c399c8b6a7c81a6d1" title="Split a group into n groups of equal size (or size differing only by one, if n does not perfectly div..." alt="" coords="184,55,348,97"/>
-<area shape="rect" href="group__supporters.html#ga71dbb7fd0d0317d24aa06b6bbb472367" title="Function to identify the next n sequential integers that do not identify a group that currently has m..." alt="" coords="396,60,559,87"/>
-<area shape="rect" href="group__supporters.html#gaa471b9b9b77c8010dff8d318e9a968a7" title="Produce a random ordering of the first n elements in an array of integers using a (partial) Fisher&#45;Ya..." alt="" coords="428,111,527,137"/>
-<area shape="rect" href="group__getters.html#ga3305ddcc29138d2d92689f39a7885ca0" title="Identify every group number that currently has members." alt="" coords="607,60,745,87"/>
-<area shape="rect" href="group__supporters.html#gadae2e9f7e1061cb20426ba2333b7629b" title="Comparator function for qsort." alt="" coords="793,60,964,87"/>
+<div id="dynsection-6-content" class="dyncontent" style="display:none;">
+<div class="center"><img src="group__groupmod_ga49e99e674d87de80facffa7bed28393f_cgraph.png" border="0" usemap="#agroup__groupmod_ga49e99e674d87de80facffa7bed28393f_cgraph" alt=""/></div>
+<map name="agroup__groupmod_ga49e99e674d87de80facffa7bed28393f_cgraph" id="agroup__groupmod_ga49e99e674d87de80facffa7bed28393f_cgraph">
+<area shape="rect" title="Split a group into n groups of equal size (or size differing only by one, if n does not perfectly div..." alt="" coords="5,35,136,63"/>
+<area shape="rect" href="group__collgetters.html#ga706e640cd2cfb0f390f98c3b8c00a709" title="Function to count the number of genotypes that currently belong to the specified group." alt="" coords="421,5,530,33"/>
+<area shape="rect" href="group__groupmod.html#ga74610483035cee35d81bd24c1a044259" title="Split a group into n groups of equal size (or size differing only by one, if n does not perfectly div..." alt="" coords="184,56,347,100"/>
+<area shape="rect" href="group__supporters.html#ga5bce9a6f19127aa17d90990dae7e138a" title="Function to identify the next n sequential integers that do not identify a group that currently has m..." alt="" coords="395,61,556,89"/>
+<area shape="rect" href="group__supporters.html#ga575fe459225d6b565a199426f1b5c030" title="Produce a random ordering of the first n elements in an array of integers using a (partial) Fisher&#45;Ya..." alt="" coords="427,113,524,141"/>
+<area shape="rect" href="group__collgetters.html#ga6f49e4b90be53f42241fcfb9850f2f29" title="Identify group numbers that currently have members." alt="" coords="604,35,742,63"/>
+<area shape="rect" href="group__supporters.html#ga6072a152b624743eeafb30adaf9b7f17" title="Replace calls to malloc direct with this function, which errors and exits with status 2 if memory all..." alt="" coords="631,87,715,115"/>
+<area shape="rect" href="group__supporters.html#gadae2e9f7e1061cb20426ba2333b7629b" title="Comparator function for qsort." alt="" coords="790,35,959,63"/>
 </map>
 </div>
 
 </div>
 </div>
-<a id="ga64b60c64209718e14b77ff4f4a991fe0" name="ga64b60c64209718e14b77ff4f4a991fe0"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ga64b60c64209718e14b77ff4f4a991fe0">&#9670;&nbsp;</a></span>split_evenly_into_two()</h2>
+<a id="ga02fd183dde037779a2d6b18c84907ba9" name="ga02fd183dde037779a2d6b18c84907ba9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga02fd183dde037779a2d6b18c84907ba9">&#9670;&nbsp;</a></span>split_evenly_into_two()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -413,7 +567,7 @@ Functions</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">int&#160;</td>
+          <td class="paramtype">const int&#160;</td>
           <td class="paramname"><em>group_id</em>&#160;</td>
         </tr>
         <tr>
@@ -427,8 +581,8 @@ Functions</h2></td></tr>
 <p>Split a group into two groups of equal size (or size differing only by one, if the original group had an odd number of members) using a random permutation of the group members to determine which goes where. </p>
 <p >Of the two groups produced, one has the same group number as the original group (parameter group_id) and the other has the return value as its group number.</p>
 <p >If the original group size was odd, the new group/the return value will have the slightly smaller size.</p>
-<p >A more general approach to this task: <a class="el" href="group__groupmod.html#gae4916db977e1014b5a4b163edf37427b" title="Split a group into n groups of equal size (or size differing only by one, if n does not perfectly div...">split_evenly_into_n()</a></p>
-<p >An alternate approach to splitting a group in two: <a class="el" href="group__groupmod.html#gacd7e433cf6af229f0d2932b04468e9ca" title="Flip a coin for each member of the group to decide if it should be moved to the new group.">split_randomly_into_two()</a></p>
+<p >A more general approach to this task: <a class="el" href="group__groupmod.html#ga49e99e674d87de80facffa7bed28393f" title="Split a group into n groups of equal size (or size differing only by one, if n does not perfectly div...">split_evenly_into_n()</a></p>
+<p >An alternate approach to splitting a group in two: <a class="el" href="group__groupmod.html#ga28fa0c21827594b777881c45878f4444" title="Flip a coin for each member of the group to decide if it should be moved to the new group.">split_randomly_into_two()</a></p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">d</td><td>the <a class="el" href="struct_sim_data.html" title="Composite type that is used to run crossing simulations.">SimData</a> struct on which to perform the operation </td></tr>
@@ -437,26 +591,27 @@ Functions</h2></td></tr>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>the group number of the new group to which half the members of the old group have been allocated. </dd></dl>
-<div id="dynsection-5" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
-  <img id="dynsection-5-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
-<div id="dynsection-5-summary" class="dynsummary" style="display:block;">
+<div id="dynsection-7" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-7-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
+<div id="dynsection-7-summary" class="dynsummary" style="display:block;">
 </div>
-<div id="dynsection-5-content" class="dyncontent" style="display:none;">
-<div class="center"><img src="group__groupmod_ga64b60c64209718e14b77ff4f4a991fe0_cgraph.png" border="0" usemap="#agroup__groupmod_ga64b60c64209718e14b77ff4f4a991fe0_cgraph" alt=""/></div>
-<map name="agroup__groupmod_ga64b60c64209718e14b77ff4f4a991fe0_cgraph" id="agroup__groupmod_ga64b60c64209718e14b77ff4f4a991fe0_cgraph">
-<area shape="rect" title="Split a group into two groups of equal size (or size differing only by one, if the original group had..." alt="" coords="5,56,149,83"/>
-<area shape="rect" href="group__getters.html#gad6d2b66296cd80f5bfe303e06de7935c" title="Function to count the number of genotypes that currently belong to the specified group." alt="" coords="213,5,323,32"/>
-<area shape="rect" href="group__supporters.html#gae974a74145fe876e303e14336d3c5d3a" title="Function to identify the next sequential integer that does not identify a group that currently has me..." alt="" coords="197,56,339,83"/>
-<area shape="rect" href="group__supporters.html#gaa471b9b9b77c8010dff8d318e9a968a7" title="Produce a random ordering of the first n elements in an array of integers using a (partial) Fisher&#45;Ya..." alt="" coords="219,107,317,133"/>
-<area shape="rect" href="group__getters.html#ga3305ddcc29138d2d92689f39a7885ca0" title="Identify every group number that currently has members." alt="" coords="387,56,525,83"/>
-<area shape="rect" href="group__supporters.html#gadae2e9f7e1061cb20426ba2333b7629b" title="Comparator function for qsort." alt="" coords="573,56,744,83"/>
+<div id="dynsection-7-content" class="dyncontent" style="display:none;">
+<div class="center"><img src="group__groupmod_ga02fd183dde037779a2d6b18c84907ba9_cgraph.png" border="0" usemap="#agroup__groupmod_ga02fd183dde037779a2d6b18c84907ba9_cgraph" alt=""/></div>
+<map name="agroup__groupmod_ga02fd183dde037779a2d6b18c84907ba9_cgraph" id="agroup__groupmod_ga02fd183dde037779a2d6b18c84907ba9_cgraph">
+<area shape="rect" title="Split a group into two groups of equal size (or size differing only by one, if the original group had..." alt="" coords="5,57,149,85"/>
+<area shape="rect" href="group__collgetters.html#ga706e640cd2cfb0f390f98c3b8c00a709" title="Function to count the number of genotypes that currently belong to the specified group." alt="" coords="212,5,322,33"/>
+<area shape="rect" href="group__supporters.html#ga57da16044e22c5c21e14b45bbef5e9eb" title="Function to identify the next sequential integer that does not identify a group that currently has me..." alt="" coords="197,57,337,85"/>
+<area shape="rect" href="group__supporters.html#ga575fe459225d6b565a199426f1b5c030" title="Produce a random ordering of the first n elements in an array of integers using a (partial) Fisher&#45;Ya..." alt="" coords="218,109,316,137"/>
+<area shape="rect" href="group__collgetters.html#ga6f49e4b90be53f42241fcfb9850f2f29" title="Identify group numbers that currently have members." alt="" coords="385,32,522,60"/>
+<area shape="rect" href="group__supporters.html#ga6072a152b624743eeafb30adaf9b7f17" title="Replace calls to malloc direct with this function, which errors and exits with status 2 if memory all..." alt="" coords="412,84,496,112"/>
+<area shape="rect" href="group__supporters.html#gadae2e9f7e1061cb20426ba2333b7629b" title="Comparator function for qsort." alt="" coords="570,32,740,60"/>
 </map>
 </div>
 
 </div>
 </div>
-<a id="gaf2eda46d016c384b166ce65605952b7c" name="gaf2eda46d016c384b166ce65605952b7c"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#gaf2eda46d016c384b166ce65605952b7c">&#9670;&nbsp;</a></span>split_from_group()</h2>
+<a id="ga548aadbba9882294ab8241511976b563" name="ga548aadbba9882294ab8241511976b563"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga548aadbba9882294ab8241511976b563">&#9670;&nbsp;</a></span>split_from_group()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -470,13 +625,13 @@ Functions</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">int&#160;</td>
+          <td class="paramtype">const int&#160;</td>
           <td class="paramname"><em>n</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">int&#160;</td>
+          <td class="paramtype">const int&#160;</td>
           <td class="paramname"><em>indexes_to_split</em>[n]&#160;</td>
         </tr>
         <tr>
@@ -498,36 +653,37 @@ Functions</h2></td></tr>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>the group number of the new group to which the provided indexes have been allocated. </dd></dl>
-<div id="dynsection-6" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
-  <img id="dynsection-6-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
-<div id="dynsection-6-summary" class="dynsummary" style="display:block;">
+<div id="dynsection-8" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-8-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
+<div id="dynsection-8-summary" class="dynsummary" style="display:block;">
 </div>
-<div id="dynsection-6-content" class="dyncontent" style="display:none;">
-<div class="center"><img src="group__groupmod_gaf2eda46d016c384b166ce65605952b7c_cgraph.png" border="0" usemap="#agroup__groupmod_gaf2eda46d016c384b166ce65605952b7c_cgraph" alt=""/></div>
-<map name="agroup__groupmod_gaf2eda46d016c384b166ce65605952b7c_cgraph" id="agroup__groupmod_gaf2eda46d016c384b166ce65605952b7c_cgraph">
-<area shape="rect" title="Take a list of indexes and allocate the genotypes at those indexes to a new group." alt="" coords="5,5,123,32"/>
-<area shape="rect" href="group__supporters.html#gadae2e9f7e1061cb20426ba2333b7629b" title="Comparator function for qsort." alt="" coords="547,5,717,32"/>
-<area shape="rect" href="group__supporters.html#gae974a74145fe876e303e14336d3c5d3a" title="Function to identify the next sequential integer that does not identify a group that currently has me..." alt="" coords="171,31,312,57"/>
-<area shape="rect" href="group__getters.html#ga3305ddcc29138d2d92689f39a7885ca0" title="Identify every group number that currently has members." alt="" coords="360,31,499,57"/>
+<div id="dynsection-8-content" class="dyncontent" style="display:none;">
+<div class="center"><img src="group__groupmod_ga548aadbba9882294ab8241511976b563_cgraph.png" border="0" usemap="#agroup__groupmod_ga548aadbba9882294ab8241511976b563_cgraph" alt=""/></div>
+<map name="agroup__groupmod_ga548aadbba9882294ab8241511976b563_cgraph" id="agroup__groupmod_ga548aadbba9882294ab8241511976b563_cgraph">
+<area shape="rect" title="Take a list of indexes and allocate the genotypes at those indexes to a new group." alt="" coords="5,5,122,33"/>
+<area shape="rect" href="group__supporters.html#gadae2e9f7e1061cb20426ba2333b7629b" title="Comparator function for qsort." alt="" coords="543,5,713,33"/>
+<area shape="rect" href="group__supporters.html#ga57da16044e22c5c21e14b45bbef5e9eb" title="Function to identify the next sequential integer that does not identify a group that currently has me..." alt="" coords="170,31,310,59"/>
+<area shape="rect" href="group__collgetters.html#ga6f49e4b90be53f42241fcfb9850f2f29" title="Identify group numbers that currently have members." alt="" coords="358,31,495,59"/>
+<area shape="rect" href="group__supporters.html#ga6072a152b624743eeafb30adaf9b7f17" title="Replace calls to malloc direct with this function, which errors and exits with status 2 if memory all..." alt="" coords="385,83,469,111"/>
 </map>
 </div>
-<div id="dynsection-7" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
-  <img id="dynsection-7-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
-<div id="dynsection-7-summary" class="dynsummary" style="display:block;">
+<div id="dynsection-9" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-9-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
+<div id="dynsection-9-summary" class="dynsummary" style="display:block;">
 </div>
-<div id="dynsection-7-content" class="dyncontent" style="display:none;">
-<div class="center"><img src="group__groupmod_gaf2eda46d016c384b166ce65605952b7c_icgraph.png" border="0" usemap="#agroup__groupmod_gaf2eda46d016c384b166ce65605952b7c_icgraph" alt=""/></div>
-<map name="agroup__groupmod_gaf2eda46d016c384b166ce65605952b7c_icgraph" id="agroup__groupmod_gaf2eda46d016c384b166ce65605952b7c_icgraph">
-<area shape="rect" title="Take a list of indexes and allocate the genotypes at those indexes to a new group." alt="" coords="341,13,459,39"/>
-<area shape="rect" href="group__calculators.html#gae34db60faf62b898d0572ea6c039b96a" title="Takes the top_n individuals in the group with the best breeding values/fitnesses and puts them in a n..." alt="" coords="207,13,293,39"/>
-<area shape="rect" href="group__crossers.html#ga68aca99a41527b019316c8243e6fc7a7" title="Find the top m percent of a group and perform random crosses between those top individuals." alt="" coords="5,5,159,47"/>
+<div id="dynsection-9-content" class="dyncontent" style="display:none;">
+<div class="center"><img src="group__groupmod_ga548aadbba9882294ab8241511976b563_icgraph.png" border="0" usemap="#agroup__groupmod_ga548aadbba9882294ab8241511976b563_icgraph" alt=""/></div>
+<map name="agroup__groupmod_ga548aadbba9882294ab8241511976b563_icgraph" id="agroup__groupmod_ga548aadbba9882294ab8241511976b563_icgraph">
+<area shape="rect" title="Take a list of indexes and allocate the genotypes at those indexes to a new group." alt="" coords="339,13,455,41"/>
+<area shape="rect" href="group__calculators.html#ga98696fc21c0424d98a5eed4df5c60f04" title="Takes the top_n individuals in the group with the best breeding values/fitnesses and puts them in a n..." alt="" coords="206,13,291,41"/>
+<area shape="rect" href="group__crossers.html#gaa41e75da9e6e4f8db5466e8929dec2ee" title="Find the top m percent of a group and perform random crosses between those top individuals." alt="" coords="5,5,158,49"/>
 </map>
 </div>
 
 </div>
 </div>
-<a id="ga62aec37e088d85c1df20a53b6d65daa4" name="ga62aec37e088d85c1df20a53b6d65daa4"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ga62aec37e088d85c1df20a53b6d65daa4">&#9670;&nbsp;</a></span>split_into_families()</h2>
+<a id="ga938574a9b1c279fc6d8ae9a5d5c14fe0" name="ga938574a9b1c279fc6d8ae9a5d5c14fe0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga938574a9b1c279fc6d8ae9a5d5c14fe0">&#9670;&nbsp;</a></span>split_into_families()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -541,7 +697,7 @@ Functions</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">int&#160;</td>
+          <td class="paramtype">const int&#160;</td>
           <td class="paramname"><em>group_id</em>, </td>
         </tr>
         <tr>
@@ -569,23 +725,24 @@ Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
-<div id="dynsection-8" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
-  <img id="dynsection-8-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
-<div id="dynsection-8-summary" class="dynsummary" style="display:block;">
+<div id="dynsection-10" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-10-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
+<div id="dynsection-10-summary" class="dynsummary" style="display:block;">
 </div>
-<div id="dynsection-8-content" class="dyncontent" style="display:none;">
-<div class="center"><img src="group__groupmod_ga62aec37e088d85c1df20a53b6d65daa4_cgraph.png" border="0" usemap="#agroup__groupmod_ga62aec37e088d85c1df20a53b6d65daa4_cgraph" alt=""/></div>
-<map name="agroup__groupmod_ga62aec37e088d85c1df20a53b6d65daa4_cgraph" id="agroup__groupmod_ga62aec37e088d85c1df20a53b6d65daa4_cgraph">
-<area shape="rect" title="Split a group into a set of smaller groups, each of which contains the genotypes in the original grou..." alt="" coords="5,5,131,32"/>
-<area shape="rect" href="group__getters.html#ga3305ddcc29138d2d92689f39a7885ca0" title="Identify every group number that currently has members." alt="" coords="179,5,317,32"/>
-<area shape="rect" href="group__supporters.html#gadae2e9f7e1061cb20426ba2333b7629b" title="Comparator function for qsort." alt="" coords="365,5,536,32"/>
+<div id="dynsection-10-content" class="dyncontent" style="display:none;">
+<div class="center"><img src="group__groupmod_ga938574a9b1c279fc6d8ae9a5d5c14fe0_cgraph.png" border="0" usemap="#agroup__groupmod_ga938574a9b1c279fc6d8ae9a5d5c14fe0_cgraph" alt=""/></div>
+<map name="agroup__groupmod_ga938574a9b1c279fc6d8ae9a5d5c14fe0_cgraph" id="agroup__groupmod_ga938574a9b1c279fc6d8ae9a5d5c14fe0_cgraph">
+<area shape="rect" title="Split a group into a set of smaller groups, each of which contains the genotypes in the original grou..." alt="" coords="5,32,130,60"/>
+<area shape="rect" href="group__collgetters.html#ga6f49e4b90be53f42241fcfb9850f2f29" title="Identify group numbers that currently have members." alt="" coords="178,5,315,33"/>
+<area shape="rect" href="group__supporters.html#ga6072a152b624743eeafb30adaf9b7f17" title="Replace calls to malloc direct with this function, which errors and exits with status 2 if memory all..." alt="" coords="204,57,289,85"/>
+<area shape="rect" href="group__supporters.html#gadae2e9f7e1061cb20426ba2333b7629b" title="Comparator function for qsort." alt="" coords="363,5,532,33"/>
 </map>
 </div>
 
 </div>
 </div>
-<a id="ga39c5cb49068858b095acea9385e017ec" name="ga39c5cb49068858b095acea9385e017ec"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ga39c5cb49068858b095acea9385e017ec">&#9670;&nbsp;</a></span>split_into_halfsib_families()</h2>
+<a id="ga7a0e5dbce2c1d0af839712f8215ac4e2" name="ga7a0e5dbce2c1d0af839712f8215ac4e2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga7a0e5dbce2c1d0af839712f8215ac4e2">&#9670;&nbsp;</a></span>split_into_halfsib_families()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -599,13 +756,13 @@ Functions</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">int&#160;</td>
+          <td class="paramtype">const int&#160;</td>
           <td class="paramname"><em>group_id</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">int&#160;</td>
+          <td class="paramtype">const int&#160;</td>
           <td class="paramname"><em>parent</em>, </td>
         </tr>
         <tr>
@@ -634,23 +791,24 @@ Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
-<div id="dynsection-9" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
-  <img id="dynsection-9-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
-<div id="dynsection-9-summary" class="dynsummary" style="display:block;">
+<div id="dynsection-11" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-11-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
+<div id="dynsection-11-summary" class="dynsummary" style="display:block;">
 </div>
-<div id="dynsection-9-content" class="dyncontent" style="display:none;">
-<div class="center"><img src="group__groupmod_ga39c5cb49068858b095acea9385e017ec_cgraph.png" border="0" usemap="#agroup__groupmod_ga39c5cb49068858b095acea9385e017ec_cgraph" alt=""/></div>
-<map name="agroup__groupmod_ga39c5cb49068858b095acea9385e017ec_cgraph" id="agroup__groupmod_ga39c5cb49068858b095acea9385e017ec_cgraph">
-<area shape="rect" title="Split a group into a set of smaller groups, each containing the genotypes from the original group tha..." alt="" coords="5,5,124,47"/>
-<area shape="rect" href="group__getters.html#ga3305ddcc29138d2d92689f39a7885ca0" title="Identify every group number that currently has members." alt="" coords="172,13,311,39"/>
-<area shape="rect" href="group__supporters.html#gadae2e9f7e1061cb20426ba2333b7629b" title="Comparator function for qsort." alt="" coords="359,13,529,39"/>
+<div id="dynsection-11-content" class="dyncontent" style="display:none;">
+<div class="center"><img src="group__groupmod_ga7a0e5dbce2c1d0af839712f8215ac4e2_cgraph.png" border="0" usemap="#agroup__groupmod_ga7a0e5dbce2c1d0af839712f8215ac4e2_cgraph" alt=""/></div>
+<map name="agroup__groupmod_ga7a0e5dbce2c1d0af839712f8215ac4e2_cgraph" id="agroup__groupmod_ga7a0e5dbce2c1d0af839712f8215ac4e2_cgraph">
+<area shape="rect" title="Split a group into a set of smaller groups, each containing the genotypes from the original group tha..." alt="" coords="5,24,123,68"/>
+<area shape="rect" href="group__collgetters.html#ga6f49e4b90be53f42241fcfb9850f2f29" title="Identify group numbers that currently have members." alt="" coords="171,5,308,33"/>
+<area shape="rect" href="group__supporters.html#ga6072a152b624743eeafb30adaf9b7f17" title="Replace calls to malloc direct with this function, which errors and exits with status 2 if memory all..." alt="" coords="197,57,282,85"/>
+<area shape="rect" href="group__supporters.html#gadae2e9f7e1061cb20426ba2333b7629b" title="Comparator function for qsort." alt="" coords="356,5,525,33"/>
 </map>
 </div>
 
 </div>
 </div>
-<a id="ga4cad3df4dd91ba6d8f8be038e14aa182" name="ga4cad3df4dd91ba6d8f8be038e14aa182"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ga4cad3df4dd91ba6d8f8be038e14aa182">&#9670;&nbsp;</a></span>split_into_individuals()</h2>
+<a id="ga2ffe6f186b1d9309dee151ae06f730b9" name="ga2ffe6f186b1d9309dee151ae06f730b9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga2ffe6f186b1d9309dee151ae06f730b9">&#9670;&nbsp;</a></span>split_into_individuals()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -664,7 +822,7 @@ Functions</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">int&#160;</td>
+          <td class="paramtype">const int&#160;</td>
           <td class="paramname"><em>group_id</em>, </td>
         </tr>
         <tr>
@@ -690,23 +848,24 @@ Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
-<div id="dynsection-10" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
-  <img id="dynsection-10-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
-<div id="dynsection-10-summary" class="dynsummary" style="display:block;">
+<div id="dynsection-12" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-12-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
+<div id="dynsection-12-summary" class="dynsummary" style="display:block;">
 </div>
-<div id="dynsection-10-content" class="dyncontent" style="display:none;">
-<div class="center"><img src="group__groupmod_ga4cad3df4dd91ba6d8f8be038e14aa182_cgraph.png" border="0" usemap="#agroup__groupmod_ga4cad3df4dd91ba6d8f8be038e14aa182_cgraph" alt=""/></div>
-<map name="agroup__groupmod_ga4cad3df4dd91ba6d8f8be038e14aa182_cgraph" id="agroup__groupmod_ga4cad3df4dd91ba6d8f8be038e14aa182_cgraph">
-<area shape="rect" title="Give every individual in the group a new group number that does not belong to any other existing grou..." alt="" coords="5,5,145,32"/>
-<area shape="rect" href="group__getters.html#ga3305ddcc29138d2d92689f39a7885ca0" title="Identify every group number that currently has members." alt="" coords="193,5,332,32"/>
-<area shape="rect" href="group__supporters.html#gadae2e9f7e1061cb20426ba2333b7629b" title="Comparator function for qsort." alt="" coords="380,5,551,32"/>
+<div id="dynsection-12-content" class="dyncontent" style="display:none;">
+<div class="center"><img src="group__groupmod_ga2ffe6f186b1d9309dee151ae06f730b9_cgraph.png" border="0" usemap="#agroup__groupmod_ga2ffe6f186b1d9309dee151ae06f730b9_cgraph" alt=""/></div>
+<map name="agroup__groupmod_ga2ffe6f186b1d9309dee151ae06f730b9_cgraph" id="agroup__groupmod_ga2ffe6f186b1d9309dee151ae06f730b9_cgraph">
+<area shape="rect" title="Give every individual in the group a new group number that does not belong to any other existing grou..." alt="" coords="5,32,145,60"/>
+<area shape="rect" href="group__collgetters.html#ga6f49e4b90be53f42241fcfb9850f2f29" title="Identify group numbers that currently have members." alt="" coords="193,5,330,33"/>
+<area shape="rect" href="group__supporters.html#ga6072a152b624743eeafb30adaf9b7f17" title="Replace calls to malloc direct with this function, which errors and exits with status 2 if memory all..." alt="" coords="219,57,304,85"/>
+<area shape="rect" href="group__supporters.html#gadae2e9f7e1061cb20426ba2333b7629b" title="Comparator function for qsort." alt="" coords="378,5,547,33"/>
 </map>
 </div>
 
 </div>
 </div>
-<a id="ga38909617537e075fa1bea7cc15ca86df" name="ga38909617537e075fa1bea7cc15ca86df"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ga38909617537e075fa1bea7cc15ca86df">&#9670;&nbsp;</a></span>split_randomly_into_n()</h2>
+<a id="gad4682769497c140c4374d3a8d85350c6" name="gad4682769497c140c4374d3a8d85350c6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gad4682769497c140c4374d3a8d85350c6">&#9670;&nbsp;</a></span>split_randomly_into_n()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -720,13 +879,13 @@ Functions</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">int&#160;</td>
+          <td class="paramtype">const int&#160;</td>
           <td class="paramname"><em>group_id</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">int&#160;</td>
+          <td class="paramtype">const int&#160;</td>
           <td class="paramname"><em>n</em>, </td>
         </tr>
         <tr>
@@ -746,7 +905,7 @@ Functions</h2></td></tr>
 <p>Allocate each member of the group to one of n groups with equal probability. </p>
 <p >There is no guarantee that all groups will have members. There is no guarantee the groups will be near the same size.</p>
 <p >Each genotype has equal probability of being allocated to each of n groups. The old group number (group_id) is included as one of these n possible groups.</p>
-<p >To split by uneven probabilities instead: <a class="el" href="group__groupmod.html#ga75110a594a4cd6ddfc5f6905a83c422e" title="Allocate each member of the group to one of n groups with custom probabilities for each group.">split_by_probabilities_into_n()</a></p>
+<p >To split by uneven probabilities instead: <a class="el" href="group__groupmod.html#gaedf5b91b00b207a38c6a1a036f3853cf" title="Allocate each member of the group to one of n groups with custom probabilities for each group.">split_by_probabilities_into_n()</a></p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">d</td><td>the <a class="el" href="struct_sim_data.html" title="Composite type that is used to run crossing simulations.">SimData</a> struct on which to perform the operation </td></tr>
@@ -756,26 +915,26 @@ Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
-<div id="dynsection-11" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
-  <img id="dynsection-11-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
-<div id="dynsection-11-summary" class="dynsummary" style="display:block;">
+<div id="dynsection-13" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-13-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
+<div id="dynsection-13-summary" class="dynsummary" style="display:block;">
 </div>
-<div id="dynsection-11-content" class="dyncontent" style="display:none;">
-<div class="center"><img src="group__groupmod_ga38909617537e075fa1bea7cc15ca86df_cgraph.png" border="0" usemap="#agroup__groupmod_ga38909617537e075fa1bea7cc15ca86df_cgraph" alt=""/></div>
-<map name="agroup__groupmod_ga38909617537e075fa1bea7cc15ca86df_cgraph" id="agroup__groupmod_ga38909617537e075fa1bea7cc15ca86df_cgraph">
-<area shape="rect" title="Allocate each member of the group to one of n groups with equal probability." alt="" coords="5,56,153,83"/>
-<area shape="rect" href="group__getters.html#gad6d2b66296cd80f5bfe303e06de7935c" title="Function to count the number of genotypes that currently belong to the specified group." alt="" coords="227,5,338,32"/>
-<area shape="rect" href="group__supporters.html#ga71dbb7fd0d0317d24aa06b6bbb472367" title="Function to identify the next n sequential integers that do not identify a group that currently has m..." alt="" coords="201,56,364,83"/>
-<area shape="rect" href="group__maths.html#ga89e066191f12e056cebb8d2cd74a2a29" title="Generate an integer randomly between 0 and limit inclusive." alt="" coords="251,107,315,133"/>
-<area shape="rect" href="group__getters.html#ga3305ddcc29138d2d92689f39a7885ca0" title="Identify every group number that currently has members." alt="" coords="412,56,551,83"/>
-<area shape="rect" href="group__supporters.html#gadae2e9f7e1061cb20426ba2333b7629b" title="Comparator function for qsort." alt="" coords="599,56,769,83"/>
+<div id="dynsection-13-content" class="dyncontent" style="display:none;">
+<div class="center"><img src="group__groupmod_gad4682769497c140c4374d3a8d85350c6_cgraph.png" border="0" usemap="#agroup__groupmod_gad4682769497c140c4374d3a8d85350c6_cgraph" alt=""/></div>
+<map name="agroup__groupmod_gad4682769497c140c4374d3a8d85350c6_cgraph" id="agroup__groupmod_gad4682769497c140c4374d3a8d85350c6_cgraph">
+<area shape="rect" title="Allocate each member of the group to one of n groups with equal probability." alt="" coords="5,32,153,60"/>
+<area shape="rect" href="group__collgetters.html#ga706e640cd2cfb0f390f98c3b8c00a709" title="Function to count the number of genotypes that currently belong to the specified group." alt="" coords="227,5,336,33"/>
+<area shape="rect" href="group__supporters.html#ga5bce9a6f19127aa17d90990dae7e138a" title="Function to identify the next n sequential integers that do not identify a group that currently has m..." alt="" coords="201,57,362,85"/>
+<area shape="rect" href="group__collgetters.html#ga6f49e4b90be53f42241fcfb9850f2f29" title="Identify group numbers that currently have members." alt="" coords="410,31,547,59"/>
+<area shape="rect" href="group__supporters.html#ga6072a152b624743eeafb30adaf9b7f17" title="Replace calls to malloc direct with this function, which errors and exits with status 2 if memory all..." alt="" coords="437,83,521,111"/>
+<area shape="rect" href="group__supporters.html#gadae2e9f7e1061cb20426ba2333b7629b" title="Comparator function for qsort." alt="" coords="595,31,765,59"/>
 </map>
 </div>
 
 </div>
 </div>
-<a id="gacd7e433cf6af229f0d2932b04468e9ca" name="gacd7e433cf6af229f0d2932b04468e9ca"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#gacd7e433cf6af229f0d2932b04468e9ca">&#9670;&nbsp;</a></span>split_randomly_into_two()</h2>
+<a id="ga28fa0c21827594b777881c45878f4444" name="ga28fa0c21827594b777881c45878f4444"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga28fa0c21827594b777881c45878f4444">&#9670;&nbsp;</a></span>split_randomly_into_two()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -789,7 +948,7 @@ Functions</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">int&#160;</td>
+          <td class="paramtype">const int&#160;</td>
           <td class="paramname"><em>group_id</em>&#160;</td>
         </tr>
         <tr>
@@ -803,8 +962,8 @@ Functions</h2></td></tr>
 <p>Flip a coin for each member of the group to decide if it should be moved to the new group. </p>
 <p >There is no guarantee that there will be any genotypes in the new group (if all coin flips were 0) or any genotypes in the old group (if all coin flips were 1). There is no guarantee the two groups will be near the same size.</p>
 <p >This could be useful for allocating a sex to genotypes.</p>
-<p >A more general approach to this task: <a class="el" href="group__groupmod.html#ga38909617537e075fa1bea7cc15ca86df" title="Allocate each member of the group to one of n groups with equal probability.">split_randomly_into_n()</a></p>
-<p >An alternate approach to splitting a group in two: <a class="el" href="group__groupmod.html#ga64b60c64209718e14b77ff4f4a991fe0" title="Split a group into two groups of equal size (or size differing only by one, if the original group had...">split_evenly_into_two()</a></p>
+<p >A more general approach to this task: <a class="el" href="group__groupmod.html#gad4682769497c140c4374d3a8d85350c6" title="Allocate each member of the group to one of n groups with equal probability.">split_randomly_into_n()</a></p>
+<p >An alternate approach to splitting a group in two: <a class="el" href="group__groupmod.html#ga02fd183dde037779a2d6b18c84907ba9" title="Split a group into two groups of equal size (or size differing only by one, if the original group had...">split_evenly_into_two()</a></p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">d</td><td>the <a class="el" href="struct_sim_data.html" title="Composite type that is used to run crossing simulations.">SimData</a> struct on which to perform the operation </td></tr>
@@ -813,18 +972,18 @@ Functions</h2></td></tr>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>the group number of the new group to which some members of the old group may have been randomly allocated. </dd></dl>
-<div id="dynsection-12" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
-  <img id="dynsection-12-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
-<div id="dynsection-12-summary" class="dynsummary" style="display:block;">
+<div id="dynsection-14" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-14-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
+<div id="dynsection-14-summary" class="dynsummary" style="display:block;">
 </div>
-<div id="dynsection-12-content" class="dyncontent" style="display:none;">
-<div class="center"><img src="group__groupmod_gacd7e433cf6af229f0d2932b04468e9ca_cgraph.png" border="0" usemap="#agroup__groupmod_gacd7e433cf6af229f0d2932b04468e9ca_cgraph" alt=""/></div>
-<map name="agroup__groupmod_gacd7e433cf6af229f0d2932b04468e9ca_cgraph" id="agroup__groupmod_gacd7e433cf6af229f0d2932b04468e9ca_cgraph">
-<area shape="rect" title="Flip a coin for each member of the group to decide if it should be moved to the new group." alt="" coords="5,31,167,57"/>
-<area shape="rect" href="group__supporters.html#gae974a74145fe876e303e14336d3c5d3a" title="Function to identify the next sequential integer that does not identify a group that currently has me..." alt="" coords="215,5,356,32"/>
-<area shape="rect" href="group__maths.html#gad4e0f7934e82157e3115f8df7aec01f0" title="Generates randomly one of 0 or 1, by splitting the output of rand() in half." alt="" coords="258,56,313,83"/>
-<area shape="rect" href="group__getters.html#ga3305ddcc29138d2d92689f39a7885ca0" title="Identify every group number that currently has members." alt="" coords="404,5,543,32"/>
-<area shape="rect" href="group__supporters.html#gadae2e9f7e1061cb20426ba2333b7629b" title="Comparator function for qsort." alt="" coords="591,5,761,32"/>
+<div id="dynsection-14-content" class="dyncontent" style="display:none;">
+<div class="center"><img src="group__groupmod_ga28fa0c21827594b777881c45878f4444_cgraph.png" border="0" usemap="#agroup__groupmod_ga28fa0c21827594b777881c45878f4444_cgraph" alt=""/></div>
+<map name="agroup__groupmod_ga28fa0c21827594b777881c45878f4444_cgraph" id="agroup__groupmod_ga28fa0c21827594b777881c45878f4444_cgraph">
+<area shape="rect" title="Flip a coin for each member of the group to decide if it should be moved to the new group." alt="" coords="5,32,166,60"/>
+<area shape="rect" href="group__supporters.html#ga57da16044e22c5c21e14b45bbef5e9eb" title="Function to identify the next sequential integer that does not identify a group that currently has me..." alt="" coords="214,32,354,60"/>
+<area shape="rect" href="group__collgetters.html#ga6f49e4b90be53f42241fcfb9850f2f29" title="Identify group numbers that currently have members." alt="" coords="402,5,539,33"/>
+<area shape="rect" href="group__supporters.html#ga6072a152b624743eeafb30adaf9b7f17" title="Replace calls to malloc direct with this function, which errors and exits with status 2 if memory all..." alt="" coords="429,57,513,85"/>
+<area shape="rect" href="group__supporters.html#gadae2e9f7e1061cb20426ba2333b7629b" title="Comparator function for qsort." alt="" coords="587,5,757,33"/>
 </map>
 </div>
 

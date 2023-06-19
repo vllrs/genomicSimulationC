@@ -1,0 +1,12 @@
+<map id="get_group_names" name="get_group_names">
+<area shape="rect" id="node1" title="Gets a shallow copy of the names of each member of the group." alt="" coords="415,204,539,232"/>
+<area shape="rect" id="node2" href="$group__calculators.html#ga0d4c3760b88655d9d58e44d359b1b9f8" title="Given a set of blocks of markers in a file, for each genotype in a group, calculate the local fitness..." alt="" coords="195,5,367,33"/>
+<area shape="rect" id="node3" href="$group__crossers.html#ga5e1da39f8341127e758d32393e8654aa" title="Creates an identical copy of each member of a group." alt="" coords="232,57,330,85"/>
+<area shape="rect" id="node4" href="$group__savers.html#ga8bbfd2ed13f449e5934b91701cc94a9f" title="Print the number of copies of a particular allele at each marker of each genotype in a group to a fil..." alt="" coords="208,109,354,153"/>
+<area shape="rect" id="node5" href="$group__savers.html#gaeb3b527db48fd67f0d42a39c681b2c65" title="Prints the genotypes of each individual in a given group to a file, with the following format." alt="" coords="216,177,346,205"/>
+<area shape="rect" id="node6" href="$group__savers.html#ga7cd7382db4574b2b0cffb316eab47a29" title="Print the breeding value of each genotype in a group to a file." alt="" coords="225,229,337,257"/>
+<area shape="rect" id="node7" href="$group__savers.html#ga7adbe41e3a1d04fbf2b32840e2d01f86" title="Print the full known pedigree of each genotype in a group to a file." alt="" coords="198,281,364,309"/>
+<area shape="rect" id="node9" href="$group__savers.html#ga822c4500c4f5979c9eee8aa733434196" title="Print the parents of each genotype in a group to a file." alt="" coords="208,333,354,377"/>
+<area shape="rect" id="node10" href="$group__savers.html#ga2790244044d202e6fb158d8f57cf6d6f" title="Prints the genotypes of each individual in a given group to a file, with the following format." alt="" coords="202,401,360,445"/>
+<area shape="rect" id="node8" href="$group__collgetters.html#ga530d4ce0844f7709a6868d63f018ef28" title="Gets the full pedigree string (as per save_group_full_pedigree() ) of each member of the group." alt="" coords="5,281,147,309"/>
+</map>

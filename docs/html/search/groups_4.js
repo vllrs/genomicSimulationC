@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['recombination_20calculators_0',['Recombination Calculators',['../group__recomb.html',1,'']]]
+  ['mathematical_20functions_0',['Mathematical functions',['../group__maths.html',1,'']]],
+  ['meiosis_20simulation_20functions_1',['Meiosis Simulation Functions',['../group__meiosis.html',1,'']]]
 ];

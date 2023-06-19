@@ -21,7 +21,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">genomicSimulationC<span id="projectnumber">&#160;0.2.1</span>
+   <div id="projectname">genomicSimulationC<span id="projectnumber">&#160;0.2.3</span>
    </div>
   </td>
  </tr>
@@ -63,8 +63,7 @@ $(function() {
 
 <div class="header">
   <div class="summary">
-<a href="#func-members">Functions</a> &#124;
-<a href="#var-members">Variables</a>  </div>
+<a href="#func-members">Functions</a>  </div>
   <div class="headertitle"><div class="title">Mathematical functions</div></div>
 </div><!--header-->
 <div class="contents">
@@ -74,39 +73,25 @@ $(function() {
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:ga3d910624bfa7ac1bfacf706c3357fc5d"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__maths.html#ga3d910624bfa7ac1bfacf706c3357fc5d">randn</a> (void)</td></tr>
-<tr class="memdesc:ga3d910624bfa7ac1bfacf706c3357fc5d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generates a double from the normal distribution N(0,1) based on rand() and the Box-Muller algorithm.  <a href="group__maths.html#ga3d910624bfa7ac1bfacf706c3357fc5d">More...</a><br /></td></tr>
-<tr class="separator:ga3d910624bfa7ac1bfacf706c3357fc5d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gad4e0f7934e82157e3115f8df7aec01f0"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__maths.html#gad4e0f7934e82157e3115f8df7aec01f0">randb</a> (void)</td></tr>
-<tr class="memdesc:gad4e0f7934e82157e3115f8df7aec01f0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generates randomly one of 0 or 1, by splitting the output of rand() in half.  <a href="group__maths.html#gad4e0f7934e82157e3115f8df7aec01f0">More...</a><br /></td></tr>
-<tr class="separator:gad4e0f7934e82157e3115f8df7aec01f0"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga7d9dbe538d6fb096af14c3163c98e800"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__maths.html#ga7d9dbe538d6fb096af14c3163c98e800">randpoi</a> (double lambda)</td></tr>
-<tr class="memdesc:ga7d9dbe538d6fb096af14c3163c98e800"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generates randomly a number from the Poisson distribution with parameter <code>lambda</code>, using the Knuth approach.  <a href="group__maths.html#ga7d9dbe538d6fb096af14c3163c98e800">More...</a><br /></td></tr>
-<tr class="separator:ga7d9dbe538d6fb096af14c3163c98e800"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga89e066191f12e056cebb8d2cd74a2a29"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__maths.html#ga89e066191f12e056cebb8d2cd74a2a29">randlim</a> (int limit)</td></tr>
-<tr class="memdesc:ga89e066191f12e056cebb8d2cd74a2a29"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generate an integer randomly between 0 and limit inclusive.  <a href="group__maths.html#ga89e066191f12e056cebb8d2cd74a2a29">More...</a><br /></td></tr>
-<tr class="separator:ga89e066191f12e056cebb8d2cd74a2a29"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gabf3f578b0aa59d5b68ccd0738dd6a9d1"><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_decimal_matrix.html">DecimalMatrix</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__maths.html#gabf3f578b0aa59d5b68ccd0738dd6a9d1">generate_zero_dmatrix</a> (int r, int c)</td></tr>
-<tr class="memdesc:gabf3f578b0aa59d5b68ccd0738dd6a9d1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generates a matrix of c columns, r rows with all 0.  <a href="group__maths.html#gabf3f578b0aa59d5b68ccd0738dd6a9d1">More...</a><br /></td></tr>
-<tr class="separator:gabf3f578b0aa59d5b68ccd0738dd6a9d1"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gabb8addf721442aecdd7dca3dfd955c3c"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__maths.html#gabb8addf721442aecdd7dca3dfd955c3c">add_matrixvector_product_to_dmatrix</a> (<a class="el" href="struct_decimal_matrix.html">DecimalMatrix</a> *result, <a class="el" href="struct_decimal_matrix.html">DecimalMatrix</a> *a, double *b)</td></tr>
-<tr class="memdesc:gabb8addf721442aecdd7dca3dfd955c3c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Multiply a <a class="el" href="struct_decimal_matrix.html" title="A row-major heap matrix that contains floating point numbers.">DecimalMatrix</a> to a vector, and add that product to the first column of a provided <a class="el" href="struct_decimal_matrix.html" title="A row-major heap matrix that contains floating point numbers.">DecimalMatrix</a>.  <a href="group__maths.html#gabb8addf721442aecdd7dca3dfd955c3c">More...</a><br /></td></tr>
-<tr class="separator:gabb8addf721442aecdd7dca3dfd955c3c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gad2c9cda1aab9679e0bfe3c88959213c6"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__maths.html#gad2c9cda1aab9679e0bfe3c88959213c6">add_doublematrixvector_product_to_dmatrix</a> (<a class="el" href="struct_decimal_matrix.html">DecimalMatrix</a> *result, <a class="el" href="struct_decimal_matrix.html">DecimalMatrix</a> *amat, double *avec, <a class="el" href="struct_decimal_matrix.html">DecimalMatrix</a> *bmat, double *bvec)</td></tr>
-<tr class="memdesc:gad2c9cda1aab9679e0bfe3c88959213c6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Multiply two sets of a <a class="el" href="struct_decimal_matrix.html" title="A row-major heap matrix that contains floating point numbers.">DecimalMatrix</a> and vector, and add both products to the first column of a provided <a class="el" href="struct_decimal_matrix.html" title="A row-major heap matrix that contains floating point numbers.">DecimalMatrix</a>.  <a href="group__maths.html#gad2c9cda1aab9679e0bfe3c88959213c6">More...</a><br /></td></tr>
-<tr class="separator:gad2c9cda1aab9679e0bfe3c88959213c6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="var-members" name="var-members"></a>
-Variables</h2></td></tr>
-<tr class="memitem:ga6db8fbe9028cc259012cbdf075c222b2"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__maths.html#ga6db8fbe9028cc259012cbdf075c222b2">RAND_HALFPOINT</a></td></tr>
-<tr class="separator:ga6db8fbe9028cc259012cbdf075c222b2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gac0aed93b85c3ff464c1e29bd2093e066"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__maths.html#gac0aed93b85c3ff464c1e29bd2093e066">randpoi</a> (rnd_pcg_t *rng, double lambda)</td></tr>
+<tr class="memdesc:gac0aed93b85c3ff464c1e29bd2093e066"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generates randomly a number from the Poisson distribution with parameter <code>lambda</code>, using the Knuth approach.  <a href="group__maths.html#gac0aed93b85c3ff464c1e29bd2093e066">More...</a><br /></td></tr>
+<tr class="separator:gac0aed93b85c3ff464c1e29bd2093e066"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga26e7ca69aa8bd969e3a781331a0afe27"><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_decimal_matrix.html">DecimalMatrix</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__maths.html#ga26e7ca69aa8bd969e3a781331a0afe27">generate_zero_dmatrix</a> (const int r, const int c)</td></tr>
+<tr class="memdesc:ga26e7ca69aa8bd969e3a781331a0afe27"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generates a matrix of c columns, r rows with all 0.  <a href="group__maths.html#ga26e7ca69aa8bd969e3a781331a0afe27">More...</a><br /></td></tr>
+<tr class="separator:ga26e7ca69aa8bd969e3a781331a0afe27"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga029101c5b02d8ab22e74ce3c103f6114"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__maths.html#ga029101c5b02d8ab22e74ce3c103f6114">add_matrixvector_product_to_dmatrix</a> (<a class="el" href="struct_decimal_matrix.html">DecimalMatrix</a> *result, const <a class="el" href="struct_decimal_matrix.html">DecimalMatrix</a> *a, const double *b)</td></tr>
+<tr class="memdesc:ga029101c5b02d8ab22e74ce3c103f6114"><td class="mdescLeft">&#160;</td><td class="mdescRight">Multiply a <a class="el" href="struct_decimal_matrix.html" title="A row-major heap matrix that contains floating point numbers.">DecimalMatrix</a> to a vector, and add that product to the first column of a provided <a class="el" href="struct_decimal_matrix.html" title="A row-major heap matrix that contains floating point numbers.">DecimalMatrix</a>.  <a href="group__maths.html#ga029101c5b02d8ab22e74ce3c103f6114">More...</a><br /></td></tr>
+<tr class="separator:ga029101c5b02d8ab22e74ce3c103f6114"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gab1f0bafd56d3496348ea3ccddfe9d937"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__maths.html#gab1f0bafd56d3496348ea3ccddfe9d937">add_doublematrixvector_product_to_dmatrix</a> (<a class="el" href="struct_decimal_matrix.html">DecimalMatrix</a> *result, const <a class="el" href="struct_decimal_matrix.html">DecimalMatrix</a> *amat, const double *avec, const <a class="el" href="struct_decimal_matrix.html">DecimalMatrix</a> *bmat, const double *bvec)</td></tr>
+<tr class="memdesc:gab1f0bafd56d3496348ea3ccddfe9d937"><td class="mdescLeft">&#160;</td><td class="mdescRight">Multiply two sets of a <a class="el" href="struct_decimal_matrix.html" title="A row-major heap matrix that contains floating point numbers.">DecimalMatrix</a> and vector, and add both products to the first column of a provided <a class="el" href="struct_decimal_matrix.html" title="A row-major heap matrix that contains floating point numbers.">DecimalMatrix</a>.  <a href="group__maths.html#gab1f0bafd56d3496348ea3ccddfe9d937">More...</a><br /></td></tr>
+<tr class="separator:gab1f0bafd56d3496348ea3ccddfe9d937"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <p >For mathematical and statistical operations as required by the package. </p>
 <p >Includes matrix operations defined on a <a class="el" href="struct_decimal_matrix.html" title="A row-major heap matrix that contains floating point numbers.">DecimalMatrix</a> struct, and draws from certain random distributions. </p>
 <h2 class="groupheader">Function Documentation</h2>
-<a id="gad2c9cda1aab9679e0bfe3c88959213c6" name="gad2c9cda1aab9679e0bfe3c88959213c6"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#gad2c9cda1aab9679e0bfe3c88959213c6">&#9670;&nbsp;</a></span>add_doublematrixvector_product_to_dmatrix()</h2>
+<a id="gab1f0bafd56d3496348ea3ccddfe9d937" name="gab1f0bafd56d3496348ea3ccddfe9d937"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gab1f0bafd56d3496348ea3ccddfe9d937">&#9670;&nbsp;</a></span>add_doublematrixvector_product_to_dmatrix()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -120,25 +105,25 @@ Variables</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="struct_decimal_matrix.html">DecimalMatrix</a> *&#160;</td>
+          <td class="paramtype">const <a class="el" href="struct_decimal_matrix.html">DecimalMatrix</a> *&#160;</td>
           <td class="paramname"><em>amat</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">double *&#160;</td>
+          <td class="paramtype">const double *&#160;</td>
           <td class="paramname"><em>avec</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="struct_decimal_matrix.html">DecimalMatrix</a> *&#160;</td>
+          <td class="paramtype">const <a class="el" href="struct_decimal_matrix.html">DecimalMatrix</a> *&#160;</td>
           <td class="paramname"><em>bmat</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">double *&#160;</td>
+          <td class="paramtype">const double *&#160;</td>
           <td class="paramname"><em>bvec</em>&#160;</td>
         </tr>
         <tr>
@@ -169,32 +154,32 @@ Variables</h2></td></tr>
 <div id="dynsection-0-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-0-content" class="dyncontent" style="display:none;">
-<div class="center"><img src="group__maths_gad2c9cda1aab9679e0bfe3c88959213c6_icgraph.png" border="0" usemap="#agroup__maths_gad2c9cda1aab9679e0bfe3c88959213c6_icgraph" alt=""/></div>
-<map name="agroup__maths_gad2c9cda1aab9679e0bfe3c88959213c6_icgraph" id="agroup__maths_gad2c9cda1aab9679e0bfe3c88959213c6_icgraph">
-<area shape="rect" title="Multiply two sets of a DecimalMatrix and vector, and add both products to the first column of a provi..." alt="" coords="628,201,787,242"/>
-<area shape="rect" href="group__calculators.html#gab5b177cf40a7e28276c460d60a3ecbb5" title="Calculates the fitness metric/breeding value for each genotype in the AlleleMatrix,..." alt="" coords="461,284,561,311"/>
-<area shape="rect" href="group__calculators.html#ga7f80905718ac87e9da1c30a2cec77ea6" title="Calculates the fitness metric/breeding value for each genotype in the AlleleMatrix in a certain group..." alt="" coords="441,81,580,108"/>
-<area shape="rect" href="group__crossers.html#gae66231fb141a76432d1211e2cf0baf25" title="Performs random crosses among members of a group." alt="" coords="219,157,390,184"/>
-<area shape="rect" href="group__crossers.html#ga3be2cb18d1c722b3a766a7a5663a8f0c" title="Performs random crosses where the first parent comes from one group and the second from another." alt="" coords="220,208,389,235"/>
-<area shape="rect" href="group__crossers.html#gabb793988799d792dfe4007efdf988068" title="Performs the crosses of pairs of parents whose ids are provided in an array." alt="" coords="216,259,393,285"/>
-<area shape="rect" href="group__crossers.html#gaa42e48ab06f9051e5ed6879409cbe2f4" title="Creates an identical copy of each member of a group." alt="" coords="255,309,354,336"/>
-<area shape="rect" href="group__crossers.html#gaf078d6bc1b5d4234a9b960e6132480aa" title="Creates a doubled haploid from each member of a group." alt="" coords="224,360,385,387"/>
-<area shape="rect" href="group__savers.html#ga6024d629560199d7c97d86bda15f55fc" title="Print the breeding value of each genotype in the SimData to a file." alt="" coords="267,411,342,437"/>
-<area shape="rect" href="group__crossers.html#gadf5beb682ac15fa5a0176e480adc9d91" title="Selfs each member of a group for a certain number of generations." alt="" coords="257,461,352,488"/>
-<area shape="rect" href="group__crossers.html#ga68aca99a41527b019316c8243e6fc7a7" title="Find the top m percent of a group and perform random crosses between those top individuals." alt="" coords="10,63,163,105"/>
-<area shape="rect" href="group__crossers.html#ga3f1b06b7aa35e6a05918e16d1deabeee" title="Perform crosses between all pairs of parents in the group from_group and allocates the resulting offs..." alt="" coords="8,193,165,234"/>
-<area shape="rect" href="group__crossers.html#ga3b67d38c13c7a8bef2d0fc91c0365177" title="Perform crosses between pairs of parents identified by name in a file and allocate the resulting offs..." alt="" coords="5,259,168,285"/>
-<area shape="rect" href="group__crossers.html#gaa7c90b4015e4abce750176c6d891cad2" title="Perform crosses between previously&#45;generated offspring of pairs of parents identified by name in a fi..." alt="" coords="11,310,163,351"/>
-<area shape="rect" href="group__getters.html#gaacbc190e8ea144de14b586e5fe3ae865" title="Gets the breeding values/breeding values/fitnesses of each member of the group." alt="" coords="252,56,357,83"/>
-<area shape="rect" href="group__savers.html#ga0da46978e8e546af5eb3b2635902a82b" title="Print the breeding value of each genotype in a group to a file." alt="" coords="248,107,361,133"/>
-<area shape="rect" href="group__calculators.html#gae34db60faf62b898d0572ea6c039b96a" title="Takes the top_n individuals in the group with the best breeding values/fitnesses and puts them in a n..." alt="" coords="261,5,348,32"/>
+<div class="center"><img src="group__maths_gab1f0bafd56d3496348ea3ccddfe9d937_icgraph.png" border="0" usemap="#agroup__maths_gab1f0bafd56d3496348ea3ccddfe9d937_icgraph" alt=""/></div>
+<map name="agroup__maths_gab1f0bafd56d3496348ea3ccddfe9d937_icgraph" id="agroup__maths_gab1f0bafd56d3496348ea3ccddfe9d937_icgraph">
+<area shape="rect" title="Multiply two sets of a DecimalMatrix and vector, and add both products to the first column of a provi..." alt="" coords="625,180,783,224"/>
+<area shape="rect" href="group__calculators.html#ga75f4e1199f9ead752b64cd5fa3b5a1a7" title="Calculates the fitness metric/breeding value for each genotype in the AlleleMatrix,..." alt="" coords="459,292,558,320"/>
+<area shape="rect" href="group__calculators.html#gabf3d2edad86e88ef0021cb608b009b87" title="Calculates the fitness metric/breeding value for each genotype in the AlleleMatrix in a certain group..." alt="" coords="439,84,577,112"/>
+<area shape="rect" href="group__crossers.html#ga7f9865d8d1912cda7e8524d1ff761de6" title="Performs random crosses among members of a group." alt="" coords="218,161,388,189"/>
+<area shape="rect" href="group__crossers.html#ga43f436342a1afc3b14343a8f6e9385f9" title="Performs random crosses where the first parent comes from one group and the second from another." alt="" coords="219,213,387,241"/>
+<area shape="rect" href="sim-operations_8c.html#a42ded1341b4c5a03c2233e2a3875fe07" title="Performs the crosses of pairs of parents whose indexes are provided in an array." alt="" coords="215,265,391,293"/>
+<area shape="rect" href="group__crossers.html#ga5e1da39f8341127e758d32393e8654aa" title="Creates an identical copy of each member of a group." alt="" coords="254,317,352,345"/>
+<area shape="rect" href="group__crossers.html#gab081b254e7abce63067b8c02fbac774f" title="Creates a doubled haploid from each member of a group." alt="" coords="223,369,383,397"/>
+<area shape="rect" href="group__savers.html#gaa9a8f4e7b82dda77c7a688d83fa08e28" title="Print the breeding value of each genotype in the SimData to a file." alt="" coords="266,421,340,449"/>
+<area shape="rect" href="group__crossers.html#gaf0d8ffcde1a2098e7ae807a031bbe7b9" title="Selfs each member of a group for a certain number of generations." alt="" coords="256,473,350,501"/>
+<area shape="rect" href="group__crossers.html#gaa41e75da9e6e4f8db5466e8929dec2ee" title="Find the top m percent of a group and perform random crosses between those top individuals." alt="" coords="10,64,162,108"/>
+<area shape="rect" href="group__crossers.html#ga9d79117014f247c078c6576c70d600fb" title="Perform crosses between all pairs of parents in the group from_group and allocates the resulting offs..." alt="" coords="8,197,164,241"/>
+<area shape="rect" href="group__crossers.html#ga7fafc033bf3aaa14c9d5affbe9421ca9" title="Perform crosses between pairs of parents identified by name in a file and allocate the resulting offs..." alt="" coords="5,265,167,293"/>
+<area shape="rect" href="group__crossers.html#gafb306165b0cf0f5cd752f3eaf4c60928" title="Perform crosses between previously&#45;generated offspring of pairs of parents identified by name in a fi..." alt="" coords="10,317,162,361"/>
+<area shape="rect" href="group__collgetters.html#ga2b01b0cb9588c86830615b186e7d62b6" title="Gets the breeding values/breeding values/fitnesses of each member of the group." alt="" coords="251,57,355,85"/>
+<area shape="rect" href="group__savers.html#ga7cd7382db4574b2b0cffb316eab47a29" title="Print the breeding value of each genotype in a group to a file." alt="" coords="247,109,359,137"/>
+<area shape="rect" href="group__calculators.html#ga98696fc21c0424d98a5eed4df5c60f04" title="Takes the top_n individuals in the group with the best breeding values/fitnesses and puts them in a n..." alt="" coords="260,5,346,33"/>
 </map>
 </div>
 
 </div>
 </div>
-<a id="gabb8addf721442aecdd7dca3dfd955c3c" name="gabb8addf721442aecdd7dca3dfd955c3c"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#gabb8addf721442aecdd7dca3dfd955c3c">&#9670;&nbsp;</a></span>add_matrixvector_product_to_dmatrix()</h2>
+<a id="ga029101c5b02d8ab22e74ce3c103f6114" name="ga029101c5b02d8ab22e74ce3c103f6114"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga029101c5b02d8ab22e74ce3c103f6114">&#9670;&nbsp;</a></span>add_matrixvector_product_to_dmatrix()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -208,13 +193,13 @@ Variables</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="struct_decimal_matrix.html">DecimalMatrix</a> *&#160;</td>
+          <td class="paramtype">const <a class="el" href="struct_decimal_matrix.html">DecimalMatrix</a> *&#160;</td>
           <td class="paramname"><em>a</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">double *&#160;</td>
+          <td class="paramtype">const double *&#160;</td>
           <td class="paramname"><em>b</em>&#160;</td>
         </tr>
         <tr>
@@ -242,32 +227,32 @@ Variables</h2></td></tr>
 <div id="dynsection-1-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-1-content" class="dyncontent" style="display:none;">
-<div class="center"><img src="group__maths_gabb8addf721442aecdd7dca3dfd955c3c_icgraph.png" border="0" usemap="#agroup__maths_gabb8addf721442aecdd7dca3dfd955c3c_icgraph" alt=""/></div>
-<map name="agroup__maths_gabb8addf721442aecdd7dca3dfd955c3c_icgraph" id="agroup__maths_gabb8addf721442aecdd7dca3dfd955c3c_icgraph">
-<area shape="rect" title="Multiply a DecimalMatrix to a vector, and add that product to the first column of a provided DecimalM..." alt="" coords="628,201,799,242"/>
-<area shape="rect" href="group__calculators.html#gab5b177cf40a7e28276c460d60a3ecbb5" title="Calculates the fitness metric/breeding value for each genotype in the AlleleMatrix,..." alt="" coords="461,284,561,311"/>
-<area shape="rect" href="group__calculators.html#ga7f80905718ac87e9da1c30a2cec77ea6" title="Calculates the fitness metric/breeding value for each genotype in the AlleleMatrix in a certain group..." alt="" coords="441,81,580,108"/>
-<area shape="rect" href="group__crossers.html#gae66231fb141a76432d1211e2cf0baf25" title="Performs random crosses among members of a group." alt="" coords="219,157,390,184"/>
-<area shape="rect" href="group__crossers.html#ga3be2cb18d1c722b3a766a7a5663a8f0c" title="Performs random crosses where the first parent comes from one group and the second from another." alt="" coords="220,208,389,235"/>
-<area shape="rect" href="group__crossers.html#gabb793988799d792dfe4007efdf988068" title="Performs the crosses of pairs of parents whose ids are provided in an array." alt="" coords="216,259,393,285"/>
-<area shape="rect" href="group__crossers.html#gaa42e48ab06f9051e5ed6879409cbe2f4" title="Creates an identical copy of each member of a group." alt="" coords="255,309,354,336"/>
-<area shape="rect" href="group__crossers.html#gaf078d6bc1b5d4234a9b960e6132480aa" title="Creates a doubled haploid from each member of a group." alt="" coords="224,360,385,387"/>
-<area shape="rect" href="group__savers.html#ga6024d629560199d7c97d86bda15f55fc" title="Print the breeding value of each genotype in the SimData to a file." alt="" coords="267,411,342,437"/>
-<area shape="rect" href="group__crossers.html#gadf5beb682ac15fa5a0176e480adc9d91" title="Selfs each member of a group for a certain number of generations." alt="" coords="257,461,352,488"/>
-<area shape="rect" href="group__crossers.html#ga68aca99a41527b019316c8243e6fc7a7" title="Find the top m percent of a group and perform random crosses between those top individuals." alt="" coords="10,63,163,105"/>
-<area shape="rect" href="group__crossers.html#ga3f1b06b7aa35e6a05918e16d1deabeee" title="Perform crosses between all pairs of parents in the group from_group and allocates the resulting offs..." alt="" coords="8,193,165,234"/>
-<area shape="rect" href="group__crossers.html#ga3b67d38c13c7a8bef2d0fc91c0365177" title="Perform crosses between pairs of parents identified by name in a file and allocate the resulting offs..." alt="" coords="5,259,168,285"/>
-<area shape="rect" href="group__crossers.html#gaa7c90b4015e4abce750176c6d891cad2" title="Perform crosses between previously&#45;generated offspring of pairs of parents identified by name in a fi..." alt="" coords="11,310,163,351"/>
-<area shape="rect" href="group__getters.html#gaacbc190e8ea144de14b586e5fe3ae865" title="Gets the breeding values/breeding values/fitnesses of each member of the group." alt="" coords="252,56,357,83"/>
-<area shape="rect" href="group__savers.html#ga0da46978e8e546af5eb3b2635902a82b" title="Print the breeding value of each genotype in a group to a file." alt="" coords="248,107,361,133"/>
-<area shape="rect" href="group__calculators.html#gae34db60faf62b898d0572ea6c039b96a" title="Takes the top_n individuals in the group with the best breeding values/fitnesses and puts them in a n..." alt="" coords="261,5,348,32"/>
+<div class="center"><img src="group__maths_ga029101c5b02d8ab22e74ce3c103f6114_icgraph.png" border="0" usemap="#agroup__maths_ga029101c5b02d8ab22e74ce3c103f6114_icgraph" alt=""/></div>
+<map name="agroup__maths_ga029101c5b02d8ab22e74ce3c103f6114_icgraph" id="agroup__maths_ga029101c5b02d8ab22e74ce3c103f6114_icgraph">
+<area shape="rect" title="Multiply a DecimalMatrix to a vector, and add that product to the first column of a provided DecimalM..." alt="" coords="625,180,795,224"/>
+<area shape="rect" href="group__calculators.html#ga75f4e1199f9ead752b64cd5fa3b5a1a7" title="Calculates the fitness metric/breeding value for each genotype in the AlleleMatrix,..." alt="" coords="459,292,558,320"/>
+<area shape="rect" href="group__calculators.html#gabf3d2edad86e88ef0021cb608b009b87" title="Calculates the fitness metric/breeding value for each genotype in the AlleleMatrix in a certain group..." alt="" coords="439,84,577,112"/>
+<area shape="rect" href="group__crossers.html#ga7f9865d8d1912cda7e8524d1ff761de6" title="Performs random crosses among members of a group." alt="" coords="218,161,388,189"/>
+<area shape="rect" href="group__crossers.html#ga43f436342a1afc3b14343a8f6e9385f9" title="Performs random crosses where the first parent comes from one group and the second from another." alt="" coords="219,213,387,241"/>
+<area shape="rect" href="sim-operations_8c.html#a42ded1341b4c5a03c2233e2a3875fe07" title="Performs the crosses of pairs of parents whose indexes are provided in an array." alt="" coords="215,265,391,293"/>
+<area shape="rect" href="group__crossers.html#ga5e1da39f8341127e758d32393e8654aa" title="Creates an identical copy of each member of a group." alt="" coords="254,317,352,345"/>
+<area shape="rect" href="group__crossers.html#gab081b254e7abce63067b8c02fbac774f" title="Creates a doubled haploid from each member of a group." alt="" coords="223,369,383,397"/>
+<area shape="rect" href="group__savers.html#gaa9a8f4e7b82dda77c7a688d83fa08e28" title="Print the breeding value of each genotype in the SimData to a file." alt="" coords="266,421,340,449"/>
+<area shape="rect" href="group__crossers.html#gaf0d8ffcde1a2098e7ae807a031bbe7b9" title="Selfs each member of a group for a certain number of generations." alt="" coords="256,473,350,501"/>
+<area shape="rect" href="group__crossers.html#gaa41e75da9e6e4f8db5466e8929dec2ee" title="Find the top m percent of a group and perform random crosses between those top individuals." alt="" coords="10,64,162,108"/>
+<area shape="rect" href="group__crossers.html#ga9d79117014f247c078c6576c70d600fb" title="Perform crosses between all pairs of parents in the group from_group and allocates the resulting offs..." alt="" coords="8,197,164,241"/>
+<area shape="rect" href="group__crossers.html#ga7fafc033bf3aaa14c9d5affbe9421ca9" title="Perform crosses between pairs of parents identified by name in a file and allocate the resulting offs..." alt="" coords="5,265,167,293"/>
+<area shape="rect" href="group__crossers.html#gafb306165b0cf0f5cd752f3eaf4c60928" title="Perform crosses between previously&#45;generated offspring of pairs of parents identified by name in a fi..." alt="" coords="10,317,162,361"/>
+<area shape="rect" href="group__collgetters.html#ga2b01b0cb9588c86830615b186e7d62b6" title="Gets the breeding values/breeding values/fitnesses of each member of the group." alt="" coords="251,57,355,85"/>
+<area shape="rect" href="group__savers.html#ga7cd7382db4574b2b0cffb316eab47a29" title="Print the breeding value of each genotype in a group to a file." alt="" coords="247,109,359,137"/>
+<area shape="rect" href="group__calculators.html#ga98696fc21c0424d98a5eed4df5c60f04" title="Takes the top_n individuals in the group with the best breeding values/fitnesses and puts them in a n..." alt="" coords="260,5,346,33"/>
 </map>
 </div>
 
 </div>
 </div>
-<a id="gabf3f578b0aa59d5b68ccd0738dd6a9d1" name="gabf3f578b0aa59d5b68ccd0738dd6a9d1"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#gabf3f578b0aa59d5b68ccd0738dd6a9d1">&#9670;&nbsp;</a></span>generate_zero_dmatrix()</h2>
+<a id="ga26e7ca69aa8bd969e3a781331a0afe27" name="ga26e7ca69aa8bd969e3a781331a0afe27"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga26e7ca69aa8bd969e3a781331a0afe27">&#9670;&nbsp;</a></span>generate_zero_dmatrix()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -275,13 +260,13 @@ Variables</h2></td></tr>
         <tr>
           <td class="memname"><a class="el" href="struct_decimal_matrix.html">DecimalMatrix</a> generate_zero_dmatrix </td>
           <td>(</td>
-          <td class="paramtype">int&#160;</td>
+          <td class="paramtype">const int&#160;</td>
           <td class="paramname"><em>r</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">int&#160;</td>
+          <td class="paramtype">const int&#160;</td>
           <td class="paramname"><em>c</em>&#160;</td>
         </tr>
         <tr>
@@ -306,146 +291,38 @@ Variables</h2></td></tr>
 <div id="dynsection-2-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-2-content" class="dyncontent" style="display:none;">
-<div class="center"><img src="group__maths_gabf3f578b0aa59d5b68ccd0738dd6a9d1_icgraph.png" border="0" usemap="#agroup__maths_gabf3f578b0aa59d5b68ccd0738dd6a9d1_icgraph" alt=""/></div>
-<map name="agroup__maths_gabf3f578b0aa59d5b68ccd0738dd6a9d1_icgraph" id="agroup__maths_gabf3f578b0aa59d5b68ccd0738dd6a9d1_icgraph">
-<area shape="rect" title="Generates a matrix of c columns, r rows with all 0." alt="" coords="636,469,791,496"/>
-<area shape="rect" href="group__calculators.html#gab5b177cf40a7e28276c460d60a3ecbb5" title="Calculates the fitness metric/breeding value for each genotype in the AlleleMatrix,..." alt="" coords="465,191,565,217"/>
-<area shape="rect" href="group__calculators.html#ga42f2398ccb53ffafce9b4a17e3222636" title="Calculates the number of times at each marker that a particular allele appears for each genotype in t..." alt="" coords="447,382,583,423"/>
-<area shape="rect" href="group__calculators.html#ga7f80905718ac87e9da1c30a2cec77ea6" title="Calculates the fitness metric/breeding value for each genotype in the AlleleMatrix in a certain group..." alt="" coords="445,469,584,496"/>
-<area shape="rect" href="group__supporters.html#gadebbfa88bf139ddca501ab158f3746c5" title="Takes a SimData object, and sorts its markers, the rows of its parent gen AlleleMatrix (because they ..." alt="" coords="446,545,583,572"/>
-<area shape="rect" href="group__savers.html#gab732ec2d648a6dc01444ef74f780fc70" title="Print the number of copies of a particular allele at each marker of each genotype in a group to a fil..." alt="" coords="441,597,588,638"/>
-<area shape="rect" href="group__crossers.html#gae66231fb141a76432d1211e2cf0baf25" title="Performs random crosses among members of a group." alt="" coords="219,317,390,344"/>
-<area shape="rect" href="group__crossers.html#ga3be2cb18d1c722b3a766a7a5663a8f0c" title="Performs random crosses where the first parent comes from one group and the second from another." alt="" coords="220,13,389,40"/>
-<area shape="rect" href="group__crossers.html#gabb793988799d792dfe4007efdf988068" title="Performs the crosses of pairs of parents whose ids are provided in an array." alt="" coords="216,64,393,91"/>
-<area shape="rect" href="group__crossers.html#gaa42e48ab06f9051e5ed6879409cbe2f4" title="Creates an identical copy of each member of a group." alt="" coords="255,115,354,141"/>
-<area shape="rect" href="group__crossers.html#gaf078d6bc1b5d4234a9b960e6132480aa" title="Creates a doubled haploid from each member of a group." alt="" coords="224,165,385,192"/>
-<area shape="rect" href="group__savers.html#ga6024d629560199d7c97d86bda15f55fc" title="Print the breeding value of each genotype in the SimData to a file." alt="" coords="267,216,342,243"/>
-<area shape="rect" href="group__crossers.html#gadf5beb682ac15fa5a0176e480adc9d91" title="Selfs each member of a group for a certain number of generations." alt="" coords="257,267,352,293"/>
-<area shape="rect" href="group__crossers.html#ga68aca99a41527b019316c8243e6fc7a7" title="Find the top m percent of a group and perform random crosses between those top individuals." alt="" coords="10,361,163,402"/>
-<area shape="rect" href="group__crossers.html#ga3f1b06b7aa35e6a05918e16d1deabeee" title="Perform crosses between all pairs of parents in the group from_group and allocates the resulting offs..." alt="" coords="8,122,165,163"/>
-<area shape="rect" href="group__crossers.html#ga3b67d38c13c7a8bef2d0fc91c0365177" title="Perform crosses between pairs of parents identified by name in a file and allocate the resulting offs..." alt="" coords="5,5,168,32"/>
-<area shape="rect" href="group__crossers.html#gaa7c90b4015e4abce750176c6d891cad2" title="Perform crosses between previously&#45;generated offspring of pairs of parents identified by name in a fi..." alt="" coords="11,57,163,98"/>
-<area shape="rect" href="group__savers.html#ga490906a5bfdb22b90aba5cdf6282fd03" title="Print the number of copies of a particular allele at each marker of each genotype in the SimData to a..." alt="" coords="239,368,370,395"/>
-<area shape="rect" href="group__getters.html#gaacbc190e8ea144de14b586e5fe3ae865" title="Gets the breeding values/breeding values/fitnesses of each member of the group." alt="" coords="252,469,357,496"/>
-<area shape="rect" href="group__savers.html#ga0da46978e8e546af5eb3b2635902a82b" title="Print the breeding value of each genotype in a group to a file." alt="" coords="248,520,361,547"/>
-<area shape="rect" href="group__calculators.html#gae34db60faf62b898d0572ea6c039b96a" title="Takes the top_n individuals in the group with the best breeding values/fitnesses and puts them in a n..." alt="" coords="261,419,348,445"/>
-<area shape="rect" href="group__loaders.html#ga54cd625669413c2ef171060e9844d814" title="Populates a SimData combination from scratch with marker allele data, a genetic map,..." alt="" coords="27,596,146,623"/>
-<area shape="rect" href="group__loaders.html#ga8edb09b9b9eb27f84ac59cc4342ea855" title="Populates a SimData combination with data from a genetic map." alt="" coords="219,571,390,597"/>
+<div class="center"><img src="group__maths_ga26e7ca69aa8bd969e3a781331a0afe27_icgraph.png" border="0" usemap="#agroup__maths_ga26e7ca69aa8bd969e3a781331a0afe27_icgraph" alt=""/></div>
+<map name="agroup__maths_ga26e7ca69aa8bd969e3a781331a0afe27_icgraph" id="agroup__maths_ga26e7ca69aa8bd969e3a781331a0afe27_icgraph">
+<area shape="rect" title="Generates a matrix of c columns, r rows with all 0." alt="" coords="633,481,787,509"/>
+<area shape="rect" href="group__calculators.html#ga75f4e1199f9ead752b64cd5fa3b5a1a7" title="Calculates the fitness metric/breeding value for each genotype in the AlleleMatrix,..." alt="" coords="463,196,562,224"/>
+<area shape="rect" href="group__calculators.html#gae9e20b885533620494187b26e7d44d48" title="Calculates the number of times at each marker that a particular allele appears for each genotype in t..." alt="" coords="445,391,580,435"/>
+<area shape="rect" href="group__calculators.html#gabf3d2edad86e88ef0021cb608b009b87" title="Calculates the fitness metric/breeding value for each genotype in the AlleleMatrix in a certain group..." alt="" coords="443,481,581,509"/>
+<area shape="rect" href="group__supporters.html#gadebbfa88bf139ddca501ab158f3746c5" title="Takes a SimData object, and sorts its markers, the rows of its parent gen AlleleMatrix (because they ..." alt="" coords="444,559,580,587"/>
+<area shape="rect" href="group__savers.html#ga8bbfd2ed13f449e5934b91701cc94a9f" title="Print the number of copies of a particular allele at each marker of each genotype in a group to a fil..." alt="" coords="439,611,585,655"/>
+<area shape="rect" href="group__crossers.html#ga7f9865d8d1912cda7e8524d1ff761de6" title="Performs random crosses among members of a group." alt="" coords="218,325,388,353"/>
+<area shape="rect" href="group__crossers.html#ga43f436342a1afc3b14343a8f6e9385f9" title="Performs random crosses where the first parent comes from one group and the second from another." alt="" coords="219,13,387,41"/>
+<area shape="rect" href="sim-operations_8c.html#a42ded1341b4c5a03c2233e2a3875fe07" title="Performs the crosses of pairs of parents whose indexes are provided in an array." alt="" coords="215,65,391,93"/>
+<area shape="rect" href="group__crossers.html#ga5e1da39f8341127e758d32393e8654aa" title="Creates an identical copy of each member of a group." alt="" coords="254,117,352,145"/>
+<area shape="rect" href="group__crossers.html#gab081b254e7abce63067b8c02fbac774f" title="Creates a doubled haploid from each member of a group." alt="" coords="223,169,383,197"/>
+<area shape="rect" href="group__savers.html#gaa9a8f4e7b82dda77c7a688d83fa08e28" title="Print the breeding value of each genotype in the SimData to a file." alt="" coords="266,221,340,249"/>
+<area shape="rect" href="group__crossers.html#gaf0d8ffcde1a2098e7ae807a031bbe7b9" title="Selfs each member of a group for a certain number of generations." alt="" coords="256,273,350,301"/>
+<area shape="rect" href="group__crossers.html#gaa41e75da9e6e4f8db5466e8929dec2ee" title="Find the top m percent of a group and perform random crosses between those top individuals." alt="" coords="10,369,162,413"/>
+<area shape="rect" href="group__crossers.html#ga9d79117014f247c078c6576c70d600fb" title="Perform crosses between all pairs of parents in the group from_group and allocates the resulting offs..." alt="" coords="8,125,164,169"/>
+<area shape="rect" href="group__crossers.html#ga7fafc033bf3aaa14c9d5affbe9421ca9" title="Perform crosses between pairs of parents identified by name in a file and allocate the resulting offs..." alt="" coords="5,5,167,33"/>
+<area shape="rect" href="group__crossers.html#gafb306165b0cf0f5cd752f3eaf4c60928" title="Perform crosses between previously&#45;generated offspring of pairs of parents identified by name in a fi..." alt="" coords="10,57,162,101"/>
+<area shape="rect" href="group__savers.html#ga38b0958216f509a3b0a10c4c49183f44" title="Print the number of copies of a particular allele at each marker of each genotype in the SimData to a..." alt="" coords="238,377,368,405"/>
+<area shape="rect" href="group__collgetters.html#ga2b01b0cb9588c86830615b186e7d62b6" title="Gets the breeding values/breeding values/fitnesses of each member of the group." alt="" coords="251,481,355,509"/>
+<area shape="rect" href="group__savers.html#ga7cd7382db4574b2b0cffb316eab47a29" title="Print the breeding value of each genotype in a group to a file." alt="" coords="247,533,359,561"/>
+<area shape="rect" href="group__calculators.html#ga98696fc21c0424d98a5eed4df5c60f04" title="Takes the top_n individuals in the group with the best breeding values/fitnesses and puts them in a n..." alt="" coords="260,429,346,457"/>
+<area shape="rect" href="group__loaders.html#ga54cd625669413c2ef171060e9844d814" title="Populates a SimData combination from scratch with marker allele data, a genetic map,..." alt="" coords="27,611,145,639"/>
+<area shape="rect" href="group__loaders.html#ga8edb09b9b9eb27f84ac59cc4342ea855" title="Populates a SimData combination with data from a genetic map." alt="" coords="218,585,388,613"/>
 </map>
 </div>
 
 </div>
 </div>
-<a id="gad4e0f7934e82157e3115f8df7aec01f0" name="gad4e0f7934e82157e3115f8df7aec01f0"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#gad4e0f7934e82157e3115f8df7aec01f0">&#9670;&nbsp;</a></span>randb()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">int randb </td>
-          <td>(</td>
-          <td class="paramtype">void&#160;</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Generates randomly one of 0 or 1, by splitting the output of rand() in half. </p>
-<dl class="section return"><dt>Returns</dt><dd>0 or 1 at random. </dd></dl>
-<div id="dynsection-3" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
-  <img id="dynsection-3-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
-<div id="dynsection-3-summary" class="dynsummary" style="display:block;">
-</div>
-<div id="dynsection-3-content" class="dyncontent" style="display:none;">
-<div class="center"><img src="group__maths_gad4e0f7934e82157e3115f8df7aec01f0_icgraph.png" border="0" usemap="#agroup__maths_gad4e0f7934e82157e3115f8df7aec01f0_icgraph" alt=""/></div>
-<map name="agroup__maths_gad4e0f7934e82157e3115f8df7aec01f0_icgraph" id="agroup__maths_gad4e0f7934e82157e3115f8df7aec01f0_icgraph">
-<area shape="rect" title="Generates randomly one of 0 or 1, by splitting the output of rand() in half." alt="" coords="663,257,717,283"/>
-<area shape="rect" href="group__meiosis.html#gaa18b10bcd660dee5213868cc3244f826" title="Get the alleles of the outcome of crossing two genotypes." alt="" coords="473,130,583,157"/>
-<area shape="rect" href="group__meiosis.html#gac1f46b3de0afb4674ae6d34311e7aea7" title="Get the alleles of the outcome of producing a doubled haploid from a gamete from a given parent." alt="" coords="442,206,614,233"/>
-<area shape="rect" href="group__meiosis.html#gae406f4a0266b7480e49899693f1b00da" title="Fills a char* with the simulated result of meiosis (reduction and recombination) from the marker alle..." alt="" coords="467,257,589,283"/>
-<area shape="rect" href="group__loaders.html#gad5863641a67355c2c1523e1a23b6f581" title="Populates a SimData combination with marker allele data." alt="" coords="441,308,615,349"/>
-<area shape="rect" href="group__groupmod.html#gacd7e433cf6af229f0d2932b04468e9ca" title="Flip a coin for each member of the group to decide if it should be moved to the new group." alt="" coords="447,374,609,401"/>
-<area shape="rect" href="group__crossers.html#gae66231fb141a76432d1211e2cf0baf25" title="Performs random crosses among members of a group." alt="" coords="219,18,390,45"/>
-<area shape="rect" href="group__crossers.html#ga3be2cb18d1c722b3a766a7a5663a8f0c" title="Performs random crosses where the first parent comes from one group and the second from another." alt="" coords="220,79,389,106"/>
-<area shape="rect" href="group__crossers.html#gabb793988799d792dfe4007efdf988068" title="Performs the crosses of pairs of parents whose ids are provided in an array." alt="" coords="216,130,393,157"/>
-<area shape="rect" href="group__crossers.html#gadf5beb682ac15fa5a0176e480adc9d91" title="Selfs each member of a group for a certain number of generations." alt="" coords="257,181,352,207"/>
-<area shape="rect" href="group__crossers.html#ga68aca99a41527b019316c8243e6fc7a7" title="Find the top m percent of a group and perform random crosses between those top individuals." alt="" coords="10,5,163,47"/>
-<area shape="rect" href="group__crossers.html#ga3f1b06b7aa35e6a05918e16d1deabeee" title="Perform crosses between all pairs of parents in the group from_group and allocates the resulting offs..." alt="" coords="8,71,165,112"/>
-<area shape="rect" href="group__crossers.html#ga3b67d38c13c7a8bef2d0fc91c0365177" title="Perform crosses between pairs of parents identified by name in a file and allocate the resulting offs..." alt="" coords="5,137,168,163"/>
-<area shape="rect" href="group__crossers.html#gaa7c90b4015e4abce750176c6d891cad2" title="Perform crosses between previously&#45;generated offspring of pairs of parents identified by name in a fi..." alt="" coords="11,188,163,229"/>
-<area shape="rect" href="group__crossers.html#gaf078d6bc1b5d4234a9b960e6132480aa" title="Creates a doubled haploid from each member of a group." alt="" coords="224,231,385,258"/>
-</map>
-</div>
-
-</div>
-</div>
-<a id="ga89e066191f12e056cebb8d2cd74a2a29" name="ga89e066191f12e056cebb8d2cd74a2a29"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ga89e066191f12e056cebb8d2cd74a2a29">&#9670;&nbsp;</a></span>randlim()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">int randlim </td>
-          <td>(</td>
-          <td class="paramtype">int&#160;</td>
-          <td class="paramname"><em>limit</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Generate an integer randomly between 0 and limit inclusive. </p>
-<p >Written by Jerry Coffin <a href="https://stackoverflow.com/questions/2999075/generate-a-random-number-within-range/2999130#2999130">https://stackoverflow.com/questions/2999075/generate-a-random-number-within-range/2999130#2999130</a></p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">limit</td><td>the upper limit of the range to be generated </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>a random integer in the range [0,limit]. </dd></dl>
-<div id="dynsection-4" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
-  <img id="dynsection-4-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
-<div id="dynsection-4-summary" class="dynsummary" style="display:block;">
-</div>
-<div id="dynsection-4-content" class="dyncontent" style="display:none;">
-<div class="center"><img src="group__maths_ga89e066191f12e056cebb8d2cd74a2a29_icgraph.png" border="0" usemap="#agroup__maths_ga89e066191f12e056cebb8d2cd74a2a29_icgraph" alt=""/></div>
-<map name="agroup__maths_ga89e066191f12e056cebb8d2cd74a2a29_icgraph" id="agroup__maths_ga89e066191f12e056cebb8d2cd74a2a29_icgraph">
-<area shape="rect" title="Generate an integer randomly between 0 and limit inclusive." alt="" coords="425,63,489,90"/>
-<area shape="rect" href="group__crossers.html#gae66231fb141a76432d1211e2cf0baf25" title="Performs random crosses among members of a group." alt="" coords="207,13,377,39"/>
-<area shape="rect" href="group__crossers.html#ga3be2cb18d1c722b3a766a7a5663a8f0c" title="Performs random crosses where the first parent comes from one group and the second from another." alt="" coords="207,63,377,90"/>
-<area shape="rect" href="group__groupmod.html#ga38909617537e075fa1bea7cc15ca86df" title="Allocate each member of the group to one of n groups with equal probability." alt="" coords="218,114,366,141"/>
-<area shape="rect" href="group__crossers.html#ga68aca99a41527b019316c8243e6fc7a7" title="Find the top m percent of a group and perform random crosses between those top individuals." alt="" coords="5,5,159,47"/>
-</map>
-</div>
-
-</div>
-</div>
-<a id="ga3d910624bfa7ac1bfacf706c3357fc5d" name="ga3d910624bfa7ac1bfacf706c3357fc5d"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ga3d910624bfa7ac1bfacf706c3357fc5d">&#9670;&nbsp;</a></span>randn()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">double randn </td>
-          <td>(</td>
-          <td class="paramtype">void&#160;</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Generates a double from the normal distribution N(0,1) based on rand() and the Box-Muller algorithm. </p>
-<dl class="section return"><dt>Returns</dt><dd>a double drawn from the N(0,1) random distribution. </dd></dl>
-
-</div>
-</div>
-<a id="ga7d9dbe538d6fb096af14c3163c98e800" name="ga7d9dbe538d6fb096af14c3163c98e800"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ga7d9dbe538d6fb096af14c3163c98e800">&#9670;&nbsp;</a></span>randpoi()</h2>
+<a id="gac0aed93b85c3ff464c1e29bd2093e066" name="gac0aed93b85c3ff464c1e29bd2093e066"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gac0aed93b85c3ff464c1e29bd2093e066">&#9670;&nbsp;</a></span>randpoi()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -453,9 +330,19 @@ Variables</h2></td></tr>
         <tr>
           <td class="memname">int randpoi </td>
           <td>(</td>
-          <td class="paramtype">double&#160;</td>
-          <td class="paramname"><em>lambda</em></td><td>)</td>
+          <td class="paramtype">rnd_pcg_t *&#160;</td>
+          <td class="paramname"><em>rng</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
           <td></td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>lambda</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -465,48 +352,34 @@ Variables</h2></td></tr>
 <p >This approach is known to run slow for larger values of lambda.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
+    <tr><td class="paramname">rng</td><td>random number generator source </td></tr>
     <tr><td class="paramname">lambda</td><td>the parameter of the Poisson distribution. Corresponds to both expected value and variance of the distribution. </td></tr>
   </table>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>a random integer generated from the Poisson distribution with parameter lambda. </dd></dl>
-<div id="dynsection-5" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
-  <img id="dynsection-5-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
-<div id="dynsection-5-summary" class="dynsummary" style="display:block;">
+<div id="dynsection-3" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-3-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
+<div id="dynsection-3-summary" class="dynsummary" style="display:block;">
 </div>
-<div id="dynsection-5-content" class="dyncontent" style="display:none;">
-<div class="center"><img src="group__maths_ga7d9dbe538d6fb096af14c3163c98e800_icgraph.png" border="0" usemap="#agroup__maths_ga7d9dbe538d6fb096af14c3163c98e800_icgraph" alt=""/></div>
-<map name="agroup__maths_ga7d9dbe538d6fb096af14c3163c98e800_icgraph" id="agroup__maths_ga7d9dbe538d6fb096af14c3163c98e800_icgraph">
-<area shape="rect" title="Generates randomly a number from the Poisson distribution with parameter lambda, using the Knuth appr..." alt="" coords="661,206,725,233"/>
-<area shape="rect" href="group__meiosis.html#gaa18b10bcd660dee5213868cc3244f826" title="Get the alleles of the outcome of crossing two genotypes." alt="" coords="472,130,583,157"/>
-<area shape="rect" href="group__meiosis.html#gac1f46b3de0afb4674ae6d34311e7aea7" title="Get the alleles of the outcome of producing a doubled haploid from a gamete from a given parent." alt="" coords="441,206,613,233"/>
-<area shape="rect" href="group__meiosis.html#gae406f4a0266b7480e49899693f1b00da" title="Fills a char* with the simulated result of meiosis (reduction and recombination) from the marker alle..." alt="" coords="466,257,589,283"/>
-<area shape="rect" href="group__crossers.html#gae66231fb141a76432d1211e2cf0baf25" title="Performs random crosses among members of a group." alt="" coords="219,18,390,45"/>
-<area shape="rect" href="group__crossers.html#ga3be2cb18d1c722b3a766a7a5663a8f0c" title="Performs random crosses where the first parent comes from one group and the second from another." alt="" coords="220,79,389,106"/>
-<area shape="rect" href="group__crossers.html#gabb793988799d792dfe4007efdf988068" title="Performs the crosses of pairs of parents whose ids are provided in an array." alt="" coords="216,130,393,157"/>
-<area shape="rect" href="group__crossers.html#gadf5beb682ac15fa5a0176e480adc9d91" title="Selfs each member of a group for a certain number of generations." alt="" coords="257,181,352,207"/>
-<area shape="rect" href="group__crossers.html#ga68aca99a41527b019316c8243e6fc7a7" title="Find the top m percent of a group and perform random crosses between those top individuals." alt="" coords="10,5,163,47"/>
-<area shape="rect" href="group__crossers.html#ga3f1b06b7aa35e6a05918e16d1deabeee" title="Perform crosses between all pairs of parents in the group from_group and allocates the resulting offs..." alt="" coords="8,71,165,112"/>
-<area shape="rect" href="group__crossers.html#ga3b67d38c13c7a8bef2d0fc91c0365177" title="Perform crosses between pairs of parents identified by name in a file and allocate the resulting offs..." alt="" coords="5,137,168,163"/>
-<area shape="rect" href="group__crossers.html#gaa7c90b4015e4abce750176c6d891cad2" title="Perform crosses between previously&#45;generated offspring of pairs of parents identified by name in a fi..." alt="" coords="11,188,163,229"/>
-<area shape="rect" href="group__crossers.html#gaf078d6bc1b5d4234a9b960e6132480aa" title="Creates a doubled haploid from each member of a group." alt="" coords="224,231,385,258"/>
+<div id="dynsection-3-content" class="dyncontent" style="display:none;">
+<div class="center"><img src="group__maths_gac0aed93b85c3ff464c1e29bd2093e066_icgraph.png" border="0" usemap="#agroup__maths_gac0aed93b85c3ff464c1e29bd2093e066_icgraph" alt=""/></div>
+<map name="agroup__maths_gac0aed93b85c3ff464c1e29bd2093e066_icgraph" id="agroup__maths_gac0aed93b85c3ff464c1e29bd2093e066_icgraph">
+<area shape="rect" title="Generates randomly a number from the Poisson distribution with parameter lambda, using the Knuth appr..." alt="" coords="658,212,722,240"/>
+<area shape="rect" href="group__meiosis.html#gafc34eb6a9bf8128a2619ffd322db8689" title="Get the alleles of the outcome of crossing two genotypes." alt="" coords="470,135,580,163"/>
+<area shape="rect" href="group__meiosis.html#ga795bfb971a6c406f5f06c14467fd2287" title="Get the alleles of the outcome of producing a doubled haploid from a gamete from a given parent." alt="" coords="439,212,610,240"/>
+<area shape="rect" href="group__meiosis.html#ga90f7b0635f358ca029d16b996e203cbf" title="Fills a char* with the simulated result of meiosis (reduction and recombination) from the marker alle..." alt="" coords="464,264,585,292"/>
+<area shape="rect" href="group__crossers.html#ga7f9865d8d1912cda7e8524d1ff761de6" title="Performs random crosses among members of a group." alt="" coords="218,19,388,47"/>
+<area shape="rect" href="group__crossers.html#ga43f436342a1afc3b14343a8f6e9385f9" title="Performs random crosses where the first parent comes from one group and the second from another." alt="" coords="219,83,387,111"/>
+<area shape="rect" href="sim-operations_8c.html#a42ded1341b4c5a03c2233e2a3875fe07" title="Performs the crosses of pairs of parents whose indexes are provided in an array." alt="" coords="215,135,391,163"/>
+<area shape="rect" href="group__crossers.html#gaf0d8ffcde1a2098e7ae807a031bbe7b9" title="Selfs each member of a group for a certain number of generations." alt="" coords="256,187,350,215"/>
+<area shape="rect" href="group__crossers.html#gaa41e75da9e6e4f8db5466e8929dec2ee" title="Find the top m percent of a group and perform random crosses between those top individuals." alt="" coords="10,5,162,49"/>
+<area shape="rect" href="group__crossers.html#ga9d79117014f247c078c6576c70d600fb" title="Perform crosses between all pairs of parents in the group from_group and allocates the resulting offs..." alt="" coords="8,73,164,117"/>
+<area shape="rect" href="group__crossers.html#ga7fafc033bf3aaa14c9d5affbe9421ca9" title="Perform crosses between pairs of parents identified by name in a file and allocate the resulting offs..." alt="" coords="5,141,167,169"/>
+<area shape="rect" href="group__crossers.html#gafb306165b0cf0f5cd752f3eaf4c60928" title="Perform crosses between previously&#45;generated offspring of pairs of parents identified by name in a fi..." alt="" coords="10,193,162,237"/>
+<area shape="rect" href="group__crossers.html#gab081b254e7abce63067b8c02fbac774f" title="Creates a doubled haploid from each member of a group." alt="" coords="223,239,383,267"/>
 </map>
 </div>
-
-</div>
-</div>
-<h2 class="groupheader">Variable Documentation</h2>
-<a id="ga6db8fbe9028cc259012cbdf075c222b2" name="ga6db8fbe9028cc259012cbdf075c222b2"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ga6db8fbe9028cc259012cbdf075c222b2">&#9670;&nbsp;</a></span>RAND_HALFPOINT</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">int RAND_HALFPOINT</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
 
 </div>
 </div>

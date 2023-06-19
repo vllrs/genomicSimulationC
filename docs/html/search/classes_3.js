@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['geneticmap_0',['GeneticMap',['../struct_genetic_map.html',1,'']]],
-  ['genoptions_1',['GenOptions',['../struct_gen_options.html',1,'']]]
+  ['effectmatrix_0',['EffectMatrix',['../struct_effect_matrix.html',1,'']]]
 ];

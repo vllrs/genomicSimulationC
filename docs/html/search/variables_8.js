@@ -1,12 +1,9 @@
 var searchData=
 [
-  ['n_5fchr_0',['n_chr',['../struct_genetic_map.html#afd4a97262832e3f7c82c739290aa5e31',1,'GeneticMap']]],
-  ['n_5fgenotypes_1',['n_genotypes',['../struct_allele_matrix.html#af4c83a2b9421b9ea10576c51df97499d',1,'AlleleMatrix']]],
-  ['n_5fmarkers_2',['n_markers',['../struct_allele_matrix.html#abe54d751c98bca248601301132295907',1,'AlleleMatrix::n_markers()'],['../struct_sim_data.html#af91c67baf2824ded2ff130500c29ab36',1,'SimData::n_markers()']]],
-  ['names_3',['names',['../struct_allele_matrix.html#a7161aa1a99fed07850afd9fdc4886168',1,'AlleleMatrix']]],
-  ['next_4',['next',['../struct_allele_matrix.html#aca3941327ee78ef135afdee6ad0a5b2f',1,'AlleleMatrix']]],
-  ['num_5fblocks_5',['num_blocks',['../struct_marker_blocks.html#afe2371521213af6d994edfdbf36cfccc',1,'MarkerBlocks']]],
-  ['num_5fcolumns_6',['num_columns',['../struct_table_size.html#a34e87d794ae5be21e24999d5072b2641',1,'TableSize']]],
-  ['num_5fmarkers_5fin_5fblock_7',['num_markers_in_block',['../struct_marker_blocks.html#a05bc16cd7262d5513b07ae8086c4a0de',1,'MarkerBlocks']]],
-  ['num_5frows_8',['num_rows',['../struct_table_size.html#a28dfd1ee14fc332ab779ed5e8f47ea62',1,'TableSize']]]
+  ['label_5fdefaults_0',['label_defaults',['../struct_sim_data.html#a4e1157e5fc24ca9f4cd049039315381b',1,'SimData']]],
+  ['label_5fids_1',['label_ids',['../struct_sim_data.html#a5443bc9d7d1607bc356f3ad6b1e89242',1,'SimData']]],
+  ['labels_2',['labels',['../struct_allele_matrix.html#abce01a89b9ac65d04799c6b9f6d6aa9c',1,'AlleleMatrix']]],
+  ['largestcached_3',['largestCached',['../struct_random_access_iterator.html#a4bca83b7d5f80033560456cc4a119f42',1,'RandomAccessIterator']]],
+  ['localam_4',['localAM',['../struct_geno_location.html#af713c48011ddb3961abe9ae1be8f8c7b',1,'GenoLocation']]],
+  ['localpos_5',['localPos',['../struct_geno_location.html#a7a5fe0f559e18f10bd27e52c0ee3773f',1,'GenoLocation']]]
 ];

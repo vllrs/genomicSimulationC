@@ -1,9 +1,0 @@
-<map id="split_evenly_into_n" name="split_evenly_into_n">
-<area shape="rect" id="node1" title="Split a group into n groups of equal size (or size differing only by one, if n does not perfectly div..." alt="" coords="5,33,136,60"/>
-<area shape="rect" id="node2" href="$group__getters.html#gad6d2b66296cd80f5bfe303e06de7935c" title="Function to count the number of genotypes that currently belong to the specified group." alt="" coords="422,5,533,32"/>
-<area shape="rect" id="node3" href="$group__groupmod.html#ga8fe9bd972582622c399c8b6a7c81a6d1" title="Split a group into n groups of equal size (or size differing only by one, if n does not perfectly div..." alt="" coords="184,55,348,97"/>
-<area shape="rect" id="node4" href="$group__supporters.html#ga71dbb7fd0d0317d24aa06b6bbb472367" title="Function to identify the next n sequential integers that do not identify a group that currently has m..." alt="" coords="396,60,559,87"/>
-<area shape="rect" id="node7" href="$group__supporters.html#gaa471b9b9b77c8010dff8d318e9a968a7" title="Produce a random ordering of the first n elements in an array of integers using a (partial) Fisher&#45;Ya..." alt="" coords="428,111,527,137"/>
-<area shape="rect" id="node5" href="$group__getters.html#ga3305ddcc29138d2d92689f39a7885ca0" title="Identify every group number that currently has members." alt="" coords="607,60,745,87"/>
-<area shape="rect" id="node6" href="$group__supporters.html#gadae2e9f7e1061cb20426ba2333b7629b" title="Comparator function for qsort." alt="" coords="793,60,964,87"/>
-</map>

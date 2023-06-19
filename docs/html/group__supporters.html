@@ -21,7 +21,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">genomicSimulationC<span id="projectnumber">&#160;0.2.1</span>
+   <div id="projectname">genomicSimulationC<span id="projectnumber">&#160;0.2.3</span>
    </div>
   </td>
  </tr>
@@ -70,47 +70,69 @@ $(function() {
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:ga392c23248f22e9faf085198dbb1d8711"><td class="memItemLeft" align="right" valign="top">struct <a class="el" href="struct_table_size.html">TableSize</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__supporters.html#ga392c23248f22e9faf085198dbb1d8711">get_file_dimensions</a> (const char *filename, char sep)</td></tr>
-<tr class="memdesc:ga392c23248f22e9faf085198dbb1d8711"><td class="mdescLeft">&#160;</td><td class="mdescRight">Opens a table file and reads the number of columns and rows (including headers) separated by <code>sep</code> into a <a class="el" href="struct_table_size.html" title="A simple struct used for returning the dimensions of a matrix or table.">TableSize</a> struct that is returned.  <a href="group__supporters.html#ga392c23248f22e9faf085198dbb1d8711">More...</a><br /></td></tr>
-<tr class="separator:ga392c23248f22e9faf085198dbb1d8711"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gaa6943b0633c1744bacad62ab2bf68ebd"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__supporters.html#gaa6943b0633c1744bacad62ab2bf68ebd">get_from_ordered_uint_list</a> (unsigned int target, unsigned int *list, unsigned int list_len)</td></tr>
-<tr class="memdesc:gaa6943b0633c1744bacad62ab2bf68ebd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the located index in an array of integers where the integer is <code>target</code>.  <a href="group__supporters.html#gaa6943b0633c1744bacad62ab2bf68ebd">More...</a><br /></td></tr>
-<tr class="separator:gaa6943b0633c1744bacad62ab2bf68ebd"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gaed2ae969c3ce4ed1466a885dcc559472"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__supporters.html#gaed2ae969c3ce4ed1466a885dcc559472">get_from_unordered_str_list</a> (char *target, char **list, int list_len)</td></tr>
-<tr class="memdesc:gaed2ae969c3ce4ed1466a885dcc559472"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the first located index in an array of strings where the string is the same as the string <code>target</code>.  <a href="group__supporters.html#gaed2ae969c3ce4ed1466a885dcc559472">More...</a><br /></td></tr>
-<tr class="separator:gaed2ae969c3ce4ed1466a885dcc559472"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gaa471b9b9b77c8010dff8d318e9a968a7"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__supporters.html#gaa471b9b9b77c8010dff8d318e9a968a7">shuffle_up_to</a> (int *sequence, size_t total_n, size_t n_to_shuffle)</td></tr>
-<tr class="memdesc:gaa471b9b9b77c8010dff8d318e9a968a7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Produce a random ordering of the first n elements in an array of integers using a (partial) Fisher-Yates shuffle.  <a href="group__supporters.html#gaa471b9b9b77c8010dff8d318e9a968a7">More...</a><br /></td></tr>
-<tr class="separator:gaa471b9b9b77c8010dff8d318e9a968a7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga10dddc2d2028b8c1341837897b6eee4d"><td class="memItemLeft" align="right" valign="top">struct <a class="el" href="struct_table_size.html">TableSize</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__supporters.html#ga10dddc2d2028b8c1341837897b6eee4d">get_file_dimensions</a> (const char *filename, const char sep)</td></tr>
+<tr class="memdesc:ga10dddc2d2028b8c1341837897b6eee4d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Opens a table file and reads the number of columns and rows (including headers) separated by <code>sep</code> into a <a class="el" href="struct_table_size.html" title="A simple struct used for returning the dimensions of a matrix or table.">TableSize</a> struct that is returned.  <a href="group__supporters.html#ga10dddc2d2028b8c1341837897b6eee4d">More...</a><br /></td></tr>
+<tr class="separator:ga10dddc2d2028b8c1341837897b6eee4d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga98f69379fe6a5cca7fb25ed1fe49e1c7"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__supporters.html#ga98f69379fe6a5cca7fb25ed1fe49e1c7">get_from_ordered_uint_list</a> (const unsigned int target, const unsigned int listLen, const unsigned int list[listLen])</td></tr>
+<tr class="memdesc:ga98f69379fe6a5cca7fb25ed1fe49e1c7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the located index in an array of integers where the integer is <code>target</code>.  <a href="group__supporters.html#ga98f69379fe6a5cca7fb25ed1fe49e1c7">More...</a><br /></td></tr>
+<tr class="separator:ga98f69379fe6a5cca7fb25ed1fe49e1c7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaf78d759e6da39a08acff41421d0e7b2a"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__supporters.html#gaf78d759e6da39a08acff41421d0e7b2a">get_from_unordered_str_list</a> (const char *target, const int listLen, const char *list[listLen])</td></tr>
+<tr class="memdesc:gaf78d759e6da39a08acff41421d0e7b2a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the first located index in an array of strings where the string is the same as the string <code>target</code>.  <a href="group__supporters.html#gaf78d759e6da39a08acff41421d0e7b2a">More...</a><br /></td></tr>
+<tr class="separator:gaf78d759e6da39a08acff41421d0e7b2a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga575fe459225d6b565a199426f1b5c030"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__supporters.html#ga575fe459225d6b565a199426f1b5c030">shuffle_up_to</a> (rnd_pcg_t *rng, int *sequence, const size_t total_n, const size_t n_to_shuffle)</td></tr>
+<tr class="memdesc:ga575fe459225d6b565a199426f1b5c030"><td class="mdescLeft">&#160;</td><td class="mdescRight">Produce a random ordering of the first n elements in an array of integers using a (partial) Fisher-Yates shuffle.  <a href="group__supporters.html#ga575fe459225d6b565a199426f1b5c030">More...</a><br /></td></tr>
+<tr class="separator:ga575fe459225d6b565a199426f1b5c030"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga01a6e3ec05c4a13139cf853e427845fe"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__supporters.html#ga01a6e3ec05c4a13139cf853e427845fe">create_new_label</a> (<a class="el" href="struct_sim_data.html">SimData</a> *d, const int setTo)</td></tr>
+<tr class="memdesc:ga01a6e3ec05c4a13139cf853e427845fe"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialises a new custom label.  <a href="group__supporters.html#ga01a6e3ec05c4a13139cf853e427845fe">More...</a><br /></td></tr>
+<tr class="separator:ga01a6e3ec05c4a13139cf853e427845fe"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga7e23a13297740a5656360550177006ed"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__supporters.html#ga7e23a13297740a5656360550177006ed">set_label_default</a> (<a class="el" href="struct_sim_data.html">SimData</a> *d, const int whichLabel, const int newDefault)</td></tr>
+<tr class="memdesc:ga7e23a13297740a5656360550177006ed"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the default value of a custom label.  <a href="group__supporters.html#ga7e23a13297740a5656360550177006ed">More...</a><br /></td></tr>
+<tr class="separator:ga7e23a13297740a5656360550177006ed"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga7ec8bba2fa9d7660993903e7790ebdf3"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__supporters.html#ga7ec8bba2fa9d7660993903e7790ebdf3">set_labels_to_const</a> (<a class="el" href="struct_sim_data.html">SimData</a> *d, const int whichGroup, const int whichLabel, const int setTo)</td></tr>
+<tr class="memdesc:ga7ec8bba2fa9d7660993903e7790ebdf3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the values of a custom label.  <a href="group__supporters.html#ga7ec8bba2fa9d7660993903e7790ebdf3">More...</a><br /></td></tr>
+<tr class="separator:ga7ec8bba2fa9d7660993903e7790ebdf3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga2a1b6572fa048b93de5ea25d3cc30124"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__supporters.html#ga2a1b6572fa048b93de5ea25d3cc30124">increment_labels</a> (<a class="el" href="struct_sim_data.html">SimData</a> *d, const int whichGroup, const int whichLabel, const int byValue)</td></tr>
+<tr class="memdesc:ga2a1b6572fa048b93de5ea25d3cc30124"><td class="mdescLeft">&#160;</td><td class="mdescRight">Increment the values of a custom label.  <a href="group__supporters.html#ga2a1b6572fa048b93de5ea25d3cc30124">More...</a><br /></td></tr>
+<tr class="separator:ga2a1b6572fa048b93de5ea25d3cc30124"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gab59b6b2fbb70c8d9db746c4186a6fa43"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__supporters.html#gab59b6b2fbb70c8d9db746c4186a6fa43">set_labels_to_values</a> (<a class="el" href="struct_sim_data.html">SimData</a> *d, const int whichGroup, const int startIndex, const int whichLabel, const int n_values, const int values[n_values])</td></tr>
+<tr class="memdesc:gab59b6b2fbb70c8d9db746c4186a6fa43"><td class="mdescLeft">&#160;</td><td class="mdescRight">Copy a vector of integers into a custom label.  <a href="group__supporters.html#gab59b6b2fbb70c8d9db746c4186a6fa43">More...</a><br /></td></tr>
+<tr class="separator:gab59b6b2fbb70c8d9db746c4186a6fa43"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaa8e0196f0963912519c78fc8c2263beb"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__supporters.html#gaa8e0196f0963912519c78fc8c2263beb">set_names_to_values</a> (<a class="el" href="struct_sim_data.html">SimData</a> *d, const int whichGroup, const int startIndex, const int n_values, const char *values[n_values])</td></tr>
+<tr class="memdesc:gaa8e0196f0963912519c78fc8c2263beb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Copy a vector of strings into the genotype name field.  <a href="group__supporters.html#gaa8e0196f0963912519c78fc8c2263beb">More...</a><br /></td></tr>
+<tr class="separator:gaa8e0196f0963912519c78fc8c2263beb"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gadebbfa88bf139ddca501ab158f3746c5"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__supporters.html#gadebbfa88bf139ddca501ab158f3746c5">get_sorted_markers</a> (<a class="el" href="struct_sim_data.html">SimData</a> *d, int actual_n_markers)</td></tr>
 <tr class="memdesc:gadebbfa88bf139ddca501ab158f3746c5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Takes a <a class="el" href="struct_sim_data.html" title="Composite type that is used to run crossing simulations.">SimData</a> object, and sorts its markers, the rows of its parent gen <a class="el" href="struct_allele_matrix.html">AlleleMatrix</a> (because they are ordered by the markers), and its genetic map so that the markers are ordered by chromosome number then position.  <a href="group__supporters.html#gadebbfa88bf139ddca501ab158f3746c5">More...</a><br /></td></tr>
 <tr class="separator:gadebbfa88bf139ddca501ab158f3746c5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga5e049945be5700a6d5a5654b6b332842"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__supporters.html#ga5e049945be5700a6d5a5654b6b332842">get_chromosome_locations</a> (<a class="el" href="struct_sim_data.html">SimData</a> *d)</td></tr>
 <tr class="memdesc:ga5e049945be5700a6d5a5654b6b332842"><td class="mdescLeft">&#160;</td><td class="mdescRight">Updates the chr_ends, n_chr and chr_lengths fields in <a class="el" href="struct_sim_data.html#ae1ae6d192937ca2edaba69edf8308711" title="A GeneticMap.">SimData.map</a>.  <a href="group__supporters.html#ga5e049945be5700a6d5a5654b6b332842">More...</a><br /></td></tr>
 <tr class="separator:ga5e049945be5700a6d5a5654b6b332842"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gab751e196194afd414e942f0900adba72"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__supporters.html#gab751e196194afd414e942f0900adba72">set_names</a> (<a class="el" href="struct_allele_matrix.html">AlleleMatrix</a> *a, char *prefix, int suffix, int from_index)</td></tr>
-<tr class="memdesc:gab751e196194afd414e942f0900adba72"><td class="mdescLeft">&#160;</td><td class="mdescRight">Fills the designated section of the <code>.names</code> array in an <a class="el" href="struct_allele_matrix.html">AlleleMatrix</a> with the pattern <code>prefix</code>index.  <a href="group__supporters.html#gab751e196194afd414e942f0900adba72">More...</a><br /></td></tr>
-<tr class="separator:gab751e196194afd414e942f0900adba72"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga076a7b5225f3bb1f0d7912715df393b3"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__supporters.html#ga076a7b5225f3bb1f0d7912715df393b3">set_ids</a> (<a class="el" href="struct_sim_data.html">SimData</a> *d, int from_index, int to_index)</td></tr>
-<tr class="memdesc:ga076a7b5225f3bb1f0d7912715df393b3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Allocate lifetime-unique ids to each genotype in the range of whole <a class="el" href="struct_sim_data.html" title="Composite type that is used to run crossing simulations.">SimData</a> indexes <code>from_index</code> to <code>to_index</code> inclusive.  <a href="group__supporters.html#ga076a7b5225f3bb1f0d7912715df393b3">More...</a><br /></td></tr>
-<tr class="separator:ga076a7b5225f3bb1f0d7912715df393b3"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gad7d864d43092823ac2ed8a6cbd595e35"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__supporters.html#gad7d864d43092823ac2ed8a6cbd595e35">get_integer_digits</a> (int i)</td></tr>
-<tr class="memdesc:gad7d864d43092823ac2ed8a6cbd595e35"><td class="mdescLeft">&#160;</td><td class="mdescRight">Count and return the number of digits in <code>i</code>.  <a href="group__supporters.html#gad7d864d43092823ac2ed8a6cbd595e35">More...</a><br /></td></tr>
-<tr class="separator:gad7d864d43092823ac2ed8a6cbd595e35"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gae974a74145fe876e303e14336d3c5d3a"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__supporters.html#gae974a74145fe876e303e14336d3c5d3a">get_new_group_num</a> (<a class="el" href="struct_sim_data.html">SimData</a> *d)</td></tr>
-<tr class="memdesc:gae974a74145fe876e303e14336d3c5d3a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Function to identify the next sequential integer that does not identify a group that currently has member(s).  <a href="group__supporters.html#gae974a74145fe876e303e14336d3c5d3a">More...</a><br /></td></tr>
-<tr class="separator:gae974a74145fe876e303e14336d3c5d3a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga71dbb7fd0d0317d24aa06b6bbb472367"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__supporters.html#ga71dbb7fd0d0317d24aa06b6bbb472367">get_n_new_group_nums</a> (<a class="el" href="struct_sim_data.html">SimData</a> *d, int n, int *result)</td></tr>
-<tr class="memdesc:ga71dbb7fd0d0317d24aa06b6bbb472367"><td class="mdescLeft">&#160;</td><td class="mdescRight">Function to identify the next n sequential integers that do not identify a group that currently has member(s).  <a href="group__supporters.html#ga71dbb7fd0d0317d24aa06b6bbb472367">More...</a><br /></td></tr>
-<tr class="separator:ga71dbb7fd0d0317d24aa06b6bbb472367"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gace12db201ad55ffc72c26a76ee8fbfc5"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__supporters.html#gace12db201ad55ffc72c26a76ee8fbfc5">set_group_list</a> (<a class="el" href="struct_sim_data.html">SimData</a> *d, int by_n, int new_group)</td></tr>
-<tr class="separator:gace12db201ad55ffc72c26a76ee8fbfc5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gafad0846098c4da7ca876f0a625f369e1"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__supporters.html#gafad0846098c4da7ca876f0a625f369e1">set_names</a> (<a class="el" href="struct_allele_matrix.html">AlleleMatrix</a> *a, const char *prefix, const int suffix, const int from_index)</td></tr>
+<tr class="memdesc:gafad0846098c4da7ca876f0a625f369e1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Fills the designated section of the <code>.names</code> array in an <a class="el" href="struct_allele_matrix.html">AlleleMatrix</a> with the pattern <code>prefix</code>index.  <a href="group__supporters.html#gafad0846098c4da7ca876f0a625f369e1">More...</a><br /></td></tr>
+<tr class="separator:gafad0846098c4da7ca876f0a625f369e1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga80c7861f7c1014e8c406ef279a54759f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__supporters.html#ga80c7861f7c1014e8c406ef279a54759f">set_ids</a> (<a class="el" href="struct_sim_data.html">SimData</a> *d, const int from_index, const int to_index)</td></tr>
+<tr class="memdesc:ga80c7861f7c1014e8c406ef279a54759f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Allocate lifetime-unique ids to each genotype in the range of whole <a class="el" href="struct_sim_data.html" title="Composite type that is used to run crossing simulations.">SimData</a> indexes <code>from_index</code> to <code>to_index</code> inclusive.  <a href="group__supporters.html#ga80c7861f7c1014e8c406ef279a54759f">More...</a><br /></td></tr>
+<tr class="separator:ga80c7861f7c1014e8c406ef279a54759f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga4467dd870605266ac95eff75bacffb1f"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__supporters.html#ga4467dd870605266ac95eff75bacffb1f">get_integer_digits</a> (const int i)</td></tr>
+<tr class="memdesc:ga4467dd870605266ac95eff75bacffb1f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Count and return the number of digits in <code>i</code>.  <a href="group__supporters.html#ga4467dd870605266ac95eff75bacffb1f">More...</a><br /></td></tr>
+<tr class="separator:ga4467dd870605266ac95eff75bacffb1f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga835f8472c31ae57a4b826417f3dd7781"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__supporters.html#ga835f8472c31ae57a4b826417f3dd7781">get_index_of_label</a> (const <a class="el" href="struct_sim_data.html">SimData</a> *d, const int label)</td></tr>
+<tr class="memdesc:ga835f8472c31ae57a4b826417f3dd7781"><td class="mdescLeft">&#160;</td><td class="mdescRight">Function to identify the label lookup index of a label identifier.  <a href="group__supporters.html#ga835f8472c31ae57a4b826417f3dd7781">More...</a><br /></td></tr>
+<tr class="separator:ga835f8472c31ae57a4b826417f3dd7781"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga081557e4980a6e7e44363e53634d8fb7"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__supporters.html#ga081557e4980a6e7e44363e53634d8fb7">get_new_label_id</a> (const <a class="el" href="struct_sim_data.html">SimData</a> *d)</td></tr>
+<tr class="memdesc:ga081557e4980a6e7e44363e53634d8fb7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Function to identify the next sequential integer that is not already allocated to a label in the simulation.  <a href="group__supporters.html#ga081557e4980a6e7e44363e53634d8fb7">More...</a><br /></td></tr>
+<tr class="separator:ga081557e4980a6e7e44363e53634d8fb7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga57da16044e22c5c21e14b45bbef5e9eb"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__supporters.html#ga57da16044e22c5c21e14b45bbef5e9eb">get_new_group_num</a> (const <a class="el" href="struct_sim_data.html">SimData</a> *d)</td></tr>
+<tr class="memdesc:ga57da16044e22c5c21e14b45bbef5e9eb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Function to identify the next sequential integer that does not identify a group that currently has member(s).  <a href="group__supporters.html#ga57da16044e22c5c21e14b45bbef5e9eb">More...</a><br /></td></tr>
+<tr class="separator:ga57da16044e22c5c21e14b45bbef5e9eb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga5bce9a6f19127aa17d90990dae7e138a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__supporters.html#ga5bce9a6f19127aa17d90990dae7e138a">get_n_new_group_nums</a> (const <a class="el" href="struct_sim_data.html">SimData</a> *d, const int n, int *result)</td></tr>
+<tr class="memdesc:ga5bce9a6f19127aa17d90990dae7e138a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Function to identify the next n sequential integers that do not identify a group that currently has member(s).  <a href="group__supporters.html#ga5bce9a6f19127aa17d90990dae7e138a">More...</a><br /></td></tr>
+<tr class="separator:ga5bce9a6f19127aa17d90990dae7e138a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga887027349503be24b1a847c9b833aaac"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__supporters.html#ga887027349503be24b1a847c9b833aaac">condense_allele_matrix</a> (<a class="el" href="struct_sim_data.html">SimData</a> *d)</td></tr>
 <tr class="memdesc:ga887027349503be24b1a847c9b833aaac"><td class="mdescLeft">&#160;</td><td class="mdescRight">A function to tidy the internal storage of genotypes after addition or deletion of genotypes in the <a class="el" href="struct_sim_data.html" title="Composite type that is used to run crossing simulations.">SimData</a>.  <a href="group__supporters.html#ga887027349503be24b1a847c9b833aaac">More...</a><br /></td></tr>
 <tr class="separator:ga887027349503be24b1a847c9b833aaac"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga08d9e7703e6779d2122baa4309fca0ab"><td class="memItemLeft" align="right" valign="top">void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__supporters.html#ga08d9e7703e6779d2122baa4309fca0ab">get_malloc</a> (size_t size)</td></tr>
-<tr class="memdesc:ga08d9e7703e6779d2122baa4309fca0ab"><td class="mdescLeft">&#160;</td><td class="mdescRight">Replace calls to malloc direct with this function, which errors and exits with status 2 if memory allocation fails.  <a href="group__supporters.html#ga08d9e7703e6779d2122baa4309fca0ab">More...</a><br /></td></tr>
-<tr class="separator:ga08d9e7703e6779d2122baa4309fca0ab"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga6072a152b624743eeafb30adaf9b7f17"><td class="memItemLeft" align="right" valign="top">void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__supporters.html#ga6072a152b624743eeafb30adaf9b7f17">get_malloc</a> (const size_t size)</td></tr>
+<tr class="memdesc:ga6072a152b624743eeafb30adaf9b7f17"><td class="mdescLeft">&#160;</td><td class="mdescRight">Replace calls to malloc direct with this function, which errors and exits with status 2 if memory allocation fails.  <a href="group__supporters.html#ga6072a152b624743eeafb30adaf9b7f17">More...</a><br /></td></tr>
+<tr class="separator:ga6072a152b624743eeafb30adaf9b7f17"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga80cab739edbd12bbd2ad1f9b77b27548"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__supporters.html#ga80cab739edbd12bbd2ad1f9b77b27548">_simdata_pos_compare</a> (const void *pp0, const void *pp1)</td></tr>
 <tr class="memdesc:ga80cab739edbd12bbd2ad1f9b77b27548"><td class="mdescLeft">&#160;</td><td class="mdescRight">Comparator function for qsort.  <a href="group__supporters.html#ga80cab739edbd12bbd2ad1f9b77b27548">More...</a><br /></td></tr>
 <tr class="separator:ga80cab739edbd12bbd2ad1f9b77b27548"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -159,7 +181,7 @@ Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Comparator function for qsort. </p>
-<p >Used to compare an array of doubles* to sort them in ascending order of the doubles they point to. </p><dl class="section see"><dt>See also</dt><dd><a class="el" href="group__calculators.html#gae34db60faf62b898d0572ea6c039b96a" title="Takes the top_n individuals in the group with the best breeding values/fitnesses and puts them in a n...">split_by_bv()</a></dd></dl>
+<p >Used to compare an array of doubles* to sort them in ascending order of the doubles they point to. </p><dl class="section see"><dt>See also</dt><dd><a class="el" href="group__calculators.html#ga98696fc21c0424d98a5eed4df5c60f04" title="Takes the top_n individuals in the group with the best breeding values/fitnesses and puts them in a n...">split_by_bv()</a></dd></dl>
 <p>Sorts lower numbers before higher numbers. If they are equal, their order after comparison is undefined. </p>
 <div id="dynsection-0" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-0-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
@@ -168,9 +190,9 @@ Functions</h2></td></tr>
 <div id="dynsection-0-content" class="dyncontent" style="display:none;">
 <div class="center"><img src="group__supporters_ga311381904a1ca73ea26dfede9fcddea2_icgraph.png" border="0" usemap="#agroup__supporters_ga311381904a1ca73ea26dfede9fcddea2_icgraph" alt=""/></div>
 <map name="agroup__supporters_ga311381904a1ca73ea26dfede9fcddea2_icgraph" id="agroup__supporters_ga311381904a1ca73ea26dfede9fcddea2_icgraph">
-<area shape="rect" title="Comparator function for qsort." alt="" coords="341,13,536,39"/>
-<area shape="rect" href="group__calculators.html#gae34db60faf62b898d0572ea6c039b96a" title="Takes the top_n individuals in the group with the best breeding values/fitnesses and puts them in a n..." alt="" coords="207,13,293,39"/>
-<area shape="rect" href="group__crossers.html#ga68aca99a41527b019316c8243e6fc7a7" title="Find the top m percent of a group and perform random crosses between those top individuals." alt="" coords="5,5,159,47"/>
+<area shape="rect" title="Comparator function for qsort." alt="" coords="339,13,532,41"/>
+<area shape="rect" href="group__calculators.html#ga98696fc21c0424d98a5eed4df5c60f04" title="Takes the top_n individuals in the group with the best breeding values/fitnesses and puts them in a n..." alt="" coords="206,13,291,41"/>
+<area shape="rect" href="group__crossers.html#gaa41e75da9e6e4f8db5466e8929dec2ee" title="Find the top m percent of a group and perform random crosses between those top individuals." alt="" coords="5,5,158,49"/>
 </map>
 </div>
 
@@ -203,7 +225,7 @@ Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Comparator function for qsort. </p>
-<p >Used to compare an array of floats to sort them in ascending order. </p><dl class="section see"><dt>See also</dt><dd><a class="el" href="group__meiosis.html#gae406f4a0266b7480e49899693f1b00da" title="Fills a char* with the simulated result of meiosis (reduction and recombination) from the marker alle...">generate_gamete()</a></dd></dl>
+<p >Used to compare an array of floats to sort them in ascending order. </p><dl class="section see"><dt>See also</dt><dd><a class="el" href="group__meiosis.html#ga90f7b0635f358ca029d16b996e203cbf" title="Fills a char* with the simulated result of meiosis (reduction and recombination) from the marker alle...">generate_gamete()</a></dd></dl>
 <p>Sorts lower numbers before higher numbers. If floats are equal, their order after comparison is undefined. </p>
 <div id="dynsection-1" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-1-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
@@ -212,19 +234,19 @@ Functions</h2></td></tr>
 <div id="dynsection-1-content" class="dyncontent" style="display:none;">
 <div class="center"><img src="group__supporters_ga3744bc6f3fcb52952d520029055e8af8_icgraph.png" border="0" usemap="#agroup__supporters_ga3744bc6f3fcb52952d520029055e8af8_icgraph" alt=""/></div>
 <map name="agroup__supporters_ga3744bc6f3fcb52952d520029055e8af8_icgraph" id="agroup__supporters_ga3744bc6f3fcb52952d520029055e8af8_icgraph">
-<area shape="rect" title="Comparator function for qsort." alt="" coords="661,206,841,233"/>
-<area shape="rect" href="group__meiosis.html#gaa18b10bcd660dee5213868cc3244f826" title="Get the alleles of the outcome of crossing two genotypes." alt="" coords="472,130,583,157"/>
-<area shape="rect" href="group__meiosis.html#gac1f46b3de0afb4674ae6d34311e7aea7" title="Get the alleles of the outcome of producing a doubled haploid from a gamete from a given parent." alt="" coords="441,206,613,233"/>
-<area shape="rect" href="group__meiosis.html#gae406f4a0266b7480e49899693f1b00da" title="Fills a char* with the simulated result of meiosis (reduction and recombination) from the marker alle..." alt="" coords="466,257,589,283"/>
-<area shape="rect" href="group__crossers.html#gae66231fb141a76432d1211e2cf0baf25" title="Performs random crosses among members of a group." alt="" coords="219,18,390,45"/>
-<area shape="rect" href="group__crossers.html#ga3be2cb18d1c722b3a766a7a5663a8f0c" title="Performs random crosses where the first parent comes from one group and the second from another." alt="" coords="220,79,389,106"/>
-<area shape="rect" href="group__crossers.html#gabb793988799d792dfe4007efdf988068" title="Performs the crosses of pairs of parents whose ids are provided in an array." alt="" coords="216,130,393,157"/>
-<area shape="rect" href="group__crossers.html#gadf5beb682ac15fa5a0176e480adc9d91" title="Selfs each member of a group for a certain number of generations." alt="" coords="257,181,352,207"/>
-<area shape="rect" href="group__crossers.html#ga68aca99a41527b019316c8243e6fc7a7" title="Find the top m percent of a group and perform random crosses between those top individuals." alt="" coords="10,5,163,47"/>
-<area shape="rect" href="group__crossers.html#ga3f1b06b7aa35e6a05918e16d1deabeee" title="Perform crosses between all pairs of parents in the group from_group and allocates the resulting offs..." alt="" coords="8,71,165,112"/>
-<area shape="rect" href="group__crossers.html#ga3b67d38c13c7a8bef2d0fc91c0365177" title="Perform crosses between pairs of parents identified by name in a file and allocate the resulting offs..." alt="" coords="5,137,168,163"/>
-<area shape="rect" href="group__crossers.html#gaa7c90b4015e4abce750176c6d891cad2" title="Perform crosses between previously&#45;generated offspring of pairs of parents identified by name in a fi..." alt="" coords="11,188,163,229"/>
-<area shape="rect" href="group__crossers.html#gaf078d6bc1b5d4234a9b960e6132480aa" title="Creates a doubled haploid from each member of a group." alt="" coords="224,231,385,258"/>
+<area shape="rect" title="Comparator function for qsort." alt="" coords="658,212,838,240"/>
+<area shape="rect" href="group__meiosis.html#gafc34eb6a9bf8128a2619ffd322db8689" title="Get the alleles of the outcome of crossing two genotypes." alt="" coords="470,135,580,163"/>
+<area shape="rect" href="group__meiosis.html#ga795bfb971a6c406f5f06c14467fd2287" title="Get the alleles of the outcome of producing a doubled haploid from a gamete from a given parent." alt="" coords="439,212,610,240"/>
+<area shape="rect" href="group__meiosis.html#ga90f7b0635f358ca029d16b996e203cbf" title="Fills a char* with the simulated result of meiosis (reduction and recombination) from the marker alle..." alt="" coords="464,264,585,292"/>
+<area shape="rect" href="group__crossers.html#ga7f9865d8d1912cda7e8524d1ff761de6" title="Performs random crosses among members of a group." alt="" coords="218,19,388,47"/>
+<area shape="rect" href="group__crossers.html#ga43f436342a1afc3b14343a8f6e9385f9" title="Performs random crosses where the first parent comes from one group and the second from another." alt="" coords="219,83,387,111"/>
+<area shape="rect" href="sim-operations_8c.html#a42ded1341b4c5a03c2233e2a3875fe07" title="Performs the crosses of pairs of parents whose indexes are provided in an array." alt="" coords="215,135,391,163"/>
+<area shape="rect" href="group__crossers.html#gaf0d8ffcde1a2098e7ae807a031bbe7b9" title="Selfs each member of a group for a certain number of generations." alt="" coords="256,187,350,215"/>
+<area shape="rect" href="group__crossers.html#gaa41e75da9e6e4f8db5466e8929dec2ee" title="Find the top m percent of a group and perform random crosses between those top individuals." alt="" coords="10,5,162,49"/>
+<area shape="rect" href="group__crossers.html#ga9d79117014f247c078c6576c70d600fb" title="Perform crosses between all pairs of parents in the group from_group and allocates the resulting offs..." alt="" coords="8,73,164,117"/>
+<area shape="rect" href="group__crossers.html#ga7fafc033bf3aaa14c9d5affbe9421ca9" title="Perform crosses between pairs of parents identified by name in a file and allocate the resulting offs..." alt="" coords="5,141,167,169"/>
+<area shape="rect" href="group__crossers.html#gafb306165b0cf0f5cd752f3eaf4c60928" title="Perform crosses between previously&#45;generated offspring of pairs of parents identified by name in a fi..." alt="" coords="10,193,162,237"/>
+<area shape="rect" href="group__crossers.html#gab081b254e7abce63067b8c02fbac774f" title="Creates a doubled haploid from each member of a group." alt="" coords="223,239,383,267"/>
 </map>
 </div>
 
@@ -257,7 +279,7 @@ Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Comparator function for qsort. </p>
-<p >Used to compare an array of integers to sort them in ascending order. </p><dl class="section see"><dt>See also</dt><dd><a class="el" href="group__getters.html#ga9e5a5fb63d74d84617d91d4ae9acf1ee" title="Identify every group number that currently has members.">get_existing_groups()</a></dd></dl>
+<p >Used to compare an array of integers to sort them in ascending order. </p><dl class="section see"><dt>See also</dt><dd><a class="el" href="group__collgetters.html#ga6f49e4b90be53f42241fcfb9850f2f29" title="Identify group numbers that currently have members.">get_existing_groups()</a></dd></dl>
 <p>Sorts lower numbers before higher numbers. If floats are equal, their order after comparison is undefined. </p>
 <div id="dynsection-2" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-2-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
@@ -266,32 +288,34 @@ Functions</h2></td></tr>
 <div id="dynsection-2-content" class="dyncontent" style="display:none;">
 <div class="center"><img src="group__supporters_gadae2e9f7e1061cb20426ba2333b7629b_icgraph.png" border="0" usemap="#agroup__supporters_gadae2e9f7e1061cb20426ba2333b7629b_icgraph" alt=""/></div>
 <map name="agroup__supporters_gadae2e9f7e1061cb20426ba2333b7629b_icgraph" id="agroup__supporters_gadae2e9f7e1061cb20426ba2333b7629b_icgraph">
-<area shape="rect" title="Comparator function for qsort." alt="" coords="1048,595,1219,622"/>
-<area shape="rect" href="group__getters.html#ga3305ddcc29138d2d92689f39a7885ca0" title="Identify every group number that currently has members." alt="" coords="861,503,1000,530"/>
-<area shape="rect" href="group__groupmod.html#gaf2eda46d016c384b166ce65605952b7c" title="Take a list of indexes and allocate the genotypes at those indexes to a new group." alt="" coords="455,659,573,686"/>
-<area shape="rect" href="group__supporters.html#ga71dbb7fd0d0317d24aa06b6bbb472367" title="Function to identify the next n sequential integers that do not identify a group that currently has m..." alt="" coords="651,107,813,134"/>
-<area shape="rect" href="group__supporters.html#gae974a74145fe876e303e14336d3c5d3a" title="Function to identify the next sequential integer that does not identify a group that currently has me..." alt="" coords="661,423,803,450"/>
-<area shape="rect" href="group__groupmod.html#ga62aec37e088d85c1df20a53b6d65daa4" title="Split a group into a set of smaller groups, each of which contains the genotypes in the original grou..." alt="" coords="669,474,795,501"/>
-<area shape="rect" href="group__groupmod.html#ga39c5cb49068858b095acea9385e017ec" title="Split a group into a set of smaller groups, each containing the genotypes from the original group tha..." alt="" coords="673,525,791,567"/>
-<area shape="rect" href="group__groupmod.html#ga4cad3df4dd91ba6d8f8be038e14aa182" title="Give every individual in the group a new group number that does not belong to any other existing grou..." alt="" coords="662,591,802,618"/>
-<area shape="rect" href="group__groupmod.html#ga75110a594a4cd6ddfc5f6905a83c422e" title="Allocate each member of the group to one of n groups with custom probabilities for each group." alt="" coords="443,5,585,47"/>
-<area shape="rect" href="group__groupmod.html#ga8fe9bd972582622c399c8b6a7c81a6d1" title="Split a group into n groups of equal size (or size differing only by one, if n does not perfectly div..." alt="" coords="432,71,596,112"/>
-<area shape="rect" href="group__groupmod.html#ga38909617537e075fa1bea7cc15ca86df" title="Allocate each member of the group to one of n groups with equal probability." alt="" coords="440,137,588,163"/>
-<area shape="rect" href="group__groupmod.html#gae4916db977e1014b5a4b163edf37427b" title="Split a group into n groups of equal size (or size differing only by one, if n does not perfectly div..." alt="" coords="227,78,357,105"/>
-<area shape="rect" href="group__crossers.html#gae66231fb141a76432d1211e2cf0baf25" title="Performs random crosses among members of a group." alt="" coords="207,187,377,214"/>
-<area shape="rect" href="group__crossers.html#ga3be2cb18d1c722b3a766a7a5663a8f0c" title="Performs random crosses where the first parent comes from one group and the second from another." alt="" coords="429,238,599,265"/>
-<area shape="rect" href="group__crossers.html#gabb793988799d792dfe4007efdf988068" title="Performs the crosses of pairs of parents whose ids are provided in an array." alt="" coords="425,289,603,315"/>
-<area shape="rect" href="group__loaders.html#ga8bd85cb47ec8e0c4049f937ef40ae102" title="Appends genotype data from a file to an existing SimData." alt="" coords="437,340,591,381"/>
-<area shape="rect" href="group__crossers.html#gaa42e48ab06f9051e5ed6879409cbe2f4" title="Creates an identical copy of each member of a group." alt="" coords="465,406,563,433"/>
-<area shape="rect" href="group__crossers.html#gaf078d6bc1b5d4234a9b960e6132480aa" title="Creates a doubled haploid from each member of a group." alt="" coords="433,457,595,483"/>
-<area shape="rect" href="group__crossers.html#gadf5beb682ac15fa5a0176e480adc9d91" title="Selfs each member of a group for a certain number of generations." alt="" coords="467,507,561,534"/>
-<area shape="rect" href="group__groupmod.html#ga64b60c64209718e14b77ff4f4a991fe0" title="Split a group into two groups of equal size (or size differing only by one, if the original group had..." alt="" coords="442,558,586,585"/>
-<area shape="rect" href="group__groupmod.html#gacd7e433cf6af229f0d2932b04468e9ca" title="Flip a coin for each member of the group to decide if it should be moved to the new group." alt="" coords="433,609,595,635"/>
-<area shape="rect" href="group__crossers.html#ga68aca99a41527b019316c8243e6fc7a7" title="Find the top m percent of a group and perform random crosses between those top individuals." alt="" coords="5,416,159,457"/>
-<area shape="rect" href="group__crossers.html#ga3f1b06b7aa35e6a05918e16d1deabeee" title="Perform crosses between all pairs of parents in the group from_group and allocates the resulting offs..." alt="" coords="213,239,371,280"/>
-<area shape="rect" href="group__crossers.html#ga3b67d38c13c7a8bef2d0fc91c0365177" title="Perform crosses between pairs of parents identified by name in a file and allocate the resulting offs..." alt="" coords="211,305,373,331"/>
-<area shape="rect" href="group__crossers.html#gaa7c90b4015e4abce750176c6d891cad2" title="Perform crosses between previously&#45;generated offspring of pairs of parents identified by name in a fi..." alt="" coords="216,356,368,397"/>
-<area shape="rect" href="group__calculators.html#gae34db60faf62b898d0572ea6c039b96a" title="Takes the top_n individuals in the group with the best breeding values/fitnesses and puts them in a n..." alt="" coords="249,541,335,567"/>
+<area shape="rect" title="Comparator function for qsort." alt="" coords="1042,681,1211,709"/>
+<area shape="rect" href="group__collgetters.html#ga6f49e4b90be53f42241fcfb9850f2f29" title="Identify group numbers that currently have members." alt="" coords="857,579,994,607"/>
+<area shape="rect" href="group__groupmod.html#ga548aadbba9882294ab8241511976b563" title="Take a list of indexes and allocate the genotypes at those indexes to a new group." alt="" coords="453,781,569,809"/>
+<area shape="rect" href="group__supporters.html#ga5bce9a6f19127aa17d90990dae7e138a" title="Function to identify the next n sequential integers that do not identify a group that currently has m..." alt="" coords="647,112,809,140"/>
+<area shape="rect" href="group__supporters.html#ga57da16044e22c5c21e14b45bbef5e9eb" title="Function to identify the next sequential integer that does not identify a group that currently has me..." alt="" coords="658,496,798,524"/>
+<area shape="rect" href="group__groupmod.html#ga938574a9b1c279fc6d8ae9a5d5c14fe0" title="Split a group into a set of smaller groups, each of which contains the genotypes in the original grou..." alt="" coords="666,548,790,576"/>
+<area shape="rect" href="group__groupmod.html#ga7a0e5dbce2c1d0af839712f8215ac4e2" title="Split a group into a set of smaller groups, each containing the genotypes from the original group tha..." alt="" coords="669,600,787,644"/>
+<area shape="rect" href="group__groupmod.html#ga2ffe6f186b1d9309dee151ae06f730b9" title="Give every individual in the group a new group number that does not belong to any other existing grou..." alt="" coords="658,668,798,696"/>
+<area shape="rect" href="group__groupmod.html#gaedf5b91b00b207a38c6a1a036f3853cf" title="Allocate each member of the group to one of n groups with custom probabilities for each group." alt="" coords="440,5,582,49"/>
+<area shape="rect" href="group__groupmod.html#ga74610483035cee35d81bd24c1a044259" title="Split a group into n groups of equal size (or size differing only by one, if n does not perfectly div..." alt="" coords="430,73,593,117"/>
+<area shape="rect" href="group__groupmod.html#gad4682769497c140c4374d3a8d85350c6" title="Allocate each member of the group to one of n groups with equal probability." alt="" coords="438,141,585,169"/>
+<area shape="rect" href="group__groupmod.html#ga49e99e674d87de80facffa7bed28393f" title="Split a group into n groups of equal size (or size differing only by one, if n does not perfectly div..." alt="" coords="225,81,356,109"/>
+<area shape="rect" href="group__crossers.html#ga7f9865d8d1912cda7e8524d1ff761de6" title="Performs random crosses among members of a group." alt="" coords="206,193,375,221"/>
+<area shape="rect" href="group__crossers.html#ga43f436342a1afc3b14343a8f6e9385f9" title="Performs random crosses where the first parent comes from one group and the second from another." alt="" coords="427,245,595,273"/>
+<area shape="rect" href="sim-operations_8c.html#a42ded1341b4c5a03c2233e2a3875fe07" title="Performs the crosses of pairs of parents whose indexes are provided in an array." alt="" coords="423,297,599,325"/>
+<area shape="rect" href="group__loaders.html#ga8bd85cb47ec8e0c4049f937ef40ae102" title="Appends genotype data from a file to an existing SimData." alt="" coords="435,349,587,393"/>
+<area shape="rect" href="group__crossers.html#ga5e1da39f8341127e758d32393e8654aa" title="Creates an identical copy of each member of a group." alt="" coords="462,417,560,445"/>
+<area shape="rect" href="group__crossers.html#gab081b254e7abce63067b8c02fbac774f" title="Creates a doubled haploid from each member of a group." alt="" coords="431,469,591,497"/>
+<area shape="rect" href="group__crossers.html#gaf0d8ffcde1a2098e7ae807a031bbe7b9" title="Selfs each member of a group for a certain number of generations." alt="" coords="464,521,558,549"/>
+<area shape="rect" href="group__groupmod.html#ga9d60310dc0abe90122ada760536e0fe9" title="Allocates the genotypes with values of a label in a particular range to a new group." alt="" coords="442,573,581,601"/>
+<area shape="rect" href="group__groupmod.html#ga4d831280c4cf64be337f1bff8bf62d80" title="Allocates the genotypes with a particular value of a label to a new group." alt="" coords="443,625,579,653"/>
+<area shape="rect" href="group__groupmod.html#ga02fd183dde037779a2d6b18c84907ba9" title="Split a group into two groups of equal size (or size differing only by one, if the original group had..." alt="" coords="440,677,583,705"/>
+<area shape="rect" href="group__groupmod.html#ga28fa0c21827594b777881c45878f4444" title="Flip a coin for each member of the group to decide if it should be moved to the new group." alt="" coords="431,729,591,757"/>
+<area shape="rect" href="group__crossers.html#gaa41e75da9e6e4f8db5466e8929dec2ee" title="Find the top m percent of a group and perform random crosses between those top individuals." alt="" coords="5,479,158,523"/>
+<area shape="rect" href="group__crossers.html#ga9d79117014f247c078c6576c70d600fb" title="Perform crosses between all pairs of parents in the group from_group and allocates the resulting offs..." alt="" coords="212,245,369,289"/>
+<area shape="rect" href="group__crossers.html#ga7fafc033bf3aaa14c9d5affbe9421ca9" title="Perform crosses between pairs of parents identified by name in a file and allocate the resulting offs..." alt="" coords="210,313,371,341"/>
+<area shape="rect" href="group__crossers.html#gafb306165b0cf0f5cd752f3eaf4c60928" title="Perform crosses between previously&#45;generated offspring of pairs of parents identified by name in a fi..." alt="" coords="215,365,366,409"/>
+<area shape="rect" href="group__calculators.html#ga98696fc21c0424d98a5eed4df5c60f04" title="Takes the top_n individuals in the group with the best breeding values/fitnesses and puts them in a n..." alt="" coords="248,607,333,635"/>
 </map>
 </div>
 
@@ -324,7 +348,7 @@ Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Comparator function for qsort. </p>
-<p >Used to compare an array of integers* to sort the integers pointed to in ascending order. </p><dl class="section see"><dt>See also</dt><dd><a class="el" href="group__getters.html#ga66bed294fc6cad3ca04026cbbdb62e02" title="Identify every group number that currently has members and the number of genotypes currently allocate...">get_existing_group_counts()</a></dd></dl>
+<p >Used to compare an array of integers* to sort the integers pointed to in ascending order. </p><dl class="section see"><dt>See also</dt><dd><a class="el" href="group__collgetters.html#gad827c6748cf9e9da0428c9bc730101ed" title="Identify group numbers that currently has members and the number of genotypes currently allocated to ...">get_existing_group_counts()</a></dd></dl>
 <p>Sorts lower numbers before higher numbers. If floats are equal, their order after comparison is undefined. </p>
 <div id="dynsection-3" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-3-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
@@ -333,8 +357,8 @@ Functions</h2></td></tr>
 <div id="dynsection-3-content" class="dyncontent" style="display:none;">
 <div class="center"><img src="group__supporters_gacda79ff4e2a3229d13c5393d006136db_icgraph.png" border="0" usemap="#agroup__supporters_gacda79ff4e2a3229d13c5393d006136db_icgraph" alt=""/></div>
 <map name="agroup__supporters_gacda79ff4e2a3229d13c5393d006136db_icgraph" id="agroup__supporters_gacda79ff4e2a3229d13c5393d006136db_icgraph">
-<area shape="rect" title="Comparator function for qsort." alt="" coords="184,13,361,39"/>
-<area shape="rect" href="group__getters.html#ga23caa19435d6b5d27a7a5b9b6643ff9a" title="Identify every group number that currently has members and the number of genotypes currently allocate..." alt="" coords="5,5,136,47"/>
+<area shape="rect" title="Comparator function for qsort." alt="" coords="184,13,360,41"/>
+<area shape="rect" href="group__collgetters.html#gad827c6748cf9e9da0428c9bc730101ed" title="Identify group numbers that currently has members and the number of genotypes currently allocated to ..." alt="" coords="5,5,136,49"/>
 </map>
 </div>
 
@@ -367,7 +391,7 @@ Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Comparator function for qsort. </p>
-<p >Used to compare an array of doubles* to sort them in descending order of the doubles they point to. </p><dl class="section see"><dt>See also</dt><dd><a class="el" href="group__calculators.html#gae34db60faf62b898d0572ea6c039b96a" title="Takes the top_n individuals in the group with the best breeding values/fitnesses and puts them in a n...">split_by_bv()</a></dd></dl>
+<p >Used to compare an array of doubles* to sort them in descending order of the doubles they point to. </p><dl class="section see"><dt>See also</dt><dd><a class="el" href="group__calculators.html#ga98696fc21c0424d98a5eed4df5c60f04" title="Takes the top_n individuals in the group with the best breeding values/fitnesses and puts them in a n...">split_by_bv()</a></dd></dl>
 <p>Sorts higher numbers before lower numbers. If they are equal, their order after comparison is undefined. </p>
 <div id="dynsection-4" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-4-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
@@ -376,9 +400,9 @@ Functions</h2></td></tr>
 <div id="dynsection-4-content" class="dyncontent" style="display:none;">
 <div class="center"><img src="group__supporters_ga2aae9a568cd0cd5313808e458a9fe388_icgraph.png" border="0" usemap="#agroup__supporters_ga2aae9a568cd0cd5313808e458a9fe388_icgraph" alt=""/></div>
 <map name="agroup__supporters_ga2aae9a568cd0cd5313808e458a9fe388_icgraph" id="agroup__supporters_ga2aae9a568cd0cd5313808e458a9fe388_icgraph">
-<area shape="rect" title="Comparator function for qsort." alt="" coords="341,5,481,47"/>
-<area shape="rect" href="group__calculators.html#gae34db60faf62b898d0572ea6c039b96a" title="Takes the top_n individuals in the group with the best breeding values/fitnesses and puts them in a n..." alt="" coords="207,13,293,39"/>
-<area shape="rect" href="group__crossers.html#ga68aca99a41527b019316c8243e6fc7a7" title="Find the top m percent of a group and perform random crosses between those top individuals." alt="" coords="5,5,159,47"/>
+<area shape="rect" title="Comparator function for qsort." alt="" coords="339,5,478,49"/>
+<area shape="rect" href="group__calculators.html#ga98696fc21c0424d98a5eed4df5c60f04" title="Takes the top_n individuals in the group with the best breeding values/fitnesses and puts them in a n..." alt="" coords="206,13,291,41"/>
+<area shape="rect" href="group__crossers.html#gaa41e75da9e6e4f8db5466e8929dec2ee" title="Find the top m percent of a group and perform random crosses between those top individuals." alt="" coords="5,5,158,49"/>
 </map>
 </div>
 
@@ -423,10 +447,10 @@ Functions</h2></td></tr>
 <div id="dynsection-5-content" class="dyncontent" style="display:none;">
 <div class="center"><img src="group__supporters_ga80cab739edbd12bbd2ad1f9b77b27548_icgraph.png" border="0" usemap="#agroup__supporters_ga80cab739edbd12bbd2ad1f9b77b27548_icgraph" alt=""/></div>
 <map name="agroup__supporters_ga80cab739edbd12bbd2ad1f9b77b27548_icgraph" id="agroup__supporters_ga80cab739edbd12bbd2ad1f9b77b27548_icgraph">
-<area shape="rect" title="Comparator function for qsort." alt="" coords="576,5,736,32"/>
-<area shape="rect" href="group__supporters.html#gadebbfa88bf139ddca501ab158f3746c5" title="Takes a SimData object, and sorts its markers, the rows of its parent gen AlleleMatrix (because they ..." alt="" coords="391,5,528,32"/>
-<area shape="rect" href="group__loaders.html#ga54cd625669413c2ef171060e9844d814" title="Populates a SimData combination from scratch with marker allele data, a genetic map,..." alt="" coords="5,5,124,32"/>
-<area shape="rect" href="group__loaders.html#ga8edb09b9b9eb27f84ac59cc4342ea855" title="Populates a SimData combination with data from a genetic map." alt="" coords="172,31,343,57"/>
+<area shape="rect" title="Comparator function for qsort." alt="" coords="573,5,733,33"/>
+<area shape="rect" href="group__supporters.html#gadebbfa88bf139ddca501ab158f3746c5" title="Takes a SimData object, and sorts its markers, the rows of its parent gen AlleleMatrix (because they ..." alt="" coords="389,5,525,33"/>
+<area shape="rect" href="group__loaders.html#ga54cd625669413c2ef171060e9844d814" title="Populates a SimData combination from scratch with marker allele data, a genetic map,..." alt="" coords="5,5,124,33"/>
+<area shape="rect" href="group__loaders.html#ga8edb09b9b9eb27f84ac59cc4342ea855" title="Populates a SimData combination with data from a genetic map." alt="" coords="172,31,341,59"/>
 </map>
 </div>
 
@@ -465,8 +489,8 @@ Functions</h2></td></tr>
 <div id="dynsection-6-content" class="dyncontent" style="display:none;">
 <div class="center"><img src="group__supporters_ga887027349503be24b1a847c9b833aaac_cgraph.png" border="0" usemap="#agroup__supporters_ga887027349503be24b1a847c9b833aaac_cgraph" alt=""/></div>
 <map name="agroup__supporters_ga887027349503be24b1a847c9b833aaac_cgraph" id="agroup__supporters_ga887027349503be24b1a847c9b833aaac_cgraph">
-<area shape="rect" title="A function to tidy the internal storage of genotypes after addition or deletion of genotypes in the S..." alt="" coords="5,5,164,32"/>
-<area shape="rect" href="group__deletors.html#gadd4a9c17e8c3e59fc00eee25635b110f" title="Deletes the full AlleleMatrix object and frees its memory." alt="" coords="212,5,349,32"/>
+<area shape="rect" title="A function to tidy the internal storage of genotypes after addition or deletion of genotypes in the S..." alt="" coords="5,5,163,33"/>
+<area shape="rect" href="group__deletors.html#gadd4a9c17e8c3e59fc00eee25635b110f" title="Delete the AlleleMatrix linked list from m onwards and frees its memory." alt="" coords="211,5,347,33"/>
 </map>
 </div>
 <div id="dynsection-7" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
@@ -476,19 +500,70 @@ Functions</h2></td></tr>
 <div id="dynsection-7-content" class="dyncontent" style="display:none;">
 <div class="center"><img src="group__supporters_ga887027349503be24b1a847c9b833aaac_icgraph.png" border="0" usemap="#agroup__supporters_ga887027349503be24b1a847c9b833aaac_icgraph" alt=""/></div>
 <map name="agroup__supporters_ga887027349503be24b1a847c9b833aaac_icgraph" id="agroup__supporters_ga887027349503be24b1a847c9b833aaac_icgraph">
-<area shape="rect" title="A function to tidy the internal storage of genotypes after addition or deletion of genotypes in the S..." alt="" coords="441,211,600,238"/>
-<area shape="rect" href="group__crossers.html#gae66231fb141a76432d1211e2cf0baf25" title="Performs random crosses among members of a group." alt="" coords="219,19,390,46"/>
-<area shape="rect" href="group__crossers.html#ga3be2cb18d1c722b3a766a7a5663a8f0c" title="Performs random crosses where the first parent comes from one group and the second from another." alt="" coords="220,81,389,107"/>
-<area shape="rect" href="group__crossers.html#gabb793988799d792dfe4007efdf988068" title="Performs the crosses of pairs of parents whose ids are provided in an array." alt="" coords="216,131,393,158"/>
-<area shape="rect" href="group__deletors.html#gafecdc653eee11af9dbee476eca981a0b" title="Clears memory of all genotypes and associated information belonging to a particular group." alt="" coords="257,182,353,209"/>
-<area shape="rect" href="group__loaders.html#ga8bd85cb47ec8e0c4049f937ef40ae102" title="Appends genotype data from a file to an existing SimData." alt="" coords="228,233,381,275"/>
-<area shape="rect" href="group__crossers.html#gaa42e48ab06f9051e5ed6879409cbe2f4" title="Creates an identical copy of each member of a group." alt="" coords="255,299,354,326"/>
-<area shape="rect" href="group__crossers.html#gaf078d6bc1b5d4234a9b960e6132480aa" title="Creates a doubled haploid from each member of a group." alt="" coords="224,350,385,377"/>
-<area shape="rect" href="group__crossers.html#gadf5beb682ac15fa5a0176e480adc9d91" title="Selfs each member of a group for a certain number of generations." alt="" coords="257,401,352,427"/>
-<area shape="rect" href="group__crossers.html#ga68aca99a41527b019316c8243e6fc7a7" title="Find the top m percent of a group and perform random crosses between those top individuals." alt="" coords="10,5,163,47"/>
-<area shape="rect" href="group__crossers.html#ga3f1b06b7aa35e6a05918e16d1deabeee" title="Perform crosses between all pairs of parents in the group from_group and allocates the resulting offs..." alt="" coords="8,71,165,112"/>
-<area shape="rect" href="group__crossers.html#ga3b67d38c13c7a8bef2d0fc91c0365177" title="Perform crosses between pairs of parents identified by name in a file and allocate the resulting offs..." alt="" coords="5,137,168,163"/>
-<area shape="rect" href="group__crossers.html#gaa7c90b4015e4abce750176c6d891cad2" title="Perform crosses between previously&#45;generated offspring of pairs of parents identified by name in a fi..." alt="" coords="11,188,163,229"/>
+<area shape="rect" title="A function to tidy the internal storage of genotypes after addition or deletion of genotypes in the S..." alt="" coords="439,217,596,245"/>
+<area shape="rect" href="group__crossers.html#ga7f9865d8d1912cda7e8524d1ff761de6" title="Performs random crosses among members of a group." alt="" coords="218,25,388,53"/>
+<area shape="rect" href="group__crossers.html#ga43f436342a1afc3b14343a8f6e9385f9" title="Performs random crosses where the first parent comes from one group and the second from another." alt="" coords="219,83,387,111"/>
+<area shape="rect" href="sim-operations_8c.html#a42ded1341b4c5a03c2233e2a3875fe07" title="Performs the crosses of pairs of parents whose indexes are provided in an array." alt="" coords="215,135,391,163"/>
+<area shape="rect" href="group__deletors.html#gafa812880f0b40686b0a4e1324c911ffd" title="Deletes all genotypes belonging to a particular group." alt="" coords="255,187,351,215"/>
+<area shape="rect" href="group__loaders.html#ga8bd85cb47ec8e0c4049f937ef40ae102" title="Appends genotype data from a file to an existing SimData." alt="" coords="227,239,379,283"/>
+<area shape="rect" href="group__crossers.html#ga5e1da39f8341127e758d32393e8654aa" title="Creates an identical copy of each member of a group." alt="" coords="254,307,352,335"/>
+<area shape="rect" href="group__crossers.html#gab081b254e7abce63067b8c02fbac774f" title="Creates a doubled haploid from each member of a group." alt="" coords="223,359,383,387"/>
+<area shape="rect" href="group__crossers.html#gaf0d8ffcde1a2098e7ae807a031bbe7b9" title="Selfs each member of a group for a certain number of generations." alt="" coords="256,411,350,439"/>
+<area shape="rect" href="group__crossers.html#gaa41e75da9e6e4f8db5466e8929dec2ee" title="Find the top m percent of a group and perform random crosses between those top individuals." alt="" coords="10,5,162,49"/>
+<area shape="rect" href="group__crossers.html#ga9d79117014f247c078c6576c70d600fb" title="Perform crosses between all pairs of parents in the group from_group and allocates the resulting offs..." alt="" coords="8,73,164,117"/>
+<area shape="rect" href="group__crossers.html#ga7fafc033bf3aaa14c9d5affbe9421ca9" title="Perform crosses between pairs of parents identified by name in a file and allocate the resulting offs..." alt="" coords="5,141,167,169"/>
+<area shape="rect" href="group__crossers.html#gafb306165b0cf0f5cd752f3eaf4c60928" title="Perform crosses between previously&#45;generated offspring of pairs of parents identified by name in a fi..." alt="" coords="10,193,162,237"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="ga01a6e3ec05c4a13139cf853e427845fe" name="ga01a6e3ec05c4a13139cf853e427845fe"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga01a6e3ec05c4a13139cf853e427845fe">&#9670;&nbsp;</a></span>create_new_label()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int create_new_label </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="struct_sim_data.html">SimData</a> *&#160;</td>
+          <td class="paramname"><em>d</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const int&#160;</td>
+          <td class="paramname"><em>setTo</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Initialises a new custom label. </p>
+<p >Creates a new custom label on every genotype currently and in future belonging to the <a class="el" href="struct_sim_data.html" title="Composite type that is used to run crossing simulations.">SimData</a>. The value of the label is set as <code>setTo</code> for every genotype.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">d</td><td>pointer to the <code><a class="el" href="struct_sim_data.html" title="Composite type that is used to run crossing simulations.">SimData</a></code> whose child <code><a class="el" href="struct_allele_matrix.html">AlleleMatrix</a></code>s will be given the new label. </td></tr>
+    <tr><td class="paramname">setTo</td><td>the value to which every genotype's label is initialised. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>the label id of the new label </dd></dl>
+<div id="dynsection-8" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-8-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
+<div id="dynsection-8-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-8-content" class="dyncontent" style="display:none;">
+<div class="center"><img src="group__supporters_ga01a6e3ec05c4a13139cf853e427845fe_cgraph.png" border="0" usemap="#agroup__supporters_ga01a6e3ec05c4a13139cf853e427845fe_cgraph" alt=""/></div>
+<map name="agroup__supporters_ga01a6e3ec05c4a13139cf853e427845fe_cgraph" id="agroup__supporters_ga01a6e3ec05c4a13139cf853e427845fe_cgraph">
+<area shape="rect" title="Initialises a new custom label." alt="" coords="5,32,127,60"/>
+<area shape="rect" href="group__supporters.html#ga6072a152b624743eeafb30adaf9b7f17" title="Replace calls to malloc direct with this function, which errors and exits with status 2 if memory all..." alt="" coords="193,5,277,33"/>
+<area shape="rect" href="group__supporters.html#ga081557e4980a6e7e44363e53634d8fb7" title="Function to identify the next sequential integer that is not already allocated to a label in the simu..." alt="" coords="175,57,295,85"/>
 </map>
 </div>
 
@@ -520,34 +595,34 @@ Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
-<div id="dynsection-8" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
-  <img id="dynsection-8-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
-<div id="dynsection-8-summary" class="dynsummary" style="display:block;">
-</div>
-<div id="dynsection-8-content" class="dyncontent" style="display:none;">
-<div class="center"><img src="group__supporters_ga5e049945be5700a6d5a5654b6b332842_cgraph.png" border="0" usemap="#agroup__supporters_ga5e049945be5700a6d5a5654b6b332842_cgraph" alt=""/></div>
-<map name="agroup__supporters_ga5e049945be5700a6d5a5654b6b332842_cgraph" id="agroup__supporters_ga5e049945be5700a6d5a5654b6b332842_cgraph">
-<area shape="rect" title="Updates the chr_ends, n_chr and chr_lengths fields in SimData.map." alt="" coords="5,5,187,32"/>
-<area shape="rect" href="group__supporters.html#gad1a5b9f3e850da13931ee02fbb170d41" title="Replace calls to malloc direct with this function, which errors and exits with status 2 if memory all..." alt="" coords="235,5,320,32"/>
-</map>
-</div>
 <div id="dynsection-9" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
-  <img id="dynsection-9-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
+  <img id="dynsection-9-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
 <div id="dynsection-9-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-9-content" class="dyncontent" style="display:none;">
+<div class="center"><img src="group__supporters_ga5e049945be5700a6d5a5654b6b332842_cgraph.png" border="0" usemap="#agroup__supporters_ga5e049945be5700a6d5a5654b6b332842_cgraph" alt=""/></div>
+<map name="agroup__supporters_ga5e049945be5700a6d5a5654b6b332842_cgraph" id="agroup__supporters_ga5e049945be5700a6d5a5654b6b332842_cgraph">
+<area shape="rect" title="Updates the chr_ends, n_chr and chr_lengths fields in SimData.map." alt="" coords="5,5,186,33"/>
+<area shape="rect" href="group__supporters.html#ga6072a152b624743eeafb30adaf9b7f17" title="Replace calls to malloc direct with this function, which errors and exits with status 2 if memory all..." alt="" coords="234,5,318,33"/>
+</map>
+</div>
+<div id="dynsection-10" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-10-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
+<div id="dynsection-10-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-10-content" class="dyncontent" style="display:none;">
 <div class="center"><img src="group__supporters_ga5e049945be5700a6d5a5654b6b332842_icgraph.png" border="0" usemap="#agroup__supporters_ga5e049945be5700a6d5a5654b6b332842_icgraph" alt=""/></div>
 <map name="agroup__supporters_ga5e049945be5700a6d5a5654b6b332842_icgraph" id="agroup__supporters_ga5e049945be5700a6d5a5654b6b332842_icgraph">
-<area shape="rect" title="Updates the chr_ends, n_chr and chr_lengths fields in SimData.map." alt="" coords="391,5,572,32"/>
-<area shape="rect" href="group__loaders.html#ga54cd625669413c2ef171060e9844d814" title="Populates a SimData combination from scratch with marker allele data, a genetic map,..." alt="" coords="5,5,124,32"/>
-<area shape="rect" href="group__loaders.html#ga8edb09b9b9eb27f84ac59cc4342ea855" title="Populates a SimData combination with data from a genetic map." alt="" coords="172,31,343,57"/>
+<area shape="rect" title="Updates the chr_ends, n_chr and chr_lengths fields in SimData.map." alt="" coords="389,5,569,33"/>
+<area shape="rect" href="group__loaders.html#ga54cd625669413c2ef171060e9844d814" title="Populates a SimData combination from scratch with marker allele data, a genetic map,..." alt="" coords="5,5,124,33"/>
+<area shape="rect" href="group__loaders.html#ga8edb09b9b9eb27f84ac59cc4342ea855" title="Populates a SimData combination with data from a genetic map." alt="" coords="172,31,341,59"/>
 </map>
 </div>
 
 </div>
 </div>
-<a id="ga392c23248f22e9faf085198dbb1d8711" name="ga392c23248f22e9faf085198dbb1d8711"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ga392c23248f22e9faf085198dbb1d8711">&#9670;&nbsp;</a></span>get_file_dimensions()</h2>
+<a id="ga10dddc2d2028b8c1341837897b6eee4d" name="ga10dddc2d2028b8c1341837897b6eee4d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga10dddc2d2028b8c1341837897b6eee4d">&#9670;&nbsp;</a></span>get_file_dimensions()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -561,7 +636,7 @@ Functions</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">char&#160;</td>
+          <td class="paramtype">const char&#160;</td>
           <td class="paramname"><em>sep</em>&#160;</td>
         </tr>
         <tr>
@@ -584,29 +659,29 @@ Functions</h2></td></tr>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd><a class="el" href="struct_table_size.html" title="A simple struct used for returning the dimensions of a matrix or table.">TableSize</a> struct with .num_columns and .num_rows filled. These counts include header rows/columns and exclude blank rows. </dd></dl>
-<div id="dynsection-10" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
-  <img id="dynsection-10-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
-<div id="dynsection-10-summary" class="dynsummary" style="display:block;">
+<div id="dynsection-11" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-11-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
+<div id="dynsection-11-summary" class="dynsummary" style="display:block;">
 </div>
-<div id="dynsection-10-content" class="dyncontent" style="display:none;">
-<div class="center"><img src="group__supporters_ga392c23248f22e9faf085198dbb1d8711_icgraph.png" border="0" usemap="#agroup__supporters_ga392c23248f22e9faf085198dbb1d8711_icgraph" alt=""/></div>
-<map name="agroup__supporters_ga392c23248f22e9faf085198dbb1d8711_icgraph" id="agroup__supporters_ga392c23248f22e9faf085198dbb1d8711_icgraph">
-<area shape="rect" title="Opens a table file and reads the number of columns and rows (including headers) separated by sep into..." alt="" coords="393,209,529,235"/>
-<area shape="rect" href="group__recomb.html#ga7813f256407ab2ea242df32ea9ad2c7e" title="Provides guesses as to the location of recombination events that led to the creation of certain genot..." alt="" coords="174,5,343,47"/>
-<area shape="rect" href="group__loaders.html#ga8bd85cb47ec8e0c4049f937ef40ae102" title="Appends genotype data from a file to an existing SimData." alt="" coords="182,71,335,112"/>
-<area shape="rect" href="group__loaders.html#gad5863641a67355c2c1523e1a23b6f581" title="Populates a SimData combination with marker allele data." alt="" coords="172,136,345,177"/>
-<area shape="rect" href="group__loaders.html#ga156666e21151a9f267e31598574366a6" title="Populates a SimData combination with marker allele data." alt="" coords="179,201,338,243"/>
-<area shape="rect" href="group__crossers.html#ga3b67d38c13c7a8bef2d0fc91c0365177" title="Perform crosses between pairs of parents identified by name in a file and allocate the resulting offs..." alt="" coords="177,267,340,294"/>
-<area shape="rect" href="group__crossers.html#gaa7c90b4015e4abce750176c6d891cad2" title="Perform crosses between previously&#45;generated offspring of pairs of parents identified by name in a fi..." alt="" coords="183,319,335,360"/>
-<area shape="rect" href="group__calculators.html#ga463082fc380a6815f07bd06401927bc0" title="Given a file containing definitions of blocks of markers, process that file and return a struct conta..." alt="" coords="205,385,313,411"/>
-<area shape="rect" href="group__loaders.html#ga54cd625669413c2ef171060e9844d814" title="Populates a SimData combination from scratch with marker allele data, a genetic map,..." alt="" coords="5,209,124,235"/>
+<div id="dynsection-11-content" class="dyncontent" style="display:none;">
+<div class="center"><img src="group__supporters_ga10dddc2d2028b8c1341837897b6eee4d_icgraph.png" border="0" usemap="#agroup__supporters_ga10dddc2d2028b8c1341837897b6eee4d_icgraph" alt=""/></div>
+<map name="agroup__supporters_ga10dddc2d2028b8c1341837897b6eee4d_icgraph" id="agroup__supporters_ga10dddc2d2028b8c1341837897b6eee4d_icgraph">
+<area shape="rect" title="Opens a table file and reads the number of columns and rows (including headers) separated by sep into..." alt="" coords="392,217,527,245"/>
+<area shape="rect" href="group__recomb.html#ga7813f256407ab2ea242df32ea9ad2c7e" title="Provides guesses as to the location of recombination events that led to the creation of certain genot..." alt="" coords="174,5,342,49"/>
+<area shape="rect" href="group__loaders.html#ga8bd85cb47ec8e0c4049f937ef40ae102" title="Appends genotype data from a file to an existing SimData." alt="" coords="182,73,334,117"/>
+<area shape="rect" href="group__loaders.html#gad5863641a67355c2c1523e1a23b6f581" title="Populates a SimData combination with marker allele data." alt="" coords="172,141,344,185"/>
+<area shape="rect" href="group__loaders.html#ga156666e21151a9f267e31598574366a6" title="Populates a SimData combination with marker allele data." alt="" coords="179,209,337,253"/>
+<area shape="rect" href="group__crossers.html#ga7fafc033bf3aaa14c9d5affbe9421ca9" title="Perform crosses between pairs of parents identified by name in a file and allocate the resulting offs..." alt="" coords="177,277,339,305"/>
+<area shape="rect" href="group__crossers.html#gafb306165b0cf0f5cd752f3eaf4c60928" title="Perform crosses between previously&#45;generated offspring of pairs of parents identified by name in a fi..." alt="" coords="182,329,334,373"/>
+<area shape="rect" href="group__calculators.html#ga43ce1b960fe8dce2376319c20ecc0561" title="Given a file containing definitions of blocks of markers, process that file and return a struct conta..." alt="" coords="204,397,312,425"/>
+<area shape="rect" href="group__loaders.html#ga54cd625669413c2ef171060e9844d814" title="Populates a SimData combination from scratch with marker allele data, a genetic map,..." alt="" coords="5,217,124,245"/>
 </map>
 </div>
 
 </div>
 </div>
-<a id="gaa6943b0633c1744bacad62ab2bf68ebd" name="gaa6943b0633c1744bacad62ab2bf68ebd"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#gaa6943b0633c1744bacad62ab2bf68ebd">&#9670;&nbsp;</a></span>get_from_ordered_uint_list()</h2>
+<a id="ga98f69379fe6a5cca7fb25ed1fe49e1c7" name="ga98f69379fe6a5cca7fb25ed1fe49e1c7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga98f69379fe6a5cca7fb25ed1fe49e1c7">&#9670;&nbsp;</a></span>get_from_ordered_uint_list()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -614,20 +689,20 @@ Functions</h2></td></tr>
         <tr>
           <td class="memname">int get_from_ordered_uint_list </td>
           <td>(</td>
-          <td class="paramtype">unsigned int&#160;</td>
+          <td class="paramtype">const unsigned int&#160;</td>
           <td class="paramname"><em>target</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">unsigned int *&#160;</td>
-          <td class="paramname"><em>list</em>, </td>
+          <td class="paramtype">const unsigned int&#160;</td>
+          <td class="paramname"><em>listLen</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">unsigned int&#160;</td>
-          <td class="paramname"><em>list_len</em>&#160;</td>
+          <td class="paramtype">const unsigned int&#160;</td>
+          <td class="paramname"><em>list</em>[listLen]&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -638,9 +713,9 @@ Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Returns the located index in an array of integers where the integer is <code>target</code>. </p>
-<p >Returns -1 if no match was found. </p><dl class="section see"><dt>See also</dt><dd><a class="el" href="group__supporters.html#gaed2ae969c3ce4ed1466a885dcc559472" title="Returns the first located index in an array of strings where the string is the same as the string tar...">get_from_unordered_str_list()</a></dd></dl>
-<p>The list is assumed to be sorted in ascending order.</p>
-<p >It uses the bisection method to search the list.</p>
+<p >Returns -1 if no match was found. </p><dl class="section see"><dt>See also</dt><dd><a class="el" href="group__supporters.html#gaf78d759e6da39a08acff41421d0e7b2a" title="Returns the first located index in an array of strings where the string is the same as the string tar...">get_from_unordered_str_list()</a></dd></dl>
+<p>The list is assumed to be sorted in ascending order. Only integers &gt;0 are considered valid; entries of 0 are considered empty and can be located at any point in the list.</p>
+<p >It uses a binary search method, but has to widen its search both directions if the desired midpoint has value 0.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">target</td><td>the integer to be located </td></tr>
@@ -650,42 +725,40 @@ Functions</h2></td></tr>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>Index in <code>list</code> where we find the same integer as <code>target</code>, or -1 if no match is found. </dd></dl>
-<div id="dynsection-11" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
-  <img id="dynsection-11-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
-<div id="dynsection-11-summary" class="dynsummary" style="display:block;">
+<div id="dynsection-12" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-12-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
+<div id="dynsection-12-summary" class="dynsummary" style="display:block;">
 </div>
-<div id="dynsection-11-content" class="dyncontent" style="display:none;">
-<div class="center"><img src="group__supporters_gaa6943b0633c1744bacad62ab2bf68ebd_icgraph.png" border="0" usemap="#agroup__supporters_gaa6943b0633c1744bacad62ab2bf68ebd_icgraph" alt=""/></div>
-<map name="agroup__supporters_gaa6943b0633c1744bacad62ab2bf68ebd_icgraph" id="agroup__supporters_gaa6943b0633c1744bacad62ab2bf68ebd_icgraph">
-<area shape="rect" title="Returns the located index in an array of integers where the integer is target." alt="" coords="1044,97,1219,124"/>
-<area shape="rect" href="group__getters.html#gaf49ac14d9ff4483bce6424f823d30ca0" title="Returns the alleles at each marker of the genotype with a given id." alt="" coords="876,47,992,73"/>
-<area shape="rect" href="group__getters.html#ga6aa75e72bb29725ffe32cd003c547480" title="Returns the name of the genotype with a given id." alt="" coords="877,97,991,124"/>
-<area shape="rect" href="group__getters.html#ga229c9de94875ea41a23723d337f5f92f" title="Saves the ids of the parents of a genotype with a particular id to the output array output." alt="" coords="872,148,996,175"/>
-<area shape="rect" href="group__getters.html#gad4113b624a908f12d46962bcd93cb95e" title="Gets the names of either the first or second parent of each member of the group." alt="" coords="656,5,824,32"/>
-<area shape="rect" href="group__savers.html#ga979efe39128de97176da5460cab7dfa7" title="Print the parents of each genotype in a group to a file." alt="" coords="667,57,813,98"/>
-<area shape="rect" href="group__savers.html#ga6b87b484064fd373aec0bfa4ce8dbef1" title="Print the parents of each genotype in the SimData to a file." alt="" coords="658,123,822,149"/>
-<area shape="rect" href="group__savers.html#gabc1307a944deb18e0aef315783ab123e" title="Recursively save the parents of a particular id to a file." alt="" coords="683,197,797,224"/>
-<area shape="rect" href="group__savers.html#gabf5bc0b61b008aeda217ea9a666ad9cb" title="Print the full known pedigree of each genotype in a single AlleleMatrix to a file." alt="" coords="459,197,590,224"/>
-<area shape="rect" href="group__savers.html#ga40dbed7f680c5c1181a8ed27e616417b" title="Print the full known pedigree of each genotype in the SimData to a file." alt="" coords="461,147,588,173"/>
-<area shape="rect" href="group__savers.html#ga75e854cbc72b31a5e2eb03c63c33ecc6" title="Print the full known pedigree of each genotype in a group to a file." alt="" coords="441,248,608,275"/>
-<area shape="rect" href="group__crossers.html#gae66231fb141a76432d1211e2cf0baf25" title="Performs random crosses among members of a group." alt="" coords="219,197,390,224"/>
-<area shape="rect" href="group__crossers.html#ga3be2cb18d1c722b3a766a7a5663a8f0c" title="Performs random crosses where the first parent comes from one group and the second from another." alt="" coords="220,248,389,275"/>
-<area shape="rect" href="group__crossers.html#gabb793988799d792dfe4007efdf988068" title="Performs the crosses of pairs of parents whose ids are provided in an array." alt="" coords="216,299,393,325"/>
-<area shape="rect" href="group__crossers.html#gaa42e48ab06f9051e5ed6879409cbe2f4" title="Creates an identical copy of each member of a group." alt="" coords="255,45,354,72"/>
-<area shape="rect" href="group__crossers.html#gaf078d6bc1b5d4234a9b960e6132480aa" title="Creates a doubled haploid from each member of a group." alt="" coords="224,96,385,123"/>
-<area shape="rect" href="group__crossers.html#gadf5beb682ac15fa5a0176e480adc9d91" title="Selfs each member of a group for a certain number of generations." alt="" coords="257,147,352,173"/>
-<area shape="rect" href="group__crossers.html#ga68aca99a41527b019316c8243e6fc7a7" title="Find the top m percent of a group and perform random crosses between those top individuals." alt="" coords="10,178,163,219"/>
-<area shape="rect" href="group__crossers.html#ga3f1b06b7aa35e6a05918e16d1deabeee" title="Perform crosses between all pairs of parents in the group from_group and allocates the resulting offs..." alt="" coords="8,243,165,285"/>
-<area shape="rect" href="group__crossers.html#ga3b67d38c13c7a8bef2d0fc91c0365177" title="Perform crosses between pairs of parents identified by name in a file and allocate the resulting offs..." alt="" coords="5,309,168,336"/>
-<area shape="rect" href="group__crossers.html#gaa7c90b4015e4abce750176c6d891cad2" title="Perform crosses between previously&#45;generated offspring of pairs of parents identified by name in a fi..." alt="" coords="11,361,163,402"/>
-<area shape="rect" href="group__getters.html#ga86e56272267b8d4980e5062d6c0fef7c" title="Gets the full pedigree string (as per save_group_full_pedigree() ) of each member of the group." alt="" coords="233,349,376,376"/>
+<div id="dynsection-12-content" class="dyncontent" style="display:none;">
+<div class="center"><img src="group__supporters_ga98f69379fe6a5cca7fb25ed1fe49e1c7_icgraph.png" border="0" usemap="#agroup__supporters_ga98f69379fe6a5cca7fb25ed1fe49e1c7_icgraph" alt=""/></div>
+<map name="agroup__supporters_ga98f69379fe6a5cca7fb25ed1fe49e1c7_icgraph" id="agroup__supporters_ga98f69379fe6a5cca7fb25ed1fe49e1c7_icgraph">
+<area shape="rect" title="Returns the located index in an array of integers where the integer is target." alt="" coords="1035,67,1208,95"/>
+<area shape="rect" href="group__search.html#gaac7b697008227dd0fe32651d82bd5882" title="Returns the alleles at each marker of the genotype with a given id." alt="" coords="868,40,983,68"/>
+<area shape="rect" href="group__search.html#gade1706129ba2510f1f1ed496b51efcb6" title="Saves the ids of the parents of a genotype with a particular id to the output array output." alt="" coords="864,92,987,120"/>
+<area shape="rect" href="group__savers.html#ga7adbe41e3a1d04fbf2b32840e2d01f86" title="Print the full known pedigree of each genotype in a group to a file." alt="" coords="439,5,604,33"/>
+<area shape="rect" href="group__savers.html#ga822c4500c4f5979c9eee8aa733434196" title="Print the parents of each genotype in a group to a file." alt="" coords="661,53,807,97"/>
+<area shape="rect" href="group__savers.html#ga5674dd2fbdcf205475c8036a09536f2e" title="Print the parents of each genotype in the SimData to a file." alt="" coords="652,121,816,149"/>
+<area shape="rect" href="group__savers.html#gaead4d69058f8fe7d59465100c801bbbd" title="Recursively save the parents of a particular id to a file." alt="" coords="677,197,791,225"/>
+<area shape="rect" href="group__collgetters.html#ga530d4ce0844f7709a6868d63f018ef28" title="Gets the full pedigree string (as per save_group_full_pedigree() ) of each member of the group." alt="" coords="232,5,374,33"/>
+<area shape="rect" href="group__savers.html#gabf1a9b82d2978a1563daf31c8814a783" title="Print the full known pedigree of each genotype in a single AlleleMatrix to a file." alt="" coords="457,191,587,219"/>
+<area shape="rect" href="group__savers.html#ga08c823d63ce4c648432cb740b5ab743b" title="Print the full known pedigree of each genotype in the SimData to a file." alt="" coords="459,243,585,271"/>
+<area shape="rect" href="group__crossers.html#ga7f9865d8d1912cda7e8524d1ff761de6" title="Performs random crosses among members of a group." alt="" coords="218,71,388,99"/>
+<area shape="rect" href="group__crossers.html#ga43f436342a1afc3b14343a8f6e9385f9" title="Performs random crosses where the first parent comes from one group and the second from another." alt="" coords="219,135,387,163"/>
+<area shape="rect" href="sim-operations_8c.html#a42ded1341b4c5a03c2233e2a3875fe07" title="Performs the crosses of pairs of parents whose indexes are provided in an array." alt="" coords="215,187,391,215"/>
+<area shape="rect" href="group__crossers.html#ga5e1da39f8341127e758d32393e8654aa" title="Creates an identical copy of each member of a group." alt="" coords="254,239,352,267"/>
+<area shape="rect" href="group__crossers.html#gab081b254e7abce63067b8c02fbac774f" title="Creates a doubled haploid from each member of a group." alt="" coords="223,291,383,319"/>
+<area shape="rect" href="group__crossers.html#gaf0d8ffcde1a2098e7ae807a031bbe7b9" title="Selfs each member of a group for a certain number of generations." alt="" coords="256,343,350,371"/>
+<area shape="rect" href="group__crossers.html#gaa41e75da9e6e4f8db5466e8929dec2ee" title="Find the top m percent of a group and perform random crosses between those top individuals." alt="" coords="10,57,162,101"/>
+<area shape="rect" href="group__crossers.html#ga9d79117014f247c078c6576c70d600fb" title="Perform crosses between all pairs of parents in the group from_group and allocates the resulting offs..." alt="" coords="8,125,164,169"/>
+<area shape="rect" href="group__crossers.html#ga7fafc033bf3aaa14c9d5affbe9421ca9" title="Perform crosses between pairs of parents identified by name in a file and allocate the resulting offs..." alt="" coords="5,193,167,221"/>
+<area shape="rect" href="group__crossers.html#gafb306165b0cf0f5cd752f3eaf4c60928" title="Perform crosses between previously&#45;generated offspring of pairs of parents identified by name in a fi..." alt="" coords="10,245,162,289"/>
 </map>
 </div>
 
 </div>
 </div>
-<a id="gaed2ae969c3ce4ed1466a885dcc559472" name="gaed2ae969c3ce4ed1466a885dcc559472"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#gaed2ae969c3ce4ed1466a885dcc559472">&#9670;&nbsp;</a></span>get_from_unordered_str_list()</h2>
+<a id="gaf78d759e6da39a08acff41421d0e7b2a" name="gaf78d759e6da39a08acff41421d0e7b2a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gaf78d759e6da39a08acff41421d0e7b2a">&#9670;&nbsp;</a></span>get_from_unordered_str_list()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -693,20 +766,20 @@ Functions</h2></td></tr>
         <tr>
           <td class="memname">int get_from_unordered_str_list </td>
           <td>(</td>
-          <td class="paramtype">char *&#160;</td>
+          <td class="paramtype">const char *&#160;</td>
           <td class="paramname"><em>target</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">char **&#160;</td>
-          <td class="paramname"><em>list</em>, </td>
+          <td class="paramtype">const int&#160;</td>
+          <td class="paramname"><em>listLen</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">int&#160;</td>
-          <td class="paramname"><em>list_len</em>&#160;</td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>list</em>[listLen]&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -717,7 +790,7 @@ Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Returns the first located index in an array of strings where the string is the same as the string <code>target</code>. </p>
-<p >Returns -1 if no match was found. </p><dl class="section see"><dt>See also</dt><dd><a class="el" href="group__supporters.html#gaa6943b0633c1744bacad62ab2bf68ebd" title="Returns the located index in an array of integers where the integer is target.">get_from_ordered_uint_list()</a></dd></dl>
+<p >Returns -1 if no match was found. </p><dl class="section see"><dt>See also</dt><dd><a class="el" href="group__supporters.html#ga98f69379fe6a5cca7fb25ed1fe49e1c7" title="Returns the located index in an array of integers where the integer is target.">get_from_ordered_uint_list()</a></dd></dl>
 <p>The list of strings is not assumed to be sorted.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
@@ -728,26 +801,81 @@ Functions</h2></td></tr>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>Index in <code>list</code> where we find the same string as <code>target</code>, or -1 if no match is found. </dd></dl>
-<div id="dynsection-12" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
-  <img id="dynsection-12-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
-<div id="dynsection-12-summary" class="dynsummary" style="display:block;">
+<div id="dynsection-13" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-13-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
+<div id="dynsection-13-summary" class="dynsummary" style="display:block;">
 </div>
-<div id="dynsection-12-content" class="dyncontent" style="display:none;">
-<div class="center"><img src="group__supporters_gaed2ae969c3ce4ed1466a885dcc559472_icgraph.png" border="0" usemap="#agroup__supporters_gaed2ae969c3ce4ed1466a885dcc559472_icgraph" alt=""/></div>
-<map name="agroup__supporters_gaed2ae969c3ce4ed1466a885dcc559472_icgraph" id="agroup__supporters_gaed2ae969c3ce4ed1466a885dcc559472_icgraph">
-<area shape="rect" title="Returns the first located index in an array of strings where the string is the same as the string tar..." alt="" coords="391,78,527,119"/>
-<area shape="rect" href="group__loaders.html#ga9d6b231bd6ddde82af66a5d276a2c739" title="Populates a SimData combination with effect values." alt="" coords="176,5,339,32"/>
-<area shape="rect" href="group__loaders.html#ga8edb09b9b9eb27f84ac59cc4342ea855" title="Populates a SimData combination with data from a genetic map." alt="" coords="172,56,343,83"/>
-<area shape="rect" href="group__loaders.html#ga8bd85cb47ec8e0c4049f937ef40ae102" title="Appends genotype data from a file to an existing SimData." alt="" coords="181,107,334,149"/>
-<area shape="rect" href="group__calculators.html#ga463082fc380a6815f07bd06401927bc0" title="Given a file containing definitions of blocks of markers, process that file and return a struct conta..." alt="" coords="203,173,311,200"/>
-<area shape="rect" href="group__loaders.html#ga54cd625669413c2ef171060e9844d814" title="Populates a SimData combination from scratch with marker allele data, a genetic map,..." alt="" coords="5,31,124,57"/>
+<div id="dynsection-13-content" class="dyncontent" style="display:none;">
+<div class="center"><img src="group__supporters_gaf78d759e6da39a08acff41421d0e7b2a_icgraph.png" border="0" usemap="#agroup__supporters_gaf78d759e6da39a08acff41421d0e7b2a_icgraph" alt=""/></div>
+<map name="agroup__supporters_gaf78d759e6da39a08acff41421d0e7b2a_icgraph" id="agroup__supporters_gaf78d759e6da39a08acff41421d0e7b2a_icgraph">
+<area shape="rect" title="Returns the first located index in an array of strings where the string is the same as the string tar..." alt="" coords="389,80,524,124"/>
+<area shape="rect" href="group__loaders.html#ga9d6b231bd6ddde82af66a5d276a2c739" title="Populates a SimData combination with effect values." alt="" coords="176,5,337,33"/>
+<area shape="rect" href="group__loaders.html#ga8edb09b9b9eb27f84ac59cc4342ea855" title="Populates a SimData combination with data from a genetic map." alt="" coords="172,57,341,85"/>
+<area shape="rect" href="group__loaders.html#ga8bd85cb47ec8e0c4049f937ef40ae102" title="Appends genotype data from a file to an existing SimData." alt="" coords="180,109,333,153"/>
+<area shape="rect" href="group__calculators.html#ga43ce1b960fe8dce2376319c20ecc0561" title="Given a file containing definitions of blocks of markers, process that file and return a struct conta..." alt="" coords="203,177,310,205"/>
+<area shape="rect" href="group__loaders.html#ga54cd625669413c2ef171060e9844d814" title="Populates a SimData combination from scratch with marker allele data, a genetic map,..." alt="" coords="5,32,124,60"/>
 </map>
 </div>
 
 </div>
 </div>
-<a id="gad7d864d43092823ac2ed8a6cbd595e35" name="gad7d864d43092823ac2ed8a6cbd595e35"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#gad7d864d43092823ac2ed8a6cbd595e35">&#9670;&nbsp;</a></span>get_integer_digits()</h2>
+<a id="ga835f8472c31ae57a4b826417f3dd7781" name="ga835f8472c31ae57a4b826417f3dd7781"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga835f8472c31ae57a4b826417f3dd7781">&#9670;&nbsp;</a></span>get_index_of_label()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int get_index_of_label </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="struct_sim_data.html">SimData</a> *&#160;</td>
+          <td class="paramname"><em>d</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const int&#160;</td>
+          <td class="paramname"><em>label</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Function to identify the label lookup index of a label identifier. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">d</td><td>the <a class="el" href="struct_sim_data.html" title="Composite type that is used to run crossing simulations.">SimData</a> struct on which to perform the operation </td></tr>
+    <tr><td class="paramname">label</td><td>a label id </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>the index in d-&gt;label_ids, d-&gt;label_defaults, and the -&gt;labels table in <a class="el" href="struct_allele_matrix.html">AlleleMatrix</a> where the data for this label is stored, or -1 (UNINITIALISED) if the label with that id could not be found. </dd></dl>
+<div id="dynsection-14" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-14-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
+<div id="dynsection-14-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-14-content" class="dyncontent" style="display:none;">
+<div class="center"><img src="group__supporters_ga835f8472c31ae57a4b826417f3dd7781_icgraph.png" border="0" usemap="#agroup__supporters_ga835f8472c31ae57a4b826417f3dd7781_icgraph" alt=""/></div>
+<map name="agroup__supporters_ga835f8472c31ae57a4b826417f3dd7781_icgraph" id="agroup__supporters_ga835f8472c31ae57a4b826417f3dd7781_icgraph">
+<area shape="rect" title="Function to identify the label lookup index of a label identifier." alt="" coords="195,161,323,189"/>
+<area shape="rect" href="group__deletors.html#ga41f67d51041d877406ff606891873660" title="Clears memory of this label from the simulation and all its genotypes." alt="" coords="31,5,121,33"/>
+<area shape="rect" href="group__supporters.html#ga2a1b6572fa048b93de5ea25d3cc30124" title="Increment the values of a custom label." alt="" coords="16,57,136,85"/>
+<area shape="rect" href="group__supporters.html#ga7e23a13297740a5656360550177006ed" title="Set the default value of a custom label." alt="" coords="17,109,135,137"/>
+<area shape="rect" href="group__supporters.html#ga7ec8bba2fa9d7660993903e7790ebdf3" title="Set the values of a custom label." alt="" coords="7,161,145,189"/>
+<area shape="rect" href="group__supporters.html#gab59b6b2fbb70c8d9db746c4186a6fa43" title="Copy a vector of integers into a custom label." alt="" coords="5,213,147,241"/>
+<area shape="rect" href="group__groupmod.html#ga9d60310dc0abe90122ada760536e0fe9" title="Allocates the genotypes with values of a label in a particular range to a new group." alt="" coords="6,265,146,293"/>
+<area shape="rect" href="group__groupmod.html#ga4d831280c4cf64be337f1bff8bf62d80" title="Allocates the genotypes with a particular value of a label to a new group." alt="" coords="8,317,144,345"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="ga4467dd870605266ac95eff75bacffb1f" name="ga4467dd870605266ac95eff75bacffb1f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga4467dd870605266ac95eff75bacffb1f">&#9670;&nbsp;</a></span>get_integer_digits()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -755,7 +883,7 @@ Functions</h2></td></tr>
         <tr>
           <td class="memname">int get_integer_digits </td>
           <td>(</td>
-          <td class="paramtype">int&#160;</td>
+          <td class="paramtype">const int&#160;</td>
           <td class="paramname"><em>i</em></td><td>)</td>
           <td></td>
         </tr>
@@ -770,32 +898,32 @@ Functions</h2></td></tr>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>the number of digits to print <code>i</code> </dd></dl>
-<div id="dynsection-13" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
-  <img id="dynsection-13-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
-<div id="dynsection-13-summary" class="dynsummary" style="display:block;">
+<div id="dynsection-15" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-15-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
+<div id="dynsection-15-summary" class="dynsummary" style="display:block;">
 </div>
-<div id="dynsection-13-content" class="dyncontent" style="display:none;">
-<div class="center"><img src="group__supporters_gad7d864d43092823ac2ed8a6cbd595e35_icgraph.png" border="0" usemap="#agroup__supporters_gad7d864d43092823ac2ed8a6cbd595e35_icgraph" alt=""/></div>
-<map name="agroup__supporters_gad7d864d43092823ac2ed8a6cbd595e35_icgraph" id="agroup__supporters_gad7d864d43092823ac2ed8a6cbd595e35_icgraph">
-<area shape="rect" title="Count and return the number of digits in i." alt="" coords="576,157,700,183"/>
-<area shape="rect" href="group__supporters.html#gab751e196194afd414e942f0900adba72" title="Fills the designated section of the .names array in an AlleleMatrix with the pattern prefixindex." alt="" coords="441,157,528,183"/>
-<area shape="rect" href="group__crossers.html#gae66231fb141a76432d1211e2cf0baf25" title="Performs random crosses among members of a group." alt="" coords="219,19,390,46"/>
-<area shape="rect" href="group__crossers.html#ga3be2cb18d1c722b3a766a7a5663a8f0c" title="Performs random crosses where the first parent comes from one group and the second from another." alt="" coords="220,81,389,107"/>
-<area shape="rect" href="group__crossers.html#gabb793988799d792dfe4007efdf988068" title="Performs the crosses of pairs of parents whose ids are provided in an array." alt="" coords="216,131,393,158"/>
-<area shape="rect" href="group__crossers.html#gaa42e48ab06f9051e5ed6879409cbe2f4" title="Creates an identical copy of each member of a group." alt="" coords="255,182,354,209"/>
-<area shape="rect" href="group__crossers.html#gaf078d6bc1b5d4234a9b960e6132480aa" title="Creates a doubled haploid from each member of a group." alt="" coords="224,233,385,259"/>
-<area shape="rect" href="group__crossers.html#gadf5beb682ac15fa5a0176e480adc9d91" title="Selfs each member of a group for a certain number of generations." alt="" coords="257,283,352,310"/>
-<area shape="rect" href="group__crossers.html#ga68aca99a41527b019316c8243e6fc7a7" title="Find the top m percent of a group and perform random crosses between those top individuals." alt="" coords="10,5,163,47"/>
-<area shape="rect" href="group__crossers.html#ga3f1b06b7aa35e6a05918e16d1deabeee" title="Perform crosses between all pairs of parents in the group from_group and allocates the resulting offs..." alt="" coords="8,71,165,112"/>
-<area shape="rect" href="group__crossers.html#ga3b67d38c13c7a8bef2d0fc91c0365177" title="Perform crosses between pairs of parents identified by name in a file and allocate the resulting offs..." alt="" coords="5,137,168,163"/>
-<area shape="rect" href="group__crossers.html#gaa7c90b4015e4abce750176c6d891cad2" title="Perform crosses between previously&#45;generated offspring of pairs of parents identified by name in a fi..." alt="" coords="11,188,163,229"/>
+<div id="dynsection-15-content" class="dyncontent" style="display:none;">
+<div class="center"><img src="group__supporters_ga4467dd870605266ac95eff75bacffb1f_icgraph.png" border="0" usemap="#agroup__supporters_ga4467dd870605266ac95eff75bacffb1f_icgraph" alt=""/></div>
+<map name="agroup__supporters_ga4467dd870605266ac95eff75bacffb1f_icgraph" id="agroup__supporters_ga4467dd870605266ac95eff75bacffb1f_icgraph">
+<area shape="rect" title="Count and return the number of digits in i." alt="" coords="572,161,696,189"/>
+<area shape="rect" href="group__supporters.html#gafad0846098c4da7ca876f0a625f369e1" title="Fills the designated section of the .names array in an AlleleMatrix with the pattern prefixindex." alt="" coords="439,161,524,189"/>
+<area shape="rect" href="group__crossers.html#ga7f9865d8d1912cda7e8524d1ff761de6" title="Performs random crosses among members of a group." alt="" coords="218,25,388,53"/>
+<area shape="rect" href="group__crossers.html#ga43f436342a1afc3b14343a8f6e9385f9" title="Performs random crosses where the first parent comes from one group and the second from another." alt="" coords="219,83,387,111"/>
+<area shape="rect" href="sim-operations_8c.html#a42ded1341b4c5a03c2233e2a3875fe07" title="Performs the crosses of pairs of parents whose indexes are provided in an array." alt="" coords="215,135,391,163"/>
+<area shape="rect" href="group__crossers.html#ga5e1da39f8341127e758d32393e8654aa" title="Creates an identical copy of each member of a group." alt="" coords="254,187,352,215"/>
+<area shape="rect" href="group__crossers.html#gab081b254e7abce63067b8c02fbac774f" title="Creates a doubled haploid from each member of a group." alt="" coords="223,239,383,267"/>
+<area shape="rect" href="group__crossers.html#gaf0d8ffcde1a2098e7ae807a031bbe7b9" title="Selfs each member of a group for a certain number of generations." alt="" coords="256,291,350,319"/>
+<area shape="rect" href="group__crossers.html#gaa41e75da9e6e4f8db5466e8929dec2ee" title="Find the top m percent of a group and perform random crosses between those top individuals." alt="" coords="10,5,162,49"/>
+<area shape="rect" href="group__crossers.html#ga9d79117014f247c078c6576c70d600fb" title="Perform crosses between all pairs of parents in the group from_group and allocates the resulting offs..." alt="" coords="8,73,164,117"/>
+<area shape="rect" href="group__crossers.html#ga7fafc033bf3aaa14c9d5affbe9421ca9" title="Perform crosses between pairs of parents identified by name in a file and allocate the resulting offs..." alt="" coords="5,141,167,169"/>
+<area shape="rect" href="group__crossers.html#gafb306165b0cf0f5cd752f3eaf4c60928" title="Perform crosses between previously&#45;generated offspring of pairs of parents identified by name in a fi..." alt="" coords="10,193,162,237"/>
 </map>
 </div>
 
 </div>
 </div>
-<a id="ga08d9e7703e6779d2122baa4309fca0ab" name="ga08d9e7703e6779d2122baa4309fca0ab"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ga08d9e7703e6779d2122baa4309fca0ab">&#9670;&nbsp;</a></span>get_malloc()</h2>
+<a id="ga6072a152b624743eeafb30adaf9b7f17" name="ga6072a152b624743eeafb30adaf9b7f17"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga6072a152b624743eeafb30adaf9b7f17">&#9670;&nbsp;</a></span>get_malloc()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -803,7 +931,7 @@ Functions</h2></td></tr>
         <tr>
           <td class="memname">void * get_malloc </td>
           <td>(</td>
-          <td class="paramtype">size_t&#160;</td>
+          <td class="paramtype">const size_t&#160;</td>
           <td class="paramname"><em>size</em></td><td>)</td>
           <td></td>
         </tr>
@@ -818,18 +946,70 @@ Functions</h2></td></tr>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>pointer to the allocated space. </dd></dl>
-<div id="dynsection-14" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
-  <img id="dynsection-14-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
-<div id="dynsection-14-summary" class="dynsummary" style="display:block;">
+<div id="dynsection-16" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-16-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
+<div id="dynsection-16-summary" class="dynsummary" style="display:block;">
 </div>
-<div id="dynsection-14-content" class="dyncontent" style="display:none;">
-<div class="center"><img src="group__supporters_ga08d9e7703e6779d2122baa4309fca0ab_icgraph.png" border="0" usemap="#agroup__supporters_ga08d9e7703e6779d2122baa4309fca0ab_icgraph" alt=""/></div>
+<div id="dynsection-16-content" class="dyncontent" style="display:none;">
+<div class="center"><img src="group__supporters_ga6072a152b624743eeafb30adaf9b7f17_icgraph.png" border="0" usemap="#agroup__supporters_ga6072a152b624743eeafb30adaf9b7f17_icgraph" alt=""/></div>
+<map name="agroup__supporters_ga6072a152b624743eeafb30adaf9b7f17_icgraph" id="agroup__supporters_ga6072a152b624743eeafb30adaf9b7f17_icgraph">
+<area shape="rect" title="Replace calls to malloc direct with this function, which errors and exits with status 2 if memory all..." alt="" coords="868,796,952,824"/>
+<area shape="rect" href="group__calculators.html#gac190a17b0ba826b96882f9e4dfa300df" title="Takes a look at the currently&#45;loaded effect values and creates a string containing the allele with th..." alt="" coords="646,5,813,33"/>
+<area shape="rect" href="group__calculators.html#ga77d70e66cc7c607ebcf0868a9c5757ab" title="Calculates the highest&#45;breeding&#45;value haplotype that can be created from the alleles present in a giv..." alt="" coords="640,57,819,101"/>
+<area shape="rect" href="group__loaders.html#gaf0399b852faa346adeab52d57fa9701b" title="Creator for an empty AlleleMatrix object of a given size." alt="" coords="643,488,816,516"/>
+<area shape="rect" href="group__crossers.html#ga7f9865d8d1912cda7e8524d1ff761de6" title="Performs random crosses among members of a group." alt="" coords="419,228,588,256"/>
+<area shape="rect" href="group__crossers.html#ga43f436342a1afc3b14343a8f6e9385f9" title="Performs random crosses where the first parent comes from one group and the second from another." alt="" coords="419,124,587,152"/>
+<area shape="rect" href="group__loaders.html#ga8bd85cb47ec8e0c4049f937ef40ae102" title="Appends genotype data from a file to an existing SimData." alt="" coords="427,696,579,740"/>
+<area shape="rect" href="group__loaders.html#gad5863641a67355c2c1523e1a23b6f581" title="Populates a SimData combination with marker allele data." alt="" coords="417,764,589,808"/>
+<area shape="rect" href="group__loaders.html#ga156666e21151a9f267e31598574366a6" title="Populates a SimData combination with marker allele data." alt="" coords="424,832,582,876"/>
+<area shape="rect" href="group__crossers.html#ga5e1da39f8341127e758d32393e8654aa" title="Creates an identical copy of each member of a group." alt="" coords="454,332,552,360"/>
+<area shape="rect" href="group__crossers.html#gaf0d8ffcde1a2098e7ae807a031bbe7b9" title="Selfs each member of a group for a certain number of generations." alt="" coords="456,176,550,204"/>
+<area shape="rect" href="group__loaders.html#gac60a0289c8c051dab7bd8383a70a6245" title="Creator for an empty SimData object on the heap." alt="" coords="653,900,806,928"/>
+<area shape="rect" href="group__calculators.html#gaa7adc67211c9168dc29e9a4c1219c8f0" title="Divide the genotype into blocks where each block contains all markers within a 1/n length section of ..." alt="" coords="648,952,811,980"/>
+<area shape="rect" href="group__supporters.html#ga01a6e3ec05c4a13139cf853e427845fe" title="Initialises a new custom label." alt="" coords="669,1004,790,1032"/>
+<area shape="rect" href="group__iterators.html#ga9c8c5e805121a133c588768db8e419fa" title="Create a Random Access Iterator." alt="" coords="642,1056,817,1084"/>
+<area shape="rect" href="group__deletors.html#ga41f67d51041d877406ff606891873660" title="Clears memory of this label from the simulation and all its genotypes." alt="" coords="684,1108,775,1136"/>
+<area shape="rect" href="group__meiosis.html#gafc34eb6a9bf8128a2619ffd322db8689" title="Get the alleles of the outcome of crossing two genotypes." alt="" coords="674,228,785,256"/>
+<area shape="rect" href="group__meiosis.html#ga795bfb971a6c406f5f06c14467fd2287" title="Get the alleles of the outcome of producing a doubled haploid from a gamete from a given parent." alt="" coords="644,540,815,568"/>
+<area shape="rect" href="group__meiosis.html#ga90f7b0635f358ca029d16b996e203cbf" title="Fills a char* with the simulated result of meiosis (reduction and recombination) from the marker alle..." alt="" coords="669,1160,790,1188"/>
+<area shape="rect" href="group__supporters.html#ga5e049945be5700a6d5a5654b6b332842" title="Updates the chr_ends, n_chr and chr_lengths fields in SimData.map." alt="" coords="639,796,820,824"/>
+<area shape="rect" href="group__collgetters.html#ga530d4ce0844f7709a6868d63f018ef28" title="Gets the full pedigree string (as per save_group_full_pedigree() ) of each member of the group." alt="" coords="659,1212,800,1240"/>
+<area shape="rect" href="group__supporters.html#ga5bce9a6f19127aa17d90990dae7e138a" title="Function to identify the next n sequential integers that do not identify a group that currently has m..." alt="" coords="649,1264,810,1292"/>
+<area shape="rect" href="group__supporters.html#ga57da16044e22c5c21e14b45bbef5e9eb" title="Function to identify the next sequential integer that does not identify a group that currently has me..." alt="" coords="659,436,800,464"/>
+<area shape="rect" href="group__supporters.html#gadebbfa88bf139ddca501ab158f3746c5" title="Takes a SimData object, and sorts its markers, the rows of its parent gen AlleleMatrix (because they ..." alt="" coords="661,848,798,876"/>
+<area shape="rect" href="group__loaders.html#ga9d6b231bd6ddde82af66a5d276a2c739" title="Populates a SimData combination with effect values." alt="" coords="423,900,584,928"/>
+<area shape="rect" href="group__iterators.html#ga0bc5b9ebb0857a471e41630fda00403b" title="Get a location by index using a RandomAccessIterator." alt="" coords="681,1316,778,1344"/>
+<area shape="rect" href="group__calculators.html#ga43ce1b960fe8dce2376319c20ecc0561" title="Given a file containing definitions of blocks of markers, process that file and return a struct conta..." alt="" coords="676,1368,783,1396"/>
+<area shape="rect" href="group__supporters.html#gafad0846098c4da7ca876f0a625f369e1" title="Fills the designated section of the .names array in an AlleleMatrix with the pattern prefixindex." alt="" coords="687,332,772,360"/>
+<area shape="rect" href="group__supporters.html#gaa8e0196f0963912519c78fc8c2263beb" title="Copy a vector of strings into the genotype name field." alt="" coords="656,1420,803,1448"/>
+<area shape="rect" href="group__groupmod.html#ga938574a9b1c279fc6d8ae9a5d5c14fe0" title="Split a group into a set of smaller groups, each of which contains the genotypes in the original grou..." alt="" coords="667,1472,792,1500"/>
+<area shape="rect" href="group__groupmod.html#ga7a0e5dbce2c1d0af839712f8215ac4e2" title="Split a group into a set of smaller groups, each containing the genotypes from the original group tha..." alt="" coords="671,1524,788,1568"/>
+<area shape="rect" href="group__groupmod.html#ga2ffe6f186b1d9309dee151ae06f730b9" title="Give every individual in the group a new group number that does not belong to any other existing grou..." alt="" coords="660,1592,799,1620"/>
+<area shape="rect" href="sim-operations_8c.html#a42ded1341b4c5a03c2233e2a3875fe07" title="Performs the crosses of pairs of parents whose indexes are provided in an array." alt="" coords="415,280,591,308"/>
+<area shape="rect" href="group__crossers.html#gab081b254e7abce63067b8c02fbac774f" title="Creates a doubled haploid from each member of a group." alt="" coords="423,644,583,672"/>
+<area shape="rect" href="group__crossers.html#gaa41e75da9e6e4f8db5466e8929dec2ee" title="Find the top m percent of a group and perform random crosses between those top individuals." alt="" coords="5,308,158,352"/>
+<area shape="rect" href="group__crossers.html#ga9d79117014f247c078c6576c70d600fb" title="Perform crosses between all pairs of parents in the group from_group and allocates the resulting offs..." alt="" coords="208,368,365,412"/>
+<area shape="rect" href="group__crossers.html#ga7fafc033bf3aaa14c9d5affbe9421ca9" title="Perform crosses between pairs of parents identified by name in a file and allocate the resulting offs..." alt="" coords="206,248,367,276"/>
+<area shape="rect" href="group__crossers.html#gafb306165b0cf0f5cd752f3eaf4c60928" title="Perform crosses between previously&#45;generated offspring of pairs of parents identified by name in a fi..." alt="" coords="211,300,362,344"/>
+<area shape="rect" href="group__loaders.html#ga54cd625669413c2ef171060e9844d814" title="Populates a SimData combination from scratch with marker allele data, a genetic map,..." alt="" coords="227,952,346,980"/>
+<area shape="rect" href="group__loaders.html#ga8edb09b9b9eb27f84ac59cc4342ea855" title="Populates a SimData combination with data from a genetic map." alt="" coords="419,1004,588,1032"/>
+<area shape="rect" href="group__groupmod.html#gaedf5b91b00b207a38c6a1a036f3853cf" title="Allocate each member of the group to one of n groups with custom probabilities for each group." alt="" coords="432,1188,574,1232"/>
+<area shape="rect" href="group__groupmod.html#ga74610483035cee35d81bd24c1a044259" title="Split a group into n groups of equal size (or size differing only by one, if n does not perfectly div..." alt="" coords="422,1256,585,1300"/>
+<area shape="rect" href="group__groupmod.html#gad4682769497c140c4374d3a8d85350c6" title="Allocate each member of the group to one of n groups with equal probability." alt="" coords="430,1324,577,1352"/>
+<area shape="rect" href="group__groupmod.html#ga49e99e674d87de80facffa7bed28393f" title="Split a group into n groups of equal size (or size differing only by one, if n does not perfectly div..." alt="" coords="221,1264,352,1292"/>
+<area shape="rect" href="group__groupmod.html#ga9d60310dc0abe90122ada760536e0fe9" title="Allocates the genotypes with values of a label in a particular range to a new group." alt="" coords="434,488,573,516"/>
+<area shape="rect" href="group__groupmod.html#ga4d831280c4cf64be337f1bff8bf62d80" title="Allocates the genotypes with a particular value of a label to a new group." alt="" coords="435,540,571,568"/>
+<area shape="rect" href="group__groupmod.html#ga02fd183dde037779a2d6b18c84907ba9" title="Split a group into two groups of equal size (or size differing only by one, if the original group had..." alt="" coords="432,592,575,620"/>
+<area shape="rect" href="group__groupmod.html#ga548aadbba9882294ab8241511976b563" title="Take a list of indexes and allocate the genotypes at those indexes to a new group." alt="" coords="445,436,561,464"/>
+<area shape="rect" href="group__groupmod.html#ga28fa0c21827594b777881c45878f4444" title="Flip a coin for each member of the group to decide if it should be moved to the new group." alt="" coords="423,384,583,412"/>
+<area shape="rect" href="group__calculators.html#ga98696fc21c0424d98a5eed4df5c60f04" title="Takes the top_n individuals in the group with the best breeding values/fitnesses and puts them in a n..." alt="" coords="244,436,329,464"/>
+</map>
 </div>
 
 </div>
 </div>
-<a id="ga71dbb7fd0d0317d24aa06b6bbb472367" name="ga71dbb7fd0d0317d24aa06b6bbb472367"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ga71dbb7fd0d0317d24aa06b6bbb472367">&#9670;&nbsp;</a></span>get_n_new_group_nums()</h2>
+<a id="ga5bce9a6f19127aa17d90990dae7e138a" name="ga5bce9a6f19127aa17d90990dae7e138a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga5bce9a6f19127aa17d90990dae7e138a">&#9670;&nbsp;</a></span>get_n_new_group_nums()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -837,13 +1017,13 @@ Functions</h2></td></tr>
         <tr>
           <td class="memname">void get_n_new_group_nums </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="struct_sim_data.html">SimData</a> *&#160;</td>
+          <td class="paramtype">const <a class="el" href="struct_sim_data.html">SimData</a> *&#160;</td>
           <td class="paramname"><em>d</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">int&#160;</td>
+          <td class="paramtype">const int&#160;</td>
           <td class="paramname"><em>n</em>, </td>
         </tr>
         <tr>
@@ -869,70 +1049,17 @@ Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
-<div id="dynsection-15" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
-  <img id="dynsection-15-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
-<div id="dynsection-15-summary" class="dynsummary" style="display:block;">
-</div>
-<div id="dynsection-15-content" class="dyncontent" style="display:none;">
-<div class="center"><img src="group__supporters_ga71dbb7fd0d0317d24aa06b6bbb472367_cgraph.png" border="0" usemap="#agroup__supporters_ga71dbb7fd0d0317d24aa06b6bbb472367_cgraph" alt=""/></div>
-<map name="agroup__supporters_ga71dbb7fd0d0317d24aa06b6bbb472367_cgraph" id="agroup__supporters_ga71dbb7fd0d0317d24aa06b6bbb472367_cgraph">
-<area shape="rect" title="Function to identify the next n sequential integers that do not identify a group that currently has m..." alt="" coords="5,5,168,32"/>
-<area shape="rect" href="group__getters.html#ga3305ddcc29138d2d92689f39a7885ca0" title="Identify every group number that currently has members." alt="" coords="216,5,355,32"/>
-<area shape="rect" href="group__supporters.html#gadae2e9f7e1061cb20426ba2333b7629b" title="Comparator function for qsort." alt="" coords="403,5,573,32"/>
-</map>
-</div>
-<div id="dynsection-16" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
-  <img id="dynsection-16-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
-<div id="dynsection-16-summary" class="dynsummary" style="display:block;">
-</div>
-<div id="dynsection-16-content" class="dyncontent" style="display:none;">
-<div class="center"><img src="group__supporters_ga71dbb7fd0d0317d24aa06b6bbb472367_icgraph.png" border="0" usemap="#agroup__supporters_ga71dbb7fd0d0317d24aa06b6bbb472367_icgraph" alt=""/></div>
-<map name="agroup__supporters_ga71dbb7fd0d0317d24aa06b6bbb472367_icgraph" id="agroup__supporters_ga71dbb7fd0d0317d24aa06b6bbb472367_icgraph">
-<area shape="rect" title="Function to identify the next n sequential integers that do not identify a group that currently has m..." alt="" coords="396,78,559,105"/>
-<area shape="rect" href="group__groupmod.html#ga75110a594a4cd6ddfc5f6905a83c422e" title="Allocate each member of the group to one of n groups with custom probabilities for each group." alt="" coords="195,5,337,47"/>
-<area shape="rect" href="group__groupmod.html#ga8fe9bd972582622c399c8b6a7c81a6d1" title="Split a group into n groups of equal size (or size differing only by one, if n does not perfectly div..." alt="" coords="184,71,348,112"/>
-<area shape="rect" href="group__groupmod.html#ga38909617537e075fa1bea7cc15ca86df" title="Allocate each member of the group to one of n groups with equal probability." alt="" coords="192,137,340,163"/>
-<area shape="rect" href="group__groupmod.html#gae4916db977e1014b5a4b163edf37427b" title="Split a group into n groups of equal size (or size differing only by one, if n does not perfectly div..." alt="" coords="5,78,136,105"/>
-</map>
-</div>
-
-</div>
-</div>
-<a id="gae974a74145fe876e303e14336d3c5d3a" name="gae974a74145fe876e303e14336d3c5d3a"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#gae974a74145fe876e303e14336d3c5d3a">&#9670;&nbsp;</a></span>get_new_group_num()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">int get_new_group_num </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="struct_sim_data.html">SimData</a> *&#160;</td>
-          <td class="paramname"><em>d</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Function to identify the next sequential integer that does not identify a group that currently has member(s). </p>
-<p >This calls <a class="el" href="group__getters.html#ga9e5a5fb63d74d84617d91d4ae9acf1ee" title="Identify every group number that currently has members.">get_existing_groups()</a> every time, so for better speed, functions that do repeated group creation, like <a class="el" href="group__groupmod.html#ga4cad3df4dd91ba6d8f8be038e14aa182" title="Give every individual in the group a new group number that does not belong to any other existing grou...">split_into_individuals()</a>, are recommended to use <a class="el" href="group__supporters.html#ga71dbb7fd0d0317d24aa06b6bbb472367" title="Function to identify the next n sequential integers that do not identify a group that currently has m...">get_n_new_group_nums()</a> (if they know the number of groups they need) or their own implementation, rather than calling this function repeatedly.</p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">d</td><td>the <a class="el" href="struct_sim_data.html" title="Composite type that is used to run crossing simulations.">SimData</a> struct on which to perform the operation </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>the next sequential currently-unused group number. </dd></dl>
 <div id="dynsection-17" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-17-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
 <div id="dynsection-17-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-17-content" class="dyncontent" style="display:none;">
-<div class="center"><img src="group__supporters_gae974a74145fe876e303e14336d3c5d3a_cgraph.png" border="0" usemap="#agroup__supporters_gae974a74145fe876e303e14336d3c5d3a_cgraph" alt=""/></div>
-<map name="agroup__supporters_gae974a74145fe876e303e14336d3c5d3a_cgraph" id="agroup__supporters_gae974a74145fe876e303e14336d3c5d3a_cgraph">
-<area shape="rect" title="Function to identify the next sequential integer that does not identify a group that currently has me..." alt="" coords="5,5,147,32"/>
-<area shape="rect" href="group__getters.html#ga3305ddcc29138d2d92689f39a7885ca0" title="Identify every group number that currently has members." alt="" coords="195,5,333,32"/>
-<area shape="rect" href="group__supporters.html#gadae2e9f7e1061cb20426ba2333b7629b" title="Comparator function for qsort." alt="" coords="381,5,552,32"/>
+<div class="center"><img src="group__supporters_ga5bce9a6f19127aa17d90990dae7e138a_cgraph.png" border="0" usemap="#agroup__supporters_ga5bce9a6f19127aa17d90990dae7e138a_cgraph" alt=""/></div>
+<map name="agroup__supporters_ga5bce9a6f19127aa17d90990dae7e138a_cgraph" id="agroup__supporters_ga5bce9a6f19127aa17d90990dae7e138a_cgraph">
+<area shape="rect" title="Function to identify the next n sequential integers that do not identify a group that currently has m..." alt="" coords="5,32,167,60"/>
+<area shape="rect" href="group__collgetters.html#ga6f49e4b90be53f42241fcfb9850f2f29" title="Identify group numbers that currently have members." alt="" coords="215,5,352,33"/>
+<area shape="rect" href="group__supporters.html#ga6072a152b624743eeafb30adaf9b7f17" title="Replace calls to malloc direct with this function, which errors and exits with status 2 if memory all..." alt="" coords="241,57,326,85"/>
+<area shape="rect" href="group__supporters.html#gadae2e9f7e1061cb20426ba2333b7629b" title="Comparator function for qsort." alt="" coords="400,5,569,33"/>
 </map>
 </div>
 <div id="dynsection-18" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
@@ -940,24 +1067,119 @@ Functions</h2></td></tr>
 <div id="dynsection-18-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-18-content" class="dyncontent" style="display:none;">
-<div class="center"><img src="group__supporters_gae974a74145fe876e303e14336d3c5d3a_icgraph.png" border="0" usemap="#agroup__supporters_gae974a74145fe876e303e14336d3c5d3a_icgraph" alt=""/></div>
-<map name="agroup__supporters_gae974a74145fe876e303e14336d3c5d3a_icgraph" id="agroup__supporters_gae974a74145fe876e303e14336d3c5d3a_icgraph">
-<area shape="rect" title="Function to identify the next sequential integer that does not identify a group that currently has me..." alt="" coords="651,253,792,279"/>
-<area shape="rect" href="group__crossers.html#gae66231fb141a76432d1211e2cf0baf25" title="Performs random crosses among members of a group." alt="" coords="207,9,377,35"/>
-<area shape="rect" href="group__crossers.html#ga3be2cb18d1c722b3a766a7a5663a8f0c" title="Performs random crosses where the first parent comes from one group and the second from another." alt="" coords="429,59,599,86"/>
-<area shape="rect" href="group__crossers.html#gabb793988799d792dfe4007efdf988068" title="Performs the crosses of pairs of parents whose ids are provided in an array." alt="" coords="425,110,603,137"/>
-<area shape="rect" href="group__loaders.html#ga8bd85cb47ec8e0c4049f937ef40ae102" title="Appends genotype data from a file to an existing SimData." alt="" coords="437,161,591,203"/>
-<area shape="rect" href="group__crossers.html#gaa42e48ab06f9051e5ed6879409cbe2f4" title="Creates an identical copy of each member of a group." alt="" coords="465,227,563,254"/>
-<area shape="rect" href="group__crossers.html#gaf078d6bc1b5d4234a9b960e6132480aa" title="Creates a doubled haploid from each member of a group." alt="" coords="433,278,595,305"/>
-<area shape="rect" href="group__crossers.html#gadf5beb682ac15fa5a0176e480adc9d91" title="Selfs each member of a group for a certain number of generations." alt="" coords="467,329,561,355"/>
-<area shape="rect" href="group__groupmod.html#ga64b60c64209718e14b77ff4f4a991fe0" title="Split a group into two groups of equal size (or size differing only by one, if the original group had..." alt="" coords="442,379,586,406"/>
-<area shape="rect" href="group__groupmod.html#gaf2eda46d016c384b166ce65605952b7c" title="Take a list of indexes and allocate the genotypes at those indexes to a new group." alt="" coords="455,430,573,457"/>
-<area shape="rect" href="group__groupmod.html#gacd7e433cf6af229f0d2932b04468e9ca" title="Flip a coin for each member of the group to decide if it should be moved to the new group." alt="" coords="433,481,595,507"/>
-<area shape="rect" href="group__crossers.html#ga68aca99a41527b019316c8243e6fc7a7" title="Find the top m percent of a group and perform random crosses between those top individuals." alt="" coords="5,212,159,253"/>
-<area shape="rect" href="group__crossers.html#ga3f1b06b7aa35e6a05918e16d1deabeee" title="Perform crosses between all pairs of parents in the group from_group and allocates the resulting offs..." alt="" coords="213,60,371,101"/>
-<area shape="rect" href="group__crossers.html#ga3b67d38c13c7a8bef2d0fc91c0365177" title="Perform crosses between pairs of parents identified by name in a file and allocate the resulting offs..." alt="" coords="211,126,373,153"/>
-<area shape="rect" href="group__crossers.html#gaa7c90b4015e4abce750176c6d891cad2" title="Perform crosses between previously&#45;generated offspring of pairs of parents identified by name in a fi..." alt="" coords="216,177,368,219"/>
-<area shape="rect" href="group__calculators.html#gae34db60faf62b898d0572ea6c039b96a" title="Takes the top_n individuals in the group with the best breeding values/fitnesses and puts them in a n..." alt="" coords="249,337,335,363"/>
+<div class="center"><img src="group__supporters_ga5bce9a6f19127aa17d90990dae7e138a_icgraph.png" border="0" usemap="#agroup__supporters_ga5bce9a6f19127aa17d90990dae7e138a_icgraph" alt=""/></div>
+<map name="agroup__supporters_ga5bce9a6f19127aa17d90990dae7e138a_icgraph" id="agroup__supporters_ga5bce9a6f19127aa17d90990dae7e138a_icgraph">
+<area shape="rect" title="Function to identify the next n sequential integers that do not identify a group that currently has m..." alt="" coords="395,81,556,109"/>
+<area shape="rect" href="group__groupmod.html#gaedf5b91b00b207a38c6a1a036f3853cf" title="Allocate each member of the group to one of n groups with custom probabilities for each group." alt="" coords="194,5,337,49"/>
+<area shape="rect" href="group__groupmod.html#ga74610483035cee35d81bd24c1a044259" title="Split a group into n groups of equal size (or size differing only by one, if n does not perfectly div..." alt="" coords="184,73,347,117"/>
+<area shape="rect" href="group__groupmod.html#gad4682769497c140c4374d3a8d85350c6" title="Allocate each member of the group to one of n groups with equal probability." alt="" coords="192,141,339,169"/>
+<area shape="rect" href="group__groupmod.html#ga49e99e674d87de80facffa7bed28393f" title="Split a group into n groups of equal size (or size differing only by one, if n does not perfectly div..." alt="" coords="5,81,136,109"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="ga57da16044e22c5c21e14b45bbef5e9eb" name="ga57da16044e22c5c21e14b45bbef5e9eb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga57da16044e22c5c21e14b45bbef5e9eb">&#9670;&nbsp;</a></span>get_new_group_num()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int get_new_group_num </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="struct_sim_data.html">SimData</a> *&#160;</td>
+          <td class="paramname"><em>d</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Function to identify the next sequential integer that does not identify a group that currently has member(s). </p>
+<p >This calls <a class="el" href="group__collgetters.html#ga6f49e4b90be53f42241fcfb9850f2f29" title="Identify group numbers that currently have members.">get_existing_groups()</a> every time, so for better speed, functions that do repeated group creation, like <a class="el" href="group__groupmod.html#ga2ffe6f186b1d9309dee151ae06f730b9" title="Give every individual in the group a new group number that does not belong to any other existing grou...">split_into_individuals()</a>, are recommended to use <a class="el" href="group__supporters.html#ga5bce9a6f19127aa17d90990dae7e138a" title="Function to identify the next n sequential integers that do not identify a group that currently has m...">get_n_new_group_nums()</a> (if they know the number of groups they need) or their own implementation, rather than calling this function repeatedly.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">d</td><td>the <a class="el" href="struct_sim_data.html" title="Composite type that is used to run crossing simulations.">SimData</a> struct on which to perform the operation </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>the next sequential currently-unused group number, an integer greater than 0. </dd></dl>
+<div id="dynsection-19" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-19-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
+<div id="dynsection-19-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-19-content" class="dyncontent" style="display:none;">
+<div class="center"><img src="group__supporters_ga57da16044e22c5c21e14b45bbef5e9eb_cgraph.png" border="0" usemap="#agroup__supporters_ga57da16044e22c5c21e14b45bbef5e9eb_cgraph" alt=""/></div>
+<map name="agroup__supporters_ga57da16044e22c5c21e14b45bbef5e9eb_cgraph" id="agroup__supporters_ga57da16044e22c5c21e14b45bbef5e9eb_cgraph">
+<area shape="rect" title="Function to identify the next sequential integer that does not identify a group that currently has me..." alt="" coords="5,32,146,60"/>
+<area shape="rect" href="group__collgetters.html#ga6f49e4b90be53f42241fcfb9850f2f29" title="Identify group numbers that currently have members." alt="" coords="194,5,331,33"/>
+<area shape="rect" href="group__supporters.html#ga6072a152b624743eeafb30adaf9b7f17" title="Replace calls to malloc direct with this function, which errors and exits with status 2 if memory all..." alt="" coords="220,57,305,85"/>
+<area shape="rect" href="group__supporters.html#gadae2e9f7e1061cb20426ba2333b7629b" title="Comparator function for qsort." alt="" coords="379,5,548,33"/>
+</map>
+</div>
+<div id="dynsection-20" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-20-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
+<div id="dynsection-20-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-20-content" class="dyncontent" style="display:none;">
+<div class="center"><img src="group__supporters_ga57da16044e22c5c21e14b45bbef5e9eb_icgraph.png" border="0" usemap="#agroup__supporters_ga57da16044e22c5c21e14b45bbef5e9eb_icgraph" alt=""/></div>
+<map name="agroup__supporters_ga57da16044e22c5c21e14b45bbef5e9eb_icgraph" id="agroup__supporters_ga57da16044e22c5c21e14b45bbef5e9eb_icgraph">
+<area shape="rect" title="Function to identify the next sequential integer that does not identify a group that currently has me..." alt="" coords="647,313,788,341"/>
+<area shape="rect" href="group__crossers.html#ga7f9865d8d1912cda7e8524d1ff761de6" title="Performs random crosses among members of a group." alt="" coords="206,10,375,38"/>
+<area shape="rect" href="group__crossers.html#ga43f436342a1afc3b14343a8f6e9385f9" title="Performs random crosses where the first parent comes from one group and the second from another." alt="" coords="427,62,595,90"/>
+<area shape="rect" href="sim-operations_8c.html#a42ded1341b4c5a03c2233e2a3875fe07" title="Performs the crosses of pairs of parents whose indexes are provided in an array." alt="" coords="423,114,599,142"/>
+<area shape="rect" href="group__loaders.html#ga8bd85cb47ec8e0c4049f937ef40ae102" title="Appends genotype data from a file to an existing SimData." alt="" coords="435,166,587,210"/>
+<area shape="rect" href="group__crossers.html#ga5e1da39f8341127e758d32393e8654aa" title="Creates an identical copy of each member of a group." alt="" coords="462,234,560,262"/>
+<area shape="rect" href="group__crossers.html#gab081b254e7abce63067b8c02fbac774f" title="Creates a doubled haploid from each member of a group." alt="" coords="431,286,591,314"/>
+<area shape="rect" href="group__crossers.html#gaf0d8ffcde1a2098e7ae807a031bbe7b9" title="Selfs each member of a group for a certain number of generations." alt="" coords="464,338,558,366"/>
+<area shape="rect" href="group__groupmod.html#ga9d60310dc0abe90122ada760536e0fe9" title="Allocates the genotypes with values of a label in a particular range to a new group." alt="" coords="442,390,581,418"/>
+<area shape="rect" href="group__groupmod.html#ga4d831280c4cf64be337f1bff8bf62d80" title="Allocates the genotypes with a particular value of a label to a new group." alt="" coords="443,442,579,470"/>
+<area shape="rect" href="group__groupmod.html#ga02fd183dde037779a2d6b18c84907ba9" title="Split a group into two groups of equal size (or size differing only by one, if the original group had..." alt="" coords="440,494,583,522"/>
+<area shape="rect" href="group__groupmod.html#ga548aadbba9882294ab8241511976b563" title="Take a list of indexes and allocate the genotypes at those indexes to a new group." alt="" coords="453,546,569,574"/>
+<area shape="rect" href="group__groupmod.html#ga28fa0c21827594b777881c45878f4444" title="Flip a coin for each member of the group to decide if it should be moved to the new group." alt="" coords="431,598,591,626"/>
+<area shape="rect" href="group__crossers.html#gaa41e75da9e6e4f8db5466e8929dec2ee" title="Find the top m percent of a group and perform random crosses between those top individuals." alt="" coords="5,270,158,314"/>
+<area shape="rect" href="group__crossers.html#ga9d79117014f247c078c6576c70d600fb" title="Perform crosses between all pairs of parents in the group from_group and allocates the resulting offs..." alt="" coords="212,62,369,106"/>
+<area shape="rect" href="group__crossers.html#ga7fafc033bf3aaa14c9d5affbe9421ca9" title="Perform crosses between pairs of parents identified by name in a file and allocate the resulting offs..." alt="" coords="210,130,371,158"/>
+<area shape="rect" href="group__crossers.html#gafb306165b0cf0f5cd752f3eaf4c60928" title="Perform crosses between previously&#45;generated offspring of pairs of parents identified by name in a fi..." alt="" coords="215,182,366,226"/>
+<area shape="rect" href="group__calculators.html#ga98696fc21c0424d98a5eed4df5c60f04" title="Takes the top_n individuals in the group with the best breeding values/fitnesses and puts them in a n..." alt="" coords="248,398,333,426"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="ga081557e4980a6e7e44363e53634d8fb7" name="ga081557e4980a6e7e44363e53634d8fb7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga081557e4980a6e7e44363e53634d8fb7">&#9670;&nbsp;</a></span>get_new_label_id()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int get_new_label_id </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="struct_sim_data.html">SimData</a> *&#160;</td>
+          <td class="paramname"><em>d</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Function to identify the next sequential integer that is not already allocated to a label in the simulation. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">d</td><td>the <a class="el" href="struct_sim_data.html" title="Composite type that is used to run crossing simulations.">SimData</a> struct on which to perform the operation </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>the next sequential currently-unused label id, an integer greater than 0. </dd></dl>
+<div id="dynsection-21" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-21-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
+<div id="dynsection-21-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-21-content" class="dyncontent" style="display:none;">
+<div class="center"><img src="group__supporters_ga081557e4980a6e7e44363e53634d8fb7_icgraph.png" border="0" usemap="#agroup__supporters_ga081557e4980a6e7e44363e53634d8fb7_icgraph" alt=""/></div>
+<map name="agroup__supporters_ga081557e4980a6e7e44363e53634d8fb7_icgraph" id="agroup__supporters_ga081557e4980a6e7e44363e53634d8fb7_icgraph">
+<area shape="rect" title="Function to identify the next sequential integer that is not already allocated to a label in the simu..." alt="" coords="175,5,295,33"/>
+<area shape="rect" href="group__supporters.html#ga01a6e3ec05c4a13139cf853e427845fe" title="Initialises a new custom label." alt="" coords="5,5,127,33"/>
 </map>
 </div>
 
@@ -995,48 +1217,48 @@ Functions</h2></td></tr>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">d</td><td>pointer to the <a class="el" href="struct_sim_data.html" title="Composite type that is used to run crossing simulations.">SimData</a> to have its markers, genetic map, and allele matrix sorted. The <a class="el" href="struct_sim_data.html" title="Composite type that is used to run crossing simulations.">SimData</a> pointed to by d will be modified by this function. </td></tr>
-    <tr><td class="paramname">actual_n_markers</td><td>If previously calculated, include the number of markers in <code>d-&gt;markers</code> that have a position loaded into <code>d-&gt;map.positions</code>. If this has not been calculated yet, make the value -1 and this function will calculate it. The value is calculated as the number of positions in <code>d-&gt;map.positions</code> that have a chromosome number of 0. </td></tr>
+    <tr><td class="paramname">actual_n_markers</td><td>If previously calculated, include the number of markers in <code>d-&gt;markers</code> that have a position loaded into <code>d-&gt;map.positions</code>. If this has not been calculated yet, make the value -1 (UNINITIALISED) and this function will calculate it. The value is calculated as the number of positions in <code>d-&gt;map.positions</code> that have a chromosome number of 0. </td></tr>
   </table>
   </dd>
 </dl>
-<div id="dynsection-19" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
-  <img id="dynsection-19-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
-<div id="dynsection-19-summary" class="dynsummary" style="display:block;">
+<div id="dynsection-22" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-22-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
+<div id="dynsection-22-summary" class="dynsummary" style="display:block;">
 </div>
-<div id="dynsection-19-content" class="dyncontent" style="display:none;">
+<div id="dynsection-22-content" class="dyncontent" style="display:none;">
 <div class="center"><img src="group__supporters_gadebbfa88bf139ddca501ab158f3746c5_cgraph.png" border="0" usemap="#agroup__supporters_gadebbfa88bf139ddca501ab158f3746c5_cgraph" alt=""/></div>
 <map name="agroup__supporters_gadebbfa88bf139ddca501ab158f3746c5_cgraph" id="agroup__supporters_gadebbfa88bf139ddca501ab158f3746c5_cgraph">
-<area shape="rect" title="Takes a SimData object, and sorts its markers, the rows of its parent gen AlleleMatrix (because they ..." alt="" coords="5,107,143,133"/>
-<area shape="rect" href="group__supporters.html#ga80cab739edbd12bbd2ad1f9b77b27548" title="Comparator function for qsort." alt="" coords="191,5,351,32"/>
-<area shape="rect" href="group__deletors.html#gaaf6542d59034f88f9e1ec48e5f053c4a" title="Deletes a DecimalMatrix and frees its memory." alt="" coords="217,56,324,83"/>
-<area shape="rect" href="group__deletors.html#gaaf7e12b92ec0f93bb3bc2ec67155bc94" title="Deletes a GeneticMap object and frees its memory." alt="" coords="215,107,326,133"/>
-<area shape="rect" href="group__maths.html#gabf3f578b0aa59d5b68ccd0738dd6a9d1" title="Generates a matrix of c columns, r rows with all 0." alt="" coords="193,157,348,184"/>
-<area shape="rect" href="group__supporters.html#gad1a5b9f3e850da13931ee02fbb170d41" title="Replace calls to malloc direct with this function, which errors and exits with status 2 if memory all..." alt="" coords="228,208,313,235"/>
+<area shape="rect" title="Takes a SimData object, and sorts its markers, the rows of its parent gen AlleleMatrix (because they ..." alt="" coords="5,109,142,137"/>
+<area shape="rect" href="group__supporters.html#ga80cab739edbd12bbd2ad1f9b77b27548" title="Comparator function for qsort." alt="" coords="190,5,349,33"/>
+<area shape="rect" href="group__deletors.html#gaaf6542d59034f88f9e1ec48e5f053c4a" title="Deletes a DecimalMatrix and frees its memory." alt="" coords="216,57,323,85"/>
+<area shape="rect" href="group__deletors.html#gaaf7e12b92ec0f93bb3bc2ec67155bc94" title="Deletes a GeneticMap object and frees its memory." alt="" coords="215,109,324,137"/>
+<area shape="rect" href="group__maths.html#ga26e7ca69aa8bd969e3a781331a0afe27" title="Generates a matrix of c columns, r rows with all 0." alt="" coords="193,161,346,189"/>
+<area shape="rect" href="group__supporters.html#ga6072a152b624743eeafb30adaf9b7f17" title="Replace calls to malloc direct with this function, which errors and exits with status 2 if memory all..." alt="" coords="227,213,312,241"/>
 </map>
 </div>
-<div id="dynsection-20" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
-  <img id="dynsection-20-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
-<div id="dynsection-20-summary" class="dynsummary" style="display:block;">
+<div id="dynsection-23" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-23-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
+<div id="dynsection-23-summary" class="dynsummary" style="display:block;">
 </div>
-<div id="dynsection-20-content" class="dyncontent" style="display:none;">
+<div id="dynsection-23-content" class="dyncontent" style="display:none;">
 <div class="center"><img src="group__supporters_gadebbfa88bf139ddca501ab158f3746c5_icgraph.png" border="0" usemap="#agroup__supporters_gadebbfa88bf139ddca501ab158f3746c5_icgraph" alt=""/></div>
 <map name="agroup__supporters_gadebbfa88bf139ddca501ab158f3746c5_icgraph" id="agroup__supporters_gadebbfa88bf139ddca501ab158f3746c5_icgraph">
-<area shape="rect" title="Takes a SimData object, and sorts its markers, the rows of its parent gen AlleleMatrix (because they ..." alt="" coords="391,5,528,32"/>
-<area shape="rect" href="group__loaders.html#ga54cd625669413c2ef171060e9844d814" title="Populates a SimData combination from scratch with marker allele data, a genetic map,..." alt="" coords="5,5,124,32"/>
-<area shape="rect" href="group__loaders.html#ga8edb09b9b9eb27f84ac59cc4342ea855" title="Populates a SimData combination with data from a genetic map." alt="" coords="172,31,343,57"/>
+<area shape="rect" title="Takes a SimData object, and sorts its markers, the rows of its parent gen AlleleMatrix (because they ..." alt="" coords="389,5,525,33"/>
+<area shape="rect" href="group__loaders.html#ga54cd625669413c2ef171060e9844d814" title="Populates a SimData combination from scratch with marker allele data, a genetic map,..." alt="" coords="5,5,124,33"/>
+<area shape="rect" href="group__loaders.html#ga8edb09b9b9eb27f84ac59cc4342ea855" title="Populates a SimData combination with data from a genetic map." alt="" coords="172,31,341,59"/>
 </map>
 </div>
 
 </div>
 </div>
-<a id="gace12db201ad55ffc72c26a76ee8fbfc5" name="gace12db201ad55ffc72c26a76ee8fbfc5"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#gace12db201ad55ffc72c26a76ee8fbfc5">&#9670;&nbsp;</a></span>set_group_list()</h2>
+<a id="ga2a1b6572fa048b93de5ea25d3cc30124" name="ga2a1b6572fa048b93de5ea25d3cc30124"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga2a1b6572fa048b93de5ea25d3cc30124">&#9670;&nbsp;</a></span>increment_labels()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void set_group_list </td>
+          <td class="memname">void increment_labels </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="struct_sim_data.html">SimData</a> *&#160;</td>
           <td class="paramname"><em>d</em>, </td>
@@ -1044,14 +1266,20 @@ Functions</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">int&#160;</td>
-          <td class="paramname"><em>by_n</em>, </td>
+          <td class="paramtype">const int&#160;</td>
+          <td class="paramname"><em>whichGroup</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">int&#160;</td>
-          <td class="paramname"><em>new_group</em>&#160;</td>
+          <td class="paramtype">const int&#160;</td>
+          <td class="paramname"><em>whichLabel</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const int&#160;</td>
+          <td class="paramname"><em>byValue</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -1061,10 +1289,33 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>Increment the values of a custom label. </p>
+<p >Increments the values of the custom label that has index <code>whichLabel</code> by the value <code>byValue</code>. Depending on the value of <code>whichGroup</code>, the function will modify the label of every single genotype in the simulation, or just modify the label of every member of a given group.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">d</td><td>pointer to the <code><a class="el" href="struct_sim_data.html" title="Composite type that is used to run crossing simulations.">SimData</a></code> containing the genotypes and labels to be relabelled </td></tr>
+    <tr><td class="paramname">whichGroup</td><td>0 to modify the relevant labels of all extant genotypes, or a positive integer to modify the relevant labels of all members of group `whichGroup. </td></tr>
+    <tr><td class="paramname">whichLabel</td><td>the label id of the relevant label. </td></tr>
+    <tr><td class="paramname">byValue</td><td>the value by which the appropriate labels will be incremented. For example, a value of 1 would increase all relevant labels by 1, a value of -2 would subtract 2 from each relevant label. </td></tr>
+  </table>
+  </dd>
+</dl>
+<div id="dynsection-24" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-24-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
+<div id="dynsection-24-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-24-content" class="dyncontent" style="display:none;">
+<div class="center"><img src="group__supporters_ga2a1b6572fa048b93de5ea25d3cc30124_cgraph.png" border="0" usemap="#agroup__supporters_ga2a1b6572fa048b93de5ea25d3cc30124_cgraph" alt=""/></div>
+<map name="agroup__supporters_ga2a1b6572fa048b93de5ea25d3cc30124_cgraph" id="agroup__supporters_ga2a1b6572fa048b93de5ea25d3cc30124_cgraph">
+<area shape="rect" title="Increment the values of a custom label." alt="" coords="5,5,125,33"/>
+<area shape="rect" href="group__supporters.html#ga835f8472c31ae57a4b826417f3dd7781" title="Function to identify the label lookup index of a label identifier." alt="" coords="173,5,301,33"/>
+</map>
+</div>
+
 </div>
 </div>
-<a id="ga076a7b5225f3bb1f0d7912715df393b3" name="ga076a7b5225f3bb1f0d7912715df393b3"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ga076a7b5225f3bb1f0d7912715df393b3">&#9670;&nbsp;</a></span>set_ids()</h2>
+<a id="ga80c7861f7c1014e8c406ef279a54759f" name="ga80c7861f7c1014e8c406ef279a54759f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga80c7861f7c1014e8c406ef279a54759f">&#9670;&nbsp;</a></span>set_ids()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -1078,13 +1329,13 @@ Functions</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">int&#160;</td>
+          <td class="paramtype">const int&#160;</td>
           <td class="paramname"><em>from_index</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">int&#160;</td>
+          <td class="paramtype">const int&#160;</td>
           <td class="paramname"><em>to_index</em>&#160;</td>
         </tr>
         <tr>
@@ -1105,25 +1356,222 @@ Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
-<div id="dynsection-21" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
-  <img id="dynsection-21-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
-<div id="dynsection-21-summary" class="dynsummary" style="display:block;">
+<div id="dynsection-25" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-25-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
+<div id="dynsection-25-summary" class="dynsummary" style="display:block;">
 </div>
-<div id="dynsection-21-content" class="dyncontent" style="display:none;">
-<div class="center"><img src="group__supporters_ga076a7b5225f3bb1f0d7912715df393b3_icgraph.png" border="0" usemap="#agroup__supporters_ga076a7b5225f3bb1f0d7912715df393b3_icgraph" alt=""/></div>
-<map name="agroup__supporters_ga076a7b5225f3bb1f0d7912715df393b3_icgraph" id="agroup__supporters_ga076a7b5225f3bb1f0d7912715df393b3_icgraph">
-<area shape="rect" title="Allocate lifetime&#45;unique ids to each genotype in the range of whole SimData indexes from_index to to_..." alt="" coords="393,78,457,105"/>
-<area shape="rect" href="group__loaders.html#ga8bd85cb47ec8e0c4049f937ef40ae102" title="Appends genotype data from a file to an existing SimData." alt="" coords="182,5,335,47"/>
-<area shape="rect" href="group__loaders.html#gad5863641a67355c2c1523e1a23b6f581" title="Populates a SimData combination with marker allele data." alt="" coords="172,71,345,112"/>
-<area shape="rect" href="group__loaders.html#ga156666e21151a9f267e31598574366a6" title="Populates a SimData combination with marker allele data." alt="" coords="179,136,338,177"/>
-<area shape="rect" href="group__loaders.html#ga54cd625669413c2ef171060e9844d814" title="Populates a SimData combination from scratch with marker allele data, a genetic map,..." alt="" coords="5,143,124,170"/>
+<div id="dynsection-25-content" class="dyncontent" style="display:none;">
+<div class="center"><img src="group__supporters_ga80c7861f7c1014e8c406ef279a54759f_icgraph.png" border="0" usemap="#agroup__supporters_ga80c7861f7c1014e8c406ef279a54759f_icgraph" alt=""/></div>
+<map name="agroup__supporters_ga80c7861f7c1014e8c406ef279a54759f_icgraph" id="agroup__supporters_ga80c7861f7c1014e8c406ef279a54759f_icgraph">
+<area shape="rect" title="Allocate lifetime&#45;unique ids to each genotype in the range of whole SimData indexes from_index to to_..." alt="" coords="392,81,455,109"/>
+<area shape="rect" href="group__loaders.html#ga8bd85cb47ec8e0c4049f937ef40ae102" title="Appends genotype data from a file to an existing SimData." alt="" coords="182,5,334,49"/>
+<area shape="rect" href="group__loaders.html#gad5863641a67355c2c1523e1a23b6f581" title="Populates a SimData combination with marker allele data." alt="" coords="172,73,344,117"/>
+<area shape="rect" href="group__loaders.html#ga156666e21151a9f267e31598574366a6" title="Populates a SimData combination with marker allele data." alt="" coords="179,141,337,185"/>
+<area shape="rect" href="group__loaders.html#ga54cd625669413c2ef171060e9844d814" title="Populates a SimData combination from scratch with marker allele data, a genetic map,..." alt="" coords="5,149,124,177"/>
 </map>
 </div>
 
 </div>
 </div>
-<a id="gab751e196194afd414e942f0900adba72" name="gab751e196194afd414e942f0900adba72"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#gab751e196194afd414e942f0900adba72">&#9670;&nbsp;</a></span>set_names()</h2>
+<a id="ga7e23a13297740a5656360550177006ed" name="ga7e23a13297740a5656360550177006ed"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga7e23a13297740a5656360550177006ed">&#9670;&nbsp;</a></span>set_label_default()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void set_label_default </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="struct_sim_data.html">SimData</a> *&#160;</td>
+          <td class="paramname"><em>d</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const int&#160;</td>
+          <td class="paramname"><em>whichLabel</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const int&#160;</td>
+          <td class="paramname"><em>newDefault</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Set the default value of a custom label. </p>
+<p >Sets the default (birth) value of the custom label that has index <code>whichLabel</code> to the value <code>newDefault</code>.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">d</td><td>pointer to the <code><a class="el" href="struct_sim_data.html" title="Composite type that is used to run crossing simulations.">SimData</a></code> containing the genotypes and labels to be relabelle </td></tr>
+    <tr><td class="paramname">whichLabel</td><td>the label id of the relevant label. </td></tr>
+    <tr><td class="paramname">newDefault</td><td>the value to which the appropriate label's default will be set. </td></tr>
+  </table>
+  </dd>
+</dl>
+<div id="dynsection-26" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-26-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
+<div id="dynsection-26-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-26-content" class="dyncontent" style="display:none;">
+<div class="center"><img src="group__supporters_ga7e23a13297740a5656360550177006ed_cgraph.png" border="0" usemap="#agroup__supporters_ga7e23a13297740a5656360550177006ed_cgraph" alt=""/></div>
+<map name="agroup__supporters_ga7e23a13297740a5656360550177006ed_cgraph" id="agroup__supporters_ga7e23a13297740a5656360550177006ed_cgraph">
+<area shape="rect" title="Set the default value of a custom label." alt="" coords="5,5,124,33"/>
+<area shape="rect" href="group__supporters.html#ga835f8472c31ae57a4b826417f3dd7781" title="Function to identify the label lookup index of a label identifier." alt="" coords="172,5,300,33"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="ga7ec8bba2fa9d7660993903e7790ebdf3" name="ga7ec8bba2fa9d7660993903e7790ebdf3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga7ec8bba2fa9d7660993903e7790ebdf3">&#9670;&nbsp;</a></span>set_labels_to_const()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void set_labels_to_const </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="struct_sim_data.html">SimData</a> *&#160;</td>
+          <td class="paramname"><em>d</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const int&#160;</td>
+          <td class="paramname"><em>whichGroup</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const int&#160;</td>
+          <td class="paramname"><em>whichLabel</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const int&#160;</td>
+          <td class="paramname"><em>setTo</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Set the values of a custom label. </p>
+<p >Sets the values of the custom label that has index <code>whichLabel</code> to the value <code>setTo</code>. Depending on the value of <code>whichGroup</code>, the function will modify the label of every single genotype in the simulation, or just modify the label of every member of a given group.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">d</td><td>pointer to the <code><a class="el" href="struct_sim_data.html" title="Composite type that is used to run crossing simulations.">SimData</a></code> containing the genotypes and labels to be relabelled </td></tr>
+    <tr><td class="paramname">whichGroup</td><td>0 to modify the relevant labels of all extant genotypes, or a positive integer to modify the relevant labels of all members of group <code>whichGroup</code>. </td></tr>
+    <tr><td class="paramname">whichLabel</td><td>the label id of the relevant label. </td></tr>
+    <tr><td class="paramname">setTo</td><td>the value to which the appropriate labels will be set. </td></tr>
+  </table>
+  </dd>
+</dl>
+<div id="dynsection-27" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-27-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
+<div id="dynsection-27-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-27-content" class="dyncontent" style="display:none;">
+<div class="center"><img src="group__supporters_ga7ec8bba2fa9d7660993903e7790ebdf3_cgraph.png" border="0" usemap="#agroup__supporters_ga7ec8bba2fa9d7660993903e7790ebdf3_cgraph" alt=""/></div>
+<map name="agroup__supporters_ga7ec8bba2fa9d7660993903e7790ebdf3_cgraph" id="agroup__supporters_ga7ec8bba2fa9d7660993903e7790ebdf3_cgraph">
+<area shape="rect" title="Set the values of a custom label." alt="" coords="5,5,143,33"/>
+<area shape="rect" href="group__supporters.html#ga835f8472c31ae57a4b826417f3dd7781" title="Function to identify the label lookup index of a label identifier." alt="" coords="191,5,319,33"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="gab59b6b2fbb70c8d9db746c4186a6fa43" name="gab59b6b2fbb70c8d9db746c4186a6fa43"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gab59b6b2fbb70c8d9db746c4186a6fa43">&#9670;&nbsp;</a></span>set_labels_to_values()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void set_labels_to_values </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="struct_sim_data.html">SimData</a> *&#160;</td>
+          <td class="paramname"><em>d</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const int&#160;</td>
+          <td class="paramname"><em>whichGroup</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const int&#160;</td>
+          <td class="paramname"><em>startIndex</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const int&#160;</td>
+          <td class="paramname"><em>whichLabel</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const int&#160;</td>
+          <td class="paramname"><em>n_values</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const int&#160;</td>
+          <td class="paramname"><em>values</em>[n_values]&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Copy a vector of integers into a custom label. </p>
+<p >Sets values of the custom label that has index <code>whichLabel</code> to the contents of the array <code>values</code>. The genotypes with the <code>n_values</code> contiguous simulation indexes starting with <code>startIndex</code> in group <code>whichGroup</code> are the ones given those labels. If <code>whichGroup</code> is 0, then it sets the labels of the genotypes with global indexes starting at <code>startIndex</code>.</p>
+<p >If <code>n_values</code> is longer than the number of genotypes in the right group after <code>startIndex</code>, then the extra values are ignored.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">d</td><td>pointer to the <code><a class="el" href="struct_sim_data.html" title="Composite type that is used to run crossing simulations.">SimData</a></code> containing the genotypes and labels to be relabelled </td></tr>
+    <tr><td class="paramname">whichGroup</td><td>0 to set the label of the genotypes with global indexes between <code>startIndex</code> and <code>startIndex + n_values</code>, or a positive integer to set the label of the <code>startIndex</code>th to <code>startIndex + n_values</code>th members of group <code>whichGroup</code>. </td></tr>
+    <tr><td class="paramname">startIndex</td><td>the first index of the group to set to a value </td></tr>
+    <tr><td class="paramname">whichLabel</td><td>the label id of the relevant label. </td></tr>
+    <tr><td class="paramname">n_values</td><td>length of <code>values</code> </td></tr>
+    <tr><td class="paramname">values</td><td>vector of integers to paste into the chosen custom label of the chosen genotypes. </td></tr>
+  </table>
+  </dd>
+</dl>
+<div id="dynsection-28" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-28-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
+<div id="dynsection-28-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-28-content" class="dyncontent" style="display:none;">
+<div class="center"><img src="group__supporters_gab59b6b2fbb70c8d9db746c4186a6fa43_cgraph.png" border="0" usemap="#agroup__supporters_gab59b6b2fbb70c8d9db746c4186a6fa43_cgraph" alt=""/></div>
+<map name="agroup__supporters_gab59b6b2fbb70c8d9db746c4186a6fa43_cgraph" id="agroup__supporters_gab59b6b2fbb70c8d9db746c4186a6fa43_cgraph">
+<area shape="rect" title="Copy a vector of integers into a custom label." alt="" coords="5,5,147,33"/>
+<area shape="rect" href="group__supporters.html#ga835f8472c31ae57a4b826417f3dd7781" title="Function to identify the label lookup index of a label identifier." alt="" coords="195,5,323,33"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="gafad0846098c4da7ca876f0a625f369e1" name="gafad0846098c4da7ca876f0a625f369e1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gafad0846098c4da7ca876f0a625f369e1">&#9670;&nbsp;</a></span>set_names()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -1137,19 +1585,19 @@ Functions</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">char *&#160;</td>
+          <td class="paramtype">const char *&#160;</td>
           <td class="paramname"><em>prefix</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">int&#160;</td>
+          <td class="paramtype">const int&#160;</td>
           <td class="paramname"><em>suffix</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">int&#160;</td>
+          <td class="paramtype">const int&#160;</td>
           <td class="paramname"><em>from_index</em>&#160;</td>
         </tr>
         <tr>
@@ -1173,43 +1621,114 @@ Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
-<div id="dynsection-22" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
-  <img id="dynsection-22-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
-<div id="dynsection-22-summary" class="dynsummary" style="display:block;">
+<div id="dynsection-29" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-29-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
+<div id="dynsection-29-summary" class="dynsummary" style="display:block;">
 </div>
-<div id="dynsection-22-content" class="dyncontent" style="display:none;">
-<div class="center"><img src="group__supporters_gab751e196194afd414e942f0900adba72_cgraph.png" border="0" usemap="#agroup__supporters_gab751e196194afd414e942f0900adba72_cgraph" alt=""/></div>
-<map name="agroup__supporters_gab751e196194afd414e942f0900adba72_cgraph" id="agroup__supporters_gab751e196194afd414e942f0900adba72_cgraph">
-<area shape="rect" title="Fills the designated section of the .names array in an AlleleMatrix with the pattern prefixindex." alt="" coords="5,31,92,57"/>
-<area shape="rect" href="group__supporters.html#gad7d864d43092823ac2ed8a6cbd595e35" title="Count and return the number of digits in i." alt="" coords="140,5,264,32"/>
-<area shape="rect" href="group__supporters.html#gad1a5b9f3e850da13931ee02fbb170d41" title="Replace calls to malloc direct with this function, which errors and exits with status 2 if memory all..." alt="" coords="159,56,245,83"/>
+<div id="dynsection-29-content" class="dyncontent" style="display:none;">
+<div class="center"><img src="group__supporters_gafad0846098c4da7ca876f0a625f369e1_cgraph.png" border="0" usemap="#agroup__supporters_gafad0846098c4da7ca876f0a625f369e1_cgraph" alt=""/></div>
+<map name="agroup__supporters_gafad0846098c4da7ca876f0a625f369e1_cgraph" id="agroup__supporters_gafad0846098c4da7ca876f0a625f369e1_cgraph">
+<area shape="rect" title="Fills the designated section of the .names array in an AlleleMatrix with the pattern prefixindex." alt="" coords="5,32,91,60"/>
+<area shape="rect" href="group__supporters.html#ga4467dd870605266ac95eff75bacffb1f" title="Count and return the number of digits in i." alt="" coords="139,5,262,33"/>
+<area shape="rect" href="group__supporters.html#ga6072a152b624743eeafb30adaf9b7f17" title="Replace calls to malloc direct with this function, which errors and exits with status 2 if memory all..." alt="" coords="158,57,243,85"/>
 </map>
 </div>
-<div id="dynsection-23" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
-  <img id="dynsection-23-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
-<div id="dynsection-23-summary" class="dynsummary" style="display:block;">
+<div id="dynsection-30" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-30-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
+<div id="dynsection-30-summary" class="dynsummary" style="display:block;">
 </div>
-<div id="dynsection-23-content" class="dyncontent" style="display:none;">
-<div class="center"><img src="group__supporters_gab751e196194afd414e942f0900adba72_icgraph.png" border="0" usemap="#agroup__supporters_gab751e196194afd414e942f0900adba72_icgraph" alt=""/></div>
-<map name="agroup__supporters_gab751e196194afd414e942f0900adba72_icgraph" id="agroup__supporters_gab751e196194afd414e942f0900adba72_icgraph">
-<area shape="rect" title="Fills the designated section of the .names array in an AlleleMatrix with the pattern prefixindex." alt="" coords="441,157,528,183"/>
-<area shape="rect" href="group__crossers.html#gae66231fb141a76432d1211e2cf0baf25" title="Performs random crosses among members of a group." alt="" coords="219,19,390,46"/>
-<area shape="rect" href="group__crossers.html#ga3be2cb18d1c722b3a766a7a5663a8f0c" title="Performs random crosses where the first parent comes from one group and the second from another." alt="" coords="220,81,389,107"/>
-<area shape="rect" href="group__crossers.html#gabb793988799d792dfe4007efdf988068" title="Performs the crosses of pairs of parents whose ids are provided in an array." alt="" coords="216,131,393,158"/>
-<area shape="rect" href="group__crossers.html#gaa42e48ab06f9051e5ed6879409cbe2f4" title="Creates an identical copy of each member of a group." alt="" coords="255,182,354,209"/>
-<area shape="rect" href="group__crossers.html#gaf078d6bc1b5d4234a9b960e6132480aa" title="Creates a doubled haploid from each member of a group." alt="" coords="224,233,385,259"/>
-<area shape="rect" href="group__crossers.html#gadf5beb682ac15fa5a0176e480adc9d91" title="Selfs each member of a group for a certain number of generations." alt="" coords="257,283,352,310"/>
-<area shape="rect" href="group__crossers.html#ga68aca99a41527b019316c8243e6fc7a7" title="Find the top m percent of a group and perform random crosses between those top individuals." alt="" coords="10,5,163,47"/>
-<area shape="rect" href="group__crossers.html#ga3f1b06b7aa35e6a05918e16d1deabeee" title="Perform crosses between all pairs of parents in the group from_group and allocates the resulting offs..." alt="" coords="8,71,165,112"/>
-<area shape="rect" href="group__crossers.html#ga3b67d38c13c7a8bef2d0fc91c0365177" title="Perform crosses between pairs of parents identified by name in a file and allocate the resulting offs..." alt="" coords="5,137,168,163"/>
-<area shape="rect" href="group__crossers.html#gaa7c90b4015e4abce750176c6d891cad2" title="Perform crosses between previously&#45;generated offspring of pairs of parents identified by name in a fi..." alt="" coords="11,188,163,229"/>
+<div id="dynsection-30-content" class="dyncontent" style="display:none;">
+<div class="center"><img src="group__supporters_gafad0846098c4da7ca876f0a625f369e1_icgraph.png" border="0" usemap="#agroup__supporters_gafad0846098c4da7ca876f0a625f369e1_icgraph" alt=""/></div>
+<map name="agroup__supporters_gafad0846098c4da7ca876f0a625f369e1_icgraph" id="agroup__supporters_gafad0846098c4da7ca876f0a625f369e1_icgraph">
+<area shape="rect" title="Fills the designated section of the .names array in an AlleleMatrix with the pattern prefixindex." alt="" coords="439,161,524,189"/>
+<area shape="rect" href="group__crossers.html#ga7f9865d8d1912cda7e8524d1ff761de6" title="Performs random crosses among members of a group." alt="" coords="218,25,388,53"/>
+<area shape="rect" href="group__crossers.html#ga43f436342a1afc3b14343a8f6e9385f9" title="Performs random crosses where the first parent comes from one group and the second from another." alt="" coords="219,83,387,111"/>
+<area shape="rect" href="sim-operations_8c.html#a42ded1341b4c5a03c2233e2a3875fe07" title="Performs the crosses of pairs of parents whose indexes are provided in an array." alt="" coords="215,135,391,163"/>
+<area shape="rect" href="group__crossers.html#ga5e1da39f8341127e758d32393e8654aa" title="Creates an identical copy of each member of a group." alt="" coords="254,187,352,215"/>
+<area shape="rect" href="group__crossers.html#gab081b254e7abce63067b8c02fbac774f" title="Creates a doubled haploid from each member of a group." alt="" coords="223,239,383,267"/>
+<area shape="rect" href="group__crossers.html#gaf0d8ffcde1a2098e7ae807a031bbe7b9" title="Selfs each member of a group for a certain number of generations." alt="" coords="256,291,350,319"/>
+<area shape="rect" href="group__crossers.html#gaa41e75da9e6e4f8db5466e8929dec2ee" title="Find the top m percent of a group and perform random crosses between those top individuals." alt="" coords="10,5,162,49"/>
+<area shape="rect" href="group__crossers.html#ga9d79117014f247c078c6576c70d600fb" title="Perform crosses between all pairs of parents in the group from_group and allocates the resulting offs..." alt="" coords="8,73,164,117"/>
+<area shape="rect" href="group__crossers.html#ga7fafc033bf3aaa14c9d5affbe9421ca9" title="Perform crosses between pairs of parents identified by name in a file and allocate the resulting offs..." alt="" coords="5,141,167,169"/>
+<area shape="rect" href="group__crossers.html#gafb306165b0cf0f5cd752f3eaf4c60928" title="Perform crosses between previously&#45;generated offspring of pairs of parents identified by name in a fi..." alt="" coords="10,193,162,237"/>
 </map>
 </div>
 
 </div>
 </div>
-<a id="gaa471b9b9b77c8010dff8d318e9a968a7" name="gaa471b9b9b77c8010dff8d318e9a968a7"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#gaa471b9b9b77c8010dff8d318e9a968a7">&#9670;&nbsp;</a></span>shuffle_up_to()</h2>
+<a id="gaa8e0196f0963912519c78fc8c2263beb" name="gaa8e0196f0963912519c78fc8c2263beb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gaa8e0196f0963912519c78fc8c2263beb">&#9670;&nbsp;</a></span>set_names_to_values()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void set_names_to_values </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="struct_sim_data.html">SimData</a> *&#160;</td>
+          <td class="paramname"><em>d</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const int&#160;</td>
+          <td class="paramname"><em>whichGroup</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const int&#160;</td>
+          <td class="paramname"><em>startIndex</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const int&#160;</td>
+          <td class="paramname"><em>n_values</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>values</em>[n_values]&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Copy a vector of strings into the genotype name field. </p>
+<p >Sets genotype names to the contents of the array <code>values</code>. The genotypes with the <code>n_values</code> contiguous simulation indexes starting with <code>startIndex</code> in group <code>whichGroup</code> are the ones given those names. If <code>whichGroup</code> is 0, then it sets the names of the genotypes with global indexes starting at <code>startIndex</code>.</p>
+<p >If <code>n_values</code> is longer than the number of genotypes in the right group after <code>startIndex</code>, then the extra values are ignored.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">d</td><td>pointer to the <code><a class="el" href="struct_sim_data.html" title="Composite type that is used to run crossing simulations.">SimData</a></code> containing the genotypes to be renamed </td></tr>
+    <tr><td class="paramname">whichGroup</td><td>0 to set the names of the genotypes with global indexes between <code>startIndex</code> and <code>startIndex + n_values</code>, or a positive integer to set the names of the <code>startIndex</code>th to <code>startIndex + n_values</code>th members of group <code>whichGroup</code>. </td></tr>
+    <tr><td class="paramname">startIndex</td><td>the first index of the group to set to a value </td></tr>
+    <tr><td class="paramname">n_values</td><td>length of <code>values</code> </td></tr>
+    <tr><td class="paramname">values</td><td>vector of integers to paste into the name field of the chosen genotypes. </td></tr>
+  </table>
+  </dd>
+</dl>
+<div id="dynsection-31" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-31-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
+<div id="dynsection-31-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-31-content" class="dyncontent" style="display:none;">
+<div class="center"><img src="group__supporters_gaa8e0196f0963912519c78fc8c2263beb_cgraph.png" border="0" usemap="#agroup__supporters_gaa8e0196f0963912519c78fc8c2263beb_cgraph" alt=""/></div>
+<map name="agroup__supporters_gaa8e0196f0963912519c78fc8c2263beb_cgraph" id="agroup__supporters_gaa8e0196f0963912519c78fc8c2263beb_cgraph">
+<area shape="rect" title="Copy a vector of strings into the genotype name field." alt="" coords="5,5,152,33"/>
+<area shape="rect" href="group__supporters.html#ga6072a152b624743eeafb30adaf9b7f17" title="Replace calls to malloc direct with this function, which errors and exits with status 2 if memory all..." alt="" coords="200,5,284,33"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="ga575fe459225d6b565a199426f1b5c030" name="ga575fe459225d6b565a199426f1b5c030"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga575fe459225d6b565a199426f1b5c030">&#9670;&nbsp;</a></span>shuffle_up_to()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -1217,19 +1736,25 @@ Functions</h2></td></tr>
         <tr>
           <td class="memname">void shuffle_up_to </td>
           <td>(</td>
+          <td class="paramtype">rnd_pcg_t *&#160;</td>
+          <td class="paramname"><em>rng</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
           <td class="paramtype">int *&#160;</td>
           <td class="paramname"><em>sequence</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">size_t&#160;</td>
+          <td class="paramtype">const size_t&#160;</td>
           <td class="paramname"><em>total_n</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">size_t&#160;</td>
+          <td class="paramtype">const size_t&#160;</td>
           <td class="paramname"><em>n_to_shuffle</em>&#160;</td>
         </tr>
         <tr>
@@ -1244,30 +1769,24 @@ Functions</h2></td></tr>
 <p >Modified from <a href="https://benpfaff.org/writings/clc/shuffle.html">https://benpfaff.org/writings/clc/shuffle.html</a></p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
+    <tr><td class="paramname">d</td><td><a class="el" href="struct_sim_data.html" title="Composite type that is used to run crossing simulations.">SimData</a>, only used for pointer to random number generator </td></tr>
     <tr><td class="paramname">sequence</td><td>the array </td></tr>
     <tr><td class="paramname">total_n</td><td>length of the array </td></tr>
     <tr><td class="paramname">n_to_shuffle</td><td>After calling this function, the first n_to_shuffle integers in the array will be randomly ordered by a Fischer-Yates shuffle </td></tr>
   </table>
   </dd>
 </dl>
-<div id="dynsection-24" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
-  <img id="dynsection-24-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
-<div id="dynsection-24-summary" class="dynsummary" style="display:block;">
+<div id="dynsection-32" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-32-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
+<div id="dynsection-32-summary" class="dynsummary" style="display:block;">
 </div>
-<div id="dynsection-24-content" class="dyncontent" style="display:none;">
-<div class="center"><img src="group__supporters_gaa471b9b9b77c8010dff8d318e9a968a7_cgraph.png" border="0" usemap="#agroup__supporters_gaa471b9b9b77c8010dff8d318e9a968a7_cgraph" alt=""/></div>
-</div>
-<div id="dynsection-25" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
-  <img id="dynsection-25-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
-<div id="dynsection-25-summary" class="dynsummary" style="display:block;">
-</div>
-<div id="dynsection-25-content" class="dyncontent" style="display:none;">
-<div class="center"><img src="group__supporters_gaa471b9b9b77c8010dff8d318e9a968a7_icgraph.png" border="0" usemap="#agroup__supporters_gaa471b9b9b77c8010dff8d318e9a968a7_icgraph" alt=""/></div>
-<map name="agroup__supporters_gaa471b9b9b77c8010dff8d318e9a968a7_icgraph" id="agroup__supporters_gaa471b9b9b77c8010dff8d318e9a968a7_icgraph">
-<area shape="rect" title="Produce a random ordering of the first n elements in an array of integers using a (partial) Fisher&#45;Ya..." alt="" coords="396,42,495,69"/>
-<area shape="rect" href="group__groupmod.html#ga8fe9bd972582622c399c8b6a7c81a6d1" title="Split a group into n groups of equal size (or size differing only by one, if n does not perfectly div..." alt="" coords="184,5,348,47"/>
-<area shape="rect" href="group__groupmod.html#ga64b60c64209718e14b77ff4f4a991fe0" title="Split a group into two groups of equal size (or size differing only by one, if the original group had..." alt="" coords="194,71,338,98"/>
-<area shape="rect" href="group__groupmod.html#gae4916db977e1014b5a4b163edf37427b" title="Split a group into n groups of equal size (or size differing only by one, if n does not perfectly div..." alt="" coords="5,13,136,39"/>
+<div id="dynsection-32-content" class="dyncontent" style="display:none;">
+<div class="center"><img src="group__supporters_ga575fe459225d6b565a199426f1b5c030_icgraph.png" border="0" usemap="#agroup__supporters_ga575fe459225d6b565a199426f1b5c030_icgraph" alt=""/></div>
+<map name="agroup__supporters_ga575fe459225d6b565a199426f1b5c030_icgraph" id="agroup__supporters_ga575fe459225d6b565a199426f1b5c030_icgraph">
+<area shape="rect" title="Produce a random ordering of the first n elements in an array of integers using a (partial) Fisher&#45;Ya..." alt="" coords="395,44,492,72"/>
+<area shape="rect" href="group__groupmod.html#ga74610483035cee35d81bd24c1a044259" title="Split a group into n groups of equal size (or size differing only by one, if n does not perfectly div..." alt="" coords="184,5,347,49"/>
+<area shape="rect" href="group__groupmod.html#ga02fd183dde037779a2d6b18c84907ba9" title="Split a group into two groups of equal size (or size differing only by one, if the original group had..." alt="" coords="194,73,337,101"/>
+<area shape="rect" href="group__groupmod.html#ga49e99e674d87de80facffa7bed28393f" title="Split a group into n groups of equal size (or size differing only by one, if n does not perfectly div..." alt="" coords="5,13,136,41"/>
 </map>
 </div>
 

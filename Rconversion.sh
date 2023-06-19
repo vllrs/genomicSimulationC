@@ -14,7 +14,7 @@ awk 'NR<174 || NR>204' ./sim-operations.c | sed \
 	-e 's/shuffle_up_to([^,]*,/shuffle_up_to(/g' \
 	-e 's/randpoi(.*,/Rf_rpois(/g' \
 	-e 's/rnd_pcg_range([^,]*,0,1)/(unif_rand() > 0.5)/g' \
-	-e 's/rnd_pcg_range([^,]*,0,\(.*\)/round(unif_rand() * \1/g' \
+	-e 's/rnd_pcg_range([^,]*,0,\(.*\)/round(unif_rand() * (\1)/g' \
 	-e 's/printf("/Rprintf("/g' -e 's+srand+//srand+g' \
 	-e 's+((double)rand() / (double)RAND_MAX)+unif_rand()+g' \
 	> ../sim-operations-for-R.c

@@ -1,0 +1,7 @@
+<map id="save_transposed_group_alleles" name="save_transposed_group_alleles">
+<area shape="rect" id="node1" title="Prints the genotypes of each individual in a given group to a file, with the following format." alt="" coords="5,76,163,120"/>
+<area shape="rect" id="node2" href="$group__collgetters.html#gaf3f95ff569cca762e4de8be67c4d4097" title="Gets a shallow copy of the genes/alleles of each member of the group." alt="" coords="213,5,333,33"/>
+<area shape="rect" id="node3" href="$group__collgetters.html#ga706e640cd2cfb0f390f98c3b8c00a709" title="Function to count the number of genotypes that currently belong to the specified group." alt="" coords="383,84,492,112"/>
+<area shape="rect" id="node4" href="$group__collgetters.html#ga7bb2cb27f43af0f6330c6fa9105d8dea" title="Gets the ids of each member of the group." alt="" coords="222,109,324,137"/>
+<area shape="rect" id="node5" href="$group__collgetters.html#gabb5a3786c56f6cfc7fa8a363bb1d2149" title="Gets a shallow copy of the names of each member of the group." alt="" coords="211,161,335,189"/>
+</map>

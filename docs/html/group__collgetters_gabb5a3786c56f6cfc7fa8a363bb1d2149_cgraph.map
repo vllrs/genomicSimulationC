@@ -1,0 +1,4 @@
+<map id="get_group_names" name="get_group_names">
+<area shape="rect" id="node1" title="Gets a shallow copy of the names of each member of the group." alt="" coords="5,5,130,33"/>
+<area shape="rect" id="node2" href="$group__collgetters.html#ga706e640cd2cfb0f390f98c3b8c00a709" title="Function to count the number of genotypes that currently belong to the specified group." alt="" coords="178,5,287,33"/>
+</map>

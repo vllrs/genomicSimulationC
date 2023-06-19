@@ -5,7 +5,8 @@
     <tab type="mainpage" visible="yes" title="Home"/>
     <tab type="user" url="@ref news" title="News"/>
     <tab type="user" url="@ref templates" title="Templates"/>
-    <tab type="user" url="@ref concordance" title="Concordance"/>
+    <tab type="user" url="@ref concordance" title="Concordances"/>
+	<tab type="user" url="@ref guarantees" title="Guarantees"/>
     <tab type="modules" visible="yes" title="Documentation" intro=""/>
   </navindex>
 

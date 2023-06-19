@@ -1,11 +1,11 @@
 <map id="load_genmap_to_simdata" name="load_genmap_to_simdata">
-<area shape="rect" id="node1" title="Populates a SimData combination with data from a genetic map." alt="" coords="5,81,176,108"/>
-<area shape="rect" id="node2" href="$group__deletors.html#gaaf7e12b92ec0f93bb3bc2ec67155bc94" title="Deletes a GeneticMap object and frees its memory." alt="" coords="478,5,589,32"/>
-<area shape="rect" id="node3" href="$group__supporters.html#ga5e049945be5700a6d5a5654b6b332842" title="Updates the chr_ends, n_chr and chr_lengths fields in SimData.map." alt="" coords="224,56,405,83"/>
-<area shape="rect" id="node5" href="$group__supporters.html#gaed2ae969c3ce4ed1466a885dcc559472" title="Returns the first located index in an array of strings where the string is the same as the string tar..." alt="" coords="247,158,383,199"/>
-<area shape="rect" id="node6" href="$group__supporters.html#gadebbfa88bf139ddca501ab158f3746c5" title="Takes a SimData object, and sorts its markers, the rows of its parent gen AlleleMatrix (because they ..." alt="" coords="246,107,383,133"/>
-<area shape="rect" id="node4" href="$group__supporters.html#gad1a5b9f3e850da13931ee02fbb170d41" title="Replace calls to malloc direct with this function, which errors and exits with status 2 if memory all..." alt="" coords="491,56,576,83"/>
-<area shape="rect" id="node7" href="$group__supporters.html#ga80cab739edbd12bbd2ad1f9b77b27548" title="Comparator function for qsort." alt="" coords="453,107,613,133"/>
-<area shape="rect" id="node8" href="$group__deletors.html#gaaf6542d59034f88f9e1ec48e5f053c4a" title="Deletes a DecimalMatrix and frees its memory." alt="" coords="480,157,587,184"/>
-<area shape="rect" id="node9" href="$group__maths.html#gabf3f578b0aa59d5b68ccd0738dd6a9d1" title="Generates a matrix of c columns, r rows with all 0." alt="" coords="456,208,611,235"/>
+<area shape="rect" id="node1" title="Populates a SimData combination with data from a genetic map." alt="" coords="5,84,175,112"/>
+<area shape="rect" id="node2" href="$group__deletors.html#gaaf7e12b92ec0f93bb3bc2ec67155bc94" title="Deletes a GeneticMap object and frees its memory." alt="" coords="476,5,585,33"/>
+<area shape="rect" id="node3" href="$group__supporters.html#ga5e049945be5700a6d5a5654b6b332842" title="Updates the chr_ends, n_chr and chr_lengths fields in SimData.map." alt="" coords="223,57,403,85"/>
+<area shape="rect" id="node5" href="$group__supporters.html#gaf78d759e6da39a08acff41421d0e7b2a" title="Returns the first located index in an array of strings where the string is the same as the string tar..." alt="" coords="245,161,381,205"/>
+<area shape="rect" id="node6" href="$group__supporters.html#gadebbfa88bf139ddca501ab158f3746c5" title="Takes a SimData object, and sorts its markers, the rows of its parent gen AlleleMatrix (because they ..." alt="" coords="245,109,381,137"/>
+<area shape="rect" id="node4" href="$group__supporters.html#ga6072a152b624743eeafb30adaf9b7f17" title="Replace calls to malloc direct with this function, which errors and exits with status 2 if memory all..." alt="" coords="489,57,573,85"/>
+<area shape="rect" id="node7" href="$group__supporters.html#ga80cab739edbd12bbd2ad1f9b77b27548" title="Comparator function for qsort." alt="" coords="451,109,610,137"/>
+<area shape="rect" id="node8" href="$group__deletors.html#gaaf6542d59034f88f9e1ec48e5f053c4a" title="Deletes a DecimalMatrix and frees its memory." alt="" coords="478,161,584,189"/>
+<area shape="rect" id="node9" href="$group__maths.html#ga26e7ca69aa8bd969e3a781331a0afe27" title="Generates a matrix of c columns, r rows with all 0." alt="" coords="454,213,607,241"/>
 </map>

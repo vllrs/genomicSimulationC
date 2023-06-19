@@ -1,4 +1,4 @@
 <map id="_ascending_int_dcomparer" name="_ascending_int_dcomparer">
-<area shape="rect" id="node1" title="Comparator function for qsort." alt="" coords="184,13,361,39"/>
-<area shape="rect" id="node2" href="$group__getters.html#ga23caa19435d6b5d27a7a5b9b6643ff9a" title="Identify every group number that currently has members and the number of genotypes currently allocate..." alt="" coords="5,5,136,47"/>
+<area shape="rect" id="node1" title="Comparator function for qsort." alt="" coords="184,13,360,41"/>
+<area shape="rect" id="node2" href="$group__collgetters.html#gad827c6748cf9e9da0428c9bc730101ed" title="Identify group numbers that currently has members and the number of genotypes currently allocated to ..." alt="" coords="5,5,136,49"/>
 </map>

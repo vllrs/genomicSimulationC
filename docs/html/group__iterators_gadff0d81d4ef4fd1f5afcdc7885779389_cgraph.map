@@ -1,0 +1,5 @@
+<map id="next_forwards" name="next_forwards">
+<area shape="rect" id="node1" title="Get the next location from a bidirectional iterator." alt="" coords="5,48,107,76"/>
+<area shape="rect" id="node2" href="$group__iterators.html#gabf1ee9717701b8580e118144c5671cb5" title="Initialise a Bidirectional iterator to the start of its sequence." alt="" coords="155,5,295,49"/>
+<area shape="rect" id="node3" href="$group__iterators.html#ga7ff54a3cacc5c06c334cd9e8a2635204" title="Check nothing in the BidirectionalIterator is obviously invalid." alt="" coords="155,73,295,117"/>
+</map>

@@ -1,0 +1,9 @@
+<map id="calculate_bvs" name="calculate_bvs">
+<area shape="rect" id="node1" title="Calculates the fitness metric/breeding value for each genotype in the AlleleMatrix,..." alt="" coords="5,184,105,212"/>
+<area shape="rect" id="node2" href="$group__maths.html#gab1f0bafd56d3496348ea3ccddfe9d937" title="Multiply two sets of a DecimalMatrix and vector, and add both products to the first column of a provi..." alt="" coords="159,5,316,49"/>
+<area shape="rect" id="node3" href="$group__maths.html#ga029101c5b02d8ab22e74ce3c103f6114" title="Multiply a DecimalMatrix to a vector, and add that product to the first column of a provided DecimalM..." alt="" coords="153,73,322,117"/>
+<area shape="rect" id="node4" href="$group__calculators.html#gae883ac8145dd7e45ada82cc878d405d7" title="Calculates the number of times at each marker that a particular allele appears for each genotype in a..." alt="" coords="160,141,315,185"/>
+<area shape="rect" id="node5" href="$group__calculators.html#ga11a8e25ed696aaf04d27b2276e345fe6" title="Calculates the number of times at each marker that two particular alleles appear for each genotype in..." alt="" coords="162,209,313,253"/>
+<area shape="rect" id="node6" href="$group__deletors.html#gaaf6542d59034f88f9e1ec48e5f053c4a" title="Deletes a DecimalMatrix and frees its memory." alt="" coords="184,277,291,305"/>
+<area shape="rect" id="node7" href="$group__maths.html#ga26e7ca69aa8bd969e3a781331a0afe27" title="Generates a matrix of c columns, r rows with all 0." alt="" coords="161,329,314,357"/>
+</map>

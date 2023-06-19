@@ -1,0 +1,4 @@
+<map id="calculate_full_count_matrix_of_allele" name="calculate_full_count_matrix_of_allele">
+<area shape="rect" id="node1" title="Calculates the number of times at each marker that a particular allele appears for each genotype in t..." alt="" coords="5,5,141,49"/>
+<area shape="rect" id="node2" href="$group__maths.html#ga26e7ca69aa8bd969e3a781331a0afe27" title="Generates a matrix of c columns, r rows with all 0." alt="" coords="189,13,342,41"/>
+</map>

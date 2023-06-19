@@ -1,0 +1,4 @@
+<map id="set_bidirectional_iter_to_end" name="set_bidirectional_iter_to_end">
+<area shape="rect" id="node1" title="Initialise a Bidirectional iterator to the end of its sequence." alt="" coords="169,5,309,49"/>
+<area shape="rect" id="node2" href="$group__iterators.html#ga9431cd1ae9e15331a5464ac1c1204a8d" title="Get the previous location from a bidirectional iterator." alt="" coords="5,13,121,41"/>
+</map>

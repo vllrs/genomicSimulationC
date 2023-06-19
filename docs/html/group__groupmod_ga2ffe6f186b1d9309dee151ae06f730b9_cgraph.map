@@ -1,0 +1,6 @@
+<map id="split_into_individuals" name="split_into_individuals">
+<area shape="rect" id="node1" title="Give every individual in the group a new group number that does not belong to any other existing grou..." alt="" coords="5,32,145,60"/>
+<area shape="rect" id="node2" href="$group__collgetters.html#ga6f49e4b90be53f42241fcfb9850f2f29" title="Identify group numbers that currently have members." alt="" coords="193,5,330,33"/>
+<area shape="rect" id="node4" href="$group__supporters.html#ga6072a152b624743eeafb30adaf9b7f17" title="Replace calls to malloc direct with this function, which errors and exits with status 2 if memory all..." alt="" coords="219,57,304,85"/>
+<area shape="rect" id="node3" href="$group__supporters.html#gadae2e9f7e1061cb20426ba2333b7629b" title="Comparator function for qsort." alt="" coords="378,5,547,33"/>
+</map>

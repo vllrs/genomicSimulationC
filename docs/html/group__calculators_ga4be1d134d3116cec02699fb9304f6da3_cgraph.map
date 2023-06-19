@@ -1,0 +1,5 @@
+<map id="calculate_optimal_available_bv" name="calculate_optimal_available_bv">
+<area shape="rect" id="node1" title="Calculates the breeding value of the highest breeding&#45;value genotype that can be created from the all..." alt="" coords="5,32,203,60"/>
+<area shape="rect" id="node2" href="$group__collgetters.html#gaf3f95ff569cca762e4de8be67c4d4097" title="Gets a shallow copy of the genes/alleles of each member of the group." alt="" coords="251,5,371,33"/>
+<area shape="rect" id="node3" href="$group__collgetters.html#ga706e640cd2cfb0f390f98c3b8c00a709" title="Function to count the number of genotypes that currently belong to the specified group." alt="" coords="419,32,528,60"/>
+</map>

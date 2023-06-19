@@ -1,6 +1,6 @@
 #ifndef SIM_OPERATIONS_H
 #define SIM_OPERATIONS_H
-/* genomicSimulationC v0.2.2.11 - last edit 8 June 2023 */
+/* genomicSimulationC v0.2.3 - last edit 19 June 2023 */
 
 #ifdef SIM_OPERATIONS
     #define RND_IMPLEMENTATION

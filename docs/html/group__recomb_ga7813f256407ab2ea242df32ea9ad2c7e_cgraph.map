@@ -1,11 +1,11 @@
 <map id="calculate_recombinations_from_file" name="calculate_recombinations_from_file">
-<area shape="rect" id="node1" title="Provides guesses as to the location of recombination events that led to the creation of certain genot..." alt="" coords="5,125,175,166"/>
-<area shape="rect" id="node2" href="$group__recomb.html#gaad9cd4248231da3682ba2f08a40cdbe8" title="Identify markers in the genotype of offspring where recombination from its parents occured." alt="" coords="223,5,445,32"/>
-<area shape="rect" id="node4" href="$group__recomb.html#ga3627a380ed86ebebe937c953bc3b2339" title="Identify markers in the genotype of offspring where recombination from its parents occured,..." alt="" coords="223,56,445,83"/>
-<area shape="rect" id="node6" href="$group__supporters.html#ga392c23248f22e9faf085198dbb1d8711" title="Opens a table file and reads the number of columns and rows (including headers) separated by sep into..." alt="" coords="266,107,402,133"/>
-<area shape="rect" id="node7" href="$group__getters.html#ga309dbf26800ee65e982df2b347980906" title="Get the alleles of a genotype by its index." alt="" coords="265,157,403,184"/>
-<area shape="rect" id="node8" href="$group__getters.html#ga67f649fd36494324e609b06fcc960785" title="Get the id of a genotype by its index." alt="" coords="278,208,390,235"/>
-<area shape="rect" id="node9" href="$group__getters.html#ga93779d37ca9081d07987fd83c27b84af" title="Search for a genotype with a particular name in a linked list of AlleleMatrix, and return its index." alt="" coords="267,259,401,285"/>
-<area shape="rect" id="node3" href="$group__recomb.html#gaa71cdbced90506820ef61bd842ecfa40" title="Simple operator to determine if at marker i, two genotypes share at least one allele." alt="" coords="517,5,644,32"/>
-<area shape="rect" id="node5" href="$group__recomb.html#gab88223532880a22dfc966be4cdb4107b" title="Simple operator to determine if at markers with indexes i to i+w inclusive, two genotypes share at le..." alt="" coords="493,56,668,83"/>
+<area shape="rect" id="node1" title="Provides guesses as to the location of recombination events that led to the creation of certain genot..." alt="" coords="5,128,174,172"/>
+<area shape="rect" id="node2" href="$group__recomb.html#gabefce26ab485e6886d7bbfcaa5692f3a" title="Identify markers in the genotype of offspring where recombination from its parents occured." alt="" coords="222,5,444,33"/>
+<area shape="rect" id="node4" href="$group__recomb.html#ga9c9c066183d70aa46d4ed4d224116580" title="Identify markers in the genotype of offspring where recombination from its parents occured,..." alt="" coords="222,57,444,85"/>
+<area shape="rect" id="node6" href="$group__supporters.html#ga10dddc2d2028b8c1341837897b6eee4d" title="Opens a table file and reads the number of columns and rows (including headers) separated by sep into..." alt="" coords="265,109,401,137"/>
+<area shape="rect" id="node7" href="$group__search.html#ga31eb9ab2cd17d7c107102922e2609aac" title="Get the alleles of a genotype by its index." alt="" coords="265,161,401,189"/>
+<area shape="rect" id="node8" href="$group__search.html#ga69e677408363916b3be1d90ba30eb46f" title="Get the id of a genotype by its index." alt="" coords="277,213,389,241"/>
+<area shape="rect" id="node9" href="$group__search.html#ga852d1f756b52ea86e30e63335dcc33e1" title="Search for a genotype with a particular name in a linked list of AlleleMatrix, and return its index." alt="" coords="266,265,400,293"/>
+<area shape="rect" id="node3" href="$group__recomb.html#ga616d4bb1a616a3c7895f2de96be52870" title="Simple operator to determine if at marker i, two genotypes share at least one allele." alt="" coords="517,5,642,33"/>
+<area shape="rect" id="node5" href="$group__recomb.html#gafd5313ef4d6df2e2c43ab32ae54ae28d" title="Simple operator to determine if at markers with indexes i to i+w inclusive, two genotypes share at le..." alt="" coords="492,57,666,85"/>
 </map>

@@ -1,0 +1,4 @@
+<map id="get_group" name="get_group">
+<area shape="rect" id="node1" title="Get the current group membership of a genotype." alt="" coords="150,5,228,33"/>
+<area shape="rect" id="node2" href="$group__iterators.html#ga0bc5b9ebb0857a471e41630fda00403b" title="Get a location by index using a RandomAccessIterator." alt="" coords="5,5,102,33"/>
+</map>

@@ -1,0 +1,6 @@
+<map id="calculate_group_local_bvs" name="calculate_group_local_bvs">
+<area shape="rect" id="node1" title="Given a set of blocks of markers in a file, for each genotype in a group, calculate the local fitness..." alt="" coords="5,57,178,85"/>
+<area shape="rect" id="node2" href="$group__collgetters.html#gaf3f95ff569cca762e4de8be67c4d4097" title="Gets a shallow copy of the genes/alleles of each member of the group." alt="" coords="228,5,348,33"/>
+<area shape="rect" id="node3" href="$group__collgetters.html#ga706e640cd2cfb0f390f98c3b8c00a709" title="Function to count the number of genotypes that currently belong to the specified group." alt="" coords="398,57,507,85"/>
+<area shape="rect" id="node4" href="$group__collgetters.html#gabb5a3786c56f6cfc7fa8a363bb1d2149" title="Gets a shallow copy of the names of each member of the group." alt="" coords="226,109,350,137"/>
+</map>

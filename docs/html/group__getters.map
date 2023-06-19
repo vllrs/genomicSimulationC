@@ -1,0 +1,7 @@
+<map id="Data Access and Search Functions" name="Data Access and Search Functions">
+<area shape="rect" id="node1" href="$group__collgetters.html" title="These functions return vector data, rather than data on a single genotype or single group." alt="" coords="228,5,383,48"/>
+<area shape="rect" id="node2" title="For non&#45;persistent access to simulation results and contents." alt="" coords="5,93,172,136"/>
+<area shape="rect" id="node3" href="$group__iterators.html" title="For iterating through the genotypes in the simulation." alt="" coords="241,72,370,99"/>
+<area shape="rect" id="node4" href="$group__liteget.html" title="These functions take as a parameter a GenoLocation (the output of iterators), and access the data for..." alt="" coords="236,123,375,165"/>
+<area shape="rect" id="node5" href="$group__search.html" title="These functions search the simulation data for the genotype that matches a particular known piece of ..." alt="" coords="220,189,391,216"/>
+</map>

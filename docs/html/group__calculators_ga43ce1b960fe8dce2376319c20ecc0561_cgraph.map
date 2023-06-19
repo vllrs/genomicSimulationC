@@ -1,0 +1,6 @@
+<map id="read_block_file" name="read_block_file">
+<area shape="rect" id="node1" title="Given a file containing definitions of blocks of markers, process that file and return a struct conta..." alt="" coords="5,65,113,93"/>
+<area shape="rect" id="node2" href="$group__supporters.html#ga10dddc2d2028b8c1341837897b6eee4d" title="Opens a table file and reads the number of columns and rows (including headers) separated by sep into..." alt="" coords="161,5,296,33"/>
+<area shape="rect" id="node3" href="$group__supporters.html#gaf78d759e6da39a08acff41421d0e7b2a" title="Returns the first located index in an array of strings where the string is the same as the string tar..." alt="" coords="161,57,296,101"/>
+<area shape="rect" id="node4" href="$group__supporters.html#ga6072a152b624743eeafb30adaf9b7f17" title="Replace calls to malloc direct with this function, which errors and exits with status 2 if memory all..." alt="" coords="186,125,271,153"/>
+</map>

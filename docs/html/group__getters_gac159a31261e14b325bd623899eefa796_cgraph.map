@@ -1,5 +1,0 @@
-<map id="get_group_genes" name="get_group_genes">
-<area shape="rect" id="node1" title="Gets a shallow copy of the genes/alleles of each member of the group." alt="" coords="5,31,127,57"/>
-<area shape="rect" id="node2" href="$group__getters.html#gad6d2b66296cd80f5bfe303e06de7935c" title="Function to count the number of genotypes that currently belong to the specified group." alt="" coords="175,5,285,32"/>
-<area shape="rect" id="node3" href="$group__supporters.html#gad1a5b9f3e850da13931ee02fbb170d41" title="Replace calls to malloc direct with this function, which errors and exits with status 2 if memory all..." alt="" coords="187,56,273,83"/>
-</map>

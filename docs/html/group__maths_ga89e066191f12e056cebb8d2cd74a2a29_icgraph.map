@@ -1,7 +1,0 @@
-<map id="randlim" name="randlim">
-<area shape="rect" id="node1" title="Generate an integer randomly between 0 and limit inclusive." alt="" coords="425,63,489,90"/>
-<area shape="rect" id="node2" href="$group__crossers.html#gae66231fb141a76432d1211e2cf0baf25" title="Performs random crosses among members of a group." alt="" coords="207,13,377,39"/>
-<area shape="rect" id="node4" href="$group__crossers.html#ga3be2cb18d1c722b3a766a7a5663a8f0c" title="Performs random crosses where the first parent comes from one group and the second from another." alt="" coords="207,63,377,90"/>
-<area shape="rect" id="node5" href="$group__groupmod.html#ga38909617537e075fa1bea7cc15ca86df" title="Allocate each member of the group to one of n groups with equal probability." alt="" coords="218,114,366,141"/>
-<area shape="rect" id="node3" href="$group__crossers.html#ga68aca99a41527b019316c8243e6fc7a7" title="Find the top m percent of a group and perform random crosses between those top individuals." alt="" coords="5,5,159,47"/>
-</map>

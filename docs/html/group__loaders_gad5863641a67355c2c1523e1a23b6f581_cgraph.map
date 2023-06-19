@@ -1,8 +1,7 @@
 <map id="load_transposed_encoded_genes_to_simdata" name="load_transposed_encoded_genes_to_simdata">
-<area shape="rect" id="node1" title="Populates a SimData combination with marker allele data." alt="" coords="5,99,179,141"/>
-<area shape="rect" id="node2" href="$group__loaders.html#gaf33ee5369403f3ecaa2e73a738fecb05" title="Creator for an empty AlleleMatrix object of a given size." alt="" coords="227,5,401,32"/>
-<area shape="rect" id="node3" href="$group__supporters.html#gad1a5b9f3e850da13931ee02fbb170d41" title="Replace calls to malloc direct with this function, which errors and exits with status 2 if memory all..." alt="" coords="449,31,535,57"/>
-<area shape="rect" id="node4" href="$group__supporters.html#ga392c23248f22e9faf085198dbb1d8711" title="Opens a table file and reads the number of columns and rows (including headers) separated by sep into..." alt="" coords="246,107,382,133"/>
-<area shape="rect" id="node5" href="$group__maths.html#gad4e0f7934e82157e3115f8df7aec01f0" title="Generates randomly one of 0 or 1, by splitting the output of rand() in half." alt="" coords="287,157,341,184"/>
-<area shape="rect" id="node6" href="$group__supporters.html#ga076a7b5225f3bb1f0d7912715df393b3" title="Allocate lifetime&#45;unique ids to each genotype in the range of whole SimData indexes from_index to to_..." alt="" coords="282,208,346,235"/>
+<area shape="rect" id="node1" title="Populates a SimData combination with marker allele data." alt="" coords="5,76,178,120"/>
+<area shape="rect" id="node2" href="$group__loaders.html#gaf0399b852faa346adeab52d57fa9701b" title="Creator for an empty AlleleMatrix object of a given size." alt="" coords="226,5,399,33"/>
+<area shape="rect" id="node3" href="$group__supporters.html#ga6072a152b624743eeafb30adaf9b7f17" title="Replace calls to malloc direct with this function, which errors and exits with status 2 if memory all..." alt="" coords="447,32,531,60"/>
+<area shape="rect" id="node4" href="$group__supporters.html#ga10dddc2d2028b8c1341837897b6eee4d" title="Opens a table file and reads the number of columns and rows (including headers) separated by sep into..." alt="" coords="245,109,380,137"/>
+<area shape="rect" id="node5" href="$group__supporters.html#ga80c7861f7c1014e8c406ef279a54759f" title="Allocate lifetime&#45;unique ids to each genotype in the range of whole SimData indexes from_index to to_..." alt="" coords="281,161,344,189"/>
 </map>

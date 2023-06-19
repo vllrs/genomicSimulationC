@@ -1,0 +1,6 @@
+<map id="calculate_optimal_available_alleles" name="calculate_optimal_available_alleles">
+<area shape="rect" id="node1" title="Calculates the highest&#45;breeding&#45;value haplotype that can be created from the alleles present in a giv..." alt="" coords="5,49,184,93"/>
+<area shape="rect" id="node2" href="$group__collgetters.html#gaf3f95ff569cca762e4de8be67c4d4097" title="Gets a shallow copy of the genes/alleles of each member of the group." alt="" coords="232,5,352,33"/>
+<area shape="rect" id="node3" href="$group__collgetters.html#ga706e640cd2cfb0f390f98c3b8c00a709" title="Function to count the number of genotypes that currently belong to the specified group." alt="" coords="400,32,509,60"/>
+<area shape="rect" id="node4" href="$group__supporters.html#ga6072a152b624743eeafb30adaf9b7f17" title="Replace calls to malloc direct with this function, which errors and exits with status 2 if memory all..." alt="" coords="250,109,334,137"/>
+</map>

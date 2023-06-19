@@ -1,5 +1,5 @@
 <map id="get_chromosome_locations" name="get_chromosome_locations">
-<area shape="rect" id="node1" title="Updates the chr_ends, n_chr and chr_lengths fields in SimData.map." alt="" coords="391,5,572,32"/>
-<area shape="rect" id="node2" href="$group__loaders.html#ga54cd625669413c2ef171060e9844d814" title="Populates a SimData combination from scratch with marker allele data, a genetic map,..." alt="" coords="5,5,124,32"/>
-<area shape="rect" id="node3" href="$group__loaders.html#ga8edb09b9b9eb27f84ac59cc4342ea855" title="Populates a SimData combination with data from a genetic map." alt="" coords="172,31,343,57"/>
+<area shape="rect" id="node1" title="Updates the chr_ends, n_chr and chr_lengths fields in SimData.map." alt="" coords="389,5,569,33"/>
+<area shape="rect" id="node2" href="$group__loaders.html#ga54cd625669413c2ef171060e9844d814" title="Populates a SimData combination from scratch with marker allele data, a genetic map,..." alt="" coords="5,5,124,33"/>
+<area shape="rect" id="node3" href="$group__loaders.html#ga8edb09b9b9eb27f84ac59cc4342ea855" title="Populates a SimData combination with data from a genetic map." alt="" coords="172,31,341,59"/>
 </map>

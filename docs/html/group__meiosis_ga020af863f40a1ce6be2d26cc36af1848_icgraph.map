@@ -1,0 +1,4 @@
+<map id="generate_clone" name="generate_clone">
+<area shape="rect" id="node1" title="Get an identical copy of a given genotype." alt="" coords="152,5,261,33"/>
+<area shape="rect" id="node2" href="$group__crossers.html#ga5e1da39f8341127e758d32393e8654aa" title="Creates an identical copy of each member of a group." alt="" coords="5,5,104,33"/>
+</map>

@@ -1,4 +1,0 @@
-<map id="calculate_min_recombinations_fwn" name="calculate_min_recombinations_fwn">
-<area shape="rect" id="node1" title="Identify markers in the genotype of offspring where recombination from its parents occured,..." alt="" coords="5,5,228,32"/>
-<area shape="rect" id="node2" href="$group__recomb.html#gab88223532880a22dfc966be4cdb4107b" title="Simple operator to determine if at markers with indexes i to i+w inclusive, two genotypes share at le..." alt="" coords="276,5,451,32"/>
-</map>
