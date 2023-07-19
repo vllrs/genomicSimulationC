@@ -1,6 +1,11 @@
 Latest News       {#news}
 ===========
 
+# genomicSimulation 0.2.3.002
+
+- genomicSimulation had a chance of a segmentation fault in load_all_simdata for certain marker effect files. The chance was higher for effect files listing few markers or listing many alleles. This release is a quick-fix for this bug.
+- Also fixed a flaw in Rconversion.sh, the script that converts genomicSimulationC's code to genomicSimulation (R version)
+
 # genomicSimulation 0.2.3
 
 # New Features

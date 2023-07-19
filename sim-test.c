@@ -1582,6 +1582,14 @@ int main(int argc, char* argv[]) {
     int m = split_by_bv(d, g0, 55, 1);
     assert(get_group_size(d, m) == 50);
 
+    delete_simdata(d);
+
+    // Testing 5 allele effects bug? Replicability.
+    d = create_empty_simdata(randomSeed);
+    g0 = load_all_simdata(d, "./gt_parents_mr2_50-trimto-5000.txt",
+             "./genetic-map_5112-trimto5000.txt",
+             "./qtl_5test.txt");
+
 
 	printf("\nAll done\n");
 	delete_simdata(d);

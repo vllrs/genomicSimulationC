@@ -1,7 +1,7 @@
 #ifndef SIM_OPERATIONS
 #define SIM_OPERATIONS
 #include "sim-operations.h"
-/* genomicSimulationC v0.2.3 - last edit 19 June 2023 */
+/* genomicSimulationC v0.2.3.002 - last edit 19 July 2023 */
 
 /** Options parameter to run SimData functions in their bare-bones form.*/
 const GenOptions BASIC_OPT = {
@@ -5263,11 +5263,15 @@ void load_effects_to_simdata(SimData* d, const char* filename) {
 
 	int n_loaded = 0;
 	int n_allele = 0; // count the different alleles we're tracking
-	const int MAX_SYMBOLS = 25;
-	char alleles_loaded[MAX_SYMBOLS + 1];
-	memset(alleles_loaded, '\0', MAX_SYMBOLS + 1);
-	double* effects_loaded[MAX_SYMBOLS];
-    memset(effects_loaded, 0, MAX_SYMBOLS);
+    int MAX_SYMBOLS = 10;
+    char* alleles_loaded = get_malloc(sizeof(char)*(MAX_SYMBOLS+1));
+    memset(alleles_loaded, '\0', sizeof(char)*(MAX_SYMBOLS+1));
+    double** effects_loaded = get_malloc(sizeof(double*)*(MAX_SYMBOLS+1));
+    memset(effects_loaded, 0, sizeof(double*)*MAX_SYMBOLS);
+    for (int i = 0; i < MAX_SYMBOLS; ++i) {
+        effects_loaded[i] = get_malloc(sizeof(double) * d->n_markers);
+        //memset((effects_loaded + symbol_index), 0, sizeof(double) * d->n_markers);
+    }
 
 	if (d->e.effects.matrix != NULL) {
 		delete_dmatrix(&(d->e.effects));
@@ -5291,16 +5295,29 @@ void load_effects_to_simdata(SimData* d, const char* filename) {
 				symbol_index = n_allele;
 				++n_allele;
 				alleles_loaded[symbol_index] = allele;
+                if (n_allele >= MAX_SYMBOLS) {
+                    char* temp1 = get_malloc(sizeof(char)*(MAX_SYMBOLS*2 + 1));
+                    memcpy(temp1, alleles_loaded, sizeof(char)*MAX_SYMBOLS);
+                    memset(temp1 + MAX_SYMBOLS, '\0', sizeof(char)*(MAX_SYMBOLS+1));
+                    double** temp2 = get_malloc(sizeof(double*)*(MAX_SYMBOLS*2 +1));
+                    memcpy(temp2, effects_loaded, sizeof(double*)*MAX_SYMBOLS);
+                    memset(effects_loaded+MAX_SYMBOLS, 0, sizeof(double*)*MAX_SYMBOLS);
+                    MAX_SYMBOLS *= 2;
+                    free(alleles_loaded);
+                    free(effects_loaded);
+                    alleles_loaded = temp1;
+                    effects_loaded = temp2;
+                }
 			} else {
 				symbol_index = symbol_location - alleles_loaded; // difference between the pointers
 			}
 
 			// now the marker is in our list and the allele value is valid
 			// so save the effect value in effects_loaded.
-            if (effects_loaded[symbol_index] == 0) { // 0 = NULL
+            /*if (effects_loaded[symbol_index] == 0) { // 0 = NULL
                 effects_loaded[symbol_index] = get_malloc(sizeof(double) * d->n_markers);
                 //memset((effects_loaded + symbol_index), 0, sizeof(double) * d->n_markers);
-			}
+            }*/
 			effects_loaded[symbol_index][location] = effect;
 			n_loaded += 1;
 		}
