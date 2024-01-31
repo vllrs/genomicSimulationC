@@ -140,10 +140,12 @@ typedef struct {
                             * are saved to "[filename_prefix}-pedigree.txt", even
                             * if `will_save_to_simdata` is false.
                             * Pedigrees are saved in the format of save_full_pedigree()*/
-	int will_save_bvs_to_file; /**< A boolean. If true, the breeding values
+    int will_save_bvs_to_file; /**< An index. If 0 or greater, the breeding values according
+                            * to the marker effect set with that index
                             * of every offspring generated in the cross
                             * are saved to "[filename_prefix}-bv.txt", even
                             * if `will_save_to_simdata` is false.
+                            * If negative, no bvs are calculated or saved.
                             * BVs are saved in the format of save_bvs() */
 	int will_save_alleles_to_file; /**< A boolean. If true, the set of alleles
                             * of every offspring generated in the cross
@@ -247,7 +249,10 @@ typedef struct {
                       * metadata of founders and simulated offspring. The
                       * AlleleMatrix is start of a linked list if there are
                       * many genotypes. */
-	EffectMatrix e; /**< An EffectMatrix, optional for the use of the simulation.
+
+    int n_eff_sets; /**< The number of sets of allele effects in the simulation **/
+    char** eff_names; /**< Name for each set of allele effects, set upon effect loading. **/
+    EffectMatrix* e; /**< Array of n_eff_sets EffectMatrix, optional for the use of the simulation.
                      * Used for calculating breeding values from which alleles
                      * a genotype has at each marker.*/
 
@@ -276,6 +281,7 @@ DecimalMatrix generate_zero_dmatrix(const int r, const int c);
 int add_matrixvector_product_to_dmatrix(DecimalMatrix* result, const DecimalMatrix* a, const double* b);
 int add_doublematrixvector_product_to_dmatrix(DecimalMatrix* result, const DecimalMatrix* amat, const double* avec,
                                               const DecimalMatrix* bmat, const double* bvec);
+
 /** @} */
 
 /** @defgroup supporters Utils/Supporting Functions
@@ -301,6 +307,7 @@ void get_chromosome_locations(SimData *d);
 void set_names(AlleleMatrix* a, const char* prefix, const int suffix, const int from_index);
 void set_ids(SimData* d, const int from_index, const int to_index);
 int get_integer_digits(const int i);
+int get_eff_set( const SimData* d, const char* effLabel );
 int get_index_of_label( const SimData* d, const int label );
 int get_new_label_id( const SimData* d );
 int get_new_group_num( const SimData* d );
@@ -556,7 +563,7 @@ int get_group_genes( const SimData* d, const int group_id, int group_size, char*
 int get_group_names( const SimData* d, const int group_id, int group_size, char** output);
 int get_group_ids( const SimData* d, const int group_id, int group_size, unsigned int* output);
 int get_group_indexes( const SimData* d, const int group_id, int group_size, int* output);
-int get_group_bvs( const SimData* d, const int group_id, int group_size, double* output);
+int get_group_bvs( const SimData* d, const int group_id, const unsigned int effIndex, int group_size, double* output);
 int get_group_parent_ids( const SimData* d, const int group_id, int group_size, const int whichParent, unsigned int* output);
 int get_group_parent_names( const SimData* d, const int group_id, int group_size, const int whichParent, char** output);
 int get_group_pedigrees( const SimData* d, const int group_id, int group_size, char** output);
@@ -600,6 +607,7 @@ void delete_label(SimData* d, const int whichLabel);
 void delete_genmap(GeneticMap* m);
 void delete_allele_matrix(AlleleMatrix* m);
 void delete_effect_matrix(EffectMatrix* m);
+void delete_eff_set(SimData* d, int whichIndex);
 void delete_simdata(SimData* m);
 void delete_markerblocks(MarkerBlocks* b);
 void delete_dmatrix(DecimalMatrix* m);
@@ -623,8 +631,8 @@ int load_genes_to_simdata(SimData* d, const char* filename); //@ add
 int load_more_genes_to_simdata(SimData* d, const char* filename); //@ add
 int load_transposed_encoded_genes_to_simdata(SimData* d, const char* filename);
 void load_genmap_to_simdata(SimData* d, const char* filename);
-void load_effects_to_simdata(SimData* d, const char* filename);
-int load_all_simdata(SimData* d, const char* data_file, const char* map_file, const char* effect_file);
+int load_effects_to_simdata(SimData* d, const char* filename, const char* label);
+int load_all_simdata(SimData* d, const char* data_file, const char* map_file, const char* effect_file, const char* effLabel);
 /** @} */
 
 /** @defgroup recomb Recombination Calculators
@@ -713,7 +721,7 @@ int make_doubled_haploids(SimData* d, const int group, const GenOptions g);
 int make_clones(SimData* d, const int group, const int inherit_names, const GenOptions g);
 
 int make_all_unidirectional_crosses(SimData* d, const int from_group, const GenOptions g);
-int make_n_crosses_from_top_m_percent(SimData* d, const int n, const int m, const int group, const GenOptions g);
+int make_n_crosses_from_top_m_percent(SimData* d, const int n, const int m, const int group, const unsigned int effIndex, const GenOptions g);
 int make_crosses_from_file(SimData* d, const char* input_file, const GenOptions g);
 int make_double_crosses_from_file(SimData* d, const char* input_file, const GenOptions g);
 /**@}*/
@@ -724,8 +732,8 @@ int make_double_crosses_from_file(SimData* d, const char* input_file, const GenO
  *
  * @{
  */
-int split_by_bv(SimData* d, const int group, const int top_n, const int lowIsBest);
-DecimalMatrix calculate_group_bvs(const SimData* d, const unsigned int group);
+int split_by_bv(SimData* d, const int group, const unsigned int effIndex, const int top_n, const int lowIsBest);
+DecimalMatrix calculate_group_bvs(const SimData* d, const unsigned int group, const unsigned int effIndex);
 DecimalMatrix calculate_bvs( const AlleleMatrix* m, const EffectMatrix* e);
 int calculate_group_count_matrix_of_allele( const SimData* d, const unsigned int group, const char allele, DecimalMatrix* counts);
 int calculate_group_doublecount_matrix_of_allele( const SimData* d, const unsigned int group, const char allele, DecimalMatrix* counts, const char allele2, DecimalMatrix* counts2);
@@ -735,14 +743,14 @@ DecimalMatrix calculate_full_count_matrix_of_allele( const AlleleMatrix* m, cons
 
 MarkerBlocks create_n_blocks_by_chr(const SimData* d, const int n);
 MarkerBlocks read_block_file(const SimData* d, const char* block_file);
-void calculate_group_local_bvs(const SimData* d, const MarkerBlocks b, const char* output_file, const int group);
-void calculate_local_bvs(const SimData* d, const MarkerBlocks b, const char* output_file);
+void calculate_group_local_bvs(const SimData* d, const MarkerBlocks b, const unsigned int effIndex, const char* output_file, const int group);
+void calculate_local_bvs(const SimData* d, const MarkerBlocks b, const unsigned int effIndex, const char* output_file);
 
-char* calculate_optimal_alleles(const SimData* d);
-char* calculate_optimal_available_alleles(const SimData* d, const unsigned int group);
-double calculate_optimum_bv(const SimData* d);
-double calculate_optimal_available_bv(const SimData* d, const unsigned int group);
-double calculate_minimum_bv(const SimData* d);
+char* calculate_optimal_alleles(const SimData* d, const unsigned int effIndex);
+char* calculate_optimal_available_alleles(const SimData* d, const unsigned int group, const unsigned int effIndex);
+double calculate_optimum_bv(const SimData* d, const unsigned int effIndex);
+double calculate_optimal_available_bv(const SimData* d, const unsigned int group, const unsigned int effIndex);
+double calculate_minimum_bv(const SimData* d, const unsigned int effIndex);
 /**@}*/
 
 /** @defgroup savers Saving Functions
@@ -767,9 +775,9 @@ void save_full_pedigree(FILE* f, const SimData* d);
 void save_AM_pedigree(FILE* f, const AlleleMatrix* m, const SimData* parents);
 void save_parents_of(FILE* f, const AlleleMatrix* m, const unsigned int p1, const unsigned int p2);
 
-void save_group_bvs(FILE* f, const SimData* d, const int group);
+void save_group_bvs(FILE* f, const SimData* d, const int group, const unsigned int effIndex);
 void save_manual_bvs(FILE* f, const DecimalMatrix* e, const unsigned int* ids, const char** names);
-void save_bvs(FILE* f, const SimData* d);
+void save_bvs(FILE* f, const SimData* d, const unsigned int effIndex);
 
 void save_count_matrix(FILE* f, const SimData* d, const char allele);
 void save_count_matrix_of_group(FILE* f, const SimData* d, const char allele, const int group);

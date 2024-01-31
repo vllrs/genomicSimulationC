@@ -103,8 +103,14 @@ int test_loaders(SimData* d) {
 	}
 	fwrite(HELPER_EFF, sizeof(char), strlen(HELPER_EFF), fp);
 	fclose(fp);
+    if ((fp = fopen("a-test-eff2.txt", "w")) == NULL) {
+        fprintf(stderr, "Failed to create file.\n");
+        exit(1);
+    }
+    fwrite(HELPER_EFF2, sizeof(char), strlen(HELPER_EFF2), fp);
+    fclose(fp);
 
-	int g0 = load_all_simdata(d, "a-test.txt", "a-test-map.txt", "a-test-eff.txt");
+    int g0 = load_all_simdata(d, "a-test.txt", "a-test-map.txt", "a-test-eff.txt", NULL);
 
 	remove("a-test.txt");
 	remove("a-test-map.txt");
@@ -130,26 +136,57 @@ int test_loaders(SimData* d) {
 	assert(d->map.positions[2].chromosome == 3);
 	printf("...genome map loaded correctly\n");
 
-	assert(d->e.effects.rows == 2);
-	assert(d->e.effects.cols == 3);
+    assert(d->n_eff_sets == 1);
+    assert(d->e[0].effects.rows == 2);
+    assert(d->e[0].effects.cols == 3);
 	// don't mind which order the effects are in so just figure it out, then check based on that.
 	int apos = 0;
-	if (d->e.effect_names[0] == 'A') {
-		assert(d->e.effect_names[0] == 'A');
-		assert(d->e.effect_names[1] == 'T');
+    if (d->e[0].effect_names[0] == 'A') {
+        assert(d->e[0].effect_names[0] == 'A');
+        assert(d->e[0].effect_names[1] == 'T');
 	} else {
 		apos = 1;
-		assert(d->e.effect_names[0] == 'T');
-		assert(d->e.effect_names[1] == 'A');
+        assert(d->e[0].effect_names[0] == 'T');
+        assert(d->e[0].effect_names[1] == 'A');
 	}
-    assert(fabs(d->e.effects.matrix[apos][0] - (-0.8)) < TOL);
-    assert(fabs(d->e.effects.matrix[apos][1] - (-0.1)) < TOL);
-    assert(fabs(d->e.effects.matrix[apos][2] - (0.1)) < TOL);
+    assert(fabs(d->e[0].effects.matrix[apos][0] - (-0.8)) < TOL);
+    assert(fabs(d->e[0].effects.matrix[apos][1] - (-0.1)) < TOL);
+    assert(fabs(d->e[0].effects.matrix[apos][2] - (0.1)) < TOL);
 	int tpos = 1 - apos;
-    assert(fabs(d->e.effects.matrix[tpos][0] - (0.9)) < TOL);
-    assert(fabs(d->e.effects.matrix[tpos][1] - (-0.5)) < TOL);
-    assert(fabs(d->e.effects.matrix[tpos][2] - (-0.1)) < TOL);
-	printf("...effect values loaded correctly\n");
+    assert(fabs(d->e[0].effects.matrix[tpos][0] - (0.9)) < TOL);
+    assert(fabs(d->e[0].effects.matrix[tpos][1] - (-0.5)) < TOL);
+    assert(fabs(d->e[0].effects.matrix[tpos][2] - (-0.1)) < TOL);
+    printf("...marker effects loaded correctly\n");
+
+    assert(load_effects_to_simdata(d, "a-test-eff2.txt", "additional")==1);
+    assert(d->n_eff_sets == 2);
+    assert(d->e[0].effects.rows == 2);
+    assert(d->e[0].effects.cols == 3);
+    // don't mind which order the effects are in so just figure it out, then check based on that.
+    if (d->e[0].effect_names[0] == 'A') {
+        assert(d->e[0].effect_names[0] == 'A');
+        assert(d->e[0].effect_names[1] == 'T');
+    } else {
+        apos = 1;
+        assert(d->e[0].effect_names[0] == 'T');
+        assert(d->e[0].effect_names[1] == 'A');
+    }
+    assert(fabs(d->e[0].effects.matrix[apos][0] - (-0.8)) < TOL);
+    assert(fabs(d->e[0].effects.matrix[apos][1] - (-0.1)) < TOL);
+    assert(fabs(d->e[0].effects.matrix[apos][2] - (0.1)) < TOL);
+    assert(fabs(d->e[0].effects.matrix[tpos][0] - (0.9)) < TOL);
+    assert(fabs(d->e[0].effects.matrix[tpos][1] - (-0.5)) < TOL);
+    assert(fabs(d->e[0].effects.matrix[tpos][2] - (-0.1)) < TOL);
+
+    assert(d->e[1].effects.rows == 1);
+    assert(d->e[1].effects.cols == 3);
+    assert(d->e[1].effect_names[0] == 'A');
+    assert(fabs(d->e[1].effects.matrix[apos][0] - 1) < TOL);
+    assert(fabs(d->e[1].effects.matrix[apos][1] - 0) < TOL);
+    assert(fabs(d->e[1].effects.matrix[apos][2] - 0) < TOL);
+
+    printf("...second set of marker effects loaded correctly\n");
+    remove("a-test-eff2.txt");
 
 	assert(d->current_id == 6);
     assert(d->m); // != NULL
@@ -383,7 +420,7 @@ int test_labels(SimData *d, int g0) {
                     .will_allocate_ids = FALSE,
                     .filename_prefix = NULL,
                     .will_save_alleles_to_file = FALSE,
-                    .will_save_bvs_to_file = FALSE,
+                    .will_save_bvs_to_file = -1,
                     .will_save_pedigree_to_file = FALSE,
                     .will_save_to_simdata = TRUE};
     int f1 = cross_random_individuals(d,g0,4,0,g);
@@ -634,7 +671,7 @@ int test_specific_splits(SimData *d, int g0) {
                     .will_allocate_ids = FALSE,
                     .filename_prefix = NULL,
                     .will_save_alleles_to_file = FALSE,
-                    .will_save_bvs_to_file = FALSE,
+                    .will_save_bvs_to_file = -1,
                     .will_save_pedigree_to_file = FALSE,
                     .will_save_to_simdata = TRUE};
     int f1 = cross_random_individuals(d, g0, 3, 1, g);
@@ -837,7 +874,7 @@ int test_grouping(SimData *d, int g0) {
 }
 
 int test_effect_calculators(SimData *d, int g0) {
-	DecimalMatrix dec = calculate_group_bvs(d, g0);
+    DecimalMatrix dec = calculate_group_bvs(d, g0, 0);
 
 	assert(dec.rows == 1);
 	assert(dec.cols == 6);
@@ -847,43 +884,61 @@ int test_effect_calculators(SimData *d, int g0) {
     assert(fabs(dec.matrix[0][3] - (-0.1)) < TOL);
     assert(fabs(dec.matrix[0][4] - 0.6) < TOL);
     assert(fabs(dec.matrix[0][5] - (-0.3)) < TOL);
-	printf("...GEBVs calculated correctly\n");
+
+    // and with the second set of effects:
+    dec = calculate_group_bvs(d, g0, 1);
+
+    assert(dec.rows == 1);
+    assert(dec.cols == 6);
+    assert(fabs(dec.matrix[0][0] - 0) < TOL);
+    assert(fabs(dec.matrix[0][1] - 0) < TOL);
+    assert(fabs(dec.matrix[0][2] - 0) < TOL);
+    assert(fabs(dec.matrix[0][3] - 1) < TOL);
+    assert(fabs(dec.matrix[0][4] - 0) < TOL);
+    assert(fabs(dec.matrix[0][5] - 1) < TOL);
+    printf("...GEBVs calculated correctly\n");
 
 	delete_dmatrix(&dec);
 	return 0;
 }
 
 int test_optimal_calculators(SimData *d, int g0) {
-    char* ig = calculate_optimal_alleles(d);
+    char* ig = calculate_optimal_alleles(d, 0);
     assert(ig[0] == 'T');
     assert(ig[1] == 'A');
     assert(ig[2] == 'A');
     free(ig);
 
-    double optimal = calculate_optimum_bv(d);
+    double optimal = calculate_optimum_bv(d, 0);
     assert(fabs(optimal - 1.8) < TOL);
+    assert(fabs(calculate_optimum_bv(d, 1) - 2) < TOL);
 
-    double unoptimal = calculate_minimum_bv(d);
+    double unoptimal = calculate_minimum_bv(d, 0);
     assert(fabs(unoptimal + 2.8) < TOL);
+    //assert(fabs(calculate_minimum_bv(d, 1) - 0) < TOL); // this function actually doesn't work when not all alleles have marker effects for somewhere in the genome
 
-    char* founderhaplo = calculate_optimal_available_alleles(d, g0);
+    char* founderhaplo = calculate_optimal_available_alleles(d, g0, 0);
     assert(founderhaplo[0] == 'T');
     assert(founderhaplo[1] == 'A');
     assert(founderhaplo[2] == 'A');
     free(founderhaplo);
+    founderhaplo = calculate_optimal_available_alleles(d, g0, 1);
+    assert(founderhaplo[0] == 'A');
+    free(founderhaplo);
 
-    double founderoptimal = calculate_optimal_available_bv(d, g0);
+    double founderoptimal = calculate_optimal_available_bv(d, g0, 0);
     assert(fabs(founderoptimal - 1.8) < TOL);
+    assert(fabs(calculate_optimal_available_bv(d, g0, 1) - 2) < TOL);
 
     int factorout[2] = {4,5};
     int g0partial = split_from_group(d,2, factorout);
-    char* founderhaplo2 = calculate_optimal_available_alleles(d, g0partial);
+    char* founderhaplo2 = calculate_optimal_available_alleles(d, g0partial, 0);
     assert(founderhaplo2[0] == 'T');
     assert(founderhaplo2[1] == 'A');
     assert(founderhaplo2[2] == 'T');
     free(founderhaplo2);
 
-    double founderoptimal2 = calculate_optimal_available_bv(d, g0partial);
+    double founderoptimal2 = calculate_optimal_available_bv(d, g0partial, 0);
     assert(fabs(founderoptimal2 - 1.4) < TOL);
 
     int recombine[2] = {g0,g0partial};
@@ -925,7 +980,7 @@ int test_crossing_unidirectional(SimData *d, int g0) {
                     .will_allocate_ids=TRUE,
                     .filename_prefix="atestF1",
                     .will_save_pedigree_to_file=TRUE,
-                    .will_save_bvs_to_file=TRUE,
+                    .will_save_bvs_to_file=0,
                     .will_save_alleles_to_file=TRUE,
                     .will_save_to_simdata=TRUE};
 	//AlleleMatrix* a = make_all_unidirectional_crosses(&sd, 0, g);
@@ -1161,6 +1216,14 @@ int test_deletors(SimData *d, int g0) {
 	}
 	printf("...group of genotypes cleared correctly\n");
 
+    delete_eff_set(d, 0);
+    assert(d->n_eff_sets == 1);
+    assert(d->e != NULL);
+    assert(d->e[0].effects.rows == 1); // check identity
+    assert((d->e[0].effects.matrix[0][0] - 1) < TOL); // check identity
+
+    printf("...marker effects set cleared correctly\n");
+
 	delete_simdata(d);
 	printf("...SimData cleared correctly\n");
 
@@ -1231,7 +1294,7 @@ int test_iterators(SimData* d, int gp) {
         .will_allocate_ids = FALSE,
         .filename_prefix = NULL,
         .will_save_pedigree_to_file = FALSE,
-        .will_save_bvs_to_file = FALSE,
+        .will_save_bvs_to_file = -1,
         .will_save_alleles_to_file = FALSE,
         .will_save_to_simdata = TRUE
     };
@@ -1349,7 +1412,7 @@ int test_getters(SimData* d, int gp) {
     }
 
     double bvs[6];
-    assert(get_group_bvs(d, gp, 6, bvs) == 6);
+    assert(get_group_bvs(d, gp, 0, 6, bvs) == 6);
     assert(fabs(bvs[0] - 1.4) < TOL);
     assert(fabs(bvs[1] - 1.4) < TOL);
     assert(fabs(bvs[2] - 1.6) < TOL);
@@ -1369,7 +1432,7 @@ int test_getters(SimData* d, int gp) {
         .will_allocate_ids = FALSE,
         .filename_prefix = NULL,
         .will_save_pedigree_to_file = FALSE,
-        .will_save_bvs_to_file = FALSE,
+        .will_save_bvs_to_file = -1,
         .will_save_alleles_to_file = FALSE,
         .will_save_to_simdata = TRUE
     };
@@ -1491,16 +1554,11 @@ int main(int argc, char* argv[]) {
     d = create_empty_simdata(randomSeed);
     g0 = load_all_simdata(d, "./gt_parents_mr2_50-trimto-5000.txt",
 			 "./genetic-map_5112-trimto5000.txt",
-             "./qtl_mr2.eff-processed.txt");
+             "./qtl_mr2.eff-processed.txt", NULL);
 
     /*g0 = load_all_simdata(d, "./gt_parents_mr2_3000x30000.txt",
                           "./genetic-map_huge30000.txt",
-                          "./eff_huge30000.txt");*/
-
-    /*g0 = load_all_simdata(d, "../../HealthAndHorns/AACo_HD_geno_101122/AACOg2.txt",
-                              "../../HealthAndHorns/AACo_HD_geno_101122/AACo_HD_geno_101122.map",
-                              "./eff_huge30000.txt");
-    fprintf(stdout, "REALLY HERE\n");*/
+                          "./eff_huge30000.txt", NULL);*/
 
 	/*printf("\nNow testing split into individuals\n");
 	assert(get_group_size(d, g0) == 50);
@@ -1520,7 +1578,7 @@ int main(int argc, char* argv[]) {
 	GenOptions gens =  {.will_name_offspring=FALSE, .offspring_name_prefix=NULL, .family_size=243,
 		.will_track_pedigree=TRUE, .will_allocate_ids=TRUE,
 		.filename_prefix="testcross", .will_save_pedigree_to_file=FALSE,
-		.will_save_bvs_to_file=FALSE, .will_save_alleles_to_file=FALSE,
+        .will_save_bvs_to_file=-1, .will_save_alleles_to_file=FALSE,
 		.will_save_to_simdata=TRUE};
     int g1 = cross_these_combinations(d,nc,crosses[0],crosses[1],gens);
 
@@ -1572,14 +1630,14 @@ int main(int argc, char* argv[]) {
     GenOptions gens =  {.will_name_offspring=TRUE, .offspring_name_prefix="cr", .family_size=243,
         .will_track_pedigree=TRUE, .will_allocate_ids=TRUE,
         .filename_prefix="testcross", .will_save_pedigree_to_file=FALSE,
-        .will_save_bvs_to_file=FALSE, .will_save_alleles_to_file=FALSE,
+        .will_save_bvs_to_file=-1, .will_save_alleles_to_file=FALSE,
         .will_save_to_simdata=TRUE};
     cross_random_individuals(d, g0, 10, 0, gens);
     cross_random_individuals(d, g0, 10, 0, gens);
     cross_random_individuals(d, g0, 10, 0, gens);
     cross_random_individuals(d, g0, 10, 0, gens);
     cross_random_individuals(d, g0, 10, 0, gens);
-    int m = split_by_bv(d, g0, 55, 1);
+    int m = split_by_bv(d, g0, 0, 55, 1);
     assert(get_group_size(d, m) == 50);
 
     delete_simdata(d);
@@ -1588,7 +1646,7 @@ int main(int argc, char* argv[]) {
     d = create_empty_simdata(randomSeed);
     g0 = load_all_simdata(d, "./gt_parents_mr2_50-trimto-5000.txt",
              "./genetic-map_5112-trimto5000.txt",
-             "./qtl_5test.txt");
+             "./qtl_5test.txt", NULL);
 
 
 	printf("\nAll done\n");
@@ -1609,7 +1667,7 @@ int main(int argc, char* argv[]) {
 	GenOptions g = {.will_name_offspring=FALSE, .offspring_name_prefix=NULL, .family_size=1,
 		.will_track_pedigree=TRUE, .will_allocate_ids=TRUE,
 		.filename_prefix="testcross", .will_save_pedigree_to_file=FALSE,
-		.will_save_bvs_to_file=FALSE, .will_save_alleles_to_file=FALSE,
+        .will_save_bvs_to_file=-1, .will_save_alleles_to_file=FALSE,
 		.will_save_to_simdata=TRUE};
     int f = cross_random_individuals(sd, fg0, 100000, g);
 	c = clock() - c;

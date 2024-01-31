@@ -13,6 +13,7 @@ const char HELPER_MAP[] = "marker chr pos\n" "m3 3 15\n"
 const char HELPER_EFF[] = "m1 A -0.8\n" "m2 A -0.1\n"
 	"m3 A 0.1\n" "m1 T 0.9\n"
 	"m3 T -0.1\n" "m2 T -0.5";
+const char HELPER_EFF2[] = "m1 A 1\n";
 const char HELPER_PLAN[] = "G01\tG02\tG03\tG05\n"
 	"G01\tG03\tG05\tG06\n" "G05\tG06\tG01\tG04";
 

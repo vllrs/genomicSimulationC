@@ -25,7 +25,7 @@ awk 'NR<174 || NR>204' ./sim-operations.c | sed \
 echo ">>> Deleting lines from sim-operations.h:"
 awk 'NR>=272 && NR<=274' ./sim-operations.h
 
-awk 'NR<272 || NR>274' ./sim-operations.h | sed \
+awk 'NR<276 || NR>283' ./sim-operations.h | sed \
 	-e 's+#include "lib/rnd.h"++g' \
 	-e 's/RND_U32 RNGseed//g' \
 	-e 's+rnd_pcg_t rng;+//CRANDOMGENERATOR+g' \
