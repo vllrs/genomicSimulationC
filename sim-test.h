@@ -17,29 +17,29 @@ const char HELPER_EFF2[] = "m1 A 1\n";
 const char HELPER_PLAN[] = "G01\tG02\tG03\tG05\n"
 	"G01\tG03\tG05\tG06\n" "G05\tG06\tG01\tG04";
 
-float calculate_heterozygosity(SimData* d, int group_number);
+float calculate_heterozygosity(SimData* d, GroupNum group_number);
 int compareFiles(char* f1, char* f2); // returns 0 if matching
 
-int test_loaders(SimData* d);
+GroupNum test_loaders(SimData* d);
 
-int test_grouping(SimData *d, int g0);
-int test_specific_splits(SimData *d, int g0);
-int test_random_splits(SimData *d, int g0);
-int test_labels(SimData *d, int g0);
+GroupNum test_grouping(SimData *d, GroupNum g0);
+GroupNum test_specific_splits(SimData *d, GroupNum g0);
+GroupNum test_random_splits(SimData *d, GroupNum g0);
+GroupNum test_labels(SimData *d, GroupNum g0);
 
-int test_effect_calculators(SimData *d, int g0);
-int test_optimal_calculators(SimData *d, int g0);
+int test_effect_calculators(SimData *d, GroupNum g0);
+int test_optimal_calculators(SimData *d, GroupNum g0);
 
-int test_data_access(SimData* d, int gp);
-int test_iterators(SimData* d, int gp);
-int test_getters(SimData* d, int gp);
+int test_data_access(SimData* d, GroupNum gp);
+int test_iterators(SimData* d, GroupNum gp);
+int test_getters(SimData* d, GroupNum gp);
 
-int test_crossing(SimData *d, int g0);
-int test_crossing_unidirectional(SimData *d, int g0);
-int test_crossing_from_file(SimData *d, char* fname);
-int test_crossing_selfing(SimData *d, int g1);
-void test_crossing_randomly(SimData *d, int g1);
+int test_crossing(SimData *d, GroupNum g0);
+GroupNum test_crossing_unidirectional(SimData *d, GroupNum g0);
+GroupNum test_crossing_from_file(SimData *d, char* fname);
+GroupNum test_crossing_selfing(SimData *d, GroupNum g1);
+int test_crossing_randomly(SimData *d, GroupNum g1);
 
-int test_deletors(SimData *d, int g0);
+int test_deletors(SimData *d, GroupNum g0);
 
 int test_block_generator(SimData *d);
