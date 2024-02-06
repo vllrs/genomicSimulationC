@@ -18,6 +18,240 @@ float calculate_heterozygosity(SimData* d, GroupNum group_number) {
 	return (float) hetcount / (gn * d->n_markers);
 }
 
+int test_savers(unsigned int rseed) {
+    SimData* d = create_empty_simdata(rseed);
+    GroupNum g0 = just_load(d);
+    assert(d->n_markers == 3);
+    assert(d->n_eff_sets == 1);
+    assert(d->m->n_genotypes == 6);
+
+    // create some interesting groups
+    GenOptions g = {.will_name_offspring=TRUE,
+            .offspring_name_prefix="F1",
+            .family_size=1,.will_track_pedigree=TRUE,
+            .will_allocate_ids=TRUE,
+            .filename_prefix="",
+            .will_save_pedigree_to_file=FALSE,
+            .will_save_bvs_to_file=0,
+            .will_save_alleles_to_file=FALSE,
+            .will_save_to_simdata=TRUE};
+    GroupNum f1 = cross_random_individuals(d, g0, 5, 2, g); // produce 5 offspring
+    g.will_track_pedigree = TRUE;
+    g.will_allocate_ids = FALSE;
+    g.offspring_name_prefix = "s";
+    GroupNum f2 = self_n_times(d,2,f1,g); // produce 5 offspring that know their parents but will be anonymous parents themselves
+    g.will_name_offspring = FALSE;
+    g.will_allocate_ids = TRUE;
+    GroupNum f3 = make_doubled_haploids(d,f2,g); // produce 5 offspring that don't have names or know their parents.
+
+    int toprint[] = {0,1,//2,3,4,5 from g0
+                     6,7,//8,9,10 from f1
+                     11,15,//11,12,13,14,15 from f2
+                     16,17//18,19,20 from f3
+                    };
+    GroupNum printingGroup = split_from_group(d, 8, toprint);
+
+    /*GroupNum gout[5];
+    int gs[5];
+    get_existing_group_counts(d,5,gout,gs);*/
+
+    // try saving genotypes save_allele_matrix save_transposed_allele_matrix save_group_alleles save_transposed_group_alleles
+    FILE* fp;
+    if ((fp = fopen("test1_save_allele_matrix.txt", "w")) == NULL) {
+        fprintf(stderr, "Failed to create file.\n");
+        exit(1);
+    }
+    save_names_header(fp,d->n_markers,(const char**) d->markers);
+    save_allele_matrix(fp,d->m);
+    fclose(fp);
+    assert(compareFileToString("test1_save_allele_matrix.txt", TEST1_TRUTH_save_allele_matrix)==0);
+    remove("test1_save_allele_matrix.txt");
+
+
+    if ((fp = fopen("test1_save_transposed_allele_matrix.txt", "w")) == NULL) {
+        fprintf(stderr, "Failed to create file.\n");
+        exit(1);
+    }
+    save_transposed_allele_matrix(fp,d->m,(const char**) d->markers);
+    fclose(fp);
+    assert(compareFileToString("test1_save_transposed_allele_matrix.txt", TEST1_TRUTH_save_transposed_allele_matrix)==0);
+    remove("test1_save_transposed_allele_matrix.txt");
+
+
+    if ((fp = fopen("test1_save_group_alleles.txt", "w")) == NULL) {
+        fprintf(stderr, "Failed to create file.\n");
+        exit(1);
+    }
+    save_group_alleles(fp,d,printingGroup);
+    fclose(fp);
+    assert(compareFileToString("test1_save_group_alleles.txt", TEST1_TRUTH_save_group_alleles)==0);
+    remove("test1_save_group_alleles.txt");
+
+
+    if ((fp = fopen("test1_save_transposed_group_alleles.txt", "w")) == NULL) {
+        fprintf(stderr, "Failed to create file.\n");
+        exit(1);
+    }
+    save_transposed_group_alleles(fp,d,printingGroup);
+    fclose(fp);
+    assert(compareFileToString("test1_save_transposed_group_alleles.txt", TEST1_TRUTH_save_transposed_group_alleles)==0);
+    remove("test1_save_transposed_group_alleles.txt");
+
+
+    // try saving counts save_count_matrix save_count_matrix_of_group
+    if ((fp = fopen("test1_save_count_matrix.txt", "w")) == NULL) {
+        fprintf(stderr, "Failed to create file.\n");
+        exit(1);
+    }
+    save_count_matrix(fp,d,'A');
+    fclose(fp);
+    assert(compareFileToString("test1_save_count_matrix.txt", TEST1_TRUTH_save_count_matrix)==0);
+    remove("test1_save_count_matrix.txt");
+
+
+    if ((fp = fopen("test1_save_count_matrix_of_group.txt", "w")) == NULL) {
+        fprintf(stderr, "Failed to create file.\n");
+        exit(1);
+    }
+    save_count_matrix_of_group(fp,d,'T',printingGroup);
+    fclose(fp);
+    assert(compareFileToString("test1_save_count_matrix_of_group.txt", TEST1_TRUTH_save_count_matrix_of_group)==0);
+    remove("test1_save_count_matrix_of_group.txt");
+
+
+    printf("...genotype matrix file savers produce the expected output formats\n");
+
+
+    // try saving bvs save_bvs save_group_bvs
+    EffectID effSet1 = {.id=1};
+
+    if ((fp = fopen("test1_save_bvs.txt", "w")) == NULL) {
+        fprintf(stderr, "Failed to create file.\n");
+        exit(1);
+    }
+    save_bvs(fp,d,effSet1);
+    fclose(fp);
+    assert(compareFileToString("test1_save_bvs.txt", TEST1_TRUTH_save_bvs)==0);
+    remove("test1_save_bvs.txt");
+
+
+    if ((fp = fopen("test1_save_group_bvs.txt", "w")) == NULL) {
+        fprintf(stderr, "Failed to create file.\n");
+        exit(1);
+    }
+    save_group_bvs(fp,d,printingGroup,effSet1);
+    fclose(fp);
+    assert(compareFileToString("test1_save_group_bvs.txt", TEST1_TRUTH_save_group_bvs)==0);
+    remove("test1_save_group_bvs.txt");
+
+
+    // try saving local gebvs save_marker_blocks calculate_local_bvs
+    MarkerBlocks exampleMB = create_n_blocks_by_chr(d,1);
+
+    if ((fp = fopen("test1_save_marker_blocks.txt", "w")) == NULL) {
+        fprintf(stderr, "Failed to create file.\n");
+        exit(1);
+    }
+    save_marker_blocks(fp,d,exampleMB);
+    fclose(fp);
+    assert(compareFileToString("test1_save_marker_blocks.txt", TEST1_TRUTH_save_marker_blocks)==0);
+    remove("test1_save_marker_blocks.txt");
+
+
+    calculate_local_bvs(d,exampleMB,effSet1,"test1_save_local_bvs.txt");
+    assert(compareFileToString("test1_save_local_bvs.txt", TEST1_TRUTH_save_local_bvs)==0);
+    remove("test1_save_local_bvs.txt");
+
+
+    calculate_group_local_bvs(d,exampleMB,effSet1,"test1_save_group_local_bvs.txt",printingGroup);
+    assert(compareFileToString("test1_save_group_local_bvs.txt", TEST1_TRUTH_save_group_local_bvs)==0);
+    remove("test1_save_group_local_bvs.txt");
+
+
+    printf("...breeding value file savers produce the expected output formats\n");
+
+
+    // try saving one-step pedigrees save_group_one_step_pedigree save_one_step_pedigree
+    g = (GenOptions){.will_name_offspring=TRUE,
+            .offspring_name_prefix="F2",
+            .family_size=1,.will_track_pedigree=TRUE,
+            .will_allocate_ids=TRUE,
+            .filename_prefix="",
+            .will_save_pedigree_to_file=FALSE,
+            .will_save_bvs_to_file=0,
+            .will_save_alleles_to_file=FALSE,
+            .will_save_to_simdata=TRUE};
+    GroupNum f2b = cross_random_individuals(d,f1,1,1,g);
+
+    if ((fp = fopen("test1_save_one_step_pedigree.txt", "w")) == NULL) {
+        fprintf(stderr, "Failed to create file.\n");
+        exit(1);
+    }
+    save_one_step_pedigree(fp,d);
+    fclose(fp);
+    assert(compareFileToString("test1_save_one_step_pedigree.txt", TEST1_TRUTH_save_one_step_pedigrees)==0);
+    remove("test1_save_one_step_pedigree.txt");
+
+
+    if ((fp = fopen("test1_save_group_one_step_pedigree.txt", "w")) == NULL) {
+        fprintf(stderr, "Failed to create file.\n");
+        exit(1);
+    }
+    save_group_one_step_pedigree(fp,d,printingGroup);
+    fclose(fp);
+    assert(compareFileToString("test1_save_group_one_step_pedigree.txt", TEST1_TRUTH_save_group_one_step_pedigrees)==0);
+    remove("test1_save_group_one_step_pedigree.txt");
+
+
+    // try saving full pedigrees save_group_full_pedigree save_full_pedigree
+    if ((fp = fopen("test1_save_full_pedigree.txt", "w")) == NULL) {
+        fprintf(stderr, "Failed to create file.\n");
+        exit(1);
+    }
+    save_full_pedigree(fp,d);
+    fclose(fp);
+    assert(compareFileToString("test1_save_full_pedigree.txt", TEST1_TRUTH_save_full_pedigrees)==0);
+    remove("test1_save_full_pedigree.txt");
+
+
+    if ((fp = fopen("test1_save_group_full_pedigree.txt", "w")) == NULL) {
+        fprintf(stderr, "Failed to create file.\n");
+        exit(1);
+    }
+    save_group_full_pedigree(fp,d,printingGroup);
+    fclose(fp);
+    assert(compareFileToString("test1_save_group_full_pedigree.txt", TEST1_TRUTH_save_group_full_pedigrees)==0);
+    remove("test1_save_group_full_pedigree.txt");
+
+
+    // try save-as-you-go savers (ideally you'd run this with a very low CONTIG_WIDTH, and also for all crossing funcs.
+    int parentix[] = {20};
+    GroupNum parent = split_from_group(d,1,parentix);
+    g = (GenOptions){.will_name_offspring=FALSE,
+            .offspring_name_prefix="",
+            .family_size=(CONTIG_WIDTH+5),.will_track_pedigree=TRUE,
+            .will_allocate_ids=FALSE,
+            .filename_prefix="test1_save_as_you_go",
+            .will_save_pedigree_to_file=TRUE,
+            .will_save_bvs_to_file=effSet1.id,
+            .will_save_alleles_to_file=TRUE,
+            .will_save_to_simdata=FALSE};
+    make_doubled_haploids(d,parent,g);
+
+    assert(compareRepeatingFileToTable("test1_save_as_you_go-genotype.txt", CONTIG_WIDTH+5,
+                                       TEST1_TRUTH_sayg_genotype_header, TEST1_TRUTH_sayg_genotype_bodyrow)==0);
+    remove("test1_save_as_you_go-genotype.txt");
+    assert(compareRepeatingFileToTable("test1_save_as_you_go-bv.txt", CONTIG_WIDTH+5,
+                                       NULL, TEST1_TRUTH_sayg_bv_bodyrow)==0);
+    remove("test1_save_as_you_go-bv.txt");
+    assert(compareRepeatingFileToTable("test1_save_as_you_go-pedigree.txt", CONTIG_WIDTH+5,
+                                       NULL, TEST1_TRUTH_sayg_pedigree_bodyrow)==0);
+    remove("test1_save_as_you_go-pedigree.txt");
+
+
+    return 0;
+}
+
 int test_loaders2(SimData* d) {
     // Test genotype matrix loading
     /*
@@ -82,27 +316,26 @@ m2 AT AA TT
     return 0;
 }
 
-
-GroupNum test_loaders(SimData* d) {
-	FILE* fp;
-	if ((fp = fopen("a-test.txt", "w")) == NULL) {
-		fprintf(stderr, "Failed to create file.\n");
-		exit(1);
-	}
-	fwrite(HELPER_GENOTYPES, sizeof(char), strlen(HELPER_GENOTYPES), fp);
-	fclose(fp);
-	if ((fp = fopen("a-test-map.txt", "w")) == NULL) {
-		fprintf(stderr, "Failed to create file.\n");
-		exit(1);
-	}
-	fwrite(HELPER_MAP, sizeof(char), strlen(HELPER_MAP), fp);
-	fclose(fp);
-	if ((fp = fopen("a-test-eff.txt", "w")) == NULL) {
-		fprintf(stderr, "Failed to create file.\n");
-		exit(1);
-	}
-	fwrite(HELPER_EFF, sizeof(char), strlen(HELPER_EFF), fp);
-	fclose(fp);
+GroupNum just_load(SimData* d) {
+    FILE* fp;
+    if ((fp = fopen("a-test.txt", "w")) == NULL) {
+        fprintf(stderr, "Failed to create file.\n");
+        exit(1);
+    }
+    fwrite(HELPER_GENOTYPES, sizeof(char), strlen(HELPER_GENOTYPES), fp);
+    fclose(fp);
+    if ((fp = fopen("a-test-map.txt", "w")) == NULL) {
+        fprintf(stderr, "Failed to create file.\n");
+        exit(1);
+    }
+    fwrite(HELPER_MAP, sizeof(char), strlen(HELPER_MAP), fp);
+    fclose(fp);
+    if ((fp = fopen("a-test-eff.txt", "w")) == NULL) {
+        fprintf(stderr, "Failed to create file.\n");
+        exit(1);
+    }
+    fwrite(HELPER_EFF, sizeof(char), strlen(HELPER_EFF), fp);
+    fclose(fp);
     if ((fp = fopen("a-test-eff2.txt", "w")) == NULL) {
         fprintf(stderr, "Failed to create file.\n");
         exit(1);
@@ -110,11 +343,18 @@ GroupNum test_loaders(SimData* d) {
     fwrite(HELPER_EFF2, sizeof(char), strlen(HELPER_EFF2), fp);
     fclose(fp);
 
-    GroupNum g0 = load_all_simdata(d, "a-test.txt", "a-test-map.txt", "a-test-eff.txt");
+    struct GroupAndEffectSet gande = load_all_simdata(d, "a-test.txt", "a-test-map.txt", "a-test-eff.txt");
+    GroupNum g0 = gande.group;
 
-	remove("a-test.txt");
-	remove("a-test-map.txt");
-	remove("a-test-eff.txt");
+    remove("a-test.txt");
+    remove("a-test-map.txt");
+    remove("a-test-eff.txt");
+    return g0;
+}
+
+
+GroupNum test_loaders(SimData* d) {
+    GroupNum g0 = just_load(d);
 
 	assert(d->n_markers == 3); // all markers loaded
 	assert(strcmp(d->markers[0], "m1") == 0); // all markers ordered right
@@ -158,7 +398,7 @@ GroupNum test_loaders(SimData* d) {
     assert(fabs(d->e[0].effects.matrix[tpos][2] - (-0.1)) < TOL);
     printf("...marker effects loaded correctly\n");
 
-    assert(load_effects_to_simdata(d, "a-test-eff2.txt")==1);
+    assert(load_effects_to_simdata(d, "a-test-eff2.txt").id==2);
     assert(d->n_eff_sets == 2);
     assert(d->e[0].effects.rows == 2);
     assert(d->e[0].effects.cols == 3);
@@ -885,20 +1125,38 @@ int test_effect_calculators(SimData *d, GroupNum g0) {
     assert(fabs(dec.matrix[0][4] - 0.6) < TOL);
     assert(fabs(dec.matrix[0][5] - (-0.3)) < TOL);
 
+    delete_dmatrix(&dec);
     // and with the second set of effects:
-    dec = calculate_group_bvs(d, g0, (EffectID){.id=2});
+    DecimalMatrix dec2 = calculate_group_bvs(d, g0, (EffectID){.id=2});
 
-    assert(dec.rows == 1);
-    assert(dec.cols == 6);
-    assert(fabs(dec.matrix[0][0] - 0) < TOL);
-    assert(fabs(dec.matrix[0][1] - 0) < TOL);
-    assert(fabs(dec.matrix[0][2] - 0) < TOL);
-    assert(fabs(dec.matrix[0][3] - 1) < TOL);
-    assert(fabs(dec.matrix[0][4] - 0) < TOL);
-    assert(fabs(dec.matrix[0][5] - 1) < TOL);
+    assert(dec2.rows == 1);
+    assert(dec2.cols == 6);
+    assert(fabs(dec2.matrix[0][0] - 0) < TOL);
+    assert(fabs(dec2.matrix[0][1] - 0) < TOL);
+    assert(fabs(dec2.matrix[0][2] - 0) < TOL);
+    assert(fabs(dec2.matrix[0][3] - 1) < TOL);
+    assert(fabs(dec2.matrix[0][4] - 0) < TOL);
+    assert(fabs(dec2.matrix[0][5] - 1) < TOL);
+    delete_dmatrix(&dec2);
+
+    FILE* fp = fopen("a-test-eff3.txt","w");
+    fwrite(HELPER_EFF2, sizeof(char), strlen(HELPER_EFF2), fp);
+    fclose(fp);
+    EffectID e3 = load_effects_to_simdata(d,"a-test-eff3.txt");
+    DecimalMatrix dec3 = calculate_group_bvs(d, g0, e3);
+    assert(fabs(dec3.matrix[0][0] - 0) < TOL);
+    assert(fabs(dec3.matrix[0][1] - 0) < TOL);
+    assert(fabs(dec3.matrix[0][2] - 0) < TOL);
+    assert(fabs(dec3.matrix[0][3] - 1) < TOL);
+    assert(fabs(dec3.matrix[0][4] - 0) < TOL);
+    assert(fabs(dec3.matrix[0][5] - 1) < TOL);
+    delete_eff_set(d,e3);
+    delete_dmatrix(&dec3);
+
+    remove("a-test-eff3.txt");
+
     printf("...GEBVs calculated correctly\n");
 
-	delete_dmatrix(&dec);
 	return 0;
 }
 
@@ -1499,6 +1757,68 @@ int compareFiles(char* f1, char* f2) {
 	else return -1;
 }
 
+int compareFileToString(char* filename, const char* target) {
+    FILE* fp = fopen(filename, "r");
+    int i = 0;
+
+    char c1, c2;
+
+    do {
+        c1 = fgetc(fp);
+        c2 = target[i];
+
+        if (c1 != c2) break;
+        ++i;
+
+    } while (c1 != EOF && c2 != '\0');
+
+    if (c1 == EOF && c2 == '\0') return 0;
+    else return -1;
+}
+
+int compareRepeatingFileToTable(char* filename, unsigned int expectedNRows, const char* header, const char* body) {
+    FILE* fp = fopen(filename, "r");
+    int i = 0;
+    unsigned int row = 0;
+    char processingheader = (header == NULL) ? FALSE : TRUE;
+
+    char c1, c2;
+
+    do {
+        c1 = fgetc(fp);
+        if (processingheader) {
+            c2 = header[i];
+        } else {
+            c2 = body[i];
+        }
+
+        if (c2 == '\0') {
+            if (c1 == '\n') {
+                i = 0;
+                if (processingheader) {
+                    processingheader = FALSE;
+                } else {
+                    ++row;
+                }
+            } else {
+                break;
+            }
+        } else if (c1 != c2) {
+            break;
+        } else {
+            ++i;
+        }
+
+    } while (c1 != EOF && row < expectedNRows);
+
+    if (row == expectedNRows) {
+        c1 = fgetc(fp);
+    }
+
+    if (c1 == EOF && i == 0 && row == expectedNRows) return 0;
+    else return -1;
+}
+
 
 /* main, for testing. Only uses a small dataset. */
 int main(int argc, char* argv[]) {
@@ -1545,6 +1865,7 @@ int main(int argc, char* argv[]) {
 
 	//test file savers
 	printf("\nNow testing saver functions:\n");
+    test_savers(randomSeed);
 	printf("TODO Saver tests not implemented yet\n");
 
 	// test SimData deletors.
@@ -1557,9 +1878,11 @@ int main(int argc, char* argv[]) {
 
 	//testing new grouping functions
     d = create_empty_simdata(randomSeed);
-    g0 = load_all_simdata(d, "./gt_parents_mr2_50-trimto-5000.txt",
+    struct GroupAndEffectSet gande =
+            load_all_simdata(d, "./gt_parents_mr2_50-trimto-5000.txt",
 			 "./genetic-map_5112-trimto5000.txt",
              "./qtl_mr2.eff-processed.txt");
+    g0 = gande.group;
 
     /*g0 = load_all_simdata(d, "./gt_parents_mr2_3000x30000.txt",
                           "./genetic-map_huge30000.txt",
@@ -1649,10 +1972,9 @@ int main(int argc, char* argv[]) {
 
     // Testing 5 allele effects bug? Replicability.
     d = create_empty_simdata(randomSeed);
-    g0 = load_all_simdata(d, "./gt_parents_mr2_50-trimto-5000.txt",
+    gande = load_all_simdata(d, "./gt_parents_mr2_50-trimto-5000.txt",
              "./genetic-map_5112-trimto5000.txt",
              "./qtl_5test.txt");
-
 
 	printf("\nAll done\n");
 	delete_simdata(d);

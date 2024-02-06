@@ -1,6 +1,26 @@
 Latest News       {#news}
 ===========
 
+# genomicSimulation 0.2.4
+
+## New Features
+
+- Add ability to load multiple effect files. Multiple sets of marker effects can now be available at one time. Loading an effect file will return an EffectID that represents that particular set of marker effects. Sets of marker effects can be removed from memory using delete_eff_set.
+
+## Improvements
+
+- BREAKING CHANGE: The four different types of identifiers have been tidied into four struct types (GroupNum, PedigreeID, LabelID and EffectID), and all functions have been updated to use these struct types. Each of these types also has a named invalid value that may be returned if a function fails: NO_GROUP, NO_PEDIGREE, NOT_A_LABEL, and NOT_AN_EFFECT_SET. 
+- BREAKING CHANGE: Because sets of marker effects now have identifiers, load_all_simdata now returns a struct GroupAndEffectSet, which is a wrapper around a GroupNum and EffectID pair, instead of just a group number.
+- Added test cases for functions that cover saving data to output files.
+- The save-as-you-go setting for saving breeding values in GenOptions now takes the value of the id from an EffectID, if you wish to save the breeding values from that set of marker effects, or 0/NOT_AN_EFFECT_SET, to not use the save-as-you-go functionality.
+ 
+## Bug Fixes
+- Standardised file-output functions so that genotype names are consistently substituted with their PedigreeIDs, if the genotype does not have a name. 
+- Stopped save-as-you-go genotype saving repeating the header row (of genetic marker names) every 1000 rows. The header row now only appears in the first row.
+- Semicolon separators appear correctly in the output of save_marker_blocks
+- Pedigrees are printed consistently between save_group_[]_pedigree and save_[]_pedigree variants of the same function. Parents are no longer skipped in favour of starting with grandparents in group-specific functions.
+
+
 # genomicSimulation 0.2.3.002
 
 - genomicSimulation had a chance of a segmentation fault in load_all_simdata for certain marker effect files. The chance was higher for effect files listing few markers or listing many alleles. This release is a quick-fix for this bug.
@@ -8,7 +28,7 @@ Latest News       {#news}
 
 # genomicSimulation 0.2.3
 
-# New Features
+## New Features
 
 - Add functions calculate_optimal_available_alleles and calculate_optimal_available_bv, to calculate the best combination of alleles and best possible breeding value score given the pool of alleles available in a particular group.
 - Added custom integer labels, eg. for tracking age:
@@ -22,7 +42,7 @@ Latest News       {#news}
 - Iterators return GenoLocation values. A new family of get_ functions has been added to access the data of the genotype at a particular GenoLocation.
 	- get_name; get_alleles; get_first_parent; get_second_parent; get_id; get_group; get_label_value
 	
-# Improvements 
+## Improvements 
 
 - BREAKING CHANGE: Removed automatic re-seeding in get_chromosome_locations. Users should now set the random number generator seed in their own programs (see the example sim.c). This removes the unexpected behaviour where genomicSimulation overwrites your own random seeds.
 - BREAKING CHANGE: Collective data access functions (get_group_\* family, get_existing_groups and get_existing_group_counts) now use parameter modification (save their results to an array passed as a parameter) rather than by returning a heap array.
@@ -30,7 +50,7 @@ Latest News       {#news}
 - Added 'const' to all readonly parameters. Compilation should no longer produce warnings.
 - Swapped to using Mattias Gustavsson's "rnd" implementation of a Permuted Congruential Generator (https://github.com/mattiasgustavsson/libs) for random number generation, rather than the builtin and subpar "rand()".
 
-# Bug Fixes 
+## Bug Fixes 
 
 - Up NAME_LENGTH (the buffer size for name loading) to 45, as a temporary fix.
 - Allow uint ordered search to ignore 0s mid-list, to solve a bug when not all genotypes are allocated IDs

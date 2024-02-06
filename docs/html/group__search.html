@@ -21,7 +21,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">genomicSimulationC<span id="projectnumber">&#160;0.2.3</span>
+   <div id="projectname">genomicSimulationC<span id="projectnumber">&#160;0.2.4</span>
    </div>
   </td>
  </tr>
@@ -84,30 +84,30 @@ $(function() {
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:ga0a9f180e2bff0952bd9e5af26c7ae37d"><td class="memItemLeft" align="right" valign="top">char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__search.html#ga0a9f180e2bff0952bd9e5af26c7ae37d">get_name_of_id</a> (const <a class="el" href="struct_allele_matrix.html">AlleleMatrix</a> *start, const unsigned int id)</td></tr>
-<tr class="memdesc:ga0a9f180e2bff0952bd9e5af26c7ae37d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the name of the genotype with a given id.  <a href="group__search.html#ga0a9f180e2bff0952bd9e5af26c7ae37d">More...</a><br /></td></tr>
-<tr class="separator:ga0a9f180e2bff0952bd9e5af26c7ae37d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gaac7b697008227dd0fe32651d82bd5882"><td class="memItemLeft" align="right" valign="top">char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__search.html#gaac7b697008227dd0fe32651d82bd5882">get_genes_of_id</a> (const <a class="el" href="struct_allele_matrix.html">AlleleMatrix</a> *start, const unsigned int id)</td></tr>
-<tr class="memdesc:gaac7b697008227dd0fe32651d82bd5882"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the alleles at each marker of the genotype with a given id.  <a href="group__search.html#gaac7b697008227dd0fe32651d82bd5882">More...</a><br /></td></tr>
-<tr class="separator:gaac7b697008227dd0fe32651d82bd5882"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gade1706129ba2510f1f1ed496b51efcb6"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__search.html#gade1706129ba2510f1f1ed496b51efcb6">get_parents_of_id</a> (const <a class="el" href="struct_allele_matrix.html">AlleleMatrix</a> *start, const unsigned int id, unsigned int output[2])</td></tr>
-<tr class="memdesc:gade1706129ba2510f1f1ed496b51efcb6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Saves the ids of the parents of a genotype with a particular id to the output array <code>output</code>.  <a href="group__search.html#gade1706129ba2510f1f1ed496b51efcb6">More...</a><br /></td></tr>
-<tr class="separator:gade1706129ba2510f1f1ed496b51efcb6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gaf1e297a4ef41de2dc01281556ac0c540"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__search.html#gaf1e297a4ef41de2dc01281556ac0c540">get_ids_of_names</a> (const <a class="el" href="struct_allele_matrix.html">AlleleMatrix</a> *start, const int n_names, const char *names[n_names], unsigned int *output)</td></tr>
-<tr class="memdesc:gaf1e297a4ef41de2dc01281556ac0c540"><td class="mdescLeft">&#160;</td><td class="mdescRight">Search for genotypes with certain names in a linked list of <a class="el" href="struct_allele_matrix.html">AlleleMatrix</a> and save the ids of those names.  <a href="group__search.html#gaf1e297a4ef41de2dc01281556ac0c540">More...</a><br /></td></tr>
-<tr class="separator:gaf1e297a4ef41de2dc01281556ac0c540"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga6466a838744dde3b65f4253277b56024"><td class="memItemLeft" align="right" valign="top">unsigned int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__search.html#ga6466a838744dde3b65f4253277b56024">get_id_of_child</a> (const <a class="el" href="struct_allele_matrix.html">AlleleMatrix</a> *start, const unsigned int parent1id, const unsigned int parent2id)</td></tr>
-<tr class="memdesc:ga6466a838744dde3b65f4253277b56024"><td class="mdescLeft">&#160;</td><td class="mdescRight">Search for a genotype with parentage matching two given parent ids in a linked list of <a class="el" href="struct_allele_matrix.html">AlleleMatrix</a>, and return its id.  <a href="group__search.html#ga6466a838744dde3b65f4253277b56024">More...</a><br /></td></tr>
-<tr class="separator:ga6466a838744dde3b65f4253277b56024"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gab8a8e94492b531f4dd5e680e7a02cc5d"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__search.html#gab8a8e94492b531f4dd5e680e7a02cc5d">get_index_of_child</a> (const <a class="el" href="struct_allele_matrix.html">AlleleMatrix</a> *start, const unsigned int parent1id, const unsigned int parent2id)</td></tr>
-<tr class="memdesc:gab8a8e94492b531f4dd5e680e7a02cc5d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Search for a genotype with parentage matching two given parent ids in a linked list of <a class="el" href="struct_allele_matrix.html">AlleleMatrix</a>, and return its index.  <a href="group__search.html#gab8a8e94492b531f4dd5e680e7a02cc5d">More...</a><br /></td></tr>
-<tr class="separator:gab8a8e94492b531f4dd5e680e7a02cc5d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaaea63100f4c2639907cce72c29a413e8"><td class="memItemLeft" align="right" valign="top">char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__search.html#gaaea63100f4c2639907cce72c29a413e8">get_name_of_id</a> (const <a class="el" href="struct_allele_matrix.html">AlleleMatrix</a> *start, const <a class="el" href="struct_pedigree_i_d.html">PedigreeID</a> id)</td></tr>
+<tr class="memdesc:gaaea63100f4c2639907cce72c29a413e8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the name of the genotype with a given id.  <a href="group__search.html#gaaea63100f4c2639907cce72c29a413e8">More...</a><br /></td></tr>
+<tr class="separator:gaaea63100f4c2639907cce72c29a413e8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga25a640c4ebdcdca0fade3ad3d74523e6"><td class="memItemLeft" align="right" valign="top">char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__search.html#ga25a640c4ebdcdca0fade3ad3d74523e6">get_genes_of_id</a> (const <a class="el" href="struct_allele_matrix.html">AlleleMatrix</a> *start, const <a class="el" href="struct_pedigree_i_d.html">PedigreeID</a> id)</td></tr>
+<tr class="memdesc:ga25a640c4ebdcdca0fade3ad3d74523e6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the alleles at each marker of the genotype with a given id.  <a href="group__search.html#ga25a640c4ebdcdca0fade3ad3d74523e6">More...</a><br /></td></tr>
+<tr class="separator:ga25a640c4ebdcdca0fade3ad3d74523e6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaa814762960a964cd0aaf82be0c18b8cb"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__search.html#gaa814762960a964cd0aaf82be0c18b8cb">get_parents_of_id</a> (const <a class="el" href="struct_allele_matrix.html">AlleleMatrix</a> *start, const <a class="el" href="struct_pedigree_i_d.html">PedigreeID</a> id, <a class="el" href="struct_pedigree_i_d.html">PedigreeID</a> output[2])</td></tr>
+<tr class="memdesc:gaa814762960a964cd0aaf82be0c18b8cb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Saves the ids of the parents of a genotype with a particular id to the output array <code>output</code>.  <a href="group__search.html#gaa814762960a964cd0aaf82be0c18b8cb">More...</a><br /></td></tr>
+<tr class="separator:gaa814762960a964cd0aaf82be0c18b8cb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga27f29c0ac93e571fd539e81ce6dacb4b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__search.html#ga27f29c0ac93e571fd539e81ce6dacb4b">get_ids_of_names</a> (const <a class="el" href="struct_allele_matrix.html">AlleleMatrix</a> *start, const int n_names, const char *names[n_names], <a class="el" href="struct_pedigree_i_d.html">PedigreeID</a> *output)</td></tr>
+<tr class="memdesc:ga27f29c0ac93e571fd539e81ce6dacb4b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Search for genotypes with certain names in a linked list of <a class="el" href="struct_allele_matrix.html">AlleleMatrix</a> and save the ids of those names.  <a href="group__search.html#ga27f29c0ac93e571fd539e81ce6dacb4b">More...</a><br /></td></tr>
+<tr class="separator:ga27f29c0ac93e571fd539e81ce6dacb4b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga7bef742844713ce42ef56eb73050d1bb"><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_pedigree_i_d.html">PedigreeID</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__search.html#ga7bef742844713ce42ef56eb73050d1bb">get_id_of_child</a> (const <a class="el" href="struct_allele_matrix.html">AlleleMatrix</a> *start, const <a class="el" href="struct_pedigree_i_d.html">PedigreeID</a> parent1id, const <a class="el" href="struct_pedigree_i_d.html">PedigreeID</a> parent2id)</td></tr>
+<tr class="memdesc:ga7bef742844713ce42ef56eb73050d1bb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Search for a genotype with parentage matching two given parent ids in a linked list of <a class="el" href="struct_allele_matrix.html">AlleleMatrix</a>, and return its id.  <a href="group__search.html#ga7bef742844713ce42ef56eb73050d1bb">More...</a><br /></td></tr>
+<tr class="separator:ga7bef742844713ce42ef56eb73050d1bb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga6803a600c63f5789aa97275acf97365e"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__search.html#ga6803a600c63f5789aa97275acf97365e">get_index_of_child</a> (const <a class="el" href="struct_allele_matrix.html">AlleleMatrix</a> *start, const <a class="el" href="struct_pedigree_i_d.html">PedigreeID</a> parent1id, const <a class="el" href="struct_pedigree_i_d.html">PedigreeID</a> parent2id)</td></tr>
+<tr class="memdesc:ga6803a600c63f5789aa97275acf97365e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Search for a genotype with parentage matching two given parent ids in a linked list of <a class="el" href="struct_allele_matrix.html">AlleleMatrix</a>, and return its index.  <a href="group__search.html#ga6803a600c63f5789aa97275acf97365e">More...</a><br /></td></tr>
+<tr class="separator:ga6803a600c63f5789aa97275acf97365e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga852d1f756b52ea86e30e63335dcc33e1"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__search.html#ga852d1f756b52ea86e30e63335dcc33e1">get_index_of_name</a> (const <a class="el" href="struct_allele_matrix.html">AlleleMatrix</a> *start, const char *name)</td></tr>
 <tr class="memdesc:ga852d1f756b52ea86e30e63335dcc33e1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Search for a genotype with a particular name in a linked list of <a class="el" href="struct_allele_matrix.html">AlleleMatrix</a>, and return its index.  <a href="group__search.html#ga852d1f756b52ea86e30e63335dcc33e1">More...</a><br /></td></tr>
 <tr class="separator:ga852d1f756b52ea86e30e63335dcc33e1"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga69e677408363916b3be1d90ba30eb46f"><td class="memItemLeft" align="right" valign="top">unsigned int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__search.html#ga69e677408363916b3be1d90ba30eb46f">get_id_of_index</a> (const <a class="el" href="struct_allele_matrix.html">AlleleMatrix</a> *start, const int index)</td></tr>
-<tr class="memdesc:ga69e677408363916b3be1d90ba30eb46f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the id of a genotype by its index.  <a href="group__search.html#ga69e677408363916b3be1d90ba30eb46f">More...</a><br /></td></tr>
-<tr class="separator:ga69e677408363916b3be1d90ba30eb46f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga8c2bc00d2b81a4c293a939f202250eb8"><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_pedigree_i_d.html">PedigreeID</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__search.html#ga8c2bc00d2b81a4c293a939f202250eb8">get_id_of_index</a> (const <a class="el" href="struct_allele_matrix.html">AlleleMatrix</a> *start, const int index)</td></tr>
+<tr class="memdesc:ga8c2bc00d2b81a4c293a939f202250eb8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the id of a genotype by its index.  <a href="group__search.html#ga8c2bc00d2b81a4c293a939f202250eb8">More...</a><br /></td></tr>
+<tr class="separator:ga8c2bc00d2b81a4c293a939f202250eb8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga31eb9ab2cd17d7c107102922e2609aac"><td class="memItemLeft" align="right" valign="top">char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__search.html#ga31eb9ab2cd17d7c107102922e2609aac">get_genes_of_index</a> (const <a class="el" href="struct_allele_matrix.html">AlleleMatrix</a> *start, const int index)</td></tr>
 <tr class="memdesc:ga31eb9ab2cd17d7c107102922e2609aac"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the alleles of a genotype by its index.  <a href="group__search.html#ga31eb9ab2cd17d7c107102922e2609aac">More...</a><br /></td></tr>
 <tr class="separator:ga31eb9ab2cd17d7c107102922e2609aac"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -116,8 +116,8 @@ Functions</h2></td></tr>
 <p >These functions search the simulation data for the genotype that matches a particular known piece of information, eg a name, id, global index, or set of parents. </p>
 <p >Depending on the size of the simulation, they may not be fast. </p>
 <h2 class="groupheader">Function Documentation</h2>
-<a id="gaac7b697008227dd0fe32651d82bd5882" name="gaac7b697008227dd0fe32651d82bd5882"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#gaac7b697008227dd0fe32651d82bd5882">&#9670;&nbsp;</a></span>get_genes_of_id()</h2>
+<a id="ga25a640c4ebdcdca0fade3ad3d74523e6" name="ga25a640c4ebdcdca0fade3ad3d74523e6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga25a640c4ebdcdca0fade3ad3d74523e6">&#9670;&nbsp;</a></span>get_genes_of_id()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -131,7 +131,7 @@ Functions</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const unsigned int&#160;</td>
+          <td class="paramtype">const <a class="el" href="struct_pedigree_i_d.html">PedigreeID</a>&#160;</td>
           <td class="paramname"><em>id</em>&#160;</td>
         </tr>
         <tr>
@@ -143,7 +143,7 @@ Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Returns the alleles at each marker of the genotype with a given id. </p>
-<p >The function uses a bisection search on the <a class="el" href="struct_allele_matrix.html">AlleleMatrix</a> where it should be found. Searching by id is therefore fast. </p><dl class="section see"><dt>See also</dt><dd><a class="el" href="group__supporters.html#ga98f69379fe6a5cca7fb25ed1fe49e1c7" title="Returns the located index in an array of integers where the integer is target.">get_from_ordered_uint_list()</a></dd></dl>
+<p >The function uses a bisection search on the <a class="el" href="struct_allele_matrix.html">AlleleMatrix</a> where it should be found. Searching by id is therefore fast. </p><dl class="section see"><dt>See also</dt><dd><a class="el" href="group__supporters.html#ga4e3d1fd7ae67dd133c4dbdec9a84d455" title="Returns the located index in an array of PedigreeIDs where the PedigreeID is target.">get_from_ordered_pedigree_list()</a></dd></dl>
 <p>This function assumes that ids are never reshuffled in the <a class="el" href="struct_sim_data.html" title="Composite type that is used to run crossing simulations.">SimData</a>. This is true as long as condense_allele_matrix's process of moving genotypes while retaining their order is the only genotype-rearranging function in use. This function's algorithm will need to be revisited if different genotype-rearranging processes are implemented.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
@@ -158,10 +158,10 @@ Functions</h2></td></tr>
 <div id="dynsection-1-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-1-content" class="dyncontent" style="display:none;">
-<div class="center"><img src="group__search_gaac7b697008227dd0fe32651d82bd5882_cgraph.png" border="0" usemap="#agroup__search_gaac7b697008227dd0fe32651d82bd5882_cgraph" alt=""/></div>
-<map name="agroup__search_gaac7b697008227dd0fe32651d82bd5882_cgraph" id="agroup__search_gaac7b697008227dd0fe32651d82bd5882_cgraph">
+<div class="center"><img src="group__search_ga25a640c4ebdcdca0fade3ad3d74523e6_cgraph.png" border="0" usemap="#agroup__search_ga25a640c4ebdcdca0fade3ad3d74523e6_cgraph" alt=""/></div>
+<map name="agroup__search_ga25a640c4ebdcdca0fade3ad3d74523e6_cgraph" id="agroup__search_ga25a640c4ebdcdca0fade3ad3d74523e6_cgraph">
 <area shape="rect" title="Returns the alleles at each marker of the genotype with a given id." alt="" coords="5,5,121,33"/>
-<area shape="rect" href="group__supporters.html#ga98f69379fe6a5cca7fb25ed1fe49e1c7" title="Returns the located index in an array of integers where the integer is target." alt="" coords="169,5,342,33"/>
+<area shape="rect" href="group__supporters.html#ga4e3d1fd7ae67dd133c4dbdec9a84d455" title="Returns the located index in an array of PedigreeIDs where the PedigreeID is target." alt="" coords="169,5,370,33"/>
 </map>
 </div>
 
@@ -212,23 +212,23 @@ Functions</h2></td></tr>
 <map name="agroup__search_ga31eb9ab2cd17d7c107102922e2609aac_icgraph" id="agroup__search_ga31eb9ab2cd17d7c107102922e2609aac_icgraph">
 <area shape="rect" title="Get the alleles of a genotype by its index." alt="" coords="439,44,575,72"/>
 <area shape="rect" href="group__recomb.html#ga7813f256407ab2ea242df32ea9ad2c7e" title="Provides guesses as to the location of recombination events that led to the creation of certain genot..." alt="" coords="219,5,387,49"/>
-<area shape="rect" href="sim-operations_8c.html#a42ded1341b4c5a03c2233e2a3875fe07" title="Performs the crosses of pairs of parents whose indexes are provided in an array." alt="" coords="215,73,391,101"/>
-<area shape="rect" href="group__crossers.html#ga9d79117014f247c078c6576c70d600fb" title="Perform crosses between all pairs of parents in the group from_group and allocates the resulting offs..." alt="" coords="8,5,164,49"/>
-<area shape="rect" href="group__crossers.html#ga7fafc033bf3aaa14c9d5affbe9421ca9" title="Perform crosses between pairs of parents identified by name in a file and allocate the resulting offs..." alt="" coords="5,73,167,101"/>
-<area shape="rect" href="group__crossers.html#gafb306165b0cf0f5cd752f3eaf4c60928" title="Perform crosses between previously&#45;generated offspring of pairs of parents identified by name in a fi..." alt="" coords="10,125,162,169"/>
+<area shape="rect" href="sim-operations_8c.html#a877bbfdb03961d00c30f7e2fa55efe7c" title="Performs the crosses of pairs of parents whose indexes are provided in an array." alt="" coords="215,73,391,101"/>
+<area shape="rect" href="group__crossers.html#gab173426b15ba3e135e1eea25035afd85" title="Perform crosses between all pairs of parents in the group from_group and allocates the resulting offs..." alt="" coords="8,5,164,49"/>
+<area shape="rect" href="group__crossers.html#ga18a22fc990289359e790fa207613c121" title="Perform crosses between pairs of parents identified by name in a file and allocate the resulting offs..." alt="" coords="5,73,167,101"/>
+<area shape="rect" href="group__crossers.html#ga0cc412ee0f607370ad3b34f4c39a15ff" title="Perform crosses between previously&#45;generated offspring of pairs of parents identified by name in a fi..." alt="" coords="10,125,162,169"/>
 </map>
 </div>
 
 </div>
 </div>
-<a id="ga6466a838744dde3b65f4253277b56024" name="ga6466a838744dde3b65f4253277b56024"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ga6466a838744dde3b65f4253277b56024">&#9670;&nbsp;</a></span>get_id_of_child()</h2>
+<a id="ga7bef742844713ce42ef56eb73050d1bb" name="ga7bef742844713ce42ef56eb73050d1bb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga7bef742844713ce42ef56eb73050d1bb">&#9670;&nbsp;</a></span>get_id_of_child()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">unsigned int get_id_of_child </td>
+          <td class="memname"><a class="el" href="struct_pedigree_i_d.html">PedigreeID</a> get_id_of_child </td>
           <td>(</td>
           <td class="paramtype">const <a class="el" href="struct_allele_matrix.html">AlleleMatrix</a> *&#160;</td>
           <td class="paramname"><em>start</em>, </td>
@@ -236,13 +236,13 @@ Functions</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const unsigned int&#160;</td>
+          <td class="paramtype">const <a class="el" href="struct_pedigree_i_d.html">PedigreeID</a>&#160;</td>
           <td class="paramname"><em>parent1id</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const unsigned int&#160;</td>
+          <td class="paramtype">const <a class="el" href="struct_pedigree_i_d.html">PedigreeID</a>&#160;</td>
           <td class="paramname"><em>parent2id</em>&#160;</td>
         </tr>
         <tr>
@@ -265,28 +265,17 @@ Functions</h2></td></tr>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>the id of the first sequentially located genotype whose parents match the two parent ids provided </dd></dl>
-<div id="dynsection-3" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
-  <img id="dynsection-3-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
-<div id="dynsection-3-summary" class="dynsummary" style="display:block;">
-</div>
-<div id="dynsection-3-content" class="dyncontent" style="display:none;">
-<div class="center"><img src="group__search_ga6466a838744dde3b65f4253277b56024_icgraph.png" border="0" usemap="#agroup__search_ga6466a838744dde3b65f4253277b56024_icgraph" alt=""/></div>
-<map name="agroup__search_ga6466a838744dde3b65f4253277b56024_icgraph" id="agroup__search_ga6466a838744dde3b65f4253277b56024_icgraph">
-<area shape="rect" title="Search for a genotype with parentage matching two given parent ids in a linked list of AlleleMatrix,..." alt="" coords="205,13,312,41"/>
-<area shape="rect" href="group__crossers.html#gafb306165b0cf0f5cd752f3eaf4c60928" title="Perform crosses between previously&#45;generated offspring of pairs of parents identified by name in a fi..." alt="" coords="5,5,157,49"/>
-</map>
-</div>
 
 </div>
 </div>
-<a id="ga69e677408363916b3be1d90ba30eb46f" name="ga69e677408363916b3be1d90ba30eb46f"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ga69e677408363916b3be1d90ba30eb46f">&#9670;&nbsp;</a></span>get_id_of_index()</h2>
+<a id="ga8c2bc00d2b81a4c293a939f202250eb8" name="ga8c2bc00d2b81a4c293a939f202250eb8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga8c2bc00d2b81a4c293a939f202250eb8">&#9670;&nbsp;</a></span>get_id_of_index()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">unsigned int get_id_of_index </td>
+          <td class="memname"><a class="el" href="struct_pedigree_i_d.html">PedigreeID</a> get_id_of_index </td>
           <td>(</td>
           <td class="paramtype">const <a class="el" href="struct_allele_matrix.html">AlleleMatrix</a> *&#160;</td>
           <td class="paramname"><em>start</em>, </td>
@@ -315,26 +304,26 @@ Functions</h2></td></tr>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>the lifetime-unique id of the genotype found at that index. </dd></dl>
-<div id="dynsection-4" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
-  <img id="dynsection-4-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
-<div id="dynsection-4-summary" class="dynsummary" style="display:block;">
+<div id="dynsection-3" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-3-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
+<div id="dynsection-3-summary" class="dynsummary" style="display:block;">
 </div>
-<div id="dynsection-4-content" class="dyncontent" style="display:none;">
-<div class="center"><img src="group__search_ga69e677408363916b3be1d90ba30eb46f_icgraph.png" border="0" usemap="#agroup__search_ga69e677408363916b3be1d90ba30eb46f_icgraph" alt=""/></div>
-<map name="agroup__search_ga69e677408363916b3be1d90ba30eb46f_icgraph" id="agroup__search_ga69e677408363916b3be1d90ba30eb46f_icgraph">
+<div id="dynsection-3-content" class="dyncontent" style="display:none;">
+<div class="center"><img src="group__search_ga8c2bc00d2b81a4c293a939f202250eb8_icgraph.png" border="0" usemap="#agroup__search_ga8c2bc00d2b81a4c293a939f202250eb8_icgraph" alt=""/></div>
+<map name="agroup__search_ga8c2bc00d2b81a4c293a939f202250eb8_icgraph" id="agroup__search_ga8c2bc00d2b81a4c293a939f202250eb8_icgraph">
 <area shape="rect" title="Get the id of a genotype by its index." alt="" coords="439,44,550,72"/>
 <area shape="rect" href="group__recomb.html#ga7813f256407ab2ea242df32ea9ad2c7e" title="Provides guesses as to the location of recombination events that led to the creation of certain genot..." alt="" coords="219,5,387,49"/>
-<area shape="rect" href="sim-operations_8c.html#a42ded1341b4c5a03c2233e2a3875fe07" title="Performs the crosses of pairs of parents whose indexes are provided in an array." alt="" coords="215,73,391,101"/>
-<area shape="rect" href="group__crossers.html#ga9d79117014f247c078c6576c70d600fb" title="Perform crosses between all pairs of parents in the group from_group and allocates the resulting offs..." alt="" coords="8,5,164,49"/>
-<area shape="rect" href="group__crossers.html#ga7fafc033bf3aaa14c9d5affbe9421ca9" title="Perform crosses between pairs of parents identified by name in a file and allocate the resulting offs..." alt="" coords="5,73,167,101"/>
-<area shape="rect" href="group__crossers.html#gafb306165b0cf0f5cd752f3eaf4c60928" title="Perform crosses between previously&#45;generated offspring of pairs of parents identified by name in a fi..." alt="" coords="10,125,162,169"/>
+<area shape="rect" href="sim-operations_8c.html#a877bbfdb03961d00c30f7e2fa55efe7c" title="Performs the crosses of pairs of parents whose indexes are provided in an array." alt="" coords="215,73,391,101"/>
+<area shape="rect" href="group__crossers.html#gab173426b15ba3e135e1eea25035afd85" title="Perform crosses between all pairs of parents in the group from_group and allocates the resulting offs..." alt="" coords="8,5,164,49"/>
+<area shape="rect" href="group__crossers.html#ga18a22fc990289359e790fa207613c121" title="Perform crosses between pairs of parents identified by name in a file and allocate the resulting offs..." alt="" coords="5,73,167,101"/>
+<area shape="rect" href="group__crossers.html#ga0cc412ee0f607370ad3b34f4c39a15ff" title="Perform crosses between previously&#45;generated offspring of pairs of parents identified by name in a fi..." alt="" coords="10,125,162,169"/>
 </map>
 </div>
 
 </div>
 </div>
-<a id="gaf1e297a4ef41de2dc01281556ac0c540" name="gaf1e297a4ef41de2dc01281556ac0c540"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#gaf1e297a4ef41de2dc01281556ac0c540">&#9670;&nbsp;</a></span>get_ids_of_names()</h2>
+<a id="ga27f29c0ac93e571fd539e81ce6dacb4b" name="ga27f29c0ac93e571fd539e81ce6dacb4b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga27f29c0ac93e571fd539e81ce6dacb4b">&#9670;&nbsp;</a></span>get_ids_of_names()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -360,7 +349,7 @@ Functions</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">unsigned int *&#160;</td>
+          <td class="paramtype"><a class="el" href="struct_pedigree_i_d.html">PedigreeID</a> *&#160;</td>
           <td class="paramname"><em>output</em>&#160;</td>
         </tr>
         <tr>
@@ -383,22 +372,22 @@ Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
-<div id="dynsection-5" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
-  <img id="dynsection-5-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
-<div id="dynsection-5-summary" class="dynsummary" style="display:block;">
+<div id="dynsection-4" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-4-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
+<div id="dynsection-4-summary" class="dynsummary" style="display:block;">
 </div>
-<div id="dynsection-5-content" class="dyncontent" style="display:none;">
-<div class="center"><img src="group__search_gaf1e297a4ef41de2dc01281556ac0c540_icgraph.png" border="0" usemap="#agroup__search_gaf1e297a4ef41de2dc01281556ac0c540_icgraph" alt=""/></div>
-<map name="agroup__search_gaf1e297a4ef41de2dc01281556ac0c540_icgraph" id="agroup__search_gaf1e297a4ef41de2dc01281556ac0c540_icgraph">
+<div id="dynsection-4-content" class="dyncontent" style="display:none;">
+<div class="center"><img src="group__search_ga27f29c0ac93e571fd539e81ce6dacb4b_icgraph.png" border="0" usemap="#agroup__search_ga27f29c0ac93e571fd539e81ce6dacb4b_icgraph" alt=""/></div>
+<map name="agroup__search_ga27f29c0ac93e571fd539e81ce6dacb4b_icgraph" id="agroup__search_ga27f29c0ac93e571fd539e81ce6dacb4b_icgraph">
 <area shape="rect" title="Search for genotypes with certain names in a linked list of AlleleMatrix and save the ids of those na..." alt="" coords="205,13,331,41"/>
-<area shape="rect" href="group__crossers.html#gafb306165b0cf0f5cd752f3eaf4c60928" title="Perform crosses between previously&#45;generated offspring of pairs of parents identified by name in a fi..." alt="" coords="5,5,157,49"/>
+<area shape="rect" href="group__crossers.html#ga0cc412ee0f607370ad3b34f4c39a15ff" title="Perform crosses between previously&#45;generated offspring of pairs of parents identified by name in a fi..." alt="" coords="5,5,157,49"/>
 </map>
 </div>
 
 </div>
 </div>
-<a id="gab8a8e94492b531f4dd5e680e7a02cc5d" name="gab8a8e94492b531f4dd5e680e7a02cc5d"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#gab8a8e94492b531f4dd5e680e7a02cc5d">&#9670;&nbsp;</a></span>get_index_of_child()</h2>
+<a id="ga6803a600c63f5789aa97275acf97365e" name="ga6803a600c63f5789aa97275acf97365e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga6803a600c63f5789aa97275acf97365e">&#9670;&nbsp;</a></span>get_index_of_child()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -412,13 +401,13 @@ Functions</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const unsigned int&#160;</td>
+          <td class="paramtype">const <a class="el" href="struct_pedigree_i_d.html">PedigreeID</a>&#160;</td>
           <td class="paramname"><em>parent1id</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const unsigned int&#160;</td>
+          <td class="paramtype">const <a class="el" href="struct_pedigree_i_d.html">PedigreeID</a>&#160;</td>
           <td class="paramname"><em>parent2id</em>&#160;</td>
         </tr>
         <tr>
@@ -441,15 +430,15 @@ Functions</h2></td></tr>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>the index (0-based, starting at the start of <code>start</code>) of the first sequentially located genotype whose parents match the two parent ids provided </dd></dl>
-<div id="dynsection-6" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
-  <img id="dynsection-6-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
-<div id="dynsection-6-summary" class="dynsummary" style="display:block;">
+<div id="dynsection-5" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-5-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
+<div id="dynsection-5-summary" class="dynsummary" style="display:block;">
 </div>
-<div id="dynsection-6-content" class="dyncontent" style="display:none;">
-<div class="center"><img src="group__search_gab8a8e94492b531f4dd5e680e7a02cc5d_icgraph.png" border="0" usemap="#agroup__search_gab8a8e94492b531f4dd5e680e7a02cc5d_icgraph" alt=""/></div>
-<map name="agroup__search_gab8a8e94492b531f4dd5e680e7a02cc5d_icgraph" id="agroup__search_gab8a8e94492b531f4dd5e680e7a02cc5d_icgraph">
+<div id="dynsection-5-content" class="dyncontent" style="display:none;">
+<div class="center"><img src="group__search_ga6803a600c63f5789aa97275acf97365e_icgraph.png" border="0" usemap="#agroup__search_ga6803a600c63f5789aa97275acf97365e_icgraph" alt=""/></div>
+<map name="agroup__search_ga6803a600c63f5789aa97275acf97365e_icgraph" id="agroup__search_ga6803a600c63f5789aa97275acf97365e_icgraph">
 <area shape="rect" title="Search for a genotype with parentage matching two given parent ids in a linked list of AlleleMatrix,..." alt="" coords="205,13,333,41"/>
-<area shape="rect" href="group__crossers.html#gafb306165b0cf0f5cd752f3eaf4c60928" title="Perform crosses between previously&#45;generated offspring of pairs of parents identified by name in a fi..." alt="" coords="5,5,157,49"/>
+<area shape="rect" href="group__crossers.html#ga0cc412ee0f607370ad3b34f4c39a15ff" title="Perform crosses between previously&#45;generated offspring of pairs of parents identified by name in a fi..." alt="" coords="5,5,157,49"/>
 </map>
 </div>
 
@@ -492,23 +481,23 @@ Functions</h2></td></tr>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>the index (0-based, starting at the start of <code>start</code>) of the first sequentially located genotype whose name is the same as the provided name. </dd></dl>
-<div id="dynsection-7" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
-  <img id="dynsection-7-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
-<div id="dynsection-7-summary" class="dynsummary" style="display:block;">
+<div id="dynsection-6" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-6-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
+<div id="dynsection-6-summary" class="dynsummary" style="display:block;">
 </div>
-<div id="dynsection-7-content" class="dyncontent" style="display:none;">
+<div id="dynsection-6-content" class="dyncontent" style="display:none;">
 <div class="center"><img src="group__search_ga852d1f756b52ea86e30e63335dcc33e1_icgraph.png" border="0" usemap="#agroup__search_ga852d1f756b52ea86e30e63335dcc33e1_icgraph" alt=""/></div>
 <map name="agroup__search_ga852d1f756b52ea86e30e63335dcc33e1_icgraph" id="agroup__search_ga852d1f756b52ea86e30e63335dcc33e1_icgraph">
 <area shape="rect" title="Search for a genotype with a particular name in a linked list of AlleleMatrix, and return its index." alt="" coords="222,44,355,72"/>
 <area shape="rect" href="group__recomb.html#ga7813f256407ab2ea242df32ea9ad2c7e" title="Provides guesses as to the location of recombination events that led to the creation of certain genot..." alt="" coords="5,5,174,49"/>
-<area shape="rect" href="group__crossers.html#ga7fafc033bf3aaa14c9d5affbe9421ca9" title="Perform crosses between pairs of parents identified by name in a file and allocate the resulting offs..." alt="" coords="9,73,170,101"/>
+<area shape="rect" href="group__crossers.html#ga18a22fc990289359e790fa207613c121" title="Perform crosses between pairs of parents identified by name in a file and allocate the resulting offs..." alt="" coords="9,73,170,101"/>
 </map>
 </div>
 
 </div>
 </div>
-<a id="ga0a9f180e2bff0952bd9e5af26c7ae37d" name="ga0a9f180e2bff0952bd9e5af26c7ae37d"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ga0a9f180e2bff0952bd9e5af26c7ae37d">&#9670;&nbsp;</a></span>get_name_of_id()</h2>
+<a id="gaaea63100f4c2639907cce72c29a413e8" name="gaaea63100f4c2639907cce72c29a413e8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gaaea63100f4c2639907cce72c29a413e8">&#9670;&nbsp;</a></span>get_name_of_id()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -522,7 +511,7 @@ Functions</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const unsigned int&#160;</td>
+          <td class="paramtype">const <a class="el" href="struct_pedigree_i_d.html">PedigreeID</a>&#160;</td>
           <td class="paramname"><em>id</em>&#160;</td>
         </tr>
         <tr>
@@ -534,7 +523,7 @@ Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Returns the name of the genotype with a given id. </p>
-<p >The function uses a bisection search on the <a class="el" href="struct_allele_matrix.html">AlleleMatrix</a> where it should be found. Searching by id is therefore fast. </p><dl class="section see"><dt>See also</dt><dd><a class="el" href="group__supporters.html#ga98f69379fe6a5cca7fb25ed1fe49e1c7" title="Returns the located index in an array of integers where the integer is target.">get_from_ordered_uint_list()</a></dd></dl>
+<p >The function uses a bisection search on the <a class="el" href="struct_allele_matrix.html">AlleleMatrix</a> where it should be found. Searching by id is therefore fast. </p><dl class="section see"><dt>See also</dt><dd><a class="el" href="group__supporters.html#ga4e3d1fd7ae67dd133c4dbdec9a84d455" title="Returns the located index in an array of PedigreeIDs where the PedigreeID is target.">get_from_ordered_pedigree_list()</a></dd></dl>
 <p>This function assumes that ids are never reshuffled in the <a class="el" href="struct_sim_data.html" title="Composite type that is used to run crossing simulations.">SimData</a>. This is true as long as condense_allele_matrix's process of moving genotypes while retaining their order is the only genotype-rearranging function in use. This function's algorithm will need to be revisited if different genotype-rearranging processes are implemented.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
@@ -544,39 +533,50 @@ Functions</h2></td></tr>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>the name of the genotype that has id <code>id</code>, as a copy of the pointer to the heap memory where the name is saved (so <em>don't</em> free the pointer returned from this function). Returns NULL if the ID does not exist. Note the return value might also be NULL if the genotype of this ID has no name. </dd></dl>
+<div id="dynsection-7" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-7-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
+<div id="dynsection-7-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-7-content" class="dyncontent" style="display:none;">
+<div class="center"><img src="group__search_gaaea63100f4c2639907cce72c29a413e8_cgraph.png" border="0" usemap="#agroup__search_gaaea63100f4c2639907cce72c29a413e8_cgraph" alt=""/></div>
+<map name="agroup__search_gaaea63100f4c2639907cce72c29a413e8_cgraph" id="agroup__search_gaaea63100f4c2639907cce72c29a413e8_cgraph">
+<area shape="rect" title="Returns the name of the genotype with a given id." alt="" coords="5,5,118,33"/>
+<area shape="rect" href="group__supporters.html#ga4e3d1fd7ae67dd133c4dbdec9a84d455" title="Returns the located index in an array of PedigreeIDs where the PedigreeID is target." alt="" coords="166,5,367,33"/>
+</map>
+</div>
 <div id="dynsection-8" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-8-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
 <div id="dynsection-8-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-8-content" class="dyncontent" style="display:none;">
-<div class="center"><img src="group__search_ga0a9f180e2bff0952bd9e5af26c7ae37d_icgraph.png" border="0" usemap="#agroup__search_ga0a9f180e2bff0952bd9e5af26c7ae37d_icgraph" alt=""/></div>
-<map name="agroup__search_ga0a9f180e2bff0952bd9e5af26c7ae37d_icgraph" id="agroup__search_ga0a9f180e2bff0952bd9e5af26c7ae37d_icgraph">
+<div class="center"><img src="group__search_gaaea63100f4c2639907cce72c29a413e8_icgraph.png" border="0" usemap="#agroup__search_gaaea63100f4c2639907cce72c29a413e8_icgraph" alt=""/></div>
+<map name="agroup__search_gaaea63100f4c2639907cce72c29a413e8_icgraph" id="agroup__search_gaaea63100f4c2639907cce72c29a413e8_icgraph">
 <area shape="rect" title="Returns the name of the genotype with a given id." alt="" coords="868,147,980,175"/>
-<area shape="rect" href="group__collgetters.html#ga70a5beaad84dd61398bb089c82f407bd" title="Gets the names of either the first or second parent of each member of the group." alt="" coords="652,56,820,84"/>
-<area shape="rect" href="group__savers.html#ga822c4500c4f5979c9eee8aa733434196" title="Print the parents of each genotype in a group to a file." alt="" coords="663,108,809,152"/>
+<area shape="rect" href="group__collgetters.html#gad9cd4b14b44c05037093599c72d3b074" title="Gets the names of either the first or second parent of each member of the group." alt="" coords="652,56,820,84"/>
+<area shape="rect" href="group__savers.html#ga8ebf516e290bc4fd0e171a6d621efc2b" title="Print the parents of each genotype in a group to a file." alt="" coords="663,108,809,152"/>
 <area shape="rect" href="group__savers.html#ga5674dd2fbdcf205475c8036a09536f2e" title="Print the parents of each genotype in the SimData to a file." alt="" coords="654,176,818,204"/>
-<area shape="rect" href="group__savers.html#gaead4d69058f8fe7d59465100c801bbbd" title="Recursively save the parents of a particular id to a file." alt="" coords="679,252,793,280"/>
+<area shape="rect" href="group__savers.html#ga2ad03e903efdd56805722af554328592" title="Recursively save the parents of a particular id to a file." alt="" coords="679,252,793,280"/>
 <area shape="rect" href="group__savers.html#gabf1a9b82d2978a1563daf31c8814a783" title="Print the full known pedigree of each genotype in a single AlleleMatrix to a file." alt="" coords="457,187,587,215"/>
 <area shape="rect" href="group__savers.html#ga08c823d63ce4c648432cb740b5ab743b" title="Print the full known pedigree of each genotype in the SimData to a file." alt="" coords="459,252,585,280"/>
-<area shape="rect" href="group__savers.html#ga7adbe41e3a1d04fbf2b32840e2d01f86" title="Print the full known pedigree of each genotype in a group to a file." alt="" coords="439,329,604,357"/>
-<area shape="rect" href="group__crossers.html#ga7f9865d8d1912cda7e8524d1ff761de6" title="Performs random crosses among members of a group." alt="" coords="218,19,388,47"/>
-<area shape="rect" href="group__crossers.html#ga43f436342a1afc3b14343a8f6e9385f9" title="Performs random crosses where the first parent comes from one group and the second from another." alt="" coords="219,83,387,111"/>
-<area shape="rect" href="sim-operations_8c.html#a42ded1341b4c5a03c2233e2a3875fe07" title="Performs the crosses of pairs of parents whose indexes are provided in an array." alt="" coords="215,135,391,163"/>
-<area shape="rect" href="group__crossers.html#ga5e1da39f8341127e758d32393e8654aa" title="Creates an identical copy of each member of a group." alt="" coords="254,187,352,215"/>
-<area shape="rect" href="group__crossers.html#gab081b254e7abce63067b8c02fbac774f" title="Creates a doubled haploid from each member of a group." alt="" coords="223,239,383,267"/>
-<area shape="rect" href="group__crossers.html#gaf0d8ffcde1a2098e7ae807a031bbe7b9" title="Selfs each member of a group for a certain number of generations." alt="" coords="256,291,350,319"/>
-<area shape="rect" href="group__crossers.html#gaa41e75da9e6e4f8db5466e8929dec2ee" title="Find the top m percent of a group and perform random crosses between those top individuals." alt="" coords="10,5,162,49"/>
-<area shape="rect" href="group__crossers.html#ga9d79117014f247c078c6576c70d600fb" title="Perform crosses between all pairs of parents in the group from_group and allocates the resulting offs..." alt="" coords="8,73,164,117"/>
-<area shape="rect" href="group__crossers.html#ga7fafc033bf3aaa14c9d5affbe9421ca9" title="Perform crosses between pairs of parents identified by name in a file and allocate the resulting offs..." alt="" coords="5,141,167,169"/>
-<area shape="rect" href="group__crossers.html#gafb306165b0cf0f5cd752f3eaf4c60928" title="Perform crosses between previously&#45;generated offspring of pairs of parents identified by name in a fi..." alt="" coords="10,193,162,237"/>
-<area shape="rect" href="group__collgetters.html#ga530d4ce0844f7709a6868d63f018ef28" title="Gets the full pedigree string (as per save_group_full_pedigree() ) of each member of the group." alt="" coords="232,343,374,371"/>
+<area shape="rect" href="group__savers.html#ga821e9489b1668201f9bd38d9ac467673" title="Print the full known pedigree of each genotype in a group to a file." alt="" coords="439,329,604,357"/>
+<area shape="rect" href="group__crossers.html#ga823b906485f3edf2771935f2ad4f12db" title="Performs random crosses among members of a group." alt="" coords="218,19,388,47"/>
+<area shape="rect" href="group__crossers.html#ga21fd20fa9a626c2933b7ec114c3faca5" title="Performs random crosses where the first parent comes from one group and the second from another." alt="" coords="219,83,387,111"/>
+<area shape="rect" href="sim-operations_8c.html#a877bbfdb03961d00c30f7e2fa55efe7c" title="Performs the crosses of pairs of parents whose indexes are provided in an array." alt="" coords="215,135,391,163"/>
+<area shape="rect" href="group__crossers.html#ga4eb395614f3ec7ffecb3b779c16e6f17" title="Creates an identical copy of each member of a group." alt="" coords="254,187,352,215"/>
+<area shape="rect" href="group__crossers.html#ga6a3afc7743003c66fe24e7a2872e26cc" title="Creates a doubled haploid from each member of a group." alt="" coords="223,239,383,267"/>
+<area shape="rect" href="group__crossers.html#gaafc0d183fdb9762dc0817e5bd3009178" title="Selfs each member of a group for a certain number of generations." alt="" coords="256,291,350,319"/>
+<area shape="rect" href="group__crossers.html#gafdd1fa0e8dd54ba1f3089c05986686cb" title="Find the top m percent of a group and perform random crosses between those top individuals." alt="" coords="10,5,162,49"/>
+<area shape="rect" href="group__crossers.html#gab173426b15ba3e135e1eea25035afd85" title="Perform crosses between all pairs of parents in the group from_group and allocates the resulting offs..." alt="" coords="8,73,164,117"/>
+<area shape="rect" href="group__crossers.html#ga18a22fc990289359e790fa207613c121" title="Perform crosses between pairs of parents identified by name in a file and allocate the resulting offs..." alt="" coords="5,141,167,169"/>
+<area shape="rect" href="group__crossers.html#ga0cc412ee0f607370ad3b34f4c39a15ff" title="Perform crosses between previously&#45;generated offspring of pairs of parents identified by name in a fi..." alt="" coords="10,193,162,237"/>
+<area shape="rect" href="group__collgetters.html#ga31b649f4b57e0fa7ed2490b4cc48c97e" title="Gets the full pedigree string (as per save_group_full_pedigree() ) of each member of the group." alt="" coords="232,343,374,371"/>
 </map>
 </div>
 
 </div>
 </div>
-<a id="gade1706129ba2510f1f1ed496b51efcb6" name="gade1706129ba2510f1f1ed496b51efcb6"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#gade1706129ba2510f1f1ed496b51efcb6">&#9670;&nbsp;</a></span>get_parents_of_id()</h2>
+<a id="gaa814762960a964cd0aaf82be0c18b8cb" name="gaa814762960a964cd0aaf82be0c18b8cb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gaa814762960a964cd0aaf82be0c18b8cb">&#9670;&nbsp;</a></span>get_parents_of_id()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -590,13 +590,13 @@ Functions</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const unsigned int&#160;</td>
+          <td class="paramtype">const <a class="el" href="struct_pedigree_i_d.html">PedigreeID</a>&#160;</td>
           <td class="paramname"><em>id</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">unsigned int&#160;</td>
+          <td class="paramtype"><a class="el" href="struct_pedigree_i_d.html">PedigreeID</a>&#160;</td>
           <td class="paramname"><em>output</em>[2]&#160;</td>
         </tr>
         <tr>
@@ -608,7 +608,7 @@ Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Saves the ids of the parents of a genotype with a particular id to the output array <code>output</code>. </p>
-<p >The function uses a bisection search on the <a class="el" href="struct_allele_matrix.html">AlleleMatrix</a> where it should be found. Searching by id is therefore fast. </p><dl class="section see"><dt>See also</dt><dd><a class="el" href="group__supporters.html#ga98f69379fe6a5cca7fb25ed1fe49e1c7" title="Returns the located index in an array of integers where the integer is target.">get_from_ordered_uint_list()</a></dd></dl>
+<p >The function uses a bisection search on the <a class="el" href="struct_allele_matrix.html">AlleleMatrix</a> where it should be found. Searching by id is therefore fast. </p><dl class="section see"><dt>See also</dt><dd><a class="el" href="group__supporters.html#ga4e3d1fd7ae67dd133c4dbdec9a84d455" title="Returns the located index in an array of PedigreeIDs where the PedigreeID is target.">get_from_ordered_pedigree_list()</a></dd></dl>
 <p>This function assumes that ids are never reshuffled in the <a class="el" href="struct_sim_data.html" title="Composite type that is used to run crossing simulations.">SimData</a>. This is true as long as condense_allele_matrix's process of moving genotypes while retaining their order is the only genotype-rearranging function in use. This function's algorithm will need to be revisited if different genotype-rearranging processes are implemented.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
@@ -624,10 +624,10 @@ Functions</h2></td></tr>
 <div id="dynsection-9-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-9-content" class="dyncontent" style="display:none;">
-<div class="center"><img src="group__search_gade1706129ba2510f1f1ed496b51efcb6_cgraph.png" border="0" usemap="#agroup__search_gade1706129ba2510f1f1ed496b51efcb6_cgraph" alt=""/></div>
-<map name="agroup__search_gade1706129ba2510f1f1ed496b51efcb6_cgraph" id="agroup__search_gade1706129ba2510f1f1ed496b51efcb6_cgraph">
+<div class="center"><img src="group__search_gaa814762960a964cd0aaf82be0c18b8cb_cgraph.png" border="0" usemap="#agroup__search_gaa814762960a964cd0aaf82be0c18b8cb_cgraph" alt=""/></div>
+<map name="agroup__search_gaa814762960a964cd0aaf82be0c18b8cb_cgraph" id="agroup__search_gaa814762960a964cd0aaf82be0c18b8cb_cgraph">
 <area shape="rect" title="Saves the ids of the parents of a genotype with a particular id to the output array output." alt="" coords="5,5,129,33"/>
-<area shape="rect" href="group__supporters.html#ga98f69379fe6a5cca7fb25ed1fe49e1c7" title="Returns the located index in an array of integers where the integer is target." alt="" coords="177,5,350,33"/>
+<area shape="rect" href="group__supporters.html#ga4e3d1fd7ae67dd133c4dbdec9a84d455" title="Returns the located index in an array of PedigreeIDs where the PedigreeID is target." alt="" coords="177,5,378,33"/>
 </map>
 </div>
 <div id="dynsection-10" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
@@ -635,26 +635,24 @@ Functions</h2></td></tr>
 <div id="dynsection-10-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-10-content" class="dyncontent" style="display:none;">
-<div class="center"><img src="group__search_gade1706129ba2510f1f1ed496b51efcb6_icgraph.png" border="0" usemap="#agroup__search_gade1706129ba2510f1f1ed496b51efcb6_icgraph" alt=""/></div>
-<map name="agroup__search_gade1706129ba2510f1f1ed496b51efcb6_icgraph" id="agroup__search_gade1706129ba2510f1f1ed496b51efcb6_icgraph">
-<area shape="rect" title="Saves the ids of the parents of a genotype with a particular id to the output array output." alt="" coords="864,92,987,120"/>
-<area shape="rect" href="group__savers.html#ga7adbe41e3a1d04fbf2b32840e2d01f86" title="Print the full known pedigree of each genotype in a group to a file." alt="" coords="439,5,604,33"/>
-<area shape="rect" href="group__savers.html#ga822c4500c4f5979c9eee8aa733434196" title="Print the parents of each genotype in a group to a file." alt="" coords="661,53,807,97"/>
-<area shape="rect" href="group__savers.html#ga5674dd2fbdcf205475c8036a09536f2e" title="Print the parents of each genotype in the SimData to a file." alt="" coords="652,121,816,149"/>
-<area shape="rect" href="group__savers.html#gaead4d69058f8fe7d59465100c801bbbd" title="Recursively save the parents of a particular id to a file." alt="" coords="677,197,791,225"/>
-<area shape="rect" href="group__collgetters.html#ga530d4ce0844f7709a6868d63f018ef28" title="Gets the full pedigree string (as per save_group_full_pedigree() ) of each member of the group." alt="" coords="232,5,374,33"/>
-<area shape="rect" href="group__savers.html#gabf1a9b82d2978a1563daf31c8814a783" title="Print the full known pedigree of each genotype in a single AlleleMatrix to a file." alt="" coords="457,191,587,219"/>
-<area shape="rect" href="group__savers.html#ga08c823d63ce4c648432cb740b5ab743b" title="Print the full known pedigree of each genotype in the SimData to a file." alt="" coords="459,243,585,271"/>
-<area shape="rect" href="group__crossers.html#ga7f9865d8d1912cda7e8524d1ff761de6" title="Performs random crosses among members of a group." alt="" coords="218,71,388,99"/>
-<area shape="rect" href="group__crossers.html#ga43f436342a1afc3b14343a8f6e9385f9" title="Performs random crosses where the first parent comes from one group and the second from another." alt="" coords="219,135,387,163"/>
-<area shape="rect" href="sim-operations_8c.html#a42ded1341b4c5a03c2233e2a3875fe07" title="Performs the crosses of pairs of parents whose indexes are provided in an array." alt="" coords="215,187,391,215"/>
-<area shape="rect" href="group__crossers.html#ga5e1da39f8341127e758d32393e8654aa" title="Creates an identical copy of each member of a group." alt="" coords="254,239,352,267"/>
-<area shape="rect" href="group__crossers.html#gab081b254e7abce63067b8c02fbac774f" title="Creates a doubled haploid from each member of a group." alt="" coords="223,291,383,319"/>
-<area shape="rect" href="group__crossers.html#gaf0d8ffcde1a2098e7ae807a031bbe7b9" title="Selfs each member of a group for a certain number of generations." alt="" coords="256,343,350,371"/>
-<area shape="rect" href="group__crossers.html#gaa41e75da9e6e4f8db5466e8929dec2ee" title="Find the top m percent of a group and perform random crosses between those top individuals." alt="" coords="10,57,162,101"/>
-<area shape="rect" href="group__crossers.html#ga9d79117014f247c078c6576c70d600fb" title="Perform crosses between all pairs of parents in the group from_group and allocates the resulting offs..." alt="" coords="8,125,164,169"/>
-<area shape="rect" href="group__crossers.html#ga7fafc033bf3aaa14c9d5affbe9421ca9" title="Perform crosses between pairs of parents identified by name in a file and allocate the resulting offs..." alt="" coords="5,193,167,221"/>
-<area shape="rect" href="group__crossers.html#gafb306165b0cf0f5cd752f3eaf4c60928" title="Perform crosses between previously&#45;generated offspring of pairs of parents identified by name in a fi..." alt="" coords="10,245,162,289"/>
+<div class="center"><img src="group__search_gaa814762960a964cd0aaf82be0c18b8cb_icgraph.png" border="0" usemap="#agroup__search_gaa814762960a964cd0aaf82be0c18b8cb_icgraph" alt=""/></div>
+<map name="agroup__search_gaa814762960a964cd0aaf82be0c18b8cb_icgraph" id="agroup__search_gaa814762960a964cd0aaf82be0c18b8cb_icgraph">
+<area shape="rect" title="Saves the ids of the parents of a genotype with a particular id to the output array output." alt="" coords="815,252,938,280"/>
+<area shape="rect" href="group__savers.html#ga2ad03e903efdd56805722af554328592" title="Recursively save the parents of a particular id to a file." alt="" coords="652,252,767,280"/>
+<area shape="rect" href="group__savers.html#gabf1a9b82d2978a1563daf31c8814a783" title="Print the full known pedigree of each genotype in a single AlleleMatrix to a file." alt="" coords="457,187,587,215"/>
+<area shape="rect" href="group__savers.html#ga08c823d63ce4c648432cb740b5ab743b" title="Print the full known pedigree of each genotype in the SimData to a file." alt="" coords="459,252,585,280"/>
+<area shape="rect" href="group__savers.html#ga821e9489b1668201f9bd38d9ac467673" title="Print the full known pedigree of each genotype in a group to a file." alt="" coords="439,329,604,357"/>
+<area shape="rect" href="group__crossers.html#ga823b906485f3edf2771935f2ad4f12db" title="Performs random crosses among members of a group." alt="" coords="218,19,388,47"/>
+<area shape="rect" href="group__crossers.html#ga21fd20fa9a626c2933b7ec114c3faca5" title="Performs random crosses where the first parent comes from one group and the second from another." alt="" coords="219,83,387,111"/>
+<area shape="rect" href="sim-operations_8c.html#a877bbfdb03961d00c30f7e2fa55efe7c" title="Performs the crosses of pairs of parents whose indexes are provided in an array." alt="" coords="215,135,391,163"/>
+<area shape="rect" href="group__crossers.html#ga4eb395614f3ec7ffecb3b779c16e6f17" title="Creates an identical copy of each member of a group." alt="" coords="254,187,352,215"/>
+<area shape="rect" href="group__crossers.html#ga6a3afc7743003c66fe24e7a2872e26cc" title="Creates a doubled haploid from each member of a group." alt="" coords="223,239,383,267"/>
+<area shape="rect" href="group__crossers.html#gaafc0d183fdb9762dc0817e5bd3009178" title="Selfs each member of a group for a certain number of generations." alt="" coords="256,291,350,319"/>
+<area shape="rect" href="group__crossers.html#gafdd1fa0e8dd54ba1f3089c05986686cb" title="Find the top m percent of a group and perform random crosses between those top individuals." alt="" coords="10,5,162,49"/>
+<area shape="rect" href="group__crossers.html#gab173426b15ba3e135e1eea25035afd85" title="Perform crosses between all pairs of parents in the group from_group and allocates the resulting offs..." alt="" coords="8,73,164,117"/>
+<area shape="rect" href="group__crossers.html#ga18a22fc990289359e790fa207613c121" title="Perform crosses between pairs of parents identified by name in a file and allocate the resulting offs..." alt="" coords="5,141,167,169"/>
+<area shape="rect" href="group__crossers.html#ga0cc412ee0f607370ad3b34f4c39a15ff" title="Perform crosses between previously&#45;generated offspring of pairs of parents identified by name in a fi..." alt="" coords="10,193,162,237"/>
+<area shape="rect" href="group__collgetters.html#ga31b649f4b57e0fa7ed2490b4cc48c97e" title="Gets the full pedigree string (as per save_group_full_pedigree() ) of each member of the group." alt="" coords="232,343,374,371"/>
 </map>
 </div>
 

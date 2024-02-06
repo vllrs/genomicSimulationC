@@ -1,0 +1,9 @@
+<map id="save_group_one_step_pedigree" name="save_group_one_step_pedigree">
+<area shape="rect" id="node1" title="Print the parents of each genotype in a group to a file." alt="" coords="5,101,152,145"/>
+<area shape="rect" id="node2" href="$group__collgetters.html#gacc8432b03b8b5a33e0adde825c02ee7a" title="Gets the ids of each member of the group." alt="" coords="221,5,324,33"/>
+<area shape="rect" id="node3" href="$group__collgetters.html#ga6773f2b434edda042163890dea8f8dbd" title="Function to count the number of genotypes that currently belong to the specified group." alt="" coords="439,84,548,112"/>
+<area shape="rect" id="node4" href="$group__collgetters.html#gab535d4c5e7afdce3816ab40c19a46a78" title="Gets a shallow copy of the names of each member of the group." alt="" coords="210,109,335,137"/>
+<area shape="rect" id="node5" href="$group__collgetters.html#gac6f09e3398d4bf55d071d3a77e2f60f9" title="Gets the ids of either the first or second parent of each member of the group." alt="" coords="200,161,345,189"/>
+<area shape="rect" id="node6" href="$group__search.html#gaaea63100f4c2639907cce72c29a413e8" title="Returns the name of the genotype with a given id." alt="" coords="216,213,329,241"/>
+<area shape="rect" id="node7" href="$group__supporters.html#ga4e3d1fd7ae67dd133c4dbdec9a84d455" title="Returns the located index in an array of PedigreeIDs where the PedigreeID is target." alt="" coords="393,213,594,241"/>
+</map>

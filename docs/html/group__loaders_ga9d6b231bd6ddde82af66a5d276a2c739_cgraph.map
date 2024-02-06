@@ -1,6 +1,0 @@
-<map id="load_effects_to_simdata" name="load_effects_to_simdata">
-<area shape="rect" id="node1" title="Populates a SimData combination with effect values." alt="" coords="5,65,167,93"/>
-<area shape="rect" id="node2" href="$group__deletors.html#gaaf6542d59034f88f9e1ec48e5f053c4a" title="Deletes a DecimalMatrix and frees its memory." alt="" coords="229,5,336,33"/>
-<area shape="rect" id="node3" href="$group__supporters.html#gaf78d759e6da39a08acff41421d0e7b2a" title="Returns the first located index in an array of strings where the string is the same as the string tar..." alt="" coords="215,57,350,101"/>
-<area shape="rect" id="node4" href="$group__supporters.html#ga6072a152b624743eeafb30adaf9b7f17" title="Replace calls to malloc direct with this function, which errors and exits with status 2 if memory all..." alt="" coords="240,125,325,153"/>
-</map>

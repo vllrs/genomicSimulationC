@@ -21,7 +21,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">genomicSimulationC<span id="projectnumber">&#160;0.2.3</span>
+   <div id="projectname">genomicSimulationC<span id="projectnumber">&#160;0.2.4</span>
    </div>
   </td>
  </tr>
@@ -79,57 +79,60 @@ Functions</h2></td></tr>
 <tr class="memitem:ga63e803fa3cdf0cbb209b2922ce2982fe"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__savers.html#ga63e803fa3cdf0cbb209b2922ce2982fe">save_marker_blocks</a> (FILE *f, const <a class="el" href="struct_sim_data.html">SimData</a> *d, const <a class="el" href="struct_marker_blocks.html">MarkerBlocks</a> b)</td></tr>
 <tr class="memdesc:ga63e803fa3cdf0cbb209b2922ce2982fe"><td class="mdescLeft">&#160;</td><td class="mdescRight">Prints the markers contained in a set of blocks to a file.  <a href="group__savers.html#ga63e803fa3cdf0cbb209b2922ce2982fe">More...</a><br /></td></tr>
 <tr class="separator:ga63e803fa3cdf0cbb209b2922ce2982fe"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga3e90f23745c5b9c68d85276e41fbe23f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__savers.html#ga3e90f23745c5b9c68d85276e41fbe23f">save_allele_matrix</a> (FILE *f, const <a class="el" href="struct_allele_matrix.html">AlleleMatrix</a> *m, const char **markers)</td></tr>
-<tr class="memdesc:ga3e90f23745c5b9c68d85276e41fbe23f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Prints all the genotype data saved in the linked list of AlleleMatrices starting with <code>m</code> to a file.  <a href="group__savers.html#ga3e90f23745c5b9c68d85276e41fbe23f">More...</a><br /></td></tr>
-<tr class="separator:ga3e90f23745c5b9c68d85276e41fbe23f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaf147e82611c7d5d3cf3c5b8b27c4fb07"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__savers.html#gaf147e82611c7d5d3cf3c5b8b27c4fb07">save_allele_matrix</a> (FILE *f, const <a class="el" href="struct_allele_matrix.html">AlleleMatrix</a> *m)</td></tr>
+<tr class="memdesc:gaf147e82611c7d5d3cf3c5b8b27c4fb07"><td class="mdescLeft">&#160;</td><td class="mdescRight">Prints all the genotype data saved in the linked list of AlleleMatrices starting with <code>m</code> to a file.  <a href="group__savers.html#gaf147e82611c7d5d3cf3c5b8b27c4fb07">More...</a><br /></td></tr>
+<tr class="separator:gaf147e82611c7d5d3cf3c5b8b27c4fb07"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga5b6c6c66af73fea9f0545b826d899a70"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__savers.html#ga5b6c6c66af73fea9f0545b826d899a70">save_names_header</a> (FILE *f, size_t n, const char *names[n])</td></tr>
+<tr class="memdesc:ga5b6c6c66af73fea9f0545b826d899a70"><td class="mdescLeft">&#160;</td><td class="mdescRight">Prints a list of names as a tab-separated row to a file.  <a href="group__savers.html#ga5b6c6c66af73fea9f0545b826d899a70">More...</a><br /></td></tr>
+<tr class="separator:ga5b6c6c66af73fea9f0545b826d899a70"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga8e14b8d8c1836e1402a4a5e7a74c274f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__savers.html#ga8e14b8d8c1836e1402a4a5e7a74c274f">save_transposed_allele_matrix</a> (FILE *f, const <a class="el" href="struct_allele_matrix.html">AlleleMatrix</a> *m, const char **markers)</td></tr>
 <tr class="memdesc:ga8e14b8d8c1836e1402a4a5e7a74c274f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Prints all the gene data saved in the linked list starting with <code>m</code> to the file.  <a href="group__savers.html#ga8e14b8d8c1836e1402a4a5e7a74c274f">More...</a><br /></td></tr>
 <tr class="separator:ga8e14b8d8c1836e1402a4a5e7a74c274f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gaeb3b527db48fd67f0d42a39c681b2c65"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__savers.html#gaeb3b527db48fd67f0d42a39c681b2c65">save_group_alleles</a> (FILE *f, <a class="el" href="struct_sim_data.html">SimData</a> *d, const int group_id)</td></tr>
-<tr class="memdesc:gaeb3b527db48fd67f0d42a39c681b2c65"><td class="mdescLeft">&#160;</td><td class="mdescRight">Prints the genotypes of each individual in a given group to a file, with the following format.  <a href="group__savers.html#gaeb3b527db48fd67f0d42a39c681b2c65">More...</a><br /></td></tr>
-<tr class="separator:gaeb3b527db48fd67f0d42a39c681b2c65"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga2790244044d202e6fb158d8f57cf6d6f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__savers.html#ga2790244044d202e6fb158d8f57cf6d6f">save_transposed_group_alleles</a> (FILE *f, const <a class="el" href="struct_sim_data.html">SimData</a> *d, const int group_id)</td></tr>
-<tr class="memdesc:ga2790244044d202e6fb158d8f57cf6d6f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Prints the genotypes of each individual in a given group to a file, with the following format.  <a href="group__savers.html#ga2790244044d202e6fb158d8f57cf6d6f">More...</a><br /></td></tr>
-<tr class="separator:ga2790244044d202e6fb158d8f57cf6d6f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga822c4500c4f5979c9eee8aa733434196"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__savers.html#ga822c4500c4f5979c9eee8aa733434196">save_group_one_step_pedigree</a> (FILE *f, const <a class="el" href="struct_sim_data.html">SimData</a> *d, const int group)</td></tr>
-<tr class="memdesc:ga822c4500c4f5979c9eee8aa733434196"><td class="mdescLeft">&#160;</td><td class="mdescRight">Print the parents of each genotype in a group to a file.  <a href="group__savers.html#ga822c4500c4f5979c9eee8aa733434196">More...</a><br /></td></tr>
-<tr class="separator:ga822c4500c4f5979c9eee8aa733434196"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gae65797e9f37cac9cff90abadd8c219c5"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__savers.html#gae65797e9f37cac9cff90abadd8c219c5">save_group_alleles</a> (FILE *f, <a class="el" href="struct_sim_data.html">SimData</a> *d, const <a class="el" href="struct_group_num.html">GroupNum</a> group_id)</td></tr>
+<tr class="memdesc:gae65797e9f37cac9cff90abadd8c219c5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Prints the genotypes of each individual in a given group to a file, with the following format.  <a href="group__savers.html#gae65797e9f37cac9cff90abadd8c219c5">More...</a><br /></td></tr>
+<tr class="separator:gae65797e9f37cac9cff90abadd8c219c5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaaf856013dc9108a075ed5c1145487285"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__savers.html#gaaf856013dc9108a075ed5c1145487285">save_transposed_group_alleles</a> (FILE *f, const <a class="el" href="struct_sim_data.html">SimData</a> *d, const <a class="el" href="struct_group_num.html">GroupNum</a> group_id)</td></tr>
+<tr class="memdesc:gaaf856013dc9108a075ed5c1145487285"><td class="mdescLeft">&#160;</td><td class="mdescRight">Prints the genotypes of each individual in a given group to a file, with the following format.  <a href="group__savers.html#gaaf856013dc9108a075ed5c1145487285">More...</a><br /></td></tr>
+<tr class="separator:gaaf856013dc9108a075ed5c1145487285"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga8ebf516e290bc4fd0e171a6d621efc2b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__savers.html#ga8ebf516e290bc4fd0e171a6d621efc2b">save_group_one_step_pedigree</a> (FILE *f, const <a class="el" href="struct_sim_data.html">SimData</a> *d, const <a class="el" href="struct_group_num.html">GroupNum</a> group)</td></tr>
+<tr class="memdesc:ga8ebf516e290bc4fd0e171a6d621efc2b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Print the parents of each genotype in a group to a file.  <a href="group__savers.html#ga8ebf516e290bc4fd0e171a6d621efc2b">More...</a><br /></td></tr>
+<tr class="separator:ga8ebf516e290bc4fd0e171a6d621efc2b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga5674dd2fbdcf205475c8036a09536f2e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__savers.html#ga5674dd2fbdcf205475c8036a09536f2e">save_one_step_pedigree</a> (FILE *f, const <a class="el" href="struct_sim_data.html">SimData</a> *d)</td></tr>
 <tr class="memdesc:ga5674dd2fbdcf205475c8036a09536f2e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Print the parents of each genotype in the <a class="el" href="struct_sim_data.html" title="Composite type that is used to run crossing simulations.">SimData</a> to a file.  <a href="group__savers.html#ga5674dd2fbdcf205475c8036a09536f2e">More...</a><br /></td></tr>
 <tr class="separator:ga5674dd2fbdcf205475c8036a09536f2e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga7adbe41e3a1d04fbf2b32840e2d01f86"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__savers.html#ga7adbe41e3a1d04fbf2b32840e2d01f86">save_group_full_pedigree</a> (FILE *f, const <a class="el" href="struct_sim_data.html">SimData</a> *d, const int group)</td></tr>
-<tr class="memdesc:ga7adbe41e3a1d04fbf2b32840e2d01f86"><td class="mdescLeft">&#160;</td><td class="mdescRight">Print the full known pedigree of each genotype in a group to a file.  <a href="group__savers.html#ga7adbe41e3a1d04fbf2b32840e2d01f86">More...</a><br /></td></tr>
-<tr class="separator:ga7adbe41e3a1d04fbf2b32840e2d01f86"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga821e9489b1668201f9bd38d9ac467673"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__savers.html#ga821e9489b1668201f9bd38d9ac467673">save_group_full_pedigree</a> (FILE *f, const <a class="el" href="struct_sim_data.html">SimData</a> *d, const <a class="el" href="struct_group_num.html">GroupNum</a> group)</td></tr>
+<tr class="memdesc:ga821e9489b1668201f9bd38d9ac467673"><td class="mdescLeft">&#160;</td><td class="mdescRight">Print the full known pedigree of each genotype in a group to a file.  <a href="group__savers.html#ga821e9489b1668201f9bd38d9ac467673">More...</a><br /></td></tr>
+<tr class="separator:ga821e9489b1668201f9bd38d9ac467673"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga08c823d63ce4c648432cb740b5ab743b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__savers.html#ga08c823d63ce4c648432cb740b5ab743b">save_full_pedigree</a> (FILE *f, const <a class="el" href="struct_sim_data.html">SimData</a> *d)</td></tr>
 <tr class="memdesc:ga08c823d63ce4c648432cb740b5ab743b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Print the full known pedigree of each genotype in the <a class="el" href="struct_sim_data.html" title="Composite type that is used to run crossing simulations.">SimData</a> to a file.  <a href="group__savers.html#ga08c823d63ce4c648432cb740b5ab743b">More...</a><br /></td></tr>
 <tr class="separator:ga08c823d63ce4c648432cb740b5ab743b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gabf1a9b82d2978a1563daf31c8814a783"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__savers.html#gabf1a9b82d2978a1563daf31c8814a783">save_AM_pedigree</a> (FILE *f, const <a class="el" href="struct_allele_matrix.html">AlleleMatrix</a> *m, const <a class="el" href="struct_sim_data.html">SimData</a> *parents)</td></tr>
 <tr class="memdesc:gabf1a9b82d2978a1563daf31c8814a783"><td class="mdescLeft">&#160;</td><td class="mdescRight">Print the full known pedigree of each genotype in a single <a class="el" href="struct_allele_matrix.html">AlleleMatrix</a> to a file.  <a href="group__savers.html#gabf1a9b82d2978a1563daf31c8814a783">More...</a><br /></td></tr>
 <tr class="separator:gabf1a9b82d2978a1563daf31c8814a783"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gaead4d69058f8fe7d59465100c801bbbd"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__savers.html#gaead4d69058f8fe7d59465100c801bbbd">save_parents_of</a> (FILE *f, const <a class="el" href="struct_allele_matrix.html">AlleleMatrix</a> *m, const unsigned int p1, const unsigned int p2)</td></tr>
-<tr class="memdesc:gaead4d69058f8fe7d59465100c801bbbd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Recursively save the parents of a particular id to a file.  <a href="group__savers.html#gaead4d69058f8fe7d59465100c801bbbd">More...</a><br /></td></tr>
-<tr class="separator:gaead4d69058f8fe7d59465100c801bbbd"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga7cd7382db4574b2b0cffb316eab47a29"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__savers.html#ga7cd7382db4574b2b0cffb316eab47a29">save_group_bvs</a> (FILE *f, const <a class="el" href="struct_sim_data.html">SimData</a> *d, const int group)</td></tr>
-<tr class="memdesc:ga7cd7382db4574b2b0cffb316eab47a29"><td class="mdescLeft">&#160;</td><td class="mdescRight">Print the breeding value of each genotype in a group to a file.  <a href="group__savers.html#ga7cd7382db4574b2b0cffb316eab47a29">More...</a><br /></td></tr>
-<tr class="separator:ga7cd7382db4574b2b0cffb316eab47a29"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga378aa1f3cc71a3b3e5e17c9c103c4727"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__savers.html#ga378aa1f3cc71a3b3e5e17c9c103c4727">save_manual_bvs</a> (FILE *f, const <a class="el" href="struct_decimal_matrix.html">DecimalMatrix</a> *e, const unsigned int *ids, const char **names)</td></tr>
-<tr class="memdesc:ga378aa1f3cc71a3b3e5e17c9c103c4727"><td class="mdescLeft">&#160;</td><td class="mdescRight">Print the provided breeding values of each provided name and id to a file, with the same format as a regular call to <code>save_bvs</code> or <code>save_group_bvs</code>.  <a href="group__savers.html#ga378aa1f3cc71a3b3e5e17c9c103c4727">More...</a><br /></td></tr>
-<tr class="separator:ga378aa1f3cc71a3b3e5e17c9c103c4727"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gaa9a8f4e7b82dda77c7a688d83fa08e28"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__savers.html#gaa9a8f4e7b82dda77c7a688d83fa08e28">save_bvs</a> (FILE *f, const <a class="el" href="struct_sim_data.html">SimData</a> *d)</td></tr>
-<tr class="memdesc:gaa9a8f4e7b82dda77c7a688d83fa08e28"><td class="mdescLeft">&#160;</td><td class="mdescRight">Print the breeding value of each genotype in the <a class="el" href="struct_sim_data.html" title="Composite type that is used to run crossing simulations.">SimData</a> to a file.  <a href="group__savers.html#gaa9a8f4e7b82dda77c7a688d83fa08e28">More...</a><br /></td></tr>
-<tr class="separator:gaa9a8f4e7b82dda77c7a688d83fa08e28"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga2ad03e903efdd56805722af554328592"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__savers.html#ga2ad03e903efdd56805722af554328592">save_parents_of</a> (FILE *f, const <a class="el" href="struct_allele_matrix.html">AlleleMatrix</a> *m, <a class="el" href="struct_pedigree_i_d.html">PedigreeID</a> p1, <a class="el" href="struct_pedigree_i_d.html">PedigreeID</a> p2)</td></tr>
+<tr class="memdesc:ga2ad03e903efdd56805722af554328592"><td class="mdescLeft">&#160;</td><td class="mdescRight">Recursively save the parents of a particular id to a file.  <a href="group__savers.html#ga2ad03e903efdd56805722af554328592">More...</a><br /></td></tr>
+<tr class="separator:ga2ad03e903efdd56805722af554328592"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gadb547ac914ca6f84033394402ffece7e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__savers.html#gadb547ac914ca6f84033394402ffece7e">save_group_bvs</a> (FILE *f, const <a class="el" href="struct_sim_data.html">SimData</a> *d, const <a class="el" href="struct_group_num.html">GroupNum</a> group, const <a class="el" href="struct_effect_i_d.html">EffectID</a> effID)</td></tr>
+<tr class="memdesc:gadb547ac914ca6f84033394402ffece7e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Print the breeding value of each genotype in a group to a file.  <a href="group__savers.html#gadb547ac914ca6f84033394402ffece7e">More...</a><br /></td></tr>
+<tr class="separator:gadb547ac914ca6f84033394402ffece7e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga4950114dda9c59fa276b72b13823d772"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__savers.html#ga4950114dda9c59fa276b72b13823d772">save_manual_bvs</a> (FILE *f, const <a class="el" href="struct_decimal_matrix.html">DecimalMatrix</a> *e, const <a class="el" href="struct_pedigree_i_d.html">PedigreeID</a> *ids, const char **names)</td></tr>
+<tr class="memdesc:ga4950114dda9c59fa276b72b13823d772"><td class="mdescLeft">&#160;</td><td class="mdescRight">Print the provided breeding values of each provided name and id to a file, with the same format as a regular call to <code>save_bvs</code> or <code>save_group_bvs</code>.  <a href="group__savers.html#ga4950114dda9c59fa276b72b13823d772">More...</a><br /></td></tr>
+<tr class="separator:ga4950114dda9c59fa276b72b13823d772"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga9ff67eb9572c42530b64b70f4a307488"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__savers.html#ga9ff67eb9572c42530b64b70f4a307488">save_bvs</a> (FILE *f, const <a class="el" href="struct_sim_data.html">SimData</a> *d, const <a class="el" href="struct_effect_i_d.html">EffectID</a> effID)</td></tr>
+<tr class="memdesc:ga9ff67eb9572c42530b64b70f4a307488"><td class="mdescLeft">&#160;</td><td class="mdescRight">Print the breeding value of each genotype in the <a class="el" href="struct_sim_data.html" title="Composite type that is used to run crossing simulations.">SimData</a> to a file.  <a href="group__savers.html#ga9ff67eb9572c42530b64b70f4a307488">More...</a><br /></td></tr>
+<tr class="separator:ga9ff67eb9572c42530b64b70f4a307488"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga38b0958216f509a3b0a10c4c49183f44"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__savers.html#ga38b0958216f509a3b0a10c4c49183f44">save_count_matrix</a> (FILE *f, const <a class="el" href="struct_sim_data.html">SimData</a> *d, const char allele)</td></tr>
 <tr class="memdesc:ga38b0958216f509a3b0a10c4c49183f44"><td class="mdescLeft">&#160;</td><td class="mdescRight">Print the number of copies of a particular allele at each marker of each genotype in the <a class="el" href="struct_sim_data.html" title="Composite type that is used to run crossing simulations.">SimData</a> to a file.  <a href="group__savers.html#ga38b0958216f509a3b0a10c4c49183f44">More...</a><br /></td></tr>
 <tr class="separator:ga38b0958216f509a3b0a10c4c49183f44"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga8bbfd2ed13f449e5934b91701cc94a9f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__savers.html#ga8bbfd2ed13f449e5934b91701cc94a9f">save_count_matrix_of_group</a> (FILE *f, const <a class="el" href="struct_sim_data.html">SimData</a> *d, const char allele, const int group)</td></tr>
-<tr class="memdesc:ga8bbfd2ed13f449e5934b91701cc94a9f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Print the number of copies of a particular allele at each marker of each genotype in a group to a file.  <a href="group__savers.html#ga8bbfd2ed13f449e5934b91701cc94a9f">More...</a><br /></td></tr>
-<tr class="separator:ga8bbfd2ed13f449e5934b91701cc94a9f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga5c490bff6698ad221c9eeec1254623c5"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__savers.html#ga5c490bff6698ad221c9eeec1254623c5">save_count_matrix_of_group</a> (FILE *f, const <a class="el" href="struct_sim_data.html">SimData</a> *d, const char allele, const <a class="el" href="struct_group_num.html">GroupNum</a> group)</td></tr>
+<tr class="memdesc:ga5c490bff6698ad221c9eeec1254623c5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Print the number of copies of a particular allele at each marker of each genotype in a group to a file.  <a href="group__savers.html#ga5c490bff6698ad221c9eeec1254623c5">More...</a><br /></td></tr>
+<tr class="separator:ga5c490bff6698ad221c9eeec1254623c5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <p >For saving persistent simulation results. </p>
 <h2 class="groupheader">Function Documentation</h2>
-<a id="ga3e90f23745c5b9c68d85276e41fbe23f" name="ga3e90f23745c5b9c68d85276e41fbe23f"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ga3e90f23745c5b9c68d85276e41fbe23f">&#9670;&nbsp;</a></span>save_allele_matrix()</h2>
+<a id="gaf147e82611c7d5d3cf3c5b8b27c4fb07" name="gaf147e82611c7d5d3cf3c5b8b27c4fb07"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gaf147e82611c7d5d3cf3c5b8b27c4fb07">&#9670;&nbsp;</a></span>save_allele_matrix()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -144,13 +147,7 @@ Functions</h2></td></tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">const <a class="el" href="struct_allele_matrix.html">AlleleMatrix</a> *&#160;</td>
-          <td class="paramname"><em>m</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">const char **&#160;</td>
-          <td class="paramname"><em>markers</em>&#160;</td>
+          <td class="paramname"><em>m</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -161,8 +158,8 @@ Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Prints all the genotype data saved in the linked list of AlleleMatrices starting with <code>m</code> to a file. </p>
-<p >Uses the following format: </p><pre class="fragment">    [marker name]   [marker name]
-</pre><p> [id]OR[name] [allele pairs for each marker]</p>
+<p >Uses the following format:</p>
+<p >[id]OR[name] [allele pairs for each marker]</p>
 <p >[id]OR[name] [allele pairs for each marker]</p>
 <p >...</p>
 <p >ID will be printed if the genotype does not have a name saved</p>
@@ -170,7 +167,6 @@ Functions</h2></td></tr>
   <table class="params">
     <tr><td class="paramname">f</td><td>file pointer opened for writing to put the output </td></tr>
     <tr><td class="paramname">m</td><td>pointer to the <a class="el" href="struct_allele_matrix.html">AlleleMatrix</a> whose data we print </td></tr>
-    <tr><td class="paramname">markers</td><td>array of strings that correspond to names of the markers. if this is null, the header row will be empty. </td></tr>
   </table>
   </dd>
 </dl>
@@ -180,19 +176,19 @@ Functions</h2></td></tr>
 <div id="dynsection-0-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-0-content" class="dyncontent" style="display:none;">
-<div class="center"><img src="group__savers_ga3e90f23745c5b9c68d85276e41fbe23f_icgraph.png" border="0" usemap="#agroup__savers_ga3e90f23745c5b9c68d85276e41fbe23f_icgraph" alt=""/></div>
-<map name="agroup__savers_ga3e90f23745c5b9c68d85276e41fbe23f_icgraph" id="agroup__savers_ga3e90f23745c5b9c68d85276e41fbe23f_icgraph">
+<div class="center"><img src="group__savers_gaf147e82611c7d5d3cf3c5b8b27c4fb07_icgraph.png" border="0" usemap="#agroup__savers_gaf147e82611c7d5d3cf3c5b8b27c4fb07_icgraph" alt=""/></div>
+<map name="agroup__savers_gaf147e82611c7d5d3cf3c5b8b27c4fb07_icgraph" id="agroup__savers_gaf147e82611c7d5d3cf3c5b8b27c4fb07_icgraph">
 <area shape="rect" title="Prints all the genotype data saved in the linked list of AlleleMatrices starting with m to a file." alt="" coords="439,161,566,189"/>
-<area shape="rect" href="group__crossers.html#ga7f9865d8d1912cda7e8524d1ff761de6" title="Performs random crosses among members of a group." alt="" coords="218,25,388,53"/>
-<area shape="rect" href="group__crossers.html#ga43f436342a1afc3b14343a8f6e9385f9" title="Performs random crosses where the first parent comes from one group and the second from another." alt="" coords="219,83,387,111"/>
-<area shape="rect" href="sim-operations_8c.html#a42ded1341b4c5a03c2233e2a3875fe07" title="Performs the crosses of pairs of parents whose indexes are provided in an array." alt="" coords="215,135,391,163"/>
-<area shape="rect" href="group__crossers.html#ga5e1da39f8341127e758d32393e8654aa" title="Creates an identical copy of each member of a group." alt="" coords="254,187,352,215"/>
-<area shape="rect" href="group__crossers.html#gab081b254e7abce63067b8c02fbac774f" title="Creates a doubled haploid from each member of a group." alt="" coords="223,239,383,267"/>
-<area shape="rect" href="group__crossers.html#gaf0d8ffcde1a2098e7ae807a031bbe7b9" title="Selfs each member of a group for a certain number of generations." alt="" coords="256,291,350,319"/>
-<area shape="rect" href="group__crossers.html#gaa41e75da9e6e4f8db5466e8929dec2ee" title="Find the top m percent of a group and perform random crosses between those top individuals." alt="" coords="10,5,162,49"/>
-<area shape="rect" href="group__crossers.html#ga9d79117014f247c078c6576c70d600fb" title="Perform crosses between all pairs of parents in the group from_group and allocates the resulting offs..." alt="" coords="8,73,164,117"/>
-<area shape="rect" href="group__crossers.html#ga7fafc033bf3aaa14c9d5affbe9421ca9" title="Perform crosses between pairs of parents identified by name in a file and allocate the resulting offs..." alt="" coords="5,141,167,169"/>
-<area shape="rect" href="group__crossers.html#gafb306165b0cf0f5cd752f3eaf4c60928" title="Perform crosses between previously&#45;generated offspring of pairs of parents identified by name in a fi..." alt="" coords="10,193,162,237"/>
+<area shape="rect" href="group__crossers.html#ga823b906485f3edf2771935f2ad4f12db" title="Performs random crosses among members of a group." alt="" coords="218,25,388,53"/>
+<area shape="rect" href="group__crossers.html#ga21fd20fa9a626c2933b7ec114c3faca5" title="Performs random crosses where the first parent comes from one group and the second from another." alt="" coords="219,83,387,111"/>
+<area shape="rect" href="sim-operations_8c.html#a877bbfdb03961d00c30f7e2fa55efe7c" title="Performs the crosses of pairs of parents whose indexes are provided in an array." alt="" coords="215,135,391,163"/>
+<area shape="rect" href="group__crossers.html#ga4eb395614f3ec7ffecb3b779c16e6f17" title="Creates an identical copy of each member of a group." alt="" coords="254,187,352,215"/>
+<area shape="rect" href="group__crossers.html#ga6a3afc7743003c66fe24e7a2872e26cc" title="Creates a doubled haploid from each member of a group." alt="" coords="223,239,383,267"/>
+<area shape="rect" href="group__crossers.html#gaafc0d183fdb9762dc0817e5bd3009178" title="Selfs each member of a group for a certain number of generations." alt="" coords="256,291,350,319"/>
+<area shape="rect" href="group__crossers.html#gafdd1fa0e8dd54ba1f3089c05986686cb" title="Find the top m percent of a group and perform random crosses between those top individuals." alt="" coords="10,5,162,49"/>
+<area shape="rect" href="group__crossers.html#gab173426b15ba3e135e1eea25035afd85" title="Perform crosses between all pairs of parents in the group from_group and allocates the resulting offs..." alt="" coords="8,73,164,117"/>
+<area shape="rect" href="group__crossers.html#ga18a22fc990289359e790fa207613c121" title="Perform crosses between pairs of parents identified by name in a file and allocate the resulting offs..." alt="" coords="5,141,167,169"/>
+<area shape="rect" href="group__crossers.html#ga0cc412ee0f607370ad3b34f4c39a15ff" title="Perform crosses between previously&#45;generated offspring of pairs of parents identified by name in a fi..." alt="" coords="10,193,162,237"/>
 </map>
 </div>
 
@@ -255,10 +251,10 @@ Functions</h2></td></tr>
 <div class="center"><img src="group__savers_gabf1a9b82d2978a1563daf31c8814a783_cgraph.png" border="0" usemap="#agroup__savers_gabf1a9b82d2978a1563daf31c8814a783_cgraph" alt=""/></div>
 <map name="agroup__savers_gabf1a9b82d2978a1563daf31c8814a783_cgraph" id="agroup__savers_gabf1a9b82d2978a1563daf31c8814a783_cgraph">
 <area shape="rect" title="Print the full known pedigree of each genotype in a single AlleleMatrix to a file." alt="" coords="5,32,136,60"/>
-<area shape="rect" href="group__savers.html#gaead4d69058f8fe7d59465100c801bbbd" title="Recursively save the parents of a particular id to a file." alt="" coords="184,32,298,60"/>
-<area shape="rect" href="group__search.html#ga0a9f180e2bff0952bd9e5af26c7ae37d" title="Returns the name of the genotype with a given id." alt="" coords="352,5,464,33"/>
-<area shape="rect" href="group__search.html#gade1706129ba2510f1f1ed496b51efcb6" title="Saves the ids of the parents of a genotype with a particular id to the output array output." alt="" coords="346,57,469,85"/>
-<area shape="rect" href="group__supporters.html#ga98f69379fe6a5cca7fb25ed1fe49e1c7" title="Returns the located index in an array of integers where the integer is target." alt="" coords="517,57,691,85"/>
+<area shape="rect" href="group__savers.html#ga2ad03e903efdd56805722af554328592" title="Recursively save the parents of a particular id to a file." alt="" coords="184,32,298,60"/>
+<area shape="rect" href="group__search.html#gaaea63100f4c2639907cce72c29a413e8" title="Returns the name of the genotype with a given id." alt="" coords="352,5,464,33"/>
+<area shape="rect" href="group__search.html#gaa814762960a964cd0aaf82be0c18b8cb" title="Saves the ids of the parents of a genotype with a particular id to the output array output." alt="" coords="346,57,469,85"/>
+<area shape="rect" href="group__supporters.html#ga4e3d1fd7ae67dd133c4dbdec9a84d455" title="Returns the located index in an array of PedigreeIDs where the PedigreeID is target." alt="" coords="517,32,719,60"/>
 </map>
 </div>
 <div id="dynsection-2" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
@@ -269,23 +265,23 @@ Functions</h2></td></tr>
 <div class="center"><img src="group__savers_gabf1a9b82d2978a1563daf31c8814a783_icgraph.png" border="0" usemap="#agroup__savers_gabf1a9b82d2978a1563daf31c8814a783_icgraph" alt=""/></div>
 <map name="agroup__savers_gabf1a9b82d2978a1563daf31c8814a783_icgraph" id="agroup__savers_gabf1a9b82d2978a1563daf31c8814a783_icgraph">
 <area shape="rect" title="Print the full known pedigree of each genotype in a single AlleleMatrix to a file." alt="" coords="439,161,569,189"/>
-<area shape="rect" href="group__crossers.html#ga7f9865d8d1912cda7e8524d1ff761de6" title="Performs random crosses among members of a group." alt="" coords="218,25,388,53"/>
-<area shape="rect" href="group__crossers.html#ga43f436342a1afc3b14343a8f6e9385f9" title="Performs random crosses where the first parent comes from one group and the second from another." alt="" coords="219,83,387,111"/>
-<area shape="rect" href="sim-operations_8c.html#a42ded1341b4c5a03c2233e2a3875fe07" title="Performs the crosses of pairs of parents whose indexes are provided in an array." alt="" coords="215,135,391,163"/>
-<area shape="rect" href="group__crossers.html#ga5e1da39f8341127e758d32393e8654aa" title="Creates an identical copy of each member of a group." alt="" coords="254,187,352,215"/>
-<area shape="rect" href="group__crossers.html#gab081b254e7abce63067b8c02fbac774f" title="Creates a doubled haploid from each member of a group." alt="" coords="223,239,383,267"/>
-<area shape="rect" href="group__crossers.html#gaf0d8ffcde1a2098e7ae807a031bbe7b9" title="Selfs each member of a group for a certain number of generations." alt="" coords="256,291,350,319"/>
-<area shape="rect" href="group__crossers.html#gaa41e75da9e6e4f8db5466e8929dec2ee" title="Find the top m percent of a group and perform random crosses between those top individuals." alt="" coords="10,5,162,49"/>
-<area shape="rect" href="group__crossers.html#ga9d79117014f247c078c6576c70d600fb" title="Perform crosses between all pairs of parents in the group from_group and allocates the resulting offs..." alt="" coords="8,73,164,117"/>
-<area shape="rect" href="group__crossers.html#ga7fafc033bf3aaa14c9d5affbe9421ca9" title="Perform crosses between pairs of parents identified by name in a file and allocate the resulting offs..." alt="" coords="5,141,167,169"/>
-<area shape="rect" href="group__crossers.html#gafb306165b0cf0f5cd752f3eaf4c60928" title="Perform crosses between previously&#45;generated offspring of pairs of parents identified by name in a fi..." alt="" coords="10,193,162,237"/>
+<area shape="rect" href="group__crossers.html#ga823b906485f3edf2771935f2ad4f12db" title="Performs random crosses among members of a group." alt="" coords="218,25,388,53"/>
+<area shape="rect" href="group__crossers.html#ga21fd20fa9a626c2933b7ec114c3faca5" title="Performs random crosses where the first parent comes from one group and the second from another." alt="" coords="219,83,387,111"/>
+<area shape="rect" href="sim-operations_8c.html#a877bbfdb03961d00c30f7e2fa55efe7c" title="Performs the crosses of pairs of parents whose indexes are provided in an array." alt="" coords="215,135,391,163"/>
+<area shape="rect" href="group__crossers.html#ga4eb395614f3ec7ffecb3b779c16e6f17" title="Creates an identical copy of each member of a group." alt="" coords="254,187,352,215"/>
+<area shape="rect" href="group__crossers.html#ga6a3afc7743003c66fe24e7a2872e26cc" title="Creates a doubled haploid from each member of a group." alt="" coords="223,239,383,267"/>
+<area shape="rect" href="group__crossers.html#gaafc0d183fdb9762dc0817e5bd3009178" title="Selfs each member of a group for a certain number of generations." alt="" coords="256,291,350,319"/>
+<area shape="rect" href="group__crossers.html#gafdd1fa0e8dd54ba1f3089c05986686cb" title="Find the top m percent of a group and perform random crosses between those top individuals." alt="" coords="10,5,162,49"/>
+<area shape="rect" href="group__crossers.html#gab173426b15ba3e135e1eea25035afd85" title="Perform crosses between all pairs of parents in the group from_group and allocates the resulting offs..." alt="" coords="8,73,164,117"/>
+<area shape="rect" href="group__crossers.html#ga18a22fc990289359e790fa207613c121" title="Perform crosses between pairs of parents identified by name in a file and allocate the resulting offs..." alt="" coords="5,141,167,169"/>
+<area shape="rect" href="group__crossers.html#ga0cc412ee0f607370ad3b34f4c39a15ff" title="Perform crosses between previously&#45;generated offspring of pairs of parents identified by name in a fi..." alt="" coords="10,193,162,237"/>
 </map>
 </div>
 
 </div>
 </div>
-<a id="gaa9a8f4e7b82dda77c7a688d83fa08e28" name="gaa9a8f4e7b82dda77c7a688d83fa08e28"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#gaa9a8f4e7b82dda77c7a688d83fa08e28">&#9670;&nbsp;</a></span>save_bvs()</h2>
+<a id="ga9ff67eb9572c42530b64b70f4a307488" name="ga9ff67eb9572c42530b64b70f4a307488"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga9ff67eb9572c42530b64b70f4a307488">&#9670;&nbsp;</a></span>save_bvs()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -300,7 +296,13 @@ Functions</h2></td></tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">const <a class="el" href="struct_sim_data.html">SimData</a> *&#160;</td>
-          <td class="paramname"><em>d</em>&#160;</td>
+          <td class="paramname"><em>d</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="struct_effect_i_d.html">EffectID</a>&#160;</td>
+          <td class="paramname"><em>effID</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -320,6 +322,7 @@ Functions</h2></td></tr>
   <table class="params">
     <tr><td class="paramname">f</td><td>file pointer opened for writing to put the output </td></tr>
     <tr><td class="paramname">d</td><td>pointer to the <a class="el" href="struct_sim_data.html" title="Composite type that is used to run crossing simulations.">SimData</a> containing the group members. </td></tr>
+    <tr><td class="paramname">effID</td><td>Identifier of the marker effect set to be used to calculate these breeding values </td></tr>
   </table>
   </dd>
 </dl>
@@ -328,16 +331,17 @@ Functions</h2></td></tr>
 <div id="dynsection-3-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-3-content" class="dyncontent" style="display:none;">
-<div class="center"><img src="group__savers_gaa9a8f4e7b82dda77c7a688d83fa08e28_cgraph.png" border="0" usemap="#agroup__savers_gaa9a8f4e7b82dda77c7a688d83fa08e28_cgraph" alt=""/></div>
-<map name="agroup__savers_gaa9a8f4e7b82dda77c7a688d83fa08e28_cgraph" id="agroup__savers_gaa9a8f4e7b82dda77c7a688d83fa08e28_cgraph">
-<area shape="rect" title="Print the breeding value of each genotype in the SimData to a file." alt="" coords="5,273,79,301"/>
-<area shape="rect" href="group__calculators.html#ga75f4e1199f9ead752b64cd5fa3b5a1a7" title="Calculates the fitness metric/breeding value for each genotype in the AlleleMatrix,..." alt="" coords="127,217,226,245"/>
-<area shape="rect" href="group__deletors.html#gaaf6542d59034f88f9e1ec48e5f053c4a" title="Deletes a DecimalMatrix and frees its memory." alt="" coords="306,329,412,357"/>
-<area shape="rect" href="group__maths.html#gab1f0bafd56d3496348ea3ccddfe9d937" title="Multiply two sets of a DecimalMatrix and vector, and add both products to the first column of a provi..." alt="" coords="280,5,437,49"/>
-<area shape="rect" href="group__maths.html#ga029101c5b02d8ab22e74ce3c103f6114" title="Multiply a DecimalMatrix to a vector, and add that product to the first column of a provided DecimalM..." alt="" coords="274,73,443,117"/>
-<area shape="rect" href="group__calculators.html#gae883ac8145dd7e45ada82cc878d405d7" title="Calculates the number of times at each marker that a particular allele appears for each genotype in a..." alt="" coords="281,141,436,185"/>
-<area shape="rect" href="group__calculators.html#ga11a8e25ed696aaf04d27b2276e345fe6" title="Calculates the number of times at each marker that two particular alleles appear for each genotype in..." alt="" coords="284,209,434,253"/>
-<area shape="rect" href="group__maths.html#ga26e7ca69aa8bd969e3a781331a0afe27" title="Generates a matrix of c columns, r rows with all 0." alt="" coords="282,277,435,305"/>
+<div class="center"><img src="group__savers_ga9ff67eb9572c42530b64b70f4a307488_cgraph.png" border="0" usemap="#agroup__savers_ga9ff67eb9572c42530b64b70f4a307488_cgraph" alt=""/></div>
+<map name="agroup__savers_ga9ff67eb9572c42530b64b70f4a307488_cgraph" id="agroup__savers_ga9ff67eb9572c42530b64b70f4a307488_cgraph">
+<area shape="rect" title="Print the breeding value of each genotype in the SimData to a file." alt="" coords="5,300,79,328"/>
+<area shape="rect" href="group__calculators.html#ga75f4e1199f9ead752b64cd5fa3b5a1a7" title="Calculates the fitness metric/breeding value for each genotype in the AlleleMatrix,..." alt="" coords="147,217,246,245"/>
+<area shape="rect" href="group__deletors.html#gaaf6542d59034f88f9e1ec48e5f053c4a" title="Deletes a DecimalMatrix and frees its memory." alt="" coords="346,329,452,357"/>
+<area shape="rect" href="group__supporters.html#gaa605100835fdec6b250fde0ad5a9cc8f" title="Function to identify the lookup index of a marker effect set identifier." alt="" coords="127,352,266,380"/>
+<area shape="rect" href="group__maths.html#gab1f0bafd56d3496348ea3ccddfe9d937" title="Multiply two sets of a DecimalMatrix and vector, and add both products to the first column of a provi..." alt="" coords="320,5,477,49"/>
+<area shape="rect" href="group__maths.html#ga029101c5b02d8ab22e74ce3c103f6114" title="Multiply a DecimalMatrix to a vector, and add that product to the first column of a provided DecimalM..." alt="" coords="314,73,483,117"/>
+<area shape="rect" href="group__calculators.html#gae883ac8145dd7e45ada82cc878d405d7" title="Calculates the number of times at each marker that a particular allele appears for each genotype in a..." alt="" coords="321,141,476,185"/>
+<area shape="rect" href="group__calculators.html#ga11a8e25ed696aaf04d27b2276e345fe6" title="Calculates the number of times at each marker that two particular alleles appear for each genotype in..." alt="" coords="324,209,474,253"/>
+<area shape="rect" href="group__maths.html#ga26e7ca69aa8bd969e3a781331a0afe27" title="Generates a matrix of c columns, r rows with all 0." alt="" coords="322,277,475,305"/>
 </map>
 </div>
 
@@ -405,8 +409,8 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="ga8bbfd2ed13f449e5934b91701cc94a9f" name="ga8bbfd2ed13f449e5934b91701cc94a9f"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ga8bbfd2ed13f449e5934b91701cc94a9f">&#9670;&nbsp;</a></span>save_count_matrix_of_group()</h2>
+<a id="ga5c490bff6698ad221c9eeec1254623c5" name="ga5c490bff6698ad221c9eeec1254623c5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga5c490bff6698ad221c9eeec1254623c5">&#9670;&nbsp;</a></span>save_count_matrix_of_group()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -432,7 +436,7 @@ Functions</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const int&#160;</td>
+          <td class="paramtype">const <a class="el" href="struct_group_num.html">GroupNum</a>&#160;</td>
           <td class="paramname"><em>group</em>&#160;</td>
         </tr>
         <tr>
@@ -463,15 +467,16 @@ Functions</h2></td></tr>
 <div id="dynsection-5-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-5-content" class="dyncontent" style="display:none;">
-<div class="center"><img src="group__savers_ga8bbfd2ed13f449e5934b91701cc94a9f_cgraph.png" border="0" usemap="#agroup__savers_ga8bbfd2ed13f449e5934b91701cc94a9f_cgraph" alt=""/></div>
-<map name="agroup__savers_ga8bbfd2ed13f449e5934b91701cc94a9f_cgraph" id="agroup__savers_ga8bbfd2ed13f449e5934b91701cc94a9f_cgraph">
-<area shape="rect" title="Print the number of copies of a particular allele at each marker of each genotype in a group to a fil..." alt="" coords="5,152,152,196"/>
-<area shape="rect" href="group__calculators.html#ga3b7bb854c37c21eaa60ca155ac6e7d86" title="Calculates the number of times at each marker that a particular allele appears for each genotype in a..." alt="" coords="201,40,352,84"/>
-<area shape="rect" href="group__collgetters.html#ga706e640cd2cfb0f390f98c3b8c00a709" title="Function to count the number of genotypes that currently belong to the specified group." alt="" coords="573,83,683,111"/>
+<div class="center"><img src="group__savers_ga5c490bff6698ad221c9eeec1254623c5_cgraph.png" border="0" usemap="#agroup__savers_ga5c490bff6698ad221c9eeec1254623c5_cgraph" alt=""/></div>
+<map name="agroup__savers_ga5c490bff6698ad221c9eeec1254623c5_cgraph" id="agroup__savers_ga5c490bff6698ad221c9eeec1254623c5_cgraph">
+<area shape="rect" title="Print the number of copies of a particular allele at each marker of each genotype in a group to a fil..." alt="" coords="5,179,152,223"/>
+<area shape="rect" href="group__calculators.html#gace12e242f730dd2b7747919b955a5035" title="Calculates the number of times at each marker that a particular allele appears for each genotype in a..." alt="" coords="201,40,352,84"/>
+<area shape="rect" href="group__collgetters.html#ga6773f2b434edda042163890dea8f8dbd" title="Function to count the number of genotypes that currently belong to the specified group." alt="" coords="573,108,683,136"/>
 <area shape="rect" href="group__deletors.html#gaaf6542d59034f88f9e1ec48e5f053c4a" title="Deletes a DecimalMatrix and frees its memory." alt="" coords="223,160,330,188"/>
 <area shape="rect" href="group__maths.html#ga26e7ca69aa8bd969e3a781331a0afe27" title="Generates a matrix of c columns, r rows with all 0." alt="" coords="200,212,353,240"/>
-<area shape="rect" href="group__collgetters.html#gabb5a3786c56f6cfc7fa8a363bb1d2149" title="Gets a shallow copy of the names of each member of the group." alt="" coords="401,212,525,240"/>
-<area shape="rect" href="group__collgetters.html#gaf3f95ff569cca762e4de8be67c4d4097" title="Gets a shallow copy of the genes/alleles of each member of the group." alt="" coords="403,5,523,33"/>
+<area shape="rect" href="group__collgetters.html#gacc8432b03b8b5a33e0adde825c02ee7a" title="Gets the ids of each member of the group." alt="" coords="412,185,514,213"/>
+<area shape="rect" href="group__collgetters.html#gab535d4c5e7afdce3816ab40c19a46a78" title="Gets a shallow copy of the names of each member of the group." alt="" coords="401,288,525,316"/>
+<area shape="rect" href="group__collgetters.html#ga2897db8c7fffee9b2a4bcd7f81e368f6" title="Gets a shallow copy of the genes/alleles of each member of the group." alt="" coords="403,5,523,33"/>
 </map>
 </div>
 
@@ -526,17 +531,17 @@ Functions</h2></td></tr>
 <div class="center"><img src="group__savers_ga08c823d63ce4c648432cb740b5ab743b_cgraph.png" border="0" usemap="#agroup__savers_ga08c823d63ce4c648432cb740b5ab743b_cgraph" alt=""/></div>
 <map name="agroup__savers_ga08c823d63ce4c648432cb740b5ab743b_cgraph" id="agroup__savers_ga08c823d63ce4c648432cb740b5ab743b_cgraph">
 <area shape="rect" title="Print the full known pedigree of each genotype in the SimData to a file." alt="" coords="5,32,132,60"/>
-<area shape="rect" href="group__savers.html#gaead4d69058f8fe7d59465100c801bbbd" title="Recursively save the parents of a particular id to a file." alt="" coords="180,32,294,60"/>
-<area shape="rect" href="group__search.html#ga0a9f180e2bff0952bd9e5af26c7ae37d" title="Returns the name of the genotype with a given id." alt="" coords="348,5,460,33"/>
-<area shape="rect" href="group__search.html#gade1706129ba2510f1f1ed496b51efcb6" title="Saves the ids of the parents of a genotype with a particular id to the output array output." alt="" coords="342,57,465,85"/>
-<area shape="rect" href="group__supporters.html#ga98f69379fe6a5cca7fb25ed1fe49e1c7" title="Returns the located index in an array of integers where the integer is target." alt="" coords="513,57,687,85"/>
+<area shape="rect" href="group__savers.html#ga2ad03e903efdd56805722af554328592" title="Recursively save the parents of a particular id to a file." alt="" coords="180,32,294,60"/>
+<area shape="rect" href="group__search.html#gaaea63100f4c2639907cce72c29a413e8" title="Returns the name of the genotype with a given id." alt="" coords="348,5,460,33"/>
+<area shape="rect" href="group__search.html#gaa814762960a964cd0aaf82be0c18b8cb" title="Saves the ids of the parents of a genotype with a particular id to the output array output." alt="" coords="342,57,465,85"/>
+<area shape="rect" href="group__supporters.html#ga4e3d1fd7ae67dd133c4dbdec9a84d455" title="Returns the located index in an array of PedigreeIDs where the PedigreeID is target." alt="" coords="513,32,715,60"/>
 </map>
 </div>
 
 </div>
 </div>
-<a id="gaeb3b527db48fd67f0d42a39c681b2c65" name="gaeb3b527db48fd67f0d42a39c681b2c65"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#gaeb3b527db48fd67f0d42a39c681b2c65">&#9670;&nbsp;</a></span>save_group_alleles()</h2>
+<a id="gae65797e9f37cac9cff90abadd8c219c5" name="gae65797e9f37cac9cff90abadd8c219c5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gae65797e9f37cac9cff90abadd8c219c5">&#9670;&nbsp;</a></span>save_group_alleles()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -556,7 +561,7 @@ Functions</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">int&#160;</td>
+          <td class="paramtype"><a class="el" href="struct_group_num.html">GroupNum</a>&#160;</td>
           <td class="paramname"><em>group_id</em>&#160;</td>
         </tr>
         <tr>
@@ -587,20 +592,20 @@ Functions</h2></td></tr>
 <div id="dynsection-7-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-7-content" class="dyncontent" style="display:none;">
-<div class="center"><img src="group__savers_gaeb3b527db48fd67f0d42a39c681b2c65_cgraph.png" border="0" usemap="#agroup__savers_gaeb3b527db48fd67f0d42a39c681b2c65_cgraph" alt=""/></div>
-<map name="agroup__savers_gaeb3b527db48fd67f0d42a39c681b2c65_cgraph" id="agroup__savers_gaeb3b527db48fd67f0d42a39c681b2c65_cgraph">
+<div class="center"><img src="group__savers_gae65797e9f37cac9cff90abadd8c219c5_cgraph.png" border="0" usemap="#agroup__savers_gae65797e9f37cac9cff90abadd8c219c5_cgraph" alt=""/></div>
+<map name="agroup__savers_gae65797e9f37cac9cff90abadd8c219c5_cgraph" id="agroup__savers_gae65797e9f37cac9cff90abadd8c219c5_cgraph">
 <area shape="rect" title="Prints the genotypes of each individual in a given group to a file, with the following format." alt="" coords="5,84,136,112"/>
-<area shape="rect" href="group__collgetters.html#gaf3f95ff569cca762e4de8be67c4d4097" title="Gets a shallow copy of the genes/alleles of each member of the group." alt="" coords="186,5,306,33"/>
-<area shape="rect" href="group__collgetters.html#ga706e640cd2cfb0f390f98c3b8c00a709" title="Function to count the number of genotypes that currently belong to the specified group." alt="" coords="356,84,465,112"/>
-<area shape="rect" href="group__collgetters.html#ga7bb2cb27f43af0f6330c6fa9105d8dea" title="Gets the ids of each member of the group." alt="" coords="195,109,297,137"/>
-<area shape="rect" href="group__collgetters.html#gabb5a3786c56f6cfc7fa8a363bb1d2149" title="Gets a shallow copy of the names of each member of the group." alt="" coords="184,161,308,189"/>
+<area shape="rect" href="group__collgetters.html#ga2897db8c7fffee9b2a4bcd7f81e368f6" title="Gets a shallow copy of the genes/alleles of each member of the group." alt="" coords="186,5,306,33"/>
+<area shape="rect" href="group__collgetters.html#ga6773f2b434edda042163890dea8f8dbd" title="Function to count the number of genotypes that currently belong to the specified group." alt="" coords="356,84,465,112"/>
+<area shape="rect" href="group__collgetters.html#gacc8432b03b8b5a33e0adde825c02ee7a" title="Gets the ids of each member of the group." alt="" coords="195,109,297,137"/>
+<area shape="rect" href="group__collgetters.html#gab535d4c5e7afdce3816ab40c19a46a78" title="Gets a shallow copy of the names of each member of the group." alt="" coords="184,161,308,189"/>
 </map>
 </div>
 
 </div>
 </div>
-<a id="ga7cd7382db4574b2b0cffb316eab47a29" name="ga7cd7382db4574b2b0cffb316eab47a29"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ga7cd7382db4574b2b0cffb316eab47a29">&#9670;&nbsp;</a></span>save_group_bvs()</h2>
+<a id="gadb547ac914ca6f84033394402ffece7e" name="gadb547ac914ca6f84033394402ffece7e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gadb547ac914ca6f84033394402ffece7e">&#9670;&nbsp;</a></span>save_group_bvs()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -620,8 +625,14 @@ Functions</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const int&#160;</td>
-          <td class="paramname"><em>group</em>&#160;</td>
+          <td class="paramtype">const <a class="el" href="struct_group_num.html">GroupNum</a>&#160;</td>
+          <td class="paramname"><em>group</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="struct_effect_i_d.html">EffectID</a>&#160;</td>
+          <td class="paramname"><em>effID</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -642,6 +653,7 @@ Functions</h2></td></tr>
     <tr><td class="paramname">f</td><td>file pointer opened for writing to put the output </td></tr>
     <tr><td class="paramname">d</td><td>pointer to the <a class="el" href="struct_sim_data.html" title="Composite type that is used to run crossing simulations.">SimData</a> containing the group members. </td></tr>
     <tr><td class="paramname">group</td><td>group number of the group of individuals to print the breeding values of. </td></tr>
+    <tr><td class="paramname">effID</td><td>Identifier of the marker effect set to be used to calculate these breeding values </td></tr>
   </table>
   </dd>
 </dl>
@@ -650,27 +662,28 @@ Functions</h2></td></tr>
 <div id="dynsection-8-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-8-content" class="dyncontent" style="display:none;">
-<div class="center"><img src="group__savers_ga7cd7382db4574b2b0cffb316eab47a29_cgraph.png" border="0" usemap="#agroup__savers_ga7cd7382db4574b2b0cffb316eab47a29_cgraph" alt=""/></div>
-<map name="agroup__savers_ga7cd7382db4574b2b0cffb316eab47a29_cgraph" id="agroup__savers_ga7cd7382db4574b2b0cffb316eab47a29_cgraph">
-<area shape="rect" title="Print the breeding value of each genotype in a group to a file." alt="" coords="5,438,118,466"/>
-<area shape="rect" href="group__calculators.html#gabf3d2edad86e88ef0021cb608b009b87" title="Calculates the fitness metric/breeding value for each genotype in the AlleleMatrix in a certain group..." alt="" coords="166,229,304,257"/>
-<area shape="rect" href="group__collgetters.html#ga706e640cd2cfb0f390f98c3b8c00a709" title="Function to count the number of genotypes that currently belong to the specified group." alt="" coords="758,186,867,214"/>
-<area shape="rect" href="group__deletors.html#gaaf6542d59034f88f9e1ec48e5f053c4a" title="Deletes a DecimalMatrix and frees its memory." alt="" coords="394,386,500,414"/>
-<area shape="rect" href="group__collgetters.html#ga7bb2cb27f43af0f6330c6fa9105d8dea" title="Gets the ids of each member of the group." alt="" coords="598,489,701,517"/>
-<area shape="rect" href="group__collgetters.html#gabb5a3786c56f6cfc7fa8a363bb1d2149" title="Gets a shallow copy of the names of each member of the group." alt="" coords="173,541,297,569"/>
-<area shape="rect" href="group__maths.html#gab1f0bafd56d3496348ea3ccddfe9d937" title="Multiply two sets of a DecimalMatrix and vector, and add both products to the first column of a provi..." alt="" coords="368,250,525,294"/>
-<area shape="rect" href="group__maths.html#ga029101c5b02d8ab22e74ce3c103f6114" title="Multiply a DecimalMatrix to a vector, and add that product to the first column of a provided DecimalM..." alt="" coords="362,318,531,362"/>
-<area shape="rect" href="group__calculators.html#ga3b7bb854c37c21eaa60ca155ac6e7d86" title="Calculates the number of times at each marker that a particular allele appears for each genotype in a..." alt="" coords="371,62,522,106"/>
-<area shape="rect" href="group__calculators.html#ga50e0c672eb7e42ef3c8d94861d2262af" title="Calculates the number of times at each marker that two particular alleles appear for each genotype in..." alt="" coords="352,130,541,174"/>
-<area shape="rect" href="group__maths.html#ga26e7ca69aa8bd969e3a781331a0afe27" title="Generates a matrix of c columns, r rows with all 0." alt="" coords="370,198,523,226"/>
-<area shape="rect" href="group__collgetters.html#gaf3f95ff569cca762e4de8be67c4d4097" title="Gets a shallow copy of the genes/alleles of each member of the group." alt="" coords="589,134,710,162"/>
+<div class="center"><img src="group__savers_gadb547ac914ca6f84033394402ffece7e_cgraph.png" border="0" usemap="#agroup__savers_gadb547ac914ca6f84033394402ffece7e_cgraph" alt=""/></div>
+<map name="agroup__savers_gadb547ac914ca6f84033394402ffece7e_cgraph" id="agroup__savers_gadb547ac914ca6f84033394402ffece7e_cgraph">
+<area shape="rect" title="Print the breeding value of each genotype in a group to a file." alt="" coords="5,462,118,490"/>
+<area shape="rect" href="group__calculators.html#gafd3faffcf504432504b50b669055f46b" title="Calculates the fitness metric/breeding value for each genotype in the AlleleMatrix in a certain group..." alt="" coords="166,324,304,352"/>
+<area shape="rect" href="group__collgetters.html#ga6773f2b434edda042163890dea8f8dbd" title="Function to count the number of genotypes that currently belong to the specified group." alt="" coords="758,184,867,212"/>
+<area shape="rect" href="group__deletors.html#gaaf6542d59034f88f9e1ec48e5f053c4a" title="Deletes a DecimalMatrix and frees its memory." alt="" coords="394,436,500,464"/>
+<area shape="rect" href="group__supporters.html#gaa605100835fdec6b250fde0ad5a9cc8f" title="Function to identify the lookup index of a marker effect set identifier." alt="" coords="377,488,516,516"/>
+<area shape="rect" href="group__collgetters.html#gacc8432b03b8b5a33e0adde825c02ee7a" title="Gets the ids of each member of the group." alt="" coords="598,486,701,514"/>
+<area shape="rect" href="group__collgetters.html#gab535d4c5e7afdce3816ab40c19a46a78" title="Gets a shallow copy of the names of each member of the group." alt="" coords="173,592,297,620"/>
+<area shape="rect" href="group__maths.html#gab1f0bafd56d3496348ea3ccddfe9d937" title="Multiply two sets of a DecimalMatrix and vector, and add both products to the first column of a provi..." alt="" coords="368,248,525,292"/>
+<area shape="rect" href="group__maths.html#ga029101c5b02d8ab22e74ce3c103f6114" title="Multiply a DecimalMatrix to a vector, and add that product to the first column of a provided DecimalM..." alt="" coords="362,316,531,360"/>
+<area shape="rect" href="group__calculators.html#gace12e242f730dd2b7747919b955a5035" title="Calculates the number of times at each marker that a particular allele appears for each genotype in a..." alt="" coords="371,60,522,104"/>
+<area shape="rect" href="group__calculators.html#gace545bfe1524e08d158793bd738cdf5f" title="Calculates the number of times at each marker that two particular alleles appear for each genotype in..." alt="" coords="352,128,541,172"/>
+<area shape="rect" href="group__maths.html#ga26e7ca69aa8bd969e3a781331a0afe27" title="Generates a matrix of c columns, r rows with all 0." alt="" coords="370,196,523,224"/>
+<area shape="rect" href="group__collgetters.html#ga2897db8c7fffee9b2a4bcd7f81e368f6" title="Gets a shallow copy of the genes/alleles of each member of the group." alt="" coords="589,132,710,160"/>
 </map>
 </div>
 
 </div>
 </div>
-<a id="ga7adbe41e3a1d04fbf2b32840e2d01f86" name="ga7adbe41e3a1d04fbf2b32840e2d01f86"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ga7adbe41e3a1d04fbf2b32840e2d01f86">&#9670;&nbsp;</a></span>save_group_full_pedigree()</h2>
+<a id="ga821e9489b1668201f9bd38d9ac467673" name="ga821e9489b1668201f9bd38d9ac467673"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga821e9489b1668201f9bd38d9ac467673">&#9670;&nbsp;</a></span>save_group_full_pedigree()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -690,7 +703,7 @@ Functions</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const int&#160;</td>
+          <td class="paramtype">const <a class="el" href="struct_group_num.html">GroupNum</a>&#160;</td>
           <td class="paramname"><em>group</em>&#160;</td>
         </tr>
         <tr>
@@ -722,16 +735,17 @@ Functions</h2></td></tr>
 <div id="dynsection-9-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-9-content" class="dyncontent" style="display:none;">
-<div class="center"><img src="group__savers_ga7adbe41e3a1d04fbf2b32840e2d01f86_cgraph.png" border="0" usemap="#agroup__savers_ga7adbe41e3a1d04fbf2b32840e2d01f86_cgraph" alt=""/></div>
-<map name="agroup__savers_ga7adbe41e3a1d04fbf2b32840e2d01f86_cgraph" id="agroup__savers_ga7adbe41e3a1d04fbf2b32840e2d01f86_cgraph">
+<div class="center"><img src="group__savers_ga821e9489b1668201f9bd38d9ac467673_cgraph.png" border="0" usemap="#agroup__savers_ga821e9489b1668201f9bd38d9ac467673_cgraph" alt=""/></div>
+<map name="agroup__savers_ga821e9489b1668201f9bd38d9ac467673_cgraph" id="agroup__savers_ga821e9489b1668201f9bd38d9ac467673_cgraph">
 <area shape="rect" title="Print the full known pedigree of each genotype in a group to a file." alt="" coords="5,109,171,137"/>
-<area shape="rect" href="group__collgetters.html#ga7bb2cb27f43af0f6330c6fa9105d8dea" title="Gets the ids of each member of the group." alt="" coords="230,5,332,33"/>
-<area shape="rect" href="group__collgetters.html#ga706e640cd2cfb0f390f98c3b8c00a709" title="Function to count the number of genotypes that currently belong to the specified group." alt="" coords="398,57,507,85"/>
-<area shape="rect" href="group__collgetters.html#gabb5a3786c56f6cfc7fa8a363bb1d2149" title="Gets a shallow copy of the names of each member of the group." alt="" coords="219,109,343,137"/>
-<area shape="rect" href="group__search.html#gade1706129ba2510f1f1ed496b51efcb6" title="Saves the ids of the parents of a genotype with a particular id to the output array output." alt="" coords="391,173,514,201"/>
-<area shape="rect" href="group__savers.html#gaead4d69058f8fe7d59465100c801bbbd" title="Recursively save the parents of a particular id to a file." alt="" coords="224,237,338,265"/>
-<area shape="rect" href="group__supporters.html#ga98f69379fe6a5cca7fb25ed1fe49e1c7" title="Returns the located index in an array of integers where the integer is target." alt="" coords="562,173,736,201"/>
-<area shape="rect" href="group__search.html#ga0a9f180e2bff0952bd9e5af26c7ae37d" title="Returns the name of the genotype with a given id." alt="" coords="397,237,509,265"/>
+<area shape="rect" href="group__collgetters.html#gacc8432b03b8b5a33e0adde825c02ee7a" title="Gets the ids of each member of the group." alt="" coords="240,5,343,33"/>
+<area shape="rect" href="group__collgetters.html#ga6773f2b434edda042163890dea8f8dbd" title="Function to count the number of genotypes that currently belong to the specified group." alt="" coords="419,84,528,112"/>
+<area shape="rect" href="group__collgetters.html#gab535d4c5e7afdce3816ab40c19a46a78" title="Gets a shallow copy of the names of each member of the group." alt="" coords="229,109,354,137"/>
+<area shape="rect" href="group__collgetters.html#gac6f09e3398d4bf55d071d3a77e2f60f9" title="Gets the ids of either the first or second parent of each member of the group." alt="" coords="219,161,364,189"/>
+<area shape="rect" href="group__savers.html#ga2ad03e903efdd56805722af554328592" title="Recursively save the parents of a particular id to a file." alt="" coords="234,237,349,265"/>
+<area shape="rect" href="group__search.html#gaaea63100f4c2639907cce72c29a413e8" title="Returns the name of the genotype with a given id." alt="" coords="418,211,530,239"/>
+<area shape="rect" href="group__search.html#gaa814762960a964cd0aaf82be0c18b8cb" title="Saves the ids of the parents of a genotype with a particular id to the output array output." alt="" coords="412,263,535,291"/>
+<area shape="rect" href="group__supporters.html#ga4e3d1fd7ae67dd133c4dbdec9a84d455" title="Returns the located index in an array of PedigreeIDs where the PedigreeID is target." alt="" coords="583,237,785,265"/>
 </map>
 </div>
 <div id="dynsection-10" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
@@ -739,17 +753,17 @@ Functions</h2></td></tr>
 <div id="dynsection-10-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-10-content" class="dyncontent" style="display:none;">
-<div class="center"><img src="group__savers_ga7adbe41e3a1d04fbf2b32840e2d01f86_icgraph.png" border="0" usemap="#agroup__savers_ga7adbe41e3a1d04fbf2b32840e2d01f86_icgraph" alt=""/></div>
-<map name="agroup__savers_ga7adbe41e3a1d04fbf2b32840e2d01f86_icgraph" id="agroup__savers_ga7adbe41e3a1d04fbf2b32840e2d01f86_icgraph">
+<div class="center"><img src="group__savers_ga821e9489b1668201f9bd38d9ac467673_icgraph.png" border="0" usemap="#agroup__savers_ga821e9489b1668201f9bd38d9ac467673_icgraph" alt=""/></div>
+<map name="agroup__savers_ga821e9489b1668201f9bd38d9ac467673_icgraph" id="agroup__savers_ga821e9489b1668201f9bd38d9ac467673_icgraph">
 <area shape="rect" title="Print the full known pedigree of each genotype in a group to a file." alt="" coords="195,5,360,33"/>
-<area shape="rect" href="group__collgetters.html#ga530d4ce0844f7709a6868d63f018ef28" title="Gets the full pedigree string (as per save_group_full_pedigree() ) of each member of the group." alt="" coords="5,5,147,33"/>
+<area shape="rect" href="group__collgetters.html#ga31b649f4b57e0fa7ed2490b4cc48c97e" title="Gets the full pedigree string (as per save_group_full_pedigree() ) of each member of the group." alt="" coords="5,5,147,33"/>
 </map>
 </div>
 
 </div>
 </div>
-<a id="ga822c4500c4f5979c9eee8aa733434196" name="ga822c4500c4f5979c9eee8aa733434196"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ga822c4500c4f5979c9eee8aa733434196">&#9670;&nbsp;</a></span>save_group_one_step_pedigree()</h2>
+<a id="ga8ebf516e290bc4fd0e171a6d621efc2b" name="ga8ebf516e290bc4fd0e171a6d621efc2b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga8ebf516e290bc4fd0e171a6d621efc2b">&#9670;&nbsp;</a></span>save_group_one_step_pedigree()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -769,7 +783,7 @@ Functions</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const int&#160;</td>
+          <td class="paramtype">const <a class="el" href="struct_group_num.html">GroupNum</a>&#160;</td>
           <td class="paramname"><em>group</em>&#160;</td>
         </tr>
         <tr>
@@ -800,22 +814,22 @@ Functions</h2></td></tr>
 <div id="dynsection-11-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-11-content" class="dyncontent" style="display:none;">
-<div class="center"><img src="group__savers_ga822c4500c4f5979c9eee8aa733434196_cgraph.png" border="0" usemap="#agroup__savers_ga822c4500c4f5979c9eee8aa733434196_cgraph" alt=""/></div>
-<map name="agroup__savers_ga822c4500c4f5979c9eee8aa733434196_cgraph" id="agroup__savers_ga822c4500c4f5979c9eee8aa733434196_cgraph">
+<div class="center"><img src="group__savers_ga8ebf516e290bc4fd0e171a6d621efc2b_cgraph.png" border="0" usemap="#agroup__savers_ga8ebf516e290bc4fd0e171a6d621efc2b_cgraph" alt=""/></div>
+<map name="agroup__savers_ga8ebf516e290bc4fd0e171a6d621efc2b_cgraph" id="agroup__savers_ga8ebf516e290bc4fd0e171a6d621efc2b_cgraph">
 <area shape="rect" title="Print the parents of each genotype in a group to a file." alt="" coords="5,101,152,145"/>
-<area shape="rect" href="group__collgetters.html#ga7bb2cb27f43af0f6330c6fa9105d8dea" title="Gets the ids of each member of the group." alt="" coords="211,5,313,33"/>
-<area shape="rect" href="group__collgetters.html#ga706e640cd2cfb0f390f98c3b8c00a709" title="Function to count the number of genotypes that currently belong to the specified group." alt="" coords="404,57,513,85"/>
-<area shape="rect" href="group__collgetters.html#gabb5a3786c56f6cfc7fa8a363bb1d2149" title="Gets a shallow copy of the names of each member of the group." alt="" coords="200,109,324,137"/>
-<area shape="rect" href="group__search.html#ga0a9f180e2bff0952bd9e5af26c7ae37d" title="Returns the name of the genotype with a given id." alt="" coords="206,161,318,189"/>
-<area shape="rect" href="group__search.html#gade1706129ba2510f1f1ed496b51efcb6" title="Saves the ids of the parents of a genotype with a particular id to the output array output." alt="" coords="200,213,324,241"/>
-<area shape="rect" href="group__supporters.html#ga98f69379fe6a5cca7fb25ed1fe49e1c7" title="Returns the located index in an array of integers where the integer is target." alt="" coords="372,213,545,241"/>
+<area shape="rect" href="group__collgetters.html#gacc8432b03b8b5a33e0adde825c02ee7a" title="Gets the ids of each member of the group." alt="" coords="221,5,324,33"/>
+<area shape="rect" href="group__collgetters.html#ga6773f2b434edda042163890dea8f8dbd" title="Function to count the number of genotypes that currently belong to the specified group." alt="" coords="439,84,548,112"/>
+<area shape="rect" href="group__collgetters.html#gab535d4c5e7afdce3816ab40c19a46a78" title="Gets a shallow copy of the names of each member of the group." alt="" coords="210,109,335,137"/>
+<area shape="rect" href="group__collgetters.html#gac6f09e3398d4bf55d071d3a77e2f60f9" title="Gets the ids of either the first or second parent of each member of the group." alt="" coords="200,161,345,189"/>
+<area shape="rect" href="group__search.html#gaaea63100f4c2639907cce72c29a413e8" title="Returns the name of the genotype with a given id." alt="" coords="216,213,329,241"/>
+<area shape="rect" href="group__supporters.html#ga4e3d1fd7ae67dd133c4dbdec9a84d455" title="Returns the located index in an array of PedigreeIDs where the PedigreeID is target." alt="" coords="393,213,594,241"/>
 </map>
 </div>
 
 </div>
 </div>
-<a id="ga378aa1f3cc71a3b3e5e17c9c103c4727" name="ga378aa1f3cc71a3b3e5e17c9c103c4727"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ga378aa1f3cc71a3b3e5e17c9c103c4727">&#9670;&nbsp;</a></span>save_manual_bvs()</h2>
+<a id="ga4950114dda9c59fa276b72b13823d772" name="ga4950114dda9c59fa276b72b13823d772"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga4950114dda9c59fa276b72b13823d772">&#9670;&nbsp;</a></span>save_manual_bvs()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -835,7 +849,7 @@ Functions</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const unsigned int *&#160;</td>
+          <td class="paramtype">const <a class="el" href="struct_pedigree_i_d.html">PedigreeID</a> *&#160;</td>
           <td class="paramname"><em>ids</em>, </td>
         </tr>
         <tr>
@@ -872,19 +886,19 @@ Functions</h2></td></tr>
 <div id="dynsection-12-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-12-content" class="dyncontent" style="display:none;">
-<div class="center"><img src="group__savers_ga378aa1f3cc71a3b3e5e17c9c103c4727_icgraph.png" border="0" usemap="#agroup__savers_ga378aa1f3cc71a3b3e5e17c9c103c4727_icgraph" alt=""/></div>
-<map name="agroup__savers_ga378aa1f3cc71a3b3e5e17c9c103c4727_icgraph" id="agroup__savers_ga378aa1f3cc71a3b3e5e17c9c103c4727_icgraph">
+<div class="center"><img src="group__savers_ga4950114dda9c59fa276b72b13823d772_icgraph.png" border="0" usemap="#agroup__savers_ga4950114dda9c59fa276b72b13823d772_icgraph" alt=""/></div>
+<map name="agroup__savers_ga4950114dda9c59fa276b72b13823d772_icgraph" id="agroup__savers_ga4950114dda9c59fa276b72b13823d772_icgraph">
 <area shape="rect" title="Print the provided breeding values of each provided name and id to a file, with the same format as a ..." alt="" coords="439,161,561,189"/>
-<area shape="rect" href="group__crossers.html#ga7f9865d8d1912cda7e8524d1ff761de6" title="Performs random crosses among members of a group." alt="" coords="218,25,388,53"/>
-<area shape="rect" href="group__crossers.html#ga43f436342a1afc3b14343a8f6e9385f9" title="Performs random crosses where the first parent comes from one group and the second from another." alt="" coords="219,83,387,111"/>
-<area shape="rect" href="sim-operations_8c.html#a42ded1341b4c5a03c2233e2a3875fe07" title="Performs the crosses of pairs of parents whose indexes are provided in an array." alt="" coords="215,135,391,163"/>
-<area shape="rect" href="group__crossers.html#ga5e1da39f8341127e758d32393e8654aa" title="Creates an identical copy of each member of a group." alt="" coords="254,187,352,215"/>
-<area shape="rect" href="group__crossers.html#gab081b254e7abce63067b8c02fbac774f" title="Creates a doubled haploid from each member of a group." alt="" coords="223,239,383,267"/>
-<area shape="rect" href="group__crossers.html#gaf0d8ffcde1a2098e7ae807a031bbe7b9" title="Selfs each member of a group for a certain number of generations." alt="" coords="256,291,350,319"/>
-<area shape="rect" href="group__crossers.html#gaa41e75da9e6e4f8db5466e8929dec2ee" title="Find the top m percent of a group and perform random crosses between those top individuals." alt="" coords="10,5,162,49"/>
-<area shape="rect" href="group__crossers.html#ga9d79117014f247c078c6576c70d600fb" title="Perform crosses between all pairs of parents in the group from_group and allocates the resulting offs..." alt="" coords="8,73,164,117"/>
-<area shape="rect" href="group__crossers.html#ga7fafc033bf3aaa14c9d5affbe9421ca9" title="Perform crosses between pairs of parents identified by name in a file and allocate the resulting offs..." alt="" coords="5,141,167,169"/>
-<area shape="rect" href="group__crossers.html#gafb306165b0cf0f5cd752f3eaf4c60928" title="Perform crosses between previously&#45;generated offspring of pairs of parents identified by name in a fi..." alt="" coords="10,193,162,237"/>
+<area shape="rect" href="group__crossers.html#ga823b906485f3edf2771935f2ad4f12db" title="Performs random crosses among members of a group." alt="" coords="218,25,388,53"/>
+<area shape="rect" href="group__crossers.html#ga21fd20fa9a626c2933b7ec114c3faca5" title="Performs random crosses where the first parent comes from one group and the second from another." alt="" coords="219,83,387,111"/>
+<area shape="rect" href="sim-operations_8c.html#a877bbfdb03961d00c30f7e2fa55efe7c" title="Performs the crosses of pairs of parents whose indexes are provided in an array." alt="" coords="215,135,391,163"/>
+<area shape="rect" href="group__crossers.html#ga4eb395614f3ec7ffecb3b779c16e6f17" title="Creates an identical copy of each member of a group." alt="" coords="254,187,352,215"/>
+<area shape="rect" href="group__crossers.html#ga6a3afc7743003c66fe24e7a2872e26cc" title="Creates a doubled haploid from each member of a group." alt="" coords="223,239,383,267"/>
+<area shape="rect" href="group__crossers.html#gaafc0d183fdb9762dc0817e5bd3009178" title="Selfs each member of a group for a certain number of generations." alt="" coords="256,291,350,319"/>
+<area shape="rect" href="group__crossers.html#gafdd1fa0e8dd54ba1f3089c05986686cb" title="Find the top m percent of a group and perform random crosses between those top individuals." alt="" coords="10,5,162,49"/>
+<area shape="rect" href="group__crossers.html#gab173426b15ba3e135e1eea25035afd85" title="Perform crosses between all pairs of parents in the group from_group and allocates the resulting offs..." alt="" coords="8,73,164,117"/>
+<area shape="rect" href="group__crossers.html#ga18a22fc990289359e790fa207613c121" title="Perform crosses between pairs of parents identified by name in a file and allocate the resulting offs..." alt="" coords="5,141,167,169"/>
+<area shape="rect" href="group__crossers.html#ga0cc412ee0f607370ad3b34f4c39a15ff" title="Perform crosses between previously&#45;generated offspring of pairs of parents identified by name in a fi..." alt="" coords="10,193,162,237"/>
 </map>
 </div>
 
@@ -929,7 +943,7 @@ Functions</h2></td></tr>
 <p >0 0 b0 b m1;m2;m3;m4;</p>
 <p >0 0 b0 b m7;m9;</p>
 <p >...</p>
-<p >where m1, m2, m3, m4 are the names of the markers in the first block and m7 and m9 are the names of the markers in the second block.</p>
+<p >where m1, m2, m3, m4 are the names of the markers in the first block and m7 and m9 are the names of the markers in the second block. Note that chromosome numbers and positions are not actually specified, just replaced with 0. Only the last column is meaningful.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">f</td><td>file pointer opened for writing to put the output </td></tr>
@@ -938,6 +952,71 @@ Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
+
+</div>
+</div>
+<a id="ga5b6c6c66af73fea9f0545b826d899a70" name="ga5b6c6c66af73fea9f0545b826d899a70"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga5b6c6c66af73fea9f0545b826d899a70">&#9670;&nbsp;</a></span>save_names_header()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void save_names_header </td>
+          <td>(</td>
+          <td class="paramtype">FILE *&#160;</td>
+          <td class="paramname"><em>f</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname"><em>n</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>names</em>[n]&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Prints a list of names as a tab-separated row to a file. </p>
+<p >Used, for example, for printing marker names as a header in a genotype output file.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">f</td><td>file pointer opened for writing to put the output </td></tr>
+    <tr><td class="paramname">n</td><td>number of names to print </td></tr>
+    <tr><td class="paramname">names</td><td>list of names to print </td></tr>
+  </table>
+  </dd>
+</dl>
+<div id="dynsection-13" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-13-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
+<div id="dynsection-13-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-13-content" class="dyncontent" style="display:none;">
+<div class="center"><img src="group__savers_ga5b6c6c66af73fea9f0545b826d899a70_icgraph.png" border="0" usemap="#agroup__savers_ga5b6c6c66af73fea9f0545b826d899a70_icgraph" alt=""/></div>
+<map name="agroup__savers_ga5b6c6c66af73fea9f0545b826d899a70_icgraph" id="agroup__savers_ga5b6c6c66af73fea9f0545b826d899a70_icgraph">
+<area shape="rect" title="Prints a list of names as a tab&#45;separated row to a file." alt="" coords="439,161,578,189"/>
+<area shape="rect" href="group__crossers.html#ga823b906485f3edf2771935f2ad4f12db" title="Performs random crosses among members of a group." alt="" coords="218,25,388,53"/>
+<area shape="rect" href="group__crossers.html#ga21fd20fa9a626c2933b7ec114c3faca5" title="Performs random crosses where the first parent comes from one group and the second from another." alt="" coords="219,83,387,111"/>
+<area shape="rect" href="sim-operations_8c.html#a877bbfdb03961d00c30f7e2fa55efe7c" title="Performs the crosses of pairs of parents whose indexes are provided in an array." alt="" coords="215,135,391,163"/>
+<area shape="rect" href="group__crossers.html#ga4eb395614f3ec7ffecb3b779c16e6f17" title="Creates an identical copy of each member of a group." alt="" coords="254,187,352,215"/>
+<area shape="rect" href="group__crossers.html#ga6a3afc7743003c66fe24e7a2872e26cc" title="Creates a doubled haploid from each member of a group." alt="" coords="223,239,383,267"/>
+<area shape="rect" href="group__crossers.html#gaafc0d183fdb9762dc0817e5bd3009178" title="Selfs each member of a group for a certain number of generations." alt="" coords="256,291,350,319"/>
+<area shape="rect" href="group__crossers.html#gafdd1fa0e8dd54ba1f3089c05986686cb" title="Find the top m percent of a group and perform random crosses between those top individuals." alt="" coords="10,5,162,49"/>
+<area shape="rect" href="group__crossers.html#gab173426b15ba3e135e1eea25035afd85" title="Perform crosses between all pairs of parents in the group from_group and allocates the resulting offs..." alt="" coords="8,73,164,117"/>
+<area shape="rect" href="group__crossers.html#ga18a22fc990289359e790fa207613c121" title="Perform crosses between pairs of parents identified by name in a file and allocate the resulting offs..." alt="" coords="5,141,167,169"/>
+<area shape="rect" href="group__crossers.html#ga0cc412ee0f607370ad3b34f4c39a15ff" title="Perform crosses between previously&#45;generated offspring of pairs of parents identified by name in a fi..." alt="" coords="10,193,162,237"/>
+</map>
+</div>
 
 </div>
 </div>
@@ -981,24 +1060,23 @@ Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
-<div id="dynsection-13" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
-  <img id="dynsection-13-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
-<div id="dynsection-13-summary" class="dynsummary" style="display:block;">
+<div id="dynsection-14" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-14-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
+<div id="dynsection-14-summary" class="dynsummary" style="display:block;">
 </div>
-<div id="dynsection-13-content" class="dyncontent" style="display:none;">
+<div id="dynsection-14-content" class="dyncontent" style="display:none;">
 <div class="center"><img src="group__savers_ga5674dd2fbdcf205475c8036a09536f2e_cgraph.png" border="0" usemap="#agroup__savers_ga5674dd2fbdcf205475c8036a09536f2e_cgraph" alt=""/></div>
 <map name="agroup__savers_ga5674dd2fbdcf205475c8036a09536f2e_cgraph" id="agroup__savers_ga5674dd2fbdcf205475c8036a09536f2e_cgraph">
-<area shape="rect" title="Print the parents of each genotype in the SimData to a file." alt="" coords="5,32,169,60"/>
-<area shape="rect" href="group__search.html#ga0a9f180e2bff0952bd9e5af26c7ae37d" title="Returns the name of the genotype with a given id." alt="" coords="222,5,335,33"/>
-<area shape="rect" href="group__search.html#gade1706129ba2510f1f1ed496b51efcb6" title="Saves the ids of the parents of a genotype with a particular id to the output array output." alt="" coords="217,57,340,85"/>
-<area shape="rect" href="group__supporters.html#ga98f69379fe6a5cca7fb25ed1fe49e1c7" title="Returns the located index in an array of integers where the integer is target." alt="" coords="388,57,561,85"/>
+<area shape="rect" title="Print the parents of each genotype in the SimData to a file." alt="" coords="5,5,169,33"/>
+<area shape="rect" href="group__search.html#gaaea63100f4c2639907cce72c29a413e8" title="Returns the name of the genotype with a given id." alt="" coords="217,5,329,33"/>
+<area shape="rect" href="group__supporters.html#ga4e3d1fd7ae67dd133c4dbdec9a84d455" title="Returns the located index in an array of PedigreeIDs where the PedigreeID is target." alt="" coords="377,5,578,33"/>
 </map>
 </div>
 
 </div>
 </div>
-<a id="gaead4d69058f8fe7d59465100c801bbbd" name="gaead4d69058f8fe7d59465100c801bbbd"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#gaead4d69058f8fe7d59465100c801bbbd">&#9670;&nbsp;</a></span>save_parents_of()</h2>
+<a id="ga2ad03e903efdd56805722af554328592" name="ga2ad03e903efdd56805722af554328592"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga2ad03e903efdd56805722af554328592">&#9670;&nbsp;</a></span>save_parents_of()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -1018,13 +1096,13 @@ Functions</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">unsigned int&#160;</td>
+          <td class="paramtype"><a class="el" href="struct_pedigree_i_d.html">PedigreeID</a>&#160;</td>
           <td class="paramname"><em>p1</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">unsigned int&#160;</td>
+          <td class="paramtype"><a class="el" href="struct_pedigree_i_d.html">PedigreeID</a>&#160;</td>
           <td class="paramname"><em>p2</em>&#160;</td>
         </tr>
         <tr>
@@ -1051,41 +1129,41 @@ Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
-<div id="dynsection-14" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
-  <img id="dynsection-14-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
-<div id="dynsection-14-summary" class="dynsummary" style="display:block;">
-</div>
-<div id="dynsection-14-content" class="dyncontent" style="display:none;">
-<div class="center"><img src="group__savers_gaead4d69058f8fe7d59465100c801bbbd_cgraph.png" border="0" usemap="#agroup__savers_gaead4d69058f8fe7d59465100c801bbbd_cgraph" alt=""/></div>
-<map name="agroup__savers_gaead4d69058f8fe7d59465100c801bbbd_cgraph" id="agroup__savers_gaead4d69058f8fe7d59465100c801bbbd_cgraph">
-<area shape="rect" title="Recursively save the parents of a particular id to a file." alt="" coords="5,32,120,60"/>
-<area shape="rect" href="group__search.html#ga0a9f180e2bff0952bd9e5af26c7ae37d" title="Returns the name of the genotype with a given id." alt="" coords="173,5,286,33"/>
-<area shape="rect" href="group__search.html#gade1706129ba2510f1f1ed496b51efcb6" title="Saves the ids of the parents of a genotype with a particular id to the output array output." alt="" coords="168,57,291,85"/>
-<area shape="rect" href="group__supporters.html#ga98f69379fe6a5cca7fb25ed1fe49e1c7" title="Returns the located index in an array of integers where the integer is target." alt="" coords="339,57,512,85"/>
-</map>
-</div>
 <div id="dynsection-15" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
-  <img id="dynsection-15-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
+  <img id="dynsection-15-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
 <div id="dynsection-15-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-15-content" class="dyncontent" style="display:none;">
-<div class="center"><img src="group__savers_gaead4d69058f8fe7d59465100c801bbbd_icgraph.png" border="0" usemap="#agroup__savers_gaead4d69058f8fe7d59465100c801bbbd_icgraph" alt=""/></div>
-<map name="agroup__savers_gaead4d69058f8fe7d59465100c801bbbd_icgraph" id="agroup__savers_gaead4d69058f8fe7d59465100c801bbbd_icgraph">
+<div class="center"><img src="group__savers_ga2ad03e903efdd56805722af554328592_cgraph.png" border="0" usemap="#agroup__savers_ga2ad03e903efdd56805722af554328592_cgraph" alt=""/></div>
+<map name="agroup__savers_ga2ad03e903efdd56805722af554328592_cgraph" id="agroup__savers_ga2ad03e903efdd56805722af554328592_cgraph">
+<area shape="rect" title="Recursively save the parents of a particular id to a file." alt="" coords="5,32,120,60"/>
+<area shape="rect" href="group__search.html#gaaea63100f4c2639907cce72c29a413e8" title="Returns the name of the genotype with a given id." alt="" coords="173,5,286,33"/>
+<area shape="rect" href="group__search.html#gaa814762960a964cd0aaf82be0c18b8cb" title="Saves the ids of the parents of a genotype with a particular id to the output array output." alt="" coords="168,57,291,85"/>
+<area shape="rect" href="group__supporters.html#ga4e3d1fd7ae67dd133c4dbdec9a84d455" title="Returns the located index in an array of PedigreeIDs where the PedigreeID is target." alt="" coords="339,32,540,60"/>
+</map>
+</div>
+<div id="dynsection-16" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-16-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
+<div id="dynsection-16-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-16-content" class="dyncontent" style="display:none;">
+<div class="center"><img src="group__savers_ga2ad03e903efdd56805722af554328592_icgraph.png" border="0" usemap="#agroup__savers_ga2ad03e903efdd56805722af554328592_icgraph" alt=""/></div>
+<map name="agroup__savers_ga2ad03e903efdd56805722af554328592_icgraph" id="agroup__savers_ga2ad03e903efdd56805722af554328592_icgraph">
 <area shape="rect" title="Recursively save the parents of a particular id to a file." alt="" coords="652,252,767,280"/>
 <area shape="rect" href="group__savers.html#gabf1a9b82d2978a1563daf31c8814a783" title="Print the full known pedigree of each genotype in a single AlleleMatrix to a file." alt="" coords="457,187,587,215"/>
 <area shape="rect" href="group__savers.html#ga08c823d63ce4c648432cb740b5ab743b" title="Print the full known pedigree of each genotype in the SimData to a file." alt="" coords="459,252,585,280"/>
-<area shape="rect" href="group__savers.html#ga7adbe41e3a1d04fbf2b32840e2d01f86" title="Print the full known pedigree of each genotype in a group to a file." alt="" coords="439,329,604,357"/>
-<area shape="rect" href="group__crossers.html#ga7f9865d8d1912cda7e8524d1ff761de6" title="Performs random crosses among members of a group." alt="" coords="218,19,388,47"/>
-<area shape="rect" href="group__crossers.html#ga43f436342a1afc3b14343a8f6e9385f9" title="Performs random crosses where the first parent comes from one group and the second from another." alt="" coords="219,83,387,111"/>
-<area shape="rect" href="sim-operations_8c.html#a42ded1341b4c5a03c2233e2a3875fe07" title="Performs the crosses of pairs of parents whose indexes are provided in an array." alt="" coords="215,135,391,163"/>
-<area shape="rect" href="group__crossers.html#ga5e1da39f8341127e758d32393e8654aa" title="Creates an identical copy of each member of a group." alt="" coords="254,187,352,215"/>
-<area shape="rect" href="group__crossers.html#gab081b254e7abce63067b8c02fbac774f" title="Creates a doubled haploid from each member of a group." alt="" coords="223,239,383,267"/>
-<area shape="rect" href="group__crossers.html#gaf0d8ffcde1a2098e7ae807a031bbe7b9" title="Selfs each member of a group for a certain number of generations." alt="" coords="256,291,350,319"/>
-<area shape="rect" href="group__crossers.html#gaa41e75da9e6e4f8db5466e8929dec2ee" title="Find the top m percent of a group and perform random crosses between those top individuals." alt="" coords="10,5,162,49"/>
-<area shape="rect" href="group__crossers.html#ga9d79117014f247c078c6576c70d600fb" title="Perform crosses between all pairs of parents in the group from_group and allocates the resulting offs..." alt="" coords="8,73,164,117"/>
-<area shape="rect" href="group__crossers.html#ga7fafc033bf3aaa14c9d5affbe9421ca9" title="Perform crosses between pairs of parents identified by name in a file and allocate the resulting offs..." alt="" coords="5,141,167,169"/>
-<area shape="rect" href="group__crossers.html#gafb306165b0cf0f5cd752f3eaf4c60928" title="Perform crosses between previously&#45;generated offspring of pairs of parents identified by name in a fi..." alt="" coords="10,193,162,237"/>
-<area shape="rect" href="group__collgetters.html#ga530d4ce0844f7709a6868d63f018ef28" title="Gets the full pedigree string (as per save_group_full_pedigree() ) of each member of the group." alt="" coords="232,343,374,371"/>
+<area shape="rect" href="group__savers.html#ga821e9489b1668201f9bd38d9ac467673" title="Print the full known pedigree of each genotype in a group to a file." alt="" coords="439,329,604,357"/>
+<area shape="rect" href="group__crossers.html#ga823b906485f3edf2771935f2ad4f12db" title="Performs random crosses among members of a group." alt="" coords="218,19,388,47"/>
+<area shape="rect" href="group__crossers.html#ga21fd20fa9a626c2933b7ec114c3faca5" title="Performs random crosses where the first parent comes from one group and the second from another." alt="" coords="219,83,387,111"/>
+<area shape="rect" href="sim-operations_8c.html#a877bbfdb03961d00c30f7e2fa55efe7c" title="Performs the crosses of pairs of parents whose indexes are provided in an array." alt="" coords="215,135,391,163"/>
+<area shape="rect" href="group__crossers.html#ga4eb395614f3ec7ffecb3b779c16e6f17" title="Creates an identical copy of each member of a group." alt="" coords="254,187,352,215"/>
+<area shape="rect" href="group__crossers.html#ga6a3afc7743003c66fe24e7a2872e26cc" title="Creates a doubled haploid from each member of a group." alt="" coords="223,239,383,267"/>
+<area shape="rect" href="group__crossers.html#gaafc0d183fdb9762dc0817e5bd3009178" title="Selfs each member of a group for a certain number of generations." alt="" coords="256,291,350,319"/>
+<area shape="rect" href="group__crossers.html#gafdd1fa0e8dd54ba1f3089c05986686cb" title="Find the top m percent of a group and perform random crosses between those top individuals." alt="" coords="10,5,162,49"/>
+<area shape="rect" href="group__crossers.html#gab173426b15ba3e135e1eea25035afd85" title="Perform crosses between all pairs of parents in the group from_group and allocates the resulting offs..." alt="" coords="8,73,164,117"/>
+<area shape="rect" href="group__crossers.html#ga18a22fc990289359e790fa207613c121" title="Perform crosses between pairs of parents identified by name in a file and allocate the resulting offs..." alt="" coords="5,141,167,169"/>
+<area shape="rect" href="group__crossers.html#ga0cc412ee0f607370ad3b34f4c39a15ff" title="Perform crosses between previously&#45;generated offspring of pairs of parents identified by name in a fi..." alt="" coords="10,193,162,237"/>
+<area shape="rect" href="group__collgetters.html#ga31b649f4b57e0fa7ed2490b4cc48c97e" title="Gets the full pedigree string (as per save_group_full_pedigree() ) of each member of the group." alt="" coords="232,343,374,371"/>
 </map>
 </div>
 
@@ -1119,19 +1197,7 @@ Functions</h2></td></tr>
 
 <p>Prints the setup data (everything except the actual genotypes) stored inside a <a class="el" href="struct_sim_data.html" title="Composite type that is used to run crossing simulations.">SimData</a> to a file. </p>
 <p >Column separators are tabs.</p>
-<p >The printing format is:</p>
-<p >name chr pos [allele to which these effects apply, 0+ columns]</p>
-<p >[marker name] [chr number] [chr pos] [effects, 0+ columns]</p>
-<p >[marker name] [chr number] [chr pos] [effects, 0+ columns]</p>
-<p >...</p>
-<p >If m-&gt;effects is NULL, m-&gt;ref_alleles is NULL, or m-&gt;genetic_map is NULL, then the relevant columns are omitted.</p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">f</td><td>file pointer opened for writing to put the output </td></tr>
-    <tr><td class="paramname">m</td><td>pointer to the <a class="el" href="struct_sim_data.html" title="Composite type that is used to run crossing simulations.">SimData</a> whose data we print </td></tr>
-  </table>
-  </dd>
-</dl>
+<p >This function is deprecated. It will be replaced with a file format that genomicSimulation can save and reload to preserve its state. </p>
 
 </div>
 </div>
@@ -1184,8 +1250,8 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="ga2790244044d202e6fb158d8f57cf6d6f" name="ga2790244044d202e6fb158d8f57cf6d6f"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ga2790244044d202e6fb158d8f57cf6d6f">&#9670;&nbsp;</a></span>save_transposed_group_alleles()</h2>
+<a id="gaaf856013dc9108a075ed5c1145487285" name="gaaf856013dc9108a075ed5c1145487285"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gaaf856013dc9108a075ed5c1145487285">&#9670;&nbsp;</a></span>save_transposed_group_alleles()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -1205,7 +1271,7 @@ Functions</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const int&#160;</td>
+          <td class="paramtype">const <a class="el" href="struct_group_num.html">GroupNum</a>&#160;</td>
           <td class="paramname"><em>group_id</em>&#160;</td>
         </tr>
         <tr>
@@ -1231,18 +1297,18 @@ Functions</h2></td></tr>
   </dd>
 </dl>
 <p >fprintf(f, "\n");</p>
-<div id="dynsection-16" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
-  <img id="dynsection-16-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
-<div id="dynsection-16-summary" class="dynsummary" style="display:block;">
+<div id="dynsection-17" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-17-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
+<div id="dynsection-17-summary" class="dynsummary" style="display:block;">
 </div>
-<div id="dynsection-16-content" class="dyncontent" style="display:none;">
-<div class="center"><img src="group__savers_ga2790244044d202e6fb158d8f57cf6d6f_cgraph.png" border="0" usemap="#agroup__savers_ga2790244044d202e6fb158d8f57cf6d6f_cgraph" alt=""/></div>
-<map name="agroup__savers_ga2790244044d202e6fb158d8f57cf6d6f_cgraph" id="agroup__savers_ga2790244044d202e6fb158d8f57cf6d6f_cgraph">
+<div id="dynsection-17-content" class="dyncontent" style="display:none;">
+<div class="center"><img src="group__savers_gaaf856013dc9108a075ed5c1145487285_cgraph.png" border="0" usemap="#agroup__savers_gaaf856013dc9108a075ed5c1145487285_cgraph" alt=""/></div>
+<map name="agroup__savers_gaaf856013dc9108a075ed5c1145487285_cgraph" id="agroup__savers_gaaf856013dc9108a075ed5c1145487285_cgraph">
 <area shape="rect" title="Prints the genotypes of each individual in a given group to a file, with the following format." alt="" coords="5,76,163,120"/>
-<area shape="rect" href="group__collgetters.html#gaf3f95ff569cca762e4de8be67c4d4097" title="Gets a shallow copy of the genes/alleles of each member of the group." alt="" coords="213,5,333,33"/>
-<area shape="rect" href="group__collgetters.html#ga706e640cd2cfb0f390f98c3b8c00a709" title="Function to count the number of genotypes that currently belong to the specified group." alt="" coords="383,84,492,112"/>
-<area shape="rect" href="group__collgetters.html#ga7bb2cb27f43af0f6330c6fa9105d8dea" title="Gets the ids of each member of the group." alt="" coords="222,109,324,137"/>
-<area shape="rect" href="group__collgetters.html#gabb5a3786c56f6cfc7fa8a363bb1d2149" title="Gets a shallow copy of the names of each member of the group." alt="" coords="211,161,335,189"/>
+<area shape="rect" href="group__collgetters.html#ga2897db8c7fffee9b2a4bcd7f81e368f6" title="Gets a shallow copy of the genes/alleles of each member of the group." alt="" coords="213,5,333,33"/>
+<area shape="rect" href="group__collgetters.html#ga6773f2b434edda042163890dea8f8dbd" title="Function to count the number of genotypes that currently belong to the specified group." alt="" coords="383,84,492,112"/>
+<area shape="rect" href="group__collgetters.html#gacc8432b03b8b5a33e0adde825c02ee7a" title="Gets the ids of each member of the group." alt="" coords="222,109,324,137"/>
+<area shape="rect" href="group__collgetters.html#gab535d4c5e7afdce3816ab40c19a46a78" title="Gets a shallow copy of the names of each member of the group." alt="" coords="211,161,335,189"/>
 </map>
 </div>
 

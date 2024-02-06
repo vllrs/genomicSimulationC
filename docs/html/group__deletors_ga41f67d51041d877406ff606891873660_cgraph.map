@@ -1,5 +1,0 @@
-<map id="delete_label" name="delete_label">
-<area shape="rect" id="node1" title="Clears memory of this label from the simulation and all its genotypes." alt="" coords="5,32,96,60"/>
-<area shape="rect" id="node2" href="$group__supporters.html#ga835f8472c31ae57a4b826417f3dd7781" title="Function to identify the label lookup index of a label identifier." alt="" coords="144,5,272,33"/>
-<area shape="rect" id="node3" href="$group__supporters.html#ga6072a152b624743eeafb30adaf9b7f17" title="Replace calls to malloc direct with this function, which errors and exits with status 2 if memory all..." alt="" coords="166,57,250,85"/>
-</map>

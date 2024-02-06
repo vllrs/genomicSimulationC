@@ -1,7 +1,7 @@
 #ifndef SIM_OPERATIONS
 #define SIM_OPERATIONS
 #include "sim-operations.h"
-/* genomicSimulationC v0.2.4 - last edit 31 Jan 2024 */
+/* genomicSimulationC v0.2.4 - last edit 5 Feb 2024 */
 
 /** Options parameter to run SimData functions in their bare-bones form.*/
 const GenOptions BASIC_OPT = {
@@ -12,7 +12,7 @@ const GenOptions BASIC_OPT = {
 	.will_allocate_ids = TRUE,
 	.filename_prefix = NULL,
 	.will_save_pedigree_to_file = FALSE,
-    .will_save_bvs_to_file = -1,
+    .will_save_bvs_to_file = NOT_AN_EFFECT_SET,
 	.will_save_alleles_to_file = FALSE,
 	.will_save_to_simdata = TRUE
 };
@@ -2107,20 +2107,22 @@ int get_parents_of_id( const AlleleMatrix* start, const PedigreeID id, PedigreeI
 
 			if (index < 0) {
 				// search failed
-				if (m->next == NULL) {
+                /*if (m->next == NULL) {
                     fprintf(stderr, "Unable to locate ID %d in simulation memory (genotype has likely been deleted): pedigree past this point cannot be determined.\n", id.id);
 					return 2;
 				} else {
 					m = m->next;
-				}
-			}
+                }*/
+                continue;
+            } else {
 
-            if (m->pedigrees[0][index].id != NO_PEDIGREE.id || m->pedigrees[1][index].id != NO_PEDIGREE.id) {
-				output[0] = m->pedigrees[0][index];
-				output[1] = m->pedigrees[1][index];
-				return 0;
-			}
-			return 1; // if neither parent's id is known
+                if (m->pedigrees[0][index].id != NO_PEDIGREE.id || m->pedigrees[1][index].id != NO_PEDIGREE.id) {
+                    output[0] = m->pedigrees[0][index];
+                    output[1] = m->pedigrees[1][index];
+                    return 0;
+                }
+                return 1; // if neither parent's id is known
+            }
 
 		}
 
@@ -3915,8 +3917,7 @@ int get_group_indexes(const SimData* d, const GroupNum group_id, int group_size,
  *
  * @param d the SimData struct on which to perform the operation
  * @param group_id the group number of the group you want data from
- * @param effIndex index (loading order, starting at 0) of the marker effect set to use
- * to calculate BVs. eg. 0 if only one set of marker effects is loaded.
+ * @param effID Identifier of the marker effect set to be used to calculate these breeding values
  * @param group_size if group_size has already been calculated, pass it too, otherwise
  * put in -1 (UNINITIALISED). This enables fewer calls to get_group_size when using multiple
  * group-data-getter functions.
@@ -4362,7 +4363,7 @@ void delete_group(SimData* d, const GroupNum group_id) {
 void delete_eff_set(SimData* d, EffectID whichID) {
     int whichIndex = get_index_of_eff_set(d, whichID);
     if (whichIndex < 0 || whichIndex >= d->n_eff_sets) {
-        fprintf(stderr, "Nonexistent effect set %d\n", whichIndex);
+        fprintf(stderr, "Nonexistent effect set %d\n", whichID);
         return;
     }
 
@@ -4370,15 +4371,24 @@ void delete_eff_set(SimData* d, EffectID whichID) {
         delete_effect_matrix(d->e);
         d->n_eff_sets = 0;
         free(d->e);
+        free(d->eff_set_ids);
         d->e = NULL;
+        d->eff_set_ids = NULL;
     } else {
         delete_effect_matrix(d->e + whichIndex);
         d->n_eff_sets--;
+
         EffectMatrix* newE = get_malloc(sizeof(EffectMatrix)*d->n_eff_sets);
         memcpy(newE, d->e, sizeof(EffectMatrix)*whichIndex);
         memcpy(newE + whichIndex, d->e + whichIndex + 1, sizeof(EffectMatrix)*(d->n_eff_sets - whichIndex));
         free(d->e);
         d->e = newE;
+
+        EffectID* newIDs = get_malloc(sizeof(EffectID)*d->n_eff_sets);
+        memcpy(newIDs, d->eff_set_ids, sizeof(EffectID)*whichIndex);
+        memcpy(newIDs + whichIndex, d->eff_set_ids + whichIndex + 1, sizeof(EffectID)*(d->n_eff_sets - whichIndex));
+        free(d->eff_set_ids);
+        d->eff_set_ids = newIDs;
     }
 }
 
@@ -5420,14 +5430,14 @@ void get_chromosome_locations(SimData *d) {
  * @param d pointer to SimData to be populated.
  * @param filename string name/path of file containing effect values.
  * @param label optional name to have the effects known as
- * @returns the index where the set of marker effects just loaded is stored.
+ * @returns the ID of the set of marker effects just loaded is stored.
 */
-int load_effects_to_simdata(SimData* d, const char* filename) {
+EffectID load_effects_to_simdata(SimData* d, const char* filename) {
 	// open our file.
 	FILE* fp;
 	if ((fp = fopen(filename, "r")) == NULL) {
 		fprintf(stderr, "Failed to open file %s.\n", filename);
-        return -1;
+        return NOT_AN_EFFECT_SET;
 	}
 
 	int bufferlen = 100; // assume no line is over 100 characters long
@@ -5529,7 +5539,7 @@ int load_effects_to_simdata(SimData* d, const char* filename) {
 	printf("%d effect values spanning %d alleles loaded.\n", n_loaded, n_allele);
 
 	fclose(fp);
-    return index;
+    return d->eff_set_ids[index];
 }
 
 /** Populates a SimData combination from scratch with marker allele data, a genetic map, and
@@ -5546,21 +5556,23 @@ int load_effects_to_simdata(SimData* d, const char* filename) {
  * allele data.
  * @param map_file string name/path of file containing genetic map data.
  * @param effect_file string name/path of file containing effect values (optional).
- * @returns group number of the founding group
+ * @returns group number of the founding group, and effect set id of the loaded effect file.
 */
-GroupNum load_all_simdata(SimData* d, const char* data_file, const char* map_file, const char* effect_file) {
+struct GroupAndEffectSet load_all_simdata(SimData* d, const char* data_file, const char* map_file, const char* effect_file) {
     clear_simdata(d); // make this empty.
     GroupNum gp = load_transposed_genes_to_simdata(d, data_file);
 
 	load_genmap_to_simdata(d, map_file);
 
+    EffectID effId = NOT_AN_EFFECT_SET;
 	if (effect_file != NULL) {
-        load_effects_to_simdata(d, effect_file);
+        effId = load_effects_to_simdata(d, effect_file);
 	}
 
 	get_sorted_markers(d, d->n_markers);
 	get_chromosome_locations(d);
-	return gp;
+
+    return (struct GroupAndEffectSet){.group=gp,.effectSet=effId};
 }
 
 
@@ -6199,14 +6211,18 @@ GroupNum cross_random_individuals(SimData* d, const GroupNum from_group, const i
 		strcat(fname, "-pedigree.txt");
 		fp = fopen(fname, "w");
 	}
-    if (g.will_save_bvs_to_file >= 0 && g.will_save_bvs_to_file < d->n_eff_sets) {
-        if (g.filename_prefix != NULL) {
-            strcpy(fname, g.filename_prefix);
-        } else {
-            strcpy(fname, "out");
+    int effIndex = UNINITIALISED;
+    if (g.will_save_bvs_to_file.id != NOT_AN_EFFECT_SET.id) {
+        effIndex = get_index_of_eff_set(d,g.will_save_bvs_to_file);
+        if (effIndex != UNINITIALISED) { //error code for 'effect set does not exist'
+            if (g.filename_prefix != NULL) {
+                strcpy(fname, g.filename_prefix);
+            } else {
+                strcpy(fname, "out");
+            }
+            strcat(fname, "-bv.txt");
+            fe = fopen(fname, "w");
         }
-		strcat(fname, "-bv.txt");
-		fe = fopen(fname, "w");
     }
 	if (g.will_save_alleles_to_file) {
         if (g.filename_prefix != NULL) {
@@ -6216,6 +6232,7 @@ GroupNum cross_random_individuals(SimData* d, const GroupNum from_group, const i
         }
 		strcat(fname, "-genotype.txt");
 		fg = fopen(fname, "w");
+        save_names_header(fg,d->n_markers, (const char**) d->markers);
 	}
 
 	//RPACKINSERT GetRNGstate();
@@ -6258,13 +6275,13 @@ GroupNum cross_random_individuals(SimData* d, const GroupNum from_group, const i
 				if (g.will_save_pedigree_to_file) {
 					save_AM_pedigree( fp, crosses, d);
 				}
-                if (g.will_save_bvs_to_file >= 0 && g.will_save_bvs_to_file < d->n_eff_sets) {
-                    eff = calculate_bvs( crosses, d->e + g.will_save_bvs_to_file);
+                if (effIndex != UNINITIALISED) { // represents g.will_save_bvs_to_file
+                    eff = calculate_bvs( crosses, d->e + effIndex);
                     save_manual_bvs( fe, &eff, crosses->ids, (const char**) crosses->names);
 					delete_dmatrix( &eff);
 				}
 				if (g.will_save_alleles_to_file) {
-                    save_allele_matrix( fg, crosses, (const char**) d->markers);
+                    save_allele_matrix( fg, crosses);
 				}
 
 				if (g.will_save_to_simdata) {
@@ -6312,14 +6329,14 @@ GroupNum cross_random_individuals(SimData* d, const GroupNum from_group, const i
 		save_AM_pedigree( fp, crosses, d);
 		fclose(fp);
 	}
-    if (g.will_save_bvs_to_file >= 0 && g.will_save_bvs_to_file < d->n_eff_sets) {
-        eff = calculate_bvs( crosses, d->e + g.will_save_bvs_to_file);
+    if (effIndex != UNINITIALISED) { // represents g.will_save_bvs_to_file
+        eff = calculate_bvs( crosses, d->e + effIndex);
         save_manual_bvs( fe, &eff, crosses->ids, (const char**) crosses->names);
 		delete_dmatrix( &eff);
 		fclose(fe);
 	}
 	if (g.will_save_alleles_to_file) {
-        save_allele_matrix( fg, crosses, (const char**) d->markers);
+        save_allele_matrix( fg, crosses );
 		fclose(fg);
 	}
 	if (g.will_save_to_simdata) {
@@ -6464,14 +6481,18 @@ GroupNum cross_randomly_between(SimData*d, const GroupNum group1, const GroupNum
         strcat(fname, "-pedigree.txt");
         fp = fopen(fname, "w");
     }
-    if (g.will_save_bvs_to_file >= 0 && g.will_save_bvs_to_file < d->n_eff_sets) {
-        if (g.filename_prefix != NULL) {
-            strcpy(fname, g.filename_prefix);
-        } else {
-            strcpy(fname, "out");
+    int effIndex = UNINITIALISED;
+    if (g.will_save_bvs_to_file.id != NOT_AN_EFFECT_SET.id) {
+        effIndex = get_index_of_eff_set(d,g.will_save_bvs_to_file);
+        if (effIndex != UNINITIALISED) { //error code for 'effect set does not exist'
+            if (g.filename_prefix != NULL) {
+                strcpy(fname, g.filename_prefix);
+            } else {
+                strcpy(fname, "out");
+            }
+            strcat(fname, "-bv.txt");
+            fe = fopen(fname, "w");
         }
-        strcat(fname, "-bv.txt");
-        fe = fopen(fname, "w");
     }
     if (g.will_save_alleles_to_file) {
         if (g.filename_prefix != NULL) {
@@ -6481,6 +6502,7 @@ GroupNum cross_randomly_between(SimData*d, const GroupNum group1, const GroupNum
         }
         strcat(fname, "-genotype.txt");
         fg = fopen(fname, "w");
+        save_names_header(fg,d->n_markers, (const char**) d->markers);
     }
 
     //RPACKINSERT GetRNGstate();
@@ -6528,13 +6550,13 @@ GroupNum cross_randomly_between(SimData*d, const GroupNum group1, const GroupNum
                 if (g.will_save_pedigree_to_file) {
                     save_AM_pedigree( fp, crosses, d);
                 }
-                if (g.will_save_bvs_to_file >= 0 && g.will_save_bvs_to_file < d->n_eff_sets) {
-                    eff = calculate_bvs( crosses, d->e + g.will_save_bvs_to_file);
+                if (effIndex != UNINITIALISED) { // represents g.will_save_bvs_to_file
+                    eff = calculate_bvs( crosses, d->e + effIndex);
                     save_manual_bvs( fe, &eff, crosses->ids, (const char**) crosses->names);
                     delete_dmatrix( &eff);
                 }
                 if (g.will_save_alleles_to_file) {
-                    save_allele_matrix( fg, crosses, (const char**) d->markers);
+                    save_allele_matrix( fg, crosses );
                 }
 
                 if (g.will_save_to_simdata) {
@@ -6585,14 +6607,14 @@ GroupNum cross_randomly_between(SimData*d, const GroupNum group1, const GroupNum
         save_AM_pedigree( fp, crosses, d);
         fclose(fp);
     }
-    if (g.will_save_bvs_to_file >= 0 && g.will_save_bvs_to_file < d->n_eff_sets) {
-        eff = calculate_bvs( crosses, d->e + g.will_save_bvs_to_file);
+    if (effIndex != UNINITIALISED) { // represents g.will_save_bvs_to_file
+        eff = calculate_bvs( crosses, d->e + effIndex);
         save_manual_bvs( fe, &eff, crosses->ids, (const char**) crosses->names);
         delete_dmatrix( &eff);
         fclose(fe);
     }
     if (g.will_save_alleles_to_file) {
-        save_allele_matrix( fg, crosses, (const char**) d->markers);
+        save_allele_matrix( fg, crosses );
         fclose(fg);
     }
     if (g.will_save_to_simdata) {
@@ -6672,15 +6694,19 @@ GroupNum cross_these_combinations(SimData* d, const int n_combinations, const in
 		strcat(fname, "-pedigree.txt");
 		fp = fopen(fname, "w");
 	}
-    if (g.will_save_bvs_to_file >= 0 && g.will_save_bvs_to_file < d->n_eff_sets) {
-        if (g.filename_prefix != NULL) {
-            strcpy(fname, g.filename_prefix);
-        } else {
-            strcpy(fname, "out");
+    int effIndex = UNINITIALISED;
+    if (g.will_save_bvs_to_file.id != NOT_AN_EFFECT_SET.id) {
+        effIndex = get_index_of_eff_set(d,g.will_save_bvs_to_file);
+        if (effIndex != UNINITIALISED) { //error code for 'effect set does not exist'
+            if (g.filename_prefix != NULL) {
+                strcpy(fname, g.filename_prefix);
+            } else {
+                strcpy(fname, "out");
+            }
+            strcat(fname, "-bv.txt");
+            fe = fopen(fname, "w");
         }
-		strcat(fname, "-bv.txt");
-		fe = fopen(fname, "w");
-	}
+    }
 	if (g.will_save_alleles_to_file) {
         if (g.filename_prefix != NULL) {
             strcpy(fname, g.filename_prefix);
@@ -6689,6 +6715,7 @@ GroupNum cross_these_combinations(SimData* d, const int n_combinations, const in
         }
 		strcat(fname, "-genotype.txt");
 		fg = fopen(fname, "w");
+        save_names_header(fg,d->n_markers, (const char**) d->markers);
 	}
 
 	//RPACKINSERT GetRNGstate();
@@ -6723,13 +6750,13 @@ GroupNum cross_these_combinations(SimData* d, const int n_combinations, const in
 					if (g.will_save_pedigree_to_file) {
 						save_AM_pedigree( fp, crosses, d);
 					}
-                    if (g.will_save_bvs_to_file >= 0 && g.will_save_bvs_to_file < d->n_eff_sets) {
-                        eff = calculate_bvs( crosses, d->e + g.will_save_bvs_to_file);
+                    if (effIndex != UNINITIALISED) { // represents g.will_save_bvs_to_file
+                        eff = calculate_bvs( crosses, d->e + effIndex);
                         save_manual_bvs( fe, &eff, crosses->ids, (const char**) crosses->names);
 						delete_dmatrix( &eff);
 					}
 					if (g.will_save_alleles_to_file) {
-                        save_allele_matrix( fg, crosses, (const char**) d->markers);
+                        save_allele_matrix( fg, crosses );
 					}
 
 					if (g.will_save_to_simdata) {
@@ -6775,14 +6802,14 @@ GroupNum cross_these_combinations(SimData* d, const int n_combinations, const in
 		save_AM_pedigree( fp, crosses, d);
 		fclose(fp);
 	}
-    if (g.will_save_bvs_to_file >= 0 && g.will_save_bvs_to_file < d->n_eff_sets) {
-        eff = calculate_bvs( crosses, d->e + g.will_save_bvs_to_file);
+    if (effIndex != UNINITIALISED) { // represents g.will_save_bvs_to_file
+        eff = calculate_bvs( crosses, d->e + effIndex);
         save_manual_bvs( fe, &eff, crosses->ids, (const char**) crosses->names);
 		delete_dmatrix( &eff);
 		fclose(fe);
 	}
 	if (g.will_save_alleles_to_file) {
-        save_allele_matrix( fg, crosses, (const char**) d->markers);
+        save_allele_matrix( fg, crosses );
 		fclose(fg);
 	}
 	if (g.will_save_to_simdata) {
@@ -6866,15 +6893,19 @@ GroupNum self_n_times(SimData* d, const int n, const GroupNum group, const GenOp
 		strcat(fname, "-pedigree.txt");
 		fp = fopen(fname, "w");
 	}
-    if (g.will_save_bvs_to_file >= 0 && g.will_save_bvs_to_file < d->n_eff_sets) {
-        if (g.filename_prefix != NULL) {
-            strcpy(fname, g.filename_prefix);
-        } else {
-            strcpy(fname, "out");
+    int effIndex = UNINITIALISED;
+    if (g.will_save_bvs_to_file.id != NOT_AN_EFFECT_SET.id) {
+        effIndex = get_index_of_eff_set(d,g.will_save_bvs_to_file);
+        if (effIndex != UNINITIALISED) { //error code for 'effect set does not exist'
+            if (g.filename_prefix != NULL) {
+                strcpy(fname, g.filename_prefix);
+            } else {
+                strcpy(fname, "out");
+            }
+            strcat(fname, "-bv.txt");
+            fe = fopen(fname, "w");
         }
-		strcat(fname, "-bv.txt");
-		fe = fopen(fname, "w");
-	}
+    }
 	if (g.will_save_alleles_to_file) {
         if (g.filename_prefix != NULL) {
             strcpy(fname, g.filename_prefix);
@@ -6883,6 +6914,7 @@ GroupNum self_n_times(SimData* d, const int n, const GroupNum group, const GenOp
         }
 		strcat(fname, "-genotype.txt");
 		fg = fopen(fname, "w");
+        save_names_header(fg,d->n_markers, (const char**) d->markers);
 	}
 
 	//RPACKINSERT GetRNGstate();
@@ -6913,13 +6945,13 @@ GroupNum self_n_times(SimData* d, const int n, const GroupNum group, const GenOp
 					if (g.will_save_pedigree_to_file) {
 						save_AM_pedigree( fp, outcome, d);
 					}
-                    if (g.will_save_bvs_to_file >= 0 && g.will_save_bvs_to_file < d->n_eff_sets) {
-                        eff = calculate_bvs( outcome, d->e + g.will_save_bvs_to_file);
+                    if (effIndex != UNINITIALISED) { // represents g.will_save_bvs_to_file
+                        eff = calculate_bvs( outcome, d->e + effIndex);
                         save_manual_bvs( fe, &eff, outcome->ids, (const char**) outcome->names);
 						delete_dmatrix( &eff);
 					}
 					if (g.will_save_alleles_to_file) {
-                        save_allele_matrix( fg, outcome, (const char**) d->markers);
+                        save_allele_matrix( fg, outcome );
 					}
 
 					if (g.will_save_to_simdata) {
@@ -6974,13 +7006,13 @@ GroupNum self_n_times(SimData* d, const int n, const GroupNum group, const GenOp
 					if (g.will_save_pedigree_to_file) {
 						save_AM_pedigree( fp, outcome, d);
 					}
-                    if (g.will_save_bvs_to_file >= 0 && g.will_save_bvs_to_file < d->n_eff_sets) {
-                        eff = calculate_bvs( outcome, d->e + g.will_save_bvs_to_file);
+                    if (effIndex != UNINITIALISED) { // represents g.will_save_bvs_to_file
+                        eff = calculate_bvs( outcome, d->e + effIndex);
                         save_manual_bvs( fe, &eff, outcome->ids, (const char**) outcome->names);
 						delete_dmatrix( &eff);
 					}
 					if (g.will_save_alleles_to_file) {
-                        save_allele_matrix( fg, outcome, (const char**) d->markers);
+                        save_allele_matrix( fg, outcome );
 					}
 
 					if (g.will_save_to_simdata) {
@@ -7046,14 +7078,14 @@ GroupNum self_n_times(SimData* d, const int n, const GroupNum group, const GenOp
 		save_AM_pedigree( fp, outcome, d);
 		fclose(fp);
 	}
-    if (g.will_save_bvs_to_file >= 0 && g.will_save_bvs_to_file < d->n_eff_sets) {
-        eff = calculate_bvs( outcome, d->e + g.will_save_bvs_to_file);
+    if (effIndex != UNINITIALISED) { // represents g.will_save_bvs_to_file
+        eff = calculate_bvs( outcome, d->e + effIndex);
         save_manual_bvs( fe, &eff, outcome->ids, (const char**) outcome->names);
 		delete_dmatrix( &eff);
 		fclose(fe);
 	}
 	if (g.will_save_alleles_to_file) {
-        save_allele_matrix( fg, outcome, (const char**) d->markers);
+        save_allele_matrix( fg, outcome );
 		fclose(fg);
 	}
 	if (g.will_save_to_simdata) {
@@ -7129,15 +7161,19 @@ GroupNum make_doubled_haploids(SimData* d, const GroupNum group, const GenOption
 		strcat(fname, "-pedigree.txt");
 		fp = fopen(fname, "w");
 	}
-    if (g.will_save_bvs_to_file >= 0 && g.will_save_bvs_to_file < d->n_eff_sets) {
-        if (g.filename_prefix != NULL) {
-            strcpy(fname, g.filename_prefix);
-        } else {
-            strcpy(fname, "out");
+    int effIndex = UNINITIALISED;
+    if (g.will_save_bvs_to_file.id != NOT_AN_EFFECT_SET.id) {
+        effIndex = get_index_of_eff_set(d,g.will_save_bvs_to_file);
+        if (effIndex != UNINITIALISED) { //error code for 'effect set does not exist'
+            if (g.filename_prefix != NULL) {
+                strcpy(fname, g.filename_prefix);
+            } else {
+                strcpy(fname, "out");
+            }
+            strcat(fname, "-bv.txt");
+            fe = fopen(fname, "w");
         }
-		strcat(fname, "-bv.txt");
-		fe = fopen(fname, "w");
-	}
+    }
 	if (g.will_save_alleles_to_file) {
         if (g.filename_prefix != NULL) {
             strcpy(fname, g.filename_prefix);
@@ -7146,6 +7182,7 @@ GroupNum make_doubled_haploids(SimData* d, const GroupNum group, const GenOption
         }
 		strcat(fname, "-genotype.txt");
 		fg = fopen(fname, "w");
+        save_names_header(fg,d->n_markers, (const char**) d->markers);
 	}
 
 	//RPACKINSERT GetRNGstate();
@@ -7177,13 +7214,13 @@ GroupNum make_doubled_haploids(SimData* d, const GroupNum group, const GenOption
 				if (g.will_save_pedigree_to_file) {
 					save_AM_pedigree( fp, outcome, d);
 				}
-                if (g.will_save_bvs_to_file >= 0 && g.will_save_bvs_to_file < d->n_eff_sets) {
-                    eff = calculate_bvs( outcome, d->e + g.will_save_bvs_to_file);
+                if (effIndex != UNINITIALISED) { // represents g.will_save_bvs_to_file
+                    eff = calculate_bvs( outcome, d->e + effIndex);
                     save_manual_bvs( fe, &eff, outcome->ids, (const char**) outcome->names);
 					delete_dmatrix( &eff);
 				}
 				if (g.will_save_alleles_to_file) {
-                    save_allele_matrix( fg, outcome, (const char**) d->markers);
+                    save_allele_matrix( fg, outcome );
 				}
 
 				if (g.will_save_to_simdata) {
@@ -7228,14 +7265,14 @@ GroupNum make_doubled_haploids(SimData* d, const GroupNum group, const GenOption
 		save_AM_pedigree( fp, outcome, d);
 		fclose(fp);
 	}
-    if (g.will_save_bvs_to_file >= 0 && g.will_save_bvs_to_file < d->n_eff_sets) {
-        eff = calculate_bvs( outcome, d->e + g.will_save_bvs_to_file);
+    if (effIndex != UNINITIALISED) { // represents g.will_save_bvs_to_file
+        eff = calculate_bvs( outcome, d->e + effIndex);
         save_manual_bvs( fe, &eff, outcome->ids, (const char**) outcome->names);
 		delete_dmatrix( &eff);
 		fclose(fe);
 	}
 	if (g.will_save_alleles_to_file) {
-        save_allele_matrix( fg, outcome, (const char**) d->markers);
+        save_allele_matrix( fg, outcome );
 		fclose(fg);
 	}
 	if (g.will_save_to_simdata) {
@@ -7323,14 +7360,18 @@ GroupNum make_clones(SimData* d, const GroupNum group, const int inherit_names, 
         strcat(fname, "-pedigree.txt");
         fp = fopen(fname, "w");
     }
-    if (g.will_save_bvs_to_file >= 0 && g.will_save_bvs_to_file < d->n_eff_sets) {
-        if (g.filename_prefix != NULL) {
-            strcpy(fname, g.filename_prefix);
-        } else {
-            strcpy(fname, "out");
+    int effIndex = UNINITIALISED;
+    if (g.will_save_bvs_to_file.id != NOT_AN_EFFECT_SET.id) {
+        effIndex = get_index_of_eff_set(d,g.will_save_bvs_to_file);
+        if (effIndex != UNINITIALISED) { //error code for 'effect set does not exist'
+            if (g.filename_prefix != NULL) {
+                strcpy(fname, g.filename_prefix);
+            } else {
+                strcpy(fname, "out");
+            }
+            strcat(fname, "-bv.txt");
+            fe = fopen(fname, "w");
         }
-        strcat(fname, "-bv.txt");
-        fe = fopen(fname, "w");
     }
     if (g.will_save_alleles_to_file) {
         if (g.filename_prefix != NULL) {
@@ -7340,6 +7381,7 @@ GroupNum make_clones(SimData* d, const GroupNum group, const int inherit_names, 
         }
         strcat(fname, "-genotype.txt");
         fg = fopen(fname, "w");
+        save_names_header(fg,d->n_markers, (const char**) d->markers);
     }
 
     //RPACKINSERT GetRNGstate();
@@ -7373,13 +7415,13 @@ GroupNum make_clones(SimData* d, const GroupNum group, const int inherit_names, 
                 if (g.will_save_pedigree_to_file) {
                     save_AM_pedigree( fp, outcome, d);
                 }
-                if (g.will_save_bvs_to_file >= 0 && g.will_save_bvs_to_file < d->n_eff_sets) {
-                    eff = calculate_bvs( outcome, d->e + g.will_save_bvs_to_file);
+                if (effIndex != UNINITIALISED) { // represents g.will_save_bvs_to_file
+                    eff = calculate_bvs( outcome, d->e + effIndex);
                     save_manual_bvs( fe, &eff, outcome->ids, (const char**) outcome->names);
                     delete_dmatrix( &eff);
                 }
                 if (g.will_save_alleles_to_file) {
-                    save_allele_matrix( fg, outcome, (const char**) d->markers);
+                    save_allele_matrix( fg, outcome );
                 }
 
                 if (g.will_save_to_simdata) {
@@ -7439,14 +7481,14 @@ GroupNum make_clones(SimData* d, const GroupNum group, const int inherit_names, 
         save_AM_pedigree( fp, outcome, d);
         fclose(fp);
     }
-    if (g.will_save_bvs_to_file >= 0 && g.will_save_bvs_to_file < d->n_eff_sets) {
-        eff = calculate_bvs( outcome, d->e + g.will_save_bvs_to_file);
+    if (effIndex != UNINITIALISED) { // represents g.will_save_bvs_to_file
+        eff = calculate_bvs( outcome, d->e + effIndex);
         save_manual_bvs( fe, &eff, outcome->ids, (const char**) outcome->names);
         delete_dmatrix( &eff);
         fclose(fe);
     }
     if (g.will_save_alleles_to_file) {
-        save_allele_matrix( fg, outcome, (const char**) d->markers);
+        save_allele_matrix( fg, outcome );
         fclose(fg);
     }
     if (g.will_save_to_simdata) {
@@ -7514,8 +7556,8 @@ GroupNum make_all_unidirectional_crosses(SimData* d, const GroupNum from_group, 
  * @param m percentage (as a decimal, i.e. 0.2 for 20percent). Take the best [this portion]
  * of the group for performing the random crosses.
  * @param group group number from which to identify top parents and do crosses
- * @param effIndex index (loading order, starting at 0) of the marker effect set to use
- * to calculate BVs. eg. 0 if only one set of marker effects is loaded.
+ * @param effID Identifier of the set of marker effects to be used to calculate the breeding values
+ * with which to rank top parents
  * @param g options for the AlleleMatrix created. @see GenOptions
  * @returns the group number of the group to which the produced offspring were allocated.
  */
@@ -7698,8 +7740,7 @@ GroupNum make_double_crosses_from_file(SimData* d, const char* input_file, const
  * @param d pointer to the SimData object to which the groups and individuals belong.
  * It must have a marker effect file loaded to successfully run this function.
  * @param group group number from which to split the top individuals.
- * @param effIndex index (loading order, starting at 0) of the marker effect set to use
- * to calculate BVs. eg. 0 if only one set of marker effects is loaded.
+ * @param effID Identifier of the set of marker effects to use to calculate BV.
  * @param top_n The number of individuals to put in the new group.
  * @param lowIsBest boolean, if TRUE the `top_n` with the lowest breeding value
  * will be selected, if false the `top_n` with the highest breeding value are.
@@ -7762,8 +7803,7 @@ GroupNum split_by_bv(SimData* d, const GroupNum group, const EffectID effID, con
 * @param d pointer to the SimData object to which the groups and individuals belong.
 * It must have a marker effect file loaded to successfully run this function.
 * @param group calculate breeding values for each genotype in the group with this group number.
-* @param effIndex index (loading order, starting at 0) of the marker effect set to use
-* to calculate BVs. eg. 0 if only one set of marker effects is loaded.
+* @param effID Identifier of the marker effect set to be used to calculate these breeding values
 * @returns A DecimalMatrix containing the score for each individual in the group.
 */
 DecimalMatrix calculate_group_bvs(const SimData* d, const GroupNum group, const EffectID effID) {
@@ -8277,8 +8317,7 @@ MarkerBlocks read_block_file(const SimData* d, const char* block_file) {
  * @param d pointer to the SimData object to which the groups and individuals belong.
  * It must have a marker effect file loaded to successfully run this function.
  * @param b struct containing the blocks to use
- * @param effIndex index (loading order, starting at 0) of the marker effect set to use
- * to calculate BVs. eg. 0 if only one set of marker effects is loaded.
+ * @param effID Identifier of the marker effect set to be used to calculate these breeding values
  * @param output_file string containing the filename of the file to which output
  * block effects/local BVs will be saved.
  * @param group group number from which to split the top individuals.
@@ -8286,7 +8325,7 @@ MarkerBlocks read_block_file(const SimData* d, const char* block_file) {
 void calculate_group_local_bvs(const SimData* d, const MarkerBlocks b, const EffectID effID, const char* output_file, const GroupNum group) {
     const int effIndex = get_index_of_eff_set(d, effID);
     if (effIndex >= d->n_eff_sets) {
-        fprintf(stderr,"Invalid effIndex value provided: We don't have that many marker effect sets loaded.\n");
+        fprintf(stderr,"We don't have that many marker effect sets loaded.\n");
         return;
     }
     EffectMatrix e = d->e[effIndex];
@@ -8303,13 +8342,19 @@ void calculate_group_local_bvs(const SimData* d, const MarkerBlocks b, const Eff
     char* ggenos[gsize]; char* gnames[gsize];
     get_group_genes(d, group, gsize, ggenos);
     get_group_names(d, group, gsize, gnames);
+    PedigreeID gids[gsize];
+    get_group_ids(d,group,gsize,gids);
 
 	double beffect;
 
 	// for each group member
 	for (int i = 0; i < gsize; ++i) {
 		// for each block
-		sprintf(buffer, "%s_1", gnames[i]);
+        if (gnames[i] != NULL) {
+            sprintf(buffer, "%s_1", gnames[i]);
+        } else {
+            sprintf(buffer, "%d_1", gids[i].id);
+        }
 		fwrite(buffer, sizeof(char), strlen(buffer), outfile);
 
 		// for each block
@@ -8330,7 +8375,11 @@ void calculate_group_local_bvs(const SimData* d, const MarkerBlocks b, const Eff
 			fflush(outfile);
 		}
 
-		sprintf(buffer, "\n%s_2", gnames[i]);
+        if (gnames[i] != NULL) {
+            sprintf(buffer, "\n%s_2", gnames[i]);
+        } else {
+            sprintf(buffer, "\n%d_2", gids[i].id);
+        }
 		fwrite(buffer, sizeof(char), strlen(buffer), outfile);
 
 		// for each block for the second haplotype
@@ -8377,15 +8426,14 @@ void calculate_group_local_bvs(const SimData* d, const MarkerBlocks b, const Eff
  * @param d pointer to the SimData object to which individuals belong.
  * It must have a marker effect file loaded to successfully run this function.
  * @param b struct containing the blocks to use
- * @param effIndex index (loading order, starting at 0) of the marker effect set to use
- * to calculate BVs. eg. 0 if only one set of marker effects is loaded.
+ * @param effID Identifier of the marker effect set to be used to calculate these breeding values
  * @param output_file string containing the filename of the file to which output
  * block effects/local BV will be saved.
  */
 void calculate_local_bvs(const SimData* d, const MarkerBlocks b, const EffectID effID, const char* output_file) {
     const int effIndex = get_index_of_eff_set(d, effID);
     if (effIndex >= d->n_eff_sets) {
-        fprintf(stderr,"Invalid effIndex value provided: We don't have that many marker effect sets loaded.\n");
+        fprintf(stderr,"We don't have that many marker effect sets loaded.\n");
         return;
     }
     EffectMatrix e = d->e[effIndex];
@@ -8411,8 +8459,12 @@ void calculate_local_bvs(const SimData* d, const MarkerBlocks b, const EffectID 
 	int total_i = 0;
 	do {
 		for (int i = 0; i < m->n_genotypes; ++i, ++total_i) {
-			// for each block
-			sprintf(buffer, "%s_1", m->names[i]);
+            // for each group member
+            if (m->names[i] != NULL) {
+                sprintf(buffer, "%s_1",  m->names[i]);
+            } else {
+                sprintf(buffer, "%d_1", m->ids[i].id);
+            }
 			fwrite(buffer, sizeof(char), strlen(buffer), outfile);
 
 			// for each block
@@ -8433,7 +8485,11 @@ void calculate_local_bvs(const SimData* d, const MarkerBlocks b, const EffectID 
 				fflush(outfile);
 			}
 
-			sprintf(buffer, "\n%s_2", m->names[i]);
+            if (m->names[i] != NULL) {
+                sprintf(buffer, "\n%s_2",  m->names[i]);
+            } else {
+                sprintf(buffer, "\n%d_2", m->ids[i].id);
+            }
 			fwrite(buffer, sizeof(char), strlen(buffer), outfile);
 
 			// for each block for the second haplotype
@@ -8471,15 +8527,14 @@ void calculate_local_bvs(const SimData* d, const MarkerBlocks b, const EffectID 
  * The SimData must be initialised with marker effects for this function to succeed.
  *
  * @param d pointer to the SimData containing markers and marker effects.
- * @param effIndex index (loading order, starting at 0) of the marker effect set to use
- * to calculate BVs. eg. 0 if only one set of marker effects is loaded.
+ * @param effID Identifier of the marker effect set to be used to calculate these breeding values
  * @returns a heap array filled with a null-terminated string containing the highest
  * scoring allele at each marker.
  */
 char* calculate_optimal_alleles(const SimData* d, const EffectID effID) {
     const int effIndex = get_index_of_eff_set(d, effID);
     if (effIndex >= d->n_eff_sets) {
-        fprintf(stderr,"Invalid effIndex value provided: We don't have that many marker effect sets loaded.\n");
+        fprintf(stderr,"We don't have that many marker effect sets loaded.\n");
 		return NULL;
 	}
     EffectMatrix e = d->e[effIndex];
@@ -8511,15 +8566,14 @@ char* calculate_optimal_alleles(const SimData* d, const EffectID effID) {
  *
  * @param d pointer to the SimData containing markers and marker effects.
  * @param group group number to look at the available alleles in
- * @param effIndex index (loading order, starting at 0) of the marker effect set to use
- * to calculate BVs. eg. 0 if only one set of marker effects is loaded.
+ * @param effID Identifier of the marker effect set to be used to calculate these breeding values
  * @returns a heap array filled with a null-terminated string containing the highest
  * scoring allele at each marker.
  */
 char* calculate_optimal_available_alleles(const SimData* d, const GroupNum group, const EffectID effID) {
     const int effIndex = get_index_of_eff_set(d, effID);
     if (effIndex >= d->n_eff_sets) {
-        fprintf(stderr,"Invalid effIndex value provided: We don't have that many marker effect sets loaded.\n");
+        fprintf(stderr,"We don't have that many marker effect sets loaded.\n");
         return NULL;
     }
     EffectMatrix e = d->e[effIndex];
@@ -8585,14 +8639,13 @@ char* calculate_optimal_available_alleles(const SimData* d, const GroupNum group
  * The SimData must be initialised with marker effects for this function to succeed.
  *
  * @param d pointer to the SimData containing markers and marker effects.
- * @param effIndex index (loading order, starting at 0) of the marker effect set to use
- * to calculate BVs. eg. 0 if only one set of marker effects is loaded.
+ * @param effID Identifier of the marker effect set to be used to calculate these breeding values
  * @returns the fitness metric/breeding value of the best/ideal genotype.
  */
 double calculate_optimum_bv(const SimData* d, const EffectID effID) {
     const int effIndex = get_index_of_eff_set(d, effID);
     if (effIndex >= d->n_eff_sets) {
-        fprintf(stderr,"Invalid effIndex value provided: We don't have that many marker effect sets loaded.\n");
+        fprintf(stderr,"We don't have that many marker effect sets loaded.\n");
         return 0;
     }
     EffectMatrix e = d->e[effIndex];
@@ -8626,14 +8679,13 @@ double calculate_optimum_bv(const SimData* d, const EffectID effID) {
  *
  * @param d pointer to the SimData containing markers and marker effects.
  * @param  group number to look at the available alleles in
- * @param effIndex index (loading order, starting at 0) of the marker effect set to use
- * to calculate BVs. eg. 0 if only one set of marker effects is loaded.
+ * @param effID Identifier of the marker effect set to be used to calculate these breeding values
  * @returns the fitness metric/breeding value of the best genotype
  */
 double calculate_optimal_available_bv(const SimData* d, const GroupNum group, const EffectID effID) {
     const int effIndex = get_index_of_eff_set(d, effID);
     if (effIndex >= d->n_eff_sets) {
-        fprintf(stderr,"Invalid effIndex value provided: We don't have that many marker effect sets loaded.\n");
+        fprintf(stderr,"We don't have that many marker effect sets loaded.\n");
         return 0;
     }
     EffectMatrix e = d->e[effIndex];
@@ -8699,14 +8751,13 @@ double calculate_optimal_available_bv(const SimData* d, const GroupNum group, co
  * The SimData must be initialised with marker effects for this function to succeed.
  *
  * @param d pointer to the SimData containing markers and marker effects.
- * @param effIndex index (loading order, starting at 0) of the marker effect set to use
- * to calculate BVs. eg. 0 if only one set of marker effects is loaded.
+ * @param effID Identifier of the marker effect set to be used to calculate these breeding values
  * @returns the fitness metric/breeding value of the worst genotype.
  */
 double calculate_minimum_bv(const SimData* d, const EffectID effID) {
     const int effIndex = get_index_of_eff_set(d, effID);
     if (effIndex >= d->n_eff_sets) {
-        fprintf(stderr,"Invalid effIndex value provided: We don't have that many marker effect sets loaded.\n");
+        fprintf(stderr,"We don't have that many marker effect sets loaded.\n");
         return 0;
     }
     EffectMatrix e = d->e[effIndex];
@@ -8756,7 +8807,9 @@ void save_simdata(FILE* f, const SimData* m) {
  * ...
  *
  * where m1, m2, m3, m4 are the names of the markers in the first block and
- * m7 and m9 are the names of the markers in the second block.
+ * m7 and m9 are the names of the markers in the second block. Note that chromosome
+ * numbers and positions are not actually specified, just replaced with 0. Only the last
+ * column is meaningful.
  *
  * @param f file pointer opened for writing to put the output
  * @param d pointer to the SimData whose data we print
@@ -8777,6 +8830,7 @@ void save_marker_blocks(FILE* f, const SimData* d, const MarkerBlocks b) {
 			int k = b.markers_in_block[i][j];
 
 			fwrite(d->markers[k], sizeof(char)*strlen(d->markers[k]), 1, f);
+            fputc(';',f);
 		}
 
 		fwrite("\n", sizeof(char), 1, f);
@@ -8787,10 +8841,28 @@ void save_marker_blocks(FILE* f, const SimData* d, const MarkerBlocks b) {
 
 }
 
+/** Prints a list of names as a tab-separated row to a file.
+ *
+ * Used, for example, for printing marker names as a header
+ * in a genotype output file.
+ *
+ * @param f file pointer opened for writing to put the output
+ * @param n number of names to print
+ * @param names list of names to print
+*/
+void save_names_header(FILE* f, size_t n, const char* names[n]) {
+    if (names == NULL) return;
+    for (int i = 0; i < n; ++i) {
+        fwrite("\t", sizeof(char), 1, f);
+        if (names[i] != NULL) { // assume all-or-nothing with marker names
+            fwrite(names[i], sizeof(char), strlen(names[i]), f);
+        }
+    }
+    fwrite("\n", sizeof(char), 1, f);
+}
+
 /** Prints all the genotype data saved in the linked list of AlleleMatrices
  * starting with `m` to a file. Uses the following format:
- *
- * 		[marker name]	[marker name]
  *
  * [id]OR[name]	[allele pairs for each marker]
  *
@@ -8802,23 +8874,9 @@ void save_marker_blocks(FILE* f, const SimData* d, const MarkerBlocks b) {
  *
  * @param f file pointer opened for writing to put the output
  * @param m pointer to the AlleleMatrix whose data we print
- * @param markers array of strings that correspond to names of the markers.
- * if this is null, the header row will be empty.
 */
-void save_allele_matrix(FILE* f, const AlleleMatrix* m, const char** markers) {
-	/* Print header */
-	for (int i = 0; i < m->n_markers; ++i) {
-		if (markers != NULL) { // assume all-or-nothing with marker names
-			//fprintf(f, "\t%s", markers[i]);
-			fwrite("\t", sizeof(char), 1, f);
-			fwrite(markers[i], sizeof(char), strlen(markers[i]), f);
-		}
-	}
-	//fprintf(f, "\n");
-	fwrite("\n", sizeof(char), 1, f);
-
+void save_allele_matrix(FILE* f, const AlleleMatrix* m) {
 	do {
-		/* Print the body */
 		for (int i = 0; i < m->n_genotypes; ++i) {
 			// print the name or ID of the individual.
 			if (m->names[i] != NULL) {
@@ -8882,7 +8940,7 @@ void save_transposed_allele_matrix(FILE* f, const AlleleMatrix* m, const char** 
 			fwrite("\t", sizeof(char), 1, f);
 			fwrite(currentm->names[currenti], sizeof(char), strlen(currentm->names[currenti]), f);
 		} else {
-            fprintf(f, "%d", currentm->ids[currenti].id);
+            fprintf(f, "\t%d", currentm->ids[currenti].id);
 		}
 
 	}
@@ -9016,7 +9074,12 @@ void save_transposed_group_alleles(FILE* f, const SimData* d, const GroupNum gro
     fprintf(f, "%d", group_id.num);
 	for (int i = 0; i < group_size; ++i) {
 		fwrite("\t", sizeof(char), 1, f);
-		fwrite(names[i], sizeof(char), strlen(names[i]), f);
+        if (names[i] != NULL) {
+            fwrite(names[i], sizeof(char), strlen(names[i]), f);
+        } else {
+            //fwrite(group_contents + i, sizeof(int), 1, f);
+            fprintf(f, "%d", ids[i].id);
+        }
 	}
 	//fprintf(f, "\n");
 	fwrite("\n", sizeof(char), 1, f);
@@ -9069,12 +9132,14 @@ void save_group_one_step_pedigree(FILE* f, const SimData* d, const GroupNum grou
         return;
     }
 
-
     PedigreeID group_contents[group_size];
     get_group_ids( d, group, group_size, group_contents );
     char* group_names[group_size];
     get_group_names( d, group, group_size, group_names );
-    PedigreeID pedigree[2];
+    PedigreeID parent1s[group_size];
+    PedigreeID parent2s[group_size];
+    get_group_parent_ids(d, group, group_size, 1, parent1s );
+    get_group_parent_ids(d, group, group_size, 2, parent2s );
 	char* name;
 
 	for (int i = 0; i < group_size; i++) {
@@ -9087,27 +9152,28 @@ void save_group_one_step_pedigree(FILE* f, const SimData* d, const GroupNum grou
 		}
 		fwrite("\t", sizeof(char), 1, f);
 
-		if (get_parents_of_id( d->m, group_contents[i], pedigree) == 0) {
-			// Prints both parents, even if they're the same one.
-			/* Parent 1 */
-			name = get_name_of_id( d->m, pedigree[0]);
-			if (name != NULL) {
-				fwrite(name, sizeof(char), strlen(name), f);
-            } else if (pedigree[0].id != NO_PEDIGREE.id) {
-				//fwrite(pedigree, sizeof(int), 1, f);
-                fprintf(f, "%d", pedigree[0].id);
-			}
-			fwrite("\t", sizeof(char), 1, f);
+        // Prints both parents, even if they're the same one.
+        /* Parent 1 */
+        if (parent1s[i].id != NO_PEDIGREE.id) {
+            name = get_name_of_id( d->m, parent1s[i]);
+            if (name != NULL) {
+                fwrite(name, sizeof(char), strlen(name), f);
+            } else {
+                fprintf(f, "%d", parent1s[i].id);
+            }
+        }
+        fwrite("\t", sizeof(char), 1, f);
 
-			/* Parent 2 */
-			name = get_name_of_id( d->m, pedigree[1]);
-			if (name != NULL) {
-				fwrite(name, sizeof(char), strlen(name), f);
-            } else if (pedigree[1].id != NO_PEDIGREE.id) {
-                fprintf(f, "%d", pedigree[1].id);
-				//fwrite(pedigree + 1, sizeof(int), 1, f);
-			}
-		}
+        /* Parent 2 */
+        if (parent2s[i].id != NO_PEDIGREE.id) {
+            name = get_name_of_id( d->m, parent2s[i]);
+            if (name != NULL) {
+                fwrite(name, sizeof(char), strlen(name), f);
+            } else {
+                fprintf(f, "%d", parent2s[i].id);
+            }
+        }
+
 		fwrite("\n", sizeof(char), 1, f);
 	}
 	fflush(f);
@@ -9148,28 +9214,28 @@ void save_one_step_pedigree(FILE* f, const SimData* d) {
 			}
 			fwrite("\t", sizeof(char), 1, f);
 
-			if (get_parents_of_id( d->m, m->ids[i], pedigree) == 0) {
-				// Even if both parents are the same, print them both.
-				/* Parent 1 */
-				name = get_name_of_id( d->m, pedigree[0]);
-				if (name != NULL) {
-					fwrite(name, sizeof(char), strlen(name), f);
-                } else if (pedigree[0].id != NO_PEDIGREE.id) {
-					//fwrite(pedigree, sizeof(int), 1, f);
-                    fprintf(f, "%d", pedigree[0].id);
-				}
-				fwrite("\t", sizeof(char), 1, f);
 
-				/* Parent 2 */
-				name = get_name_of_id( d->m, pedigree[1]);
-				if (name != NULL) {
-					fwrite(name, sizeof(char), strlen(name), f);
-                } else if (pedigree[1].id != NO_PEDIGREE.id) {
-                    fprintf(f, "%d", pedigree[1].id);
-					//fwrite(pedigree + 1, sizeof(int), 1, f);
-				}
+            /* Parent 1 */
+            if (m->pedigrees[0][i].id != NO_PEDIGREE.id) {
+                name = get_name_of_id( d->m, m->pedigrees[0][i] );
+                if (name != NULL) {
+                    fwrite(name, sizeof(char), strlen(name), f);
+                } else {
+                    fprintf(f, "%d", m->pedigrees[0][i].id);
+                }
+            }
+            fwrite("\t", sizeof(char), 1, f);
 
-			}
+            /* Parent 2 */
+            if (m->pedigrees[1][i].id != NO_PEDIGREE.id) {
+                name = get_name_of_id( d->m, m->pedigrees[1][i]);
+                if (name != NULL) {
+                    fwrite(name, sizeof(char), strlen(name), f);
+                } else {
+                    fprintf(f, "%d", m->pedigrees[1][i].id);
+                }
+            }
+
 			fwrite("\n", sizeof(char), 1, f);
 		}
 	} while ((m = m->next) != NULL);
@@ -9217,7 +9283,10 @@ void save_group_full_pedigree(FILE* f, const SimData* d, const GroupNum group) {
     char* group_names[group_size];
     get_group_names( d, group, group_size, group_names );
 	const char newline[] = "\n";
-    PedigreeID pedigree[2];
+    PedigreeID parent1s[group_size];
+    PedigreeID parent2s[group_size];
+    get_group_parent_ids(d, group, group_size, 1, parent1s );
+    get_group_parent_ids(d, group, group_size, 2, parent2s );
 
 	for (int i = 0; i < group_size; i++) {
 		/*Group member name*/
@@ -9226,8 +9295,8 @@ void save_group_full_pedigree(FILE* f, const SimData* d, const GroupNum group) {
 			fwrite(group_names[i], sizeof(char), strlen(group_names[i]), f);
 		}
 
-		if (get_parents_of_id(d->m, group_contents[i], pedigree) == 0) {
-			save_parents_of(f, d->m, pedigree[0], pedigree[1]);
+        if (parent1s[i].id != NO_PEDIGREE.id || parent2s[i].id != NO_PEDIGREE.id) {
+            save_parents_of(f, d->m, parent1s[i], parent2s[i]);
 		}
 		fwrite(newline, sizeof(char), 1, f);
 	}
@@ -9434,13 +9503,12 @@ void save_parents_of(FILE* f, const AlleleMatrix* m, PedigreeID p1, PedigreeID p
  * @param d pointer to the SimData containing the group members.
  * @param group group number of the group of individuals to print the
  * breeding values of.
- * @param effIndex index (loading order, starting at 0) of the marker effect set to use
- * to calculate BVs. eg. 0 if only one set of marker effects is loaded.
+ * @param effID Identifier of the marker effect set to be used to calculate these breeding values
  */
 void save_group_bvs(FILE* f, const SimData* d, const GroupNum group, const EffectID effID) {
     const int effIndex = get_index_of_eff_set(d, effID);
     if (effIndex >= d->n_eff_sets) {
-        fprintf(stderr,"Invalid effIndex value provided: We don't have that many marker effect sets loaded.\n");
+        fprintf(stderr,"We don't have that many marker effect sets loaded.\n");
         return;
     }
 
@@ -9488,13 +9556,12 @@ void save_group_bvs(FILE* f, const SimData* d, const GroupNum group, const Effec
  *
  * @param f file pointer opened for writing to put the output
  * @param d pointer to the SimData containing the group members.
- * @param effIndex index (loading order, starting at 0) of the marker effect set to use
- * to calculate BVs. eg. 0 if only one set of marker effects is loaded.
+ * @param effID Identifier of the marker effect set to be used to calculate these breeding values
  */
 void save_bvs(FILE* f, const SimData* d, const EffectID effID) {
     const int effIndex = get_index_of_eff_set(d, effID);
     if (effIndex >= d->n_eff_sets) {
-        fprintf(stderr,"Invalid effIndex value provided: We don't have that many marker effect sets loaded.\n");
+        fprintf(stderr,"We don't have that many marker effect sets loaded.\n");
         return;
     }
 
@@ -9594,7 +9661,9 @@ void save_count_matrix(FILE* f, const SimData* d, const char allele) {
 		fwrite("\t", sizeof(char), 1, f);
 		if (currentm->names[currenti] != NULL) {
 			fwrite(currentm->names[currenti], sizeof(char), strlen(currentm->names[currenti]), f);
-		}
+        } else {
+            fprintf(f, "%d", currentm->ids[currenti].id);
+        }
 	}
 
 	fwrite("\n", sizeof(char), 1, f);
@@ -9648,6 +9717,8 @@ void save_count_matrix_of_group(FILE* f, const SimData* d, const char allele, co
 
     char* group_names[group_size];
     get_group_names( d, group, group_size, group_names );
+    PedigreeID group_ids[group_size];
+    get_group_ids(d,group,group_size, group_ids);
 	DecimalMatrix counts = generate_zero_dmatrix(group_size,d->n_markers);
 	calculate_group_count_matrix_of_allele(d,group,allele,&counts);
 
@@ -9657,7 +9728,9 @@ void save_count_matrix_of_group(FILE* f, const SimData* d, const char allele, co
 		fwrite("\t", sizeof(char), 1, f);
 		if (group_names[i] != NULL) {
 			fwrite(group_names[i], sizeof(char), strlen(group_names[i]), f);
-		}
+        } else {
+            fprintf(f, "%d", group_ids[i].id);
+        }
 	}
 
 	fwrite("\n", sizeof(char), 1, f);
@@ -9674,7 +9747,7 @@ void save_count_matrix_of_group(FILE* f, const SimData* d, const char allele, co
             fprintf(f, "%d", (int) counts.matrix[j][i]);
 		}
 		//print the newline
-        if (i + 1 < d->n_markers) {
+        if (i + 1 < counts.rows) {
 			fwrite("\n", sizeof(char), 1, f);
 		}
 	}

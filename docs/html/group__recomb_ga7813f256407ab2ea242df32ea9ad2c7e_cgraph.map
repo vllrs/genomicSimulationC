@@ -4,7 +4,7 @@
 <area shape="rect" id="node4" href="$group__recomb.html#ga9c9c066183d70aa46d4ed4d224116580" title="Identify markers in the genotype of offspring where recombination from its parents occured,..." alt="" coords="222,57,444,85"/>
 <area shape="rect" id="node6" href="$group__supporters.html#ga10dddc2d2028b8c1341837897b6eee4d" title="Opens a table file and reads the number of columns and rows (including headers) separated by sep into..." alt="" coords="265,109,401,137"/>
 <area shape="rect" id="node7" href="$group__search.html#ga31eb9ab2cd17d7c107102922e2609aac" title="Get the alleles of a genotype by its index." alt="" coords="265,161,401,189"/>
-<area shape="rect" id="node8" href="$group__search.html#ga69e677408363916b3be1d90ba30eb46f" title="Get the id of a genotype by its index." alt="" coords="277,213,389,241"/>
+<area shape="rect" id="node8" href="$group__search.html#ga8c2bc00d2b81a4c293a939f202250eb8" title="Get the id of a genotype by its index." alt="" coords="277,213,389,241"/>
 <area shape="rect" id="node9" href="$group__search.html#ga852d1f756b52ea86e30e63335dcc33e1" title="Search for a genotype with a particular name in a linked list of AlleleMatrix, and return its index." alt="" coords="266,265,400,293"/>
 <area shape="rect" id="node3" href="$group__recomb.html#ga616d4bb1a616a3c7895f2de96be52870" title="Simple operator to determine if at marker i, two genotypes share at least one allele." alt="" coords="517,5,642,33"/>
 <area shape="rect" id="node5" href="$group__recomb.html#gafd5313ef4d6df2e2c43ab32ae54ae28d" title="Simple operator to determine if at markers with indexes i to i+w inclusive, two genotypes share at le..." alt="" coords="492,57,666,85"/>

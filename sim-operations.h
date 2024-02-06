@@ -1,6 +1,6 @@
 #ifndef SIM_OPERATIONS_H
 #define SIM_OPERATIONS_H
-/* genomicSimulationC v0.2.4 - last edit 31 Jan 2024 */
+/* genomicSimulationC v0.2.4 - last edit 5 Feb 2024 */
 
 #ifdef SIM_OPERATIONS
     #define RND_IMPLEMENTATION
@@ -108,6 +108,40 @@ typedef struct {
 } DecimalMatrix;
 
 
+/** A type representing a program-lifetime-unique identifier for a genotype,
+ *  to be used in tracking pedigree.
+ */
+typedef struct {
+    unsigned int id;
+} PedigreeID;
+#define NO_PEDIGREE (PedigreeID){.id=0}
+
+/** A type representing the identifier of a group of genotypes
+ */
+typedef struct {
+    unsigned int num;
+} GroupNum;
+#define NO_GROUP (GroupNum){.num=0}
+
+/** A type representing a particular loaded set of marker effects
+ */
+typedef struct {
+    int id;
+} EffectID;
+#define NOT_AN_EFFECT_SET (EffectID){.id=0}
+
+/** A type representing a particular integer label
+ */
+typedef struct {
+    int id;
+} LabelID;
+#define NOT_A_LABEL (LabelID){.id=0}
+
+struct GroupAndEffectSet {
+    GroupNum group;
+    EffectID effectSet;
+};
+
 /** A type that contains choices of settings for SimData functions that create a
  * new AlleleMatrix/generation.
  *
@@ -140,12 +174,12 @@ typedef struct {
                             * are saved to "[filename_prefix}-pedigree.txt", even
                             * if `will_save_to_simdata` is false.
                             * Pedigrees are saved in the format of save_full_pedigree()*/
-    int will_save_bvs_to_file; /**< An index. If 0 or greater, the breeding values according
-                            * to the marker effect set with that index
-                            * of every offspring generated in the cross
+    EffectID will_save_bvs_to_file; /**< If equal to NOT_AN_EFFECT_SET, no bvs are calculated or saved.
+                            * Otherwise, for each offspring in the cross,
+                            * the breeding values according
+                            * to the marker effect set with this EffectID
                             * are saved to "[filename_prefix}-bv.txt", even
                             * if `will_save_to_simdata` is false.
-                            * If negative, no bvs are calculated or saved.
                             * BVs are saved in the format of save_bvs() */
 	int will_save_alleles_to_file; /**< A boolean. If true, the set of alleles
                             * of every offspring generated in the cross
@@ -183,21 +217,6 @@ typedef struct {
 
 	MarkerPosition* positions; /**< An array of MarkerPositions, ordered from lowest to highest. */
 } GeneticMap;
-
-/** A type representing a program-lifetime-unique identifier for a genotype,
- *  to be used in tracking pedigree.
- */
-typedef struct {
-    unsigned int id;
-} PedigreeID;
-#define NO_PEDIGREE (PedigreeID){.id=0}
-
-/** A type representing the identifier of a group of genotypes
- */
-typedef struct {
-    unsigned int num;
-} GroupNum;
-#define NO_GROUP (GroupNum){.num=0}
 
 /** A linked list entry that stores a matrix of alleles for a set of SNP markers
  * and genotypes.
@@ -242,20 +261,6 @@ typedef struct {
 	char* effect_names; /**< Character array containing allele characters ordered
         * to match rows of `effects`. */
 } EffectMatrix;
-
-/** A type representing a particular loaded set of marker effects
- */
-typedef struct {
-    int id;
-} EffectID;
-#define NOT_AN_EFFECT_SET (EffectID){.id=0}
-
-/** A type representing a particular integer label
- */
-typedef struct {
-    int id;
-} LabelID;
-#define NOT_A_LABEL (LabelID){.id=0}
 
 /** Composite type that is used to run crossing simulations.
  *
@@ -663,8 +668,8 @@ GroupNum load_genes_to_simdata(SimData* d, const char* filename); //@ add
 GroupNum load_more_genes_to_simdata(SimData* d, const char* filename); //@ add
 GroupNum load_transposed_encoded_genes_to_simdata(SimData* d, const char* filename);
 void load_genmap_to_simdata(SimData* d, const char* filename);
-int load_effects_to_simdata(SimData* d, const char* filename);
-GroupNum load_all_simdata(SimData* d, const char* data_file, const char* map_file, const char* effect_file);
+EffectID load_effects_to_simdata(SimData* d, const char* filename);
+struct GroupAndEffectSet load_all_simdata(SimData* d, const char* data_file, const char* map_file, const char* effect_file);
 /** @} */
 
 /** @defgroup recomb Recombination Calculators
@@ -795,7 +800,8 @@ void save_simdata(FILE* f, const SimData* m);
 
 void save_marker_blocks(FILE* f, const SimData* d, const MarkerBlocks b);
 
-void save_allele_matrix(FILE* f, const AlleleMatrix* m, const char** markers);
+void save_allele_matrix(FILE* f, const AlleleMatrix* m);
+void save_names_header(FILE* f, size_t n, const char* names[n]);
 void save_transposed_allele_matrix(FILE* f, const AlleleMatrix* m, const char** markers);
 void save_group_alleles(FILE* f, SimData* d, const GroupNum group_id);
 void save_transposed_group_alleles(FILE* f, const SimData* d, const GroupNum group_id);

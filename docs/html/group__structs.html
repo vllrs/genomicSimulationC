@@ -21,7 +21,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">genomicSimulationC<span id="projectnumber">&#160;0.2.3</span>
+   <div id="projectname">genomicSimulationC<span id="projectnumber">&#160;0.2.4</span>
    </div>
   </td>
  </tr>
@@ -65,6 +65,7 @@ $(function() {
   <div class="summary">
 <a href="#groups">Modules</a> &#124;
 <a href="#nested-classes">Data Structures</a> &#124;
+<a href="#define-members">Macros</a> &#124;
 <a href="#typedef-members">Typedefs</a> &#124;
 <a href="#var-members">Variables</a>  </div>
   <div class="headertitle"><div class="title">Data Structures</div></div>
@@ -105,6 +106,20 @@ Data Structures</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_decimal_matrix.html">DecimalMatrix</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">A row-major heap matrix that contains floating point numbers.  <a href="struct_decimal_matrix.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_pedigree_i_d.html">PedigreeID</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">A type representing a program-lifetime-unique identifier for a genotype, to be used in tracking pedigree.  <a href="struct_pedigree_i_d.html#details">More...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_group_num.html">GroupNum</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">A type representing the identifier of a group of genotypes.  <a href="struct_group_num.html#details">More...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_effect_i_d.html">EffectID</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">A type representing a particular loaded set of marker effects.  <a href="struct_effect_i_d.html#details">More...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_label_i_d.html">LabelID</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">A type representing a particular integer label.  <a href="struct_label_i_d.html#details">More...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_group_and_effect_set.html">GroupAndEffectSet</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_gen_options.html">GenOptions</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">A type that contains choices of settings for <a class="el" href="struct_sim_data.html" title="Composite type that is used to run crossing simulations.">SimData</a> functions that create a new AlleleMatrix/generation.  <a href="struct_gen_options.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -119,6 +134,17 @@ Data Structures</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_sim_data.html">SimData</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Composite type that is used to run crossing simulations.  <a href="struct_sim_data.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="define-members" name="define-members"></a>
+Macros</h2></td></tr>
+<tr class="memitem:ga8ad73d9697c47aa32a926fbfc36d2a87"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__structs.html#ga8ad73d9697c47aa32a926fbfc36d2a87">NO_PEDIGREE</a>&#160;&#160;&#160;(<a class="el" href="struct_pedigree_i_d.html">PedigreeID</a>){.id=0}</td></tr>
+<tr class="separator:ga8ad73d9697c47aa32a926fbfc36d2a87"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga9f261279a53dfe33021f00801df5709b"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__structs.html#ga9f261279a53dfe33021f00801df5709b">NO_GROUP</a>&#160;&#160;&#160;(<a class="el" href="struct_group_num.html">GroupNum</a>){.num=0}</td></tr>
+<tr class="separator:ga9f261279a53dfe33021f00801df5709b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga323f0e3c5ced1e5e79a3647f9a43ce7e"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__structs.html#ga323f0e3c5ced1e5e79a3647f9a43ce7e">NOT_AN_EFFECT_SET</a>&#160;&#160;&#160;(<a class="el" href="struct_effect_i_d.html">EffectID</a>){.id=0}</td></tr>
+<tr class="separator:ga323f0e3c5ced1e5e79a3647f9a43ce7e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gab4a297465025d2767c08c2f350856253"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__structs.html#gab4a297465025d2767c08c2f350856253">NOT_A_LABEL</a>&#160;&#160;&#160;(<a class="el" href="struct_label_i_d.html">LabelID</a>){.id=0}</td></tr>
+<tr class="separator:gab4a297465025d2767c08c2f350856253"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="typedef-members" name="typedef-members"></a>
 Typedefs</h2></td></tr>
@@ -137,6 +163,63 @@ Variables</h2></td></tr>
 <p >genomicSimulation is a state-based package. These data structures are used to store the library's data/state. Many use dynamically allocated memory so call the relevant delete_ function if one exists when you are finished with them.</p>
 <p ><a class="el" href="struct_sim_data.html" title="Composite type that is used to run crossing simulations.">SimData</a> is the central state/data storage struct, and so is a required parameter to most user-facing functions. It contains pointers to a <a class="el" href="struct_genetic_map.html" title="A type that stores the genetic map for a set of markers.">GeneticMap</a> (storing the loaded genome map), an <a class="el" href="struct_effect_matrix.html" title="A type that stores a matrix of effect values and their names.">EffectMatrix</a> (storing the loaded allele effects), and an <a class="el" href="struct_allele_matrix.html">AlleleMatrix</a> (storing metadata and genotypes of founders and simulated offspring).</p>
 <p >Other structs in this group (<a class="el" href="struct_table_size.html" title="A simple struct used for returning the dimensions of a matrix or table.">TableSize</a>, <a class="el" href="struct_marker_blocks.html" title="A struct used to store a set of blocks of markers.">MarkerBlocks</a>, <a class="el" href="struct_gen_options.html" title="A type that contains choices of settings for SimData functions that create a new AlleleMatrix/generat...">GenOptions</a>) represented specific types of data and are used as parameters and return value of certain functions. </p>
+<h2 class="groupheader">Macro Definition Documentation</h2>
+<a id="ga9f261279a53dfe33021f00801df5709b" name="ga9f261279a53dfe33021f00801df5709b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga9f261279a53dfe33021f00801df5709b">&#9670;&nbsp;</a></span>NO_GROUP</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define NO_GROUP&#160;&#160;&#160;(<a class="el" href="struct_group_num.html">GroupNum</a>){.num=0}</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ga8ad73d9697c47aa32a926fbfc36d2a87" name="ga8ad73d9697c47aa32a926fbfc36d2a87"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga8ad73d9697c47aa32a926fbfc36d2a87">&#9670;&nbsp;</a></span>NO_PEDIGREE</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define NO_PEDIGREE&#160;&#160;&#160;(<a class="el" href="struct_pedigree_i_d.html">PedigreeID</a>){.id=0}</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="gab4a297465025d2767c08c2f350856253" name="gab4a297465025d2767c08c2f350856253"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gab4a297465025d2767c08c2f350856253">&#9670;&nbsp;</a></span>NOT_A_LABEL</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define NOT_A_LABEL&#160;&#160;&#160;(<a class="el" href="struct_label_i_d.html">LabelID</a>){.id=0}</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ga323f0e3c5ced1e5e79a3647f9a43ce7e" name="ga323f0e3c5ced1e5e79a3647f9a43ce7e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga323f0e3c5ced1e5e79a3647f9a43ce7e">&#9670;&nbsp;</a></span>NOT_AN_EFFECT_SET</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define NOT_AN_EFFECT_SET&#160;&#160;&#160;(<a class="el" href="struct_effect_i_d.html">EffectID</a>){.id=0}</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <h2 class="groupheader">Typedef Documentation</h2>
 <a id="ga210a64911b3ec2ed32894e3969365e7f" name="ga210a64911b3ec2ed32894e3969365e7f"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ga210a64911b3ec2ed32894e3969365e7f">&#9670;&nbsp;</a></span>AlleleMatrix</h2>

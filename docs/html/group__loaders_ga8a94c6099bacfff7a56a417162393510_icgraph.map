@@ -1,0 +1,4 @@
+<map id="load_transposed_genes_to_simdata" name="load_transposed_genes_to_simdata">
+<area shape="rect" id="node1" title="Populates a SimData combination with marker allele data." alt="" coords="172,5,330,49"/>
+<area shape="rect" id="node2" href="$group__loaders.html#ga3d8878f2c2c5fafdae57ffc46a78dfbc" title="Populates a SimData combination from scratch with marker allele data, a genetic map,..." alt="" coords="5,13,124,41"/>
+</map>

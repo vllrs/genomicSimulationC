@@ -1,0 +1,4 @@
+<map id="get_name_of_id" name="get_name_of_id">
+<area shape="rect" id="node1" title="Returns the name of the genotype with a given id." alt="" coords="5,5,118,33"/>
+<area shape="rect" id="node2" href="$group__supporters.html#ga4e3d1fd7ae67dd133c4dbdec9a84d455" title="Returns the located index in an array of PedigreeIDs where the PedigreeID is target." alt="" coords="166,5,367,33"/>
+</map>

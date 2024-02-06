@@ -1,0 +1,13 @@
+<map id="get_group_pedigrees" name="get_group_pedigrees">
+<area shape="rect" id="node1" title="Gets the full pedigree string (as per save_group_full_pedigree() ) of each member of the group." alt="" coords="5,32,147,60"/>
+<area shape="rect" id="node2" href="$group__collgetters.html#ga6773f2b434edda042163890dea8f8dbd" title="Function to count the number of genotypes that currently belong to the specified group." alt="" coords="608,70,718,98"/>
+<area shape="rect" id="node3" href="$group__supporters.html#ga6072a152b624743eeafb30adaf9b7f17" title="Replace calls to malloc direct with this function, which errors and exits with status 2 if memory all..." alt="" coords="235,32,320,60"/>
+<area shape="rect" id="node4" href="$group__savers.html#ga821e9489b1668201f9bd38d9ac467673" title="Print the full known pedigree of each genotype in a group to a file." alt="" coords="195,109,360,137"/>
+<area shape="rect" id="node5" href="$group__collgetters.html#gacc8432b03b8b5a33e0adde825c02ee7a" title="Gets the ids of each member of the group." alt="" coords="430,70,532,98"/>
+<area shape="rect" id="node6" href="$group__collgetters.html#gab535d4c5e7afdce3816ab40c19a46a78" title="Gets a shallow copy of the names of each member of the group." alt="" coords="419,122,543,150"/>
+<area shape="rect" id="node7" href="$group__collgetters.html#gac6f09e3398d4bf55d071d3a77e2f60f9" title="Gets the ids of either the first or second parent of each member of the group." alt="" coords="408,174,553,202"/>
+<area shape="rect" id="node8" href="$group__savers.html#ga2ad03e903efdd56805722af554328592" title="Recursively save the parents of a particular id to a file." alt="" coords="424,250,538,278"/>
+<area shape="rect" id="node9" href="$group__search.html#gaaea63100f4c2639907cce72c29a413e8" title="Returns the name of the genotype with a given id." alt="" coords="607,224,719,252"/>
+<area shape="rect" id="node11" href="$group__search.html#gaa814762960a964cd0aaf82be0c18b8cb" title="Saves the ids of the parents of a genotype with a particular id to the output array output." alt="" coords="601,276,725,304"/>
+<area shape="rect" id="node10" href="$group__supporters.html#ga4e3d1fd7ae67dd133c4dbdec9a84d455" title="Returns the located index in an array of PedigreeIDs where the PedigreeID is target." alt="" coords="773,250,974,278"/>
+</map>

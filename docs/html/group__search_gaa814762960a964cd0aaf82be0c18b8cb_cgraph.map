@@ -1,0 +1,4 @@
+<map id="get_parents_of_id" name="get_parents_of_id">
+<area shape="rect" id="node1" title="Saves the ids of the parents of a genotype with a particular id to the output array output." alt="" coords="5,5,129,33"/>
+<area shape="rect" id="node2" href="$group__supporters.html#ga4e3d1fd7ae67dd133c4dbdec9a84d455" title="Returns the located index in an array of PedigreeIDs where the PedigreeID is target." alt="" coords="177,5,378,33"/>
+</map>

@@ -1,0 +1,8 @@
+<map id="calculate_group_local_bvs" name="calculate_group_local_bvs">
+<area shape="rect" id="node1" title="Given a set of blocks of markers in a file, for each genotype in a group, calculate the local fitness..." alt="" coords="5,109,178,137"/>
+<area shape="rect" id="node2" href="$group__collgetters.html#ga2897db8c7fffee9b2a4bcd7f81e368f6" title="Gets a shallow copy of the genes/alleles of each member of the group." alt="" coords="235,5,356,33"/>
+<area shape="rect" id="node3" href="$group__collgetters.html#ga6773f2b434edda042163890dea8f8dbd" title="Function to count the number of genotypes that currently belong to the specified group." alt="" coords="413,84,522,112"/>
+<area shape="rect" id="node4" href="$group__collgetters.html#gacc8432b03b8b5a33e0adde825c02ee7a" title="Gets the ids of each member of the group." alt="" coords="244,109,347,137"/>
+<area shape="rect" id="node5" href="$group__collgetters.html#gab535d4c5e7afdce3816ab40c19a46a78" title="Gets a shallow copy of the names of each member of the group." alt="" coords="233,161,358,189"/>
+<area shape="rect" id="node6" href="$group__supporters.html#gaa605100835fdec6b250fde0ad5a9cc8f" title="Function to identify the lookup index of a marker effect set identifier." alt="" coords="226,213,365,241"/>
+</map>

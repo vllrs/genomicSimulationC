@@ -21,7 +21,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">genomicSimulationC<span id="projectnumber">&#160;0.2.3</span>
+   <div id="projectname">genomicSimulationC<span id="projectnumber">&#160;0.2.4</span>
    </div>
   </td>
  </tr>
@@ -74,11 +74,11 @@ $(function() {
 <li>Genotypes loaded from an input file will be stored (and given IDs, and indexes) in the same order as they appeared in the input file.</li>
 <li>The order of genetic markers may not match the order of genetic markers in the input file: they will be re-ordered to match the genetic map (eg sorted by lower chromosome number and earlier position).</li>
 </ul>
-<h1><a class="anchor" id="autotoc_md39"></a>
+<h1><a class="anchor" id="autotoc_md44"></a>
 Valid values</h1>
 <ul>
 <li>Genotype indexes will be integer values greater than or equal to 0. These correspond to the position the genotype is currently stored at inside the simulation's data structures.</li>
-<li>Genotype IDs will be integer values greater than or equal to 1. 0 denotes no/unknown ID. This is used to track pedigree, and is unique to each genotype for the lifetime of the simulation.</li>
+<li>Genotype Pedigree IDs will be integer values greater than or equal to 1. 0 denotes no/unknown ID. This is used to track pedigree, and is unique to each genotype for the lifetime of the simulation.</li>
 <li>Group IDs/group numbers will be integer values greater than or equal to 1. All genotypes will be a member of a valid group; 0 is an error code. This is used to group together genotypes and run commands on groups of genotypes.</li>
 <li>Label IDs will be integer values greater than or equal to 1. Labels can be used to save information on each genotype (eg age, sex). </li>
 </ul>

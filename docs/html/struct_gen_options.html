@@ -21,7 +21,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">genomicSimulationC<span id="projectnumber">&#160;0.2.3</span>
+   <div id="projectname">genomicSimulationC<span id="projectnumber">&#160;0.2.4</span>
    </div>
   </td>
  </tr>
@@ -72,6 +72,17 @@ $(function() {
  <a href="struct_gen_options.html#details">More...</a></p>
 
 <p><code>#include &lt;<a class="el" href="sim-operations_8h_source.html">sim-operations.h</a>&gt;</code></p>
+<div id="dynsection-0" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-0-trigger" src="closed.png" alt="+"/> Collaboration diagram for GenOptions:</div>
+<div id="dynsection-0-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-0-content" class="dyncontent" style="display:none;">
+<div class="center"><img src="struct_gen_options__coll__graph.png" border="0" usemap="#a_gen_options_coll__map" alt="Collaboration graph"/></div>
+<map name="a_gen_options_coll__map" id="a_gen_options_coll__map">
+<area shape="rect" title="A type that contains choices of settings for SimData functions that create a new AlleleMatrix/generat..." alt="" coords="5,97,96,125"/>
+<area shape="rect" href="struct_effect_i_d.html" title="A type representing a particular loaded set of marker effects." alt="" coords="17,5,84,33"/>
+</map>
+<center><span class="legend">[<a href="graph_legend.html">legend</a>]</span></center></div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
 Data Fields</h2></td></tr>
@@ -96,9 +107,9 @@ Data Fields</h2></td></tr>
 <tr class="memitem:a06c720c1ed82d8154e441a4499c3b7bd"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_gen_options.html#a06c720c1ed82d8154e441a4499c3b7bd">will_save_pedigree_to_file</a></td></tr>
 <tr class="memdesc:a06c720c1ed82d8154e441a4499c3b7bd"><td class="mdescLeft">&#160;</td><td class="mdescRight">A boolean.  <a href="struct_gen_options.html#a06c720c1ed82d8154e441a4499c3b7bd">More...</a><br /></td></tr>
 <tr class="separator:a06c720c1ed82d8154e441a4499c3b7bd"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2b33ec8a6faeb963d87716cce444e47d"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_gen_options.html#a2b33ec8a6faeb963d87716cce444e47d">will_save_bvs_to_file</a></td></tr>
-<tr class="memdesc:a2b33ec8a6faeb963d87716cce444e47d"><td class="mdescLeft">&#160;</td><td class="mdescRight">A boolean.  <a href="struct_gen_options.html#a2b33ec8a6faeb963d87716cce444e47d">More...</a><br /></td></tr>
-<tr class="separator:a2b33ec8a6faeb963d87716cce444e47d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a100ac0a4226f344d614b8d5a84883ba2"><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_effect_i_d.html">EffectID</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_gen_options.html#a100ac0a4226f344d614b8d5a84883ba2">will_save_bvs_to_file</a></td></tr>
+<tr class="memdesc:a100ac0a4226f344d614b8d5a84883ba2"><td class="mdescLeft">&#160;</td><td class="mdescRight">If equal to NOT_AN_EFFECT_SET, no bvs are calculated or saved.  <a href="struct_gen_options.html#a100ac0a4226f344d614b8d5a84883ba2">More...</a><br /></td></tr>
+<tr class="separator:a100ac0a4226f344d614b8d5a84883ba2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a03a4d5e32968ee1adfa4956a876c9f4a"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_gen_options.html#a03a4d5e32968ee1adfa4956a876c9f4a">will_save_alleles_to_file</a></td></tr>
 <tr class="memdesc:a03a4d5e32968ee1adfa4956a876c9f4a"><td class="mdescLeft">&#160;</td><td class="mdescRight">A boolean.  <a href="struct_gen_options.html#a03a4d5e32968ee1adfa4956a876c9f4a">More...</a><br /></td></tr>
 <tr class="separator:a03a4d5e32968ee1adfa4956a876c9f4a"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -206,24 +217,24 @@ Data Fields</h2></td></tr>
 </div><div class="memdoc">
 
 <p>A boolean. </p>
-<p >If true, the set of alleles of every offspring generated in the cross are saved to "[filename_prefix}-genotype.txt", even if <code>will_save_to_simdata</code> is false. Genotypes are saved in the format of <a class="el" href="group__savers.html#gaeb3b527db48fd67f0d42a39c681b2c65" title="Prints the genotypes of each individual in a given group to a file, with the following format.">save_group_alleles()</a> </p>
+<p >If true, the set of alleles of every offspring generated in the cross are saved to "[filename_prefix}-genotype.txt", even if <code>will_save_to_simdata</code> is false. Genotypes are saved in the format of <a class="el" href="group__savers.html#gae65797e9f37cac9cff90abadd8c219c5" title="Prints the genotypes of each individual in a given group to a file, with the following format.">save_group_alleles()</a> </p>
 
 </div>
 </div>
-<a id="a2b33ec8a6faeb963d87716cce444e47d" name="a2b33ec8a6faeb963d87716cce444e47d"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a2b33ec8a6faeb963d87716cce444e47d">&#9670;&nbsp;</a></span>will_save_bvs_to_file</h2>
+<a id="a100ac0a4226f344d614b8d5a84883ba2" name="a100ac0a4226f344d614b8d5a84883ba2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a100ac0a4226f344d614b8d5a84883ba2">&#9670;&nbsp;</a></span>will_save_bvs_to_file</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">int GenOptions::will_save_bvs_to_file</td>
+          <td class="memname"><a class="el" href="struct_effect_i_d.html">EffectID</a> GenOptions::will_save_bvs_to_file</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p>A boolean. </p>
-<p >If true, the breeding values of every offspring generated in the cross are saved to "[filename_prefix}-bv.txt", even if <code>will_save_to_simdata</code> is false. BVs are saved in the format of <a class="el" href="group__savers.html#gaa9a8f4e7b82dda77c7a688d83fa08e28" title="Print the breeding value of each genotype in the SimData to a file.">save_bvs()</a> </p>
+<p>If equal to NOT_AN_EFFECT_SET, no bvs are calculated or saved. </p>
+<p >Otherwise, for each offspring in the cross, the breeding values according to the marker effect set with this <a class="el" href="struct_effect_i_d.html" title="A type representing a particular loaded set of marker effects.">EffectID</a> are saved to "[filename_prefix}-bv.txt", even if <code>will_save_to_simdata</code> is false. BVs are saved in the format of <a class="el" href="group__savers.html#ga9ff67eb9572c42530b64b70f4a307488" title="Print the breeding value of each genotype in the SimData to a file.">save_bvs()</a> </p>
 
 </div>
 </div>

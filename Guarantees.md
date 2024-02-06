@@ -13,7 +13,7 @@ A list of understandings about the simulation tool that you can trust will hold.
 ## Valid values
 
 - Genotype indexes will be integer values greater than or equal to 0. These correspond to the position the genotype is currently stored at inside the simulation's data structures.
-- Genotype IDs will be integer values greater than or equal to 1. 0 denotes no/unknown ID. This is used to track pedigree, and is unique to each genotype for the lifetime of the simulation.
+- Genotype Pedigree IDs will be integer values greater than or equal to 1. 0 denotes no/unknown ID. This is used to track pedigree, and is unique to each genotype for the lifetime of the simulation.
 - Group IDs/group numbers will be integer values greater than or equal to 1. All genotypes will be a member of a valid group; 0 is an error code. This is used to group together genotypes and run commands on groups of genotypes.
 - Label IDs will be integer values greater than or equal to 1. Labels can be used to save information on each genotype (eg age, sex).
 

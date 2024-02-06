@@ -1,0 +1,5 @@
+<map id="get_new_eff_set_id" name="get_new_eff_set_id">
+<area shape="rect" id="node1" title="Function to identify the next sequential integer that is not already allocated to a marker effect set..." alt="" coords="381,5,512,33"/>
+<area shape="rect" id="node2" href="$group__loaders.html#ga29f27b356c8ce89107314097868532d3" title="Populates a SimData combination with effect values." alt="" coords="172,5,333,33"/>
+<area shape="rect" id="node3" href="$group__loaders.html#ga3d8878f2c2c5fafdae57ffc46a78dfbc" title="Populates a SimData combination from scratch with marker allele data, a genetic map,..." alt="" coords="5,5,124,33"/>
+</map>

@@ -21,7 +21,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">genomicSimulationC<span id="projectnumber">&#160;0.2.3</span>
+   <div id="projectname">genomicSimulationC<span id="projectnumber">&#160;0.2.4</span>
    </div>
   </td>
  </tr>
@@ -76,7 +76,9 @@ $(function() {
 <div id="dynsection-0-content" class="dyncontent" style="display:none;">
 <div class="center"><img src="struct_allele_matrix__coll__graph.png" border="0" usemap="#a_allele_matrix_coll__map" alt="Collaboration graph"/></div>
 <map name="a_allele_matrix_coll__map" id="a_allele_matrix_coll__map">
-<area shape="rect" title=" " alt="" coords="5,5,95,33"/>
+<area shape="rect" title=" " alt="" coords="56,113,146,141"/>
+<area shape="rect" href="struct_pedigree_i_d.html" title="A type representing a program&#45;lifetime&#45;unique identifier for a genotype, to be used in tracking pedig..." alt="" coords="5,5,90,33"/>
+<area shape="rect" href="struct_group_num.html" title="A type representing the identifier of a group of genotypes." alt="" coords="114,5,197,33"/>
 </map>
 <center><span class="legend">[<a href="graph_legend.html">legend</a>]</span></center></div>
 <table class="memberdecls">
@@ -94,15 +96,15 @@ Data Fields</h2></td></tr>
 <tr class="memitem:a7161aa1a99fed07850afd9fdc4886168"><td class="memItemLeft" align="right" valign="top">char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_allele_matrix.html#a7161aa1a99fed07850afd9fdc4886168">names</a> [<a class="el" href="sim-operations_8h.html#af5eaa46085f7cc2b20091cdf17eea54a">CONTIG_WIDTH</a>]</td></tr>
 <tr class="memdesc:a7161aa1a99fed07850afd9fdc4886168"><td class="mdescLeft">&#160;</td><td class="mdescRight">Array of dynamically allocated strings containing the names of the lines/genotypes in this matrix.  <a href="struct_allele_matrix.html#a7161aa1a99fed07850afd9fdc4886168">More...</a><br /></td></tr>
 <tr class="separator:a7161aa1a99fed07850afd9fdc4886168"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a84a371ded20b00d177dd6dbf5877d85a"><td class="memItemLeft" align="right" valign="top">unsigned int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_allele_matrix.html#a84a371ded20b00d177dd6dbf5877d85a">ids</a> [<a class="el" href="sim-operations_8h.html#af5eaa46085f7cc2b20091cdf17eea54a">CONTIG_WIDTH</a>]</td></tr>
-<tr class="memdesc:a84a371ded20b00d177dd6dbf5877d85a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Unique ID for each genotype.  <a href="struct_allele_matrix.html#a84a371ded20b00d177dd6dbf5877d85a">More...</a><br /></td></tr>
-<tr class="separator:a84a371ded20b00d177dd6dbf5877d85a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a789948354e752963b4585980a76c5126"><td class="memItemLeft" align="right" valign="top">unsigned int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_allele_matrix.html#a789948354e752963b4585980a76c5126">pedigrees</a> [2][<a class="el" href="sim-operations_8h.html#af5eaa46085f7cc2b20091cdf17eea54a">CONTIG_WIDTH</a>]</td></tr>
-<tr class="memdesc:a789948354e752963b4585980a76c5126"><td class="mdescLeft">&#160;</td><td class="mdescRight">Two lists of integer IDs of the parents of this genotype (if tracked), or 0 if we don't know/care.  <a href="struct_allele_matrix.html#a789948354e752963b4585980a76c5126">More...</a><br /></td></tr>
-<tr class="separator:a789948354e752963b4585980a76c5126"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a30bb226acbee9ac11970d7c4bdabe9e1"><td class="memItemLeft" align="right" valign="top">unsigned int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_allele_matrix.html#a30bb226acbee9ac11970d7c4bdabe9e1">groups</a> [<a class="el" href="sim-operations_8h.html#af5eaa46085f7cc2b20091cdf17eea54a">CONTIG_WIDTH</a>]</td></tr>
-<tr class="memdesc:a30bb226acbee9ac11970d7c4bdabe9e1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Group allocation of each genotype.  <a href="struct_allele_matrix.html#a30bb226acbee9ac11970d7c4bdabe9e1">More...</a><br /></td></tr>
-<tr class="separator:a30bb226acbee9ac11970d7c4bdabe9e1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aab7ad09ffc9a1271eefbfb0e8d831eb2"><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_pedigree_i_d.html">PedigreeID</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_allele_matrix.html#aab7ad09ffc9a1271eefbfb0e8d831eb2">ids</a> [<a class="el" href="sim-operations_8h.html#af5eaa46085f7cc2b20091cdf17eea54a">CONTIG_WIDTH</a>]</td></tr>
+<tr class="memdesc:aab7ad09ffc9a1271eefbfb0e8d831eb2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Unique ID for each genotype.  <a href="struct_allele_matrix.html#aab7ad09ffc9a1271eefbfb0e8d831eb2">More...</a><br /></td></tr>
+<tr class="separator:aab7ad09ffc9a1271eefbfb0e8d831eb2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad1602a1fb3b18a4f3c46c6d2aadfad39"><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_pedigree_i_d.html">PedigreeID</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_allele_matrix.html#ad1602a1fb3b18a4f3c46c6d2aadfad39">pedigrees</a> [2][<a class="el" href="sim-operations_8h.html#af5eaa46085f7cc2b20091cdf17eea54a">CONTIG_WIDTH</a>]</td></tr>
+<tr class="memdesc:ad1602a1fb3b18a4f3c46c6d2aadfad39"><td class="mdescLeft">&#160;</td><td class="mdescRight">Two lists of integer IDs of the parents of this genotype (if tracked), or 0 if we don't know/care.  <a href="struct_allele_matrix.html#ad1602a1fb3b18a4f3c46c6d2aadfad39">More...</a><br /></td></tr>
+<tr class="separator:ad1602a1fb3b18a4f3c46c6d2aadfad39"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad4963a0fcdad6381d1dc1a3d443d210a"><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_group_num.html">GroupNum</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_allele_matrix.html#ad4963a0fcdad6381d1dc1a3d443d210a">groups</a> [<a class="el" href="sim-operations_8h.html#af5eaa46085f7cc2b20091cdf17eea54a">CONTIG_WIDTH</a>]</td></tr>
+<tr class="memdesc:ad4963a0fcdad6381d1dc1a3d443d210a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Group allocation of each genotype.  <a href="struct_allele_matrix.html#ad4963a0fcdad6381d1dc1a3d443d210a">More...</a><br /></td></tr>
+<tr class="separator:ad4963a0fcdad6381d1dc1a3d443d210a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4b122f41c91ee957e5558f965bfea128"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_allele_matrix.html#a4b122f41c91ee957e5558f965bfea128">n_labels</a></td></tr>
 <tr class="memdesc:a4b122f41c91ee957e5558f965bfea128"><td class="mdescLeft">&#160;</td><td class="mdescRight">Number of custom labels currently available to this <a class="el" href="struct_allele_matrix.html">AlleleMatrix</a>.  <a href="struct_allele_matrix.html#a4b122f41c91ee957e5558f965bfea128">More...</a><br /></td></tr>
 <tr class="separator:a4b122f41c91ee957e5558f965bfea128"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -131,14 +133,14 @@ Data Fields</h2></td></tr>
 
 </div>
 </div>
-<a id="a30bb226acbee9ac11970d7c4bdabe9e1" name="a30bb226acbee9ac11970d7c4bdabe9e1"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a30bb226acbee9ac11970d7c4bdabe9e1">&#9670;&nbsp;</a></span>groups</h2>
+<a id="ad4963a0fcdad6381d1dc1a3d443d210a" name="ad4963a0fcdad6381d1dc1a3d443d210a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad4963a0fcdad6381d1dc1a3d443d210a">&#9670;&nbsp;</a></span>groups</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">unsigned int AlleleMatrix::groups[<a class="el" href="sim-operations_8h.html#af5eaa46085f7cc2b20091cdf17eea54a">CONTIG_WIDTH</a>]</td>
+          <td class="memname"><a class="el" href="struct_group_num.html">GroupNum</a> AlleleMatrix::groups[<a class="el" href="sim-operations_8h.html#af5eaa46085f7cc2b20091cdf17eea54a">CONTIG_WIDTH</a>]</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -147,14 +149,14 @@ Data Fields</h2></td></tr>
 
 </div>
 </div>
-<a id="a84a371ded20b00d177dd6dbf5877d85a" name="a84a371ded20b00d177dd6dbf5877d85a"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a84a371ded20b00d177dd6dbf5877d85a">&#9670;&nbsp;</a></span>ids</h2>
+<a id="aab7ad09ffc9a1271eefbfb0e8d831eb2" name="aab7ad09ffc9a1271eefbfb0e8d831eb2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aab7ad09ffc9a1271eefbfb0e8d831eb2">&#9670;&nbsp;</a></span>ids</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">unsigned int AlleleMatrix::ids[<a class="el" href="sim-operations_8h.html#af5eaa46085f7cc2b20091cdf17eea54a">CONTIG_WIDTH</a>]</td>
+          <td class="memname"><a class="el" href="struct_pedigree_i_d.html">PedigreeID</a> AlleleMatrix::ids[<a class="el" href="sim-operations_8h.html#af5eaa46085f7cc2b20091cdf17eea54a">CONTIG_WIDTH</a>]</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -263,14 +265,14 @@ Data Fields</h2></td></tr>
 
 </div>
 </div>
-<a id="a789948354e752963b4585980a76c5126" name="a789948354e752963b4585980a76c5126"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a789948354e752963b4585980a76c5126">&#9670;&nbsp;</a></span>pedigrees</h2>
+<a id="ad1602a1fb3b18a4f3c46c6d2aadfad39" name="ad1602a1fb3b18a4f3c46c6d2aadfad39"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad1602a1fb3b18a4f3c46c6d2aadfad39">&#9670;&nbsp;</a></span>pedigrees</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">unsigned int AlleleMatrix::pedigrees[2][<a class="el" href="sim-operations_8h.html#af5eaa46085f7cc2b20091cdf17eea54a">CONTIG_WIDTH</a>]</td>
+          <td class="memname"><a class="el" href="struct_pedigree_i_d.html">PedigreeID</a> AlleleMatrix::pedigrees[2][<a class="el" href="sim-operations_8h.html#af5eaa46085f7cc2b20091cdf17eea54a">CONTIG_WIDTH</a>]</td>
         </tr>
       </table>
 </div><div class="memdoc">

@@ -49,7 +49,8 @@ m1 1 5.2
 <td>
 ```{C}
 SimData* d = create_empty_simdata(time(NULL));
-int founders = load_all_simdata(d, "genotype-file.txt", "map-file.txt", NULL);
+struct GroupAndEffectSet init = load_all_simdata(d, "genotype-file.txt", "map-file.txt", NULL);
+GroupNum founders = init.group;
 ```
 <td>
 ```{R}
@@ -96,8 +97,9 @@ m1 1 5.2
 <td>
 ```{C}
 SimData* d = create_empty_simdata(time(NULL));
-int founders_a = load_all_simdata(d, "genotype-file.txt", "map-file.txt", NULL);
-int founders_b = load_more_transposed_genes_to_simdata(d, "genotype-file2.txt");
+struct GroupAndEffectSet init = load_all_simdata(d, "genotype-file.txt", "map-file.txt", NULL);
+GroupNum founders_a = init.group;
+GroupNum founders_b = load_more_transposed_genes_to_simdata(d, "genotype-file2.txt");
 ```
 <td>
 ```{R}
@@ -144,17 +146,22 @@ m3 T -0.1
 <td>
 ```{C}
 SimData* d = create_empty_simdata(time(NULL));
-int founders = load_all_simdata(d, "genotype-file.txt", "map-file.txt", "eff-file.txt");
+struct GroupAndEffectSet init = load_all_simdata(d, "genotype-file.txt", "map-file.txt", "eff-file.txt");
+GroupNum founders = init.group;
+EffectID eff1 = init.effectSet;
 ```
 <td>
 ```{R}
-founders <- load.data(allele.file="genotype-file.txt", map.file="map-file.txt", effect.file="eff-file.txt")
+# Note that the output is slightly different when an effect file is loaded.
+init <- load.data(allele.file="genotype-file.txt", map.file="map-file.txt", effect.file="eff-file.txt")
+founders <- init$groupNum
+eff1 <- init$effectID
 ```
 </table>
 
-## Swap out the set of additive trait effects for another
+## Load another set of additive trait effects
 
-This assumes the simulation is set up, that is, one of **Load a genetic map and a set of founder genotypes**, **Load a genetic map and several sets of founder genotypes**, **Load a genetic map, a set of founder genotypes, and a set of additive trait effects** or equivalent has been carried out. If the simulation is not yet set up and you with to load trait effect values, see the section above, titled **Load a genetic map, a set of founder genotypes, and a set of additive trait effects**.
+This assumes the simulation is set up, that is, one of **Load a genetic map and a set of founder genotypes**, **Load a genetic map and several sets of founder genotypes**, **Load a genetic map, a set of founder genotypes, and a set of additive trait effects** or equivalent has been carried out. If the simulation is not yet set up and you wish to load trait effect values, see the section above, titled **Load a genetic map, a set of founder genotypes, and a set of additive trait effects**.
 
 <table>
 <tr><th>Task <th>Input Files <th>genomicSimulationC (C) <th>genomicSimulation (R)
@@ -163,11 +170,11 @@ This assumes the simulation is set up, that is, one of **Load a genetic map and 
 - File location: eff-file2.txt
 <td>
 ```{C}
-load_effects_to_simdata(d, "eff-file2.txt");
+EffectID eff2 = load_effects_to_simdata(d, "eff-file2.txt");
 ```
 <td>
 ```{R}
-load.different.effects("eff-file2.txt")
+eff2 <- load.different.effects("eff-file2.txt")
 ```
 </table>
 
@@ -197,7 +204,7 @@ The first (header) line's values are not checked. After that, all rows must have
 
 Only markers that appear both in the genotype file and the map file are used in simulation. The simulation tool will print as output the number of markers that were loaded and the number that were discarded.
 
-Loading an effect file is optional for running the simulation. Its format should be:
+Loading effect file(s) is optional for running the simulation. Effect files should should be formatted as follows:
 ```
 m1 A -0.8
 m2 A -0.1
@@ -215,7 +222,7 @@ Updates to expand the range of allowed input formats are coming soon.
 
 
 # Crossing & Other Ways to Generate New Genotypes: Plant-themed
-Templates in this section assume you have loaded a set of founders whose group id is saved in the variable `founders`.
+Templates in this section assume you have loaded a set of founders whose group number is saved in the variable `founders`.
 
 ## Single seed descent
 
@@ -224,7 +231,7 @@ Templates in this section assume you have loaded a set of founders whose group i
 <tr><td>For six generations grow a single seed from each plant to maturity.
 <td>
 ```{C}
-int f6 = self_n_times(d, 6, founders, BASIC_OPT);
+GroupNum f6 = self_n_times(d, 6, founders, BASIC_OPT);
 ```
 <td>
 ```{R}
@@ -242,10 +249,10 @@ f6 <- self.n.times(founders, n=6)
 GenOptions opt = {.will_name_offspring=FALSE, .offspring_name_prefix=NULL, .family_size=6,
 		.will_track_pedigree=TRUE, .will_allocate_ids=TRUE,
 		.filename_prefix=NULL, .will_save_pedigree_to_file=FALSE,
-		.will_save_bvs_to_file=FALSE, .will_save_alleles_to_file=FALSE,
+		.will_save_bvs_to_file=NOT_AN_EFFECT_ID, .will_save_alleles_to_file=FALSE,
 		.will_save_to_simdata=TRUE};
-int crosses = cross_random_individuals(d, founders, 20, 0, opt);
-int families[20];
+GroupNum crosses = cross_random_individuals(d, founders, 20, 0, opt);
+GroupNum families[20];
 split_into_families(d, crosses, families);
 ```
 <td>
@@ -261,16 +268,16 @@ families <- break.group.into.families(crosses)
 <td>
 ```{C}
 int targetparent = 1;
-int targetparent_group = split_from_group(d, 1, &targetparent);
+GroupNum targetparent_group = split_from_group(d, 1, &targetparent);
 
 GenOptions opt = {.will_name_offspring=FALSE, .offspring_name_prefix=NULL, .family_size=6,
 		.will_track_pedigree=TRUE, .will_allocate_ids=TRUE,
 		.filename_prefix=NULL, .will_save_pedigree_to_file=FALSE,
-		.will_save_bvs_to_file=FALSE, .will_save_alleles_to_file=FALSE,
+		.will_save_bvs_to_file=NOT_AN_EFFECT_ID, .will_save_alleles_to_file=FALSE,
 		.will_save_to_simdata=TRUE};
-int crosses = cross_randomly_between(d, targetparent_group, founders, 10, 0, 0, opt);
+GroupNum crosses = cross_randomly_between(d, targetparent_group, founders, 10, 0, 0, opt);
 
-int families[10];
+GroupNum families[10];
 split_into_halfsib_families(d, crosses, 1, families);
 ```
 <td>
@@ -294,8 +301,8 @@ Updating the marker effect estimates is a task that must be done outside of geno
 <tr><td>Suppose you want to simulate the success of the founder population in different environments.
 <td>
 ```{C}
-int location1 = make_clones(d, founders, TRUE, BASIC_OPT);
-int location2 = make_clones(d, founders, TRUE, BASIC_OPT);
+GroupNum location1 = make_clones(d, founders, TRUE, BASIC_OPT);
+GroupNum location2 = make_clones(d, founders, TRUE, BASIC_OPT);
 ```
 <td>
 ```{R}
@@ -314,9 +321,9 @@ Once separate copies exist for trials at different locations, simulate selection
 <td>
 ```{C}
 int targetparent = 1;
-int targetparent_group = split_from_group(d, 1, &targetparent);
+GroupNum targetparent_group = split_from_group(d, 1, &targetparent);
 
-int backcross_generations[20];
+GroupNum backcross_generations[20];
 backcross_generation[0] = founders;
 for (int i = 1; i < 20; ++i) {
 	backcross_generations[i] = cross_randomly_between(d, targetparent_group, backcross_generations[i-1], 10, 0, 0, BASIC_OPT);
@@ -347,10 +354,10 @@ Templates in this section assume you have loaded two sets of founders whose grou
 <tr><td>Suppose you randomly cross your founders, then want to identify the male and female calves among the offspring.
 <td>
 ```{C}
-int offspring = cross_randomly_between(d, cows, bulls, 10, 0, 0, BASIC_OPT);
+GroupNum offspring = cross_randomly_between(d, cows, bulls, 10, 0, 0, BASIC_OPT);
 
-int offspring_f = split_randomly_into_two(d, offspring);
-int offspring_m = offspring;
+GroupNum offspring_f = split_randomly_into_two(d, offspring);
+GroupNum offspring_m = offspring;
 ```
 <td>
 ```{R}
@@ -373,13 +380,13 @@ Suppose the `offspring_f` and `offspring_m` groups exist, as created in the prev
 <tr><td>Suppose you want to add your new calves to the breeding kernels from which their parents were chosen.
 <td>
 ```{C}
-int cowGroups[2];
+GroupNum cowGroups[2];
 cowGroups[0] = cows;
 cowGroups[1] = offspring_f;
 
 cows = combine_groups(d, 2, cowGroups);
 
-int bullGroups[2];
+GroupNum bullGroups[2];
 bullGroups[0] = bulls;
 bullGroups[1] = offspring_m;
 
@@ -399,7 +406,7 @@ bulls <- combine.groups(c(bulls,offspring_m))
 <tr><td>Suppose each cow should only have one calf this generation.
 <td>
 ```{C}
-int offspring = cross_randomly_between(d, cows, bulls, 10, 1, 0, BASIC_OPT);
+GroupNum offspring = cross_randomly_between(d, cows, bulls, 10, 1, 0, BASIC_OPT);
 ```
 <td>
 ```{R}
@@ -414,13 +421,13 @@ offspring <- cross.randomly.between(cows, bulls, cap1=1, n.crosses=10)
 <tr><td>Suppose the best bull in the population is the only one that will father calves under the current breeding strategy.
 <td>
 ```{C}
-int bestbull = split_by_bv(d, bulls, 1, FALSE);
+GroupNum bestbull = split_by_bv(d, bulls, eff1, 1, FALSE); # where eff1 is an EffectID representing the marker effect set to use to calculate bvs
 
-int offspring = cross_randomly_between(d, cows, bestbull, 10, 1, 0, BASIC_OPT);
+GroupNum offspring = cross_randomly_between(d, cows, bestbull, 10, 1, 0, BASIC_OPT);
 ```
 <td>
 ```{R}
-bestbull <- select.by.gebv(bulls, number=1)
+bestbull <- select.by.gebv(bulls, number=1, eff.set=eff1) # by default, this function uses the first effect set, so `eff.set=eff1` is optional
 offspring <- cross.randomly.between(cows, bestbull, cap1=1, n.crosses=10)
 ```
 </table>
@@ -446,7 +453,7 @@ crossingPlan[1][0] = bull1_index;
 crossingPlan[1][1] = bull2_index;
 crossingPlan[1][2] = bull1_index;
 
-int offspring = cross_these_combinations(d, 3, crossingPlan[0], crossingPlan[1], BASIC_OPT);
+GroupNum offspring = cross_these_combinations(d, 3, crossingPlan[0], crossingPlan[1], BASIC_OPT);
 ```
 <td>
 ```{R}
@@ -477,7 +484,7 @@ int crossingPlan[2][1];
 crossingPlan[0][0] = breed1_index;
 crossingPlan[1][0] = breed2_index;
 
-int f1 = cross_these_combinations(d, 1, crossingPlan[0], crossingPlan[1] BASIC_OPT);
+GroupNum f1 = cross_these_combinations(d, 1, crossingPlan[0], crossingPlan[1] BASIC_OPT);
 int* f1_index = malloc(sizeof(int) * 1);
 get_group_indexes(d, f1, 1, f1_index); //we know this group has only one member
 
@@ -486,7 +493,7 @@ crossingPlan[0][0] = breed3_index;
 crossingPlan[1][0] = f1_index[0];
 free(f1_index);
 
-int f3way = cross_these_combinations(d, 1, crossingPlan[0], crossingPlan[1], BASIC_OPT);
+GroupNum f3way = cross_these_combinations(d, 1, crossingPlan[0], crossingPlan[1], BASIC_OPT);
 ```
 <td>
 ```{R}
@@ -516,7 +523,7 @@ GenOptions opt = {.family_size=5,
 		.will_save_bvs_to_file=FALSE, .will_save_alleles_to_file=FALSE,
 		.will_save_to_simdata=TRUE};
 
-int f1 = cross_these_combinations(d, 1, crossingPlan[0], crossingPlan[1], opt);
+GroupNum f1 = cross_these_combinations(d, 1, crossingPlan[0], crossingPlan[1], opt);
 int* f1_indexes = malloc(sizeof(int) * 5);
 get_group_indexes(d, f1, 5, f1_indexes);
 
@@ -529,7 +536,7 @@ crossingPlanb[1][2] = f1_indexes[2]; crossingPlanb[1][3] = f1_indexes[3];
 crossingPlanb[1][4] = f1_indexes[4];
 free(f1_indexes);
 
-int f3way = cross_these_combinations(d, 5, crossingPlanb[0], crossingPlanb[1], opt);
+GroupNum f3way = cross_these_combinations(d, 5, crossingPlanb[0], crossingPlanb[1], opt);
 ```
 <td>
 ```{R}
@@ -551,22 +558,23 @@ genomicSimulation's custom labels can be used to track age (or some other known 
 <td>
 ```{C}
 SimData* d = create_empty_simdata(1234567);
-int animals = load_all_simdata(d, "genotype-file.txt", "map-file.txt", NULL);
+struct GroupAndEffectSet init = load_all_simdata(d, "genotype-file.txt", "map-file.txt", NULL);
+GroupNum animals = init.group;
 
 // Create a new label to represent age, with default/at-birth value of 0.
-int ageLabel = create_new_label(d, 0);
+LabelID ageLabel = create_new_label(d, 0);
 
 // Founders are 3 years old at the beginning.
 set_labels_to_const(d, animals, ageLabel, 3);
 
 for (int year = 0; year < 10; ++year) {
-	int breedingGroup = split_by_label_value(d, animals, ageLabel, 3);
+	GroupNum breedingGroup = split_by_label_value(d, animals, ageLabel, 3);
 	
 	// Do some breeding/selection steps as appropriate for the breeding program, eg:
-	int offspring = cross_random_individuals(d, breedingGroup, 50, 0, BASIC_OPT);
+	GruopNum offspring = cross_random_individuals(d, breedingGroup, 50, 0, BASIC_OPT);
 	// Offspring will have the default value for the label i.e. ageLabel = 0
 	
-	int toCombine[3] = {animals, breedingGroup, offspring};
+	GroupNum toCombine[3] = {animals, breedingGroup, offspring};
 	animals = combine_groups(d, 3, toCombine);
 	
 	// Increase age of all by 1
@@ -604,7 +612,7 @@ for (year in 0:10) {
 <tr><td>Suppose you want to cull animals that are 12 years old or older.
 <td>
 ```{C}
-int toCull = split_by_label_range(d, animals, ageLabel, 12, 1000000); 
+GroupNum toCull = split_by_label_range(d, animals, ageLabel, 12, 1000000); 
 // some very large number for upper bound. User is responsible for the values
 // of the custom label, so you can work out a number your script should never 
 // set the label above.
@@ -615,7 +623,7 @@ if (toCull > 0) { // split_by_label_range did find some animals to cull
 ```
 or
 ```{C}
-int toKeep = split_by_label_range(d, animals, ageLabel, 0, 11); 
+GroupNum toKeep = split_by_label_range(d, animals, ageLabel, 0, 11); 
 
 delete_group(d, animals);
 ```
@@ -655,11 +663,13 @@ The template selection template. This does the exact same thing as `split_by_bv`
 <tr><td>Suppose you want to select the top 10 genotypes in `target` according to their true breeding value as calculated by the internal breeding value calculator.
 <td>
 ```{C}
-int select_10_with_best_GEBV(int group) {
+GroupNum select_10_with_best_GEBV(GroupNum group) {
   unsigned int group_size = get_group_size( d, group );
-  int* group_indexes = malloc(sizeof(int) * group_size);
+  int group_indexes[group_size];
+  memset(group_indexes, 0, sizeof(int)*group_size);
   get_group_indexes( d, group, group_size, group_indexes);
-  double* group_bvs = malloc(sizeof(double) * group_size);
+  double group_bvs[group_size];
+  memset(group_bvs, 0, sizeof(double)*group_size);
   get_group_bvs( d, group, group_size, group_bvs);
 
   # A pretty inefficient way of finding the top 10 scores and their corresponding
@@ -684,8 +694,6 @@ int select_10_with_best_GEBV(int group) {
 	group_bvs[currentTopIndex] = min_score;
   }
 
-  free(group_indexes);
-  free(group_bvs);
   return split_from_group(d, 10, top_individuals);
 }
 ```
@@ -751,3 +759,6 @@ Suppose you have an effect file for a quantitative trait, called `eff-large.txt`
 
 ## Select on an index weighting two traits.
 
+
+
+(this list of examples will continue to be expanded...)

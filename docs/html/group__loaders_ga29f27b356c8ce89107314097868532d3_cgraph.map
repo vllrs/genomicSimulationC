@@ -1,0 +1,6 @@
+<map id="load_effects_to_simdata" name="load_effects_to_simdata">
+<area shape="rect" id="node1" title="Populates a SimData combination with effect values." alt="" coords="5,73,167,101"/>
+<area shape="rect" id="node2" href="$group__supporters.html#gaf78d759e6da39a08acff41421d0e7b2a" title="Returns the first located index in an array of strings where the string is the same as the string tar..." alt="" coords="215,5,350,49"/>
+<area shape="rect" id="node3" href="$group__supporters.html#ga6072a152b624743eeafb30adaf9b7f17" title="Replace calls to malloc direct with this function, which errors and exits with status 2 if memory all..." alt="" coords="240,73,325,101"/>
+<area shape="rect" id="node4" href="$group__supporters.html#ga921f3d9c1ff27c103a436e4f36292a14" title="Function to identify the next sequential integer that is not already allocated to a marker effect set..." alt="" coords="217,125,348,153"/>
+</map>

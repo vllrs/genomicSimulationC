@@ -1,7 +1,0 @@
-<map id="get_n_new_group_nums" name="get_n_new_group_nums">
-<area shape="rect" id="node1" title="Function to identify the next n sequential integers that do not identify a group that currently has m..." alt="" coords="395,81,556,109"/>
-<area shape="rect" id="node2" href="$group__groupmod.html#gaedf5b91b00b207a38c6a1a036f3853cf" title="Allocate each member of the group to one of n groups with custom probabilities for each group." alt="" coords="194,5,337,49"/>
-<area shape="rect" id="node3" href="$group__groupmod.html#ga74610483035cee35d81bd24c1a044259" title="Split a group into n groups of equal size (or size differing only by one, if n does not perfectly div..." alt="" coords="184,73,347,117"/>
-<area shape="rect" id="node5" href="$group__groupmod.html#gad4682769497c140c4374d3a8d85350c6" title="Allocate each member of the group to one of n groups with equal probability." alt="" coords="192,141,339,169"/>
-<area shape="rect" id="node4" href="$group__groupmod.html#ga49e99e674d87de80facffa7bed28393f" title="Split a group into n groups of equal size (or size differing only by one, if n does not perfectly div..." alt="" coords="5,81,136,109"/>
-</map>

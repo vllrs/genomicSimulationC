@@ -1,0 +1,6 @@
+<map id="get_n_new_group_nums" name="get_n_new_group_nums">
+<area shape="rect" id="node1" title="Function to identify the next n sequential integers that do not identify a group that currently has m..." alt="" coords="5,32,167,60"/>
+<area shape="rect" id="node2" href="$group__collgetters.html#gacadb6fd4167febae0fcd3f653ee8a534" title="Identify group numbers that currently have members." alt="" coords="215,5,352,33"/>
+<area shape="rect" id="node4" href="$group__supporters.html#ga6072a152b624743eeafb30adaf9b7f17" title="Replace calls to malloc direct with this function, which errors and exits with status 2 if memory all..." alt="" coords="241,57,326,85"/>
+<area shape="rect" id="node3" href="$group__supporters.html#gadae2e9f7e1061cb20426ba2333b7629b" title="Comparator function for qsort." alt="" coords="400,5,569,33"/>
+</map>

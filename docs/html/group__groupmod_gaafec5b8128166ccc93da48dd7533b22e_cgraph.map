@@ -1,0 +1,8 @@
+<map id="split_by_probabilities_into_n" name="split_by_probabilities_into_n">
+<area shape="rect" id="node1" title="Allocate each member of the group to one of n groups with custom probabilities for each group." alt="" coords="5,24,148,68"/>
+<area shape="rect" id="node2" href="$group__collgetters.html#ga6773f2b434edda042163890dea8f8dbd" title="Function to count the number of genotypes that currently belong to the specified group." alt="" coords="222,5,331,33"/>
+<area shape="rect" id="node3" href="$group__supporters.html#ga5f4874bcb65118360f7bba3870efe5e2" title="Function to identify the next n sequential integers that do not identify a group that currently has m..." alt="" coords="196,57,357,85"/>
+<area shape="rect" id="node4" href="$group__collgetters.html#gacadb6fd4167febae0fcd3f653ee8a534" title="Identify group numbers that currently have members." alt="" coords="405,31,542,59"/>
+<area shape="rect" id="node6" href="$group__supporters.html#ga6072a152b624743eeafb30adaf9b7f17" title="Replace calls to malloc direct with this function, which errors and exits with status 2 if memory all..." alt="" coords="432,83,516,111"/>
+<area shape="rect" id="node5" href="$group__supporters.html#gadae2e9f7e1061cb20426ba2333b7629b" title="Comparator function for qsort." alt="" coords="590,31,760,59"/>
+</map>

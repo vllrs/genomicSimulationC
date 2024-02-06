@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['simdata_0',['SimData',['../struct_sim_data.html',1,'']]]
+  ['pedigreeid_0',['PedigreeID',['../struct_pedigree_i_d.html',1,'']]]
 ];

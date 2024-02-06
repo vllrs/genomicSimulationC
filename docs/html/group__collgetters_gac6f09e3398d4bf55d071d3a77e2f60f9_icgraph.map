@@ -1,0 +1,6 @@
+<map id="get_group_parent_ids" name="get_group_parent_ids">
+<area shape="rect" id="node1" title="Gets the ids of either the first or second parent of each member of the group." alt="" coords="408,36,553,64"/>
+<area shape="rect" id="node2" href="$group__savers.html#ga821e9489b1668201f9bd38d9ac467673" title="Print the full known pedigree of each genotype in a group to a file." alt="" coords="195,5,360,33"/>
+<area shape="rect" id="node4" href="$group__savers.html#ga8ebf516e290bc4fd0e171a6d621efc2b" title="Print the parents of each genotype in a group to a file." alt="" coords="204,57,351,101"/>
+<area shape="rect" id="node3" href="$group__collgetters.html#ga31b649f4b57e0fa7ed2490b4cc48c97e" title="Gets the full pedigree string (as per save_group_full_pedigree() ) of each member of the group." alt="" coords="5,5,147,33"/>
+</map>

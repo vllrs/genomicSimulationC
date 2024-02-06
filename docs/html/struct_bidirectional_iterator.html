@@ -21,7 +21,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">genomicSimulationC<span id="projectnumber">&#160;0.2.3</span>
+   <div id="projectname">genomicSimulationC<span id="projectnumber">&#160;0.2.4</span>
    </div>
   </td>
  </tr>
@@ -79,13 +79,17 @@ $(function() {
 <div id="dynsection-0-content" class="dyncontent" style="display:none;">
 <div class="center"><img src="struct_bidirectional_iterator__coll__graph.png" border="0" usemap="#a_bidirectional_iterator_coll__map" alt="Collaboration graph"/></div>
 <map name="a_bidirectional_iterator_coll__map" id="a_bidirectional_iterator_coll__map">
-<area shape="rect" title="A structure to iterate forwards and backwards through all genotypes in a SimData or through only the ..." alt="" coords="187,281,319,309"/>
-<area shape="rect" href="struct_sim_data.html" title="Composite type that is used to run crossing simulations." alt="" coords="169,189,241,217"/>
-<area shape="rect" href="struct_genetic_map.html" title="A type that stores the genetic map for a set of markers." alt="" coords="18,97,109,125"/>
-<area shape="rect" href="struct_marker_position.html" title="A struct representing a single marker location." alt="" coords="5,5,114,33"/>
-<area shape="rect" href="struct_allele_matrix.html" title=" " alt="" coords="255,97,344,125"/>
-<area shape="rect" href="struct_effect_matrix.html" title="A type that stores a matrix of effect values and their names." alt="" coords="141,97,231,125"/>
-<area shape="rect" href="struct_decimal_matrix.html" title="A row&#45;major heap matrix that contains floating point numbers." alt="" coords="138,5,242,33"/>
+<area shape="rect" title="A structure to iterate forwards and backwards through all genotypes in a SimData or through only the ..." alt="" coords="502,297,634,325"/>
+<area shape="rect" href="struct_sim_data.html" title="Composite type that is used to run crossing simulations." alt="" coords="287,205,359,233"/>
+<area shape="rect" href="struct_label_i_d.html" title="A type representing a particular integer label." alt="" coords="5,113,70,141"/>
+<area shape="rect" href="struct_genetic_map.html" title="A type that stores the genetic map for a set of markers." alt="" coords="408,113,499,141"/>
+<area shape="rect" href="struct_marker_position.html" title="A struct representing a single marker location." alt="" coords="402,5,510,33"/>
+<area shape="rect" href="struct_allele_matrix.html" title=" " alt="" coords="524,113,613,141"/>
+<area shape="rect" href="struct_pedigree_i_d.html" title="A type representing a program&#45;lifetime&#45;unique identifier for a genotype, to be used in tracking pedig..." alt="" coords="294,5,378,33"/>
+<area shape="rect" href="struct_group_num.html" title="A type representing the identifier of a group of genotypes." alt="" coords="629,5,713,33"/>
+<area shape="rect" href="struct_effect_i_d.html" title="A type representing a particular loaded set of marker effects." alt="" coords="94,113,160,141"/>
+<area shape="rect" href="struct_effect_matrix.html" title="A type that stores a matrix of effect values and their names." alt="" coords="184,113,275,141"/>
+<area shape="rect" href="struct_decimal_matrix.html" title="A row&#45;major heap matrix that contains floating point numbers." alt="" coords="165,5,270,33"/>
 </map>
 <center><span class="legend">[<a href="graph_legend.html">legend</a>]</span></center></div>
 <table class="memberdecls">
@@ -94,9 +98,9 @@ Data Fields</h2></td></tr>
 <tr class="memitem:aa7b00c5469206a6eb323975cf717708f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_sim_data.html">SimData</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_bidirectional_iterator.html#aa7b00c5469206a6eb323975cf717708f">d</a></td></tr>
 <tr class="memdesc:aa7b00c5469206a6eb323975cf717708f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Simulation data through which to iterate.  <a href="struct_bidirectional_iterator.html#aa7b00c5469206a6eb323975cf717708f">More...</a><br /></td></tr>
 <tr class="separator:aa7b00c5469206a6eb323975cf717708f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a768a2d6f1149a2b3dd5c9b2c27066ffc"><td class="memItemLeft" align="right" valign="top">unsigned int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_bidirectional_iterator.html#a768a2d6f1149a2b3dd5c9b2c27066ffc">group</a></td></tr>
-<tr class="memdesc:a768a2d6f1149a2b3dd5c9b2c27066ffc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Group through which to iterate.  <a href="struct_bidirectional_iterator.html#a768a2d6f1149a2b3dd5c9b2c27066ffc">More...</a><br /></td></tr>
-<tr class="separator:a768a2d6f1149a2b3dd5c9b2c27066ffc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abab8b5190c5f6b57d764ffcc62579c76"><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_group_num.html">GroupNum</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_bidirectional_iterator.html#abab8b5190c5f6b57d764ffcc62579c76">group</a></td></tr>
+<tr class="memdesc:abab8b5190c5f6b57d764ffcc62579c76"><td class="mdescLeft">&#160;</td><td class="mdescRight">Group through which to iterate.  <a href="struct_bidirectional_iterator.html#abab8b5190c5f6b57d764ffcc62579c76">More...</a><br /></td></tr>
+<tr class="separator:abab8b5190c5f6b57d764ffcc62579c76"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1a0dc2557bec6d315cadf3c740f975bc"><td class="memItemLeft" align="right" valign="top">unsigned long int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_bidirectional_iterator.html#a1a0dc2557bec6d315cadf3c740f975bc">globalPos</a></td></tr>
 <tr class="memdesc:a1a0dc2557bec6d315cadf3c740f975bc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Global index of the genotype in the linked list of <a class="el" href="struct_allele_matrix.html">AlleleMatrix</a> beginning at <code>d-&gt;m</code> where the iterator's 'cursor' currently sits.  <a href="struct_bidirectional_iterator.html#a1a0dc2557bec6d315cadf3c740f975bc">More...</a><br /></td></tr>
 <tr class="separator:a1a0dc2557bec6d315cadf3c740f975bc"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -115,7 +119,7 @@ Data Fields</h2></td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p >A structure to iterate forwards and backwards through all genotypes in a <a class="el" href="struct_sim_data.html" title="Composite type that is used to run crossing simulations.">SimData</a> or through only the members of a group. </p>
-<dl class="section see"><dt>See also</dt><dd><a class="el" href="group__iterators.html#ga9431b219505c28acc24a310f4ae8801f" title="Create a bidirectional iterator.">create_bidirectional_iter</a> </dd></dl>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="group__iterators.html#gaa3cc5e7ea10f92c655ba7e4b88468a35" title="Create a bidirectional iterator.">create_bidirectional_iter</a> </dd></dl>
 </div><h2 class="groupheader">Field Documentation</h2>
 <a id="a9d8e48db516355c6fb3c93313ec44d33" name="a9d8e48db516355c6fb3c93313ec44d33"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a9d8e48db516355c6fb3c93313ec44d33">&#9670;&nbsp;</a></span>atEnd</h2>
@@ -215,14 +219,14 @@ Data Fields</h2></td></tr>
 
 </div>
 </div>
-<a id="a768a2d6f1149a2b3dd5c9b2c27066ffc" name="a768a2d6f1149a2b3dd5c9b2c27066ffc"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a768a2d6f1149a2b3dd5c9b2c27066ffc">&#9670;&nbsp;</a></span>group</h2>
+<a id="abab8b5190c5f6b57d764ffcc62579c76" name="abab8b5190c5f6b57d764ffcc62579c76"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abab8b5190c5f6b57d764ffcc62579c76">&#9670;&nbsp;</a></span>group</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">unsigned int BidirectionalIterator::group</td>
+          <td class="memname"><a class="el" href="struct_group_num.html">GroupNum</a> BidirectionalIterator::group</td>
         </tr>
       </table>
 </div><div class="memdoc">

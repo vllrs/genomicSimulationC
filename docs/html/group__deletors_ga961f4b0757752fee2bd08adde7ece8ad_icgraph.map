@@ -1,6 +1,7 @@
 <map id="delete_effect_matrix" name="delete_effect_matrix">
-<area shape="rect" id="node1" title="Deletes an EffectMatrix object and frees its memory." alt="" coords="329,32,466,60"/>
+<area shape="rect" id="node1" title="Deletes an EffectMatrix object and frees its memory." alt="" coords="329,57,466,85"/>
 <area shape="rect" id="node2" href="$group__loaders.html#gac052ad3cb1f8975c21b28eea560a6e0b" title="Clear a SimData object on the heap." alt="" coords="175,5,278,33"/>
-<area shape="rect" id="node4" href="$group__deletors.html#ga6fc4a687a2186e9e9dcf3229d9141041" title="Deletes a SimData object and frees its memory." alt="" coords="172,57,281,85"/>
-<area shape="rect" id="node3" href="$group__loaders.html#ga54cd625669413c2ef171060e9844d814" title="Populates a SimData combination from scratch with marker allele data, a genetic map,..." alt="" coords="5,5,124,33"/>
+<area shape="rect" id="node4" href="$group__deletors.html#ga85e0f5ee7e16b9b029eb92ef30ae419a" title="Deletes a particular set of marker effects from memory." alt="" coords="176,57,277,85"/>
+<area shape="rect" id="node5" href="$group__deletors.html#ga6fc4a687a2186e9e9dcf3229d9141041" title="Deletes a SimData object and frees its memory." alt="" coords="172,109,281,137"/>
+<area shape="rect" id="node3" href="$group__loaders.html#ga3d8878f2c2c5fafdae57ffc46a78dfbc" title="Populates a SimData combination from scratch with marker allele data, a genetic map,..." alt="" coords="5,5,124,33"/>
 </map>

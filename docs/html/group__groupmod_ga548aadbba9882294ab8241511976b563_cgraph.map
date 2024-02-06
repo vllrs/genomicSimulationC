@@ -1,7 +1,0 @@
-<map id="split_from_group" name="split_from_group">
-<area shape="rect" id="node1" title="Take a list of indexes and allocate the genotypes at those indexes to a new group." alt="" coords="5,5,122,33"/>
-<area shape="rect" id="node2" href="$group__supporters.html#gadae2e9f7e1061cb20426ba2333b7629b" title="Comparator function for qsort." alt="" coords="543,5,713,33"/>
-<area shape="rect" id="node3" href="$group__supporters.html#ga57da16044e22c5c21e14b45bbef5e9eb" title="Function to identify the next sequential integer that does not identify a group that currently has me..." alt="" coords="170,31,310,59"/>
-<area shape="rect" id="node4" href="$group__collgetters.html#ga6f49e4b90be53f42241fcfb9850f2f29" title="Identify group numbers that currently have members." alt="" coords="358,31,495,59"/>
-<area shape="rect" id="node5" href="$group__supporters.html#ga6072a152b624743eeafb30adaf9b7f17" title="Replace calls to malloc direct with this function, which errors and exits with status 2 if memory all..." alt="" coords="385,83,469,111"/>
-</map>

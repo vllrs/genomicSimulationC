@@ -8,8 +8,9 @@ This can also be interpreted as the list of user-facing functions in genomicSimu
 | genomicSimulationC (C) | genomicSimulation (R) |
 | ------------- | ------------- |
 | load_all_simdata * | load.data * |
-| load_effects_to_simdata | load.different.effects |
 | load_more_transposed_genes_to_simdata | load.more.genotypes |
+| load_effects_to_simdata | load.different.effects |
+| delete_eff_set | delete.effect.set |
 | calculate_minimum_bv | see.minimum.GEBV |
 | calculate_optimum_bv | see.optimal.GEBV |
 | calculate_optimal_alleles | see.optimal.haplotype |
