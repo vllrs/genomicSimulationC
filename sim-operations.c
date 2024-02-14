@@ -81,10 +81,10 @@ AlleleMatrix* create_empty_allelematrix(const int n_markers, const int n_labels,
         m->labels = NULL;
     }
 
-	memset(m->ids, 0, sizeof(unsigned int) * CONTIG_WIDTH);
-	memset(m->pedigrees[0], 0, sizeof(unsigned int) * CONTIG_WIDTH);
-	memset(m->pedigrees[1], 0, sizeof(unsigned int) * CONTIG_WIDTH);
-	memset(m->groups, 0, sizeof(unsigned int) * CONTIG_WIDTH);
+    memset(m->ids, 0, sizeof(PedigreeID) * CONTIG_WIDTH);
+    memset(m->pedigrees[0], 0, sizeof(PedigreeID) * CONTIG_WIDTH);
+    memset(m->pedigrees[1], 0, sizeof(PedigreeID) * CONTIG_WIDTH);
+    memset(m->groups, 0, sizeof(GroupNum) * CONTIG_WIDTH);
 	memset(m->names, 0, sizeof(char*) * CONTIG_WIDTH); // setting the pointers to NULL
 
 	m->next = NULL;
@@ -1076,6 +1076,23 @@ int _ascending_int_comparer(const void* p0, const void* p1) {
 	} else {
 		return (f0 > f1); // 0 if equal, 1 if f0 is greater
 	}
+}
+
+/** Comparator function for qsort. Used to compare an array of GroupNums to sort
+ * them in ascending order.
+ * @see get_existing_groups()
+ *
+ * Sorts lower numbers before higher numbers. If floats are equal, their
+ * order after comparison is undefined.
+ */
+int _ascending_GroupNum_comparer(const void* p0, const void* p1) {
+    GroupNum f0 = *(GroupNum *)p0;
+    GroupNum f1 = *(GroupNum *)p1;
+    if (f0.num < f1.num) {
+        return -1;
+    } else {
+        return (f0.num > f1.num); // 0 if equal, 1 if f0 is greater
+    }
 }
 
 /** Comparator function for qsort. Used to compare an array of integers* to sort
@@ -2632,7 +2649,7 @@ void split_into_individuals( SimData* d, const GroupNum group_id, GroupNum* resu
     while (n_groups == eg_length) {
         free(existing_groups);
         eg_length = eg_length << 1;
-        existing_groups = get_malloc(sizeof(int)*eg_length);
+        existing_groups = get_malloc(sizeof(GroupNum)*eg_length);
         n_groups = get_existing_groups(d, eg_length, existing_groups);
     }
     // n_groups is now less than eg_length, so we have found all the groups.
@@ -2703,12 +2720,12 @@ void split_into_families(SimData* d, const GroupNum group_id, GroupNum* results)
 	// get pre-existing numbers
     int n_groups;
     int eg_length = 5;
-    GroupNum* existing_groups = get_malloc(sizeof(int)*eg_length);
+    GroupNum* existing_groups = get_malloc(sizeof(GroupNum)*eg_length);
     n_groups = get_existing_groups(d, eg_length, existing_groups);
     while (n_groups == eg_length) {
         free(existing_groups);
         eg_length = eg_length << 1;
-        existing_groups = get_malloc(sizeof(int)*eg_length);
+        existing_groups = get_malloc(sizeof(GroupNum)*eg_length);
         n_groups = get_existing_groups(d, eg_length, existing_groups);
     }
 	// have another variable for the next id we can't allocate so we can still free the original.
@@ -2833,12 +2850,12 @@ void split_into_halfsib_families( SimData* d, const GroupNum group_id, const int
 	// get pre-existing numbers
     int n_groups;
     int eg_length = 5;
-    GroupNum* existing_groups = get_malloc(sizeof(int)*eg_length);
+    GroupNum* existing_groups = get_malloc(sizeof(GroupNum)*eg_length);
     n_groups = get_existing_groups(d, eg_length, existing_groups);
     while (n_groups == eg_length) {
         free(existing_groups);
         eg_length = eg_length << 1;
-        existing_groups = get_malloc(sizeof(int)*eg_length);
+        existing_groups = get_malloc(sizeof(GroupNum)*eg_length);
         n_groups = get_existing_groups(d, eg_length, existing_groups);
     }
 	// have another variable for the next id we can't allocate so we can still free the original.
@@ -2846,7 +2863,7 @@ void split_into_halfsib_families( SimData* d, const GroupNum group_id, const int
 
 	int families_found = 0;
     int family_bookmarks_len = 50;
-    GroupNum* family_groups = get_malloc(sizeof(unsigned int)*family_bookmarks_len);
+    GroupNum* family_groups = get_malloc(sizeof(GroupNum)*family_bookmarks_len);
     PedigreeID* family_identities = get_malloc(sizeof(PedigreeID)*family_bookmarks_len);
 
 	// looping through all entries
@@ -3107,7 +3124,7 @@ void split_by_specific_counts_into_n(SimData* d, const GroupNum group_id, const 
 
 	if (results != NULL) {
 		results[0] = group_id;
-		memcpy(results + 1, new_group, sizeof(int) * (n-1));
+        memcpy(results + 1, new_group, sizeof(GroupNum) * (n-1));
 	}
 
 	AlleleMatrix* m = d->m;
@@ -3228,7 +3245,7 @@ void split_randomly_into_n(SimData* d, const GroupNum group_id, const int n, Gro
 	// save the results
 	if (results != NULL) {
 		results[0] = group_id;
-		memcpy(results + 1, new_groups, sizeof(int) * (n-1));
+        memcpy(results + 1, new_groups, sizeof(GroupNum) * (n-1));
 	}
 
 	AlleleMatrix* m = d->m;
@@ -3317,7 +3334,7 @@ void split_by_probabilities_into_n(SimData* d, const GroupNum group_id, const in
 	// save the results
 	if (results != NULL) {
 		results[0] = group_id;
-		memcpy(results + 1, new_groups, sizeof(int) * (n-1));
+        memcpy(results + 1, new_groups, sizeof(GroupNum) * (n-1));
 	}
 
 	AlleleMatrix* m = d->m;
@@ -3386,14 +3403,14 @@ int get_existing_groups( const SimData* d, const int n_groups, GroupNum* output)
 		}
 
 		if (m->next == NULL) {
-            qsort(output, eg_size, sizeof(int), _ascending_int_comparer);
+            qsort(output, eg_size, sizeof(GroupNum), _ascending_GroupNum_comparer);
             return eg_size;
 		} else {
 			m = m->next;
 		}
 
 	}
-    qsort(output, eg_size, sizeof(int), _ascending_int_comparer);
+    qsort(output, eg_size, sizeof(GroupNum), _ascending_GroupNum_comparer);
     return eg_size;
 }
 
@@ -3500,12 +3517,12 @@ GroupNum get_new_group_num( const SimData* d) {
     // Make sure we get all existing groups
     int n_groups;
     int eg_length = 10;
-    GroupNum* existing_groups = get_malloc(sizeof(int)*eg_length);
+    GroupNum* existing_groups = get_malloc(sizeof(GroupNum)*eg_length);
     n_groups = get_existing_groups(d, eg_length, existing_groups);
     while (n_groups == eg_length) {
         free(existing_groups);
         eg_length = eg_length << 1;
-        existing_groups = get_malloc(sizeof(int)*eg_length);
+        existing_groups = get_malloc(sizeof(GroupNum)*eg_length);
         n_groups = get_existing_groups(d, eg_length, existing_groups);
     }
 
@@ -3652,12 +3669,12 @@ void get_n_new_group_nums( const SimData* d, const int n, GroupNum* result) {
     // Make sure we get all existing groups
     int n_groups;
     int eg_length = 10;
-    GroupNum* existing_groups = get_malloc(sizeof(int)*eg_length);
+    GroupNum* existing_groups = get_malloc(sizeof(GroupNum)*eg_length);
     n_groups = get_existing_groups(d, eg_length, existing_groups);
     while (n_groups == eg_length) {
         free(existing_groups);
         eg_length = eg_length << 1;
-        existing_groups = get_malloc(sizeof(int)*eg_length);
+        existing_groups = get_malloc(sizeof(GroupNum)*eg_length);
         n_groups = get_existing_groups(d, eg_length, existing_groups);
     }
 
@@ -4143,7 +4160,7 @@ int get_group_pedigrees( const SimData* d, const GroupNum group_id, int group_si
 
 			if (index >= size) {
 				size *= 2;
-                char* temp = realloc(output[i], size);
+                char* temp = realloc(output[i], sizeof(char) * size);
 				if (temp == NULL) {
                     free(output[i]);
 					fprintf(stderr, "Memory allocation of size %u failed.\n", size);
@@ -4363,7 +4380,7 @@ void delete_group(SimData* d, const GroupNum group_id) {
 void delete_eff_set(SimData* d, EffectID whichID) {
     int whichIndex = get_index_of_eff_set(d, whichID);
     if (whichIndex < 0 || whichIndex >= d->n_eff_sets) {
-        fprintf(stderr, "Nonexistent effect set %d\n", whichID);
+        fprintf(stderr, "Nonexistent effect set %d\n", whichID.id);
         return;
     }
 
