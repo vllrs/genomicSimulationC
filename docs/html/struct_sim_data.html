@@ -21,7 +21,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">genomicSimulationC<span id="projectnumber">&#160;0.2.4</span>
+   <div id="projectname">genomicSimulationC<span id="projectnumber">&#160;0.2.4.003</span>
    </div>
   </td>
  </tr>
@@ -130,6 +130,9 @@ Data Fields</h2></td></tr>
 <tr class="memitem:af6c7043d2db8b0a1cdb9e5ad0fab0007"><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_pedigree_i_d.html">PedigreeID</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_sim_data.html#af6c7043d2db8b0a1cdb9e5ad0fab0007">current_id</a></td></tr>
 <tr class="memdesc:af6c7043d2db8b0a1cdb9e5ad0fab0007"><td class="mdescLeft">&#160;</td><td class="mdescRight">Highest SimData-unique ID that has been generated so far.  <a href="struct_sim_data.html#af6c7043d2db8b0a1cdb9e5ad0fab0007">More...</a><br /></td></tr>
 <tr class="separator:af6c7043d2db8b0a1cdb9e5ad0fab0007"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a237b265302f55235dbfca6e581a14827"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_sim_data.html#a237b265302f55235dbfca6e581a14827">n_groups</a></td></tr>
+<tr class="memdesc:a237b265302f55235dbfca6e581a14827"><td class="mdescLeft">&#160;</td><td class="mdescRight">Number of groups currently existing in simulation.  <a href="struct_sim_data.html#a237b265302f55235dbfca6e581a14827">More...</a><br /></td></tr>
+<tr class="separator:a237b265302f55235dbfca6e581a14827"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p >Composite type that is used to run crossing simulations. </p>
@@ -280,6 +283,23 @@ Data Fields</h2></td></tr>
 </div><div class="memdoc">
 
 <p>The number of sets of allele effects in the simulation. </p>
+
+</div>
+</div>
+<a id="a237b265302f55235dbfca6e581a14827" name="a237b265302f55235dbfca6e581a14827"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a237b265302f55235dbfca6e581a14827">&#9670;&nbsp;</a></span>n_groups</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">size_t SimData::n_groups</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Number of groups currently existing in simulation. </p>
+<p >It is guaranteed to never be less than the number of groups in simulation even if not perfectly accurate. </p>
 
 </div>
 </div>

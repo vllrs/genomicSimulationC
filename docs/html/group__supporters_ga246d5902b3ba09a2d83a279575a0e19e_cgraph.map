@@ -1,0 +1,10 @@
+<map id="get_new_group_num" name="get_new_group_num">
+<area shape="rect" id="node1" title="Function to identify the next sequential integer that does not identify a group that currently has me..." alt="" coords="5,84,146,112"/>
+<area shape="rect" id="node2" href="$group__collgetters.html#gab4afabad0d5085062a858bdc599f5a58" title="Identify group numbers that currently have members." alt="" coords="194,84,331,112"/>
+<area shape="rect" id="node3" href="$group__collgetters.html#ga48161e16dc3abce9e3437d7c33f65cd1" title="Identify group numbers that currently have members, and how many members they have." alt="" coords="379,76,509,120"/>
+<area shape="rect" id="node4" href="$group__iterators.html#gae40bdbdf456a02077ff3faee8246e6c5" title="Create a bidirectional iterator." alt="" coords="557,5,716,33"/>
+<area shape="rect" id="node5" href="$group__liteget.html#gac519344020834a97f9a1ffece03c4b12" title="Get the current group membership of a genotype." alt="" coords="597,57,676,85"/>
+<area shape="rect" id="node6" href="$group__supporters.html#ga6072a152b624743eeafb30adaf9b7f17" title="Replace calls to malloc direct with this function, which errors and exits with status 2 if memory all..." alt="" coords="594,109,679,137"/>
+<area shape="rect" id="node7" href="$group__iterators.html#gadff0d81d4ef4fd1f5afcdc7885779389" title="Get the next location from a bidirectional iterator." alt="" coords="586,161,687,189"/>
+<area shape="rect" id="node8" href="$group__iterators.html#gabf1ee9717701b8580e118144c5671cb5" title="Initialise a Bidirectional iterator to the start of its sequence." alt="" coords="764,153,904,197"/>
+</map>

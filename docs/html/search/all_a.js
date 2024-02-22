@@ -15,5 +15,5 @@ var searchData=
   ['load_5ftransposed_5fencoded_5fgenes_5fto_5fsimdata_12',['load_transposed_encoded_genes_to_simdata',['../group__loaders.html#ga65488a38fc6d9f437175e58d6fc481d1',1,'load_transposed_encoded_genes_to_simdata(SimData *d, const char *filename):&#160;sim-operations.c'],['../group__loaders.html#ga65488a38fc6d9f437175e58d6fc481d1',1,'load_transposed_encoded_genes_to_simdata(SimData *d, const char *filename):&#160;sim-operations.c']]],
   ['load_5ftransposed_5fgenes_5fto_5fsimdata_13',['load_transposed_genes_to_simdata',['../group__loaders.html#ga8a94c6099bacfff7a56a417162393510',1,'load_transposed_genes_to_simdata(SimData *d, const char *filename):&#160;sim-operations.c'],['../group__loaders.html#ga8a94c6099bacfff7a56a417162393510',1,'load_transposed_genes_to_simdata(SimData *d, const char *filename):&#160;sim-operations.c']]],
   ['localam_14',['localAM',['../struct_geno_location.html#af713c48011ddb3961abe9ae1be8f8c7b',1,'GenoLocation']]],
-  ['localpos_15',['localPos',['../struct_geno_location.html#a7a5fe0f559e18f10bd27e52c0ee3773f',1,'GenoLocation']]]
+  ['localpos_15',['localPos',['../struct_geno_location.html#a7a5fe0f559e18f10bd27e52c0ee3773f',1,'GenoLocation::localPos()'],['../struct_bidirectional_iterator.html#a7ef8633b975684851534f35011e32593',1,'BidirectionalIterator::localPos()']]]
 ];

@@ -1,0 +1,8 @@
+<map id="combine_groups" name="combine_groups">
+<area shape="rect" id="node1" title="Combine a set of groups into one group." alt="" coords="5,84,122,112"/>
+<area shape="rect" id="node2" href="$group__iterators.html#gae40bdbdf456a02077ff3faee8246e6c5" title="Create a bidirectional iterator." alt="" coords="170,5,328,33"/>
+<area shape="rect" id="node3" href="$group__liteget.html#gac519344020834a97f9a1ffece03c4b12" title="Get the current group membership of a genotype." alt="" coords="210,57,288,85"/>
+<area shape="rect" id="node4" href="$group__iterators.html#gadff0d81d4ef4fd1f5afcdc7885779389" title="Get the next location from a bidirectional iterator." alt="" coords="198,109,300,137"/>
+<area shape="rect" id="node6" href="$group__liteget.html#gae735e8e0dd35e322033695939f1e6be7" title="Set the current group membership of a genotype." alt="" coords="210,161,288,189"/>
+<area shape="rect" id="node5" href="$group__iterators.html#gabf1ee9717701b8580e118144c5671cb5" title="Initialise a Bidirectional iterator to the start of its sequence." alt="" coords="376,101,516,145"/>
+</map>

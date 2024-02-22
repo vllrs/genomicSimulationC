@@ -1,0 +1,15 @@
+<map id="split_from_group" name="split_from_group">
+<area shape="rect" id="node1" title="Take a list of indexes and allocate the genotypes at those indexes to a new group." alt="" coords="5,187,122,215"/>
+<area shape="rect" id="node2" href="$group__iterators.html#ga3251316712a19e1e90322536f7592ca1" title="Create a Random Access Iterator." alt="" coords="358,213,532,241"/>
+<area shape="rect" id="node4" href="$group__supporters.html#ga246d5902b3ba09a2d83a279575a0e19e" title="Function to identify the next sequential integer that does not identify a group that currently has me..." alt="" coords="170,105,310,133"/>
+<area shape="rect" id="node11" href="$group__iterators.html#gae12ec1fca24fc5ac891378d1468a9ed5" title="Get a location by index using a RandomAccessIterator." alt="" coords="597,161,694,189"/>
+<area shape="rect" id="node13" href="$group__liteget.html#gae735e8e0dd35e322033695939f1e6be7" title="Set the current group membership of a genotype." alt="" coords="201,264,279,292"/>
+<area shape="rect" id="node3" href="$group__supporters.html#ga6072a152b624743eeafb30adaf9b7f17" title="Replace calls to malloc direct with this function, which errors and exits with status 2 if memory all..." alt="" coords="796,213,880,241"/>
+<area shape="rect" id="node5" href="$group__collgetters.html#gab4afabad0d5085062a858bdc599f5a58" title="Identify group numbers that currently have members." alt="" coords="377,104,514,132"/>
+<area shape="rect" id="node6" href="$group__collgetters.html#ga48161e16dc3abce9e3437d7c33f65cd1" title="Identify group numbers that currently have members, and how many members they have." alt="" coords="580,93,711,137"/>
+<area shape="rect" id="node7" href="$group__iterators.html#gae40bdbdf456a02077ff3faee8246e6c5" title="Create a bidirectional iterator." alt="" coords="759,5,917,33"/>
+<area shape="rect" id="node8" href="$group__liteget.html#gac519344020834a97f9a1ffece03c4b12" title="Get the current group membership of a genotype." alt="" coords="799,109,877,137"/>
+<area shape="rect" id="node9" href="$group__iterators.html#gadff0d81d4ef4fd1f5afcdc7885779389" title="Get the next location from a bidirectional iterator." alt="" coords="787,57,889,85"/>
+<area shape="rect" id="node10" href="$group__iterators.html#gabf1ee9717701b8580e118144c5671cb5" title="Initialise a Bidirectional iterator to the start of its sequence." alt="" coords="965,49,1105,93"/>
+<area shape="rect" id="node12" href="$group__iterators.html#gaab4c1841241403397fac8c6a2087a497" title="Get an AlleleMatrix by index in the linked list." alt="" coords="768,161,908,189"/>
+</map>

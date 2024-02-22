@@ -6,9 +6,9 @@
 #    -> replaces C standard libraries with R library equivalents
 
 echo ">>> Deleting lines from sim-operations.c:"
-awk 'NR>=174 && NR<=207' ./sim-operations.c
+awk 'NR>=176 && NR<=208' ./sim-operations.c
 
-awk 'NR<174 || NR>207' ./sim-operations.c | sed \
+awk 'NR<176 || NR>208' ./sim-operations.c | sed \
 	-e 's+//RPACKINSERT ++g' \
 	-e 's/fprintf(stderr,\(.*\)); exit([0-9]);/error(\1);/g' \
 	-e 's/fprintf(stderr,\(.*\));/warning(\1);/g' \
@@ -18,14 +18,16 @@ awk 'NR<174 || NR>207' ./sim-operations.c | sed \
 	-e 's/randpoi(.*,/Rf_rpois(/g' \
 	-e 's/rnd_pcg_range([^,]*,0,1)/(unif_rand() > 0.5)/g' \
 	-e 's/rnd_pcg_range([^,]*,0,\(.*\));/round(unif_rand() * (\1));/g' \
+	-e 's/rnd_pcg_nextf([^,]*);/unif_rand();/g' \
 	-e 's/printf("/Rprintf("/g' -e 's+srand+//srand+g' \
 	-e 's+((double)rand() / (double)RAND_MAX)+unif_rand()+g' \
+	-e 's/size_t/unsigned int/g' \
 	> ../sim-operations-for-R.c
 	
 echo ">>> Deleting lines from sim-operations.h:"
-awk 'NR>=312 && NR<=314' ./sim-operations.h
+awk 'NR>=315 && NR<=317' ./sim-operations.h
 
-awk 'NR<312 || NR>314' ./sim-operations.h | sed \
+awk 'NR<315 || NR>317' ./sim-operations.h | sed \
 	-e 's+#include "lib/rnd.h"++g' \
 	-e 's/RND_U32 RNGseed//g' \
 	-e 's+rnd_pcg_t rng;+//CRANDOMGENERATOR+g' \
@@ -35,4 +37,5 @@ awk 'NR<312 || NR>314' ./sim-operations.h | sed \
 	-e 's/<math.h>/<Rmath.h>/' \
 	-e 's+<time.h>+<R_ext/Utils.h>+' \
 	-e 's+#define PI+//#define PI+' \
+	-e 's/size_t/unsigned int/g' \
 	> ../sim-operations-for-R.h

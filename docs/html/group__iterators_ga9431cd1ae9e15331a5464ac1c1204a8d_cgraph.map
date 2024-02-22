@@ -1,6 +1,5 @@
 <map id="next_backwards" name="next_backwards">
-<area shape="rect" id="node1" title="Get the previous location from a bidirectional iterator." alt="" coords="5,35,121,63"/>
+<area shape="rect" id="node1" title="Get the previous location from a bidirectional iterator." alt="" coords="5,5,121,33"/>
 <area shape="rect" id="node2" href="$group__iterators.html#gaab4c1841241403397fac8c6a2087a497" title="Get an AlleleMatrix by index in the linked list." alt="" coords="357,5,496,33"/>
 <area shape="rect" id="node3" href="$group__iterators.html#gaa7e9bc9b0ea586369586d01237d30258" title="Initialise a Bidirectional iterator to the end of its sequence." alt="" coords="169,27,309,71"/>
-<area shape="rect" id="node4" href="$group__iterators.html#ga7ff54a3cacc5c06c334cd9e8a2635204" title="Check nothing in the BidirectionalIterator is obviously invalid." alt="" coords="169,95,309,139"/>
 </map>

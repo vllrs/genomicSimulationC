@@ -44,7 +44,7 @@ int test_savers(unsigned int rseed) {
     g.will_allocate_ids = TRUE;
     GroupNum f3 = make_doubled_haploids(d,f2,g); // produce 5 offspring that don't have names or know their parents.
 
-    int toprint[] = {0,1,//2,3,4,5 from g0
+    size_t toprint[] = {0,1,//2,3,4,5 from g0
                      6,7,//8,9,10 from f1
                      11,15,//11,12,13,14,15 from f2
                      16,17//18,19,20 from f3
@@ -225,7 +225,7 @@ int test_savers(unsigned int rseed) {
 
 
     // try save-as-you-go savers (ideally you'd run this with a very low CONTIG_WIDTH, and also for all crossing funcs.
-    int parentix[] = {20};
+    size_t parentix[] = {20};
     GroupNum parent = split_from_group(d,1,parentix);
     g = (GenOptions){.will_name_offspring=FALSE,
             .offspring_name_prefix="",
@@ -588,7 +588,7 @@ GroupNum test_labels(SimData *d, GroupNum g0) {
     assert(d->m->labels[label1index][5] == newlabel1value);
 
     // Can set values of a label (more labels than needed)
-    const unsigned int newlabel2values[] = {11, 12, 13, 14, 15, 16, 17};
+    const int newlabel2values[] = {11, 12, 13, 14, 15, 16, 17};
     set_labels_to_values(d, g0, 0, label2, 7, newlabel2values);
     assert(d->n_labels == 2);
     assert(d->m->n_labels == 2);
@@ -603,7 +603,7 @@ GroupNum test_labels(SimData *d, GroupNum g0) {
     assert(d->m->labels[label2index][5] == newlabel2values[5]);
 
     // Can set value of a label (only some values set)
-    const unsigned int newerlabel1values[] = {0,1,-1,100};
+    const int newerlabel1values[] = {0,1,-1,100};
     set_labels_to_values(d, g0, 1, label1, 4, newerlabel1values);
     assert(d->n_labels == 2);
     assert(d->m->n_labels == 2);
@@ -663,7 +663,9 @@ GroupNum test_labels(SimData *d, GroupNum g0) {
                     .will_save_bvs_to_file = -1,
                     .will_save_pedigree_to_file = FALSE,
                     .will_save_to_simdata = TRUE};
+    assert(d->n_groups == 1);
     GroupNum f1 = cross_random_individuals(d,g0,4,0,g);
+    assert(d->n_groups == 2);
     // Check that the labels are set to their defaults
     assert(d->m->labels[label1index][6+0] == label1value);
     assert(d->m->labels[label1index][6+1] == label1value);
@@ -679,26 +681,31 @@ GroupNum test_labels(SimData *d, GroupNum g0) {
 
     // test can split by label (across groups)
     GroupNum groupB = split_by_label_value(d, NO_GROUP, label1, newlabel1value + increment);
+    assert(d->n_groups == 3);
     assert(g0.num != groupB.num && f1.num != groupB.num);
     assert(get_group_size(d, groupB) == 2+4);
-    int Bindexes[2+4];
+    size_t Bindexes[2+4];
     get_group_indexes(d, groupB, 2+4, Bindexes);
     assert(Bindexes[0] == 0);
     assert(Bindexes[1] == 5);
     assert(Bindexes[2] == 6 && Bindexes[3] == 7 && Bindexes[4] == 8 && Bindexes[5] == 9);
 
-    int outtakes[4] = {6,7,8,9};
+    size_t outtakes[4] = {6,7,8,9};
     GroupNum f1outtakes = split_from_group(d,4,outtakes);
+    assert(d->n_groups == 3); // not 4, because it's corrected by get_new_group_num inside split_from_group
     GroupNum toCombine[2] = {f1, f1outtakes};
     f1 = combine_groups(d, 2, toCombine);
+    assert(d->n_groups == 3);
     assert(get_group_size(d, f1) == 4);
     toCombine[0] = g0;
     toCombine[1] = groupB;
     g0 = combine_groups(d, 2, toCombine);
+    assert(d->n_groups == 2);
     assert(get_group_size(d, g0) == 6);
 
     // test can split by label range (across groups)
     groupB = split_by_label_range(d, NO_GROUP, label2, 1, 15);
+    assert(d->n_groups == 3);
     assert(g0.num != groupB.num && f1.num != groupB.num);
     assert(get_group_size(d, groupB) == 6);
     get_group_indexes(d, groupB, 6, Bindexes);
@@ -711,17 +718,21 @@ GroupNum test_labels(SimData *d, GroupNum g0) {
 
     outtakes[0] = 7;
     f1outtakes = split_from_group(d,1,outtakes);
+    assert(d->n_groups == 4);
     toCombine[0] = f1;
     toCombine[1] = f1outtakes;
     f1 = combine_groups(d, 2, toCombine);
+    assert(d->n_groups == 3);
     assert(get_group_size(d, f1) == 4);
     toCombine[0] = g0;
     toCombine[1] = groupB;
     g0 = combine_groups(d, 2, toCombine);
+    assert(d->n_groups == 2);
     assert(get_group_size(d, g0) == 6);
 
     // and can split from group (within group)
     groupB = split_by_label_value(d, g0, label1, newlabel1value + increment);
+    assert(d->n_groups == 3);
     assert(g0.num != groupB.num && f1.num != groupB.num);
     assert(get_group_size(d, groupB) == 2);
     get_group_indexes(d, groupB, 2, Bindexes);
@@ -731,12 +742,14 @@ GroupNum test_labels(SimData *d, GroupNum g0) {
     toCombine[0] = g0;
     toCombine[1] = groupB;
     g0 = combine_groups(d, 2, toCombine);
+    assert(d->n_groups == 2);
     assert(get_group_size(d, g0) == 6);
     assert(get_group_size(d, f1) == 4);
 
 
     // and can split from group by label range (within group)
     groupB = split_by_label_range(d, g0, label2, 1, 15);
+    assert(d->n_groups == 3);
     assert(g0.num != groupB.num && f1.num != groupB.num);
     assert(get_group_size(d, groupB) == 5);
     get_group_indexes(d, groupB, 5, Bindexes);
@@ -749,9 +762,11 @@ GroupNum test_labels(SimData *d, GroupNum g0) {
     toCombine[0] = g0;
     toCombine[1] = groupB;
     g0 = combine_groups(d, 2, toCombine);
+    assert(d->n_groups == 2);
     assert(get_group_size(d, g0) == 6);
     assert(get_group_size(d, f1) == 4);
     delete_group(d,f1);
+    assert(d->n_groups == 1);
 
     // Check label deletion works
     delete_label(d,label1);
@@ -770,13 +785,16 @@ GroupNum test_random_splits(SimData *d, GroupNum g0) {
     // g0: contents of "a-test.txt", contains 6 genotypes
 
     // Can split into 2; repeat 10x for confidence
+    assert(d->n_groups == 1);
     for (int i = 0; i < 10; ++i) {
         GroupNum grpB = split_evenly_into_two(d, g0);
+        assert(d->n_groups == 2);
         assert(get_group_size(d,g0) == 3);
         assert(get_group_size(d,grpB) == 3);
 
         GroupNum toMerge[2] = {g0, grpB};
         g0 = combine_groups(d,2,toMerge);
+        assert(d->n_groups == 1);
         assert(get_group_size(d,g0) == 6);
     }
 
@@ -784,11 +802,13 @@ GroupNum test_random_splits(SimData *d, GroupNum g0) {
     for (int i = 0; i < 10; ++i) {
         GroupNum grpB[3];
         split_evenly_into_n(d,g0,3,grpB);
+        assert(d->n_groups == 3);
         assert(get_group_size(d,grpB[0]) == 2);
         assert(get_group_size(d,grpB[1]) == 2);
         assert(get_group_size(d,grpB[2]) == 2);
 
         g0 = combine_groups(d,3,grpB);
+        assert(d->n_groups == 1);
         assert(get_group_size(d,g0) == 6);
     }
 
@@ -797,11 +817,13 @@ GroupNum test_random_splits(SimData *d, GroupNum g0) {
         GroupNum grpB[3];
         int grpBsizes[3] = {1,3,2};
         split_by_specific_counts_into_n(d,g0,3,grpBsizes,grpB);
+        assert(d->n_groups == 3);
         assert(get_group_size(d,grpB[0]) == 1);
         assert(get_group_size(d,grpB[1]) == 3);
         assert(get_group_size(d,grpB[2]) == 2);
 
         g0 = combine_groups(d,3,grpB);
+        assert(d->n_groups == 1);
         assert(get_group_size(d,g0) == 6);
     }
 
@@ -810,6 +832,7 @@ GroupNum test_random_splits(SimData *d, GroupNum g0) {
     int grpBsizes = 0;
     for (int i = 0; i < 10; ++i) {
         GroupNum grpB = split_randomly_into_two(d, g0);
+        assert(d->n_groups == 2);
         int grpBsize = get_group_size(d,grpB);
         assert(get_group_size(d,g0) + grpBsize == 6);
         grpBsizes += grpBsize;
@@ -819,6 +842,8 @@ GroupNum test_random_splits(SimData *d, GroupNum g0) {
         assert(get_group_size(d,g0) == 6);
     }
     assert(grpBsizes > 20 && grpBsizes < 40); // about 1.3% chance of failure by random chance
+    assert(get_existing_groups(d,NULL) == 1);
+    assert(d->n_groups == 1);
 
     // Can split by thirds
     grpBsizes = 0;
@@ -826,6 +851,7 @@ GroupNum test_random_splits(SimData *d, GroupNum g0) {
     for (int i = 0; i < 10; ++i) {
         GroupNum grpB[3];
         split_randomly_into_n(d,g0,3,grpB);
+        assert(d->n_groups <= 3); // sometimes, randomly, we may not get all three groups.
         int grpBsize = get_group_size(d,grpB[0]);
         int grpBsize2 = get_group_size(d,grpB[1]);
         assert(get_group_size(d,grpB[2]) + grpBsize + grpBsize2 == 6);
@@ -837,6 +863,8 @@ GroupNum test_random_splits(SimData *d, GroupNum g0) {
     }
     assert(grpBsizes > 9 && grpBsizes < 34); // about 1.3% chance of failure by random chance
     assert(grpBsizes2 > 9 && grpBsizes2 < 34);
+    assert(get_existing_groups(d,NULL) == 1);
+    assert(d->n_groups == 1);
 
     // Can split by any probability
     grpBsizes = 0;
@@ -844,6 +872,7 @@ GroupNum test_random_splits(SimData *d, GroupNum g0) {
         GroupNum grpB[2];
         double grpBprobs = 3.0/7.0;
         split_by_probabilities_into_n(d,g0,2,&grpBprobs,grpB);
+        assert(d->n_groups == 2);
         int grpBsize = get_group_size(d,grpB[0]);
         assert(get_group_size(d,grpB[1]) + grpBsize == 6);
         grpBsizes += grpBsize;
@@ -852,12 +881,15 @@ GroupNum test_random_splits(SimData *d, GroupNum g0) {
         assert(get_group_size(d,g0) == 6);
     }
     assert(grpBsizes > 16 && grpBsizes < 39); // about 0.75% chance of failure by random chance
+    assert(get_existing_groups(d,NULL) == 1);
+    assert(d->n_groups == 1);
 
     grpBsizes = 0;
     for (int i = 0; i < 10; ++i) {
         GroupNum grpB[2];
         double grpBprobs[2] = {1./12.,11./12.};
         split_by_probabilities_into_n(d,g0,2,grpBprobs,grpB);
+        assert(d->n_groups == 2);
         int grpBsize = get_group_size(d,grpB[0]);
         assert(get_group_size(d,grpB[1]) + grpBsize == 6);
         grpBsizes += grpBsize;
@@ -866,6 +898,8 @@ GroupNum test_random_splits(SimData *d, GroupNum g0) {
         assert(get_group_size(d,g0) == 6);
     }
     assert(grpBsizes < 11); // about 1% chance of failure by random chance
+    assert(get_existing_groups(d,NULL) == 1);
+    assert(d->n_groups == 1);
 
     printf("...Random group splitting runs correctly\n");
 
@@ -878,12 +912,12 @@ GroupNum test_specific_splits(SimData *d, GroupNum g0) {
 
     // Can split into individuals and recombine
     const int g0size = get_group_size(d, g0);
+    assert(d->n_groups == 1);
     assert(g0size == 6); // pre-test test validity requirement
-    GroupNum g0indivs[8];
-    for (int i = 0; i < 8; ++i) {
-        g0indivs[i] = NO_GROUP;
-    }
-    split_into_individuals(d, g0, g0indivs);
+    GroupNum g0indivs[10];
+    unsigned nindivs = split_into_individuals(d, g0, 10, g0indivs);
+    assert(nindivs == 6);
+    assert(d->n_groups == 6);
     assert(g0indivs[0].num > 0);
     assert(g0indivs[1].num > 0);
     assert(g0indivs[1].num != g0indivs[0].num);
@@ -897,11 +931,10 @@ GroupNum test_specific_splits(SimData *d, GroupNum g0) {
     assert(g0indivs[5].num > 0);
     assert(g0indivs[5].num != g0indivs[0].num && g0indivs[5].num != g0indivs[1].num && g0indivs[5].num != g0indivs[2].num
             && g0indivs[5].num != g0indivs[3].num && g0indivs[5].num != g0indivs[4].num);
-    assert(g0indivs[6].num == 0);
-    assert(g0indivs[7].num == 0);
 
     g0 = combine_groups(d,6,g0indivs);
     assert(get_group_size(d,g0) == 6);
+    assert(d->n_groups == 1);
 
     // Can split into families
     GenOptions g = {.family_size = 5,
@@ -917,22 +950,19 @@ GroupNum test_specific_splits(SimData *d, GroupNum g0) {
     GroupNum f1 = cross_random_individuals(d, g0, 3, 1, g);
     int f1size = 5*3;
     GroupNum families[f1size];
-    for (int i = 0; i < f1size; ++i) {
-        families[i] = NO_GROUP;
-    }
-    split_into_families(d,f1,families);
+    assert(d->n_groups == 2);
+    int f1nfamilies = split_into_families(d,f1,f1size,families);
+    assert(d->n_groups == 4);
+    assert(f1nfamilies == 3);
     assert(families[0].num > 0);
     assert(families[1].num > 0);
     assert(families[2].num > 0);
-    for (int i = 3; i < f1size; ++i) {
-        assert(families[i].num == 0);
-    }
     assert(families[0].num != families[1].num && families[1].num != families[2].num && families[0].num != families[2].num);
     assert(get_group_size(d,families[0]) == 5);
     assert(get_group_size(d,families[1]) == 5);
     assert(get_group_size(d,families[2]) == 5);
     // Check all groups contain families
-    int f1family1[5];
+    size_t f1family1[5];
     assert(get_group_indexes(d,families[0],5,f1family1) == 5);
     assert(d->m->pedigrees[0][f1family1[0]].id == d->m->pedigrees[0][f1family1[1]].id &&
             d->m->pedigrees[0][f1family1[0]].id == d->m->pedigrees[0][f1family1[2]].id &&
@@ -943,7 +973,7 @@ GroupNum test_specific_splits(SimData *d, GroupNum g0) {
             d->m->pedigrees[1][f1family1[0]].id == d->m->pedigrees[1][f1family1[3]].id &&
             d->m->pedigrees[1][f1family1[0]].id == d->m->pedigrees[1][f1family1[4]].id);
 
-    int f1family2[5];
+    size_t f1family2[5];
     assert(get_group_indexes(d,families[1],5,f1family2) == 5);
     assert(d->m->pedigrees[0][f1family1[0]].id == d->m->pedigrees[0][f1family1[1]].id &&
             d->m->pedigrees[0][f1family1[0]].id == d->m->pedigrees[0][f1family1[2]].id &&
@@ -954,7 +984,7 @@ GroupNum test_specific_splits(SimData *d, GroupNum g0) {
             d->m->pedigrees[1][f1family1[0]].id == d->m->pedigrees[1][f1family1[3]].id &&
             d->m->pedigrees[1][f1family1[0]].id == d->m->pedigrees[1][f1family1[4]].id);
 
-    int f1family3[5];
+    size_t f1family3[5];
     assert(get_group_indexes(d,families[2],5,f1family3) == 5);
     assert(d->m->pedigrees[0][f1family1[0]].id == d->m->pedigrees[0][f1family1[1]].id &&
             d->m->pedigrees[0][f1family1[0]].id == d->m->pedigrees[0][f1family1[2]].id &&
@@ -976,6 +1006,7 @@ GroupNum test_specific_splits(SimData *d, GroupNum g0) {
     delete_group(d, families[0]);
     delete_group(d, families[1]);
     delete_group(d, families[2]);
+    assert(d->n_groups == 1);
 
     // Can split into halfsib families
     int combinations[2][4];
@@ -984,22 +1015,19 @@ GroupNum test_specific_splits(SimData *d, GroupNum g0) {
     combinations[0][2] = 3; combinations[1][2] = 1;
     combinations[0][3] = 4; combinations[1][3] = 5;
     GroupNum fhs = cross_these_combinations(d,4,combinations[0], combinations[1],g);
+    assert(d->n_groups == 2);
 
-    GroupNum halfsibfamilies[5];
-    for (int i = 0; i < 5; ++i) {
-        halfsibfamilies[i] = NO_GROUP;
-    }
-    split_into_halfsib_families(d,fhs,1,halfsibfamilies);
+    GroupNum halfsibfamilies[3];
+    assert(split_into_halfsib_families(d,fhs,1,3,halfsibfamilies) == 3);
+    assert(d->n_groups == 4);
     assert(halfsibfamilies[0].num > 0);
     assert(halfsibfamilies[1].num > 0);
     assert(halfsibfamilies[2].num > 0);
-    assert(halfsibfamilies[3].num == 0);
-    assert(halfsibfamilies[4].num == 0);
 
     // Check all halfsib families share the same parent 1
     int fhsfamily1size = get_group_size(d,halfsibfamilies[0]); // assumes the largest hsfamily will be the first one seen
     assert(fhsfamily1size == 10);
-    int fhsfamily1[10];
+    size_t fhsfamily1[10];
     assert(get_group_indexes(d,halfsibfamilies[0],10,fhsfamily1) == fhsfamily1size);
     assert(d->m->pedigrees[0][fhsfamily1[0]].id == d->m->pedigrees[0][fhsfamily1[1]].id &&
             d->m->pedigrees[0][fhsfamily1[0]].id == d->m->pedigrees[0][fhsfamily1[2]].id &&
@@ -1013,7 +1041,7 @@ GroupNum test_specific_splits(SimData *d, GroupNum g0) {
 
     int fhsfamily2size = get_group_size(d,halfsibfamilies[1]);
     assert(fhsfamily2size == 5);
-    int fhsfamily2[5];
+    size_t fhsfamily2[5];
     assert(get_group_indexes(d,halfsibfamilies[1],5,fhsfamily2) == fhsfamily2size);
     assert(d->m->pedigrees[0][fhsfamily2[0]].id == d->m->pedigrees[0][fhsfamily2[1]].id &&
             d->m->pedigrees[0][fhsfamily2[0]].id == d->m->pedigrees[0][fhsfamily2[2]].id &&
@@ -1022,7 +1050,7 @@ GroupNum test_specific_splits(SimData *d, GroupNum g0) {
 
     int fhsfamily3size = get_group_size(d,halfsibfamilies[2]);
     assert(fhsfamily3size == 5);
-    int fhsfamily3[fhsfamily3size];
+    size_t fhsfamily3[fhsfamily3size];
     assert(get_group_indexes(d,halfsibfamilies[2],5,fhsfamily3) == fhsfamily3size);
     assert(d->m->pedigrees[0][fhsfamily3[0]].id == d->m->pedigrees[0][fhsfamily3[1]].id &&
             d->m->pedigrees[0][fhsfamily3[0]].id == d->m->pedigrees[0][fhsfamily3[2]].id &&
@@ -1036,15 +1064,12 @@ GroupNum test_specific_splits(SimData *d, GroupNum g0) {
 
     // Then check halfsibs in the other direction
     fhs = combine_groups(d,3,halfsibfamilies);
-    for (int i = 0; i < 5; ++i) {
-        halfsibfamilies[i] = NO_GROUP;
-    }
-    split_into_halfsib_families(d,fhs,2,halfsibfamilies);
+    assert(d->n_groups == 2);
+    assert(split_into_halfsib_families(d,fhs,2,3,halfsibfamilies) == 3);
+    assert(d->n_groups == 4);
     assert(halfsibfamilies[0].num > 0);
     assert(halfsibfamilies[1].num > 0);
     assert(halfsibfamilies[2].num > 0);
-    assert(halfsibfamilies[3].num == 0);
-    assert(halfsibfamilies[4].num == 0);
 
     // Check all halfsib families share the same parent 1
     fhsfamily1size = get_group_size(d,halfsibfamilies[0]); // assumes the largest hsfamily will be the first one seen
@@ -1082,22 +1107,28 @@ GroupNum test_specific_splits(SimData *d, GroupNum g0) {
     assert(d->m->pedigrees[1][fhsfamily2[0]].id != d->m->pedigrees[1][fhsfamily3[0]].id);
 
     fhs = combine_groups(d,3,halfsibfamilies);
+    assert(d->n_groups == 2);
 
     // Can create a group from indexes
-    int splitters[4] = {0, 2, 5, 6};
+    size_t splitters[4] = {0, 2, 5, 6};
     GroupNum g0b = split_from_group(d, 4, splitters);
+    assert(d->n_groups == 3);
     assert(get_group_size(d,g0) == 3 && get_group_size(d,g0b) == 4);
-    int g0bi[4];
+    size_t g0bi[4];
     assert(get_group_indexes(d,g0b,4,g0bi) == 4);
     assert(g0bi[0] == 0 && g0bi[1] == 2 && g0bi[2] == 5 && g0bi[3] == 6);
 
     GroupNum n6 = split_from_group(d, 1, splitters+3);
+    assert(d->n_groups == 4);
     GroupNum combiners[2] = {fhs, n6};
     fhs = combine_groups(d, 2, combiners);
+    assert(d->n_groups == 3);
     delete_group(d, fhs);
+    assert(d->n_groups == 2);
 
-    int g0members[6] = {0,1,2,3,4,5};
+    size_t g0members[6] = {0,1,2,3,4,5};
     g0 = split_from_group(d,6,g0members);
+    assert(d->n_groups >= 1);
 
     printf("...Specified group splitting runs correctly\n");
 
@@ -1189,7 +1220,7 @@ int test_optimal_calculators(SimData *d, GroupNum g0) {
     assert(fabs(founderoptimal - 1.8) < TOL);
     assert(fabs(calculate_optimal_available_bv(d, g0, (EffectID){.id=2}) - 2) < TOL);
 
-    int factorout[2] = {4,5};
+    size_t factorout[2] = {4,5};
     GroupNum g0partial = split_from_group(d,2, factorout);
     char* founderhaplo2 = calculate_optimal_available_alleles(d, g0partial, eff_set);
     assert(founderhaplo2[0] == 'T');
@@ -1394,7 +1425,7 @@ int test_crossing_randomly(SimData *d, GroupNum g1) {
     gopt.will_track_pedigree = TRUE;
     // Test random crossing seems about right
     GroupNum g2 = cross_random_individuals( d , g1, 4, 0, gopt);
-    int g2ixs[4];
+    size_t g2ixs[4];
     assert(get_group_indexes(d, g2, -1, g2ixs) == 4);
 
     assert(get_group_size(d, g2) == 4);
@@ -1453,20 +1484,23 @@ int test_crossing_randomly(SimData *d, GroupNum g1) {
 }
 
 int test_deletors(SimData *d, GroupNum g0) {
-    GroupNum groups1[50];
-    int ngroups1 = get_existing_groups(d, 50, groups1);
+    GroupNum groups1[d->n_groups];
+    int ngroups1 = get_existing_groups(d, groups1);
+    assert(d->n_groups == ngroups1);
 
-    GroupNum groups1b[50];
-    int groupcounts1b[50];
-    int ngroups1b = get_existing_group_counts(d, 40, groups1b, groupcounts1b);
+    GroupNum groups1b[d->n_groups];
+    size_t groupcounts1b[d->n_groups];
+    int ngroups1b = get_existing_group_counts(d, groups1b, groupcounts1b);
+    assert(d->n_groups == ngroups1b);
     assert(ngroups1b == ngroups1);
     for (int i = 0; i < ngroups1; ++i) {
         assert(groups1[i].num == groups1b[i].num);
     }
 
 	delete_group(d, g0);
-    GroupNum groups2[50];
-    int ngroups2 = get_existing_groups(d, 50, groups2);
+    GroupNum groups2[d->n_groups];
+    int ngroups2 = get_existing_groups(d, groups2);
+    assert(d->n_groups == ngroups2);
 
 	assert(ngroups1 - ngroups2 == 1);
 	for (int i = 0; i < ngroups1; ++i) {
@@ -1619,7 +1653,7 @@ int test_iterators(SimData* d, GroupNum gp) {
     delete_randomaccess_iter(&it3);
 
     // RandomAccess group iterator
-    char* newnames[4] = {"f1a", "f1b", "f1c", "f1d"};
+    const char* newnames[4] = {"f1a", "f1b", "f1c", "f1d"};
     set_names_to_values(d,f1,0,4,newnames);
     RandomAccessIterator it4 = create_randomaccess_iter(d, f1);
     assert(get_group(next_get_nth(&it4, 0)).num == f1.num);
@@ -1668,7 +1702,7 @@ int test_getters(SimData* d, GroupNum gp) {
         assert(ids[i].id == i+1);
     }
 
-    int indexes[6];
+    size_t indexes[6];
     assert(get_group_indexes(d, gp, 6, indexes) == 6);
     for (int i = 0; i < 6; ++i) {
         assert(indexes[i] == i);
@@ -1955,7 +1989,7 @@ int main(int argc, char* argv[]) {
     }*/
 
     // This should not segfault
-    GenOptions gens =  {.will_name_offspring=TRUE, .offspring_name_prefix="cr", .family_size=243,
+    GenOptions gens = {.will_name_offspring=TRUE, .offspring_name_prefix="cr", .family_size=243,
         .will_track_pedigree=TRUE, .will_allocate_ids=TRUE,
         .filename_prefix="testcross", .will_save_pedigree_to_file=FALSE,
         .will_save_bvs_to_file=-1, .will_save_alleles_to_file=FALSE,
@@ -1975,6 +2009,17 @@ int main(int argc, char* argv[]) {
     gande = load_all_simdata(d, "./gt_parents_mr2_50-trimto-5000.txt",
              "./genetic-map_5112-trimto5000.txt",
              "./qtl_5test.txt");
+
+    // Testing break-evenly bug
+    GroupNum g2 = cross_random_individuals(d,gande.group,1200,0,BASIC_OPT);
+    delete_group(d,gande.group);
+    GroupNum split[2000];
+    for (int i = 0; i < 10; ++i) {
+        split_evenly_into_n(d,g2,2000,split);
+        get_existing_groups(d,NULL);  // only crashes when this is between the split and recombine, not other way around, and not when it's not here.
+        g2 = combine_groups(d,2000,split);
+    }
+
 
 	printf("\nAll done\n");
 	delete_simdata(d);

@@ -1,6 +1,28 @@
 Latest News       {#news}
 ===========
 
+# genomicSimulation 0.2.4.003
+
+## Bug Fixes 
+
+- Group modification functions (`split_` prefix) no longer fail if there are more than 10 groups in existence. 
+
+## Improvements 
+
+- Significant under-the-hood changes to `split_`-prefixed functions. They now use BidirectionalIterator and RandomAccessIterator to find members of the group to split, and some call `_split`-prefixed generic functions to reduce code duplication.
+- `split_`-prefixed functions now return the number of groups they created, rather than being `void` functions. Thanks to the GroupNum type (introduced v0.2.4) we can avoid confusion over whether the return value of these functions represents a group identifier or a count of groups. 
+	- For users, this will mean it is no longer necessary to zero the output array passed to these functions so that you can identify how many entries are the newly-created groups after the function finishes execution. Instead, the return value lets you know how many entries have been saved to the output array.
+- BREAKING CHANGE: `split_into_families` and `split_into_halfsib_families` now take a parameter for length of the output array, and will truncate output if they find more families than that.
+- Added a cache `n_groups` inside SimData to track the number of groups present in simulation at the current point in time. This allows users to know how much space to allocate before calling functions like `get_existing_groups` and `get_existing_group_counts`, and the program to know how much space to allocate inside `split_into_families` and `split_into_halfsib_families`. This will help avoid issues around truncated output or memory overruns.
+	- Specifically, this cache is an upper bound on the number of groups currently present in simulation, because `split_from_group` is not aware if it has destroyed a group by moving the entire group into its new one. 
+	- `get_existing_groups` and `get_existing_group_counts` will update `n_groups` to the true value of the number of groups in simulation as a side-effect of their calls. 
+- BREAKING CHANGE: Function signatures of `get_existing_groups` and `get_existing_group_counts` are slightly different. They can now be passed NULL to output parameters that you don't need, and they assume that their not-NULL output parameters are of length `SimData.n_groups` at least, rather than asking for the length of their output parameters separately.
+- Gradual transformation of genotype indexes from `unsigned int` type to a `size_t` type. This conversion is now implemented in the iterators and `get_group_indexes`.
+- New iterator helper function `set_group`, to go alongside `get_group`, `get_id`, etc. It is currently the only iterator helper function that modifies data.
+- BidirectionalIterators now use local position rather than global position. Just in case of hypothetical really huge simulations.
+- Removed some qsort comparator functions that are no longer called by anything.
+
+
 # genomicSimulation 0.2.4
 
 ## New Features
