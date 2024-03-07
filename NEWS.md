@@ -1,6 +1,11 @@
 Latest News       {#news}
 ===========
 
+## Improvements
+
+- Significant under-the-hood changes to crossing functions. They now call `_make_genotypes`, a generic function, to reduce code duplication. 
+- The same script and same random seed re-run post-0.2.4.003 will now produce slightly different genotypes. This is because the two gametes that make a cross are now generated successively (first one, then the other) rather than simultaneously.
+
 # genomicSimulation 0.2.4.003
 
 ## Bug Fixes 
