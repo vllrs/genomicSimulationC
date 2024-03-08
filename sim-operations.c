@@ -1252,6 +1252,11 @@ void condense_allele_matrix( SimData* d) {
         ++checker.cursor.localPos;
         nextgappy_get_nongap(&checker);
     }
+
+    if (filler.cursor.localAM->next != NULL && filler.cursor.localAM->next->n_genotypes == 0) {
+        delete_allele_matrix(filler.cursor.localAM->next);
+        filler.cursor.localAM->next = NULL;
+    }
 }
 
 
