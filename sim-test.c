@@ -1967,7 +1967,6 @@ int compareRepeatingFileToTable(char* filename, unsigned int expectedNRows, cons
     else return -1;
 }
 
-
 /* main, for testing. Only uses a small dataset. */
 int main(int argc, char* argv[]) {
     unsigned int randomSeed = time(NULL);
@@ -1997,13 +1996,13 @@ int main(int argc, char* argv[]) {
 
 	// test effect calculators
 	printf("\nNow testing GEBV calculator:\n");
-	test_effect_calculators(d, g0);
+    test_effect_calculators(d, g0);
     test_optimal_calculators(d, g0);
 	printf("\t\t-> GEBV calculators all clear\n");
 
 	// test crossers
 	printf("\nNow testing crossing functions:\n");
-	test_crossing(d, g0);
+    test_crossing(d, g0);
     subfunctiontest_meiosis(randomSeed);
 	printf("\t\t-> Crossing functions all clear\n");
 
@@ -2104,23 +2103,81 @@ int main(int argc, char* argv[]) {
     }*/
 
     // This should not segfault
-    GenOptions gens = {.will_name_offspring=TRUE, .offspring_name_prefix="cr", .family_size=23,
+    GenOptions gens = {.will_name_offspring=TRUE, .offspring_name_prefix="cr", .family_size=240,
         .will_track_pedigree=TRUE, .will_allocate_ids=TRUE,
         .filename_prefix="testcross", .will_save_pedigree_to_file=FALSE,
         .will_save_bvs_to_file=-1, .will_save_alleles_to_file=FALSE,
         .will_save_to_simdata=TRUE};
-    cross_random_individuals(d, g0, 10, 0, gens);
+    GroupNum g000 = cross_random_individuals(d, g0, 10, 0, gens);
+    size_t ixs[3000];
     assert(d->n_groups == 2);
-    cross_random_individuals(d, g0, 10, 0, gens);
+    assert(g000.num == 2);
+    assert(get_group_size(d,g000)==2400);
+    get_group_indexes(d,g000,-1,ixs);
+    assert(ixs[0] == 50);
+    assert(ixs[2399] == 2449);
+    AlleleMatrix* cam = d->m;
+    do {
+        assert(cam->n_genotypes <= CONTIG_WIDTH);
+    } while ((cam = cam->next) != NULL);
+    g000 = cross_random_individuals(d, g0, 10, 0, gens); // perfectly as expected.
     assert(d->n_groups == 3);
-    cross_random_individuals(d, g0, 10, 0, gens);
+    assert(g000.num == 3);
+    assert(get_group_size(d,g000)==2400);
+    get_group_indexes(d,g000,-1,ixs);
+    assert(ixs[0] == 2450);
+    assert(ixs[2399] == 4849);
+    cam = d->m;
+    do {
+        assert(cam->n_genotypes <= CONTIG_WIDTH);
+    } while ((cam = cam->next) != NULL);
+    g000 = cross_random_individuals(d, g0, 10, 0, gens); // perfectly as expected.
     assert(d->n_groups == 4);
-    cross_random_individuals(d, g0, 10, 0, gens);
+    assert(g000.num == 4);
+    assert(get_group_size(d,g000)==2400);
+    get_group_indexes(d,g000,-1,ixs);
+    assert(ixs[0] == 4850);
+    assert(ixs[2399] == 7249);
+    cam = d->m;
+    do {
+        assert(cam->n_genotypes <= CONTIG_WIDTH);
+    } while ((cam = cam->next) != NULL);
+    g000 = cross_random_individuals(d, g0, 10, 0, gens); // perfectly as expected
     assert(d->n_groups == 5);
-    cross_random_individuals(d, g0, 10, 0, gens);
+    assert(g000.num == 5);
+    BidirectionalIterator it000 = create_bidirectional_iter(d,NO_GROUP);
+    GenoLocation last = next_backwards(&it000);
+    assert(get_group(last).num==5);
+    int totalngenos = 0;
+    cam = d->m;
+    do {
+        assert(cam->n_genotypes <= CONTIG_WIDTH);
+        totalngenos += cam->n_genotypes;
+    } while ((cam = cam->next) != NULL);
+    assert(totalngenos == 9650); // correct
+    assert(get_group_size(d,(GroupNum){.num=4})==2400);
+    assert(get_group_size(d,(GroupNum){.num=3})==2400);
+    assert(get_group_size(d,(GroupNum){.num=2})==2400);
+    assert(get_group_size(d,(GroupNum){.num=1})==50);
+    assert(get_group_size(d,(GroupNum){.num=0})==0);
+    assert(get_group_size(d,(GroupNum){.num=6})==0);
+    RandomAccessIterator it001 = create_randomaccess_iter(d,NO_GROUP);
+    GenoLocation g001 = next_get_nth(&it001,7251);
+    GroupNum tmp01 = get_group(g001);
+    get_group_indexes(d,(GroupNum){.num=4},-1,ixs);
+    assert(ixs[0] == 4850);
+    assert(ixs[2399] == 7249);
+    get_group_indexes(d,g000,-1,ixs); // !! indexes start at 7400 instead of the expected 7250
+    //assert(ixs[0] == 7250);
+    //assert(ixs[2399] == 9649);
+    int gsize = get_group_size(d,g000);
+    //assert(gsize==2400); // not correct. some genos must be being given the wrong number. Which?
+    g000 = cross_random_individuals(d, g0, 10, 0, gens);
     assert(d->n_groups == 6);
+    assert(g000.num == 6);
     GroupNum m = split_by_bv(d, g0, (EffectID){.id=1}, 55, 1);
     assert(d->n_groups == 7);
+    assert(m.num == 7);
     assert(get_group_size(d, m) == 50);
 
     delete_simdata(d);

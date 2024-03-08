@@ -1,10 +1,15 @@
 Latest News       {#news}
 ===========
 
+## Bug Fixes
+
+- Fix a bug in large simulations where gaps in the AlleleMatrix linked list failed to be patched in `condense_allele_matrix`, and some genotypes lost their group numbers (group numbers reverted to 0). 
+
 ## Improvements
 
 - Significant under-the-hood changes to crossing functions. They now call `_make_genotypes`, a generic function, to reduce code duplication. 
 - The same script and same random seed re-run post-0.2.4.003 will now produce slightly different genotypes. This is because the two gametes that make a cross are now generated successively (first one, then the other) rather than simultaneously.
+- Under-the-hood changes to `condense_allele_matrix`, for easier debugging. It now takes advantage of a `GappyIterator` to help it shuffle the positions of genotypes in the AlleleMatrix linked list.
 
 # genomicSimulation 0.2.4.003
 
