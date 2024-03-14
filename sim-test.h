@@ -1,5 +1,8 @@
 #include "sim-operations.h"
 
+//#define GSC_DEPRECATED_VERBOSE
+//#include "names_stopgap.h"
+
 #include <assert.h>
 
 #define TOL 0.00001

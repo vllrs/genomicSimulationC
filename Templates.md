@@ -49,7 +49,7 @@ m1 1 5.2
 <td>
 ```{C}
 SimData* d = create_empty_simdata(time(NULL));
-struct GroupAndEffectSet init = load_all_simdata(d, "genotype-file.txt", "map-file.txt", NULL);
+struct GroupAndEffectSet init = load_all_data(d, "genotype-file.txt", "map-file.txt", NULL);
 GroupNum founders = init.group;
 ```
 <td>
@@ -97,9 +97,9 @@ m1 1 5.2
 <td>
 ```{C}
 SimData* d = create_empty_simdata(time(NULL));
-struct GroupAndEffectSet init = load_all_simdata(d, "genotype-file.txt", "map-file.txt", NULL);
+struct GroupAndEffectSet init = load_all_data(d, "genotype-file.txt", "map-file.txt", NULL);
 GroupNum founders_a = init.group;
-GroupNum founders_b = load_more_transposed_genes_to_simdata(d, "genotype-file2.txt");
+GroupNum founders_b = load_genotypes_transposed(d, "genotype-file2.txt");
 ```
 <td>
 ```{R}
@@ -146,7 +146,7 @@ m3 T -0.1
 <td>
 ```{C}
 SimData* d = create_empty_simdata(time(NULL));
-struct GroupAndEffectSet init = load_all_simdata(d, "genotype-file.txt", "map-file.txt", "eff-file.txt");
+struct GroupAndEffectSet init = load_all_data(d, "genotype-file.txt", "map-file.txt", "eff-file.txt");
 GroupNum founders = init.group;
 EffectID eff1 = init.effectSet;
 ```
@@ -170,7 +170,7 @@ This assumes the simulation is set up, that is, one of **Load a genetic map and 
 - File location: eff-file2.txt
 <td>
 ```{C}
-EffectID eff2 = load_effects_to_simdata(d, "eff-file2.txt");
+EffectID eff2 = load_effects(d, "eff-file2.txt");
 ```
 <td>
 ```{R}
@@ -251,7 +251,7 @@ GenOptions opt = {.will_name_offspring=FALSE, .offspring_name_prefix=NULL, .fami
 		.filename_prefix=NULL, .will_save_pedigree_to_file=FALSE,
 		.will_save_bvs_to_file=NOT_AN_EFFECT_ID, .will_save_alleles_to_file=FALSE,
 		.will_save_to_simdata=TRUE};
-GroupNum crosses = cross_random_individuals(d, founders, 20, 0, opt);
+GroupNum crosses = make_random_crosses(d, founders, 20, 0, opt);
 GroupNum families[20];
 split_into_families(d, crosses, families);
 ```
@@ -268,14 +268,14 @@ families <- break.group.into.families(crosses)
 <td>
 ```{C}
 int targetparent = 1;
-GroupNum targetparent_group = split_from_group(d, 1, &targetparent);
+GroupNum targetparent_group = make_group_from(d, 1, &targetparent);
 
 GenOptions opt = {.will_name_offspring=FALSE, .offspring_name_prefix=NULL, .family_size=6,
 		.will_track_pedigree=TRUE, .will_allocate_ids=TRUE,
 		.filename_prefix=NULL, .will_save_pedigree_to_file=FALSE,
 		.will_save_bvs_to_file=NOT_AN_EFFECT_ID, .will_save_alleles_to_file=FALSE,
 		.will_save_to_simdata=TRUE};
-GroupNum crosses = cross_randomly_between(d, targetparent_group, founders, 10, 0, 0, opt);
+GroupNum crosses = make_random_crosses(d, targetparent_group, founders, 10, 0, 0, opt);
 
 GroupNum families[10];
 split_into_halfsib_families(d, crosses, 1, families);
@@ -321,12 +321,12 @@ Once separate copies exist for trials at different locations, simulate selection
 <td>
 ```{C}
 int targetparent = 1;
-GroupNum targetparent_group = split_from_group(d, 1, &targetparent);
+GroupNum targetparent_group = make_group_from(d, 1, &targetparent);
 
 GroupNum backcross_generations[20];
 backcross_generation[0] = founders;
 for (int i = 1; i < 20; ++i) {
-	backcross_generations[i] = cross_randomly_between(d, targetparent_group, backcross_generations[i-1], 10, 0, 0, BASIC_OPT);
+	backcross_generations[i] = make_random_crosses_between(d, targetparent_group, backcross_generations[i-1], 10, 0, 0, BASIC_OPT);
 }
 ```
 <td>
@@ -354,7 +354,7 @@ Templates in this section assume you have loaded two sets of founders whose grou
 <tr><td>Suppose you randomly cross your founders, then want to identify the male and female calves among the offspring.
 <td>
 ```{C}
-GroupNum offspring = cross_randomly_between(d, cows, bulls, 10, 0, 0, BASIC_OPT);
+GroupNum offspring = make_random_crosses_between(d, cows, bulls, 10, 0, 0, BASIC_OPT);
 
 GroupNum offspring_f = split_randomly_into_two(d, offspring);
 GroupNum offspring_m = offspring;
@@ -406,7 +406,7 @@ bulls <- combine.groups(c(bulls,offspring_m))
 <tr><td>Suppose each cow should only have one calf this generation.
 <td>
 ```{C}
-GroupNum offspring = cross_randomly_between(d, cows, bulls, 10, 1, 0, BASIC_OPT);
+GroupNum offspring = make_random_crosses_between(d, cows, bulls, 10, 1, 0, BASIC_OPT);
 ```
 <td>
 ```{R}
@@ -423,7 +423,7 @@ offspring <- cross.randomly.between(cows, bulls, cap1=1, n.crosses=10)
 ```{C}
 GroupNum bestbull = split_by_bv(d, bulls, eff1, 1, FALSE); # where eff1 is an EffectID representing the marker effect set to use to calculate bvs
 
-GroupNum offspring = cross_randomly_between(d, cows, bestbull, 10, 1, 0, BASIC_OPT);
+GroupNum offspring = make_random_crosses_between(d, cows, bestbull, 10, 1, 0, BASIC_OPT);
 ```
 <td>
 ```{R}
@@ -439,11 +439,11 @@ offspring <- cross.randomly.between(cows, bestbull, cap1=1, n.crosses=10)
 <tr><td>Suppose you want to cross Cow1 to Bull1, Cow2 to Bull2, and Daisy to Bull1
 <td>
 ```{C}
-cow1_index = get_index_of_name(d->m, "Cow1");
-cow2_index = get_index_of_name(d->m, "Cow2");
-cow3_index = get_index_of_name(d->m, "Daisy");
-bull1_index = get_index_of_name(d->m, "Bull1");
-bull2_index = get_index_of_name(d->m, "Bull2");
+cow1_index = gsc_get_index_of_name(d->m, "Cow1");
+cow2_index = gsc_get_index_of_name(d->m, "Cow2");
+cow3_index = gsc_get_index_of_name(d->m, "Daisy");
+bull1_index = gsc_get_index_of_name(d->m, "Bull1");
+bull2_index = gsc_get_index_of_name(d->m, "Bull2");
 
 int crossingPlan[2][3];
 crossingPlan[0][0] = cow1_index;
@@ -453,7 +453,7 @@ crossingPlan[1][0] = bull1_index;
 crossingPlan[1][1] = bull2_index;
 crossingPlan[1][2] = bull1_index;
 
-GroupNum offspring = cross_these_combinations(d, 3, crossingPlan[0], crossingPlan[1], BASIC_OPT);
+GroupNum offspring = make_targeted_crosses(d, 3, crossingPlan[0], crossingPlan[1], BASIC_OPT);
 ```
 <td>
 ```{R}
@@ -476,15 +476,15 @@ and call `make_crosses_from_file` or `cross.combinations.file`.
 <tr><td>Suppose you want to make a single Breed1/Breed2//Breed3 cross. That is, cross the F1 of a mating between Breed1 and Breed2 to Breed3. Assumes the genotypes for Breed1, Breed2, and Breed3 have those names.
 <td>
 ```{C}
-breed1_index = get_index_of_name(d->m, "Breed1");
-breed2_index = get_index_of_name(d->m, "Breed2");
-breed3_index = get_index_of_name(d->m, "Breed3");
+breed1_index = gsc_get_index_of_name(d->m, "Breed1");
+breed2_index = gsc_get_index_of_name(d->m, "Breed2");
+breed3_index = gsc_get_index_of_name(d->m, "Breed3");
 
 int crossingPlan[2][1];
 crossingPlan[0][0] = breed1_index;
 crossingPlan[1][0] = breed2_index;
 
-GroupNum f1 = cross_these_combinations(d, 1, crossingPlan[0], crossingPlan[1] BASIC_OPT);
+GroupNum f1 = make_targeted_crosses(d, 1, crossingPlan[0], crossingPlan[1] BASIC_OPT);
 int* f1_index = malloc(sizeof(int) * 1);
 get_group_indexes(d, f1, 1, f1_index); //we know this group has only one member
 
@@ -493,7 +493,7 @@ crossingPlan[0][0] = breed3_index;
 crossingPlan[1][0] = f1_index[0];
 free(f1_index);
 
-GroupNum f3way = cross_these_combinations(d, 1, crossingPlan[0], crossingPlan[1], BASIC_OPT);
+GroupNum f3way = make_targeted_crosses(d, 1, crossingPlan[0], crossingPlan[1], BASIC_OPT);
 ```
 <td>
 ```{R}
@@ -508,9 +508,9 @@ f3way <- cross.combinations(c("Breed3"), f1_index)
 <tr><td>Suppose you want 25 offspring of a Breed1/Breed2//Breed3 cross. Assumes the genotypes for Breed1, Breed2, and Breed3 have those names.
 <td>
 ```{C}
-breed1_index = get_index_of_name(d->m, "Breed1");
-breed2_index = get_index_of_name(d->m, "Breed2");
-breed3_index = get_index_of_name(d->m, "Breed3");
+breed1_index = gsc_get_index_of_name(d->m, "Breed1");
+breed2_index = gsc_get_index_of_name(d->m, "Breed2");
+breed3_index = gsc_get_index_of_name(d->m, "Breed3");
 
 int crossingPlan[2][1];
 crossingPlan[0][0] = breed1_index;
@@ -523,7 +523,7 @@ GenOptions opt = {.family_size=5,
 		.will_save_bvs_to_file=FALSE, .will_save_alleles_to_file=FALSE,
 		.will_save_to_simdata=TRUE};
 
-GroupNum f1 = cross_these_combinations(d, 1, crossingPlan[0], crossingPlan[1], opt);
+GroupNum f1 = make_random_crosses(d, 1, crossingPlan[0], crossingPlan[1], opt);
 int* f1_indexes = malloc(sizeof(int) * 5);
 get_group_indexes(d, f1, 5, f1_indexes);
 
@@ -536,7 +536,7 @@ crossingPlanb[1][2] = f1_indexes[2]; crossingPlanb[1][3] = f1_indexes[3];
 crossingPlanb[1][4] = f1_indexes[4];
 free(f1_indexes);
 
-GroupNum f3way = cross_these_combinations(d, 5, crossingPlanb[0], crossingPlanb[1], opt);
+GroupNum f3way = make_targeted_crosses(d, 5, crossingPlanb[0], crossingPlanb[1], opt);
 ```
 <td>
 ```{R}
@@ -558,27 +558,27 @@ genomicSimulation's custom labels can be used to track age (or some other known 
 <td>
 ```{C}
 SimData* d = create_empty_simdata(1234567);
-struct GroupAndEffectSet init = load_all_simdata(d, "genotype-file.txt", "map-file.txt", NULL);
+struct GroupAndEffectSet init = load_all_data(d, "genotype-file.txt", "map-file.txt", NULL);
 GroupNum animals = init.group;
 
 // Create a new label to represent age, with default/at-birth value of 0.
 LabelID ageLabel = create_new_label(d, 0);
 
 // Founders are 3 years old at the beginning.
-set_labels_to_const(d, animals, ageLabel, 3);
+change_label_to(d, animals, ageLabel, 3);
 
 for (int year = 0; year < 10; ++year) {
 	GroupNum breedingGroup = split_by_label_value(d, animals, ageLabel, 3);
 	
 	// Do some breeding/selection steps as appropriate for the breeding program, eg:
-	GruopNum offspring = cross_random_individuals(d, breedingGroup, 50, 0, BASIC_OPT);
+	GruopNum offspring = make_random_crosses(d, breedingGroup, 50, 0, BASIC_OPT);
 	// Offspring will have the default value for the label i.e. ageLabel = 0
 	
 	GroupNum toCombine[3] = {animals, breedingGroup, offspring};
 	animals = combine_groups(d, 3, toCombine);
 	
 	// Increase age of all by 1
-	increment_labels(d, animals, ageLabel, 1);
+	change_label_by_amount(d, animals, ageLabel, 1);
 }
 ```
 <td>
@@ -694,7 +694,7 @@ GroupNum select_10_with_best_GEBV(GroupNum group) {
 	group_bvs[currentTopIndex] = min_score;
   }
 
-  return split_from_group(d, 10, top_individuals);
+  return make_group_from(d, 10, top_individuals);
 }
 ```
 <td>
