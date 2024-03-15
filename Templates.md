@@ -174,7 +174,7 @@ EffectID eff2 = load_effects(d, "eff-file2.txt");
 ```
 <td>
 ```{R}
-eff2 <- load.different.effects("eff-file2.txt")
+eff2 <- load.more.effects("eff-file2.txt")
 ```
 </table>
 
@@ -257,7 +257,7 @@ split_into_families(d, crosses, families);
 ```
 <td>
 ```{R}
-crosses <- cross.randomly(founders, n.crosses=20, offspring=6)
+crosses <- make.random.crosses(founders, n.crosses=20, offspring=6)
 families <- break.group.into.families(crosses)
 ```
 </table>
@@ -284,7 +284,7 @@ split_into_halfsib_families(d, crosses, 1, families);
 ```{R}
 targetparent_group <- make.group(c(1L))
 
-crosses <- cross.randomly.between(targetparent_group, founders, n.crosses=10, offspring=6)
+crosses <- make.random.crosses.between(targetparent_group, founders, n.crosses=10, offspring=6)
 
 families <- break.group.into.halfsib.families(crosses)
 ```
@@ -336,7 +336,7 @@ targetparent_group <- make.group(c(1L))
 backcross_generations <- rep(0L, times=20);
 backcross_generations[1] <- founders
 for (ii in 1:20) {
-	backcross_generations[ii] <- cross.randomly.between(targetparent_group, backcross_generations[ii-1], n.crosses=10)
+	backcross_generations[ii] <- make.random.crosses.between(targetparent_group, backcross_generations[ii-1], n.crosses=10)
 }
 ```
 </table>
@@ -361,7 +361,7 @@ GroupNum offspring_m = offspring;
 ```
 <td>
 ```{R}
-offspring <- cross.randomly.between(cows, bulls, n.crosses=10)
+offspring <- make.random.crosses.between(cows, bulls, n.crosses=10)
 
 temporary <- break.group.randomly(offspring, into.n = 2)
 offspring_f <- temporary[1]
@@ -410,7 +410,7 @@ GroupNum offspring = make_random_crosses_between(d, cows, bulls, 10, 1, 0, BASIC
 ```
 <td>
 ```{R}
-offspring <- cross.randomly.between(cows, bulls, cap1=1, n.crosses=10)
+offspring <- make.random.crosses.between(cows, bulls, cap1=1, n.crosses=10)
 ```
 </table>
 
@@ -427,8 +427,8 @@ GroupNum offspring = make_random_crosses_between(d, cows, bestbull, 10, 1, 0, BA
 ```
 <td>
 ```{R}
-bestbull <- select.by.gebv(bulls, number=1, eff.set=eff1) # by default, this function uses the first effect set, so `eff.set=eff1` is optional
-offspring <- cross.randomly.between(cows, bestbull, cap1=1, n.crosses=10)
+bestbull <- break.group.by.gebv(bulls, number=1, eff.set=eff1) # by default, this function uses the first effect set, so `eff.set=eff1` is optional
+offspring <- make.random.crosses.between(cows, bestbull, cap1=1, n.crosses=10)
 ```
 </table>
 
@@ -457,7 +457,7 @@ GroupNum offspring = make_targeted_crosses(d, 3, crossingPlan[0], crossingPlan[1
 ```
 <td>
 ```{R}
-offspring <- cross.combinations(c("Cow1", "Cow2", "Daisy"), c("Bull1", "Bull2", "Bull1"))
+offspring <- make.targeted.crosses(c("Cow1", "Cow2", "Daisy"), c("Bull1", "Bull2", "Bull1"))
 ```
 </table>
 
@@ -467,7 +467,7 @@ Cow1 Bull1
 Cow2 Bull2
 Daisy Bull1
 ```
-and call `make_crosses_from_file` or `cross.combinations.file`.
+and call `make_crosses_from_file` or `make.crosses.from.file`.
 
 ## Three-Way Crosses
 
@@ -497,9 +497,9 @@ GroupNum f3way = make_targeted_crosses(d, 1, crossingPlan[0], crossingPlan[1], B
 ```
 <td>
 ```{R}
-f1 <- cross.combinations(c("Breed1"), c("Breed2"))
+f1 <- make.targeted.crosses(c("Breed1"), c("Breed2"))
 f1_index <- see.group.data(f1, "X")
-f3way <- cross.combinations(c("Breed3"), f1_index)
+f3way <- make.targeted.crosses(c("Breed3"), f1_index)
 ```
 </table>
 
@@ -540,10 +540,10 @@ GroupNum f3way = make_targeted_crosses(d, 5, crossingPlanb[0], crossingPlanb[1],
 ```
 <td>
 ```{R}
-f1 <- cross.combinations(c("Breed1"), c("Breed2"), offspring=5)
+f1 <- make.targeted.crosses(c("Breed1"), c("Breed2"), offspring=5)
 # This time, f1 is a group of multiple individuals
 f1_indexes <- see.group.data(f1, "X")
-f3way <- cross.combinations(rep("Breed3", times=length(f1_indexes)), f1_indexes, offspring=5)
+f3way <- make.targeted.crosses(rep("Breed3", times=length(f1_indexes)), f1_indexes, offspring=5)
 
 ```
 </table>
@@ -586,16 +586,16 @@ for (int year = 0; year < 10; ++year) {
 animals <- load.data("genotype-file.txt", "map-file.txt")
 
 # Create a new label to represent age, with default/at-birth value of 0.
-ageLabel <- make.label(0L)
+ageLabel <- create.new.label(0L)
 
 # Founders are 3 years old at the beginning.
 change.label.to.this(ageLabel, 3L, animals);
 
 for (year in 0:10) {
-	breedingGroup <- make.group.from.label(ageLabel, 3L, animals);
+	breedingGroup <- break.group.by.label.value(ageLabel, 3L, animals);
 	
 	# Do some breeding/selection steps as appropriate for the breeding program, eg:
-	offspring <- cross.randomly(breedingGroup, 50, 0)
+	offspring <- make.random.crosses(breedingGroup, 50, 0)
 	# Offspring will have the default value for the label i.e. ageLabel = 0
 	
 	animals <- combine.groups(c(animals, breedingGroup, offspring))
@@ -629,7 +629,7 @@ delete_group(d, animals);
 ```
 <td>
 ```{R}
-toCull <- make.group.from.label.range(ageLabel, 12, 1000000, animals)
+toCull <- break.group.by.label.range(ageLabel, 12, 1000000, animals)
 
 if (toCull > 0) { // split_by_label_range did find some animals to cull
 	delete.group(toCull) // delete from memory
@@ -638,7 +638,7 @@ if (toCull > 0) { // split_by_label_range did find some animals to cull
 ```
 or
 ```{R}
-toKeep <- make.group.from.label.range(ageLabel, 0, 11, animals)
+toKeep <- break.group.by.label.range(ageLabel, 0, 11, animals)
 
 delete.group(animals)
 rm(animals)
@@ -656,7 +656,7 @@ Note the concept of the 'custom selection interface' is mainly appropriate to th
 
 ## Manually select on true breeding value
 
-The template selection template. This does the exact same thing as `split_by_bv` / `select.by.gebv`, but using the 'custom selection method interface'. Hopefully this aids in understanding the concept.
+The template selection template. This does the exact same thing as `split_by_bv` / `break.group.by.gebv`, but using the 'custom selection method interface'. Hopefully this aids in understanding the concept.
 
 <table>
 <tr><th>Task <th>genomicSimulationC (C) <th>genomicSimulation (R)
