@@ -1,9 +1,9 @@
 #ifndef SIM_OPERATIONS_H
 #define SIM_OPERATIONS_H
 /* 
-genomicSimulationC v0.2.4.005 
+genomicSimulationC v0.2.4.007
 
-    Last edit: 13 Mar 2024 
+    Last edit: 18 Mar 2024
 	License: MIT License
 
 Copyright (c) 2021 Kira Villiers
@@ -118,13 +118,13 @@ SOFTWARE.
 
 #ifndef GSC_NO_SHORT_NAMES
 #define PedigreeID                 gsc_PedigreeID
-#define NO_PEDIGREE                gsc_NO_PEDIGREE
+#define NO_PEDIGREE                GSC_NO_PEDIGREE
 #define GroupNum                   gsc_GroupNum
-#define NO_GROUP                   gsc_NO_GROUP
+#define NO_GROUP                   GSC_NO_GROUP
 #define EffectID                   gsc_EffectID
-#define NOT_AN_EFFECT_SET          gsc_NOT_AN_EFFECT_SET
+#define NOT_AN_EFFECT_SET          GSC_NOT_AN_EFFECT_SET
 #define LabelID                    gsc_LabelID
-#define NOT_A_LABEL                gsc_NOT_A_LABEL
+#define NOT_A_LABEL                GSC_NOT_A_LABEL
 #define GroupAndEffectSet          gsc_GroupAndEffectSet
 
 #define TableSize                  gsc_TableSize
@@ -176,6 +176,8 @@ SOFTWARE.
 #define get_group                  gsc_get_group
 #define set_group                  gsc_set_group
 #define get_label_value            gsc_get_label_value
+#define get_index_of_label         gsc_get_index_of_label
+#define get_index_of_eff_set       gsc_get_index_of_eff_set
 #define get_existing_groups        gsc_get_existing_groups
 #define get_existing_group_counts  gsc_get_existing_group_counts
 #define get_group_size             gsc_get_group_size
@@ -284,6 +286,95 @@ SOFTWARE.
  *
  * @{
  */
+ 
+ 
+/** Macro to create a stretchy buffer of any type and some length
+ *
+ * After this macro is run, a buffer with the requested type and capacity
+ * will exist in the scope under the requested name. 
+ *
+ * This macro will also create two helper variables. Their names will be 
+ * generated based on the name of the buffer:
+ * - {name}cap will contain the current capacity of the buffer.
+ * - {name}stack will be a stack array of size CONTIG_WIDTH. If the buffer 
+ * length is not greater than CONTIG_WIDTH, then {name}stack will point to
+ * the same array as the buffer.
+ *
+ * Use this buffer only within one local scope. These functions won't work
+ * for buffers that have escaped their scope and so left their helper variables 
+ * behind.
+ *
+ * The buffer will be allocated on the stack if its length will not make it 
+ * exceed CONTIG_WIDTH*sizeof(int) in size in bytes. Otherwise, it will be allocated
+ * on the heap. For safety, you 
+ * should call @a GSC_DELETE_BUFFER on the buffer once you have finished using it,
+ * even if you believe it is small enough to have been allocated on the stack.
+ *
+ * @see GSC_DELETE_BUFFER
+ * @see GSC_STRETCH_BUFFER
+ *
+ * @param n name for the buffer.
+ * @param type type of each entry in the buffer (eg int).
+ * @param length number of entries the buffer should be able to hold.
+ */
+#define GSC_CREATE_BUFFER(n,type,length) \
+type n##stack[sizeof(int)*CONTIG_WIDTH/sizeof(type)]; size_t n##cap = length; \
+type* n = (n##cap >= sizeof(n##stack)/sizeof(type)) ? gsc_malloc_wrap(sizeof(type)*n##cap,GSC_TRUE) : n##stack;
+
+/** For debugging purposes.
+ *
+ * @see GSC_CREATE_BUFFER
+ * @see GSC_STRETCH_BUFFER
+ * @see GSC_DELETE_BUFFER
+ */
+#define GSC_BUFFER_ISHEAP(n) n##cap >= sizeof(n##stack)/sizeof(n##stack[0])
+
+/** Macro to delete a stretchy buffer
+ *
+ * @see GSC_CREATE_BUFFER
+ * @see GSC_STRETCH_BUFFER
+ *
+ * The buffer named {n}, and its assistant variable {n}cap and {n}stack, must exist 
+ * in the current scope. They would be created by @a GSC_CREATE_BUFFER
+ *
+ * @param n name of the buffer.
+ */
+#define GSC_DELETE_BUFFER(n) do { if (n##cap >= sizeof(n##stack)/sizeof(n##stack[0])) { GSC_FREE(n); } \
+n = NULL; n##cap = 0; } while (0)
+
+/** Macro to expand the capacity of a stretchy buffer
+ *
+ * @see GSC_CREATE_BUFFER
+ * @see GSC_DELETE_BUFFER
+ *
+ * The buffer named {n}, and its assistant variables {n}cap and {n}stack, must exist 
+ * in the current scope. They would be created by @a GSC_CREATE_BUFFER
+ *
+ * After this macro executes, the buffer named {n} will have the capacity 
+ * to hold {n}cap entries. Unless memory allocation failed, {n}cap will be 
+ * greater than or equal to the requested new length. Check the value of 
+ * {n}cap to check that resizing succeeded. 
+ *
+ * @param n name of the buffer.
+ * @param newlen after execution, the buffer should be able to hold this 
+ * many entries, unless memory allocation failed (can be checked with
+ * n{cap} >= newlen )
+ */
+#define GSC_STRETCH_BUFFER(n,newlen) do {    \
+	if (newlen < n##cap) { } \
+	else if (n##cap >= sizeof(n##stack)/sizeof(n##stack[0])) { \
+        void* tmp = gsc_malloc_wrap(sizeof(n##stack[0])*newlen,GSC_FALSE); \
+		if (tmp != NULL) { \
+		memcpy(tmp,n,sizeof(n[0])*n##cap); \
+        GSC_FREE(n); n = tmp; n##cap = newlen; }} \
+    else if (newlen >= sizeof(n##stack)/sizeof(n##stack[0])) { \
+        n = gsc_malloc_wrap(sizeof(n##stack[0])*newlen,GSC_FALSE); \
+        if (n != NULL) { \
+        memcpy(n,n##stack,sizeof(n##stack[0])*n##cap); n##cap = newlen; }} \
+    else if (newlen < CONTIG_WIDTH) { n##cap = newlen; } \
+} while (0)
+
+
 
 /** A struct representing a single marker location. the attribute
  * `chromosome` represents the chromosome number, and `position` the
@@ -349,7 +440,7 @@ typedef struct {
 /** Empty/null value for pedigree fields.
  *
  * @shortnamed{NO_PEDIGREE} */
-#define gsc_NO_PEDIGREE (gsc_PedigreeID){.id=0}
+#define GSC_NO_PEDIGREE (gsc_PedigreeID){.id=0}
 
 
 /** A type representing the identifier of a group of genotypes
@@ -362,7 +453,7 @@ typedef struct {
 /** Empty/null value for group allocations.
  *
  * @shortnamed{NO_GROUP} */
-#define gsc_NO_GROUP (gsc_GroupNum){.num=0}
+#define GSC_NO_GROUP (gsc_GroupNum){.num=0}
 
 /** A type representing a particular loaded set of marker effects
  *
@@ -374,7 +465,7 @@ typedef struct {
 /** Empty/null value for effect set identifiers.
  *
  * @shortnamed{NOT_AN_EFFECT_SET} */
-#define gsc_NOT_AN_EFFECT_SET (gsc_EffectID){.id=0}
+#define GSC_NOT_AN_EFFECT_SET (gsc_EffectID){.id=0}
 
 /** A type representing a particular integer label
  *
@@ -386,7 +477,7 @@ typedef struct {
 /** Empty/null value for custom label identifiers.
  *
  * @shortnamed{NOT_A_LABEL} */
-#define gsc_NOT_A_LABEL (gsc_LabelID){.id=0}
+#define GSC_NOT_A_LABEL (gsc_LabelID){.id=0}
 
 /** Simple crate (stores a GroupNum and an EffectID, nothing more).
  *
@@ -414,7 +505,7 @@ struct gsc_GroupAndEffectSet {
 typedef struct {
 	int will_name_offspring; /**< A boolean: whether generated offspring should be given names. */
     const char* offspring_name_prefix; /**< If `will_name_offspring` is true, generated
-                           * offspring are named [offspring_name_prefix][index]. */
+                           * offspring are named with the concatenation {offspring_name_prefix}{index}. */
 
 	int family_size; /**< The number of offspring to produce from each cross.*/
 
@@ -427,19 +518,19 @@ typedef struct {
     const char* filename_prefix; /**< A string used in save-as-you-go file names. */
 	int will_save_pedigree_to_file; /**< A boolean. If true, the full/recursive
                             * pedigrees of every offspring generated in the cross
-                            * are saved to "[filename_prefix}-pedigree.txt", even
+                            * are saved to "{filename_prefix}-pedigree.txt", even
                             * if `will_save_to_simdata` is false.
                             * Pedigrees are saved in the format of gsc_save_full_pedigree()*/
     gsc_EffectID will_save_bvs_to_file; /**< If equal to NOT_AN_EFFECT_SET, no bvs are calculated or saved.
                             * Otherwise, for each offspring in the cross,
                             * the breeding values according
                             * to the marker effect set with this gsc_EffectID
-                            * are saved to "[filename_prefix}-bv.txt", even
+                            * are saved to "{filename_prefix}-bv.txt", even
                             * if `will_save_to_simdata` is false.
                             * BVs are saved in the format of gsc_save_bvs() */
 	int will_save_alleles_to_file; /**< A boolean. If true, the set of alleles
                             * of every offspring generated in the cross
-                            * are saved to "[filename_prefix}-genotype.txt", even
+                            * are saved to "{filename_prefix}-genotype.txt", even
                             * if `will_save_to_simdata` is false.
                             * Genotypes are saved in the format of gsc_save_allele_matrix()*/
 	int will_save_to_simdata; /**< A boolean. If true, the generated offspring exist
@@ -486,8 +577,8 @@ typedef struct {
 typedef struct gsc_AlleleMatrix gsc_AlleleMatrix;
 struct gsc_AlleleMatrix {
     /** A matrix of SNP markers by lines/genotypes containing pairs of alleles
-     * eg TT, TA. Use `alleles[line index][marker index * 2]` to get the
-     * first allele and `alleles[lines index][marker index * 2 + 1]` to
+     * eg TT, TA. Use `alleles[genotype index][marker index * 2]` to get the
+     * first allele and `alleles[genotype index][marker index * 2 + 1]` to
      * get the second. If CONTIG_WIDTH lines are saved here, another
      * gsc_AlleleMatrix is added to the linked list when there's a need to save more.*/
 	char* alleles[CONTIG_WIDTH];
@@ -593,9 +684,9 @@ int			  gsc_add_doublematrixvector_product_to_dmatrix(gsc_DecimalMatrix* result,
  * @{
  */
 struct gsc_TableSize gsc_get_file_dimensions(const char* filename, const char sep);
-int gsc_get_from_ordered_uint_list(const unsigned int target, const unsigned int listLen, const unsigned int list[listLen]);
-int gsc_get_from_ordered_pedigree_list(const gsc_PedigreeID target, const unsigned int listLen, const gsc_PedigreeID list[listLen]);
-int gsc_get_from_unordered_str_list(const char* target, const int listLen, const char* list[listLen]);
+int gsc_get_from_ordered_uint_list(const unsigned int target, const unsigned int listLen, const unsigned int* list);
+int gsc_get_from_ordered_pedigree_list(const gsc_PedigreeID target, const unsigned int listLen, const gsc_PedigreeID* list);
+int gsc_get_from_unordered_str_list(const char* target, const int listLen, const char** list);
 void gsc_shuffle_up_to(rnd_pcg_t* rng, size_t* sequence, const size_t total_n, const size_t n_to_shuffle);
 unsigned int gsc_randomdraw_replacementrules(gsc_SimData* d, unsigned int max, unsigned int cap, unsigned int* member_uses, unsigned int noCollision);
 
@@ -604,12 +695,12 @@ void gsc_change_label_default(gsc_SimData* d, const gsc_LabelID whichLabel, cons
 void gsc_change_label_to(gsc_SimData* d, const gsc_GroupNum whichGroup, const gsc_LabelID whichLabel, const int setTo);
 void gsc_change_label_by_amount(gsc_SimData* d, const gsc_GroupNum whichGroup, const gsc_LabelID whichLabel, const int byValue);
 void gsc_change_label_to_values(gsc_SimData* d, const gsc_GroupNum whichGroup, const int startIndex, const gsc_LabelID whichLabel,
-                          const int n_values, const int values[n_values]);
+                          const int n_values, const int* values);
 
 //static void gsc_get_sorted_markers(gsc_SimData* d, int actual_n_markers);
 //static void gsc_get_chromosome_locations(gsc_SimData *d);
 
-void gsc_change_names_to_values(gsc_SimData* d, const gsc_GroupNum whichGroup, const int startIndex, const int n_values, const char* values[n_values]);
+void gsc_change_names_to_values(gsc_SimData* d, const gsc_GroupNum whichGroup, const int startIndex, const int n_values, const char** values);
 //static void gsc_set_names(gsc_AlleleMatrix* a, const char* prefix, const int suffix, const int from_index);
 //static void gsc_set_ids(gsc_SimData* d, const int from_index, const int to_index);
 int gsc_get_integer_digits(const int i);
@@ -622,7 +713,7 @@ gsc_GroupNum gsc_get_next_free_group_num( const int n_existing_groups, const gsc
 gsc_GroupNum gsc_get_new_group_num( gsc_SimData* d );
 void gsc_get_n_new_group_nums( gsc_SimData* d, const int n, gsc_GroupNum* result);
 void gsc_condense_allele_matrix( gsc_SimData* d);
-//static void* gsc_malloc_wrap(const size_t size);
+//static void* gsc_malloc_wrap(const size_t size, char exitonfail);
 
 //static int gsc_helper_simdata_pos_compare(const void *pp0, const void *pp1);
 //static int gsc_helper_descending_double_comparer(const void* pp0, const void* pp1);
@@ -637,7 +728,7 @@ void gsc_condense_allele_matrix( gsc_SimData* d);
  *
  * @{
  */
-gsc_AlleleMatrix* gsc_create_empty_allelematrix(const int n_markers, const int n_labels, const int labelDefaults[n_labels], const int n_genotypes);
+gsc_AlleleMatrix* gsc_create_empty_allelematrix(const int n_markers, const int n_labels, const int* labelDefaults, const int n_genotypes);
 gsc_SimData* gsc_create_empty_simdata(RND_U32 RNGseed);
 void gsc_clear_simdata(gsc_SimData* d);
 
@@ -932,8 +1023,8 @@ static inline int gsc_get_label_value(const gsc_GenoLocation loc, const int labe
      * @{
      */
 char* gsc_get_name_of_id( const gsc_AlleleMatrix* start, const gsc_PedigreeID id);
-int gsc_get_parents_of_id( const gsc_AlleleMatrix* start, const gsc_PedigreeID id, gsc_PedigreeID output[2]);
-void gsc_get_ids_of_names( const gsc_AlleleMatrix* start, const int n_names, const char* names[n_names], gsc_PedigreeID* output);
+int gsc_get_parents_of_id( const gsc_AlleleMatrix* start, const gsc_PedigreeID id, gsc_PedigreeID output[static 2]);
+void gsc_get_ids_of_names( const gsc_AlleleMatrix* start, const int n_names, const char** names, gsc_PedigreeID* output);
 int gsc_get_index_of_child( const gsc_AlleleMatrix* start, const gsc_PedigreeID parent1id, const gsc_PedigreeID parent2id);
 int gsc_get_index_of_name( const gsc_AlleleMatrix* start, const char* name);
 gsc_PedigreeID gsc_get_id_of_index( const gsc_AlleleMatrix* start, const int index);
@@ -973,8 +1064,8 @@ int gsc_get_existing_group_counts( gsc_SimData* d, gsc_GroupNum* out_groups, siz
  *
  * @{
  */
-gsc_GroupNum gsc_combine_groups( gsc_SimData* d, const int list_len, const gsc_GroupNum group_ids[list_len]);
-gsc_GroupNum gsc_make_group_from( gsc_SimData* d, const int n, const size_t genotype_indexes[n]);
+gsc_GroupNum gsc_combine_groups( gsc_SimData* d, const int list_len, const gsc_GroupNum* grouplist);
+gsc_GroupNum gsc_make_group_from( gsc_SimData* d, const int index_list_len, const size_t* genotype_indexes);
 gsc_GroupNum gsc_split_by_label_value( gsc_SimData* d, const gsc_GroupNum group, const gsc_LabelID whichLabel, const int valueToSplit);
 gsc_GroupNum gsc_split_by_label_range( gsc_SimData* d, const gsc_GroupNum group, const gsc_LabelID whichLabel, const int valueLowBound, const int valueHighBound);
 
@@ -984,11 +1075,11 @@ unsigned int gsc_scaffold_split_by_somequality( gsc_SimData* d, const gsc_GroupN
         gsc_GroupNum (*somequality_tester)(gsc_GenoLocation, void*, unsigned int, unsigned int, gsc_GroupNum*),
         size_t maxentries_results, gsc_GroupNum* results);
 // APPLICATIONS
-unsigned int gsc_split_into_individuals( gsc_SimData* d, const gsc_GroupNum group_id, size_t maxentries_results, gsc_GroupNum results[maxentries_results]);
+unsigned int gsc_split_into_individuals( gsc_SimData* d, const gsc_GroupNum group_id, size_t maxentries_results, gsc_GroupNum* results);
     //static gsc_GroupNum gsc_helper_split_by_quality_individuate(gsc_GenoLocation loc, void** datastore, unsigned int maxgroups, unsigned int groupsfound, gsc_GroupNum** results);
-unsigned int gsc_split_into_families(gsc_SimData* d, const gsc_GroupNum group_id, size_t maxentries_results, gsc_GroupNum results[maxentries_results]);
+unsigned int gsc_split_into_families(gsc_SimData* d, const gsc_GroupNum group_id, size_t maxentries_results, gsc_GroupNum* results);
     //static gsc_GroupNum gsc_helper_split_by_quality_family(gsc_GenoLocation loc, void** datastore, unsigned int maxgroups, unsigned int groupsfound, gsc_GroupNum** results);
-unsigned int gsc_split_into_halfsib_families( gsc_SimData* d, const gsc_GroupNum group_id, const int parent, size_t maxentries_results, gsc_GroupNum results[maxentries_results]);
+unsigned int gsc_split_into_halfsib_families( gsc_SimData* d, const gsc_GroupNum group_id, const int parent, size_t maxentries_results, gsc_GroupNum* results);
     //static gsc_GroupNum gsc_helper_split_by_quality_halfsib1(gsc_GenoLocation loc, void** datastore, unsigned int maxgroups, unsigned int groupsfound, gsc_GroupNum* results);
     //static gsc_GroupNum gsc_helper_split_by_quality_halfsib2(gsc_GenoLocation loc, void** datastore, unsigned int maxgroups, unsigned int groupsfound, gsc_GroupNum* results);
     //static gsc_GroupNum gsc_helper_split_by_quality_halfsibtemplate(gsc_GenoLocation loc, void** datastore, unsigned int maxgroups, unsigned int groupsfound, gsc_GroupNum* results, gsc_PedigreeID (*getparent)(gsc_GenoLocation));
@@ -996,7 +1087,7 @@ unsigned int gsc_split_into_halfsib_families( gsc_SimData* d, const gsc_GroupNum
 // GENERIC
 unsigned int gsc_scaffold_split_by_someallocation( gsc_SimData* d, const gsc_GroupNum group_id, void* someallocator_data,
         gsc_GroupNum (*someallocator)(gsc_GenoLocation, gsc_SimData*, void*, unsigned int, unsigned int*, gsc_GroupNum*),
-        size_t n_outgroups, gsc_GroupNum outgroups[n_outgroups]);
+        size_t n_outgroups, gsc_GroupNum* outgroups);
 // APPLICATIONS
 gsc_GroupNum gsc_split_evenly_into_two(gsc_SimData* d, const gsc_GroupNum group_id);
     //static gsc_GroupNum gsc_helper_split_by_allocator_knowncounts(gsc_GenoLocation loc, gsc_SimData* d, void* datastore, unsigned int n_outgroups, unsigned int* subgroupsfound, gsc_GroupNum* outgroups)
@@ -1133,7 +1224,7 @@ void gsc_move_genotype(gsc_GenoLocation from, gsc_GenoLocation to, int* label_de
 
 void gsc_save_marker_blocks(FILE* f, const gsc_SimData* d, const gsc_MarkerBlocks b);
 
-void gsc_save_names_header(FILE* f, size_t n, const char* names[n]);
+void gsc_save_names_header(FILE* f, size_t n, const char** names);
 void gsc_save_allele_matrix(FILE* f, const gsc_AlleleMatrix* m);
 void gsc_save_transposed_allele_matrix(FILE* f, const gsc_AlleleMatrix* m, const char** markers);
 

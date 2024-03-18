@@ -14,6 +14,7 @@ Latest News       {#news}
 - Significant under-the-hood changes to crossing functions. They now call `_make_genotypes`, a generic function, to reduce code duplication. 
 - The same script and same random seed re-run post-0.2.4.003 will now produce slightly different genotypes. This is because the two gametes that make a cross are now generated successively (first one, then the other) rather than simultaneously.
 - Under-the-hood changes to `condense_allele_matrix`, for easier debugging. It now takes advantage of a `GappyIterator` to help it shuffle the positions of genotypes in the AlleleMatrix linked list.
+- Remove all Variable Length Arrays (VLAs). All buffers used internally in genomicSimulation now allocate themselves sizeof(int)\*CONTIG_WIDTH bytes of space on the stack, or use heap memory if that is insufficient.  
 
 # genomicSimulation 0.2.4.003
 

@@ -3,7 +3,8 @@
 float calculate_heterozygosity(SimData* d, GroupNum group_number) {
 	int hetcount = 0;
     int gn = get_group_size(d, group_number);
-    char* galleles[gn];
+    assert(gn < 1000);
+    char* galleles[1000];
     get_group_genes(d, group_number, gn, galleles);
 
 	// uses subjects as the first index
@@ -949,7 +950,7 @@ GroupNum test_specific_splits(SimData *d, GroupNum g0) {
                     .will_save_to_simdata = GSC_TRUE};
     GroupNum f1 = make_random_crosses(d, g0, 3, 1, g);
     int f1size = 5*3;
-    GroupNum families[f1size];
+    GroupNum families[15];
     assert(d->n_groups == 2);
     int f1nfamilies = split_into_families(d,f1,f1size,families);
     assert(d->n_groups == 4);
@@ -1050,7 +1051,7 @@ GroupNum test_specific_splits(SimData *d, GroupNum g0) {
 
     int fhsfamily3size = get_group_size(d,halfsibfamilies[2]);
     assert(fhsfamily3size == 5);
-    size_t fhsfamily3[fhsfamily3size];
+    size_t fhsfamily3[5];
     assert(get_group_indexes(d,halfsibfamilies[2],5,fhsfamily3) == fhsfamily3size);
     assert(d->m->pedigrees[0][fhsfamily3[0]].id == d->m->pedigrees[0][fhsfamily3[1]].id &&
             d->m->pedigrees[0][fhsfamily3[0]].id == d->m->pedigrees[0][fhsfamily3[2]].id &&
@@ -1484,12 +1485,13 @@ int test_crossing_randomly(SimData *d, GroupNum g1) {
 }
 
 int test_deletors(SimData *d, GroupNum g0) {
-    GroupNum groups1[d->n_groups];
+    GroupNum groups1[1000];
+    assert(d->n_groups < 1000);
     int ngroups1 = get_existing_groups(d, groups1);
     assert(d->n_groups == ngroups1);
 
-    GroupNum groups1b[d->n_groups];
-    size_t groupcounts1b[d->n_groups];
+    GroupNum groups1b[1000];
+    size_t groupcounts1b[1000];
     int ngroups1b = get_existing_group_counts(d, groups1b, groupcounts1b);
     assert(d->n_groups == ngroups1b);
     assert(ngroups1b == ngroups1);
@@ -1498,7 +1500,7 @@ int test_deletors(SimData *d, GroupNum g0) {
     }
 
 	delete_group(d, g0);
-    GroupNum groups2[d->n_groups];
+    GroupNum groups2[1000];
     int ngroups2 = get_existing_groups(d, groups2);
     assert(d->n_groups == ngroups2);
 
