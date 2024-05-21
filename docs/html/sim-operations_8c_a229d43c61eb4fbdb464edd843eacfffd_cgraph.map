@@ -1,0 +1,7 @@
+<map id="gsc_helper_make_offspring_cross" name="gsc_helper_make_offspring_cross">
+<area shape="rect" id="node1" title="offspringGenerator function parameter for gsc_make_random_crosses." alt="" coords="5,61,184,105"/>
+<area shape="rect" id="node2" href="$group__meiosis.html#ga923d9402fffe6eacac7971b703343073" title="Fills a char* with the simulated result of meiosis (reduction and recombination) from the marker alle..." alt="" coords="232,43,381,71"/>
+<area shape="rect" id="node5" href="$group__liteget.html#ga5e1e89782604c9ab47f196e1da233362" title="Get the alleles of a genotype." alt="" coords="251,95,362,123"/>
+<area shape="rect" id="node3" href="$sim-operations_8c.html#a50de1f9769153df70263edc86de41fa5" title="Comparator function for qsort." alt="" coords="429,5,579,49"/>
+<area shape="rect" id="node4" href="$group__maths.html#ga897c7abb536f30f0cbc1baf2abcd2067" title="Generates randomly a number from the Poisson distribution with parameter lambda, using the Knuth appr..." alt="" coords="459,73,550,101"/>
+</map>

@@ -9,20 +9,21 @@ float calculate_heterozygosity(SimData* d, GroupNum group_number) {
 
 	// uses subjects as the first index
 	for (int i = 0; i < gn; i++) {
-		for (int j = 0; j < d->n_markers; j += 2) {
+        for (int j = 0; j < d->genome.n_markers; j += 2) {
 			if (galleles[i][j] != galleles[i][j + 1]) {
 				hetcount += 1;
 			}
 		}
 	}
 
-	return (float) hetcount / (gn * d->n_markers);
+    return (float) hetcount / (gn * d->genome.n_markers);
 }
 
 int test_savers(unsigned int rseed) {
     SimData* d = create_empty_simdata(rseed);
-    GroupNum g0 = just_load(d);
-    assert(d->n_markers == 3);
+    struct MultiIDSet loaded = just_load(d);
+    GroupNum g0 = loaded.group;
+    assert(d->genome.n_markers == 3);
     assert(d->n_eff_sets == 1);
     assert(d->m->n_genotypes == 6);
 
@@ -36,14 +37,17 @@ int test_savers(unsigned int rseed) {
             .will_save_bvs_to_file=0,
             .will_save_alleles_to_file=GSC_FALSE,
             .will_save_to_simdata=GSC_TRUE};
-    GroupNum f1 = make_random_crosses(d, g0, 5, 2, g); // produce 5 offspring
+
+    int firstparents[] = {2, 3, 1, 4, 0};
+    int secondparents[] = {4, 1, 3, 2, 5};
+    GroupNum f1 = gsc_make_targeted_crosses(d, 5, firstparents, secondparents, NO_MAP, NO_MAP, g); // produce 5 offspring
     g.will_track_pedigree = GSC_TRUE;
     g.will_allocate_ids = GSC_FALSE;
     g.offspring_name_prefix = "s";
-    GroupNum f2 = self_n_times(d,2,f1,g); // produce 5 offspring that know their parents but will be anonymous parents themselves
+    GroupNum f2 = self_n_times(d,2,f1, NO_MAP,g); // produce 5 offspring that know their parents but will be anonymous parents themselves
     g.will_name_offspring = GSC_FALSE;
     g.will_allocate_ids = GSC_TRUE;
-    GroupNum f3 = make_doubled_haploids(d,f2,g); // produce 5 offspring that don't have names or know their parents.
+    GroupNum f3 = make_doubled_haploids(d,f2, NO_MAP,g); // produce 5 offspring that don't have names or know their parents.
 
     size_t toprint[] = {0,1,//2,3,4,5 from g0
                      6,7,//8,9,10 from f1
@@ -56,27 +60,41 @@ int test_savers(unsigned int rseed) {
     int gs[5];
     get_existing_group_counts(d,5,gout,gs);*/
 
+    /*int REFSIZE = 5000;
+    char ref[REFSIZE];
+    memset(ref,0,sizeof(ref));*/
+
     // try saving genotypes save_allele_matrix save_transposed_allele_matrix save_group_genotypes save_transposed_group_genotypes
     FILE* fp;
     if ((fp = fopen("test1_save_allele_matrix.txt", "w")) == NULL) {
         fprintf(stderr, "Failed to create file.\n");
         exit(1);
     }
-    save_names_header(fp,d->n_markers,(const char**) d->markers);
+    save_names_header(fp,d->genome.n_markers,(const char**) d->genome.marker_names);
     save_allele_matrix(fp,d->m);
     fclose(fp);
-    //assert(compareFileToString("test1_save_allele_matrix.txt", TEST1_TRUTH_save_allele_matrix)==0);
-    //remove("test1_save_allele_matrix.txt");
+    /*strcat(ref,"\tm1\tm2\tam3\n");
+    for (int i = 0; i < d->m->n_genotypes; ++i) {
+        if (d->m->names[i] == NULL) {
+            snprintf()
+            strcat(ref,"\tm1\tm2\tam3\n");
+        } else {
+            strcat(ref,"\tm1\tm2\tam3\n");
+        }
+    }*/
+
+    assert(compareFileToString("test1_save_allele_matrix.txt", TEST1_TRUTH_save_allele_matrix)==0);
+    remove("test1_save_allele_matrix.txt");
 
 
     if ((fp = fopen("test1_save_transposed_allele_matrix.txt", "w")) == NULL) {
         fprintf(stderr, "Failed to create file.\n");
         exit(1);
     }
-    save_transposed_allele_matrix(fp,d->m,(const char**) d->markers);
+    save_transposed_allele_matrix(fp,d->m,(const char**) d->genome.marker_names);
     fclose(fp);
-    //assert(compareFileToString("test1_save_transposed_allele_matrix.txt", TEST1_TRUTH_save_transposed_allele_matrix)==0);
-    //remove("test1_save_transposed_allele_matrix.txt");
+    assert(compareFileToString("test1_save_transposed_allele_matrix.txt", TEST1_TRUTH_save_transposed_allele_matrix)==0);
+    remove("test1_save_transposed_allele_matrix.txt");
 
 
     if ((fp = fopen("test1_save_group_genotypes.txt", "w")) == NULL) {
@@ -85,8 +103,8 @@ int test_savers(unsigned int rseed) {
     }
     save_group_genotypes(fp,d,printingGroup);
     fclose(fp);
-    //assert(compareFileToString("test1_save_group_genotypes.txt", TEST1_TRUTH_save_group_genotypes)==0);
-    //remove("test1_save_group_genotypes.txt");
+    assert(compareFileToString("test1_save_group_genotypes.txt", TEST1_TRUTH_save_group_alleles)==0);
+    remove("test1_save_group_genotypes.txt");
 
 
     if ((fp = fopen("test1_save_transposed_group_genotypes.txt", "w")) == NULL) {
@@ -95,8 +113,8 @@ int test_savers(unsigned int rseed) {
     }
     save_transposed_group_genotypes(fp,d,printingGroup);
     fclose(fp);
-    //assert(compareFileToString("test1_save_transposed_group_genotypes.txt", TEST1_TRUTH_save_transposed_group_genotypes)==0);
-    //remove("test1_save_transposed_group_genotypes.txt");
+    assert(compareFileToString("test1_save_transposed_group_genotypes.txt", TEST1_TRUTH_save_transposed_group_alleles)==0);
+    remove("test1_save_transposed_group_genotypes.txt");
 
 
     // try saving counts save_count_matrix save_group_count_matrix
@@ -106,8 +124,8 @@ int test_savers(unsigned int rseed) {
     }
     save_count_matrix(fp,d,'A');
     fclose(fp);
-    //assert(compareFileToString("test1_save_count_matrix.txt", TEST1_TRUTH_save_count_matrix)==0);
-    //remove("test1_save_count_matrix.txt");
+    assert(compareFileToString("test1_save_count_matrix.txt", TEST1_TRUTH_save_count_matrix)==0);
+    remove("test1_save_count_matrix.txt");
 
 
     if ((fp = fopen("test1_save_group_count_matrix.txt", "w")) == NULL) {
@@ -116,8 +134,8 @@ int test_savers(unsigned int rseed) {
     }
     save_group_count_matrix(fp,d,'T',printingGroup);
     fclose(fp);
-    //assert(compareFileToString("test1_save_group_count_matrix.txt", TEST1_TRUTH_save_group_count_matrix)==0);
-    //remove("test1_save_group_count_matrix.txt");
+    assert(compareFileToString("test1_save_group_count_matrix.txt", TEST1_TRUTH_save_count_matrix_of_group)==0);
+    remove("test1_save_group_count_matrix.txt");
 
 
     printf("...genotype matrix file savers produce the expected output formats\n");
@@ -132,8 +150,8 @@ int test_savers(unsigned int rseed) {
     }
     save_bvs(fp,d,effSet1);
     fclose(fp);
-    //assert(compareFileToString("test1_save_bvs.txt", TEST1_TRUTH_save_bvs)==0);
-    //remove("test1_save_bvs.txt");
+    assert(compareFileToString("test1_save_bvs.txt", TEST1_TRUTH_save_bvs)==0);
+    remove("test1_save_bvs.txt");
 
 
     if ((fp = fopen("test1_save_group_bvs.txt", "w")) == NULL) {
@@ -142,26 +160,26 @@ int test_savers(unsigned int rseed) {
     }
     save_group_bvs(fp,d,printingGroup,effSet1);
     fclose(fp);
-    //assert(compareFileToString("test1_save_group_bvs.txt", TEST1_TRUTH_save_group_bvs)==0);
-    //remove("test1_save_group_bvs.txt");
+    assert(compareFileToString("test1_save_group_bvs.txt", TEST1_TRUTH_save_group_bvs)==0);
+    remove("test1_save_group_bvs.txt");
 
 
     // try saving local gebvs save_marker_blocks calculate_local_bvs
-    MarkerBlocks exampleMB = create_evenlength_blocks_each_chr(d,1);
+    MarkerBlocks exampleMB = create_evenlength_blocks_each_chr(d, NO_MAP,1);
 
     if ((fp = fopen("test1_save_marker_blocks.txt", "w")) == NULL) {
         fprintf(stderr, "Failed to create file.\n");
         exit(1);
     }
-    save_marker_blocks(fp,d,exampleMB);
+    save_markerblocks(fp,d,exampleMB);
     fclose(fp);
-    //assert(compareFileToString("test1_save_marker_blocks.txt", TEST1_TRUTH_save_marker_blocks)==0);
-    //remove("test1_save_marker_blocks.txt");
+    assert(compareFileToString("test1_save_marker_blocks.txt", TEST1_TRUTH_save_marker_blocks)==0);
+    remove("test1_save_marker_blocks.txt");
 
 
     calculate_local_bvs(d,exampleMB,effSet1,"test1_save_local_bvs.txt");
-    //assert(compareFileToString("test1_save_local_bvs.txt", TEST1_TRUTH_save_local_bvs)==0);
-    //remove("test1_save_local_bvs.txt");
+    assert(compareFileToString("test1_save_local_bvs.txt", TEST1_TRUTH_save_local_bvs)==0);
+    remove("test1_save_local_bvs.txt");
 
 
     calculate_group_local_bvs(d,exampleMB,effSet1,"test1_save_group_local_bvs.txt",printingGroup);
@@ -182,7 +200,7 @@ int test_savers(unsigned int rseed) {
             .will_save_bvs_to_file=0,
             .will_save_alleles_to_file=GSC_FALSE,
             .will_save_to_simdata=GSC_TRUE};
-    GroupNum f2b = make_random_crosses(d,f1,1,1,g);
+    GroupNum f2b = make_random_crosses(d,f1,1,1, NO_MAP,g);
 
     if ((fp = fopen("test1_save_one_step_pedigree.txt", "w")) == NULL) {
         fprintf(stderr, "Failed to create file.\n");
@@ -237,7 +255,7 @@ int test_savers(unsigned int rseed) {
             .will_save_bvs_to_file=effSet1.id,
             .will_save_alleles_to_file=GSC_TRUE,
             .will_save_to_simdata=GSC_FALSE};
-    make_doubled_haploids(d,parent,g);
+    make_doubled_haploids(d,parent, NO_MAP,g);
 
     assert(compareRepeatingFileToTable("test1_save_as_you_go-genotype.txt", CONTIG_WIDTH+5,
                                        TEST1_TRUTH_sayg_genotype_header, TEST1_TRUTH_sayg_genotype_bodyrow)==0);
@@ -253,7 +271,669 @@ int test_savers(unsigned int rseed) {
     return 0;
 }
 
-int test_loaders2(SimData* d) {
+int test_effloaders2(void) {
+    FILE* fp;
+    int it = 0;
+    SimData* d = create_empty_simdata(1);
+    char* f1; MapID tmp;
+    char filename[] = "0test-eff.txt";
+
+    f1 = "marker chr pos\n"
+            "first 3 3.2\n"
+            "second 3 43.2\n";
+    if ((fp = fopen(filename, "w")) == NULL) {
+        fprintf(stderr, "Failed to create file.\n");
+        exit(1);
+    }
+    fwrite(f1, sizeof(char), strlen(f1), fp);
+    fclose(fp);
+    tmp = load_mapfile(d,filename);
+    assert(tmp.id == 1);
+
+    // ------- start testing ----------
+
+    // Regular file
+    ++it; filename[0] = it + 'A';
+    f1 = "marker allele eff\n"
+            "first A 0.5\n"
+            "first T -0.5\n"
+            "second A 1e2\n"
+            "second T 1e-2\n";
+    if ((fp = fopen(filename, "w")) == NULL) {
+        fprintf(stderr, "Failed to create file.\n");
+        exit(1);
+    }
+    fwrite(f1, sizeof(char), strlen(f1), fp);
+    fclose(fp);
+    assert(load_effectfile(d,filename).id == it);
+    fflush(stdout);
+    assert(d->n_eff_sets == it);
+    assert(d->eff_set_ids[it-1].id == it);
+    assert(d->e[it-1].effect_names[0] == 'A');
+    assert(d->e[it-1].effect_names[1] == 'T');
+    assert(d->e[it-1].effects.rows == 2);
+    assert(d->e[it-1].effects.cols == d->genome.n_markers);
+    assert(fabs(d->e[it-1].effects.matrix[0][0] - 0.5) < TOL);
+    assert(fabs(d->e[it-1].effects.matrix[1][0] - - 0.5) < TOL);
+    assert(fabs(d->e[it-1].effects.matrix[0][1] - 1e2) < TOL);
+    assert(fabs(d->e[it-1].effects.matrix[1][1] - 1e-2) < TOL);
+
+    // tabs, no final newline
+    ++it; filename[0] = it + 'A';
+    f1 = "marker\tallele\teff\n"
+            "first\tA\t0.5\n"
+            "first\tT\t-0.5\n"
+            "second\tA\t1e2\n"
+            "second\tT\t1e-2";
+    if ((fp = fopen(filename, "w")) == NULL) {
+        fprintf(stderr, "Failed to create file.\n");
+        exit(1);
+    }
+    fwrite(f1, sizeof(char), strlen(f1), fp);
+    fclose(fp);
+    assert(load_effectfile(d,filename).id == it);
+    fflush(stdout);
+    assert(d->n_eff_sets == it);
+    assert(d->eff_set_ids[it-1].id == it);
+    assert(d->e[it-1].effect_names[0] == 'A');
+    assert(d->e[it-1].effect_names[1] == 'T');
+    assert(d->e[it-1].effects.rows == 2);
+    assert(d->e[it-1].effects.cols == d->genome.n_markers);
+    assert(fabs(d->e[it-1].effects.matrix[0][0] - 0.5) < TOL);
+    assert(fabs(d->e[it-1].effects.matrix[1][0] - - 0.5) < TOL);
+    assert(fabs(d->e[it-1].effects.matrix[0][1] - 1e2) < TOL);
+    assert(fabs(d->e[it-1].effects.matrix[1][1] - 1e-2) < TOL);
+
+    // mixed spacing
+    ++it; filename[0] = it + 'A';
+    f1 = "marker, allele, eff\n"
+            "first \tA 0.5\n"
+            "first \tT -0.5\n"
+            "second \tA 1e2\n"
+            "second T,,,1e-2\n";
+    if ((fp = fopen(filename, "w")) == NULL) {
+        fprintf(stderr, "Failed to create file.\n");
+        exit(1);
+    }
+    fwrite(f1, sizeof(char), strlen(f1), fp);
+    fclose(fp);
+    assert(load_effectfile(d,filename).id == it);
+    fflush(stdout);
+    assert(d->n_eff_sets == it);
+    assert(d->eff_set_ids[it-1].id == it);
+    assert(d->e[it-1].effect_names[0] == 'A');
+    assert(d->e[it-1].effect_names[1] == 'T');
+    assert(d->e[it-1].effects.rows == 2);
+    assert(d->e[it-1].effects.cols == d->genome.n_markers);
+    assert(fabs(d->e[it-1].effects.matrix[0][0] - 0.5) < TOL);
+    assert(fabs(d->e[it-1].effects.matrix[1][0] - - 0.5) < TOL);
+    assert(fabs(d->e[it-1].effects.matrix[0][1] - 1e2) < TOL);
+    assert(fabs(d->e[it-1].effects.matrix[1][1] - 1e-2) < TOL);
+
+    // rearranged rows
+    ++it; filename[0] = it + 'A';
+    f1 = "marker allele eff\n"
+            "second A 1e2\n"
+            "first A 0.5\n"
+            "first T -0.5\n"
+            "second T 1e-2";
+    if ((fp = fopen(filename, "w")) == NULL) {
+        fprintf(stderr, "Failed to create file.\n");
+        exit(1);
+    }
+    fwrite(f1, sizeof(char), strlen(f1), fp);
+    fclose(fp);
+    assert(load_effectfile(d,filename).id == it);
+    fflush(stdout);
+    assert(d->n_eff_sets == it);
+    assert(d->eff_set_ids[it-1].id == it);
+    assert(d->e[it-1].effect_names[0] == 'A');
+    assert(d->e[it-1].effect_names[1] == 'T');
+    assert(d->e[it-1].effects.rows == 2);
+    assert(d->e[it-1].effects.cols == d->genome.n_markers);
+    assert(fabs(d->e[it-1].effects.matrix[0][0] - 0.5) < TOL);
+    assert(fabs(d->e[it-1].effects.matrix[1][0] - - 0.5) < TOL);
+    assert(fabs(d->e[it-1].effects.matrix[0][1] - 1e2) < TOL);
+    assert(fabs(d->e[it-1].effects.matrix[1][1] - 1e-2) < TOL);
+
+    // no header
+    ++it; filename[0] = it + 'A';
+    f1 = "second A 1e2\n"
+            "first A 0.5\n"
+            "first T -0.5\n"
+            "second T 1e-2\n";
+    if ((fp = fopen(filename, "w")) == NULL) {
+        fprintf(stderr, "Failed to create file.\n");
+        exit(1);
+    }
+    fwrite(f1, sizeof(char), strlen(f1), fp);
+    fclose(fp);
+    assert(load_effectfile(d,filename).id == it);
+    fflush(stdout);
+    assert(d->n_eff_sets == it);
+    assert(d->eff_set_ids[it-1].id == it);
+    assert(d->e[it-1].effect_names[0] == 'A');
+    assert(d->e[it-1].effect_names[1] == 'T');
+    assert(d->e[it-1].effects.rows == 2);
+    assert(d->e[it-1].effects.cols == d->genome.n_markers);
+    assert(fabs(d->e[it-1].effects.matrix[0][0] - 0.5) < TOL);
+    assert(fabs(d->e[it-1].effects.matrix[1][0] - - 0.5) < TOL);
+    assert(fabs(d->e[it-1].effects.matrix[0][1] - 1e2) < TOL);
+    assert(fabs(d->e[it-1].effects.matrix[1][1] - 1e-2) < TOL);
+
+    // rearranged columns
+    ++it; filename[0] = it + 'A';
+    f1 = "marker eff allele \n"
+            "second 1e2 A\n"
+            "first 0.5 A\n"
+            "second 1e-2 T\n"
+            "first -0.5 T\n";
+    if ((fp = fopen(filename, "w")) == NULL) {
+        fprintf(stderr, "Failed to create file.\n");
+        exit(1);
+    }
+    fwrite(f1, sizeof(char), strlen(f1), fp);
+    fclose(fp);
+    assert(load_effectfile(d,filename).id == it);
+    fflush(stdout);
+    assert(d->n_eff_sets == it);
+    assert(d->eff_set_ids[it-1].id == it);
+    assert(d->e[it-1].effect_names[0] == 'A');
+    assert(d->e[it-1].effect_names[1] == 'T');
+    assert(d->e[it-1].effects.rows == 2);
+    assert(d->e[it-1].effects.cols == d->genome.n_markers);
+    assert(fabs(d->e[it-1].effects.matrix[0][0] - 0.5) < TOL);
+    assert(fabs(d->e[it-1].effects.matrix[1][0] - - 0.5) < TOL);
+    assert(fabs(d->e[it-1].effects.matrix[0][1] - 1e2) < TOL);
+    assert(fabs(d->e[it-1].effects.matrix[1][1] - 1e-2) < TOL);
+
+    // assorted alleles
+    ++it; filename[0] = it + 'A';
+    f1 = "marker allele eff\n"
+            "second 8 1e-2\n"
+            "first A 0.5\n"
+            "first T -0.5\n"
+            "second T 1e2\n";
+    if ((fp = fopen(filename, "w")) == NULL) {
+        fprintf(stderr, "Failed to create file.\n");
+        exit(1);
+    }
+    fwrite(f1, sizeof(char), strlen(f1), fp);
+    fclose(fp);
+    assert(load_effectfile(d,filename).id == it);
+    fflush(stdout);
+    assert(d->n_eff_sets == it);
+    assert(d->eff_set_ids[it-1].id == it);
+    assert(d->e[it-1].effect_names[0] == '8');
+    assert(d->e[it-1].effect_names[1] == 'A');
+    assert(d->e[it-1].effect_names[2] == 'T');
+    assert(d->e[it-1].effects.rows == 3);
+    assert(d->e[it-1].effects.cols == d->genome.n_markers);
+    assert(fabs(d->e[it-1].effects.matrix[1][0] - 0.5) < TOL);
+    assert(fabs(d->e[it-1].effects.matrix[1][1] - 0) < TOL);
+    assert(fabs(d->e[it-1].effects.matrix[2][0] - - 0.5) < TOL);
+    assert(fabs(d->e[it-1].effects.matrix[2][1] - 1e2) < TOL);
+    assert(fabs(d->e[it-1].effects.matrix[0][1] - 1e-2) < TOL);
+    assert(fabs(d->e[it-1].effects.matrix[0][0] - 0) < TOL);
+
+    // only one row
+    ++it; filename[0] = it + 'A';
+    f1 = "marker allele eff\n"
+            "first A 0.5\n";
+    if ((fp = fopen(filename, "w")) == NULL) {
+        fprintf(stderr, "Failed to create file.\n");
+        exit(1);
+    }
+    fwrite(f1, sizeof(char), strlen(f1), fp);
+    fclose(fp);
+    assert(load_effectfile(d,filename).id == it);
+    fflush(stdout);
+    assert(d->n_eff_sets == it);
+    assert(d->eff_set_ids[it-1].id == it);
+    assert(d->e[it-1].effect_names[0] == 'A');
+    assert(d->e[it-1].effects.rows == 1);
+    assert(d->e[it-1].effects.cols == d->genome.n_markers);
+    assert(fabs(d->e[it-1].effects.matrix[0][0] - 0.5) < TOL);
+    assert(fabs(d->e[it-1].effects.matrix[0][1] - 0) < TOL);
+
+    // only one row no header
+    ++it; filename[0] = it + 'A';
+    f1 = "first a 0.5\n";
+    if ((fp = fopen(filename, "w")) == NULL) {
+        fprintf(stderr, "Failed to create file.\n");
+        exit(1);
+    }
+    fwrite(f1, sizeof(char), strlen(f1), fp);
+    fclose(fp);
+    assert(load_effectfile(d,filename).id == it);
+    fflush(stdout);
+    assert(d->n_eff_sets == it);
+    assert(d->eff_set_ids[it-1].id == it);
+    assert(d->e[it-1].effect_names[0] == 'a');
+    assert(d->e[it-1].effects.rows == 1);
+    assert(d->e[it-1].effects.cols == d->genome.n_markers);
+    assert(fabs(d->e[it-1].effects.matrix[0][0] - 0.5) < TOL);
+    assert(fabs(d->e[it-1].effects.matrix[0][1] - 0) < TOL);
+
+    // discard markers not tracked by the simulation
+    ++it; filename[0] = it + 'A';
+    f1 = "marker eff allele \n"
+            "second 1e2 A\n"
+            "first 0.5 A\n"
+            "3rd 1e-2 B\n"
+            "first -0.5 T\n";
+    if ((fp = fopen(filename, "w")) == NULL) {
+        fprintf(stderr, "Failed to create file.\n");
+        exit(1);
+    }
+    fwrite(f1, sizeof(char), strlen(f1), fp);
+    fclose(fp);
+    assert(load_effectfile(d,filename).id == it);
+    fflush(stdout);
+    assert(d->n_eff_sets == it);
+    assert(d->eff_set_ids[it-1].id == it);
+    assert(d->e[it-1].effect_names[0] == 'A');
+    assert(d->e[it-1].effect_names[1] == 'T');
+    assert(d->e[it-1].effects.rows == 2);
+    assert(d->e[it-1].effects.cols == d->genome.n_markers);
+    assert(fabs(d->e[it-1].effects.matrix[0][0] - 0.5) < TOL);
+    assert(fabs(d->e[it-1].effects.matrix[1][0] - - 0.5) < TOL);
+    assert(fabs(d->e[it-1].effects.matrix[0][1] - 1e2) < TOL);
+    assert(fabs(d->e[it-1].effects.matrix[1][1] - 0) < TOL);
+
+    // file with too many columns on one row
+    ++it; filename[0] = it + 'A';
+    f1 = "marker eff allele\n"
+            "second 1e2 A ?\n"
+            "first 0.5 A //comment forgotten here\n"
+            "second 1e-2 T\n"
+            "first -0.5 T\n";
+    if ((fp = fopen(filename, "w")) == NULL) {
+        fprintf(stderr, "Failed to create file.\n");
+        exit(1);
+    }
+    fwrite(f1, sizeof(char), strlen(f1), fp);
+    fclose(fp);
+    assert(load_effectfile(d,filename).id == it);
+    fflush(stdout);
+    assert(d->n_eff_sets == it);
+    assert(d->eff_set_ids[it-1].id == it);
+    assert(d->e[it-1].effect_names[0] == 'T');
+    assert(d->e[it-1].effects.rows == 1);
+    assert(d->e[it-1].effects.cols == d->genome.n_markers);
+    assert(fabs(d->e[it-1].effects.matrix[0][0] - - 0.5) < TOL);
+    assert(fabs(d->e[it-1].effects.matrix[0][1] - 1e-2) < TOL);
+
+    // file with a duplicated marker/allele pair
+    ++it; filename[0] = it + 'A';
+    f1 = "marker eff allele\n"
+            "second 1e2 A\n"
+            "first 0.5 T\n"
+            "second 1e-2 T\n"
+            "first -0.5 T\n";
+    if ((fp = fopen(filename, "w")) == NULL) {
+        fprintf(stderr, "Failed to create file.\n");
+        exit(1);
+    }
+    fwrite(f1, sizeof(char), strlen(f1), fp);
+    fclose(fp);
+    assert(load_effectfile(d,filename).id == it);
+    fflush(stdout);
+    assert(d->n_eff_sets == it);
+    assert(d->eff_set_ids[it-1].id == it);
+    assert(d->e[it-1].effect_names[0] == 'A');
+    assert(d->e[it-1].effect_names[1] == 'T');
+    assert(d->e[it-1].effects.rows == 2);
+    assert(d->e[it-1].effects.cols == d->genome.n_markers);
+    assert(fabs(d->e[it-1].effects.matrix[0][0] - 0) < TOL);
+    assert(fabs(d->e[it-1].effects.matrix[0][1] - 1e2) < TOL);
+    assert(fabs(d->e[it-1].effects.matrix[1][0] - - 0.5) < TOL);
+    assert(fabs(d->e[it-1].effects.matrix[1][1] - 1e-2) < TOL);
+
+    // file with no valid lines
+    ++it; filename[0] = it + 'A';
+    f1 = "marker eff allele\n"
+            "first 0.5 A //comment forgotten here\n"
+            "fifth 1e-2 T\n";
+    if ((fp = fopen(filename, "w")) == NULL) {
+        fprintf(stderr, "Failed to create file.\n");
+        exit(1);
+    }
+    fwrite(f1, sizeof(char), strlen(f1), fp);
+    fclose(fp);
+    assert(load_effectfile(d,filename).id == NO_EFFECTSET.id);
+    fflush(stdout);
+    assert(d->n_eff_sets == it-1);
+
+    delete_simdata(d);
+
+    return 0;
+}
+
+static void check_mapfile(SimData* d, char* filename, int it) {
+    MapID mp = load_mapfile(d, filename);
+    fflush(stdout);
+
+    assert(d->genome.n_markers == 5);
+    assert(strcmp(d->genome.marker_names[0],"first") == 0);
+    assert(strcmp(d->genome.marker_names[1],"second") == 0);
+    assert(strcmp(d->genome.marker_names[2],"3rd") == 0);
+    assert(strcmp(d->genome.marker_names[3],"fourth") == 0);
+    assert(strcmp(d->genome.marker_names[4],"5") == 0);
+    assert(strcmp(d->genome.names_alphabetical[0][0],"3rd") == 0);
+    assert(strcmp(d->genome.names_alphabetical[1][0],"5") == 0);
+    assert(strcmp(d->genome.names_alphabetical[2][0],"first") == 0);
+    assert(strcmp(d->genome.names_alphabetical[3][0],"fourth") == 0);
+    assert(strcmp(d->genome.names_alphabetical[4][0],"second") == 0);
+    assert(d->genome.n_maps == it);
+    assert(mp.id == it);
+    for (int i = 0; i < it; ++i) {
+        assert(d->genome.map_ids[i].id == i+1);
+    }
+    assert(d->genome.maps[it-1].n_chr == 2);
+    assert(d->genome.maps[it-1].chrs[0].type == GSC_LINKAGEGROUP_SIMPLE);
+    assert(d->genome.maps[it-1].chrs[1].type == GSC_LINKAGEGROUP_REORDER);
+    assert(d->genome.maps[it-1].chrs[0].map.simple.n_markers == 2);
+    assert(fabs(d->genome.maps[it-1].chrs[0].map.simple.expected_n_crossovers - 0.4) < TOL);
+    assert(fabs(d->genome.maps[it-1].chrs[0].map.simple.dists[0] - 0) < TOL);
+    assert(fabs(d->genome.maps[it-1].chrs[0].map.simple.dists[1] - 1) < TOL);
+    assert(d->genome.maps[it-1].chrs[0].map.simple.first_marker_index == 0);
+    assert(d->genome.maps[it-1].chrs[1].map.reorder.n_markers == 3);
+    assert(fabs(d->genome.maps[it-1].chrs[1].map.reorder.expected_n_crossovers - 0.1) < TOL);
+    assert(fabs(d->genome.maps[it-1].chrs[1].map.reorder.dists[0] - 0) < TOL);
+    assert(fabs(d->genome.maps[it-1].chrs[1].map.reorder.dists[1] - 0.83) < TOL);
+    assert(fabs(d->genome.maps[it-1].chrs[1].map.reorder.dists[2] - 1) < TOL);
+    assert(d->genome.maps[it-1].chrs[1].map.reorder.marker_indexes[0] == 4);
+    assert(d->genome.maps[it-1].chrs[1].map.reorder.marker_indexes[1] == 2);
+    assert(d->genome.maps[it-1].chrs[1].map.reorder.marker_indexes[2] == 3);
+
+    SimData* d2 = create_empty_simdata(3);
+    assert(load_mapfile(d2, filename).id == 1);
+
+    assert(d2->genome.n_markers == 5);
+    assert(strcmp(d2->genome.marker_names[0],"first") == 0);
+    assert(strcmp(d2->genome.marker_names[1],"second") == 0);
+    assert(strcmp(d2->genome.marker_names[3],"3rd") == 0);
+    assert(strcmp(d2->genome.marker_names[4],"fourth") == 0);
+    assert(strcmp(d2->genome.marker_names[2],"5") == 0);
+    assert(strcmp(d2->genome.names_alphabetical[0][0],"3rd") == 0);
+    assert(strcmp(d2->genome.names_alphabetical[1][0],"5") == 0);
+    assert(strcmp(d2->genome.names_alphabetical[2][0],"first") == 0);
+    assert(strcmp(d2->genome.names_alphabetical[3][0],"fourth") == 0);
+    assert(strcmp(d2->genome.names_alphabetical[4][0],"second") == 0);
+    assert(d2->genome.n_maps == 1);
+    assert(d2->genome.maps[0].n_chr == 2);
+    assert(d2->genome.maps[0].chrs[0].type == GSC_LINKAGEGROUP_SIMPLE);
+    assert(d2->genome.maps[0].chrs[1].type == GSC_LINKAGEGROUP_SIMPLE);
+    assert(d2->genome.maps[0].chrs[0].map.simple.n_markers == 2);
+    assert(fabs(d2->genome.maps[0].chrs[0].map.simple.expected_n_crossovers - 0.4) < TOL);
+    assert(fabs(d2->genome.maps[0].chrs[0].map.simple.dists[0] - 0) < TOL);
+    assert(fabs(d2->genome.maps[0].chrs[0].map.simple.dists[1] - 1) < TOL);
+    assert(d2->genome.maps[0].chrs[0].map.simple.first_marker_index == 0);
+    assert(d2->genome.maps[0].chrs[1].map.simple.n_markers == 3);
+    assert(fabs(d2->genome.maps[0].chrs[1].map.simple.expected_n_crossovers - 0.1) < TOL);
+    assert(fabs(d2->genome.maps[0].chrs[1].map.simple.dists[0] - 0) < TOL);
+    assert(fabs(d2->genome.maps[0].chrs[1].map.simple.dists[1] - 0.83) < TOL);
+    assert(fabs(d2->genome.maps[0].chrs[1].map.simple.dists[2] - 1) < TOL);
+    assert(d2->genome.maps[0].chrs[1].map.simple.first_marker_index == 2);
+    delete_simdata(d2);
+}
+
+int test_maploaders2(void) {
+    FILE* fp;
+    int it = 0;
+    SimData* d = create_empty_simdata(1);
+    char* f1; MapID tmp;
+    char filename[] = "0test-map.txt";
+
+    f1 = "marker chr pos\n"
+            "first 3 3.2\n"
+            "second 3 43.2\n"
+            "3rd 1A 1e2\n"
+            "fourth 1A 108.3\n"
+            "5 1A 110\n";
+    if ((fp = fopen(filename, "w")) == NULL) {
+        fprintf(stderr, "Failed to create file.\n");
+        exit(1);
+    }
+    fwrite(f1, sizeof(char), strlen(f1), fp);
+    fclose(fp);
+    tmp = load_mapfile(d,filename);
+    assert(tmp.id == 1);
+    delete_recombination_map(d, tmp);
+
+    // First real test: mixed spacing
+    ++it; filename[0] = it + 'A';
+    f1 = "marker\tchr pos\n"
+            "first\t\t3\t3.2\n"
+            "second 3\t43.2\n"
+            "3rd 1A 108.3\n"
+            "fourth 1A 110\n"
+            "5 1A 1e2\n";
+    if ((fp = fopen(filename, "w")) == NULL) {
+        fprintf(stderr, "Failed to create file.\n");
+        exit(1);
+    }
+    fwrite(f1, sizeof(char), strlen(f1), fp);
+    fclose(fp);
+    check_mapfile(d, filename, it);
+
+    // No final line
+    ++it; filename[0] = it + 'A';
+    f1 = "marker chr pos\n"
+            "first 3 3.2\n"
+            "second 3 43.2\n"
+         "3rd 1A 108.3\n"
+         "fourth 1A 110\n"
+         "5 1A 1e2";
+    if ((fp = fopen(filename, "w")) == NULL) {
+        fprintf(stderr, "Failed to create file.\n");
+        exit(1);
+    }
+    fwrite(f1, sizeof(char), strlen(f1), fp);
+    fclose(fp);
+    check_mapfile(d, filename, it);
+
+    // rearranged column order
+    ++it; filename[0] = it + 'A';
+    f1 = "chr marker pos\n"
+            "3 first 3.2\n"
+            "3 second 43.2\n"
+    "1A 3rd 108.3\n"
+    "1A fourth 110\n"
+    "1A 5 1e2\n";
+    if ((fp = fopen(filename, "w")) == NULL) {
+        fprintf(stderr, "Failed to create file.\n");
+        exit(1);
+    }
+    fwrite(f1, sizeof(char), strlen(f1), fp);
+    fclose(fp);
+    check_mapfile(d, filename, it);
+
+
+    // No header line
+    ++it; filename[0] = it + 'A';
+    f1 = "first 3 3.2\n"
+            "second 3 43.2\n"
+         "3rd 1A 108.3\n"
+         "fourth 1A 110\n"
+         "5 1A 1e2";
+    if ((fp = fopen(filename, "w")) == NULL) {
+        fprintf(stderr, "Failed to create file.\n");
+        exit(1);
+    }
+    fwrite(f1, sizeof(char), strlen(f1), fp);
+    fclose(fp);
+    check_mapfile(d, filename, it);
+
+    // Mix order
+    ++it; filename[0] = it + 'A';
+    f1 = "first 3 3.2\n"
+            "5 1A 1e2\n"
+            "3rd 1A 108.3\n"
+            "second 3 43.2\n"
+            "fourth 1A 110\n";
+    if ((fp = fopen(filename, "w")) == NULL) {
+        fprintf(stderr, "Failed to create file.\n");
+        exit(1);
+    }
+    fwrite(f1, sizeof(char), strlen(f1), fp);
+    fclose(fp);
+    check_mapfile(d, filename, it);
+
+    // Discard extra markers, leave out a missing marker, and change chromosomes and positions
+    ++it; filename[0] = it + 'A';
+    f1 = "pos marker chr\n"
+            "43.2 first 1B\n"
+            "3.2 second 1B\n"
+            "1.083e2 3rd 3\n"
+            "100 fourth 3\n"
+            "110 fake5 3\n";
+    if ((fp = fopen(filename, "w")) == NULL) {
+        fprintf(stderr, "Failed to create file.\n");
+        exit(1);
+    }
+    fwrite(f1, sizeof(char), strlen(f1), fp);
+    fclose(fp);
+    assert(load_mapfile(d,filename).id == it);
+    assert(d->genome.n_markers == 5);
+    assert(strcmp(d->genome.marker_names[0],"first") == 0);
+    assert(strcmp(d->genome.marker_names[1],"second") == 0);
+    assert(strcmp(d->genome.marker_names[2],"3rd") == 0);
+    assert(strcmp(d->genome.marker_names[3],"fourth") == 0);
+    assert(strcmp(d->genome.marker_names[4],"5") == 0);
+    assert(strcmp(d->genome.names_alphabetical[0][0],"3rd") == 0);
+    assert(strcmp(d->genome.names_alphabetical[1][0],"5") == 0);
+    assert(strcmp(d->genome.names_alphabetical[2][0],"first") == 0);
+    assert(strcmp(d->genome.names_alphabetical[3][0],"fourth") == 0);
+    assert(strcmp(d->genome.names_alphabetical[4][0],"second") == 0);
+    assert(d->genome.n_maps == it);
+    for (int i = 0; i < it; ++i) {
+        assert(d->genome.map_ids[i].id == i+1);
+    }
+    assert(d->genome.maps[it-1].n_chr == 2);
+    assert(d->genome.maps[it-1].chrs[0].type == GSC_LINKAGEGROUP_REORDER);
+    assert(d->genome.maps[it-1].chrs[1].type == GSC_LINKAGEGROUP_REORDER);
+    assert(d->genome.maps[it-1].chrs[1].map.reorder.n_markers == 2);
+    assert(fabs(d->genome.maps[it-1].chrs[1].map.reorder.expected_n_crossovers - 0.4) < TOL);
+    assert(fabs(d->genome.maps[it-1].chrs[1].map.reorder.dists[0] - 0) < TOL);
+    assert(fabs(d->genome.maps[it-1].chrs[1].map.reorder.dists[1] - 1) < TOL);
+    assert(d->genome.maps[it-1].chrs[1].map.reorder.marker_indexes[0] == 1);
+    assert(d->genome.maps[it-1].chrs[1].map.reorder.marker_indexes[1] == 0);
+    assert(d->genome.maps[it-1].chrs[0].map.reorder.n_markers == 2);
+    assert(fabs(d->genome.maps[it-1].chrs[0].map.reorder.expected_n_crossovers - 0.083) < TOL);
+    assert(fabs(d->genome.maps[it-1].chrs[0].map.reorder.dists[0] - 0) < TOL);
+    assert(fabs(d->genome.maps[it-1].chrs[0].map.reorder.dists[1] - 1) < TOL);
+    assert(d->genome.maps[it-1].chrs[0].map.reorder.marker_indexes[0] == 3);
+    assert(d->genome.maps[it-1].chrs[0].map.reorder.marker_indexes[1] == 2);
+
+    // Too many columns in one place
+    ++it; filename[0] = it + 'A';
+    f1 = "first 3 3.2\n"
+            "5 1A 1e2\n"
+            "3rd 1A 108.3 //commint_oops\n"
+            "second 3 43.2\n"
+            "fourth 1A 110\n";
+    if ((fp = fopen(filename, "w")) == NULL) {
+        fprintf(stderr, "Failed to create file.\n");
+        exit(1);
+    }
+    fwrite(f1, sizeof(char), strlen(f1), fp);
+    fclose(fp);
+    assert(load_mapfile(d,filename).id == it);
+    assert(d->genome.n_markers == 5);
+    assert(d->genome.maps[it-1].n_chr == 2);
+    assert(d->genome.maps[it-1].chrs[1].type == GSC_LINKAGEGROUP_REORDER);
+    assert(d->genome.maps[it-1].chrs[0].type == GSC_LINKAGEGROUP_SIMPLE);
+    assert(d->genome.maps[it-1].chrs[0].map.simple.n_markers == 2);
+    assert(d->genome.maps[it-1].chrs[0].map.simple.first_marker_index == 0);
+    assert(d->genome.maps[it-1].chrs[1].map.reorder.n_markers == 2);
+    assert(fabs(d->genome.maps[it-1].chrs[1].map.reorder.expected_n_crossovers - 0.1) < TOL);
+    assert(fabs(d->genome.maps[it-1].chrs[1].map.reorder.dists[0] - 0) < TOL);
+    assert(fabs(d->genome.maps[it-1].chrs[1].map.reorder.dists[1] - 1) < TOL);
+    assert(d->genome.maps[it-1].chrs[1].map.reorder.marker_indexes[0] == 4);
+    assert(d->genome.maps[it-1].chrs[1].map.reorder.marker_indexes[1] == 3);
+
+    // Single line map with header. A single line map doesn't seem very useful but we may as well check against crashes
+    ++it; filename[0] = it + 'A';
+    f1 = "chr pos marker\n"
+            "1A 3700 second\n";
+    if ((fp = fopen(filename, "w")) == NULL) {
+        fprintf(stderr, "Failed to create file.\n");
+        exit(1);
+    }
+    fwrite(f1, sizeof(char), strlen(f1), fp);
+    fclose(fp);
+    assert(load_mapfile(d,filename).id == it);
+    assert(d->genome.n_markers == 5);
+    assert(d->genome.maps[it-1].n_chr == 1);
+    assert(d->genome.maps[it-1].chrs[0].type == GSC_LINKAGEGROUP_SIMPLE);
+    assert(d->genome.maps[it-1].chrs[0].map.simple.n_markers == 1);
+    assert(d->genome.maps[it-1].chrs[0].map.simple.first_marker_index == 1);
+
+    // single line map without header
+    ++it; filename[0] = it + 'A';
+    f1 = "second 1A 3700";
+    if ((fp = fopen(filename, "w")) == NULL) {
+        fprintf(stderr, "Failed to create file.\n");
+        exit(1);
+    }
+    fwrite(f1, sizeof(char), strlen(f1), fp);
+    fclose(fp);
+    assert(load_mapfile(d,filename).id == it);
+    assert(d->genome.n_markers == 5);
+    assert(d->genome.maps[it-1].n_chr == 1);
+    assert(d->genome.maps[it-1].chrs[0].type == GSC_LINKAGEGROUP_SIMPLE);
+    assert(d->genome.maps[it-1].chrs[0].map.simple.n_markers == 1);
+    assert(d->genome.maps[it-1].chrs[0].map.simple.first_marker_index == 1);
+
+    // Single line inappropriate map
+    ++it; filename[0] = it + 'A';
+    f1 = "pos marker chr\n"
+            "110 fake5 3\n";
+    if ((fp = fopen(filename, "w")) == NULL) {
+        fprintf(stderr, "Failed to create file.\n");
+        exit(1);
+    }
+    fwrite(f1, sizeof(char), strlen(f1), fp);
+    fclose(fp);
+    assert(load_mapfile(d,filename).id == NO_MAP.id);
+    assert(d->genome.n_markers == 5);
+
+    return 0;
+
+}
+
+static void check_genotypes(SimData* d, int it) {
+    fflush(stdout);
+    const int nm = 2;
+    const int nl = 3;
+
+    assert(d->n_groups == it);
+    assert(d->current_id.id == nl*it);
+    assert(d->genome.n_markers == nm);
+    assert(d->genome.n_maps == 1);
+    assert(d->n_labels == 0);
+    assert(d->n_eff_sets == 0);
+    assert(d->m->n_labels == 0);
+    assert(d->m->next == NULL);
+    assert(d->m->n_genotypes == nl*it);
+    assert(d->m->n_markers == nm);
+    assert(strncmp(d->m->alleles[nl*(it-1) + 0],"AATA",2*nm) == 0);
+    assert(strncmp(d->m->alleles[nl*(it-1) + 1],"ATAA",2*nm) == 0);
+    assert(strncmp(d->m->alleles[nl*(it-1) + 2],"AATT",2*nm) == 0);
+    assert(strcmp(d->m->names[nl*(it-1) + 0],"g1") == 0);
+    assert(strcmp(d->m->names[nl*(it-1) + 1],"g2") == 0);
+    assert(strcmp(d->m->names[nl*(it-1) + 2],"oog3") == 0);
+    for (int i = 0; i < nl; ++i) {
+        assert(d->m->ids[nl*(it-1) + i].id == nl*(it-1) + i + 1);
+        assert(d->m->groups[nl*(it-1) + i].num == it);
+        assert(d->m->pedigrees[0][nl*(it-1) + i].id == 0);
+        assert(d->m->pedigrees[1][nl*(it-1) + i].id == 0);
+    }
+}
+
+int test_genoloaders2(void) {
     // Test genotype matrix loading
     /*
 name g1 g2 g3
@@ -261,63 +941,762 @@ m1 AA AA AA
 m2 AT AA TT
     */
     FILE* fp;
-    const char HEADER_TAB[] = "\tg1\tg2\tg3";
-    const char HEADER_SP[] = " g1 g2 g3";
-    const char BODY1_TAB[] = "m1\tAA\tAA\tAA";
-    const char BODY1_SP[] = "m1 AA AA AA";
-    const char BODY2_TAB[] = "m2\tAT\tAA\tTT";
-    const char BODY2_SP[] = "m2 AT AA TT";
-    if ((fp = fopen("1test.txt", "w")) == NULL) {
+    int it = 0;
+    SimData* d = create_empty_simdata(1);
+    char* f1; GroupNum tmp;
+    char filename[] = "0test.txt";
+
+    // vertical first, tabs, wcorner, wendline B
+    ++it; filename[0] = it + 'A';
+    f1 = "corner\tm1\tm2\n"
+            "g1\tAA\tTA\n"
+            "g2\tAT\tAA\n"
+            "oog3\tAA\tTT\n";
+    if ((fp = fopen(filename, "w")) == NULL) {
         fprintf(stderr, "Failed to create file.\n");
         exit(1);
     }
-    fwrite("name", sizeof(char), strlen("name"), fp);
-    fwrite(HEADER_TAB, sizeof(char), strlen(HEADER_TAB), fp);
-    fputc('\n', fp);
-    fwrite(BODY1_TAB, sizeof(char), strlen(BODY1_TAB), fp);
-    fputc('\n', fp);
-    fwrite(BODY2_TAB, sizeof(char), strlen(BODY2_TAB), fp);
+    fwrite(f1, sizeof(char), strlen(f1), fp);
     fclose(fp);
-    //fputc('\n', fp);
+    tmp = load_genotypefile(d,filename);
+    check_genotypes(d,it);
 
-    // @@
 
-    // Test replacing tabs with spaces
-    if ((fp = fopen("1test.txt", "w")) == NULL) {
+    // tabs, wcorner, wendline C
+    ++it; filename[0] = it + 'A';
+    f1 = "corner\tg1\tg2\toog3\n"
+            "m1\tAA\tAT\tAA\n"
+            "m2\tTA\tAA\tTT\n";
+    if ((fp = fopen(filename, "w")) == NULL) {
         fprintf(stderr, "Failed to create file.\n");
         exit(1);
     }
-    fwrite("name", sizeof(char), strlen("name"), fp);
-    fwrite(HEADER_SP, sizeof(char), strlen(HEADER_SP), fp);
-    fputc('\n', fp);
-    fwrite(BODY1_SP, sizeof(char), strlen(BODY1_SP), fp);
-    fputc('\n', fp);
-    fwrite(BODY2_SP, sizeof(char), strlen(BODY2_SP), fp);
+    fwrite(f1, sizeof(char), strlen(f1), fp);
     fclose(fp);
+    tmp = load_genotypefile(d,filename);
+    check_genotypes(d,it);
 
-    // @@
 
-    // test extra free line at the end
-    if ((fp = fopen("1test.txt", "w")) == NULL) {
+    // spaces, wcorner, wendline D
+    ++it; filename[0] = it+ 'A';
+    f1 = "coner g1 g2 oog3\n"
+            "m1 AA AT AA\n"
+            "m2 TA AA TT\n";
+    if ((fp = fopen(filename, "w")) == NULL) {
         fprintf(stderr, "Failed to create file.\n");
         exit(1);
     }
-    fwrite("1", sizeof(char), strlen("name"), fp);
-    fwrite(HEADER_SP, sizeof(char), strlen(HEADER_SP), fp);
-    fputc('\n', fp);
-    fwrite(BODY1_SP, sizeof(char), strlen(BODY1_SP), fp);
-    fputc('\n', fp);
-    fwrite(BODY2_SP, sizeof(char), strlen(BODY2_SP), fp);
+    fwrite(f1, sizeof(char), strlen(f1), fp);
     fclose(fp);
-    fputc('\n', fp);
+    tmp = load_genotypefile(d,filename);
+    check_genotypes(d,it);
 
-    // @@
+    // spaces, wcorner, wrendline E
+    ++it; filename[0] = it+ 'A';
+    f1 = "coner g1 g2 oog3\r\n"
+            "m1 AA AT AA\r\n"
+            "m2 TA AA TT\r\n";
+    if ((fp = fopen(filename, "w")) == NULL) {
+        fprintf(stderr, "Failed to create file.\n");
+        exit(1);
+    }
+    fwrite(f1, sizeof(char), strlen(f1), fp);
+    fclose(fp);
+    tmp = load_genotypefile(d,filename);
+    check_genotypes(d,it);
+
+    // mixed endlines and spacings, wcorner, wrendline F
+    ++it; filename[0] = it+ 'A';
+    f1 = "coner\tg1\tg2\toog3\r\n"
+            "m1,AA AT AA\n"
+            "m2 TA AA,  TT\r\n";
+    if ((fp = fopen(filename, "w")) == NULL) {
+        fprintf(stderr, "Failed to create file.\n");
+        exit(1);
+    }
+    fwrite(f1, sizeof(char), strlen(f1), fp);
+    fclose(fp);
+    tmp = load_genotypefile(d,filename);
+    check_genotypes(d,it);
+
+    // tabs, noendline, wcorner G
+    ++it; filename[0] = it+ 'A';
+    f1 = "corner\tg1\tg2\toog3\n"
+            "m1\tAA\tAT\tAA\n"
+            "m2\tTA\tAA\tTT";
+    if ((fp = fopen(filename, "w")) == NULL) {
+        fprintf(stderr, "Failed to create file.\n");
+        exit(1);
+    }
+    fwrite(f1, sizeof(char), strlen(f1), fp);
+    fclose(fp);
+    tmp = load_genotypefile(d,filename);
+    check_genotypes(d,it);
+
+    // spaces, noendline, wcorner H
+    ++it; filename[0] = it+ 'A';
+    f1 = "1 g1 g2 oog3\n"
+            "m1 AA AT AA\r\n"
+            "m2 TA AA TT";
+    if ((fp = fopen(filename, "w")) == NULL) {
+        fprintf(stderr, "Failed to create file.\n");
+        exit(1);
+    }
+    fwrite(f1, sizeof(char), strlen(f1), fp);
+    fclose(fp);
+    tmp = load_genotypefile(d,filename);
+    check_genotypes(d,it);
+
+    // spaces, noendline, nocorner I
+    ++it; filename[0] = it+ 'A';
+    f1 = " g1 g2 oog3\n"
+            "m1 AA AT AA\n"
+            "m2 TA AA TT";
+    if ((fp = fopen(filename, "w")) == NULL) {
+        fprintf(stderr, "Failed to create file.\n");
+        exit(1);
+    }
+    fwrite(f1, sizeof(char), strlen(f1), fp);
+    fclose(fp);
+    tmp = load_genotypefile(d,filename);
+    check_genotypes(d,it);
+
+    // tabs, noendline, nocorner J
+    ++it; filename[0] = it+ 'A';
+    f1 = "\tg1\tg2\toog3\n"
+            "m1\tAA\tAT\tAA\n"
+            "m2\tTA\tAA\tTT";
+    if ((fp = fopen(filename, "w")) == NULL) {
+        fprintf(stderr, "Failed to create file.\n");
+        exit(1);
+    }
+    fwrite(f1, sizeof(char), strlen(f1), fp);
+    fclose(fp);
+    tmp = load_genotypefile(d,filename);
+    check_genotypes(d,it);
+
+    // K
+    ++it; filename[0] = it+ 'A';
+    f1 = "g1\tg2\toog3\n"
+            "m1\tAA\tAT\tAA\n"
+            "m2\tTA\tAA\tTT";
+    if ((fp = fopen(filename, "w")) == NULL) {
+        fprintf(stderr, "Failed to create file.\n");
+        exit(1);
+    }
+    fwrite(f1, sizeof(char), strlen(f1), fp);
+    fclose(fp);
+    tmp = load_genotypefile(d,filename);
+    check_genotypes(d,it);
+
+    // tabs, nocorner, wendline L
+    ++it; filename[0] = it+ 'A';
+    f1 = "\tg1\tg2\toog3\n"
+            "m1\tAA\tAT\tAA\n"
+            "m2\tTA\tAA\tTT\n";
+    if ((fp = fopen(filename, "w")) == NULL) {
+        fprintf(stderr, "Failed to create file.\n");
+        exit(1);
+    }
+    fwrite(f1, sizeof(char), strlen(f1), fp);
+    fclose(fp);
+    tmp = load_genotypefile(d,filename);
+    check_genotypes(d,it);
 
 
+    // vertical, tabs, noendline M
+    ++it; filename[0] = it + 'A';
+    f1 = "corner\tm1\tm2\n"
+            "g1\tAA\tTA\n"
+            "g2\tAT\tAA\n"
+            "oog3\tAA\tTT";
+    if ((fp = fopen(filename, "w")) == NULL) {
+        fprintf(stderr, "Failed to create file.\n");
+        exit(1);
+    }
+    fwrite(f1, sizeof(char), strlen(f1), fp);
+    fclose(fp);
+    tmp = load_genotypefile(d,filename);
+    check_genotypes(d,it);
+
+    // vertical, tabs, nocorner, noendline N
+    ++it; filename[0] = it + 'A';
+    f1 = "m1\tm2\n"
+            "g1\tAA\tTA\n"
+            "g2\tAT\tAA\n"
+            "oog3\tAA\tTT";
+    if ((fp = fopen(filename, "w")) == NULL) {
+        fprintf(stderr, "Failed to create file.\n");
+        exit(1);
+    }
+    fwrite(f1, sizeof(char), strlen(f1), fp);
+    fclose(fp);
+    tmp = load_genotypefile(d,filename);
+    check_genotypes(d,it);
+
+    // vertical, tabs, nocorner O
+    ++it; filename[0] = it + 'A';
+    f1 = "\tm1\tm2\n"
+            "g1\tAA\tTA\n"
+            "g2\tAT\tAA\n"
+            "oog3\tAA\tTT\n";
+    if ((fp = fopen(filename, "w")) == NULL) {
+        fprintf(stderr, "Failed to create file.\n");
+        exit(1);
+    }
+    fwrite(f1, sizeof(char), strlen(f1), fp);
+    fclose(fp);
+    tmp = load_genotypefile(d,filename);
+    check_genotypes(d,it);
+
+    // vertical, commas, nocorner P
+    ++it; filename[0] = it + 'A';
+    f1 = "m1,m2\n"
+            "g1,AA,TA\n"
+            "g2,AT,AA\n"
+            "oog3,AA,TT\n";
+    if ((fp = fopen(filename, "w")) == NULL) {
+        fprintf(stderr, "Failed to create file.\n");
+        exit(1);
+    }
+    fwrite(f1, sizeof(char), strlen(f1), fp);
+    fclose(fp);
+    tmp = load_genotypefile(d,filename);
+    check_genotypes(d,it);
+
+    // vertical, commas, nocorner, noendline Q
+    ++it; filename[0] = it + 'A';
+    f1 = "m1,m2\n"
+            "g1,AA,TA\n"
+            "g2,AT,AA\n"
+            "oog3,AA,TT";
+    if ((fp = fopen(filename, "w")) == NULL) {
+        fprintf(stderr, "Failed to create file.\n");
+        exit(1);
+    }
+    fwrite(f1, sizeof(char), strlen(f1), fp);
+    fclose(fp);
+    tmp = load_genotypefile(d,filename);
+    check_genotypes(d,it);
+
+    // vertical, commas, corner, ignore extra R
+    ++it; filename[0] = it + 'A';
+    f1 = ",m1,m2\n"
+            "g1,AA,TA\n"
+            "g2,AT,AA,\n"
+            "oog3,AA,TT\n";
+    if ((fp = fopen(filename, "w")) == NULL) {
+        fprintf(stderr, "Failed to create file.\n");
+        exit(1);
+    }
+    fwrite(f1, sizeof(char), strlen(f1), fp);
+    fclose(fp);
+    tmp = load_genotypefile(d,filename);
+    check_genotypes(d,it);
+
+    // vertical, commas, corner, ignore extra, noendline S
+    ++it; filename[0] = it + 'A';
+    f1 = " ,m1,m2\n"
+            "g1,AA,TA\n"
+            "g2,AT,AA,\n"
+            "oog3,AA, TT";
+    if ((fp = fopen(filename, "w")) == NULL) {
+        fprintf(stderr, "Failed to create file.\n");
+        exit(1);
+    }
+    fwrite(f1, sizeof(char), strlen(f1), fp);
+    fclose(fp);
+    tmp = load_genotypefile(d,filename);
+    check_genotypes(d,it);
+
+    // vertical, slashpairs T
+    ++it; filename[0] = it + 'A';
+    f1 = ",m1,m2\n"
+            "g1,A/A,T/A\n"
+            "g2,A/T,A/A,\n"
+            "oog3,A/A,T/T\n";
+    if ((fp = fopen(filename, "w")) == NULL) {
+        fprintf(stderr, "Failed to create file.\n");
+        exit(1);
+    }
+    fwrite(f1, sizeof(char), strlen(f1), fp);
+    fclose(fp);
+    tmp = load_genotypefile(d,filename);
+    check_genotypes(d,it);
+
+    // horizontal, slashpairs U
+    ++it; filename[0] = it+ 'A';
+    f1 = "\tg1\tg2\toog3\n"
+            "m1\tA/A\tA/T\tA/A\n"
+            "m2\tT/A\tA/A\tT/T\n";
+    if ((fp = fopen(filename, "w")) == NULL) {
+        fprintf(stderr, "Failed to create file.\n");
+        exit(1);
+    }
+    fwrite(f1, sizeof(char), strlen(f1), fp);
+    fclose(fp);
+    tmp = load_genotypefile(d,filename);
+    check_genotypes(d,it);
+
+    // horizontal, rearranged markers
+    ++it; filename[0] = it+ 'A';
+    f1 = "\tg1\tg2\toog3\n"
+            "m2\tT/A\tA/A\tT/T\n"
+            "m1\tA/A\tA/T\tA/A\n";
+    if ((fp = fopen(filename, "w")) == NULL) {
+        fprintf(stderr, "Failed to create file.\n");
+        exit(1);
+    }
+    fwrite(f1, sizeof(char), strlen(f1), fp);
+    fclose(fp);
+    tmp = load_genotypefile(d,filename);
+    check_genotypes(d,it);
+
+    // vertical, rearranged markers
+    ++it; filename[0] = it + 'A';
+    f1 = " ,m2,m1\n"
+            "g1,TA,AA\n"
+            "g2,AA,AT,\n"
+            "oog3,TT,AA\n";
+    if ((fp = fopen(filename, "w")) == NULL) {
+        fprintf(stderr, "Failed to create file.\n");
+        exit(1);
+    }
+    fwrite(f1, sizeof(char), strlen(f1), fp);
+    fclose(fp);
+    tmp = load_genotypefile(d,filename);
+    check_genotypes(d,it);
+
+    // vertical, rearranged markers and extra fake marker
+    ++it; filename[0] = it + 'A';
+    f1 = " ,m2,m1,omg\n"
+            "g1,TA,AA,BB\n"
+            "g2,AA,AT,BA\n"
+            "oog3,TT,AA,CA\n";
+    if ((fp = fopen(filename, "w")) == NULL) {
+        fprintf(stderr, "Failed to create file.\n");
+        exit(1);
+    }
+    fwrite(f1, sizeof(char), strlen(f1), fp);
+    fclose(fp);
+    tmp = load_genotypefile(d,filename);
+    check_genotypes(d,it);
+
+    // horizontal, extra fake marker
+    ++it; filename[0] = it+ 'A';
+    f1 = "g1\tg2\toog3\n"
+            "m1\tAA\tAT\tAA\n"
+            "m2\tTA\tAA\tTT\n"
+            "notthisone\t:)\tAA\tTT\n";
+    if ((fp = fopen(filename, "w")) == NULL) {
+        fprintf(stderr, "Failed to create file.\n");
+        exit(1);
+    }
+    fwrite(f1, sizeof(char), strlen(f1), fp);
+    fclose(fp);
+    tmp = load_genotypefile(d,filename);
+    check_genotypes(d,it);
+
+    // vertical, blank names
+    ++it; filename[0] = it + 'A';
+    f1 = " m2,m1\n"
+            " TA,AA\n"
+            " AA,AT\n"
+            " TT,AA\n";
+    if ((fp = fopen(filename, "w")) == NULL) {
+        fprintf(stderr, "Failed to create file.\n");
+        exit(1);
+    }
+    fwrite(f1, sizeof(char), strlen(f1), fp);
+    fclose(fp);
+    tmp = load_genotypefile(d,filename);
+    assert(d->n_groups == it);
+    assert(d->current_id.id == 3*it);
+    assert(d->genome.n_markers == 2);
+    assert(d->genome.n_maps == 1);
+    assert(d->n_labels == 0);
+    assert(d->n_eff_sets == 0);
+    assert(d->m->n_labels == 0);
+    assert(d->m->next == NULL);
+    assert(d->m->n_genotypes == 3*it);
+    assert(d->m->n_markers == 2);
+    assert(strncmp(d->m->alleles[3*(it-1) + 0],"AATA",2*2) == 0);
+    assert(strncmp(d->m->alleles[3*(it-1) + 1],"ATAA",2*2) == 0);
+    assert(strncmp(d->m->alleles[3*(it-1) + 2],"AATT",2*2) == 0);
+    for (int i = 0; i < 3; ++i) {
+        assert(d->m->ids[3*(it-1) + i].id == 3*(it-1) + i + 1);
+        assert(d->m->groups[3*(it-1) + i].num == it);
+        assert(d->m->pedigrees[0][3*(it-1) + i].id == 0);
+        assert(d->m->pedigrees[1][3*(it-1) + i].id == 0);
+    }
+
+    // temporarily create new SimData with map.
+    f1 = "m1 1 10\n"
+            "m2 1 20";
+    if ((fp = fopen("2marker-map.txt", "w")) == NULL) {
+        fprintf(stderr, "Failed to create file.\n");
+        exit(1);
+    }
+    fwrite(f1, sizeof(char), strlen(f1), fp);
+    fclose(fp);
+    SimData* d2 = create_empty_simdata(1);
+    load_mapfile(d2, "2marker-map.txt");
+    assert(d2->genome.n_markers == 2);
+    int cid = 0;
+    const int checkpoint = it;
+
+    // horizontal, single-line w header
+    ++it; filename[0] = it - checkpoint + 'a';
+    f1 = "1 g1 g2 oog3\n"
+            "m1 AA AT AA\n";
+    if ((fp = fopen(filename, "w")) == NULL) {
+        fprintf(stderr, "Failed to create file.\n");
+        exit(1);
+    }
+    fwrite(f1, sizeof(char), strlen(f1), fp);
+    fclose(fp);
+    tmp = load_genotypefile(d2,filename);
+    cid += 3;
+    assert(d2->n_groups == 1);
+    assert(d2->current_id.id == cid);
+    assert(d2->genome.n_markers == 2);
+    assert(d2->genome.n_maps == 1);
+    assert(d2->n_labels == 0);
+    assert(d2->n_eff_sets == 0);
+    assert(d2->m->n_labels == 0);
+    assert(d2->m->next == NULL);
+    assert(d2->m->n_genotypes == 3);
+    assert(d2->m->n_markers == 2);
+    assert(d2->m->alleles[0][0] == 'A'); assert(d2->m->alleles[0][1] == 'A');
+    assert(d2->m->alleles[0][2] == '\0'); assert(d2->m->alleles[0][3] == '\0');
+    assert(d2->m->alleles[1][0] == 'A'); assert(d2->m->alleles[1][1] == 'T');
+    assert(d2->m->alleles[1][2] == '\0'); assert(d2->m->alleles[1][3] == '\0');
+    assert(d2->m->alleles[2][0] == 'A'); assert(d2->m->alleles[2][1] == 'A');
+    assert(d2->m->alleles[2][2] == '\0'); assert(d2->m->alleles[2][3] == '\0');
+    assert(strcmp(d2->m->names[0],"g1") == 0);
+    assert(strcmp(d2->m->names[1],"g2") == 0);
+    assert(strcmp(d2->m->names[2],"oog3") == 0);
+    for (int i = 0; i < 3; ++i) {
+        assert(d2->m->ids[i].id == (cid - 2) + i);
+        assert(d2->m->groups[i].num == 1);
+        assert(d2->m->pedigrees[0][i].id == 0);
+        assert(d2->m->pedigrees[1][i].id == 0);
+    }
+    delete_group(d2,(GroupNum){.num=1});
+
+    // horizontal, single line no header
+    ++it; filename[0] = it - checkpoint + 'a';
+    f1 = "m2 AA TA AA\n";
+    if ((fp = fopen(filename, "w")) == NULL) {
+        fprintf(stderr, "Failed to create file.\n");
+        exit(1);
+    }
+    fwrite(f1, sizeof(char), strlen(f1), fp);
+    fclose(fp);
+    tmp = load_genotypefile(d2,filename);
+    cid += 3;
+    change_allele_symbol(d2,NULL,'\0','-');
+    fflush(stdout);
+    assert(d2->n_groups == 1);
+    assert(d2->current_id.id == cid);
+    assert(d2->genome.n_markers == 2);
+    assert(d2->genome.n_maps == 1);
+    assert(d2->n_labels == 0);
+    assert(d2->n_eff_sets == 0);
+    assert(d2->m->n_labels == 0);
+    assert(d2->m->next == NULL);
+    assert(d2->m->n_genotypes == 3);
+    assert(d2->m->n_markers == 2);
+    assert(strncmp(d2->m->alleles[0],"--AA",2*2) == 0);
+    assert(strncmp(d2->m->alleles[1],"--TA",2*2) == 0);
+    assert(strncmp(d2->m->alleles[2],"--AA",2*2) == 0);
+    assert(d2->m->names[0] == NULL);
+    assert(d2->m->names[1] == NULL);
+    assert(d2->m->names[2] == NULL);
+    for (int i = 0; i < 3; ++i) {
+        assert(d2->m->ids[i].id == (cid - 2) + i);
+        assert(d2->m->groups[i].num == 1);
+        assert(d2->m->pedigrees[0][i].id == 0);
+        assert(d2->m->pedigrees[1][i].id == 0);
+    }
+    delete_group(d2,(GroupNum){.num=1});
+
+
+    // horizontal, single column
+    ++it; filename[0] = it - checkpoint + 'a';
+    f1 = "g1\n"
+            "m2\tT/A\n"
+            "m1\tA/A";
+    if ((fp = fopen(filename, "w")) == NULL) {
+        fprintf(stderr, "Failed to create file.\n");
+        exit(1);
+    }
+    fwrite(f1, sizeof(char), strlen(f1), fp);
+    fclose(fp);
+    tmp = load_genotypefile(d2,filename);
+    ++cid;
+    fflush(stdout);
+    assert(d2->n_groups == 1);
+    assert(d2->current_id.id == cid);
+    assert(d2->genome.n_markers == 2);
+    assert(d2->genome.n_maps == 1);
+    assert(d2->n_labels == 0);
+    assert(d2->n_eff_sets == 0);
+    assert(d2->m->n_labels == 0);
+    assert(d2->m->next == NULL);
+    assert(d2->m->n_genotypes == 1);
+    assert(d2->m->n_markers == 2);
+    assert(strncmp(d2->m->alleles[0],"AATA",2*2) == 0);
+    assert(strcmp(d2->m->names[0],"g1") == 0);
+    for (int i = 0; i < 1; ++i) {
+        assert(d2->m->ids[i].id == cid - i);
+        assert(d2->m->groups[i].num == 1);
+        assert(d2->m->pedigrees[0][i].id == 0);
+        assert(d2->m->pedigrees[1][i].id == 0);
+    }
+    delete_group(d2,(GroupNum){.num=1});
+
+    // horizontal, single column, noheader
+    ++it; filename[0] = it - checkpoint + 'a';
+    f1 = "m2\tT/A\n"
+            "m1\tA/A";
+    if ((fp = fopen(filename, "w")) == NULL) {
+        fprintf(stderr, "Failed to create file.\n");
+        exit(1);
+    }
+    fwrite(f1, sizeof(char), strlen(f1), fp);
+    fclose(fp);
+    tmp = load_genotypefile(d2,filename);
+    ++cid;
+    fflush(stdout);
+    assert(d2->n_groups == 1);
+    assert(d2->current_id.id == cid);
+    assert(d2->genome.n_markers == 2);
+    assert(d2->genome.n_maps == 1);
+    assert(d2->n_labels == 0);
+    assert(d2->n_eff_sets == 0);
+    assert(d2->m->n_labels == 0);
+    assert(d2->m->next == NULL);
+    assert(d2->m->n_genotypes == 1);
+    assert(d2->m->n_markers == 2);
+    assert(strncmp(d2->m->alleles[0],"AATA",2*2) == 0);
+    assert(d2->m->names[0] == NULL);
+    for (int i = 0; i < 1; ++i) {
+        assert(d2->m->ids[i].id == cid + i);
+        assert(d2->m->groups[i].num == 1);
+        assert(d2->m->pedigrees[0][i].id == 0);
+        assert(d2->m->pedigrees[1][i].id == 0);
+    }
+    delete_group(d2,(GroupNum){.num=1});
+
+    // vertical, single line
+    ++it; filename[0] = it - checkpoint  + 'a';
+    f1 = "20 ,m1,m2\n"
+            "g1,AA,TA\n";
+    if ((fp = fopen(filename, "w")) == NULL) {
+        fprintf(stderr, "Failed to create file.\n");
+        exit(1);
+    }
+    fwrite(f1, sizeof(char), strlen(f1), fp);
+    fclose(fp);
+    tmp = load_genotypefile(d2,filename);
+    ++cid;
+    fflush(stdout);
+    assert(d2->n_groups == 1);
+    assert(d2->current_id.id == cid);
+    assert(d2->genome.n_markers == 2);
+    assert(d2->genome.n_maps == 1);
+    assert(d2->n_labels == 0);
+    assert(d2->n_eff_sets == 0);
+    assert(d2->m->n_labels == 0);
+    assert(d2->m->next == NULL);
+    assert(d2->m->n_genotypes == 1);
+    assert(d2->m->n_markers == 2);
+    assert(strncmp(d2->m->alleles[0],"AATA",2*2) == 0);
+    assert(strcmp(d2->m->names[0],"g1") == 0);
+    for (int i = 0; i < 1; ++i) {
+        assert(d2->m->ids[i].id == cid + i);
+        assert(d2->m->groups[i].num == 1);
+        assert(d2->m->pedigrees[0][i].id == 0);
+        assert(d2->m->pedigrees[1][i].id == 0);
+    }
+    delete_group(d2,(GroupNum){.num=1});
+
+    // vertical singleline noheader -> fails, can't guarantee marker order.
+    ++it; filename[0] = it - checkpoint + 'a';
+    /*f1 = "g1,AA,TA\n";
+    if ((fp = fopen(filename, "w")) == NULL) {
+        fprintf(stderr, "Failed to create file.\n");
+        exit(1);
+    }
+    fwrite(f1, sizeof(char), strlen(f1), fp);
+    fclose(fp);
+    tmp = load_genotypefile(d2,filename);
+    ++cid;
+    fflush(stdout);
+    assert(d2->n_groups == 1);
+    assert(d2->current_id.id == cid);
+    assert(d2->genome.n_markers == 2);
+    assert(d2->genome.n_maps == 1);
+    assert(d2->n_labels == 0);
+    assert(d2->n_eff_sets == 0);
+    assert(d2->m->n_labels == 0);
+    assert(d2->m->next == NULL);
+    assert(d2->m->n_genotypes == 1);
+    assert(d2->m->n_markers == 2);
+    assert(strncmp(d2->m->alleles[0],"AATA",2*2) == 0);
+    assert(strcmp(d2->m->names[0],"g1") == 0);
+    for (int i = 0; i < 1; ++i) {
+        assert(d2->m->ids[i].id == cid + i);
+        assert(d2->m->groups[i].num == 1);
+        assert(d2->m->pedigrees[0][i].id == 0);
+        assert(d2->m->pedigrees[1][i].id == 0);
+    }
+    delete_group(d2,(GroupNum){.num=1});*/
+
+    // vertical singlecolumn
+    ++it; filename[0] = it - checkpoint + 'a';
+    f1 = "m2\n" "g1,AA\n";
+    if ((fp = fopen(filename, "w")) == NULL) {
+        fprintf(stderr, "Failed to create file.\n");
+        exit(1);
+    }
+    fwrite(f1, sizeof(char), strlen(f1), fp);
+    fclose(fp);
+    tmp = load_genotypefile(d2,filename);
+    ++cid;
+    fflush(stdout);
+    assert(d2->n_groups == 1);
+    assert(d2->current_id.id == cid);
+    assert(d2->genome.n_markers == 2);
+    assert(d2->genome.n_maps == 1);
+    assert(d2->n_labels == 0);
+    assert(d2->n_eff_sets == 0);
+    assert(d2->m->n_labels == 0);
+    assert(d2->m->next == NULL);
+    assert(d2->m->n_genotypes == 1);
+    assert(d2->m->n_markers == 2);
+    assert(d2->m->alleles[0][0] == '\0'); assert(d2->m->alleles[0][1] == '\0');
+    assert(d2->m->alleles[0][2] == 'A'); assert(d2->m->alleles[0][3] == 'A');
+    assert(strcmp(d2->m->names[0],"g1") == 0);
+    for (int i = 0; i < 1; ++i) {
+        assert(d2->m->ids[i].id == cid + i);
+        assert(d2->m->groups[i].num == 1);
+        assert(d2->m->pedigrees[0][i].id == 0);
+        assert(d2->m->pedigrees[1][i].id == 0);
+    }
+    delete_group(d2,(GroupNum){.num=1});
+
+    // Check counts work
+    ++it; filename[0] = it + 'A';
+    f1 = " ,m2,m1\n"
+            "g1,1,1\n"
+            "g2,0,1\n"
+            "oog3,1,2\n";
+    if ((fp = fopen(filename, "w")) == NULL) {
+        fprintf(stderr, "Failed to create file.\n");
+        exit(1);
+    }
+    fwrite(f1, sizeof(char), strlen(f1), fp);
+    fclose(fp);
+    tmp = load_genotypefile(d2,filename);
+    cid += 3;
+    fflush(stdout);
+    assert(d2->n_groups == 1);
+    assert(d2->current_id.id == cid);
+    assert(d2->genome.n_markers == 2);
+    assert(d2->genome.n_maps == 1);
+    assert(d2->n_labels == 0);
+    assert(d2->n_eff_sets == 0);
+    assert(d2->m->n_labels == 0);
+    assert(d2->m->next == NULL);
+    assert(d2->m->n_genotypes == 3);
+    assert(d2->m->n_markers == 2);
+    assert(strncmp(d2->m->alleles[0],"ATAT",2*2) == 0);
+    assert(strncmp(d2->m->alleles[1],"TATT",2*2) == 0);
+    assert(strncmp(d2->m->alleles[2],"AAAT",2*2) == 0);
+    assert(strcmp(d2->m->names[0],"g1") == 0);
+    assert(strcmp(d2->m->names[1],"g2") == 0);
+    assert(strcmp(d2->m->names[2],"oog3") == 0);
+    for (int i = 0; i < 3; ++i) {
+        assert(d2->m->ids[i].id == (cid - 2) + i);
+        assert(d2->m->groups[i].num == 1);
+        assert(d2->m->pedigrees[0][i].id == 0);
+        assert(d2->m->pedigrees[1][i].id == 0);
+    }
+    delete_group(d2,(GroupNum){.num=1});
+
+    // Check encodings work
+    ++it; filename[0] = it + 'A';
+    f1 = " ,m1,m2\n"
+            "g1,G,A\n"
+            "g2,T,C\n"
+            "oog3,R,R\n"
+            "oog4,R,R\n"
+            "oog5,Y,Y\n"
+            "oog6,Y,Y\n"
+            "oog7,M,M\n"
+            "oog8,M,M\n"
+            "oog9,K,K\n"
+            "oog10,K,K\n"
+            "oogA,S,S\n"
+            "oogB,S,S\n"
+            "oogC,W,W\n"
+            "oogD,W,W\n"
+            "oogBb,S,S\n"
+            ;
+    if ((fp = fopen(filename, "w")) == NULL) {
+        fprintf(stderr, "Failed to create file.\n");
+        exit(1);
+    }
+    fwrite(f1, sizeof(char), strlen(f1), fp);
+    fclose(fp);
+    tmp = load_genotypefile(d2,filename);
+    cid += 15;
+    fflush(stdout);
+    assert(d2->n_groups == 1);
+    assert(d2->current_id.id == cid);
+    assert(d2->genome.n_markers == 2);
+    assert(d2->genome.n_maps == 1);
+    assert(d2->n_labels == 0);
+    assert(d2->n_eff_sets == 0);
+    assert(d2->m->n_labels == 0);
+    assert(d2->m->next == NULL);
+    assert(d2->m->n_genotypes == 15);
+    assert(d2->m->n_markers == 2);
+    assert(strncmp(d2->m->alleles[0],"GGAA",2*2) == 0);
+    assert(strncmp(d2->m->alleles[1],"TTCC",2*2) == 0);
+    assert(strncmp(d2->m->alleles[2],"GAAG",2*2) == 0);
+    assert(strncmp(d2->m->alleles[3],"AGGA",2*2) == 0);
+    assert(strncmp(d2->m->alleles[4],"TCTC",2*2) == 0);
+    assert(strncmp(d2->m->alleles[5],"CTCT",2*2) == 0);
+    assert(strncmp(d2->m->alleles[6],"CACA",2*2) == 0);
+    assert(strncmp(d2->m->alleles[7],"ACCA",2*2) == 0);
+    assert(strncmp(d2->m->alleles[8],"TGTG",2*2) == 0);
+    assert(strncmp(d2->m->alleles[9],"TGGT",2*2) == 0);
+    assert(strncmp(d2->m->alleles[10],"GCGC",2*2) == 0);
+    assert(strncmp(d2->m->alleles[11],"GCGC",2*2) == 0);
+    assert(strncmp(d2->m->alleles[12],"ATAT",2*2) == 0);
+    assert(strncmp(d2->m->alleles[13],"TAAT",2*2) == 0);
+    assert(strncmp(d2->m->alleles[14],"CGCG",2*2) == 0);
+    assert(strcmp(d2->m->names[0],"g1") == 0);
+    assert(strcmp(d2->m->names[1],"g2") == 0);
+    assert(strcmp(d2->m->names[2],"oog3") == 0); // we'll just trust rest of the names
+    for (int i = 0; i < 15; ++i) {
+        assert(d2->m->ids[i].id == (cid - 14) + i);
+        assert(d2->m->groups[i].num == 1);
+        assert(d2->m->pedigrees[0][i].id == 0);
+        assert(d2->m->pedigrees[1][i].id == 0);
+    }
+    delete_group(d2,(GroupNum){.num=1});
+
+    delete_simdata(d2);
+
+    delete_simdata(d);
     return 0;
 }
 
-GroupNum just_load(SimData* d) {
+struct MultiIDSet just_load(SimData* d) {
     FILE* fp;
     if ((fp = fopen("a-test.txt", "w")) == NULL) {
         fprintf(stderr, "Failed to create file.\n");
@@ -344,38 +1723,67 @@ GroupNum just_load(SimData* d) {
     fwrite(HELPER_EFF2, sizeof(char), strlen(HELPER_EFF2), fp);
     fclose(fp);
 
-    struct GroupAndEffectSet gande = load_all_data(d, "a-test.txt", "a-test-map.txt", "a-test-eff.txt");
-    GroupNum g0 = gande.group;
-
+    struct MultiIDSet gande = load_data_files(d, "a-test.txt", "a-test-map.txt", "a-test-eff.txt");
     remove("a-test.txt");
     remove("a-test-map.txt");
     remove("a-test-eff.txt");
-    return g0;
+    return gande;
 }
 
 
 GroupNum test_loaders(SimData* d) {
-    GroupNum g0 = just_load(d);
+    struct MultiIDSet loaded = just_load(d);
+    GroupNum g0 = loaded.group;
 
-	assert(d->n_markers == 3); // all markers loaded
-	assert(strcmp(d->markers[0], "m1") == 0); // all markers ordered right
-	assert(strcmp(d->markers[1], "m2") == 0);
-	assert(strcmp(d->markers[2], "m3") == 0);
-	printf("...SNP marker names loaded correctly\n");
+    assert(d->genome.n_markers == 3); // all markers loaded
+    assert(strcmp(d->genome.marker_names[0], "m1") == 0); // all markers ordered right
+    assert(strcmp(d->genome.marker_names[1], "m2") == 0);
+    assert(strcmp(d->genome.marker_names[2], "am3") == 0);
+    assert(strcmp(*d->genome.names_alphabetical[0], "am3") == 0); // all markers ordered right
+    assert(strcmp(*d->genome.names_alphabetical[1], "m1") == 0);
+    assert(strcmp(*d->genome.names_alphabetical[2], "m2") == 0);
+    printf("...genome map loaded correctly\n");
 
-	assert(d->map.n_chr == 3); // correct number of chromosomes
-	assert(d->map.chr_ends[0] == 0);
-	assert(d->map.chr_ends[1] == 2);
-	assert(d->map.chr_ends[2] == 2);
-    assert(fabs(d->map.chr_lengths[0] - 3.1) < TOL);
-	// @other lengths don't matter?
-    assert(fabs(d->map.positions[0].position - 5.2) < TOL);
-	assert(d->map.positions[0].chromosome == 1);
-    assert(fabs(d->map.positions[1].position - 8.3) < TOL);
-	assert(d->map.positions[1].chromosome == 1);
-    assert(fabs(d->map.positions[2].position - 15) < TOL);
-	assert(d->map.positions[2].chromosome == 3);
-	printf("...genome map loaded correctly\n");
+    assert(d->genome.n_maps == 1);
+    assert(d->genome.map_ids[0].id = loaded.map.id);
+    assert(d->genome.maps[0].n_chr == 2); // correct number of chromosomes
+    assert(d->genome.maps[0].chrs[0].type == GSC_LINKAGEGROUP_SIMPLE);
+    assert(d->genome.maps[0].chrs[0].map.simple.n_markers == 2);
+    assert(d->genome.maps[0].chrs[0].map.simple.first_marker_index == 0);
+    assert(fabs(d->genome.maps[0].chrs[0].map.simple.expected_n_crossovers - (3.1/100)) < TOL);
+    assert(fabs(d->genome.maps[0].chrs[0].map.simple.dists[0] - 0) < TOL);
+    assert(fabs(d->genome.maps[0].chrs[0].map.simple.dists[1] - 1) < TOL);
+    assert(d->genome.maps[0].chrs[1].type == GSC_LINKAGEGROUP_SIMPLE);
+    assert(d->genome.maps[0].chrs[1].map.simple.n_markers == 1);
+    assert(d->genome.maps[0].chrs[1].map.simple.first_marker_index == 2);
+    // assert(d->genome.maps[0].chrs[1].map.simple.expected_n_crossovers // length doesn't matter
+    // assert(d->genome.maps[0].chrs[1].map.simple.dists[0]
+    printf("...recombination map loaded correctly\n");
+
+    MapID m2 = load_mapfile(d,"2marker-map.txt");
+    assert(d->genome.n_maps == 2);
+    assert(d->genome.map_ids[0].id = loaded.map.id);
+    assert(d->genome.map_ids[1].id == m2.id);
+    assert(loaded.map.id != m2.id);
+    assert(d->genome.maps[0].n_chr == 2); // correct number of chromosomes
+    assert(d->genome.maps[0].chrs[0].type == GSC_LINKAGEGROUP_SIMPLE);
+    assert(d->genome.maps[0].chrs[0].map.simple.n_markers == 2);
+    assert(d->genome.maps[0].chrs[0].map.simple.first_marker_index == 0);
+    assert(fabs(d->genome.maps[0].chrs[0].map.simple.expected_n_crossovers - (3.1/100)) < TOL);
+    assert(fabs(d->genome.maps[0].chrs[0].map.simple.dists[0] - 0) < TOL);
+    assert(fabs(d->genome.maps[0].chrs[0].map.simple.dists[1] - 1) < TOL);
+    assert(d->genome.maps[0].chrs[1].type == GSC_LINKAGEGROUP_SIMPLE);
+    assert(d->genome.maps[0].chrs[1].map.simple.n_markers == 1);
+    assert(d->genome.maps[0].chrs[1].map.simple.first_marker_index == 2);
+    assert(d->genome.maps[1].n_chr == 1); // correct number of chromosomes
+    assert(d->genome.maps[1].chrs[0].type == GSC_LINKAGEGROUP_SIMPLE);
+    assert(d->genome.maps[1].chrs[0].map.simple.n_markers == 2);
+    assert(d->genome.maps[1].chrs[0].map.simple.first_marker_index == 0);
+    assert(fabs(d->genome.maps[1].chrs[0].map.simple.expected_n_crossovers - 0.1) < TOL);
+    assert(fabs(d->genome.maps[1].chrs[0].map.simple.dists[0] - 0) < TOL);
+    assert(fabs(d->genome.maps[1].chrs[0].map.simple.dists[1] - 1) < TOL);
+    printf("...second recombination map loaded correctly\n");
+    delete_recombination_map(d,m2);
 
     assert(d->n_eff_sets == 1);
     assert(d->e[0].effects.rows == 2);
@@ -399,7 +1807,7 @@ GroupNum test_loaders(SimData* d) {
     assert(fabs(d->e[0].effects.matrix[tpos][2] - (-0.1)) < TOL);
     printf("...marker effects loaded correctly\n");
 
-    assert(load_effects(d, "a-test-eff2.txt").id==2);
+    assert(load_effectfile(d, "a-test-eff2.txt").id==2);
     assert(d->n_eff_sets == 2);
     assert(d->e[0].effects.rows == 2);
     assert(d->e[0].effects.cols == 3);
@@ -468,29 +1876,42 @@ GroupNum test_loaders(SimData* d) {
 	assert(strncmp(d->m->alleles[5],"ATAATT", 6) == 0); // G06
 	printf("...genotypes loaded correctly\n");
 
-	/*unsigned int g1 = load_more_transposed_genes_to_simdata(d, "a-test.txt");
+
+    GroupNum g1 = load_genotypefile(d, "a-test.txt");
 
 	assert(d->m != NULL);
-	assert(d->current_id == 12);
+    assert(d->current_id.id == 12);
 	assert(d->m->n_markers == 3);
 	assert(d->m->n_genotypes == 12);
-	assert(d->m->groups[0] == g0);
-	assert(d->m->groups[1] == g0);
-	assert(d->m->groups[2] == g0);
-	assert(d->m->groups[3] == g0);
-	assert(d->m->groups[4] == g0);
-	assert(d->m->groups[5] == g0);
-	assert(g0 > 0);
-	assert(d->m->groups[6] == g1);
-	assert(d->m->groups[7] == g1);
-	assert(d->m->groups[8] == g1);
-	assert(d->m->groups[9] == g1);
-	assert(d->m->groups[10] == g1);
-	assert(d->m->groups[11] == g1);
-	assert(g1 > 0);
-	assert(g1 != g0);
+    assert(d->m->groups[0].num == g0.num);
+    assert(d->m->groups[1].num == g0.num);
+    assert(d->m->groups[2].num == g0.num);
+    assert(d->m->groups[3].num == g0.num);
+    assert(d->m->groups[4].num == g0.num);
+    assert(d->m->groups[5].num == g0.num);
+    assert(g0.num == 1);
+    assert(d->m->groups[6].num == g1.num);
+    assert(d->m->groups[7].num == g1.num);
+    assert(d->m->groups[8].num == g1.num);
+    assert(d->m->groups[9].num == g1.num);
+    assert(d->m->groups[10].num == g1.num);
+    assert(d->m->groups[11].num == g1.num);
+    assert(g1.num == 2);
+    assert(strncmp(d->m->alleles[0],"TTAATT", 6) == 0); // G01
+    assert(strncmp(d->m->alleles[1],"TTAATT", 6) == 0); // G02
+    assert(strncmp(d->m->alleles[2],"TTAATA", 6) == 0); // G03
+    assert(strncmp(d->m->alleles[3],"TAAATA", 6) == 0); // G04
+    assert(strncmp(d->m->alleles[4],"TTTTTT", 6) == 0); // G05
+    assert(strncmp(d->m->alleles[5],"ATAATT", 6) == 0); // G06
+    assert(strncmp(d->m->alleles[6],"TTAATT", 6) == 0); // G01
+    assert(strncmp(d->m->alleles[7],"TTAATT", 6) == 0); // G02
+    assert(strncmp(d->m->alleles[8],"TTAATA", 6) == 0); // G03
+    assert(strncmp(d->m->alleles[9],"TAAATA", 6) == 0); // G04
+    assert(strncmp(d->m->alleles[10],"TTTTTT", 6) == 0); // G05
+    assert(strncmp(d->m->alleles[11],"ATAATT", 6) == 0); // G06
+    printf("...second set of genotypes loaded correctly\n");
 
-	delete_group(d, g1);*/
+    delete_group(d, g1);
 
 	return g0;
 }
@@ -665,7 +2086,7 @@ GroupNum test_labels(SimData *d, GroupNum g0) {
                     .will_save_pedigree_to_file = GSC_FALSE,
                     .will_save_to_simdata = GSC_TRUE};
     assert(d->n_groups == 1);
-    GroupNum f1 = make_random_crosses(d,g0,4,0,g);
+    GroupNum f1 = make_random_crosses(d,g0,4,0,NO_MAP,g);
     assert(d->n_groups == 2);
     // Check that the labels are set to their defaults
     assert(d->m->labels[label1index][6+0] == label1value);
@@ -948,7 +2369,7 @@ GroupNum test_specific_splits(SimData *d, GroupNum g0) {
                     .will_save_bvs_to_file = -1,
                     .will_save_pedigree_to_file = GSC_FALSE,
                     .will_save_to_simdata = GSC_TRUE};
-    GroupNum f1 = make_random_crosses(d, g0, 3, 1, g);
+    GroupNum f1 = make_random_crosses(d, g0, 3, 1, NO_MAP, g);
     int f1size = 5*3;
     GroupNum families[15];
     assert(d->n_groups == 2);
@@ -1015,7 +2436,7 @@ GroupNum test_specific_splits(SimData *d, GroupNum g0) {
     combinations[0][1] = 0; combinations[1][1] = 2;
     combinations[0][2] = 3; combinations[1][2] = 1;
     combinations[0][3] = 4; combinations[1][3] = 5;
-    GroupNum fhs = make_targeted_crosses(d,4,combinations[0], combinations[1],g);
+    GroupNum fhs = make_targeted_crosses(d,4,combinations[0], combinations[1],NO_MAP,NO_MAP,g);
     assert(d->n_groups == 2);
 
     GroupNum halfsibfamilies[3];
@@ -1174,7 +2595,7 @@ int test_effect_calculators(SimData *d, GroupNum g0) {
     FILE* fp = fopen("a-test-eff3.txt","w");
     fwrite(HELPER_EFF2, sizeof(char), strlen(HELPER_EFF2), fp);
     fclose(fp);
-    EffectID e3 = load_effects(d,"a-test-eff3.txt");
+    EffectID e3 = load_effectfile(d,"a-test-eff3.txt");
     DecimalMatrix dec3 = calculate_group_bvs(d, g0, e3);
     assert(fabs(dec3.matrix[0][0] - 0) < TOL);
     assert(fabs(dec3.matrix[0][1] - 0) < TOL);
@@ -1276,27 +2697,27 @@ GroupNum test_crossing_unidirectional(SimData *d, GroupNum g0) {
                     .will_save_to_simdata=GSC_TRUE};
 	//AlleleMatrix* a = make_all_unidirectional_crosses(&sd, 0, g);
 	//sd.m->next_gen = a;
-    GroupNum g1 = make_all_unidirectional_crosses(d, g0, g);
+    GroupNum g1 = make_all_unidirectional_crosses(d, g0, NO_MAP, g);
 
     assert(g1.num != g0.num);
 	assert(d->m->n_genotypes == 21);
 	assert(d->m->n_markers == 3);
 	//assert(strcmp(sd.m->name, "F1g") == 0);
-	assert(strcmp(d->m->names[6], "F107") == 0);
-	assert(strcmp(d->m->names[7], "F108") == 0);
-	assert(strcmp(d->m->names[8], "F109") == 0);
-	assert(strcmp(d->m->names[9], "F110") == 0);
-	assert(strcmp(d->m->names[10], "F111") == 0);
-	assert(strcmp(d->m->names[11], "F112") == 0);
-	assert(strcmp(d->m->names[12], "F113") == 0);
-	assert(strcmp(d->m->names[13], "F114") == 0);
-	assert(strcmp(d->m->names[14], "F115") == 0);
-	assert(strcmp(d->m->names[15], "F116") == 0);
-	assert(strcmp(d->m->names[16], "F117") == 0);
-	assert(strcmp(d->m->names[17], "F118") == 0);
-	assert(strcmp(d->m->names[18], "F119") == 0);
-	assert(strcmp(d->m->names[19], "F120") == 0);
-	assert(strcmp(d->m->names[20], "F121") == 0);
+    assert(strcmp(d->m->names[6], "F113") == 0);
+    assert(strcmp(d->m->names[7], "F114") == 0);
+    assert(strcmp(d->m->names[8], "F115") == 0);
+    assert(strcmp(d->m->names[9], "F116") == 0);
+    assert(strcmp(d->m->names[10], "F117") == 0);
+    assert(strcmp(d->m->names[11], "F118") == 0);
+    assert(strcmp(d->m->names[12], "F119") == 0);
+    assert(strcmp(d->m->names[13], "F120") == 0);
+    assert(strcmp(d->m->names[14], "F121") == 0);
+    assert(strcmp(d->m->names[15], "F122") == 0);
+    assert(strcmp(d->m->names[16], "F123") == 0);
+    assert(strcmp(d->m->names[17], "F124") == 0);
+    assert(strcmp(d->m->names[18], "F125") == 0);
+    assert(strcmp(d->m->names[19], "F126") == 0);
+    assert(strcmp(d->m->names[20], "F127") == 0);
     assert(d->m->pedigrees[0][6].id == 1 && d->m->pedigrees[1][6].id == 2); //assumes you're doing the top triangle of crosses
     assert(d->m->pedigrees[0][7].id == 1 && d->m->pedigrees[1][7].id == 3);
     assert(d->m->pedigrees[0][8].id == 1 && d->m->pedigrees[1][8].id == 4);
@@ -1334,13 +2755,13 @@ GroupNum test_crossing_from_file(SimData *d, char* fname) {
 	g2.family_size = 2;
 	//g2.will_save_pedigree_to_file = GSC_TRUE;
 	//2.filename_prefix = "atest-dc";
-    GroupNum bp = make_double_crosses_from_file(d, fname, g2);
-    assert(d->m->pedigrees[0][21].id == d->m->ids[6].id && d->m->pedigrees[1][21].id == 17);
-    assert(d->m->pedigrees[0][23].id == d->m->ids[7].id && d->m->pedigrees[1][23].id == 21);
-    assert(d->m->pedigrees[0][25].id == d->m->ids[20].id && d->m->pedigrees[1][25].id == 9);
-    assert(d->m->pedigrees[0][22].id == 7 && d->m->pedigrees[1][22].id == 17);
-    assert(d->m->pedigrees[0][24].id == 8 && d->m->pedigrees[1][24].id == 21);
-    assert(d->m->pedigrees[0][26].id == 21 && d->m->pedigrees[1][26].id == 9);
+    GroupNum bp = make_double_crosses_from_file(d, fname, NO_MAP, NO_MAP, g2);
+    assert(d->m->pedigrees[0][21].id == d->m->ids[6].id && d->m->pedigrees[1][21].id == 23);
+    assert(d->m->pedigrees[0][23].id == d->m->ids[7].id && d->m->pedigrees[1][23].id == 27);
+    assert(d->m->pedigrees[0][25].id == d->m->ids[20].id && d->m->pedigrees[1][25].id == 15);
+    assert(d->m->pedigrees[0][22].id == 13 && d->m->pedigrees[1][22].id == 23);
+    assert(d->m->pedigrees[0][24].id == 14 && d->m->pedigrees[1][24].id == 27);
+    assert(d->m->pedigrees[0][26].id == 27 && d->m->pedigrees[1][26].id == 15);
 	assert(d->m->n_genotypes == 27);
 	assert(d->m->n_markers == 3);
 	printf("...crossed combinations from file correctly\n");
@@ -1353,7 +2774,7 @@ GroupNum test_crossing_selfing(SimData *d, GroupNum g1) {
     GenOptions opt = BASIC_OPT;
     opt.will_track_pedigree = GSC_TRUE;
 	float h1 = calculate_heterozygosity(d, g1);
-    GroupNum g1selfed = self_n_times(d, 5, g1, opt);
+    GroupNum g1selfed = self_n_times(d, 5, g1, NO_MAP, opt);
 	float h2 = calculate_heterozygosity(d,  g1selfed);
 
     assert(g1selfed.num != g1.num);
@@ -1368,7 +2789,7 @@ GroupNum test_crossing_selfing(SimData *d, GroupNum g1) {
 	printf("...selfing function correctly reduced heterozygosity by %f%%\n", (h2-h1)*100);
 
     // test doubled haploids
-    GroupNum g1dhap = make_doubled_haploids(d, g1, opt);
+    GroupNum g1dhap = make_doubled_haploids(d, g1, (MapID){.id=1}, opt);
     assert(g1dhap.num != g1.num);
     assert(d->m->n_genotypes == oldsize + 2*6);
     assert(d->m->n_markers == 3);
@@ -1403,10 +2824,10 @@ GroupNum test_crossing_selfing(SimData *d, GroupNum g1) {
     printf("...cloning function works correctly\n");
 
     opt.will_allocate_ids = GSC_TRUE;
-    GroupNum gap = make_random_crosses(d , g1, 5, 0, opt);
+    GroupNum gap = make_random_crosses(d , g1, 5, 0, NO_MAP, opt);
     GroupNum newparents[2];
     newparents[0] = g1clones;
-    newparents[1] = make_random_crosses(d , g1, 5, 0, opt);
+    newparents[1] = make_random_crosses(d , g1, 5, 0, NO_MAP, opt);
     GroupNum cloneparents2 = combine_groups(d, 2, newparents);
     GroupNum g2clones = make_clones(d, cloneparents2, GSC_FALSE, opt);
 
@@ -1425,7 +2846,7 @@ int test_crossing_randomly(SimData *d, GroupNum g1) {
     GenOptions gopt = BASIC_OPT;
     gopt.will_track_pedigree = GSC_TRUE;
     // Test random crossing seems about right
-    GroupNum g2 = make_random_crosses( d , g1, 4, 0, gopt);
+    GroupNum g2 = make_random_crosses( d , g1, 4, 0, NO_MAP, gopt);
     size_t g2ixs[4];
     assert(get_group_indexes(d, g2, -1, g2ixs) == 4);
 
@@ -1443,7 +2864,7 @@ int test_crossing_randomly(SimData *d, GroupNum g1) {
 
     // Test random crossing between two groups seems about right.
     gopt.family_size = 2;
-    GroupNum g3 = make_random_crosses_between( d, g1, g2, 3, 0, 0, gopt);
+    GroupNum g3 = make_random_crosses_between( d, g1, g2, 3, 0, 0, NO_MAP, NO_MAP, gopt);
 
     assert(get_group_size(d, g3) == 6);
     assert(d->m->pedigrees[0][g2ixs[3] + 1].id == d->m->pedigrees[0][g2ixs[3] + 2].id); // family size works
@@ -1463,7 +2884,7 @@ int test_crossing_randomly(SimData *d, GroupNum g1) {
     GroupNum tempg = make_group_from( d, 1, g2ixs + 1);
     assert(get_group_size(d, tempg) == 1);
     int g4sizetobe = 6;
-    GroupNum g4 = make_random_crosses_between( d, g1, tempg, g4sizetobe, 1, 0, gopt );
+    GroupNum g4 = make_random_crosses_between( d, g1, tempg, g4sizetobe, 1, 0, NO_MAP, NO_MAP, gopt );
     assert(get_group_size(d, g4) == g4sizetobe);
     GroupNum combine[2] = {tempg, g2};
     g2 = combine_groups( d, 2, combine );
@@ -1530,7 +2951,7 @@ int test_deletors(SimData *d, GroupNum g0) {
 }
 
 int test_block_generator(SimData *d) {
-    MarkerBlocks b = create_evenlength_blocks_each_chr(d, 2);
+    MarkerBlocks b = create_evenlength_blocks_each_chr(d, NO_MAP, 2);
 
 	assert(b.num_blocks == 4);
 	assert(b.num_markers_in_block[0] == 1);
@@ -1557,7 +2978,7 @@ int test_block_generator(SimData *d) {
 
 	printf("...MarkerBlocks deletor works\n");
 
-    b = create_evenlength_blocks_each_chr(d, 4);
+    b = create_evenlength_blocks_each_chr(d, NO_MAP, 4);
 
 	assert(b.num_blocks == 8);
 	assert(b.num_markers_in_block[0] == 1);
@@ -1601,7 +3022,7 @@ int test_iterators(SimData* d, GroupNum gp) {
     combos[0][0] = 0; combos[1][0] = 0;
     combos[0][1] = 1; combos[1][1] = 2;
     combos[0][2] = 1; combos[1][2] = 5;
-    GroupNum f1 = make_targeted_crosses(d, 3, combos[0], combos[1], g);
+    GroupNum f1 = make_targeted_crosses(d, 3, combos[0], combos[1], NO_MAP, NO_MAP, g);
     const LabelID label1 = create_new_label(d, 0);
     change_label_by_amount(d,f1,label1,1);
 
@@ -1735,7 +3156,7 @@ int test_getters(SimData* d, GroupNum gp) {
         .will_save_alleles_to_file = GSC_FALSE,
         .will_save_to_simdata = GSC_TRUE
     };
-    GroupNum f1 = make_targeted_crosses(d,3,combos[0],combos[1],g);
+    GroupNum f1 = make_targeted_crosses(d,3,combos[0],combos[1], NO_MAP, NO_MAP, g);
 
     PedigreeID p1s[3]; PedigreeID p2s[6];
     assert(get_group_parent_ids(d, f1, GSC_UNINIT, 1, p1s) == 3);
@@ -1777,7 +3198,8 @@ int test_data_access(SimData* d, GroupNum gp) {
 
 int subfunctiontest_meiosis(int seed) {
     SimData* d = create_empty_simdata(seed);
-    GroupNum g0 = just_load(d);
+    struct MultiIDSet loaded = just_load(d);
+    GroupNum g0 = loaded.group;
     // As of yet these do not check anything about crossovers. Nothing about whether it's
     // following the promised probabilities, only that the results, in isolation, look plausible.
 
@@ -1800,7 +3222,7 @@ int subfunctiontest_meiosis(int seed) {
     // test of generate_gamete
     // with a totally homozygous parent eg G01, gives the expected result eg (TTA)
     strcpy(expected,"T?A?T?");
-    generate_gamete(d,get_alleles(homozygote),gamete);
+    generate_gamete(d,get_alleles(homozygote),gamete,0);
     for (int i = 0; i < GENOMESIZE; ++i) {
         if (expected[i] != '?') {
             assert(expected[i] == gamete[i]);
@@ -1816,7 +3238,7 @@ int subfunctiontest_meiosis(int seed) {
     memset(gamete,0,sizeof(char)*10);
     int e1count = 0; int e2count = 0;
     while (1) {
-        generate_gamete(d,get_alleles(heterozygote),gamete);
+        generate_gamete(d,get_alleles(heterozygote),gamete,0);
         if (gamete[0] == expected[0] && gamete[2] == expected[2] && gamete[4] == expected[4]) {
             ++e1count;
         } else if (gamete[0] == expected2[0] && gamete[2] == expected2[2] && gamete[4] == expected2[4]) {
@@ -1838,7 +3260,7 @@ int subfunctiontest_meiosis(int seed) {
     // with a totally homozygous parent
     memset(gamete,0,sizeof(char)*10);
     strcpy(expected,"TTAATT");
-    generate_doubled_haploid(d,get_alleles(homozygote),gamete);
+    generate_doubled_haploid(d,get_alleles(homozygote),gamete,0);
     assert(strncmp(gamete,expected,sizeof(char)*GENOMESIZE) == 0);
     assert(gamete[GENOMESIZE] == 0);
 
@@ -1848,7 +3270,7 @@ int subfunctiontest_meiosis(int seed) {
     memset(gamete,0,sizeof(char)*10);
     e1count = 0; e2count = 0;
     while (1) {
-        generate_doubled_haploid(d,get_alleles(heterozygote),gamete);
+        generate_doubled_haploid(d,get_alleles(heterozygote),gamete,0);
         if (strncmp(gamete,expected,sizeof(char)*GENOMESIZE) == 0) {
             ++e1count;
         } else if (strncmp(gamete,expected2,sizeof(char)*GENOMESIZE) == 0)  {
@@ -1986,6 +3408,9 @@ int main(int argc, char* argv[]) {
     printf("\nNow testing loader functions:\n");
     SimData* d = create_empty_simdata(randomSeed);
     GroupNum g0 = test_loaders(d);
+    test_genoloaders2();
+    test_maploaders2();
+    test_effloaders2();
 	printf("\t\t-> Loader functions all clear\n");
 
     printf("\nNow testing group manipulation functions:\n");
@@ -2028,8 +3453,8 @@ int main(int argc, char* argv[]) {
 
 	//testing new grouping functions
     d = create_empty_simdata(randomSeed);
-    struct GroupAndEffectSet gande =
-            load_all_data(d, "./gt_parents_mr2_50-trimto-5000.txt",
+    struct MultiIDSet gande =
+            load_data_files(d, "./gt_parents_mr2_50-trimto-5000.txt",
 			 "./genetic-map_5112-trimto5000.txt",
              "./qtl_mr2.eff-processed.txt");
     g0 = gande.group;
@@ -2114,7 +3539,7 @@ int main(int argc, char* argv[]) {
     size_t ixs[3000];
     assert(get_group_size(d,g0) == 50);
 
-        GroupNum g000 = make_random_crosses(d, g0, ncrosses, 0, gens);
+        GroupNum g000 = make_random_crosses(d, g0, ncrosses, 0, NO_MAP, gens);
     assert(d->n_groups == 2);
     assert(g000.num == 2);
     assert(get_group_size(d,g000)==gens.family_size*ncrosses);
@@ -2122,7 +3547,7 @@ int main(int argc, char* argv[]) {
     assert(ixs[0] == 50);
     assert(ixs[gens.family_size*ncrosses-1] == gens.family_size*ncrosses + 49);
 
-        g000 = make_random_crosses(d, g0, ncrosses, 0, gens);
+        g000 = make_random_crosses(d, g0, ncrosses, 0, NO_MAP, gens);
     assert(d->n_groups == 3);
     assert(g000.num == 3);
     assert(get_group_size(d,g000)==gens.family_size*ncrosses);
@@ -2130,7 +3555,7 @@ int main(int argc, char* argv[]) {
     assert(ixs[0] == gens.family_size*ncrosses + 50);
     assert(ixs[gens.family_size*ncrosses-1] == gens.family_size*ncrosses*2 + 49);
 
-        g000 = make_random_crosses(d, g0, ncrosses, 0, gens);
+        g000 = make_random_crosses(d, g0, ncrosses, 0, NO_MAP, gens);
     assert(d->n_groups == 4);
     assert(g000.num == 4);
     assert(get_group_size(d,g000)==gens.family_size*ncrosses);
@@ -2138,7 +3563,7 @@ int main(int argc, char* argv[]) {
     assert(ixs[0] == gens.family_size*ncrosses*2 + 50);
     assert(ixs[gens.family_size*ncrosses-1] == gens.family_size*ncrosses*3 + 49);
 
-        g000 = make_random_crosses(d, g0, ncrosses, 0, gens);
+        g000 = make_random_crosses(d, g0, ncrosses, 0, NO_MAP, gens);
     assert(d->n_groups == 5);
     assert(g000.num == 5);
     BidirectionalIterator it000 = create_bidirectional_iter(d,NO_GROUP);
@@ -2165,7 +3590,7 @@ int main(int argc, char* argv[]) {
     assert(ixs[gens.family_size*ncrosses-1] == gens.family_size*ncrosses*4 + 49);
     assert(get_group_size(d,g000)==gens.family_size*ncrosses);
 
-        g000 = make_random_crosses(d, g0, 10, 0, gens);
+        g000 = make_random_crosses(d, g0, 10, 0, NO_MAP, gens);
     assert(d->n_groups == 6);
     assert(g000.num == 6);
     assert(get_group_size(d,g000)==gens.family_size*ncrosses);
@@ -2179,7 +3604,7 @@ int main(int argc, char* argv[]) {
 
     // Testing 5 allele effects bug? Replicability.
     d = create_empty_simdata(randomSeed);
-    gande = load_all_data(d, "./gt_parents_mr2_50-trimto-5000.txt",
+    gande = load_data_files(d, "./gt_parents_mr2_50-trimto-5000.txt",
              "./genetic-map_5112-trimto5000.txt",
              "./qtl_5test.txt");
     /*for (int i = 0; i < d->map.n_chr; ++i) {
@@ -2188,7 +3613,7 @@ int main(int argc, char* argv[]) {
     printf("\n");*/
 
     // Testing break-evenly bug
-    GroupNum g2 = make_random_crosses(d,gande.group,1200,0,BASIC_OPT);
+    GroupNum g2 = make_random_crosses(d,gande.group,1200,0,NO_MAP,BASIC_OPT);
     delete_group(d,gande.group);
     GroupNum split[2000];
     for (int i = 0; i < 10; ++i) {

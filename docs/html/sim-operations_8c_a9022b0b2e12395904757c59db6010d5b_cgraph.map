@@ -1,0 +1,7 @@
+<map id="gsc_helper_tablefilereader_get_next_cell_wqueue" name="gsc_helper_tablefilereader_get_next_cell_wqueue">
+<area shape="rect" id="node1" title="Return the next cell from a queue of cells until the queue is exhausted, and thereafter read new cell..." alt="" coords="5,73,177,117"/>
+<area shape="rect" id="node2" href="$group__structs.html#ga9b389be1c0eada385d1015e445886c05" title="Read forwards in TableFileReader and return the next cell&#39;s contents, as well as how many column gaps..." alt="" coords="225,73,354,117"/>
+<area shape="rect" id="node3" href="$group__structs.html#ga9861b51e8a5c74f843aac748c932c3a0" title="Classify the character under the cursor of a TableFileReader as cell contents or otherwise." alt="" coords="402,5,573,49"/>
+<area shape="rect" id="node4" href="$group__structs.html#gac2206b9a58abb4b533d11dec4bd9f322" title="Read another buffer&#39;s worth of characters from a gsc_TableFileReader&#39;s file." alt="" coords="402,73,573,117"/>
+<area shape="rect" id="node5" href="$sim-operations_8c.html#aaaf3ebc75feaf901829232712e55677b" title="Replace calls to malloc direct with this function." alt="" coords="427,141,548,169"/>
+</map>

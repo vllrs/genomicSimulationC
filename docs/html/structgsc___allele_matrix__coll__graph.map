@@ -1,0 +1,5 @@
+<map id="gsc_AlleleMatrix" name="gsc_AlleleMatrix">
+<area shape="rect" id="node1" title=" " alt="" coords="71,113,188,141"/>
+<area shape="rect" id="node2" href="$structgsc___pedigree_i_d.html" title="A type representing a program&#45;lifetime&#45;unique identifier for a genotype, to be used in tracking pedig..." alt="" coords="5,5,118,33"/>
+<area shape="rect" id="node3" href="$structgsc___group_num.html" title="A type representing the identifier of a group of genotypes." alt="" coords="142,5,253,33"/>
+</map>

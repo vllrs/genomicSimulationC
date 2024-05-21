@@ -21,7 +21,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">genomicSimulationC<span id="projectnumber">&#160;0.2.4.003</span>
+   <div id="projectname">genomicSimulationC<span id="projectnumber">&#160;0.2.5</span>
    </div>
   </td>
  </tr>
@@ -67,6 +67,8 @@ $(function() {
 <a href="#nested-classes">Data Structures</a> &#124;
 <a href="#define-members">Macros</a> &#124;
 <a href="#typedef-members">Typedefs</a> &#124;
+<a href="#enum-members">Enumerations</a> &#124;
+<a href="#func-members">Functions</a> &#124;
 <a href="#var-members">Variables</a>  </div>
   <div class="headertitle"><div class="title">Data Structures</div></div>
 </div><!--header-->
@@ -94,152 +96,889 @@ Modules</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="nested-classes" name="nested-classes"></a>
 Data Structures</h2></td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_marker_position.html">MarkerPosition</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">A struct representing a single marker location.  <a href="struct_marker_position.html#details">More...</a><br /></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structgsc___marker_position.html">gsc_MarkerPosition</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">A struct representing a single marker location.  <a href="structgsc___marker_position.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_table_size.html">TableSize</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">A simple struct used for returning the dimensions of a matrix or table.  <a href="struct_table_size.html#details">More...</a><br /></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structgsc___table_size.html">gsc_TableSize</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">A simple struct used for returning the dimensions of a matrix or table.  <a href="structgsc___table_size.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_marker_blocks.html">MarkerBlocks</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">A struct used to store a set of blocks of markers.  <a href="struct_marker_blocks.html#details">More...</a><br /></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structgsc___marker_blocks.html">gsc_MarkerBlocks</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">A struct used to store a set of blocks of markers.  <a href="structgsc___marker_blocks.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_decimal_matrix.html">DecimalMatrix</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">A row-major heap matrix that contains floating point numbers.  <a href="struct_decimal_matrix.html#details">More...</a><br /></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structgsc___decimal_matrix.html">gsc_DecimalMatrix</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">A row-major heap matrix that contains floating point numbers.  <a href="structgsc___decimal_matrix.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_pedigree_i_d.html">PedigreeID</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">A type representing a program-lifetime-unique identifier for a genotype, to be used in tracking pedigree.  <a href="struct_pedigree_i_d.html#details">More...</a><br /></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structgsc___pedigree_i_d.html">gsc_PedigreeID</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">A type representing a program-lifetime-unique identifier for a genotype, to be used in tracking pedigree.  <a href="structgsc___pedigree_i_d.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_group_num.html">GroupNum</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">A type representing the identifier of a group of genotypes.  <a href="struct_group_num.html#details">More...</a><br /></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structgsc___group_num.html">gsc_GroupNum</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">A type representing the identifier of a group of genotypes.  <a href="structgsc___group_num.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_effect_i_d.html">EffectID</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">A type representing a particular loaded set of marker effects.  <a href="struct_effect_i_d.html#details">More...</a><br /></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structgsc___effect_i_d.html">gsc_EffectID</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">A type representing a particular loaded set of marker effects.  <a href="structgsc___effect_i_d.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_label_i_d.html">LabelID</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">A type representing a particular integer label.  <a href="struct_label_i_d.html#details">More...</a><br /></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structgsc___label_i_d.html">gsc_LabelID</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">A type representing a particular custom label.  <a href="structgsc___label_i_d.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_group_and_effect_set.html">GroupAndEffectSet</a></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structgsc___map_i_d.html">gsc_MapID</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">A type representing a particular loaded recombination map.  <a href="structgsc___map_i_d.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_gen_options.html">GenOptions</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">A type that contains choices of settings for <a class="el" href="struct_sim_data.html" title="Composite type that is used to run crossing simulations.">SimData</a> functions that create a new AlleleMatrix/generation.  <a href="struct_gen_options.html#details">More...</a><br /></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structgsc___multi_i_d_set.html">gsc_MultiIDSet</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Simple crate that stores a GroupNum, a MapID, and an EffectID.  <a href="structgsc___multi_i_d_set.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_genetic_map.html">GeneticMap</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">A type that stores the genetic map for a set of markers.  <a href="struct_genetic_map.html#details">More...</a><br /></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structgsc___gen_options.html">gsc_GenOptions</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">A type that contains choices of settings for <a class="el" href="structgsc___sim_data.html" title="Composite type that is used to run crossing simulations.">gsc_SimData</a> functions that create a new gsc_AlleleMatrix/generation.  <a href="structgsc___gen_options.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_allele_matrix.html">AlleleMatrix</a></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structgsc___simple_linkage_group.html">gsc_SimpleLinkageGroup</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Parameters for simulating meiosis on a linkage group whose markers are stored contiguously in the simulation.  <a href="structgsc___simple_linkage_group.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_effect_matrix.html">EffectMatrix</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">A type that stores a matrix of effect values and their names.  <a href="struct_effect_matrix.html#details">More...</a><br /></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structgsc___reordered_linkage_group.html">gsc_ReorderedLinkageGroup</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Parameters for simulating meiosis on a linkage group whose markers are re-ordered compared to the first recombination map.  <a href="structgsc___reordered_linkage_group.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_sim_data.html">SimData</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Composite type that is used to run crossing simulations.  <a href="struct_sim_data.html#details">More...</a><br /></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structgsc___linkage_group.html">gsc_LinkageGroup</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">A generic store for a linkage group, used to simulate meiosis on a certain subset of markers.  <a href="structgsc___linkage_group.html#details">More...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structgsc___recombination_map.html">gsc_RecombinationMap</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">A type that stores linkage groups and crossover probabilities for simulating meiosis.  <a href="structgsc___recombination_map.html#details">More...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structgsc___known_genome.html">gsc_KnownGenome</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">A type that stores the genome structure used in simulation.  <a href="structgsc___known_genome.html#details">More...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structgsc___allele_matrix.html">gsc_AlleleMatrix</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structgsc___effect_matrix.html">gsc_EffectMatrix</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">A type that stores a matrix of effect values and their names.  <a href="structgsc___effect_matrix.html#details">More...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structgsc___sim_data.html">gsc_SimData</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Composite type that is used to run crossing simulations.  <a href="structgsc___sim_data.html#details">More...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structgsc___table_file_reader.html">gsc_TableFileReader</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Stream reader for files of some tabular format.  <a href="structgsc___table_file_reader.html#details">More...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structgsc___table_file_cell.html">gsc_TableFileCell</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Represent a cell read by a <em><a class="el" href="structgsc___table_file_reader.html" title="Stream reader for files of some tabular format.">gsc_TableFileReader</a></em>.  <a href="structgsc___table_file_cell.html#details">More...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structgsc___mapfile_unit.html">gsc_MapfileUnit</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Unprocessed data for one marker (linkage group and position) loaded from a map file.  <a href="structgsc___mapfile_unit.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="define-members" name="define-members"></a>
 Macros</h2></td></tr>
-<tr class="memitem:ga8ad73d9697c47aa32a926fbfc36d2a87"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__structs.html#ga8ad73d9697c47aa32a926fbfc36d2a87">NO_PEDIGREE</a>&#160;&#160;&#160;(<a class="el" href="struct_pedigree_i_d.html">PedigreeID</a>){.id=0}</td></tr>
-<tr class="separator:ga8ad73d9697c47aa32a926fbfc36d2a87"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga9f261279a53dfe33021f00801df5709b"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__structs.html#ga9f261279a53dfe33021f00801df5709b">NO_GROUP</a>&#160;&#160;&#160;(<a class="el" href="struct_group_num.html">GroupNum</a>){.num=0}</td></tr>
-<tr class="separator:ga9f261279a53dfe33021f00801df5709b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga323f0e3c5ced1e5e79a3647f9a43ce7e"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__structs.html#ga323f0e3c5ced1e5e79a3647f9a43ce7e">NOT_AN_EFFECT_SET</a>&#160;&#160;&#160;(<a class="el" href="struct_effect_i_d.html">EffectID</a>){.id=0}</td></tr>
-<tr class="separator:ga323f0e3c5ced1e5e79a3647f9a43ce7e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gab4a297465025d2767c08c2f350856253"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__structs.html#gab4a297465025d2767c08c2f350856253">NOT_A_LABEL</a>&#160;&#160;&#160;(<a class="el" href="struct_label_i_d.html">LabelID</a>){.id=0}</td></tr>
-<tr class="separator:gab4a297465025d2767c08c2f350856253"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gab0154f9408fe4a3f8e82e470161ec18e"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__structs.html#gab0154f9408fe4a3f8e82e470161ec18e">GSC_CREATE_BUFFER</a>(n,  type,  length)</td></tr>
+<tr class="memdesc:gab0154f9408fe4a3f8e82e470161ec18e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Macro to create a stretchy buffer of any type and some length.  <a href="group__structs.html#gab0154f9408fe4a3f8e82e470161ec18e">More...</a><br /></td></tr>
+<tr class="separator:gab0154f9408fe4a3f8e82e470161ec18e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaf01630972193f6f49176afeb3916306f"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__structs.html#gaf01630972193f6f49176afeb3916306f">GSC_BUFFER_ISHEAP</a>(n)&#160;&#160;&#160;n##cap &gt;= sizeof(n##stack)/sizeof(n##stack[0])</td></tr>
+<tr class="memdesc:gaf01630972193f6f49176afeb3916306f"><td class="mdescLeft">&#160;</td><td class="mdescRight">For debugging purposes.  <a href="group__structs.html#gaf01630972193f6f49176afeb3916306f">More...</a><br /></td></tr>
+<tr class="separator:gaf01630972193f6f49176afeb3916306f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga0627c6d5721f51d30fc61c2bd9c86152"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__structs.html#ga0627c6d5721f51d30fc61c2bd9c86152">GSC_FINALISE_BUFFER</a>(n,  as,  nentries)</td></tr>
+<tr class="memdesc:ga0627c6d5721f51d30fc61c2bd9c86152"><td class="mdescLeft">&#160;</td><td class="mdescRight">Macro to convert a stretchy buffer to a solid heap vector.  <a href="group__structs.html#ga0627c6d5721f51d30fc61c2bd9c86152">More...</a><br /></td></tr>
+<tr class="separator:ga0627c6d5721f51d30fc61c2bd9c86152"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga9675b4bd2688e5f56acbb2346b884a24"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__structs.html#ga9675b4bd2688e5f56acbb2346b884a24">GSC_DELETE_BUFFER</a>(n)</td></tr>
+<tr class="memdesc:ga9675b4bd2688e5f56acbb2346b884a24"><td class="mdescLeft">&#160;</td><td class="mdescRight">Macro to delete a stretchy buffer.  <a href="group__structs.html#ga9675b4bd2688e5f56acbb2346b884a24">More...</a><br /></td></tr>
+<tr class="separator:ga9675b4bd2688e5f56acbb2346b884a24"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga4986c9d56e02f8cc9240f29a39555f03"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__structs.html#ga4986c9d56e02f8cc9240f29a39555f03">GSC_STRETCH_BUFFER</a>(n,  newlen)</td></tr>
+<tr class="memdesc:ga4986c9d56e02f8cc9240f29a39555f03"><td class="mdescLeft">&#160;</td><td class="mdescRight">Macro to expand the capacity of a stretchy buffer.  <a href="group__structs.html#ga4986c9d56e02f8cc9240f29a39555f03">More...</a><br /></td></tr>
+<tr class="separator:ga4986c9d56e02f8cc9240f29a39555f03"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gac4ac4cc8992764b6fbae9c569d06c427"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__structs.html#gac4ac4cc8992764b6fbae9c569d06c427">GSC_NO_PEDIGREE</a>&#160;&#160;&#160;(<a class="el" href="structgsc___pedigree_i_d.html">gsc_PedigreeID</a>){.id=0}</td></tr>
+<tr class="memdesc:gac4ac4cc8992764b6fbae9c569d06c427"><td class="mdescLeft">&#160;</td><td class="mdescRight">Empty/null value for pedigree fields.  <a href="group__structs.html#gac4ac4cc8992764b6fbae9c569d06c427">More...</a><br /></td></tr>
+<tr class="separator:gac4ac4cc8992764b6fbae9c569d06c427"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaf109f463dff93122baf7caa500e83eef"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__structs.html#gaf109f463dff93122baf7caa500e83eef">GSC_NO_GROUP</a>&#160;&#160;&#160;(<a class="el" href="structgsc___group_num.html">gsc_GroupNum</a>){.num=0}</td></tr>
+<tr class="memdesc:gaf109f463dff93122baf7caa500e83eef"><td class="mdescLeft">&#160;</td><td class="mdescRight">Empty/null value for group allocations.  <a href="group__structs.html#gaf109f463dff93122baf7caa500e83eef">More...</a><br /></td></tr>
+<tr class="separator:gaf109f463dff93122baf7caa500e83eef"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga97b47270a34b2e77032cac2257d1cb8d"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__structs.html#ga97b47270a34b2e77032cac2257d1cb8d">GSC_NO_EFFECTSET</a>&#160;&#160;&#160;(<a class="el" href="structgsc___effect_i_d.html">gsc_EffectID</a>){.id=0}</td></tr>
+<tr class="memdesc:ga97b47270a34b2e77032cac2257d1cb8d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Empty/null value for effect set identifiers.  <a href="group__structs.html#ga97b47270a34b2e77032cac2257d1cb8d">More...</a><br /></td></tr>
+<tr class="separator:ga97b47270a34b2e77032cac2257d1cb8d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga3cdd645c31e3c14d365c8cba62928a4f"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__structs.html#ga3cdd645c31e3c14d365c8cba62928a4f">GSC_NO_LABEL</a>&#160;&#160;&#160;(<a class="el" href="structgsc___label_i_d.html">gsc_LabelID</a>){.id=0}</td></tr>
+<tr class="memdesc:ga3cdd645c31e3c14d365c8cba62928a4f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Empty/null value for custom label identifiers.  <a href="group__structs.html#ga3cdd645c31e3c14d365c8cba62928a4f">More...</a><br /></td></tr>
+<tr class="separator:ga3cdd645c31e3c14d365c8cba62928a4f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga50f9d8210e1cb0c644cdf90fe0d23477"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__structs.html#ga50f9d8210e1cb0c644cdf90fe0d23477">GSC_NO_MAP</a>&#160;&#160;&#160;(<a class="el" href="structgsc___map_i_d.html">gsc_MapID</a>){.id=0}</td></tr>
+<tr class="memdesc:ga50f9d8210e1cb0c644cdf90fe0d23477"><td class="mdescLeft">&#160;</td><td class="mdescRight">Empty/null value for recombination map identifiers.  <a href="group__structs.html#ga50f9d8210e1cb0c644cdf90fe0d23477">More...</a><br /></td></tr>
+<tr class="separator:ga50f9d8210e1cb0c644cdf90fe0d23477"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="typedef-members" name="typedef-members"></a>
 Typedefs</h2></td></tr>
-<tr class="memitem:ga210a64911b3ec2ed32894e3969365e7f"><td class="memItemLeft" align="right" valign="top">typedef struct <a class="el" href="struct_allele_matrix.html">AlleleMatrix</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__structs.html#ga210a64911b3ec2ed32894e3969365e7f">AlleleMatrix</a></td></tr>
-<tr class="memdesc:ga210a64911b3ec2ed32894e3969365e7f"><td class="mdescLeft">&#160;</td><td class="mdescRight">A linked list entry that stores a matrix of alleles for a set of SNP markers and genotypes.  <a href="group__structs.html#ga210a64911b3ec2ed32894e3969365e7f">More...</a><br /></td></tr>
-<tr class="separator:ga210a64911b3ec2ed32894e3969365e7f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga75fcd8b0cc31c4c6edd1efcf47f2f8e2"><td class="memItemLeft" align="right" valign="top">typedef struct <a class="el" href="structgsc___allele_matrix.html">gsc_AlleleMatrix</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__structs.html#ga75fcd8b0cc31c4c6edd1efcf47f2f8e2">gsc_AlleleMatrix</a></td></tr>
+<tr class="memdesc:ga75fcd8b0cc31c4c6edd1efcf47f2f8e2"><td class="mdescLeft">&#160;</td><td class="mdescRight">A linked list entry that stores a matrix of alleles for a set of SNP markers and genotypes.  <a href="group__structs.html#ga75fcd8b0cc31c4c6edd1efcf47f2f8e2">More...</a><br /></td></tr>
+<tr class="separator:ga75fcd8b0cc31c4c6edd1efcf47f2f8e2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="enum-members" name="enum-members"></a>
+Enumerations</h2></td></tr>
+<tr class="memitem:gabaab9ae5c2f4689211a8f1a2b33d23bc"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__structs.html#gabaab9ae5c2f4689211a8f1a2b33d23bc">gsc_LinkageGroupType</a> { <a class="el" href="group__structs.html#ggabaab9ae5c2f4689211a8f1a2b33d23bca43305e4386c6a4c2b8a538e49bd22d50">GSC_LINKAGEGROUP_SIMPLE</a>
+, <a class="el" href="group__structs.html#ggabaab9ae5c2f4689211a8f1a2b33d23bca2dda577345113ce4397822dc484fe34a">GSC_LINKAGEGROUP_REORDER</a>
+ }</td></tr>
+<tr class="memdesc:gabaab9ae5c2f4689211a8f1a2b33d23bc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Enumerate possible types of recombination within linkage groups.  <a href="group__structs.html#gabaab9ae5c2f4689211a8f1a2b33d23bc">More...</a><br /></td></tr>
+<tr class="separator:gabaab9ae5c2f4689211a8f1a2b33d23bc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaa092055f7433a18bae99970ac6d2b79f"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__structs.html#gaa092055f7433a18bae99970ac6d2b79f">gsc_TableFileCurrentStatus</a> { <br />
+&#160;&#160;<a class="el" href="group__structs.html#ggaa092055f7433a18bae99970ac6d2b79fa826f62ac640f635777d762e6129cf1e2">GSC_TABLEFILE_NEWLINE</a>
+, <a class="el" href="group__structs.html#ggaa092055f7433a18bae99970ac6d2b79fa570d82d0d78f9dc4f991df3a492ad922">GSC_TABLEFILE_COLUMNGAP</a>
+, <a class="el" href="group__structs.html#ggaa092055f7433a18bae99970ac6d2b79fa928157f2beac1b0b67d5c08a3576a455">GSC_TABLEFILE_CONTENTS</a>
+, <a class="el" href="group__structs.html#ggaa092055f7433a18bae99970ac6d2b79fa10ff766349027085d393d3037a1b9e59">GSC_TABLEFILE_ERROR_EOF</a>
+, <br />
+&#160;&#160;<a class="el" href="group__structs.html#ggaa092055f7433a18bae99970ac6d2b79fa50b3c2e2c5ebda41b27f8bea704b49ab">GSC_TABLEFILE_ERROR_EOBUF</a>
+<br />
+ }</td></tr>
+<tr class="memdesc:gaa092055f7433a18bae99970ac6d2b79f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Represent possible states of the cursor of a <em><a class="el" href="structgsc___table_file_reader.html" title="Stream reader for files of some tabular format.">gsc_TableFileReader</a></em>.  <a href="group__structs.html#gaa092055f7433a18bae99970ac6d2b79f">More...</a><br /></td></tr>
+<tr class="separator:gaa092055f7433a18bae99970ac6d2b79f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga169da3c2b32a6f9afd92e2e0801ad741"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__structs.html#ga169da3c2b32a6f9afd92e2e0801ad741">gsc_GenotypeFileCellStyle</a> { <br />
+&#160;&#160;<a class="el" href="group__structs.html#gga169da3c2b32a6f9afd92e2e0801ad741a7ace3d1df4d9466ce2fdac1f1b2e678c">GSC_GENOTYPECELLSTYLE_PAIR</a>
+, <a class="el" href="group__structs.html#gga169da3c2b32a6f9afd92e2e0801ad741aec1165ad11520194f8a126f3ebd1529b">GSC_GENOTYPECELLSTYLE_COUNT</a>
+, <a class="el" href="group__structs.html#gga169da3c2b32a6f9afd92e2e0801ad741adc7d046830c6b85f13a3565177fa78c1">GSC_GENOTYPECELLSTYLE_ENCODED</a>
+, <a class="el" href="group__structs.html#gga169da3c2b32a6f9afd92e2e0801ad741a4838ce244876aa72916bf4d96423491a">GSC_GENOTYPECELLSTYLE_SLASHPAIR</a>
+, <br />
+&#160;&#160;<a class="el" href="group__structs.html#gga169da3c2b32a6f9afd92e2e0801ad741ab1a4bcd4b13e83b2a14a9db0cf23c118">GSC_GENOTYPECELLSTYLE_UNKNOWN</a>
+<br />
+ }</td></tr>
+<tr class="memdesc:ga169da3c2b32a6f9afd92e2e0801ad741"><td class="mdescLeft">&#160;</td><td class="mdescRight">Represent possible representations of alleles at a marker in a genotype file.  <a href="group__structs.html#ga169da3c2b32a6f9afd92e2e0801ad741">More...</a><br /></td></tr>
+<tr class="separator:ga169da3c2b32a6f9afd92e2e0801ad741"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gae49f64d8275e0072f6e36c13622e89b8"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__structs.html#gae49f64d8275e0072f6e36c13622e89b8">gsc_GenotypeFileType</a> { <a class="el" href="group__structs.html#ggae49f64d8275e0072f6e36c13622e89b8a5f86295f41ccba1b6d55083b47d08015">GSC_GENOTYPEFILE_MATRIX</a>
+, <a class="el" href="group__structs.html#ggae49f64d8275e0072f6e36c13622e89b8a84af5193acd7315949cf9434fe664318">GSC_GENOTYPEFILE_BED</a>
+, <a class="el" href="group__structs.html#ggae49f64d8275e0072f6e36c13622e89b8ac328f360965380d27a504cde5e848a1b">GSC_GENOTYPEFILE_PED</a>
+, <a class="el" href="group__structs.html#ggae49f64d8275e0072f6e36c13622e89b8a6ea230ca7286da7d1354472a6c837fc5">GSC_GENOTYPEFILE_VCF</a>
+ }</td></tr>
+<tr class="memdesc:gae49f64d8275e0072f6e36c13622e89b8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Enumerate types of genotype files that the simulation knows how to load.  <a href="group__structs.html#gae49f64d8275e0072f6e36c13622e89b8">More...</a><br /></td></tr>
+<tr class="separator:gae49f64d8275e0072f6e36c13622e89b8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
+Functions</h2></td></tr>
+<tr class="memitem:ga1a3a39309d4ce6447581e73f7483fbfb"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structgsc___table_file_reader.html">gsc_TableFileReader</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__structs.html#ga1a3a39309d4ce6447581e73f7483fbfb">gsc_tablefilereader_create</a> (const char *filename)</td></tr>
+<tr class="memdesc:ga1a3a39309d4ce6447581e73f7483fbfb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Open a file for reading with <a class="el" href="structgsc___table_file_reader.html" title="Stream reader for files of some tabular format.">gsc_TableFileReader</a>.  <a href="group__structs.html#ga1a3a39309d4ce6447581e73f7483fbfb">More...</a><br /></td></tr>
+<tr class="separator:ga1a3a39309d4ce6447581e73f7483fbfb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga85b05dcdc5ec484d918ed2d3330c3ae8"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__structs.html#ga85b05dcdc5ec484d918ed2d3330c3ae8">gsc_tablefilereader_close</a> (<a class="el" href="structgsc___table_file_reader.html">gsc_TableFileReader</a> *tbl)</td></tr>
+<tr class="memdesc:ga85b05dcdc5ec484d918ed2d3330c3ae8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Close a <a class="el" href="structgsc___table_file_reader.html" title="Stream reader for files of some tabular format.">gsc_TableFileReader</a>'s file pointer.  <a href="group__structs.html#ga85b05dcdc5ec484d918ed2d3330c3ae8">More...</a><br /></td></tr>
+<tr class="separator:ga85b05dcdc5ec484d918ed2d3330c3ae8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gac2206b9a58abb4b533d11dec4bd9f322"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__structs.html#gac2206b9a58abb4b533d11dec4bd9f322">gsc_helper_tablefilereader_refill_buffer</a> (<a class="el" href="structgsc___table_file_reader.html">gsc_TableFileReader</a> *tbl)</td></tr>
+<tr class="memdesc:gac2206b9a58abb4b533d11dec4bd9f322"><td class="mdescLeft">&#160;</td><td class="mdescRight">Read another buffer's worth of characters from a <a class="el" href="structgsc___table_file_reader.html" title="Stream reader for files of some tabular format.">gsc_TableFileReader</a>'s file.  <a href="group__structs.html#gac2206b9a58abb4b533d11dec4bd9f322">More...</a><br /></td></tr>
+<tr class="separator:gac2206b9a58abb4b533d11dec4bd9f322"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga9861b51e8a5c74f843aac748c932c3a0"><td class="memItemLeft" align="right" valign="top">enum <a class="el" href="group__structs.html#gaa092055f7433a18bae99970ac6d2b79f">gsc_TableFileCurrentStatus</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__structs.html#ga9861b51e8a5c74f843aac748c932c3a0">gsc_helper_tablefilereader_classify_char</a> (<a class="el" href="structgsc___table_file_reader.html">gsc_TableFileReader</a> *tbl)</td></tr>
+<tr class="memdesc:ga9861b51e8a5c74f843aac748c932c3a0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Classify the character under the cursor of a TableFileReader as cell contents or otherwise.  <a href="group__structs.html#ga9861b51e8a5c74f843aac748c932c3a0">More...</a><br /></td></tr>
+<tr class="separator:ga9861b51e8a5c74f843aac748c932c3a0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga85446dd929940e823745067d0a1d1d5d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__structs.html#ga85446dd929940e823745067d0a1d1d5d">gsc_tablefilecell_deep_copy</a> (<a class="el" href="structgsc___table_file_cell.html">gsc_TableFileCell</a> *c)</td></tr>
+<tr class="memdesc:ga85446dd929940e823745067d0a1d1d5d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Allocate memory to store a deep copy of a <a class="el" href="structgsc___table_file_cell.html" title="Represent a cell read by a gsc_TableFileReader.">gsc_TableFileCell</a>, if previously only a shallow copy.  <a href="group__structs.html#ga85446dd929940e823745067d0a1d1d5d">More...</a><br /></td></tr>
+<tr class="separator:ga85446dd929940e823745067d0a1d1d5d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga9b389be1c0eada385d1015e445886c05"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structgsc___table_file_cell.html">gsc_TableFileCell</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__structs.html#ga9b389be1c0eada385d1015e445886c05">gsc_tablefilereader_get_next_cell</a> (<a class="el" href="structgsc___table_file_reader.html">gsc_TableFileReader</a> *tbl)</td></tr>
+<tr class="memdesc:ga9b389be1c0eada385d1015e445886c05"><td class="mdescLeft">&#160;</td><td class="mdescRight">Read forwards in TableFileReader and return the next cell's contents, as well as how many column gaps and newlines preceeded it.  <a href="group__structs.html#ga9b389be1c0eada385d1015e445886c05">More...</a><br /></td></tr>
+<tr class="separator:ga9b389be1c0eada385d1015e445886c05"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="var-members" name="var-members"></a>
 Variables</h2></td></tr>
-<tr class="memitem:ga5c6b92aede8f29f53476aa78d4e4133a"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="struct_gen_options.html">GenOptions</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__structs.html#ga5c6b92aede8f29f53476aa78d4e4133a">BASIC_OPT</a></td></tr>
-<tr class="memdesc:ga5c6b92aede8f29f53476aa78d4e4133a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Options parameter to run <a class="el" href="struct_sim_data.html" title="Composite type that is used to run crossing simulations.">SimData</a> functions in their bare-bones form.  <a href="group__structs.html#ga5c6b92aede8f29f53476aa78d4e4133a">More...</a><br /></td></tr>
-<tr class="separator:ga5c6b92aede8f29f53476aa78d4e4133a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gabec7841eda2ede124314f2f49e224ca0"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="structgsc___gen_options.html">gsc_GenOptions</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__structs.html#gabec7841eda2ede124314f2f49e224ca0">GSC_BASIC_OPT</a></td></tr>
+<tr class="memdesc:gabec7841eda2ede124314f2f49e224ca0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Default parameter values for GenOptions, to help with quick scripts and prototypes.  <a href="group__structs.html#gabec7841eda2ede124314f2f49e224ca0">More...</a><br /></td></tr>
+<tr class="separator:gabec7841eda2ede124314f2f49e224ca0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <p >How the simulation stores data. </p>
 <p >genomicSimulation is a state-based package. These data structures are used to store the library's data/state. Many use dynamically allocated memory so call the relevant delete_ function if one exists when you are finished with them.</p>
-<p ><a class="el" href="struct_sim_data.html" title="Composite type that is used to run crossing simulations.">SimData</a> is the central state/data storage struct, and so is a required parameter to most user-facing functions. It contains pointers to a <a class="el" href="struct_genetic_map.html" title="A type that stores the genetic map for a set of markers.">GeneticMap</a> (storing the loaded genome map), an <a class="el" href="struct_effect_matrix.html" title="A type that stores a matrix of effect values and their names.">EffectMatrix</a> (storing the loaded allele effects), and an <a class="el" href="struct_allele_matrix.html">AlleleMatrix</a> (storing metadata and genotypes of founders and simulated offspring).</p>
-<p >Other structs in this group (<a class="el" href="struct_table_size.html" title="A simple struct used for returning the dimensions of a matrix or table.">TableSize</a>, <a class="el" href="struct_marker_blocks.html" title="A struct used to store a set of blocks of markers.">MarkerBlocks</a>, <a class="el" href="struct_gen_options.html" title="A type that contains choices of settings for SimData functions that create a new AlleleMatrix/generat...">GenOptions</a>) represented specific types of data and are used as parameters and return value of certain functions. </p>
+<p ><a class="el" href="structgsc___sim_data.html" title="Composite type that is used to run crossing simulations.">gsc_SimData</a> is the central state/data storage struct, and so is a required parameter to most user-facing functions. It contains pointers to a <a class="el" href="structgsc___known_genome.html" title="A type that stores the genome structure used in simulation.">gsc_KnownGenome</a> (storing the loaded markers and any recombination maps), an <a class="el" href="structgsc___effect_matrix.html" title="A type that stores a matrix of effect values and their names.">gsc_EffectMatrix</a> (storing the loaded allele effects), and an <a class="el" href="structgsc___allele_matrix.html">gsc_AlleleMatrix</a> (storing metadata and genotypes of founders and simulated offspring).</p>
+<p >Other structs in this group (<a class="el" href="structgsc___table_size.html" title="A simple struct used for returning the dimensions of a matrix or table.">gsc_TableSize</a>, <a class="el" href="structgsc___marker_blocks.html" title="A struct used to store a set of blocks of markers.">gsc_MarkerBlocks</a>, <a class="el" href="structgsc___gen_options.html" title="A type that contains choices of settings for gsc_SimData functions that create a new gsc_AlleleMatrix...">gsc_GenOptions</a>) represented specific types of data and are used as parameters and return value of certain functions. </p>
 <h2 class="groupheader">Macro Definition Documentation</h2>
-<a id="ga9f261279a53dfe33021f00801df5709b" name="ga9f261279a53dfe33021f00801df5709b"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ga9f261279a53dfe33021f00801df5709b">&#9670;&nbsp;</a></span>NO_GROUP</h2>
+<a id="gaf01630972193f6f49176afeb3916306f" name="gaf01630972193f6f49176afeb3916306f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gaf01630972193f6f49176afeb3916306f">&#9670;&nbsp;</a></span>GSC_BUFFER_ISHEAP</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">#define NO_GROUP&#160;&#160;&#160;(<a class="el" href="struct_group_num.html">GroupNum</a>){.num=0}</td>
+          <td class="memname">#define GSC_BUFFER_ISHEAP</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">n</td><td>)</td>
+          <td>&#160;&#160;&#160;n##cap &gt;= sizeof(n##stack)/sizeof(n##stack[0])</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
+<p>For debugging purposes. </p>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="group__structs.html#gab0154f9408fe4a3f8e82e470161ec18e" title="Macro to create a stretchy buffer of any type and some length.">GSC_CREATE_BUFFER</a> </dd>
+<dd>
+<a class="el" href="group__structs.html#ga4986c9d56e02f8cc9240f29a39555f03" title="Macro to expand the capacity of a stretchy buffer.">GSC_STRETCH_BUFFER</a> </dd>
+<dd>
+<a class="el" href="group__structs.html#ga9675b4bd2688e5f56acbb2346b884a24" title="Macro to delete a stretchy buffer.">GSC_DELETE_BUFFER</a> </dd></dl>
+
 </div>
 </div>
-<a id="ga8ad73d9697c47aa32a926fbfc36d2a87" name="ga8ad73d9697c47aa32a926fbfc36d2a87"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ga8ad73d9697c47aa32a926fbfc36d2a87">&#9670;&nbsp;</a></span>NO_PEDIGREE</h2>
+<a id="gab0154f9408fe4a3f8e82e470161ec18e" name="gab0154f9408fe4a3f8e82e470161ec18e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gab0154f9408fe4a3f8e82e470161ec18e">&#9670;&nbsp;</a></span>GSC_CREATE_BUFFER</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">#define NO_PEDIGREE&#160;&#160;&#160;(<a class="el" href="struct_pedigree_i_d.html">PedigreeID</a>){.id=0}</td>
+          <td class="memname">#define GSC_CREATE_BUFFER</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">n, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">type, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">length&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
         </tr>
       </table>
 </div><div class="memdoc">
+<b>Value:</b><div class="fragment"><div class="line">type n##stack[<span class="keyword">sizeof</span>(int)*<a class="code hl_define" href="sim-operations_8h.html#af5eaa46085f7cc2b20091cdf17eea54a">CONTIG_WIDTH</a>/<span class="keyword">sizeof</span>(type)]; <span class="keywordtype">size_t</span> n##cap = length; \</div>
+<div class="line">type* n = (n##cap &gt;= <span class="keyword">sizeof</span>(n##stack)/<span class="keyword">sizeof</span>(type)) ? <a class="code hl_function" href="sim-operations_8c.html#aaaf3ebc75feaf901829232712e55677b">gsc_malloc_wrap</a>(<span class="keyword">sizeof</span>(type)*n##cap,<a class="code hl_define" href="sim-operations_8h.html#ad3981037d5b9c99a0c49de9f0dfc1e8c">GSC_TRUE</a>) : n##stack;</div>
+<div class="ttc" id="asim-operations_8c_html_aaaf3ebc75feaf901829232712e55677b"><div class="ttname"><a href="sim-operations_8c.html#aaaf3ebc75feaf901829232712e55677b">gsc_malloc_wrap</a></div><div class="ttdeci">static void * gsc_malloc_wrap(const size_t size, char exitonfail)</div><div class="ttdoc">Replace calls to malloc direct with this function.</div><div class="ttdef"><b>Definition:</b> sim-operations.c:33</div></div>
+<div class="ttc" id="asim-operations_8h_html_ad3981037d5b9c99a0c49de9f0dfc1e8c"><div class="ttname"><a href="sim-operations_8h.html#ad3981037d5b9c99a0c49de9f0dfc1e8c">GSC_TRUE</a></div><div class="ttdeci">#define GSC_TRUE</div><div class="ttdef"><b>Definition:</b> sim-operations.h:80</div></div>
+<div class="ttc" id="asim-operations_8h_html_af5eaa46085f7cc2b20091cdf17eea54a"><div class="ttname"><a href="sim-operations_8h.html#af5eaa46085f7cc2b20091cdf17eea54a">CONTIG_WIDTH</a></div><div class="ttdeci">#define CONTIG_WIDTH</div><div class="ttdef"><b>Definition:</b> sim-operations.h:85</div></div>
+</div><!-- fragment -->
+<p>Macro to create a stretchy buffer of any type and some length. </p>
+<p >After this macro is run, a buffer with the requested type and capacity will exist in the scope under the requested name.</p>
+<p >This macro will also create two helper variables. Their names will be generated based on the name of the buffer:</p><ul>
+<li>{name}cap will contain the current capacity of the buffer.</li>
+<li>{name}stack will be a stack array of size CONTIG_WIDTH. If the buffer length is not greater than CONTIG_WIDTH, then {name}stack will point to the same array as the buffer.</li>
+</ul>
+<p >Use this buffer only within one local scope. These functions won't work for buffers that have escaped their scope and so left their helper variables behind.</p>
+<p >The buffer will be allocated on the stack if its length will not make it exceed CONTIG_WIDTH*sizeof(int) in size in bytes. Otherwise, it will be allocated on the heap. For safety, you should call <em>GSC_DELETE_BUFFER</em> on the buffer once you have finished using it, even if you believe it is small enough to have been allocated on the stack.</p>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="group__structs.html#ga9675b4bd2688e5f56acbb2346b884a24" title="Macro to delete a stretchy buffer.">GSC_DELETE_BUFFER</a> </dd>
+<dd>
+<a class="el" href="group__structs.html#ga4986c9d56e02f8cc9240f29a39555f03" title="Macro to expand the capacity of a stretchy buffer.">GSC_STRETCH_BUFFER</a></dd></dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">n</td><td>name for the buffer. </td></tr>
+    <tr><td class="paramname">type</td><td>type of each entry in the buffer (eg int). </td></tr>
+    <tr><td class="paramname">length</td><td>number of entries the buffer should be able to hold. </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
-<a id="gab4a297465025d2767c08c2f350856253" name="gab4a297465025d2767c08c2f350856253"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#gab4a297465025d2767c08c2f350856253">&#9670;&nbsp;</a></span>NOT_A_LABEL</h2>
+<a id="ga9675b4bd2688e5f56acbb2346b884a24" name="ga9675b4bd2688e5f56acbb2346b884a24"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga9675b4bd2688e5f56acbb2346b884a24">&#9670;&nbsp;</a></span>GSC_DELETE_BUFFER</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">#define NOT_A_LABEL&#160;&#160;&#160;(<a class="el" href="struct_label_i_d.html">LabelID</a>){.id=0}</td>
+          <td class="memname">#define GSC_DELETE_BUFFER</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">n</td><td>)</td>
+          <td></td>
         </tr>
       </table>
 </div><div class="memdoc">
+<b>Value:</b><div class="fragment"><div class="line"><span class="keywordflow">do</span> { <span class="keywordflow">if</span> (n##cap &gt;= <span class="keyword">sizeof</span>(n##stack)/<span class="keyword">sizeof</span>(n##stack[0])) { <a class="code hl_define" href="sim-operations_8h.html#adf944aa49cef9f70a33ab114a0f071a9">GSC_FREE</a>(n); } \</div>
+<div class="line">n = NULL; n##cap = 0; } <span class="keywordflow">while</span> (0)</div>
+<div class="ttc" id="asim-operations_8h_html_adf944aa49cef9f70a33ab114a0f071a9"><div class="ttname"><a href="sim-operations_8h.html#adf944aa49cef9f70a33ab114a0f071a9">GSC_FREE</a></div><div class="ttdeci">#define GSC_FREE(ptr)</div><div class="ttdef"><b>Definition:</b> sim-operations.h:96</div></div>
+</div><!-- fragment -->
+<p>Macro to delete a stretchy buffer. </p>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="group__structs.html#gab0154f9408fe4a3f8e82e470161ec18e" title="Macro to create a stretchy buffer of any type and some length.">GSC_CREATE_BUFFER</a> </dd>
+<dd>
+<a class="el" href="group__structs.html#ga4986c9d56e02f8cc9240f29a39555f03" title="Macro to expand the capacity of a stretchy buffer.">GSC_STRETCH_BUFFER</a> </dd>
+<dd>
+<a class="el" href="group__structs.html#ga0627c6d5721f51d30fc61c2bd9c86152" title="Macro to convert a stretchy buffer to a solid heap vector.">GSC_FINALISE_BUFFER</a></dd></dl>
+<p>The buffer named {n}, and its assistant variable {n}cap and {n}stack, must exist in the current scope. They would be created by <em>GSC_CREATE_BUFFER</em> </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">n</td><td>name of the buffer. </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
-<a id="ga323f0e3c5ced1e5e79a3647f9a43ce7e" name="ga323f0e3c5ced1e5e79a3647f9a43ce7e"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ga323f0e3c5ced1e5e79a3647f9a43ce7e">&#9670;&nbsp;</a></span>NOT_AN_EFFECT_SET</h2>
+<a id="ga0627c6d5721f51d30fc61c2bd9c86152" name="ga0627c6d5721f51d30fc61c2bd9c86152"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga0627c6d5721f51d30fc61c2bd9c86152">&#9670;&nbsp;</a></span>GSC_FINALISE_BUFFER</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">#define NOT_AN_EFFECT_SET&#160;&#160;&#160;(<a class="el" href="struct_effect_i_d.html">EffectID</a>){.id=0}</td>
+          <td class="memname">#define GSC_FINALISE_BUFFER</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">n, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">as, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">nentries&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
         </tr>
       </table>
 </div><div class="memdoc">
+<b>Value:</b><div class="fragment"><div class="line"><span class="keywordflow">do</span> { <span class="keywordflow">if</span> (n##cap &gt;= <span class="keyword">sizeof</span>(n##stack)/<span class="keyword">sizeof</span>(n##stack[0])) { as = n; } <span class="keywordflow">else</span> \</div>
+<div class="line">{ <span class="keywordtype">size_t</span> len = nentries &gt; n##cap ? n##cap : nentries; as = <a class="code hl_function" href="sim-operations_8c.html#aaaf3ebc75feaf901829232712e55677b">gsc_malloc_wrap</a>(<span class="keyword">sizeof</span>(n##stack[0])*len,<a class="code hl_define" href="sim-operations_8h.html#ad3981037d5b9c99a0c49de9f0dfc1e8c">GSC_TRUE</a>); memcpy(as,n,<span class="keyword">sizeof</span>(n##stack[0])*len); } } <span class="keywordflow">while</span> (0)</div>
+</div><!-- fragment -->
+<p>Macro to convert a stretchy buffer to a solid heap vector. </p>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="group__structs.html#ga9675b4bd2688e5f56acbb2346b884a24" title="Macro to delete a stretchy buffer.">GSC_DELETE_BUFFER</a></dd></dl>
+<p>The buffer named {n}, and its assistant variable {n}cap and {n}stack, must exist in the current scope. They would be created by <em>GSC_CREATE_BUFFER</em> </p>
+<p >This is an alternative to GSC_DELETE_BUFFER, if you want to keep the results.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">n</td><td>name of the buffer. </td></tr>
+    <tr><td class="paramname">as</td><td>name of the finalised buffer. </td></tr>
+    <tr><td class="paramname">nentries</td><td>number of entries to copy, if less than buffer capacity </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="ga97b47270a34b2e77032cac2257d1cb8d" name="ga97b47270a34b2e77032cac2257d1cb8d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga97b47270a34b2e77032cac2257d1cb8d">&#9670;&nbsp;</a></span>GSC_NO_EFFECTSET</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define GSC_NO_EFFECTSET&#160;&#160;&#160;(<a class="el" href="structgsc___effect_i_d.html">gsc_EffectID</a>){.id=0}</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Empty/null value for effect set identifiers. </p>
+<p ><em>Has short name:</em> <a class="el" href="group__shortnames.html#ga27b7a0c46aa95c0f127549d8ae007b8d">NO_EFFECTSET</a> </p>
+
+</div>
+</div>
+<a id="gaf109f463dff93122baf7caa500e83eef" name="gaf109f463dff93122baf7caa500e83eef"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gaf109f463dff93122baf7caa500e83eef">&#9670;&nbsp;</a></span>GSC_NO_GROUP</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define GSC_NO_GROUP&#160;&#160;&#160;(<a class="el" href="structgsc___group_num.html">gsc_GroupNum</a>){.num=0}</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Empty/null value for group allocations. </p>
+<p ><em>Has short name:</em> <a class="el" href="group__shortnames.html#ga9f261279a53dfe33021f00801df5709b">NO_GROUP</a> </p>
+
+</div>
+</div>
+<a id="ga3cdd645c31e3c14d365c8cba62928a4f" name="ga3cdd645c31e3c14d365c8cba62928a4f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga3cdd645c31e3c14d365c8cba62928a4f">&#9670;&nbsp;</a></span>GSC_NO_LABEL</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define GSC_NO_LABEL&#160;&#160;&#160;(<a class="el" href="structgsc___label_i_d.html">gsc_LabelID</a>){.id=0}</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Empty/null value for custom label identifiers. </p>
+<p ><em>Has short name:</em> <a class="el" href="group__shortnames.html#ga656701d3e780d6e6bd991aac853c0433">NO_LABEL</a> </p>
+
+</div>
+</div>
+<a id="ga50f9d8210e1cb0c644cdf90fe0d23477" name="ga50f9d8210e1cb0c644cdf90fe0d23477"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga50f9d8210e1cb0c644cdf90fe0d23477">&#9670;&nbsp;</a></span>GSC_NO_MAP</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define GSC_NO_MAP&#160;&#160;&#160;(<a class="el" href="structgsc___map_i_d.html">gsc_MapID</a>){.id=0}</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Empty/null value for recombination map identifiers. </p>
+<p ><em>Has short name:</em> <a class="el" href="group__shortnames.html#ga3710da75e403e5a3da4e2deade0d50af">NO_MAP</a> </p>
+
+</div>
+</div>
+<a id="gac4ac4cc8992764b6fbae9c569d06c427" name="gac4ac4cc8992764b6fbae9c569d06c427"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gac4ac4cc8992764b6fbae9c569d06c427">&#9670;&nbsp;</a></span>GSC_NO_PEDIGREE</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define GSC_NO_PEDIGREE&#160;&#160;&#160;(<a class="el" href="structgsc___pedigree_i_d.html">gsc_PedigreeID</a>){.id=0}</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Empty/null value for pedigree fields. </p>
+<p ><em>Has short name:</em> <a class="el" href="group__shortnames.html#ga8ad73d9697c47aa32a926fbfc36d2a87">NO_PEDIGREE</a> </p>
+
+</div>
+</div>
+<a id="ga4986c9d56e02f8cc9240f29a39555f03" name="ga4986c9d56e02f8cc9240f29a39555f03"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga4986c9d56e02f8cc9240f29a39555f03">&#9670;&nbsp;</a></span>GSC_STRETCH_BUFFER</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define GSC_STRETCH_BUFFER</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">n, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">newlen&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<b>Value:</b><div class="fragment"><div class="line">    <span class="keywordflow">do</span> {    \</div>
+<div class="line">    if (newlen &lt; n##cap) { } \</div>
+<div class="line">    else <span class="keywordflow">if</span> (n##cap &gt;= <span class="keyword">sizeof</span>(n##stack)/<span class="keyword">sizeof</span>(n##stack[0])) { \</div>
+<div class="line">        void* tmp = <a class="code hl_function" href="sim-operations_8c.html#aaaf3ebc75feaf901829232712e55677b">gsc_malloc_wrap</a>(<span class="keyword">sizeof</span>(n##stack[0])*newlen,<a class="code hl_define" href="sim-operations_8h.html#ad7e35da105ef91e548f815227171d1df">GSC_FALSE</a>); \</div>
+<div class="line">        if (tmp != NULL) { \</div>
+<div class="line">        memcpy(tmp,n,<span class="keyword">sizeof</span>(n[0])*n##cap); \</div>
+<div class="line">        GSC_FREE(n); n = tmp; n##cap = newlen; }} \</div>
+<div class="line">    else <span class="keywordflow">if</span> (newlen &gt;= <span class="keyword">sizeof</span>(n##stack)/<span class="keyword">sizeof</span>(n##stack[0])) { \</div>
+<div class="line">        n = <a class="code hl_function" href="sim-operations_8c.html#aaaf3ebc75feaf901829232712e55677b">gsc_malloc_wrap</a>(<span class="keyword">sizeof</span>(n##stack[0])*newlen,<a class="code hl_define" href="sim-operations_8h.html#ad7e35da105ef91e548f815227171d1df">GSC_FALSE</a>); \</div>
+<div class="line">        if (n != NULL) { \</div>
+<div class="line">        memcpy(n,n##stack,<span class="keyword">sizeof</span>(n##stack[0])*n##cap); n##cap = newlen; }} \</div>
+<div class="line">    else <span class="keywordflow">if</span> (newlen &lt; <a class="code hl_define" href="sim-operations_8h.html#af5eaa46085f7cc2b20091cdf17eea54a">CONTIG_WIDTH</a>) { n##cap = newlen; } \</div>
+<div class="line">} <span class="keywordflow">while</span> (0)</div>
+<div class="ttc" id="asim-operations_8h_html_ad7e35da105ef91e548f815227171d1df"><div class="ttname"><a href="sim-operations_8h.html#ad7e35da105ef91e548f815227171d1df">GSC_FALSE</a></div><div class="ttdeci">#define GSC_FALSE</div><div class="ttdef"><b>Definition:</b> sim-operations.h:81</div></div>
+</div><!-- fragment -->
+<p>Macro to expand the capacity of a stretchy buffer. </p>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="group__structs.html#gab0154f9408fe4a3f8e82e470161ec18e" title="Macro to create a stretchy buffer of any type and some length.">GSC_CREATE_BUFFER</a> </dd>
+<dd>
+<a class="el" href="group__structs.html#ga9675b4bd2688e5f56acbb2346b884a24" title="Macro to delete a stretchy buffer.">GSC_DELETE_BUFFER</a></dd></dl>
+<p>The buffer named {n}, and its assistant variables {n}cap and {n}stack, must exist in the current scope. They would be created by <em>GSC_CREATE_BUFFER</em> </p>
+<p >After this macro executes, the buffer named {n} will have the capacity to hold {n}cap entries. Unless memory allocation failed, {n}cap will be greater than or equal to the requested new length. Check the value of {n}cap to check that resizing succeeded.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">n</td><td>name of the buffer. </td></tr>
+    <tr><td class="paramname">newlen</td><td>after execution, the buffer should be able to hold this many entries, unless memory allocation failed (can be checked with n{cap} &gt;= newlen ) </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
 <h2 class="groupheader">Typedef Documentation</h2>
-<a id="ga210a64911b3ec2ed32894e3969365e7f" name="ga210a64911b3ec2ed32894e3969365e7f"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ga210a64911b3ec2ed32894e3969365e7f">&#9670;&nbsp;</a></span>AlleleMatrix</h2>
+<a id="ga75fcd8b0cc31c4c6edd1efcf47f2f8e2" name="ga75fcd8b0cc31c4c6edd1efcf47f2f8e2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga75fcd8b0cc31c4c6edd1efcf47f2f8e2">&#9670;&nbsp;</a></span>gsc_AlleleMatrix</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">typedef struct <a class="el" href="struct_allele_matrix.html">AlleleMatrix</a> <a class="el" href="struct_allele_matrix.html">AlleleMatrix</a></td>
+          <td class="memname">typedef struct <a class="el" href="structgsc___allele_matrix.html">gsc_AlleleMatrix</a> <a class="el" href="structgsc___allele_matrix.html">gsc_AlleleMatrix</a></td>
         </tr>
       </table>
 </div><div class="memdoc">
 
 <p>A linked list entry that stores a matrix of alleles for a set of SNP markers and genotypes. </p>
+<p >The simulation stores its genotypes in a list of AlleleMatrix nodes. Each node can store up to CONTIG_WIDTH genotypes.</p>
+<p ><em>Has short name:</em> <a class="el" href="group__shortnames.html#ga029c9078fc19e20d1e2fda468f92f35b">AlleleMatrix</a> </p>
+
+</div>
+</div>
+<h2 class="groupheader">Enumeration Type Documentation</h2>
+<a id="ga169da3c2b32a6f9afd92e2e0801ad741" name="ga169da3c2b32a6f9afd92e2e0801ad741"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga169da3c2b32a6f9afd92e2e0801ad741">&#9670;&nbsp;</a></span>gsc_GenotypeFileCellStyle</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum <a class="el" href="group__structs.html#ga169da3c2b32a6f9afd92e2e0801ad741">gsc_GenotypeFileCellStyle</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Represent possible representations of alleles at a marker in a genotype file. </p>
+<table class="fieldtable">
+<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="gga169da3c2b32a6f9afd92e2e0801ad741a7ace3d1df4d9466ce2fdac1f1b2e678c" name="gga169da3c2b32a6f9afd92e2e0801ad741a7ace3d1df4d9466ce2fdac1f1b2e678c"></a>GSC_GENOTYPECELLSTYLE_PAIR&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="gga169da3c2b32a6f9afd92e2e0801ad741aec1165ad11520194f8a126f3ebd1529b" name="gga169da3c2b32a6f9afd92e2e0801ad741aec1165ad11520194f8a126f3ebd1529b"></a>GSC_GENOTYPECELLSTYLE_COUNT&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="gga169da3c2b32a6f9afd92e2e0801ad741adc7d046830c6b85f13a3565177fa78c1" name="gga169da3c2b32a6f9afd92e2e0801ad741adc7d046830c6b85f13a3565177fa78c1"></a>GSC_GENOTYPECELLSTYLE_ENCODED&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="gga169da3c2b32a6f9afd92e2e0801ad741a4838ce244876aa72916bf4d96423491a" name="gga169da3c2b32a6f9afd92e2e0801ad741a4838ce244876aa72916bf4d96423491a"></a>GSC_GENOTYPECELLSTYLE_SLASHPAIR&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="gga169da3c2b32a6f9afd92e2e0801ad741ab1a4bcd4b13e83b2a14a9db0cf23c118" name="gga169da3c2b32a6f9afd92e2e0801ad741ab1a4bcd4b13e83b2a14a9db0cf23c118"></a>GSC_GENOTYPECELLSTYLE_UNKNOWN&#160;</td><td class="fielddoc"></td></tr>
+</table>
+
+</div>
+</div>
+<a id="gae49f64d8275e0072f6e36c13622e89b8" name="gae49f64d8275e0072f6e36c13622e89b8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gae49f64d8275e0072f6e36c13622e89b8">&#9670;&nbsp;</a></span>gsc_GenotypeFileType</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum <a class="el" href="group__structs.html#gae49f64d8275e0072f6e36c13622e89b8">gsc_GenotypeFileType</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Enumerate types of genotype files that the simulation knows how to load. </p>
+<p >The format of the file cannot be automatically in all cases. This type exists so that users can specify the format of input files.</p>
+<p ><em>Has short name:</em> GenotypeFileType</p>
+<p >The format of the file is decoded separately from the format of the alleles of each genotype at each marker. In the templates of each format, "[alleles]" can represent:</p><ul>
+<li>a pair of ASCII characters (in which case the two characters are interpreted as the two alleles, with their ordering representing their phase),</li>
+<li>a single character from the standard IUPAC nucleotide encoding (in which case the character is decoded to represent the alleles observed at this marker. The phase of the alleles at this marker is randomly chosen if the genotype is heterozygous at that marker), or</li>
+<li>a single digit from {0,1,2} (in which case the digit represents the number of copies of the major allele. The phase of the alleles at this marker if the digit is 1 is randomly chosen.)</li>
+</ul>
+<p >IUPAC nucleotide encoding: Code =&gt; Alleles key: A =&gt; AA ; C =&gt; CC ; G =&gt; GG ; T =&gt; TT ; R =&gt; AG ; Y =&gt; CT ; S =&gt; CG ; W =&gt; AT ; K =&gt; GT ; M =&gt; AC</p>
+<p >The format of the "[alleles]" cells in a file can be automatically determined out of these options. </p>
+<table class="fieldtable">
+<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="ggae49f64d8275e0072f6e36c13622e89b8a5f86295f41ccba1b6d55083b47d08015" name="ggae49f64d8275e0072f6e36c13622e89b8a5f86295f41ccba1b6d55083b47d08015"></a>GSC_GENOTYPEFILE_MATRIX&#160;</td><td class="fielddoc"><p >Either a marker-by-line matrix, where each marker is a row, or a line-by-marker matrix, where each marker is a column. </p>
+<p >The other axis represents lines/organisms/founders.</p>
+<h1><a class="anchor" id="Template"></a>
+(marker-as-row form)</h1>
+<p >[corner] [line] [line] [line] ... [line]</p>
+<p >[marker] [alleles] [alleles] [alleles] ... [alleles]</p>
+<p >[marker] [alleles] [alleles] [alleles] ... [alleles]</p>
+<p >...</p>
+<h1><a class="anchor" id="Template"></a>
+(marker-as-row form)</h1>
+<p >[corner] [marker] [marker] [marker] ... [marker]</p>
+<p >[line] [alleles] [alleles] [alleles] ... [alleles]</p>
+<p >[line] [alleles] [alleles] [alleles] ... [alleles]</p>
+<p >...</p>
+<h1><a class="anchor" id="Format"></a>
+Details</h1>
+<p >The corner cell may or may not be filled. Its value is ignored.</p>
+<p >Any combination of spaces or tabs between non-space/non-tab characters is interpreted as a column separator. Length and order of spaces and tabs do not need to be consistent between column separators in the file.</p>
+<p >Any one or two consecutive characters from {'<br  />
+', '\r'}, in any order, will be interpreted as a single line break.</p>
+<p >The default, when no map is present in simulation, is to assume markers are rows in this file. However, if any of the column headers of a matrix file are names of markers being tracked by the simulation, then that file is interpreted as having markers as columns. </p>
+</td></tr>
+<tr><td class="fieldname"><a id="ggae49f64d8275e0072f6e36c13622e89b8a84af5193acd7315949cf9434fe664318" name="ggae49f64d8275e0072f6e36c13622e89b8a84af5193acd7315949cf9434fe664318"></a>GSC_GENOTYPEFILE_BED&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="ggae49f64d8275e0072f6e36c13622e89b8ac328f360965380d27a504cde5e848a1b" name="ggae49f64d8275e0072f6e36c13622e89b8ac328f360965380d27a504cde5e848a1b"></a>GSC_GENOTYPEFILE_PED&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="ggae49f64d8275e0072f6e36c13622e89b8a6ea230ca7286da7d1354472a6c837fc5" name="ggae49f64d8275e0072f6e36c13622e89b8a6ea230ca7286da7d1354472a6c837fc5"></a>GSC_GENOTYPEFILE_VCF&#160;</td><td class="fielddoc"></td></tr>
+</table>
+
+</div>
+</div>
+<a id="gabaab9ae5c2f4689211a8f1a2b33d23bc" name="gabaab9ae5c2f4689211a8f1a2b33d23bc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gabaab9ae5c2f4689211a8f1a2b33d23bc">&#9670;&nbsp;</a></span>gsc_LinkageGroupType</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum <a class="el" href="group__structs.html#gabaab9ae5c2f4689211a8f1a2b33d23bc">gsc_LinkageGroupType</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Enumerate possible types of recombination within linkage groups. </p>
+<p ><em>Has short name:</em> LinkageGroupType </p>
+<table class="fieldtable">
+<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="ggabaab9ae5c2f4689211a8f1a2b33d23bca43305e4386c6a4c2b8a538e49bd22d50" name="ggabaab9ae5c2f4689211a8f1a2b33d23bca43305e4386c6a4c2b8a538e49bd22d50"></a>GSC_LINKAGEGROUP_SIMPLE&#160;</td><td class="fielddoc"><dl class="section see"><dt>See also</dt><dd><a class="el" href="structgsc___simple_linkage_group.html" title="Parameters for simulating meiosis on a linkage group whose markers are stored contiguously in the sim...">gsc_SimpleLinkageGroup</a> </dd></dl>
+</td></tr>
+<tr><td class="fieldname"><a id="ggabaab9ae5c2f4689211a8f1a2b33d23bca2dda577345113ce4397822dc484fe34a" name="ggabaab9ae5c2f4689211a8f1a2b33d23bca2dda577345113ce4397822dc484fe34a"></a>GSC_LINKAGEGROUP_REORDER&#160;</td><td class="fielddoc"><dl class="section see"><dt>See also</dt><dd><a class="el" href="structgsc___reordered_linkage_group.html" title="Parameters for simulating meiosis on a linkage group whose markers are re-ordered compared to the fir...">gsc_ReorderedLinkageGroup</a> </dd></dl>
+</td></tr>
+</table>
+
+</div>
+</div>
+<a id="gaa092055f7433a18bae99970ac6d2b79f" name="gaa092055f7433a18bae99970ac6d2b79f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gaa092055f7433a18bae99970ac6d2b79f">&#9670;&nbsp;</a></span>gsc_TableFileCurrentStatus</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum <a class="el" href="group__structs.html#gaa092055f7433a18bae99970ac6d2b79f">gsc_TableFileCurrentStatus</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Represent possible states of the cursor of a <em><a class="el" href="structgsc___table_file_reader.html" title="Stream reader for files of some tabular format.">gsc_TableFileReader</a></em>. </p>
+<table class="fieldtable">
+<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="ggaa092055f7433a18bae99970ac6d2b79fa826f62ac640f635777d762e6129cf1e2" name="ggaa092055f7433a18bae99970ac6d2b79fa826f62ac640f635777d762e6129cf1e2"></a>GSC_TABLEFILE_NEWLINE&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="ggaa092055f7433a18bae99970ac6d2b79fa570d82d0d78f9dc4f991df3a492ad922" name="ggaa092055f7433a18bae99970ac6d2b79fa570d82d0d78f9dc4f991df3a492ad922"></a>GSC_TABLEFILE_COLUMNGAP&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="ggaa092055f7433a18bae99970ac6d2b79fa928157f2beac1b0b67d5c08a3576a455" name="ggaa092055f7433a18bae99970ac6d2b79fa928157f2beac1b0b67d5c08a3576a455"></a>GSC_TABLEFILE_CONTENTS&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="ggaa092055f7433a18bae99970ac6d2b79fa10ff766349027085d393d3037a1b9e59" name="ggaa092055f7433a18bae99970ac6d2b79fa10ff766349027085d393d3037a1b9e59"></a>GSC_TABLEFILE_ERROR_EOF&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="ggaa092055f7433a18bae99970ac6d2b79fa50b3c2e2c5ebda41b27f8bea704b49ab" name="ggaa092055f7433a18bae99970ac6d2b79fa50b3c2e2c5ebda41b27f8bea704b49ab"></a>GSC_TABLEFILE_ERROR_EOBUF&#160;</td><td class="fielddoc"></td></tr>
+</table>
+
+</div>
+</div>
+<h2 class="groupheader">Function Documentation</h2>
+<a id="ga9861b51e8a5c74f843aac748c932c3a0" name="ga9861b51e8a5c74f843aac748c932c3a0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga9861b51e8a5c74f843aac748c932c3a0">&#9670;&nbsp;</a></span>gsc_helper_tablefilereader_classify_char()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum <a class="el" href="group__structs.html#gaa092055f7433a18bae99970ac6d2b79f">gsc_TableFileCurrentStatus</a> gsc_helper_tablefilereader_classify_char </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structgsc___table_file_reader.html">gsc_TableFileReader</a> *&#160;</td>
+          <td class="paramname"><em>tbl</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Classify the character under the cursor of a TableFileReader as cell contents or otherwise. </p>
+<p >Does not update <em>tbl-&gt;cursor</em>, so repeated calls of this same function without updating the cursor in between will return the same result. </p>
+<div id="dynsection-1" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-1-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
+<div id="dynsection-1-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-1-content" class="dyncontent" style="display:none;">
+<div class="center"><img src="group__structs_ga9861b51e8a5c74f843aac748c932c3a0_icgraph.png" border="0" usemap="#agroup__structs_ga9861b51e8a5c74f843aac748c932c3a0_icgraph" alt=""/></div>
+<map name="agroup__structs_ga9861b51e8a5c74f843aac748c932c3a0_icgraph" id="agroup__structs_ga9861b51e8a5c74f843aac748c932c3a0_icgraph">
+<area shape="rect" title="Classify the character under the cursor of a TableFileReader as cell contents or otherwise." alt="" coords="1171,73,1343,117"/>
+<area shape="rect" href="group__structs.html#ga9b389be1c0eada385d1015e445886c05" title="Read forwards in TableFileReader and return the next cell&#39;s contents, as well as how many column gaps..." alt="" coords="994,73,1123,117"/>
+<area shape="rect" href="sim-operations_8c.html#a890aa11fc3f54d411dff950b77931835" title="Header row reading and processing for map and effect set files." alt="" coords="782,5,939,49"/>
+<area shape="rect" href="sim-operations_8c.html#a9022b0b2e12395904757c59db6010d5b" title="Return the next cell from a queue of cells until the queue is exhausted, and thereafter read new cell..." alt="" coords="775,73,946,117"/>
+<area shape="rect" href="sim-operations_8c.html#a0f9bc7d42b9a98a1f4ea30c4a5f49312" title="Loads a genotype file, with or without existing genome model in the SimData." alt="" coords="566,125,716,169"/>
+<area shape="rect" href="sim-operations_8c.html#ad3c2207b2bd170d752a0a26a9fa2aa19" title="Extract the contents of a genetic map file." alt="" coords="555,73,727,101"/>
+<area shape="rect" href="group__loaders.html#ga176416bff8f5e258dbe1619637c8b831" title="Populates a gsc_SimData combination with effect values." alt="" coords="577,21,705,49"/>
+<area shape="rect" href="group__loaders.html#gac180eb5f1d27907a69314e68cc0d37af" title="Load a genetic map to a gsc_SimData object." alt="" coords="386,73,507,101"/>
+<area shape="rect" href="group__loaders.html#gac7f5d37f0a3fd81aa26f1eae2ebae2db" title="Populates a gsc_SimData object with marker allele data, a genetic map, and (optionally) marker effect..." alt="" coords="203,73,338,101"/>
+<area shape="rect" href="group__loaders.html#gabbe46ffa8009c748d895d4215a6c8bb8" title="Load a set of genotypes to a gsc_SimData object." alt="" coords="5,73,155,101"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="gac2206b9a58abb4b533d11dec4bd9f322" name="gac2206b9a58abb4b533d11dec4bd9f322"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gac2206b9a58abb4b533d11dec4bd9f322">&#9670;&nbsp;</a></span>gsc_helper_tablefilereader_refill_buffer()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void gsc_helper_tablefilereader_refill_buffer </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structgsc___table_file_reader.html">gsc_TableFileReader</a> *&#160;</td>
+          <td class="paramname"><em>tbl</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Read another buffer's worth of characters from a <a class="el" href="structgsc___table_file_reader.html" title="Stream reader for files of some tabular format.">gsc_TableFileReader</a>'s file. </p>
+<dl class="section warning"><dt>Warning</dt><dd>This overwrites any characters previously saved in the TableFileReader buffer. The pointers of any <em><a class="el" href="structgsc___table_file_cell.html" title="Represent a cell read by a gsc_TableFileReader.">gsc_TableFileCell</a></em> read from this table may become invalid if they are shallow copies. If you need to retain any cell values, consider using <em><a class="el" href="group__structs.html#ga85446dd929940e823745067d0a1d1d5d" title="Allocate memory to store a deep copy of a gsc_TableFileCell, if previously only a shallow copy.">gsc_tablefilecell_deep_copy()</a></em> before calling this function. </dd></dl>
+<div id="dynsection-2" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-2-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
+<div id="dynsection-2-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-2-content" class="dyncontent" style="display:none;">
+<div class="center"><img src="group__structs_gac2206b9a58abb4b533d11dec4bd9f322_icgraph.png" border="0" usemap="#agroup__structs_gac2206b9a58abb4b533d11dec4bd9f322_icgraph" alt=""/></div>
+<map name="agroup__structs_gac2206b9a58abb4b533d11dec4bd9f322_icgraph" id="agroup__structs_gac2206b9a58abb4b533d11dec4bd9f322_icgraph">
+<area shape="rect" title="Read another buffer&#39;s worth of characters from a gsc_TableFileReader&#39;s file." alt="" coords="1171,73,1343,117"/>
+<area shape="rect" href="group__structs.html#ga9b389be1c0eada385d1015e445886c05" title="Read forwards in TableFileReader and return the next cell&#39;s contents, as well as how many column gaps..." alt="" coords="994,73,1123,117"/>
+<area shape="rect" href="sim-operations_8c.html#a890aa11fc3f54d411dff950b77931835" title="Header row reading and processing for map and effect set files." alt="" coords="782,5,939,49"/>
+<area shape="rect" href="sim-operations_8c.html#a9022b0b2e12395904757c59db6010d5b" title="Return the next cell from a queue of cells until the queue is exhausted, and thereafter read new cell..." alt="" coords="775,73,946,117"/>
+<area shape="rect" href="sim-operations_8c.html#a0f9bc7d42b9a98a1f4ea30c4a5f49312" title="Loads a genotype file, with or without existing genome model in the SimData." alt="" coords="566,125,716,169"/>
+<area shape="rect" href="sim-operations_8c.html#ad3c2207b2bd170d752a0a26a9fa2aa19" title="Extract the contents of a genetic map file." alt="" coords="555,73,727,101"/>
+<area shape="rect" href="group__loaders.html#ga176416bff8f5e258dbe1619637c8b831" title="Populates a gsc_SimData combination with effect values." alt="" coords="577,21,705,49"/>
+<area shape="rect" href="group__loaders.html#gac180eb5f1d27907a69314e68cc0d37af" title="Load a genetic map to a gsc_SimData object." alt="" coords="386,73,507,101"/>
+<area shape="rect" href="group__loaders.html#gac7f5d37f0a3fd81aa26f1eae2ebae2db" title="Populates a gsc_SimData object with marker allele data, a genetic map, and (optionally) marker effect..." alt="" coords="203,73,338,101"/>
+<area shape="rect" href="group__loaders.html#gabbe46ffa8009c748d895d4215a6c8bb8" title="Load a set of genotypes to a gsc_SimData object." alt="" coords="5,73,155,101"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="ga85446dd929940e823745067d0a1d1d5d" name="ga85446dd929940e823745067d0a1d1d5d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga85446dd929940e823745067d0a1d1d5d">&#9670;&nbsp;</a></span>gsc_tablefilecell_deep_copy()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void gsc_tablefilecell_deep_copy </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structgsc___table_file_cell.html">gsc_TableFileCell</a> *&#160;</td>
+          <td class="paramname"><em>c</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Allocate memory to store a deep copy of a <a class="el" href="structgsc___table_file_cell.html" title="Represent a cell read by a gsc_TableFileReader.">gsc_TableFileCell</a>, if previously only a shallow copy. </p>
+<p >The deep copy will be a null-terminated string even if the shallow copy was not null-terminated.</p>
+<p >After this call, the cell is stored in heap memory and will need to be freed once the cell is no longer needed. Schema for doing this: if (!mycell.isCellShallow) { GSC_FREE(mycell.cell); } </p>
+<div id="dynsection-3" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-3-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
+<div id="dynsection-3-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-3-content" class="dyncontent" style="display:none;">
+<div class="center"><img src="group__structs_ga85446dd929940e823745067d0a1d1d5d_cgraph.png" border="0" usemap="#agroup__structs_ga85446dd929940e823745067d0a1d1d5d_cgraph" alt=""/></div>
+<map name="agroup__structs_ga85446dd929940e823745067d0a1d1d5d_cgraph" id="agroup__structs_ga85446dd929940e823745067d0a1d1d5d_cgraph">
+<area shape="rect" title="Allocate memory to store a deep copy of a gsc_TableFileCell, if previously only a shallow copy." alt="" coords="5,5,189,33"/>
+<area shape="rect" href="sim-operations_8c.html#aaaf3ebc75feaf901829232712e55677b" title="Replace calls to malloc direct with this function." alt="" coords="237,5,358,33"/>
+</map>
+</div>
+<div id="dynsection-4" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-4-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
+<div id="dynsection-4-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-4-content" class="dyncontent" style="display:none;">
+<div class="center"><img src="group__structs_ga85446dd929940e823745067d0a1d1d5d_icgraph.png" border="0" usemap="#agroup__structs_ga85446dd929940e823745067d0a1d1d5d_icgraph" alt=""/></div>
+<map name="agroup__structs_ga85446dd929940e823745067d0a1d1d5d_icgraph" id="agroup__structs_ga85446dd929940e823745067d0a1d1d5d_icgraph">
+<area shape="rect" title="Allocate memory to store a deep copy of a gsc_TableFileCell, if previously only a shallow copy." alt="" coords="1008,57,1191,85"/>
+<area shape="rect" href="sim-operations_8c.html#a890aa11fc3f54d411dff950b77931835" title="Header row reading and processing for map and effect set files." alt="" coords="803,49,960,93"/>
+<area shape="rect" href="sim-operations_8c.html#ad3c2207b2bd170d752a0a26a9fa2aa19" title="Extract the contents of a genetic map file." alt="" coords="583,5,755,33"/>
+<area shape="rect" href="sim-operations_8c.html#a0f9bc7d42b9a98a1f4ea30c4a5f49312" title="Loads a genotype file, with or without existing genome model in the SimData." alt="" coords="386,109,535,153"/>
+<area shape="rect" href="group__loaders.html#ga176416bff8f5e258dbe1619637c8b831" title="Populates a gsc_SimData combination with effect values." alt="" coords="605,57,733,85"/>
+<area shape="rect" href="group__loaders.html#gac180eb5f1d27907a69314e68cc0d37af" title="Load a genetic map to a gsc_SimData object." alt="" coords="400,5,521,33"/>
+<area shape="rect" href="group__loaders.html#gac7f5d37f0a3fd81aa26f1eae2ebae2db" title="Populates a gsc_SimData object with marker allele data, a genetic map, and (optionally) marker effect..." alt="" coords="203,57,338,85"/>
+<area shape="rect" href="group__loaders.html#gabbe46ffa8009c748d895d4215a6c8bb8" title="Load a set of genotypes to a gsc_SimData object." alt="" coords="5,57,155,85"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="ga85b05dcdc5ec484d918ed2d3330c3ae8" name="ga85b05dcdc5ec484d918ed2d3330c3ae8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga85b05dcdc5ec484d918ed2d3330c3ae8">&#9670;&nbsp;</a></span>gsc_tablefilereader_close()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void gsc_tablefilereader_close </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structgsc___table_file_reader.html">gsc_TableFileReader</a> *&#160;</td>
+          <td class="paramname"><em>tbl</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Close a <a class="el" href="structgsc___table_file_reader.html" title="Stream reader for files of some tabular format.">gsc_TableFileReader</a>'s file pointer. </p>
+<div id="dynsection-5" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-5-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
+<div id="dynsection-5-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-5-content" class="dyncontent" style="display:none;">
+<div class="center"><img src="group__structs_ga85b05dcdc5ec484d918ed2d3330c3ae8_icgraph.png" border="0" usemap="#agroup__structs_ga85b05dcdc5ec484d918ed2d3330c3ae8_icgraph" alt=""/></div>
+<map name="agroup__structs_ga85b05dcdc5ec484d918ed2d3330c3ae8_icgraph" id="agroup__structs_ga85b05dcdc5ec484d918ed2d3330c3ae8_icgraph">
+<area shape="rect" title="Close a gsc_TableFileReader&#39;s file pointer." alt="" coords="781,24,910,68"/>
+<area shape="rect" href="sim-operations_8c.html#ad3c2207b2bd170d752a0a26a9fa2aa19" title="Extract the contents of a genetic map file." alt="" coords="561,5,733,33"/>
+<area shape="rect" href="group__loaders.html#ga176416bff8f5e258dbe1619637c8b831" title="Populates a gsc_SimData combination with effect values." alt="" coords="386,57,513,85"/>
+<area shape="rect" href="group__loaders.html#gac180eb5f1d27907a69314e68cc0d37af" title="Load a genetic map to a gsc_SimData object." alt="" coords="389,5,510,33"/>
+<area shape="rect" href="group__loaders.html#gac7f5d37f0a3fd81aa26f1eae2ebae2db" title="Populates a gsc_SimData object with marker allele data, a genetic map, and (optionally) marker effect..." alt="" coords="203,32,338,60"/>
+<area shape="rect" href="group__loaders.html#gabbe46ffa8009c748d895d4215a6c8bb8" title="Load a set of genotypes to a gsc_SimData object." alt="" coords="5,32,155,60"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="ga1a3a39309d4ce6447581e73f7483fbfb" name="ga1a3a39309d4ce6447581e73f7483fbfb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga1a3a39309d4ce6447581e73f7483fbfb">&#9670;&nbsp;</a></span>gsc_tablefilereader_create()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structgsc___table_file_reader.html">gsc_TableFileReader</a> gsc_tablefilereader_create </td>
+          <td>(</td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>filename</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Open a file for reading with <a class="el" href="structgsc___table_file_reader.html" title="Stream reader for files of some tabular format.">gsc_TableFileReader</a>. </p>
+<p >On successfully opening file, fills the TableFileReader buffer for the first time. </p>
+<div id="dynsection-6" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-6-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
+<div id="dynsection-6-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-6-content" class="dyncontent" style="display:none;">
+<div class="center"><img src="group__structs_ga1a3a39309d4ce6447581e73f7483fbfb_icgraph.png" border="0" usemap="#agroup__structs_ga1a3a39309d4ce6447581e73f7483fbfb_icgraph" alt=""/></div>
+<map name="agroup__structs_ga1a3a39309d4ce6447581e73f7483fbfb_icgraph" id="agroup__structs_ga1a3a39309d4ce6447581e73f7483fbfb_icgraph">
+<area shape="rect" title="Open a file for reading with gsc_TableFileReader." alt="" coords="803,49,932,93"/>
+<area shape="rect" href="sim-operations_8c.html#ad3c2207b2bd170d752a0a26a9fa2aa19" title="Extract the contents of a genetic map file." alt="" coords="583,5,755,33"/>
+<area shape="rect" href="group__loaders.html#ga176416bff8f5e258dbe1619637c8b831" title="Populates a gsc_SimData combination with effect values." alt="" coords="605,57,733,85"/>
+<area shape="rect" href="sim-operations_8c.html#a0f9bc7d42b9a98a1f4ea30c4a5f49312" title="Loads a genotype file, with or without existing genome model in the SimData." alt="" coords="386,109,535,153"/>
+<area shape="rect" href="group__loaders.html#gac180eb5f1d27907a69314e68cc0d37af" title="Load a genetic map to a gsc_SimData object." alt="" coords="400,5,521,33"/>
+<area shape="rect" href="group__loaders.html#gac7f5d37f0a3fd81aa26f1eae2ebae2db" title="Populates a gsc_SimData object with marker allele data, a genetic map, and (optionally) marker effect..." alt="" coords="203,57,338,85"/>
+<area shape="rect" href="group__loaders.html#gabbe46ffa8009c748d895d4215a6c8bb8" title="Load a set of genotypes to a gsc_SimData object." alt="" coords="5,57,155,85"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="ga9b389be1c0eada385d1015e445886c05" name="ga9b389be1c0eada385d1015e445886c05"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga9b389be1c0eada385d1015e445886c05">&#9670;&nbsp;</a></span>gsc_tablefilereader_get_next_cell()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structgsc___table_file_cell.html">gsc_TableFileCell</a> gsc_tablefilereader_get_next_cell </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structgsc___table_file_reader.html">gsc_TableFileReader</a> *&#160;</td>
+          <td class="paramname"><em>tbl</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Read forwards in TableFileReader and return the next cell's contents, as well as how many column gaps and newlines preceeded it. </p>
+<p >Cells can be of unlimited length, as long as they fit in memory. </p>
+<div id="dynsection-7" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-7-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
+<div id="dynsection-7-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-7-content" class="dyncontent" style="display:none;">
+<div class="center"><img src="group__structs_ga9b389be1c0eada385d1015e445886c05_cgraph.png" border="0" usemap="#agroup__structs_ga9b389be1c0eada385d1015e445886c05_cgraph" alt=""/></div>
+<map name="agroup__structs_ga9b389be1c0eada385d1015e445886c05_cgraph" id="agroup__structs_ga9b389be1c0eada385d1015e445886c05_cgraph">
+<area shape="rect" title="Read forwards in TableFileReader and return the next cell&#39;s contents, as well as how many column gaps..." alt="" coords="5,73,135,117"/>
+<area shape="rect" href="group__structs.html#ga9861b51e8a5c74f843aac748c932c3a0" title="Classify the character under the cursor of a TableFileReader as cell contents or otherwise." alt="" coords="183,5,354,49"/>
+<area shape="rect" href="group__structs.html#gac2206b9a58abb4b533d11dec4bd9f322" title="Read another buffer&#39;s worth of characters from a gsc_TableFileReader&#39;s file." alt="" coords="183,73,354,117"/>
+<area shape="rect" href="sim-operations_8c.html#aaaf3ebc75feaf901829232712e55677b" title="Replace calls to malloc direct with this function." alt="" coords="208,141,329,169"/>
+</map>
+</div>
+<div id="dynsection-8" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-8-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
+<div id="dynsection-8-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-8-content" class="dyncontent" style="display:none;">
+<div class="center"><img src="group__structs_ga9b389be1c0eada385d1015e445886c05_icgraph.png" border="0" usemap="#agroup__structs_ga9b389be1c0eada385d1015e445886c05_icgraph" alt=""/></div>
+<map name="agroup__structs_ga9b389be1c0eada385d1015e445886c05_icgraph" id="agroup__structs_ga9b389be1c0eada385d1015e445886c05_icgraph">
+<area shape="rect" title="Read forwards in TableFileReader and return the next cell&#39;s contents, as well as how many column gaps..." alt="" coords="994,73,1123,117"/>
+<area shape="rect" href="sim-operations_8c.html#a890aa11fc3f54d411dff950b77931835" title="Header row reading and processing for map and effect set files." alt="" coords="782,5,939,49"/>
+<area shape="rect" href="sim-operations_8c.html#a9022b0b2e12395904757c59db6010d5b" title="Return the next cell from a queue of cells until the queue is exhausted, and thereafter read new cell..." alt="" coords="775,73,946,117"/>
+<area shape="rect" href="sim-operations_8c.html#a0f9bc7d42b9a98a1f4ea30c4a5f49312" title="Loads a genotype file, with or without existing genome model in the SimData." alt="" coords="566,125,716,169"/>
+<area shape="rect" href="sim-operations_8c.html#ad3c2207b2bd170d752a0a26a9fa2aa19" title="Extract the contents of a genetic map file." alt="" coords="555,73,727,101"/>
+<area shape="rect" href="group__loaders.html#ga176416bff8f5e258dbe1619637c8b831" title="Populates a gsc_SimData combination with effect values." alt="" coords="577,21,705,49"/>
+<area shape="rect" href="group__loaders.html#gac180eb5f1d27907a69314e68cc0d37af" title="Load a genetic map to a gsc_SimData object." alt="" coords="386,73,507,101"/>
+<area shape="rect" href="group__loaders.html#gac7f5d37f0a3fd81aa26f1eae2ebae2db" title="Populates a gsc_SimData object with marker allele data, a genetic map, and (optionally) marker effect..." alt="" coords="203,73,338,101"/>
+<area shape="rect" href="group__loaders.html#gabbe46ffa8009c748d895d4215a6c8bb8" title="Load a set of genotypes to a gsc_SimData object." alt="" coords="5,73,155,101"/>
+</map>
+</div>
 
 </div>
 </div>
 <h2 class="groupheader">Variable Documentation</h2>
-<a id="ga5c6b92aede8f29f53476aa78d4e4133a" name="ga5c6b92aede8f29f53476aa78d4e4133a"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ga5c6b92aede8f29f53476aa78d4e4133a">&#9670;&nbsp;</a></span>BASIC_OPT</h2>
+<a id="gabec7841eda2ede124314f2f49e224ca0" name="gabec7841eda2ede124314f2f49e224ca0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gabec7841eda2ede124314f2f49e224ca0">&#9670;&nbsp;</a></span>GSC_BASIC_OPT</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -248,7 +987,7 @@ Variables</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">const <a class="el" href="struct_gen_options.html">GenOptions</a> BASIC_OPT</td>
+          <td class="memname">const <a class="el" href="structgsc___gen_options.html">gsc_GenOptions</a> GSC_BASIC_OPT</td>
         </tr>
       </table>
   </td>
@@ -258,7 +997,8 @@ Variables</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Options parameter to run <a class="el" href="struct_sim_data.html" title="Composite type that is used to run crossing simulations.">SimData</a> functions in their bare-bones form. </p>
+<p>Default parameter values for GenOptions, to help with quick scripts and prototypes. </p>
+<p ><em>Has short name:</em> <a class="el" href="group__shortnames.html#ga4af98a71b0736f81c32df8e5e4fd6a83">BASIC_OPT</a> </p>
 
 </div>
 </div>

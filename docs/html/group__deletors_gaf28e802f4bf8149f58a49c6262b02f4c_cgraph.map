@@ -1,0 +1,4 @@
+<map id="gsc_delete_genome" name="gsc_delete_genome">
+<area shape="rect" id="node1" title="Deletes and clears the memory of a gsc_KnownGenome object and its children." alt="" coords="5,13,143,41"/>
+<area shape="rect" id="node2" href="$group__deletors.html#gaa6d16e1e88561612bb4efa22b80a5bed" title="Deletes and clears the memory of a gsc_RecombinationMap struct." alt="" coords="191,5,363,49"/>
+</map>

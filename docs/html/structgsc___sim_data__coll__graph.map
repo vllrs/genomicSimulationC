@@ -1,0 +1,16 @@
+<map id="gsc_SimData" name="gsc_SimData">
+<area shape="rect" id="node1" title="Composite type that is used to run crossing simulations." alt="" coords="1008,139,1107,167"/>
+<area shape="rect" id="node2" href="$structgsc___label_i_d.html" title="A type representing a particular custom label." alt="" coords="779,5,871,33"/>
+<area shape="rect" id="node3" href="$structgsc___known_genome.html" title="A type that stores the genome structure used in simulation." alt="" coords="756,57,894,85"/>
+<area shape="rect" id="node4" href="$structgsc___map_i_d.html" title="A type representing a particular loaded recombination map." alt="" coords="529,13,615,41"/>
+<area shape="rect" id="node5" href="$structgsc___recombination_map.html" title="A type that stores linkage groups and crossover probabilities for simulating meiosis." alt="" coords="492,65,652,93"/>
+<area shape="rect" id="node6" href="$structgsc___linkage_group.html" title="A generic store for a linkage group, used to simulate meiosis on a certain subset of markers." alt="" coords="286,65,415,93"/>
+<area shape="rect" id="node7" href="$structgsc___simple_linkage_group.html" title="Parameters for simulating meiosis on a linkage group whose markers are stored contiguously in the sim..." alt="" coords="15,39,184,67"/>
+<area shape="rect" id="node8" href="$structgsc___reordered_linkage_group.html" title="Parameters for simulating meiosis on a linkage group whose markers are re&#45;ordered compared to the fir..." alt="" coords="5,91,194,119"/>
+<area shape="rect" id="node9" href="$structgsc___allele_matrix.html" title=" " alt="" coords="766,215,884,243"/>
+<area shape="rect" id="node10" href="$structgsc___pedigree_i_d.html" title="A type representing a program&#45;lifetime&#45;unique identifier for a genotype, to be used in tracking pedig..." alt="" coords="516,136,628,164"/>
+<area shape="rect" id="node11" href="$structgsc___group_num.html" title="A type representing the identifier of a group of genotypes." alt="" coords="517,215,628,243"/>
+<area shape="rect" id="node12" href="$structgsc___effect_i_d.html" title="A type representing a particular loaded set of marker effects." alt="" coords="778,267,872,295"/>
+<area shape="rect" id="node13" href="$structgsc___effect_matrix.html" title="A type that stores a matrix of effect values and their names." alt="" coords="766,319,884,347"/>
+<area shape="rect" id="node14" href="$structgsc___decimal_matrix.html" title="A row&#45;major heap matrix that contains floating point numbers." alt="" coords="506,319,638,347"/>
+</map>

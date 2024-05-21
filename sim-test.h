@@ -9,27 +9,27 @@
 
 const char HELPER_GENOTYPES[] = "name\tG01\tG02\tG03\tG04\tG05\tG06\n"
 	"m1\tTT\tTT\tTT\tTA\tTT\tAT\n"
-	"m3\tTT\tTT\tTA\tTA\tTT\tTT\n"
+    "am3\tTT\tTT\tTA\tTA\tTT\tTT\n"
 	"m2\tAA\tAA\tAA\tAA\tTT\tAA";
-const char HELPER_MAP[] = "marker chr pos\n" "m3 3 15\n"
+const char HELPER_MAP[] = "marker chr pos\n" "am3 3 15\n"
 	"m2 1 8.3\n" "m1 1 5.2";
 const char HELPER_EFF[] = "m1 A -0.8\n" "m2 A -0.1\n"
-	"m3 A 0.1\n" "m1 T 0.9\n"
-	"m3 T -0.1\n" "m2 T -0.5";
+    "am3 A 0.1\n" "m1 T 0.9\n"
+    "am3 T -0.1\n" "m2 T -0.5";
 const char HELPER_EFF2[] = "m1 A 1\n";
 const char HELPER_PLAN[] = "G01\tG02\tG03\tG05\n"
 	"G01\tG03\tG05\tG06\n" "G05\tG06\tG01\tG04";
 
-const char TEST1_TRUTH_save_group_alleles[] = "5	m1	m2	m3\n"
+const char TEST1_TRUTH_save_group_alleles[] = "5	m1	m2	am3\n"
         "G01	TT	AA	TT\n"
         "G02	TT	AA	TT\n"
         "F17	TT	AT	AT\n"
-        "F18	AT	AA	AT\n"
-        "s12	TT	AA	TT\n"
+        "F18	AT	AA	TT\n"
+        "s12	TT	AT	TT\n"
         "s16	TT	AA	TT\n"
         "12	TT	AA	TT\n"
         "13	TT	AA	TT\n";
-const char TEST1_TRUTH_save_allele_matrix[] = "	m1	m2	m3\n"
+const char TEST1_TRUTH_save_allele_matrix[] = "	m1	m2	am3\n"
         "G01	TT	AA	TT\n"
         "G02	TT	AA	TT\n"
         "G03	TT	AA	TA\n"
@@ -37,40 +37,40 @@ const char TEST1_TRUTH_save_allele_matrix[] = "	m1	m2	m3\n"
         "G05	TT	TT	TT\n"
         "G06	AT	AA	TT\n"
         "F17	TT	AT	AT\n"
-        "F18	AT	AA	AT\n"
-        "F19	TA	AA	TA\n"
+        "F18	AT	AA	TT\n"
+        "F19	TT	AA	TT\n"
         "F110	TT	TA	TT\n"
         "F111	TT	AA	TT\n"
-        "s12	TT	AA	TT\n"
-        "s13	AT	AA	TA\n"
-        "s14	AA	AA	TT\n"
-        "s15	TT	TT	TT\n"
+        "s12	TT	AT	TT\n"
+        "s13	TT	AA	TT\n"
+        "s14	TT	AA	TT\n"
+        "s15	TT	TA	TT\n"
         "s16	TT	AA	TT\n"
         "12	TT	AA	TT\n"
-        "13	AA	AA	TT\n"
-        "14	AA	AA	TT\n"
+        "13	TT	AA	TT\n"
+        "14	TT	AA	TT\n"
         "15	TT	TT	TT\n"
         "16	TT	AA	TT\n";
 const char TEST1_TRUTH_save_transposed_allele_matrix[] =
         "	G01	G02	G03	G04	G05	G06	F17	F18	F19	F110	F111	s12	s13	s14	s15	s16	12	13	14	15	16\n"
-        "m1	TT	TT	TT	TA	TT	AT	TT	AT	TA	TT	TT	TT	AT	AA	TT	TT	TT	AA	AA	TT	TT\n"
-        "m2	AA	AA	AA	AA	TT	AA	AT	AA	AA	TA	AA	AA	AA	AA	TT	AA	AA	AA	AA	TT	AA\n"
-        "m3	TT	TT	TA	TA	TT	TT	AT	AT	TA	TT	TT	TT	TA	TT	TT	TT	TT	TT	TT	TT	TT\n";
+        "m1	TT	TT	TT	TA	TT	AT	TT	AT	TT	TT	TT	TT	TT	TT	TT	TT	TT	TT	TT	TT	TT\n"
+		"m2	AA	AA	AA	AA	TT	AA	AT	AA	AA	TA	AA	AT	AA	AA	TA	AA	AA	AA	AA	TT	AA\n"
+		"am3	TT	TT	TA	TA	TT	TT	AT	TT	TT	TT	TT	TT	TT	TT	TT	TT	TT	TT	TT	TT	TT\n";
 const char TEST1_TRUTH_save_transposed_group_alleles[] =
         "5	G01	G02	F17	F18	s12	s16	12	13\n"
-        "m1	TT	TT	TT	AT	TT	TT	TT	AA\n"
-        "m2	AA	AA	AT	AA	AA	AA	AA	AA\n"
-        "m3	TT	TT	AT	AT	TT	TT	TT	TT\n";
+		"m1	TT	TT	TT	AT	TT	TT	TT	TT\n"
+		"m2	AA	AA	AT	AA	AT	AA	AA	AA\n"
+		"am3	TT	TT	AT	TT	TT	TT	TT	TT\n";
 const char TEST1_TRUTH_save_count_matrix[] =
         "	G01	G02	G03	G04	G05	G06	F17	F18	F19	F110	F111	s12	s13	s14	s15	s16	12	13	14	15	16\n"
-        "m1	0	0	0	1	0	1	0	1	1	0	0	0	1	2	0	0	0	2	2	0	0\n"
-        "m2	2	2	2	2	0	2	1	2	2	1	2	2	2	2	0	2	2	2	2	0	2\n"
-        "m3	0	0	1	1	0	0	1	1	1	0	0	0	1	0	0	0	0	0	0	0	0\n";
+        "m1	0	0	0	1	0	1	0	1	0	0	0	0	0	0	0	0	0	0	0	0	0\n"
+        "m2	2	2	2	2	0	2	1	2	2	1	2	1	2	2	1	2	2	2	2	0	2\n"
+        "am3	0	0	1	1	0	0	1	0	0	0	0	0	0	0	0	0	0	0	0	0	0\n";
 const char TEST1_TRUTH_save_count_matrix_of_group[] =
         "5	G01	G02	F17	F18	s12	s16	12	13\n"
-        "m1	2	2	2	1	2	2	2	0\n"
-        "m2	0	0	1	0	0	0	0	0\n"
-        "m3	2	2	1	1	2	2	2	2\n";
+        "m1	2	2	2	1	2	2	2	2\n"
+        "m2	0	0	1	0	1	0	0	0\n"
+        "am3	2	2	1	2	2	2	2	2\n";
 const char TEST1_TRUTH_save_bvs[] = "1	G01	1.400000\n"
         "2	G02	1.400000\n"
         "3	G03	1.600000\n"
@@ -78,31 +78,31 @@ const char TEST1_TRUTH_save_bvs[] = "1	G01	1.400000\n"
         "5	G05	0.600000\n"
         "6	G06	-0.300000\n"
         "7	F17	1.200000\n"
-        "8	F18	-0.100000\n"
-        "9	F19	-0.100000\n"
+        "8	F18	-0.300000\n"
+        "9	F19	1.400000\n"
         "10	F110	1.000000\n"
         "11	F111	1.400000\n"
-        "0	s12	1.400000\n"
-        "0	s13	-0.100000\n"
-        "0	s14	-2.000000\n"
-        "0	s15	0.600000\n"
+        "0	s12	1.000000\n"
+        "0	s13	1.400000\n"
+        "0	s14	1.400000\n"
+        "0	s15	1.000000\n"
         "0	s16	1.400000\n"
         "12		1.400000\n"
-        "13		-2.000000\n"
-        "14		-2.000000\n"
+        "13		1.400000\n"
+        "14		1.400000\n"
         "15		0.600000\n"
         "16		1.400000\n";
 const char TEST1_TRUTH_save_group_bvs[] = "1	G01	1.400000\n"
         "2	G02	1.400000\n"
         "7	F17	1.200000\n"
-        "8	F18	-0.100000\n"
-        "0	s12	1.400000\n"
+        "8	F18	-0.300000\n"
+        "0	s12	1.000000\n"
         "0	s16	1.400000\n"
         "12		1.400000\n"
-        "13		-2.000000\n";
+        "13		1.400000\n";
 const char TEST1_TRUTH_save_marker_blocks[] = "Chrom	Pos	Name	Class	Markers\n"
         "0	0	b0	b	m1;m2;\n"
-        "0	0	b0	b	m3;\n";
+        "0	0	b0	b	am3;\n";
 const char TEST1_TRUTH_save_local_bvs[] = "G01_1 0.800000 -0.100000\n"
         "G01_2 0.800000 -0.100000\n"
         "G02_1 0.800000 -0.100000\n"
@@ -117,30 +117,30 @@ const char TEST1_TRUTH_save_local_bvs[] = "G01_1 0.800000 -0.100000\n"
         "G06_2 0.800000 -0.100000\n"
         "F17_1 0.800000 0.100000\n"
         "F17_2 0.400000 -0.100000\n"
-        "F18_1 -0.900000 0.100000\n"
+        "F18_1 -0.900000 -0.100000\n"
         "F18_2 0.800000 -0.100000\n"
         "F19_1 0.800000 -0.100000\n"
-        "F19_2 -0.900000 0.100000\n"
+        "F19_2 0.800000 -0.100000\n"
         "F110_1 0.400000 -0.100000\n"
         "F110_2 0.800000 -0.100000\n"
         "F111_1 0.800000 -0.100000\n"
         "F111_2 0.800000 -0.100000\n"
         "s12_1 0.800000 -0.100000\n"
-        "s12_2 0.800000 -0.100000\n"
-        "s13_1 -0.900000 -0.100000\n"
-        "s13_2 0.800000 0.100000\n"
-        "s14_1 -0.900000 -0.100000\n"
-        "s14_2 -0.900000 -0.100000\n"
+        "s12_2 0.400000 -0.100000\n"
+        "s13_1 0.800000 -0.100000\n"
+        "s13_2 0.800000 -0.100000\n"
+        "s14_1 0.800000 -0.100000\n"
+        "s14_2 0.800000 -0.100000\n"
         "s15_1 0.400000 -0.100000\n"
-        "s15_2 0.400000 -0.100000\n"
+        "s15_2 0.800000 -0.100000\n"
         "s16_1 0.800000 -0.100000\n"
         "s16_2 0.800000 -0.100000\n"
         "12_1 0.800000 -0.100000\n"
         "12_2 0.800000 -0.100000\n"
-        "13_1 -0.900000 -0.100000\n"
-        "13_2 -0.900000 -0.100000\n"
-        "14_1 -0.900000 -0.100000\n"
-        "14_2 -0.900000 -0.100000\n"
+        "13_1 0.800000 -0.100000\n"
+        "13_2 0.800000 -0.100000\n"
+        "14_1 0.800000 -0.100000\n"
+        "14_2 0.800000 -0.100000\n"
         "15_1 0.400000 -0.100000\n"
         "15_2 0.400000 -0.100000\n"
         "16_1 0.800000 -0.100000\n"
@@ -151,16 +151,16 @@ const char TEST1_TRUTH_save_group_local_bvs[] = "G01_1 0.800000 -0.100000\n"
         "G02_2 0.800000 -0.100000\n"
         "F17_1 0.800000 0.100000\n"
         "F17_2 0.400000 -0.100000\n"
-        "F18_1 -0.900000 0.100000\n"
+        "F18_1 -0.900000 -0.100000\n"
         "F18_2 0.800000 -0.100000\n"
         "s12_1 0.800000 -0.100000\n"
-        "s12_2 0.800000 -0.100000\n"
+        "s12_2 0.400000 -0.100000\n"
         "s16_1 0.800000 -0.100000\n"
         "s16_2 0.800000 -0.100000\n"
         "12_1 0.800000 -0.100000\n"
         "12_2 0.800000 -0.100000\n"
-        "13_1 -0.900000 -0.100000\n"
-        "13_2 -0.900000 -0.100000\n";
+        "13_1 0.800000 -0.100000\n"
+        "13_2 0.800000 -0.100000\n";
 const char TEST1_TRUTH_save_full_pedigrees[] = "1	G01\n"
         "2	G02\n"
         "3	G03\n"
@@ -182,7 +182,7 @@ const char TEST1_TRUTH_save_full_pedigrees[] = "1	G01\n"
         "14	\n"
         "15	\n"
         "16	\n"
-        "17	F217=(F19=(G02,G04),F111=(G01,G06))\n";
+        "17	F217=(F111=(G01,G06),F19=(G02,G04))\n";
 const char TEST1_TRUTH_save_group_full_pedigrees[] = "1	G01\n"
         "2	G02\n"
         "7	F17=(G03,G05)\n"
@@ -212,7 +212,7 @@ const char TEST1_TRUTH_save_one_step_pedigrees[] = "G01		\n"
         "14		\n"
         "15		\n"
         "16		\n"
-        "F217	F19	F111\n";
+        "F217	F111	F19\n";
 const char TEST1_TRUTH_save_group_one_step_pedigrees[] = "G01		\n"
         "G02		\n"
         "F17	G03	G05\n"
@@ -221,7 +221,7 @@ const char TEST1_TRUTH_save_group_one_step_pedigrees[] = "G01		\n"
         "s16	F111	F111\n"
         "12		\n"
         "13		\n";
-const char TEST1_TRUTH_sayg_genotype_header[] = "	m1	m2	m3";
+const char TEST1_TRUTH_sayg_genotype_header[] = "	m1	m2	am3";
 const char TEST1_TRUTH_sayg_genotype_bodyrow[] = "0	TT	AA	TT";
 const char TEST1_TRUTH_sayg_bv_bodyrow[] = "0		1.400000";
 const char TEST1_TRUTH_sayg_pedigree_bodyrow[] = "0	=(16)";
@@ -231,7 +231,7 @@ int compareFiles(char* f1, char* f2); // returns 0 if matching
 int compareFileToString(char* filename, const char* target);
 int compareRepeatingFileToTable(char* filename, unsigned int expectedNRows, const char* header, const char* body);
 
-GroupNum just_load(SimData* d);
+struct MultiIDSet just_load(SimData* d);
 GroupNum test_loaders(SimData* d);
 
 GroupNum test_grouping(SimData *d, GroupNum g0);

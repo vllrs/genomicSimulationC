@@ -27,5 +27,4 @@ var menudata={children:[
 {text:"News",url:"news.html"},
 {text:"Templates",url:"templates.html"},
 {text:"Concordances",url:"concordance.html"},
-{text:"Guarantees",url:"@ref guarantees"},
 {text:"Documentation",url:"modules.html"}]}

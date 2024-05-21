@@ -9,6 +9,144 @@ This page provides a set of templates for implementing common breeding project a
 
 # Setting Up
 
+## Input file formats:
+genomicSimulation has three types of input files: a genotype matrix, a genetic map, and a list of marker effects. If multiple files are provided at once in a call to `load_data_files` (C)/`load.data` (R), the map file will be loaded first, followed by the genotype matrix and marker effect file.
+
+### Genetic map files
+
+The simplest genetic map file is formatted as follows:
+```
+marker chr pos
+m3 3 15
+m2 1 8.3
+m1 1 5.2
+```
+
+The first column represents marker names. For all genomicSimulation features to work, genetic markers must have names. There is no issue with purely numeric names.
+
+The second column represents the chromosome/linkage group in which that marker is found. Any alphanumeric combination may be used to denote a chromosome/linkage group, eg. '9' or '1A'.
+
+The third column represents the position in centimorgans of that marker along that linkage group. (Distance of 1cM = expected probability of 0.01 chromosomal crossovers in that range.)
+
+The header line is optional. However, if it is provided, the three columns "marker" "chr" and "pos" may be rearranged into any ordering. If the header is not provided, the order is assumed to be marker name, followed by chromosome, followed by position. 
+
+Cells may be separated by spaces, tabs, commas, or any combination thereof. Cell spacers do not need to be consistent across the file. 
+
+The order in which genetic markers are presented in the file does not matter. If a marker is duplicated in the file, it will be recorded twice as two separate markers in the same position and with the same name. genomicSimulation does not check against this. However, if two markers have the same name, genotypes may not be loaded correctly, as loading genotypes depends on matching markers by name, so this should be avoided.
+
+Other valid genetic map files might include:
+```
+chr marker pos
+1A m1243509 173.2
+1A m2350898 462.2
+1B m4360992 32.009
+2A m1243556 243.5
+```
+or
+```
+gene 10 3.24
+othergene 10 8.3e-1
+etc 15 1.203e2
+```
+
+### Genotype matrix files
+
+The simplest genotype matrix file is formatted as follows:
+```
+name	G01	G02	G03	G04	G05	G06
+m1	TT	TT	TT	TA	TT	AT
+m3	TT	TT	TA	TA	TT	TT
+m2	AA	AA	AA	AA	CC	AA
+```
+where G01, G02, ..., are names of the founder genotypes; m1, m2, ..., are the markers; and entries in the matrix are the alleles that genotype has at that marker. 
+
+The genotype matrix may be row-major or column-major (that is, the genetic markers may be rows, or columns). The program will determine the orientation by attempting to match row and column headers with names of markers tracked by the simulation. If the simulation does not yet have a list of tracked markers (that is, if this is the first file to be loaded, before even a genetic map file), then it defaults to assuming that columns represent genetic markers.  
+
+Cells may be separated by spaces, tabs, commas, or any combination thereof. Cell spacers do not need to be consistent across the file. 
+
+The order in which genetic markers are presented in the file does not matter. Genotypes, however, will be saved internally in the simulation in the order that they appear in the file. Genotype names need not be unique.
+
+Marker names must be provided, so if the file does not have a header row, it must have a header column containing genetic marker names, and if it does not have a header column, it must have a header row containing genetic marker names.
+
+The first or corner cell (in the above example, containing the value "name") can be deleted or can contain any text, which will be ignored. 
+
+The simulation tool can parse a few different encodings of the alleles at each marker. The format of the allele pair will be automatically detected. All allele pairs in the same genotype matrix must be in the same format.
+
+Allele pair encodings, with phase:
+
+- Any pair of characters (see the above example). Alleles can be any character that is not a space, tab, comma, or newline.
+- Any pair of characters, separated by a forwards slash "/" character. 
+
+Allele pair encodings, without phase (the simulation tool will randomise phase as the file is loaded):
+
+- Alternate allele counts ("0", "1", "2")
+- IUPAC encodings ("G", "A", "T", "C", "R", "Y", "M", "K", "S", "W", "N")
+
+**Note you might have a genotype matrix that uses "alternate allele counts"-style encoding but presents it in a format that looks like pairs of alleles, eg. "AA", "AT", and "TT".** genomicSimulation expects allele pair encodings to include haplotype phase, (that is, to have four possible values for genotypes of two alleles, not three: "AA", "AT", "TA", and "TT"). 
+
+Two options for loading a dataset with non-phased "AA"/"AT"/"TT" allele pairs are:
+
+- Use “haplotyping”/”haplotype phasing”/”haplotype inference” software to infer whether heterozygotes are "AT" or "TA", before loading into genomicSimulation.
+- Find-and-replace "TT" with "0", "AT" with "1", and "AA" with "2" before loading into genomicSimulation. genomicSimulation will then randomise the phase of each haplotype.
+
+Other valid genotype matrix files might include:
+```
+ m100, m101, m102
+cand1,0,0,1
+cand2,1,2,2
+cand4,2,1,2
+```
+or
+```
+marker1	T/T	T/T	T/T	T/A	T/T	A/T
+marker3	T/T	T/T	T/A	T/A	T/T	T/T
+marker2	A/A	A/A	A/A	A/A	T/T	A/A
+```
+
+### Marker effect files
+
+Loading effect file(s) is optional for running the simulation. The simplest marker effect file is formatted as follows:
+```
+marker allele eff
+m1 A -0.8
+m2 A -0.1
+m3 A 0.1
+m1 T 0.9
+m3 T -0.1
+```
+
+The first column is to be a genetic marker name, corresponding to a name used in a previously-loaded map file. 
+
+The second should be the allele (non-space character, eg "A") that this effect value corresponds to. 
+
+The third should be a decimal representing the additive effect value of that allele for that marker.
+
+The header line is optional. However, if it is provided, the three columns "marker" "allele" and "eff" may be rearranged. If the header is not provided, the order is assumed to be marker name, followed by allele symbol, followed by additive effect value. 
+
+Cells may be separated by spaces, tabs, commas, or any combination thereof. Cell spacers do not need to be consistent across the file. 
+
+The order in which rows are presented in the file does not generally matter. If a particular marker/allele combination is included multiple times in the file, only the last effect value in that file for that combination will be saved.
+
+A particular marker/allele combination not being included in the file is equivalent to that combination having an effect value of 0. If a particular marker/allele combination is included multiple times in a file, only the last occurrence is saved. If a marker name in the file does not match any marker tracked by the simulation, that row will be ignored. The simulation will print out the number of marker/allele pairs for which effects are loaded: for the sample file above, that would be 5.
+
+Other valid marker effect files might include:
+```
+marker eff allele
+m1243509 0.1 A
+m1243509 -0.1 T
+m2350898 0.15 T
+m2350898 -0.1 A
+```
+or
+```
+specialgene G 1.0
+```
+
+### Loading from other file formats
+Updates to expand the range of allowed input formats are coming soon.
+
+
+
 ## Set the random number generator
 In C, you should manually set the seed for the random number generator when you create the SimData object, before loading data. The R version borrows R's own random number generator so has no need for setting a seed, or for manually creating the simulation data structure before loading data.
 
@@ -49,14 +187,16 @@ m1 1 5.2
 <td>
 ```{C}
 SimData* d = create_empty_simdata(time(NULL));
-struct GroupAndEffectSet init = load_all_data(d, "genotype-file.txt", "map-file.txt", NULL);
+struct MultiIDSet init = load_data_files(d, "genotype-file.txt", "map-file.txt", NULL);
 GroupNum founders = init.group;
 ```
 <td>
 ```{R}
-founders <- load.data(allele.file="genotype-file.txt", map.file="map-file.txt")
+founders <- load.data(genotype.file="genotype-file.txt", map.file="map-file.txt")
 ```
 </table>
+
+The simulation will track genotypes across all markers present in the map file. Which markers are tracked by the simulation cannot currently be changed. Line order does not matter in any file.
 
 Consider using the get_group_ family of functions (genomicSimulationC) and see.group.data function (genomicSimulation) to confirm data is correctly loaded.
 
@@ -69,7 +209,7 @@ Consider using the get_group_ family of functions (genomicSimulationC) and see.g
 - File location: genotype-file.txt
 - File contents:
 ```
-name	G01	G02	G03	G04	G05
+	G01	G02	G03	G04	G05
 m1	TT	TT	TT	TA	TT
 m3	TT	TT	TA	TA	TT
 m2	AA	AA	AA	AA	TT
@@ -79,10 +219,10 @@ Genotype file 2:
 - File location: genotype-file2.txt
 - File contents:
 ```
-name	G06
-m1	AT
-m2	AA
-m3	TT
+ G06
+m1,AT
+m2,AA
+m3,TT
 ```
 
 Map file:
@@ -97,14 +237,14 @@ m1 1 5.2
 <td>
 ```{C}
 SimData* d = create_empty_simdata(time(NULL));
-struct GroupAndEffectSet init = load_all_data(d, "genotype-file.txt", "map-file.txt", NULL);
+struct MultiIDSet init = load_data_files(d, "genotype-file.txt", "map-file.txt", NULL);
 GroupNum founders_a = init.group;
-GroupNum founders_b = load_genotypes_transposed(d, "genotype-file2.txt");
+GroupNum founders_b = load_genotypefile(d, "genotype-file2.txt");
 ```
 <td>
 ```{R}
-founders_a <- load.data(allele.file="genotype-file.txt", map.file="map-file.txt")
-founders_b <- load.more.genotypes("genotype-file2.txt")
+founders_a <- load.data(genotype.file="genotype-file.txt", map.file="map-file.txt")
+founders_b <- load.genotypes("genotype-file2.txt")
 ```
 </table>
 
@@ -135,8 +275,9 @@ m1 1 5.2
 
 Effect file:
 - File location: eff-file.txt
-- File contents: (line order does not matter)
+- File contents:
 ```
+marker allele eff
 m1 A -0.8
 m2 A -0.1
 m3 A 0.1
@@ -146,16 +287,18 @@ m3 T -0.1
 <td>
 ```{C}
 SimData* d = create_empty_simdata(time(NULL));
-struct GroupAndEffectSet init = load_all_data(d, "genotype-file.txt", "map-file.txt", "eff-file.txt");
+struct MultiIDSet init = load_data_files(d, "genotype-file.txt", "map-file.txt", "eff-file.txt");
 GroupNum founders = init.group;
 EffectID eff1 = init.effectSet;
+MapID map1 = init.map;
 ```
 <td>
 ```{R}
 # Note that the output is slightly different when an effect file is loaded.
-init <- load.data(allele.file="genotype-file.txt", map.file="map-file.txt", effect.file="eff-file.txt")
+init <- load.data(genotype.file="genotype-file.txt", map.file="map-file.txt", effect.file="eff-file.txt")
 founders <- init$groupNum
 eff1 <- init$effectID
+map1 <- init$mapID
 ```
 </table>
 
@@ -170,56 +313,32 @@ This assumes the simulation is set up, that is, one of **Load a genetic map and 
 - File location: eff-file2.txt
 <td>
 ```{C}
-EffectID eff2 = load_effects(d, "eff-file2.txt");
+EffectID eff2 = load_effectfile(d, "eff-file2.txt");
 ```
 <td>
 ```{R}
-eff2 <- load.more.effects("eff-file2.txt")
+eff2 <- load.effects("eff-file2.txt")
 ```
 </table>
 
-## Input file formats:
-The file format expected for the genotype file is something like:
+## Load another linkage map
+
+Markers in this map that are not present in the primary linkage map will be ignored. (That is, the first genetic map loaded must contain all markers you wish to be tracked by the simulation. Later genetic maps can only provide different recombination frequencies or chromosome allocations).
+
+<table>
+<tr><th>Task <th>Input Files <th>genomicSimulationC (C) <th>genomicSimulation (R)
+<tr><td>
+<td>Map file:
+- File location: mapfile2.txt
+<td>
+```{C}
+MapID map2 = load_mapfile(d, "mapfile2.txt");
 ```
-name	G01	G02	G03	G04	G05	G06
-m1	TT	TT	TT	TA	TT	AT
-m3	TT	TT	TA	TA	TT	TT
-m2	AA	AA	AA	AA	TT	AA
+<td>
+```{R}
+map2 <- load.map("mapfile2.txt")
 ```
-where G01, G02, ..., are names of the starter set of genotypes; m1, m2, ..., are the markers; and entries in the matrix are two-character pairs listing the two alleles that genotype has at that marker. Alleles can be any non-space character and the order of the two alleles is saved.
-
-Cells may be space-separated or tab-separated. The order of rows and columns does not matter. The value in the first cell ("name" in this example) is ignored.
-
-The C version of the package has additional functions for loading differently-formatted genotype files. This functionality is on track to be improved and shared between versions in some upcoming update.
-
-The map file should be formatted as follows:
-```
-marker chr pos
-m3 3 15
-m2 1 8.3
-m1 1 5.2
-```
-
-The first (header) line's values are not checked. After that, all rows must have three space-or-tab-separated values. The first should be the marker name, the second an integer representing the chromosome number, and the third a decimal representing the position of the SNP along the chromosome in centiMorgans (cM). The order of the rows in the file does not matter.
-
-Only markers that appear both in the genotype file and the map file are used in simulation. The simulation tool will print as output the number of markers that were loaded and the number that were discarded.
-
-Loading effect file(s) is optional for running the simulation. Effect files should should be formatted as follows:
-```
-m1 A -0.8
-m2 A -0.1
-m3 A 0.1
-m1 T 0.9
-m3 T -0.1
-```
-
-The first column should be a marker name, corresponding to a name used in the map and genotype files. The second should be the allele (non-space character, eg A) this effect value corresponds to. The third should be a decimal representing the additive effect value of that allele for that marker.
-
-A particular marker/allele combination not being included in the file is equivalent to that combination having an effect value of 0. If a particular marker/allele combination is included multiple times in a file, only the last occurence is saved. If a marker name in the file does not match any marker tracked by the simulation, that row will be ignored. The simulation will print out the number of marker/allele pairs for which effects are loaded: for the sample file above, that would be 5.
-
-### Loading from other file formats
-Updates to expand the range of allowed input formats are coming soon.
-
+</table>
 
 # Crossing & Other Ways to Generate New Genotypes: Plant-themed
 Templates in this section assume you have loaded a set of founders whose group number is saved in the variable `founders`.
@@ -231,13 +350,15 @@ Templates in this section assume you have loaded a set of founders whose group n
 <tr><td>For six generations grow a single seed from each plant to maturity.
 <td>
 ```{C}
-GroupNum f6 = self_n_times(d, 6, founders, BASIC_OPT);
+GroupNum f6 = self_n_times(d, 6, founders, NO_MAP, BASIC_OPT);
 ```
 <td>
 ```{R}
 f6 <- self.n.times(founders, n=6)
 ```
 </table>
+
+Using NO_MAP for the recombination map parameter in any crossing function in the C version causes the tool to default to the first/primary recombination map. This is the same default as in the R version.
 
 ## Creating halfsib or fullsib families
 
@@ -251,7 +372,7 @@ GenOptions opt = {.will_name_offspring=FALSE, .offspring_name_prefix=NULL, .fami
 		.filename_prefix=NULL, .will_save_pedigree_to_file=FALSE,
 		.will_save_bvs_to_file=NOT_AN_EFFECT_ID, .will_save_alleles_to_file=FALSE,
 		.will_save_to_simdata=TRUE};
-GroupNum crosses = make_random_crosses(d, founders, 20, 0, opt);
+GroupNum crosses = make_random_crosses(d, founders, 20, 0, NO_MAP, opt);
 GroupNum families[20];
 split_into_families(d, crosses, families);
 ```
@@ -275,7 +396,7 @@ GenOptions opt = {.will_name_offspring=FALSE, .offspring_name_prefix=NULL, .fami
 		.filename_prefix=NULL, .will_save_pedigree_to_file=FALSE,
 		.will_save_bvs_to_file=NOT_AN_EFFECT_ID, .will_save_alleles_to_file=FALSE,
 		.will_save_to_simdata=TRUE};
-GroupNum crosses = make_random_crosses(d, targetparent_group, founders, 10, 0, 0, opt);
+GroupNum crosses = make_random_crosses_between(d, targetparent_group, founders, 10, 0, 0, NO_MAP, NO_MAP, opt);
 
 GroupNum families[10];
 split_into_halfsib_families(d, crosses, 1, families);
@@ -326,7 +447,7 @@ GroupNum targetparent_group = make_group_from(d, 1, &targetparent);
 GroupNum backcross_generations[20];
 backcross_generation[0] = founders;
 for (int i = 1; i < 20; ++i) {
-	backcross_generations[i] = make_random_crosses_between(d, targetparent_group, backcross_generations[i-1], 10, 0, 0, BASIC_OPT);
+	backcross_generations[i] = make_random_crosses_between(d, targetparent_group, backcross_generations[i-1], 10, 0, 0, NO_MAP, NO_MAP, BASIC_OPT);
 }
 ```
 <td>
@@ -354,7 +475,7 @@ Templates in this section assume you have loaded two sets of founders whose grou
 <tr><td>Suppose you randomly cross your founders, then want to identify the male and female calves among the offspring.
 <td>
 ```{C}
-GroupNum offspring = make_random_crosses_between(d, cows, bulls, 10, 0, 0, BASIC_OPT);
+GroupNum offspring = make_random_crosses_between(d, cows, bulls, 10, 0, 0, NO_MAP, NO_MAP, BASIC_OPT);
 
 GroupNum offspring_f = split_randomly_into_two(d, offspring);
 GroupNum offspring_m = offspring;
@@ -406,7 +527,7 @@ bulls <- combine.groups(c(bulls,offspring_m))
 <tr><td>Suppose each cow should only have one calf this generation.
 <td>
 ```{C}
-GroupNum offspring = make_random_crosses_between(d, cows, bulls, 10, 1, 0, BASIC_OPT);
+GroupNum offspring = make_random_crosses_between(d, cows, bulls, 10, 1, 0, NO_MAP, NO_MAP, BASIC_OPT);
 ```
 <td>
 ```{R}
@@ -423,7 +544,7 @@ offspring <- make.random.crosses.between(cows, bulls, cap1=1, n.crosses=10)
 ```{C}
 GroupNum bestbull = split_by_bv(d, bulls, eff1, 1, FALSE); # where eff1 is an EffectID representing the marker effect set to use to calculate bvs
 
-GroupNum offspring = make_random_crosses_between(d, cows, bestbull, 10, 1, 0, BASIC_OPT);
+GroupNum offspring = make_random_crosses_between(d, cows, bestbull, 10, 1, 0, NO_MAP, NO_MAP, BASIC_OPT);
 ```
 <td>
 ```{R}
@@ -453,7 +574,7 @@ crossingPlan[1][0] = bull1_index;
 crossingPlan[1][1] = bull2_index;
 crossingPlan[1][2] = bull1_index;
 
-GroupNum offspring = make_targeted_crosses(d, 3, crossingPlan[0], crossingPlan[1], BASIC_OPT);
+GroupNum offspring = make_targeted_crosses(d, 3, crossingPlan[0], crossingPlan[1], NO_MAP, NO_MAP, BASIC_OPT);
 ```
 <td>
 ```{R}
@@ -484,7 +605,7 @@ int crossingPlan[2][1];
 crossingPlan[0][0] = breed1_index;
 crossingPlan[1][0] = breed2_index;
 
-GroupNum f1 = make_targeted_crosses(d, 1, crossingPlan[0], crossingPlan[1] BASIC_OPT);
+GroupNum f1 = make_targeted_crosses(d, 1, crossingPlan[0], crossingPlan[1], NO_MAP, NO_MAP, BASIC_OPT);
 int* f1_index = malloc(sizeof(int) * 1);
 get_group_indexes(d, f1, 1, f1_index); //we know this group has only one member
 
@@ -493,7 +614,7 @@ crossingPlan[0][0] = breed3_index;
 crossingPlan[1][0] = f1_index[0];
 free(f1_index);
 
-GroupNum f3way = make_targeted_crosses(d, 1, crossingPlan[0], crossingPlan[1], BASIC_OPT);
+GroupNum f3way = make_targeted_crosses(d, 1, crossingPlan[0], crossingPlan[1], NO_MAP, NO_MAP, BASIC_OPT);
 ```
 <td>
 ```{R}
@@ -523,7 +644,7 @@ GenOptions opt = {.family_size=5,
 		.will_save_bvs_to_file=FALSE, .will_save_alleles_to_file=FALSE,
 		.will_save_to_simdata=TRUE};
 
-GroupNum f1 = make_random_crosses(d, 1, crossingPlan[0], crossingPlan[1], opt);
+GroupNum f1 = make_random_crosses(d, 1, crossingPlan[0], crossingPlan[1], NO_MAP, NO_MAP, opt);
 int* f1_indexes = malloc(sizeof(int) * 5);
 get_group_indexes(d, f1, 5, f1_indexes);
 
@@ -536,7 +657,7 @@ crossingPlanb[1][2] = f1_indexes[2]; crossingPlanb[1][3] = f1_indexes[3];
 crossingPlanb[1][4] = f1_indexes[4];
 free(f1_indexes);
 
-GroupNum f3way = make_targeted_crosses(d, 5, crossingPlanb[0], crossingPlanb[1], opt);
+GroupNum f3way = make_targeted_crosses(d, 5, crossingPlanb[0], crossingPlanb[1], NO_MAP, NO_MAP, opt);
 ```
 <td>
 ```{R}
@@ -558,7 +679,7 @@ genomicSimulation's custom labels can be used to track age (or some other known 
 <td>
 ```{C}
 SimData* d = create_empty_simdata(1234567);
-struct GroupAndEffectSet init = load_all_data(d, "genotype-file.txt", "map-file.txt", NULL);
+struct MultiIDSet init = load_data_files(d, "genotype-file.txt", "map-file.txt", NULL);
 GroupNum animals = init.group;
 
 // Create a new label to represent age, with default/at-birth value of 0.
@@ -571,7 +692,7 @@ for (int year = 0; year < 10; ++year) {
 	GroupNum breedingGroup = split_by_label_value(d, animals, ageLabel, 3);
 	
 	// Do some breeding/selection steps as appropriate for the breeding program, eg:
-	GruopNum offspring = make_random_crosses(d, breedingGroup, 50, 0, BASIC_OPT);
+	GruopNum offspring = make_random_crosses(d, breedingGroup, 50, 0, NO_MAP, BASIC_OPT);
 	// Offspring will have the default value for the label i.e. ageLabel = 0
 	
 	GroupNum toCombine[3] = {animals, breedingGroup, offspring};
@@ -642,6 +763,32 @@ toKeep <- break.group.by.label.range(ageLabel, 0, 11, animals)
 
 delete.group(animals)
 rm(animals)
+```
+</table>
+
+## Species with differing male and female recombination rates
+
+<table>
+<tr><th>Task <th>genomicSimulationC (C) <th>genomicSimulation (R)
+<tr><td>Suppose you only want to simulate a cross in a species with differing male and female recombination maps.
+<td>
+```{C}
+SimData* d = create_empty_simdata(7654321);
+MapID female_map = load_mapfile("fmap.txt");
+MapID male_map = load_mapfile("mmap.txt");
+GroupNum female_pop = load_genotypefile("fgenos.txt");
+GroupNum male_pop = load_genotypefile("mgenos.txt");
+
+GroupNum offspring = make_random_crosses_between(d, female_pop, male_pop, 1, 0, 0, female_map, male_map, BASIC_OPT);
+```
+<td>
+```{R}
+female_map <- load.map("fmap.txt")
+male_map <- load.map("mmap.txt")
+female_pop <- load.genotypes("fgenos.txt")
+male_pop <- load.genotypes("mgenos.txt") 
+
+offspring <- make.random.crosses.between(female_pop, male_pop, 1, map1=female_map, map2=male_map)
 ```
 </table>
 
@@ -744,12 +891,10 @@ If you have a trait with only a small number of possible outcomes - perhaps a ma
 <tr><td>Suppose you want to select on a trait that has possible values
 Your effect file looks like:
 ```
-POLLED T 1
+TARGETGENE T 1
 ```
 <td>
-```{R}
 
-```
 </table>
 
 ## Select on a qualitative trait, then a quantitative trait.

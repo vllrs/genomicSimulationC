@@ -28,6 +28,22 @@ replacement of deprecated functions.
 #define DEPRECATION__STATIC(a) fprintf(stderr,"Deprecated function call: %s. Function is now defined as internal/static. Contact maintainer if this is not suitable.\n",a)
 #define DEPRECATION__CHANGED(a,b) fprintf(stderr,"Deprecated function call: %s. Replacement: (gsc_)%s\n",a,b)
 #define DEPRECATION__FULL(a) fprintf(stderr,"Deprecated function call: %s. Function is now fully removed.\n",a)
+#define DEPRECATION__SIGCHANGE(a,reason) fprintf(stderr,"Deprecated function call: %s now has an added parameter representing %s\n",a,reason);
+
+// ---- Structs with changed names ----
+
+#define NOT_AN_EFFECT_SET GSC_NO_EFFECTSET
+#define NOT_A_LABEL GSC_NO_LABEL
+#define TRUE GSC_TRUE 
+#define FALSE GSC_FALSE
+#define UNINITIALISED -1
+#define isValidLocation IS_VALID_LOCATION
+
+struct GroupAndEffectSet { // to MultiIDSet. Comment exists in the function that uses this.
+    gsc_GroupNum group;
+    gsc_EffectID effectSet;
+};
+
 
 // ---- Functions with changed names (for convergence with R version) ----
 void set_label_default(SimData* d, const LabelID whichLabel, const int newDefault) {
@@ -72,46 +88,49 @@ void get_malloc(const size_t size) {
 	#endif
 }
 
+
 GroupNum load_transposed_genes_to_simdata(SimData* d, const char* filename) {
 	#ifdef GSC_DEPRECATED_VERBOSE
-		DEPRECATION__CHANGED("load_transposed_genes_to_simdata", "load_genotypes_transposed");
+		DEPRECATION__CHANGED("load_transposed_genes_to_simdata", "load_genotypefile");
 	#endif	
-	return gsc_load_genotypes_transposed(d,filename);
+	return gsc_load_genotypefile(d,filename);
 }
 
 GroupNum load_more_transposed_genes_to_simdata(SimData* d, const char* filename) {
 	#ifdef GSC_DEPRECATED_VERBOSE
-		DEPRECATION__CHANGED("load_more_transposed_genes_to_simdata", "load_genotypes_transposed");
+		DEPRECATION__CHANGED("load_more_transposed_genes_to_simdata", "load_genotypefile");
 	#endif	
-	return gsc_load_genotypes_transposed(d,filename);
+	return gsc_load_genotypefile(d,filename);
 }
 
 GroupNum load_transposed_encoded_genes_to_simdata(SimData* d, const char* filename) {
 	#ifdef GSC_DEPRECATED_VERBOSE
-		DEPRECATION__CHANGED("load_transposed_encoded_genes_to_simdata", "load_genotypes_encoded_and_transposed");
+		DEPRECATION__CHANGED("load_transposed_encoded_genes_to_simdata", "load_genotypefile");
 	#endif	
-	return gsc_load_genotypes_encoded_and_transposed(d,filename);
+	return gsc_load_genotypefile(d,filename);
 }
 
 void load_genmap_to_simdata(SimData* d, const char* filename) {
 	#ifdef GSC_DEPRECATED_VERBOSE
-		DEPRECATION__CHANGED("load_genmap_to_simdata", "load_genmap");
+		DEPRECATION__CHANGED("load_genmap_to_simdata", "load_mapfile");
 	#endif	
-	gsc_load_genmap(d,filename);
+	return gsc_load_mapfile(d,filename);
 }
 
 EffectID load_effects_to_simdata(SimData* d, const char* filename) {
 	#ifdef GSC_DEPRECATED_VERBOSE
-		DEPRECATION__CHANGED("load_effects_to_simdata", "load_effects");
+		DEPRECATION__CHANGED("load_effects_to_simdata", "load_effectfile");
 	#endif	
-	return gsc_load_effects(d,filename);
+	return gsc_load_effectfile(d,filename);
 }
 
 struct GroupAndEffectSet load_all_simdata(SimData* d, const char* data_file, const char* map_file, const char* effect_file) {
 	#ifdef GSC_DEPRECATED_VERBOSE
-		DEPRECATION__CHANGED("load_all_simdata", "load_all_data");
+		DEPRECATION__CHANGED("load_all_simdata", "load_data_files");
+		fprintf(stderr,"Deprecated type: load_initial_files returns a struct MultiIDSet, not a struct GroupAndEffectSet");
 	#endif	
-	return gsc_load_all_data(d,data_file,map_file,effect_file);	
+	struct gsc_MultiIDSet a = gsc_load_data_files(d,data_file,map_file,effect_file);
+	return (struct GroupAndEffectSet){.group=a.group, .effectSet=a.effSet};
 }
 
 void save_group_alleles(FILE* f, SimData* d, const GroupNum group_id) {
@@ -186,8 +205,22 @@ void generate_cross(SimData* d, const char* parent1_genome, const char* parent2_
 	#ifdef GSC_DEPRECATED_VERBOSE
 		DEPRECATION__CHANGED("generate_cross", "generate_gamete (called twice)");
 	#endif
-	gsc_generate_gamete(d,parent1_genome,output);
-	gsc_generate_gamete(d,parent2_genome,output+1);
+	gsc_generate_gamete(d,parent1_genome,output,0);
+	gsc_generate_gamete(d,parent2_genome,output+1,0);
+}
+
+void generate_gamete(SimData* d, const char* parent_genome, char* output) {
+	#ifdef GSC_DEPRECATED_VERBOSE
+		DEPRECATION_SIGCHANGE("generate_gamete", "choice of recombination map");
+	#endif
+	gsc_generate_gamete(d,parent_genome,output,0);
+}
+
+void generate_doubled_haploid(SimData* d, const char* parent_genome, char* output) {
+	#ifdef GSC_DEPRECATED_VERBOSE
+		DEPRECATION__SIGCHANGE("generate_doubled_haploid", "choice of recombination map");
+	#endif
+	gsc_generate_doubled_haploid(d,parent_genome,output,0);
 }
 
 GroupNum _make_new_genotypes(SimData* d, const GenOptions g,
@@ -204,14 +237,14 @@ GroupNum cross_random_individuals(SimData* d, const GroupNum from_group, const i
 	#ifdef GSC_DEPRECATED_VERBOSE
 		DEPRECATION__CHANGED("cross_random_individuals", "make_random_crosses");
 	#endif	
-	return gsc_make_random_crosses(d,from_group,n_crosses,cap,g);
+	return gsc_make_random_crosses(d,from_group,n_crosses,cap,NO_MAP,g);
 }
 
 GroupNum cross_randomly_between(SimData*d, const GroupNum group1, const GroupNum group2, const int n_crosses, const int cap1, const int cap2, const GenOptions g) {
 	#ifdef GSC_DEPRECATED_VERBOSE
 		DEPRECATION__CHANGED("cross_randomly_between", "make_random_crosses_between");
 	#endif	
-	return gsc_make_random_crosses_between(d,group1,group2,n_crosses,cap1,cap2,g);
+	return gsc_make_random_crosses_between(d,group1,group2,n_crosses,cap1,cap2,NO_MAP,NO_MAP,g);
 }
 
 unsigned int _specialised_random_draw(SimData* d, unsigned int max, unsigned int cap, unsigned int* member_uses, unsigned int noCollision) {
@@ -225,7 +258,49 @@ GroupNum cross_these_combinations(SimData* d, const int n_combinations, const in
 	#ifdef GSC_DEPRECATED_VERBOSE
 		DEPRECATION__CHANGED("cross_these_combinations", "make_targeted_crosses");
 	#endif	
-	return gsc_make_targeted_crosses(d,n_combinations,firstParents,secondParents,g);
+	return gsc_make_targeted_crosses(d,n_combinations,firstParents,secondParents,NO_MAP,NO_MAP,g);
+}
+
+GroupNum self_n_times(SimData* d, const unsigned int n, const GroupNum group, const GenOptions g) {
+	#ifdef GSC_DEPRECATED_VERBOSE
+		DEPRECATION__SIGCHANGE("self_n_times", "choice of recombination map");
+	#endif
+	return gsc_self_n_times(d,n,group,NO_MAP,g);
+}
+
+GroupNum make_doubled_haploids(SimData* d, const GroupNum group, const GenOptions g) {
+	#ifdef GSC_DEPRECATED_VERBOSE
+		DEPRECATION__SIGCHANGE("make_doubled_haploids", "choice of recombination map");
+	#endif
+	return gsc_make_doubled_haploids(d,group,NO_MAP,g);	
+}
+
+GroupNum make_all_unidirectional_crosses(SimData* d, const GroupNum from_group, const GenOptions g) {
+	#ifdef GSC_DEPRECATED_VERBOSE
+		DEPRECATION__SIGCHANGE("make_all_unidirectional_crosses", "choice of recombination map");
+	#endif
+	return gsc_make_all_unidirectional_crosses(d,from_group,NO_MAP,g);
+}
+
+GroupNum make_n_crosses_from_top_m_percent(SimData* d, const int n, const int m, const GroupNum group, const EffectID effID, const GenOptions g) {
+	#ifdef GSC_DEPRECATED_VERBOSE
+		DEPRECATION__SIGCHANGE("make_n_crosses_from_top_m_percent", "choice of recombination map");
+	#endif
+	return gsc_make_n_crosses_from_top_m_percent(d,n,m,group,NO_MAP,effID,g);
+}
+
+GroupNum make_crosses_from_file(SimData* d, const char* input_file, const GenOptions g) {
+	#ifdef GSC_DEPRECATED_VERBOSE
+		DEPRECATION__SIGCHANGE("make_crosses_from_file", "choice of recombination map");
+	#endif
+	return gsc_make_crosses_from_file(d,input_file,NO_MAP,g);
+}
+
+GroupNum make_double_crosses_from_file(SimData* d, const char* input_file, const GenOptions g) {
+	#ifdef GSC_DEPRECATED_VERBOSE
+		DEPRECATION__SIGCHANGE("make_double_crosses_from_file", "choice of recombination map");
+	#endif
+	return gsc_make_double_crosses_from_file(d,input_file,NO_MAP,g);
 }
 
 int calculate_group_count_matrix_of_allele( const SimData* d, const GroupNum group, const char allele, DecimalMatrix* counts) {
@@ -267,7 +342,7 @@ MarkerBlocks create_n_blocks_by_chr(const SimData* d, const int n) {
 	#ifdef GSC_DEPRECATED_VERBOSE
 		DEPRECATION__CHANGED("create_n_blocks_by_chr", "create_evenlength_blocks_each_chr");
 	#endif
-	return gsc_create_evenlength_blocks_each_chr(d,n);
+	return gsc_create_evenlength_blocks_each_chr(d,NO_MAP,n);
 }
 
 MarkerBlocks read_block_file(const SimData* d, const char* block_file) {
@@ -564,14 +639,14 @@ int* calculate_min_recombinations_fw1(SimData* d, char* parent1, unsigned int p1
 	#ifdef GSC_DEPRECATED_VERBOSE
 		DEPRECATION__PREFIXED("calculate_min_recombinations_fw1");
 	#endif
-	return gsc_calculate_min_recombinations_fw1(d,parent1,p1num,parent2,p2num,offspring,certain);
+	return gsc_calculate_min_recombinations_fw1(d,NO_MAP,parent1,p1num,parent2,p2num,offspring,certain);
 }
 
 int* calculate_min_recombinations_fwn(SimData* d, char* parent1, unsigned int p1num, char* parent2, unsigned int p2num, char* offspring, int window_size, int certain) {
 	#ifdef GSC_DEPRECATED_VERBOSE
 		DEPRECATION__PREFIXED("calculate_min_recombinations_fwn");
 	#endif
-	return gsc_calculate_min_recombinations_fwn(d,parent1,p1num,parent2,p2num,offspring,window_size,certain);
+	return gsc_calculate_min_recombinations_fwn(d,NO_MAP,parent1,p1num,parent2,p2num,offspring,window_size,certain);
 }
 
 static inline int has_same_alleles(const char* p1, const char* p2, const int i) {

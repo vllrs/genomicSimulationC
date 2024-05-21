@@ -1,0 +1,6 @@
+<map id="gsc_RecombinationMap" name="gsc_RecombinationMap">
+<area shape="rect" id="node1" title="A type that stores linkage groups and crossover probabilities for simulating meiosis." alt="" coords="111,189,272,217"/>
+<area shape="rect" id="node2" href="$structgsc___linkage_group.html" title="A generic store for a linkage group, used to simulate meiosis on a certain subset of markers." alt="" coords="127,97,256,125"/>
+<area shape="rect" id="node3" href="$structgsc___simple_linkage_group.html" title="Parameters for simulating meiosis on a linkage group whose markers are stored contiguously in the sim..." alt="" coords="5,5,175,33"/>
+<area shape="rect" id="node4" href="$structgsc___reordered_linkage_group.html" title="Parameters for simulating meiosis on a linkage group whose markers are re&#45;ordered compared to the fir..." alt="" coords="199,5,387,33"/>
+</map>

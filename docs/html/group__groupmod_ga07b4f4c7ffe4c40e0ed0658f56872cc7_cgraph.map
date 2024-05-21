@@ -1,0 +1,14 @@
+<map id="gsc_split_evenly_into_n" name="gsc_split_evenly_into_n">
+<area shape="rect" id="node1" title="Split a group into n groups of equal size (or size differing only by one, if n does not perfectly div..." alt="" coords="5,65,164,93"/>
+<area shape="rect" id="node2" href="$group__collgetters.html#gae9131a8c72149706f67f6e4a48add79c" title="Function to count the number of genotypes that currently belong to the specified group." alt="" coords="223,5,361,33"/>
+<area shape="rect" id="node3" href="$sim-operations_8c.html#ab93ed92191433e9c03270127baeb21d2" title=" " alt="" coords="212,57,372,101"/>
+<area shape="rect" id="node4" href="$group__groupmod.html#gab0f7f198ee2602c6db2e315e7345b2e5" title="Split by some allocator (generic function)" alt="" coords="224,125,360,169"/>
+<area shape="rect" id="node5" href="$group__iterators.html#ga05da8d96593f8404938cc24f659db049" title="Create a bidirectional iterator." alt="" coords="1077,45,1263,73"/>
+<area shape="rect" id="node6" href="$group__supporters.html#ga6d28dad64b97f61aac8575493ab8a95b" title="Function to identify the next n sequential integers that do not identify a group that currently has m..." alt="" coords="420,107,609,135"/>
+<area shape="rect" id="node10" href="$group__iterators.html#ga630ba7f8e864238e296cb9480dfbc728" title="Get the next location from a bidirectional iterator." alt="" coords="1106,157,1235,185"/>
+<area shape="rect" id="node12" href="$group__liteget.html#ga7c88af63ccbce0c1e9026339d38fe53a" title="Set the current group membership of a genotype." alt="" coords="462,213,568,241"/>
+<area shape="rect" id="node7" href="$group__collgetters.html#gaf9692ce014cfe5439fd00e522a6bab9f" title="Identify group numbers that currently have members." alt="" coords="657,105,823,133"/>
+<area shape="rect" id="node8" href="$group__collgetters.html#gaddb8ea59b22bbe0ec8c61da7f5ba8a98" title="Identify group numbers that currently have members, and how many members they have." alt="" coords="871,93,1029,137"/>
+<area shape="rect" id="node9" href="$group__liteget.html#gae5d12aca851dd2358b63dc60b8ac6e5f" title="Get the current group membership of a genotype." alt="" coords="1117,101,1223,129"/>
+<area shape="rect" id="node11" href="$group__iterators.html#gaa4fa2aec3b7f49f9925fe82c8ff38dcd" title="Initialise a Bidirectional iterator to the start of its sequence." alt="" coords="1311,149,1455,193"/>
+</map>

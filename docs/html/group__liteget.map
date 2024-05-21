@@ -1,4 +1,4 @@
 <map id="Getting data from an Iterator" name="Getting data from an Iterator">
 <area shape="rect" id="node1" href="$group__getters.html" title="For non&#45;persistent access to simulation results and contents." alt="" coords="5,5,172,48"/>
-<area shape="rect" id="node2" title="These functions take as a parameter a GenoLocation (the output of iterators), and access the data for..." alt="" coords="220,5,359,48"/>
+<area shape="rect" id="node2" title="These functions take as a parameter a gsc_GenoLocation (the output of iterators), and access the data..." alt="" coords="220,5,359,48"/>
 </map>

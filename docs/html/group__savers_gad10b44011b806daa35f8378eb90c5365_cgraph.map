@@ -1,0 +1,9 @@
+<map id="gsc_save_group_one_step_pedigree" name="gsc_save_group_one_step_pedigree">
+<area shape="rect" id="node1" title="Print the parents of each genotype in a group to a file." alt="" coords="5,101,148,145"/>
+<area shape="rect" id="node2" href="$group__collgetters.html#gae5fac6863433c073871766b80aa6d966" title="Gets the ids of each member of the group." alt="" coords="217,5,348,33"/>
+<area shape="rect" id="node3" href="$group__collgetters.html#gae9131a8c72149706f67f6e4a48add79c" title="Function to count the number of genotypes that currently belong to the specified group." alt="" coords="423,84,560,112"/>
+<area shape="rect" id="node4" href="$group__collgetters.html#ga52a8eb90f5a6a1f9dabea81955d0bb79" title="Gets a shallow copy of the names of each member of the group." alt="" coords="206,109,359,137"/>
+<area shape="rect" id="node5" href="$group__collgetters.html#ga3010fa26c1c6a31c61286e6c60c97dd5" title="Gets the ids of either the first or second parent of each member of the group." alt="" coords="196,161,369,189"/>
+<area shape="rect" id="node6" href="$group__search.html#ga5c7cd898a40e515c3164c98821068978" title="Returns the name of the genotype with a given id." alt="" coords="212,213,353,241"/>
+<area shape="rect" id="node7" href="$group__supporters.html#ga8b0703c50a67ddcbe49f6b8d4ba3162b" title="Binary search through a list of PedigreeIDs." alt="" coords="417,205,566,249"/>
+</map>

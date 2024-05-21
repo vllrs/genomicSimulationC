@@ -21,7 +21,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">genomicSimulationC<span id="projectnumber">&#160;0.2.4.003</span>
+   <div id="projectname">genomicSimulationC<span id="projectnumber">&#160;0.2.5</span>
    </div>
   </td>
  </tr>
@@ -73,37 +73,43 @@ $(function() {
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:gabefce26ab485e6886d7bbfcaa5692f3a"><td class="memItemLeft" align="right" valign="top">int *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__recomb.html#gabefce26ab485e6886d7bbfcaa5692f3a">calculate_min_recombinations_fw1</a> (<a class="el" href="struct_sim_data.html">SimData</a> *d, char *parent1, unsigned int p1num, char *parent2, unsigned int p2num, char *offspring, int certain)</td></tr>
-<tr class="memdesc:gabefce26ab485e6886d7bbfcaa5692f3a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Identify markers in the genotype of <code>offspring</code> where recombination from its parents occured.  <a href="group__recomb.html#gabefce26ab485e6886d7bbfcaa5692f3a">More...</a><br /></td></tr>
-<tr class="separator:gabefce26ab485e6886d7bbfcaa5692f3a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga9c9c066183d70aa46d4ed4d224116580"><td class="memItemLeft" align="right" valign="top">int *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__recomb.html#ga9c9c066183d70aa46d4ed4d224116580">calculate_min_recombinations_fwn</a> (<a class="el" href="struct_sim_data.html">SimData</a> *d, char *parent1, unsigned int p1num, char *parent2, unsigned int p2num, char *offspring, int window_size, int certain)</td></tr>
-<tr class="memdesc:ga9c9c066183d70aa46d4ed4d224116580"><td class="mdescLeft">&#160;</td><td class="mdescRight">Identify markers in the genotype of <code>offspring</code> where recombination from its parents occured, as judged by the marker itself and a short window around it.  <a href="group__recomb.html#ga9c9c066183d70aa46d4ed4d224116580">More...</a><br /></td></tr>
-<tr class="separator:ga9c9c066183d70aa46d4ed4d224116580"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga616d4bb1a616a3c7895f2de96be52870"><td class="memItemLeft" align="right" valign="top">static int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__recomb.html#ga616d4bb1a616a3c7895f2de96be52870">has_same_alleles</a> (const char *p1, const char *p2, const int i)</td></tr>
-<tr class="memdesc:ga616d4bb1a616a3c7895f2de96be52870"><td class="mdescLeft">&#160;</td><td class="mdescRight">Simple operator to determine if at marker i, two genotypes share at least one allele.  <a href="group__recomb.html#ga616d4bb1a616a3c7895f2de96be52870">More...</a><br /></td></tr>
-<tr class="separator:ga616d4bb1a616a3c7895f2de96be52870"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gafd5313ef4d6df2e2c43ab32ae54ae28d"><td class="memItemLeft" align="right" valign="top">static int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__recomb.html#gafd5313ef4d6df2e2c43ab32ae54ae28d">has_same_alleles_window</a> (const char *g1, const char *g2, const int start, const int w)</td></tr>
-<tr class="memdesc:gafd5313ef4d6df2e2c43ab32ae54ae28d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Simple operator to determine if at markers with indexes i to i+w inclusive, two genotypes share at least one allele.  <a href="group__recomb.html#gafd5313ef4d6df2e2c43ab32ae54ae28d">More...</a><br /></td></tr>
-<tr class="separator:gafd5313ef4d6df2e2c43ab32ae54ae28d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga7813f256407ab2ea242df32ea9ad2c7e"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__recomb.html#ga7813f256407ab2ea242df32ea9ad2c7e">calculate_recombinations_from_file</a> (<a class="el" href="struct_sim_data.html">SimData</a> *d, const char *input_file, const char *output_file, int window_len, int certain)</td></tr>
-<tr class="memdesc:ga7813f256407ab2ea242df32ea9ad2c7e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Provides guesses as to the location of recombination events that led to the creation of certain genotypes from certain other genotypes.  <a href="group__recomb.html#ga7813f256407ab2ea242df32ea9ad2c7e">More...</a><br /></td></tr>
-<tr class="separator:ga7813f256407ab2ea242df32ea9ad2c7e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaecfe54dacdba616a25212ff12a32398c"><td class="memItemLeft" align="right" valign="top">int *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__recomb.html#gaecfe54dacdba616a25212ff12a32398c">gsc_calculate_min_recombinations_fw1</a> (<a class="el" href="structgsc___sim_data.html">gsc_SimData</a> *d, <a class="el" href="structgsc___map_i_d.html">gsc_MapID</a> mapid, char *parent1, unsigned int p1num, char *parent2, unsigned int p2num, char *offspring, int certain)</td></tr>
+<tr class="memdesc:gaecfe54dacdba616a25212ff12a32398c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Identify markers in the genotype of <code>offspring</code> where recombination from its parents occured.  <a href="group__recomb.html#gaecfe54dacdba616a25212ff12a32398c">More...</a><br /></td></tr>
+<tr class="separator:gaecfe54dacdba616a25212ff12a32398c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaf955aa7d648a243e559ac23040e35fc5"><td class="memItemLeft" align="right" valign="top">int *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__recomb.html#gaf955aa7d648a243e559ac23040e35fc5">gsc_calculate_min_recombinations_fwn</a> (<a class="el" href="structgsc___sim_data.html">gsc_SimData</a> *d, <a class="el" href="structgsc___map_i_d.html">gsc_MapID</a> mapid, char *parent1, unsigned int p1num, char *parent2, unsigned int p2num, char *offspring, int window_size, int certain)</td></tr>
+<tr class="memdesc:gaf955aa7d648a243e559ac23040e35fc5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Identify markers in the genotype of <code>offspring</code> where recombination from its parents occured, as judged by the marker itself and a short window around it.  <a href="group__recomb.html#gaf955aa7d648a243e559ac23040e35fc5">More...</a><br /></td></tr>
+<tr class="separator:gaf955aa7d648a243e559ac23040e35fc5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaeac78d574a417dfcdad5ef091b464951"><td class="memItemLeft" align="right" valign="top">static int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__recomb.html#gaeac78d574a417dfcdad5ef091b464951">gsc_has_same_alleles</a> (const char *p1, const char *p2, const int i)</td></tr>
+<tr class="memdesc:gaeac78d574a417dfcdad5ef091b464951"><td class="mdescLeft">&#160;</td><td class="mdescRight">Simple operator to determine if at marker i, two genotypes share at least one allele.  <a href="group__recomb.html#gaeac78d574a417dfcdad5ef091b464951">More...</a><br /></td></tr>
+<tr class="separator:gaeac78d574a417dfcdad5ef091b464951"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaf2a329b02429066eb2a7d077def64c51"><td class="memItemLeft" align="right" valign="top">static int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__recomb.html#gaf2a329b02429066eb2a7d077def64c51">gsc_has_same_alleles_window</a> (const char *g1, const char *g2, const int start, const int w)</td></tr>
+<tr class="memdesc:gaf2a329b02429066eb2a7d077def64c51"><td class="mdescLeft">&#160;</td><td class="mdescRight">Simple operator to determine if at markers with indexes i to i+w inclusive, two genotypes share at least one allele.  <a href="group__recomb.html#gaf2a329b02429066eb2a7d077def64c51">More...</a><br /></td></tr>
+<tr class="separator:gaf2a329b02429066eb2a7d077def64c51"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga17bf2aa42201490431e56ba42ace85fc"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__recomb.html#ga17bf2aa42201490431e56ba42ace85fc">gsc_calculate_recombinations_from_file</a> (<a class="el" href="structgsc___sim_data.html">gsc_SimData</a> *d, const char *input_file, const char *output_file, int window_len, int certain)</td></tr>
+<tr class="memdesc:ga17bf2aa42201490431e56ba42ace85fc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Provides guesses as to the location of recombination events that led to the creation of certain genotypes from certain other genotypes.  <a href="group__recomb.html#ga17bf2aa42201490431e56ba42ace85fc">More...</a><br /></td></tr>
+<tr class="separator:ga17bf2aa42201490431e56ba42ace85fc"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <p >Experimental functions for retroactively calculating number of recombinations. </p>
 <p >This functionality is for interest only. It is not clear, or tidy, or checked against real data. </p>
 <h2 class="groupheader">Function Documentation</h2>
-<a id="gabefce26ab485e6886d7bbfcaa5692f3a" name="gabefce26ab485e6886d7bbfcaa5692f3a"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#gabefce26ab485e6886d7bbfcaa5692f3a">&#9670;&nbsp;</a></span>calculate_min_recombinations_fw1()</h2>
+<a id="gaecfe54dacdba616a25212ff12a32398c" name="gaecfe54dacdba616a25212ff12a32398c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gaecfe54dacdba616a25212ff12a32398c">&#9670;&nbsp;</a></span>gsc_calculate_min_recombinations_fw1()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">int * calculate_min_recombinations_fw1 </td>
+          <td class="memname">int * gsc_calculate_min_recombinations_fw1 </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="struct_sim_data.html">SimData</a> *&#160;</td>
+          <td class="paramtype"><a class="el" href="structgsc___sim_data.html">gsc_SimData</a> *&#160;</td>
           <td class="paramname"><em>d</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structgsc___map_i_d.html">gsc_MapID</a>&#160;</td>
+          <td class="paramname"><em>mapid</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -150,17 +156,18 @@ Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Identify markers in the genotype of <code>offspring</code> where recombination from its parents occured. </p>
-<p >This function is a little lower-level (see the kinds of parameters required) and so a wrapper like calculate_recombinations_from_file is suggested for end users. </p><dl class="section see"><dt>See also</dt><dd><a class="el" href="group__recomb.html#ga7813f256407ab2ea242df32ea9ad2c7e" title="Provides guesses as to the location of recombination events that led to the creation of certain genot...">calculate_recombinations_from_file()</a></dd></dl>
+<p >This function is a little lower-level (see the kinds of parameters required) and so a wrapper like gsc_calculate_recombinations_from_file is suggested for end users. </p><dl class="section see"><dt>See also</dt><dd><a class="el" href="group__recomb.html#ga17bf2aa42201490431e56ba42ace85fc" title="Provides guesses as to the location of recombination events that led to the creation of certain genot...">gsc_calculate_recombinations_from_file()</a></dd></dl>
 <p>The function reads start to end along each chromosome. At each marker, it checks if the alleles the offspring has could only have come from one parent/there is known parentage of that allele. If that is the case, it saves the provided id number of the source parent to the matching position in the result vector. If it is not the case, its behaviour depends on the <code>certain</code> parameter.</p>
 <p >Parents do not have to be directly identified as parents by the pedigree functionality of this library. A sample usage is performing a cross then multiple generations of selfing, then comparing the final inbred to the original two lines of the cross.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">d</td><td>pointer to the <a class="el" href="struct_sim_data.html" title="Composite type that is used to run crossing simulations.">SimData</a> struct whose genetic map matches the provided genotypes. </td></tr>
-    <tr><td class="paramname">parent1</td><td>a character vector containing one parent's alleles at each marker in the <a class="el" href="struct_sim_data.html" title="Composite type that is used to run crossing simulations.">SimData</a>. </td></tr>
+    <tr><td class="paramname">d</td><td>pointer to the <a class="el" href="structgsc___sim_data.html" title="Composite type that is used to run crossing simulations.">gsc_SimData</a> struct whose genetic map matches the provided genotypes. </td></tr>
+    <tr><td class="paramname">mapid</td><td>ID of the map from which to calculate potential historical crossovers, or NO_MAP to use the first-loaded/primary map by default </td></tr>
+    <tr><td class="paramname">parent1</td><td>a character vector containing one parent's alleles at each marker in the <a class="el" href="structgsc___sim_data.html" title="Composite type that is used to run crossing simulations.">gsc_SimData</a>. </td></tr>
     <tr><td class="paramname">p1num</td><td>an integer that will be used to identify areas of the genome that come from the first parent in the returned vector. </td></tr>
-    <tr><td class="paramname">parent2</td><td>a character vector containing the other parent's alleles at each marker in the <a class="el" href="struct_sim_data.html" title="Composite type that is used to run crossing simulations.">SimData</a>. </td></tr>
+    <tr><td class="paramname">parent2</td><td>a character vector containing the other parent's alleles at each marker in the <a class="el" href="structgsc___sim_data.html" title="Composite type that is used to run crossing simulations.">gsc_SimData</a>. </td></tr>
     <tr><td class="paramname">p2num</td><td>an integer that will be used to identify areas of the genome that come from the second parent in the returned vector. </td></tr>
-    <tr><td class="paramname">offspring</td><td>a character vector containing the alleles at each marker in the <a class="el" href="struct_sim_data.html" title="Composite type that is used to run crossing simulations.">SimData</a> of the genotype whose likely recombinations we want to identify. </td></tr>
+    <tr><td class="paramname">offspring</td><td>a character vector containing the alleles at each marker in the <a class="el" href="structgsc___sim_data.html" title="Composite type that is used to run crossing simulations.">gsc_SimData</a> of the genotype whose likely recombinations we want to identify. </td></tr>
     <tr><td class="paramname">certain</td><td>a boolean. If TRUE, markers where the parent of origin cannot be identified will be set to 0, if FALSE, the value will be set to the id of the parent that provided the most recently identified allele in that chromosome. </td></tr>
   </table>
   </dd>
@@ -171,10 +178,12 @@ Functions</h2></td></tr>
 <div id="dynsection-0-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-0-content" class="dyncontent" style="display:none;">
-<div class="center"><img src="group__recomb_gabefce26ab485e6886d7bbfcaa5692f3a_cgraph.png" border="0" usemap="#agroup__recomb_gabefce26ab485e6886d7bbfcaa5692f3a_cgraph" alt=""/></div>
-<map name="agroup__recomb_gabefce26ab485e6886d7bbfcaa5692f3a_cgraph" id="agroup__recomb_gabefce26ab485e6886d7bbfcaa5692f3a_cgraph">
-<area shape="rect" title="Identify markers in the genotype of offspring where recombination from its parents occured." alt="" coords="5,5,228,33"/>
-<area shape="rect" href="group__recomb.html#ga616d4bb1a616a3c7895f2de96be52870" title="Simple operator to determine if at marker i, two genotypes share at least one allele." alt="" coords="276,5,401,33"/>
+<div class="center"><img src="group__recomb_gaecfe54dacdba616a25212ff12a32398c_cgraph.png" border="0" usemap="#agroup__recomb_gaecfe54dacdba616a25212ff12a32398c_cgraph" alt=""/></div>
+<map name="agroup__recomb_gaecfe54dacdba616a25212ff12a32398c_cgraph" id="agroup__recomb_gaecfe54dacdba616a25212ff12a32398c_cgraph">
+<area shape="rect" title="Identify markers in the genotype of offspring where recombination from its parents occured." alt="" coords="5,57,256,85"/>
+<area shape="rect" href="group__supporters.html#gaaa359f6aab15a4c27d344e1118e87457" title="Function to identify the lookup index of a recombination map identifier." alt="" coords="304,5,458,33"/>
+<area shape="rect" href="group__recomb.html#gaeac78d574a417dfcdad5ef091b464951" title="Simple operator to determine if at marker i, two genotypes share at least one allele." alt="" coords="304,57,458,85"/>
+<area shape="rect" href="sim-operations_8c.html#aaaf3ebc75feaf901829232712e55677b" title="Replace calls to malloc direct with this function." alt="" coords="320,109,442,137"/>
 </map>
 </div>
 <div id="dynsection-1" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
@@ -182,26 +191,32 @@ Functions</h2></td></tr>
 <div id="dynsection-1-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-1-content" class="dyncontent" style="display:none;">
-<div class="center"><img src="group__recomb_gabefce26ab485e6886d7bbfcaa5692f3a_icgraph.png" border="0" usemap="#agroup__recomb_gabefce26ab485e6886d7bbfcaa5692f3a_icgraph" alt=""/></div>
-<map name="agroup__recomb_gabefce26ab485e6886d7bbfcaa5692f3a_icgraph" id="agroup__recomb_gabefce26ab485e6886d7bbfcaa5692f3a_icgraph">
-<area shape="rect" title="Identify markers in the genotype of offspring where recombination from its parents occured." alt="" coords="222,13,444,41"/>
-<area shape="rect" href="group__recomb.html#ga7813f256407ab2ea242df32ea9ad2c7e" title="Provides guesses as to the location of recombination events that led to the creation of certain genot..." alt="" coords="5,5,174,49"/>
+<div class="center"><img src="group__recomb_gaecfe54dacdba616a25212ff12a32398c_icgraph.png" border="0" usemap="#agroup__recomb_gaecfe54dacdba616a25212ff12a32398c_icgraph" alt=""/></div>
+<map name="agroup__recomb_gaecfe54dacdba616a25212ff12a32398c_icgraph" id="agroup__recomb_gaecfe54dacdba616a25212ff12a32398c_icgraph">
+<area shape="rect" title="Identify markers in the genotype of offspring where recombination from its parents occured." alt="" coords="250,13,500,41"/>
+<area shape="rect" href="group__recomb.html#ga17bf2aa42201490431e56ba42ace85fc" title="Provides guesses as to the location of recombination events that led to the creation of certain genot..." alt="" coords="5,5,202,49"/>
 </map>
 </div>
 
 </div>
 </div>
-<a id="ga9c9c066183d70aa46d4ed4d224116580" name="ga9c9c066183d70aa46d4ed4d224116580"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ga9c9c066183d70aa46d4ed4d224116580">&#9670;&nbsp;</a></span>calculate_min_recombinations_fwn()</h2>
+<a id="gaf955aa7d648a243e559ac23040e35fc5" name="gaf955aa7d648a243e559ac23040e35fc5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gaf955aa7d648a243e559ac23040e35fc5">&#9670;&nbsp;</a></span>gsc_calculate_min_recombinations_fwn()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">int * calculate_min_recombinations_fwn </td>
+          <td class="memname">int * gsc_calculate_min_recombinations_fwn </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="struct_sim_data.html">SimData</a> *&#160;</td>
+          <td class="paramtype"><a class="el" href="structgsc___sim_data.html">gsc_SimData</a> *&#160;</td>
           <td class="paramname"><em>d</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structgsc___map_i_d.html">gsc_MapID</a>&#160;</td>
+          <td class="paramname"><em>mapid</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -254,18 +269,19 @@ Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Identify markers in the genotype of <code>offspring</code> where recombination from its parents occured, as judged by the marker itself and a short window around it. </p>
-<p >This function is a little lower-level (see the kinds of parameters required) and so a wrapper like calculate_recombinations_from_file is suggested for end users. </p><dl class="section see"><dt>See also</dt><dd><a class="el" href="group__recomb.html#ga7813f256407ab2ea242df32ea9ad2c7e" title="Provides guesses as to the location of recombination events that led to the creation of certain genot...">calculate_recombinations_from_file()</a></dd></dl>
+<p >This function is a little lower-level (see the kinds of parameters required) and so a wrapper like gsc_calculate_recombinations_from_file is suggested for end users. </p><dl class="section see"><dt>See also</dt><dd><a class="el" href="group__recomb.html#ga17bf2aa42201490431e56ba42ace85fc" title="Provides guesses as to the location of recombination events that led to the creation of certain genot...">gsc_calculate_recombinations_from_file()</a></dd></dl>
 <p>The function reads start to end along each chromosome. At each marker, it checks if the alleles the offspring has in the window centered at that marker could have come from one parent but could not have come from the other/there is known parentage of that allele. If that is the case, it saves the provided id number of the source parent to the matching position in the result vector. If it is not the case, its behaviour depends on the <code>certain</code> parameter.</p>
 <p >Parents do not have to be directly identified as parents by the pedigree functionality of this library. A sample usage is performing a cross then multiple generations of selfing, then comparing the final inbred to the original two lines of the cross.</p>
 <p >Behaviour when the window size is not an odd integer has not been tested.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">d</td><td>pointer to the <a class="el" href="struct_sim_data.html" title="Composite type that is used to run crossing simulations.">SimData</a> struct whose genetic map matches the provided genotypes. </td></tr>
-    <tr><td class="paramname">parent1</td><td>a character vector containing one parent's alleles at each marker in the <a class="el" href="struct_sim_data.html" title="Composite type that is used to run crossing simulations.">SimData</a>. </td></tr>
+    <tr><td class="paramname">d</td><td>pointer to the <a class="el" href="structgsc___sim_data.html" title="Composite type that is used to run crossing simulations.">gsc_SimData</a> struct whose genetic map matches the provided genotypes. </td></tr>
+    <tr><td class="paramname">mapid</td><td>ID of the map from which to calculate potential historical crossovers, or NO_MAP to use the first-loaded/primary map by default </td></tr>
+    <tr><td class="paramname">parent1</td><td>a character vector containing one parent's alleles at each marker in the <a class="el" href="structgsc___sim_data.html" title="Composite type that is used to run crossing simulations.">gsc_SimData</a>. </td></tr>
     <tr><td class="paramname">p1num</td><td>an integer that will be used to identify areas of the genome that come from the first parent in the returned vector. </td></tr>
-    <tr><td class="paramname">parent2</td><td>a character vector containing the other parent's alleles at each marker in the <a class="el" href="struct_sim_data.html" title="Composite type that is used to run crossing simulations.">SimData</a>. </td></tr>
+    <tr><td class="paramname">parent2</td><td>a character vector containing the other parent's alleles at each marker in the <a class="el" href="structgsc___sim_data.html" title="Composite type that is used to run crossing simulations.">gsc_SimData</a>. </td></tr>
     <tr><td class="paramname">p2num</td><td>an integer that will be used to identify areas of the genome that come from the second parent in the returned vector. </td></tr>
-    <tr><td class="paramname">offspring</td><td>a character vector containing the alleles at each marker in the <a class="el" href="struct_sim_data.html" title="Composite type that is used to run crossing simulations.">SimData</a> of the genotype whose likely recombinations we want to identify. </td></tr>
+    <tr><td class="paramname">offspring</td><td>a character vector containing the alleles at each marker in the <a class="el" href="structgsc___sim_data.html" title="Composite type that is used to run crossing simulations.">gsc_SimData</a> of the genotype whose likely recombinations we want to identify. </td></tr>
     <tr><td class="paramname">window_size</td><td>an odd integer representing the number of markers to check for known parentage around each marker </td></tr>
     <tr><td class="paramname">certain</td><td>a boolean. If TRUE, markers where the parent of origin cannot be identified will be set to 0, if FALSE, the value will be set to the id of the parent that provided the most recently identified allele in that chromosome. </td></tr>
   </table>
@@ -277,10 +293,12 @@ Functions</h2></td></tr>
 <div id="dynsection-2-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-2-content" class="dyncontent" style="display:none;">
-<div class="center"><img src="group__recomb_ga9c9c066183d70aa46d4ed4d224116580_cgraph.png" border="0" usemap="#agroup__recomb_ga9c9c066183d70aa46d4ed4d224116580_cgraph" alt=""/></div>
-<map name="agroup__recomb_ga9c9c066183d70aa46d4ed4d224116580_cgraph" id="agroup__recomb_ga9c9c066183d70aa46d4ed4d224116580_cgraph">
-<area shape="rect" title="Identify markers in the genotype of offspring where recombination from its parents occured,..." alt="" coords="5,5,228,33"/>
-<area shape="rect" href="group__recomb.html#gafd5313ef4d6df2e2c43ab32ae54ae28d" title="Simple operator to determine if at markers with indexes i to i+w inclusive, two genotypes share at le..." alt="" coords="276,5,450,33"/>
+<div class="center"><img src="group__recomb_gaf955aa7d648a243e559ac23040e35fc5_cgraph.png" border="0" usemap="#agroup__recomb_gaf955aa7d648a243e559ac23040e35fc5_cgraph" alt=""/></div>
+<map name="agroup__recomb_gaf955aa7d648a243e559ac23040e35fc5_cgraph" id="agroup__recomb_gaf955aa7d648a243e559ac23040e35fc5_cgraph">
+<area shape="rect" title="Identify markers in the genotype of offspring where recombination from its parents occured,..." alt="" coords="5,65,256,93"/>
+<area shape="rect" href="group__supporters.html#gaaa359f6aab15a4c27d344e1118e87457" title="Function to identify the lookup index of a recombination map identifier." alt="" coords="304,5,458,33"/>
+<area shape="rect" href="group__recomb.html#gaf2a329b02429066eb2a7d077def64c51" title="Simple operator to determine if at markers with indexes i to i+w inclusive, two genotypes share at le..." alt="" coords="304,57,458,101"/>
+<area shape="rect" href="sim-operations_8c.html#aaaf3ebc75feaf901829232712e55677b" title="Replace calls to malloc direct with this function." alt="" coords="320,125,442,153"/>
 </map>
 </div>
 <div id="dynsection-3" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
@@ -288,25 +306,25 @@ Functions</h2></td></tr>
 <div id="dynsection-3-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-3-content" class="dyncontent" style="display:none;">
-<div class="center"><img src="group__recomb_ga9c9c066183d70aa46d4ed4d224116580_icgraph.png" border="0" usemap="#agroup__recomb_ga9c9c066183d70aa46d4ed4d224116580_icgraph" alt=""/></div>
-<map name="agroup__recomb_ga9c9c066183d70aa46d4ed4d224116580_icgraph" id="agroup__recomb_ga9c9c066183d70aa46d4ed4d224116580_icgraph">
-<area shape="rect" title="Identify markers in the genotype of offspring where recombination from its parents occured,..." alt="" coords="222,13,444,41"/>
-<area shape="rect" href="group__recomb.html#ga7813f256407ab2ea242df32ea9ad2c7e" title="Provides guesses as to the location of recombination events that led to the creation of certain genot..." alt="" coords="5,5,174,49"/>
+<div class="center"><img src="group__recomb_gaf955aa7d648a243e559ac23040e35fc5_icgraph.png" border="0" usemap="#agroup__recomb_gaf955aa7d648a243e559ac23040e35fc5_icgraph" alt=""/></div>
+<map name="agroup__recomb_gaf955aa7d648a243e559ac23040e35fc5_icgraph" id="agroup__recomb_gaf955aa7d648a243e559ac23040e35fc5_icgraph">
+<area shape="rect" title="Identify markers in the genotype of offspring where recombination from its parents occured,..." alt="" coords="250,13,500,41"/>
+<area shape="rect" href="group__recomb.html#ga17bf2aa42201490431e56ba42ace85fc" title="Provides guesses as to the location of recombination events that led to the creation of certain genot..." alt="" coords="5,5,202,49"/>
 </map>
 </div>
 
 </div>
 </div>
-<a id="ga7813f256407ab2ea242df32ea9ad2c7e" name="ga7813f256407ab2ea242df32ea9ad2c7e"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ga7813f256407ab2ea242df32ea9ad2c7e">&#9670;&nbsp;</a></span>calculate_recombinations_from_file()</h2>
+<a id="ga17bf2aa42201490431e56ba42ace85fc" name="ga17bf2aa42201490431e56ba42ace85fc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga17bf2aa42201490431e56ba42ace85fc">&#9670;&nbsp;</a></span>gsc_calculate_recombinations_from_file()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">int calculate_recombinations_from_file </td>
+          <td class="memname">int gsc_calculate_recombinations_from_file </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="struct_sim_data.html">SimData</a> *&#160;</td>
+          <td class="paramtype"><a class="el" href="structgsc___sim_data.html">gsc_SimData</a> *&#160;</td>
           <td class="paramname"><em>d</em>, </td>
         </tr>
         <tr>
@@ -352,7 +370,7 @@ Functions</h2></td></tr>
 <p >Parents do not have to be directly identified as parents by the pedigree functionality of this library. A sample usage is performing a cross then multiple generations of selfing, then comparing the final inbred to the original two lines of the cross.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">d</td><td>pointer to the <a class="el" href="struct_sim_data.html" title="Composite type that is used to run crossing simulations.">SimData</a> struct containing the genotypes and map under consideration. </td></tr>
+    <tr><td class="paramname">d</td><td>pointer to the <a class="el" href="structgsc___sim_data.html" title="Composite type that is used to run crossing simulations.">gsc_SimData</a> struct containing the genotypes and map under consideration. </td></tr>
     <tr><td class="paramname">input_file</td><td>string containing the name of the file with the pairs of parents and offsprings of which to calculate recombinations </td></tr>
     <tr><td class="paramname">output_file</td><td>string containing the filename to which to save the results. </td></tr>
     <tr><td class="paramname">window_len</td><td>an odd integer representing the number of markers to check for known parentage around each marker </td></tr>
@@ -366,24 +384,26 @@ Functions</h2></td></tr>
 <div id="dynsection-4-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-4-content" class="dyncontent" style="display:none;">
-<div class="center"><img src="group__recomb_ga7813f256407ab2ea242df32ea9ad2c7e_cgraph.png" border="0" usemap="#agroup__recomb_ga7813f256407ab2ea242df32ea9ad2c7e_cgraph" alt=""/></div>
-<map name="agroup__recomb_ga7813f256407ab2ea242df32ea9ad2c7e_cgraph" id="agroup__recomb_ga7813f256407ab2ea242df32ea9ad2c7e_cgraph">
-<area shape="rect" title="Provides guesses as to the location of recombination events that led to the creation of certain genot..." alt="" coords="5,128,174,172"/>
-<area shape="rect" href="group__recomb.html#gabefce26ab485e6886d7bbfcaa5692f3a" title="Identify markers in the genotype of offspring where recombination from its parents occured." alt="" coords="222,5,444,33"/>
-<area shape="rect" href="group__recomb.html#ga9c9c066183d70aa46d4ed4d224116580" title="Identify markers in the genotype of offspring where recombination from its parents occured,..." alt="" coords="222,57,444,85"/>
-<area shape="rect" href="group__supporters.html#ga10dddc2d2028b8c1341837897b6eee4d" title="Opens a table file and reads the number of columns and rows (including headers) separated by sep into..." alt="" coords="265,109,401,137"/>
-<area shape="rect" href="group__search.html#ga31eb9ab2cd17d7c107102922e2609aac" title="Get the alleles of a genotype by its index." alt="" coords="265,161,401,189"/>
-<area shape="rect" href="group__search.html#ga8c2bc00d2b81a4c293a939f202250eb8" title="Get the id of a genotype by its index." alt="" coords="277,213,389,241"/>
-<area shape="rect" href="group__search.html#ga852d1f756b52ea86e30e63335dcc33e1" title="Search for a genotype with a particular name in a linked list of AlleleMatrix, and return its index." alt="" coords="266,265,400,293"/>
-<area shape="rect" href="group__recomb.html#ga616d4bb1a616a3c7895f2de96be52870" title="Simple operator to determine if at marker i, two genotypes share at least one allele." alt="" coords="517,5,642,33"/>
-<area shape="rect" href="group__recomb.html#gafd5313ef4d6df2e2c43ab32ae54ae28d" title="Simple operator to determine if at markers with indexes i to i+w inclusive, two genotypes share at le..." alt="" coords="492,57,666,85"/>
+<div class="center"><img src="group__recomb_ga17bf2aa42201490431e56ba42ace85fc_cgraph.png" border="0" usemap="#agroup__recomb_ga17bf2aa42201490431e56ba42ace85fc_cgraph" alt=""/></div>
+<map name="agroup__recomb_ga17bf2aa42201490431e56ba42ace85fc_cgraph" id="agroup__recomb_ga17bf2aa42201490431e56ba42ace85fc_cgraph">
+<area shape="rect" title="Provides guesses as to the location of recombination events that led to the creation of certain genot..." alt="" coords="5,196,202,240"/>
+<area shape="rect" href="group__recomb.html#gaecfe54dacdba616a25212ff12a32398c" title="Identify markers in the genotype of offspring where recombination from its parents occured." alt="" coords="250,125,500,153"/>
+<area shape="rect" href="group__recomb.html#gaf955aa7d648a243e559ac23040e35fc5" title="Identify markers in the genotype of offspring where recombination from its parents occured,..." alt="" coords="250,73,500,101"/>
+<area shape="rect" href="group__supporters.html#ga31fba32c2f869b50d97669e3e322d338" title="Opens a table file and reads the number of columns and rows (including headers) separated by sep into..." alt="" coords="293,177,457,205"/>
+<area shape="rect" href="group__search.html#ga6bf46b86dfd6f562de44b86f64ba6eda" title="Get the alleles of a genotype by its index." alt="" coords="293,229,457,257"/>
+<area shape="rect" href="group__search.html#ga7cab70998890225a5cac0d4f08850a55" title="Get the id of a genotype by its index." alt="" coords="305,281,445,309"/>
+<area shape="rect" href="group__search.html#ga292d9c26b8d027c931a84fd09a32518f" title="Search for a genotype with a particular name in a linked list of gsc_AlleleMatrix,..." alt="" coords="294,333,456,361"/>
+<area shape="rect" href="group__supporters.html#gaaa359f6aab15a4c27d344e1118e87457" title="Function to identify the lookup index of a recombination map identifier." alt="" coords="548,73,702,101"/>
+<area shape="rect" href="group__recomb.html#gaeac78d574a417dfcdad5ef091b464951" title="Simple operator to determine if at marker i, two genotypes share at least one allele." alt="" coords="549,177,702,205"/>
+<area shape="rect" href="sim-operations_8c.html#aaaf3ebc75feaf901829232712e55677b" title="Replace calls to malloc direct with this function." alt="" coords="565,125,686,153"/>
+<area shape="rect" href="group__recomb.html#gaf2a329b02429066eb2a7d077def64c51" title="Simple operator to determine if at markers with indexes i to i+w inclusive, two genotypes share at le..." alt="" coords="549,5,702,49"/>
 </map>
 </div>
 
 </div>
 </div>
-<a id="ga616d4bb1a616a3c7895f2de96be52870" name="ga616d4bb1a616a3c7895f2de96be52870"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ga616d4bb1a616a3c7895f2de96be52870">&#9670;&nbsp;</a></span>has_same_alleles()</h2>
+<a id="gaeac78d574a417dfcdad5ef091b464951" name="gaeac78d574a417dfcdad5ef091b464951"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gaeac78d574a417dfcdad5ef091b464951">&#9670;&nbsp;</a></span>gsc_has_same_alleles()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -392,7 +412,7 @@ Functions</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">static int has_same_alleles </td>
+          <td class="memname">static int gsc_has_same_alleles </td>
           <td>(</td>
           <td class="paramtype">const char *&#160;</td>
           <td class="paramname"><em>p1</em>, </td>
@@ -426,7 +446,7 @@ Functions</h2></td></tr>
 <p >Checks only 3 of four possible permutations because assumes there cannot be more than two alleles at a given marker.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">p1</td><td>pointer to a character array genotype of the type stored in an <a class="el" href="struct_allele_matrix.html">AlleleMatrix</a> (2*n_markers long, representing the two alleles at a marker consecutively) for the first of the genotypes to compare. </td></tr>
+    <tr><td class="paramname">p1</td><td>pointer to a character array genotype of the type stored in an <a class="el" href="structgsc___allele_matrix.html">gsc_AlleleMatrix</a> (2*n_markers long, representing the two alleles at a marker consecutively) for the first of the genotypes to compare. </td></tr>
     <tr><td class="paramname">p2</td><td>pointer to a character array genotype for the second of the genotypes to compare. </td></tr>
     <tr><td class="paramname">i</td><td>index of the marker at which to perform the check </td></tr>
   </table>
@@ -438,18 +458,18 @@ Functions</h2></td></tr>
 <div id="dynsection-5-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-5-content" class="dyncontent" style="display:none;">
-<div class="center"><img src="group__recomb_ga616d4bb1a616a3c7895f2de96be52870_icgraph.png" border="0" usemap="#agroup__recomb_ga616d4bb1a616a3c7895f2de96be52870_icgraph" alt=""/></div>
-<map name="agroup__recomb_ga616d4bb1a616a3c7895f2de96be52870_icgraph" id="agroup__recomb_ga616d4bb1a616a3c7895f2de96be52870_icgraph">
-<area shape="rect" title="Simple operator to determine if at marker i, two genotypes share at least one allele." alt="" coords="492,13,617,41"/>
-<area shape="rect" href="group__recomb.html#gabefce26ab485e6886d7bbfcaa5692f3a" title="Identify markers in the genotype of offspring where recombination from its parents occured." alt="" coords="222,13,444,41"/>
-<area shape="rect" href="group__recomb.html#ga7813f256407ab2ea242df32ea9ad2c7e" title="Provides guesses as to the location of recombination events that led to the creation of certain genot..." alt="" coords="5,5,174,49"/>
+<div class="center"><img src="group__recomb_gaeac78d574a417dfcdad5ef091b464951_icgraph.png" border="0" usemap="#agroup__recomb_gaeac78d574a417dfcdad5ef091b464951_icgraph" alt=""/></div>
+<map name="agroup__recomb_gaeac78d574a417dfcdad5ef091b464951_icgraph" id="agroup__recomb_gaeac78d574a417dfcdad5ef091b464951_icgraph">
+<area shape="rect" title="Simple operator to determine if at marker i, two genotypes share at least one allele." alt="" coords="548,13,701,41"/>
+<area shape="rect" href="group__recomb.html#gaecfe54dacdba616a25212ff12a32398c" title="Identify markers in the genotype of offspring where recombination from its parents occured." alt="" coords="250,13,500,41"/>
+<area shape="rect" href="group__recomb.html#ga17bf2aa42201490431e56ba42ace85fc" title="Provides guesses as to the location of recombination events that led to the creation of certain genot..." alt="" coords="5,5,202,49"/>
 </map>
 </div>
 
 </div>
 </div>
-<a id="gafd5313ef4d6df2e2c43ab32ae54ae28d" name="gafd5313ef4d6df2e2c43ab32ae54ae28d"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#gafd5313ef4d6df2e2c43ab32ae54ae28d">&#9670;&nbsp;</a></span>has_same_alleles_window()</h2>
+<a id="gaf2a329b02429066eb2a7d077def64c51" name="gaf2a329b02429066eb2a7d077def64c51"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gaf2a329b02429066eb2a7d077def64c51">&#9670;&nbsp;</a></span>gsc_has_same_alleles_window()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -458,7 +478,7 @@ Functions</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">static int has_same_alleles_window </td>
+          <td class="memname">static int gsc_has_same_alleles_window </td>
           <td>(</td>
           <td class="paramtype">const char *&#160;</td>
           <td class="paramname"><em>g1</em>, </td>
@@ -498,7 +518,7 @@ Functions</h2></td></tr>
 <p >Checks only 3 of four possible permutations at each marker because assumes there cannot be more than two alleles at a given marker. For the return value to be true, there must be at least one match at every one of the markers in the window.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">g1</td><td>pointer to a character array genotype of the type stored in an <a class="el" href="struct_allele_matrix.html">AlleleMatrix</a> (2*n_markers long, representing the two alleles at a marker consecutively) for the first of the genotypes to compare. </td></tr>
+    <tr><td class="paramname">g1</td><td>pointer to a character array genotype of the type stored in an <a class="el" href="structgsc___allele_matrix.html">gsc_AlleleMatrix</a> (2*n_markers long, representing the two alleles at a marker consecutively) for the first of the genotypes to compare. </td></tr>
     <tr><td class="paramname">g2</td><td>pointer to a character array genotype for the second of the genotypes to compare. </td></tr>
     <tr><td class="paramname">start</td><td>index of the first marker in the window over which to perform the check </td></tr>
     <tr><td class="paramname">w</td><td>length of the window over which to perform the check </td></tr>
@@ -511,11 +531,11 @@ Functions</h2></td></tr>
 <div id="dynsection-6-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-6-content" class="dyncontent" style="display:none;">
-<div class="center"><img src="group__recomb_gafd5313ef4d6df2e2c43ab32ae54ae28d_icgraph.png" border="0" usemap="#agroup__recomb_gafd5313ef4d6df2e2c43ab32ae54ae28d_icgraph" alt=""/></div>
-<map name="agroup__recomb_gafd5313ef4d6df2e2c43ab32ae54ae28d_icgraph" id="agroup__recomb_gafd5313ef4d6df2e2c43ab32ae54ae28d_icgraph">
-<area shape="rect" title="Simple operator to determine if at markers with indexes i to i+w inclusive, two genotypes share at le..." alt="" coords="492,13,666,41"/>
-<area shape="rect" href="group__recomb.html#ga9c9c066183d70aa46d4ed4d224116580" title="Identify markers in the genotype of offspring where recombination from its parents occured,..." alt="" coords="222,13,444,41"/>
-<area shape="rect" href="group__recomb.html#ga7813f256407ab2ea242df32ea9ad2c7e" title="Provides guesses as to the location of recombination events that led to the creation of certain genot..." alt="" coords="5,5,174,49"/>
+<div class="center"><img src="group__recomb_gaf2a329b02429066eb2a7d077def64c51_icgraph.png" border="0" usemap="#agroup__recomb_gaf2a329b02429066eb2a7d077def64c51_icgraph" alt=""/></div>
+<map name="agroup__recomb_gaf2a329b02429066eb2a7d077def64c51_icgraph" id="agroup__recomb_gaf2a329b02429066eb2a7d077def64c51_icgraph">
+<area shape="rect" title="Simple operator to determine if at markers with indexes i to i+w inclusive, two genotypes share at le..." alt="" coords="548,5,701,49"/>
+<area shape="rect" href="group__recomb.html#gaf955aa7d648a243e559ac23040e35fc5" title="Identify markers in the genotype of offspring where recombination from its parents occured,..." alt="" coords="250,13,500,41"/>
+<area shape="rect" href="group__recomb.html#ga17bf2aa42201490431e56ba42ace85fc" title="Provides guesses as to the location of recombination events that led to the creation of certain genot..." alt="" coords="5,5,202,49"/>
 </map>
 </div>
 

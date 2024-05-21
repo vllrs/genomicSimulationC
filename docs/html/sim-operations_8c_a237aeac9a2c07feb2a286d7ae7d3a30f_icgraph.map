@@ -1,0 +1,5 @@
+<map id="gsc_get_chromosome_locations" name="gsc_get_chromosome_locations">
+<area shape="rect" id="node1" title="Updates the chr_ends, n_chr and chr_lengths fields in gsc_SimData.map." alt="" coords="353,5,502,49"/>
+<area shape="rect" id="node2" href="$group__loaders.html#ga2361e1185a626fbac89cdcf504af82c7" title="Populates a gsc_SimData combination from scratch with marker allele data, a genetic map,..." alt="" coords="5,13,131,41"/>
+<area shape="rect" id="node3" href="$group__loaders.html#gaf70cc3ef92b5f3220b35e10964a75e32" title="Populates a gsc_SimData combination with data from a genetic map." alt="" coords="179,39,305,67"/>
+</map>

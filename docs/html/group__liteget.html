@@ -21,7 +21,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">genomicSimulationC<span id="projectnumber">&#160;0.2.4.003</span>
+   <div id="projectname">genomicSimulationC<span id="projectnumber">&#160;0.2.5</span>
    </div>
   </td>
  </tr>
@@ -68,7 +68,7 @@ $(function() {
 </div><!--header-->
 <div class="contents">
 
-<p>These functions take as a parameter a <a class="el" href="struct_geno_location.html" title="An AlleleMatrix/AlleleMatrix index coordinate of a particular genotype in the simulation.">GenoLocation</a> (the output of iterators), and access the data for the single genotype that the iterator has found.  
+<p>These functions take as a parameter a <a class="el" href="structgsc___geno_location.html" title="An gsc_AlleleMatrix/gsc_AlleleMatrix index coordinate of a particular genotype in the simulation.">gsc_GenoLocation</a> (the output of iterators), and access the data for the single genotype that the iterator has found.  
 <a href="#details">More...</a></p>
 <div id="dynsection-0" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-0-trigger" src="closed.png" alt="+"/> Collaboration diagram for Getting data from an Iterator:</div>
@@ -78,43 +78,46 @@ $(function() {
 <div class="center"><img src="group__liteget.png" border="0" usemap="#agroup____liteget" alt=""/></div>
 <map name="agroup____liteget" id="agroup____liteget">
 <area shape="rect" href="group__getters.html" title="For non&#45;persistent access to simulation results and contents." alt="" coords="5,5,172,48"/>
-<area shape="rect" title="These functions take as a parameter a GenoLocation (the output of iterators), and access the data for..." alt="" coords="220,5,359,48"/>
+<area shape="rect" title="These functions take as a parameter a gsc_GenoLocation (the output of iterators), and access the data..." alt="" coords="220,5,359,48"/>
 </map>
 </div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:ga93c9253285cf7f83308aac2612d69d48"><td class="memItemLeft" align="right" valign="top">static char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__liteget.html#ga93c9253285cf7f83308aac2612d69d48">get_name</a> (const <a class="el" href="struct_geno_location.html">GenoLocation</a> loc)</td></tr>
-<tr class="memdesc:ga93c9253285cf7f83308aac2612d69d48"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the name of a genotype.  <a href="group__liteget.html#ga93c9253285cf7f83308aac2612d69d48">More...</a><br /></td></tr>
-<tr class="separator:ga93c9253285cf7f83308aac2612d69d48"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gab8892d21b9cb2cafb539fd12ac51797c"><td class="memItemLeft" align="right" valign="top">static char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__liteget.html#gab8892d21b9cb2cafb539fd12ac51797c">get_alleles</a> (const <a class="el" href="struct_geno_location.html">GenoLocation</a> loc)</td></tr>
-<tr class="memdesc:gab8892d21b9cb2cafb539fd12ac51797c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the alleles of a genotype.  <a href="group__liteget.html#gab8892d21b9cb2cafb539fd12ac51797c">More...</a><br /></td></tr>
-<tr class="separator:gab8892d21b9cb2cafb539fd12ac51797c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gacc807efe6da5bfa758d27fc6c6074e83"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="struct_pedigree_i_d.html">PedigreeID</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__liteget.html#gacc807efe6da5bfa758d27fc6c6074e83">get_first_parent</a> (const <a class="el" href="struct_geno_location.html">GenoLocation</a> loc)</td></tr>
-<tr class="memdesc:gacc807efe6da5bfa758d27fc6c6074e83"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the first/left parent of a genotype.  <a href="group__liteget.html#gacc807efe6da5bfa758d27fc6c6074e83">More...</a><br /></td></tr>
-<tr class="separator:gacc807efe6da5bfa758d27fc6c6074e83"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga89565bb9dff14f6c5644925a599d2aa7"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="struct_pedigree_i_d.html">PedigreeID</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__liteget.html#ga89565bb9dff14f6c5644925a599d2aa7">get_second_parent</a> (const <a class="el" href="struct_geno_location.html">GenoLocation</a> loc)</td></tr>
-<tr class="memdesc:ga89565bb9dff14f6c5644925a599d2aa7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the second/right parent of a genotype.  <a href="group__liteget.html#ga89565bb9dff14f6c5644925a599d2aa7">More...</a><br /></td></tr>
-<tr class="separator:ga89565bb9dff14f6c5644925a599d2aa7"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga9fcff437abcf5d3a193f9a34a243848a"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="struct_pedigree_i_d.html">PedigreeID</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__liteget.html#ga9fcff437abcf5d3a193f9a34a243848a">get_id</a> (const <a class="el" href="struct_geno_location.html">GenoLocation</a> loc)</td></tr>
-<tr class="memdesc:ga9fcff437abcf5d3a193f9a34a243848a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the persistent id of a genotype.  <a href="group__liteget.html#ga9fcff437abcf5d3a193f9a34a243848a">More...</a><br /></td></tr>
-<tr class="separator:ga9fcff437abcf5d3a193f9a34a243848a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gac519344020834a97f9a1ffece03c4b12"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="struct_group_num.html">GroupNum</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__liteget.html#gac519344020834a97f9a1ffece03c4b12">get_group</a> (const <a class="el" href="struct_geno_location.html">GenoLocation</a> loc)</td></tr>
-<tr class="memdesc:gac519344020834a97f9a1ffece03c4b12"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the current group membership of a genotype.  <a href="group__liteget.html#gac519344020834a97f9a1ffece03c4b12">More...</a><br /></td></tr>
-<tr class="separator:gac519344020834a97f9a1ffece03c4b12"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gae735e8e0dd35e322033695939f1e6be7"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__liteget.html#gae735e8e0dd35e322033695939f1e6be7">set_group</a> (const <a class="el" href="struct_geno_location.html">GenoLocation</a> loc, const <a class="el" href="struct_group_num.html">GroupNum</a> group)</td></tr>
-<tr class="memdesc:gae735e8e0dd35e322033695939f1e6be7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the current group membership of a genotype.  <a href="group__liteget.html#gae735e8e0dd35e322033695939f1e6be7">More...</a><br /></td></tr>
-<tr class="separator:gae735e8e0dd35e322033695939f1e6be7"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gadc1910dce94117071fc55362865aa169"><td class="memItemLeft" align="right" valign="top">static int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__liteget.html#gadc1910dce94117071fc55362865aa169">get_label_value</a> (const <a class="el" href="struct_geno_location.html">GenoLocation</a> loc, const int labelIndex)</td></tr>
-<tr class="memdesc:gadc1910dce94117071fc55362865aa169"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the value of a specific label of a genotype.  <a href="group__liteget.html#gadc1910dce94117071fc55362865aa169">More...</a><br /></td></tr>
-<tr class="separator:gadc1910dce94117071fc55362865aa169"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga22a270ae73aaa86d93212a4a40f999dc"><td class="memItemLeft" align="right" valign="top">static char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__liteget.html#ga22a270ae73aaa86d93212a4a40f999dc">gsc_get_name</a> (const <a class="el" href="structgsc___geno_location.html">gsc_GenoLocation</a> loc)</td></tr>
+<tr class="memdesc:ga22a270ae73aaa86d93212a4a40f999dc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the name of a genotype.  <a href="group__liteget.html#ga22a270ae73aaa86d93212a4a40f999dc">More...</a><br /></td></tr>
+<tr class="separator:ga22a270ae73aaa86d93212a4a40f999dc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gadff19e04cab018dd64ae232e0adcb3cc"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__liteget.html#gadff19e04cab018dd64ae232e0adcb3cc">gsc_set_name</a> (const <a class="el" href="structgsc___geno_location.html">gsc_GenoLocation</a> loc, char *name)</td></tr>
+<tr class="memdesc:gadff19e04cab018dd64ae232e0adcb3cc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the name of a genotype.  <a href="group__liteget.html#gadff19e04cab018dd64ae232e0adcb3cc">More...</a><br /></td></tr>
+<tr class="separator:gadff19e04cab018dd64ae232e0adcb3cc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga5e1e89782604c9ab47f196e1da233362"><td class="memItemLeft" align="right" valign="top">static char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__liteget.html#ga5e1e89782604c9ab47f196e1da233362">gsc_get_alleles</a> (const <a class="el" href="structgsc___geno_location.html">gsc_GenoLocation</a> loc)</td></tr>
+<tr class="memdesc:ga5e1e89782604c9ab47f196e1da233362"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the alleles of a genotype.  <a href="group__liteget.html#ga5e1e89782604c9ab47f196e1da233362">More...</a><br /></td></tr>
+<tr class="separator:ga5e1e89782604c9ab47f196e1da233362"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga847569827ccdd09ff54808c09aba742c"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="structgsc___pedigree_i_d.html">gsc_PedigreeID</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__liteget.html#ga847569827ccdd09ff54808c09aba742c">gsc_get_first_parent</a> (const <a class="el" href="structgsc___geno_location.html">gsc_GenoLocation</a> loc)</td></tr>
+<tr class="memdesc:ga847569827ccdd09ff54808c09aba742c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the first/left parent of a genotype.  <a href="group__liteget.html#ga847569827ccdd09ff54808c09aba742c">More...</a><br /></td></tr>
+<tr class="separator:ga847569827ccdd09ff54808c09aba742c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gab71ce9343a19dd2fc34da1af89fee00a"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="structgsc___pedigree_i_d.html">gsc_PedigreeID</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__liteget.html#gab71ce9343a19dd2fc34da1af89fee00a">gsc_get_second_parent</a> (const <a class="el" href="structgsc___geno_location.html">gsc_GenoLocation</a> loc)</td></tr>
+<tr class="memdesc:gab71ce9343a19dd2fc34da1af89fee00a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the second/right parent of a genotype.  <a href="group__liteget.html#gab71ce9343a19dd2fc34da1af89fee00a">More...</a><br /></td></tr>
+<tr class="separator:gab71ce9343a19dd2fc34da1af89fee00a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga0ce82f67cb5e35a1c73bef54138202f6"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="structgsc___pedigree_i_d.html">gsc_PedigreeID</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__liteget.html#ga0ce82f67cb5e35a1c73bef54138202f6">gsc_get_id</a> (const <a class="el" href="structgsc___geno_location.html">gsc_GenoLocation</a> loc)</td></tr>
+<tr class="memdesc:ga0ce82f67cb5e35a1c73bef54138202f6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the persistent id of a genotype.  <a href="group__liteget.html#ga0ce82f67cb5e35a1c73bef54138202f6">More...</a><br /></td></tr>
+<tr class="separator:ga0ce82f67cb5e35a1c73bef54138202f6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gae5d12aca851dd2358b63dc60b8ac6e5f"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="structgsc___group_num.html">gsc_GroupNum</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__liteget.html#gae5d12aca851dd2358b63dc60b8ac6e5f">gsc_get_group</a> (const <a class="el" href="structgsc___geno_location.html">gsc_GenoLocation</a> loc)</td></tr>
+<tr class="memdesc:gae5d12aca851dd2358b63dc60b8ac6e5f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the current group membership of a genotype.  <a href="group__liteget.html#gae5d12aca851dd2358b63dc60b8ac6e5f">More...</a><br /></td></tr>
+<tr class="separator:gae5d12aca851dd2358b63dc60b8ac6e5f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga7c88af63ccbce0c1e9026339d38fe53a"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__liteget.html#ga7c88af63ccbce0c1e9026339d38fe53a">gsc_set_group</a> (const <a class="el" href="structgsc___geno_location.html">gsc_GenoLocation</a> loc, const <a class="el" href="structgsc___group_num.html">gsc_GroupNum</a> group)</td></tr>
+<tr class="memdesc:ga7c88af63ccbce0c1e9026339d38fe53a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the current group membership of a genotype.  <a href="group__liteget.html#ga7c88af63ccbce0c1e9026339d38fe53a">More...</a><br /></td></tr>
+<tr class="separator:ga7c88af63ccbce0c1e9026339d38fe53a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga3d5bf9499314302b55e30e7a943ad2e7"><td class="memItemLeft" align="right" valign="top">static int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__liteget.html#ga3d5bf9499314302b55e30e7a943ad2e7">gsc_get_label_value</a> (const <a class="el" href="structgsc___geno_location.html">gsc_GenoLocation</a> loc, const int labelIndex)</td></tr>
+<tr class="memdesc:ga3d5bf9499314302b55e30e7a943ad2e7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the value of a specific label of a genotype.  <a href="group__liteget.html#ga3d5bf9499314302b55e30e7a943ad2e7">More...</a><br /></td></tr>
+<tr class="separator:ga3d5bf9499314302b55e30e7a943ad2e7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<p >These functions take as a parameter a <a class="el" href="struct_geno_location.html" title="An AlleleMatrix/AlleleMatrix index coordinate of a particular genotype in the simulation.">GenoLocation</a> (the output of iterators), and access the data for the single genotype that the iterator has found. </p>
+<p >These functions take as a parameter a <a class="el" href="structgsc___geno_location.html" title="An gsc_AlleleMatrix/gsc_AlleleMatrix index coordinate of a particular genotype in the simulation.">gsc_GenoLocation</a> (the output of iterators), and access the data for the single genotype that the iterator has found. </p>
 <p >They are very lightweight: they have no error-checking and implemented inline. </p>
 <h2 class="groupheader">Function Documentation</h2>
-<a id="gab8892d21b9cb2cafb539fd12ac51797c" name="gab8892d21b9cb2cafb539fd12ac51797c"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#gab8892d21b9cb2cafb539fd12ac51797c">&#9670;&nbsp;</a></span>get_alleles()</h2>
+<a id="ga5e1e89782604c9ab47f196e1da233362" name="ga5e1e89782604c9ab47f196e1da233362"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga5e1e89782604c9ab47f196e1da233362">&#9670;&nbsp;</a></span>gsc_get_alleles()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -123,9 +126,9 @@ Functions</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">static char * get_alleles </td>
+          <td class="memname">static char * gsc_get_alleles </td>
           <td>(</td>
-          <td class="paramtype">const <a class="el" href="struct_geno_location.html">GenoLocation</a>&#160;</td>
+          <td class="paramtype">const <a class="el" href="structgsc___geno_location.html">gsc_GenoLocation</a>&#160;</td>
           <td class="paramname"><em>loc</em></td><td>)</td>
           <td></td>
         </tr>
@@ -138,6 +141,7 @@ Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Get the alleles of a genotype. </p>
+<p ><em>Has short name:</em> <a class="el" href="group__shortnames.html#ga3b45650d84122a9a86af6759a5b36ab8">get_alleles</a></p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">loc</td><td>location of the relevant genotype </td></tr>
@@ -145,11 +149,35 @@ Functions</h2></td></tr>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>shallow copy of the allele string of the genotype at location <code>loc</code>. The loci are ordered according to the genetic map (by chromosome, then by location). The entire string is 2*n characters long, where n is the number of loci. The two alleles of each locus are presented side-by-side, at positions 2i and 2i+1. </dd></dl>
+<div id="dynsection-1" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-1-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
+<div id="dynsection-1-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-1-content" class="dyncontent" style="display:none;">
+<div class="center"><img src="group__liteget_ga5e1e89782604c9ab47f196e1da233362_icgraph.png" border="0" usemap="#agroup__liteget_ga5e1e89782604c9ab47f196e1da233362_icgraph" alt=""/></div>
+<map name="agroup__liteget_ga5e1e89782604c9ab47f196e1da233362_icgraph" id="agroup__liteget_ga5e1e89782604c9ab47f196e1da233362_icgraph">
+<area shape="rect" title="Get the alleles of a genotype." alt="" coords="705,160,817,188"/>
+<area shape="rect" href="sim-operations_8c.html#a4d4dab463fbb14fdb47834b2b9d1170f" title="offspringGenerator function parameter for gsc_make_clones." alt="" coords="479,21,657,65"/>
+<area shape="rect" href="sim-operations_8c.html#a229d43c61eb4fbdb464edd843eacfffd" title="offspringGenerator function parameter for gsc_make_random_crosses." alt="" coords="479,113,657,157"/>
+<area shape="rect" href="sim-operations_8c.html#aceb894a2f5c45552c2eb297e0a475af9" title="offspringGenerator function parameter for gsc_make_doubled_haploids." alt="" coords="479,185,657,229"/>
+<area shape="rect" href="sim-operations_8c.html#aaaf499677f08b2daef64d0b322e9ca13" title="offspringGenerator function parameter for gsc_self_n_times." alt="" coords="479,260,657,304"/>
+<area shape="rect" href="group__crossers.html#ga15af204958dc69717334c46b19219a2d" title="Creates an identical copy of each member of a group." alt="" coords="274,5,400,33"/>
+<area shape="rect" href="group__crossers.html#ga03af5446006203244dd3080cf75af26f" title="Performs random crosses among members of a group." alt="" coords="245,57,429,85"/>
+<area shape="rect" href="group__crossers.html#ga652376b5a34d24f239e5fc0b167c067b" title="Performs random crosses where the first parent comes from one group and the second from another." alt="" coords="245,109,429,153"/>
+<area shape="rect" href="group__crossers.html#ga4450224009587f4cd4a972413423c96e" title="Performs the crosses of pairs of parents whose indexes are provided in an array." alt="" coords="243,177,431,205"/>
+<area shape="rect" href="group__crossers.html#gab19b3eb80b5fe460d17c93e0c27f7aaf" title="Find the top m percent of a group and perform random crosses between those top individuals." alt="" coords="26,45,174,89"/>
+<area shape="rect" href="group__crossers.html#gaa70fd79312587d8e9fc166c64612cbce" title="Perform crosses between all pairs of parents in the group from_group and allocates the resulting offs..." alt="" coords="8,113,192,157"/>
+<area shape="rect" href="group__crossers.html#ga5c0be901d03d0e5dd3d74bc19a4bea70" title="Perform crosses between pairs of parents identified by name in a file and allocate the resulting offs..." alt="" coords="5,181,195,209"/>
+<area shape="rect" href="group__crossers.html#ga2b8100d2d30cf1ada0db8403663076ff" title="Perform crosses between previously&#45;generated offspring of pairs of parents identified by name in a fi..." alt="" coords="10,233,190,277"/>
+<area shape="rect" href="group__crossers.html#ga6c230330ca9a9db9459d4477512a21af" title="Creates a doubled haploid from each member of a group." alt="" coords="243,229,431,257"/>
+<area shape="rect" href="group__crossers.html#gab625453074798be6ba8677a5d4986edf" title="Selfs each member of a group for a certain number of generations." alt="" coords="276,281,398,309"/>
+</map>
+</div>
 
 </div>
 </div>
-<a id="gacc807efe6da5bfa758d27fc6c6074e83" name="gacc807efe6da5bfa758d27fc6c6074e83"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#gacc807efe6da5bfa758d27fc6c6074e83">&#9670;&nbsp;</a></span>get_first_parent()</h2>
+<a id="ga847569827ccdd09ff54808c09aba742c" name="ga847569827ccdd09ff54808c09aba742c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga847569827ccdd09ff54808c09aba742c">&#9670;&nbsp;</a></span>gsc_get_first_parent()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -158,9 +186,9 @@ Functions</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">static <a class="el" href="struct_pedigree_i_d.html">PedigreeID</a> get_first_parent </td>
+          <td class="memname">static <a class="el" href="structgsc___pedigree_i_d.html">gsc_PedigreeID</a> gsc_get_first_parent </td>
           <td>(</td>
-          <td class="paramtype">const <a class="el" href="struct_geno_location.html">GenoLocation</a>&#160;</td>
+          <td class="paramtype">const <a class="el" href="structgsc___geno_location.html">gsc_GenoLocation</a>&#160;</td>
           <td class="paramname"><em>loc</em></td><td>)</td>
           <td></td>
         </tr>
@@ -173,6 +201,7 @@ Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Get the first/left parent of a genotype. </p>
+<p ><em>Has short name:</em> <a class="el" href="group__shortnames.html#ga1431ee77affab5d96e8a0b6fdcca0934">get_first_parent</a></p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">loc</td><td>location of the relevant genotype </td></tr>
@@ -180,25 +209,25 @@ Functions</h2></td></tr>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>id of the left parent of the genotype at location <code>loc</code> </dd></dl>
-<div id="dynsection-1" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
-  <img id="dynsection-1-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
-<div id="dynsection-1-summary" class="dynsummary" style="display:block;">
+<div id="dynsection-2" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-2-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
+<div id="dynsection-2-summary" class="dynsummary" style="display:block;">
 </div>
-<div id="dynsection-1-content" class="dyncontent" style="display:none;">
-<div class="center"><img src="group__liteget_gacc807efe6da5bfa758d27fc6c6074e83_icgraph.png" border="0" usemap="#agroup__liteget_gacc807efe6da5bfa758d27fc6c6074e83_icgraph" alt=""/></div>
-<map name="agroup__liteget_gacc807efe6da5bfa758d27fc6c6074e83_icgraph" id="agroup__liteget_gacc807efe6da5bfa758d27fc6c6074e83_icgraph">
-<area shape="rect" title="Get the first/left parent of a genotype." alt="" coords="351,48,461,76"/>
-<area shape="rect" href="sim-operations_8c.html#a2d5814a84a8e5ad966d569443fa28303" title=" " alt="" coords="178,5,303,49"/>
-<area shape="rect" href="sim-operations_8c.html#a80a3febcfc94a4da885d20092ab09f9a" title=" " alt="" coords="178,73,303,117"/>
-<area shape="rect" href="group__groupmod.html#ga7902a9a728d27c4799eadf2b560a3790" title="Split a group into families by their pedigrees." alt="" coords="5,13,130,41"/>
-<area shape="rect" href="group__groupmod.html#gaf9cbba2a870a78c35b0857637b48a32a" title="Split a group into families of half&#45;siblings by shared first or second parent." alt="" coords="9,73,126,117"/>
+<div id="dynsection-2-content" class="dyncontent" style="display:none;">
+<div class="center"><img src="group__liteget_ga847569827ccdd09ff54808c09aba742c_icgraph.png" border="0" usemap="#agroup__liteget_ga847569827ccdd09ff54808c09aba742c_icgraph" alt=""/></div>
+<map name="agroup__liteget_ga847569827ccdd09ff54808c09aba742c_icgraph" id="agroup__liteget_ga847569827ccdd09ff54808c09aba742c_icgraph">
+<area shape="rect" title="Get the first/left parent of a genotype." alt="" coords="390,48,528,76"/>
+<area shape="rect" href="sim-operations_8c.html#a788867aadede9ca0afd97cf322c5617a" title=" " alt="" coords="206,5,342,49"/>
+<area shape="rect" href="sim-operations_8c.html#a7741653cb130c3369de6fa574277269d" title=" " alt="" coords="206,73,342,117"/>
+<area shape="rect" href="group__groupmod.html#ga4e2399c23a2a123d275f3cffbe46c74f" title="Split a group into families by their pedigrees." alt="" coords="5,13,158,41"/>
+<area shape="rect" href="group__groupmod.html#gadf875ab8f9f992dba4497258291b1ccd" title="Split a group into families of half&#45;siblings by shared first or second parent." alt="" coords="9,73,154,117"/>
 </map>
 </div>
 
 </div>
 </div>
-<a id="gac519344020834a97f9a1ffece03c4b12" name="gac519344020834a97f9a1ffece03c4b12"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#gac519344020834a97f9a1ffece03c4b12">&#9670;&nbsp;</a></span>get_group()</h2>
+<a id="gae5d12aca851dd2358b63dc60b8ac6e5f" name="gae5d12aca851dd2358b63dc60b8ac6e5f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gae5d12aca851dd2358b63dc60b8ac6e5f">&#9670;&nbsp;</a></span>gsc_get_group()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -207,9 +236,9 @@ Functions</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">static <a class="el" href="struct_group_num.html">GroupNum</a> get_group </td>
+          <td class="memname">static <a class="el" href="structgsc___group_num.html">gsc_GroupNum</a> gsc_get_group </td>
           <td>(</td>
-          <td class="paramtype">const <a class="el" href="struct_geno_location.html">GenoLocation</a>&#160;</td>
+          <td class="paramtype">const <a class="el" href="structgsc___geno_location.html">gsc_GenoLocation</a>&#160;</td>
           <td class="paramname"><em>loc</em></td><td>)</td>
           <td></td>
         </tr>
@@ -222,6 +251,7 @@ Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Get the current group membership of a genotype. </p>
+<p ><em>Has short name:</em> <a class="el" href="group__shortnames.html#gafc114d43e8ab20d2d3b23312e915b809">get_group</a></p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">loc</td><td>location of the relevant genotype </td></tr>
@@ -229,53 +259,59 @@ Functions</h2></td></tr>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>group number of the group affiliation of the genotype at location <code>loc</code> </dd></dl>
-<div id="dynsection-2" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
-  <img id="dynsection-2-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
-<div id="dynsection-2-summary" class="dynsummary" style="display:block;">
+<div id="dynsection-3" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-3-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
+<div id="dynsection-3-summary" class="dynsummary" style="display:block;">
 </div>
-<div id="dynsection-2-content" class="dyncontent" style="display:none;">
-<div class="center"><img src="group__liteget_gac519344020834a97f9a1ffece03c4b12_icgraph.png" border="0" usemap="#agroup__liteget_gac519344020834a97f9a1ffece03c4b12_icgraph" alt=""/></div>
-<map name="agroup__liteget_gac519344020834a97f9a1ffece03c4b12_icgraph" id="agroup__liteget_gac519344020834a97f9a1ffece03c4b12_icgraph">
-<area shape="rect" title="Get the current group membership of a genotype." alt="" coords="1233,471,1312,499"/>
-<area shape="rect" href="group__groupmod.html#ga54018cd747361983c4d3a90ea9abc05d" title="Combine a set of groups into one group." alt="" coords="1062,219,1178,247"/>
-<area shape="rect" href="group__collgetters.html#ga48161e16dc3abce9e3437d7c33f65cd1" title="Identify group numbers that currently have members, and how many members they have." alt="" coords="1055,463,1185,507"/>
-<area shape="rect" href="group__iterators.html#gae12ec1fca24fc5ac891378d1468a9ed5" title="Get a location by index using a RandomAccessIterator." alt="" coords="680,696,776,724"/>
-<area shape="rect" href="group__crossers.html#gafdd1fa0e8dd54ba1f3089c05986686cb" title="Find the top m percent of a group and perform random crosses between those top individuals." alt="" coords="5,303,158,347"/>
-<area shape="rect" href="sim-operations_8c.html#afc5332217ec53809dfa2ee757b350e0e" title="Split by some quality (generic function)" alt="" coords="857,499,1007,527"/>
-<area shape="rect" href="group__collgetters.html#gab4afabad0d5085062a858bdc599f5a58" title="Identify group numbers that currently have members." alt="" coords="863,420,1001,448"/>
-<area shape="rect" href="group__groupmod.html#ga7902a9a728d27c4799eadf2b560a3790" title="Split a group into families by their pedigrees." alt="" coords="666,524,790,552"/>
-<area shape="rect" href="group__groupmod.html#gaf9cbba2a870a78c35b0857637b48a32a" title="Split a group into families of half&#45;siblings by shared first or second parent." alt="" coords="669,576,787,620"/>
-<area shape="rect" href="group__groupmod.html#gacea0a6c2089359494a1807827979979a" title="Split a group into n one&#45;member groups." alt="" coords="658,472,798,500"/>
-<area shape="rect" href="group__supporters.html#gab8789bfd9de059d49a5252d8ad326af7" title="Function to identify the next n sequential integers that do not identify a group that currently has m..." alt="" coords="647,237,809,265"/>
-<area shape="rect" href="group__supporters.html#ga246d5902b3ba09a2d83a279575a0e19e" title="Function to identify the next sequential integer that does not identify a group that currently has me..." alt="" coords="658,420,798,448"/>
-<area shape="rect" href="group__groupmod.html#ga56d387be7c04358909d7fcb3c773c0ba" title="Split by some allocator (generic function)" alt="" coords="428,108,595,136"/>
-<area shape="rect" href="group__groupmod.html#ga889a60d61224875b37dfb4f53d3b695a" title="Allocate each member of the group to one of n groups with custom probabilities for each group." alt="" coords="219,165,362,209"/>
-<area shape="rect" href="group__groupmod.html#ga8d06ca9e6265ec8a81194f23c904a570" title="Split a group into n groups of equal size (or size differing only by one, if n does not perfectly div..." alt="" coords="209,233,372,277"/>
-<area shape="rect" href="group__groupmod.html#ga3a2d416a661b8dfa98db541aab2aabde" title="Split a group into n groups of equal size (or size differing only by one, if n does not perfectly div..." alt="" coords="225,61,356,89"/>
-<area shape="rect" href="group__groupmod.html#ga6834d279d86a7ada27fb571e97fea13a" title="Allocate each member of the group to one of n groups with equal probability." alt="" coords="217,113,364,141"/>
-<area shape="rect" href="group__crossers.html#ga823b906485f3edf2771935f2ad4f12db" title="Performs random crosses among members of a group." alt="" coords="206,311,375,339"/>
-<area shape="rect" href="group__crossers.html#ga21fd20fa9a626c2933b7ec114c3faca5" title="Performs random crosses where the first parent comes from one group and the second from another." alt="" coords="427,368,595,396"/>
-<area shape="rect" href="sim-operations_8c.html#a877bbfdb03961d00c30f7e2fa55efe7c" title="Performs the crosses of pairs of parents whose indexes are provided in an array." alt="" coords="423,420,599,448"/>
-<area shape="rect" href="group__loaders.html#ga38ad77c70ea0719c4c59644127fd3368" title="Appends genotype data from a file to an existing SimData." alt="" coords="435,472,587,516"/>
-<area shape="rect" href="group__crossers.html#ga4eb395614f3ec7ffecb3b779c16e6f17" title="Creates an identical copy of each member of a group." alt="" coords="462,540,560,568"/>
-<area shape="rect" href="group__crossers.html#ga6a3afc7743003c66fe24e7a2872e26cc" title="Creates a doubled haploid from each member of a group." alt="" coords="431,592,591,620"/>
-<area shape="rect" href="group__crossers.html#gaafc0d183fdb9762dc0817e5bd3009178" title="Selfs each member of a group for a certain number of generations." alt="" coords="464,644,558,672"/>
-<area shape="rect" href="group__groupmod.html#ga6cc15e471588f5b7e00d358e6af232fd" title="Allocates the genotypes with values of a label in a particular range to a new group." alt="" coords="442,160,581,188"/>
-<area shape="rect" href="group__groupmod.html#ga94e9e1a407c7effc6f886b0b13084184" title="Allocates the genotypes with a particular value of a label to a new group." alt="" coords="443,212,579,240"/>
-<area shape="rect" href="group__groupmod.html#gaf21b446a646f846db7c4053f9e8bcb65" title="Split a group into two groups of equal size (or size differing only by one, if the original group had..." alt="" coords="440,696,583,724"/>
-<area shape="rect" href="group__groupmod.html#gaadc9a048dfeb0a9287c47b181d232738" title="Take a list of indexes and allocate the genotypes at those indexes to a new group." alt="" coords="453,748,569,776"/>
-<area shape="rect" href="group__groupmod.html#ga20b19aaab1ae2bf54cb657284d2a6935" title="Flip a coin for each member of the group to decide if it should be moved to the new group." alt="" coords="431,264,591,292"/>
-<area shape="rect" href="group__crossers.html#gab173426b15ba3e135e1eea25035afd85" title="Perform crosses between all pairs of parents in the group from_group and allocates the resulting offs..." alt="" coords="212,363,369,407"/>
-<area shape="rect" href="group__crossers.html#ga18a22fc990289359e790fa207613c121" title="Perform crosses between pairs of parents identified by name in a file and allocate the resulting offs..." alt="" coords="210,431,371,459"/>
-<area shape="rect" href="group__crossers.html#ga0cc412ee0f607370ad3b34f4c39a15ff" title="Perform crosses between previously&#45;generated offspring of pairs of parents identified by name in a fi..." alt="" coords="215,483,366,527"/>
-<area shape="rect" href="group__calculators.html#ga88e086f459bf255ded35aff26f976ab8" title="Takes the top_n individuals in the group with the best breeding values/fitnesses and puts them in a n..." alt="" coords="248,647,333,675"/>
+<div id="dynsection-3-content" class="dyncontent" style="display:none;">
+<div class="center"><img src="group__liteget_gae5d12aca851dd2358b63dc60b8ac6e5f_icgraph.png" border="0" usemap="#agroup__liteget_gae5d12aca851dd2358b63dc60b8ac6e5f_icgraph" alt=""/></div>
+<map name="agroup__liteget_gae5d12aca851dd2358b63dc60b8ac6e5f_icgraph" id="agroup__liteget_gae5d12aca851dd2358b63dc60b8ac6e5f_icgraph">
+<area shape="rect" title="Get the current group membership of a genotype." alt="" coords="1359,501,1466,529"/>
+<area shape="rect" href="group__groupmod.html#gafe9b4c3c798099790da0cbb6aa55ceca" title="Combine a set of groups into one group." alt="" coords="1160,180,1304,208"/>
+<area shape="rect" href="group__collgetters.html#gaddb8ea59b22bbe0ec8c61da7f5ba8a98" title="Identify group numbers that currently have members, and how many members they have." alt="" coords="1153,493,1311,537"/>
+<area shape="rect" href="group__iterators.html#ga5b9b804b6c3b0c165f20a765942fa810" title="Get a location by index using a gsc_RandomAccessIterator." alt="" coords="735,688,859,716"/>
+<area shape="rect" href="group__crossers.html#gab19b3eb80b5fe460d17c93e0c27f7aaf" title="Find the top m percent of a group and perform random crosses between those top individuals." alt="" coords="26,592,174,636"/>
+<area shape="rect" href="group__collgetters.html#gaf9692ce014cfe5439fd00e522a6bab9f" title="Identify group numbers that currently have members." alt="" coords="940,456,1105,484"/>
+<area shape="rect" href="group__groupmod.html#ga078ef2c5d296b3104ee751d3c1d8eae6" title="Split by some quality (generic function)" alt="" coords="960,538,1085,582"/>
+<area shape="rect" href="group__supporters.html#ga6d28dad64b97f61aac8575493ab8a95b" title="Function to identify the next n sequential integers that do not identify a group that currently has m..." alt="" coords="702,305,892,333"/>
+<area shape="rect" href="group__supporters.html#ga22609353c4951dcf3ed54537ecb6eeda" title="Function to identify the next sequential integer that does not identify a group that currently has me..." alt="" coords="713,456,881,484"/>
+<area shape="rect" href="group__groupmod.html#gab0f7f198ee2602c6db2e315e7345b2e5" title="Split by some allocator (generic function)" alt="" coords="499,173,635,217"/>
+<area shape="rect" href="group__groupmod.html#ga817560e5eeca1e7f5eb8a81b35114f38" title="Allocate each member of the group to one of n groups with custom probabilities for each group." alt="" coords="252,241,422,269"/>
+<area shape="rect" href="group__groupmod.html#ga07b4f4c7ffe4c40e0ed0658f56872cc7" title="Split a group into n groups of equal size (or size differing only by one, if n does not perfectly div..." alt="" coords="258,69,416,97"/>
+<area shape="rect" href="group__groupmod.html#ga750ec838a37133c3f26428647868b310" title="Split a group into n groups of equal size (or size differing only by one, if n does not perfectly div..." alt="" coords="260,121,414,149"/>
+<area shape="rect" href="group__groupmod.html#gacc75e6df7f5b7f05c7df04cf04977ea4" title="Allocate each member of the group to one of n groups with equal probability." alt="" coords="270,173,404,217"/>
+<area shape="rect" href="sim-operations_8c.html#a0f9bc7d42b9a98a1f4ea30c4a5f49312" title="Loads a genotype file, with or without existing genome model in the SimData." alt="" coords="492,269,641,313"/>
+<area shape="rect" href="group__groupmod.html#ga9a3bd44f93ffc4ee634a9c5d1aeb59a2" title="Take a list of indexes and allocate the genotypes at those indexes to a new group." alt="" coords="491,609,643,637"/>
+<area shape="rect" href="group__crossers.html#ga28b0fcf60b6a8f6e8ca470f7b5d0a4b7" title="Make new genotypes (generic function)" alt="" coords="486,337,648,381"/>
+<area shape="rect" href="group__groupmod.html#ga5290a4afbf8a34b3149f476cc7a9a97d" title="Allocates the genotypes with values of a label in a particular range to a new group." alt="" coords="503,405,631,449"/>
+<area shape="rect" href="group__groupmod.html#gab2b56b3f3c1754e6f8a5440aaf2ba38b" title="Allocates the genotypes with a particular value of a label to a new group." alt="" coords="503,473,631,517"/>
+<area shape="rect" href="group__groupmod.html#ga47292b150273a395fe282f86c0f78e0b" title="Split a group into two groups of equal size (or size differing only by one, if the original group had..." alt="" coords="481,661,652,689"/>
+<area shape="rect" href="group__groupmod.html#gad3a5afbd400e53b51c16a2ab278b221a" title="Flip a coin for each member of the group to decide if it should be moved to the new group." alt="" coords="500,541,633,585"/>
+<area shape="rect" href="group__loaders.html#gac7f5d37f0a3fd81aa26f1eae2ebae2db" title="Populates a gsc_SimData object with marker allele data, a genetic map, and (optionally) marker effect..." alt="" coords="269,293,405,321"/>
+<area shape="rect" href="group__loaders.html#gabbe46ffa8009c748d895d4215a6c8bb8" title="Load a set of genotypes to a gsc_SimData object." alt="" coords="25,293,175,321"/>
+<area shape="rect" href="group__calculators.html#ga3b43d07c08ed861ed0f22a69bb57b94a" title="Takes the top_n individuals in the group with the best breeding values/fitnesses and puts them in a n..." alt="" coords="280,600,394,628"/>
+<area shape="rect" href="group__crossers.html#ga15af204958dc69717334c46b19219a2d" title="Creates an identical copy of each member of a group." alt="" coords="274,449,400,477"/>
+<area shape="rect" href="group__crossers.html#ga6c230330ca9a9db9459d4477512a21af" title="Creates a doubled haploid from each member of a group." alt="" coords="243,345,431,373"/>
+<area shape="rect" href="group__crossers.html#ga03af5446006203244dd3080cf75af26f" title="Performs random crosses among members of a group." alt="" coords="245,652,429,680"/>
+<area shape="rect" href="group__crossers.html#ga652376b5a34d24f239e5fc0b167c067b" title="Performs random crosses where the first parent comes from one group and the second from another." alt="" coords="245,521,429,565"/>
+<area shape="rect" href="group__crossers.html#ga4450224009587f4cd4a972413423c96e" title="Performs the crosses of pairs of parents whose indexes are provided in an array." alt="" coords="243,792,431,820"/>
+<area shape="rect" href="group__crossers.html#gab625453074798be6ba8677a5d4986edf" title="Selfs each member of a group for a certain number of generations." alt="" coords="276,397,398,425"/>
+<area shape="rect" href="group__crossers.html#gaa70fd79312587d8e9fc166c64612cbce" title="Perform crosses between all pairs of parents in the group from_group and allocates the resulting offs..." alt="" coords="8,784,192,828"/>
+<area shape="rect" href="group__crossers.html#ga5c0be901d03d0e5dd3d74bc19a4bea70" title="Perform crosses between pairs of parents identified by name in a file and allocate the resulting offs..." alt="" coords="5,852,195,880"/>
+<area shape="rect" href="group__crossers.html#ga2b8100d2d30cf1ada0db8403663076ff" title="Perform crosses between previously&#45;generated offspring of pairs of parents identified by name in a fi..." alt="" coords="10,716,190,760"/>
+<area shape="rect" href="group__groupmod.html#ga4e2399c23a2a123d275f3cffbe46c74f" title="Split a group into families by their pedigrees." alt="" coords="721,628,873,656"/>
+<area shape="rect" href="group__groupmod.html#gadf875ab8f9f992dba4497258291b1ccd" title="Split a group into families of half&#45;siblings by shared first or second parent." alt="" coords="724,508,870,552"/>
+<area shape="rect" href="group__groupmod.html#ga8a45ea8ea9d072484ba1f1ac0c360cc4" title="Split a group into n one&#45;member groups." alt="" coords="713,576,881,604"/>
+<area shape="rect" href="sim-operations_8c.html#a1908f6e821f03205fcdf8bd0bfbc7050" title="parentChooser function parameter for gsc_make_random_crosses." alt="" coords="480,781,653,825"/>
+<area shape="rect" href="sim-operations_8c.html#a301f5b32dfc3d0a700fefa366b8a937e" title="parentChooser function parameter for gsc_make_random_crosses_between." alt="" coords="479,713,654,757"/>
+<area shape="rect" href="sim-operations_8c.html#a70d4029a8a6078e9e29635d5058f4021" title="parentChooser function parameter for gsc_make_targeted_crosses." alt="" coords="480,849,653,893"/>
 </map>
 </div>
 
 </div>
 </div>
-<a id="ga9fcff437abcf5d3a193f9a34a243848a" name="ga9fcff437abcf5d3a193f9a34a243848a"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ga9fcff437abcf5d3a193f9a34a243848a">&#9670;&nbsp;</a></span>get_id()</h2>
+<a id="ga0ce82f67cb5e35a1c73bef54138202f6" name="ga0ce82f67cb5e35a1c73bef54138202f6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga0ce82f67cb5e35a1c73bef54138202f6">&#9670;&nbsp;</a></span>gsc_get_id()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -284,9 +320,9 @@ Functions</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">static <a class="el" href="struct_pedigree_i_d.html">PedigreeID</a> get_id </td>
+          <td class="memname">static <a class="el" href="structgsc___pedigree_i_d.html">gsc_PedigreeID</a> gsc_get_id </td>
           <td>(</td>
-          <td class="paramtype">const <a class="el" href="struct_geno_location.html">GenoLocation</a>&#160;</td>
+          <td class="paramtype">const <a class="el" href="structgsc___geno_location.html">gsc_GenoLocation</a>&#160;</td>
           <td class="paramname"><em>loc</em></td><td>)</td>
           <td></td>
         </tr>
@@ -300,6 +336,7 @@ Functions</h2></td></tr>
 
 <p>Get the persistent id of a genotype. </p>
 <p >The persistent id is the number used in pedigree tracing, and is unique for the lifetime of the simulation.</p>
+<p ><em>Has short name:</em> <a class="el" href="group__shortnames.html#gaac44e9d83033fd5c5e4e449c0c23959b">get_id</a></p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">loc</td><td>location of the relevant genotype </td></tr>
@@ -307,11 +344,32 @@ Functions</h2></td></tr>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>id of the genotype at location <code>loc</code> </dd></dl>
+<div id="dynsection-4" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-4-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
+<div id="dynsection-4-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-4-content" class="dyncontent" style="display:none;">
+<div class="center"><img src="group__liteget_ga0ce82f67cb5e35a1c73bef54138202f6_icgraph.png" border="0" usemap="#agroup__liteget_ga0ce82f67cb5e35a1c73bef54138202f6_icgraph" alt=""/></div>
+<map name="agroup__liteget_ga0ce82f67cb5e35a1c73bef54138202f6_icgraph" id="agroup__liteget_ga0ce82f67cb5e35a1c73bef54138202f6_icgraph">
+<area shape="rect" title="Get the persistent id of a genotype." alt="" coords="689,140,774,168"/>
+<area shape="rect" href="group__crossers.html#ga28b0fcf60b6a8f6e8ca470f7b5d0a4b7" title="Make new genotypes (generic function)" alt="" coords="479,132,641,176"/>
+<area shape="rect" href="group__crossers.html#ga15af204958dc69717334c46b19219a2d" title="Creates an identical copy of each member of a group." alt="" coords="274,5,400,33"/>
+<area shape="rect" href="group__crossers.html#ga6c230330ca9a9db9459d4477512a21af" title="Creates a doubled haploid from each member of a group." alt="" coords="243,57,431,85"/>
+<area shape="rect" href="group__crossers.html#ga03af5446006203244dd3080cf75af26f" title="Performs random crosses among members of a group." alt="" coords="245,109,429,137"/>
+<area shape="rect" href="group__crossers.html#ga652376b5a34d24f239e5fc0b167c067b" title="Performs random crosses where the first parent comes from one group and the second from another." alt="" coords="245,161,429,205"/>
+<area shape="rect" href="group__crossers.html#ga4450224009587f4cd4a972413423c96e" title="Performs the crosses of pairs of parents whose indexes are provided in an array." alt="" coords="243,229,431,257"/>
+<area shape="rect" href="group__crossers.html#gab625453074798be6ba8677a5d4986edf" title="Selfs each member of a group for a certain number of generations." alt="" coords="276,281,398,309"/>
+<area shape="rect" href="group__crossers.html#gab19b3eb80b5fe460d17c93e0c27f7aaf" title="Find the top m percent of a group and perform random crosses between those top individuals." alt="" coords="26,97,174,141"/>
+<area shape="rect" href="group__crossers.html#gaa70fd79312587d8e9fc166c64612cbce" title="Perform crosses between all pairs of parents in the group from_group and allocates the resulting offs..." alt="" coords="8,165,192,209"/>
+<area shape="rect" href="group__crossers.html#ga5c0be901d03d0e5dd3d74bc19a4bea70" title="Perform crosses between pairs of parents identified by name in a file and allocate the resulting offs..." alt="" coords="5,233,195,261"/>
+<area shape="rect" href="group__crossers.html#ga2b8100d2d30cf1ada0db8403663076ff" title="Perform crosses between previously&#45;generated offspring of pairs of parents identified by name in a fi..." alt="" coords="10,285,190,329"/>
+</map>
+</div>
 
 </div>
 </div>
-<a id="gadc1910dce94117071fc55362865aa169" name="gadc1910dce94117071fc55362865aa169"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#gadc1910dce94117071fc55362865aa169">&#9670;&nbsp;</a></span>get_label_value()</h2>
+<a id="ga3d5bf9499314302b55e30e7a943ad2e7" name="ga3d5bf9499314302b55e30e7a943ad2e7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga3d5bf9499314302b55e30e7a943ad2e7">&#9670;&nbsp;</a></span>gsc_get_label_value()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -320,9 +378,9 @@ Functions</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">static int get_label_value </td>
+          <td class="memname">static int gsc_get_label_value </td>
           <td>(</td>
-          <td class="paramtype">const <a class="el" href="struct_geno_location.html">GenoLocation</a>&#160;</td>
+          <td class="paramtype">const <a class="el" href="structgsc___geno_location.html">gsc_GenoLocation</a>&#160;</td>
           <td class="paramname"><em>loc</em>, </td>
         </tr>
         <tr>
@@ -345,6 +403,7 @@ Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Get the value of a specific label of a genotype. </p>
+<p ><em>Has short name:</em> <a class="el" href="group__shortnames.html#ga82d95b1d7c02dad02a7fac0f1a042d28">get_label_value</a></p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">loc</td><td>location of the relevant genotype </td></tr>
@@ -353,23 +412,23 @@ Functions</h2></td></tr>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>value of the <code>labelIndex</code>th label of the genotype at location <code>loc</code> </dd></dl>
-<div id="dynsection-3" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
-  <img id="dynsection-3-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
-<div id="dynsection-3-summary" class="dynsummary" style="display:block;">
+<div id="dynsection-5" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-5-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
+<div id="dynsection-5-summary" class="dynsummary" style="display:block;">
 </div>
-<div id="dynsection-3-content" class="dyncontent" style="display:none;">
-<div class="center"><img src="group__liteget_gadc1910dce94117071fc55362865aa169_icgraph.png" border="0" usemap="#agroup__liteget_gadc1910dce94117071fc55362865aa169_icgraph" alt=""/></div>
-<map name="agroup__liteget_gadc1910dce94117071fc55362865aa169_icgraph" id="agroup__liteget_gadc1910dce94117071fc55362865aa169_icgraph">
-<area shape="rect" title="Get the value of a specific label of a genotype." alt="" coords="193,32,302,60"/>
-<area shape="rect" href="group__groupmod.html#ga6cc15e471588f5b7e00d358e6af232fd" title="Allocates the genotypes with values of a label in a particular range to a new group." alt="" coords="5,5,145,33"/>
-<area shape="rect" href="group__groupmod.html#ga94e9e1a407c7effc6f886b0b13084184" title="Allocates the genotypes with a particular value of a label to a new group." alt="" coords="7,57,143,85"/>
+<div id="dynsection-5-content" class="dyncontent" style="display:none;">
+<div class="center"><img src="group__liteget_ga3d5bf9499314302b55e30e7a943ad2e7_icgraph.png" border="0" usemap="#agroup__liteget_ga3d5bf9499314302b55e30e7a943ad2e7_icgraph" alt=""/></div>
+<map name="agroup__liteget_ga3d5bf9499314302b55e30e7a943ad2e7_icgraph" id="agroup__liteget_ga3d5bf9499314302b55e30e7a943ad2e7_icgraph">
+<area shape="rect" title="Get the value of a specific label of a genotype." alt="" coords="182,48,319,76"/>
+<area shape="rect" href="group__groupmod.html#ga5290a4afbf8a34b3149f476cc7a9a97d" title="Allocates the genotypes with values of a label in a particular range to a new group." alt="" coords="5,5,134,49"/>
+<area shape="rect" href="group__groupmod.html#gab2b56b3f3c1754e6f8a5440aaf2ba38b" title="Allocates the genotypes with a particular value of a label to a new group." alt="" coords="5,73,134,117"/>
 </map>
 </div>
 
 </div>
 </div>
-<a id="ga93c9253285cf7f83308aac2612d69d48" name="ga93c9253285cf7f83308aac2612d69d48"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ga93c9253285cf7f83308aac2612d69d48">&#9670;&nbsp;</a></span>get_name()</h2>
+<a id="ga22a270ae73aaa86d93212a4a40f999dc" name="ga22a270ae73aaa86d93212a4a40f999dc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga22a270ae73aaa86d93212a4a40f999dc">&#9670;&nbsp;</a></span>gsc_get_name()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -378,9 +437,9 @@ Functions</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">static char * get_name </td>
+          <td class="memname">static char * gsc_get_name </td>
           <td>(</td>
-          <td class="paramtype">const <a class="el" href="struct_geno_location.html">GenoLocation</a>&#160;</td>
+          <td class="paramtype">const <a class="el" href="structgsc___geno_location.html">gsc_GenoLocation</a>&#160;</td>
           <td class="paramname"><em>loc</em></td><td>)</td>
           <td></td>
         </tr>
@@ -393,6 +452,7 @@ Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Get the name of a genotype. </p>
+<p ><em>Has short name:</em> <a class="el" href="group__shortnames.html#ga555a72fbd7fef69ac4f057b1be64fb49">get_name</a></p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">loc</td><td>location of the relevant genotype </td></tr>
@@ -400,11 +460,23 @@ Functions</h2></td></tr>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>shallow copy of the name of the genotype at location <code>loc</code> </dd></dl>
+<div id="dynsection-6" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-6-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
+<div id="dynsection-6-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-6-content" class="dyncontent" style="display:none;">
+<div class="center"><img src="group__liteget_ga22a270ae73aaa86d93212a4a40f999dc_icgraph.png" border="0" usemap="#agroup__liteget_ga22a270ae73aaa86d93212a4a40f999dc_icgraph" alt=""/></div>
+<map name="agroup__liteget_ga22a270ae73aaa86d93212a4a40f999dc_icgraph" id="agroup__liteget_ga22a270ae73aaa86d93212a4a40f999dc_icgraph">
+<area shape="rect" title="Get the name of a genotype." alt="" coords="401,13,507,41"/>
+<area shape="rect" href="sim-operations_8c.html#a7d20152442bba4d1dbcc3f4ae2bc51b9" title="parentChooser function parameter for gsc_make_clones." alt="" coords="180,5,353,49"/>
+<area shape="rect" href="group__crossers.html#ga15af204958dc69717334c46b19219a2d" title="Creates an identical copy of each member of a group." alt="" coords="5,13,132,41"/>
+</map>
+</div>
 
 </div>
 </div>
-<a id="ga89565bb9dff14f6c5644925a599d2aa7" name="ga89565bb9dff14f6c5644925a599d2aa7"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ga89565bb9dff14f6c5644925a599d2aa7">&#9670;&nbsp;</a></span>get_second_parent()</h2>
+<a id="gab71ce9343a19dd2fc34da1af89fee00a" name="gab71ce9343a19dd2fc34da1af89fee00a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gab71ce9343a19dd2fc34da1af89fee00a">&#9670;&nbsp;</a></span>gsc_get_second_parent()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -413,9 +485,9 @@ Functions</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">static <a class="el" href="struct_pedigree_i_d.html">PedigreeID</a> get_second_parent </td>
+          <td class="memname">static <a class="el" href="structgsc___pedigree_i_d.html">gsc_PedigreeID</a> gsc_get_second_parent </td>
           <td>(</td>
-          <td class="paramtype">const <a class="el" href="struct_geno_location.html">GenoLocation</a>&#160;</td>
+          <td class="paramtype">const <a class="el" href="structgsc___geno_location.html">gsc_GenoLocation</a>&#160;</td>
           <td class="paramname"><em>loc</em></td><td>)</td>
           <td></td>
         </tr>
@@ -428,6 +500,7 @@ Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Get the second/right parent of a genotype. </p>
+<p ><em>Has short name:</em> <a class="el" href="group__shortnames.html#ga496f203a65acfbd6f43b5b186bc8b606">get_second_parent</a></p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">loc</td><td>location of the relevant genotype </td></tr>
@@ -435,25 +508,25 @@ Functions</h2></td></tr>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>id of the right parent of the genotype at location <code>loc</code> </dd></dl>
-<div id="dynsection-4" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
-  <img id="dynsection-4-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
-<div id="dynsection-4-summary" class="dynsummary" style="display:block;">
+<div id="dynsection-7" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-7-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
+<div id="dynsection-7-summary" class="dynsummary" style="display:block;">
 </div>
-<div id="dynsection-4-content" class="dyncontent" style="display:none;">
-<div class="center"><img src="group__liteget_ga89565bb9dff14f6c5644925a599d2aa7_icgraph.png" border="0" usemap="#agroup__liteget_ga89565bb9dff14f6c5644925a599d2aa7_icgraph" alt=""/></div>
-<map name="agroup__liteget_ga89565bb9dff14f6c5644925a599d2aa7_icgraph" id="agroup__liteget_ga89565bb9dff14f6c5644925a599d2aa7_icgraph">
-<area shape="rect" title="Get the second/right parent of a genotype." alt="" coords="351,48,482,76"/>
-<area shape="rect" href="sim-operations_8c.html#a2d5814a84a8e5ad966d569443fa28303" title=" " alt="" coords="178,5,303,49"/>
-<area shape="rect" href="sim-operations_8c.html#a593b48b82e5edb53028276af126d46d8" title=" " alt="" coords="178,73,303,117"/>
-<area shape="rect" href="group__groupmod.html#ga7902a9a728d27c4799eadf2b560a3790" title="Split a group into families by their pedigrees." alt="" coords="5,13,130,41"/>
-<area shape="rect" href="group__groupmod.html#gaf9cbba2a870a78c35b0857637b48a32a" title="Split a group into families of half&#45;siblings by shared first or second parent." alt="" coords="9,73,126,117"/>
+<div id="dynsection-7-content" class="dyncontent" style="display:none;">
+<div class="center"><img src="group__liteget_gab71ce9343a19dd2fc34da1af89fee00a_icgraph.png" border="0" usemap="#agroup__liteget_gab71ce9343a19dd2fc34da1af89fee00a_icgraph" alt=""/></div>
+<map name="agroup__liteget_gab71ce9343a19dd2fc34da1af89fee00a_icgraph" id="agroup__liteget_gab71ce9343a19dd2fc34da1af89fee00a_icgraph">
+<area shape="rect" title="Get the second/right parent of a genotype." alt="" coords="390,48,549,76"/>
+<area shape="rect" href="sim-operations_8c.html#a788867aadede9ca0afd97cf322c5617a" title=" " alt="" coords="206,5,342,49"/>
+<area shape="rect" href="sim-operations_8c.html#acfea3f73120059feaa3a96441dfaf32e" title=" " alt="" coords="206,73,342,117"/>
+<area shape="rect" href="group__groupmod.html#ga4e2399c23a2a123d275f3cffbe46c74f" title="Split a group into families by their pedigrees." alt="" coords="5,13,158,41"/>
+<area shape="rect" href="group__groupmod.html#gadf875ab8f9f992dba4497258291b1ccd" title="Split a group into families of half&#45;siblings by shared first or second parent." alt="" coords="9,73,154,117"/>
 </map>
 </div>
 
 </div>
 </div>
-<a id="gae735e8e0dd35e322033695939f1e6be7" name="gae735e8e0dd35e322033695939f1e6be7"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#gae735e8e0dd35e322033695939f1e6be7">&#9670;&nbsp;</a></span>set_group()</h2>
+<a id="ga7c88af63ccbce0c1e9026339d38fe53a" name="ga7c88af63ccbce0c1e9026339d38fe53a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga7c88af63ccbce0c1e9026339d38fe53a">&#9670;&nbsp;</a></span>gsc_set_group()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -462,15 +535,15 @@ Functions</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">static void set_group </td>
+          <td class="memname">static void gsc_set_group </td>
           <td>(</td>
-          <td class="paramtype">const <a class="el" href="struct_geno_location.html">GenoLocation</a>&#160;</td>
+          <td class="paramtype">const <a class="el" href="structgsc___geno_location.html">gsc_GenoLocation</a>&#160;</td>
           <td class="paramname"><em>loc</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const <a class="el" href="struct_group_num.html">GroupNum</a>&#160;</td>
+          <td class="paramtype">const <a class="el" href="structgsc___group_num.html">gsc_GroupNum</a>&#160;</td>
           <td class="paramname"><em>group</em>&#160;</td>
         </tr>
         <tr>
@@ -487,38 +560,100 @@ Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Set the current group membership of a genotype. </p>
+<p ><em>Has short name:</em> <a class="el" href="group__shortnames.html#ga57e30cc42797f9cf08922754096feda3">set_group</a></p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">loc</td><td>location of the relevant genotype </td></tr>
-    <tr><td class="paramname">group</td><td><a class="el" href="struct_group_num.html" title="A type representing the identifier of a group of genotypes.">GroupNum</a> of the group affiliation of the genotype at location <code>loc</code> after this call </td></tr>
+    <tr><td class="paramname">group</td><td><a class="el" href="structgsc___group_num.html" title="A type representing the identifier of a group of genotypes.">gsc_GroupNum</a> of the group affiliation of the genotype at location <code>loc</code> after this call </td></tr>
   </table>
   </dd>
 </dl>
-<div id="dynsection-5" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
-  <img id="dynsection-5-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
-<div id="dynsection-5-summary" class="dynsummary" style="display:block;">
+<div id="dynsection-8" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-8-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
+<div id="dynsection-8-summary" class="dynsummary" style="display:block;">
 </div>
-<div id="dynsection-5-content" class="dyncontent" style="display:none;">
-<div class="center"><img src="group__liteget_gae735e8e0dd35e322033695939f1e6be7_icgraph.png" border="0" usemap="#agroup__liteget_gae735e8e0dd35e322033695939f1e6be7_icgraph" alt=""/></div>
-<map name="agroup__liteget_gae735e8e0dd35e322033695939f1e6be7_icgraph" id="agroup__liteget_gae735e8e0dd35e322033695939f1e6be7_icgraph">
-<area shape="rect" title="Set the current group membership of a genotype." alt="" coords="632,405,711,433"/>
-<area shape="rect" href="group__groupmod.html#ga56d387be7c04358909d7fcb3c773c0ba" title="Split by some allocator (generic function)" alt="" coords="417,141,584,169"/>
-<area shape="rect" href="sim-operations_8c.html#afc5332217ec53809dfa2ee757b350e0e" title="Split by some quality (generic function)" alt="" coords="426,275,576,303"/>
-<area shape="rect" href="group__groupmod.html#ga54018cd747361983c4d3a90ea9abc05d" title="Combine a set of groups into one group." alt="" coords="443,327,559,355"/>
-<area shape="rect" href="group__groupmod.html#ga6cc15e471588f5b7e00d358e6af232fd" title="Allocates the genotypes with values of a label in a particular range to a new group." alt="" coords="431,379,570,407"/>
-<area shape="rect" href="group__groupmod.html#ga94e9e1a407c7effc6f886b0b13084184" title="Allocates the genotypes with a particular value of a label to a new group." alt="" coords="433,431,569,459"/>
-<area shape="rect" href="group__groupmod.html#gaf21b446a646f846db7c4053f9e8bcb65" title="Split a group into two groups of equal size (or size differing only by one, if the original group had..." alt="" coords="429,483,572,511"/>
-<area shape="rect" href="group__groupmod.html#gaadc9a048dfeb0a9287c47b181d232738" title="Take a list of indexes and allocate the genotypes at those indexes to a new group." alt="" coords="443,535,559,563"/>
-<area shape="rect" href="group__groupmod.html#ga20b19aaab1ae2bf54cb657284d2a6935" title="Flip a coin for each member of the group to decide if it should be moved to the new group." alt="" coords="421,587,581,615"/>
-<area shape="rect" href="group__groupmod.html#ga889a60d61224875b37dfb4f53d3b695a" title="Allocate each member of the group to one of n groups with custom probabilities for each group." alt="" coords="216,5,359,49"/>
-<area shape="rect" href="group__groupmod.html#ga8d06ca9e6265ec8a81194f23c904a570" title="Split a group into n groups of equal size (or size differing only by one, if n does not perfectly div..." alt="" coords="206,73,369,117"/>
-<area shape="rect" href="group__groupmod.html#ga3a2d416a661b8dfa98db541aab2aabde" title="Split a group into n groups of equal size (or size differing only by one, if n does not perfectly div..." alt="" coords="222,141,353,169"/>
-<area shape="rect" href="group__groupmod.html#ga6834d279d86a7ada27fb571e97fea13a" title="Allocate each member of the group to one of n groups with equal probability." alt="" coords="214,193,361,221"/>
-<area shape="rect" href="group__groupmod.html#ga7902a9a728d27c4799eadf2b560a3790" title="Split a group into families by their pedigrees." alt="" coords="225,245,350,273"/>
-<area shape="rect" href="group__groupmod.html#gaf9cbba2a870a78c35b0857637b48a32a" title="Split a group into families of half&#45;siblings by shared first or second parent." alt="" coords="229,297,346,341"/>
-<area shape="rect" href="group__groupmod.html#gacea0a6c2089359494a1807827979979a" title="Split a group into n one&#45;member groups." alt="" coords="218,365,357,393"/>
-<area shape="rect" href="group__crossers.html#gafdd1fa0e8dd54ba1f3089c05986686cb" title="Find the top m percent of a group and perform random crosses between those top individuals." alt="" coords="5,463,158,507"/>
-<area shape="rect" href="group__calculators.html#ga88e086f459bf255ded35aff26f976ab8" title="Takes the top_n individuals in the group with the best breeding values/fitnesses and puts them in a n..." alt="" coords="245,496,330,524"/>
+<div id="dynsection-8-content" class="dyncontent" style="display:none;">
+<div class="center"><img src="group__liteget_ga7c88af63ccbce0c1e9026339d38fe53a_icgraph.png" border="0" usemap="#agroup__liteget_ga7c88af63ccbce0c1e9026339d38fe53a_icgraph" alt=""/></div>
+<map name="agroup__liteget_ga7c88af63ccbce0c1e9026339d38fe53a_icgraph" id="agroup__liteget_ga7c88af63ccbce0c1e9026339d38fe53a_icgraph">
+<area shape="rect" title="Set the current group membership of a genotype." alt="" coords="639,324,746,352"/>
+<area shape="rect" href="group__groupmod.html#gafe9b4c3c798099790da0cbb6aa55ceca" title="Combine a set of groups into one group." alt="" coords="434,11,578,39"/>
+<area shape="rect" href="group__groupmod.html#ga9a3bd44f93ffc4ee634a9c5d1aeb59a2" title="Take a list of indexes and allocate the genotypes at those indexes to a new group." alt="" coords="430,87,582,115"/>
+<area shape="rect" href="group__groupmod.html#gab0f7f198ee2602c6db2e315e7345b2e5" title="Split by some allocator (generic function)" alt="" coords="438,187,574,231"/>
+<area shape="rect" href="group__groupmod.html#ga078ef2c5d296b3104ee751d3c1d8eae6" title="Split by some quality (generic function)" alt="" coords="444,281,568,325"/>
+<area shape="rect" href="group__groupmod.html#ga5290a4afbf8a34b3149f476cc7a9a97d" title="Allocates the genotypes with values of a label in a particular range to a new group." alt="" coords="442,349,570,393"/>
+<area shape="rect" href="group__groupmod.html#gab2b56b3f3c1754e6f8a5440aaf2ba38b" title="Allocates the genotypes with a particular value of a label to a new group." alt="" coords="442,417,570,461"/>
+<area shape="rect" href="group__groupmod.html#ga47292b150273a395fe282f86c0f78e0b" title="Split a group into two groups of equal size (or size differing only by one, if the original group had..." alt="" coords="420,485,591,513"/>
+<area shape="rect" href="group__groupmod.html#gad3a5afbd400e53b51c16a2ab278b221a" title="Flip a coin for each member of the group to decide if it should be moved to the new group." alt="" coords="439,537,572,581"/>
+<area shape="rect" href="group__crossers.html#gab19b3eb80b5fe460d17c93e0c27f7aaf" title="Find the top m percent of a group and perform random crosses between those top individuals." alt="" coords="5,5,154,49"/>
+<area shape="rect" href="group__calculators.html#ga3b43d07c08ed861ed0f22a69bb57b94a" title="Takes the top_n individuals in the group with the best breeding values/fitnesses and puts them in a n..." alt="" coords="230,39,344,67"/>
+<area shape="rect" href="group__groupmod.html#ga817560e5eeca1e7f5eb8a81b35114f38" title="Allocate each member of the group to one of n groups with custom probabilities for each group." alt="" coords="202,91,372,119"/>
+<area shape="rect" href="group__groupmod.html#ga07b4f4c7ffe4c40e0ed0658f56872cc7" title="Split a group into n groups of equal size (or size differing only by one, if n does not perfectly div..." alt="" coords="208,143,366,171"/>
+<area shape="rect" href="group__groupmod.html#ga750ec838a37133c3f26428647868b310" title="Split a group into n groups of equal size (or size differing only by one, if n does not perfectly div..." alt="" coords="210,195,364,223"/>
+<area shape="rect" href="group__groupmod.html#gacc75e6df7f5b7f05c7df04cf04977ea4" title="Allocate each member of the group to one of n groups with equal probability." alt="" coords="220,247,354,291"/>
+<area shape="rect" href="group__groupmod.html#ga4e2399c23a2a123d275f3cffbe46c74f" title="Split a group into families by their pedigrees." alt="" coords="211,315,363,343"/>
+<area shape="rect" href="group__groupmod.html#gadf875ab8f9f992dba4497258291b1ccd" title="Split a group into families of half&#45;siblings by shared first or second parent." alt="" coords="214,367,360,411"/>
+<area shape="rect" href="group__groupmod.html#ga8a45ea8ea9d072484ba1f1ac0c360cc4" title="Split a group into n one&#45;member groups." alt="" coords="203,435,371,463"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="gadff19e04cab018dd64ae232e0adcb3cc" name="gadff19e04cab018dd64ae232e0adcb3cc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gadff19e04cab018dd64ae232e0adcb3cc">&#9670;&nbsp;</a></span>gsc_set_name()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static void gsc_set_name </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="structgsc___geno_location.html">gsc_GenoLocation</a>&#160;</td>
+          <td class="paramname"><em>loc</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char *&#160;</td>
+          <td class="paramname"><em>name</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Set the name of a genotype. </p>
+<p ><em>Has short name:</em> <a class="el" href="group__shortnames.html#gad89ceb70c9c871eba852038b86fbe0fc">set_name</a></p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">loc</td><td>location of the relevant genotype </td></tr>
+    <tr><td class="paramname">name</td><td>name of the genotype at location <code>loc</code> after this call </td></tr>
+  </table>
+  </dd>
+</dl>
+<div id="dynsection-9" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-9-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
+<div id="dynsection-9-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-9-content" class="dyncontent" style="display:none;">
+<div class="center"><img src="group__liteget_gadff19e04cab018dd64ae232e0adcb3cc_icgraph.png" border="0" usemap="#agroup__liteget_gadff19e04cab018dd64ae232e0adcb3cc_icgraph" alt=""/></div>
+<map name="agroup__liteget_gadff19e04cab018dd64ae232e0adcb3cc_icgraph" id="agroup__liteget_gadff19e04cab018dd64ae232e0adcb3cc_icgraph">
+<area shape="rect" title="Set the name of a genotype." alt="" coords="612,48,719,76"/>
+<area shape="rect" href="sim-operations_8c.html#a4d4dab463fbb14fdb47834b2b9d1170f" title="offspringGenerator function parameter for gsc_make_clones." alt="" coords="386,5,564,49"/>
+<area shape="rect" href="sim-operations_8c.html#a0f9bc7d42b9a98a1f4ea30c4a5f49312" title="Loads a genotype file, with or without existing genome model in the SimData." alt="" coords="401,73,550,117"/>
+<area shape="rect" href="group__crossers.html#ga15af204958dc69717334c46b19219a2d" title="Creates an identical copy of each member of a group." alt="" coords="207,13,334,41"/>
+<area shape="rect" href="group__loaders.html#gac7f5d37f0a3fd81aa26f1eae2ebae2db" title="Populates a gsc_SimData object with marker allele data, a genetic map, and (optionally) marker effect..." alt="" coords="203,81,338,109"/>
+<area shape="rect" href="group__loaders.html#gabbe46ffa8009c748d895d4215a6c8bb8" title="Load a set of genotypes to a gsc_SimData object." alt="" coords="5,81,155,109"/>
 </map>
 </div>
 

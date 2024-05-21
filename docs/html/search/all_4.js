@@ -1,20 +1,12 @@
 var searchData=
 [
-  ['d_0',['d',['../struct_bidirectional_iterator.html#ac20fefa263ef1f01228242cd9f3eddeb',1,'BidirectionalIterator::d()'],['../struct_random_access_iterator.html#afdcfc46845cb1c9ce4205f96aa8d6544',1,'RandomAccessIterator::d()']]],
-  ['data_20access_20and_20search_20functions_1',['Data Access and Search Functions',['../group__getters.html',1,'']]],
-  ['data_20searching_20functions_2',['Data Searching Functions',['../group__search.html',1,'']]],
-  ['data_20structures_3',['Data Structures',['../group__structs.html',1,'']]],
-  ['decimalmatrix_4',['DecimalMatrix',['../struct_decimal_matrix.html',1,'']]],
-  ['delete_5fallele_5fmatrix_5',['delete_allele_matrix',['../group__deletors.html#gadd4a9c17e8c3e59fc00eee25635b110f',1,'delete_allele_matrix(AlleleMatrix *m):&#160;sim-operations.c'],['../group__deletors.html#gadd4a9c17e8c3e59fc00eee25635b110f',1,'delete_allele_matrix(AlleleMatrix *m):&#160;sim-operations.c']]],
-  ['delete_5fbidirectional_5fiter_6',['delete_bidirectional_iter',['../group__deletors.html#gac29aa376a4682a50ba040c9723745354',1,'delete_bidirectional_iter(BidirectionalIterator *it):&#160;sim-operations.c'],['../group__deletors.html#gac29aa376a4682a50ba040c9723745354',1,'delete_bidirectional_iter(BidirectionalIterator *it):&#160;sim-operations.c']]],
-  ['delete_5fdmatrix_7',['delete_dmatrix',['../group__deletors.html#gaaf6542d59034f88f9e1ec48e5f053c4a',1,'delete_dmatrix(DecimalMatrix *m):&#160;sim-operations.c'],['../group__deletors.html#gaaf6542d59034f88f9e1ec48e5f053c4a',1,'delete_dmatrix(DecimalMatrix *m):&#160;sim-operations.c']]],
-  ['delete_5feff_5fset_8',['delete_eff_set',['../group__deletors.html#ga85e0f5ee7e16b9b029eb92ef30ae419a',1,'delete_eff_set(SimData *d, EffectID whichID):&#160;sim-operations.c'],['../group__deletors.html#ga85e0f5ee7e16b9b029eb92ef30ae419a',1,'delete_eff_set(SimData *d, EffectID whichID):&#160;sim-operations.c']]],
-  ['delete_5feffect_5fmatrix_9',['delete_effect_matrix',['../group__deletors.html#ga961f4b0757752fee2bd08adde7ece8ad',1,'delete_effect_matrix(EffectMatrix *m):&#160;sim-operations.c'],['../group__deletors.html#ga961f4b0757752fee2bd08adde7ece8ad',1,'delete_effect_matrix(EffectMatrix *m):&#160;sim-operations.c']]],
-  ['delete_5fgenmap_10',['delete_genmap',['../group__deletors.html#gaaf7e12b92ec0f93bb3bc2ec67155bc94',1,'delete_genmap(GeneticMap *m):&#160;sim-operations.c'],['../group__deletors.html#gaaf7e12b92ec0f93bb3bc2ec67155bc94',1,'delete_genmap(GeneticMap *m):&#160;sim-operations.c']]],
-  ['delete_5fgroup_11',['delete_group',['../group__deletors.html#ga09859190fb4250475a866fa78a67be52',1,'delete_group(SimData *d, const GroupNum group_id):&#160;sim-operations.c'],['../group__deletors.html#ga09859190fb4250475a866fa78a67be52',1,'delete_group(SimData *d, const GroupNum group_id):&#160;sim-operations.c']]],
-  ['delete_5flabel_12',['delete_label',['../group__deletors.html#gaef409380cea0efeb551e6c3bcc455168',1,'delete_label(SimData *d, const LabelID whichLabel):&#160;sim-operations.c'],['../group__deletors.html#gaef409380cea0efeb551e6c3bcc455168',1,'delete_label(SimData *d, const LabelID whichLabel):&#160;sim-operations.c']]],
-  ['delete_5fmarkerblocks_13',['delete_markerblocks',['../group__deletors.html#gaea2a41cc103e8d11bedff564f93a4759',1,'delete_markerblocks(MarkerBlocks *b):&#160;sim-operations.c'],['../group__deletors.html#gaea2a41cc103e8d11bedff564f93a4759',1,'delete_markerblocks(MarkerBlocks *b):&#160;sim-operations.c']]],
-  ['delete_5frandomaccess_5fiter_14',['delete_randomaccess_iter',['../group__deletors.html#gabb7f5bb0df140f22d55c946df3a74f08',1,'delete_randomaccess_iter(RandomAccessIterator *it):&#160;sim-operations.c'],['../group__deletors.html#gabb7f5bb0df140f22d55c946df3a74f08',1,'delete_randomaccess_iter(RandomAccessIterator *it):&#160;sim-operations.c']]],
-  ['delete_5fsimdata_15',['delete_simdata',['../group__deletors.html#ga6fc4a687a2186e9e9dcf3229d9141041',1,'delete_simdata(SimData *m):&#160;sim-operations.c'],['../group__deletors.html#ga6fc4a687a2186e9e9dcf3229d9141041',1,'delete_simdata(SimData *m):&#160;sim-operations.c']]],
-  ['deletor_20functions_16',['Deletor Functions',['../group__deletors.html',1,'']]]
+  ['e_0',['e',['../structgsc___sim_data.html#a72ec5d334cad4416e18fdd2f35362c9a',1,'gsc_SimData']]],
+  ['eff_5fset_5fids_1',['eff_set_ids',['../structgsc___sim_data.html#a51f8b9ea0ce9c916f213ef3df971e5d1',1,'gsc_SimData']]],
+  ['effect_5fnames_2',['effect_names',['../structgsc___effect_matrix.html#a02a15df27dd29c22bd03f24c3809aef4',1,'gsc_EffectMatrix']]],
+  ['effectid_3',['EffectID',['../group__shortnames.html#ga516a882a4bac611d495b8f454478d674',1,'sim-operations.h']]],
+  ['effectmatrix_4',['EffectMatrix',['../group__shortnames.html#ga451735c1d04f8487e3f0ccf9fd53b60f',1,'sim-operations.h']]],
+  ['effects_5',['effects',['../structgsc___effect_matrix.html#ac2f7b91cd8df142307edd2e042ba5d2e',1,'gsc_EffectMatrix']]],
+  ['effset_6',['effSet',['../structgsc___multi_i_d_set.html#addf04514f6c3cf0f61f141a047b3c1cd',1,'gsc_MultiIDSet']]],
+  ['eof_7',['eof',['../structgsc___table_file_cell.html#aced8f8308ec1acf4b8bd309a97e2c3f7',1,'gsc_TableFileCell']]],
+  ['expected_5fn_5fcrossovers_8',['expected_n_crossovers',['../structgsc___simple_linkage_group.html#af1b704e680c9ba37b518590788ba076b',1,'gsc_SimpleLinkageGroup::expected_n_crossovers()'],['../structgsc___reordered_linkage_group.html#a48f12980de8c7068832f9befa7844a3c',1,'gsc_ReorderedLinkageGroup::expected_n_crossovers()']]]
 ];

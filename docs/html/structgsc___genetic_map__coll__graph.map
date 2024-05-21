@@ -1,0 +1,4 @@
+<map id="gsc_GeneticMap" name="gsc_GeneticMap">
+<area shape="rect" id="node1" title="A type that stores the genetic map for a set of markers." alt="" coords="14,97,133,125"/>
+<area shape="rect" id="node2" href="$structgsc___marker_position.html" title="A struct representing a single marker location." alt="" coords="5,5,142,33"/>
+</map>

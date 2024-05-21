@@ -1,0 +1,5 @@
+<map id="gsc_helper_parentchooser_cross_randomly" name="gsc_helper_parentchooser_cross_randomly">
+<area shape="rect" id="node1" title="parentChooser function parameter for gsc_make_random_crosses." alt="" coords="434,5,607,49"/>
+<area shape="rect" id="node2" href="$group__crossers.html#ga03af5446006203244dd3080cf75af26f" title="Performs random crosses among members of a group." alt="" coords="202,13,386,41"/>
+<area shape="rect" id="node3" href="$group__crossers.html#gab19b3eb80b5fe460d17c93e0c27f7aaf" title="Find the top m percent of a group and perform random crosses between those top individuals." alt="" coords="5,5,154,49"/>
+</map>

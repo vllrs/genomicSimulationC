@@ -1,0 +1,13 @@
+<map id="gsc_get_group_pedigrees" name="gsc_get_group_pedigrees">
+<area shape="rect" id="node1" title="Gets the full pedigree string (as per gsc_save_group_full_pedigree() ) of each member of the group." alt="" coords="5,30,175,58"/>
+<area shape="rect" id="node2" href="$group__collgetters.html#gae9131a8c72149706f67f6e4a48add79c" title="Function to count the number of genotypes that currently belong to the specified group." alt="" coords="636,70,774,98"/>
+<area shape="rect" id="node3" href="$sim-operations_8c.html#aaaf3ebc75feaf901829232712e55677b" title="Replace calls to malloc direct with this function." alt="" coords="231,30,352,58"/>
+<area shape="rect" id="node4" href="$group__savers.html#ga34df718dd14346f72cc20928351cc4d2" title="Print the full known pedigree of each genotype in a group to a file." alt="" coords="223,103,360,147"/>
+<area shape="rect" id="node5" href="$group__collgetters.html#gae5fac6863433c073871766b80aa6d966" title="Gets the ids of each member of the group." alt="" coords="430,70,560,98"/>
+<area shape="rect" id="node6" href="$group__collgetters.html#ga52a8eb90f5a6a1f9dabea81955d0bb79" title="Gets a shallow copy of the names of each member of the group." alt="" coords="419,122,571,150"/>
+<area shape="rect" id="node7" href="$group__collgetters.html#ga3010fa26c1c6a31c61286e6c60c97dd5" title="Gets the ids of either the first or second parent of each member of the group." alt="" coords="408,174,581,202"/>
+<area shape="rect" id="node8" href="$group__savers.html#ga8e5d08dbcfc4cc77d1d1c6603b75a2ed" title="Recursively save the parents of a particular id to a file." alt="" coords="424,250,566,278"/>
+<area shape="rect" id="node9" href="$group__search.html#ga5c7cd898a40e515c3164c98821068978" title="Returns the name of the genotype with a given id." alt="" coords="635,223,775,251"/>
+<area shape="rect" id="node11" href="$group__search.html#gad9d1d0b5575da681af7789354447612a" title="Saves the ids of the parents of a genotype with a particular id to the output array output." alt="" coords="629,275,781,303"/>
+<area shape="rect" id="node10" href="$group__supporters.html#ga8b0703c50a67ddcbe49f6b8d4ba3162b" title="Binary search through a list of PedigreeIDs." alt="" coords="829,242,978,286"/>
+</map>

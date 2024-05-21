@@ -1,0 +1,4 @@
+<map id="gsc_get_parents_of_id" name="gsc_get_parents_of_id">
+<area shape="rect" id="node1" title="Saves the ids of the parents of a genotype with a particular id to the output array output." alt="" coords="5,13,157,41"/>
+<area shape="rect" id="node2" href="$group__supporters.html#ga3a88444ba34b72051eefebe70856ca00" title="Returns the located index in an array of gsc_PedigreeIDs where the gsc_PedigreeID is target." alt="" coords="205,5,354,49"/>
+</map>

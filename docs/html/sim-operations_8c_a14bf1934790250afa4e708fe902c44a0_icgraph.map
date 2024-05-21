@@ -1,0 +1,6 @@
+<map id="gsc_create_emptylistnavigator" name="gsc_create_emptylistnavigator">
+<area shape="rect" id="node1" title="Create a new gsc_EmptyListNavigator, including an empty AlleleMatrix suitable for inserting into the ..." alt="" coords="583,13,780,41"/>
+<area shape="rect" id="node2" href="$sim-operations_8c.html#a0f9bc7d42b9a98a1f4ea30c4a5f49312" title="Loads a genotype file, with or without existing genome model in the SimData." alt="" coords="386,5,535,49"/>
+<area shape="rect" id="node3" href="$group__loaders.html#gac7f5d37f0a3fd81aa26f1eae2ebae2db" title="Populates a gsc_SimData object with marker allele data, a genetic map, and (optionally) marker effect..." alt="" coords="203,13,338,41"/>
+<area shape="rect" id="node4" href="$group__loaders.html#gabbe46ffa8009c748d895d4215a6c8bb8" title="Load a set of genotypes to a gsc_SimData object." alt="" coords="5,13,155,41"/>
+</map>

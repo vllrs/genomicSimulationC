@@ -1,0 +1,7 @@
+<map id="gsc_get_first_parent" name="gsc_get_first_parent">
+<area shape="rect" id="node1" title="Get the first/left parent of a genotype." alt="" coords="390,48,528,76"/>
+<area shape="rect" id="node2" href="$sim-operations_8c.html#a788867aadede9ca0afd97cf322c5617a" title=" " alt="" coords="206,5,342,49"/>
+<area shape="rect" id="node4" href="$sim-operations_8c.html#a7741653cb130c3369de6fa574277269d" title=" " alt="" coords="206,73,342,117"/>
+<area shape="rect" id="node3" href="$group__groupmod.html#ga4e2399c23a2a123d275f3cffbe46c74f" title="Split a group into families by their pedigrees." alt="" coords="5,13,158,41"/>
+<area shape="rect" id="node5" href="$group__groupmod.html#gadf875ab8f9f992dba4497258291b1ccd" title="Split a group into families of half&#45;siblings by shared first or second parent." alt="" coords="9,73,154,117"/>
+</map>

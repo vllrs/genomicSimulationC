@@ -1,0 +1,34 @@
+<map id="gsc_load_all_data" name="gsc_load_all_data">
+<area shape="rect" id="node1" title="Populates a gsc_SimData combination from scratch with marker allele data, a genetic map,..." alt="" coords="5,257,131,285"/>
+<area shape="rect" id="node2" href="$group__loaders.html#ga982b122b76326694fd0f26babeb027e7" title="Clear a gsc_SimData object on the heap." alt="" coords="390,160,520,188"/>
+<area shape="rect" id="node7" href="$sim-operations_8c.html#a237aeac9a2c07feb2a286d7ae7d3a30f" title="Updates the chr_ends, n_chr and chr_lengths fields in gsc_SimData.map." alt="" coords="617,275,767,319"/>
+<area shape="rect" id="node9" href="$sim-operations_8c.html#a15b3ba3c4f280416614dd76e0eb532d3" title="Takes a gsc_SimData object, and sorts its markers, the rows of its parent gen gsc_AlleleMatrix (becau..." alt="" coords="610,69,774,97"/>
+<area shape="rect" id="node12" href="$group__loaders.html#ga4092c689301902325dc4f14fa9631e62" title="Populates a gsc_SimData combination with effect values." alt="" coords="396,380,514,408"/>
+<area shape="rect" id="node15" href="$group__loaders.html#gaf70cc3ef92b5f3220b35e10964a75e32" title="Populates a gsc_SimData combination with data from a genetic map." alt="" coords="392,231,518,259"/>
+<area shape="rect" id="node16" href="$group__loaders.html#gaaa55b74115cd110bb111e9dfb28dd2aa" title="Populates a gsc_SimData combination with marker allele data." alt="" coords="179,661,319,705"/>
+<area shape="rect" id="node3" href="$group__deletors.html#ga9c647cacb393998930c560962c1f7f6d" title="Delete the gsc_AlleleMatrix linked list from m onwards and frees its memory." alt="" coords="850,388,1015,416"/>
+<area shape="rect" id="node4" href="$group__deletors.html#ga41c27e8d966e9adde4a844c3c022629b" title="Deletes an gsc_EffectMatrix object and frees its memory." alt="" coords="609,13,775,41"/>
+<area shape="rect" id="node6" href="$group__deletors.html#ga9fa58a28c15fd3d6a729a05168aeab7f" title="Deletes a gsc_GeneticMap object and frees its memory." alt="" coords="864,228,1001,256"/>
+<area shape="rect" id="node5" href="$group__deletors.html#ga99bbd9355f031efae628b27e6ae72f6a" title="Deletes a gsc_DecimalMatrix and frees its memory." alt="" coords="865,5,1000,33"/>
+<area shape="rect" id="node8" href="$sim-operations_8c.html#a13bf076f6441cb69d76fc5058371dec1" title="Replace calls to malloc direct with this function, which errors and exits with status 2 if memory all..." alt="" coords="1334,489,1455,517"/>
+<area shape="rect" id="node10" href="$group__maths.html#gae001e0609ac52df335530f9473cb57e1" title="Generates a matrix of c columns, r rows with all 0." alt="" coords="1072,203,1253,231"/>
+<area shape="rect" id="node11" href="$sim-operations_8c.html#af13e6ee065336f58eae9bc61ee0095dd" title="Comparator function for qsort." alt="" coords="864,57,1001,101"/>
+<area shape="rect" id="node13" href="$group__supporters.html#ga0aa39530f66f1d3b69f137c1ff4e29f3" title="Returns the first located index in an array of strings where the string is the same as the string tar..." alt="" coords="610,343,774,387"/>
+<area shape="rect" id="node14" href="$group__supporters.html#ga7881c537673d2d2d9dc3bb285676bfd4" title="Function to identify the next sequential integer that is not already allocated to a marker effect set..." alt="" coords="612,411,772,439"/>
+<area shape="rect" id="node17" href="$group__loaders.html#ga5239b30350ac028486d8e35aab01cc80" title="Creator for an empty gsc_AlleleMatrix object of a given size." alt="" coords="591,515,793,543"/>
+<area shape="rect" id="node18" href="$group__supporters.html#ga31fba32c2f869b50d97669e3e322d338" title="Opens a table file and reads the number of columns and rows (including headers) separated by sep into..." alt="" coords="610,739,774,767"/>
+<area shape="rect" id="node19" href="$group__loaders.html#ga9b948ef0483a6b190916b1b1d15d4c60" title="Appends genotype data from a file to an existing gsc_SimData." alt="" coords="367,625,543,669"/>
+<area shape="rect" id="node32" href="$sim-operations_8c.html#ad1df2a90753611c7fb2845130e555ef3" title="Allocate lifetime&#45;unique ids to each genotype in the range of whole gsc_SimData indexes from_index to..." alt="" coords="646,791,738,819"/>
+<area shape="rect" id="node20" href="$group__supporters.html#gafa617e95d5ed52b4e25434a20006809c" title="A function to tidy the internal storage of genotypes after addition or deletion of genotypes in the g..." alt="" coords="621,619,763,663"/>
+<area shape="rect" id="node25" href="$group__supporters.html#ga22609353c4951dcf3ed54537ecb6eeda" title="Function to identify the next sequential integer that does not identify a group that currently has me..." alt="" coords="608,687,776,715"/>
+<area shape="rect" id="node21" href="$sim-operations_8c.html#ae46ff71b819d28408e8b55dd4281a4f3" title="Move all details of the genotype at one gsc_GenoLocation to another gsc_GenoLocation." alt="" coords="863,671,1002,699"/>
+<area shape="rect" id="node22" href="$sim-operations_8c.html#adf656d2e43014ca8dd4f5d39adeb68f6" title="Sets the current cursor position in a gsc_GappyIterator to the next empty position,..." alt="" coords="851,619,1014,647"/>
+<area shape="rect" id="node24" href="$sim-operations_8c.html#af5486daced98d9bab2126b9d7af11356" title="Sets the current cursor position in a gsc_GappyIterator to the next filled position,..." alt="" coords="841,723,1024,751"/>
+<area shape="rect" id="node23" href="$sim-operations_8c.html#a6d94248d1163c9c40e2910e578ce4708" title="Sets the current cursor position in a gsc_GappyIterator to the next valid position,..." alt="" coords="1078,671,1247,699"/>
+<area shape="rect" id="node26" href="$group__collgetters.html#gaf9692ce014cfe5439fd00e522a6bab9f" title="Identify group numbers that currently have members." alt="" coords="850,783,1015,811"/>
+<area shape="rect" id="node27" href="$group__collgetters.html#gaddb8ea59b22bbe0ec8c61da7f5ba8a98" title="Identify group numbers that currently have members, and how many members they have." alt="" coords="1084,895,1242,939"/>
+<area shape="rect" id="node28" href="$group__iterators.html#ga05da8d96593f8404938cc24f659db049" title="Create a bidirectional iterator." alt="" coords="1301,903,1488,931"/>
+<area shape="rect" id="node29" href="$group__liteget.html#gae5d12aca851dd2358b63dc60b8ac6e5f" title="Get the current group membership of a genotype." alt="" coords="1341,955,1448,983"/>
+<area shape="rect" id="node30" href="$group__iterators.html#ga630ba7f8e864238e296cb9480dfbc728" title="Get the next location from a bidirectional iterator." alt="" coords="1330,851,1459,879"/>
+<area shape="rect" id="node31" href="$group__iterators.html#gaa4fa2aec3b7f49f9925fe82c8ff38dcd" title="Initialise a Bidirectional iterator to the start of its sequence." alt="" coords="1536,843,1679,887"/>
+</map>

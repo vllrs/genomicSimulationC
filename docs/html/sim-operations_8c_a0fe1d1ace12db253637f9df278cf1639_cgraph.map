@@ -1,0 +1,4 @@
+<map id="gsc_helper_genoptions_save_genotypes" name="gsc_helper_genoptions_save_genotypes">
+<area shape="rect" id="node1" title="save&#45;as&#45;you&#45;go (genotypes/alleles)" alt="" coords="5,5,160,49"/>
+<area shape="rect" id="node2" href="$group__savers.html#ga7bca249d1a6132b5faff18069a0e37b5" title="Prints all the genotype data saved in the linked list of AlleleMatrices starting with m to a file." alt="" coords="208,13,363,41"/>
+</map>

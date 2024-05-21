@@ -1,0 +1,8 @@
+<map id="gsc_KnownGenome" name="gsc_KnownGenome">
+<area shape="rect" id="node1" title="A type that stores the genome structure used in simulation." alt="" coords="21,281,159,309"/>
+<area shape="rect" id="node2" href="$structgsc___map_i_d.html" title="A type representing a particular loaded recombination map." alt="" coords="5,189,92,217"/>
+<area shape="rect" id="node3" href="$structgsc___recombination_map.html" title="A type that stores linkage groups and crossover probabilities for simulating meiosis." alt="" coords="116,189,277,217"/>
+<area shape="rect" id="node4" href="$structgsc___linkage_group.html" title="A generic store for a linkage group, used to simulate meiosis on a certain subset of markers." alt="" coords="132,97,261,125"/>
+<area shape="rect" id="node5" href="$structgsc___simple_linkage_group.html" title="Parameters for simulating meiosis on a linkage group whose markers are stored contiguously in the sim..." alt="" coords="11,5,180,33"/>
+<area shape="rect" id="node6" href="$structgsc___reordered_linkage_group.html" title="Parameters for simulating meiosis on a linkage group whose markers are re&#45;ordered compared to the fir..." alt="" coords="204,5,392,33"/>
+</map>

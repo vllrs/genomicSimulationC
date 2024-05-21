@@ -10,10 +10,9 @@ int main(int argc, char* argv[]) {
 
 	// load our starting data to a SimData struct.
     SimData* sd = create_empty_simdata(time(NULL));
-	int g0 = load_all_simdata(sd, "parents.txt",
+	struct MultiIDSet init = load_data_files(sd, "parents.txt",
 			"genetic-map.txt", "qtl.eff.txt");
-	// the genotypes from file `parents.txt` are allocated to the group whose
-	// group number is saved in `g0`.
+	// init contains init.group, init.map, and init.effSet
 
 	// prepare to perform a cross by selecting the options we want
 	// (macros TRUE and FALSE map to 1 and 0 and are defined in sim-operations.h)
@@ -32,12 +31,12 @@ int main(int argc, char* argv[]) {
 
 	// perform your cross. Multiple crossing functions are available for different
 	// purposes - search the docs for functions starting with `cross_` or `make_`
-	int f1 = make_all_unidirectional_crosses(sd, g0, g);
+	GroupNum f1 = make_all_unidirectional_crosses(sd, init.group, init.map, g);
 
 	// save data from the results of your cross. Search the docs for functions
 	// starting with `save_`
 	FILE* resultfile = fopen("f1all.txt", "w");
-	save_transposed_group_alleles(resultfile, sd, f1);
+	save_transposed_group_genotypes(resultfile, sd, f1);
 	fclose(resultfile);
 
 	// Other operations you might perform at this point:
@@ -47,7 +46,7 @@ int main(int argc, char* argv[]) {
 	// - Checking which groups currently exist with `get_existing_groups` or
 	//		`get_existing_group_counts`
 	// - Certain functions are available alongside the basic saving functions that calculate
-	// 		additional statistics from genotype data, eg `calculate_ideal_genotype`,
+	// 		additional statistics from genotype data, eg `calculate_optimal_bv`,
 	//		`calculate_group_block_effects`, `calculate_recombinations_from_file`
 	c = clock() - c;
 	printf("The functions took %f seconds to run\n", (double)c / CLOCKS_PER_SEC);
@@ -55,10 +54,6 @@ int main(int argc, char* argv[]) {
 	// Cleanup step: perform this call after you're done with the data in a SimData
 	// to free all memory.
 	delete_simdata(sd);
-
-	//sd = EMPTY_SIMDATA;
-	//int f1reloaded = load_all_simdata(&sd, "f1all.txt", "genetic-map.txt", "qtl.eff.txt");
-	//printf("Successfully reloaded %d\n", g0);
 
 	return 0;
 }

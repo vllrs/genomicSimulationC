@@ -1,0 +1,8 @@
+<map id="gsc_delete_genmap" name="gsc_delete_genmap">
+<area shape="rect" id="node1" title="Deletes a gsc_GeneticMap object and frees its memory." alt="" coords="569,71,707,99"/>
+<area shape="rect" id="node2" href="$group__loaders.html#ga982b122b76326694fd0f26babeb027e7" title="Clear a gsc_SimData object on the heap." alt="" coords="179,5,309,33"/>
+<area shape="rect" id="node4" href="$group__deletors.html#ga1f4bef6ea148aaa0a1fa30681b29fe50" title="Deletes a gsc_SimData object and frees its memory." alt="" coords="371,44,508,72"/>
+<area shape="rect" id="node5" href="$sim-operations_8c.html#a15b3ba3c4f280416614dd76e0eb532d3" title="Takes a gsc_SimData object, and sorts its markers, the rows of its parent gen gsc_AlleleMatrix (becau..." alt="" coords="357,96,521,124"/>
+<area shape="rect" id="node6" href="$group__loaders.html#gaf70cc3ef92b5f3220b35e10964a75e32" title="Populates a gsc_SimData combination with data from a genetic map." alt="" coords="181,123,307,151"/>
+<area shape="rect" id="node3" href="$group__loaders.html#ga2361e1185a626fbac89cdcf504af82c7" title="Populates a gsc_SimData combination from scratch with marker allele data, a genetic map,..." alt="" coords="5,71,131,99"/>
+</map>

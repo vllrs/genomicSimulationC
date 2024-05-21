@@ -1,16 +1,22 @@
 Latest News       {#news}
 ===========
 
+## New Features 
+
+- Add ability to load multiple recombination maps into simulation at a time. Loading a genetic map file will return an MapID that represents that particular map. All crossing functions now have additional parameters that allow you to select which recombination map to use when generating gametes from each group of parents. The crossing functions default to using the first loaded recombination map if not otherwise specified. Maps can be removed from memory using delete_recombination_map. The list of genetic markers changed by the simulation, however, is still immutable, so genetic markers not present in the first map loaded will not be tracked or simulated.
+- New function `change_allele_symbol` changes the internal representation of a particular allele. It does not modify corresponding marker effects. 
+
 ## Bug Fixes
 
 - Fix a bug in large simulations where gaps in the AlleleMatrix linked list failed to be patched in `condense_allele_matrix`, and some genotypes lost their group numbers (group numbers reverted to 0). 
 
 ## Improvements
 
+- Smarter and more robust genotype matrix, genetic map, and effect file loaders. See R version vignette or Templates page of C version documentation for more information. 
 - All C code now has C-style "namespace guards" (the prefix `gsc_` in front of every name). Data structures and user-friendly functions are still exported with non-prefixed "short names" unless `GSC_NO_SHORT_NAMES` is defined before import. The excellent stb libraries (https://github.com/nothings/stb) served as guides for how to do this.
+- Several function names have been changed, for better consistency within functional categories and better consistency with the R version of genomicSimulation. To keep using the old names (at least while their function signatures remain the same), import the `names_stopgap.h` header file. Optionally, `#define GSC_DEPRECATED_VERBOSE` before importing `names_stopgap.h`, and it will tell you exactly what names have changed to what, for a nice and easy find-and-replace way to update to the new names. 
 - CONTIG_WIDTH and NAME_LENGTH (the "global settings") can now be altered without needing to modify the genomicSimulation source files, using macro definitions. See instructions at the top of sim-operations.h
 - genomicSimulation's malloc and free can be replaced with alternate implementations, using macro definitions. See instructions at the top of sim-operations.h. 
-- Several function names have been changed, for better consistency within functional categories and better consistency with the R version of genomicSimulation. To keep using the old names (at least while their function signatures remain the same), import the `names_stopgap.h` header file. Optionally, `#define GSC_DEPRECATED_VERBOSE` before importing `names_stopgap.h`, and it will tell you exactly what names have changed to what, for a nice and easy find-and-replace way to update to the new names. 
 - Significant under-the-hood changes to crossing functions. They now call `_make_genotypes`, a generic function, to reduce code duplication. 
 - The same script and same random seed re-run post-0.2.4.003 will now produce slightly different genotypes. This is because the two gametes that make a cross are now generated successively (first one, then the other) rather than simultaneously.
 - Under-the-hood changes to `condense_allele_matrix`, for easier debugging. It now takes advantage of a `GappyIterator` to help it shuffle the positions of genotypes in the AlleleMatrix linked list.

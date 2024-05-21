@@ -7,9 +7,12 @@ This can also be interpreted as the list of user-facing functions in genomicSimu
 
 | genomicSimulationC (C) | genomicSimulation (R) |
 | ------------- | ------------- |
-| load_all_data \* | load.data \* |
-| load_genotypes_transposed | load.more.genotypes |
-| load_effects | load.more.effects |
+| load_data_files \* | load.data \* |
+| load_genotypefile | load.genotypes |
+| load_mapfile | load.map |
+| load_effectfile | load.effects |
+| delete_group | delete.group | 
+| delete_recombination_map | delete.recombination.map |
 | delete_eff_set | delete.effect.set |
 | calculate_minimal_bv | see.minimal.GEBV |
 | calculate_optimal_bv | see.optimal.GEBV |
@@ -37,6 +40,7 @@ This can also be interpreted as the list of user-facing functions in genomicSimu
 | get_group_pedigrees | see.group.data(data.type="ped") |
 | ~ ||
 | change_names_to_values | change.names.to.values |
+| change_allele_symbol | change.allele.symbol | 
 | change_labels_to_values | change.label.to.values |
 | change_labels_to | change.label.to.this |
 | change_labels_by_amount | change.label.by.amount |
@@ -57,7 +61,6 @@ This can also be interpreted as the list of user-facing functions in genomicSimu
 | split_by_label_range | break.group.by.label.range |
 | make_group_from | make.group |
 | combine_groups | combine.groups |
-| delete_group | delete.group  |
 | ~ ||
 | save_count_matrix | save.allele.counts(group=NULL) |
 | save_count_matrix_of_group | save.allele.counts |

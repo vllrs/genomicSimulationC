@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['mathematical_20functions_0',['Mathematical functions',['../group__maths.html',1,'']]],
-  ['meiosis_20simulation_20functions_1',['Meiosis Simulation Functions',['../group__meiosis.html',1,'']]]
+  ['genotype_20iterators_0',['Genotype Iterators',['../group__iterators.html',1,'']]],
+  ['getting_20data_20from_20an_20iterator_1',['Getting data from an Iterator',['../group__liteget.html',1,'']]]
 ];

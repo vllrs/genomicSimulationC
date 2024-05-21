@@ -1,4 +1,4 @@
-CFLAGS = -Wall -std=c99 -Wvla
+CFLAGS = -std=c99 -Wvla -Wall
 LIBS = -lm
 DEPS = sim-operations.h sim-test.h
 OBJ = sim-operations.o sim-test.o

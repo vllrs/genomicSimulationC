@@ -1,0 +1,14 @@
+<map id="gsc_get_group_bvs" name="gsc_get_group_bvs">
+<area shape="rect" id="node1" title="Gets the breeding values/breeding values/fitnesses of each member of the group." alt="" coords="5,286,138,314"/>
+<area shape="rect" id="node2" href="$group__calculators.html#ga381bf7e42397f428a322dd8e118a4243" title="Calculates the fitness metric/breeding value for each genotype in the gsc_AlleleMatrix in a certain g..." alt="" coords="186,286,352,314"/>
+<area shape="rect" id="node7" href="$group__collgetters.html#gae9131a8c72149706f67f6e4a48add79c" title="Function to count the number of genotypes that currently belong to the specified group." alt="" coords="830,366,967,394"/>
+<area shape="rect" id="node9" href="$group__deletors.html#ga99bbd9355f031efae628b27e6ae72f6a" title="Deletes a gsc_DecimalMatrix and frees its memory." alt="" coords="426,504,560,532"/>
+<area shape="rect" id="node3" href="$group__maths.html#gadaec2ba547549392530e91e50a3c985d" title="Multiply two sets of a gsc_DecimalMatrix and vector, and add both products to the first column of a p..." alt="" coords="400,180,585,224"/>
+<area shape="rect" id="node4" href="$group__maths.html#ga6fdcedf004c9d08e5135d30deb5b12fa" title="Multiply a gsc_DecimalMatrix to a vector, and add that product to the first column of a provided gsc_..." alt="" coords="419,248,566,292"/>
+<area shape="rect" id="node5" href="$group__calculators.html#ga12c13aaf31fccff2f9ddd612035c426a" title="Calculates the number of times at each marker that a particular allele appears for each genotype in a..." alt="" coords="423,368,563,412"/>
+<area shape="rect" id="node8" href="$group__calculators.html#ga160313a4276db1a2897ab0d161f5caa8" title="Calculates the number of times at each marker that two particular alleles appear for each genotype in..." alt="" coords="423,436,563,480"/>
+<area shape="rect" id="node10" href="$group__maths.html#gae001e0609ac52df335530f9473cb57e1" title="Generates a matrix of c columns, r rows with all 0." alt="" coords="402,76,583,104"/>
+<area shape="rect" id="node12" href="$group__supporters.html#gac15b90373af3e2828a786215e90963a8" title="Function to identify the lookup index of a marker effect set identifier." alt="" coords="409,128,576,156"/>
+<area shape="rect" id="node6" href="$group__collgetters.html#gab256e999fe9540658a2a3aba11260cb5" title="Gets a shallow copy of the genes/alleles of each member of the group." alt="" coords="633,418,782,446"/>
+<area shape="rect" id="node11" href="$sim-operations_8c.html#aaaf3ebc75feaf901829232712e55677b" title="Replace calls to malloc direct with this function." alt="" coords="647,76,768,104"/>
+</map>

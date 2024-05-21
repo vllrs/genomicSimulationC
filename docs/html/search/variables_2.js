@@ -1,12 +1,17 @@
 var searchData=
 [
-  ['cache_0',['cache',['../struct_random_access_iterator.html#ab09e96508d25efb84714b8ad35806257',1,'RandomAccessIterator']]],
-  ['cachedam_1',['cachedAM',['../struct_bidirectional_iterator.html#a04d9f8e53fe04ba263d7101c330a1e8d',1,'BidirectionalIterator']]],
-  ['cachedamindex_2',['cachedAMIndex',['../struct_bidirectional_iterator.html#aaf8e693160123532122133bf065034f8',1,'BidirectionalIterator']]],
-  ['cachesize_3',['cacheSize',['../struct_random_access_iterator.html#a034e367bcfb04e35e3e29236a1eeee75',1,'RandomAccessIterator']]],
-  ['chr_5fends_4',['chr_ends',['../struct_genetic_map.html#a664a9cf01704f765d18728bee31f8f96',1,'GeneticMap']]],
-  ['chr_5flengths_5',['chr_lengths',['../struct_genetic_map.html#ad53139955070266a5cc280a7a34c7056',1,'GeneticMap']]],
-  ['chromosome_6',['chromosome',['../struct_marker_position.html#a9e72af4e091e44340516fa1e4d05eae7',1,'MarkerPosition']]],
-  ['cols_7',['cols',['../struct_decimal_matrix.html#ae787fd4f660acf3c9241571f92f9b8f3',1,'DecimalMatrix']]],
-  ['current_5fid_8',['current_id',['../struct_sim_data.html#af6c7043d2db8b0a1cdb9e5ad0fab0007',1,'SimData']]]
+  ['cache_0',['cache',['../structgsc___random_access_iterator.html#af1f2cc1470b820f9b1950599282d6ccb',1,'gsc_RandomAccessIterator']]],
+  ['cachedam_1',['cachedAM',['../structgsc___bidirectional_iterator.html#a80fb1aaf7412e42aad43b3f826ef2afe',1,'gsc_BidirectionalIterator']]],
+  ['cachedamindex_2',['cachedAMIndex',['../structgsc___bidirectional_iterator.html#a49fdf0c3e0da208a3e02e8e350bcd885',1,'gsc_BidirectionalIterator']]],
+  ['cachesize_3',['cacheSize',['../structgsc___random_access_iterator.html#a11462975f978d0f0b50a1aa03e8689f3',1,'gsc_RandomAccessIterator']]],
+  ['cell_4',['cell',['../structgsc___table_file_cell.html#a2755fa841d2d0056aa992adfb9361d7d',1,'gsc_TableFileCell']]],
+  ['cell_5flen_5',['cell_len',['../structgsc___table_file_cell.html#ac628e9ee2b316bcdfbf52ec4a4230d1c',1,'gsc_TableFileCell']]],
+  ['chr_6',['chr',['../structgsc___mapfile_unit.html#af7ebb10850f4df1264dfaec193d99f38',1,'gsc_MapfileUnit']]],
+  ['chromosome_7',['chromosome',['../structgsc___marker_position.html#ab57e3fcb7eeaf536759ee4f40e781de7',1,'gsc_MarkerPosition']]],
+  ['chrs_8',['chrs',['../structgsc___recombination_map.html#aa10937ede61a908202baa08470eebc96',1,'gsc_RecombinationMap']]],
+  ['cols_9',['cols',['../structgsc___decimal_matrix.html#a3f42f23ea8e432714743ae7a63a9e98a',1,'gsc_DecimalMatrix']]],
+  ['current_5fid_10',['current_id',['../structgsc___sim_data.html#ac80a3d628c07efca0fa219c0517e5cf7',1,'gsc_SimData']]],
+  ['currentid_11',['currentid',['../structgsc___empty_list_navigator.html#a05b0ae51b5c0c119a2e63c7f2b780955',1,'gsc_EmptyListNavigator']]],
+  ['cursor_12',['cursor',['../structgsc___table_file_reader.html#aa5ff32bcb057c626683b441cbe422abd',1,'gsc_TableFileReader::cursor()'],['../structgsc___gappy_iterator.html#a3291bca61040fadfbf947ddc5364e7d5',1,'gsc_GappyIterator::cursor()']]],
+  ['cursoramindex_13',['cursorAMIndex',['../structgsc___gappy_iterator.html#ac19ff10b703b8b46803c29491b1a7e93',1,'gsc_GappyIterator']]]
 ];

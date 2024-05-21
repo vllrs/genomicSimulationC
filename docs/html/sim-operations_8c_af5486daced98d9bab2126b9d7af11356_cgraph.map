@@ -1,0 +1,4 @@
+<map id="gsc_nextgappy_get_nongap" name="gsc_nextgappy_get_nongap">
+<area shape="rect" id="node1" title="Sets the current cursor position in a gsc_GappyIterator to the next filled position,..." alt="" coords="5,5,189,33"/>
+<area shape="rect" id="node2" href="$sim-operations_8c.html#a6d94248d1163c9c40e2910e578ce4708" title="Sets the current cursor position in a gsc_GappyIterator to the next valid position,..." alt="" coords="237,5,406,33"/>
+</map>

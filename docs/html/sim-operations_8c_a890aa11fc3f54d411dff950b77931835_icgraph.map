@@ -1,0 +1,8 @@
+<map id="gsc_helper_parse_3cell_header" name="gsc_helper_parse_3cell_header">
+<area shape="rect" id="node1" title="Header row reading and processing for map and effect set files." alt="" coords="781,24,938,68"/>
+<area shape="rect" id="node2" href="$sim-operations_8c.html#ad3c2207b2bd170d752a0a26a9fa2aa19" title="Extract the contents of a genetic map file." alt="" coords="561,5,733,33"/>
+<area shape="rect" id="node6" href="$group__loaders.html#ga176416bff8f5e258dbe1619637c8b831" title="Populates a gsc_SimData combination with effect values." alt="" coords="386,57,513,85"/>
+<area shape="rect" id="node3" href="$group__loaders.html#gac180eb5f1d27907a69314e68cc0d37af" title="Load a genetic map to a gsc_SimData object." alt="" coords="389,5,510,33"/>
+<area shape="rect" id="node4" href="$group__loaders.html#gac7f5d37f0a3fd81aa26f1eae2ebae2db" title="Populates a gsc_SimData object with marker allele data, a genetic map, and (optionally) marker effect..." alt="" coords="203,32,338,60"/>
+<area shape="rect" id="node5" href="$group__loaders.html#gabbe46ffa8009c748d895d4215a6c8bb8" title="Load a set of genotypes to a gsc_SimData object." alt="" coords="5,32,155,60"/>
+</map>

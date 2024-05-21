@@ -1,0 +1,17 @@
+<map id="gsc_randpoi" name="gsc_randpoi">
+<area shape="rect" id="node1" title="Generates randomly a number from the Poisson distribution with parameter lambda, using the Knuth appr..." alt="" coords="905,88,996,116"/>
+<area shape="rect" id="node2" href="$group__meiosis.html#ga6a07e899a26f8aff2b241e3a6f7d8665" title="Get the alleles of the outcome of producing a doubled haploid from a gamete from a given parent." alt="" coords="705,45,857,89"/>
+<area shape="rect" id="node5" href="$group__meiosis.html#ga923d9402fffe6eacac7971b703343073" title="Fills a char* with the simulated result of meiosis (reduction and recombination) from the marker alle..." alt="" coords="706,117,856,145"/>
+<area shape="rect" id="node3" href="$sim-operations_8c.html#aceb894a2f5c45552c2eb297e0a475af9" title="offspringGenerator function parameter for gsc_make_doubled_haploids." alt="" coords="479,20,657,64"/>
+<area shape="rect" id="node4" href="$group__crossers.html#ga6c230330ca9a9db9459d4477512a21af" title="Creates a doubled haploid from each member of a group." alt="" coords="243,5,431,33"/>
+<area shape="rect" id="node6" href="$sim-operations_8c.html#a229d43c61eb4fbdb464edd843eacfffd" title="offspringGenerator function parameter for gsc_make_random_crosses." alt="" coords="479,109,657,153"/>
+<area shape="rect" id="node14" href="$sim-operations_8c.html#aaaf499677f08b2daef64d0b322e9ca13" title="offspringGenerator function parameter for gsc_self_n_times." alt="" coords="479,199,657,243"/>
+<area shape="rect" id="node7" href="$group__crossers.html#ga03af5446006203244dd3080cf75af26f" title="Performs random crosses among members of a group." alt="" coords="245,57,429,85"/>
+<area shape="rect" id="node9" href="$group__crossers.html#ga652376b5a34d24f239e5fc0b167c067b" title="Performs random crosses where the first parent comes from one group and the second from another." alt="" coords="245,109,429,153"/>
+<area shape="rect" id="node10" href="$group__crossers.html#ga4450224009587f4cd4a972413423c96e" title="Performs the crosses of pairs of parents whose indexes are provided in an array." alt="" coords="243,177,431,205"/>
+<area shape="rect" id="node8" href="$group__crossers.html#gab19b3eb80b5fe460d17c93e0c27f7aaf" title="Find the top m percent of a group and perform random crosses between those top individuals." alt="" coords="26,45,174,89"/>
+<area shape="rect" id="node11" href="$group__crossers.html#gaa70fd79312587d8e9fc166c64612cbce" title="Perform crosses between all pairs of parents in the group from_group and allocates the resulting offs..." alt="" coords="8,113,192,157"/>
+<area shape="rect" id="node12" href="$group__crossers.html#ga5c0be901d03d0e5dd3d74bc19a4bea70" title="Perform crosses between pairs of parents identified by name in a file and allocate the resulting offs..." alt="" coords="5,181,195,209"/>
+<area shape="rect" id="node13" href="$group__crossers.html#ga2b8100d2d30cf1ada0db8403663076ff" title="Perform crosses between previously&#45;generated offspring of pairs of parents identified by name in a fi..." alt="" coords="10,233,190,277"/>
+<area shape="rect" id="node15" href="$group__crossers.html#gab625453074798be6ba8677a5d4986edf" title="Selfs each member of a group for a certain number of generations." alt="" coords="276,229,398,257"/>
+</map>

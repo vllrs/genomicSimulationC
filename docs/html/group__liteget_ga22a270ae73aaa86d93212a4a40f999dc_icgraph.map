@@ -1,0 +1,5 @@
+<map id="gsc_get_name" name="gsc_get_name">
+<area shape="rect" id="node1" title="Get the name of a genotype." alt="" coords="401,13,507,41"/>
+<area shape="rect" id="node2" href="$sim-operations_8c.html#a7d20152442bba4d1dbcc3f4ae2bc51b9" title="parentChooser function parameter for gsc_make_clones." alt="" coords="180,5,353,49"/>
+<area shape="rect" id="node3" href="$group__crossers.html#ga15af204958dc69717334c46b19219a2d" title="Creates an identical copy of each member of a group." alt="" coords="5,13,132,41"/>
+</map>

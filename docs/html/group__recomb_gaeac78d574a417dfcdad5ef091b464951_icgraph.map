@@ -1,0 +1,5 @@
+<map id="gsc_has_same_alleles" name="gsc_has_same_alleles">
+<area shape="rect" id="node1" title="Simple operator to determine if at marker i, two genotypes share at least one allele." alt="" coords="548,13,701,41"/>
+<area shape="rect" id="node2" href="$group__recomb.html#gaecfe54dacdba616a25212ff12a32398c" title="Identify markers in the genotype of offspring where recombination from its parents occured." alt="" coords="250,13,500,41"/>
+<area shape="rect" id="node3" href="$group__recomb.html#ga17bf2aa42201490431e56ba42ace85fc" title="Provides guesses as to the location of recombination events that led to the creation of certain genot..." alt="" coords="5,5,202,49"/>
+</map>

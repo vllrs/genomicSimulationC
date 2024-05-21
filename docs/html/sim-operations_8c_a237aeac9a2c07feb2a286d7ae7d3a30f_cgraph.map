@@ -1,0 +1,4 @@
+<map id="gsc_get_chromosome_locations" name="gsc_get_chromosome_locations">
+<area shape="rect" id="node1" title="Updates the chr_ends, n_chr and chr_lengths fields in gsc_SimData.map." alt="" coords="5,5,155,49"/>
+<area shape="rect" id="node2" href="$sim-operations_8c.html#a13bf076f6441cb69d76fc5058371dec1" title="Replace calls to malloc direct with this function, which errors and exits with status 2 if memory all..." alt="" coords="203,13,324,41"/>
+</map>

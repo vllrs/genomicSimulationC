@@ -1,0 +1,5 @@
+<map id="gsc_delete_label" name="gsc_delete_label">
+<area shape="rect" id="node1" title="Clears memory of this label from the simulation and all its genotypes." alt="" coords="5,32,124,60"/>
+<area shape="rect" id="node2" href="$group__supporters.html#gaaa9150342b8c375591796d98a3c83366" title="Function to identify the label lookup index of a label identifier." alt="" coords="172,5,328,33"/>
+<area shape="rect" id="node3" href="$sim-operations_8c.html#aaaf3ebc75feaf901829232712e55677b" title="Replace calls to malloc direct with this function." alt="" coords="189,57,311,85"/>
+</map>

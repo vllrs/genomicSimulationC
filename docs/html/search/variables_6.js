@@ -1,6 +1,8 @@
 var searchData=
 [
-  ['group_0',['group',['../struct_group_and_effect_set.html#a036df49c8f687715d4f17ed0bded15f9',1,'GroupAndEffectSet::group()'],['../struct_bidirectional_iterator.html#ad9fa9fac99b9be8f649522878ef3623c',1,'BidirectionalIterator::group()'],['../struct_random_access_iterator.html#a0ab2c1c438ee5014ab411b98555e0b15',1,'RandomAccessIterator::group()']]],
-  ['groups_1',['groups',['../struct_allele_matrix.html#ad4963a0fcdad6381d1dc1a3d443d210a',1,'AlleleMatrix']]],
-  ['groupsize_2',['groupSize',['../struct_random_access_iterator.html#a45fc3ba16491043d62d326d9f701556a',1,'RandomAccessIterator']]]
+  ['genome_0',['genome',['../structgsc___sim_data.html#a34f9ec7c05ef83ea907cc3d91a7ae596',1,'gsc_SimData']]],
+  ['group_1',['group',['../structgsc___multi_i_d_set.html#af7b758da583e6a57666d0a4f490ffaaa',1,'gsc_MultiIDSet::group()'],['../structgsc___bidirectional_iterator.html#a61d64539a502a6aeb96217e975b0c5bb',1,'gsc_BidirectionalIterator::group()'],['../structgsc___random_access_iterator.html#a555525b6fff7f38800a40bb5f2950cc3',1,'gsc_RandomAccessIterator::group()']]],
+  ['groups_2',['groups',['../structgsc___allele_matrix.html#acf7fd5c8810571780c73eca2c46a590a',1,'gsc_AlleleMatrix']]],
+  ['groupsize_3',['groupSize',['../structgsc___random_access_iterator.html#a0363902eb41e5b04cca1d451484805b8',1,'gsc_RandomAccessIterator']]],
+  ['gsc_5fbasic_5fopt_4',['GSC_BASIC_OPT',['../group__structs.html#gabec7841eda2ede124314f2f49e224ca0',1,'GSC_BASIC_OPT():&#160;sim-operations.c'],['../group__structs.html#gabec7841eda2ede124314f2f49e224ca0',1,'GSC_BASIC_OPT():&#160;sim-operations.c']]]
 ];

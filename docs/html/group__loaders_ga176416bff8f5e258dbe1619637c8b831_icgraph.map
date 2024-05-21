@@ -1,0 +1,5 @@
+<map id="gsc_load_effectfile" name="gsc_load_effectfile">
+<area shape="rect" id="node1" title="Populates a gsc_SimData combination with effect values." alt="" coords="386,5,513,33"/>
+<area shape="rect" id="node2" href="$group__loaders.html#gac7f5d37f0a3fd81aa26f1eae2ebae2db" title="Populates a gsc_SimData object with marker allele data, a genetic map, and (optionally) marker effect..." alt="" coords="203,5,338,33"/>
+<area shape="rect" id="node3" href="$group__loaders.html#gabbe46ffa8009c748d895d4215a6c8bb8" title="Load a set of genotypes to a gsc_SimData object." alt="" coords="5,5,155,33"/>
+</map>

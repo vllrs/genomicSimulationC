@@ -1,0 +1,4 @@
+<map id="gsc_delete_effect_matrix" name="gsc_delete_effect_matrix">
+<area shape="rect" id="node1" title="Deletes an gsc_EffectMatrix object and frees its memory." alt="" coords="5,5,171,33"/>
+<area shape="rect" id="node2" href="$group__deletors.html#ga99bbd9355f031efae628b27e6ae72f6a" title="Deletes a gsc_DecimalMatrix and frees its memory." alt="" coords="219,5,353,33"/>
+</map>

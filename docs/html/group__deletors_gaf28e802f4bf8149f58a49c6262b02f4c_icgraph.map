@@ -1,0 +1,5 @@
+<map id="gsc_delete_genome" name="gsc_delete_genome">
+<area shape="rect" id="node1" title="Deletes and clears the memory of a gsc_KnownGenome object and its children." alt="" coords="191,32,328,60"/>
+<area shape="rect" id="node2" href="$group__loaders.html#ga982b122b76326694fd0f26babeb027e7" title="Clear a gsc_SimData object on the heap." alt="" coords="9,5,139,33"/>
+<area shape="rect" id="node3" href="$group__deletors.html#ga1f4bef6ea148aaa0a1fa30681b29fe50" title="Deletes a gsc_SimData object and frees its memory." alt="" coords="5,57,143,85"/>
+</map>

@@ -1,0 +1,5 @@
+<map id="gsc_generate_doubled_haploid" name="gsc_generate_doubled_haploid">
+<area shape="rect" id="node1" title="Get the alleles of the outcome of producing a doubled haploid from a gamete from a given parent." alt="" coords="468,5,619,49"/>
+<area shape="rect" id="node2" href="$sim-operations_8c.html#aceb894a2f5c45552c2eb297e0a475af9" title="offspringGenerator function parameter for gsc_make_doubled_haploids." alt="" coords="242,5,420,49"/>
+<area shape="rect" id="node3" href="$group__crossers.html#ga6c230330ca9a9db9459d4477512a21af" title="Creates a doubled haploid from each member of a group." alt="" coords="5,13,194,41"/>
+</map>

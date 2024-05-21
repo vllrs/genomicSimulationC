@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['allelematrix_0',['AlleleMatrix',['../group__structs.html#ga210a64911b3ec2ed32894e3969365e7f',1,'sim-operations.h']]]
+  ['gsc_5fallelematrix_0',['gsc_AlleleMatrix',['../group__structs.html#ga75fcd8b0cc31c4c6edd1efcf47f2f8e2',1,'sim-operations.h']]]
 ];

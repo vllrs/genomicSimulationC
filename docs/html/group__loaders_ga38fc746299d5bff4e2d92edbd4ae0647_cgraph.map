@@ -1,0 +1,7 @@
+<map id="gsc_load_genotypes_encoded_and_transposed" name="gsc_load_genotypes_encoded_and_transposed">
+<area shape="rect" id="node1" title="Populates a gsc_SimData combination with marker allele data." alt="" coords="5,76,182,120"/>
+<area shape="rect" id="node2" href="$group__loaders.html#ga5239b30350ac028486d8e35aab01cc80" title="Creator for an empty gsc_AlleleMatrix object of a given size." alt="" coords="230,5,431,33"/>
+<area shape="rect" id="node3" href="$sim-operations_8c.html#a13bf076f6441cb69d76fc5058371dec1" title="Replace calls to malloc direct with this function, which errors and exits with status 2 if memory all..." alt="" coords="479,32,600,60"/>
+<area shape="rect" id="node4" href="$group__supporters.html#ga31fba32c2f869b50d97669e3e322d338" title="Opens a table file and reads the number of columns and rows (including headers) separated by sep into..." alt="" coords="249,109,412,137"/>
+<area shape="rect" id="node5" href="$sim-operations_8c.html#ad1df2a90753611c7fb2845130e555ef3" title="Allocate lifetime&#45;unique ids to each genotype in the range of whole gsc_SimData indexes from_index to..." alt="" coords="285,161,376,189"/>
+</map>

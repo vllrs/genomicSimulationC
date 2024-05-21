@@ -1,0 +1,5 @@
+<map id="gsc_create_new_label" name="gsc_create_new_label">
+<area shape="rect" id="node1" title="Initialises a new custom label." alt="" coords="5,32,155,60"/>
+<area shape="rect" id="node2" href="$group__supporters.html#gaa6bcf8ef9adbfc05d8cf695ec978badf" title="Function to identify the next sequential integer that is not already allocated to a label in the simu..." alt="" coords="203,5,351,33"/>
+<area shape="rect" id="node3" href="$sim-operations_8c.html#aaaf3ebc75feaf901829232712e55677b" title="Replace calls to malloc direct with this function." alt="" coords="216,57,338,85"/>
+</map>

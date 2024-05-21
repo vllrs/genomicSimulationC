@@ -1,0 +1,11 @@
+<map id="gsc_scaffold_split_by_somequality" name="gsc_scaffold_split_by_somequality">
+<area shape="rect" id="node1" title="Split by some quality (generic function)" alt="" coords="5,144,130,188"/>
+<area shape="rect" id="node2" href="$group__iterators.html#ga05da8d96593f8404938cc24f659db049" title="Create a bidirectional iterator." alt="" coords="424,5,610,33"/>
+<area shape="rect" id="node3" href="$group__collgetters.html#gaddb8ea59b22bbe0ec8c61da7f5ba8a98" title="Identify group numbers that currently have members, and how many members they have." alt="" coords="198,84,356,128"/>
+<area shape="rect" id="node6" href="$group__iterators.html#ga630ba7f8e864238e296cb9480dfbc728" title="Get the next location from a bidirectional iterator." alt="" coords="453,161,582,189"/>
+<area shape="rect" id="node8" href="$group__supporters.html#ga7e2b87823765982be96f27dd15f8304b" title="Iterator to get the next currently&#45;free group number." alt="" coords="178,204,376,232"/>
+<area shape="rect" id="node9" href="$group__liteget.html#ga7c88af63ccbce0c1e9026339d38fe53a" title="Set the current group membership of a genotype." alt="" coords="224,256,330,284"/>
+<area shape="rect" id="node4" href="$group__liteget.html#gae5d12aca851dd2358b63dc60b8ac6e5f" title="Get the current group membership of a genotype." alt="" coords="464,57,570,85"/>
+<area shape="rect" id="node5" href="$sim-operations_8c.html#a13bf076f6441cb69d76fc5058371dec1" title="Replace calls to malloc direct with this function, which errors and exits with status 2 if memory all..." alt="" coords="457,109,578,137"/>
+<area shape="rect" id="node7" href="$group__iterators.html#gaa4fa2aec3b7f49f9925fe82c8ff38dcd" title="Initialise a Bidirectional iterator to the start of its sequence." alt="" coords="658,153,802,197"/>
+</map>

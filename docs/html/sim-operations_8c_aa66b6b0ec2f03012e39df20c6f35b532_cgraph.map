@@ -1,0 +1,8 @@
+<map id="gsc_helper_genoptions_save_pedigrees" name="gsc_helper_genoptions_save_pedigrees">
+<area shape="rect" id="node1" title="save&#45;as&#45;you&#45;go (pedigrees)" alt="" coords="5,24,160,68"/>
+<area shape="rect" id="node2" href="$group__savers.html#ga78f467f0dd08c5501b804caca1e0c6b9" title="Print the full known pedigree of each genotype in a single gsc_AlleleMatrix to a file." alt="" coords="208,24,356,68"/>
+<area shape="rect" id="node3" href="$group__savers.html#ga8e5d08dbcfc4cc77d1d1c6603b75a2ed" title="Recursively save the parents of a particular id to a file." alt="" coords="404,32,546,60"/>
+<area shape="rect" id="node4" href="$group__search.html#ga5c7cd898a40e515c3164c98821068978" title="Returns the name of the genotype with a given id." alt="" coords="600,5,740,33"/>
+<area shape="rect" id="node6" href="$group__search.html#gad9d1d0b5575da681af7789354447612a" title="Saves the ids of the parents of a genotype with a particular id to the output array output." alt="" coords="594,57,746,85"/>
+<area shape="rect" id="node5" href="$group__supporters.html#ga8b0703c50a67ddcbe49f6b8d4ba3162b" title="Binary search through a list of PedigreeIDs." alt="" coords="794,24,943,68"/>
+</map>

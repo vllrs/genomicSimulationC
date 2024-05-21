@@ -1,0 +1,19 @@
+var searchData=
+[
+  ['gsc_5fgenotypecellstyle_5fcount_0',['GSC_GENOTYPECELLSTYLE_COUNT',['../group__structs.html#gga169da3c2b32a6f9afd92e2e0801ad741aec1165ad11520194f8a126f3ebd1529b',1,'sim-operations.h']]],
+  ['gsc_5fgenotypecellstyle_5fencoded_1',['GSC_GENOTYPECELLSTYLE_ENCODED',['../group__structs.html#gga169da3c2b32a6f9afd92e2e0801ad741adc7d046830c6b85f13a3565177fa78c1',1,'sim-operations.h']]],
+  ['gsc_5fgenotypecellstyle_5fpair_2',['GSC_GENOTYPECELLSTYLE_PAIR',['../group__structs.html#gga169da3c2b32a6f9afd92e2e0801ad741a7ace3d1df4d9466ce2fdac1f1b2e678c',1,'sim-operations.h']]],
+  ['gsc_5fgenotypecellstyle_5fslashpair_3',['GSC_GENOTYPECELLSTYLE_SLASHPAIR',['../group__structs.html#gga169da3c2b32a6f9afd92e2e0801ad741a4838ce244876aa72916bf4d96423491a',1,'sim-operations.h']]],
+  ['gsc_5fgenotypecellstyle_5funknown_4',['GSC_GENOTYPECELLSTYLE_UNKNOWN',['../group__structs.html#gga169da3c2b32a6f9afd92e2e0801ad741ab1a4bcd4b13e83b2a14a9db0cf23c118',1,'sim-operations.h']]],
+  ['gsc_5fgenotypefile_5fbed_5',['GSC_GENOTYPEFILE_BED',['../group__structs.html#ggae49f64d8275e0072f6e36c13622e89b8a84af5193acd7315949cf9434fe664318',1,'sim-operations.h']]],
+  ['gsc_5fgenotypefile_5fmatrix_6',['GSC_GENOTYPEFILE_MATRIX',['../group__structs.html#ggae49f64d8275e0072f6e36c13622e89b8a5f86295f41ccba1b6d55083b47d08015',1,'sim-operations.h']]],
+  ['gsc_5fgenotypefile_5fped_7',['GSC_GENOTYPEFILE_PED',['../group__structs.html#ggae49f64d8275e0072f6e36c13622e89b8ac328f360965380d27a504cde5e848a1b',1,'sim-operations.h']]],
+  ['gsc_5fgenotypefile_5fvcf_8',['GSC_GENOTYPEFILE_VCF',['../group__structs.html#ggae49f64d8275e0072f6e36c13622e89b8a6ea230ca7286da7d1354472a6c837fc5',1,'sim-operations.h']]],
+  ['gsc_5flinkagegroup_5freorder_9',['GSC_LINKAGEGROUP_REORDER',['../group__structs.html#ggabaab9ae5c2f4689211a8f1a2b33d23bca2dda577345113ce4397822dc484fe34a',1,'sim-operations.h']]],
+  ['gsc_5flinkagegroup_5fsimple_10',['GSC_LINKAGEGROUP_SIMPLE',['../group__structs.html#ggabaab9ae5c2f4689211a8f1a2b33d23bca43305e4386c6a4c2b8a538e49bd22d50',1,'sim-operations.h']]],
+  ['gsc_5ftablefile_5fcolumngap_11',['GSC_TABLEFILE_COLUMNGAP',['../group__structs.html#ggaa092055f7433a18bae99970ac6d2b79fa570d82d0d78f9dc4f991df3a492ad922',1,'sim-operations.h']]],
+  ['gsc_5ftablefile_5fcontents_12',['GSC_TABLEFILE_CONTENTS',['../group__structs.html#ggaa092055f7433a18bae99970ac6d2b79fa928157f2beac1b0b67d5c08a3576a455',1,'sim-operations.h']]],
+  ['gsc_5ftablefile_5ferror_5feobuf_13',['GSC_TABLEFILE_ERROR_EOBUF',['../group__structs.html#ggaa092055f7433a18bae99970ac6d2b79fa50b3c2e2c5ebda41b27f8bea704b49ab',1,'sim-operations.h']]],
+  ['gsc_5ftablefile_5ferror_5feof_14',['GSC_TABLEFILE_ERROR_EOF',['../group__structs.html#ggaa092055f7433a18bae99970ac6d2b79fa10ff766349027085d393d3037a1b9e59',1,'sim-operations.h']]],
+  ['gsc_5ftablefile_5fnewline_15',['GSC_TABLEFILE_NEWLINE',['../group__structs.html#ggaa092055f7433a18bae99970ac6d2b79fa826f62ac640f635777d762e6129cf1e2',1,'sim-operations.h']]]
+];

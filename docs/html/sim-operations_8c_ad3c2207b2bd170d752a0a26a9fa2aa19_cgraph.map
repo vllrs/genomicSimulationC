@@ -1,0 +1,12 @@
+<map id="gsc_helper_parse_mapfile" name="gsc_helper_parse_mapfile">
+<area shape="rect" id="node1" title="Extract the contents of a genetic map file." alt="" coords="5,113,177,141"/>
+<area shape="rect" id="node2" href="$sim-operations_8c.html#a890aa11fc3f54d411dff950b77931835" title="Header row reading and processing for map and effect set files." alt="" coords="232,37,389,81"/>
+<area shape="rect" id="node3" href="$group__structs.html#ga85446dd929940e823745067d0a1d1d5d" title="Allocate memory to store a deep copy of a gsc_TableFileCell, if previously only a shallow copy." alt="" coords="444,15,627,43"/>
+<area shape="rect" id="node8" href="$sim-operations_8c.html#a9022b0b2e12395904757c59db6010d5b" title="Return the next cell from a queue of cells until the queue is exhausted, and thereafter read new cell..." alt="" coords="225,105,396,149"/>
+<area shape="rect" id="node9" href="$group__structs.html#ga85b05dcdc5ec484d918ed2d3330c3ae8" title="Close a gsc_TableFileReader&#39;s file pointer." alt="" coords="246,173,375,217"/>
+<area shape="rect" id="node10" href="$group__structs.html#ga1a3a39309d4ce6447581e73f7483fbfb" title="Open a file for reading with gsc_TableFileReader." alt="" coords="246,241,375,285"/>
+<area shape="rect" id="node5" href="$group__structs.html#ga9b389be1c0eada385d1015e445886c05" title="Read forwards in TableFileReader and return the next cell&#39;s contents, as well as how many column gaps..." alt="" coords="471,67,600,111"/>
+<area shape="rect" id="node4" href="$sim-operations_8c.html#aaaf3ebc75feaf901829232712e55677b" title="Replace calls to malloc direct with this function." alt="" coords="700,15,822,43"/>
+<area shape="rect" id="node6" href="$group__structs.html#ga9861b51e8a5c74f843aac748c932c3a0" title="Classify the character under the cursor of a TableFileReader as cell contents or otherwise." alt="" coords="675,67,847,111"/>
+<area shape="rect" id="node7" href="$group__structs.html#gac2206b9a58abb4b533d11dec4bd9f322" title="Read another buffer&#39;s worth of characters from a gsc_TableFileReader&#39;s file." alt="" coords="675,135,847,179"/>
+</map>

@@ -1,0 +1,7 @@
+<map id="gsc_save_transposed_group_genotypes" name="gsc_save_transposed_group_genotypes">
+<area shape="rect" id="node1" title="Prints the genotypes of each individual in a given group to a file, with the following format." alt="" coords="5,76,152,120"/>
+<area shape="rect" id="node2" href="$group__collgetters.html#gab256e999fe9540658a2a3aba11260cb5" title="Gets a shallow copy of the genes/alleles of each member of the group." alt="" coords="202,5,350,33"/>
+<area shape="rect" id="node3" href="$group__collgetters.html#gae9131a8c72149706f67f6e4a48add79c" title="Function to count the number of genotypes that currently belong to the specified group." alt="" coords="400,84,537,112"/>
+<area shape="rect" id="node4" href="$group__collgetters.html#gae5fac6863433c073871766b80aa6d966" title="Gets the ids of each member of the group." alt="" coords="211,109,341,137"/>
+<area shape="rect" id="node5" href="$group__collgetters.html#ga52a8eb90f5a6a1f9dabea81955d0bb79" title="Gets a shallow copy of the names of each member of the group." alt="" coords="200,161,352,189"/>
+</map>

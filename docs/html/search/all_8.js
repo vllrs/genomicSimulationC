@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['has_5fsame_5falleles_0',['has_same_alleles',['../group__recomb.html#ga616d4bb1a616a3c7895f2de96be52870',1,'sim-operations.h']]],
-  ['has_5fsame_5falleles_5fwindow_1',['has_same_alleles_window',['../group__recomb.html#gafd5313ef4d6df2e2c43ab32ae54ae28d',1,'sim-operations.h']]]
+  ['knowngenome_0',['KnownGenome',['../group__shortnames.html#ga1d2acfcd1986b05fac8532e9bc2a1af1',1,'sim-operations.h']]]
 ];

@@ -1,0 +1,8 @@
+<map id="gsc_clear_simdata" name="gsc_clear_simdata">
+<area shape="rect" id="node1" title="Clear a gsc_SimData object on the heap." alt="" coords="5,57,136,85"/>
+<area shape="rect" id="node2" href="$group__deletors.html#ga9c647cacb393998930c560962c1f7f6d" title="Delete the gsc_AlleleMatrix linked list from m onwards and frees its memory." alt="" coords="184,5,349,33"/>
+<area shape="rect" id="node3" href="$group__deletors.html#ga41c27e8d966e9adde4a844c3c022629b" title="Deletes an gsc_EffectMatrix object and frees its memory." alt="" coords="184,57,349,85"/>
+<area shape="rect" id="node5" href="$group__deletors.html#gaf28e802f4bf8149f58a49c6262b02f4c" title="Deletes and clears the memory of a gsc_KnownGenome object and its children." alt="" coords="198,111,335,139"/>
+<area shape="rect" id="node4" href="$group__deletors.html#ga99bbd9355f031efae628b27e6ae72f6a" title="Deletes a gsc_DecimalMatrix and frees its memory." alt="" coords="416,55,550,83"/>
+<area shape="rect" id="node6" href="$group__deletors.html#gaa6d16e1e88561612bb4efa22b80a5bed" title="Deletes and clears the memory of a gsc_RecombinationMap struct." alt="" coords="397,107,569,151"/>
+</map>

@@ -1,0 +1,13 @@
+<map id="gsc_split_by_probabilities" name="gsc_split_by_probabilities">
+<area shape="rect" id="node1" title="Allocate each member of the group to one of n groups with custom probabilities for each group." alt="" coords="5,60,176,88"/>
+<area shape="rect" id="node2" href="$sim-operations_8c.html#a55ee8da4bb466eeaac2486eb135dd46c" title=" " alt="" coords="224,17,378,61"/>
+<area shape="rect" id="node3" href="$group__groupmod.html#gab0f7f198ee2602c6db2e315e7345b2e5" title="Split by some allocator (generic function)" alt="" coords="233,85,369,129"/>
+<area shape="rect" id="node4" href="$group__iterators.html#ga05da8d96593f8404938cc24f659db049" title="Create a bidirectional iterator." alt="" coords="1083,5,1269,33"/>
+<area shape="rect" id="node5" href="$group__supporters.html#ga6d28dad64b97f61aac8575493ab8a95b" title="Function to identify the next n sequential integers that do not identify a group that currently has m..." alt="" coords="426,67,615,95"/>
+<area shape="rect" id="node9" href="$group__iterators.html#ga630ba7f8e864238e296cb9480dfbc728" title="Get the next location from a bidirectional iterator." alt="" coords="1112,117,1241,145"/>
+<area shape="rect" id="node11" href="$group__liteget.html#ga7c88af63ccbce0c1e9026339d38fe53a" title="Set the current group membership of a genotype." alt="" coords="468,173,574,201"/>
+<area shape="rect" id="node6" href="$group__collgetters.html#gaf9692ce014cfe5439fd00e522a6bab9f" title="Identify group numbers that currently have members." alt="" coords="663,65,829,93"/>
+<area shape="rect" id="node7" href="$group__collgetters.html#gaddb8ea59b22bbe0ec8c61da7f5ba8a98" title="Identify group numbers that currently have members, and how many members they have." alt="" coords="877,53,1035,97"/>
+<area shape="rect" id="node8" href="$group__liteget.html#gae5d12aca851dd2358b63dc60b8ac6e5f" title="Get the current group membership of a genotype." alt="" coords="1123,61,1229,89"/>
+<area shape="rect" id="node10" href="$group__iterators.html#gaa4fa2aec3b7f49f9925fe82c8ff38dcd" title="Initialise a Bidirectional iterator to the start of its sequence." alt="" coords="1317,109,1461,153"/>
+</map>

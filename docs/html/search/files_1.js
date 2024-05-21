@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['guarantees_2emd_0',['Guarantees.md',['../_guarantees_8md.html',1,'']]]
+  ['news_2emd_0',['NEWS.md',['../_n_e_w_s_8md.html',1,'']]]
 ];

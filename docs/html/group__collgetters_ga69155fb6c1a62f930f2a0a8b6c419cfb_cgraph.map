@@ -1,0 +1,6 @@
+<map id="gsc_get_group_parent_names" name="gsc_get_group_parent_names">
+<area shape="rect" id="node1" title="Gets the names of either the first or second parent of each member of the group." alt="" coords="5,24,155,68"/>
+<area shape="rect" id="node2" href="$group__collgetters.html#gae9131a8c72149706f67f6e4a48add79c" title="Function to count the number of genotypes that currently belong to the specified group." alt="" coords="204,5,342,33"/>
+<area shape="rect" id="node3" href="$group__search.html#ga5c7cd898a40e515c3164c98821068978" title="Returns the name of the genotype with a given id." alt="" coords="203,57,343,85"/>
+<area shape="rect" id="node4" href="$group__supporters.html#ga8b0703c50a67ddcbe49f6b8d4ba3162b" title="Binary search through a list of PedigreeIDs." alt="" coords="391,49,540,93"/>
+</map>

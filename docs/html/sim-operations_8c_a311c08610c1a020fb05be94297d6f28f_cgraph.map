@@ -1,0 +1,4 @@
+<map id="gsc_helper_genoptions_save_genotypes_setup" name="gsc_helper_genoptions_save_genotypes_setup">
+<area shape="rect" id="node1" title="Opens file for writing save&#45;as&#45;you&#45;go genotypes in accordance with gsc_GenOptions." alt="" coords="5,5,166,49"/>
+<area shape="rect" id="node2" href="$group__savers.html#ga12e6eb5a3dccf1c79fd1b68df69c2668" title="Prints a list of names as a tab&#45;separated row to a file." alt="" coords="214,13,381,41"/>
+</map>

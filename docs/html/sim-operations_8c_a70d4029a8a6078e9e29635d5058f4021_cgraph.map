@@ -1,0 +1,7 @@
+<map id="gsc_helper_parentchooser_cross_targeted" name="gsc_helper_parentchooser_cross_targeted">
+<area shape="rect" id="node1" title="parentChooser function parameter for gsc_make_targeted_crosses." alt="" coords="5,49,179,93"/>
+<area shape="rect" id="node2" href="$group__iterators.html#ga5b9b804b6c3b0c165f20a765942fa810" title="Get a location by index using a gsc_RandomAccessIterator." alt="" coords="227,57,351,85"/>
+<area shape="rect" id="node3" href="$group__liteget.html#gae5d12aca851dd2358b63dc60b8ac6e5f" title="Get the current group membership of a genotype." alt="" coords="430,5,536,33"/>
+<area shape="rect" id="node4" href="$group__iterators.html#ga16615a5663b4d3bd768d8380f820aa66" title="Get an gsc_AlleleMatrix by index in the linked list." alt="" coords="399,57,566,85"/>
+<area shape="rect" id="node5" href="$sim-operations_8c.html#aaaf3ebc75feaf901829232712e55677b" title="Replace calls to malloc direct with this function." alt="" coords="422,109,543,137"/>
+</map>

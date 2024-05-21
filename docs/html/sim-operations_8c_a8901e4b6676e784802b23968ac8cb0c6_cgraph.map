@@ -1,0 +1,8 @@
+<map id="gsc_helper_parentchooser_cross_randomly" name="gsc_helper_parentchooser_cross_randomly">
+<area shape="rect" id="node1" title="parentChooser function parameter for gsc_make_random_crosses." alt="" coords="5,76,179,120"/>
+<area shape="rect" id="node2" href="$group__iterators.html#ga5b9b804b6c3b0c165f20a765942fa810" title="Get a location by index using a gsc_RandomAccessIterator." alt="" coords="277,57,402,85"/>
+<area shape="rect" id="node6" href="$group__supporters.html#gafd6535362ff9898f871cd4e1098d2ee6" title="Randomly pick a number in a range, optionally with a cap on how many times a number can be picked,..." alt="" coords="227,109,452,137"/>
+<area shape="rect" id="node3" href="$group__liteget.html#gae5d12aca851dd2358b63dc60b8ac6e5f" title="Get the current group membership of a genotype." alt="" coords="531,5,637,33"/>
+<area shape="rect" id="node4" href="$group__iterators.html#ga16615a5663b4d3bd768d8380f820aa66" title="Get an gsc_AlleleMatrix by index in the linked list." alt="" coords="500,57,667,85"/>
+<area shape="rect" id="node5" href="$sim-operations_8c.html#a13bf076f6441cb69d76fc5058371dec1" title="Replace calls to malloc direct with this function, which errors and exits with status 2 if memory all..." alt="" coords="523,109,644,137"/>
+</map>

@@ -21,7 +21,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">genomicSimulationC<span id="projectnumber">&#160;0.2.4.003</span>
+   <div id="projectname">genomicSimulationC<span id="projectnumber">&#160;0.2.5</span>
    </div>
   </td>
  </tr>
@@ -84,61 +84,70 @@ $(function() {
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:ga09859190fb4250475a866fa78a67be52"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__deletors.html#ga09859190fb4250475a866fa78a67be52">delete_group</a> (<a class="el" href="struct_sim_data.html">SimData</a> *d, const <a class="el" href="struct_group_num.html">GroupNum</a> group_id)</td></tr>
-<tr class="memdesc:ga09859190fb4250475a866fa78a67be52"><td class="mdescLeft">&#160;</td><td class="mdescRight">Deletes all genotypes belonging to a particular group.  <a href="group__deletors.html#ga09859190fb4250475a866fa78a67be52">More...</a><br /></td></tr>
-<tr class="separator:ga09859190fb4250475a866fa78a67be52"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gaef409380cea0efeb551e6c3bcc455168"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__deletors.html#gaef409380cea0efeb551e6c3bcc455168">delete_label</a> (<a class="el" href="struct_sim_data.html">SimData</a> *d, const <a class="el" href="struct_label_i_d.html">LabelID</a> whichLabel)</td></tr>
-<tr class="memdesc:gaef409380cea0efeb551e6c3bcc455168"><td class="mdescLeft">&#160;</td><td class="mdescRight">Clears memory of this label from the simulation and all its genotypes.  <a href="group__deletors.html#gaef409380cea0efeb551e6c3bcc455168">More...</a><br /></td></tr>
-<tr class="separator:gaef409380cea0efeb551e6c3bcc455168"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gaaf7e12b92ec0f93bb3bc2ec67155bc94"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__deletors.html#gaaf7e12b92ec0f93bb3bc2ec67155bc94">delete_genmap</a> (<a class="el" href="struct_genetic_map.html">GeneticMap</a> *m)</td></tr>
-<tr class="memdesc:gaaf7e12b92ec0f93bb3bc2ec67155bc94"><td class="mdescLeft">&#160;</td><td class="mdescRight">Deletes a <a class="el" href="struct_genetic_map.html" title="A type that stores the genetic map for a set of markers.">GeneticMap</a> object and frees its memory.  <a href="group__deletors.html#gaaf7e12b92ec0f93bb3bc2ec67155bc94">More...</a><br /></td></tr>
-<tr class="separator:gaaf7e12b92ec0f93bb3bc2ec67155bc94"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gadd4a9c17e8c3e59fc00eee25635b110f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__deletors.html#gadd4a9c17e8c3e59fc00eee25635b110f">delete_allele_matrix</a> (<a class="el" href="struct_allele_matrix.html">AlleleMatrix</a> *m)</td></tr>
-<tr class="memdesc:gadd4a9c17e8c3e59fc00eee25635b110f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Delete the <a class="el" href="struct_allele_matrix.html">AlleleMatrix</a> linked list from m onwards and frees its memory.  <a href="group__deletors.html#gadd4a9c17e8c3e59fc00eee25635b110f">More...</a><br /></td></tr>
-<tr class="separator:gadd4a9c17e8c3e59fc00eee25635b110f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga961f4b0757752fee2bd08adde7ece8ad"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__deletors.html#ga961f4b0757752fee2bd08adde7ece8ad">delete_effect_matrix</a> (<a class="el" href="struct_effect_matrix.html">EffectMatrix</a> *m)</td></tr>
-<tr class="memdesc:ga961f4b0757752fee2bd08adde7ece8ad"><td class="mdescLeft">&#160;</td><td class="mdescRight">Deletes an <a class="el" href="struct_effect_matrix.html" title="A type that stores a matrix of effect values and their names.">EffectMatrix</a> object and frees its memory.  <a href="group__deletors.html#ga961f4b0757752fee2bd08adde7ece8ad">More...</a><br /></td></tr>
-<tr class="separator:ga961f4b0757752fee2bd08adde7ece8ad"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga85e0f5ee7e16b9b029eb92ef30ae419a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__deletors.html#ga85e0f5ee7e16b9b029eb92ef30ae419a">delete_eff_set</a> (<a class="el" href="struct_sim_data.html">SimData</a> *d, <a class="el" href="struct_effect_i_d.html">EffectID</a> whichID)</td></tr>
-<tr class="memdesc:ga85e0f5ee7e16b9b029eb92ef30ae419a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Deletes a particular set of marker effects from memory.  <a href="group__deletors.html#ga85e0f5ee7e16b9b029eb92ef30ae419a">More...</a><br /></td></tr>
-<tr class="separator:ga85e0f5ee7e16b9b029eb92ef30ae419a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga6fc4a687a2186e9e9dcf3229d9141041"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__deletors.html#ga6fc4a687a2186e9e9dcf3229d9141041">delete_simdata</a> (<a class="el" href="struct_sim_data.html">SimData</a> *m)</td></tr>
-<tr class="memdesc:ga6fc4a687a2186e9e9dcf3229d9141041"><td class="mdescLeft">&#160;</td><td class="mdescRight">Deletes a <a class="el" href="struct_sim_data.html" title="Composite type that is used to run crossing simulations.">SimData</a> object and frees its memory.  <a href="group__deletors.html#ga6fc4a687a2186e9e9dcf3229d9141041">More...</a><br /></td></tr>
-<tr class="separator:ga6fc4a687a2186e9e9dcf3229d9141041"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gaea2a41cc103e8d11bedff564f93a4759"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__deletors.html#gaea2a41cc103e8d11bedff564f93a4759">delete_markerblocks</a> (<a class="el" href="struct_marker_blocks.html">MarkerBlocks</a> *b)</td></tr>
-<tr class="memdesc:gaea2a41cc103e8d11bedff564f93a4759"><td class="mdescLeft">&#160;</td><td class="mdescRight">Delete a <a class="el" href="struct_marker_blocks.html" title="A struct used to store a set of blocks of markers.">MarkerBlocks</a> struct.  <a href="group__deletors.html#gaea2a41cc103e8d11bedff564f93a4759">More...</a><br /></td></tr>
-<tr class="separator:gaea2a41cc103e8d11bedff564f93a4759"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gaaf6542d59034f88f9e1ec48e5f053c4a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__deletors.html#gaaf6542d59034f88f9e1ec48e5f053c4a">delete_dmatrix</a> (<a class="el" href="struct_decimal_matrix.html">DecimalMatrix</a> *m)</td></tr>
-<tr class="memdesc:gaaf6542d59034f88f9e1ec48e5f053c4a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Deletes a <a class="el" href="struct_decimal_matrix.html" title="A row-major heap matrix that contains floating point numbers.">DecimalMatrix</a> and frees its memory.  <a href="group__deletors.html#gaaf6542d59034f88f9e1ec48e5f053c4a">More...</a><br /></td></tr>
-<tr class="separator:gaaf6542d59034f88f9e1ec48e5f053c4a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gac29aa376a4682a50ba040c9723745354"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__deletors.html#gac29aa376a4682a50ba040c9723745354">delete_bidirectional_iter</a> (<a class="el" href="struct_bidirectional_iterator.html">BidirectionalIterator</a> *it)</td></tr>
-<tr class="memdesc:gac29aa376a4682a50ba040c9723745354"><td class="mdescLeft">&#160;</td><td class="mdescRight">Deletes a <a class="el" href="struct_bidirectional_iterator.html" title="A structure to iterate forwards and backwards through all genotypes in a SimData or through only the ...">BidirectionalIterator</a> object.  <a href="group__deletors.html#gac29aa376a4682a50ba040c9723745354">More...</a><br /></td></tr>
-<tr class="separator:gac29aa376a4682a50ba040c9723745354"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gabb7f5bb0df140f22d55c946df3a74f08"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__deletors.html#gabb7f5bb0df140f22d55c946df3a74f08">delete_randomaccess_iter</a> (<a class="el" href="struct_random_access_iterator.html">RandomAccessIterator</a> *it)</td></tr>
-<tr class="memdesc:gabb7f5bb0df140f22d55c946df3a74f08"><td class="mdescLeft">&#160;</td><td class="mdescRight">Deletes a <a class="el" href="struct_random_access_iterator.html" title="A structure to search and cache indexes of all genotypes in a SimData or of all the members of a grou...">RandomAccessIterator</a> object and frees its memory.  <a href="group__deletors.html#gabb7f5bb0df140f22d55c946df3a74f08">More...</a><br /></td></tr>
-<tr class="separator:gabb7f5bb0df140f22d55c946df3a74f08"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaddc395516c92fe17e017a3a48e5fc3e5"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__deletors.html#gaddc395516c92fe17e017a3a48e5fc3e5">gsc_delete_group</a> (<a class="el" href="structgsc___sim_data.html">gsc_SimData</a> *d, const <a class="el" href="structgsc___group_num.html">gsc_GroupNum</a> group_id)</td></tr>
+<tr class="memdesc:gaddc395516c92fe17e017a3a48e5fc3e5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Deletes all genotypes belonging to a particular group.  <a href="group__deletors.html#gaddc395516c92fe17e017a3a48e5fc3e5">More...</a><br /></td></tr>
+<tr class="separator:gaddc395516c92fe17e017a3a48e5fc3e5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga060559de8b20b9a1dbbd73297a6c4079"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__deletors.html#ga060559de8b20b9a1dbbd73297a6c4079">gsc_delete_label</a> (<a class="el" href="structgsc___sim_data.html">gsc_SimData</a> *d, const <a class="el" href="structgsc___label_i_d.html">gsc_LabelID</a> whichLabel)</td></tr>
+<tr class="memdesc:ga060559de8b20b9a1dbbd73297a6c4079"><td class="mdescLeft">&#160;</td><td class="mdescRight">Clears memory of this label from the simulation and all its genotypes.  <a href="group__deletors.html#ga060559de8b20b9a1dbbd73297a6c4079">More...</a><br /></td></tr>
+<tr class="separator:ga060559de8b20b9a1dbbd73297a6c4079"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaf28e802f4bf8149f58a49c6262b02f4c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__deletors.html#gaf28e802f4bf8149f58a49c6262b02f4c">gsc_delete_genome</a> (<a class="el" href="structgsc___known_genome.html">gsc_KnownGenome</a> *g)</td></tr>
+<tr class="memdesc:gaf28e802f4bf8149f58a49c6262b02f4c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Deletes and clears the memory of a <a class="el" href="structgsc___known_genome.html" title="A type that stores the genome structure used in simulation.">gsc_KnownGenome</a> object and its children.  <a href="group__deletors.html#gaf28e802f4bf8149f58a49c6262b02f4c">More...</a><br /></td></tr>
+<tr class="separator:gaf28e802f4bf8149f58a49c6262b02f4c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga6075a65332dee0dc0032f29cad35fd74"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__deletors.html#ga6075a65332dee0dc0032f29cad35fd74">gsc_delete_recombination_map</a> (<a class="el" href="structgsc___sim_data.html">gsc_SimData</a> *d, const <a class="el" href="structgsc___map_i_d.html">gsc_MapID</a> whichMap)</td></tr>
+<tr class="memdesc:ga6075a65332dee0dc0032f29cad35fd74"><td class="mdescLeft">&#160;</td><td class="mdescRight">Deletes a particular recombination map from memory.  <a href="group__deletors.html#ga6075a65332dee0dc0032f29cad35fd74">More...</a><br /></td></tr>
+<tr class="separator:ga6075a65332dee0dc0032f29cad35fd74"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaa6d16e1e88561612bb4efa22b80a5bed"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__deletors.html#gaa6d16e1e88561612bb4efa22b80a5bed">gsc_delete_recombination_map_nointegrity</a> (<a class="el" href="structgsc___recombination_map.html">gsc_RecombinationMap</a> *m)</td></tr>
+<tr class="memdesc:gaa6d16e1e88561612bb4efa22b80a5bed"><td class="mdescLeft">&#160;</td><td class="mdescRight">Deletes and clears the memory of a <a class="el" href="structgsc___recombination_map.html" title="A type that stores linkage groups and crossover probabilities for simulating meiosis.">gsc_RecombinationMap</a> struct.  <a href="group__deletors.html#gaa6d16e1e88561612bb4efa22b80a5bed">More...</a><br /></td></tr>
+<tr class="separator:gaa6d16e1e88561612bb4efa22b80a5bed"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga9c647cacb393998930c560962c1f7f6d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__deletors.html#ga9c647cacb393998930c560962c1f7f6d">gsc_delete_allele_matrix</a> (<a class="el" href="structgsc___allele_matrix.html">gsc_AlleleMatrix</a> *m)</td></tr>
+<tr class="memdesc:ga9c647cacb393998930c560962c1f7f6d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Delete the <a class="el" href="structgsc___allele_matrix.html">gsc_AlleleMatrix</a> linked list from m onwards and frees its memory.  <a href="group__deletors.html#ga9c647cacb393998930c560962c1f7f6d">More...</a><br /></td></tr>
+<tr class="separator:ga9c647cacb393998930c560962c1f7f6d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga41c27e8d966e9adde4a844c3c022629b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__deletors.html#ga41c27e8d966e9adde4a844c3c022629b">gsc_delete_effect_matrix</a> (<a class="el" href="structgsc___effect_matrix.html">gsc_EffectMatrix</a> *m)</td></tr>
+<tr class="memdesc:ga41c27e8d966e9adde4a844c3c022629b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Deletes an <a class="el" href="structgsc___effect_matrix.html" title="A type that stores a matrix of effect values and their names.">gsc_EffectMatrix</a> object and frees its memory.  <a href="group__deletors.html#ga41c27e8d966e9adde4a844c3c022629b">More...</a><br /></td></tr>
+<tr class="separator:ga41c27e8d966e9adde4a844c3c022629b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga27c2247d05e610fc83a83a5bae3d8d94"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__deletors.html#ga27c2247d05e610fc83a83a5bae3d8d94">gsc_delete_eff_set</a> (<a class="el" href="structgsc___sim_data.html">gsc_SimData</a> *d, <a class="el" href="structgsc___effect_i_d.html">gsc_EffectID</a> whichID)</td></tr>
+<tr class="memdesc:ga27c2247d05e610fc83a83a5bae3d8d94"><td class="mdescLeft">&#160;</td><td class="mdescRight">Deletes a particular set of marker effects from memory.  <a href="group__deletors.html#ga27c2247d05e610fc83a83a5bae3d8d94">More...</a><br /></td></tr>
+<tr class="separator:ga27c2247d05e610fc83a83a5bae3d8d94"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga1f4bef6ea148aaa0a1fa30681b29fe50"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__deletors.html#ga1f4bef6ea148aaa0a1fa30681b29fe50">gsc_delete_simdata</a> (<a class="el" href="structgsc___sim_data.html">gsc_SimData</a> *m)</td></tr>
+<tr class="memdesc:ga1f4bef6ea148aaa0a1fa30681b29fe50"><td class="mdescLeft">&#160;</td><td class="mdescRight">Deletes a <a class="el" href="structgsc___sim_data.html" title="Composite type that is used to run crossing simulations.">gsc_SimData</a> object and frees its memory.  <a href="group__deletors.html#ga1f4bef6ea148aaa0a1fa30681b29fe50">More...</a><br /></td></tr>
+<tr class="separator:ga1f4bef6ea148aaa0a1fa30681b29fe50"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga8583ccabd176c47c4126f164321e0126"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__deletors.html#ga8583ccabd176c47c4126f164321e0126">gsc_delete_markerblocks</a> (<a class="el" href="structgsc___marker_blocks.html">gsc_MarkerBlocks</a> *b)</td></tr>
+<tr class="memdesc:ga8583ccabd176c47c4126f164321e0126"><td class="mdescLeft">&#160;</td><td class="mdescRight">Delete a <a class="el" href="structgsc___marker_blocks.html" title="A struct used to store a set of blocks of markers.">gsc_MarkerBlocks</a> struct.  <a href="group__deletors.html#ga8583ccabd176c47c4126f164321e0126">More...</a><br /></td></tr>
+<tr class="separator:ga8583ccabd176c47c4126f164321e0126"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga99bbd9355f031efae628b27e6ae72f6a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__deletors.html#ga99bbd9355f031efae628b27e6ae72f6a">gsc_delete_dmatrix</a> (<a class="el" href="structgsc___decimal_matrix.html">gsc_DecimalMatrix</a> *m)</td></tr>
+<tr class="memdesc:ga99bbd9355f031efae628b27e6ae72f6a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Deletes a <a class="el" href="structgsc___decimal_matrix.html" title="A row-major heap matrix that contains floating point numbers.">gsc_DecimalMatrix</a> and frees its memory.  <a href="group__deletors.html#ga99bbd9355f031efae628b27e6ae72f6a">More...</a><br /></td></tr>
+<tr class="separator:ga99bbd9355f031efae628b27e6ae72f6a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga83d81991036aca26e2ec5b03f8b33b8a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__deletors.html#ga83d81991036aca26e2ec5b03f8b33b8a">gsc_delete_bidirectional_iter</a> (<a class="el" href="structgsc___bidirectional_iterator.html">gsc_BidirectionalIterator</a> *it)</td></tr>
+<tr class="memdesc:ga83d81991036aca26e2ec5b03f8b33b8a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Deletes a <a class="el" href="structgsc___bidirectional_iterator.html" title="A structure to iterate forwards and backwards through all genotypes in a gsc_SimData or through only ...">gsc_BidirectionalIterator</a> object.  <a href="group__deletors.html#ga83d81991036aca26e2ec5b03f8b33b8a">More...</a><br /></td></tr>
+<tr class="separator:ga83d81991036aca26e2ec5b03f8b33b8a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga3e88311f64b089f3d7a336f4efee3b05"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__deletors.html#ga3e88311f64b089f3d7a336f4efee3b05">gsc_delete_randomaccess_iter</a> (<a class="el" href="structgsc___random_access_iterator.html">gsc_RandomAccessIterator</a> *it)</td></tr>
+<tr class="memdesc:ga3e88311f64b089f3d7a336f4efee3b05"><td class="mdescLeft">&#160;</td><td class="mdescRight">Deletes a <a class="el" href="structgsc___random_access_iterator.html" title="A structure to search and cache indexes of all genotypes in a gsc_SimData or of all the members of a ...">gsc_RandomAccessIterator</a> object and frees its memory.  <a href="group__deletors.html#ga3e88311f64b089f3d7a336f4efee3b05">More...</a><br /></td></tr>
+<tr class="separator:ga3e88311f64b089f3d7a336f4efee3b05"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gae46ff71b819d28408e8b55dd4281a4f3"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__deletors.html#gae46ff71b819d28408e8b55dd4281a4f3">gsc_move_genotype</a> (<a class="el" href="structgsc___geno_location.html">gsc_GenoLocation</a> from, <a class="el" href="structgsc___geno_location.html">gsc_GenoLocation</a> to, int *label_defaults)</td></tr>
+<tr class="memdesc:gae46ff71b819d28408e8b55dd4281a4f3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Move all details of the genotype at one <a class="el" href="structgsc___geno_location.html" title="An gsc_AlleleMatrix/gsc_AlleleMatrix index coordinate of a particular genotype in the simulation.">gsc_GenoLocation</a> to another <a class="el" href="structgsc___geno_location.html" title="An gsc_AlleleMatrix/gsc_AlleleMatrix index coordinate of a particular genotype in the simulation.">gsc_GenoLocation</a>.  <a href="group__deletors.html#gae46ff71b819d28408e8b55dd4281a4f3">More...</a><br /></td></tr>
+<tr class="separator:gae46ff71b819d28408e8b55dd4281a4f3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <p >For deleting and free associated memory of data structures. </p>
 <h2 class="groupheader">Function Documentation</h2>
-<a id="gadd4a9c17e8c3e59fc00eee25635b110f" name="gadd4a9c17e8c3e59fc00eee25635b110f"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#gadd4a9c17e8c3e59fc00eee25635b110f">&#9670;&nbsp;</a></span>delete_allele_matrix()</h2>
+<a id="ga9c647cacb393998930c560962c1f7f6d" name="ga9c647cacb393998930c560962c1f7f6d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga9c647cacb393998930c560962c1f7f6d">&#9670;&nbsp;</a></span>gsc_delete_allele_matrix()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void delete_allele_matrix </td>
+          <td class="memname">void gsc_delete_allele_matrix </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="struct_allele_matrix.html">AlleleMatrix</a> *&#160;</td>
+          <td class="paramtype"><a class="el" href="structgsc___allele_matrix.html">gsc_AlleleMatrix</a> *&#160;</td>
           <td class="paramname"><em>m</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p>Delete the <a class="el" href="struct_allele_matrix.html">AlleleMatrix</a> linked list from m onwards and frees its memory. </p>
-<p >Freeing its memory includes freeing the <a class="el" href="struct_allele_matrix.html">AlleleMatrix</a>, which was allocated on the heap by </p><dl class="section see"><dt>See also</dt><dd><a class="el" href="group__loaders.html#gaf0399b852faa346adeab52d57fa9701b" title="Creator for an empty AlleleMatrix object of a given size.">create_empty_allelematrix()</a>. All matrices further along in the linked list chain (eg pointed to by m-&gt;next or a chain of -&gt;next pointers) will be similarly deleted.</dd></dl>
+<p>Delete the <a class="el" href="structgsc___allele_matrix.html">gsc_AlleleMatrix</a> linked list from m onwards and frees its memory. </p>
+<p >Freeing its memory includes freeing the <a class="el" href="structgsc___allele_matrix.html">gsc_AlleleMatrix</a>, which was allocated on the heap by <a class="el" href="group__loaders.html#ga0baf4341fe54309d7c3b2ba395eb1975">gsc_create_empty_allelematrix()</a>. All matrices further along in the linked list chain (eg pointed to by m-&gt;next or a chain of -&gt;next pointers) will be similarly deleted.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">m</td><td>pointer to the matrix whose data is to be cleared and memory freed. </td></tr>
@@ -150,78 +159,55 @@ Functions</h2></td></tr>
 <div id="dynsection-1-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-1-content" class="dyncontent" style="display:none;">
-<div class="center"><img src="group__deletors_gadd4a9c17e8c3e59fc00eee25635b110f_icgraph.png" border="0" usemap="#agroup__deletors_gadd4a9c17e8c3e59fc00eee25635b110f_icgraph" alt=""/></div>
-<map name="agroup__deletors_gadd4a9c17e8c3e59fc00eee25635b110f_icgraph" id="agroup__deletors_gadd4a9c17e8c3e59fc00eee25635b110f_icgraph">
-<area shape="rect" title="Delete the AlleleMatrix linked list from m onwards and frees its memory." alt="" coords="644,221,781,249"/>
-<area shape="rect" href="group__loaders.html#gac052ad3cb1f8975c21b28eea560a6e0b" title="Clear a SimData object on the heap." alt="" coords="467,7,569,35"/>
-<area shape="rect" href="group__supporters.html#ga887027349503be24b1a847c9b833aaac" title="A function to tidy the internal storage of genotypes after addition or deletion of genotypes in the S..." alt="" coords="439,221,596,249"/>
-<area shape="rect" href="group__crossers.html#ga823b906485f3edf2771935f2ad4f12db" title="Performs random crosses among members of a group." alt="" coords="218,57,388,85"/>
-<area shape="rect" href="group__crossers.html#ga21fd20fa9a626c2933b7ec114c3faca5" title="Performs random crosses where the first parent comes from one group and the second from another." alt="" coords="219,109,387,137"/>
-<area shape="rect" href="sim-operations_8c.html#a877bbfdb03961d00c30f7e2fa55efe7c" title="Performs the crosses of pairs of parents whose indexes are provided in an array." alt="" coords="215,161,391,189"/>
-<area shape="rect" href="group__crossers.html#ga4eb395614f3ec7ffecb3b779c16e6f17" title="Creates an identical copy of each member of a group." alt="" coords="254,333,352,361"/>
-<area shape="rect" href="group__crossers.html#ga6a3afc7743003c66fe24e7a2872e26cc" title="Creates a doubled haploid from each member of a group." alt="" coords="223,385,383,413"/>
-<area shape="rect" href="group__crossers.html#gaafc0d183fdb9762dc0817e5bd3009178" title="Selfs each member of a group for a certain number of generations." alt="" coords="256,437,350,465"/>
-<area shape="rect" href="group__deletors.html#ga6fc4a687a2186e9e9dcf3229d9141041" title="Deletes a SimData object and frees its memory." alt="" coords="463,427,572,455"/>
-<area shape="rect" href="group__loaders.html#ga3d8878f2c2c5fafdae57ffc46a78dfbc" title="Populates a SimData combination from scratch with marker allele data, a genetic map,..." alt="" coords="244,5,362,33"/>
-<area shape="rect" href="group__deletors.html#ga09859190fb4250475a866fa78a67be52" title="Deletes all genotypes belonging to a particular group." alt="" coords="255,281,351,309"/>
-<area shape="rect" href="group__loaders.html#ga38ad77c70ea0719c4c59644127fd3368" title="Appends genotype data from a file to an existing SimData." alt="" coords="227,213,379,257"/>
-<area shape="rect" href="group__crossers.html#gafdd1fa0e8dd54ba1f3089c05986686cb" title="Find the top m percent of a group and perform random crosses between those top individuals." alt="" coords="10,37,162,81"/>
-<area shape="rect" href="group__crossers.html#gab173426b15ba3e135e1eea25035afd85" title="Perform crosses between all pairs of parents in the group from_group and allocates the resulting offs..." alt="" coords="8,105,164,149"/>
-<area shape="rect" href="group__crossers.html#ga18a22fc990289359e790fa207613c121" title="Perform crosses between pairs of parents identified by name in a file and allocate the resulting offs..." alt="" coords="5,173,167,201"/>
-<area shape="rect" href="group__crossers.html#ga0cc412ee0f607370ad3b34f4c39a15ff" title="Perform crosses between previously&#45;generated offspring of pairs of parents identified by name in a fi..." alt="" coords="10,225,162,269"/>
+<div class="center"><img src="group__deletors_ga9c647cacb393998930c560962c1f7f6d_icgraph.png" border="0" usemap="#agroup__deletors_ga9c647cacb393998930c560962c1f7f6d_icgraph" alt=""/></div>
+<map name="agroup__deletors_ga9c647cacb393998930c560962c1f7f6d_icgraph" id="agroup__deletors_ga9c647cacb393998930c560962c1f7f6d_icgraph">
+<area shape="rect" title="Delete the gsc_AlleleMatrix linked list from m onwards and frees its memory." alt="" coords="1077,144,1241,172"/>
+<area shape="rect" href="group__loaders.html#ga982b122b76326694fd0f26babeb027e7" title="Clear a gsc_SimData object on the heap." alt="" coords="893,53,1023,81"/>
+<area shape="rect" href="group__supporters.html#gafa617e95d5ed52b4e25434a20006809c" title="A function to tidy the internal storage of genotypes after addition or deletion of genotypes in the g..." alt="" coords="887,105,1029,149"/>
+<area shape="rect" href="group__crossers.html#ga28b0fcf60b6a8f6e8ca470f7b5d0a4b7" title="Make new genotypes (generic function)" alt="" coords="676,169,839,213"/>
+<area shape="rect" href="group__deletors.html#ga1f4bef6ea148aaa0a1fa30681b29fe50" title="Deletes a gsc_SimData object and frees its memory." alt="" coords="889,225,1027,253"/>
+<area shape="rect" href="group__deletors.html#gaddc395516c92fe17e017a3a48e5fc3e5" title="Deletes all genotypes belonging to a particular group." alt="" coords="696,49,819,77"/>
+<area shape="rect" href="sim-operations_8c.html#a622965bf813b7d185c0effe64aca6bad" title="Push emptylist edited genotypes into the SimData." alt="" coords="681,101,834,145"/>
+<area shape="rect" href="sim-operations_8c.html#a0f9bc7d42b9a98a1f4ea30c4a5f49312" title="Loads a genotype file, with or without existing genome model in the SimData." alt="" coords="460,5,609,49"/>
+<area shape="rect" href="group__loaders.html#gac7f5d37f0a3fd81aa26f1eae2ebae2db" title="Populates a gsc_SimData object with marker allele data, a genetic map, and (optionally) marker effect..." alt="" coords="230,13,365,41"/>
+<area shape="rect" href="group__loaders.html#gabbe46ffa8009c748d895d4215a6c8bb8" title="Load a set of genotypes to a gsc_SimData object." alt="" coords="5,13,155,41"/>
+<area shape="rect" href="group__crossers.html#ga15af204958dc69717334c46b19219a2d" title="Creates an identical copy of each member of a group." alt="" coords="471,73,597,101"/>
+<area shape="rect" href="group__crossers.html#ga6c230330ca9a9db9459d4477512a21af" title="Creates a doubled haploid from each member of a group." alt="" coords="440,125,628,153"/>
+<area shape="rect" href="group__crossers.html#ga03af5446006203244dd3080cf75af26f" title="Performs random crosses among members of a group." alt="" coords="442,177,626,205"/>
+<area shape="rect" href="group__crossers.html#ga652376b5a34d24f239e5fc0b167c067b" title="Performs random crosses where the first parent comes from one group and the second from another." alt="" coords="442,229,626,273"/>
+<area shape="rect" href="group__crossers.html#ga4450224009587f4cd4a972413423c96e" title="Performs the crosses of pairs of parents whose indexes are provided in an array." alt="" coords="440,297,628,325"/>
+<area shape="rect" href="group__crossers.html#gab625453074798be6ba8677a5d4986edf" title="Selfs each member of a group for a certain number of generations." alt="" coords="473,349,595,377"/>
+<area shape="rect" href="group__crossers.html#gab19b3eb80b5fe460d17c93e0c27f7aaf" title="Find the top m percent of a group and perform random crosses between those top individuals." alt="" coords="223,165,372,209"/>
+<area shape="rect" href="group__crossers.html#gaa70fd79312587d8e9fc166c64612cbce" title="Perform crosses between all pairs of parents in the group from_group and allocates the resulting offs..." alt="" coords="205,233,390,277"/>
+<area shape="rect" href="group__crossers.html#ga5c0be901d03d0e5dd3d74bc19a4bea70" title="Perform crosses between pairs of parents identified by name in a file and allocate the resulting offs..." alt="" coords="203,301,392,329"/>
+<area shape="rect" href="group__crossers.html#ga2b8100d2d30cf1ada0db8403663076ff" title="Perform crosses between previously&#45;generated offspring of pairs of parents identified by name in a fi..." alt="" coords="208,353,387,397"/>
 </map>
 </div>
 
 </div>
 </div>
-<a id="gac29aa376a4682a50ba040c9723745354" name="gac29aa376a4682a50ba040c9723745354"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#gac29aa376a4682a50ba040c9723745354">&#9670;&nbsp;</a></span>delete_bidirectional_iter()</h2>
+<a id="ga83d81991036aca26e2ec5b03f8b33b8a" name="ga83d81991036aca26e2ec5b03f8b33b8a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga83d81991036aca26e2ec5b03f8b33b8a">&#9670;&nbsp;</a></span>gsc_delete_bidirectional_iter()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void delete_bidirectional_iter </td>
+          <td class="memname">void gsc_delete_bidirectional_iter </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="struct_bidirectional_iterator.html">BidirectionalIterator</a> *&#160;</td>
+          <td class="paramtype"><a class="el" href="structgsc___bidirectional_iterator.html">gsc_BidirectionalIterator</a> *&#160;</td>
           <td class="paramname"><em>it</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p>Deletes a <a class="el" href="struct_bidirectional_iterator.html" title="A structure to iterate forwards and backwards through all genotypes in a SimData or through only the ...">BidirectionalIterator</a> object. </p>
-<p >A <a class="el" href="struct_bidirectional_iterator.html" title="A structure to iterate forwards and backwards through all genotypes in a SimData or through only the ...">BidirectionalIterator</a> has no heap memory to free, so calling this function is mostly unnecessary. The function will set all values in the struct to uninitialised/null values, and will set the iterator to think it is both at the start and end of its sequence, so that any next_* functions will not attempt to search for group member locations.</p>
+<p>Deletes a <a class="el" href="structgsc___bidirectional_iterator.html" title="A structure to iterate forwards and backwards through all genotypes in a gsc_SimData or through only ...">gsc_BidirectionalIterator</a> object. </p>
+<p >A <a class="el" href="structgsc___bidirectional_iterator.html" title="A structure to iterate forwards and backwards through all genotypes in a gsc_SimData or through only ...">gsc_BidirectionalIterator</a> has no heap memory to free, so calling this function is mostly unnecessary. The function will set all values in the struct to uninitialised/null values, and will set the iterator to think it is both at the start and end of its sequence, so that any next_* functions will not attempt to search for group member locations.</p>
+<p ><em>Has short name:</em> <a class="el" href="group__shortnames.html#ga5af66009548e959920f4ba3902a86ad8">delete_bidirectional_iter</a></p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">it</td><td>pointer to the struct whose data is to be cleared. </td></tr>
-  </table>
-  </dd>
-</dl>
-
-</div>
-</div>
-<a id="gaaf6542d59034f88f9e1ec48e5f053c4a" name="gaaf6542d59034f88f9e1ec48e5f053c4a"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#gaaf6542d59034f88f9e1ec48e5f053c4a">&#9670;&nbsp;</a></span>delete_dmatrix()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void delete_dmatrix </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="struct_decimal_matrix.html">DecimalMatrix</a> *&#160;</td>
-          <td class="paramname"><em>m</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Deletes a <a class="el" href="struct_decimal_matrix.html" title="A row-major heap matrix that contains floating point numbers.">DecimalMatrix</a> and frees its memory. </p>
-<p >m will now refer to an empty matrix, with every pointer set to null and dimensions set to 0.</p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">m</td><td>pointer to the matrix whose data is to be cleared and memory freed. </td></tr>
   </table>
   </dd>
 </dl>
@@ -230,56 +216,93 @@ Functions</h2></td></tr>
 <div id="dynsection-2-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-2-content" class="dyncontent" style="display:none;">
-<div class="center"><img src="group__deletors_gaaf6542d59034f88f9e1ec48e5f053c4a_icgraph.png" border="0" usemap="#agroup__deletors_gaaf6542d59034f88f9e1ec48e5f053c4a_icgraph" alt=""/></div>
-<map name="agroup__deletors_gaaf6542d59034f88f9e1ec48e5f053c4a_icgraph" id="agroup__deletors_gaaf6542d59034f88f9e1ec48e5f053c4a_icgraph">
-<area shape="rect" title="Deletes a DecimalMatrix and frees its memory." alt="" coords="633,379,740,407"/>
-<area shape="rect" href="group__calculators.html#ga75f4e1199f9ead752b64cd5fa3b5a1a7" title="Calculates the fitness metric/breeding value for each genotype in the AlleleMatrix,..." alt="" coords="463,404,562,432"/>
-<area shape="rect" href="group__crossers.html#ga823b906485f3edf2771935f2ad4f12db" title="Performs random crosses among members of a group." alt="" coords="218,199,388,227"/>
-<area shape="rect" href="group__crossers.html#ga21fd20fa9a626c2933b7ec114c3faca5" title="Performs random crosses where the first parent comes from one group and the second from another." alt="" coords="219,251,387,279"/>
-<area shape="rect" href="sim-operations_8c.html#a877bbfdb03961d00c30f7e2fa55efe7c" title="Performs the crosses of pairs of parents whose indexes are provided in an array." alt="" coords="215,303,391,331"/>
-<area shape="rect" href="group__crossers.html#ga4eb395614f3ec7ffecb3b779c16e6f17" title="Creates an identical copy of each member of a group." alt="" coords="254,355,352,383"/>
-<area shape="rect" href="group__crossers.html#ga6a3afc7743003c66fe24e7a2872e26cc" title="Creates a doubled haploid from each member of a group." alt="" coords="223,407,383,435"/>
-<area shape="rect" href="group__savers.html#ga9ff67eb9572c42530b64b70f4a307488" title="Print the breeding value of each genotype in the SimData to a file." alt="" coords="266,459,340,487"/>
-<area shape="rect" href="group__crossers.html#gaafc0d183fdb9762dc0817e5bd3009178" title="Selfs each member of a group for a certain number of generations." alt="" coords="256,511,350,539"/>
-<area shape="rect" href="group__calculators.html#gafd3faffcf504432504b50b669055f46b" title="Calculates the fitness metric/breeding value for each genotype in the AlleleMatrix in a certain group..." alt="" coords="443,98,581,126"/>
-<area shape="rect" href="group__collgetters.html#gaabe380985e14b55021634b3c687004e3" title="Gets the breeding values/breeding values/fitnesses of each member of the group." alt="" coords="251,7,355,35"/>
-<area shape="rect" href="group__savers.html#gadb547ac914ca6f84033394402ffece7e" title="Print the breeding value of each genotype in a group to a file." alt="" coords="247,83,359,111"/>
-<area shape="rect" href="group__calculators.html#ga88e086f459bf255ded35aff26f976ab8" title="Takes the top_n individuals in the group with the best breeding values/fitnesses and puts them in a n..." alt="" coords="260,147,346,175"/>
-<area shape="rect" href="group__deletors.html#ga961f4b0757752fee2bd08adde7ece8ad" title="Deletes an EffectMatrix object and frees its memory." alt="" coords="444,664,581,692"/>
-<area shape="rect" href="group__supporters.html#gadebbfa88bf139ddca501ab158f3746c5" title="Takes a SimData object, and sorts its markers, the rows of its parent gen AlleleMatrix (because they ..." alt="" coords="444,610,580,638"/>
-<area shape="rect" href="group__savers.html#ga38b0958216f509a3b0a10c4c49183f44" title="Print the number of copies of a particular allele at each marker of each genotype in the SimData to a..." alt="" coords="448,716,577,744"/>
-<area shape="rect" href="group__savers.html#ga5c490bff6698ad221c9eeec1254623c5" title="Print the number of copies of a particular allele at each marker of each genotype in a group to a fil..." alt="" coords="439,768,585,812"/>
-<area shape="rect" href="group__crossers.html#gafdd1fa0e8dd54ba1f3089c05986686cb" title="Find the top m percent of a group and perform random crosses between those top individuals." alt="" coords="10,154,162,198"/>
-<area shape="rect" href="group__crossers.html#gab173426b15ba3e135e1eea25035afd85" title="Perform crosses between all pairs of parents in the group from_group and allocates the resulting offs..." alt="" coords="8,235,164,279"/>
-<area shape="rect" href="group__crossers.html#ga18a22fc990289359e790fa207613c121" title="Perform crosses between pairs of parents identified by name in a file and allocate the resulting offs..." alt="" coords="5,303,167,331"/>
-<area shape="rect" href="group__crossers.html#ga0cc412ee0f607370ad3b34f4c39a15ff" title="Perform crosses between previously&#45;generated offspring of pairs of parents identified by name in a fi..." alt="" coords="10,355,162,399"/>
-<area shape="rect" href="group__loaders.html#gac052ad3cb1f8975c21b28eea560a6e0b" title="Clear a SimData object on the heap." alt="" coords="252,667,354,695"/>
-<area shape="rect" href="group__deletors.html#ga85e0f5ee7e16b9b029eb92ef30ae419a" title="Deletes a particular set of marker effects from memory." alt="" coords="252,719,354,747"/>
-<area shape="rect" href="group__deletors.html#ga6fc4a687a2186e9e9dcf3229d9141041" title="Deletes a SimData object and frees its memory." alt="" coords="248,771,358,799"/>
-<area shape="rect" href="group__loaders.html#ga3d8878f2c2c5fafdae57ffc46a78dfbc" title="Populates a SimData combination from scratch with marker allele data, a genetic map,..." alt="" coords="27,615,145,643"/>
-<area shape="rect" href="group__loaders.html#ga8edb09b9b9eb27f84ac59cc4342ea855" title="Populates a SimData combination with data from a genetic map." alt="" coords="218,563,388,591"/>
+<div class="center"><img src="group__deletors_ga83d81991036aca26e2ec5b03f8b33b8a_icgraph.png" border="0" usemap="#agroup__deletors_ga83d81991036aca26e2ec5b03f8b33b8a_icgraph" alt=""/></div>
+<map name="agroup__deletors_ga83d81991036aca26e2ec5b03f8b33b8a_icgraph" id="agroup__deletors_ga83d81991036aca26e2ec5b03f8b33b8a_icgraph">
+<area shape="rect" title="Deletes a gsc_BidirectionalIterator object." alt="" coords="231,5,416,33"/>
+<area shape="rect" href="group__supporters.html#ga63640e905157a54a1d84374f4ce2b140" title="Replace all occurences of a given allele with a different symbol representation." alt="" coords="5,5,183,33"/>
 </map>
 </div>
 
 </div>
 </div>
-<a id="ga85e0f5ee7e16b9b029eb92ef30ae419a" name="ga85e0f5ee7e16b9b029eb92ef30ae419a"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ga85e0f5ee7e16b9b029eb92ef30ae419a">&#9670;&nbsp;</a></span>delete_eff_set()</h2>
+<a id="ga99bbd9355f031efae628b27e6ae72f6a" name="ga99bbd9355f031efae628b27e6ae72f6a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga99bbd9355f031efae628b27e6ae72f6a">&#9670;&nbsp;</a></span>gsc_delete_dmatrix()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void delete_eff_set </td>
+          <td class="memname">void gsc_delete_dmatrix </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="struct_sim_data.html">SimData</a> *&#160;</td>
+          <td class="paramtype"><a class="el" href="structgsc___decimal_matrix.html">gsc_DecimalMatrix</a> *&#160;</td>
+          <td class="paramname"><em>m</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Deletes a <a class="el" href="structgsc___decimal_matrix.html" title="A row-major heap matrix that contains floating point numbers.">gsc_DecimalMatrix</a> and frees its memory. </p>
+<p >m will now refer to an empty matrix, with every pointer set to null and dimensions set to 0.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">m</td><td>pointer to the matrix whose data is to be cleared and memory freed. </td></tr>
+  </table>
+  </dd>
+</dl>
+<div id="dynsection-3" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-3-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
+<div id="dynsection-3-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-3-content" class="dyncontent" style="display:none;">
+<div class="center"><img src="group__deletors_ga99bbd9355f031efae628b27e6ae72f6a_icgraph.png" border="0" usemap="#agroup__deletors_ga99bbd9355f031efae628b27e6ae72f6a_icgraph" alt=""/></div>
+<map name="agroup__deletors_ga99bbd9355f031efae628b27e6ae72f6a_icgraph" id="agroup__deletors_ga99bbd9355f031efae628b27e6ae72f6a_icgraph">
+<area shape="rect" title="Deletes a gsc_DecimalMatrix and frees its memory." alt="" coords="1106,448,1240,476"/>
+<area shape="rect" href="group__calculators.html#gaae6cddc5291e4ad120ac28a7d043c7fa" title="Calculates the fitness metric/breeding value for each genotype in the gsc_AlleleMatrix,..." alt="" coords="911,268,1039,296"/>
+<area shape="rect" href="sim-operations_8c.html#a7072c6a3834472e7fbd768c0275fdc54" title="save&#45;as&#45;you&#45;go (breeding values)" alt="" coords="689,268,844,312"/>
+<area shape="rect" href="group__savers.html#ga9081436408a37abb9d37e035b3cfaa87" title="Print the breeding value of each genotype in the gsc_SimData to a file." alt="" coords="716,216,817,244"/>
+<area shape="rect" href="group__calculators.html#ga381bf7e42397f428a322dd8e118a4243" title="Calculates the fitness metric/breeding value for each genotype in the gsc_AlleleMatrix in a certain g..." alt="" coords="892,473,1058,501"/>
+<area shape="rect" href="group__collgetters.html#ga25310a2e8c9fbfabca0c90a355f0d522" title="Gets the breeding values/breeding values/fitnesses of each member of the group." alt="" coords="700,441,833,469"/>
+<area shape="rect" href="group__savers.html#ga3453d7fc7d552e7c254cf00788c45506" title="Print the breeding value of each genotype in a group to a file." alt="" coords="696,493,837,521"/>
+<area shape="rect" href="group__calculators.html#ga3b43d07c08ed861ed0f22a69bb57b94a" title="Takes the top_n individuals in the group with the best breeding values/fitnesses and puts them in a n..." alt="" coords="710,389,823,417"/>
+<area shape="rect" href="group__deletors.html#ga41c27e8d966e9adde4a844c3c022629b" title="Deletes an gsc_EffectMatrix object and frees its memory." alt="" coords="892,577,1058,605"/>
+<area shape="rect" href="group__savers.html#ga9678bbe9c8db5f7774188b9574c0c09c" title="Print the number of copies of a particular allele at each marker of each genotype in the gsc_SimData ..." alt="" coords="896,629,1054,657"/>
+<area shape="rect" href="group__savers.html#ga47adc7657700b186067b2c26dabf5b13" title="Print the number of copies of a particular allele at each marker of each genotype in a group to a fil..." alt="" coords="898,681,1052,725"/>
+<area shape="rect" href="group__crossers.html#ga28b0fcf60b6a8f6e8ca470f7b5d0a4b7" title="Make new genotypes (generic function)" alt="" coords="479,229,641,273"/>
+<area shape="rect" href="group__crossers.html#ga15af204958dc69717334c46b19219a2d" title="Creates an identical copy of each member of a group." alt="" coords="274,237,400,265"/>
+<area shape="rect" href="group__crossers.html#ga6c230330ca9a9db9459d4477512a21af" title="Creates a doubled haploid from each member of a group." alt="" coords="243,289,431,317"/>
+<area shape="rect" href="group__crossers.html#ga03af5446006203244dd3080cf75af26f" title="Performs random crosses among members of a group." alt="" coords="245,133,429,161"/>
+<area shape="rect" href="group__crossers.html#ga652376b5a34d24f239e5fc0b167c067b" title="Performs random crosses where the first parent comes from one group and the second from another." alt="" coords="245,341,429,385"/>
+<area shape="rect" href="group__crossers.html#ga4450224009587f4cd4a972413423c96e" title="Performs the crosses of pairs of parents whose indexes are provided in an array." alt="" coords="243,81,431,109"/>
+<area shape="rect" href="group__crossers.html#gab625453074798be6ba8677a5d4986edf" title="Selfs each member of a group for a certain number of generations." alt="" coords="276,185,398,213"/>
+<area shape="rect" href="group__crossers.html#gab19b3eb80b5fe460d17c93e0c27f7aaf" title="Find the top m percent of a group and perform random crosses between those top individuals." alt="" coords="26,297,174,341"/>
+<area shape="rect" href="group__crossers.html#gaa70fd79312587d8e9fc166c64612cbce" title="Perform crosses between all pairs of parents in the group from_group and allocates the resulting offs..." alt="" coords="8,73,192,117"/>
+<area shape="rect" href="group__crossers.html#ga5c0be901d03d0e5dd3d74bc19a4bea70" title="Perform crosses between pairs of parents identified by name in a file and allocate the resulting offs..." alt="" coords="5,141,195,169"/>
+<area shape="rect" href="group__crossers.html#ga2b8100d2d30cf1ada0db8403663076ff" title="Perform crosses between previously&#45;generated offspring of pairs of parents identified by name in a fi..." alt="" coords="10,5,190,49"/>
+<area shape="rect" href="group__loaders.html#ga982b122b76326694fd0f26babeb027e7" title="Clear a gsc_SimData object on the heap." alt="" coords="701,649,832,677"/>
+<area shape="rect" href="group__deletors.html#ga27c2247d05e610fc83a83a5bae3d8d94" title="Deletes a particular set of marker effects from memory." alt="" coords="702,545,831,573"/>
+<area shape="rect" href="group__deletors.html#ga1f4bef6ea148aaa0a1fa30681b29fe50" title="Deletes a gsc_SimData object and frees its memory." alt="" coords="698,597,835,625"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="ga27c2247d05e610fc83a83a5bae3d8d94" name="ga27c2247d05e610fc83a83a5bae3d8d94"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga27c2247d05e610fc83a83a5bae3d8d94">&#9670;&nbsp;</a></span>gsc_delete_eff_set()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void gsc_delete_eff_set </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structgsc___sim_data.html">gsc_SimData</a> *&#160;</td>
           <td class="paramname"><em>d</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="struct_effect_i_d.html">EffectID</a>&#160;</td>
-          <td class="paramname"><em>whichID</em>&#160;</td>
+          <td class="paramtype"><a class="el" href="structgsc___effect_i_d.html">gsc_EffectID</a>&#160;</td>
+          <td class="paramname"><em>effID</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -290,51 +313,11 @@ Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Deletes a particular set of marker effects from memory. </p>
+<p ><em>Has short name:</em> <a class="el" href="group__shortnames.html#ga05e55b90176f6a62162c307d25fd9086">delete_eff_set</a></p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">d</td><td>the <a class="el" href="struct_sim_data.html" title="Composite type that is used to run crossing simulations.">SimData</a> struct on which to perform the operation </td></tr>
-    <tr><td class="paramname">whichIndex</td><td>the index of the label to be destroyed (0 or greater) </td></tr>
-  </table>
-  </dd>
-</dl>
-<div id="dynsection-3" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
-  <img id="dynsection-3-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
-<div id="dynsection-3-summary" class="dynsummary" style="display:block;">
-</div>
-<div id="dynsection-3-content" class="dyncontent" style="display:none;">
-<div class="center"><img src="group__deletors_ga85e0f5ee7e16b9b029eb92ef30ae419a_cgraph.png" border="0" usemap="#agroup__deletors_ga85e0f5ee7e16b9b029eb92ef30ae419a_cgraph" alt=""/></div>
-<map name="agroup__deletors_ga85e0f5ee7e16b9b029eb92ef30ae419a_cgraph" id="agroup__deletors_ga85e0f5ee7e16b9b029eb92ef30ae419a_cgraph">
-<area shape="rect" title="Deletes a particular set of marker effects from memory." alt="" coords="5,57,107,85"/>
-<area shape="rect" href="group__deletors.html#ga961f4b0757752fee2bd08adde7ece8ad" title="Deletes an EffectMatrix object and frees its memory." alt="" coords="156,5,293,33"/>
-<area shape="rect" href="group__supporters.html#gaa605100835fdec6b250fde0ad5a9cc8f" title="Function to identify the lookup index of a marker effect set identifier." alt="" coords="155,57,294,85"/>
-<area shape="rect" href="group__supporters.html#ga6072a152b624743eeafb30adaf9b7f17" title="Replace calls to malloc direct with this function, which errors and exits with status 2 if memory all..." alt="" coords="182,109,267,137"/>
-<area shape="rect" href="group__deletors.html#gaaf6542d59034f88f9e1ec48e5f053c4a" title="Deletes a DecimalMatrix and frees its memory." alt="" coords="342,5,448,33"/>
-</map>
-</div>
-
-</div>
-</div>
-<a id="ga961f4b0757752fee2bd08adde7ece8ad" name="ga961f4b0757752fee2bd08adde7ece8ad"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ga961f4b0757752fee2bd08adde7ece8ad">&#9670;&nbsp;</a></span>delete_effect_matrix()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void delete_effect_matrix </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="struct_effect_matrix.html">EffectMatrix</a> *&#160;</td>
-          <td class="paramname"><em>m</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Deletes an <a class="el" href="struct_effect_matrix.html" title="A type that stores a matrix of effect values and their names.">EffectMatrix</a> object and frees its memory. </p>
-<p >m will now refer to an empty matrix, with every pointer set to null and dimensions set to 0.</p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">m</td><td>pointer to the matrix whose data is to be cleared and memory freed. </td></tr>
+    <tr><td class="paramname">d</td><td>the <a class="el" href="structgsc___sim_data.html" title="Composite type that is used to run crossing simulations.">gsc_SimData</a> struct on which to perform the operation </td></tr>
+    <tr><td class="paramname">effID</td><td>the identifier of the effect set to be deleted </td></tr>
   </table>
   </dd>
 </dl>
@@ -343,46 +326,35 @@ Functions</h2></td></tr>
 <div id="dynsection-4-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-4-content" class="dyncontent" style="display:none;">
-<div class="center"><img src="group__deletors_ga961f4b0757752fee2bd08adde7ece8ad_cgraph.png" border="0" usemap="#agroup__deletors_ga961f4b0757752fee2bd08adde7ece8ad_cgraph" alt=""/></div>
-<map name="agroup__deletors_ga961f4b0757752fee2bd08adde7ece8ad_cgraph" id="agroup__deletors_ga961f4b0757752fee2bd08adde7ece8ad_cgraph">
-<area shape="rect" title="Deletes an EffectMatrix object and frees its memory." alt="" coords="5,5,143,33"/>
-<area shape="rect" href="group__deletors.html#gaaf6542d59034f88f9e1ec48e5f053c4a" title="Deletes a DecimalMatrix and frees its memory." alt="" coords="191,5,297,33"/>
-</map>
-</div>
-<div id="dynsection-5" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
-  <img id="dynsection-5-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
-<div id="dynsection-5-summary" class="dynsummary" style="display:block;">
-</div>
-<div id="dynsection-5-content" class="dyncontent" style="display:none;">
-<div class="center"><img src="group__deletors_ga961f4b0757752fee2bd08adde7ece8ad_icgraph.png" border="0" usemap="#agroup__deletors_ga961f4b0757752fee2bd08adde7ece8ad_icgraph" alt=""/></div>
-<map name="agroup__deletors_ga961f4b0757752fee2bd08adde7ece8ad_icgraph" id="agroup__deletors_ga961f4b0757752fee2bd08adde7ece8ad_icgraph">
-<area shape="rect" title="Deletes an EffectMatrix object and frees its memory." alt="" coords="329,57,466,85"/>
-<area shape="rect" href="group__loaders.html#gac052ad3cb1f8975c21b28eea560a6e0b" title="Clear a SimData object on the heap." alt="" coords="175,5,278,33"/>
-<area shape="rect" href="group__deletors.html#ga85e0f5ee7e16b9b029eb92ef30ae419a" title="Deletes a particular set of marker effects from memory." alt="" coords="176,57,277,85"/>
-<area shape="rect" href="group__deletors.html#ga6fc4a687a2186e9e9dcf3229d9141041" title="Deletes a SimData object and frees its memory." alt="" coords="172,109,281,137"/>
-<area shape="rect" href="group__loaders.html#ga3d8878f2c2c5fafdae57ffc46a78dfbc" title="Populates a SimData combination from scratch with marker allele data, a genetic map,..." alt="" coords="5,5,124,33"/>
+<div class="center"><img src="group__deletors_ga27c2247d05e610fc83a83a5bae3d8d94_cgraph.png" border="0" usemap="#agroup__deletors_ga27c2247d05e610fc83a83a5bae3d8d94_cgraph" alt=""/></div>
+<map name="agroup__deletors_ga27c2247d05e610fc83a83a5bae3d8d94_cgraph" id="agroup__deletors_ga27c2247d05e610fc83a83a5bae3d8d94_cgraph">
+<area shape="rect" title="Deletes a particular set of marker effects from memory." alt="" coords="5,57,135,85"/>
+<area shape="rect" href="group__deletors.html#ga41c27e8d966e9adde4a844c3c022629b" title="Deletes an gsc_EffectMatrix object and frees its memory." alt="" coords="184,5,349,33"/>
+<area shape="rect" href="group__supporters.html#gac15b90373af3e2828a786215e90963a8" title="Function to identify the lookup index of a marker effect set identifier." alt="" coords="183,57,350,85"/>
+<area shape="rect" href="sim-operations_8c.html#aaaf3ebc75feaf901829232712e55677b" title="Replace calls to malloc direct with this function." alt="" coords="206,109,327,137"/>
+<area shape="rect" href="group__deletors.html#ga99bbd9355f031efae628b27e6ae72f6a" title="Deletes a gsc_DecimalMatrix and frees its memory." alt="" coords="398,5,532,33"/>
 </map>
 </div>
 
 </div>
 </div>
-<a id="gaaf7e12b92ec0f93bb3bc2ec67155bc94" name="gaaf7e12b92ec0f93bb3bc2ec67155bc94"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#gaaf7e12b92ec0f93bb3bc2ec67155bc94">&#9670;&nbsp;</a></span>delete_genmap()</h2>
+<a id="ga41c27e8d966e9adde4a844c3c022629b" name="ga41c27e8d966e9adde4a844c3c022629b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga41c27e8d966e9adde4a844c3c022629b">&#9670;&nbsp;</a></span>gsc_delete_effect_matrix()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void delete_genmap </td>
+          <td class="memname">void gsc_delete_effect_matrix </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="struct_genetic_map.html">GeneticMap</a> *&#160;</td>
+          <td class="paramtype"><a class="el" href="structgsc___effect_matrix.html">gsc_EffectMatrix</a> *&#160;</td>
           <td class="paramname"><em>m</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p>Deletes a <a class="el" href="struct_genetic_map.html" title="A type that stores the genetic map for a set of markers.">GeneticMap</a> object and frees its memory. </p>
+<p>Deletes an <a class="el" href="structgsc___effect_matrix.html" title="A type that stores a matrix of effect values and their names.">gsc_EffectMatrix</a> object and frees its memory. </p>
 <p >m will now refer to an empty matrix, with every pointer set to null and dimensions set to 0.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
@@ -390,40 +362,99 @@ Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
+<div id="dynsection-5" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-5-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
+<div id="dynsection-5-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-5-content" class="dyncontent" style="display:none;">
+<div class="center"><img src="group__deletors_ga41c27e8d966e9adde4a844c3c022629b_cgraph.png" border="0" usemap="#agroup__deletors_ga41c27e8d966e9adde4a844c3c022629b_cgraph" alt=""/></div>
+<map name="agroup__deletors_ga41c27e8d966e9adde4a844c3c022629b_cgraph" id="agroup__deletors_ga41c27e8d966e9adde4a844c3c022629b_cgraph">
+<area shape="rect" title="Deletes an gsc_EffectMatrix object and frees its memory." alt="" coords="5,5,171,33"/>
+<area shape="rect" href="group__deletors.html#ga99bbd9355f031efae628b27e6ae72f6a" title="Deletes a gsc_DecimalMatrix and frees its memory." alt="" coords="219,5,353,33"/>
+</map>
+</div>
 <div id="dynsection-6" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-6-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
 <div id="dynsection-6-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-6-content" class="dyncontent" style="display:none;">
-<div class="center"><img src="group__deletors_gaaf7e12b92ec0f93bb3bc2ec67155bc94_icgraph.png" border="0" usemap="#agroup__deletors_gaaf7e12b92ec0f93bb3bc2ec67155bc94_icgraph" alt=""/></div>
-<map name="agroup__deletors_gaaf7e12b92ec0f93bb3bc2ec67155bc94_icgraph" id="agroup__deletors_gaaf7e12b92ec0f93bb3bc2ec67155bc94_icgraph">
-<area shape="rect" title="Deletes a GeneticMap object and frees its memory." alt="" coords="573,71,683,99"/>
-<area shape="rect" href="group__loaders.html#gac052ad3cb1f8975c21b28eea560a6e0b" title="Clear a SimData object on the heap." alt="" coords="205,5,308,33"/>
-<area shape="rect" href="group__deletors.html#ga6fc4a687a2186e9e9dcf3229d9141041" title="Deletes a SimData object and frees its memory." alt="" coords="403,44,512,72"/>
-<area shape="rect" href="group__supporters.html#gadebbfa88bf139ddca501ab158f3746c5" title="Takes a SimData object, and sorts its markers, the rows of its parent gen AlleleMatrix (because they ..." alt="" coords="389,96,525,124"/>
-<area shape="rect" href="group__loaders.html#ga8edb09b9b9eb27f84ac59cc4342ea855" title="Populates a SimData combination with data from a genetic map." alt="" coords="172,123,341,151"/>
-<area shape="rect" href="group__loaders.html#ga3d8878f2c2c5fafdae57ffc46a78dfbc" title="Populates a SimData combination from scratch with marker allele data, a genetic map,..." alt="" coords="5,71,124,99"/>
+<div class="center"><img src="group__deletors_ga41c27e8d966e9adde4a844c3c022629b_icgraph.png" border="0" usemap="#agroup__deletors_ga41c27e8d966e9adde4a844c3c022629b_icgraph" alt=""/></div>
+<map name="agroup__deletors_ga41c27e8d966e9adde4a844c3c022629b_icgraph" id="agroup__deletors_ga41c27e8d966e9adde4a844c3c022629b_icgraph">
+<area shape="rect" title="Deletes an gsc_EffectMatrix object and frees its memory." alt="" coords="191,57,356,85"/>
+<area shape="rect" href="group__loaders.html#ga982b122b76326694fd0f26babeb027e7" title="Clear a gsc_SimData object on the heap." alt="" coords="9,5,139,33"/>
+<area shape="rect" href="group__deletors.html#ga27c2247d05e610fc83a83a5bae3d8d94" title="Deletes a particular set of marker effects from memory." alt="" coords="9,57,139,85"/>
+<area shape="rect" href="group__deletors.html#ga1f4bef6ea148aaa0a1fa30681b29fe50" title="Deletes a gsc_SimData object and frees its memory." alt="" coords="5,109,143,137"/>
 </map>
 </div>
 
 </div>
 </div>
-<a id="ga09859190fb4250475a866fa78a67be52" name="ga09859190fb4250475a866fa78a67be52"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ga09859190fb4250475a866fa78a67be52">&#9670;&nbsp;</a></span>delete_group()</h2>
+<a id="gaf28e802f4bf8149f58a49c6262b02f4c" name="gaf28e802f4bf8149f58a49c6262b02f4c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gaf28e802f4bf8149f58a49c6262b02f4c">&#9670;&nbsp;</a></span>gsc_delete_genome()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void delete_group </td>
+          <td class="memname">void gsc_delete_genome </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="struct_sim_data.html">SimData</a> *&#160;</td>
+          <td class="paramtype"><a class="el" href="structgsc___known_genome.html">gsc_KnownGenome</a> *&#160;</td>
+          <td class="paramname"><em>g</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Deletes and clears the memory of a <a class="el" href="structgsc___known_genome.html" title="A type that stores the genome structure used in simulation.">gsc_KnownGenome</a> object and its children. </p>
+<p >Children include all recombination maps associated with this KnownGenome object</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">g</td><td>pointer to the structure whose data is to be cleared and memory freed. </td></tr>
+  </table>
+  </dd>
+</dl>
+<div id="dynsection-7" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-7-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
+<div id="dynsection-7-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-7-content" class="dyncontent" style="display:none;">
+<div class="center"><img src="group__deletors_gaf28e802f4bf8149f58a49c6262b02f4c_cgraph.png" border="0" usemap="#agroup__deletors_gaf28e802f4bf8149f58a49c6262b02f4c_cgraph" alt=""/></div>
+<map name="agroup__deletors_gaf28e802f4bf8149f58a49c6262b02f4c_cgraph" id="agroup__deletors_gaf28e802f4bf8149f58a49c6262b02f4c_cgraph">
+<area shape="rect" title="Deletes and clears the memory of a gsc_KnownGenome object and its children." alt="" coords="5,13,143,41"/>
+<area shape="rect" href="group__deletors.html#gaa6d16e1e88561612bb4efa22b80a5bed" title="Deletes and clears the memory of a gsc_RecombinationMap struct." alt="" coords="191,5,363,49"/>
+</map>
+</div>
+<div id="dynsection-8" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-8-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
+<div id="dynsection-8-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-8-content" class="dyncontent" style="display:none;">
+<div class="center"><img src="group__deletors_gaf28e802f4bf8149f58a49c6262b02f4c_icgraph.png" border="0" usemap="#agroup__deletors_gaf28e802f4bf8149f58a49c6262b02f4c_icgraph" alt=""/></div>
+<map name="agroup__deletors_gaf28e802f4bf8149f58a49c6262b02f4c_icgraph" id="agroup__deletors_gaf28e802f4bf8149f58a49c6262b02f4c_icgraph">
+<area shape="rect" title="Deletes and clears the memory of a gsc_KnownGenome object and its children." alt="" coords="191,32,328,60"/>
+<area shape="rect" href="group__loaders.html#ga982b122b76326694fd0f26babeb027e7" title="Clear a gsc_SimData object on the heap." alt="" coords="9,5,139,33"/>
+<area shape="rect" href="group__deletors.html#ga1f4bef6ea148aaa0a1fa30681b29fe50" title="Deletes a gsc_SimData object and frees its memory." alt="" coords="5,57,143,85"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="gaddc395516c92fe17e017a3a48e5fc3e5" name="gaddc395516c92fe17e017a3a48e5fc3e5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gaddc395516c92fe17e017a3a48e5fc3e5">&#9670;&nbsp;</a></span>gsc_delete_group()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void gsc_delete_group </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structgsc___sim_data.html">gsc_SimData</a> *&#160;</td>
           <td class="paramname"><em>d</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const <a class="el" href="struct_group_num.html">GroupNum</a>&#160;</td>
+          <td class="paramtype">const <a class="el" href="structgsc___group_num.html">gsc_GroupNum</a>&#160;</td>
           <td class="paramname"><em>group_id</em>&#160;</td>
         </tr>
         <tr>
@@ -436,46 +467,51 @@ Functions</h2></td></tr>
 
 <p>Deletes all genotypes belonging to a particular group. </p>
 <p >This includes all of their details. Persistent ids (used to track pedigree) will not be re-used.</p>
-<p >Uses a call to <a class="el" href="group__supporters.html#ga887027349503be24b1a847c9b833aaac" title="A function to tidy the internal storage of genotypes after addition or deletion of genotypes in the S...">condense_allele_matrix()</a> to ensure that the <a class="el" href="struct_sim_data.html" title="Composite type that is used to run crossing simulations.">SimData</a> remains valid after deletion.</p>
+<p >Uses a call to <a class="el" href="group__supporters.html#gafa617e95d5ed52b4e25434a20006809c" title="A function to tidy the internal storage of genotypes after addition or deletion of genotypes in the g...">gsc_condense_allele_matrix()</a> to ensure that the <a class="el" href="structgsc___sim_data.html" title="Composite type that is used to run crossing simulations.">gsc_SimData</a> remains valid after deletion.</p>
+<p ><em>Has short name:</em> <a class="el" href="group__shortnames.html#gaed498b119b661a47824e76fece2b45df">delete_group</a></p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">d</td><td>the <a class="el" href="struct_sim_data.html" title="Composite type that is used to run crossing simulations.">SimData</a> struct on which to perform the operation </td></tr>
+    <tr><td class="paramname">d</td><td>the <a class="el" href="structgsc___sim_data.html" title="Composite type that is used to run crossing simulations.">gsc_SimData</a> struct on which to perform the operation </td></tr>
     <tr><td class="paramname">group_id</td><td>the group number of the subset of data to be cleared </td></tr>
   </table>
   </dd>
 </dl>
-<div id="dynsection-7" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
-  <img id="dynsection-7-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
-<div id="dynsection-7-summary" class="dynsummary" style="display:block;">
+<div id="dynsection-9" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-9-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
+<div id="dynsection-9-summary" class="dynsummary" style="display:block;">
 </div>
-<div id="dynsection-7-content" class="dyncontent" style="display:none;">
-<div class="center"><img src="group__deletors_ga09859190fb4250475a866fa78a67be52_cgraph.png" border="0" usemap="#agroup__deletors_ga09859190fb4250475a866fa78a67be52_cgraph" alt=""/></div>
-<map name="agroup__deletors_ga09859190fb4250475a866fa78a67be52_cgraph" id="agroup__deletors_ga09859190fb4250475a866fa78a67be52_cgraph">
-<area shape="rect" title="Deletes all genotypes belonging to a particular group." alt="" coords="5,5,101,33"/>
-<area shape="rect" href="group__supporters.html#ga887027349503be24b1a847c9b833aaac" title="A function to tidy the internal storage of genotypes after addition or deletion of genotypes in the S..." alt="" coords="149,5,306,33"/>
-<area shape="rect" href="group__deletors.html#gadd4a9c17e8c3e59fc00eee25635b110f" title="Delete the AlleleMatrix linked list from m onwards and frees its memory." alt="" coords="354,5,490,33"/>
+<div id="dynsection-9-content" class="dyncontent" style="display:none;">
+<div class="center"><img src="group__deletors_gaddc395516c92fe17e017a3a48e5fc3e5_cgraph.png" border="0" usemap="#agroup__deletors_gaddc395516c92fe17e017a3a48e5fc3e5_cgraph" alt=""/></div>
+<map name="agroup__deletors_gaddc395516c92fe17e017a3a48e5fc3e5_cgraph" id="agroup__deletors_gaddc395516c92fe17e017a3a48e5fc3e5_cgraph">
+<area shape="rect" title="Deletes all genotypes belonging to a particular group." alt="" coords="5,84,129,112"/>
+<area shape="rect" href="group__supporters.html#gafa617e95d5ed52b4e25434a20006809c" title="A function to tidy the internal storage of genotypes after addition or deletion of genotypes in the g..." alt="" coords="177,76,319,120"/>
+<area shape="rect" href="group__deletors.html#ga9c647cacb393998930c560962c1f7f6d" title="Delete the gsc_AlleleMatrix linked list from m onwards and frees its memory." alt="" coords="377,5,541,33"/>
+<area shape="rect" href="group__deletors.html#gae46ff71b819d28408e8b55dd4281a4f3" title="Move all details of the genotype at one gsc_GenoLocation to another gsc_GenoLocation." alt="" coords="389,57,528,85"/>
+<area shape="rect" href="sim-operations_8c.html#adf656d2e43014ca8dd4f5d39adeb68f6" title="Sets the current cursor position in a gsc_GappyIterator to the next empty position,..." alt="" coords="378,109,540,137"/>
+<area shape="rect" href="sim-operations_8c.html#af5486daced98d9bab2126b9d7af11356" title="Sets the current cursor position in a gsc_GappyIterator to the next filled position,..." alt="" coords="367,161,550,189"/>
+<area shape="rect" href="sim-operations_8c.html#a6d94248d1163c9c40e2910e578ce4708" title="Sets the current cursor position in a gsc_GappyIterator to the next valid position,..." alt="" coords="598,136,768,164"/>
 </map>
 </div>
 
 </div>
 </div>
-<a id="gaef409380cea0efeb551e6c3bcc455168" name="gaef409380cea0efeb551e6c3bcc455168"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#gaef409380cea0efeb551e6c3bcc455168">&#9670;&nbsp;</a></span>delete_label()</h2>
+<a id="ga060559de8b20b9a1dbbd73297a6c4079" name="ga060559de8b20b9a1dbbd73297a6c4079"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga060559de8b20b9a1dbbd73297a6c4079">&#9670;&nbsp;</a></span>gsc_delete_label()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void delete_label </td>
+          <td class="memname">void gsc_delete_label </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="struct_sim_data.html">SimData</a> *&#160;</td>
+          <td class="paramtype"><a class="el" href="structgsc___sim_data.html">gsc_SimData</a> *&#160;</td>
           <td class="paramname"><em>d</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const <a class="el" href="struct_label_i_d.html">LabelID</a>&#160;</td>
-          <td class="paramname"><em>whichLabel</em>&#160;</td>
+          <td class="paramtype">const <a class="el" href="structgsc___label_i_d.html">gsc_LabelID</a>&#160;</td>
+          <td class="paramname"><em>which_label</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -486,46 +522,48 @@ Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Clears memory of this label from the simulation and all its genotypes. </p>
+<p ><em>Has short name:</em> <a class="el" href="group__shortnames.html#ga7126d43c3daee6b94e23e2d7d6001b52">delete_label</a></p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">d</td><td>the <a class="el" href="struct_sim_data.html" title="Composite type that is used to run crossing simulations.">SimData</a> struct on which to perform the operation </td></tr>
-    <tr><td class="paramname">whichLabel</td><td>the label id of the label to be destroyed </td></tr>
+    <tr><td class="paramname">d</td><td>the <a class="el" href="structgsc___sim_data.html" title="Composite type that is used to run crossing simulations.">gsc_SimData</a> struct on which to perform the operation </td></tr>
+    <tr><td class="paramname">which_label</td><td>the label id of the label to be destroyed </td></tr>
   </table>
   </dd>
 </dl>
-<div id="dynsection-8" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
-  <img id="dynsection-8-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
-<div id="dynsection-8-summary" class="dynsummary" style="display:block;">
+<div id="dynsection-10" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-10-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
+<div id="dynsection-10-summary" class="dynsummary" style="display:block;">
 </div>
-<div id="dynsection-8-content" class="dyncontent" style="display:none;">
-<div class="center"><img src="group__deletors_gaef409380cea0efeb551e6c3bcc455168_cgraph.png" border="0" usemap="#agroup__deletors_gaef409380cea0efeb551e6c3bcc455168_cgraph" alt=""/></div>
-<map name="agroup__deletors_gaef409380cea0efeb551e6c3bcc455168_cgraph" id="agroup__deletors_gaef409380cea0efeb551e6c3bcc455168_cgraph">
-<area shape="rect" title="Clears memory of this label from the simulation and all its genotypes." alt="" coords="5,32,96,60"/>
-<area shape="rect" href="group__supporters.html#ga8db3a8d7b93a8441f1a95d7ff7f228aa" title="Function to identify the label lookup index of a label identifier." alt="" coords="144,5,272,33"/>
-<area shape="rect" href="group__supporters.html#ga6072a152b624743eeafb30adaf9b7f17" title="Replace calls to malloc direct with this function, which errors and exits with status 2 if memory all..." alt="" coords="166,57,250,85"/>
+<div id="dynsection-10-content" class="dyncontent" style="display:none;">
+<div class="center"><img src="group__deletors_ga060559de8b20b9a1dbbd73297a6c4079_cgraph.png" border="0" usemap="#agroup__deletors_ga060559de8b20b9a1dbbd73297a6c4079_cgraph" alt=""/></div>
+<map name="agroup__deletors_ga060559de8b20b9a1dbbd73297a6c4079_cgraph" id="agroup__deletors_ga060559de8b20b9a1dbbd73297a6c4079_cgraph">
+<area shape="rect" title="Clears memory of this label from the simulation and all its genotypes." alt="" coords="5,32,124,60"/>
+<area shape="rect" href="group__supporters.html#gaaa9150342b8c375591796d98a3c83366" title="Function to identify the label lookup index of a label identifier." alt="" coords="172,5,328,33"/>
+<area shape="rect" href="sim-operations_8c.html#aaaf3ebc75feaf901829232712e55677b" title="Replace calls to malloc direct with this function." alt="" coords="189,57,311,85"/>
 </map>
 </div>
 
 </div>
 </div>
-<a id="gaea2a41cc103e8d11bedff564f93a4759" name="gaea2a41cc103e8d11bedff564f93a4759"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#gaea2a41cc103e8d11bedff564f93a4759">&#9670;&nbsp;</a></span>delete_markerblocks()</h2>
+<a id="ga8583ccabd176c47c4126f164321e0126" name="ga8583ccabd176c47c4126f164321e0126"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga8583ccabd176c47c4126f164321e0126">&#9670;&nbsp;</a></span>gsc_delete_markerblocks()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void delete_markerblocks </td>
+          <td class="memname">void gsc_delete_markerblocks </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="struct_marker_blocks.html">MarkerBlocks</a> *&#160;</td>
+          <td class="paramtype"><a class="el" href="structgsc___marker_blocks.html">gsc_MarkerBlocks</a> *&#160;</td>
           <td class="paramname"><em>b</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p>Delete a <a class="el" href="struct_marker_blocks.html" title="A struct used to store a set of blocks of markers.">MarkerBlocks</a> struct. </p>
-<p >Deletes a <a class="el" href="struct_marker_blocks.html" title="A struct used to store a set of blocks of markers.">MarkerBlocks</a> object and frees its associated memory. b will now refer to an empty struct, with every pointer set to null and number of markers set to 0.</p>
+<p>Delete a <a class="el" href="structgsc___marker_blocks.html" title="A struct used to store a set of blocks of markers.">gsc_MarkerBlocks</a> struct. </p>
+<p >Deletes a <a class="el" href="structgsc___marker_blocks.html" title="A struct used to store a set of blocks of markers.">gsc_MarkerBlocks</a> object and frees its associated memory. b will now refer to an empty struct, with every pointer set to null and number of markers set to 0.</p>
+<p ><em>Has short name:</em> <a class="el" href="group__shortnames.html#gac0b5b20ad2fc366f0de06e13aad185bd">delete_markerblocks</a></p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">b</td><td>pointer to the struct whose data is to be cleared and memory freed. </td></tr>
@@ -535,24 +573,25 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="gabb7f5bb0df140f22d55c946df3a74f08" name="gabb7f5bb0df140f22d55c946df3a74f08"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#gabb7f5bb0df140f22d55c946df3a74f08">&#9670;&nbsp;</a></span>delete_randomaccess_iter()</h2>
+<a id="ga3e88311f64b089f3d7a336f4efee3b05" name="ga3e88311f64b089f3d7a336f4efee3b05"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga3e88311f64b089f3d7a336f4efee3b05">&#9670;&nbsp;</a></span>gsc_delete_randomaccess_iter()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void delete_randomaccess_iter </td>
+          <td class="memname">void gsc_delete_randomaccess_iter </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="struct_random_access_iterator.html">RandomAccessIterator</a> *&#160;</td>
+          <td class="paramtype"><a class="el" href="structgsc___random_access_iterator.html">gsc_RandomAccessIterator</a> *&#160;</td>
           <td class="paramname"><em>it</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p>Deletes a <a class="el" href="struct_random_access_iterator.html" title="A structure to search and cache indexes of all genotypes in a SimData or of all the members of a grou...">RandomAccessIterator</a> object and frees its memory. </p>
+<p>Deletes a <a class="el" href="structgsc___random_access_iterator.html" title="A structure to search and cache indexes of all genotypes in a gsc_SimData or of all the members of a ...">gsc_RandomAccessIterator</a> object and frees its memory. </p>
 <p >All values in the struct will be set to uninitialised/null values, except for groupSize, which will be set to 0 to so that any next_* functions called on the iterator will not attempt to search for group member locations.</p>
+<p ><em>Has short name:</em> <a class="el" href="group__shortnames.html#ga96eccab1ae433c430087e3da46920996">delete_randomaccess_iter</a></p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">it</td><td>pointer to the struct whose data is to be cleared and memory freed. </td></tr>
@@ -562,41 +601,209 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="ga6fc4a687a2186e9e9dcf3229d9141041" name="ga6fc4a687a2186e9e9dcf3229d9141041"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ga6fc4a687a2186e9e9dcf3229d9141041">&#9670;&nbsp;</a></span>delete_simdata()</h2>
+<a id="ga6075a65332dee0dc0032f29cad35fd74" name="ga6075a65332dee0dc0032f29cad35fd74"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga6075a65332dee0dc0032f29cad35fd74">&#9670;&nbsp;</a></span>gsc_delete_recombination_map()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void delete_simdata </td>
+          <td class="memname">void gsc_delete_recombination_map </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="struct_sim_data.html">SimData</a> *&#160;</td>
+          <td class="paramtype"><a class="el" href="structgsc___sim_data.html">gsc_SimData</a> *&#160;</td>
+          <td class="paramname"><em>d</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="structgsc___map_i_d.html">gsc_MapID</a>&#160;</td>
+          <td class="paramname"><em>which_map</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Deletes a particular recombination map from memory. </p>
+<p ><em>Has short name:</em> <a class="el" href="group__shortnames.html#ga85ae11500219da102e64c6304f06c008">delete_recombination_map</a></p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">d</td><td>the <a class="el" href="structgsc___sim_data.html" title="Composite type that is used to run crossing simulations.">gsc_SimData</a> struct on which to perform the operation </td></tr>
+    <tr><td class="paramname">which_map</td><td>the ID of the recombination map to be deleted. </td></tr>
+  </table>
+  </dd>
+</dl>
+<div id="dynsection-11" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-11-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
+<div id="dynsection-11-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-11-content" class="dyncontent" style="display:none;">
+<div class="center"><img src="group__deletors_ga6075a65332dee0dc0032f29cad35fd74_cgraph.png" border="0" usemap="#agroup__deletors_ga6075a65332dee0dc0032f29cad35fd74_cgraph" alt=""/></div>
+<map name="agroup__deletors_ga6075a65332dee0dc0032f29cad35fd74_cgraph" id="agroup__deletors_ga6075a65332dee0dc0032f29cad35fd74_cgraph">
+<area shape="rect" title="Deletes a particular recombination map from memory." alt="" coords="5,73,210,101"/>
+<area shape="rect" href="group__deletors.html#gaa6d16e1e88561612bb4efa22b80a5bed" title="Deletes and clears the memory of a gsc_RecombinationMap struct." alt="" coords="258,5,430,49"/>
+<area shape="rect" href="group__supporters.html#gaaa359f6aab15a4c27d344e1118e87457" title="Function to identify the lookup index of a recombination map identifier." alt="" coords="267,73,421,101"/>
+<area shape="rect" href="sim-operations_8c.html#aaaf3ebc75feaf901829232712e55677b" title="Replace calls to malloc direct with this function." alt="" coords="283,125,405,153"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="gaa6d16e1e88561612bb4efa22b80a5bed" name="gaa6d16e1e88561612bb4efa22b80a5bed"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gaa6d16e1e88561612bb4efa22b80a5bed">&#9670;&nbsp;</a></span>gsc_delete_recombination_map_nointegrity()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void gsc_delete_recombination_map_nointegrity </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structgsc___recombination_map.html">gsc_RecombinationMap</a> *&#160;</td>
           <td class="paramname"><em>m</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p>Deletes a <a class="el" href="struct_sim_data.html" title="Composite type that is used to run crossing simulations.">SimData</a> object and frees its memory. </p>
+<p>Deletes and clears the memory of a <a class="el" href="structgsc___recombination_map.html" title="A type that stores linkage groups and crossover probabilities for simulating meiosis.">gsc_RecombinationMap</a> struct. </p>
+<p >"No integrity" because it does not check that the corresponding <a class="el" href="structgsc___map_i_d.html" title="A type representing a particular loaded recombination map.">gsc_MapID</a> is correspondingly removed from simulation memory.</p>
+<p >For a safer/user-friendlier version of this function, </p><dl class="section see"><dt>See also</dt><dd><a class="el" href="group__deletors.html#ga6075a65332dee0dc0032f29cad35fd74" title="Deletes a particular recombination map from memory.">gsc_delete_recombination_map</a></dd></dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">m</td><td>pointer to the structure whose data is to be cleared and memory freed. </td></tr>
+  </table>
+  </dd>
+</dl>
+<div id="dynsection-12" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-12-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
+<div id="dynsection-12-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-12-content" class="dyncontent" style="display:none;">
+<div class="center"><img src="group__deletors_gaa6d16e1e88561612bb4efa22b80a5bed_icgraph.png" border="0" usemap="#agroup__deletors_gaa6d16e1e88561612bb4efa22b80a5bed_icgraph" alt=""/></div>
+<map name="agroup__deletors_gaa6d16e1e88561612bb4efa22b80a5bed_icgraph" id="agroup__deletors_gaa6d16e1e88561612bb4efa22b80a5bed_icgraph">
+<area shape="rect" title="Deletes and clears the memory of a gsc_RecombinationMap struct." alt="" coords="443,49,615,93"/>
+<area shape="rect" href="group__deletors.html#gaf28e802f4bf8149f58a49c6262b02f4c" title="Deletes and clears the memory of a gsc_KnownGenome object and its children." alt="" coords="224,31,362,59"/>
+<area shape="rect" href="group__deletors.html#ga6075a65332dee0dc0032f29cad35fd74" title="Deletes a particular recombination map from memory." alt="" coords="191,83,395,111"/>
+<area shape="rect" href="group__loaders.html#ga982b122b76326694fd0f26babeb027e7" title="Clear a gsc_SimData object on the heap." alt="" coords="9,5,139,33"/>
+<area shape="rect" href="group__deletors.html#ga1f4bef6ea148aaa0a1fa30681b29fe50" title="Deletes a gsc_SimData object and frees its memory." alt="" coords="5,57,143,85"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="ga1f4bef6ea148aaa0a1fa30681b29fe50" name="ga1f4bef6ea148aaa0a1fa30681b29fe50"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga1f4bef6ea148aaa0a1fa30681b29fe50">&#9670;&nbsp;</a></span>gsc_delete_simdata()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void gsc_delete_simdata </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structgsc___sim_data.html">gsc_SimData</a> *&#160;</td>
+          <td class="paramname"><em>m</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Deletes a <a class="el" href="structgsc___sim_data.html" title="Composite type that is used to run crossing simulations.">gsc_SimData</a> object and frees its memory. </p>
+<p ><em>Has short name:</em> <a class="el" href="group__shortnames.html#gab939944f7ef0e901b0078b9b289022c4">delete_simdata</a></p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">m</td><td>pointer to the struct whose data is to be cleared and memory freed. </td></tr>
   </table>
   </dd>
 </dl>
-<div id="dynsection-9" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
-  <img id="dynsection-9-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
-<div id="dynsection-9-summary" class="dynsummary" style="display:block;">
+<div id="dynsection-13" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-13-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
+<div id="dynsection-13-summary" class="dynsummary" style="display:block;">
 </div>
-<div id="dynsection-9-content" class="dyncontent" style="display:none;">
-<div class="center"><img src="group__deletors_ga6fc4a687a2186e9e9dcf3229d9141041_cgraph.png" border="0" usemap="#agroup__deletors_ga6fc4a687a2186e9e9dcf3229d9141041_cgraph" alt=""/></div>
-<map name="agroup__deletors_ga6fc4a687a2186e9e9dcf3229d9141041_cgraph" id="agroup__deletors_ga6fc4a687a2186e9e9dcf3229d9141041_cgraph">
-<area shape="rect" title="Deletes a SimData object and frees its memory." alt="" coords="5,57,115,85"/>
-<area shape="rect" href="group__deletors.html#gadd4a9c17e8c3e59fc00eee25635b110f" title="Delete the AlleleMatrix linked list from m onwards and frees its memory." alt="" coords="163,5,300,33"/>
-<area shape="rect" href="group__deletors.html#ga961f4b0757752fee2bd08adde7ece8ad" title="Deletes an EffectMatrix object and frees its memory." alt="" coords="163,57,300,85"/>
-<area shape="rect" href="group__deletors.html#gaaf7e12b92ec0f93bb3bc2ec67155bc94" title="Deletes a GeneticMap object and frees its memory." alt="" coords="177,109,286,137"/>
-<area shape="rect" href="group__deletors.html#gaaf6542d59034f88f9e1ec48e5f053c4a" title="Deletes a DecimalMatrix and frees its memory." alt="" coords="348,57,454,85"/>
+<div id="dynsection-13-content" class="dyncontent" style="display:none;">
+<div class="center"><img src="group__deletors_ga1f4bef6ea148aaa0a1fa30681b29fe50_cgraph.png" border="0" usemap="#agroup__deletors_ga1f4bef6ea148aaa0a1fa30681b29fe50_cgraph" alt=""/></div>
+<map name="agroup__deletors_ga1f4bef6ea148aaa0a1fa30681b29fe50_cgraph" id="agroup__deletors_ga1f4bef6ea148aaa0a1fa30681b29fe50_cgraph">
+<area shape="rect" title="Deletes a gsc_SimData object and frees its memory." alt="" coords="5,57,143,85"/>
+<area shape="rect" href="group__deletors.html#ga9c647cacb393998930c560962c1f7f6d" title="Delete the gsc_AlleleMatrix linked list from m onwards and frees its memory." alt="" coords="191,5,356,33"/>
+<area shape="rect" href="group__deletors.html#ga41c27e8d966e9adde4a844c3c022629b" title="Deletes an gsc_EffectMatrix object and frees its memory." alt="" coords="191,57,356,85"/>
+<area shape="rect" href="group__deletors.html#gaf28e802f4bf8149f58a49c6262b02f4c" title="Deletes and clears the memory of a gsc_KnownGenome object and its children." alt="" coords="205,111,342,139"/>
+<area shape="rect" href="group__deletors.html#ga99bbd9355f031efae628b27e6ae72f6a" title="Deletes a gsc_DecimalMatrix and frees its memory." alt="" coords="423,55,557,83"/>
+<area shape="rect" href="group__deletors.html#gaa6d16e1e88561612bb4efa22b80a5bed" title="Deletes and clears the memory of a gsc_RecombinationMap struct." alt="" coords="404,107,576,151"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="gae46ff71b819d28408e8b55dd4281a4f3" name="gae46ff71b819d28408e8b55dd4281a4f3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gae46ff71b819d28408e8b55dd4281a4f3">&#9670;&nbsp;</a></span>gsc_move_genotype()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void gsc_move_genotype </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structgsc___geno_location.html">gsc_GenoLocation</a>&#160;</td>
+          <td class="paramname"><em>from</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structgsc___geno_location.html">gsc_GenoLocation</a>&#160;</td>
+          <td class="paramname"><em>to</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int *&#160;</td>
+          <td class="paramname"><em>label_defaults</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Move all details of the genotype at one <a class="el" href="structgsc___geno_location.html" title="An gsc_AlleleMatrix/gsc_AlleleMatrix index coordinate of a particular genotype in the simulation.">gsc_GenoLocation</a> to another <a class="el" href="structgsc___geno_location.html" title="An gsc_AlleleMatrix/gsc_AlleleMatrix index coordinate of a particular genotype in the simulation.">gsc_GenoLocation</a>. </p>
+<p >After the genotype at <em><a class="el" href="structgsc___geno_location.html" title="An gsc_AlleleMatrix/gsc_AlleleMatrix index coordinate of a particular genotype in the simulation.">gsc_GenoLocation</a></em> <em>from</em> has been copied to <em><a class="el" href="structgsc___geno_location.html" title="An gsc_AlleleMatrix/gsc_AlleleMatrix index coordinate of a particular genotype in the simulation.">gsc_GenoLocation</a></em> <em>to</em>, the information is cleared from <em><a class="el" href="structgsc___geno_location.html" title="An gsc_AlleleMatrix/gsc_AlleleMatrix index coordinate of a particular genotype in the simulation.">gsc_GenoLocation</a></em> <em>from</em>.</p>
+<p >Copying a genotype that belongs to one <em><a class="el" href="structgsc___sim_data.html" title="Composite type that is used to run crossing simulations.">gsc_SimData</a></em> object to a <em><a class="el" href="structgsc___geno_location.html" title="An gsc_AlleleMatrix/gsc_AlleleMatrix index coordinate of a particular genotype in the simulation.">gsc_GenoLocation</a></em> in a different <em><a class="el" href="structgsc___sim_data.html" title="Composite type that is used to run crossing simulations.">gsc_SimData</a></em> object is not recommended, as genetic maps and numbers of custom labels may differ. This function is not suitable for that purpose.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">from</td><td>copying source. The information at this GenoLocation will be cleared. </td></tr>
+    <tr><td class="paramname">to</td><td>copying destination. A prior genotype existing at this location will be overwritten with a warning. </td></tr>
+    <tr><td class="paramname">label_defaults</td><td>array of default values for custom labels. It must have at least enough values that <em>to.localAM.n_labels</em> values can be read from it. </td></tr>
+  </table>
+  </dd>
+</dl>
+<div id="dynsection-14" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-14-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
+<div id="dynsection-14-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-14-content" class="dyncontent" style="display:none;">
+<div class="center"><img src="group__deletors_gae46ff71b819d28408e8b55dd4281a4f3_icgraph.png" border="0" usemap="#agroup__deletors_gae46ff71b819d28408e8b55dd4281a4f3_icgraph" alt=""/></div>
+<map name="agroup__deletors_gae46ff71b819d28408e8b55dd4281a4f3_icgraph" id="agroup__deletors_gae46ff71b819d28408e8b55dd4281a4f3_icgraph">
+<area shape="rect" title="Move all details of the genotype at one gsc_GenoLocation to another gsc_GenoLocation." alt="" coords="1077,65,1216,93"/>
+<area shape="rect" href="group__supporters.html#gafa617e95d5ed52b4e25434a20006809c" title="A function to tidy the internal storage of genotypes after addition or deletion of genotypes in the g..." alt="" coords="887,57,1029,101"/>
+<area shape="rect" href="group__deletors.html#gaddc395516c92fe17e017a3a48e5fc3e5" title="Deletes all genotypes belonging to a particular group." alt="" coords="696,5,819,33"/>
+<area shape="rect" href="sim-operations_8c.html#a622965bf813b7d185c0effe64aca6bad" title="Push emptylist edited genotypes into the SimData." alt="" coords="681,57,834,101"/>
+<area shape="rect" href="group__crossers.html#ga28b0fcf60b6a8f6e8ca470f7b5d0a4b7" title="Make new genotypes (generic function)" alt="" coords="676,173,839,217"/>
+<area shape="rect" href="sim-operations_8c.html#a0f9bc7d42b9a98a1f4ea30c4a5f49312" title="Loads a genotype file, with or without existing genome model in the SimData." alt="" coords="460,9,609,53"/>
+<area shape="rect" href="group__loaders.html#gac7f5d37f0a3fd81aa26f1eae2ebae2db" title="Populates a gsc_SimData object with marker allele data, a genetic map, and (optionally) marker effect..." alt="" coords="230,17,365,45"/>
+<area shape="rect" href="group__loaders.html#gabbe46ffa8009c748d895d4215a6c8bb8" title="Load a set of genotypes to a gsc_SimData object." alt="" coords="5,17,155,45"/>
+<area shape="rect" href="group__crossers.html#ga15af204958dc69717334c46b19219a2d" title="Creates an identical copy of each member of a group." alt="" coords="471,77,597,105"/>
+<area shape="rect" href="group__crossers.html#ga6c230330ca9a9db9459d4477512a21af" title="Creates a doubled haploid from each member of a group." alt="" coords="440,129,628,157"/>
+<area shape="rect" href="group__crossers.html#ga03af5446006203244dd3080cf75af26f" title="Performs random crosses among members of a group." alt="" coords="442,181,626,209"/>
+<area shape="rect" href="group__crossers.html#ga652376b5a34d24f239e5fc0b167c067b" title="Performs random crosses where the first parent comes from one group and the second from another." alt="" coords="442,233,626,277"/>
+<area shape="rect" href="group__crossers.html#ga4450224009587f4cd4a972413423c96e" title="Performs the crosses of pairs of parents whose indexes are provided in an array." alt="" coords="440,301,628,329"/>
+<area shape="rect" href="group__crossers.html#gab625453074798be6ba8677a5d4986edf" title="Selfs each member of a group for a certain number of generations." alt="" coords="473,353,595,381"/>
+<area shape="rect" href="group__crossers.html#gab19b3eb80b5fe460d17c93e0c27f7aaf" title="Find the top m percent of a group and perform random crosses between those top individuals." alt="" coords="223,169,372,213"/>
+<area shape="rect" href="group__crossers.html#gaa70fd79312587d8e9fc166c64612cbce" title="Perform crosses between all pairs of parents in the group from_group and allocates the resulting offs..." alt="" coords="205,237,390,281"/>
+<area shape="rect" href="group__crossers.html#ga5c0be901d03d0e5dd3d74bc19a4bea70" title="Perform crosses between pairs of parents identified by name in a file and allocate the resulting offs..." alt="" coords="203,305,392,333"/>
+<area shape="rect" href="group__crossers.html#ga2b8100d2d30cf1ada0db8403663076ff" title="Perform crosses between previously&#45;generated offspring of pairs of parents identified by name in a fi..." alt="" coords="208,357,387,401"/>
 </map>
 </div>
 

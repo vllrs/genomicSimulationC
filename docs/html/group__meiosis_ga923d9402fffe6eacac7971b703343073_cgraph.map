@@ -1,0 +1,5 @@
+<map id="gsc_generate_gamete" name="gsc_generate_gamete">
+<area shape="rect" id="node1" title="Fills a char* with the simulated result of meiosis (reduction and recombination) from the marker alle..." alt="" coords="5,44,155,72"/>
+<area shape="rect" id="node2" href="$sim-operations_8c.html#a50de1f9769153df70263edc86de41fa5" title="Comparator function for qsort." alt="" coords="203,5,353,49"/>
+<area shape="rect" id="node3" href="$group__maths.html#ga897c7abb536f30f0cbc1baf2abcd2067" title="Generates randomly a number from the Poisson distribution with parameter lambda, using the Knuth appr..." alt="" coords="232,73,324,101"/>
+</map>

@@ -1,0 +1,12 @@
+<map id="gsc_helper_genoptions_save_bvs" name="gsc_helper_genoptions_save_bvs">
+<area shape="rect" id="node1" title="save&#45;as&#45;you&#45;go (breeding values)" alt="" coords="5,291,160,335"/>
+<area shape="rect" id="node2" href="$group__calculators.html#gaae6cddc5291e4ad120ac28a7d043c7fa" title="Calculates the fitness metric/breeding value for each genotype in the gsc_AlleleMatrix,..." alt="" coords="219,217,347,245"/>
+<area shape="rect" id="node7" href="$group__deletors.html#ga99bbd9355f031efae628b27e6ae72f6a" title="Deletes a gsc_DecimalMatrix and frees its memory." alt="" coords="432,329,566,357"/>
+<area shape="rect" id="node10" href="$group__savers.html#ga707e7b98f0321e3f2460abb234e1bb88" title="Print the provided breeding values of each provided name and id to a file, with the same format as a ..." alt="" coords="208,351,358,379"/>
+<area shape="rect" id="node3" href="$group__maths.html#gadaec2ba547549392530e91e50a3c985d" title="Multiply two sets of a gsc_DecimalMatrix and vector, and add both products to the first column of a p..." alt="" coords="406,5,591,49"/>
+<area shape="rect" id="node4" href="$group__maths.html#ga6fdcedf004c9d08e5135d30deb5b12fa" title="Multiply a gsc_DecimalMatrix to a vector, and add that product to the first column of a provided gsc_..." alt="" coords="425,73,572,117"/>
+<area shape="rect" id="node5" href="$group__calculators.html#gae37153681a5a2b78b3accbe7e01f65d8" title="Calculates the number of times at each marker that a particular allele appears for each genotype in a..." alt="" coords="429,141,569,185"/>
+<area shape="rect" id="node6" href="$group__calculators.html#ga34b1d566ad458097f95823278f6bbd8e" title="Calculates the number of times at each marker that two particular alleles appear for each genotype in..." alt="" coords="429,209,569,253"/>
+<area shape="rect" id="node8" href="$group__maths.html#gae001e0609ac52df335530f9473cb57e1" title="Generates a matrix of c columns, r rows with all 0." alt="" coords="408,277,589,305"/>
+<area shape="rect" id="node9" href="$sim-operations_8c.html#aaaf3ebc75feaf901829232712e55677b" title="Replace calls to malloc direct with this function." alt="" coords="639,277,761,305"/>
+</map>

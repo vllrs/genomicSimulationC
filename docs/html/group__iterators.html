@@ -21,7 +21,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">genomicSimulationC<span id="projectnumber">&#160;0.2.4.003</span>
+   <div id="projectname">genomicSimulationC<span id="projectnumber">&#160;0.2.5</span>
    </div>
   </td>
  </tr>
@@ -86,82 +86,92 @@ $(function() {
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="nested-classes" name="nested-classes"></a>
 Data Structures</h2></td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_geno_location.html">GenoLocation</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">An AlleleMatrix/AlleleMatrix index coordinate of a particular genotype in the simulation.  <a href="struct_geno_location.html#details">More...</a><br /></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structgsc___geno_location.html">gsc_GenoLocation</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">An gsc_AlleleMatrix/gsc_AlleleMatrix index coordinate of a particular genotype in the simulation.  <a href="structgsc___geno_location.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_bidirectional_iterator.html">BidirectionalIterator</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">A structure to iterate forwards and backwards through all genotypes in a <a class="el" href="struct_sim_data.html" title="Composite type that is used to run crossing simulations.">SimData</a> or through only the members of a group.  <a href="struct_bidirectional_iterator.html#details">More...</a><br /></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structgsc___parent_choice.html">gsc_ParentChoice</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_random_access_iterator.html">RandomAccessIterator</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">A structure to search and cache indexes of all genotypes in a <a class="el" href="struct_sim_data.html" title="Composite type that is used to run crossing simulations.">SimData</a> or of all the members of a group.  <a href="struct_random_access_iterator.html#details">More...</a><br /></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structgsc___bidirectional_iterator.html">gsc_BidirectionalIterator</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">A structure to iterate forwards and backwards through all genotypes in a <a class="el" href="structgsc___sim_data.html" title="Composite type that is used to run crossing simulations.">gsc_SimData</a> or through only the members of a group.  <a href="structgsc___bidirectional_iterator.html#details">More...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structgsc___gappy_iterator.html">gsc_GappyIterator</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">A structure to iterate forwards through all positions in the <a class="el" href="structgsc___allele_matrix.html">gsc_AlleleMatrix</a> linked list in <a class="el" href="structgsc___sim_data.html" title="Composite type that is used to run crossing simulations.">gsc_SimData</a>.  <a href="structgsc___gappy_iterator.html#details">More...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structgsc___empty_list_navigator.html">gsc_EmptyListNavigator</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">A structure to hold an initially empty AlleleMatrix list whose genotypes can be accessed sequentially by storage order.  <a href="structgsc___empty_list_navigator.html#details">More...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structgsc___random_access_iterator.html">gsc_RandomAccessIterator</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">A structure to search and cache indexes of all genotypes in a <a class="el" href="structgsc___sim_data.html" title="Composite type that is used to run crossing simulations.">gsc_SimData</a> or of all the members of a group.  <a href="structgsc___random_access_iterator.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="define-members" name="define-members"></a>
 Macros</h2></td></tr>
-<tr class="memitem:ga7d0a1ac8a896751e36af006030708219"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__iterators.html#ga7d0a1ac8a896751e36af006030708219">INVALID_GENO_LOCATION</a>&#160;&#160;&#160;(<a class="el" href="struct_geno_location.html">GenoLocation</a>){.localAM=0,.localPos=-1}</td></tr>
-<tr class="memdesc:ga7d0a1ac8a896751e36af006030708219"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constant representing a nonexistent location in the simulation.  <a href="group__iterators.html#ga7d0a1ac8a896751e36af006030708219">More...</a><br /></td></tr>
-<tr class="separator:ga7d0a1ac8a896751e36af006030708219"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga7eeea1f51dd7d0110707710938122b68"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__iterators.html#ga7eeea1f51dd7d0110707710938122b68">IS_VALID_LOCATION</a>(g)&#160;&#160;&#160;(g.localAM != 0 &amp;&amp; g.localPos != -1)</td></tr>
-<tr class="separator:ga7eeea1f51dd7d0110707710938122b68"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga380f5e71802bb5191652598a3b1f80df"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__iterators.html#ga380f5e71802bb5191652598a3b1f80df">GSC_INVALID_GENO_LOCATION</a>&#160;&#160;&#160;(<a class="el" href="structgsc___geno_location.html">gsc_GenoLocation</a>){.localAM=0,.localPos=-1}</td></tr>
+<tr class="memdesc:ga380f5e71802bb5191652598a3b1f80df"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constant representing a nonexistent location in the simulation.  <a href="group__iterators.html#ga380f5e71802bb5191652598a3b1f80df">More...</a><br /></td></tr>
+<tr class="separator:ga380f5e71802bb5191652598a3b1f80df"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gabac400e75bbcf0fcfee5979feaae9fd6"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__iterators.html#gabac400e75bbcf0fcfee5979feaae9fd6">GSC_IS_VALID_LOCATION</a>(g)&#160;&#160;&#160;(g.localAM != 0 &amp;&amp; g.localPos != -1)</td></tr>
+<tr class="memdesc:gabac400e75bbcf0fcfee5979feaae9fd6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check if a <a class="el" href="group__shortnames.html#ga86d2d8f2c416cdbd37c3f99e5d80c4e3">GenoLocation</a> is <a class="el" href="group__shortnames.html#ga7d0a1ac8a896751e36af006030708219">INVALID_GENO_LOCATION</a>.  <a href="group__iterators.html#gabac400e75bbcf0fcfee5979feaae9fd6">More...</a><br /></td></tr>
+<tr class="separator:gabac400e75bbcf0fcfee5979feaae9fd6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:gafc2800bc023c5241a9f588dad4c455ad"><td class="memItemLeft" align="right" valign="top">static int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__iterators.html#gafc2800bc023c5241a9f588dad4c455ad">isValidLocation</a> (const <a class="el" href="struct_geno_location.html">GenoLocation</a> g)</td></tr>
-<tr class="memdesc:gafc2800bc023c5241a9f588dad4c455ad"><td class="mdescLeft">&#160;</td><td class="mdescRight">Identify whether a <a class="el" href="struct_geno_location.html" title="An AlleleMatrix/AlleleMatrix index coordinate of a particular genotype in the simulation.">GenoLocation</a> is INVALID_GENO_LOCATION.  <a href="group__iterators.html#gafc2800bc023c5241a9f588dad4c455ad">More...</a><br /></td></tr>
-<tr class="separator:gafc2800bc023c5241a9f588dad4c455ad"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gae40bdbdf456a02077ff3faee8246e6c5"><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_bidirectional_iterator.html">BidirectionalIterator</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__iterators.html#gae40bdbdf456a02077ff3faee8246e6c5">create_bidirectional_iter</a> (const <a class="el" href="struct_sim_data.html">SimData</a> *d, const <a class="el" href="struct_group_num.html">GroupNum</a> group)</td></tr>
-<tr class="memdesc:gae40bdbdf456a02077ff3faee8246e6c5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Create a bidirectional iterator.  <a href="group__iterators.html#gae40bdbdf456a02077ff3faee8246e6c5">More...</a><br /></td></tr>
-<tr class="separator:gae40bdbdf456a02077ff3faee8246e6c5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga3251316712a19e1e90322536f7592ca1"><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_random_access_iterator.html">RandomAccessIterator</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__iterators.html#ga3251316712a19e1e90322536f7592ca1">create_randomaccess_iter</a> (const <a class="el" href="struct_sim_data.html">SimData</a> *d, const <a class="el" href="struct_group_num.html">GroupNum</a> group)</td></tr>
-<tr class="memdesc:ga3251316712a19e1e90322536f7592ca1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Create a Random Access Iterator.  <a href="group__iterators.html#ga3251316712a19e1e90322536f7592ca1">More...</a><br /></td></tr>
-<tr class="separator:ga3251316712a19e1e90322536f7592ca1"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gaab4c1841241403397fac8c6a2087a497"><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_allele_matrix.html">AlleleMatrix</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__iterators.html#gaab4c1841241403397fac8c6a2087a497">get_nth_AlleleMatrix</a> (<a class="el" href="struct_allele_matrix.html">AlleleMatrix</a> *listStart, const unsigned int n)</td></tr>
-<tr class="memdesc:gaab4c1841241403397fac8c6a2087a497"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get an <a class="el" href="struct_allele_matrix.html">AlleleMatrix</a> by index in the linked list.  <a href="group__iterators.html#gaab4c1841241403397fac8c6a2087a497">More...</a><br /></td></tr>
-<tr class="separator:gaab4c1841241403397fac8c6a2087a497"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gabf1ee9717701b8580e118144c5671cb5"><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_geno_location.html">GenoLocation</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__iterators.html#gabf1ee9717701b8580e118144c5671cb5">set_bidirectional_iter_to_start</a> (<a class="el" href="struct_bidirectional_iterator.html">BidirectionalIterator</a> *it)</td></tr>
-<tr class="memdesc:gabf1ee9717701b8580e118144c5671cb5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialise a Bidirectional iterator to the start of its sequence.  <a href="group__iterators.html#gabf1ee9717701b8580e118144c5671cb5">More...</a><br /></td></tr>
-<tr class="separator:gabf1ee9717701b8580e118144c5671cb5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gaa7e9bc9b0ea586369586d01237d30258"><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_geno_location.html">GenoLocation</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__iterators.html#gaa7e9bc9b0ea586369586d01237d30258">set_bidirectional_iter_to_end</a> (<a class="el" href="struct_bidirectional_iterator.html">BidirectionalIterator</a> *it)</td></tr>
-<tr class="memdesc:gaa7e9bc9b0ea586369586d01237d30258"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialise a Bidirectional iterator to the end of its sequence.  <a href="group__iterators.html#gaa7e9bc9b0ea586369586d01237d30258">More...</a><br /></td></tr>
-<tr class="separator:gaa7e9bc9b0ea586369586d01237d30258"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gadff0d81d4ef4fd1f5afcdc7885779389"><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_geno_location.html">GenoLocation</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__iterators.html#gadff0d81d4ef4fd1f5afcdc7885779389">next_forwards</a> (<a class="el" href="struct_bidirectional_iterator.html">BidirectionalIterator</a> *it)</td></tr>
-<tr class="memdesc:gadff0d81d4ef4fd1f5afcdc7885779389"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the next location from a bidirectional iterator.  <a href="group__iterators.html#gadff0d81d4ef4fd1f5afcdc7885779389">More...</a><br /></td></tr>
-<tr class="separator:gadff0d81d4ef4fd1f5afcdc7885779389"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga9431cd1ae9e15331a5464ac1c1204a8d"><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_geno_location.html">GenoLocation</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__iterators.html#ga9431cd1ae9e15331a5464ac1c1204a8d">next_backwards</a> (<a class="el" href="struct_bidirectional_iterator.html">BidirectionalIterator</a> *it)</td></tr>
-<tr class="memdesc:ga9431cd1ae9e15331a5464ac1c1204a8d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the previous location from a bidirectional iterator.  <a href="group__iterators.html#ga9431cd1ae9e15331a5464ac1c1204a8d">More...</a><br /></td></tr>
-<tr class="separator:ga9431cd1ae9e15331a5464ac1c1204a8d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gae12ec1fca24fc5ac891378d1468a9ed5"><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_geno_location.html">GenoLocation</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__iterators.html#gae12ec1fca24fc5ac891378d1468a9ed5">next_get_nth</a> (<a class="el" href="struct_random_access_iterator.html">RandomAccessIterator</a> *it, const size_t n)</td></tr>
-<tr class="memdesc:gae12ec1fca24fc5ac891378d1468a9ed5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get a location by index using a <a class="el" href="struct_random_access_iterator.html" title="A structure to search and cache indexes of all genotypes in a SimData or of all the members of a grou...">RandomAccessIterator</a>.  <a href="group__iterators.html#gae12ec1fca24fc5ac891378d1468a9ed5">More...</a><br /></td></tr>
-<tr class="separator:gae12ec1fca24fc5ac891378d1468a9ed5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga8e318c37d9100ca9195193b87ede8524"><td class="memItemLeft" align="right" valign="top">static int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__iterators.html#ga8e318c37d9100ca9195193b87ede8524">gsc_isValidLocation</a> (const <a class="el" href="structgsc___geno_location.html">gsc_GenoLocation</a> g)</td></tr>
+<tr class="memdesc:ga8e318c37d9100ca9195193b87ede8524"><td class="mdescLeft">&#160;</td><td class="mdescRight">Identify whether a <a class="el" href="structgsc___geno_location.html" title="An gsc_AlleleMatrix/gsc_AlleleMatrix index coordinate of a particular genotype in the simulation.">gsc_GenoLocation</a> is INVALID_GENO_LOCATION.  <a href="group__iterators.html#ga8e318c37d9100ca9195193b87ede8524">More...</a><br /></td></tr>
+<tr class="separator:ga8e318c37d9100ca9195193b87ede8524"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga05da8d96593f8404938cc24f659db049"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structgsc___bidirectional_iterator.html">gsc_BidirectionalIterator</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__iterators.html#ga05da8d96593f8404938cc24f659db049">gsc_create_bidirectional_iter</a> (<a class="el" href="structgsc___sim_data.html">gsc_SimData</a> *d, const <a class="el" href="structgsc___group_num.html">gsc_GroupNum</a> group)</td></tr>
+<tr class="memdesc:ga05da8d96593f8404938cc24f659db049"><td class="mdescLeft">&#160;</td><td class="mdescRight">Create a bidirectional iterator.  <a href="group__iterators.html#ga05da8d96593f8404938cc24f659db049">More...</a><br /></td></tr>
+<tr class="separator:ga05da8d96593f8404938cc24f659db049"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaa26377edd1339407af2070924d3596de"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structgsc___random_access_iterator.html">gsc_RandomAccessIterator</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__iterators.html#gaa26377edd1339407af2070924d3596de">gsc_create_randomaccess_iter</a> (<a class="el" href="structgsc___sim_data.html">gsc_SimData</a> *d, const <a class="el" href="structgsc___group_num.html">gsc_GroupNum</a> group)</td></tr>
+<tr class="memdesc:gaa26377edd1339407af2070924d3596de"><td class="mdescLeft">&#160;</td><td class="mdescRight">Create a Random Access Iterator.  <a href="group__iterators.html#gaa26377edd1339407af2070924d3596de">More...</a><br /></td></tr>
+<tr class="separator:gaa26377edd1339407af2070924d3596de"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga16615a5663b4d3bd768d8380f820aa66"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structgsc___allele_matrix.html">gsc_AlleleMatrix</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__iterators.html#ga16615a5663b4d3bd768d8380f820aa66">gsc_get_nth_AlleleMatrix</a> (<a class="el" href="structgsc___allele_matrix.html">gsc_AlleleMatrix</a> *listStart, const unsigned int n)</td></tr>
+<tr class="memdesc:ga16615a5663b4d3bd768d8380f820aa66"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get an <a class="el" href="structgsc___allele_matrix.html">gsc_AlleleMatrix</a> by index in the linked list.  <a href="group__iterators.html#ga16615a5663b4d3bd768d8380f820aa66">More...</a><br /></td></tr>
+<tr class="separator:ga16615a5663b4d3bd768d8380f820aa66"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaa4fa2aec3b7f49f9925fe82c8ff38dcd"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structgsc___geno_location.html">gsc_GenoLocation</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__iterators.html#gaa4fa2aec3b7f49f9925fe82c8ff38dcd">gsc_set_bidirectional_iter_to_start</a> (<a class="el" href="structgsc___bidirectional_iterator.html">gsc_BidirectionalIterator</a> *it)</td></tr>
+<tr class="memdesc:gaa4fa2aec3b7f49f9925fe82c8ff38dcd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialise a Bidirectional iterator to the start of its sequence.  <a href="group__iterators.html#gaa4fa2aec3b7f49f9925fe82c8ff38dcd">More...</a><br /></td></tr>
+<tr class="separator:gaa4fa2aec3b7f49f9925fe82c8ff38dcd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga99820e199424a3ec8ba7e3c58802fba9"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structgsc___geno_location.html">gsc_GenoLocation</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__iterators.html#ga99820e199424a3ec8ba7e3c58802fba9">gsc_set_bidirectional_iter_to_end</a> (<a class="el" href="structgsc___bidirectional_iterator.html">gsc_BidirectionalIterator</a> *it)</td></tr>
+<tr class="memdesc:ga99820e199424a3ec8ba7e3c58802fba9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialise a Bidirectional iterator to the end of its sequence.  <a href="group__iterators.html#ga99820e199424a3ec8ba7e3c58802fba9">More...</a><br /></td></tr>
+<tr class="separator:ga99820e199424a3ec8ba7e3c58802fba9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga630ba7f8e864238e296cb9480dfbc728"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structgsc___geno_location.html">gsc_GenoLocation</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__iterators.html#ga630ba7f8e864238e296cb9480dfbc728">gsc_next_forwards</a> (<a class="el" href="structgsc___bidirectional_iterator.html">gsc_BidirectionalIterator</a> *it)</td></tr>
+<tr class="memdesc:ga630ba7f8e864238e296cb9480dfbc728"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the next location from a bidirectional iterator.  <a href="group__iterators.html#ga630ba7f8e864238e296cb9480dfbc728">More...</a><br /></td></tr>
+<tr class="separator:ga630ba7f8e864238e296cb9480dfbc728"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaacc1f3131edc2c62e14442ca1b647871"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structgsc___geno_location.html">gsc_GenoLocation</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__iterators.html#gaacc1f3131edc2c62e14442ca1b647871">gsc_next_backwards</a> (<a class="el" href="structgsc___bidirectional_iterator.html">gsc_BidirectionalIterator</a> *it)</td></tr>
+<tr class="memdesc:gaacc1f3131edc2c62e14442ca1b647871"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the previous location from a bidirectional iterator.  <a href="group__iterators.html#gaacc1f3131edc2c62e14442ca1b647871">More...</a><br /></td></tr>
+<tr class="separator:gaacc1f3131edc2c62e14442ca1b647871"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga5b9b804b6c3b0c165f20a765942fa810"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structgsc___geno_location.html">gsc_GenoLocation</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__iterators.html#ga5b9b804b6c3b0c165f20a765942fa810">gsc_next_get_nth</a> (<a class="el" href="structgsc___random_access_iterator.html">gsc_RandomAccessIterator</a> *it, const size_t n)</td></tr>
+<tr class="memdesc:ga5b9b804b6c3b0c165f20a765942fa810"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get a location by index using a <a class="el" href="structgsc___random_access_iterator.html" title="A structure to search and cache indexes of all genotypes in a gsc_SimData or of all the members of a ...">gsc_RandomAccessIterator</a>.  <a href="group__iterators.html#ga5b9b804b6c3b0c165f20a765942fa810">More...</a><br /></td></tr>
+<tr class="separator:ga5b9b804b6c3b0c165f20a765942fa810"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <p >For iterating through the genotypes in the simulation. </p>
 <p >It is possible to iterate through one group or through every genotype in the simulation. </p>
 <h2 class="groupheader">Macro Definition Documentation</h2>
-<a id="ga7d0a1ac8a896751e36af006030708219" name="ga7d0a1ac8a896751e36af006030708219"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ga7d0a1ac8a896751e36af006030708219">&#9670;&nbsp;</a></span>INVALID_GENO_LOCATION</h2>
+<a id="ga380f5e71802bb5191652598a3b1f80df" name="ga380f5e71802bb5191652598a3b1f80df"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga380f5e71802bb5191652598a3b1f80df">&#9670;&nbsp;</a></span>GSC_INVALID_GENO_LOCATION</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">#define INVALID_GENO_LOCATION&#160;&#160;&#160;(<a class="el" href="struct_geno_location.html">GenoLocation</a>){.localAM=0,.localPos=-1}</td>
+          <td class="memname">#define GSC_INVALID_GENO_LOCATION&#160;&#160;&#160;(<a class="el" href="structgsc___geno_location.html">gsc_GenoLocation</a>){.localAM=0,.localPos=-1}</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
 <p>Constant representing a nonexistent location in the simulation. </p>
+<p ><em>Has short name:</em> <a class="el" href="group__shortnames.html#ga7d0a1ac8a896751e36af006030708219">INVALID_GENO_LOCATION</a> </p>
 
 </div>
 </div>
-<a id="ga7eeea1f51dd7d0110707710938122b68" name="ga7eeea1f51dd7d0110707710938122b68"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ga7eeea1f51dd7d0110707710938122b68">&#9670;&nbsp;</a></span>IS_VALID_LOCATION</h2>
+<a id="gabac400e75bbcf0fcfee5979feaae9fd6" name="gabac400e75bbcf0fcfee5979feaae9fd6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gabac400e75bbcf0fcfee5979feaae9fd6">&#9670;&nbsp;</a></span>GSC_IS_VALID_LOCATION</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">#define IS_VALID_LOCATION</td>
+          <td class="memname">#define GSC_IS_VALID_LOCATION</td>
           <td>(</td>
           <td class="paramtype">&#160;</td>
           <td class="paramname">g</td><td>)</td>
@@ -170,25 +180,28 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>Check if a <a class="el" href="group__shortnames.html#ga86d2d8f2c416cdbd37c3f99e5d80c4e3">GenoLocation</a> is <a class="el" href="group__shortnames.html#ga7d0a1ac8a896751e36af006030708219">INVALID_GENO_LOCATION</a>. </p>
+<p ><em>Has short name:</em> <a class="el" href="group__shortnames.html#ga74a123d16204f5ca9d85342f13d3ae9a">IS_VALID_LOCATION</a> </p>
+
 </div>
 </div>
 <h2 class="groupheader">Function Documentation</h2>
-<a id="gae40bdbdf456a02077ff3faee8246e6c5" name="gae40bdbdf456a02077ff3faee8246e6c5"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#gae40bdbdf456a02077ff3faee8246e6c5">&#9670;&nbsp;</a></span>create_bidirectional_iter()</h2>
+<a id="ga05da8d96593f8404938cc24f659db049" name="ga05da8d96593f8404938cc24f659db049"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga05da8d96593f8404938cc24f659db049">&#9670;&nbsp;</a></span>gsc_create_bidirectional_iter()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="struct_bidirectional_iterator.html">BidirectionalIterator</a> create_bidirectional_iter </td>
+          <td class="memname"><a class="el" href="structgsc___bidirectional_iterator.html">gsc_BidirectionalIterator</a> gsc_create_bidirectional_iter </td>
           <td>(</td>
-          <td class="paramtype">const <a class="el" href="struct_sim_data.html">SimData</a> *&#160;</td>
+          <td class="paramtype"><a class="el" href="structgsc___sim_data.html">gsc_SimData</a> *&#160;</td>
           <td class="paramname"><em>d</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const <a class="el" href="struct_group_num.html">GroupNum</a>&#160;</td>
+          <td class="paramtype">const <a class="el" href="structgsc___group_num.html">gsc_GroupNum</a>&#160;</td>
           <td class="paramname"><em>group</em>&#160;</td>
         </tr>
         <tr>
@@ -200,76 +213,81 @@ Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Create a bidirectional iterator. </p>
-<p >A bidirectional iterator can be used to loop through members of a particular group or all genotypes in the simulation, forwards or backwards. The iterator is not initialised to any location at this point. The first call to a next* function will initialise it, or you can manually initialise using set_bidirectional_iter_to_start or set_bidirectional_iter_to_end. next_forwards will initialise it to the first in the group, or call next_backwards to initialise it to the last in the group.</p>
+<p >A bidirectional iterator can be used to loop through members of a particular group or all genotypes in the simulation, forwards or backwards. The iterator is not initialised to any location at this point. The first call to a next* function will initialise it, or you can manually initialise using gsc_set_bidirectional_iter_to_start or gsc_set_bidirectional_iter_to_end. gsc_next_forwards will initialise it to the first in the group, or call gsc_next_backwards to initialise it to the last in the group.</p>
+<p ><em>Has short name:</em> <a class="el" href="group__shortnames.html#gaf6e8c60198060f13a3ade462c56b9d77">create_bidirectional_iter</a></p>
 <dl class="section warning"><dt>Warning</dt><dd>An initialised iterator is only valid if no genotypes have been added to the group and no genotypes in the simulation as a whole have been removed since its creation. Discard the old iterator and create a new one when the state of the simulation changes.</dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">d</td><td>pointer to the <a class="el" href="struct_sim_data.html" title="Composite type that is used to run crossing simulations.">SimData</a> containing the genotypes to iterate through </td></tr>
+    <tr><td class="paramname">d</td><td>pointer to the <a class="el" href="structgsc___sim_data.html" title="Composite type that is used to run crossing simulations.">gsc_SimData</a> containing the genotypes to iterate through </td></tr>
     <tr><td class="paramname">group</td><td>the group number of the group to iterate through, or 0 to iterate through all genotypes. </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>uninitialised <a class="el" href="struct_bidirectional_iterator.html" title="A structure to iterate forwards and backwards through all genotypes in a SimData or through only the ...">BidirectionalIterator</a> for the provided group. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>uninitialised <a class="el" href="structgsc___bidirectional_iterator.html" title="A structure to iterate forwards and backwards through all genotypes in a gsc_SimData or through only ...">gsc_BidirectionalIterator</a> for the provided group. </dd></dl>
 <div id="dynsection-1" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-1-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
 <div id="dynsection-1-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-1-content" class="dyncontent" style="display:none;">
-<div class="center"><img src="group__iterators_gae40bdbdf456a02077ff3faee8246e6c5_icgraph.png" border="0" usemap="#agroup__iterators_gae40bdbdf456a02077ff3faee8246e6c5_icgraph" alt=""/></div>
-<map name="agroup__iterators_gae40bdbdf456a02077ff3faee8246e6c5_icgraph" id="agroup__iterators_gae40bdbdf456a02077ff3faee8246e6c5_icgraph">
-<area shape="rect" title="Create a bidirectional iterator." alt="" coords="1233,529,1392,557"/>
-<area shape="rect" href="group__groupmod.html#ga56d387be7c04358909d7fcb3c773c0ba" title="Split by some allocator (generic function)" alt="" coords="428,154,595,182"/>
-<area shape="rect" href="sim-operations_8c.html#afc5332217ec53809dfa2ee757b350e0e" title="Split by some quality (generic function)" alt="" coords="857,469,1007,497"/>
-<area shape="rect" href="group__groupmod.html#ga54018cd747361983c4d3a90ea9abc05d" title="Combine a set of groups into one group." alt="" coords="1062,216,1178,244"/>
-<area shape="rect" href="group__collgetters.html#ga48161e16dc3abce9e3437d7c33f65cd1" title="Identify group numbers that currently have members, and how many members they have." alt="" coords="1055,521,1185,565"/>
-<area shape="rect" href="group__groupmod.html#ga6cc15e471588f5b7e00d358e6af232fd" title="Allocates the genotypes with values of a label in a particular range to a new group." alt="" coords="442,762,581,790"/>
-<area shape="rect" href="group__groupmod.html#ga94e9e1a407c7effc6f886b0b13084184" title="Allocates the genotypes with a particular value of a label to a new group." alt="" coords="443,814,579,842"/>
-<area shape="rect" href="group__groupmod.html#ga20b19aaab1ae2bf54cb657284d2a6935" title="Flip a coin for each member of the group to decide if it should be moved to the new group." alt="" coords="431,866,591,894"/>
-<area shape="rect" href="group__groupmod.html#ga889a60d61224875b37dfb4f53d3b695a" title="Allocate each member of the group to one of n groups with custom probabilities for each group." alt="" coords="219,233,362,277"/>
-<area shape="rect" href="group__groupmod.html#ga8d06ca9e6265ec8a81194f23c904a570" title="Split a group into n groups of equal size (or size differing only by one, if n does not perfectly div..." alt="" coords="209,61,372,105"/>
-<area shape="rect" href="group__groupmod.html#ga3a2d416a661b8dfa98db541aab2aabde" title="Split a group into n groups of equal size (or size differing only by one, if n does not perfectly div..." alt="" coords="225,129,356,157"/>
-<area shape="rect" href="group__groupmod.html#ga6834d279d86a7ada27fb571e97fea13a" title="Allocate each member of the group to one of n groups with equal probability." alt="" coords="217,181,364,209"/>
-<area shape="rect" href="group__groupmod.html#ga7902a9a728d27c4799eadf2b560a3790" title="Split a group into families by their pedigrees." alt="" coords="666,409,790,437"/>
-<area shape="rect" href="group__groupmod.html#gaf9cbba2a870a78c35b0857637b48a32a" title="Split a group into families of half&#45;siblings by shared first or second parent." alt="" coords="669,461,787,505"/>
-<area shape="rect" href="group__groupmod.html#gacea0a6c2089359494a1807827979979a" title="Split a group into n one&#45;member groups." alt="" coords="658,357,798,385"/>
-<area shape="rect" href="group__crossers.html#gafdd1fa0e8dd54ba1f3089c05986686cb" title="Find the top m percent of a group and perform random crosses between those top individuals." alt="" coords="5,293,158,337"/>
-<area shape="rect" href="group__collgetters.html#gab4afabad0d5085062a858bdc599f5a58" title="Identify group numbers that currently have members." alt="" coords="863,529,1001,557"/>
-<area shape="rect" href="group__supporters.html#gab8789bfd9de059d49a5252d8ad326af7" title="Function to identify the next n sequential integers that do not identify a group that currently has m..." alt="" coords="647,529,809,557"/>
-<area shape="rect" href="group__supporters.html#ga246d5902b3ba09a2d83a279575a0e19e" title="Function to identify the next sequential integer that does not identify a group that currently has me..." alt="" coords="658,581,798,609"/>
-<area shape="rect" href="group__crossers.html#ga823b906485f3edf2771935f2ad4f12db" title="Performs random crosses among members of a group." alt="" coords="206,353,375,381"/>
-<area shape="rect" href="group__crossers.html#ga21fd20fa9a626c2933b7ec114c3faca5" title="Performs random crosses where the first parent comes from one group and the second from another." alt="" coords="427,382,595,410"/>
-<area shape="rect" href="sim-operations_8c.html#a877bbfdb03961d00c30f7e2fa55efe7c" title="Performs the crosses of pairs of parents whose indexes are provided in an array." alt="" coords="423,434,599,462"/>
-<area shape="rect" href="group__loaders.html#ga38ad77c70ea0719c4c59644127fd3368" title="Appends genotype data from a file to an existing SimData." alt="" coords="435,486,587,530"/>
-<area shape="rect" href="group__crossers.html#ga4eb395614f3ec7ffecb3b779c16e6f17" title="Creates an identical copy of each member of a group." alt="" coords="462,554,560,582"/>
-<area shape="rect" href="group__crossers.html#ga6a3afc7743003c66fe24e7a2872e26cc" title="Creates a doubled haploid from each member of a group." alt="" coords="431,606,591,634"/>
-<area shape="rect" href="group__crossers.html#gaafc0d183fdb9762dc0817e5bd3009178" title="Selfs each member of a group for a certain number of generations." alt="" coords="464,658,558,686"/>
-<area shape="rect" href="group__groupmod.html#gaf21b446a646f846db7c4053f9e8bcb65" title="Split a group into two groups of equal size (or size differing only by one, if the original group had..." alt="" coords="440,710,583,738"/>
-<area shape="rect" href="group__groupmod.html#gaadc9a048dfeb0a9287c47b181d232738" title="Take a list of indexes and allocate the genotypes at those indexes to a new group." alt="" coords="453,278,569,306"/>
-<area shape="rect" href="group__crossers.html#gab173426b15ba3e135e1eea25035afd85" title="Perform crosses between all pairs of parents in the group from_group and allocates the resulting offs..." alt="" coords="212,473,369,517"/>
-<area shape="rect" href="group__crossers.html#ga18a22fc990289359e790fa207613c121" title="Perform crosses between pairs of parents identified by name in a file and allocate the resulting offs..." alt="" coords="210,541,371,569"/>
-<area shape="rect" href="group__crossers.html#ga0cc412ee0f607370ad3b34f4c39a15ff" title="Perform crosses between previously&#45;generated offspring of pairs of parents identified by name in a fi..." alt="" coords="215,405,366,449"/>
-<area shape="rect" href="group__calculators.html#ga88e086f459bf255ded35aff26f976ab8" title="Takes the top_n individuals in the group with the best breeding values/fitnesses and puts them in a n..." alt="" coords="248,301,333,329"/>
+<div class="center"><img src="group__iterators_ga05da8d96593f8404938cc24f659db049_icgraph.png" border="0" usemap="#agroup__iterators_ga05da8d96593f8404938cc24f659db049_icgraph" alt=""/></div>
+<map name="agroup__iterators_ga05da8d96593f8404938cc24f659db049_icgraph" id="agroup__iterators_ga05da8d96593f8404938cc24f659db049_icgraph">
+<area shape="rect" title="Create a bidirectional iterator." alt="" coords="1374,564,1561,592"/>
+<area shape="rect" href="group__supporters.html#ga63640e905157a54a1d84374f4ce2b140" title="Replace all occurences of a given allele with a different symbol representation." alt="" coords="1149,133,1326,161"/>
+<area shape="rect" href="group__groupmod.html#gafe9b4c3c798099790da0cbb6aa55ceca" title="Combine a set of groups into one group." alt="" coords="946,124,1091,152"/>
+<area shape="rect" href="group__collgetters.html#gaddb8ea59b22bbe0ec8c61da7f5ba8a98" title="Identify group numbers that currently have members, and how many members they have." alt="" coords="1159,486,1317,530"/>
+<area shape="rect" href="group__groupmod.html#gab0f7f198ee2602c6db2e315e7345b2e5" title="Split by some allocator (generic function)" alt="" coords="497,221,633,265"/>
+<area shape="rect" href="group__crossers.html#ga15af204958dc69717334c46b19219a2d" title="Creates an identical copy of each member of a group." alt="" coords="274,622,400,650"/>
+<area shape="rect" href="group__crossers.html#ga6c230330ca9a9db9459d4477512a21af" title="Creates a doubled haploid from each member of a group." alt="" coords="243,708,431,736"/>
+<area shape="rect" href="group__crossers.html#gab625453074798be6ba8677a5d4986edf" title="Selfs each member of a group for a certain number of generations." alt="" coords="276,825,398,853"/>
+<area shape="rect" href="group__groupmod.html#ga5290a4afbf8a34b3149f476cc7a9a97d" title="Allocates the genotypes with values of a label in a particular range to a new group." alt="" coords="501,550,629,594"/>
+<area shape="rect" href="group__groupmod.html#gab2b56b3f3c1754e6f8a5440aaf2ba38b" title="Allocates the genotypes with a particular value of a label to a new group." alt="" coords="501,618,629,662"/>
+<area shape="rect" href="group__groupmod.html#gad3a5afbd400e53b51c16a2ab278b221a" title="Flip a coin for each member of the group to decide if it should be moved to the new group." alt="" coords="498,686,631,730"/>
+<area shape="rect" href="group__groupmod.html#ga078ef2c5d296b3104ee751d3c1d8eae6" title="Split by some quality (generic function)" alt="" coords="956,400,1081,444"/>
+<area shape="rect" href="group__crossers.html#gab19b3eb80b5fe460d17c93e0c27f7aaf" title="Find the top m percent of a group and perform random crosses between those top individuals." alt="" coords="26,378,174,422"/>
+<area shape="rect" href="group__collgetters.html#gaf9692ce014cfe5439fd00e522a6bab9f" title="Identify group numbers that currently have members." alt="" coords="936,494,1101,522"/>
+<area shape="rect" href="group__supporters.html#ga6d28dad64b97f61aac8575493ab8a95b" title="Function to identify the next n sequential integers that do not identify a group that currently has m..." alt="" coords="698,460,888,488"/>
+<area shape="rect" href="group__supporters.html#ga22609353c4951dcf3ed54537ecb6eeda" title="Function to identify the next sequential integer that does not identify a group that currently has me..." alt="" coords="709,512,877,540"/>
+<area shape="rect" href="group__groupmod.html#ga817560e5eeca1e7f5eb8a81b35114f38" title="Allocate each member of the group to one of n groups with custom probabilities for each group." alt="" coords="252,174,422,202"/>
+<area shape="rect" href="group__groupmod.html#ga07b4f4c7ffe4c40e0ed0658f56872cc7" title="Split a group into n groups of equal size (or size differing only by one, if n does not perfectly div..." alt="" coords="258,226,416,254"/>
+<area shape="rect" href="group__groupmod.html#ga750ec838a37133c3f26428647868b310" title="Split a group into n groups of equal size (or size differing only by one, if n does not perfectly div..." alt="" coords="260,278,414,306"/>
+<area shape="rect" href="group__groupmod.html#gacc75e6df7f5b7f05c7df04cf04977ea4" title="Allocate each member of the group to one of n groups with equal probability." alt="" coords="270,106,404,150"/>
+<area shape="rect" href="sim-operations_8c.html#a0f9bc7d42b9a98a1f4ea30c4a5f49312" title="Loads a genotype file, with or without existing genome model in the SimData." alt="" coords="490,310,639,354"/>
+<area shape="rect" href="group__groupmod.html#ga9a3bd44f93ffc4ee634a9c5d1aeb59a2" title="Take a list of indexes and allocate the genotypes at those indexes to a new group." alt="" coords="489,378,641,406"/>
+<area shape="rect" href="group__crossers.html#ga28b0fcf60b6a8f6e8ca470f7b5d0a4b7" title="Make new genotypes (generic function)" alt="" coords="484,482,646,526"/>
+<area shape="rect" href="group__groupmod.html#ga47292b150273a395fe282f86c0f78e0b" title="Split a group into two groups of equal size (or size differing only by one, if the original group had..." alt="" coords="479,430,650,458"/>
+<area shape="rect" href="group__loaders.html#gac7f5d37f0a3fd81aa26f1eae2ebae2db" title="Populates a gsc_SimData object with marker allele data, a genetic map, and (optionally) marker effect..." alt="" coords="269,330,405,358"/>
+<area shape="rect" href="group__loaders.html#gabbe46ffa8009c748d895d4215a6c8bb8" title="Load a set of genotypes to a gsc_SimData object." alt="" coords="25,326,175,354"/>
+<area shape="rect" href="group__calculators.html#ga3b43d07c08ed861ed0f22a69bb57b94a" title="Takes the top_n individuals in the group with the best breeding values/fitnesses and puts them in a n..." alt="" coords="280,382,394,410"/>
+<area shape="rect" href="group__crossers.html#ga03af5446006203244dd3080cf75af26f" title="Performs random crosses among members of a group." alt="" coords="245,502,429,530"/>
+<area shape="rect" href="group__crossers.html#ga652376b5a34d24f239e5fc0b167c067b" title="Performs random crosses where the first parent comes from one group and the second from another." alt="" coords="245,434,429,478"/>
+<area shape="rect" href="group__crossers.html#ga4450224009587f4cd4a972413423c96e" title="Performs the crosses of pairs of parents whose indexes are provided in an array." alt="" coords="243,554,431,582"/>
+<area shape="rect" href="group__crossers.html#gaa70fd79312587d8e9fc166c64612cbce" title="Perform crosses between all pairs of parents in the group from_group and allocates the resulting offs..." alt="" coords="8,546,192,590"/>
+<area shape="rect" href="group__crossers.html#ga5c0be901d03d0e5dd3d74bc19a4bea70" title="Perform crosses between pairs of parents identified by name in a file and allocate the resulting offs..." alt="" coords="5,614,195,642"/>
+<area shape="rect" href="group__crossers.html#ga2b8100d2d30cf1ada0db8403663076ff" title="Perform crosses between previously&#45;generated offspring of pairs of parents identified by name in a fi..." alt="" coords="10,478,190,522"/>
+<area shape="rect" href="group__groupmod.html#ga4e2399c23a2a123d275f3cffbe46c74f" title="Split a group into families by their pedigrees." alt="" coords="717,408,869,436"/>
+<area shape="rect" href="group__groupmod.html#gadf875ab8f9f992dba4497258291b1ccd" title="Split a group into families of half&#45;siblings by shared first or second parent." alt="" coords="720,288,866,332"/>
+<area shape="rect" href="group__groupmod.html#ga8a45ea8ea9d072484ba1f1ac0c360cc4" title="Split a group into n one&#45;member groups." alt="" coords="709,356,877,384"/>
 </map>
 </div>
 
 </div>
 </div>
-<a id="ga3251316712a19e1e90322536f7592ca1" name="ga3251316712a19e1e90322536f7592ca1"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ga3251316712a19e1e90322536f7592ca1">&#9670;&nbsp;</a></span>create_randomaccess_iter()</h2>
+<a id="gaa26377edd1339407af2070924d3596de" name="gaa26377edd1339407af2070924d3596de"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gaa26377edd1339407af2070924d3596de">&#9670;&nbsp;</a></span>gsc_create_randomaccess_iter()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="struct_random_access_iterator.html">RandomAccessIterator</a> create_randomaccess_iter </td>
+          <td class="memname"><a class="el" href="structgsc___random_access_iterator.html">gsc_RandomAccessIterator</a> gsc_create_randomaccess_iter </td>
           <td>(</td>
-          <td class="paramtype">const <a class="el" href="struct_sim_data.html">SimData</a> *&#160;</td>
+          <td class="paramtype"><a class="el" href="structgsc___sim_data.html">gsc_SimData</a> *&#160;</td>
           <td class="paramname"><em>d</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const <a class="el" href="struct_group_num.html">GroupNum</a>&#160;</td>
+          <td class="paramtype">const <a class="el" href="structgsc___group_num.html">gsc_GroupNum</a>&#160;</td>
           <td class="paramname"><em>group</em>&#160;</td>
         </tr>
         <tr>
@@ -281,13 +299,14 @@ Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Create a Random Access Iterator. </p>
-<p >A random access iterator and the function <a class="el" href="group__iterators.html#gae12ec1fca24fc5ac891378d1468a9ed5" title="Get a location by index using a RandomAccessIterator.">next_get_nth()</a> can be used to get any genotype in the simulation by index or any genotype in a group by within-group index.</p>
+<p >A random access iterator and the function <a class="el" href="group__iterators.html#ga5b9b804b6c3b0c165f20a765942fa810" title="Get a location by index using a gsc_RandomAccessIterator.">gsc_next_get_nth()</a> can be used to get any genotype in the simulation by index or any genotype in a group by within-group index.</p>
 <p >The random access iterator gives you access to the (i)th group member in O(n) time (n being the number of genotypes in the simulation), but contains a persistent cache that allows subsequent O(1) access to group members.</p>
 <p >The random access iterator created by this function is initialised. If the <code>groupSize</code> attribute of the returned iterator is set to 0, no members of that group could be found in the simulation, so the iterator will never return a valid position.</p>
+<p ><em>Has short name:</em> <a class="el" href="group__shortnames.html#ga6fe61bd6960ec26b020f0466cb6509d7">create_randomaccess_iter</a></p>
 <dl class="section warning"><dt>Warning</dt><dd>An initialised iterator is only valid if no genotypes have been added to the group and no genotypes in the simulation as a whole have been removed since its creation. Discard the old iterator and create a new one when the state of the simulation changes.</dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">d</td><td>pointer to the <a class="el" href="struct_sim_data.html" title="Composite type that is used to run crossing simulations.">SimData</a> containing the genotypes to iterate through </td></tr>
+    <tr><td class="paramname">d</td><td>pointer to the <a class="el" href="structgsc___sim_data.html" title="Composite type that is used to run crossing simulations.">gsc_SimData</a> containing the genotypes to iterate through </td></tr>
     <tr><td class="paramname">group</td><td>the group number of the group to iterate through, or 0 to iterate through all genotypes. </td></tr>
   </table>
   </dd>
@@ -298,10 +317,10 @@ Functions</h2></td></tr>
 <div id="dynsection-2-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-2-content" class="dyncontent" style="display:none;">
-<div class="center"><img src="group__iterators_ga3251316712a19e1e90322536f7592ca1_cgraph.png" border="0" usemap="#agroup__iterators_ga3251316712a19e1e90322536f7592ca1_cgraph" alt=""/></div>
-<map name="agroup__iterators_ga3251316712a19e1e90322536f7592ca1_cgraph" id="agroup__iterators_ga3251316712a19e1e90322536f7592ca1_cgraph">
-<area shape="rect" title="Create a Random Access Iterator." alt="" coords="5,5,180,33"/>
-<area shape="rect" href="group__supporters.html#ga6072a152b624743eeafb30adaf9b7f17" title="Replace calls to malloc direct with this function, which errors and exits with status 2 if memory all..." alt="" coords="228,5,312,33"/>
+<div class="center"><img src="group__iterators_gaa26377edd1339407af2070924d3596de_cgraph.png" border="0" usemap="#agroup__iterators_gaa26377edd1339407af2070924d3596de_cgraph" alt=""/></div>
+<map name="agroup__iterators_gaa26377edd1339407af2070924d3596de_cgraph" id="agroup__iterators_gaa26377edd1339407af2070924d3596de_cgraph">
+<area shape="rect" title="Create a Random Access Iterator." alt="" coords="5,5,208,33"/>
+<area shape="rect" href="sim-operations_8c.html#aaaf3ebc75feaf901829232712e55677b" title="Replace calls to malloc direct with this function." alt="" coords="256,5,377,33"/>
 </map>
 </div>
 <div id="dynsection-3" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
@@ -309,28 +328,34 @@ Functions</h2></td></tr>
 <div id="dynsection-3-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-3-content" class="dyncontent" style="display:none;">
-<div class="center"><img src="group__iterators_ga3251316712a19e1e90322536f7592ca1_icgraph.png" border="0" usemap="#agroup__iterators_ga3251316712a19e1e90322536f7592ca1_icgraph" alt=""/></div>
-<map name="agroup__iterators_ga3251316712a19e1e90322536f7592ca1_icgraph" id="agroup__iterators_ga3251316712a19e1e90322536f7592ca1_icgraph">
-<area shape="rect" title="Create a Random Access Iterator." alt="" coords="530,32,705,60"/>
-<area shape="rect" href="group__groupmod.html#gaf21b446a646f846db7c4053f9e8bcb65" title="Split a group into two groups of equal size (or size differing only by one, if the original group had..." alt="" coords="339,5,482,33"/>
-<area shape="rect" href="group__groupmod.html#gaadc9a048dfeb0a9287c47b181d232738" title="Take a list of indexes and allocate the genotypes at those indexes to a new group." alt="" coords="353,57,469,85"/>
-<area shape="rect" href="group__calculators.html#ga88e086f459bf255ded35aff26f976ab8" title="Takes the top_n individuals in the group with the best breeding values/fitnesses and puts them in a n..." alt="" coords="206,57,291,85"/>
-<area shape="rect" href="group__crossers.html#gafdd1fa0e8dd54ba1f3089c05986686cb" title="Find the top m percent of a group and perform random crosses between those top individuals." alt="" coords="5,49,158,93"/>
+<div class="center"><img src="group__iterators_gaa26377edd1339407af2070924d3596de_icgraph.png" border="0" usemap="#agroup__iterators_gaa26377edd1339407af2070924d3596de_icgraph" alt=""/></div>
+<map name="agroup__iterators_gaa26377edd1339407af2070924d3596de_icgraph" id="agroup__iterators_gaa26377edd1339407af2070924d3596de_icgraph">
+<area shape="rect" title="Create a Random Access Iterator." alt="" coords="675,117,878,145"/>
+<area shape="rect" href="group__groupmod.html#ga9a3bd44f93ffc4ee634a9c5d1aeb59a2" title="Take a list of indexes and allocate the genotypes at those indexes to a new group." alt="" coords="457,5,609,33"/>
+<area shape="rect" href="group__crossers.html#ga03af5446006203244dd3080cf75af26f" title="Performs random crosses among members of a group." alt="" coords="204,57,389,85"/>
+<area shape="rect" href="group__crossers.html#ga652376b5a34d24f239e5fc0b167c067b" title="Performs random crosses where the first parent comes from one group and the second from another." alt="" coords="441,109,625,153"/>
+<area shape="rect" href="group__crossers.html#ga4450224009587f4cd4a972413423c96e" title="Performs the crosses of pairs of parents whose indexes are provided in an array." alt="" coords="439,177,627,205"/>
+<area shape="rect" href="group__groupmod.html#ga47292b150273a395fe282f86c0f78e0b" title="Split a group into two groups of equal size (or size differing only by one, if the original group had..." alt="" coords="448,229,619,257"/>
+<area shape="rect" href="group__calculators.html#ga3b43d07c08ed861ed0f22a69bb57b94a" title="Takes the top_n individuals in the group with the best breeding values/fitnesses and puts them in a n..." alt="" coords="240,5,353,33"/>
+<area shape="rect" href="group__crossers.html#gab19b3eb80b5fe460d17c93e0c27f7aaf" title="Find the top m percent of a group and perform random crosses between those top individuals." alt="" coords="5,24,154,68"/>
+<area shape="rect" href="group__crossers.html#gaa70fd79312587d8e9fc166c64612cbce" title="Perform crosses between all pairs of parents in the group from_group and allocates the resulting offs..." alt="" coords="204,109,389,153"/>
+<area shape="rect" href="group__crossers.html#ga5c0be901d03d0e5dd3d74bc19a4bea70" title="Perform crosses between pairs of parents identified by name in a file and allocate the resulting offs..." alt="" coords="202,177,391,205"/>
+<area shape="rect" href="group__crossers.html#ga2b8100d2d30cf1ada0db8403663076ff" title="Perform crosses between previously&#45;generated offspring of pairs of parents identified by name in a fi..." alt="" coords="207,229,386,273"/>
 </map>
 </div>
 
 </div>
 </div>
-<a id="gaab4c1841241403397fac8c6a2087a497" name="gaab4c1841241403397fac8c6a2087a497"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#gaab4c1841241403397fac8c6a2087a497">&#9670;&nbsp;</a></span>get_nth_AlleleMatrix()</h2>
+<a id="ga16615a5663b4d3bd768d8380f820aa66" name="ga16615a5663b4d3bd768d8380f820aa66"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga16615a5663b4d3bd768d8380f820aa66">&#9670;&nbsp;</a></span>gsc_get_nth_AlleleMatrix()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="struct_allele_matrix.html">AlleleMatrix</a> * get_nth_AlleleMatrix </td>
+          <td class="memname"><a class="el" href="structgsc___allele_matrix.html">gsc_AlleleMatrix</a> * gsc_get_nth_AlleleMatrix </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="struct_allele_matrix.html">AlleleMatrix</a> *&#160;</td>
+          <td class="paramtype"><a class="el" href="structgsc___allele_matrix.html">gsc_AlleleMatrix</a> *&#160;</td>
           <td class="paramname"><em>listStart</em>, </td>
         </tr>
         <tr>
@@ -347,38 +372,47 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Get an <a class="el" href="struct_allele_matrix.html">AlleleMatrix</a> by index in the linked list. </p>
-<p >listStart is considered the 0th <a class="el" href="struct_allele_matrix.html">AlleleMatrix</a> (0-based indexing)</p>
+<p>Get an <a class="el" href="structgsc___allele_matrix.html">gsc_AlleleMatrix</a> by index in the linked list. </p>
+<p >listStart is considered the 0th <a class="el" href="structgsc___allele_matrix.html">gsc_AlleleMatrix</a> (0-based indexing)</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">listStart</td><td>the 0th <a class="el" href="struct_allele_matrix.html">AlleleMatrix</a> in the linked list </td></tr>
-    <tr><td class="paramname">n</td><td>the index of the desired <a class="el" href="struct_allele_matrix.html">AlleleMatrix</a> in the linked list </td></tr>
+    <tr><td class="paramname">listStart</td><td>the 0th <a class="el" href="structgsc___allele_matrix.html">gsc_AlleleMatrix</a> in the linked list </td></tr>
+    <tr><td class="paramname">n</td><td>the index of the desired <a class="el" href="structgsc___allele_matrix.html">gsc_AlleleMatrix</a> in the linked list </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>pointer to the nth <a class="el" href="struct_allele_matrix.html">AlleleMatrix</a>, if it exists in the list, or NULL if the list is shorter than n </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>pointer to the nth <a class="el" href="structgsc___allele_matrix.html">gsc_AlleleMatrix</a>, if it exists in the list, or NULL if the list is shorter than n </dd></dl>
 <div id="dynsection-4" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-4-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
 <div id="dynsection-4-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-4-content" class="dyncontent" style="display:none;">
-<div class="center"><img src="group__iterators_gaab4c1841241403397fac8c6a2087a497_icgraph.png" border="0" usemap="#agroup__iterators_gaab4c1841241403397fac8c6a2087a497_icgraph" alt=""/></div>
-<map name="agroup__iterators_gaab4c1841241403397fac8c6a2087a497_icgraph" id="agroup__iterators_gaab4c1841241403397fac8c6a2087a497_icgraph">
-<area shape="rect" title="Get an AlleleMatrix by index in the linked list." alt="" coords="719,47,858,75"/>
-<area shape="rect" href="group__iterators.html#ga9431cd1ae9e15331a5464ac1c1204a8d" title="Get the previous location from a bidirectional iterator." alt="" coords="353,5,468,33"/>
-<area shape="rect" href="group__iterators.html#gae12ec1fca24fc5ac891378d1468a9ed5" title="Get a location by index using a RandomAccessIterator." alt="" coords="552,107,649,135"/>
-<area shape="rect" href="group__iterators.html#gaa7e9bc9b0ea586369586d01237d30258" title="Initialise a Bidirectional iterator to the end of its sequence." alt="" coords="530,39,671,83"/>
-<area shape="rect" href="group__groupmod.html#gaf21b446a646f846db7c4053f9e8bcb65" title="Split a group into two groups of equal size (or size differing only by one, if the original group had..." alt="" coords="339,76,482,104"/>
-<area shape="rect" href="group__groupmod.html#gaadc9a048dfeb0a9287c47b181d232738" title="Take a list of indexes and allocate the genotypes at those indexes to a new group." alt="" coords="353,128,469,156"/>
-<area shape="rect" href="group__calculators.html#ga88e086f459bf255ded35aff26f976ab8" title="Takes the top_n individuals in the group with the best breeding values/fitnesses and puts them in a n..." alt="" coords="206,128,291,156"/>
-<area shape="rect" href="group__crossers.html#gafdd1fa0e8dd54ba1f3089c05986686cb" title="Find the top m percent of a group and perform random crosses between those top individuals." alt="" coords="5,120,158,164"/>
+<div class="center"><img src="group__iterators_ga16615a5663b4d3bd768d8380f820aa66_icgraph.png" border="0" usemap="#agroup__iterators_ga16615a5663b4d3bd768d8380f820aa66_icgraph" alt=""/></div>
+<map name="agroup__iterators_ga16615a5663b4d3bd768d8380f820aa66_icgraph" id="agroup__iterators_ga16615a5663b4d3bd768d8380f820aa66_icgraph">
+<area shape="rect" title="Get an gsc_AlleleMatrix by index in the linked list." alt="" coords="894,65,1061,93"/>
+<area shape="rect" href="group__iterators.html#gaacc1f3131edc2c62e14442ca1b647871" title="Get the previous location from a bidirectional iterator." alt="" coords="495,5,638,33"/>
+<area shape="rect" href="group__iterators.html#ga5b9b804b6c3b0c165f20a765942fa810" title="Get a location by index using a gsc_RandomAccessIterator." alt="" coords="712,163,836,191"/>
+<area shape="rect" href="group__iterators.html#ga99820e199424a3ec8ba7e3c58802fba9" title="Initialise a Bidirectional iterator to the end of its sequence." alt="" coords="702,57,846,101"/>
+<area shape="rect" href="sim-operations_8c.html#a1908f6e821f03205fcdf8bd0bfbc7050" title="parentChooser function parameter for gsc_make_random_crosses." alt="" coords="480,57,653,101"/>
+<area shape="rect" href="sim-operations_8c.html#a301f5b32dfc3d0a700fefa366b8a937e" title="parentChooser function parameter for gsc_make_random_crosses_between." alt="" coords="479,125,654,169"/>
+<area shape="rect" href="sim-operations_8c.html#a70d4029a8a6078e9e29635d5058f4021" title="parentChooser function parameter for gsc_make_targeted_crosses." alt="" coords="480,245,653,289"/>
+<area shape="rect" href="group__groupmod.html#ga9a3bd44f93ffc4ee634a9c5d1aeb59a2" title="Take a list of indexes and allocate the genotypes at those indexes to a new group." alt="" coords="491,193,643,221"/>
+<area shape="rect" href="group__groupmod.html#ga47292b150273a395fe282f86c0f78e0b" title="Split a group into two groups of equal size (or size differing only by one, if the original group had..." alt="" coords="481,313,652,341"/>
+<area shape="rect" href="group__crossers.html#ga03af5446006203244dd3080cf75af26f" title="Performs random crosses among members of a group." alt="" coords="245,69,429,97"/>
+<area shape="rect" href="group__crossers.html#gab19b3eb80b5fe460d17c93e0c27f7aaf" title="Find the top m percent of a group and perform random crosses between those top individuals." alt="" coords="26,89,174,133"/>
+<area shape="rect" href="group__crossers.html#ga652376b5a34d24f239e5fc0b167c067b" title="Performs random crosses where the first parent comes from one group and the second from another." alt="" coords="245,125,429,169"/>
+<area shape="rect" href="group__crossers.html#ga4450224009587f4cd4a972413423c96e" title="Performs the crosses of pairs of parents whose indexes are provided in an array." alt="" coords="243,253,431,281"/>
+<area shape="rect" href="group__crossers.html#gaa70fd79312587d8e9fc166c64612cbce" title="Perform crosses between all pairs of parents in the group from_group and allocates the resulting offs..." alt="" coords="8,185,192,229"/>
+<area shape="rect" href="group__crossers.html#ga5c0be901d03d0e5dd3d74bc19a4bea70" title="Perform crosses between pairs of parents identified by name in a file and allocate the resulting offs..." alt="" coords="5,253,195,281"/>
+<area shape="rect" href="group__crossers.html#ga2b8100d2d30cf1ada0db8403663076ff" title="Perform crosses between previously&#45;generated offspring of pairs of parents identified by name in a fi..." alt="" coords="10,305,190,349"/>
+<area shape="rect" href="group__calculators.html#ga3b43d07c08ed861ed0f22a69bb57b94a" title="Takes the top_n individuals in the group with the best breeding values/fitnesses and puts them in a n..." alt="" coords="280,193,394,221"/>
 </map>
 </div>
 
 </div>
 </div>
-<a id="gafc2800bc023c5241a9f588dad4c455ad" name="gafc2800bc023c5241a9f588dad4c455ad"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#gafc2800bc023c5241a9f588dad4c455ad">&#9670;&nbsp;</a></span>isValidLocation()</h2>
+<a id="ga8e318c37d9100ca9195193b87ede8524" name="ga8e318c37d9100ca9195193b87ede8524"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga8e318c37d9100ca9195193b87ede8524">&#9670;&nbsp;</a></span>gsc_isValidLocation()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -387,9 +421,9 @@ Functions</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">static int isValidLocation </td>
+          <td class="memname">static int gsc_isValidLocation </td>
           <td>(</td>
-          <td class="paramtype">const <a class="el" href="struct_geno_location.html">GenoLocation</a>&#160;</td>
+          <td class="paramtype">const <a class="el" href="structgsc___geno_location.html">gsc_GenoLocation</a>&#160;</td>
           <td class="paramname"><em>g</em></td><td>)</td>
           <td></td>
         </tr>
@@ -401,7 +435,8 @@ Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Identify whether a <a class="el" href="struct_geno_location.html" title="An AlleleMatrix/AlleleMatrix index coordinate of a particular genotype in the simulation.">GenoLocation</a> is INVALID_GENO_LOCATION. </p>
+<p>Identify whether a <a class="el" href="structgsc___geno_location.html" title="An gsc_AlleleMatrix/gsc_AlleleMatrix index coordinate of a particular genotype in the simulation.">gsc_GenoLocation</a> is INVALID_GENO_LOCATION. </p>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="group__shortnames.html#ga74a123d16204f5ca9d85342f13d3ae9a">IS_VALID_LOCATION</a> <a class="el" href="group__shortnames.html#ga74a123d16204f5ca9d85342f13d3ae9a">IS_VALID_LOCATION</a> has the same function. </dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">g</td><td>location to check. </td></tr>
@@ -412,16 +447,16 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="ga9431cd1ae9e15331a5464ac1c1204a8d" name="ga9431cd1ae9e15331a5464ac1c1204a8d"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ga9431cd1ae9e15331a5464ac1c1204a8d">&#9670;&nbsp;</a></span>next_backwards()</h2>
+<a id="gaacc1f3131edc2c62e14442ca1b647871" name="gaacc1f3131edc2c62e14442ca1b647871"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gaacc1f3131edc2c62e14442ca1b647871">&#9670;&nbsp;</a></span>gsc_next_backwards()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="struct_geno_location.html">GenoLocation</a> next_backwards </td>
+          <td class="memname"><a class="el" href="structgsc___geno_location.html">gsc_GenoLocation</a> gsc_next_backwards </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="struct_bidirectional_iterator.html">BidirectionalIterator</a> *&#160;</td>
+          <td class="paramtype"><a class="el" href="structgsc___bidirectional_iterator.html">gsc_BidirectionalIterator</a> *&#160;</td>
           <td class="paramname"><em>it</em></td><td>)</td>
           <td></td>
         </tr>
@@ -429,41 +464,42 @@ Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Get the previous location from a bidirectional iterator. </p>
-<p >Moves the pointer of a <a class="el" href="struct_bidirectional_iterator.html" title="A structure to iterate forwards and backwards through all genotypes in a SimData or through only the ...">BidirectionalIterator</a> backwards by one step, and returns the new location it points to. If the <a class="el" href="struct_bidirectional_iterator.html" title="A structure to iterate forwards and backwards through all genotypes in a SimData or through only the ...">BidirectionalIterator</a> is not initialised, then initialises it to the very last element.</p>
-<p >Slightly slower than next_forwards, because the <a class="el" href="struct_allele_matrix.html">AlleleMatrix</a> linked list is not bidirectional. To find the preceding <a class="el" href="struct_allele_matrix.html">AlleleMatrix</a>, it needs to count forwards from the beginning of the list to find the n-1th <a class="el" href="struct_allele_matrix.html">AlleleMatrix</a>.</p>
-<p >Returns INVALID_GENO_LOCATION if the <a class="el" href="struct_bidirectional_iterator.html" title="A structure to iterate forwards and backwards through all genotypes in a SimData or through only the ...">BidirectionalIterator</a> is corrupted or if it is at the beginning of the sequence. Test the return value of this function with </p><dl class="section see"><dt>See also</dt><dd><a class="el" href="group__iterators.html#gafc2800bc023c5241a9f588dad4c455ad" title="Identify whether a GenoLocation is INVALID_GENO_LOCATION.">isValidLocation()</a>.</dd></dl>
+<p >Moves the pointer of a <a class="el" href="structgsc___bidirectional_iterator.html" title="A structure to iterate forwards and backwards through all genotypes in a gsc_SimData or through only ...">gsc_BidirectionalIterator</a> backwards by one step, and returns the new location it points to. If the <a class="el" href="structgsc___bidirectional_iterator.html" title="A structure to iterate forwards and backwards through all genotypes in a gsc_SimData or through only ...">gsc_BidirectionalIterator</a> is not initialised, then initialises it to the very last element.</p>
+<p >Slightly slower than gsc_next_forwards, because the <a class="el" href="structgsc___allele_matrix.html">gsc_AlleleMatrix</a> linked list is not bidirectional. To find the preceding <a class="el" href="structgsc___allele_matrix.html">gsc_AlleleMatrix</a>, it needs to count forwards from the beginning of the list to find the n-1th <a class="el" href="structgsc___allele_matrix.html">gsc_AlleleMatrix</a>.</p>
+<p >Returns GSC_INVALID_GENO_LOCATION if the <a class="el" href="structgsc___bidirectional_iterator.html" title="A structure to iterate forwards and backwards through all genotypes in a gsc_SimData or through only ...">gsc_BidirectionalIterator</a> is corrupted or if it is at the beginning of the sequence. Test the return value of this function with <a class="el" href="group__iterators.html#gabac400e75bbcf0fcfee5979feaae9fd6">GSC_IS_VALID_LOCATION()</a>.</p>
+<p ><em>Has short name:</em> <a class="el" href="group__shortnames.html#gaf09273de7be166868b7d8b0d9c5f2f2e">next_backwards</a></p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">it</td><td>the <a class="el" href="struct_bidirectional_iterator.html" title="A structure to iterate forwards and backwards through all genotypes in a SimData or through only the ...">BidirectionalIterator</a> to iterate backwards </td></tr>
+    <tr><td class="paramname">it</td><td>the <a class="el" href="structgsc___bidirectional_iterator.html" title="A structure to iterate forwards and backwards through all genotypes in a gsc_SimData or through only ...">gsc_BidirectionalIterator</a> to iterate backwards </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>the location of the previous genotype in the sequence, or INVALID_GENO_LOCATION if the iterator is corrupted or the iterator's pointer is already at the first element. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>the location of the previous genotype in the sequence, or GSC_INVALID_GENO_LOCATION if the iterator is corrupted or the iterator's pointer is already at the first element. </dd></dl>
 <div id="dynsection-5" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-5-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
 <div id="dynsection-5-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-5-content" class="dyncontent" style="display:none;">
-<div class="center"><img src="group__iterators_ga9431cd1ae9e15331a5464ac1c1204a8d_cgraph.png" border="0" usemap="#agroup__iterators_ga9431cd1ae9e15331a5464ac1c1204a8d_cgraph" alt=""/></div>
-<map name="agroup__iterators_ga9431cd1ae9e15331a5464ac1c1204a8d_cgraph" id="agroup__iterators_ga9431cd1ae9e15331a5464ac1c1204a8d_cgraph">
-<area shape="rect" title="Get the previous location from a bidirectional iterator." alt="" coords="5,5,121,33"/>
-<area shape="rect" href="group__iterators.html#gaab4c1841241403397fac8c6a2087a497" title="Get an AlleleMatrix by index in the linked list." alt="" coords="357,5,496,33"/>
-<area shape="rect" href="group__iterators.html#gaa7e9bc9b0ea586369586d01237d30258" title="Initialise a Bidirectional iterator to the end of its sequence." alt="" coords="169,27,309,71"/>
+<div class="center"><img src="group__iterators_gaacc1f3131edc2c62e14442ca1b647871_cgraph.png" border="0" usemap="#agroup__iterators_gaacc1f3131edc2c62e14442ca1b647871_cgraph" alt=""/></div>
+<map name="agroup__iterators_gaacc1f3131edc2c62e14442ca1b647871_cgraph" id="agroup__iterators_gaacc1f3131edc2c62e14442ca1b647871_cgraph">
+<area shape="rect" title="Get the previous location from a bidirectional iterator." alt="" coords="5,5,149,33"/>
+<area shape="rect" href="group__iterators.html#ga16615a5663b4d3bd768d8380f820aa66" title="Get an gsc_AlleleMatrix by index in the linked list." alt="" coords="388,5,555,33"/>
+<area shape="rect" href="group__iterators.html#ga99820e199424a3ec8ba7e3c58802fba9" title="Initialise a Bidirectional iterator to the end of its sequence." alt="" coords="197,27,340,71"/>
 </map>
 </div>
 
 </div>
 </div>
-<a id="gadff0d81d4ef4fd1f5afcdc7885779389" name="gadff0d81d4ef4fd1f5afcdc7885779389"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#gadff0d81d4ef4fd1f5afcdc7885779389">&#9670;&nbsp;</a></span>next_forwards()</h2>
+<a id="ga630ba7f8e864238e296cb9480dfbc728" name="ga630ba7f8e864238e296cb9480dfbc728"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga630ba7f8e864238e296cb9480dfbc728">&#9670;&nbsp;</a></span>gsc_next_forwards()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="struct_geno_location.html">GenoLocation</a> next_forwards </td>
+          <td class="memname"><a class="el" href="structgsc___geno_location.html">gsc_GenoLocation</a> gsc_next_forwards </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="struct_bidirectional_iterator.html">BidirectionalIterator</a> *&#160;</td>
+          <td class="paramtype"><a class="el" href="structgsc___bidirectional_iterator.html">gsc_BidirectionalIterator</a> *&#160;</td>
           <td class="paramname"><em>it</em></td><td>)</td>
           <td></td>
         </tr>
@@ -471,26 +507,25 @@ Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Get the next location from a bidirectional iterator. </p>
-<p >Moves the pointer of a <a class="el" href="struct_bidirectional_iterator.html" title="A structure to iterate forwards and backwards through all genotypes in a SimData or through only the ...">BidirectionalIterator</a> forwards by one step, and returns the new location it points to. If the <a class="el" href="struct_bidirectional_iterator.html" title="A structure to iterate forwards and backwards through all genotypes in a SimData or through only the ...">BidirectionalIterator</a> is not initialised, then initialises it to the very first element.</p>
-<p >Returns INVALID_GENO_LOCATION if the <a class="el" href="struct_bidirectional_iterator.html" title="A structure to iterate forwards and backwards through all genotypes in a SimData or through only the ...">BidirectionalIterator</a> is corrupted or if it is at the end of the sequence. Test the return value of this function with </p><dl class="section see"><dt>See also</dt><dd><a class="el" href="group__iterators.html#ga7eeea1f51dd7d0110707710938122b68">IS_VALID_LOCATION()</a> or </dd>
-<dd>
-<a class="el" href="group__iterators.html#gafc2800bc023c5241a9f588dad4c455ad" title="Identify whether a GenoLocation is INVALID_GENO_LOCATION.">isValidLocation()</a>.</dd></dl>
+<p >Moves the pointer of a <a class="el" href="structgsc___bidirectional_iterator.html" title="A structure to iterate forwards and backwards through all genotypes in a gsc_SimData or through only ...">gsc_BidirectionalIterator</a> forwards by one step, and returns the new location it points to. If the <a class="el" href="structgsc___bidirectional_iterator.html" title="A structure to iterate forwards and backwards through all genotypes in a gsc_SimData or through only ...">gsc_BidirectionalIterator</a> is not initialised, then initialises it to the very first element.</p>
+<p >Returns GSC_INVALID_GENO_LOCATION if the <a class="el" href="structgsc___bidirectional_iterator.html" title="A structure to iterate forwards and backwards through all genotypes in a gsc_SimData or through only ...">gsc_BidirectionalIterator</a> is corrupted or if it is at the end of the sequence. Test the return value of this function with <a class="el" href="group__iterators.html#gabac400e75bbcf0fcfee5979feaae9fd6">GSC_IS_VALID_LOCATION()</a>.</p>
+<p ><em>Has short name:</em> <a class="el" href="group__shortnames.html#ga78e7dac2c4c329adbd048de304ebb498">next_forwards</a></p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">it</td><td>the <a class="el" href="struct_bidirectional_iterator.html" title="A structure to iterate forwards and backwards through all genotypes in a SimData or through only the ...">BidirectionalIterator</a> to iterate forwards </td></tr>
+    <tr><td class="paramname">it</td><td>the <a class="el" href="structgsc___bidirectional_iterator.html" title="A structure to iterate forwards and backwards through all genotypes in a gsc_SimData or through only ...">gsc_BidirectionalIterator</a> to iterate forwards </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>the location of the next genotype in the sequence, or INVALID_GENO_LOCATION if the iterator is corrupted or the iterator's pointer is already at the last element. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>the location of the next genotype in the sequence, or GSC_INVALID_GENO_LOCATION if the iterator is corrupted or the iterator's pointer is already at the last element. </dd></dl>
 <div id="dynsection-6" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-6-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
 <div id="dynsection-6-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-6-content" class="dyncontent" style="display:none;">
-<div class="center"><img src="group__iterators_gadff0d81d4ef4fd1f5afcdc7885779389_cgraph.png" border="0" usemap="#agroup__iterators_gadff0d81d4ef4fd1f5afcdc7885779389_cgraph" alt=""/></div>
-<map name="agroup__iterators_gadff0d81d4ef4fd1f5afcdc7885779389_cgraph" id="agroup__iterators_gadff0d81d4ef4fd1f5afcdc7885779389_cgraph">
-<area shape="rect" title="Get the next location from a bidirectional iterator." alt="" coords="5,13,107,41"/>
-<area shape="rect" href="group__iterators.html#gabf1ee9717701b8580e118144c5671cb5" title="Initialise a Bidirectional iterator to the start of its sequence." alt="" coords="155,5,295,49"/>
+<div class="center"><img src="group__iterators_ga630ba7f8e864238e296cb9480dfbc728_cgraph.png" border="0" usemap="#agroup__iterators_ga630ba7f8e864238e296cb9480dfbc728_cgraph" alt=""/></div>
+<map name="agroup__iterators_ga630ba7f8e864238e296cb9480dfbc728_cgraph" id="agroup__iterators_ga630ba7f8e864238e296cb9480dfbc728_cgraph">
+<area shape="rect" title="Get the next location from a bidirectional iterator." alt="" coords="5,13,135,41"/>
+<area shape="rect" href="group__iterators.html#gaa4fa2aec3b7f49f9925fe82c8ff38dcd" title="Initialise a Bidirectional iterator to the start of its sequence." alt="" coords="183,5,326,49"/>
 </map>
 </div>
 <div id="dynsection-7" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
@@ -498,55 +533,61 @@ Functions</h2></td></tr>
 <div id="dynsection-7-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-7-content" class="dyncontent" style="display:none;">
-<div class="center"><img src="group__iterators_gadff0d81d4ef4fd1f5afcdc7885779389_icgraph.png" border="0" usemap="#agroup__iterators_gadff0d81d4ef4fd1f5afcdc7885779389_icgraph" alt=""/></div>
-<map name="agroup__iterators_gadff0d81d4ef4fd1f5afcdc7885779389_icgraph" id="agroup__iterators_gadff0d81d4ef4fd1f5afcdc7885779389_icgraph">
-<area shape="rect" title="Get the next location from a bidirectional iterator." alt="" coords="1233,529,1335,557"/>
-<area shape="rect" href="group__groupmod.html#ga56d387be7c04358909d7fcb3c773c0ba" title="Split by some allocator (generic function)" alt="" coords="428,154,595,182"/>
-<area shape="rect" href="sim-operations_8c.html#afc5332217ec53809dfa2ee757b350e0e" title="Split by some quality (generic function)" alt="" coords="857,469,1007,497"/>
-<area shape="rect" href="group__groupmod.html#ga54018cd747361983c4d3a90ea9abc05d" title="Combine a set of groups into one group." alt="" coords="1062,216,1178,244"/>
-<area shape="rect" href="group__collgetters.html#ga48161e16dc3abce9e3437d7c33f65cd1" title="Identify group numbers that currently have members, and how many members they have." alt="" coords="1055,521,1185,565"/>
-<area shape="rect" href="group__groupmod.html#ga6cc15e471588f5b7e00d358e6af232fd" title="Allocates the genotypes with values of a label in a particular range to a new group." alt="" coords="442,762,581,790"/>
-<area shape="rect" href="group__groupmod.html#ga94e9e1a407c7effc6f886b0b13084184" title="Allocates the genotypes with a particular value of a label to a new group." alt="" coords="443,814,579,842"/>
-<area shape="rect" href="group__groupmod.html#ga20b19aaab1ae2bf54cb657284d2a6935" title="Flip a coin for each member of the group to decide if it should be moved to the new group." alt="" coords="431,866,591,894"/>
-<area shape="rect" href="group__groupmod.html#ga889a60d61224875b37dfb4f53d3b695a" title="Allocate each member of the group to one of n groups with custom probabilities for each group." alt="" coords="219,233,362,277"/>
-<area shape="rect" href="group__groupmod.html#ga8d06ca9e6265ec8a81194f23c904a570" title="Split a group into n groups of equal size (or size differing only by one, if n does not perfectly div..." alt="" coords="209,61,372,105"/>
-<area shape="rect" href="group__groupmod.html#ga3a2d416a661b8dfa98db541aab2aabde" title="Split a group into n groups of equal size (or size differing only by one, if n does not perfectly div..." alt="" coords="225,129,356,157"/>
-<area shape="rect" href="group__groupmod.html#ga6834d279d86a7ada27fb571e97fea13a" title="Allocate each member of the group to one of n groups with equal probability." alt="" coords="217,181,364,209"/>
-<area shape="rect" href="group__groupmod.html#ga7902a9a728d27c4799eadf2b560a3790" title="Split a group into families by their pedigrees." alt="" coords="666,409,790,437"/>
-<area shape="rect" href="group__groupmod.html#gaf9cbba2a870a78c35b0857637b48a32a" title="Split a group into families of half&#45;siblings by shared first or second parent." alt="" coords="669,461,787,505"/>
-<area shape="rect" href="group__groupmod.html#gacea0a6c2089359494a1807827979979a" title="Split a group into n one&#45;member groups." alt="" coords="658,357,798,385"/>
-<area shape="rect" href="group__crossers.html#gafdd1fa0e8dd54ba1f3089c05986686cb" title="Find the top m percent of a group and perform random crosses between those top individuals." alt="" coords="5,293,158,337"/>
-<area shape="rect" href="group__collgetters.html#gab4afabad0d5085062a858bdc599f5a58" title="Identify group numbers that currently have members." alt="" coords="863,529,1001,557"/>
-<area shape="rect" href="group__supporters.html#gab8789bfd9de059d49a5252d8ad326af7" title="Function to identify the next n sequential integers that do not identify a group that currently has m..." alt="" coords="647,529,809,557"/>
-<area shape="rect" href="group__supporters.html#ga246d5902b3ba09a2d83a279575a0e19e" title="Function to identify the next sequential integer that does not identify a group that currently has me..." alt="" coords="658,581,798,609"/>
-<area shape="rect" href="group__crossers.html#ga823b906485f3edf2771935f2ad4f12db" title="Performs random crosses among members of a group." alt="" coords="206,353,375,381"/>
-<area shape="rect" href="group__crossers.html#ga21fd20fa9a626c2933b7ec114c3faca5" title="Performs random crosses where the first parent comes from one group and the second from another." alt="" coords="427,382,595,410"/>
-<area shape="rect" href="sim-operations_8c.html#a877bbfdb03961d00c30f7e2fa55efe7c" title="Performs the crosses of pairs of parents whose indexes are provided in an array." alt="" coords="423,434,599,462"/>
-<area shape="rect" href="group__loaders.html#ga38ad77c70ea0719c4c59644127fd3368" title="Appends genotype data from a file to an existing SimData." alt="" coords="435,486,587,530"/>
-<area shape="rect" href="group__crossers.html#ga4eb395614f3ec7ffecb3b779c16e6f17" title="Creates an identical copy of each member of a group." alt="" coords="462,554,560,582"/>
-<area shape="rect" href="group__crossers.html#ga6a3afc7743003c66fe24e7a2872e26cc" title="Creates a doubled haploid from each member of a group." alt="" coords="431,606,591,634"/>
-<area shape="rect" href="group__crossers.html#gaafc0d183fdb9762dc0817e5bd3009178" title="Selfs each member of a group for a certain number of generations." alt="" coords="464,658,558,686"/>
-<area shape="rect" href="group__groupmod.html#gaf21b446a646f846db7c4053f9e8bcb65" title="Split a group into two groups of equal size (or size differing only by one, if the original group had..." alt="" coords="440,710,583,738"/>
-<area shape="rect" href="group__groupmod.html#gaadc9a048dfeb0a9287c47b181d232738" title="Take a list of indexes and allocate the genotypes at those indexes to a new group." alt="" coords="453,278,569,306"/>
-<area shape="rect" href="group__crossers.html#gab173426b15ba3e135e1eea25035afd85" title="Perform crosses between all pairs of parents in the group from_group and allocates the resulting offs..." alt="" coords="212,473,369,517"/>
-<area shape="rect" href="group__crossers.html#ga18a22fc990289359e790fa207613c121" title="Perform crosses between pairs of parents identified by name in a file and allocate the resulting offs..." alt="" coords="210,541,371,569"/>
-<area shape="rect" href="group__crossers.html#ga0cc412ee0f607370ad3b34f4c39a15ff" title="Perform crosses between previously&#45;generated offspring of pairs of parents identified by name in a fi..." alt="" coords="215,405,366,449"/>
-<area shape="rect" href="group__calculators.html#ga88e086f459bf255ded35aff26f976ab8" title="Takes the top_n individuals in the group with the best breeding values/fitnesses and puts them in a n..." alt="" coords="248,301,333,329"/>
+<div class="center"><img src="group__iterators_ga630ba7f8e864238e296cb9480dfbc728_icgraph.png" border="0" usemap="#agroup__iterators_ga630ba7f8e864238e296cb9480dfbc728_icgraph" alt=""/></div>
+<map name="agroup__iterators_ga630ba7f8e864238e296cb9480dfbc728_icgraph" id="agroup__iterators_ga630ba7f8e864238e296cb9480dfbc728_icgraph">
+<area shape="rect" title="Get the next location from a bidirectional iterator." alt="" coords="1376,534,1506,562"/>
+<area shape="rect" href="group__supporters.html#ga63640e905157a54a1d84374f4ce2b140" title="Replace all occurences of a given allele with a different symbol representation." alt="" coords="1151,129,1328,157"/>
+<area shape="rect" href="group__groupmod.html#gafe9b4c3c798099790da0cbb6aa55ceca" title="Combine a set of groups into one group." alt="" coords="948,122,1093,150"/>
+<area shape="rect" href="group__collgetters.html#gaddb8ea59b22bbe0ec8c61da7f5ba8a98" title="Identify group numbers that currently have members, and how many members they have." alt="" coords="1161,439,1319,483"/>
+<area shape="rect" href="group__groupmod.html#gab0f7f198ee2602c6db2e315e7345b2e5" title="Split by some allocator (generic function)" alt="" coords="498,209,634,253"/>
+<area shape="rect" href="group__groupmod.html#ga5290a4afbf8a34b3149f476cc7a9a97d" title="Allocates the genotypes with values of a label in a particular range to a new group." alt="" coords="502,517,630,561"/>
+<area shape="rect" href="group__groupmod.html#gab2b56b3f3c1754e6f8a5440aaf2ba38b" title="Allocates the genotypes with a particular value of a label to a new group." alt="" coords="502,585,630,629"/>
+<area shape="rect" href="group__groupmod.html#gad3a5afbd400e53b51c16a2ab278b221a" title="Flip a coin for each member of the group to decide if it should be moved to the new group." alt="" coords="499,653,632,697"/>
+<area shape="rect" href="group__groupmod.html#ga078ef2c5d296b3104ee751d3c1d8eae6" title="Split by some quality (generic function)" alt="" coords="958,439,1083,483"/>
+<area shape="rect" href="sim-operations_8c.html#a7d20152442bba4d1dbcc3f4ae2bc51b9" title="parentChooser function parameter for gsc_make_clones." alt="" coords="1153,713,1326,757"/>
+<area shape="rect" href="sim-operations_8c.html#a3e5fffa876c895642fa703bdee3b045d" title="parentChooser function parameter for gsc_self_n_times." alt="" coords="479,773,652,817"/>
+<area shape="rect" href="group__crossers.html#gab19b3eb80b5fe460d17c93e0c27f7aaf" title="Find the top m percent of a group and perform random crosses between those top individuals." alt="" coords="26,382,174,426"/>
+<area shape="rect" href="group__collgetters.html#gaf9692ce014cfe5439fd00e522a6bab9f" title="Identify group numbers that currently have members." alt="" coords="938,335,1103,363"/>
+<area shape="rect" href="group__supporters.html#ga6d28dad64b97f61aac8575493ab8a95b" title="Function to identify the next n sequential integers that do not identify a group that currently has m..." alt="" coords="700,283,890,311"/>
+<area shape="rect" href="group__supporters.html#ga22609353c4951dcf3ed54537ecb6eeda" title="Function to identify the next sequential integer that does not identify a group that currently has me..." alt="" coords="711,335,879,363"/>
+<area shape="rect" href="group__groupmod.html#ga817560e5eeca1e7f5eb8a81b35114f38" title="Allocate each member of the group to one of n groups with custom probabilities for each group." alt="" coords="252,175,422,203"/>
+<area shape="rect" href="group__groupmod.html#ga07b4f4c7ffe4c40e0ed0658f56872cc7" title="Split a group into n groups of equal size (or size differing only by one, if n does not perfectly div..." alt="" coords="258,227,416,255"/>
+<area shape="rect" href="group__groupmod.html#ga750ec838a37133c3f26428647868b310" title="Split a group into n groups of equal size (or size differing only by one, if n does not perfectly div..." alt="" coords="260,279,414,307"/>
+<area shape="rect" href="group__groupmod.html#gacc75e6df7f5b7f05c7df04cf04977ea4" title="Allocate each member of the group to one of n groups with equal probability." alt="" coords="270,107,404,151"/>
+<area shape="rect" href="sim-operations_8c.html#a0f9bc7d42b9a98a1f4ea30c4a5f49312" title="Loads a genotype file, with or without existing genome model in the SimData." alt="" coords="491,277,640,321"/>
+<area shape="rect" href="group__groupmod.html#ga9a3bd44f93ffc4ee634a9c5d1aeb59a2" title="Take a list of indexes and allocate the genotypes at those indexes to a new group." alt="" coords="490,397,642,425"/>
+<area shape="rect" href="group__crossers.html#ga28b0fcf60b6a8f6e8ca470f7b5d0a4b7" title="Make new genotypes (generic function)" alt="" coords="485,449,647,493"/>
+<area shape="rect" href="group__groupmod.html#ga47292b150273a395fe282f86c0f78e0b" title="Split a group into two groups of equal size (or size differing only by one, if the original group had..." alt="" coords="480,345,651,373"/>
+<area shape="rect" href="group__loaders.html#gac7f5d37f0a3fd81aa26f1eae2ebae2db" title="Populates a gsc_SimData object with marker allele data, a genetic map, and (optionally) marker effect..." alt="" coords="269,331,405,359"/>
+<area shape="rect" href="group__loaders.html#gabbe46ffa8009c748d895d4215a6c8bb8" title="Load a set of genotypes to a gsc_SimData object." alt="" coords="25,330,175,358"/>
+<area shape="rect" href="group__calculators.html#ga3b43d07c08ed861ed0f22a69bb57b94a" title="Takes the top_n individuals in the group with the best breeding values/fitnesses and puts them in a n..." alt="" coords="280,387,394,415"/>
+<area shape="rect" href="group__crossers.html#ga15af204958dc69717334c46b19219a2d" title="Creates an identical copy of each member of a group." alt="" coords="274,618,400,646"/>
+<area shape="rect" href="group__crossers.html#ga6c230330ca9a9db9459d4477512a21af" title="Creates a doubled haploid from each member of a group." alt="" coords="243,683,431,711"/>
+<area shape="rect" href="group__crossers.html#ga03af5446006203244dd3080cf75af26f" title="Performs random crosses among members of a group." alt="" coords="245,507,429,535"/>
+<area shape="rect" href="group__crossers.html#ga652376b5a34d24f239e5fc0b167c067b" title="Performs random crosses where the first parent comes from one group and the second from another." alt="" coords="245,439,429,483"/>
+<area shape="rect" href="group__crossers.html#ga4450224009587f4cd4a972413423c96e" title="Performs the crosses of pairs of parents whose indexes are provided in an array." alt="" coords="243,559,431,587"/>
+<area shape="rect" href="group__crossers.html#gab625453074798be6ba8677a5d4986edf" title="Selfs each member of a group for a certain number of generations." alt="" coords="276,763,398,791"/>
+<area shape="rect" href="group__crossers.html#gaa70fd79312587d8e9fc166c64612cbce" title="Perform crosses between all pairs of parents in the group from_group and allocates the resulting offs..." alt="" coords="8,551,192,595"/>
+<area shape="rect" href="group__crossers.html#ga5c0be901d03d0e5dd3d74bc19a4bea70" title="Perform crosses between pairs of parents identified by name in a file and allocate the resulting offs..." alt="" coords="5,619,195,647"/>
+<area shape="rect" href="group__crossers.html#ga2b8100d2d30cf1ada0db8403663076ff" title="Perform crosses between previously&#45;generated offspring of pairs of parents identified by name in a fi..." alt="" coords="10,483,190,527"/>
+<area shape="rect" href="group__groupmod.html#ga4e2399c23a2a123d275f3cffbe46c74f" title="Split a group into families by their pedigrees." alt="" coords="719,387,871,415"/>
+<area shape="rect" href="group__groupmod.html#gadf875ab8f9f992dba4497258291b1ccd" title="Split a group into families of half&#45;siblings by shared first or second parent." alt="" coords="722,439,868,483"/>
+<area shape="rect" href="group__groupmod.html#ga8a45ea8ea9d072484ba1f1ac0c360cc4" title="Split a group into n one&#45;member groups." alt="" coords="711,507,879,535"/>
 </map>
 </div>
 
 </div>
 </div>
-<a id="gae12ec1fca24fc5ac891378d1468a9ed5" name="gae12ec1fca24fc5ac891378d1468a9ed5"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#gae12ec1fca24fc5ac891378d1468a9ed5">&#9670;&nbsp;</a></span>next_get_nth()</h2>
+<a id="ga5b9b804b6c3b0c165f20a765942fa810" name="ga5b9b804b6c3b0c165f20a765942fa810"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga5b9b804b6c3b0c165f20a765942fa810">&#9670;&nbsp;</a></span>gsc_next_get_nth()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="struct_geno_location.html">GenoLocation</a> next_get_nth </td>
+          <td class="memname"><a class="el" href="structgsc___geno_location.html">gsc_GenoLocation</a> gsc_next_get_nth </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="struct_random_access_iterator.html">RandomAccessIterator</a> *&#160;</td>
+          <td class="paramtype"><a class="el" href="structgsc___random_access_iterator.html">gsc_RandomAccessIterator</a> *&#160;</td>
           <td class="paramname"><em>it</em>, </td>
         </tr>
         <tr>
@@ -563,28 +604,29 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Get a location by index using a <a class="el" href="struct_random_access_iterator.html" title="A structure to search and cache indexes of all genotypes in a SimData or of all the members of a grou...">RandomAccessIterator</a>. </p>
-<p >Gives the location of the provided global index (if <code>it-&gt;group == 0</code>) or the location of the provided group index (if <code>it-&gt;group</code> is not 0), by first searching the <a class="el" href="struct_random_access_iterator.html" title="A structure to search and cache indexes of all genotypes in a SimData or of all the members of a grou...">RandomAccessIterator</a>'s cache for it and if not, searching the <a class="el" href="struct_sim_data.html" title="Composite type that is used to run crossing simulations.">SimData</a> for it and adding it and its predecessors to the cache.</p>
-<p >Returns INVALID_GENO_LOCATION if the iterator is corrupted or the index is invalid. Check the return value with </p><dl class="section see"><dt>See also</dt><dd><a class="el" href="group__iterators.html#gafc2800bc023c5241a9f588dad4c455ad" title="Identify whether a GenoLocation is INVALID_GENO_LOCATION.">isValidLocation()</a>.</dd></dl>
+<p>Get a location by index using a <a class="el" href="structgsc___random_access_iterator.html" title="A structure to search and cache indexes of all genotypes in a gsc_SimData or of all the members of a ...">gsc_RandomAccessIterator</a>. </p>
+<p >Gives the location of the provided global index (if <code>it-&gt;group == 0</code>) or the location of the provided group index (if <code>it-&gt;group</code> is not 0), by first searching the <a class="el" href="structgsc___random_access_iterator.html" title="A structure to search and cache indexes of all genotypes in a gsc_SimData or of all the members of a ...">gsc_RandomAccessIterator</a>'s cache for it and if not, searching the <a class="el" href="structgsc___sim_data.html" title="Composite type that is used to run crossing simulations.">gsc_SimData</a> for it and adding it and its predecessors to the cache.</p>
+<p >Returns GSC_INVALID_GENO_LOCATION if the iterator is corrupted or the index is invalid. Check the return value with <a class="el" href="group__iterators.html#gabac400e75bbcf0fcfee5979feaae9fd6">GSC_IS_VALID_LOCATION()</a>.</p>
+<p ><em>Has short name:</em> <a class="el" href="group__shortnames.html#ga6c778f594f3b64af885c8cfa3ce3a784">next_get_nth</a></p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">it</td><td>the <a class="el" href="struct_random_access_iterator.html" title="A structure to search and cache indexes of all genotypes in a SimData or of all the members of a grou...">RandomAccessIterator</a> to read and update the cache of. </td></tr>
+    <tr><td class="paramname">it</td><td>the <a class="el" href="structgsc___random_access_iterator.html" title="A structure to search and cache indexes of all genotypes in a gsc_SimData or of all the members of a ...">gsc_RandomAccessIterator</a> to read and update the cache of. </td></tr>
     <tr><td class="paramname">n</td><td>If the iterator is iterating through all genotypes, the global index in the simulation of the genotype you want to access. If the iterator is iterating through the group, the within-group index of the genotype you want to access. In either case the first genotype is at index 0. </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>the location of the nth genotype/nth group member, or INVALID_GENO_LOCATION if the index is invalid. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>the location of the nth genotype/nth group member, or GSC_INVALID_GENO_LOCATION if the index is invalid. </dd></dl>
 <div id="dynsection-8" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-8-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
 <div id="dynsection-8-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-8-content" class="dyncontent" style="display:none;">
-<div class="center"><img src="group__iterators_gae12ec1fca24fc5ac891378d1468a9ed5_cgraph.png" border="0" usemap="#agroup__iterators_gae12ec1fca24fc5ac891378d1468a9ed5_cgraph" alt=""/></div>
-<map name="agroup__iterators_gae12ec1fca24fc5ac891378d1468a9ed5_cgraph" id="agroup__iterators_gae12ec1fca24fc5ac891378d1468a9ed5_cgraph">
-<area shape="rect" title="Get a location by index using a RandomAccessIterator." alt="" coords="5,57,102,85"/>
-<area shape="rect" href="group__liteget.html#gac519344020834a97f9a1ffece03c4b12" title="Get the current group membership of a genotype." alt="" coords="180,5,259,33"/>
-<area shape="rect" href="group__supporters.html#ga6072a152b624743eeafb30adaf9b7f17" title="Replace calls to malloc direct with this function, which errors and exits with status 2 if memory all..." alt="" coords="177,57,262,85"/>
-<area shape="rect" href="group__iterators.html#gaab4c1841241403397fac8c6a2087a497" title="Get an AlleleMatrix by index in the linked list." alt="" coords="150,109,289,137"/>
+<div class="center"><img src="group__iterators_ga5b9b804b6c3b0c165f20a765942fa810_cgraph.png" border="0" usemap="#agroup__iterators_ga5b9b804b6c3b0c165f20a765942fa810_cgraph" alt=""/></div>
+<map name="agroup__iterators_ga5b9b804b6c3b0c165f20a765942fa810_cgraph" id="agroup__iterators_ga5b9b804b6c3b0c165f20a765942fa810_cgraph">
+<area shape="rect" title="Get a location by index using a gsc_RandomAccessIterator." alt="" coords="5,57,130,85"/>
+<area shape="rect" href="group__liteget.html#gae5d12aca851dd2358b63dc60b8ac6e5f" title="Get the current group membership of a genotype." alt="" coords="208,5,315,33"/>
+<area shape="rect" href="group__iterators.html#ga16615a5663b4d3bd768d8380f820aa66" title="Get an gsc_AlleleMatrix by index in the linked list." alt="" coords="178,57,345,85"/>
+<area shape="rect" href="sim-operations_8c.html#aaaf3ebc75feaf901829232712e55677b" title="Replace calls to malloc direct with this function." alt="" coords="201,109,322,137"/>
 </map>
 </div>
 <div id="dynsection-9" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
@@ -592,28 +634,37 @@ Functions</h2></td></tr>
 <div id="dynsection-9-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-9-content" class="dyncontent" style="display:none;">
-<div class="center"><img src="group__iterators_gae12ec1fca24fc5ac891378d1468a9ed5_icgraph.png" border="0" usemap="#agroup__iterators_gae12ec1fca24fc5ac891378d1468a9ed5_icgraph" alt=""/></div>
-<map name="agroup__iterators_gae12ec1fca24fc5ac891378d1468a9ed5_icgraph" id="agroup__iterators_gae12ec1fca24fc5ac891378d1468a9ed5_icgraph">
-<area shape="rect" title="Get a location by index using a RandomAccessIterator." alt="" coords="530,32,627,60"/>
-<area shape="rect" href="group__groupmod.html#gaf21b446a646f846db7c4053f9e8bcb65" title="Split a group into two groups of equal size (or size differing only by one, if the original group had..." alt="" coords="339,5,482,33"/>
-<area shape="rect" href="group__groupmod.html#gaadc9a048dfeb0a9287c47b181d232738" title="Take a list of indexes and allocate the genotypes at those indexes to a new group." alt="" coords="353,57,469,85"/>
-<area shape="rect" href="group__calculators.html#ga88e086f459bf255ded35aff26f976ab8" title="Takes the top_n individuals in the group with the best breeding values/fitnesses and puts them in a n..." alt="" coords="206,57,291,85"/>
-<area shape="rect" href="group__crossers.html#gafdd1fa0e8dd54ba1f3089c05986686cb" title="Find the top m percent of a group and perform random crosses between those top individuals." alt="" coords="5,49,158,93"/>
+<div class="center"><img src="group__iterators_ga5b9b804b6c3b0c165f20a765942fa810_icgraph.png" border="0" usemap="#agroup__iterators_ga5b9b804b6c3b0c165f20a765942fa810_icgraph" alt=""/></div>
+<map name="agroup__iterators_ga5b9b804b6c3b0c165f20a765942fa810_icgraph" id="agroup__iterators_ga5b9b804b6c3b0c165f20a765942fa810_icgraph">
+<area shape="rect" title="Get a location by index using a gsc_RandomAccessIterator." alt="" coords="702,141,827,169"/>
+<area shape="rect" href="sim-operations_8c.html#a1908f6e821f03205fcdf8bd0bfbc7050" title="parentChooser function parameter for gsc_make_random_crosses." alt="" coords="480,5,653,49"/>
+<area shape="rect" href="sim-operations_8c.html#a301f5b32dfc3d0a700fefa366b8a937e" title="parentChooser function parameter for gsc_make_random_crosses_between." alt="" coords="479,73,654,117"/>
+<area shape="rect" href="sim-operations_8c.html#a70d4029a8a6078e9e29635d5058f4021" title="parentChooser function parameter for gsc_make_targeted_crosses." alt="" coords="480,193,653,237"/>
+<area shape="rect" href="group__groupmod.html#ga9a3bd44f93ffc4ee634a9c5d1aeb59a2" title="Take a list of indexes and allocate the genotypes at those indexes to a new group." alt="" coords="491,141,643,169"/>
+<area shape="rect" href="group__groupmod.html#ga47292b150273a395fe282f86c0f78e0b" title="Split a group into two groups of equal size (or size differing only by one, if the original group had..." alt="" coords="481,261,652,289"/>
+<area shape="rect" href="group__crossers.html#ga03af5446006203244dd3080cf75af26f" title="Performs random crosses among members of a group." alt="" coords="245,17,429,45"/>
+<area shape="rect" href="group__crossers.html#gab19b3eb80b5fe460d17c93e0c27f7aaf" title="Find the top m percent of a group and perform random crosses between those top individuals." alt="" coords="26,37,174,81"/>
+<area shape="rect" href="group__crossers.html#ga652376b5a34d24f239e5fc0b167c067b" title="Performs random crosses where the first parent comes from one group and the second from another." alt="" coords="245,73,429,117"/>
+<area shape="rect" href="group__crossers.html#ga4450224009587f4cd4a972413423c96e" title="Performs the crosses of pairs of parents whose indexes are provided in an array." alt="" coords="243,201,431,229"/>
+<area shape="rect" href="group__crossers.html#gaa70fd79312587d8e9fc166c64612cbce" title="Perform crosses between all pairs of parents in the group from_group and allocates the resulting offs..." alt="" coords="8,133,192,177"/>
+<area shape="rect" href="group__crossers.html#ga5c0be901d03d0e5dd3d74bc19a4bea70" title="Perform crosses between pairs of parents identified by name in a file and allocate the resulting offs..." alt="" coords="5,201,195,229"/>
+<area shape="rect" href="group__crossers.html#ga2b8100d2d30cf1ada0db8403663076ff" title="Perform crosses between previously&#45;generated offspring of pairs of parents identified by name in a fi..." alt="" coords="10,253,190,297"/>
+<area shape="rect" href="group__calculators.html#ga3b43d07c08ed861ed0f22a69bb57b94a" title="Takes the top_n individuals in the group with the best breeding values/fitnesses and puts them in a n..." alt="" coords="280,141,394,169"/>
 </map>
 </div>
 
 </div>
 </div>
-<a id="gaa7e9bc9b0ea586369586d01237d30258" name="gaa7e9bc9b0ea586369586d01237d30258"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#gaa7e9bc9b0ea586369586d01237d30258">&#9670;&nbsp;</a></span>set_bidirectional_iter_to_end()</h2>
+<a id="ga99820e199424a3ec8ba7e3c58802fba9" name="ga99820e199424a3ec8ba7e3c58802fba9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga99820e199424a3ec8ba7e3c58802fba9">&#9670;&nbsp;</a></span>gsc_set_bidirectional_iter_to_end()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="struct_geno_location.html">GenoLocation</a> set_bidirectional_iter_to_end </td>
+          <td class="memname"><a class="el" href="structgsc___geno_location.html">gsc_GenoLocation</a> gsc_set_bidirectional_iter_to_end </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="struct_bidirectional_iterator.html">BidirectionalIterator</a> *&#160;</td>
+          <td class="paramtype"><a class="el" href="structgsc___bidirectional_iterator.html">gsc_BidirectionalIterator</a> *&#160;</td>
           <td class="paramname"><em>it</em></td><td>)</td>
           <td></td>
         </tr>
@@ -621,7 +672,8 @@ Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Initialise a Bidirectional iterator to the end of its sequence. </p>
-<p >Can be used to reset a <a class="el" href="struct_bidirectional_iterator.html" title="A structure to iterate forwards and backwards through all genotypes in a SimData or through only the ...">BidirectionalIterator</a> so that it is pointing at the very last member of the group it is looping through.</p>
+<p >Can be used to reset a <a class="el" href="structgsc___bidirectional_iterator.html" title="A structure to iterate forwards and backwards through all genotypes in a gsc_SimData or through only ...">gsc_BidirectionalIterator</a> so that it is pointing at the very last member of the group it is looping through.</p>
+<p ><em>Has short name:</em> <a class="el" href="group__shortnames.html#ga7137b74725f2990fbc42af04f9fd0669">set_bidirectional_iter_to_end</a></p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">it</td><td>BidirectioanlIterator to initialise </td></tr>
@@ -634,10 +686,10 @@ Functions</h2></td></tr>
 <div id="dynsection-10-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-10-content" class="dyncontent" style="display:none;">
-<div class="center"><img src="group__iterators_gaa7e9bc9b0ea586369586d01237d30258_cgraph.png" border="0" usemap="#agroup__iterators_gaa7e9bc9b0ea586369586d01237d30258_cgraph" alt=""/></div>
-<map name="agroup__iterators_gaa7e9bc9b0ea586369586d01237d30258_cgraph" id="agroup__iterators_gaa7e9bc9b0ea586369586d01237d30258_cgraph">
-<area shape="rect" title="Initialise a Bidirectional iterator to the end of its sequence." alt="" coords="5,5,146,49"/>
-<area shape="rect" href="group__iterators.html#gaab4c1841241403397fac8c6a2087a497" title="Get an AlleleMatrix by index in the linked list." alt="" coords="194,13,333,41"/>
+<div class="center"><img src="group__iterators_ga99820e199424a3ec8ba7e3c58802fba9_cgraph.png" border="0" usemap="#agroup__iterators_ga99820e199424a3ec8ba7e3c58802fba9_cgraph" alt=""/></div>
+<map name="agroup__iterators_ga99820e199424a3ec8ba7e3c58802fba9_cgraph" id="agroup__iterators_ga99820e199424a3ec8ba7e3c58802fba9_cgraph">
+<area shape="rect" title="Initialise a Bidirectional iterator to the end of its sequence." alt="" coords="5,5,149,49"/>
+<area shape="rect" href="group__iterators.html#ga16615a5663b4d3bd768d8380f820aa66" title="Get an gsc_AlleleMatrix by index in the linked list." alt="" coords="197,13,364,41"/>
 </map>
 </div>
 <div id="dynsection-11" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
@@ -645,25 +697,25 @@ Functions</h2></td></tr>
 <div id="dynsection-11-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-11-content" class="dyncontent" style="display:none;">
-<div class="center"><img src="group__iterators_gaa7e9bc9b0ea586369586d01237d30258_icgraph.png" border="0" usemap="#agroup__iterators_gaa7e9bc9b0ea586369586d01237d30258_icgraph" alt=""/></div>
-<map name="agroup__iterators_gaa7e9bc9b0ea586369586d01237d30258_icgraph" id="agroup__iterators_gaa7e9bc9b0ea586369586d01237d30258_icgraph">
-<area shape="rect" title="Initialise a Bidirectional iterator to the end of its sequence." alt="" coords="169,5,309,49"/>
-<area shape="rect" href="group__iterators.html#ga9431cd1ae9e15331a5464ac1c1204a8d" title="Get the previous location from a bidirectional iterator." alt="" coords="5,13,121,41"/>
+<div class="center"><img src="group__iterators_ga99820e199424a3ec8ba7e3c58802fba9_icgraph.png" border="0" usemap="#agroup__iterators_ga99820e199424a3ec8ba7e3c58802fba9_icgraph" alt=""/></div>
+<map name="agroup__iterators_ga99820e199424a3ec8ba7e3c58802fba9_icgraph" id="agroup__iterators_ga99820e199424a3ec8ba7e3c58802fba9_icgraph">
+<area shape="rect" title="Initialise a Bidirectional iterator to the end of its sequence." alt="" coords="197,5,340,49"/>
+<area shape="rect" href="group__iterators.html#gaacc1f3131edc2c62e14442ca1b647871" title="Get the previous location from a bidirectional iterator." alt="" coords="5,13,149,41"/>
 </map>
 </div>
 
 </div>
 </div>
-<a id="gabf1ee9717701b8580e118144c5671cb5" name="gabf1ee9717701b8580e118144c5671cb5"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#gabf1ee9717701b8580e118144c5671cb5">&#9670;&nbsp;</a></span>set_bidirectional_iter_to_start()</h2>
+<a id="gaa4fa2aec3b7f49f9925fe82c8ff38dcd" name="gaa4fa2aec3b7f49f9925fe82c8ff38dcd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gaa4fa2aec3b7f49f9925fe82c8ff38dcd">&#9670;&nbsp;</a></span>gsc_set_bidirectional_iter_to_start()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="struct_geno_location.html">GenoLocation</a> set_bidirectional_iter_to_start </td>
+          <td class="memname"><a class="el" href="structgsc___geno_location.html">gsc_GenoLocation</a> gsc_set_bidirectional_iter_to_start </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="struct_bidirectional_iterator.html">BidirectionalIterator</a> *&#160;</td>
+          <td class="paramtype"><a class="el" href="structgsc___bidirectional_iterator.html">gsc_BidirectionalIterator</a> *&#160;</td>
           <td class="paramname"><em>it</em></td><td>)</td>
           <td></td>
         </tr>
@@ -671,7 +723,8 @@ Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Initialise a Bidirectional iterator to the start of its sequence. </p>
-<p >Can be used to reset a <a class="el" href="struct_bidirectional_iterator.html" title="A structure to iterate forwards and backwards through all genotypes in a SimData or through only the ...">BidirectionalIterator</a> so that it is pointing at the very first member of the group it is looping through.</p>
+<p >Can be used to reset a <a class="el" href="structgsc___bidirectional_iterator.html" title="A structure to iterate forwards and backwards through all genotypes in a gsc_SimData or through only ...">gsc_BidirectionalIterator</a> so that it is pointing at the very first member of the group it is looping through.</p>
+<p ><em>Has short name:</em> <a class="el" href="group__shortnames.html#ga60fa7078ac84231afe8ec7cd9cf850ef">set_bidirectional_iter_to_start</a></p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">it</td><td>BidirectioanlIterator to initialise </td></tr>
@@ -684,41 +737,47 @@ Functions</h2></td></tr>
 <div id="dynsection-12-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-12-content" class="dyncontent" style="display:none;">
-<div class="center"><img src="group__iterators_gabf1ee9717701b8580e118144c5671cb5_icgraph.png" border="0" usemap="#agroup__iterators_gabf1ee9717701b8580e118144c5671cb5_icgraph" alt=""/></div>
-<map name="agroup__iterators_gabf1ee9717701b8580e118144c5671cb5_icgraph" id="agroup__iterators_gabf1ee9717701b8580e118144c5671cb5_icgraph">
-<area shape="rect" title="Initialise a Bidirectional iterator to the start of its sequence." alt="" coords="1383,521,1523,565"/>
-<area shape="rect" href="group__iterators.html#gadff0d81d4ef4fd1f5afcdc7885779389" title="Get the next location from a bidirectional iterator." alt="" coords="1233,529,1335,557"/>
-<area shape="rect" href="group__groupmod.html#ga56d387be7c04358909d7fcb3c773c0ba" title="Split by some allocator (generic function)" alt="" coords="428,154,595,182"/>
-<area shape="rect" href="sim-operations_8c.html#afc5332217ec53809dfa2ee757b350e0e" title="Split by some quality (generic function)" alt="" coords="857,469,1007,497"/>
-<area shape="rect" href="group__groupmod.html#ga54018cd747361983c4d3a90ea9abc05d" title="Combine a set of groups into one group." alt="" coords="1062,216,1178,244"/>
-<area shape="rect" href="group__collgetters.html#ga48161e16dc3abce9e3437d7c33f65cd1" title="Identify group numbers that currently have members, and how many members they have." alt="" coords="1055,521,1185,565"/>
-<area shape="rect" href="group__groupmod.html#ga6cc15e471588f5b7e00d358e6af232fd" title="Allocates the genotypes with values of a label in a particular range to a new group." alt="" coords="442,762,581,790"/>
-<area shape="rect" href="group__groupmod.html#ga94e9e1a407c7effc6f886b0b13084184" title="Allocates the genotypes with a particular value of a label to a new group." alt="" coords="443,814,579,842"/>
-<area shape="rect" href="group__groupmod.html#ga20b19aaab1ae2bf54cb657284d2a6935" title="Flip a coin for each member of the group to decide if it should be moved to the new group." alt="" coords="431,866,591,894"/>
-<area shape="rect" href="group__groupmod.html#ga889a60d61224875b37dfb4f53d3b695a" title="Allocate each member of the group to one of n groups with custom probabilities for each group." alt="" coords="219,233,362,277"/>
-<area shape="rect" href="group__groupmod.html#ga8d06ca9e6265ec8a81194f23c904a570" title="Split a group into n groups of equal size (or size differing only by one, if n does not perfectly div..." alt="" coords="209,61,372,105"/>
-<area shape="rect" href="group__groupmod.html#ga3a2d416a661b8dfa98db541aab2aabde" title="Split a group into n groups of equal size (or size differing only by one, if n does not perfectly div..." alt="" coords="225,129,356,157"/>
-<area shape="rect" href="group__groupmod.html#ga6834d279d86a7ada27fb571e97fea13a" title="Allocate each member of the group to one of n groups with equal probability." alt="" coords="217,181,364,209"/>
-<area shape="rect" href="group__groupmod.html#ga7902a9a728d27c4799eadf2b560a3790" title="Split a group into families by their pedigrees." alt="" coords="666,409,790,437"/>
-<area shape="rect" href="group__groupmod.html#gaf9cbba2a870a78c35b0857637b48a32a" title="Split a group into families of half&#45;siblings by shared first or second parent." alt="" coords="669,461,787,505"/>
-<area shape="rect" href="group__groupmod.html#gacea0a6c2089359494a1807827979979a" title="Split a group into n one&#45;member groups." alt="" coords="658,357,798,385"/>
-<area shape="rect" href="group__crossers.html#gafdd1fa0e8dd54ba1f3089c05986686cb" title="Find the top m percent of a group and perform random crosses between those top individuals." alt="" coords="5,293,158,337"/>
-<area shape="rect" href="group__collgetters.html#gab4afabad0d5085062a858bdc599f5a58" title="Identify group numbers that currently have members." alt="" coords="863,529,1001,557"/>
-<area shape="rect" href="group__supporters.html#gab8789bfd9de059d49a5252d8ad326af7" title="Function to identify the next n sequential integers that do not identify a group that currently has m..." alt="" coords="647,529,809,557"/>
-<area shape="rect" href="group__supporters.html#ga246d5902b3ba09a2d83a279575a0e19e" title="Function to identify the next sequential integer that does not identify a group that currently has me..." alt="" coords="658,581,798,609"/>
-<area shape="rect" href="group__crossers.html#ga823b906485f3edf2771935f2ad4f12db" title="Performs random crosses among members of a group." alt="" coords="206,353,375,381"/>
-<area shape="rect" href="group__crossers.html#ga21fd20fa9a626c2933b7ec114c3faca5" title="Performs random crosses where the first parent comes from one group and the second from another." alt="" coords="427,382,595,410"/>
-<area shape="rect" href="sim-operations_8c.html#a877bbfdb03961d00c30f7e2fa55efe7c" title="Performs the crosses of pairs of parents whose indexes are provided in an array." alt="" coords="423,434,599,462"/>
-<area shape="rect" href="group__loaders.html#ga38ad77c70ea0719c4c59644127fd3368" title="Appends genotype data from a file to an existing SimData." alt="" coords="435,486,587,530"/>
-<area shape="rect" href="group__crossers.html#ga4eb395614f3ec7ffecb3b779c16e6f17" title="Creates an identical copy of each member of a group." alt="" coords="462,554,560,582"/>
-<area shape="rect" href="group__crossers.html#ga6a3afc7743003c66fe24e7a2872e26cc" title="Creates a doubled haploid from each member of a group." alt="" coords="431,606,591,634"/>
-<area shape="rect" href="group__crossers.html#gaafc0d183fdb9762dc0817e5bd3009178" title="Selfs each member of a group for a certain number of generations." alt="" coords="464,658,558,686"/>
-<area shape="rect" href="group__groupmod.html#gaf21b446a646f846db7c4053f9e8bcb65" title="Split a group into two groups of equal size (or size differing only by one, if the original group had..." alt="" coords="440,710,583,738"/>
-<area shape="rect" href="group__groupmod.html#gaadc9a048dfeb0a9287c47b181d232738" title="Take a list of indexes and allocate the genotypes at those indexes to a new group." alt="" coords="453,278,569,306"/>
-<area shape="rect" href="group__crossers.html#gab173426b15ba3e135e1eea25035afd85" title="Perform crosses between all pairs of parents in the group from_group and allocates the resulting offs..." alt="" coords="212,473,369,517"/>
-<area shape="rect" href="group__crossers.html#ga18a22fc990289359e790fa207613c121" title="Perform crosses between pairs of parents identified by name in a file and allocate the resulting offs..." alt="" coords="210,541,371,569"/>
-<area shape="rect" href="group__crossers.html#ga0cc412ee0f607370ad3b34f4c39a15ff" title="Perform crosses between previously&#45;generated offspring of pairs of parents identified by name in a fi..." alt="" coords="215,405,366,449"/>
-<area shape="rect" href="group__calculators.html#ga88e086f459bf255ded35aff26f976ab8" title="Takes the top_n individuals in the group with the best breeding values/fitnesses and puts them in a n..." alt="" coords="248,301,333,329"/>
+<div class="center"><img src="group__iterators_gaa4fa2aec3b7f49f9925fe82c8ff38dcd_icgraph.png" border="0" usemap="#agroup__iterators_gaa4fa2aec3b7f49f9925fe82c8ff38dcd_icgraph" alt=""/></div>
+<map name="agroup__iterators_gaa4fa2aec3b7f49f9925fe82c8ff38dcd_icgraph" id="agroup__iterators_gaa4fa2aec3b7f49f9925fe82c8ff38dcd_icgraph">
+<area shape="rect" title="Initialise a Bidirectional iterator to the start of its sequence." alt="" coords="1554,427,1697,471"/>
+<area shape="rect" href="group__supporters.html#ga63640e905157a54a1d84374f4ce2b140" title="Replace all occurences of a given allele with a different symbol representation." alt="" coords="1151,111,1328,139"/>
+<area shape="rect" href="group__iterators.html#ga630ba7f8e864238e296cb9480dfbc728" title="Get the next location from a bidirectional iterator." alt="" coords="1376,460,1506,488"/>
+<area shape="rect" href="group__groupmod.html#gafe9b4c3c798099790da0cbb6aa55ceca" title="Combine a set of groups into one group." alt="" coords="948,712,1093,740"/>
+<area shape="rect" href="group__collgetters.html#gaddb8ea59b22bbe0ec8c61da7f5ba8a98" title="Identify group numbers that currently have members, and how many members they have." alt="" coords="1161,392,1319,436"/>
+<area shape="rect" href="group__groupmod.html#gab0f7f198ee2602c6db2e315e7345b2e5" title="Split by some allocator (generic function)" alt="" coords="498,81,634,125"/>
+<area shape="rect" href="group__groupmod.html#ga5290a4afbf8a34b3149f476cc7a9a97d" title="Allocates the genotypes with values of a label in a particular range to a new group." alt="" coords="502,457,630,501"/>
+<area shape="rect" href="group__groupmod.html#gab2b56b3f3c1754e6f8a5440aaf2ba38b" title="Allocates the genotypes with a particular value of a label to a new group." alt="" coords="502,525,630,569"/>
+<area shape="rect" href="group__groupmod.html#gad3a5afbd400e53b51c16a2ab278b221a" title="Flip a coin for each member of the group to decide if it should be moved to the new group." alt="" coords="499,149,632,193"/>
+<area shape="rect" href="group__groupmod.html#ga078ef2c5d296b3104ee751d3c1d8eae6" title="Split by some quality (generic function)" alt="" coords="958,421,1083,465"/>
+<area shape="rect" href="sim-operations_8c.html#a7d20152442bba4d1dbcc3f4ae2bc51b9" title="parentChooser function parameter for gsc_make_clones." alt="" coords="1153,644,1326,688"/>
+<area shape="rect" href="sim-operations_8c.html#a3e5fffa876c895642fa703bdee3b045d" title="parentChooser function parameter for gsc_self_n_times." alt="" coords="479,593,652,637"/>
+<area shape="rect" href="group__crossers.html#gab19b3eb80b5fe460d17c93e0c27f7aaf" title="Find the top m percent of a group and perform random crosses between those top individuals." alt="" coords="26,473,174,517"/>
+<area shape="rect" href="group__collgetters.html#gaf9692ce014cfe5439fd00e522a6bab9f" title="Identify group numbers that currently have members." alt="" coords="938,317,1103,345"/>
+<area shape="rect" href="group__supporters.html#ga6d28dad64b97f61aac8575493ab8a95b" title="Function to identify the next n sequential integers that do not identify a group that currently has m..." alt="" coords="700,265,890,293"/>
+<area shape="rect" href="group__supporters.html#ga22609353c4951dcf3ed54537ecb6eeda" title="Function to identify the next sequential integer that does not identify a group that currently has me..." alt="" coords="711,317,879,345"/>
+<area shape="rect" href="group__groupmod.html#ga817560e5eeca1e7f5eb8a81b35114f38" title="Allocate each member of the group to one of n groups with custom probabilities for each group." alt="" coords="252,125,422,153"/>
+<area shape="rect" href="group__groupmod.html#ga07b4f4c7ffe4c40e0ed0658f56872cc7" title="Split a group into n groups of equal size (or size differing only by one, if n does not perfectly div..." alt="" coords="258,177,416,205"/>
+<area shape="rect" href="group__groupmod.html#ga750ec838a37133c3f26428647868b310" title="Split a group into n groups of equal size (or size differing only by one, if n does not perfectly div..." alt="" coords="260,5,414,33"/>
+<area shape="rect" href="group__groupmod.html#gacc75e6df7f5b7f05c7df04cf04977ea4" title="Allocate each member of the group to one of n groups with equal probability." alt="" coords="270,57,404,101"/>
+<area shape="rect" href="sim-operations_8c.html#a0f9bc7d42b9a98a1f4ea30c4a5f49312" title="Loads a genotype file, with or without existing genome model in the SimData." alt="" coords="491,269,640,313"/>
+<area shape="rect" href="group__groupmod.html#ga9a3bd44f93ffc4ee634a9c5d1aeb59a2" title="Take a list of indexes and allocate the genotypes at those indexes to a new group." alt="" coords="490,337,642,365"/>
+<area shape="rect" href="group__crossers.html#ga28b0fcf60b6a8f6e8ca470f7b5d0a4b7" title="Make new genotypes (generic function)" alt="" coords="485,389,647,433"/>
+<area shape="rect" href="group__groupmod.html#ga47292b150273a395fe282f86c0f78e0b" title="Split a group into two groups of equal size (or size differing only by one, if the original group had..." alt="" coords="480,217,651,245"/>
+<area shape="rect" href="group__loaders.html#gac7f5d37f0a3fd81aa26f1eae2ebae2db" title="Populates a gsc_SimData object with marker allele data, a genetic map, and (optionally) marker effect..." alt="" coords="269,232,405,260"/>
+<area shape="rect" href="group__loaders.html#gabbe46ffa8009c748d895d4215a6c8bb8" title="Load a set of genotypes to a gsc_SimData object." alt="" coords="25,208,175,236"/>
+<area shape="rect" href="group__calculators.html#ga3b43d07c08ed861ed0f22a69bb57b94a" title="Takes the top_n individuals in the group with the best breeding values/fitnesses and puts them in a n..." alt="" coords="280,361,394,389"/>
+<area shape="rect" href="group__crossers.html#ga15af204958dc69717334c46b19219a2d" title="Creates an identical copy of each member of a group." alt="" coords="274,655,400,683"/>
+<area shape="rect" href="group__crossers.html#ga6c230330ca9a9db9459d4477512a21af" title="Creates a doubled haploid from each member of a group." alt="" coords="243,600,431,628"/>
+<area shape="rect" href="group__crossers.html#ga03af5446006203244dd3080cf75af26f" title="Performs random crosses among members of a group." alt="" coords="245,481,429,509"/>
+<area shape="rect" href="group__crossers.html#ga652376b5a34d24f239e5fc0b167c067b" title="Performs random crosses where the first parent comes from one group and the second from another." alt="" coords="245,413,429,457"/>
+<area shape="rect" href="group__crossers.html#ga4450224009587f4cd4a972413423c96e" title="Performs the crosses of pairs of parents whose indexes are provided in an array." alt="" coords="243,309,431,337"/>
+<area shape="rect" href="group__crossers.html#gab625453074798be6ba8677a5d4986edf" title="Selfs each member of a group for a certain number of generations." alt="" coords="276,539,398,567"/>
+<area shape="rect" href="group__crossers.html#gaa70fd79312587d8e9fc166c64612cbce" title="Perform crosses between all pairs of parents in the group from_group and allocates the resulting offs..." alt="" coords="8,328,192,372"/>
+<area shape="rect" href="group__crossers.html#ga5c0be901d03d0e5dd3d74bc19a4bea70" title="Perform crosses between pairs of parents identified by name in a file and allocate the resulting offs..." alt="" coords="5,396,195,424"/>
+<area shape="rect" href="group__crossers.html#ga2b8100d2d30cf1ada0db8403663076ff" title="Perform crosses between previously&#45;generated offspring of pairs of parents identified by name in a fi..." alt="" coords="10,260,190,304"/>
+<area shape="rect" href="group__groupmod.html#ga4e2399c23a2a123d275f3cffbe46c74f" title="Split a group into families by their pedigrees." alt="" coords="719,369,871,397"/>
+<area shape="rect" href="group__groupmod.html#gadf875ab8f9f992dba4497258291b1ccd" title="Split a group into families of half&#45;siblings by shared first or second parent." alt="" coords="722,421,868,465"/>
+<area shape="rect" href="group__groupmod.html#ga8a45ea8ea9d072484ba1f1ac0c360cc4" title="Split a group into n one&#45;member groups." alt="" coords="711,489,879,517"/>
 </map>
 </div>
 

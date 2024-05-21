@@ -1,0 +1,4 @@
+<map id="gsc_calculate_full_count_matrix" name="gsc_calculate_full_count_matrix">
+<area shape="rect" id="node1" title="Calculates the number of times at each marker that a particular allele appears for each genotype in t..." alt="" coords="211,5,335,49"/>
+<area shape="rect" id="node2" href="$group__savers.html#ga9678bbe9c8db5f7774188b9574c0c09c" title="Print the number of copies of a particular allele at each marker of each genotype in the gsc_SimData ..." alt="" coords="5,13,163,41"/>
+</map>

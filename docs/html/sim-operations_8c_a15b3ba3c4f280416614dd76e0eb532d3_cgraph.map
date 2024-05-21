@@ -1,0 +1,8 @@
+<map id="gsc_get_sorted_markers" name="gsc_get_sorted_markers">
+<area shape="rect" id="node1" title="Takes a gsc_SimData object, and sorts its markers, the rows of its parent gen gsc_AlleleMatrix (becau..." alt="" coords="5,109,170,137"/>
+<area shape="rect" id="node2" href="$group__deletors.html#ga99bbd9355f031efae628b27e6ae72f6a" title="Deletes a gsc_DecimalMatrix and frees its memory." alt="" coords="241,5,376,33"/>
+<area shape="rect" id="node3" href="$group__deletors.html#ga9fa58a28c15fd3d6a729a05168aeab7f" title="Deletes a gsc_GeneticMap object and frees its memory." alt="" coords="240,57,377,85"/>
+<area shape="rect" id="node4" href="$group__maths.html#gae001e0609ac52df335530f9473cb57e1" title="Generates a matrix of c columns, r rows with all 0." alt="" coords="218,109,399,137"/>
+<area shape="rect" id="node5" href="$sim-operations_8c.html#a13bf076f6441cb69d76fc5058371dec1" title="Replace calls to malloc direct with this function, which errors and exits with status 2 if memory all..." alt="" coords="447,136,568,164"/>
+<area shape="rect" id="node6" href="$sim-operations_8c.html#af13e6ee065336f58eae9bc61ee0095dd" title="Comparator function for qsort." alt="" coords="240,213,377,257"/>
+</map>

@@ -21,7 +21,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">genomicSimulationC<span id="projectnumber">&#160;0.2.4.003</span>
+   <div id="projectname">genomicSimulationC<span id="projectnumber">&#160;0.2.4.005</span>
    </div>
   </td>
  </tr>
@@ -67,14 +67,14 @@ $(function() {
 <div class="contents">
 <div class="textblock"><p >A list of understandings about the simulation tool that you can trust will hold. C function names are used, but the assumptions still hold in the R version:</p>
 <ul>
-<li>No function can change genetic marker indexes or order, or the genetic map. The genetic map is set and static from the point it is loaded. A new <a class="el" href="struct_sim_data.html" title="Composite type that is used to run crossing simulations.">SimData</a> must be created to change it</li>
+<li>No function can change genetic marker indexes or order, or the genetic map. The genetic map is set and static from the point it is loaded. A new SimData must be created to change it</li>
 <li>No function except delete_group can change genotype indexes or invalidate iterators. delete_group deletes all genotypes in the named groups, and shuffles all genotypes after the now-deleted ones backwards (retaining order) to fill in gaps where now-deleted genotypes sat.</li>
 <li>No function will change the relative order of genotypes (follows from above).</li>
-<li>Progeny from the same cross will be given sequential indexes (and IDs, if IDs are allocated). That is, when <a class="el" href="struct_gen_options.html#a76fff8d868300904c232812b3331ef46" title="The number of offspring to produce from each cross.">GenOptions.family_size</a> &gt; 1 when calling a crossing function, that fullsib family are stored side-by-side to each other.</li>
+<li>Progeny from the same cross will be given sequential indexes (and IDs, if IDs are allocated). That is, when GenOptions.family_size &gt; 1 when calling a crossing function, that fullsib family are stored side-by-side to each other.</li>
 <li>Genotypes loaded from an input file will be stored (and given IDs, and indexes) in the same order as they appeared in the input file.</li>
 <li>The order of genetic markers may not match the order of genetic markers in the input file: they will be re-ordered to match the genetic map (eg sorted by lower chromosome number and earlier position).</li>
 </ul>
-<h1><a class="anchor" id="autotoc_md47"></a>
+<h1><a class="anchor" id="autotoc_md49"></a>
 Valid values</h1>
 <ul>
 <li>Genotype indexes will be integer values greater than or equal to 0. These correspond to the position the genotype is currently stored at inside the simulation's data structures.</li>

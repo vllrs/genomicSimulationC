@@ -1,0 +1,5 @@
+<map id="gsc_load_more_genotypes_transposed" name="gsc_load_more_genotypes_transposed">
+<area shape="rect" id="node1" title="Appends genotype data from a file to an existing gsc_SimData." alt="" coords="367,5,543,49"/>
+<area shape="rect" id="node2" href="$group__loaders.html#gaaa55b74115cd110bb111e9dfb28dd2aa" title="Populates a gsc_SimData combination with marker allele data." alt="" coords="179,5,319,49"/>
+<area shape="rect" id="node3" href="$group__loaders.html#ga2361e1185a626fbac89cdcf504af82c7" title="Populates a gsc_SimData combination from scratch with marker allele data, a genetic map,..." alt="" coords="5,13,131,41"/>
+</map>

@@ -21,7 +21,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">genomicSimulationC<span id="projectnumber">&#160;0.2.4.003</span>
+   <div id="projectname">genomicSimulationC<span id="projectnumber">&#160;0.2.5</span>
    </div>
   </td>
  </tr>
@@ -67,48 +67,73 @@ $(function() {
 <div class="contents">
 <div class="textblock"><p ><a class="anchor" id="md_NEWS"></a></p>
 <h1><a class="anchor" id="autotoc_md3"></a>
+New Features</h1>
+<ul>
+<li>Add ability to load multiple recombination maps into simulation at a time. Loading a genetic map file will return an MapID that represents that particular map. All crossing functions now have additional parameters that allow you to select which recombination map to use when generating gametes from each group of parents. The crossing functions default to using the first loaded recombination map if not otherwise specified. Maps can be removed from memory using delete_recombination_map. The list of genetic markers changed by the simulation, however, is still immutable, so genetic markers not present in the first map loaded will not be tracked or simulated.</li>
+<li>New function <code>change_allele_symbol</code> changes the internal representation of a particular allele. It does not modify corresponding marker effects.</li>
+</ul>
+<h1><a class="anchor" id="autotoc_md4"></a>
+Bug Fixes</h1>
+<ul>
+<li>Fix a bug in large simulations where gaps in the AlleleMatrix linked list failed to be patched in <code>condense_allele_matrix</code>, and some genotypes lost their group numbers (group numbers reverted to 0).</li>
+</ul>
+<h1><a class="anchor" id="autotoc_md5"></a>
+Improvements</h1>
+<ul>
+<li>Smarter and more robust genotype matrix, genetic map, and effect file loaders. See R version vignette or Templates page of C version documentation for more information.</li>
+<li>All C code now has C-style "namespace guards" (the prefix <code>gsc_</code> in front of every name). Data structures and user-friendly functions are still exported with non-prefixed "short names" unless <code>GSC_NO_SHORT_NAMES</code> is defined before import. The excellent stb libraries (<a href="https://github.com/nothings/stb">https://github.com/nothings/stb</a>) served as guides for how to do this.</li>
+<li>Several function names have been changed, for better consistency within functional categories and better consistency with the R version of genomicSimulation. To keep using the old names (at least while their function signatures remain the same), import the <code>names_stopgap.h</code> header file. Optionally, <code>#define GSC_DEPRECATED_VERBOSE</code> before importing <code>names_stopgap.h</code>, and it will tell you exactly what names have changed to what, for a nice and easy find-and-replace way to update to the new names.</li>
+<li>CONTIG_WIDTH and NAME_LENGTH (the "global settings") can now be altered without needing to modify the genomicSimulation source files, using macro definitions. See instructions at the top of <a class="el" href="sim-operations_8h.html">sim-operations.h</a></li>
+<li>genomicSimulation's malloc and free can be replaced with alternate implementations, using macro definitions. See instructions at the top of <a class="el" href="sim-operations_8h.html">sim-operations.h</a>.</li>
+<li>Significant under-the-hood changes to crossing functions. They now call <code>_make_genotypes</code>, a generic function, to reduce code duplication.</li>
+<li>The same script and same random seed re-run post-0.2.4.003 will now produce slightly different genotypes. This is because the two gametes that make a cross are now generated successively (first one, then the other) rather than simultaneously.</li>
+<li>Under-the-hood changes to <code>condense_allele_matrix</code>, for easier debugging. It now takes advantage of a <code>GappyIterator</code> to help it shuffle the positions of genotypes in the AlleleMatrix linked list.</li>
+<li>Remove all Variable Length Arrays (VLAs). All buffers used internally in genomicSimulation now allocate themselves sizeof(int)*CONTIG_WIDTH bytes of space on the stack, or use heap memory if that is insufficient. <br  />
+</li>
+</ul>
+<h1><a class="anchor" id="autotoc_md6"></a>
 genomicSimulation 0.2.4.003</h1>
-<h2><a class="anchor" id="autotoc_md4"></a>
+<h2><a class="anchor" id="autotoc_md7"></a>
 Bug Fixes</h2>
 <ul>
 <li>Group modification functions (<code>split_</code> prefix) no longer fail if there are more than 10 groups in existence.</li>
 </ul>
-<h2><a class="anchor" id="autotoc_md5"></a>
+<h2><a class="anchor" id="autotoc_md8"></a>
 Improvements</h2>
 <ul>
-<li>Significant under-the-hood changes to <code>split_</code>-prefixed functions. They now use <a class="el" href="struct_bidirectional_iterator.html" title="A structure to iterate forwards and backwards through all genotypes in a SimData or through only the ...">BidirectionalIterator</a> and <a class="el" href="struct_random_access_iterator.html" title="A structure to search and cache indexes of all genotypes in a SimData or of all the members of a grou...">RandomAccessIterator</a> to find members of the group to split, and some call <code>_split</code>-prefixed generic functions to reduce code duplication.</li>
-<li><code>split_</code>-prefixed functions now return the number of groups they created, rather than being <code>void</code> functions. Thanks to the <a class="el" href="struct_group_num.html" title="A type representing the identifier of a group of genotypes.">GroupNum</a> type (introduced v0.2.4) we can avoid confusion over whether the return value of these functions represents a group identifier or a count of groups.<ul>
+<li>Significant under-the-hood changes to <code>split_</code>-prefixed functions. They now use BidirectionalIterator and RandomAccessIterator to find members of the group to split, and some call <code>_split</code>-prefixed generic functions to reduce code duplication.</li>
+<li><code>split_</code>-prefixed functions now return the number of groups they created, rather than being <code>void</code> functions. Thanks to the GroupNum type (introduced v0.2.4) we can avoid confusion over whether the return value of these functions represents a group identifier or a count of groups.<ul>
 <li>For users, this will mean it is no longer necessary to zero the output array passed to these functions so that you can identify how many entries are the newly-created groups after the function finishes execution. Instead, the return value lets you know how many entries have been saved to the output array.</li>
 </ul>
 </li>
 <li>BREAKING CHANGE: <code>split_into_families</code> and <code>split_into_halfsib_families</code> now take a parameter for length of the output array, and will truncate output if they find more families than that.</li>
-<li>Added a cache <code>n_groups</code> inside <a class="el" href="struct_sim_data.html" title="Composite type that is used to run crossing simulations.">SimData</a> to track the number of groups present in simulation at the current point in time. This allows users to know how much space to allocate before calling functions like <code>get_existing_groups</code> and <code>get_existing_group_counts</code>, and the program to know how much space to allocate inside <code>split_into_families</code> and <code>split_into_halfsib_families</code>. This will help avoid issues around truncated output or memory overruns.<ul>
+<li>Added a cache <code>n_groups</code> inside SimData to track the number of groups present in simulation at the current point in time. This allows users to know how much space to allocate before calling functions like <code>get_existing_groups</code> and <code>get_existing_group_counts</code>, and the program to know how much space to allocate inside <code>split_into_families</code> and <code>split_into_halfsib_families</code>. This will help avoid issues around truncated output or memory overruns.<ul>
 <li>Specifically, this cache is an upper bound on the number of groups currently present in simulation, because <code>split_from_group</code> is not aware if it has destroyed a group by moving the entire group into its new one.</li>
 <li><code>get_existing_groups</code> and <code>get_existing_group_counts</code> will update <code>n_groups</code> to the true value of the number of groups in simulation as a side-effect of their calls.</li>
 </ul>
 </li>
-<li>BREAKING CHANGE: Function signatures of <code>get_existing_groups</code> and <code>get_existing_group_counts</code> are slightly different. They can now be passed NULL to output parameters that you don't need, and they assume that their not-NULL output parameters are of length <code><a class="el" href="struct_sim_data.html#a237b265302f55235dbfca6e581a14827" title="Number of groups currently existing in simulation.">SimData.n_groups</a></code> at least, rather than asking for the length of their output parameters separately.</li>
+<li>BREAKING CHANGE: Function signatures of <code>get_existing_groups</code> and <code>get_existing_group_counts</code> are slightly different. They can now be passed NULL to output parameters that you don't need, and they assume that their not-NULL output parameters are of length <code>SimData.n_groups</code> at least, rather than asking for the length of their output parameters separately.</li>
 <li>Gradual transformation of genotype indexes from <code>unsigned int</code> type to a <code>size_t</code> type. This conversion is now implemented in the iterators and <code>get_group_indexes</code>.</li>
 <li>New iterator helper function <code>set_group</code>, to go alongside <code>get_group</code>, <code>get_id</code>, etc. It is currently the only iterator helper function that modifies data.</li>
 <li>BidirectionalIterators now use local position rather than global position. Just in case of hypothetical really huge simulations.</li>
 <li>Removed some qsort comparator functions that are no longer called by anything.</li>
 </ul>
-<h1><a class="anchor" id="autotoc_md6"></a>
+<h1><a class="anchor" id="autotoc_md9"></a>
 genomicSimulation 0.2.4</h1>
-<h2><a class="anchor" id="autotoc_md7"></a>
+<h2><a class="anchor" id="autotoc_md10"></a>
 New Features</h2>
 <ul>
-<li>Add ability to load multiple effect files. Multiple sets of marker effects can now be available at one time. Loading an effect file will return an <a class="el" href="struct_effect_i_d.html" title="A type representing a particular loaded set of marker effects.">EffectID</a> that represents that particular set of marker effects. Sets of marker effects can be removed from memory using delete_eff_set.</li>
+<li>Add ability to load multiple effect files. Multiple sets of marker effects can now be available at one time. Loading an effect file will return an EffectID that represents that particular set of marker effects. Sets of marker effects can be removed from memory using delete_eff_set.</li>
 </ul>
-<h2><a class="anchor" id="autotoc_md8"></a>
+<h2><a class="anchor" id="autotoc_md11"></a>
 Improvements</h2>
 <ul>
-<li>BREAKING CHANGE: The four different types of identifiers have been tidied into four struct types (<a class="el" href="struct_group_num.html" title="A type representing the identifier of a group of genotypes.">GroupNum</a>, <a class="el" href="struct_pedigree_i_d.html" title="A type representing a program-lifetime-unique identifier for a genotype, to be used in tracking pedig...">PedigreeID</a>, <a class="el" href="struct_label_i_d.html" title="A type representing a particular integer label.">LabelID</a> and <a class="el" href="struct_effect_i_d.html" title="A type representing a particular loaded set of marker effects.">EffectID</a>), and all functions have been updated to use these struct types. Each of these types also has a named invalid value that may be returned if a function fails: NO_GROUP, NO_PEDIGREE, NOT_A_LABEL, and NOT_AN_EFFECT_SET.</li>
-<li>BREAKING CHANGE: Because sets of marker effects now have identifiers, load_all_simdata now returns a struct <a class="el" href="struct_group_and_effect_set.html">GroupAndEffectSet</a>, which is a wrapper around a <a class="el" href="struct_group_num.html" title="A type representing the identifier of a group of genotypes.">GroupNum</a> and <a class="el" href="struct_effect_i_d.html" title="A type representing a particular loaded set of marker effects.">EffectID</a> pair, instead of just a group number.</li>
+<li>BREAKING CHANGE: The four different types of identifiers have been tidied into four struct types (GroupNum, PedigreeID, LabelID and EffectID), and all functions have been updated to use these struct types. Each of these types also has a named invalid value that may be returned if a function fails: NO_GROUP, NO_PEDIGREE, NOT_A_LABEL, and NOT_AN_EFFECT_SET.</li>
+<li>BREAKING CHANGE: Because sets of marker effects now have identifiers, load_all_simdata now returns a struct GroupAndEffectSet, which is a wrapper around a GroupNum and EffectID pair, instead of just a group number.</li>
 <li>Added test cases for functions that cover saving data to output files.</li>
-<li>The save-as-you-go setting for saving breeding values in <a class="el" href="struct_gen_options.html" title="A type that contains choices of settings for SimData functions that create a new AlleleMatrix/generat...">GenOptions</a> now takes the value of the id from an <a class="el" href="struct_effect_i_d.html" title="A type representing a particular loaded set of marker effects.">EffectID</a>, if you wish to save the breeding values from that set of marker effects, or 0/NOT_AN_EFFECT_SET, to not use the save-as-you-go functionality.</li>
+<li>The save-as-you-go setting for saving breeding values in GenOptions now takes the value of the id from an EffectID, if you wish to save the breeding values from that set of marker effects, or 0/NOT_AN_EFFECT_SET, to not use the save-as-you-go functionality.</li>
 </ul>
-<h2><a class="anchor" id="autotoc_md9"></a>
+<h2><a class="anchor" id="autotoc_md12"></a>
 Bug Fixes</h2>
 <ul>
 <li>Standardised file-output functions so that genotype names are consistently substituted with their PedigreeIDs, if the genotype does not have a name.</li>
@@ -116,15 +141,15 @@ Bug Fixes</h2>
 <li>Semicolon separators appear correctly in the output of save_marker_blocks</li>
 <li>Pedigrees are printed consistently between save_group_[]_pedigree and save_[]_pedigree variants of the same function. Parents are no longer skipped in favour of starting with grandparents in group-specific functions.</li>
 </ul>
-<h1><a class="anchor" id="autotoc_md10"></a>
+<h1><a class="anchor" id="autotoc_md13"></a>
 genomicSimulation 0.2.3.002</h1>
 <ul>
 <li>genomicSimulation had a chance of a segmentation fault in load_all_simdata for certain marker effect files. The chance was higher for effect files listing few markers or listing many alleles. This release is a quick-fix for this bug.</li>
 <li>Also fixed a flaw in Rconversion.sh, the script that converts genomicSimulationC's code to genomicSimulation (R version)</li>
 </ul>
-<h1><a class="anchor" id="autotoc_md11"></a>
+<h1><a class="anchor" id="autotoc_md14"></a>
 genomicSimulation 0.2.3</h1>
-<h2><a class="anchor" id="autotoc_md12"></a>
+<h2><a class="anchor" id="autotoc_md15"></a>
 New Features</h2>
 <ul>
 <li>Add functions calculate_optimal_available_alleles and calculate_optimal_available_bv, to calculate the best combination of alleles and best possible breeding value score given the pool of alleles available in a particular group.</li>
@@ -134,18 +159,18 @@ New Features</h2>
 <li>Group manipulation using the values of a label: split_by_label_value; split_by_label_range</li>
 </ul>
 </li>
-<li>Added two iterators: <a class="el" href="struct_bidirectional_iterator.html" title="A structure to iterate forwards and backwards through all genotypes in a SimData or through only the ...">BidirectionalIterator</a> and <a class="el" href="struct_random_access_iterator.html" title="A structure to search and cache indexes of all genotypes in a SimData or of all the members of a grou...">RandomAccessIterator</a>. They can iterate through every genotype in the simulation, or through just the members of a specific group. Iterators need to be reset or destroyed and re-created when genotypes are created or destroyed.<ul>
+<li>Added two iterators: BidirectionalIterator and RandomAccessIterator. They can iterate through every genotype in the simulation, or through just the members of a specific group. Iterators need to be reset or destroyed and re-created when genotypes are created or destroyed.<ul>
 <li>Creating and initialising iterators: create_bidirectional_iter + set_bidirectional_iter_to_start or set_bidirectional_iter_to_end; create_randomaccess_iter</li>
 <li>Iterating: next_forwards; next_backwards; next_get_nth</li>
 <li>Deleting: delete_bidirectional_iter; delete_randomaccess_iter</li>
 </ul>
 </li>
-<li>Iterators return <a class="el" href="struct_geno_location.html" title="An AlleleMatrix/AlleleMatrix index coordinate of a particular genotype in the simulation.">GenoLocation</a> values. A new family of get_ functions has been added to access the data of the genotype at a particular <a class="el" href="struct_geno_location.html" title="An AlleleMatrix/AlleleMatrix index coordinate of a particular genotype in the simulation.">GenoLocation</a>.<ul>
+<li>Iterators return GenoLocation values. A new family of get_ functions has been added to access the data of the genotype at a particular GenoLocation.<ul>
 <li>get_name; get_alleles; get_first_parent; get_second_parent; get_id; get_group; get_label_value</li>
 </ul>
 </li>
 </ul>
-<h2><a class="anchor" id="autotoc_md13"></a>
+<h2><a class="anchor" id="autotoc_md16"></a>
 Improvements</h2>
 <ul>
 <li>BREAKING CHANGE: Removed automatic re-seeding in get_chromosome_locations. Users should now set the random number generator seed in their own programs (see the example sim.c). This removes the unexpected behaviour where genomicSimulation overwrites your own random seeds.</li>
@@ -154,13 +179,13 @@ Improvements</h2>
 <li>Added 'const' to all readonly parameters. Compilation should no longer produce warnings.</li>
 <li>Swapped to using Mattias Gustavsson's "rnd" implementation of a Permuted Congruential Generator (<a href="https://github.com/mattiasgustavsson/libs">https://github.com/mattiasgustavsson/libs</a>) for random number generation, rather than the builtin and subpar "rand()".</li>
 </ul>
-<h2><a class="anchor" id="autotoc_md14"></a>
+<h2><a class="anchor" id="autotoc_md17"></a>
 Bug Fixes</h2>
 <ul>
 <li>Up NAME_LENGTH (the buffer size for name loading) to 45, as a temporary fix.</li>
 <li>Allow uint ordered search to ignore 0s mid-list, to solve a bug when not all genotypes are allocated IDs</li>
 </ul>
-<h1><a class="anchor" id="autotoc_md15"></a>
+<h1><a class="anchor" id="autotoc_md18"></a>
 genomicSimulationC 0.2.2</h1>
 <ul>
 <li>Swapped out a custom randlim() in shuffle_up_to for the basic call</li>
@@ -170,7 +195,7 @@ genomicSimulationC 0.2.2</h1>
 <li>Fixed an inappropriate memory access bug in crossing functions when will_allocate_ids = FALSE</li>
 <li>Fixed an inappropriate memory access bug in make_clones when trying to inherit the name of a parent with no name.</li>
 </ul>
-<h1><a class="anchor" id="autotoc_md16"></a>
+<h1><a class="anchor" id="autotoc_md19"></a>
 genomicSimulationC 0.2.1</h1>
 <ul>
 <li>Added function make_clones (and its genotype-generating subfunction generate_clone) to make identical duplicates of members of a group.</li>
@@ -192,14 +217,14 @@ genomicSimulationC 0.2.1</h1>
 </ul>
 <p >Minor changes:</p>
 <ul>
-<li>Risk of losing reference to <a class="el" href="struct_sim_data.html" title="Composite type that is used to run crossing simulations.">SimData</a> object in load_all_simdata fixed.</li>
+<li>Risk of losing reference to SimData object in load_all_simdata fixed.</li>
 <li>Fixed read from freed memory error in self_n_times, fixed some dereference null pointer risks in other crossing functions.</li>
 <li>Improve parameter checking in crossing and saving functions.</li>
 <li>Fixed get_group_[data] functions requesting a 0-length block of heap space when they are provided with a nonexistent group. Instead they now stop and return NULL</li>
 <li>Fix segfault when trying to select more individuals by GEBV than exist in the group (e.g. asking for the best 5 members of a group of 2). Now, it just moves all group members to the new selected group, and doesn't worry about the missing requested remainder.</li>
 <li>Added two new helper functions: get_n_new_group_nums and shuffle_up_to</li>
 </ul>
-<h1><a class="anchor" id="autotoc_md17"></a>
+<h1><a class="anchor" id="autotoc_md20"></a>
 genomicSimulationC 0.2</h1>
 <ul>
 <li>State corresponding to <a href="https://github.com/vllrs/genomicSimulation/releases/tag/v0.2">genomicSimulation R package v0.2</a> release. </li>

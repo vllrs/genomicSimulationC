@@ -21,7 +21,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">genomicSimulationC<span id="projectnumber">&#160;0.2.4.003</span>
+   <div id="projectname">genomicSimulationC<span id="projectnumber">&#160;0.2.5</span>
    </div>
   </td>
  </tr>
@@ -72,73 +72,81 @@ $(function() {
 <tr class="markdownTableHead">
 <th class="markdownTableHeadNone">genomicSimulationC (C)   </th><th class="markdownTableHeadNone">genomicSimulation (R)    </th></tr>
 <tr class="markdownTableRowOdd">
-<td class="markdownTableBodyNone">load_all_simdata *   </td><td class="markdownTableBodyNone">load.data *    </td></tr>
+<td class="markdownTableBodyNone">load_data_files *   </td><td class="markdownTableBodyNone">load.data *    </td></tr>
 <tr class="markdownTableRowEven">
-<td class="markdownTableBodyNone">load_more_transposed_genes_to_simdata   </td><td class="markdownTableBodyNone">load.more.genotypes    </td></tr>
+<td class="markdownTableBodyNone">load_genotypefile   </td><td class="markdownTableBodyNone">load.genotypes    </td></tr>
 <tr class="markdownTableRowOdd">
-<td class="markdownTableBodyNone">load_effects_to_simdata   </td><td class="markdownTableBodyNone">load.different.effects    </td></tr>
+<td class="markdownTableBodyNone">load_mapfile   </td><td class="markdownTableBodyNone">load.map    </td></tr>
 <tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">load_effectfile   </td><td class="markdownTableBodyNone">load.effects    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">delete_group   </td><td class="markdownTableBodyNone">delete.group    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">delete_recombination_map   </td><td class="markdownTableBodyNone">delete.recombination.map    </td></tr>
+<tr class="markdownTableRowOdd">
 <td class="markdownTableBodyNone">delete_eff_set   </td><td class="markdownTableBodyNone">delete.effect.set    </td></tr>
-<tr class="markdownTableRowOdd">
-<td class="markdownTableBodyNone">calculate_minimum_bv   </td><td class="markdownTableBodyNone">see.minimum.GEBV    </td></tr>
 <tr class="markdownTableRowEven">
-<td class="markdownTableBodyNone">calculate_optimum_bv   </td><td class="markdownTableBodyNone">see.optimal.GEBV    </td></tr>
+<td class="markdownTableBodyNone">calculate_minimal_bv   </td><td class="markdownTableBodyNone">see.minimal.GEBV    </td></tr>
 <tr class="markdownTableRowOdd">
-<td class="markdownTableBodyNone">calculate_optimal_alleles   </td><td class="markdownTableBodyNone">see.optimal.haplotype    </td></tr>
+<td class="markdownTableBodyNone">calculate_optimal_bv   </td><td class="markdownTableBodyNone">see.optimal.GEBV    </td></tr>
 <tr class="markdownTableRowEven">
-<td class="markdownTableBodyNone">create_new_label   </td><td class="markdownTableBodyNone">make.label    </td></tr>
+<td class="markdownTableBodyNone">calculate_optimal_haplotype   </td><td class="markdownTableBodyNone">see.optimal.haplotype    </td></tr>
 <tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">create_new_label   </td><td class="markdownTableBodyNone">create.new.label    </td></tr>
+<tr class="markdownTableRowEven">
 <td class="markdownTableBodyNone" colspan="2">~    </td></tr>
-<tr class="markdownTableRowEven">
-<td class="markdownTableBodyNone">make_all_unidirectional_crosses   </td><td class="markdownTableBodyNone">cross.all.pairs    </td></tr>
 <tr class="markdownTableRowOdd">
-<td class="markdownTableBodyNone">make_crosses_from_file   </td><td class="markdownTableBodyNone">cross.combinations.file    </td></tr>
+<td class="markdownTableBodyNone">make_all_unidirectional_crosses   </td><td class="markdownTableBodyNone">make.all.unidirectional.crosses    </td></tr>
 <tr class="markdownTableRowEven">
-<td class="markdownTableBodyNone">make_double_crosses_from_file   </td><td class="markdownTableBodyNone">cross.dc.combinations.file    </td></tr>
+<td class="markdownTableBodyNone">make_crosses_from_file   </td><td class="markdownTableBodyNone">make.crosses.from.file    </td></tr>
 <tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">make_double_crosses_from_file   </td><td class="markdownTableBodyNone">make.double.crosses.from.file    </td></tr>
+<tr class="markdownTableRowEven">
 <td class="markdownTableBodyNone">make_doubled_haploids   </td><td class="markdownTableBodyNone">make.doubled.haploids    </td></tr>
-<tr class="markdownTableRowEven">
+<tr class="markdownTableRowOdd">
 <td class="markdownTableBodyNone">make_clones   </td><td class="markdownTableBodyNone">make.clones    </td></tr>
-<tr class="markdownTableRowOdd">
+<tr class="markdownTableRowEven">
 <td class="markdownTableBodyNone">self_n_times   </td><td class="markdownTableBodyNone">self.n.times    </td></tr>
-<tr class="markdownTableRowEven">
-<td class="markdownTableBodyNone">cross_these_combinations   </td><td class="markdownTableBodyNone">cross.combinations    </td></tr>
 <tr class="markdownTableRowOdd">
-<td class="markdownTableBodyNone">cross_random_individuals   </td><td class="markdownTableBodyNone">cross.randomly    </td></tr>
+<td class="markdownTableBodyNone">make_targeted_crosses   </td><td class="markdownTableBodyNone">make.targeted.crosses    </td></tr>
 <tr class="markdownTableRowEven">
-<td class="markdownTableBodyNone">cross_randomly_between   </td><td class="markdownTableBodyNone">cross.randomly.between    </td></tr>
+<td class="markdownTableBodyNone">make_random_crosses   </td><td class="markdownTableBodyNone">make.random.crosses    </td></tr>
 <tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">make_random_crosses_between   </td><td class="markdownTableBodyNone">make.random.crosses.between    </td></tr>
+<tr class="markdownTableRowEven">
 <td class="markdownTableBodyNone" colspan="2">~    </td></tr>
-<tr class="markdownTableRowEven">
+<tr class="markdownTableRowOdd">
 <td class="markdownTableBodyNone">get_existing_group_counts   </td><td class="markdownTableBodyNone">see.existing.groups    </td></tr>
-<tr class="markdownTableRowOdd">
+<tr class="markdownTableRowEven">
 <td class="markdownTableBodyNone">get_group_names   </td><td class="markdownTableBodyNone">see.group.data(data.type="N")    </td></tr>
-<tr class="markdownTableRowEven">
+<tr class="markdownTableRowOdd">
 <td class="markdownTableBodyNone">get_group_ids   </td><td class="markdownTableBodyNone">see.group.data(data.type="D")    </td></tr>
-<tr class="markdownTableRowOdd">
+<tr class="markdownTableRowEven">
 <td class="markdownTableBodyNone">get_group_indexes   </td><td class="markdownTableBodyNone">see.group.data(data.type="X")    </td></tr>
-<tr class="markdownTableRowEven">
+<tr class="markdownTableRowOdd">
 <td class="markdownTableBodyNone">get_group_genes   </td><td class="markdownTableBodyNone">see.group.data(data.type="G")    </td></tr>
-<tr class="markdownTableRowOdd">
+<tr class="markdownTableRowEven">
 <td class="markdownTableBodyNone">get_group_bvs   </td><td class="markdownTableBodyNone">see.group.data(data.type="B")    </td></tr>
-<tr class="markdownTableRowEven">
+<tr class="markdownTableRowOdd">
 <td class="markdownTableBodyNone">get_group_parent_names(parent=1)   </td><td class="markdownTableBodyNone">see.group.data(data.type="P1")    </td></tr>
-<tr class="markdownTableRowOdd">
+<tr class="markdownTableRowEven">
 <td class="markdownTableBodyNone">get_group_parent_names(parent=2)   </td><td class="markdownTableBodyNone">see.group.data(data.type="P2")    </td></tr>
-<tr class="markdownTableRowEven">
+<tr class="markdownTableRowOdd">
 <td class="markdownTableBodyNone">get_group_pedigrees   </td><td class="markdownTableBodyNone">see.group.data(data.type="ped")    </td></tr>
-<tr class="markdownTableRowOdd">
+<tr class="markdownTableRowEven">
 <td class="markdownTableBodyNone" colspan="2">~    </td></tr>
-<tr class="markdownTableRowEven">
-<td class="markdownTableBodyNone">set_names_to_values   </td><td class="markdownTableBodyNone">change.names.to.values    </td></tr>
 <tr class="markdownTableRowOdd">
-<td class="markdownTableBodyNone">set_labels_to_values   </td><td class="markdownTableBodyNone">change.label.to.values    </td></tr>
+<td class="markdownTableBodyNone">change_names_to_values   </td><td class="markdownTableBodyNone">change.names.to.values    </td></tr>
 <tr class="markdownTableRowEven">
-<td class="markdownTableBodyNone">set_labels_to_const   </td><td class="markdownTableBodyNone">change.label.to.this    </td></tr>
+<td class="markdownTableBodyNone">change_allele_symbol   </td><td class="markdownTableBodyNone">change.allele.symbol    </td></tr>
 <tr class="markdownTableRowOdd">
-<td class="markdownTableBodyNone">increment_labels   </td><td class="markdownTableBodyNone">change.label.by.amount    </td></tr>
+<td class="markdownTableBodyNone">change_labels_to_values   </td><td class="markdownTableBodyNone">change.label.to.values    </td></tr>
 <tr class="markdownTableRowEven">
-<td class="markdownTableBodyNone">set_label_default   </td><td class="markdownTableBodyNone">change.label.default    </td></tr>
+<td class="markdownTableBodyNone">change_labels_to   </td><td class="markdownTableBodyNone">change.label.to.this    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">change_labels_by_amount   </td><td class="markdownTableBodyNone">change.label.by.amount    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">change_label_default   </td><td class="markdownTableBodyNone">change.label.default    </td></tr>
 <tr class="markdownTableRowOdd">
 <td class="markdownTableBodyNone">delete_label   </td><td class="markdownTableBodyNone">delete.label    </td></tr>
 <tr class="markdownTableRowEven">
@@ -148,15 +156,15 @@ $(function() {
 <tr class="markdownTableRowEven">
 <td class="markdownTableBodyNone">split_evenly_into_n   </td><td class="markdownTableBodyNone">break.group.evenly    </td></tr>
 <tr class="markdownTableRowOdd">
-<td class="markdownTableBodyNone">split_by_specific_counts_into_n   </td><td class="markdownTableBodyNone">break.group.into.buckets    </td></tr>
+<td class="markdownTableBodyNone">split_into_buckets   </td><td class="markdownTableBodyNone">break.group.into.buckets    </td></tr>
 <tr class="markdownTableRowEven">
 <td class="markdownTableBodyNone">split_randomly_into_two   </td><td class="markdownTableBodyNone">break.group.randomly(into.n=2)    </td></tr>
 <tr class="markdownTableRowOdd">
 <td class="markdownTableBodyNone">split_randomly_into_n   </td><td class="markdownTableBodyNone">break.group.randomly    </td></tr>
 <tr class="markdownTableRowEven">
-<td class="markdownTableBodyNone">split_by_probabilities_into_n   </td><td class="markdownTableBodyNone">break.group.with.probabilities    </td></tr>
+<td class="markdownTableBodyNone">split_by_probabilities   </td><td class="markdownTableBodyNone">break.group.with.probabilities    </td></tr>
 <tr class="markdownTableRowOdd">
-<td class="markdownTableBodyNone">split_by_bv   </td><td class="markdownTableBodyNone">select.by.gebv    </td></tr>
+<td class="markdownTableBodyNone">split_by_bv   </td><td class="markdownTableBodyNone">break.group.by.gebv    </td></tr>
 <tr class="markdownTableRowEven">
 <td class="markdownTableBodyNone">split_into_families   </td><td class="markdownTableBodyNone">break.group.into.families    </td></tr>
 <tr class="markdownTableRowOdd">
@@ -164,39 +172,31 @@ $(function() {
 <tr class="markdownTableRowEven">
 <td class="markdownTableBodyNone">split_into_individuals   </td><td class="markdownTableBodyNone">break.group.into.individuals    </td></tr>
 <tr class="markdownTableRowOdd">
-<td class="markdownTableBodyNone">split_from_group   </td><td class="markdownTableBodyNone">make.group    </td></tr>
+<td class="markdownTableBodyNone">split_by_label_value   </td><td class="markdownTableBodyNone">break.group.by.label.value    </td></tr>
 <tr class="markdownTableRowEven">
-<td class="markdownTableBodyNone">split_by_label_value   </td><td class="markdownTableBodyNone">make.group.from.label    </td></tr>
+<td class="markdownTableBodyNone">split_by_label_range   </td><td class="markdownTableBodyNone">break.group.by.label.range    </td></tr>
 <tr class="markdownTableRowOdd">
-<td class="markdownTableBodyNone">split_by_label_range   </td><td class="markdownTableBodyNone">make.group.from.label.range    </td></tr>
+<td class="markdownTableBodyNone">make_group_from   </td><td class="markdownTableBodyNone">make.group    </td></tr>
 <tr class="markdownTableRowEven">
 <td class="markdownTableBodyNone">combine_groups   </td><td class="markdownTableBodyNone">combine.groups    </td></tr>
 <tr class="markdownTableRowOdd">
-<td class="markdownTableBodyNone">delete_group   </td><td class="markdownTableBodyNone">delete.group    </td></tr>
-<tr class="markdownTableRowEven">
 <td class="markdownTableBodyNone" colspan="2">~    </td></tr>
-<tr class="markdownTableRowOdd">
+<tr class="markdownTableRowEven">
 <td class="markdownTableBodyNone">save_count_matrix   </td><td class="markdownTableBodyNone">save.allele.counts(group=NULL)    </td></tr>
-<tr class="markdownTableRowEven">
+<tr class="markdownTableRowOdd">
 <td class="markdownTableBodyNone">save_count_matrix_of_group   </td><td class="markdownTableBodyNone">save.allele.counts    </td></tr>
-<tr class="markdownTableRowOdd">
-<td class="markdownTableBodyNone">save_bvs   </td><td class="markdownTableBodyNone">save.GEBVs(group=NULL)    </td></tr>
 <tr class="markdownTableRowEven">
-<td class="markdownTableBodyNone">save_group_bvs   </td><td class="markdownTableBodyNone">save.GEBVs    </td></tr>
+<td class="markdownTableBodyNone">save_bvs   </td><td class="markdownTableBodyNone">save.GEBVs(group=NULL)    </td></tr>
 <tr class="markdownTableRowOdd">
-<td class="markdownTableBodyNone">save_simdata   </td><td class="markdownTableBodyNone">save.genome.model    </td></tr>
+<td class="markdownTableBodyNone">save_group_bvs   </td><td class="markdownTableBodyNone">save.GEBVs    </td></tr>
 <tr class="markdownTableRowEven">
 <td class="markdownTableBodyNone">save_allele_matrix   </td><td class="markdownTableBodyNone">save.genotypes(group=NULL, type="R")    </td></tr>
 <tr class="markdownTableRowOdd">
 <td class="markdownTableBodyNone">save_transposed_allele_matrix   </td><td class="markdownTableBodyNone">save.genotypes(group=NULL, type="T")    </td></tr>
 <tr class="markdownTableRowEven">
-<td class="markdownTableBodyNone">save_group_alleles   </td><td class="markdownTableBodyNone">save.genotypes(type="R")    </td></tr>
+<td class="markdownTableBodyNone">save_genotypes_of_group   </td><td class="markdownTableBodyNone">save.genotypes(type="R")    </td></tr>
 <tr class="markdownTableRowOdd">
-<td class="markdownTableBodyNone">save_transposed_group_alleles   </td><td class="markdownTableBodyNone">save.genotypes(type="T")    </td></tr>
-<tr class="markdownTableRowEven">
-<td class="markdownTableBodyNone">create_n_blocks_by_chr; save_marker_blocks   </td><td class="markdownTableBodyNone">save.local.GEBVs.by.chr    </td></tr>
-<tr class="markdownTableRowOdd">
-<td class="markdownTableBodyNone">read_block_file; save_marker_blocks   </td><td class="markdownTableBodyNone">save.local.GEBVs.by.file    </td></tr>
+<td class="markdownTableBodyNone">save_transposed_group_genotypes   </td><td class="markdownTableBodyNone">save.genotypes(type="T")    </td></tr>
 <tr class="markdownTableRowEven">
 <td class="markdownTableBodyNone">save_full_pedigree   </td><td class="markdownTableBodyNone">save.pedigrees(group=NULL, type="R")    </td></tr>
 <tr class="markdownTableRowOdd">
@@ -206,9 +206,17 @@ $(function() {
 <tr class="markdownTableRowOdd">
 <td class="markdownTableBodyNone">save_group_one_step_pedigree   </td><td class="markdownTableBodyNone">save.pedigrees(type="P")    </td></tr>
 <tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">create_evenlength_blocks_each_chr; calculate_group_local_bvs   </td><td class="markdownTableBodyNone">save.local.GEBVs.blocks.from.chrsplit    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">read_block_file; calculate_group_local_bvs   </td><td class="markdownTableBodyNone">save.local.GEBVs.blocks.from.file    </td></tr>
+<tr class="markdownTableRowEven">
 <td class="markdownTableBodyNone">calculate_recombinations_from_file   </td><td class="markdownTableBodyNone">find.crossovers   </td></tr>
 </table>
-<p >*: The R function does not directly call the C function, but they have the same effects. </p>
+<p >*: The R function does not directly call the C function, but they have the same effects.</p>
+<p >Several function names were changed between versions 0.2.4 and 0.2.5. To update a C script from v0.2.4 to v0.2.5, download <code>names_stopgap.h</code> from the v0.2.5 release and add the following lines to the preamble:</p>
+<div class="fragment"><div class="line">#define GSC_DEPRECATED_VERBOSE</div>
+<div class="line">#include &quot;names_stopgap.h&quot;</div>
+</div><!-- fragment --><p >then run the code and follow the instructions printed to stderr to update to v0.2.5 names. An R script that runs in v0.2.4 should still run in v0.2.5, and will automatically print warnings as to which functions in the script should be called by different names from v0.2.5 onwards. </p>
 </div></div><!-- contents -->
 </div><!-- PageDoc -->
 <!-- start footer part -->
