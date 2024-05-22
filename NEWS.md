@@ -1,6 +1,8 @@
 Latest News       {#news}
 ===========
 
+# genomicSimulation v0.2.5
+
 ## New Features 
 
 - Add ability to load multiple recombination maps into simulation at a time. Loading a genetic map file will return an MapID that represents that particular map. All crossing functions now have additional parameters that allow you to select which recombination map to use when generating gametes from each group of parents. The crossing functions default to using the first loaded recombination map if not otherwise specified. Maps can be removed from memory using delete_recombination_map. The list of genetic markers changed by the simulation, however, is still immutable, so genetic markers not present in the first map loaded will not be tracked or simulated.
