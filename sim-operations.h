@@ -662,7 +662,7 @@ typedef struct {
  * @shortnamed{KnownGenome}
  */
 typedef struct {
-    int n_markers; /**< The total number of markers.**/
+    size_t n_markers; /**< The total number of markers.**/
     char** marker_names; /**< A vector of @a n_markers strings containing the names of markers, ordered
                           * according to their index in an AlleleMatrix. */
     char*** names_alphabetical; /**< A vector of @a n_markers pointers to names in @a marker_names, ordered

@@ -6496,6 +6496,7 @@ static gsc_GroupNum gsc_load_genotypefile_matrix(gsc_SimData* d, const char* fil
 
     gsc_GroupNum group = gsc_get_new_group_num(d);
     struct gsc_EmptyListNavigator it = gsc_create_emptylistnavigator(d, group); // its job is to add successive AMs to d as necessary. Maybe it only links its AM to the SiMData and calls condense when required, at the end.
+    size_t nvalidmarker = 0;
 
     if (markersasrows) {
         size_t row = 0;
@@ -6525,6 +6526,7 @@ static gsc_GroupNum gsc_load_genotypefile_matrix(gsc_SimData* d, const char* fil
                     }*/
                     char tmp = ncell.cell[ncell.cell_len]; ncell.cell[ncell.cell_len] = '\0';
                     validmarker = gsc_get_index_of_genetic_marker(ncell.cell, d->genome, &markeri);
+                    nvalidmarker += validmarker;
                     ncell.cell[ncell.cell_len] = tmp;
                     column = 0;
                     ++row;
@@ -6549,7 +6551,7 @@ static gsc_GroupNum gsc_load_genotypefile_matrix(gsc_SimData* d, const char* fil
             size_t* markerixs = gsc_malloc_wrap(sizeof(size_t)*ncellsfirstrow,GSC_TRUE);
             for (size_t i = 0; i < ncellsfirstrow; ++i) {
                 markerixs[i] = d->genome.n_markers;
-                gsc_get_index_of_genetic_marker(cellqueue[i].cell, d->genome, &markerixs[i]);
+                nvalidmarker += gsc_get_index_of_genetic_marker(cellqueue[i].cell, d->genome, &markerixs[i]);
                 if (!cellqueue[i].isCellShallow) { GSC_FREE(cellqueue[i].cell); }
             }
             cellqueue += ncellsfirstrow;
@@ -6601,7 +6603,7 @@ static gsc_GroupNum gsc_load_genotypefile_matrix(gsc_SimData* d, const char* fil
     do {
         ngenos += tmpam->n_genotypes;
     } while ((tmpam = tmpam->next) != NULL);
-    printf("(Loading %s) %u genotype(s) of %u marker(s) were loaded.\n", filename, (unsigned int) ngenos, it.firstAM->n_markers);
+    printf("(Loading %s) %u genotype(s) of %u marker(s) were loaded.\n", filename, (unsigned int) ngenos, nvalidmarker);
     gsc_emptylistnavigator_finaliselist(&it);
     ++d->n_groups;
     GSC_DELETE_BUFFER(cellsread);

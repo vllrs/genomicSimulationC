@@ -3624,7 +3624,15 @@ int main(int argc, char* argv[]) {
 
 
 	printf("\nAll done\n");
-	delete_simdata(d);
+
+     // A test to check the genotype file loading debug statements print correctly when marker names fail to be matched.
+    /*delete_simdata(d);
+    d = create_empty_simdata(randomSeed);
+
+    gande = load_data_files(d, "Btest.txt",
+             "./Gtest-map.txt",
+             "./Gtest-eff.txt");
+    */
 
 	/*clock_t c;
 
