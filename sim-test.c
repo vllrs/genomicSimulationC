@@ -1724,9 +1724,9 @@ struct MultiIDSet just_load(SimData* d) {
     fclose(fp);
 
     struct MultiIDSet gande = load_data_files(d, "a-test.txt", "a-test-map.txt", "a-test-eff.txt");
-    remove("a-test.txt");
-    remove("a-test-map.txt");
-    remove("a-test-eff.txt");
+    //remove("a-test.txt");
+    //remove("a-test-map.txt");
+    //remove("a-test-eff.txt");
     return gande;
 }
 
@@ -3626,13 +3626,13 @@ int main(int argc, char* argv[]) {
 	printf("\nAll done\n");
 
      // A test to check the genotype file loading debug statements print correctly when marker names fail to be matched.
-    /*delete_simdata(d);
+    delete_simdata(d);
     d = create_empty_simdata(randomSeed);
 
     gande = load_data_files(d, "Btest.txt",
              "./Gtest-map.txt",
              "./Gtest-eff.txt");
-    */
+    delete_simdata(d);
 
 	/*clock_t c;
 

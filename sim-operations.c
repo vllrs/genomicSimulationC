@@ -6597,6 +6597,7 @@ static gsc_GroupNum gsc_load_genotypefile_matrix(gsc_SimData* d, const char* fil
             fprintf(stderr, "(Loading %s) Failure: Genotype matrix with markers as columns but no header row is an unsupported file type (there is no way to tell which column is which marker)\n", filename);
         }
     }
+    gsc_tablefilereader_close(&tbl);
 
     size_t ngenos = 0;
     AlleleMatrix* tmpam = it.firstAM;

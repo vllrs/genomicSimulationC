@@ -1,6 +1,13 @@
 Latest News       {#news}
 ===========
 
+# genomicSimulation (development version)
+
+## Bug Fixes
+
+- Log messages printed during genotype file loading now accurately reflect the number of markers per genotype that were successfully loaded. Previously, it incorrectly printed out the total number of markers in the stored genetic map, while claiming it was the number of markers in the genotype file that had been accurately matched to the map.
+- Input genotype files now have `fclose` called on them after being parsed.
+
 # genomicSimulation v0.2.5
 
 ## New Features 
