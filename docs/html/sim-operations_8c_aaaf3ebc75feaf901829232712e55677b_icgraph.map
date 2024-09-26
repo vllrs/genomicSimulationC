@@ -6,7 +6,7 @@
 <area shape="rect" id="node6" href="$group__calculators.html#ga145430273fd296e49528a27489f0e520" title="Calculates the highest&#45;breeding&#45;value haplotype that can be created from the alleles present in a giv..." alt="" coords="965,177,1115,221"/>
 <area shape="rect" id="node7" href="$group__supporters.html#gab2721db3602257bd44e332b5be99e76b" title="Copy a vector of strings into the genotype name field." alt="" coords="962,245,1118,289"/>
 <area shape="rect" id="node8" href="$group__loaders.html#ga0baf4341fe54309d7c3b2ba395eb1975" title="Creator for an empty gsc_AlleleMatrix object of a given size." alt="" coords="939,568,1141,596"/>
-<area shape="rect" id="node10" href="$sim-operations_8c.html#a0f9bc7d42b9a98a1f4ea30c4a5f49312" title="Loads a genotype file, with or without existing genome model in the SimData." alt="" coords="453,471,602,515"/>
+<area shape="rect" id="node10" href="$sim-operations_8c.html#aca78dbac4d7154e95b6ddca575937d77" title="Loads a genotype file, with or without existing genome model in the SimData." alt="" coords="453,471,602,515"/>
 <area shape="rect" id="node12" href="$sim-operations_8c.html#a67c2447b0d771997a444efe026cf0600" title="Get the next sequential genotype in an gsc_EmptyListNavigator." alt="" coords="689,500,842,544"/>
 <area shape="rect" id="node15" href="$group__crossers.html#ga03af5446006203244dd3080cf75af26f" title="Performs random crosses among members of a group." alt="" coords="204,1291,388,1319"/>
 <area shape="rect" id="node17" href="$group__crossers.html#ga652376b5a34d24f239e5fc0b167c067b" title="Performs random crosses where the first parent comes from one group and the second from another." alt="" coords="204,991,388,1035"/>
@@ -35,7 +35,7 @@
 <area shape="rect" id="node3" href="$group__recomb.html#ga17bf2aa42201490431e56ba42ace85fc" title="Provides guesses as to the location of recombination events that led to the creation of certain genot..." alt="" coords="667,24,864,68"/>
 <area shape="rect" id="node9" href="$sim-operations_8c.html#a14bf1934790250afa4e708fe902c44a0" title="Create a new gsc_EmptyListNavigator, including an empty AlleleMatrix suitable for inserting into the ..." alt="" coords="667,568,864,596"/>
 <area shape="rect" id="node13" href="$group__crossers.html#ga28b0fcf60b6a8f6e8ca470f7b5d0a4b7" title="Make new genotypes (generic function)" alt="" coords="446,920,608,964"/>
-<area shape="rect" id="node11" href="$group__loaders.html#gac7f5d37f0a3fd81aa26f1eae2ebae2db" title="Populates a gsc_SimData object with marker allele data, a genetic map, and (optionally) marker effect..." alt="" coords="228,748,364,776"/>
+<area shape="rect" id="node11" href="$group__loaders.html#ga394371951741d8c2db18a85069d6b61e" title="Populates a gsc_SimData object with marker allele data, a genetic map, and (optionally) marker effect..." alt="" coords="228,748,364,776"/>
 <area shape="rect" id="node14" href="$group__crossers.html#ga15af204958dc69717334c46b19219a2d" title="Creates an identical copy of each member of a group." alt="" coords="233,919,359,947"/>
 <area shape="rect" id="node18" href="$group__crossers.html#ga4450224009587f4cd4a972413423c96e" title="Performs the crosses of pairs of parents whose indexes are provided in an array." alt="" coords="202,1089,390,1117"/>
 <area shape="rect" id="node16" href="$group__crossers.html#gab19b3eb80b5fe460d17c93e0c27f7aaf" title="Find the top m percent of a group and perform random crosses between those top individuals." alt="" coords="5,1283,154,1327"/>

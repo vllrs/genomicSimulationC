@@ -3,10 +3,21 @@ Latest News       {#news}
 
 # genomicSimulation (development version)
 
+## New Features
+
+- BREAKING CHANGE: `load_genotypefile` and `load_data_files` now take an extra final parameter of type `FileFormatSpec`. This parameters allows users to specify some or all of the layout and formatting details of an input genotype file. During the loading process, the sections tasked with detecting the already-specified features of the layout are then skipped.
+
 ## Bug Fixes
 
 - Log messages printed during genotype file loading now accurately reflect the number of markers per genotype that were successfully loaded. Previously, it incorrectly printed out the total number of markers in the stored genetic map, while claiming it was the number of markers in the genotype file that had been accurately matched to the map.
 - Input genotype files now have `fclose` called on them after being parsed.
+
+## Improvements 
+
+- Improvements to the genotype matrix layout detection processes, to cover more edge cases and to use a decision tree that is easier to understand from outside.
+- Improvements to input file loading tests, to cover more cases and be easier to expand further in future.
+- Improved documentation in Templates and in docstrings of valid input file formats and of how automatic genotype file layout detection works.
+
 
 # genomicSimulation v0.2.5
 

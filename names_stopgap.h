@@ -30,6 +30,16 @@ replacement of deprecated functions.
 #define DEPRECATION__FULL(a) fprintf(stderr,"Deprecated function call: %s. Function is now fully removed.\n",a)
 #define DEPRECATION__SIGCHANGE(a,reason) fprintf(stderr,"Deprecated function call: %s now has an added parameter representing %s\n",a,reason);
 
+// ---- Override names bound to new signatures to point to the old ones ----
+#define self_n_times old_self_n_times
+#define generate_gamete old_generate_gamete
+#define generate_doubled_haploid old_generate_doubled_haploids
+#define make_doubled_haploids old_make_doubled_haploids
+#define make_all_unidirectional_crosses old_make_all_unidirectional_crosses
+#define make_n_crosses_from_top_m_percent old_make_n_crosses_from_top_m_percent
+#define make_crosses_from_file old_make_crosses_from_file
+#define make_double_crosses_from_file old_make_double_crosses_from_file
+
 // ---- Structs with changed names ----
 
 #define NOT_AN_EFFECT_SET GSC_NO_EFFECTSET
@@ -93,28 +103,28 @@ GroupNum load_transposed_genes_to_simdata(SimData* d, const char* filename) {
 	#ifdef GSC_DEPRECATED_VERBOSE
 		DEPRECATION__CHANGED("load_transposed_genes_to_simdata", "load_genotypefile");
 	#endif	
-	return gsc_load_genotypefile(d,filename);
+	return gsc_load_genotypefile(d,filename,DETECT_FILE_FORMAT);
 }
 
 GroupNum load_more_transposed_genes_to_simdata(SimData* d, const char* filename) {
 	#ifdef GSC_DEPRECATED_VERBOSE
 		DEPRECATION__CHANGED("load_more_transposed_genes_to_simdata", "load_genotypefile");
 	#endif	
-	return gsc_load_genotypefile(d,filename);
+	return gsc_load_genotypefile(d,filename,DETECT_FILE_FORMAT);
 }
 
 GroupNum load_transposed_encoded_genes_to_simdata(SimData* d, const char* filename) {
 	#ifdef GSC_DEPRECATED_VERBOSE
 		DEPRECATION__CHANGED("load_transposed_encoded_genes_to_simdata", "load_genotypefile");
 	#endif	
-	return gsc_load_genotypefile(d,filename);
+	return gsc_load_genotypefile(d,filename,DETECT_FILE_FORMAT);
 }
 
 void load_genmap_to_simdata(SimData* d, const char* filename) {
 	#ifdef GSC_DEPRECATED_VERBOSE
 		DEPRECATION__CHANGED("load_genmap_to_simdata", "load_mapfile");
 	#endif	
-	return gsc_load_mapfile(d,filename);
+    gsc_load_mapfile(d,filename);
 }
 
 EffectID load_effects_to_simdata(SimData* d, const char* filename) {
@@ -129,7 +139,7 @@ struct GroupAndEffectSet load_all_simdata(SimData* d, const char* data_file, con
 		DEPRECATION__CHANGED("load_all_simdata", "load_data_files");
 		fprintf(stderr,"Deprecated type: load_initial_files returns a struct MultiIDSet, not a struct GroupAndEffectSet");
 	#endif	
-	struct gsc_MultiIDSet a = gsc_load_data_files(d,data_file,map_file,effect_file);
+	struct gsc_MultiIDSet a = gsc_load_data_files(d,data_file,map_file,effect_file,DETECT_FILE_FORMAT);
 	return (struct GroupAndEffectSet){.group=a.group, .effectSet=a.effSet};
 }
 
@@ -209,14 +219,14 @@ void generate_cross(SimData* d, const char* parent1_genome, const char* parent2_
 	gsc_generate_gamete(d,parent2_genome,output+1,0);
 }
 
-void generate_gamete(SimData* d, const char* parent_genome, char* output) {
+void old_generate_gamete(SimData* d, const char* parent_genome, char* output) {
 	#ifdef GSC_DEPRECATED_VERBOSE
 		DEPRECATION_SIGCHANGE("generate_gamete", "choice of recombination map");
 	#endif
 	gsc_generate_gamete(d,parent_genome,output,0);
 }
 
-void generate_doubled_haploid(SimData* d, const char* parent_genome, char* output) {
+void old_generate_doubled_haploid(SimData* d, const char* parent_genome, char* output) {
 	#ifdef GSC_DEPRECATED_VERBOSE
 		DEPRECATION__SIGCHANGE("generate_doubled_haploid", "choice of recombination map");
 	#endif
@@ -268,39 +278,39 @@ GroupNum self_n_times(SimData* d, const unsigned int n, const GroupNum group, co
 	return gsc_self_n_times(d,n,group,NO_MAP,g);
 }
 
-GroupNum make_doubled_haploids(SimData* d, const GroupNum group, const GenOptions g) {
+GroupNum old_make_doubled_haploids(SimData* d, const GroupNum group, const GenOptions g) {
 	#ifdef GSC_DEPRECATED_VERBOSE
 		DEPRECATION__SIGCHANGE("make_doubled_haploids", "choice of recombination map");
 	#endif
 	return gsc_make_doubled_haploids(d,group,NO_MAP,g);	
 }
 
-GroupNum make_all_unidirectional_crosses(SimData* d, const GroupNum from_group, const GenOptions g) {
+GroupNum old_make_all_unidirectional_crosses(SimData* d, const GroupNum from_group, const GenOptions g) {
 	#ifdef GSC_DEPRECATED_VERBOSE
 		DEPRECATION__SIGCHANGE("make_all_unidirectional_crosses", "choice of recombination map");
 	#endif
 	return gsc_make_all_unidirectional_crosses(d,from_group,NO_MAP,g);
 }
 
-GroupNum make_n_crosses_from_top_m_percent(SimData* d, const int n, const int m, const GroupNum group, const EffectID effID, const GenOptions g) {
+GroupNum old_make_n_crosses_from_top_m_percent(SimData* d, const int n, const int m, const GroupNum group, const EffectID effID, const GenOptions g) {
 	#ifdef GSC_DEPRECATED_VERBOSE
 		DEPRECATION__SIGCHANGE("make_n_crosses_from_top_m_percent", "choice of recombination map");
 	#endif
 	return gsc_make_n_crosses_from_top_m_percent(d,n,m,group,NO_MAP,effID,g);
 }
 
-GroupNum make_crosses_from_file(SimData* d, const char* input_file, const GenOptions g) {
+GroupNum old_make_crosses_from_file(SimData* d, const char* input_file, const GenOptions g) {
 	#ifdef GSC_DEPRECATED_VERBOSE
 		DEPRECATION__SIGCHANGE("make_crosses_from_file", "choice of recombination map");
 	#endif
-	return gsc_make_crosses_from_file(d,input_file,NO_MAP,g);
+    return gsc_make_crosses_from_file(d,input_file,NO_MAP,NO_MAP,g);
 }
 
-GroupNum make_double_crosses_from_file(SimData* d, const char* input_file, const GenOptions g) {
+GroupNum old_make_double_crosses_from_file(SimData* d, const char* input_file, const GenOptions g) {
 	#ifdef GSC_DEPRECATED_VERBOSE
 		DEPRECATION__SIGCHANGE("make_double_crosses_from_file", "choice of recombination map");
 	#endif
-	return gsc_make_double_crosses_from_file(d,input_file,NO_MAP,g);
+    return gsc_make_double_crosses_from_file(d,input_file,NO_MAP,NO_MAP,g);
 }
 
 int calculate_group_count_matrix_of_allele( const SimData* d, const GroupNum group, const char allele, DecimalMatrix* counts) {

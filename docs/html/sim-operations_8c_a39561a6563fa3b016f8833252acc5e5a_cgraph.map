@@ -1,0 +1,4 @@
+<map id="gsc_helper_genotypefile_matrix_detect_orientation" name="gsc_helper_genotypefile_matrix_detect_orientation">
+<area shape="rect" id="node1" title="Determine whether a genotype matrix is row&#45; or column&#45;oriented." alt="" coords="5,5,180,49"/>
+<area shape="rect" id="node2" href="$group__supporters.html#gac77f7337a190c68f84bb95181f365cca" title="Return whether or not a marker name is present in the tracked markers, and at what index." alt="" coords="228,5,399,49"/>
+</map>

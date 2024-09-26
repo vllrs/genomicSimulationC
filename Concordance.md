@@ -1,17 +1,18 @@
 Features and Concordance Guide 			{#concordance}
 =================
 
-Function names are not all consistent between R and C counterparts of genomicSimulation, particularly for functions introduced very early in the package's life. This is a table of which functions match up with which. 
+Function names are not all consistent between R and C counterparts of genomicSimulation, particularly for functions introduced very early in the package's life. This is a table of which functions match up with which.
 
 This can also be interpreted as the list of user-facing functions in genomicSimulationC (though to use genomicSimulationC, you'll also need to consider the delete_ family and the structs in which data is stored).
 
 | genomicSimulationC (C) | genomicSimulation (R) |
 | ------------- | ------------- |
-| load_data_files \* | load.data \* |
+| load_data_files | load.data |
 | load_genotypefile | load.genotypes |
 | load_mapfile | load.map |
 | load_effectfile | load.effects |
-| delete_group | delete.group | 
+| define_matrix_format_details | define.matrix.format.details |
+| delete_group | delete.group |
 | delete_recombination_map | delete.recombination.map |
 | delete_eff_set | delete.effect.set |
 | calculate_minimal_bv | see.minimal.GEBV |
@@ -40,12 +41,12 @@ This can also be interpreted as the list of user-facing functions in genomicSimu
 | get_group_pedigrees | see.group.data(data.type="ped") |
 | ~ ||
 | change_names_to_values | change.names.to.values |
-| change_allele_symbol | change.allele.symbol | 
+| change_allele_symbol | change.allele.symbol |
 | change_labels_to_values | change.label.to.values |
 | change_labels_to | change.label.to.this |
 | change_labels_by_amount | change.label.by.amount |
 | change_label_default | change.label.default |
-| delete_label | delete.label | 
+| delete_label | delete.label |
 | ~ ||
 | split_evenly_into_two | break.group.evenly(into.n=2) |
 | split_evenly_into_n   | break.group.evenly |
@@ -77,8 +78,6 @@ This can also be interpreted as the list of user-facing functions in genomicSimu
 | create_evenlength_blocks_each_chr; calculate_group_local_bvs | save.local.GEBVs.blocks.from.chrsplit |
 | read_block_file; calculate_group_local_bvs | save.local.GEBVs.blocks.from.file |
 | calculate_recombinations_from_file | find.crossovers |
- 
-\*: The R function does not directly call the C function, but they have the same effects.
 
 Several function names were changed between versions 0.2.4 and 0.2.5. To update a C script from v0.2.4 to v0.2.5, download `names_stopgap.h` from the v0.2.5 release and add the following lines to the preamble:
 

@@ -1,12 +1,10 @@
 var searchData=
 [
-  ['m_0',['m',['../structgsc___sim_data.html#aeb62a63fd9cda7cb94b3f6b2145a1516',1,'gsc_SimData']]],
-  ['map_1',['map',['../structgsc___multi_i_d_set.html#a2d755f235ad87ff0829504a1b6584bbc',1,'gsc_MultiIDSet::map()'],['../structgsc___linkage_group.html#acf1fcfb4743a14f241900e3d08355bf6',1,'gsc_LinkageGroup::map()']]],
-  ['map_5fids_2',['map_ids',['../structgsc___known_genome.html#ad84b3acaacfc8220175918eac15651f2',1,'gsc_KnownGenome']]],
-  ['mapindex_3',['mapindex',['../structgsc___parent_choice.html#ae127f7e7c90cb21e3b6ff5366aac9862',1,'gsc_ParentChoice']]],
-  ['maps_4',['maps',['../structgsc___known_genome.html#a514756a814b858865b829bf2fc351f9d',1,'gsc_KnownGenome']]],
-  ['marker_5findexes_5',['marker_indexes',['../structgsc___reordered_linkage_group.html#ab4a9b6ccf3b084347847cb2fb1bbf2a5',1,'gsc_ReorderedLinkageGroup']]],
-  ['marker_5fnames_6',['marker_names',['../structgsc___known_genome.html#a199f8268fddb3d1d84a7ab1c4d5ab4b2',1,'gsc_KnownGenome']]],
-  ['markers_5fin_5fblock_7',['markers_in_block',['../structgsc___marker_blocks.html#a2d67c10cd04596e2d0b382a00421dcfe',1,'gsc_MarkerBlocks']]],
-  ['matrix_8',['matrix',['../structgsc___decimal_matrix.html#a672a95f216a0ba3347038195fba46353',1,'gsc_DecimalMatrix']]]
+  ['label_5fdefaults_0',['label_defaults',['../structgsc___sim_data.html#a7a9281b3cfb7600f10b453cc18a03dc5',1,'gsc_SimData']]],
+  ['label_5fids_1',['label_ids',['../structgsc___sim_data.html#a4fe7c2197304c60459cf4d4b1c30ac29',1,'gsc_SimData']]],
+  ['labels_2',['labels',['../structgsc___allele_matrix.html#aad61eac7fadad1b87591f6bbf452bf67',1,'gsc_AlleleMatrix']]],
+  ['largestcached_3',['largestCached',['../structgsc___random_access_iterator.html#a92ec7193cd3852dc31b1e3a7cdce1a8e',1,'gsc_RandomAccessIterator']]],
+  ['loc_4',['loc',['../structgsc___parent_choice.html#a3f2ab977f16264c15c62ba73784f4647',1,'gsc_ParentChoice']]],
+  ['localam_5',['localAM',['../structgsc___geno_location.html#a65274c815a4a03569fc56607abc3f4ee',1,'gsc_GenoLocation::localAM()'],['../structgsc___empty_list_navigator.html#adf3847e0f84dc226734c64688179610f',1,'gsc_EmptyListNavigator::localAM()']]],
+  ['localpos_6',['localPos',['../structgsc___geno_location.html#a25f2edd6ff616e8e242d9eb69aea46e7',1,'gsc_GenoLocation::localPos()'],['../structgsc___bidirectional_iterator.html#a5836b24a72fd54a1eeea16fb1df982db',1,'gsc_BidirectionalIterator::localPos()'],['../structgsc___empty_list_navigator.html#a711e801647ee2a6da9a5fde0a6c3cb8f',1,'gsc_EmptyListNavigator::localPos()']]]
 ];

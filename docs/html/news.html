@@ -21,7 +21,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">genomicSimulationC<span id="projectnumber">&#160;0.2.5</span>
+   <div id="projectname">genomicSimulationC<span id="projectnumber">&#160;0.2.5.02</span>
    </div>
   </td>
  </tr>
@@ -67,19 +67,27 @@ $(function() {
 <div class="contents">
 <div class="textblock"><p ><a class="anchor" id="md_NEWS"></a></p>
 <h1><a class="anchor" id="autotoc_md3"></a>
-genomicSimulation v0.2.5</h1>
+genomicSimulation (development version)</h1>
 <h2><a class="anchor" id="autotoc_md4"></a>
+Bug Fixes</h2>
+<ul>
+<li>Log messages printed during genotype file loading now accurately reflect the number of markers per genotype that were successfully loaded. Previously, it incorrectly printed out the total number of markers in the stored genetic map, while claiming it was the number of markers in the genotype file that had been accurately matched to the map.</li>
+<li>Input genotype files now have <code>fclose</code> called on them after being parsed.</li>
+</ul>
+<h1><a class="anchor" id="autotoc_md5"></a>
+genomicSimulation v0.2.5</h1>
+<h2><a class="anchor" id="autotoc_md6"></a>
 New Features</h2>
 <ul>
 <li>Add ability to load multiple recombination maps into simulation at a time. Loading a genetic map file will return an MapID that represents that particular map. All crossing functions now have additional parameters that allow you to select which recombination map to use when generating gametes from each group of parents. The crossing functions default to using the first loaded recombination map if not otherwise specified. Maps can be removed from memory using delete_recombination_map. The list of genetic markers changed by the simulation, however, is still immutable, so genetic markers not present in the first map loaded will not be tracked or simulated.</li>
 <li>New function <code>change_allele_symbol</code> changes the internal representation of a particular allele. It does not modify corresponding marker effects.</li>
 </ul>
-<h2><a class="anchor" id="autotoc_md5"></a>
+<h2><a class="anchor" id="autotoc_md7"></a>
 Bug Fixes</h2>
 <ul>
 <li>Fix a bug in large simulations where gaps in the AlleleMatrix linked list failed to be patched in <code>condense_allele_matrix</code>, and some genotypes lost their group numbers (group numbers reverted to 0).</li>
 </ul>
-<h2><a class="anchor" id="autotoc_md6"></a>
+<h2><a class="anchor" id="autotoc_md8"></a>
 Improvements</h2>
 <ul>
 <li>Smarter and more robust genotype matrix, genetic map, and effect file loaders. See R version vignette or Templates page of C version documentation for more information.</li>
@@ -93,14 +101,14 @@ Improvements</h2>
 <li>Remove all Variable Length Arrays (VLAs). All buffers used internally in genomicSimulation now allocate themselves sizeof(int)*CONTIG_WIDTH bytes of space on the stack, or use heap memory if that is insufficient. <br  />
 </li>
 </ul>
-<h1><a class="anchor" id="autotoc_md7"></a>
+<h1><a class="anchor" id="autotoc_md9"></a>
 genomicSimulation 0.2.4.003</h1>
-<h2><a class="anchor" id="autotoc_md8"></a>
+<h2><a class="anchor" id="autotoc_md10"></a>
 Bug Fixes</h2>
 <ul>
 <li>Group modification functions (<code>split_</code> prefix) no longer fail if there are more than 10 groups in existence.</li>
 </ul>
-<h2><a class="anchor" id="autotoc_md9"></a>
+<h2><a class="anchor" id="autotoc_md11"></a>
 Improvements</h2>
 <ul>
 <li>Significant under-the-hood changes to <code>split_</code>-prefixed functions. They now use BidirectionalIterator and RandomAccessIterator to find members of the group to split, and some call <code>_split</code>-prefixed generic functions to reduce code duplication.</li>
@@ -120,14 +128,14 @@ Improvements</h2>
 <li>BidirectionalIterators now use local position rather than global position. Just in case of hypothetical really huge simulations.</li>
 <li>Removed some qsort comparator functions that are no longer called by anything.</li>
 </ul>
-<h1><a class="anchor" id="autotoc_md10"></a>
+<h1><a class="anchor" id="autotoc_md12"></a>
 genomicSimulation 0.2.4</h1>
-<h2><a class="anchor" id="autotoc_md11"></a>
+<h2><a class="anchor" id="autotoc_md13"></a>
 New Features</h2>
 <ul>
 <li>Add ability to load multiple effect files. Multiple sets of marker effects can now be available at one time. Loading an effect file will return an EffectID that represents that particular set of marker effects. Sets of marker effects can be removed from memory using delete_eff_set.</li>
 </ul>
-<h2><a class="anchor" id="autotoc_md12"></a>
+<h2><a class="anchor" id="autotoc_md14"></a>
 Improvements</h2>
 <ul>
 <li>BREAKING CHANGE: The four different types of identifiers have been tidied into four struct types (GroupNum, PedigreeID, LabelID and EffectID), and all functions have been updated to use these struct types. Each of these types also has a named invalid value that may be returned if a function fails: NO_GROUP, NO_PEDIGREE, NOT_A_LABEL, and NOT_AN_EFFECT_SET.</li>
@@ -135,7 +143,7 @@ Improvements</h2>
 <li>Added test cases for functions that cover saving data to output files.</li>
 <li>The save-as-you-go setting for saving breeding values in GenOptions now takes the value of the id from an EffectID, if you wish to save the breeding values from that set of marker effects, or 0/NOT_AN_EFFECT_SET, to not use the save-as-you-go functionality.</li>
 </ul>
-<h2><a class="anchor" id="autotoc_md13"></a>
+<h2><a class="anchor" id="autotoc_md15"></a>
 Bug Fixes</h2>
 <ul>
 <li>Standardised file-output functions so that genotype names are consistently substituted with their PedigreeIDs, if the genotype does not have a name.</li>
@@ -143,15 +151,15 @@ Bug Fixes</h2>
 <li>Semicolon separators appear correctly in the output of save_marker_blocks</li>
 <li>Pedigrees are printed consistently between save_group_[]_pedigree and save_[]_pedigree variants of the same function. Parents are no longer skipped in favour of starting with grandparents in group-specific functions.</li>
 </ul>
-<h1><a class="anchor" id="autotoc_md14"></a>
+<h1><a class="anchor" id="autotoc_md16"></a>
 genomicSimulation 0.2.3.002</h1>
 <ul>
 <li>genomicSimulation had a chance of a segmentation fault in load_all_simdata for certain marker effect files. The chance was higher for effect files listing few markers or listing many alleles. This release is a quick-fix for this bug.</li>
 <li>Also fixed a flaw in Rconversion.sh, the script that converts genomicSimulationC's code to genomicSimulation (R version)</li>
 </ul>
-<h1><a class="anchor" id="autotoc_md15"></a>
+<h1><a class="anchor" id="autotoc_md17"></a>
 genomicSimulation 0.2.3</h1>
-<h2><a class="anchor" id="autotoc_md16"></a>
+<h2><a class="anchor" id="autotoc_md18"></a>
 New Features</h2>
 <ul>
 <li>Add functions calculate_optimal_available_alleles and calculate_optimal_available_bv, to calculate the best combination of alleles and best possible breeding value score given the pool of alleles available in a particular group.</li>
@@ -172,7 +180,7 @@ New Features</h2>
 </ul>
 </li>
 </ul>
-<h2><a class="anchor" id="autotoc_md17"></a>
+<h2><a class="anchor" id="autotoc_md19"></a>
 Improvements</h2>
 <ul>
 <li>BREAKING CHANGE: Removed automatic re-seeding in get_chromosome_locations. Users should now set the random number generator seed in their own programs (see the example sim.c). This removes the unexpected behaviour where genomicSimulation overwrites your own random seeds.</li>
@@ -181,13 +189,13 @@ Improvements</h2>
 <li>Added 'const' to all readonly parameters. Compilation should no longer produce warnings.</li>
 <li>Swapped to using Mattias Gustavsson's "rnd" implementation of a Permuted Congruential Generator (<a href="https://github.com/mattiasgustavsson/libs">https://github.com/mattiasgustavsson/libs</a>) for random number generation, rather than the builtin and subpar "rand()".</li>
 </ul>
-<h2><a class="anchor" id="autotoc_md18"></a>
+<h2><a class="anchor" id="autotoc_md20"></a>
 Bug Fixes</h2>
 <ul>
 <li>Up NAME_LENGTH (the buffer size for name loading) to 45, as a temporary fix.</li>
 <li>Allow uint ordered search to ignore 0s mid-list, to solve a bug when not all genotypes are allocated IDs</li>
 </ul>
-<h1><a class="anchor" id="autotoc_md19"></a>
+<h1><a class="anchor" id="autotoc_md21"></a>
 genomicSimulationC 0.2.2</h1>
 <ul>
 <li>Swapped out a custom randlim() in shuffle_up_to for the basic call</li>
@@ -197,7 +205,7 @@ genomicSimulationC 0.2.2</h1>
 <li>Fixed an inappropriate memory access bug in crossing functions when will_allocate_ids = FALSE</li>
 <li>Fixed an inappropriate memory access bug in make_clones when trying to inherit the name of a parent with no name.</li>
 </ul>
-<h1><a class="anchor" id="autotoc_md20"></a>
+<h1><a class="anchor" id="autotoc_md22"></a>
 genomicSimulationC 0.2.1</h1>
 <ul>
 <li>Added function make_clones (and its genotype-generating subfunction generate_clone) to make identical duplicates of members of a group.</li>
@@ -226,7 +234,7 @@ genomicSimulationC 0.2.1</h1>
 <li>Fix segfault when trying to select more individuals by GEBV than exist in the group (e.g. asking for the best 5 members of a group of 2). Now, it just moves all group members to the new selected group, and doesn't worry about the missing requested remainder.</li>
 <li>Added two new helper functions: get_n_new_group_nums and shuffle_up_to</li>
 </ul>
-<h1><a class="anchor" id="autotoc_md21"></a>
+<h1><a class="anchor" id="autotoc_md23"></a>
 genomicSimulationC 0.2</h1>
 <ul>
 <li>State corresponding to <a href="https://github.com/vllrs/genomicSimulation/releases/tag/v0.2">genomicSimulation R package v0.2</a> release. </li>

@@ -226,6 +226,401 @@ const char TEST1_TRUTH_sayg_genotype_bodyrow[] = "0	TT	AA	TT";
 const char TEST1_TRUTH_sayg_bv_bodyrow[] = "0		1.400000";
 const char TEST1_TRUTH_sayg_pedigree_bodyrow[] = "0	=(16)";
 
+
+const char* const TEST1_MAPLOADERS[] = {
+	// Regular most-expected file
+	"marker chr pos\n"
+	"first 3 3.2\n"
+	"second 3 43.2\n"
+	"3rd 1A 1e2\n"
+	"fourth 1A 108.3\n"
+	"5 1A 110\n"
+	,
+	// Mixed spacing 
+	"marker\tchr pos\n"
+	"first\t\t3\t3.2\n"
+	"second 3\t43.2\n"
+	"3rd 1A 108.3\n"
+	"fourth 1A 110\n"
+	"5 1A 1e2\n"
+	,
+	// No final line 
+	"marker chr pos\n"
+	"first 3 3.2\n"
+	"second 3 43.2\n"
+	"3rd 1A 108.3\n"
+	"fourth 1A 110\n"
+	"5 1A 1e2"
+	,
+	// Rearranged column order 
+	"chr marker pos\n"
+	"3 first 3.2\n"
+	"3 second 43.2\n"
+    "1A 3rd 108.3\n"
+    "1A fourth 110\n"
+    "1A 5 1e2\n"
+	,
+	// No header line 
+	"first 3 3.2\n"
+	"second 3 43.2\n"
+	"3rd 1A 108.3\n"
+	"fourth 1A 110\n"
+    "5 1A 1e2"
+	,
+	// Mix order
+	 "first 3 3.2\n"
+	"5 1A 1e2\n"
+	"3rd 1A 108.3\n"
+	"second 3 43.2\n"
+	"fourth 1A 110\n"
+	,
+	// Leaves out a marker, includes a fake marker that should be ignored, and gives them different chrs and positions
+	"pos marker chr\n"
+	"43.2 first 1B\n"
+	"3.2 second 1B\n"
+	"1.083e2 3rd 3\n"
+	"100 fourth 3\n"
+    "110 fake5 3\n"
+	,
+	// Too many columns on one row
+	"first 3 3.2\n"
+	"5 1A 1e2\n"
+	"3rd 1A 108.3 //commint_oops\n"
+	"second 3 43.2\n"
+	"fourth 1A 110\n"
+	,
+	// Single line with header 
+	"chr pos marker\n"
+    "1A 3700 second\n"
+	,
+	// Single line without header
+	"second 1A 3700"
+	,
+	// Single line and no valid markers
+	"pos marker chr\n"
+    "110 fake5 3\n"
+};
+
+const char* const TEST1_GENOMATRIX_LOADERS[] = {
+	// markers cols, tabs, with corner, with endline. "B"
+	"corner\tm1\tm2\n"
+	"g1\tAA\tTA\n"
+	"g2\tAT\tAA\n"
+	"oog3\tAA\tTT\n"
+	,
+	// markers rows, tabs, with corner, with endline. "C"
+	"corner\tg1\tg2\toog3\n"
+	"m1\tAA\tAT\tAA\n"
+	"m2\tTA\tAA\tTT\n"
+	,
+	// markers rows, spaces, with corner, with endline. "D"
+	"coner g1 g2 oog3\n"
+	"m1 AA AT AA\n"
+	"m2 TA AA TT\n"
+	,
+	// markers rows, Spaces, with corner, with \r\n endlines. "E"
+	"coner g1 g2 oog3\r\n"
+	"m1 AA AT AA\r\n"
+    "m2 TA AA TT\r\n"
+	,
+	// markers rows, Mixed line endings and spacings, with corner. "F" 
+	"coner\tg1\tg2\toog3\r\n"
+	"m1,AA AT AA\n"
+	"m2 TA AA,  TT\r\n"
+	,
+	// Markers rows, tabs, with corner, no endline. "G"
+	"corner\tg1\tg2\toog3\n"
+	"m1\tAA\tAT\tAA\n"
+	"m2\tTA\tAA\tTT"
+	,
+	// Markers rows, spaces, with corner, no endline. "H"
+	"1 g1 g2 oog3\n"
+	"m1 AA AT AA\r\n"
+	"m2 TA AA TT"
+	,
+	// Markers rows, spaces, no corner, no endline. "I"
+	" g1 g2 oog3\n"
+	"m1 AA AT AA\n"
+	"m2 TA AA TT"
+	,
+	// Markers rows, tabs, no corner, no endline. "J" 
+	"\tg1\tg2\toog3\n"
+	"m1\tAA\tAT\tAA\n"
+	"m2\tTA\tAA\tTT"
+	,
+	// Markers rows, tabs, no corner or corner space, no endline "K"
+	"g1\tg2\toog3\n"
+	"m1\tAA\tAT\tAA\n"
+    "m2\tTA\tAA\tTT"
+	,
+	// Markers rows, tabs, no corner, with endline. "L"
+	"\tg1\tg2\toog3\n"
+	"m1\tAA\tAT\tAA\n"
+	"m2\tTA\tAA\tTT\n"
+	,
+	// Markers columns, tabs, corner, no end line. "M"
+	"corner\tm1\tm2\n"
+	"g1\tAA\tTA\n"
+	"g2\tAT\tAA\n"
+	"oog3\tAA\tTT"
+	,
+	// Markers columns, tabs, no corner or corner space, no endline. "N"
+	"m1\tm2\n"
+	"g1\tAA\tTA\n"
+	"g2\tAT\tAA\n"
+	"oog3\tAA\tTT"
+	,
+	// Markers columns, tabs, no corner, with endline. "O"
+	"\tm1\tm2\n"
+	"g1\tAA\tTA\n"
+	"g2\tAT\tAA\n"
+	"oog3\tAA\tTT\n"
+	,
+	// Markers columns, commas, no corner or corner space, with endline. "P"
+	"m1,m2\n"
+	"g1,AA,TA\n"
+	"g2,AT,AA\n"
+	"oog3,AA,TT\n"
+	,
+	// Markers columns, commas, no corner, with endline, ignore empty extra cell in row. "Q"
+	",m1,m2\n"
+	"g1,AA,TA\n"
+	"g2,AT,AA,\n"
+	"oog3,AA,TT\n"
+	,
+	// Markers columns, commas, no corner, no endline, ignore extra cell in row. "R"
+	" ,m1,m2\n"
+	"g1,AA,TA\n"
+	"g2,AT,AA,BB\n"
+	"oog3,AA, TT"
+	,
+	// Markers columns, commas, no corner, with endline, slashpairs. "S"
+	",m1,m2\n"
+	"g1,A/A,T/A\n"
+	"g2,A/T,A/A,\n"
+	"oog3,A/A,T/T\n"
+	,
+	// Markers rows, commas, no corner, with endline, slashpairs. "T"
+	"\tg1\tg2\toog3\n"
+	"m1\tA/A\tA/T\tA/A\n"
+	"m2\tT/A\tA/A\tT/T\n"
+	,
+	// Markers rows, commas, no corner, with endline, slashpairs, rearranged markers. "U"
+	"\tg1\tg2\toog3\n"
+	"m2\tT/A\tA/A\tT/T\n"
+	"m1\tA/A\tA/T\tA/A\n"
+	,
+	// Markers columns, commas, no corner, with endline, slashpairs, rearranged markers "V"
+	" ,m2,m1\n"
+	"g1,TA,AA\n"
+	"g2,AA,AT,\n"
+	"oog3,TT,AA\n"
+	,
+	// Markers columns, commas, no corner, rearranged markers, fake marker that should be ignored. "W"
+	" ,m2,m1,omg\n"
+	"g1,TA,AA,BB\n"
+	"g2,AA,AT,BA\n"
+	"oog3,TT,AA,CA\n"
+	,
+	// Markers columns, commas, no corner, rearranged markers, central fake marker that should be ignored. "X"
+	" ,m2,omg,m1\n"
+	"g1,TA,BB,AA\n"
+	"g2,AA,BA,AT\n"
+	"oog3,TT,CA,AA\n"
+	,
+	// Markers rows, commas, no corner or corner space, fake marker that should be ignored. "Y"
+	"g1\tg2\toog3\n"
+	"m1\tAA\tAT\tAA\n"
+	"notthisone\t:)\tAA\tTT\n"
+	"m2\tTA\tAA\tTT\n"
+	,
+	// Markers columns, blank genotype names, commas, rearranged markers. "Z"
+	" m2,m1\n"
+	" TA,AA\n"
+	" AA,AT\n"
+	" TT,AA\n"
+	,
+    // Markers as rows, no genotype names "ZA"
+    "\n"
+    "m2\tT/A\tA/A\tT/T\n"
+    "m1\tA/A\tA/T\tA/A\n"
+    ,
+    // Markers as rows, no genotype names v2 "ZB"
+    "m2\tT/A\tA/A\tT/T\n"
+    "m1\tA/A\tA/T\tA/A\n"
+    ,
+    // Markers as columns, no genotype names "ZC"
+    ",m1,m2\n"
+    ",A/A,T/A\n"
+    ",A/T,A/A,\n"
+    ",A/A,T/T\n"
+    ,
+    // Markers as columns, no genotype names v2 "ZD"
+    "corner,m1,m2\n"
+    ",A/A,T/A\n"
+    ",A/T,A/A,\n"
+    ",A/A,T/T\n"
+    ,
+	// Markers rows, single marker with header, with corner.
+	"1 g1 g2 oog3\n"
+    "m1 AA AT AA\n"
+	,
+	// Markers rows, single row no header
+	"m2 AA TA AA\n"
+	,
+	// Markers rows, single body column with header, no corner or corner space
+	"g1\n"
+	"m2\tT/A\n"
+	"m1\tA/A"
+	,
+	// Markers rows, single body column no header
+	"m2\tT/A\n"
+    "m1\tA/A"
+	,
+	// Markers columns, single row with header, with corner
+	"20 ,m1,m2\n"
+	"g1,AA,TA\n"
+	//,
+	// markers columns single marker noheader -> fails, can't guarantee marker order.
+	// "g1,AA,TA\n"
+	,
+	// Markers columns, single column and single row with header 
+	"m2\n"
+	"g1,AA\n"
+	,
+    // Markers rows, single row no header
+    "m1 0 - 2"
+    ,
+    // Markers as rows, single row, no body
+    " g1 g2 oog3"
+    ,
+    // Markers as columns, single row, no body
+    " m1 m2"
+    ,
+    // Markers as rows, single column, no body
+    "\nm1\nm2"
+    ,
+    // Markers as rows, no marker name matches
+    "\tg1\tg2\toog3\n"
+    "m24\tT/A\tA/A\tT/T\n"
+    "m14\tA/A\tA/T\tA/A\n"
+    ,
+    // Markers as columns, no marker name matches
+    ",m14,m24\n"
+    "g1,A/A,T/A\n"
+    "g2,A/T,A/A,\n"
+    "oog3,A/A,T/T\n"
+    ,
+	// Normal: counts as body
+	" ,m2,m1\n"
+	"g1,1,1\n"
+	"g2,0,1\n"
+	"oog3,1,2\n"
+	,
+	// Normal: IUPAC encodings as body
+	" ,m1,m2\n"
+	"g1,G,A\n"
+	"g2,T,C\n"
+	"oog3,R,R\n"
+	"oog4,R,R\n"
+	"oog5,Y,Y\n"
+	"oog6,Y,Y\n"
+	"oog7,M,M\n"
+	"oog8,M,M\n"
+	"oog9,K,K\n"
+	"oog10,K,K\n"
+	"oogA,S,S\n"
+	"oogB,S,S\n"
+	"oogC,W,W\n"
+	"oogD,W,W\n"
+	"oogBb,S,S\n"
+};
+const char TEST1_2MARKER_MAP[] = "m1 1 10\n" "m2 1 20";
+
+const char TEST1_EFFLOADERS_MAP[] = "marker chr pos\n" "first 3 3.2\n" "second 3 43.2\n";
+const char* const TEST1_EFFLOADERS[] = {
+	// Regular most-expected file 
+	"marker allele eff\n"
+	"first A 0.5\n"
+	"first T -0.5\n"
+	"second A 1e2\n"
+	"second T 1e-2\n"
+	,
+	// Tabs, no final newline
+	"marker\tallele\teff\n"
+	"first\tA\t0.5\n"
+	"first\tT\t-0.5\n"
+	"second\tA\t1e2\n"
+	"second\tT\t1e-2"
+	,
+	// Mixed spacing 
+	"marker, allele, eff\n"
+	"first \tA 0.5\n"
+	"first \tT -0.5\n"
+	"second \tA 1e2\n"
+	"second T,,,1e-2\n"
+	,
+	// Rearranged rows 
+	"marker allele eff\n"
+	"second A 1e2\n"
+	"first A 0.5\n"
+	"first T -0.5\n"
+	"second T 1e-2"
+	,
+	// No header
+	"second A 1e2\n"
+	"first A 0.5\n"
+	"first T -0.5\n"
+	"second T 1e-2\n"
+	,
+	// Rearranged columns
+	"marker eff allele \n"
+	"second 1e2 A\n"
+	"first 0.5 A\n"
+	"second 1e-2 T\n"
+    "first -0.5 T\n"
+	,
+	// assorted alleles
+	"marker allele eff\n"
+	"second 8 1e-2\n"
+	"first A 0.5\n"
+	"first T -0.5\n"
+	"second T 1e2\n"
+	,
+	// only one row
+	"marker allele eff\n"
+    "first A 0.5\n"
+	,
+	// only one row no header
+	"first a 0.5\n"
+	,
+	// Discard markers not tracked by the simulation
+	"marker eff allele \n"
+	"second 1e2 A\n"
+	"first 0.5 A\n"
+	"3rd 1e-2 B\n"
+	"first -0.5 T\n"
+	,
+	// Too many columns on one row 
+	"marker eff allele\n"
+	"second 1e2 A ?\n"
+	"first 0.5 A //comment forgotten here\n"
+	"second 1e-2 T\n"
+	"first -0.5 T\n"
+	,
+	// Duplicated marker/allele pair
+	"marker eff allele\n"
+	"second 1e2 A\n"
+	"first 0.5 T\n"
+	"second 1e-2 T\n"
+	"first -0.5 T\n"
+	,
+	// File with no valid lines
+	"marker eff allele\n"
+	"first 0.5 A //comment forgotten here\n"
+	"fifth 1e-2 T\n"
+};
+
 float calculate_heterozygosity(SimData* d, GroupNum group_number);
 int compareFiles(char* f1, char* f2); // returns 0 if matching
 int compareFileToString(char* filename, const char* target);

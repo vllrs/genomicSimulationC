@@ -11,7 +11,7 @@ int main(int argc, char* argv[]) {
 	// load our starting data to a SimData struct.
     SimData* sd = create_empty_simdata(time(NULL));
 	struct MultiIDSet init = load_data_files(sd, "parents.txt",
-			"genetic-map.txt", "qtl.eff.txt");
+            "genetic-map.txt", "qtl.eff.txt", DETECT_FILE_FORMAT);
 	// init contains init.group, init.map, and init.effSet
 
 	// prepare to perform a cross by selecting the options we want

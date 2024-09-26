@@ -2,6 +2,6 @@
 <area shape="rect" id="node1" title="Function to identify the next sequential integer that is not already allocated to a marker effect set..." alt="" coords="753,13,912,41"/>
 <area shape="rect" id="node2" href="$sim-operations_8c.html#a3717c5ed02cf2a321b7424dc0e668e19" title="Save an EffectMatrix to the SimData and allocate it an EffectID." alt="" coords="561,5,705,49"/>
 <area shape="rect" id="node3" href="$group__loaders.html#ga176416bff8f5e258dbe1619637c8b831" title="Populates a gsc_SimData combination with effect values." alt="" coords="386,13,513,41"/>
-<area shape="rect" id="node4" href="$group__loaders.html#gac7f5d37f0a3fd81aa26f1eae2ebae2db" title="Populates a gsc_SimData object with marker allele data, a genetic map, and (optionally) marker effect..." alt="" coords="203,13,338,41"/>
-<area shape="rect" id="node5" href="$group__loaders.html#gabbe46ffa8009c748d895d4215a6c8bb8" title="Load a set of genotypes to a gsc_SimData object." alt="" coords="5,13,155,41"/>
+<area shape="rect" id="node4" href="$group__loaders.html#ga394371951741d8c2db18a85069d6b61e" title="Populates a gsc_SimData object with marker allele data, a genetic map, and (optionally) marker effect..." alt="" coords="203,13,338,41"/>
+<area shape="rect" id="node5" href="$group__loaders.html#ga50888a3ffcd2853e07bb4c1b6f0d067a" title="Load a set of genotypes to a gsc_SimData object." alt="" coords="5,13,155,41"/>
 </map>

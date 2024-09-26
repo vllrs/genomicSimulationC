@@ -3,9 +3,9 @@
 <area shape="rect" id="node2" href="$sim-operations_8c.html#a14bf1934790250afa4e708fe902c44a0" title="Create a new gsc_EmptyListNavigator, including an empty AlleleMatrix suitable for inserting into the ..." alt="" coords="676,13,873,41"/>
 <area shape="rect" id="node6" href="$sim-operations_8c.html#a67c2447b0d771997a444efe026cf0600" title="Get the next sequential genotype in an gsc_EmptyListNavigator." alt="" coords="698,65,851,109"/>
 <area shape="rect" id="node7" href="$group__crossers.html#ga28b0fcf60b6a8f6e8ca470f7b5d0a4b7" title="Make new genotypes (generic function)" alt="" coords="693,169,856,213"/>
-<area shape="rect" id="node3" href="$sim-operations_8c.html#a0f9bc7d42b9a98a1f4ea30c4a5f49312" title="Loads a genotype file, with or without existing genome model in the SimData." alt="" coords="460,5,609,49"/>
-<area shape="rect" id="node4" href="$group__loaders.html#gac7f5d37f0a3fd81aa26f1eae2ebae2db" title="Populates a gsc_SimData object with marker allele data, a genetic map, and (optionally) marker effect..." alt="" coords="230,13,365,41"/>
-<area shape="rect" id="node5" href="$group__loaders.html#gabbe46ffa8009c748d895d4215a6c8bb8" title="Load a set of genotypes to a gsc_SimData object." alt="" coords="5,13,155,41"/>
+<area shape="rect" id="node3" href="$sim-operations_8c.html#aca78dbac4d7154e95b6ddca575937d77" title="Loads a genotype file, with or without existing genome model in the SimData." alt="" coords="460,5,609,49"/>
+<area shape="rect" id="node4" href="$group__loaders.html#ga394371951741d8c2db18a85069d6b61e" title="Populates a gsc_SimData object with marker allele data, a genetic map, and (optionally) marker effect..." alt="" coords="230,13,365,41"/>
+<area shape="rect" id="node5" href="$group__loaders.html#ga50888a3ffcd2853e07bb4c1b6f0d067a" title="Load a set of genotypes to a gsc_SimData object." alt="" coords="5,13,155,41"/>
 <area shape="rect" id="node8" href="$group__crossers.html#ga15af204958dc69717334c46b19219a2d" title="Creates an identical copy of each member of a group." alt="" coords="471,73,597,101"/>
 <area shape="rect" id="node9" href="$group__crossers.html#ga6c230330ca9a9db9459d4477512a21af" title="Creates a doubled haploid from each member of a group." alt="" coords="440,125,628,153"/>
 <area shape="rect" id="node10" href="$group__crossers.html#ga03af5446006203244dd3080cf75af26f" title="Performs random crosses among members of a group." alt="" coords="442,177,626,205"/>

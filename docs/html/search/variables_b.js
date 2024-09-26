@@ -1,4 +1,19 @@
 var searchData=
 [
-  ['offspring_5fname_5fprefix_0',['offspring_name_prefix',['../structgsc___gen_options.html#a6b8ee6897b0b6fede42ea39f32054c12',1,'gsc_GenOptions']]]
+  ['n_5fchr_0',['n_chr',['../structgsc___recombination_map.html#a081ef8b26e5b2bdd2ad18cda33bc4bbb',1,'gsc_RecombinationMap']]],
+  ['n_5feff_5fsets_1',['n_eff_sets',['../structgsc___sim_data.html#a6844dc5c3278f9789d13f11389bd3ac6',1,'gsc_SimData']]],
+  ['n_5fgenotypes_2',['n_genotypes',['../structgsc___allele_matrix.html#a6b6812558a2182e262a7c86db96a0db1',1,'gsc_AlleleMatrix']]],
+  ['n_5fgroups_3',['n_groups',['../structgsc___sim_data.html#a1de32f3891f87c316138ed639034c87b',1,'gsc_SimData']]],
+  ['n_5flabels_4',['n_labels',['../structgsc___allele_matrix.html#afacf4a7c5f722e91183e9f27cc275b90',1,'gsc_AlleleMatrix::n_labels()'],['../structgsc___sim_data.html#a2a011f1038d447e3762fa79e7e7af58f',1,'gsc_SimData::n_labels()']]],
+  ['n_5fmaps_5',['n_maps',['../structgsc___known_genome.html#a9eb1d3a7bc9704f370ee32370152ef26',1,'gsc_KnownGenome']]],
+  ['n_5fmarkers_6',['n_markers',['../structgsc___simple_linkage_group.html#a5a997f5c54255a7502e850c9fe640da2',1,'gsc_SimpleLinkageGroup::n_markers()'],['../structgsc___reordered_linkage_group.html#a3ab2200895c1b91abdd4651e4cc6d319',1,'gsc_ReorderedLinkageGroup::n_markers()'],['../structgsc___known_genome.html#ab4ebbde2bc666091aef2a725ff8f9dc9',1,'gsc_KnownGenome::n_markers()'],['../structgsc___allele_matrix.html#aa2329e175837d3a08f6bc15f5e7884b0',1,'gsc_AlleleMatrix::n_markers()']]],
+  ['name_7',['name',['../structgsc___mapfile_unit.html#a3d9e8c94281c9c7c7ab85df877d4e238',1,'gsc_MapfileUnit']]],
+  ['names_8',['names',['../structgsc___allele_matrix.html#a0aff5c12c25e307435ac50e08e2e8cb9',1,'gsc_AlleleMatrix']]],
+  ['names_5falphabetical_9',['names_alphabetical',['../structgsc___known_genome.html#a5d1dc120735aef78cdf66daeb6e20741',1,'gsc_KnownGenome']]],
+  ['next_10',['next',['../structgsc___allele_matrix.html#aaa983e1b8bcf78a64b8f21ce6db841ec',1,'gsc_AlleleMatrix']]],
+  ['num_11',['num',['../structgsc___group_num.html#ac45c88ae11d6fbbafab951fd87da88f5',1,'gsc_GroupNum']]],
+  ['num_5fblocks_12',['num_blocks',['../structgsc___marker_blocks.html#a9c39b94068c867ff7c5652b72dd3db77',1,'gsc_MarkerBlocks']]],
+  ['num_5fcolumns_13',['num_columns',['../structgsc___table_size.html#ae1783d4c76ed7e48e8c27bc6e99c831a',1,'gsc_TableSize']]],
+  ['num_5fmarkers_5fin_5fblock_14',['num_markers_in_block',['../structgsc___marker_blocks.html#a8fa1093ba7a6bc8ef7db8f49256691d6',1,'gsc_MarkerBlocks']]],
+  ['num_5frows_15',['num_rows',['../structgsc___table_size.html#aeeda2e180af66fb3bbc437cba2bcda0e',1,'gsc_TableSize']]]
 ];

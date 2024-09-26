@@ -3,11 +3,11 @@
 <area shape="rect" id="node2" href="$group__supporters.html#ga63640e905157a54a1d84374f4ce2b140" title="Replace all occurences of a given allele with a different symbol representation." alt="" coords="583,5,761,33"/>
 <area shape="rect" id="node3" href="$group__loaders.html#ga77e0915b84492088f60ab8e74da55066" title="Parse a list of markers/chrs/positions into a gsc_RecombinationMap and save to SimData." alt="" coords="592,57,752,101"/>
 <area shape="rect" id="node7" href="$group__loaders.html#ga3a2324888dbd9cfdc228554cd15597af" title="Create a uniformly&#45;spaced gsc_RecombinationMap from a list of marker names and save to SimData." alt="" coords="584,193,760,237"/>
-<area shape="rect" id="node8" href="$sim-operations_8c.html#a0f9bc7d42b9a98a1f4ea30c4a5f49312" title="Loads a genotype file, with or without existing genome model in the SimData." alt="" coords="386,253,535,297"/>
-<area shape="rect" id="node9" href="$sim-operations_8c.html#aa4a517df3f8084f40c7f8617a5112abd" title="Determine whether a genotype matrix is row&#45; or column&#45;oriented based on header and first cell of seco..." alt="" coords="592,313,752,373"/>
+<area shape="rect" id="node8" href="$sim-operations_8c.html#aca78dbac4d7154e95b6ddca575937d77" title="Loads a genotype file, with or without existing genome model in the SimData." alt="" coords="386,253,535,297"/>
+<area shape="rect" id="node9" href="$sim-operations_8c.html#a39561a6563fa3b016f8833252acc5e5a" title="Determine whether a genotype matrix is row&#45; or column&#45;oriented." alt="" coords="585,313,759,357"/>
 <area shape="rect" id="node10" href="$sim-operations_8c.html#a7d949c9d8650f7744c84c20eb28c14ff" title="Discard markers whose names are not present in a gsc_KnownGenome." alt="" coords="587,125,757,169"/>
-<area shape="rect" id="node11" href="$group__loaders.html#ga176416bff8f5e258dbe1619637c8b831" title="Populates a gsc_SimData combination with effect values." alt="" coords="397,359,524,387"/>
+<area shape="rect" id="node11" href="$group__loaders.html#ga176416bff8f5e258dbe1619637c8b831" title="Populates a gsc_SimData combination with effect values." alt="" coords="397,351,524,379"/>
 <area shape="rect" id="node4" href="$group__loaders.html#gac180eb5f1d27907a69314e68cc0d37af" title="Load a genetic map to a gsc_SimData object." alt="" coords="400,133,521,161"/>
-<area shape="rect" id="node5" href="$group__loaders.html#gac7f5d37f0a3fd81aa26f1eae2ebae2db" title="Populates a gsc_SimData object with marker allele data, a genetic map, and (optionally) marker effect..." alt="" coords="203,261,338,289"/>
-<area shape="rect" id="node6" href="$group__loaders.html#gabbe46ffa8009c748d895d4215a6c8bb8" title="Load a set of genotypes to a gsc_SimData object." alt="" coords="5,261,155,289"/>
+<area shape="rect" id="node5" href="$group__loaders.html#ga394371951741d8c2db18a85069d6b61e" title="Populates a gsc_SimData object with marker allele data, a genetic map, and (optionally) marker effect..." alt="" coords="203,261,338,289"/>
+<area shape="rect" id="node6" href="$group__loaders.html#ga50888a3ffcd2853e07bb4c1b6f0d067a" title="Load a set of genotypes to a gsc_SimData object." alt="" coords="5,261,155,289"/>
 </map>

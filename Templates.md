@@ -21,26 +21,13 @@ m3 3 15
 m2 1 8.3
 m1 1 5.2
 ```
-
-The first column represents marker names. For all genomicSimulation features to work, genetic markers must have names. There is no issue with purely numeric names.
-
-The second column represents the chromosome/linkage group in which that marker is found. Any alphanumeric combination may be used to denote a chromosome/linkage group, eg. '9' or '1A'.
-
-The third column represents the position in centimorgans of that marker along that linkage group. (Distance of 1cM = expected probability of 0.01 chromosomal crossovers in that range.)
-
-The header line is optional. However, if it is provided, the three columns "marker" "chr" and "pos" may be rearranged into any ordering. If the header is not provided, the order is assumed to be marker name, followed by chromosome, followed by position. 
-
-Cells may be separated by spaces, tabs, commas, or any combination thereof. Cell spacers do not need to be consistent across the file. 
-
-The order in which genetic markers are presented in the file does not matter. If a marker is duplicated in the file, it will be recorded twice as two separate markers in the same position and with the same name. genomicSimulation does not check against this. However, if two markers have the same name, genotypes may not be loaded correctly, as loading genotypes depends on matching markers by name, so this should be avoided.
-
 Other valid genetic map files might include:
 ```
 chr marker pos
-1A m1243509 173.2
-1A m2350898 462.2
-1B m4360992 32.009
-2A m1243556 243.5
+1A 1243509 173.2
+1A 2350898 462.2
+1B 4360992 32.009
+2A 1243556 243.5
 ```
 or
 ```
@@ -48,6 +35,18 @@ gene 10 3.24
 othergene 10 8.3e-1
 etc 15 1.203e2
 ```
+
+The header line is optional. If there is a header line, the three columns "marker" "chr" and "pos" may be rearranged into any ordering. If the header is not provided, the order is assumed to be marker name in the first column, followed by chromosome in the second column, followed by position in the third.
+
+Regarding marker names: For all genomicSimulation features to work, genetic markers must have names. There is no issue with purely numeric names.
+
+Regarding chromosomes/linkage group: any alphanumeric combination may be used to denote a chromosome/linkage group, for example '9' or '1A'. There is no limit on the number of unique chromosomes/linkage groups in the map.
+
+Regarding marker position: this represents the position in centimorgans of each marker along its linkage group. (Distance of 1 cM = expected probability of 0.01 chromosomal crossovers in that range.)
+
+The cells in the map file may be separated by spaces, tabs, commas, or any combination thereof. Cell spacers do not need to be consistent across the file, but therefore marker names/linkage group names cannot contain spaces, tabs, or commas. 
+
+The order in which genetic markers are presented in the file does not matter. If a marker is duplicated in the file, it will be recorded twice as two separate markers in the same position and with the same name.  However, because loading genotypes depends on searching for markers by name, if two markers have the same name, genotypes may not be loaded correctly. Therefore it is suggested that all markers have unique names.
 
 ### Genotype matrix files
 
@@ -58,36 +57,7 @@ m1	TT	TT	TT	TA	TT	AT
 m3	TT	TT	TA	TA	TT	TT
 m2	AA	AA	AA	AA	CC	AA
 ```
-where G01, G02, ..., are names of the founder genotypes; m1, m2, ..., are the markers; and entries in the matrix are the alleles that genotype has at that marker. 
-
-The genotype matrix may be row-major or column-major (that is, the genetic markers may be rows, or columns). The program will determine the orientation by attempting to match row and column headers with names of markers tracked by the simulation. If the simulation does not yet have a list of tracked markers (that is, if this is the first file to be loaded, before even a genetic map file), then it defaults to assuming that columns represent genetic markers.  
-
-Cells may be separated by spaces, tabs, commas, or any combination thereof. Cell spacers do not need to be consistent across the file. 
-
-The order in which genetic markers are presented in the file does not matter. Genotypes, however, will be saved internally in the simulation in the order that they appear in the file. Genotype names need not be unique.
-
-Marker names must be provided, so if the file does not have a header row, it must have a header column containing genetic marker names, and if it does not have a header column, it must have a header row containing genetic marker names.
-
-The first or corner cell (in the above example, containing the value "name") can be deleted or can contain any text, which will be ignored. 
-
-The simulation tool can parse a few different encodings of the alleles at each marker. The format of the allele pair will be automatically detected. All allele pairs in the same genotype matrix must be in the same format.
-
-Allele pair encodings, with phase:
-
-- Any pair of characters (see the above example). Alleles can be any character that is not a space, tab, comma, or newline.
-- Any pair of characters, separated by a forwards slash "/" character. 
-
-Allele pair encodings, without phase (the simulation tool will randomise phase of heterozygotes as the file is loaded):
-
-- Alternate allele counts ("0", "1", "2"). If alternate allele counts are used, the reference allele is assumed to be T and the alternate allele A. ("0" then corresponds to "TT", "2" to "AA", and "1" will be randomised as either "TA" or "AT"). `change.allele.symbol` can be used after loading if you wish to change T and/or A to other symbols.
-- IUPAC encodings ("G", "A", "T", "C", "R", "Y", "M", "K", "S", "W", "N")
-
-**Note you might have a genotype matrix that uses "alternate allele counts"-style encoding but presents it in a format that looks like pairs of alleles, eg. "AA", "AT", and "TT".** genomicSimulation expects allele pair encodings to include haplotype phase, (that is, to have four possible values for genotypes of two alleles, not three: "AA", "AT", "TA", and "TT"). 
-
-Two options for loading a dataset with non-phased "AA"/"AT"/"TT" allele pairs are:
-
-- Use “haplotyping”/”haplotype phasing”/”haplotype inference” software to infer whether heterozygotes are "AT" or "TA", before loading into genomicSimulation.
-- Find-and-replace "TT" with "0", "AT" with "1", and "AA" with "2" before loading into genomicSimulation. genomicSimulation will then randomise the phase of each haplotype.
+where G01, G02, ..., are names of the founder genotypes; m1, m2, ..., are the genetic markers; and entries in the matrix are the alleles that the founder genotypes have at those markers. 
 
 Other valid genotype matrix files might include:
 ```
@@ -103,9 +73,48 @@ marker3	T/T	T/T	T/A	T/A	T/T	T/T
 marker2	A/A	A/A	A/A	A/A	T/T	A/A
 ```
 
+The genotype matrix can be row-major or column-major (that is, the genetic markers may be rows, or columns). The program will determine the orientation by attempting to match row and column headers with names of markers tracked by the simulation (extracted from a genetic map file). If the simulation does not yet have a list of tracked markers (that is, no genetic map has been simultaneously or previously provided), then it defaults to assuming that rows represent genetic markers.  
+
+The order in which genetic markers are presented in the file does not matter. Candidate genotypes, however, will be saved internally in the simulation in the order that they appear in the file. Candidate genotype names do not need to be unique. Candidate genotype names are optional, if candidates are stored as columns. genomicSimulation cannot read a gentoype matrix with no row headers, so if candidates are stored as rows, then they are required to have names.
+
+Genetic markers' names are required. 
+
+When there are both row and column headers, the first/corner cell (the one that contained the value "name" in the first example above) can be deleted or can contain any text. Its value will be ignored. 
+
+The table cells in the genotype matrix file may be separated by spaces, tabs, commas, or any combination thereof. Cell spacers do not need to be consistent across the file. 
+
+There are several options for how the alleles at each marker can be presented. All allele pair cells in the same genotype matrix must be in the same format. The format of the allele pairs in the genotype matrix is automatically detected. There are four acceptable formats for allele pairs in the genotype matrix:
+
+1. Any pair of characters (eg. "AA", "TA", "nW"). Each character is an allele. This is a format that specifies allele phase (ie. "AT" and "TA" are different genotypes).
+2. Any pair of characters, separated by a forwards slash "/" character (eg. "A/A", "T/A", "n/W"). The two characters either side of the slash are the alleles. This is a format that specifies allele phase (ie. "AT" and "TA" are different genotypes).
+3. Alternate allele counts ("0", "1", "2"). This is a format that does not specify allele phase, so phase of heterozygotes will be randomised when loaded. The counts represent the number of copies of the alternate allele (stored inside genomicSimulation as "A", while the reference allele is stored as "T"). "0" then corresponds to "TT", "2" to "AA", and "1" will be randomised as either "TA" or "AT". Corresponding marker effect files for calculating breeding values must use allele "A" consistently to represent the alternate allele, and "T" to represent the reference. (alternatively, `change_allele_symbol` (C)/`change.allele.symbol` (R) can be used after loading to change T and/or A to other symbols.)
+4. (subset of) IUPAC encodings of DNA bases ("G", "A", "T", "C", "R", "Y", "M", "K", "S", "W", "N"). This is a format that does not specify allele phase, so phase of heterozygotes will be randomised when loaded. See below for meanings of the IUPAC encoding symbols that genomicSimulation can parse.
+
+<table>
+<tr><th>IUPAC symbol <th>genomicSimulation genotype
+<tr>G<td>GG
+<tr>A<td>AA
+<tr>T<td>TT
+<tr>C<td>CC
+<tr>R<td>GA or AG
+<tr>Y<td>TC or CT
+<tr>M<td>AC or CA
+<tr>K<td>GT or TG
+<tr>S<td>GC or CG
+<tr>W<td>AT or TA
+<tr>N<td>\\0\\0 (nulls represent unknown genotype)
+</table>
+
+**Note you might have a genotype matrix of only "AA", "AT", and "TT". This uses "alternate allele counts"-style encoding (like format 3) but presents it in a format that looks like pairs of alleles (format 1).** genomicSimulation expects allele pair encodings to include haplotype phase, (that is, to have four possible values for genotypes of two alleles, not three: eg. "AA", "AT", "TA", and "TT" instead of just "AA", "AT", "TT"). 
+
+Two options for loading a dataset with non-phased "AA"/"AT"/"TT" allele pairs are:
+
+- Use “haplotyping”/”haplotype phasing”/”haplotype inference” software to infer whether heterozygotes are "AT" or "TA", before loading into genomicSimulation.
+- Find-and-replace "TT" with "0", "AT" with "1", and "AA" with "2" before loading into genomicSimulation. genomicSimulation will then randomise the phase of each haplotype.
+
 ### Marker effect files
 
-Loading effect file(s) is optional for running the simulation. The simplest marker effect file is formatted as follows:
+Loading marker effect file(s) is optional for running the simulation. The simplest marker effect file is formatted as follows:
 ```
 marker allele eff
 m1 A -0.8
@@ -114,21 +123,6 @@ m3 A 0.1
 m1 T 0.9
 m3 T -0.1
 ```
-
-The first column is to be a genetic marker name, corresponding to a name used in a previously-loaded map file. 
-
-The second should be the allele (non-space character, eg "A") that this effect value corresponds to. 
-
-The third should be a decimal representing the additive effect value of that allele for that marker.
-
-The header line is optional. However, if it is provided, the three columns "marker" "allele" and "eff" may be rearranged. If the header is not provided, the order is assumed to be marker name, followed by allele symbol, followed by additive effect value. 
-
-Cells may be separated by spaces, tabs, commas, or any combination thereof. Cell spacers do not need to be consistent across the file. 
-
-The order in which rows are presented in the file does not generally matter. If a particular marker/allele combination is included multiple times in the file, only the last effect value in that file for that combination will be saved.
-
-A particular marker/allele combination not being included in the file is equivalent to that combination having an effect value of 0. If a particular marker/allele combination is included multiple times in a file, only the last occurrence is saved. If a marker name in the file does not match any marker tracked by the simulation, that row will be ignored. The simulation will print out the number of marker/allele pairs for which effects are loaded: for the sample file above, that would be 5.
-
 Other valid marker effect files might include:
 ```
 marker eff allele
@@ -141,6 +135,20 @@ or
 ```
 specialgene G 1.0
 ```
+
+A single marker effect file represents the allele effects for one trait. Multiple files like this can be loaded in order to calculate breeding values for multiple traits separately.
+
+The header line is optional. If there is a header line, the three columns "marker" "allele" and "eff" may be rearranged into any ordering. If the header is not provided, the order is assumed to be marker name in the first column, followed by allele, followed by additive effect value.
+
+The order of the rows in the file does not matter. If multiple rows exist in the file for the same marker name/allele combination, only the last row's additive effect value will be saved. 
+
+Regarding marker names: Only rows in this file whose marker name matches a marker name from a previously- or simultaneously-loaded map file or genotype matrix file will be loaded. 
+
+Regarding allele: This column should be the allele (non-space character, eg "A") that this effect value corresponds to. 
+
+Regarding allele effect: This column should be a decimal representing the additive effect value of the same-row allele for the same-row marker. It can be positive or negative or zero, and can be represented by an integer, a decimal, or scientific notation. 
+
+Cells may be separated by spaces, tabs, commas, or any combination thereof. Cell spacers do not need to be consistent across the file. 
 
 ### Loading from other file formats
 Updates to expand the range of allowed input formats are coming soon.
@@ -187,7 +195,7 @@ m1 1 5.2
 <td>
 ```{C}
 SimData* d = create_empty_simdata(time(NULL));
-struct MultiIDSet init = load_data_files(d, "genotype-file.txt", "map-file.txt", NULL);
+struct MultiIDSet init = load_data_files(d, "genotype-file.txt", "map-file.txt", NULL, DETECT_FILE_FORMAT);
 GroupNum founders = init.group;
 ```
 <td>
@@ -199,6 +207,53 @@ founders <- load.data(genotype.file="genotype-file.txt", map.file="map-file.txt"
 The simulation will track genotypes across all markers present in the map file. Which markers are tracked by the simulation cannot currently be changed. Line order does not matter in any file.
 
 Consider using the get_group_ family of functions (genomicSimulationC) and see.group.data function (genomicSimulation) to confirm data is correctly loaded.
+
+## Load a genetic map and genotype file, specifying file format
+
+By default, genomicSimulation attempts to detect the format of input files as it loads them. When a file loading command is run, genomicSimulation prints out its assumptions about the format of the file.
+
+If the printed logs are incorrect about the layout of your map file or effect file, the most likely cause is a mis-spelling in the header row of the file. If the printed logs are incorrect about the size of the table in your map file or effect file, the issue may be that the numbers cannot be detected as numbers, or that there are issues with the column spacers/line breaks that cause there to be more than three entries to a row.
+
+If the printed logs are incorrect about the layout or format of your genotype matrix file, you can manually specify the file format for genomicSimulation, as follows. 
+
+<table>
+<tr><th>Task <th>Input Files <th>genomicSimulationC (C) <th>genomicSimulation (R)
+<tr><td>
+<td>Genotype file/Allele file:
+- File location: genotype-file.txt
+- File contents:
+```
+name	G01	G02	G03	G04	G05	G06
+m1	TT	TT	TT	TA	TT	AT
+m3	TT	TT	TA	TA	TT	TT
+m2	AA	AA	AA	AA	TT	AA
+```
+
+Map file:
+- File location: map-file.txt
+- File contents:
+```
+marker chr pos
+m3 3 15
+m2 1 8.3
+m1 1 5.2
+```
+<td>
+```{C}
+SimData* d = create_empty_simdata(time(NULL));
+FileFormatSpec mformat = define_matrix_format_details(GSC_TRUE,GSC_TRUE,GSC_GENOTYPECELLSTYLE_PAIR);
+struct MultiIDSet init = load_data_files(d, "genotype-file.txt", "map-file.txt", NULL, mformat);
+```
+<td>
+```{R}
+mformat <- define.matrix.format.details(has.header=TRUE, markers.as.rows=TRUE, cell.style="Pair")
+founders <- load.data(genotype.file="genotype-file.txt", map.file="map-file.txt",format=mformat)
+```
+</table>
+
+It is not required that you manually specify all details of the file format. Whatever details of the file format are not manually specified will be automatically detected.
+
+See the documentation for the function `define_matrix_format_details` (C)/`define.matrix.format.details` (R) for more information.
 
 ## Load a genetic map and several sets of founder genotypes
 
@@ -237,9 +292,9 @@ m1 1 5.2
 <td>
 ```{C}
 SimData* d = create_empty_simdata(time(NULL));
-struct MultiIDSet init = load_data_files(d, "genotype-file.txt", "map-file.txt", NULL);
+struct MultiIDSet init = load_data_files(d, "genotype-file.txt", "map-file.txt", NULL, DETECT_FILE_FORMAT);
 GroupNum founders_a = init.group;
-GroupNum founders_b = load_genotypefile(d, "genotype-file2.txt");
+GroupNum founders_b = load_genotypefile(d, "genotype-file2.txt", DETECT_FILE_FORMAT);
 ```
 <td>
 ```{R}
@@ -287,7 +342,7 @@ m3 T -0.1
 <td>
 ```{C}
 SimData* d = create_empty_simdata(time(NULL));
-struct MultiIDSet init = load_data_files(d, "genotype-file.txt", "map-file.txt", "eff-file.txt");
+struct MultiIDSet init = load_data_files(d, "genotype-file.txt", "map-file.txt", "eff-file.txt", DETECT_FILE_FORMAT);
 GroupNum founders = init.group;
 EffectID eff1 = init.effectSet;
 MapID map1 = init.map;
@@ -679,7 +734,7 @@ genomicSimulation's custom labels can be used to track age (or some other known 
 <td>
 ```{C}
 SimData* d = create_empty_simdata(1234567);
-struct MultiIDSet init = load_data_files(d, "genotype-file.txt", "map-file.txt", NULL);
+struct MultiIDSet init = load_data_files(d, "genotype-file.txt", "map-file.txt", NULL, DETECT_FILE_FORMAT);
 GroupNum animals = init.group;
 
 // Create a new label to represent age, with default/at-birth value of 0.
@@ -776,8 +831,8 @@ rm(animals)
 SimData* d = create_empty_simdata(7654321);
 MapID female_map = load_mapfile("fmap.txt");
 MapID male_map = load_mapfile("mmap.txt");
-GroupNum female_pop = load_genotypefile("fgenos.txt");
-GroupNum male_pop = load_genotypefile("mgenos.txt");
+GroupNum female_pop = load_genotypefile("fgenos.txt", DETECT_FILE_FORMAT);
+GroupNum male_pop = load_genotypefile("mgenos.txt", DETECT_FILE_FORMAT);
 
 GroupNum offspring = make_random_crosses_between(d, female_pop, male_pop, 1, 0, 0, female_map, male_map, BASIC_OPT);
 ```

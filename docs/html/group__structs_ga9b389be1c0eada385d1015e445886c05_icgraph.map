@@ -2,10 +2,10 @@
 <area shape="rect" id="node1" title="Read forwards in TableFileReader and return the next cell&#39;s contents, as well as how many column gaps..." alt="" coords="994,73,1123,117"/>
 <area shape="rect" id="node2" href="$sim-operations_8c.html#a890aa11fc3f54d411dff950b77931835" title="Header row reading and processing for map and effect set files." alt="" coords="782,5,939,49"/>
 <area shape="rect" id="node8" href="$sim-operations_8c.html#a9022b0b2e12395904757c59db6010d5b" title="Return the next cell from a queue of cells until the queue is exhausted, and thereafter read new cell..." alt="" coords="775,73,946,117"/>
-<area shape="rect" id="node9" href="$sim-operations_8c.html#a0f9bc7d42b9a98a1f4ea30c4a5f49312" title="Loads a genotype file, with or without existing genome model in the SimData." alt="" coords="566,125,716,169"/>
+<area shape="rect" id="node9" href="$sim-operations_8c.html#aca78dbac4d7154e95b6ddca575937d77" title="Loads a genotype file, with or without existing genome model in the SimData." alt="" coords="566,125,716,169"/>
 <area shape="rect" id="node3" href="$sim-operations_8c.html#ad3c2207b2bd170d752a0a26a9fa2aa19" title="Extract the contents of a genetic map file." alt="" coords="555,73,727,101"/>
 <area shape="rect" id="node7" href="$group__loaders.html#ga176416bff8f5e258dbe1619637c8b831" title="Populates a gsc_SimData combination with effect values." alt="" coords="577,21,705,49"/>
 <area shape="rect" id="node4" href="$group__loaders.html#gac180eb5f1d27907a69314e68cc0d37af" title="Load a genetic map to a gsc_SimData object." alt="" coords="386,73,507,101"/>
-<area shape="rect" id="node5" href="$group__loaders.html#gac7f5d37f0a3fd81aa26f1eae2ebae2db" title="Populates a gsc_SimData object with marker allele data, a genetic map, and (optionally) marker effect..." alt="" coords="203,73,338,101"/>
-<area shape="rect" id="node6" href="$group__loaders.html#gabbe46ffa8009c748d895d4215a6c8bb8" title="Load a set of genotypes to a gsc_SimData object." alt="" coords="5,73,155,101"/>
+<area shape="rect" id="node5" href="$group__loaders.html#ga394371951741d8c2db18a85069d6b61e" title="Populates a gsc_SimData object with marker allele data, a genetic map, and (optionally) marker effect..." alt="" coords="203,73,338,101"/>
+<area shape="rect" id="node6" href="$group__loaders.html#ga50888a3ffcd2853e07bb4c1b6f0d067a" title="Load a set of genotypes to a gsc_SimData object." alt="" coords="5,73,155,101"/>
 </map>
