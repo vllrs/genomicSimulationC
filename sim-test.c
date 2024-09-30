@@ -31,8 +31,7 @@ void write_to_file(const char* filename, const char* contents) {
 
 int test_savers(unsigned int rseed) {
     SimData* d = create_empty_simdata(rseed);
-    struct MultiIDSet loaded = just_load(d);
-    GroupNum g0 = loaded.group;
+    just_load(d);
     assert(d->genome.n_markers == 3);
     assert(d->n_eff_sets == 1);
     assert(d->m->n_genotypes == 6);
@@ -44,7 +43,7 @@ int test_savers(unsigned int rseed) {
             .will_allocate_ids=GSC_TRUE,
             .filename_prefix="",
             .will_save_pedigree_to_file=GSC_FALSE,
-            .will_save_bvs_to_file=0,
+            .will_save_bvs_to_file=NO_EFFECTSET,
             .will_save_alleles_to_file=GSC_FALSE,
             .will_save_to_simdata=GSC_TRUE};
 
@@ -57,7 +56,7 @@ int test_savers(unsigned int rseed) {
     GroupNum f2 = self_n_times(d,2,f1, NO_MAP,g); // produce 5 offspring that know their parents but will be anonymous parents themselves
     g.will_name_offspring = GSC_FALSE;
     g.will_allocate_ids = GSC_TRUE;
-    GroupNum f3 = make_doubled_haploids(d,f2, NO_MAP,g); // produce 5 offspring that don't have names or know their parents.
+    make_doubled_haploids(d,f2, NO_MAP,g); // produce 5 offspring that don't have names or know their parents.
 
     size_t toprint[] = {0,1,//2,3,4,5 from g0
                      6,7,//8,9,10 from f1
@@ -207,10 +206,10 @@ int test_savers(unsigned int rseed) {
             .will_allocate_ids=GSC_TRUE,
             .filename_prefix="",
             .will_save_pedigree_to_file=GSC_FALSE,
-            .will_save_bvs_to_file=0,
+            .will_save_bvs_to_file=NO_EFFECTSET,
             .will_save_alleles_to_file=GSC_FALSE,
             .will_save_to_simdata=GSC_TRUE};
-    GroupNum f2b = make_random_crosses(d,f1,1,1, NO_MAP,g);
+    make_random_crosses(d,f1,1,1, NO_MAP,g);
 
     if ((fp = fopen("test1_save_one_step_pedigree.txt", "w")) == NULL) {
         fprintf(stderr, "Failed to create file.\n");
@@ -262,7 +261,7 @@ int test_savers(unsigned int rseed) {
             .will_allocate_ids=GSC_FALSE,
             .filename_prefix="test1_save_as_you_go",
             .will_save_pedigree_to_file=GSC_TRUE,
-            .will_save_bvs_to_file=effSet1.id,
+            .will_save_bvs_to_file=effSet1,
             .will_save_alleles_to_file=GSC_TRUE,
             .will_save_to_simdata=GSC_FALSE};
     make_doubled_haploids(d,parent, NO_MAP,g);
@@ -278,11 +277,11 @@ int test_savers(unsigned int rseed) {
     remove("test1_save_as_you_go-pedigree.txt");
 
 
+    delete_simdata(d);
     return 0;
 }
 
 int test_effloaders2(void) {
-    FILE* fp;
     int it = 0;
     SimData* d = create_empty_simdata(1);
     const char* f1; MapID tmp;
@@ -312,6 +311,7 @@ int test_effloaders2(void) {
     assert(fabs(d->e[it-1].effects.matrix[1][0] - - 0.5) < TOL);
     assert(fabs(d->e[it-1].effects.matrix[0][1] - 1e2) < TOL);
     assert(fabs(d->e[it-1].effects.matrix[1][1] - 1e-2) < TOL);
+	remove(filename);
 
     // tabs, no final newline
     ++it; filename[it / 26] = (it % 26) + 'A';
@@ -329,6 +329,7 @@ int test_effloaders2(void) {
     assert(fabs(d->e[it-1].effects.matrix[1][0] - - 0.5) < TOL);
     assert(fabs(d->e[it-1].effects.matrix[0][1] - 1e2) < TOL);
     assert(fabs(d->e[it-1].effects.matrix[1][1] - 1e-2) < TOL);
+	remove(filename);
 
     // mixed spacing
     ++it; filename[it / 26] = (it % 26) + 'A';
@@ -346,7 +347,8 @@ int test_effloaders2(void) {
     assert(fabs(d->e[it-1].effects.matrix[1][0] - - 0.5) < TOL);
     assert(fabs(d->e[it-1].effects.matrix[0][1] - 1e2) < TOL);
     assert(fabs(d->e[it-1].effects.matrix[1][1] - 1e-2) < TOL);
-
+	remove(filename);
+	
     // rearranged rows
     ++it; filename[it / 26] = (it % 26) + 'A';
     f1 = TEST1_EFFLOADERS[it-1];
@@ -363,7 +365,8 @@ int test_effloaders2(void) {
     assert(fabs(d->e[it-1].effects.matrix[1][0] - - 0.5) < TOL);
     assert(fabs(d->e[it-1].effects.matrix[0][1] - 1e2) < TOL);
     assert(fabs(d->e[it-1].effects.matrix[1][1] - 1e-2) < TOL);
-
+	remove(filename);
+	
     // no header
     ++it; filename[it / 26] = (it % 26) + 'A';
     f1 = TEST1_EFFLOADERS[it-1];
@@ -380,7 +383,8 @@ int test_effloaders2(void) {
     assert(fabs(d->e[it-1].effects.matrix[1][0] - - 0.5) < TOL);
     assert(fabs(d->e[it-1].effects.matrix[0][1] - 1e2) < TOL);
     assert(fabs(d->e[it-1].effects.matrix[1][1] - 1e-2) < TOL);
-
+	remove(filename);
+	
     // rearranged columns
     ++it; filename[it / 26] = (it % 26) + 'A';
     f1 = TEST1_EFFLOADERS[it-1];
@@ -397,7 +401,8 @@ int test_effloaders2(void) {
     assert(fabs(d->e[it-1].effects.matrix[1][0] - - 0.5) < TOL);
     assert(fabs(d->e[it-1].effects.matrix[0][1] - 1e2) < TOL);
     assert(fabs(d->e[it-1].effects.matrix[1][1] - 1e-2) < TOL);
-
+	remove(filename);
+	
     // assorted alleles
     ++it; filename[it / 26] = (it % 26) + 'A';
     f1 = TEST1_EFFLOADERS[it-1];
@@ -417,7 +422,8 @@ int test_effloaders2(void) {
     assert(fabs(d->e[it-1].effects.matrix[2][1] - 1e2) < TOL);
     assert(fabs(d->e[it-1].effects.matrix[0][1] - 1e-2) < TOL);
     assert(fabs(d->e[it-1].effects.matrix[0][0] - 0) < TOL);
-
+	remove(filename);
+	
     // only one row
     ++it; filename[it / 26] = (it % 26) + 'A';
     f1 = TEST1_EFFLOADERS[it-1];
@@ -431,7 +437,8 @@ int test_effloaders2(void) {
     assert(d->e[it-1].effects.cols == d->genome.n_markers);
     assert(fabs(d->e[it-1].effects.matrix[0][0] - 0.5) < TOL);
     assert(fabs(d->e[it-1].effects.matrix[0][1] - 0) < TOL);
-
+	remove(filename);
+	
     // only one row no header
     ++it; filename[it / 26] = (it % 26) + 'A';
     f1 = TEST1_EFFLOADERS[it-1];
@@ -445,7 +452,8 @@ int test_effloaders2(void) {
     assert(d->e[it-1].effects.cols == d->genome.n_markers);
     assert(fabs(d->e[it-1].effects.matrix[0][0] - 0.5) < TOL);
     assert(fabs(d->e[it-1].effects.matrix[0][1] - 0) < TOL);
-
+	remove(filename);
+	
     // discard markers not tracked by the simulation
     ++it; filename[it / 26] = (it % 26) + 'A';
     f1 = TEST1_EFFLOADERS[it-1];
@@ -462,7 +470,8 @@ int test_effloaders2(void) {
     assert(fabs(d->e[it-1].effects.matrix[1][0] - - 0.5) < TOL);
     assert(fabs(d->e[it-1].effects.matrix[0][1] - 1e2) < TOL);
     assert(fabs(d->e[it-1].effects.matrix[1][1] - 0) < TOL);
-
+	remove(filename);
+	
     // file with too many columns on one row
     ++it; filename[it / 26] = (it % 26) + 'A';
     f1 = TEST1_EFFLOADERS[it-1];
@@ -476,7 +485,8 @@ int test_effloaders2(void) {
     assert(d->e[it-1].effects.cols == d->genome.n_markers);
     assert(fabs(d->e[it-1].effects.matrix[0][0] - - 0.5) < TOL);
     assert(fabs(d->e[it-1].effects.matrix[0][1] - 1e-2) < TOL);
-
+	remove(filename);
+	
     // file with a duplicated marker/allele pair
     ++it; filename[it / 26] = (it % 26) + 'A';
     f1 = TEST1_EFFLOADERS[it-1];
@@ -493,7 +503,8 @@ int test_effloaders2(void) {
     assert(fabs(d->e[it-1].effects.matrix[0][1] - 1e2) < TOL);
     assert(fabs(d->e[it-1].effects.matrix[1][0] - - 0.5) < TOL);
     assert(fabs(d->e[it-1].effects.matrix[1][1] - 1e-2) < TOL);
-
+	remove(filename);
+	
     // file with no valid lines
     ++it; filename[it / 26] = (it % 26) + 'A';
     f1 = TEST1_EFFLOADERS[it-1];
@@ -501,7 +512,8 @@ int test_effloaders2(void) {
     assert(load_effectfile(d,filename).id == NO_EFFECTSET.id);
     fflush(stdout);
     assert(d->n_eff_sets == it-1);
-
+	remove(filename);
+	
     delete_simdata(d);
 
     return 0;
@@ -593,6 +605,7 @@ int test_maploaders2(void) {
     tmp = load_mapfile(d,filename);
     assert(tmp.id == 1);
     delete_recombination_map(d, tmp);
+	remove(filename);
 
     // First real test: mixed spacing
     ++it; filename[it / 26] = (it % 26) + 'A';
@@ -604,7 +617,8 @@ int test_maploaders2(void) {
     fwrite(f1, sizeof(char), strlen(f1), fp);
     fclose(fp);
     check_mapfile(d, filename, it);
-
+	remove(filename);
+	
     // No final line
     ++it; filename[it / 26] = (it % 26) + 'A';
     f1 = TEST1_MAPLOADERS[it];
@@ -615,7 +629,8 @@ int test_maploaders2(void) {
     fwrite(f1, sizeof(char), strlen(f1), fp);
     fclose(fp);
     check_mapfile(d, filename, it);
-
+	remove(filename);
+	
     // rearranged column order
     ++it; filename[it / 26] = (it % 26) + 'A';
     f1 = TEST1_MAPLOADERS[it];
@@ -626,7 +641,7 @@ int test_maploaders2(void) {
     fwrite(f1, sizeof(char), strlen(f1), fp);
     fclose(fp);
     check_mapfile(d, filename, it);
-
+	remove(filename);
 
     // No header line
     ++it; filename[it / 26] = (it % 26) + 'A';
@@ -638,7 +653,8 @@ int test_maploaders2(void) {
     fwrite(f1, sizeof(char), strlen(f1), fp);
     fclose(fp);
     check_mapfile(d, filename, it);
-
+	remove(filename);
+	
     // Mix order
     ++it; filename[it / 26] = (it % 26) + 'A';
     f1 = TEST1_MAPLOADERS[it];
@@ -649,7 +665,8 @@ int test_maploaders2(void) {
     fwrite(f1, sizeof(char), strlen(f1), fp);
     fclose(fp);
     check_mapfile(d, filename, it);
-
+    remove(filename);
+	
     // Discard extra markers, leave out a missing marker, and change chromosomes and positions
     ++it; filename[it / 26] = (it % 26) + 'A';
     f1 = TEST1_MAPLOADERS[it];
@@ -685,7 +702,8 @@ int test_maploaders2(void) {
     assert(fabs(d->genome.maps[it-1].chrs[0].map.reorder.dists[1] - 1) < TOL);
     assert(d->genome.maps[it-1].chrs[0].map.reorder.marker_indexes[0] == 3);
     assert(d->genome.maps[it-1].chrs[0].map.reorder.marker_indexes[1] == 2);
-
+    remove(filename);
+	
     // Too many columns in one place
     ++it; filename[it / 26] = (it % 26) + 'A';
     f1 = TEST1_MAPLOADERS[it];
@@ -703,7 +721,8 @@ int test_maploaders2(void) {
     assert(fabs(d->genome.maps[it-1].chrs[1].map.reorder.dists[1] - 1) < TOL);
     assert(d->genome.maps[it-1].chrs[1].map.reorder.marker_indexes[0] == 4);
     assert(d->genome.maps[it-1].chrs[1].map.reorder.marker_indexes[1] == 3);
-
+    remove(filename);
+	
     // Single line map with header. A single line map doesn't seem very useful but we may as well check against crashes
     ++it; filename[it / 26] = (it % 26) + 'A';
     f1 = TEST1_MAPLOADERS[it];
@@ -714,7 +733,8 @@ int test_maploaders2(void) {
     assert(d->genome.maps[it-1].chrs[0].type == GSC_LINKAGEGROUP_SIMPLE);
     assert(d->genome.maps[it-1].chrs[0].map.simple.n_markers == 1);
     assert(d->genome.maps[it-1].chrs[0].map.simple.first_marker_index == 1);
-
+    remove(filename);
+	
     // single line map without header
     ++it; filename[it / 26] = (it % 26) + 'A';
     f1 = TEST1_MAPLOADERS[it];
@@ -725,14 +745,18 @@ int test_maploaders2(void) {
     assert(d->genome.maps[it-1].chrs[0].type == GSC_LINKAGEGROUP_SIMPLE);
     assert(d->genome.maps[it-1].chrs[0].map.simple.n_markers == 1);
     assert(d->genome.maps[it-1].chrs[0].map.simple.first_marker_index == 1);
-
+	remove(filename);
+	
     // Single line inappropriate map
     ++it; filename[it / 26] = (it % 26) + 'A';
     f1 = TEST1_MAPLOADERS[it];
     write_to_file(filename, f1);
     assert(load_mapfile(d,filename).id == NO_MAP.id);
     assert(d->genome.n_markers == 5);
+	remove(filename);
 
+    delete_simdata(d);
+	
     return 0;
 
 }
@@ -772,51 +796,51 @@ static void check_matrix_with_different_specification_levels(int seed, char* fil
                                                       int has_header, int markers_as_rows, enum gsc_GenotypeFileCellStyle style) {
     FileFormatSpec spec = {
         .filetype=GSC_GENOTYPEFILE_MATRIX,
-        .spec=(struct gsc_GenotypeFile_MatrixFormat){
+        .spec={(struct gsc_GenotypeFile_MatrixFormat){
             .has_header=has_header,
             .markers_as_rows=markers_as_rows,
             .cell_style=style
-        }
+        }}
     };
     int it = 1;
 
     // Full spec
     SimData* d2 = create_empty_simdata(seed);
     load_mapfile(d2,mapfile);
-    GroupNum tmp = load_genotypefile(d2,filename,spec);
+    load_genotypefile(d2,filename,spec);
     check_genotypes(d2,it,0);
 
     if (!only_full) {
         // No spec, detect all
-        tmp = load_genotypefile(d2,filename,DETECT_FILE_FORMAT);
+        load_genotypefile(d2,filename,DETECT_FILE_FORMAT);
         ++it; check_genotypes(d2,it,0);
 
         // only header
         spec.spec.matrix.has_header = has_header;
         spec.spec.matrix.markers_as_rows = GSC_UNINIT;
         spec.spec.matrix.cell_style = GSC_GENOTYPECELLSTYLE_UNKNOWN;
-        tmp = load_genotypefile(d2,filename,spec);
+        load_genotypefile(d2,filename,spec);
         ++it; check_genotypes(d2,it,0);
 
         // only orientation
         spec.spec.matrix.has_header = GSC_UNINIT;
         spec.spec.matrix.markers_as_rows = markers_as_rows;
         spec.spec.matrix.cell_style = GSC_GENOTYPECELLSTYLE_UNKNOWN;
-        tmp = load_genotypefile(d2,filename,spec);
+        load_genotypefile(d2,filename,spec);
         ++it; check_genotypes(d2,it,0);
 
         // only style
         spec.spec.matrix.has_header = GSC_UNINIT;
         spec.spec.matrix.markers_as_rows = GSC_UNINIT;
         spec.spec.matrix.cell_style = style;
-        tmp = load_genotypefile(d2,filename,spec);
+        load_genotypefile(d2,filename,spec);
         ++it; check_genotypes(d2,it,0);
 
         // header + orientation
         spec.spec.matrix.has_header = has_header;
         spec.spec.matrix.markers_as_rows = markers_as_rows;
         spec.spec.matrix.cell_style = GSC_GENOTYPECELLSTYLE_UNKNOWN;
-        tmp = load_genotypefile(d2,filename,spec);
+        load_genotypefile(d2,filename,spec);
         ++it; check_genotypes(d2,it,0);
 
     }
@@ -833,7 +857,7 @@ m2 AT AA TT
     int it = 0;
     int seed = 1;
     SimData* d = create_empty_simdata(seed);
-    const char* f1; GroupNum tmp;
+    const char* f1;
     char filename[] = "0test.txt";
 
     // Prepare map, for check_with_different_specification_levels
@@ -846,218 +870,243 @@ m2 AT AA TT
 	assert(it == 1);
     f1 = TEST1_GENOMATRIX_LOADERS[it-1];
     write_to_file(filename, f1);
-    tmp = load_genotypefile(d,filename,define_matrix_format_details(GSC_UNINIT,GSC_FALSE,GSC_GENOTYPECELLSTYLE_UNKNOWN));
+    load_genotypefile(d,filename,define_matrix_format_details(GSC_UNINIT,GSC_FALSE,GSC_GENOTYPECELLSTYLE_UNKNOWN));
     check_genotypes(d,it,0);
     check_matrix_with_different_specification_levels(seed, filename, fmap, GSC_FALSE,
                                                      GSC_TRUE,GSC_FALSE,GSC_GENOTYPECELLSTYLE_PAIR);
-
+	remove(filename);
 
     // tabs, wcorner, wendline C
     ++it; filename[it / 26] = (it % 26) + 'A';
     f1 = TEST1_GENOMATRIX_LOADERS[it-1];
     write_to_file(filename, f1);
-    tmp = load_genotypefile(d,filename,DETECT_FILE_FORMAT);
+    load_genotypefile(d,filename,DETECT_FILE_FORMAT);
     check_genotypes(d,it,0);
     check_matrix_with_different_specification_levels(seed,filename,fmap,1,
                                                      GSC_TRUE,GSC_TRUE,GSC_GENOTYPECELLSTYLE_PAIR);
-
+	remove(filename);
+	
     // spaces, wcorner, wendline D
     ++it; filename[it / 26] = it+ 'A';
     f1 = TEST1_GENOMATRIX_LOADERS[it-1];
     write_to_file(filename, f1);
-    tmp = load_genotypefile(d,filename,DETECT_FILE_FORMAT);
+    load_genotypefile(d,filename,DETECT_FILE_FORMAT);
     check_genotypes(d,it,0);
-
+	remove(filename);
+	
     // spaces, wcorner, wrendline E
     ++it; filename[it / 26] = it+ 'A';
     f1 = TEST1_GENOMATRIX_LOADERS[it-1];
     write_to_file(filename, f1);
-    tmp = load_genotypefile(d,filename,DETECT_FILE_FORMAT);
+    load_genotypefile(d,filename,DETECT_FILE_FORMAT);
     check_genotypes(d,it,0);
-
+	remove(filename);
+	
     // mixed endlines and spacings, wcorner, wrendline F
     ++it; filename[it / 26] = it+ 'A';
     f1 = TEST1_GENOMATRIX_LOADERS[it-1];
     write_to_file(filename, f1);
-    tmp = load_genotypefile(d,filename,DETECT_FILE_FORMAT);
+    load_genotypefile(d,filename,DETECT_FILE_FORMAT);
     check_genotypes(d,it,0);
-
+	remove(filename);
+	
     // tabs, noendline, wcorner G
     ++it; filename[it / 26] = it+ 'A';
     f1 = TEST1_GENOMATRIX_LOADERS[it-1];
     write_to_file(filename, f1);
-    tmp = load_genotypefile(d,filename,DETECT_FILE_FORMAT);
+    load_genotypefile(d,filename,DETECT_FILE_FORMAT);
     check_genotypes(d,it,0);
-
+	remove(filename);
+	
     // spaces, noendline, wcorner H
     ++it; filename[it / 26] = it+ 'A';
     f1 = TEST1_GENOMATRIX_LOADERS[it-1];
     write_to_file(filename, f1);
-    tmp = load_genotypefile(d,filename,DETECT_FILE_FORMAT);
+    load_genotypefile(d,filename,DETECT_FILE_FORMAT);
     check_genotypes(d,it,0);
-
+	remove(filename);
+	
     // spaces, noendline, nocorner I
     ++it; filename[it / 26] = it+ 'A';
     f1 = TEST1_GENOMATRIX_LOADERS[it-1];
     write_to_file(filename, f1);
-    tmp = load_genotypefile(d,filename,DETECT_FILE_FORMAT);
+    load_genotypefile(d,filename,DETECT_FILE_FORMAT);
     check_genotypes(d,it,0);
-
+	remove(filename);
+	
     // tabs, noendline, nocorner J
     ++it; filename[it / 26] = it+ 'A';
     f1 = TEST1_GENOMATRIX_LOADERS[it-1];
     write_to_file(filename, f1);
-    tmp = load_genotypefile(d,filename,DETECT_FILE_FORMAT);
+    load_genotypefile(d,filename,DETECT_FILE_FORMAT);
     check_genotypes(d,it,0);
-
+	remove(filename);
+	
     // K
     ++it; filename[it / 26] = it+ 'A';
     f1 = TEST1_GENOMATRIX_LOADERS[it-1];
     write_to_file(filename, f1);
-    tmp = load_genotypefile(d,filename,DETECT_FILE_FORMAT);
+    load_genotypefile(d,filename,DETECT_FILE_FORMAT);
     check_genotypes(d,it,0);
-
+	remove(filename);
+	
     // tabs, nocorner, wendline L
     ++it; filename[it / 26] = it+ 'A';
     f1 = TEST1_GENOMATRIX_LOADERS[it-1];
     write_to_file(filename, f1);
-    tmp = load_genotypefile(d,filename,DETECT_FILE_FORMAT);
+    load_genotypefile(d,filename,DETECT_FILE_FORMAT);
     check_genotypes(d,it,0);
-
+	remove(filename);
 
     // vertical, tabs, noendline M
     ++it; filename[it / 26] = (it % 26) + 'A';
     f1 = TEST1_GENOMATRIX_LOADERS[it-1];
     write_to_file(filename, f1);
-    tmp = load_genotypefile(d,filename,DETECT_FILE_FORMAT);
+    load_genotypefile(d,filename,DETECT_FILE_FORMAT);
     check_genotypes(d,it,0);
-
+	remove(filename);
+	
     // vertical, tabs, nocorner, noendline N
     ++it; filename[it / 26] = (it % 26) + 'A';
     f1 = TEST1_GENOMATRIX_LOADERS[it-1];
     write_to_file(filename, f1);
-    tmp = load_genotypefile(d,filename,DETECT_FILE_FORMAT);
+    load_genotypefile(d,filename,DETECT_FILE_FORMAT);
     check_genotypes(d,it,0);
     check_matrix_with_different_specification_levels(seed,filename,fmap,1,
                                                      GSC_TRUE,GSC_FALSE,GSC_GENOTYPECELLSTYLE_PAIR);
-
+	remove(filename);
 
     // vertical, tabs, nocorner O
     ++it; filename[it / 26] = (it % 26) + 'A';
     f1 = TEST1_GENOMATRIX_LOADERS[it-1];
     write_to_file(filename, f1);
-    tmp = load_genotypefile(d,filename,DETECT_FILE_FORMAT);
+    load_genotypefile(d,filename,DETECT_FILE_FORMAT);
     check_genotypes(d,it,0);
-
+	remove(filename);
+	
     // vertical, commas, nocorner P
     ++it; filename[it / 26] = (it % 26) + 'A';
     f1 = TEST1_GENOMATRIX_LOADERS[it-1];
     write_to_file(filename, f1);
-    tmp = load_genotypefile(d,filename,DETECT_FILE_FORMAT);
+    load_genotypefile(d,filename,DETECT_FILE_FORMAT);
     check_genotypes(d,it,0);
-
+	remove(filename);
+	
     // vertical, commas, corner, ignore extra Q
     ++it; filename[it / 26] = (it % 26) + 'A';
     f1 = TEST1_GENOMATRIX_LOADERS[it-1];
     write_to_file(filename, f1);
-    tmp = load_genotypefile(d,filename,DETECT_FILE_FORMAT);
+    load_genotypefile(d,filename,DETECT_FILE_FORMAT);
     check_genotypes(d,it,0);
-
+	remove(filename);
+	
     // vertical, commas, corner, ignore extra, noendline R
     ++it; filename[it / 26] = (it % 26) + 'A';
     f1 = TEST1_GENOMATRIX_LOADERS[it-1]; 
     write_to_file(filename, f1);
-    tmp = load_genotypefile(d,filename,DETECT_FILE_FORMAT);
+    load_genotypefile(d,filename,DETECT_FILE_FORMAT);
     fflush(stdout);
     check_genotypes(d,it,0);
-
+	remove(filename);
+	
     // vertical, slashpairs S
     ++it; filename[it / 26] = (it % 26) + 'A';
     f1 = TEST1_GENOMATRIX_LOADERS[it-1]; 
     write_to_file(filename, f1);
-    tmp = load_genotypefile(d,filename,DETECT_FILE_FORMAT);
+    load_genotypefile(d,filename,DETECT_FILE_FORMAT);
     check_genotypes(d,it,0);
-
+	remove(filename);
+	
     // horizontal, slashpairs T
     ++it; filename[it / 26] = (it % 26) + 'A';
     f1 = TEST1_GENOMATRIX_LOADERS[it-1]; 
     write_to_file(filename, f1);
-    tmp = load_genotypefile(d,filename,DETECT_FILE_FORMAT);
+    load_genotypefile(d,filename,DETECT_FILE_FORMAT);
     check_genotypes(d,it,0);
-
+	remove(filename);
+	
     // horizontal, rearranged markers U
     ++it; filename[it / 26] = it+ 'A';
     f1 = TEST1_GENOMATRIX_LOADERS[it-1];  
     write_to_file(filename, f1);
-    tmp = load_genotypefile(d,filename,DETECT_FILE_FORMAT);
+    load_genotypefile(d,filename,DETECT_FILE_FORMAT);
     check_genotypes(d,it,0);
-
+	remove(filename);
+	
     // vertical, rearranged markers V
     ++it; filename[it / 26] = it+ 'A';
     f1 = TEST1_GENOMATRIX_LOADERS[it-1];
     write_to_file(filename, f1);
-    tmp = load_genotypefile(d,filename,DETECT_FILE_FORMAT);
+    load_genotypefile(d,filename,DETECT_FILE_FORMAT);
     check_genotypes(d,it,0);
-
+	remove(filename);
+	
     // vertical, rearranged markers and extra fake marker W
     ++it; filename[it / 26] = (it % 26) + 'A';
     f1 = TEST1_GENOMATRIX_LOADERS[it-1]; 
     write_to_file(filename, f1);
-    tmp = load_genotypefile(d,filename,DETECT_FILE_FORMAT);
+    load_genotypefile(d,filename,DETECT_FILE_FORMAT);
     check_genotypes(d,it,0);
-
+	remove(filename);
+	
     // horizontal, extra fake marker X
     ++it; filename[it / 26] = (it % 26) + 'A';
     f1 = TEST1_GENOMATRIX_LOADERS[it-1];
     write_to_file(filename, f1);
-    tmp = load_genotypefile(d,filename,DETECT_FILE_FORMAT);
+    load_genotypefile(d,filename,DETECT_FILE_FORMAT);
     check_genotypes(d,it,0);
     check_matrix_with_different_specification_levels(seed,filename,fmap,1,
                                                      GSC_TRUE,GSC_FALSE,GSC_GENOTYPECELLSTYLE_PAIR);
-
+	remove(filename);
 
     // horizontal, extra fake marker centrally Y
     ++it; filename[it / 26] = it+ 'A';
     f1 = TEST1_GENOMATRIX_LOADERS[it-1]; ;
     write_to_file(filename, f1);
-    tmp = load_genotypefile(d,filename,DETECT_FILE_FORMAT);
+    load_genotypefile(d,filename,DETECT_FILE_FORMAT);
     check_genotypes(d,it,0);
-
+	remove(filename);
+	
     // vertical, blank names Z
     ++it; filename[it / 26] = (it % 26) + 'A';
     f1 = TEST1_GENOMATRIX_LOADERS[it-1]; 
     write_to_file(filename, f1);
-    tmp = load_genotypefile(d,filename,DETECT_FILE_FORMAT);
+    load_genotypefile(d,filename,DETECT_FILE_FORMAT);
     check_genotypes(d,it,1);
-
+	remove(filename);
+	
     // Markers as rows, no genotype names
     ++it; filename[it / 26] = (it % 26) + 'A';
     f1 = TEST1_GENOMATRIX_LOADERS[it-1];
     write_to_file(filename, f1);
-    tmp = load_genotypefile(d,filename,DETECT_FILE_FORMAT);
+    load_genotypefile(d,filename,DETECT_FILE_FORMAT);
     check_genotypes(d,it,1);
-
+	remove(filename);
+	
     // Markers as rows, no genotype names v2
     ++it; filename[it / 26] = (it % 26) + 'A';
     f1 = TEST1_GENOMATRIX_LOADERS[it-1];
     write_to_file(filename, f1);
-    tmp = load_genotypefile(d,filename,DETECT_FILE_FORMAT);
+    load_genotypefile(d,filename,DETECT_FILE_FORMAT);
     check_genotypes(d,it,1);
-
+	remove(filename);
+	
     // Markers as columns, no genotype names "ZC"
     ++it; filename[it / 26] = (it % 26) + 'A';
     f1 = TEST1_GENOMATRIX_LOADERS[it-1];
     write_to_file(filename, f1);
-    tmp = load_genotypefile(d,filename,DETECT_FILE_FORMAT);
+    load_genotypefile(d,filename,DETECT_FILE_FORMAT);
     check_genotypes(d,it,1);
-
+	remove(filename);
+	
     // Markers as columns, no genotype names v2 "ZD"
     ++it; filename[it / 26] = (it % 26) + 'A';
     f1 = TEST1_GENOMATRIX_LOADERS[it-1];
     write_to_file(filename, f1);
-    tmp = load_genotypefile(d,filename,DETECT_FILE_FORMAT);
+    load_genotypefile(d,filename,DETECT_FILE_FORMAT);
     check_genotypes(d,it,1);
-
+	remove(filename);
+	
     // temporarily create new SimData with map.
     f1 = TEST1_2MARKER_MAP; 
     write_to_file(filename, f1);
@@ -1065,12 +1114,13 @@ m2 AT AA TT
     load_mapfile(d2, "2marker-map.txt");
     assert(d2->genome.n_markers == 2);
     int cid = 0;
-
+	remove(filename);
+	
     // horizontal, single-line w header
     ++it; filename[it / 26] = (it % 26) + 'A';
     f1 = TEST1_GENOMATRIX_LOADERS[it-1]; 
     write_to_file(filename, f1);
-    tmp = load_genotypefile(d2,filename,DETECT_FILE_FORMAT);
+    load_genotypefile(d2,filename,DETECT_FILE_FORMAT);
     cid += 3;
     assert(d2->n_groups == 1);
     assert(d2->current_id.id == cid);
@@ -1098,12 +1148,13 @@ m2 AT AA TT
         assert(d2->m->pedigrees[1][i].id == 0);
     }
     delete_group(d2,(GroupNum){.num=1});
-
+	remove(filename);
+	
     // horizontal, single line no header
     ++it; filename[it / 26] = (it % 26) + 'A';
     f1 = TEST1_GENOMATRIX_LOADERS[it-1];
     write_to_file(filename, f1);
-    tmp = load_genotypefile(d2,filename,DETECT_FILE_FORMAT);
+    load_genotypefile(d2,filename,DETECT_FILE_FORMAT);
     cid += 3;
     change_allele_symbol(d2,NULL,'\0','-');
     fflush(stdout);
@@ -1130,13 +1181,13 @@ m2 AT AA TT
         assert(d2->m->pedigrees[1][i].id == 0);
     }
     delete_group(d2,(GroupNum){.num=1});
-
+	remove(filename);
 
     // horizontal, single column
     ++it; filename[it / 26] = (it % 26) + 'A';
     f1 = TEST1_GENOMATRIX_LOADERS[it-1];
     write_to_file(filename, f1);
-    tmp = load_genotypefile(d2,filename,DETECT_FILE_FORMAT);
+    load_genotypefile(d2,filename,DETECT_FILE_FORMAT);
     ++cid;
     fflush(stdout);
     assert(d2->n_groups == 1);
@@ -1158,12 +1209,13 @@ m2 AT AA TT
         assert(d2->m->pedigrees[1][i].id == 0);
     }
     delete_group(d2,(GroupNum){.num=1});
-
+	remove(filename);
+	
     // horizontal, single column, noheader
     ++it; filename[it / 26] = (it % 26) + 'A';
     f1 = TEST1_GENOMATRIX_LOADERS[it-1];
     write_to_file(filename, f1);
-    tmp = load_genotypefile(d2,filename,DETECT_FILE_FORMAT);
+    load_genotypefile(d2,filename,DETECT_FILE_FORMAT);
     ++cid;
     fflush(stdout);
     assert(d2->n_groups == 1);
@@ -1185,12 +1237,13 @@ m2 AT AA TT
         assert(d2->m->pedigrees[1][i].id == 0);
     }
     delete_group(d2,(GroupNum){.num=1});
-
+	remove(filename);
+	
     // vertical, single line
     ++it; filename[it / 26] = (it % 26) + 'A';
     f1 = TEST1_GENOMATRIX_LOADERS[it-1]; 
     write_to_file(filename, f1);
-    tmp = load_genotypefile(d2,filename,DETECT_FILE_FORMAT);
+    load_genotypefile(d2,filename,DETECT_FILE_FORMAT);
     ++cid;
     fflush(stdout);
     assert(d2->n_groups == 1);
@@ -1212,7 +1265,8 @@ m2 AT AA TT
         assert(d2->m->pedigrees[1][i].id == 0);
     }
     delete_group(d2,(GroupNum){.num=1});
-
+	remove(filename);
+	
     // vertical singleline noheader -> fails, can't guarantee marker order.
     //++it; filename[it / 26] = (it % 26) + 'A';
     /*f1 = TEST1_GENOMATRIX_LOADERS[it-1]; "g1,AA,TA\n";
@@ -1222,7 +1276,7 @@ m2 AT AA TT
     }
     fwrite(f1, sizeof(char), strlen(f1), fp);
     fclose(fp);
-    tmp = load_genotypefile(d2,filename);
+    load_genotypefile(d2,filename);
     ++cid;
     fflush(stdout);
     assert(d2->n_groups == 1);
@@ -1243,13 +1297,14 @@ m2 AT AA TT
         assert(d2->m->pedigrees[0][i].id == 0);
         assert(d2->m->pedigrees[1][i].id == 0);
     }
-    delete_group(d2,(GroupNum){.num=1});*/
+    delete_group(d2,(GroupNum){.num=1});
+	remove(filename);*/
 
     // vertical singlecolumn
     ++it; filename[it / 26] = (it % 26) + 'A';
     f1 = TEST1_GENOMATRIX_LOADERS[it-1];
     write_to_file(filename, f1);
-    tmp = load_genotypefile(d2,filename,DETECT_FILE_FORMAT);
+    load_genotypefile(d2,filename,DETECT_FILE_FORMAT);
     ++cid;
     fflush(stdout);
     assert(d2->n_groups == 1);
@@ -1272,13 +1327,13 @@ m2 AT AA TT
         assert(d2->m->pedigrees[1][i].id == 0);
     }
     delete_group(d2,(GroupNum){.num=1});
-
+	remove(filename);
 
     // Markers rows, single row no header
     ++it; filename[it / 26] = (it % 26) + 'A';
     f1 = TEST1_GENOMATRIX_LOADERS[it-1];
     write_to_file(filename, f1);
-    tmp = load_genotypefile(d2,filename,define_matrix_format_details(GSC_FALSE,GSC_UNINIT,GSC_GENOTYPECELLSTYLE_UNKNOWN));
+    load_genotypefile(d2,filename,define_matrix_format_details(GSC_FALSE,GSC_UNINIT,GSC_GENOTYPECELLSTYLE_UNKNOWN));
     cid += 3;
     fflush(stdout);
     assert(d2->n_groups == 1);
@@ -1307,12 +1362,13 @@ m2 AT AA TT
         assert(d2->m->pedigrees[1][i].id == 0);
     }
     delete_group(d2,(GroupNum){.num=1});
-
+	remove(filename);
+	
     // Markers rows, single row no body
     ++it; filename[it / 26] = (it % 26) + 'A';
     f1 = TEST1_GENOMATRIX_LOADERS[it-1];
     write_to_file(filename, f1);
-    tmp = load_genotypefile(d2,filename,DETECT_FILE_FORMAT);
+    load_genotypefile(d2,filename,DETECT_FILE_FORMAT);
     cid += 3;
     fflush(stdout);
     assert(d2->n_groups == 1);
@@ -1341,12 +1397,13 @@ m2 AT AA TT
         assert(d2->m->pedigrees[1][i].id == 0);
     }
     delete_group(d2,(GroupNum){.num=1});
-
+	remove(filename);
+	
     // Markers as columns, single row, no body
     ++it; filename[it / 26] = (it % 26) + 'A';
     f1 = TEST1_GENOMATRIX_LOADERS[it-1];
     write_to_file(filename, f1);
-    tmp = load_genotypefile(d2,filename,DETECT_FILE_FORMAT);
+    load_genotypefile(d2,filename,DETECT_FILE_FORMAT);
     fflush(stdout);
     assert(d2->n_groups == 0);
     assert(d2->current_id.id == cid);
@@ -1358,12 +1415,13 @@ m2 AT AA TT
     assert(d2->m->next == NULL);
     assert(d2->m->n_genotypes == 0);
     assert(d2->m->n_markers == 2);
-
+	remove(filename);
+	
     // Markers as rows, single column, no body
     ++it; filename[it / 26] = (it % 26) + 'A';
     f1 = TEST1_GENOMATRIX_LOADERS[it-1];
     write_to_file(filename, f1);
-    tmp = load_genotypefile(d2,filename,DETECT_FILE_FORMAT);
+    load_genotypefile(d2,filename,DETECT_FILE_FORMAT);
     fflush(stdout);
     assert(d2->n_groups == 0);
     assert(d2->current_id.id == cid);
@@ -1375,12 +1433,13 @@ m2 AT AA TT
     assert(d2->m->next == NULL);
     assert(d2->m->n_genotypes == 0);
     assert(d2->m->n_markers == 2);
-
+	remove(filename);
+	
     // Markers as rows, no marker name matches
     ++it; filename[it / 26] = (it % 26) + 'A';
     f1 = TEST1_GENOMATRIX_LOADERS[it-1];
     write_to_file(filename, f1);
-    tmp = load_genotypefile(d2,filename,DETECT_FILE_FORMAT);
+    load_genotypefile(d2,filename,DETECT_FILE_FORMAT);
     cid += 3;
     fflush(stdout);
     assert(d2->n_groups == 1);
@@ -1409,12 +1468,13 @@ m2 AT AA TT
         assert(d2->m->pedigrees[1][i].id == 0);
     }
     delete_group(d2,(GroupNum){.num=1});
-
+	remove(filename);
+	
     // Markers as columns, no marker name matches
     ++it; filename[it / 26] = (it % 26) + 'A';
     f1 = TEST1_GENOMATRIX_LOADERS[it-1];
     write_to_file(filename, f1);
-    tmp = load_genotypefile(d2,filename,define_matrix_format_details(GSC_UNINIT,GSC_FALSE,GSC_GENOTYPECELLSTYLE_UNKNOWN));
+    load_genotypefile(d2,filename,define_matrix_format_details(GSC_UNINIT,GSC_FALSE,GSC_GENOTYPECELLSTYLE_UNKNOWN));
     cid += 3;
     fflush(stdout);
     assert(d2->n_groups == 1);
@@ -1443,12 +1503,13 @@ m2 AT AA TT
         assert(d2->m->pedigrees[1][i].id == 0);
     }
     delete_group(d2,(GroupNum){.num=1});
-
+	remove(filename);
+	
     // Check counts work
     ++it; filename[it / 26] = (it % 26) + 'A';
     f1 = TEST1_GENOMATRIX_LOADERS[it-1]; 
     write_to_file(filename, f1);
-    tmp = load_genotypefile(d2,filename,DETECT_FILE_FORMAT);
+    load_genotypefile(d2,filename,DETECT_FILE_FORMAT);
     cid += 3;
     fflush(stdout);
     assert(d2->n_groups == 1);
@@ -1474,12 +1535,13 @@ m2 AT AA TT
         assert(d2->m->pedigrees[1][i].id == 0);
     }
     delete_group(d2,(GroupNum){.num=1});
-
+	remove(filename);
+	
     // Check encodings work
     ++it; filename[it / 26] = (it % 26) + 'A';
     f1 = TEST1_GENOMATRIX_LOADERS[it-1];
     write_to_file(filename, f1);
-    tmp = load_genotypefile(d2,filename,DETECT_FILE_FORMAT);
+     load_genotypefile(d2,filename,DETECT_FILE_FORMAT);
     cid += 15;
     fflush(stdout);
     assert(d2->n_groups == 1);
@@ -1517,7 +1579,8 @@ m2 AT AA TT
         assert(d2->m->pedigrees[1][i].id == 0);
     }
     delete_group(d2,(GroupNum){.num=1});
-
+	remove(filename);
+	
     delete_simdata(d2);
 
     delete_simdata(d);
@@ -1573,7 +1636,7 @@ GroupNum test_loaders(SimData* d) {
     printf("...genome map loaded correctly\n");
 
     assert(d->genome.n_maps == 1);
-    assert(d->genome.map_ids[0].id = loaded.map.id);
+    assert(d->genome.map_ids[0].id == loaded.map.id);
     assert(d->genome.maps[0].n_chr == 2); // correct number of chromosomes
     assert(d->genome.maps[0].chrs[0].type == GSC_LINKAGEGROUP_SIMPLE);
     assert(d->genome.maps[0].chrs[0].map.simple.n_markers == 2);
@@ -1590,7 +1653,7 @@ GroupNum test_loaders(SimData* d) {
 
     MapID m2 = load_mapfile(d,"2marker-map.txt");
     assert(d->genome.n_maps == 2);
-    assert(d->genome.map_ids[0].id = loaded.map.id);
+    assert(d->genome.map_ids[0].id == loaded.map.id);
     assert(d->genome.map_ids[1].id == m2.id);
     assert(loaded.map.id != m2.id);
     assert(d->genome.maps[0].n_chr == 2); // correct number of chromosomes
@@ -1910,7 +1973,7 @@ GroupNum test_labels(SimData *d, GroupNum g0) {
                     .will_allocate_ids = GSC_FALSE,
                     .filename_prefix = NULL,
                     .will_save_alleles_to_file = GSC_FALSE,
-                    .will_save_bvs_to_file = -1,
+                    .will_save_bvs_to_file = NO_EFFECTSET,
                     .will_save_pedigree_to_file = GSC_FALSE,
                     .will_save_to_simdata = GSC_TRUE};
     assert(d->n_groups == 1);
@@ -2194,7 +2257,7 @@ GroupNum test_specific_splits(SimData *d, GroupNum g0) {
                     .will_allocate_ids = GSC_FALSE,
                     .filename_prefix = NULL,
                     .will_save_alleles_to_file = GSC_FALSE,
-                    .will_save_bvs_to_file = -1,
+                    .will_save_bvs_to_file = NO_EFFECTSET,
                     .will_save_pedigree_to_file = GSC_FALSE,
                     .will_save_to_simdata = GSC_TRUE};
     GroupNum f1 = make_random_crosses(d, g0, 3, 1, NO_MAP, g);
@@ -2520,7 +2583,7 @@ GroupNum test_crossing_unidirectional(SimData *d, GroupNum g0) {
                     .will_allocate_ids=GSC_TRUE,
                     .filename_prefix="atestF1",
                     .will_save_pedigree_to_file=GSC_TRUE,
-                    .will_save_bvs_to_file=0,
+                    .will_save_bvs_to_file={.id=1},
                     .will_save_alleles_to_file=GSC_TRUE,
                     .will_save_to_simdata=GSC_TRUE};
 	//AlleleMatrix* a = make_all_unidirectional_crosses(&sd, 0, g);
@@ -2772,7 +2835,6 @@ int test_deletors(SimData *d, GroupNum g0) {
 
     printf("...marker effects set cleared correctly\n");
 
-	delete_simdata(d);
 	printf("...SimData cleared correctly\n");
 
 	return 0;
@@ -2842,7 +2904,7 @@ int test_iterators(SimData* d, GroupNum gp) {
         .will_allocate_ids = GSC_FALSE,
         .filename_prefix = NULL,
         .will_save_pedigree_to_file = GSC_FALSE,
-        .will_save_bvs_to_file = -1,
+        .will_save_bvs_to_file = NO_EFFECTSET,
         .will_save_alleles_to_file = GSC_FALSE,
         .will_save_to_simdata = GSC_TRUE
     };
@@ -2980,7 +3042,7 @@ int test_getters(SimData* d, GroupNum gp) {
         .will_allocate_ids = GSC_FALSE,
         .filename_prefix = NULL,
         .will_save_pedigree_to_file = GSC_FALSE,
-        .will_save_bvs_to_file = -1,
+        .will_save_bvs_to_file = NO_EFFECTSET,
         .will_save_alleles_to_file = GSC_FALSE,
         .will_save_to_simdata = GSC_TRUE
     };
@@ -3221,7 +3283,7 @@ int compareRepeatingFileToTable(char* filename, unsigned int expectedNRows, cons
 
 /* main, for testing. Only uses a small dataset. */
 int main(int argc, char* argv[]) {
-    unsigned int randomSeed = time(NULL);
+    unsigned int randomSeed = 123123123; //time(NULL);
     if (argc > 1) {
         randomSeed = strtol(argv[1], 0, 0);
     }
@@ -3276,12 +3338,15 @@ int main(int argc, char* argv[]) {
 	test_deletors(d, g0);
 	printf("\t\t-> Deletor functions all clear\n");
 
+    delete_simdata(d);
+
     printf("\n------- All tests passed. -------\n");
 
 
 	//testing new grouping functions
+	struct MultiIDSet gande;
     d = create_empty_simdata(randomSeed);
-    struct MultiIDSet gande =
+    gande =
             load_data_files(d, "./gt_parents_mr2_50-trimto-5000.txt",
 			 "./genetic-map_5112-trimto5000.txt",
              "./qtl_mr2.eff-processed.txt",DETECT_FILE_FORMAT);
@@ -3309,7 +3374,7 @@ int main(int argc, char* argv[]) {
 	GenOptions gens =  {.will_name_offspring=GSC_FALSE, .offspring_name_prefix=NULL, .family_size=243,
 		.will_track_pedigree=GSC_TRUE, .will_allocate_ids=GSC_TRUE,
 		.filename_prefix="testcross", .will_save_pedigree_to_file=GSC_FALSE,
-        .will_save_bvs_to_file=-1, .will_save_alleles_to_file=GSC_FALSE,
+        .will_save_bvs_to_file=NO_EFFECTSET, .will_save_alleles_to_file=GSC_FALSE,
 		.will_save_to_simdata=GSC_TRUE};
     int g1 = make_targeted_crosses(d,nc,crosses[0],crosses[1],gens);
 
@@ -3358,10 +3423,10 @@ int main(int argc, char* argv[]) {
     }*/
 
     // This should not segfault. Or do anything else weird.
-    GenOptions gens = {.will_name_offspring=GSC_TRUE, .offspring_name_prefix="cr", .family_size=243,
+    /*GenOptions gens = {.will_name_offspring=GSC_TRUE, .offspring_name_prefix="cr", .family_size=243,
         .will_track_pedigree=GSC_TRUE, .will_allocate_ids=GSC_TRUE,
         .filename_prefix="testcross", .will_save_pedigree_to_file=GSC_FALSE,
-        .will_save_bvs_to_file=-1, .will_save_alleles_to_file=GSC_FALSE,
+        .will_save_bvs_to_file=NO_EFFECTSET, .will_save_alleles_to_file=GSC_FALSE,
         .will_save_to_simdata=GSC_TRUE};
     int ncrosses = 10;
     size_t ixs[3000];
@@ -3434,21 +3499,21 @@ int main(int argc, char* argv[]) {
     d = create_empty_simdata(randomSeed);
     gande = load_data_files(d, "./gt_parents_mr2_50-trimto-5000.txt",
              "./genetic-map_5112-trimto5000.txt",
-             "./qtl_5test.txt",DETECT_FILE_FORMAT);
+             "./qtl_5test.txt",DETECT_FILE_FORMAT);*/
     /*for (int i = 0; i < d->map.n_chr; ++i) {
         printf("%f, ", d->map.chr_lengths[i]);
     }
     printf("\n");*/
 
     // Testing break-evenly bug
-    GroupNum g2 = make_random_crosses(d,gande.group,1200,0,NO_MAP,BASIC_OPT);
+    /*GroupNum g2 = make_random_crosses(d,gande.group,1200,0,NO_MAP,BASIC_OPT);
     delete_group(d,gande.group);
     GroupNum split[2000];
     for (int i = 0; i < 10; ++i) {
         split_evenly_into_n(d,g2,2000,split);
         get_existing_groups(d,NULL);  // only crashes when this is between the split and recombine, not other way around, and not when it's not here.
         g2 = combine_groups(d,2000,split);
-    }
+    }*/
 
 
 	printf("\nAll done\n");
@@ -3457,16 +3522,23 @@ int main(int argc, char* argv[]) {
     delete_simdata(d);
     d = create_empty_simdata(randomSeed);
 
-    gande = load_data_files(d, "Btest.txt",
-             "./Gtest-map.txt",
-             "./Gtest-eff.txt",DETECT_FILE_FORMAT);
+    gande = load_data_files(d, "Btest-kept.txt",
+             "./Gtest-map-kept.txt",
+             "./Gtest-eff-kept.txt",DETECT_FILE_FORMAT);
     delete_simdata(d);
     d = create_empty_simdata(randomSeed);
 
     // This actually works fine ... leaves NA as nulls. Replicating Jess's error then, is it just non-matched marker names?
     gande = load_data_files(d, "Btest_wNA.txt",
              "./2marker-map.txt",
-             "./Gtest-eff.txt",DETECT_FILE_FORMAT);
+             "./Gtest-eff-kept.txt",DETECT_FILE_FORMAT);
+    delete_simdata(d);
+    d = create_empty_simdata(randomSeed);
+
+    gande = load_data_files(d, "../55_genotypes_broodstock_goodsize.txt",
+             "../sexavg_fam3_linkageMap_LG1_24_pared.txt",
+             "../SL_snp_effect.txt",DETECT_FILE_FORMAT);
+    delete_simdata(d);
 
 	/*clock_t c;
 
@@ -3483,7 +3555,7 @@ int main(int argc, char* argv[]) {
 	GenOptions g = {.will_name_offspring=GSC_FALSE, .offspring_name_prefix=NULL, .family_size=1,
 		.will_track_pedigree=GSC_TRUE, .will_allocate_ids=GSC_TRUE,
 		.filename_prefix="testcross", .will_save_pedigree_to_file=GSC_FALSE,
-        .will_save_bvs_to_file=-1, .will_save_alleles_to_file=GSC_FALSE,
+        .will_save_bvs_to_file=NO_EFFECTSET, .will_save_alleles_to_file=GSC_FALSE,
 		.will_save_to_simdata=GSC_TRUE};
     int f = make_random_crosses(sd, fg0, 100000, g);
 	c = clock() - c;

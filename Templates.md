@@ -425,7 +425,7 @@ Using NO_MAP for the recombination map parameter in any crossing function in the
 GenOptions opt = {.will_name_offspring=FALSE, .offspring_name_prefix=NULL, .family_size=6,
 		.will_track_pedigree=TRUE, .will_allocate_ids=TRUE,
 		.filename_prefix=NULL, .will_save_pedigree_to_file=FALSE,
-		.will_save_bvs_to_file=NOT_AN_EFFECT_ID, .will_save_alleles_to_file=FALSE,
+		.will_save_bvs_to_file=NO_EFFECTSET, .will_save_alleles_to_file=FALSE,
 		.will_save_to_simdata=TRUE};
 GroupNum crosses = make_random_crosses(d, founders, 20, 0, NO_MAP, opt);
 GroupNum families[20];
@@ -449,7 +449,7 @@ GroupNum targetparent_group = make_group_from(d, 1, &targetparent);
 GenOptions opt = {.will_name_offspring=FALSE, .offspring_name_prefix=NULL, .family_size=6,
 		.will_track_pedigree=TRUE, .will_allocate_ids=TRUE,
 		.filename_prefix=NULL, .will_save_pedigree_to_file=FALSE,
-		.will_save_bvs_to_file=NOT_AN_EFFECT_ID, .will_save_alleles_to_file=FALSE,
+		.will_save_bvs_to_file=NO_EFFECTSET, .will_save_alleles_to_file=FALSE,
 		.will_save_to_simdata=TRUE};
 GroupNum crosses = make_random_crosses_between(d, targetparent_group, founders, 10, 0, 0, NO_MAP, NO_MAP, opt);
 
@@ -696,7 +696,7 @@ GenOptions opt = {.family_size=5,
 		.will_name_offspring=FALSE, .offspring_name_prefix=NULL,
 		.will_track_pedigree=TRUE, .will_allocate_ids=TRUE,
 		.filename_prefix=NULL, .will_save_pedigree_to_file=FALSE,
-		.will_save_bvs_to_file=FALSE, .will_save_alleles_to_file=FALSE,
+		.will_save_bvs_to_file=NO_EFFECTSET, .will_save_alleles_to_file=FALSE,
 		.will_save_to_simdata=TRUE};
 
 GroupNum f1 = make_random_crosses(d, 1, crossingPlan[0], crossingPlan[1], NO_MAP, NO_MAP, opt);

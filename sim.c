@@ -19,7 +19,7 @@ int main(int argc, char* argv[]) {
 	GenOptions g = {.will_name_offspring=TRUE, .offspring_name_prefix="F1", .family_size=100,
 		.will_track_pedigree=TRUE, .will_allocate_ids=TRUE,
 		.filename_prefix="testcross", .will_save_pedigree_to_file=FALSE,
-		.will_save_bvs_to_file=FALSE, .will_save_alleles_to_file=FALSE,
+		.will_save_bvs_to_file=NO_EFFECTSET, .will_save_alleles_to_file=FALSE,
 		.will_save_to_simdata=TRUE};
 	// rather than defining all options manually, the option exists to use the constant
 	// BASIC_OPT, which has the following definition:

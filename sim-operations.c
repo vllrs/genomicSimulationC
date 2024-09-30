@@ -1,7 +1,7 @@
 #ifndef SIM_OPERATIONS
 #define SIM_OPERATIONS
 #include "sim-operations.h"
-/* genomicSimulationC v0.2.5.02 - last edit 26 September 2024 */
+/* genomicSimulationC v0.2.5.03 - last edit 40 September 2024 */
 
 /** Default parameter values for GenOptions, to help with quick scripts and prototypes.
  *
@@ -207,58 +207,6 @@ int gsc_randpoi(rnd_pcg_t* rng, double lambda) {
 /*end random generators*/
 
 /*------------------------Supporter Functions--------------------------------*/
-
-/** Allocate lifetime-unique ids to each genotype in the range of whole
- * gsc_SimData indexes `from_index` to `to_index` inclusive. Not intended to
- * be called by an end user.
- *
- * @param d the gsc_SimData struct on which to perform actions
- * @param from_index the starting 0-based index of the range to allocate ids
- * @param to_index the last 0-based index in the range to allocate ids
- */
-static void gsc_set_ids(gsc_SimData* d, const int from_index, const int to_index) {
-	if (to_index < from_index) {
-		fprintf(stderr, "Bad range for setting ids\n");
-		return;
-	}
-
-	gsc_AlleleMatrix* m = d->m;
-	int i, total_i = 0;
-	// find the gsc_AlleleMatrix from_index belongs to
-	while (total_i + m->n_genotypes <= from_index) {
-		if (m->next == NULL) {
-			fprintf(stderr, "That index does not exist.");
-			return;
-		} else {
-			total_i += m->n_genotypes;
-			m = m->next;
-		}
-	}
-	total_i = from_index;
-
-	// check for overflow:
-    if (d->current_id.id > UINT_MAX - to_index + from_index) {
-		fprintf(stderr, "IDs will overflow in the process of this calculation. Past this point id-based functions (anything to do with pedigrees) have undefined behaviour.\n");
-	}
-
-	// allocate the ids
-	while (1) {
-		for (i = 0; i < m->n_genotypes; ++i, ++total_i) {
-            ++(d->current_id.id);
-			m->ids[i] = d->current_id;
-			if (total_i >= to_index) {
-				return;
-			}
-		}
-
-		if (m->next == NULL) {
-			fprintf(stderr, "Could not set all ids.");
-			return;
-		} else {
-			m = m->next;
-		}
-	}
-}
 
 /** Opens a table file and reads the number of columns and rows
  * (including headers) separated by `sep` into a gsc_TableSize struct that is
@@ -1115,48 +1063,6 @@ int gsc_get_integer_digits(const int i) {
 	return digits;
 }
 
-
-/** Comparator function for qsort. Used to compare an array of gsc_MarkerPosition**
- * @see sort_markers()
- *
- * Use this on an array of pointers to values in gsc_SimData.map.positions.
- *
- * Sorts lower chromosome numbers before higher chromosome numbers. Within
- * chromosomes, sorts lower positions before higher ones.
- *
- * If chromosome number is 0, the gsc_MarkerPosition is considered uninitialised.
- * All unitialised values are moved to the end. The ordering of uninitialised
- * values amongst themselves is undefined.
- *
- * Reference: https://stackoverflow.com/questions/32948281/c-sort-two-arrays-the-same-way
- */
-static int gsc_helper_simdata_pos_compare(const void *pp0, const void *pp1) {
-	gsc_MarkerPosition marker0_pos = **(gsc_MarkerPosition**)pp0;
-	gsc_MarkerPosition marker1_pos = **(gsc_MarkerPosition**)pp1;
-	// first, move any empties towards the end.
-	if (marker0_pos.chromosome == 0) {
-		if (marker1_pos.chromosome == 0) {
-			return 0;
-		} else {
-			return 1; // move towards end
-		}
-	} else if (marker1_pos.chromosome == 0) {
-		return -1; // move towards end
-	} else if (marker0_pos.chromosome == marker1_pos.chromosome) { // on same chromosome
-		if (marker0_pos.position < marker1_pos.position) {
-			return -1;
-		} else if (marker0_pos.position > marker1_pos.position) {
-			return 1;
-		} else {
-			return 0; // are completely equal. Might both be empty
-		}
-	} else if (marker0_pos.chromosome < marker1_pos.chromosome) {
-		return -1;
-	} else {//if (marker0_pos.chromosome > marker1_pos.chromosome) {
-		return 1;
-	}
-}
-
 /** Comparator function for qsort. Used to compare a pair of doubles* to sort
  * them in descending order of the doubles they point to.
  * @see gsc_split_by_bv()
@@ -1205,33 +1111,6 @@ static int gsc_helper_ascending_pdouble_comparer(const void* pp0, const void* pp
     } else {
         return (d0 > d1); // 0 if equal, 1 if d0 is smaller
     }
-}
-
-
-/** Comparator function for qsort. Used to compare a pair of floats to sort
- * them in ascending order.
- * @see gsc_generate_gamete()
- *
- * Sorts lower numbers before higher numbers. If floats are equal, their
- * order after comparison is undefined.
- */
-static int gsc_helper_ascending_float_comparer(const void* p0, const void* p1) {
-	float f0 = *(float *)p0;
-	float f1 = *(float *)p1;
-	if (f0 < f1) {
-		return -1;
-	} else {
-		return (f0 > f1); // 0 if equal, 1 if f0 is greater
-	}
-}
-
-/** Comparator function for qsort. Used to compare a pair of strings to sort
- * them in alphabetical order.
- */
-static int gsc_helper_alphabetical_str_comparer(const void* p0, const void* p1) {
-    char* str1 = *(char**)p0;
-    char* str2 = *(char**)p1;
-    return strcmp(str1,str2);
 }
 
 /** Comparator function for qsort. Used to compare a pair of pointers to strings
@@ -4310,7 +4189,7 @@ int gsc_get_group_pedigrees( const gsc_SimData* d, const gsc_GroupNum group_id, 
 		size = 50;
 		index = 0;
         output[i] = gsc_malloc_wrap(sizeof(char) * size,GSC_TRUE);
-		while ((nextc = fgetc(fp)) != '\n' && nextc != EOF) {
+        while ((nextc = fgetc(fp2)) != '\n' && nextc != EOF) {
             output[i][index] = nextc;
 			++index;
 
@@ -4538,7 +4417,7 @@ void gsc_delete_group(gsc_SimData* d, const gsc_GroupNum group_id) {
  */
 void gsc_delete_eff_set(gsc_SimData* d, gsc_EffectID effID) {
     int which_ix = gsc_get_index_of_eff_set(d, effID);
-    if (which_ix < 0 || which_ix >= d->n_eff_sets) {
+    if (which_ix == GSC_UNINIT) {
         fprintf(stderr, "Nonexistent effect set %d\n", effID.id);
         return;
     }
@@ -4885,7 +4764,9 @@ void gsc_delete_simdata(gsc_SimData* m) {
         }
     }
 
-	GSC_FREE(m);
+	if (m != NULL) {
+		GSC_FREE(m);
+	}
 }
 
 /** Delete a gsc_MarkerBlocks struct.
@@ -5623,13 +5504,17 @@ gsc_MapID gsc_create_recombmap_from_markerlist(gsc_SimData* d, size_t n_markers,
     size_t could_not_match = 0;
     size_t current_marker = 0;
     size_t first_marker;
-    for (int chr_ix = 0; chr_ix < map.n_chr; ++chr_ix) {
+	int n_bad_chr = 0;
+    for (int chr_ix = 0; chr_ix < map.n_chr; ++chr_ix) {		
         first_marker = current_marker;
         double chrdist = markerlist[first_marker + chr_nmembers[chr_ix] - 1].pos - markerlist[first_marker].pos;
         double* lgdists = gsc_malloc_wrap(sizeof(double)*(chr_nmembers[chr_ix]),GSC_TRUE);
 
         char found_first = GSC_FALSE;
-        size_t firsts_coord_in_genome;
+		// n_goodmembers == 0 is a guard on firsts_coord_in_genome, but we 
+		// still initialise it here (to a value too high to be reasonable)
+		// because the compiler can't tell that.
+        size_t firsts_coord_in_genome = d->genome.n_markers; 
         size_t n_goodmembers = 0;
         size_t* marker_coords = NULL;
 
@@ -5680,21 +5565,30 @@ gsc_MapID gsc_create_recombmap_from_markerlist(gsc_SimData* d, size_t n_markers,
             }
         }
 
-        if (marker_coords == NULL) {
-            map.chrs[chr_ix].type = GSC_LINKAGEGROUP_SIMPLE;
-            map.chrs[chr_ix].map.simple.expected_n_crossovers = chrdist / 100;
-            map.chrs[chr_ix].map.simple.n_markers = n_goodmembers;
-            map.chrs[chr_ix].map.simple.first_marker_index = firsts_coord_in_genome;
-            map.chrs[chr_ix].map.simple.dists = lgdists;
+		if (n_goodmembers == 0) { // || firsts_coord_in_genome >= d->genome.n_markers) {
+			n_bad_chr++;
+        } else if (marker_coords == NULL) {
+			int chr_ix_actual = chr_ix-n_bad_chr;
+            map.chrs[chr_ix_actual].type = GSC_LINKAGEGROUP_SIMPLE;
+            map.chrs[chr_ix_actual].map.simple.expected_n_crossovers = chrdist / 100;
+            map.chrs[chr_ix_actual].map.simple.n_markers = n_goodmembers;
+            map.chrs[chr_ix_actual].map.simple.first_marker_index = firsts_coord_in_genome;
+            map.chrs[chr_ix_actual].map.simple.dists = lgdists;
         } else {
-            map.chrs[chr_ix].type = GSC_LINKAGEGROUP_REORDER;
-            map.chrs[chr_ix].map.reorder.expected_n_crossovers = chrdist / 100;
-            map.chrs[chr_ix].map.reorder.n_markers = n_goodmembers;
-            map.chrs[chr_ix].map.reorder.marker_indexes = marker_coords;
-            map.chrs[chr_ix].map.reorder.dists = lgdists;
+			int chr_ix_actual = chr_ix-n_bad_chr;
+            map.chrs[chr_ix_actual].type = GSC_LINKAGEGROUP_REORDER;
+            map.chrs[chr_ix_actual].map.reorder.expected_n_crossovers = chrdist / 100;
+            map.chrs[chr_ix_actual].map.reorder.n_markers = n_goodmembers;
+            map.chrs[chr_ix_actual].map.reorder.marker_indexes = marker_coords;
+            map.chrs[chr_ix_actual].map.reorder.dists = lgdists;
         }
     }
-    GSC_DELETE_BUFFER(chr_nmembers);
+	GSC_DELETE_BUFFER(chr_nmembers);
+	map.n_chr = map.n_chr-n_bad_chr;
+	if (map.n_chr == 0) {
+		GSC_FREE(map.chrs);
+		return NO_MAP;
+	}
     return gsc_helper_insert_recombmap_into_simdata(d, map);
 }
 
@@ -5735,7 +5629,7 @@ gsc_MapID gsc_create_uniformspaced_recombmap(gsc_SimData* d, size_t n_markers, c
         // markernames could still be simple or reordered compared to the d->genome, so need to check that first.
         char found_first = GSC_FALSE;
         size_t could_not_match;
-        size_t firsts_coord_in_genome;
+        size_t firsts_coord_in_genome = d->genome.n_markers;
         size_t chrmarker_ix = 0;
 
         size_t* marker_coords = NULL;
@@ -5757,7 +5651,8 @@ gsc_MapID gsc_create_uniformspaced_recombmap(gsc_SimData* d, size_t n_markers, c
                     chrmarker_ix++;
                 }
 
-            } else if (strcmp(markernames[i], d->genome.marker_names[firsts_coord_in_genome + i]) == 0) {
+            } else if (firsts_coord_in_genome < d->genome.n_markers && 
+					strcmp(markernames[i], d->genome.marker_names[firsts_coord_in_genome + i]) == 0) {
                 // are a simple linkage group still so far.
                 chrmarker_ix++;
 
@@ -5842,6 +5737,12 @@ gsc_MapID gsc_load_mapfile(SimData* d, const char* filename) {
 
     struct gsc_MapfileUnit* mapcontents = NULL;
     size_t nrows = gsc_helper_parse_mapfile(filename,&mapcontents);
+    if (nrows == 0 || mapcontents == NULL) {
+        if (mapcontents != NULL) {
+            GSC_FREE(mapcontents);
+        }
+        return NO_MAP;
+    }
 
     char freeMapNames = GSC_TRUE;
     if (d->genome.n_markers > 0) {
@@ -5945,21 +5846,21 @@ gsc_EffectID gsc_load_effectfile(gsc_SimData* d, const char* filename) {
         return NO_EFFECTSET;
     }
     int marker_colnum = colnums[0], allele_colnum = colnums[1], eff_colnum = colnums[2];
-
+	
 
     int goodrow = (header) ? GSC_FALSE : GSC_TRUE; // discard first row if it's a header, keep if it's not.
     size_t goodrow_counter = 0;
     size_t allele_counter = 0;
 
-    size_t markerix;
-    char allele;
-    size_t alleleix;
-    double effect;
-    char* conversionflag;
-
     GSC_CREATE_BUFFER(effset_alleles,char,2);
     GSC_CREATE_BUFFER(effset_rows,double*,2);
     size_t n_effset_rows = 0;
+	
+    size_t markerix;
+    char allele = '\0';
+    size_t alleleix = n_effset_rows + 1; // invalid value. 
+    double effect = 0;
+    char* conversionflag;
 
     gsc_TableFileCell ncell;
 
@@ -5969,8 +5870,7 @@ gsc_EffectID gsc_load_effectfile(gsc_SimData* d, const char* filename) {
         if (ncell.cell != NULL) { // so that we can cope with missing final newline
             // Update row/col position and save predecessor row
             if (ncell.predNewline) {
-                if (goodrow) { // save predecessor row
-                    ++goodrow_counter;
+                if (goodrow && col >= 3) { // save predecessor row.
                     if (alleleix == n_effset_rows) {
                         ++allele_counter;
                         ++n_effset_rows;
@@ -5981,8 +5881,11 @@ gsc_EffectID gsc_load_effectfile(gsc_SimData* d, const char* filename) {
                         effset_alleles[alleleix] = allele;
                         effset_rows[alleleix] = gsc_malloc_wrap(sizeof(double)*d->genome.n_markers,GSC_TRUE);
                         memset(effset_rows[alleleix],0,sizeof(double)*d->genome.n_markers);
-                    }
-                    effset_rows[alleleix][markerix] = effect;
+                    } 
+					if (alleleix < n_effset_rows) { // this is specifically not an "else if" 
+						effset_rows[alleleix][markerix] = effect;
+						++goodrow_counter;
+					}
                 }
                 row += ncell.predNewline;
                 goodrow = GSC_TRUE;
@@ -6580,9 +6483,9 @@ static int gsc_helper_genotypefile_matrix_detect_cornercell_presence(const size_
  */
 gsc_FileFormatSpec gsc_define_matrix_format_details(const int has_header, const int markers_as_rows, const enum gsc_GenotypeFileCellStyle cell_style) {
     return (FileFormatSpec){.filetype=GSC_GENOTYPEFILE_MATRIX,
-                            .spec=(struct gsc_GenotypeFile_MatrixFormat){.cell_style=cell_style,
+                            .spec={(struct gsc_GenotypeFile_MatrixFormat){.cell_style=cell_style,
                                                                         .has_header=has_header,
-                                                                        .markers_as_rows=markers_as_rows}};
+                                                                        .markers_as_rows=markers_as_rows}}};
 }
 
 /** Loads a genotype file, with or without existing genome model in the SimData
@@ -6735,7 +6638,7 @@ static gsc_GroupNum gsc_load_genotypefile_matrix(gsc_SimData* d, const char* fil
         gsc_TableFileCell ncell;
         n_cols = (format_detected.has_header) ? ncellsfirstrow + 1 : ncellsfirstrow; // assume first row has no corner cell for now
         int first = GSC_TRUE; 
-        int have_valid_marker; size_t markerix;
+        int have_valid_marker = GSC_FALSE; size_t markerix;
         unsigned int column = 0;
         unsigned int row = 0;
         do {
@@ -6834,7 +6737,7 @@ static gsc_GroupNum gsc_load_genotypefile_matrix(gsc_SimData* d, const char* fil
         int first = GSC_TRUE; 
         unsigned int row = 0;
         unsigned int column = 0; // we count column numbers from 1 for the first body cell. sorry for the inconsistency with the branch of the if statement above.
-        gsc_GenoLocation loc;
+        gsc_GenoLocation loc = gsc_emptylistnavigator_get_first(&it);
         gsc_TableFileCell ncell;
         do {
             ncell = gsc_helper_tablefilereader_get_next_cell_wqueue(&tbl,&cellqueue,&queuesize);
@@ -6877,7 +6780,11 @@ static gsc_GroupNum gsc_load_genotypefile_matrix(gsc_SimData* d, const char* fil
         ngenos += tmpam->n_genotypes;
     } while ((tmpam = tmpam->next) != NULL);
     printf("(Loading %s) %u genotype(s) of %u marker(s) were loaded.\n", filename, (unsigned int) ngenos, (unsigned int) nvalidmarker);
-    gsc_emptylistnavigator_finaliselist(&it);
+	if (ngenos == 0) {
+		gsc_delete_allele_matrix(it.firstAM);
+		goto failure_exit;
+	}
+	gsc_emptylistnavigator_finaliselist(&it);
     ++d->n_groups;
     
     for (int i = 0; i < ncellsread; ++i) { if (!cellsread[i].isCellShallow) GSC_FREE(cellsread[i].cell); }
@@ -7349,6 +7256,7 @@ void gsc_generate_gamete(gsc_SimData* d, const char* parent_genome, char* output
                 break;
             default:
                 fprintf(stderr, "Linkage group type of group with index %i of map with index %ui is corrupted.\n", chr, map_index);
+				num_crossovers = 0;
         }
 
         // Task 2: Find positions of all crossovers
@@ -7447,6 +7355,7 @@ void gsc_generate_doubled_haploid(gsc_SimData* d, const char* parent_genome, cha
                 break;
             default:
                 fprintf(stderr, "Linkage group type of group with index %i of map with index %ui is corrupted.\n", chr, map_index);
+				num_crossovers = 0;
         }
 
         // Task 2: Find positions of all crossovers
@@ -8493,8 +8402,8 @@ gsc_GroupNum gsc_make_n_crosses_from_top_m_percent(gsc_SimData* d, const int n, 
         fprintf(stderr,"Invalid n value provided: Number of crosses must be greater than 0.\n");
         return GSC_NO_GROUP;
     }
-    if (effIndex >= d->n_eff_sets) {
-        fprintf(stderr,"Invalid effIndex value provided: We don't have that many marker effect sets loaded.\n");
+    if (effIndex == GSC_UNINIT) {
+        fprintf(stderr,"Cannot find marker effect set with id %d\n", effID.id);
         return GSC_NO_GROUP;
     }
     if (m < 1 || m > 100) {
@@ -8697,7 +8606,7 @@ gsc_GroupNum gsc_make_double_crosses_from_file(gsc_SimData* d, const char* input
  */
 gsc_GroupNum gsc_split_by_bv(gsc_SimData* d, const gsc_GroupNum group, const gsc_EffectID effID, const int top_n, const int lowIsBest) {
     const int effIndex = gsc_get_index_of_eff_set(d, effID);
-    if (effIndex >= d->n_eff_sets || d->e[effIndex].effects.rows < 1 || d->m == NULL) {
+    if (effIndex == GSC_UNINIT || d->e[effIndex].effects.rows < 1 || d->m == NULL) {
         fprintf(stderr, "Either effect matrix or allele matrix does not exist\n"); exit(1);
     }
 
@@ -8764,7 +8673,7 @@ gsc_GroupNum gsc_split_by_bv(gsc_SimData* d, const gsc_GroupNum group, const gsc
 gsc_DecimalMatrix gsc_calculate_group_bvs(const gsc_SimData* d, const gsc_GroupNum group, const gsc_EffectID effID) {
 	// check that both of the items to be multiplied exist.
     const int effIndex = gsc_get_index_of_eff_set(d, effID);
-    if (effIndex >= d->n_eff_sets || d->e[effIndex].effects.rows < 1 || d->m == NULL) {
+    if (effIndex == GSC_UNINIT || d->e[effIndex].effects.rows < 1 || d->m == NULL) {
 		fprintf(stderr, "Either effect matrix or allele matrix does not exist\n"); exit(1);
 	}
     gsc_EffectMatrix e = d->e[effIndex];
@@ -9357,8 +9266,8 @@ gsc_MarkerBlocks gsc_load_blocks(const gsc_SimData* d, const char* block_file) {
  */
 void gsc_calculate_group_local_bvs(const gsc_SimData* d, const gsc_MarkerBlocks b, const gsc_EffectID effID, const char* output_file, const gsc_GroupNum group) {
     const int effIndex = gsc_get_index_of_eff_set(d, effID);
-    if (effIndex >= d->n_eff_sets) {
-        fprintf(stderr,"We don't have that many marker effect sets loaded.\n");
+    if (effIndex == GSC_UNINIT) {
+        fprintf(stderr,"Nonexistent effect set with id %d\n", effID.id);
         return;
     }
     gsc_EffectMatrix e = d->e[effIndex];
@@ -9470,8 +9379,8 @@ void gsc_calculate_group_local_bvs(const gsc_SimData* d, const gsc_MarkerBlocks 
  */
 void gsc_calculate_local_bvs(const gsc_SimData* d, const gsc_MarkerBlocks b, const gsc_EffectID effID, const char* output_file) {
     const int effIndex = gsc_get_index_of_eff_set(d, effID);
-    if (effIndex >= d->n_eff_sets) {
-        fprintf(stderr,"We don't have that many marker effect sets loaded.\n");
+    if (effIndex == GSC_UNINIT) {
+        fprintf(stderr,"Nonexistent effect set with id %d\n", effID.id);
         return;
     }
     gsc_EffectMatrix e = d->e[effIndex];
@@ -9572,8 +9481,8 @@ void gsc_calculate_local_bvs(const gsc_SimData* d, const gsc_MarkerBlocks b, con
  */
 char* gsc_calculate_optimal_haplotype(const gsc_SimData* d, const gsc_EffectID effID) {
     const int effIndex = gsc_get_index_of_eff_set(d, effID);
-    if (effIndex >= d->n_eff_sets) {
-        fprintf(stderr,"We don't have that many marker effect sets loaded.\n");
+    if (effIndex == GSC_UNINIT) {
+        fprintf(stderr,"Nonexistent effect set with id %d\n", effID.id);
 		return NULL;
 	}
     gsc_EffectMatrix e = d->e[effIndex];
@@ -9613,8 +9522,8 @@ char* gsc_calculate_optimal_haplotype(const gsc_SimData* d, const gsc_EffectID e
  */
 char* gsc_calculate_optimal_possible_haplotype(const gsc_SimData* d, const gsc_GroupNum group, const gsc_EffectID effID) {
     const int effIndex = gsc_get_index_of_eff_set(d, effID);
-    if (effIndex >= d->n_eff_sets) {
-        fprintf(stderr,"We don't have that many marker effect sets loaded.\n");
+    if (effIndex == GSC_UNINIT) {
+        fprintf(stderr,"Nonexistent effect set with id %d\n", effID.id);
         return NULL;
     }
     gsc_EffectMatrix e = d->e[effIndex];
@@ -9688,8 +9597,8 @@ char* gsc_calculate_optimal_possible_haplotype(const gsc_SimData* d, const gsc_G
  */
 double gsc_calculate_optimal_bv(const gsc_SimData* d, const gsc_EffectID effID) {
     const int effIndex = gsc_get_index_of_eff_set(d, effID);
-    if (effIndex >= d->n_eff_sets) {
-        fprintf(stderr,"We don't have that many marker effect sets loaded.\n");
+    if (effIndex == GSC_UNINIT) {
+        fprintf(stderr,"Nonexistent effect set with id %d\n", effID.id);
         return 0;
     }
     gsc_EffectMatrix e = d->e[effIndex];
@@ -9730,8 +9639,8 @@ double gsc_calculate_optimal_bv(const gsc_SimData* d, const gsc_EffectID effID) 
  */
 double gsc_calculate_optimal_possible_bv(const gsc_SimData* d, const gsc_GroupNum group, const gsc_EffectID effID) {
     const int effIndex = gsc_get_index_of_eff_set(d, effID);
-    if (effIndex >= d->n_eff_sets) {
-        fprintf(stderr,"We don't have that many marker effect sets loaded.\n");
+    if (effIndex == GSC_UNINIT) {
+        fprintf(stderr,"Nonexistent effect set with id %d\n", effID.id);
         return 0;
     }
     gsc_EffectMatrix e = d->e[effIndex];
@@ -9739,6 +9648,10 @@ double gsc_calculate_optimal_possible_bv(const gsc_SimData* d, const gsc_GroupNu
     // assumes no alleles in the matrix are spaces.
 
     int gsize = gsc_get_group_size(d, group);
+	if (gsize == 0) {
+		fprintf(stderr,"Nonexistent group %d\n", group.num);
+        return 0;
+	}
     GSC_CREATE_BUFFER(ggenes,char*,gsize);
     gsc_get_group_genes(d, group, gsize, ggenes);
 
@@ -9749,6 +9662,7 @@ double gsc_calculate_optimal_possible_bv(const gsc_SimData* d, const gsc_GroupNu
     // for each locus
     for (int j = 0; j < d->genome.n_markers; ++j) {
         best_allele = '\0';
+		best_score = 0;
         for (int i = 0; i < gsize; ++i) {
 
             // If the allele is different to the previous best (guaranteed if best_allele is not initialised)
@@ -9805,8 +9719,8 @@ double gsc_calculate_optimal_possible_bv(const gsc_SimData* d, const gsc_GroupNu
  */
 double gsc_calculate_minimal_bv(const gsc_SimData* d, const gsc_EffectID effID) {
     const int effIndex = gsc_get_index_of_eff_set(d, effID);
-    if (effIndex >= d->n_eff_sets) {
-        fprintf(stderr,"We don't have that many marker effect sets loaded.\n");
+    if (effIndex == GSC_UNINIT) {
+        fprintf(stderr,"Nonexistent effect set with id %d\n", effID.id);
         return 0;
     }
     gsc_EffectMatrix e = d->e[effIndex];
@@ -10713,8 +10627,8 @@ void gsc_save_parents_of(FILE* f, const gsc_AlleleMatrix* m, gsc_PedigreeID p1, 
  */
 void gsc_save_bvs(FILE* f, const gsc_SimData* d, const gsc_EffectID effID) {
     const int effIndex = gsc_get_index_of_eff_set(d, effID);
-    if (effIndex >= d->n_eff_sets) {
-        fprintf(stderr,"We don't have that many marker effect sets loaded.\n");
+    if (effIndex == GSC_UNINIT) {
+        fprintf(stderr,"Nonexistent effect set with id %d\n", effID.id);
         return;
     }
 
@@ -10764,8 +10678,8 @@ void gsc_save_bvs(FILE* f, const gsc_SimData* d, const gsc_EffectID effID) {
  */
 void gsc_save_group_bvs(FILE* f, const gsc_SimData* d, const gsc_GroupNum group, const gsc_EffectID effID) {
     const int effIndex = gsc_get_index_of_eff_set(d, effID);
-    if (effIndex >= d->n_eff_sets) {
-        fprintf(stderr,"We don't have that many marker effect sets loaded.\n");
+    if (effIndex == GSC_UNINIT) {
+        fprintf(stderr,"Nonexistent effect set with id %d\n", effID.id);
         return;
     }
 

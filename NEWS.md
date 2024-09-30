@@ -17,6 +17,7 @@ Latest News       {#news}
 - Improvements to the genotype matrix layout detection processes, to cover more edge cases and to use a decision tree that is easier to understand from outside.
 - Improvements to input file loading tests, to cover more cases and be easier to expand further in future.
 - Improved documentation in Templates and in docstrings of valid input file formats and of how automatic genotype file layout detection works.
+- Improved Makefile. It now supports both debug and release builds. Fixed compilation warnings, including initialising an EffectID with an integer and potentially uninitialised variable accesses.
 
 
 # genomicSimulation v0.2.5
