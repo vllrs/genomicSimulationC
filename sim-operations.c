@@ -1,7 +1,7 @@
 #ifndef SIM_OPERATIONS
 #define SIM_OPERATIONS
 #include "sim-operations.h"
-/* genomicSimulationC v0.2.5.03 - last edit 40 September 2024 */
+/* genomicSimulationC v0.2.5.04 - last edit 1 October 2024 */
 
 /** Default parameter values for GenOptions, to help with quick scripts and prototypes.
  *
@@ -112,6 +112,7 @@ gsc_SimData* gsc_create_empty_simdata(RND_U32 RNGseed) {
     d->label_defaults = NULL;
     d->genome.n_markers = 0;
     d->genome.marker_names = NULL;
+    d->genome.names_alphabetical = NULL;
     d->genome.n_maps = 0;
     d->genome.map_ids = NULL;
     d->genome.maps = NULL;
@@ -1915,6 +1916,7 @@ gsc_GenoLocation gsc_next_get_nth(gsc_RandomAccessIterator* it, const size_t n) 
         for (; i < newCacheSize; ++i) {
             newCache[i] = GSC_INVALID_GENO_LOCATION;
         }
+        GSC_FREE(it->cache);
         it->cacheSize = newCacheSize;
         it->cache = newCache;
     }
@@ -2507,7 +2509,8 @@ gsc_GroupNum gsc_make_group_from( gsc_SimData* d, const int index_list_len, cons
     if (invalidLocations < index_list_len) {
         d->n_groups++;
     }
-	
+
+	gsc_delete_randomaccess_iter(&it);
 	return newGroup;
 }
 
@@ -2929,6 +2932,7 @@ gsc_GroupNum gsc_split_evenly_into_two(gsc_SimData* d, const gsc_GroupNum group_
     }
 
     GSC_DELETE_BUFFER(allocations);
+    gsc_delete_randomaccess_iter(&it);
 
     //if (anyFound) {
         d->n_groups++;
@@ -4690,7 +4694,7 @@ void gsc_delete_allele_matrix(gsc_AlleleMatrix* m) {
 	gsc_AlleleMatrix* next;
 	do {
 		/* free the big data matrix */
-        for (int i = 0; i < m->n_genotypes; i++) {
+        for (int i = 0; i < CONTIG_WIDTH; i++) {
             if (m->alleles[i] != NULL) {
                 GSC_FREE(m->alleles[i]);
             }
@@ -4698,7 +4702,7 @@ void gsc_delete_allele_matrix(gsc_AlleleMatrix* m) {
         }
 
 		// free names
-        for (int i = 0; i < m->n_genotypes; i++) {
+        for (int i = 0; i < CONTIG_WIDTH; i++) {
             if (m->names[i] != NULL) {
                 GSC_FREE(m->names[i]);
             }
@@ -4920,11 +4924,12 @@ enum gsc_TableFileCurrentStatus gsc_helper_tablefilereader_classify_char(gsc_Tab
  * if (!mycell.isCellShallow) { GSC_FREE(mycell.cell); }
  */
 void gsc_tablefilecell_deep_copy(gsc_TableFileCell* c) {
-    if (c->cell != NULL && c->isCellShallow) {
+    if (c->cell_len > 0 && c->isCellShallow) {
         char* deepcell = gsc_malloc_wrap(sizeof(char)*(c->cell_len+1), GSC_TRUE);
         memcpy(deepcell,c->cell,sizeof(char)*c->cell_len);
         deepcell[c->cell_len] = '\0';
         c->cell = deepcell;
+        c->isCellShallow = GSC_FALSE;
     }
 }
 
@@ -6270,7 +6275,7 @@ static struct gsc_GenotypeFile_MatrixFormat gsc_helper_genotypefile_matrix_detec
             }
 
             // If that wasn't a match, check the first row header, if it exists:
-            if (!cellqueue[firstrowlen].eof &&
+            if (queuelen > firstrowlen && !cellqueue[firstrowlen].eof &&
                     gsc_get_index_of_genetic_marker(cellqueue[firstrowlen].cell, d->genome, NULL)) {
                 printf("(Loading %s) Format axis: genetic markers are -rows-, founder lines are |columns|\n", filenameforlog);
                 format.markers_as_rows = GSC_TRUE;
@@ -6516,6 +6521,7 @@ static gsc_GroupNum gsc_load_genotypefile_matrix(gsc_SimData* d, const char* fil
     if (format.filetype == GSC_GENOTYPEFILE_MATRIX) {
         format_detected = format.spec.matrix;
     }
+    size_t queuesize = 0;
 
     gsc_TableFileReader tbl = gsc_tablefilereader_create(filename);
     // Read one row + 2 cells (if possible)
@@ -6538,7 +6544,8 @@ static gsc_GroupNum gsc_load_genotypefile_matrix(gsc_SimData* d, const char* fil
             GSC_STRETCH_BUFFER(cellsread,2*ncellsread);
         }
     }
-    if (ncellsread <= 1) { // EOF only
+    queuesize = ncellsread; // so that we know how many to free if we failure_exit
+    if (ncellsread <= 1) { // file is an EOF only
         goto failure_exit;
     }
     //int is_onecol_file = cellsread[ncellsfirstrow + 1].predNewline > 0 || ncellsread == 2; // ncellsread == 2 means we read one cell, then an EOF
@@ -6566,6 +6573,7 @@ static gsc_GroupNum gsc_load_genotypefile_matrix(gsc_SimData* d, const char* fil
             }
         }
         // Detect corner cell
+        queuesize = ncellsread; // so that we know how many to free if we failure_exit
         size_t ncellssecondrow = ncellsread - ncellsfirstrow - 1;
         format_has_corner_cell = gsc_helper_genotypefile_matrix_detect_cornercell_presence(ncellsfirstrow, ncellssecondrow, cellsread[ncellsfirstrow].predCol > 0);
         if (format_has_corner_cell == GSC_UNINIT) {
@@ -6576,7 +6584,7 @@ static gsc_GroupNum gsc_load_genotypefile_matrix(gsc_SimData* d, const char* fil
 
     // Create the queue of cells to parse (exclude header from this queue, because it needs to be dealt with differently)
     gsc_TableFileCell* cellqueue = cellsread;
-    size_t queuesize = ncellsread;
+    //queuesize = ncellsread; (already done above)
     if (format_detected.has_header) {
         cellqueue = cellsread + ncellsfirstrow;
         queuesize = ncellsread - ncellsfirstrow;
@@ -6657,7 +6665,7 @@ static gsc_GroupNum gsc_load_genotypefile_matrix(gsc_SimData* d, const char* fil
                         }
                         gsc_tablefilecell_deep_copy(&ncell);
                         d->genome.marker_names[markerix] = ncell.cell;
-                        ncell.isCellShallow = GSC_FALSE; // prevent deletion
+                        ncell.isCellShallow = GSC_TRUE; // prevent deletion
                     } else {
                         have_valid_marker = gsc_get_index_of_genetic_marker(ncell.cell, d->genome, &markerix);
                     }
@@ -6766,7 +6774,7 @@ static gsc_GroupNum gsc_load_genotypefile_matrix(gsc_SimData* d, const char* fil
                 }
             }
 
-            if (!ncell.isCellShallow) { GSC_FREE(ncell.cell); }
+            if (!ncell.isCellShallow) { GSC_FREE(ncell.cell); } 
         } while (!ncell.eof);
 
         GSC_FREE(markerixs);
@@ -6786,15 +6794,32 @@ static gsc_GroupNum gsc_load_genotypefile_matrix(gsc_SimData* d, const char* fil
 	}
 	gsc_emptylistnavigator_finaliselist(&it);
     ++d->n_groups;
-    
-    for (int i = 0; i < ncellsread; ++i) { if (!cellsread[i].isCellShallow) GSC_FREE(cellsread[i].cell); }
+
+    // ... cleaning up the header row
+    if (format_detected.has_header) {
+        for (int j = 0; j < ncellsfirstrow; ++j) { 
+            if (!cellsread[j].isCellShallow) { GSC_FREE(cellsread[j].cell); }
+        }
+    }
     GSC_DELETE_BUFFER(cellsread);
     gsc_tablefilereader_close(&tbl);
     return group;
 
     failure_exit:
         // Clean up structures and return, having loaded no genotypes
-        for (int i = 0; i < ncellsread; ++i) { if (!cellsread[i].isCellShallow) GSC_FREE(cellsread[i].cell); }
+        // ... cleaning up unprocessed cells in the queue
+        for (int i = 1; i <= queuesize; ++i) { 
+            if (!cellsread[ncellsread-i].isCellShallow) {
+                GSC_FREE(cellsread[ncellsread-i].cell); 
+                cellsread[ncellsread-i].isCellShallow = GSC_TRUE;
+            }
+        }
+        // ... cleaning up the header row
+        if (format_detected.has_header) {
+            for (int j = 0; j < ncellsfirstrow; ++j) { 
+                if (!cellsread[j].isCellShallow) { GSC_FREE(cellsread[j].cell); }
+            }
+        }
         GSC_DELETE_BUFFER(cellsread);
         gsc_tablefilereader_close(&tbl);
         return NO_GROUP;
@@ -7799,7 +7824,8 @@ gsc_GroupNum gsc_make_random_crosses(gsc_SimData* d, const gsc_GroupNum from_gro
     gsc_GroupNum offspring = gsc_scaffold_make_new_genotypes(d, g, (void*) &parentit, (void*) datastore,
                                                              gsc_helper_parentchooser_cross_randomly,
                                                              gsc_helper_make_offspring_cross );
-		
+
+	gsc_delete_randomaccess_iter(&parentit);
 	GSC_FREE(datastore);
 	return offspring;
 }
@@ -7972,7 +7998,9 @@ gsc_GroupNum gsc_make_random_crosses_between(gsc_SimData*d, const gsc_GroupNum g
     gsc_GroupNum offspring = gsc_scaffold_make_new_genotypes(d, g, (void*) parentit, (void*) datastore,
                                                              gsc_helper_parentchooser_cross_randomly_between,
                                                              gsc_helper_make_offspring_cross );
-	
+
+	gsc_delete_randomaccess_iter(&parentit[0]);
+	gsc_delete_randomaccess_iter(&parentit[1]);
 	GSC_FREE(datastore);
 	return offspring;
 	
@@ -8068,7 +8096,8 @@ gsc_GroupNum gsc_make_targeted_crosses(gsc_SimData* d, const int n_combinations,
     gsc_GroupNum offspring = gsc_scaffold_make_new_genotypes(d, g, (void*) &parentit, (void*) datastore,
                                                              gsc_helper_parentchooser_cross_targeted,
                                                              gsc_helper_make_offspring_cross );
-	
+
+	gsc_delete_randomaccess_iter(&parentit);
 	return offspring;
 }
 
@@ -9038,10 +9067,13 @@ gsc_MarkerBlocks gsc_create_evenlength_blocks_each_chr(const gsc_SimData* d, con
         fprintf(stderr,"Invalid n value: number of blocks must be positive.\n");
         return blocks;
     }
+    if (map.n_chr < 1) {
+        fprintf(stderr,"Map has no chromosomes, so it cannot be divided into blocks.\n");
+    }
 
-    blocks.num_blocks = n * d->genome.maps[mapix].n_chr;
-    blocks.num_markers_in_block = gsc_malloc_wrap(sizeof(int) * blocks.num_blocks,GSC_TRUE);
-    blocks.markers_in_block = gsc_malloc_wrap(sizeof(int*) * blocks.num_blocks,GSC_TRUE);
+    blocks.num_blocks = n * map.n_chr;
+    blocks.num_markers_in_block = gsc_malloc_wrap(sizeof(*blocks.num_markers_in_block) * blocks.num_blocks,GSC_TRUE);
+    blocks.markers_in_block = gsc_malloc_wrap(sizeof(*blocks.markers_in_block) * blocks.num_blocks,GSC_TRUE);
     for (int i = 0; i < blocks.num_blocks; ++i) {
         blocks.num_markers_in_block[i] = 0;
         blocks.markers_in_block[i] = NULL;

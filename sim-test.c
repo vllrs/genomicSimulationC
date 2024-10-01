@@ -195,6 +195,8 @@ int test_savers(unsigned int rseed) {
     assert(compareFileToString("test1_save_group_local_bvs.txt", TEST1_TRUTH_save_group_local_bvs)==0);
     remove("test1_save_group_local_bvs.txt");
 
+    delete_markerblocks(&exampleMB);
+
 
     printf("...breeding value file savers produce the expected output formats\n");
 
@@ -2954,6 +2956,8 @@ int test_iterators(SimData* d, GroupNum gp) {
     assert(get_id(next_backwards(&it2)).id == 1);
     assert(!IS_VALID_LOCATION(next_backwards(&it2)));
 
+    delete_bidirectional_iter(&it2);
+
     // RandomAccess global iterator
     RandomAccessIterator it3 = create_randomaccess_iter(d, NO_GROUP);
     assert(get_group(next_get_nth(&it3, 6)).num == f1.num);
@@ -2980,7 +2984,8 @@ int test_iterators(SimData* d, GroupNum gp) {
     // Empty group iterator
     RandomAccessIterator it5 = create_randomaccess_iter(d,(GroupNum){.num=4});
     assert(!IS_VALID_LOCATION(next_get_nth(&it5,0)));
-
+    
+    gsc_delete_randomaccess_iter(&it5);
     delete_group(d, f1);
     delete_label(d, label1);
 
@@ -3107,7 +3112,7 @@ int subfunctiontest_meiosis(int seed) {
     assert(IS_VALID_LOCATION(heterozygote));
     assert(strcmp(get_name(heterozygote), "G06") == 0);
     assert(strncmp(get_alleles(heterozygote),"ATAATT",sizeof(char)*GENOMESIZE) == 0);
-
+    gsc_delete_randomaccess_iter(&it);
 
     // test of generate_gamete
     // with a totally homozygous parent eg G01, gives the expected result eg (TTA)
@@ -3234,6 +3239,8 @@ int compareFileToString(char* filename, const char* target) {
 
     } while (c1 != EOF && c2 != '\0');
 
+    fclose(fp);
+
     if (c1 == EOF && c2 == '\0') return 0;
     else return -1;
 }
@@ -3276,6 +3283,8 @@ int compareRepeatingFileToTable(char* filename, unsigned int expectedNRows, cons
     if (row == expectedNRows) {
         c1 = fgetc(fp);
     }
+
+    fclose(fp);
 
     if (c1 == EOF && i == 0 && row == expectedNRows) return 0;
     else return -1;
@@ -3343,249 +3352,15 @@ int main(int argc, char* argv[]) {
     printf("\n------- All tests passed. -------\n");
 
 
-	//testing new grouping functions
-	struct MultiIDSet gande;
+	//Small test that it can load a larger file alright.
     d = create_empty_simdata(randomSeed);
-    gande =
+    // struct MultiIDSet init =
             load_data_files(d, "./gt_parents_mr2_50-trimto-5000.txt",
 			 "./genetic-map_5112-trimto5000.txt",
              "./qtl_mr2.eff-processed.txt",DETECT_FILE_FORMAT);
-    g0 = gande.group;
-
-    /*g0 = load_all_data(d, "./gt_parents_mr2_3000x30000.txt",
-                          "./genetic-map_huge30000.txt",
-                          "./eff_huge30000.txt");*/
-
-	/*printf("\nNow testing split into individuals\n");
-	assert(get_group_size(d, g0) == 50);
-	int results[50];
-	split_into_individuals(d, g0, &results);
-	assert(results[0] == 2);
-	assert(results[49] == 51);
-	assert(get_group_size(d, results[23]) == 1);*/
-
-	// split into families
-	/*int nc = 23;
-	int crosses[2][nc];
-	for (int i = 0; i < nc; ++i) {
-        crosses[0][i] = i % 50;
-        crosses[1][i] = 3*(i+1) % 50;
-	}
-	GenOptions gens =  {.will_name_offspring=GSC_FALSE, .offspring_name_prefix=NULL, .family_size=243,
-		.will_track_pedigree=GSC_TRUE, .will_allocate_ids=GSC_TRUE,
-		.filename_prefix="testcross", .will_save_pedigree_to_file=GSC_FALSE,
-        .will_save_bvs_to_file=NO_EFFECTSET, .will_save_alleles_to_file=GSC_FALSE,
-		.will_save_to_simdata=GSC_TRUE};
-    int g1 = make_targeted_crosses(d,nc,crosses[0],crosses[1],gens);
-
-    assert(get_group_size(d, g1) == nc*243);
-	int results[nc];
-	//split_into_families(d, g1, results);
-	split_into_halfsib_families(d,g1,2, results);
-	int r1;
-	int** r2 = get_existing_group_counts(d, &r1);
-
-    assert(results[0] == 3);
-	assert(get_group_size(d, results[r1 - 2]) == 243);
-	//assert(get_group_size(d, results[0]) == 2*243);*/
-
-    //int gns[6];
-    //get_n_new_group_nums(d,6,gns);
-
-    /*int sequence[100];
-    for (int i = 0; i < 100; ++i) {
-        sequence[i] = i;
-    }
-    shuffle_up_to(sequence,100,20);*/
-
-    //int g0b = split_randomly_into_two(d, g0);
-    //int g0b = split_evenly_into_two(d, g0);
-    //int g0bs[50];
-    //split_randomly_into_n(d,g0,5,g0bs);
-    //split_evenly_into_n(d,g0,3,g0bs);
-    /*double probs[3];
-    probs[0] = 0.1;
-    probs[1] = 0.95;
-    split_by_probabilities(d,g0,3,probs,g0bs);*/
-
-    /*// there's too little for my buckets~
-    int buckets[3];
-    buckets[0] = 46;
-    buckets[1] = 13;
-    split_into_buckets(d,g0,3,buckets,g0bs);*/
-
-    //int a = get_group_size(d, g0);
-    //a = get_group_size(d,g0b);
-    /*// all genotypes transferred check
-    int a = 0;
-    for (int i = 0; i < 5; ++i) {
-        a += get_group_size(d, g0bs[i]);
-    }*/
-
-    // This should not segfault. Or do anything else weird.
-    /*GenOptions gens = {.will_name_offspring=GSC_TRUE, .offspring_name_prefix="cr", .family_size=243,
-        .will_track_pedigree=GSC_TRUE, .will_allocate_ids=GSC_TRUE,
-        .filename_prefix="testcross", .will_save_pedigree_to_file=GSC_FALSE,
-        .will_save_bvs_to_file=NO_EFFECTSET, .will_save_alleles_to_file=GSC_FALSE,
-        .will_save_to_simdata=GSC_TRUE};
-    int ncrosses = 10;
-    size_t ixs[3000];
-    assert(get_group_size(d,g0) == 50);
-
-        GroupNum g000 = make_random_crosses(d, g0, ncrosses, 0, NO_MAP, gens);
-    assert(d->n_groups == 2);
-    assert(g000.num == 2);
-    assert(get_group_size(d,g000)==gens.family_size*ncrosses);
-    get_group_indexes(d,g000,-1,ixs);
-    assert(ixs[0] == 50);
-    assert(ixs[gens.family_size*ncrosses-1] == gens.family_size*ncrosses + 49);
-
-        g000 = make_random_crosses(d, g0, ncrosses, 0, NO_MAP, gens);
-    assert(d->n_groups == 3);
-    assert(g000.num == 3);
-    assert(get_group_size(d,g000)==gens.family_size*ncrosses);
-    get_group_indexes(d,g000,-1,ixs);
-    assert(ixs[0] == gens.family_size*ncrosses + 50);
-    assert(ixs[gens.family_size*ncrosses-1] == gens.family_size*ncrosses*2 + 49);
-
-        g000 = make_random_crosses(d, g0, ncrosses, 0, NO_MAP, gens);
-    assert(d->n_groups == 4);
-    assert(g000.num == 4);
-    assert(get_group_size(d,g000)==gens.family_size*ncrosses);
-    get_group_indexes(d,g000,-1,ixs);
-    assert(ixs[0] == gens.family_size*ncrosses*2 + 50);
-    assert(ixs[gens.family_size*ncrosses-1] == gens.family_size*ncrosses*3 + 49);
-
-        g000 = make_random_crosses(d, g0, ncrosses, 0, NO_MAP, gens);
-    assert(d->n_groups == 5);
-    assert(g000.num == 5);
-    BidirectionalIterator it000 = create_bidirectional_iter(d,NO_GROUP);
-    GenoLocation last = next_backwards(&it000);
-    assert(get_group(last).num==5);
-    int totalngenos = 0;
-    AlleleMatrix* cam = d->m;
-    do {
-        assert(cam->n_genotypes == CONTIG_WIDTH || cam->n_genotypes == (gens.family_size*ncrosses*4 + 50) % CONTIG_WIDTH);
-        totalngenos += cam->n_genotypes;
-    } while ((cam = cam->next) != NULL);
-    assert(totalngenos == gens.family_size*ncrosses*4 + 50);
-    assert(get_group_size(d,(GroupNum){.num=4})==gens.family_size*ncrosses);
-    assert(get_group_size(d,(GroupNum){.num=3})==gens.family_size*ncrosses);
-    assert(get_group_size(d,(GroupNum){.num=2})==gens.family_size*ncrosses);
-    assert(get_group_size(d,(GroupNum){.num=1})==50);
-    assert(get_group_size(d,(GroupNum){.num=0})==0);
-    assert(get_group_size(d,(GroupNum){.num=6})==0);
-    get_group_indexes(d,(GroupNum){.num=4},-1,ixs);
-    assert(ixs[0] == gens.family_size*ncrosses*2 + 50);
-    assert(ixs[gens.family_size*ncrosses-1] == gens.family_size*ncrosses*3 + 49);
-    get_group_indexes(d,g000,-1,ixs); // !! indexes start at 7400 instead of the expected 7250
-    assert(ixs[0] == gens.family_size*ncrosses*3 + 50);
-    assert(ixs[gens.family_size*ncrosses-1] == gens.family_size*ncrosses*4 + 49);
-    assert(get_group_size(d,g000)==gens.family_size*ncrosses);
-
-        g000 = make_random_crosses(d, g0, 10, 0, NO_MAP, gens);
-    assert(d->n_groups == 6);
-    assert(g000.num == 6);
-    assert(get_group_size(d,g000)==gens.family_size*ncrosses);
-
-    GroupNum m = split_by_bv(d, g0, (EffectID){.id=1}, 55, 1);
-    assert(d->n_groups == 7);
-    assert(m.num == 7);
-    assert(get_group_size(d, m) == 50);
-
     delete_simdata(d);
-
-    // Testing 5 allele effects bug? Replicability.
-    d = create_empty_simdata(randomSeed);
-    gande = load_data_files(d, "./gt_parents_mr2_50-trimto-5000.txt",
-             "./genetic-map_5112-trimto5000.txt",
-             "./qtl_5test.txt",DETECT_FILE_FORMAT);*/
-    /*for (int i = 0; i < d->map.n_chr; ++i) {
-        printf("%f, ", d->map.chr_lengths[i]);
-    }
-    printf("\n");*/
-
-    // Testing break-evenly bug
-    /*GroupNum g2 = make_random_crosses(d,gande.group,1200,0,NO_MAP,BASIC_OPT);
-    delete_group(d,gande.group);
-    GroupNum split[2000];
-    for (int i = 0; i < 10; ++i) {
-        split_evenly_into_n(d,g2,2000,split);
-        get_existing_groups(d,NULL);  // only crashes when this is between the split and recombine, not other way around, and not when it's not here.
-        g2 = combine_groups(d,2000,split);
-    }*/
-
 
 	printf("\nAll done\n");
-
-     // A test to check the genotype file loading debug statements print correctly when marker names fail to be matched.
-    delete_simdata(d);
-    d = create_empty_simdata(randomSeed);
-
-    gande = load_data_files(d, "Btest-kept.txt",
-             "./Gtest-map-kept.txt",
-             "./Gtest-eff-kept.txt",DETECT_FILE_FORMAT);
-    delete_simdata(d);
-    d = create_empty_simdata(randomSeed);
-
-    // This actually works fine ... leaves NA as nulls. Replicating Jess's error then, is it just non-matched marker names?
-    gande = load_data_files(d, "Btest_wNA.txt",
-             "./2marker-map.txt",
-             "./Gtest-eff-kept.txt",DETECT_FILE_FORMAT);
-    delete_simdata(d);
-    d = create_empty_simdata(randomSeed);
-
-    gande = load_data_files(d, "../55_genotypes_broodstock_goodsize.txt",
-             "../sexavg_fam3_linkageMap_LG1_24_pared.txt",
-             "../SL_snp_effect.txt",DETECT_FILE_FORMAT);
-    delete_simdata(d);
-
-	/*clock_t c;
-
-	printf("\n--------Timing tests--------------\n");
-	c = clock();
-	SimData* sd = create_empty_simdata();
-    int fg0 = load_all_data(sd, "./gt_parents_mr2_50-trimto-5000.txt",
-			 "./genetic-map_5112-trimto5000.txt",
-			 "./qtl_mr2.eff-processed.txt");
-    c = clock() - c;
-	printf("Loading took %f seconds to run\n", (double)c / CLOCKS_PER_SEC);
-
-	c = clock();
-	GenOptions g = {.will_name_offspring=GSC_FALSE, .offspring_name_prefix=NULL, .family_size=1,
-		.will_track_pedigree=GSC_TRUE, .will_allocate_ids=GSC_TRUE,
-		.filename_prefix="testcross", .will_save_pedigree_to_file=GSC_FALSE,
-        .will_save_bvs_to_file=NO_EFFECTSET, .will_save_alleles_to_file=GSC_FALSE,
-		.will_save_to_simdata=GSC_TRUE};
-    int f = make_random_crosses(sd, fg0, 100000, g);
-	c = clock() - c;
-	printf("Random crossing took %f seconds to run\n", (double)c / CLOCKS_PER_SEC);
-
-	//int ngroups = 0;
-	//int** egroups = get_existing_group_counts(sd, &ngroups);
-	//for (int i = 0; i < ngroups; ++i) {
-	//	printf("Group %d has %d members\n", egroups[0][i], egroups[1][i]);
-	//}
-	//free(egroups[0]);
-	//free(egroups[1]);
-	//free(egroups);
-
-	c = clock();
-	FILE* fp = fopen("testcross-alleles.txt","w");
-    save_group_genotypes(fp, sd, f);
-	fclose(fp);
-	c = clock() - c;
-	printf("Saving genotypes to file took %f seconds to run\n", (double)c / CLOCKS_PER_SEC);
-
-	c = clock();
-	fp = fopen("testcross-bvs.txt","w");
-	save_group_bvs(fp, sd, f);
-	fclose(fp);
-	c = clock() - c;
-	printf("Saving GEBVs to file took %f seconds to run\n", (double)c / CLOCKS_PER_SEC);*/
-
-	//delete_simdata(sd);
-
 
 	return 0;
 }
