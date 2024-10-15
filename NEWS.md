@@ -16,6 +16,7 @@ Latest News       {#news}
 
 - Improvements to the genotype matrix layout detection processes, to cover more edge cases and to use a decision tree that is easier to understand from outside.
 - Improvements to input file loading tests, to cover more cases and be easier to expand further in future.
+- Add tests of allele count matrix calculation.
 - Improved documentation in Templates and in docstrings of valid input file formats and of how automatic genotype file layout detection works.
 - Improved Makefile. It now supports both debug and release builds. Fixed compilation warnings, including initialising an EffectID with an integer and potentially uninitialised variable accesses. Fixed memory leaks in `load_genotypefile` and `delete_simdata` introduced in v0.2.5.
 - BREAKING CHANGE: The file output interface (functions with prefix `save_`) has undergone a simplification and rewrite. There is now one function per data type, which offers whole-simulation vs single-group output and output file format choices as parameters, much like the R version of genomicSimulation (as opposed to separate function whether the output was for a single group or all genotypes, and also different functions per ouput formats). All user-facing functions now take a file name instead of a file pointer. See below for details.
