@@ -1,5 +1,0 @@
-<map id="gsc_GroupAndEffectSet" name="gsc_GroupAndEffectSet">
-<area shape="rect" id="node1" title="Simple crate (stores a GroupNum and an EffectID, nothing more)." alt="" coords="44,97,204,125"/>
-<area shape="rect" id="node2" href="$structgsc___group_num.html" title="A type representing the identifier of a group of genotypes." alt="" coords="5,5,117,33"/>
-<area shape="rect" id="node3" href="$structgsc___effect_i_d.html" title="A type representing a particular loaded set of marker effects." alt="" coords="141,5,235,33"/>
-</map>

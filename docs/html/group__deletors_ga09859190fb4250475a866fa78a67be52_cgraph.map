@@ -1,5 +1,0 @@
-<map id="delete_group" name="delete_group">
-<area shape="rect" id="node1" title="Deletes all genotypes belonging to a particular group." alt="" coords="5,5,101,33"/>
-<area shape="rect" id="node2" href="$group__supporters.html#ga887027349503be24b1a847c9b833aaac" title="A function to tidy the internal storage of genotypes after addition or deletion of genotypes in the S..." alt="" coords="149,5,306,33"/>
-<area shape="rect" id="node3" href="$group__deletors.html#gadd4a9c17e8c3e59fc00eee25635b110f" title="Delete the AlleleMatrix linked list from m onwards and frees its memory." alt="" coords="354,5,490,33"/>
-</map>

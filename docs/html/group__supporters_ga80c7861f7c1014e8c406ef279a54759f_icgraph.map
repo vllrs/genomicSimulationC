@@ -1,7 +1,0 @@
-<map id="set_ids" name="set_ids">
-<area shape="rect" id="node1" title="Allocate lifetime&#45;unique ids to each genotype in the range of whole SimData indexes from_index to to_..." alt="" coords="392,81,455,109"/>
-<area shape="rect" id="node2" href="$group__loaders.html#ga38ad77c70ea0719c4c59644127fd3368" title="Appends genotype data from a file to an existing SimData." alt="" coords="182,5,334,49"/>
-<area shape="rect" id="node3" href="$group__loaders.html#ga65488a38fc6d9f437175e58d6fc481d1" title="Populates a SimData combination with marker allele data." alt="" coords="172,73,344,117"/>
-<area shape="rect" id="node4" href="$group__loaders.html#ga8a94c6099bacfff7a56a417162393510" title="Populates a SimData combination with marker allele data." alt="" coords="179,141,337,185"/>
-<area shape="rect" id="node5" href="$group__loaders.html#ga3d8878f2c2c5fafdae57ffc46a78dfbc" title="Populates a SimData combination from scratch with marker allele data, a genetic map,..." alt="" coords="5,149,124,177"/>
-</map>

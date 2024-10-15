@@ -21,7 +21,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">genomicSimulationC<span id="projectnumber">&#160;0.2.5.02</span>
+   <div id="projectname">genomicSimulationC<span id="projectnumber">&#160;0.2.5.05</span>
    </div>
   </td>
  </tr>
@@ -66,43 +66,43 @@ $(function() {
 </div><!--header-->
 <div class="contents">
 <div class="toc"><h3>Table of Contents</h3>
-<ul><li class="level1"><a href="#autotoc_md24">Setting Up</a><ul><li class="level2"><a href="#autotoc_md25">Input file formats:</a><ul><li class="level3"><a href="#autotoc_md26">Genetic map files</a></li>
-<li class="level3"><a href="#autotoc_md27">Genotype matrix files</a></li>
-<li class="level3"><a href="#autotoc_md28">Marker effect files</a></li>
-<li class="level3"><a href="#autotoc_md29">Loading from other file formats</a></li>
+<ul><li class="level1"><a href="#autotoc_md26">Setting Up</a><ul><li class="level2"><a href="#autotoc_md27">Input file formats:</a><ul><li class="level3"><a href="#autotoc_md28">Genetic map files</a></li>
+<li class="level3"><a href="#autotoc_md29">Genotype matrix files</a></li>
+<li class="level3"><a href="#autotoc_md30">Marker effect files</a></li>
+<li class="level3"><a href="#autotoc_md31">Loading from other file formats</a></li>
 </ul>
 </li>
-<li class="level2"><a href="#autotoc_md30">Set the random number generator</a></li>
-<li class="level2"><a href="#autotoc_md31">Load a genetic map and a set of founder genotypes</a></li>
-<li class="level2"><a href="#autotoc_md32">Load a genetic map and genotype file, specifying file format</a></li>
-<li class="level2"><a href="#autotoc_md33">Load a genetic map and several sets of founder genotypes</a></li>
-<li class="level2"><a href="#autotoc_md34">Load a genetic map, a set of founder genotypes, and a set of additive trait effects</a></li>
-<li class="level2"><a href="#autotoc_md35">Load another set of additive trait effects</a></li>
-<li class="level2"><a href="#autotoc_md36">Load another linkage map</a></li>
+<li class="level2"><a href="#autotoc_md32">Set the random number generator</a></li>
+<li class="level2"><a href="#autotoc_md33">Load a genetic map and a set of founder genotypes</a></li>
+<li class="level2"><a href="#autotoc_md34">Load a genetic map and genotype file, specifying file format</a></li>
+<li class="level2"><a href="#autotoc_md35">Load a genetic map and several sets of founder genotypes</a></li>
+<li class="level2"><a href="#autotoc_md36">Load a genetic map, a set of founder genotypes, and a set of additive trait effects</a></li>
+<li class="level2"><a href="#autotoc_md37">Load another set of additive trait effects</a></li>
+<li class="level2"><a href="#autotoc_md38">Load another linkage map</a></li>
 </ul>
 </li>
-<li class="level1"><a href="#autotoc_md37">Crossing &amp; Other Ways to Generate New Genotypes: Plant-themed</a><ul><li class="level2"><a href="#autotoc_md38">Single seed descent</a></li>
-<li class="level2"><a href="#autotoc_md39">Creating halfsib or fullsib families</a></li>
-<li class="level2"><a href="#autotoc_md40">Updating marker effects</a></li>
-<li class="level2"><a href="#autotoc_md41">Trials and locations</a></li>
-<li class="level2"><a href="#autotoc_md42">Backcrossing</a></li>
+<li class="level1"><a href="#autotoc_md39">Crossing &amp; Other Ways to Generate New Genotypes: Plant-themed</a><ul><li class="level2"><a href="#autotoc_md40">Single seed descent</a></li>
+<li class="level2"><a href="#autotoc_md41">Creating halfsib or fullsib families</a></li>
+<li class="level2"><a href="#autotoc_md42">Updating marker effects</a></li>
+<li class="level2"><a href="#autotoc_md43">Trials and locations</a></li>
+<li class="level2"><a href="#autotoc_md44">Backcrossing</a></li>
 </ul>
 </li>
-<li class="level1"><a href="#autotoc_md43">Crossing &amp; Other Ways to Generate New Genotypes: Animal-themed</a><ul><li class="level2"><a href="#autotoc_md44">Split offspring into male and female</a></li>
-<li class="level2"><a href="#autotoc_md45">Introducing fresh blood to male and female kernels</a></li>
-<li class="level2"><a href="#autotoc_md46">Random mating with caps on number of offspring per animal</a></li>
-<li class="level2"><a href="#autotoc_md47">Mating all females to a good male</a></li>
-<li class="level2"><a href="#autotoc_md48">Making specific chosen matings</a></li>
-<li class="level2"><a href="#autotoc_md49">Three-Way Crosses</a></li>
-<li class="level2"><a href="#autotoc_md50">Tracking age and culling individuals that are too old</a></li>
-<li class="level2"><a href="#autotoc_md51">Species with differing male and female recombination rates</a></li>
+<li class="level1"><a href="#autotoc_md45">Crossing &amp; Other Ways to Generate New Genotypes: Animal-themed</a><ul><li class="level2"><a href="#autotoc_md46">Split offspring into male and female</a></li>
+<li class="level2"><a href="#autotoc_md47">Introducing fresh blood to male and female kernels</a></li>
+<li class="level2"><a href="#autotoc_md48">Random mating with caps on number of offspring per animal</a></li>
+<li class="level2"><a href="#autotoc_md49">Mating all females to a good male</a></li>
+<li class="level2"><a href="#autotoc_md50">Making specific chosen matings</a></li>
+<li class="level2"><a href="#autotoc_md51">Three-Way Crosses</a></li>
+<li class="level2"><a href="#autotoc_md52">Tracking age and culling individuals that are too old</a></li>
+<li class="level2"><a href="#autotoc_md53">Species with differing male and female recombination rates</a></li>
 </ul>
 </li>
-<li class="level1"><a href="#autotoc_md52">Selection</a><ul><li class="level2"><a href="#autotoc_md53">Manually select on true breeding value</a></li>
-<li class="level2"><a href="#autotoc_md54">Select on phenotype (simulated with a given heritability)</a></li>
-<li class="level2"><a href="#autotoc_md55">Select on a qualitative trait</a></li>
-<li class="level2"><a href="#autotoc_md56">Select on a qualitative trait, then a quantitative trait.</a></li>
-<li class="level2"><a href="#autotoc_md57">Select on an index weighting two traits.</a></li>
+<li class="level1"><a href="#autotoc_md54">Selection</a><ul><li class="level2"><a href="#autotoc_md55">Manually select on true breeding value</a></li>
+<li class="level2"><a href="#autotoc_md56">Select on phenotype (simulated with a given heritability)</a></li>
+<li class="level2"><a href="#autotoc_md57">Select on a qualitative trait</a></li>
+<li class="level2"><a href="#autotoc_md58">Select on a qualitative trait, then a quantitative trait.</a></li>
+<li class="level2"><a href="#autotoc_md59">Select on an index weighting two traits.</a></li>
 </ul>
 </li>
 </ul>
@@ -110,12 +110,12 @@ $(function() {
 <div class="textblock"><p ><a class="anchor" id="md_Templates"></a></p>
 <p >While the documentation pages of genomicSimulationC and its counterpart <a href="https://github.com/vllrs/genomicSimulation">genomicSimulation</a> do describe all the features the simulation tool offers, they don't do so in a way that is necessarily easy to browse or that's helpful for new users to understand the simulation tool.</p>
 <p >This page provides a set of templates for implementing common breeding project actions in genomicSimulationC and its R counterpart.</p>
-<h1><a class="anchor" id="autotoc_md24"></a>
+<h1><a class="anchor" id="autotoc_md26"></a>
 Setting Up</h1>
-<h2><a class="anchor" id="autotoc_md25"></a>
+<h2><a class="anchor" id="autotoc_md27"></a>
 Input file formats:</h2>
 <p >genomicSimulation has three types of input files: a genotype matrix, a genetic map, and a list of marker effects. If multiple files are provided at once in a call to <code>load_data_files</code> (C)/<code>load.data</code> (R), the map file will be loaded first, followed by the genotype matrix and marker effect file.</p>
-<h3><a class="anchor" id="autotoc_md26"></a>
+<h3><a class="anchor" id="autotoc_md28"></a>
 Genetic map files</h3>
 <p >The simplest genetic map file is formatted as follows: </p><div class="fragment"><div class="line">marker chr pos</div>
 <div class="line">m3 3 15</div>
@@ -135,7 +135,7 @@ Genetic map files</h3>
 <p >Regarding marker position: this represents the position in centimorgans of each marker along its linkage group. (Distance of 1 cM = expected probability of 0.01 chromosomal crossovers in that range.)</p>
 <p >The cells in the map file may be separated by spaces, tabs, commas, or any combination thereof. Cell spacers do not need to be consistent across the file, but therefore marker names/linkage group names cannot contain spaces, tabs, or commas.</p>
 <p >The order in which genetic markers are presented in the file does not matter. If a marker is duplicated in the file, it will be recorded twice as two separate markers in the same position and with the same name. However, because loading genotypes depends on searching for markers by name, if two markers have the same name, genotypes may not be loaded correctly. Therefore it is suggested that all markers have unique names.</p>
-<h3><a class="anchor" id="autotoc_md27"></a>
+<h3><a class="anchor" id="autotoc_md29"></a>
 Genotype matrix files</h3>
 <p >The simplest genotype matrix file is formatted as follows: </p><div class="fragment"><div class="line">name    G01 G02 G03 G04 G05 G06</div>
 <div class="line">m1  TT  TT  TT  TA  TT  AT</div>
@@ -195,7 +195,7 @@ Genotype matrix files</h3>
 <li>Use “haplotyping”/”haplotype phasing”/”haplotype inference” software to infer whether heterozygotes are "AT" or "TA", before loading into genomicSimulation.</li>
 <li>Find-and-replace "TT" with "0", "AT" with "1", and "AA" with "2" before loading into genomicSimulation. genomicSimulation will then randomise the phase of each haplotype.</li>
 </ul>
-<h3><a class="anchor" id="autotoc_md28"></a>
+<h3><a class="anchor" id="autotoc_md30"></a>
 Marker effect files</h3>
 <p >Loading marker effect file(s) is optional for running the simulation. The simplest marker effect file is formatted as follows: </p><div class="fragment"><div class="line">marker allele eff</div>
 <div class="line">m1 A -0.8</div>
@@ -216,10 +216,10 @@ Marker effect files</h3>
 <p >Regarding allele: This column should be the allele (non-space character, eg "A") that this effect value corresponds to.</p>
 <p >Regarding allele effect: This column should be a decimal representing the additive effect value of the same-row allele for the same-row marker. It can be positive or negative or zero, and can be represented by an integer, a decimal, or scientific notation.</p>
 <p >Cells may be separated by spaces, tabs, commas, or any combination thereof. Cell spacers do not need to be consistent across the file.</p>
-<h3><a class="anchor" id="autotoc_md29"></a>
+<h3><a class="anchor" id="autotoc_md31"></a>
 Loading from other file formats</h3>
 <p >Updates to expand the range of allowed input formats are coming soon.</p>
-<h2><a class="anchor" id="autotoc_md30"></a>
+<h2><a class="anchor" id="autotoc_md32"></a>
 Set the random number generator</h2>
 <p >In C, you should manually set the seed for the random number generator when you create the SimData object, before loading data. The R version borrows R's own random number generator so has no need for setting a seed, or for manually creating the simulation data structure before loading data.</p>
 <table class="doxtable">
@@ -227,11 +227,11 @@ Set the random number generator</h2>
 <th>Task </th><th>genomicSimulationC (C) </th><th>genomicSimulation (R) </th></tr>
 <tr>
 <td></td><td><div class="fragment"><div class="line"><a class="code hl_define" href="group__shortnames.html#gaa9b2f128bb156d36d9334281b158c56a">SimData</a>* sd = <a class="code hl_define" href="group__shortnames.html#gacbedd673ae83f70154d663852acfea70">create_empty_simdata</a>(time(NULL));</div>
-<div class="ttc" id="agroup__shortnames_html_gaa9b2f128bb156d36d9334281b158c56a"><div class="ttname"><a href="group__shortnames.html#gaa9b2f128bb156d36d9334281b158c56a">SimData</a></div><div class="ttdeci">#define SimData</div><div class="ttdef"><b>Definition:</b> sim-operations.h:145</div></div>
-<div class="ttc" id="agroup__shortnames_html_gacbedd673ae83f70154d663852acfea70"><div class="ttname"><a href="group__shortnames.html#gacbedd673ae83f70154d663852acfea70">create_empty_simdata</a></div><div class="ttdeci">#define create_empty_simdata</div><div class="ttdef"><b>Definition:</b> sim-operations.h:160</div></div>
+<div class="ttc" id="agroup__shortnames_html_gaa9b2f128bb156d36d9334281b158c56a"><div class="ttname"><a href="group__shortnames.html#gaa9b2f128bb156d36d9334281b158c56a">SimData</a></div><div class="ttdeci">#define SimData</div><div class="ttdef"><b>Definition:</b> <a href="sim-operations_8h_source.html#l00145">sim-operations.h:145</a></div></div>
+<div class="ttc" id="agroup__shortnames_html_gacbedd673ae83f70154d663852acfea70"><div class="ttname"><a href="group__shortnames.html#gacbedd673ae83f70154d663852acfea70">create_empty_simdata</a></div><div class="ttdeci">#define create_empty_simdata</div><div class="ttdef"><b>Definition:</b> <a href="sim-operations_8h_source.html#l00160">sim-operations.h:160</a></div></div>
 </div><!-- fragment --> </td><td></td></tr>
 </table>
-<h2><a class="anchor" id="autotoc_md31"></a>
+<h2><a class="anchor" id="autotoc_md33"></a>
 Load a genetic map and a set of founder genotypes</h2>
 <table class="doxtable">
 <tr>
@@ -256,16 +256,17 @@ Load a genetic map and a set of founder genotypes</h2>
 </td><td><div class="fragment"><div class="line"><a class="code hl_define" href="group__shortnames.html#gaa9b2f128bb156d36d9334281b158c56a">SimData</a>* d = <a class="code hl_define" href="group__shortnames.html#gacbedd673ae83f70154d663852acfea70">create_empty_simdata</a>(time(NULL));</div>
 <div class="line"><span class="keyword">struct </span><a class="code hl_define" href="group__shortnames.html#gab9139b22223d33aa0a762d3ec00b3072">MultiIDSet</a> init = <a class="code hl_define" href="group__shortnames.html#ga2e10fe6c17f65cefc887a7b8868d9017">load_data_files</a>(d, <span class="stringliteral">&quot;genotype-file.txt&quot;</span>, <span class="stringliteral">&quot;map-file.txt&quot;</span>, NULL, <a class="code hl_define" href="group__shortnames.html#ga1b342f7327286629391ccbad90ea19e4">DETECT_FILE_FORMAT</a>);</div>
 <div class="line"><a class="code hl_define" href="group__shortnames.html#gadb2ef9b75828b244e0b3e1cb3680d7ca">GroupNum</a> founders = init.group;</div>
-<div class="ttc" id="agroup__shortnames_html_ga1b342f7327286629391ccbad90ea19e4"><div class="ttname"><a href="group__shortnames.html#ga1b342f7327286629391ccbad90ea19e4">DETECT_FILE_FORMAT</a></div><div class="ttdeci">#define DETECT_FILE_FORMAT</div><div class="ttdef"><b>Definition:</b> sim-operations.h:166</div></div>
-<div class="ttc" id="agroup__shortnames_html_ga2e10fe6c17f65cefc887a7b8868d9017"><div class="ttname"><a href="group__shortnames.html#ga2e10fe6c17f65cefc887a7b8868d9017">load_data_files</a></div><div class="ttdeci">#define load_data_files</div><div class="ttdef"><b>Definition:</b> sim-operations.h:165</div></div>
-<div class="ttc" id="agroup__shortnames_html_gab9139b22223d33aa0a762d3ec00b3072"><div class="ttname"><a href="group__shortnames.html#gab9139b22223d33aa0a762d3ec00b3072">MultiIDSet</a></div><div class="ttdeci">#define MultiIDSet</div><div class="ttdef"><b>Definition:</b> sim-operations.h:134</div></div>
-<div class="ttc" id="agroup__shortnames_html_gadb2ef9b75828b244e0b3e1cb3680d7ca"><div class="ttname"><a href="group__shortnames.html#gadb2ef9b75828b244e0b3e1cb3680d7ca">GroupNum</a></div><div class="ttdeci">#define GroupNum</div><div class="ttdef"><b>Definition:</b> sim-operations.h:126</div></div>
-</div><!-- fragment --> </td><td><div class="fragment"><div class="line">founders &lt;- load.data(genotype.file=&quot;genotype-file.txt&quot;, map.file=&quot;map-file.txt&quot;)</div>
+<div class="ttc" id="agroup__shortnames_html_ga1b342f7327286629391ccbad90ea19e4"><div class="ttname"><a href="group__shortnames.html#ga1b342f7327286629391ccbad90ea19e4">DETECT_FILE_FORMAT</a></div><div class="ttdeci">#define DETECT_FILE_FORMAT</div><div class="ttdef"><b>Definition:</b> <a href="sim-operations_8h_source.html#l00166">sim-operations.h:166</a></div></div>
+<div class="ttc" id="agroup__shortnames_html_ga2e10fe6c17f65cefc887a7b8868d9017"><div class="ttname"><a href="group__shortnames.html#ga2e10fe6c17f65cefc887a7b8868d9017">load_data_files</a></div><div class="ttdeci">#define load_data_files</div><div class="ttdef"><b>Definition:</b> <a href="sim-operations_8h_source.html#l00165">sim-operations.h:165</a></div></div>
+<div class="ttc" id="agroup__shortnames_html_gab9139b22223d33aa0a762d3ec00b3072"><div class="ttname"><a href="group__shortnames.html#gab9139b22223d33aa0a762d3ec00b3072">MultiIDSet</a></div><div class="ttdeci">#define MultiIDSet</div><div class="ttdef"><b>Definition:</b> <a href="sim-operations_8h_source.html#l00134">sim-operations.h:134</a></div></div>
+<div class="ttc" id="agroup__shortnames_html_gadb2ef9b75828b244e0b3e1cb3680d7ca"><div class="ttname"><a href="group__shortnames.html#gadb2ef9b75828b244e0b3e1cb3680d7ca">GroupNum</a></div><div class="ttdeci">#define GroupNum</div><div class="ttdef"><b>Definition:</b> <a href="sim-operations_8h_source.html#l00126">sim-operations.h:126</a></div></div>
+</div><!-- fragment --> </td><td><div class="fragment"><div class="line">init &lt;- load.data(genotype.file=&quot;genotype-file.txt&quot;, map.file=&quot;map-file.txt&quot;)</div>
+<div class="line">founders = init$groupNum</div>
 </div><!-- fragment --> </td></tr>
 </table>
 <p >The simulation will track genotypes across all markers present in the map file. Which markers are tracked by the simulation cannot currently be changed. Line order does not matter in any file.</p>
 <p >Consider using the get_group_ family of functions (genomicSimulationC) and see.group.data function (genomicSimulation) to confirm data is correctly loaded.</p>
-<h2><a class="anchor" id="autotoc_md32"></a>
+<h2><a class="anchor" id="autotoc_md34"></a>
 Load a genetic map and genotype file, specifying file format</h2>
 <p >By default, genomicSimulation attempts to detect the format of input files as it loads them. When a file loading command is run, genomicSimulation prints out its assumptions about the format of the file.</p>
 <p >If the printed logs are incorrect about the layout of your map file or effect file, the most likely cause is a mis-spelling in the header row of the file. If the printed logs are incorrect about the size of the table in your map file or effect file, the issue may be that the numbers cannot be detected as numbers, or that there are issues with the column spacers/line breaks that cause there to be more than three entries to a row.</p>
@@ -293,17 +294,17 @@ Load a genetic map and genotype file, specifying file format</h2>
 </td><td><div class="fragment"><div class="line"><a class="code hl_define" href="group__shortnames.html#gaa9b2f128bb156d36d9334281b158c56a">SimData</a>* d = <a class="code hl_define" href="group__shortnames.html#gacbedd673ae83f70154d663852acfea70">create_empty_simdata</a>(time(NULL));</div>
 <div class="line"><a class="code hl_define" href="group__shortnames.html#gae2dfa9fab7307781bef01124e32e7495">FileFormatSpec</a> mformat = <a class="code hl_define" href="group__shortnames.html#ga8bc4f8369ef14861b409317322046905">define_matrix_format_details</a>(<a class="code hl_define" href="sim-operations_8h.html#ad3981037d5b9c99a0c49de9f0dfc1e8c">GSC_TRUE</a>,<a class="code hl_define" href="sim-operations_8h.html#ad3981037d5b9c99a0c49de9f0dfc1e8c">GSC_TRUE</a>,<a class="code hl_enumvalue" href="group__structs.html#gga169da3c2b32a6f9afd92e2e0801ad741a7ace3d1df4d9466ce2fdac1f1b2e678c">GSC_GENOTYPECELLSTYLE_PAIR</a>);</div>
 <div class="line"><span class="keyword">struct </span><a class="code hl_define" href="group__shortnames.html#gab9139b22223d33aa0a762d3ec00b3072">MultiIDSet</a> init = <a class="code hl_define" href="group__shortnames.html#ga2e10fe6c17f65cefc887a7b8868d9017">load_data_files</a>(d, <span class="stringliteral">&quot;genotype-file.txt&quot;</span>, <span class="stringliteral">&quot;map-file.txt&quot;</span>, NULL, mformat);</div>
-<div class="ttc" id="agroup__shortnames_html_ga8bc4f8369ef14861b409317322046905"><div class="ttname"><a href="group__shortnames.html#ga8bc4f8369ef14861b409317322046905">define_matrix_format_details</a></div><div class="ttdeci">#define define_matrix_format_details</div><div class="ttdef"><b>Definition:</b> sim-operations.h:168</div></div>
-<div class="ttc" id="agroup__shortnames_html_gae2dfa9fab7307781bef01124e32e7495"><div class="ttname"><a href="group__shortnames.html#gae2dfa9fab7307781bef01124e32e7495">FileFormatSpec</a></div><div class="ttdeci">#define FileFormatSpec</div><div class="ttdef"><b>Definition:</b> sim-operations.h:167</div></div>
-<div class="ttc" id="agroup__structs_html_gga169da3c2b32a6f9afd92e2e0801ad741a7ace3d1df4d9466ce2fdac1f1b2e678c"><div class="ttname"><a href="group__structs.html#gga169da3c2b32a6f9afd92e2e0801ad741a7ace3d1df4d9466ce2fdac1f1b2e678c">GSC_GENOTYPECELLSTYLE_PAIR</a></div><div class="ttdeci">@ GSC_GENOTYPECELLSTYLE_PAIR</div><div class="ttdef"><b>Definition:</b> sim-operations.h:835</div></div>
-<div class="ttc" id="asim-operations_8h_html_ad3981037d5b9c99a0c49de9f0dfc1e8c"><div class="ttname"><a href="sim-operations_8h.html#ad3981037d5b9c99a0c49de9f0dfc1e8c">GSC_TRUE</a></div><div class="ttdeci">#define GSC_TRUE</div><div class="ttdef"><b>Definition:</b> sim-operations.h:80</div></div>
+<div class="ttc" id="agroup__shortnames_html_ga8bc4f8369ef14861b409317322046905"><div class="ttname"><a href="group__shortnames.html#ga8bc4f8369ef14861b409317322046905">define_matrix_format_details</a></div><div class="ttdeci">#define define_matrix_format_details</div><div class="ttdef"><b>Definition:</b> <a href="sim-operations_8h_source.html#l00168">sim-operations.h:168</a></div></div>
+<div class="ttc" id="agroup__shortnames_html_gae2dfa9fab7307781bef01124e32e7495"><div class="ttname"><a href="group__shortnames.html#gae2dfa9fab7307781bef01124e32e7495">FileFormatSpec</a></div><div class="ttdeci">#define FileFormatSpec</div><div class="ttdef"><b>Definition:</b> <a href="sim-operations_8h_source.html#l00167">sim-operations.h:167</a></div></div>
+<div class="ttc" id="agroup__structs_html_gga169da3c2b32a6f9afd92e2e0801ad741a7ace3d1df4d9466ce2fdac1f1b2e678c"><div class="ttname"><a href="group__structs.html#gga169da3c2b32a6f9afd92e2e0801ad741a7ace3d1df4d9466ce2fdac1f1b2e678c">GSC_GENOTYPECELLSTYLE_PAIR</a></div><div class="ttdeci">@ GSC_GENOTYPECELLSTYLE_PAIR</div><div class="ttdef"><b>Definition:</b> <a href="sim-operations_8h_source.html#l00822">sim-operations.h:822</a></div></div>
+<div class="ttc" id="asim-operations_8h_html_ad3981037d5b9c99a0c49de9f0dfc1e8c"><div class="ttname"><a href="sim-operations_8h.html#ad3981037d5b9c99a0c49de9f0dfc1e8c">GSC_TRUE</a></div><div class="ttdeci">#define GSC_TRUE</div><div class="ttdef"><b>Definition:</b> <a href="sim-operations_8h_source.html#l00080">sim-operations.h:80</a></div></div>
 </div><!-- fragment --> </td><td><div class="fragment"><div class="line">mformat &lt;- define.matrix.format.details(has.header=TRUE, markers.as.rows=TRUE, cell.style=&quot;Pair&quot;)</div>
-<div class="line">founders &lt;- load.data(genotype.file=&quot;genotype-file.txt&quot;, map.file=&quot;map-file.txt&quot;,format=mformat)</div>
+<div class="line">init &lt;- load.data(genotype.file=&quot;genotype-file.txt&quot;, map.file=&quot;map-file.txt&quot;,format=mformat)</div>
 </div><!-- fragment --> </td></tr>
 </table>
 <p >It is not required that you manually specify all details of the file format. Whatever details of the file format are not manually specified will be automatically detected.</p>
 <p >See the documentation for the function <code>define_matrix_format_details</code> (C)/<code>define.matrix.format.details</code> (R) for more information.</p>
-<h2><a class="anchor" id="autotoc_md33"></a>
+<h2><a class="anchor" id="autotoc_md35"></a>
 Load a genetic map and several sets of founder genotypes</h2>
 <table class="doxtable">
 <tr>
@@ -337,12 +338,13 @@ Load a genetic map and several sets of founder genotypes</h2>
 <div class="line"><span class="keyword">struct </span><a class="code hl_define" href="group__shortnames.html#gab9139b22223d33aa0a762d3ec00b3072">MultiIDSet</a> init = <a class="code hl_define" href="group__shortnames.html#ga2e10fe6c17f65cefc887a7b8868d9017">load_data_files</a>(d, <span class="stringliteral">&quot;genotype-file.txt&quot;</span>, <span class="stringliteral">&quot;map-file.txt&quot;</span>, NULL, <a class="code hl_define" href="group__shortnames.html#ga1b342f7327286629391ccbad90ea19e4">DETECT_FILE_FORMAT</a>);</div>
 <div class="line"><a class="code hl_define" href="group__shortnames.html#gadb2ef9b75828b244e0b3e1cb3680d7ca">GroupNum</a> founders_a = init.group;</div>
 <div class="line"><a class="code hl_define" href="group__shortnames.html#gadb2ef9b75828b244e0b3e1cb3680d7ca">GroupNum</a> founders_b = <a class="code hl_define" href="group__shortnames.html#ga23a7a92af469dfbba4905bb5c9c90a9b">load_genotypefile</a>(d, <span class="stringliteral">&quot;genotype-file2.txt&quot;</span>, <a class="code hl_define" href="group__shortnames.html#ga1b342f7327286629391ccbad90ea19e4">DETECT_FILE_FORMAT</a>);</div>
-<div class="ttc" id="agroup__shortnames_html_ga23a7a92af469dfbba4905bb5c9c90a9b"><div class="ttname"><a href="group__shortnames.html#ga23a7a92af469dfbba4905bb5c9c90a9b">load_genotypefile</a></div><div class="ttdeci">#define load_genotypefile</div><div class="ttdef"><b>Definition:</b> sim-operations.h:164</div></div>
-</div><!-- fragment --> </td><td><div class="fragment"><div class="line">founders_a &lt;- load.data(genotype.file=&quot;genotype-file.txt&quot;, map.file=&quot;map-file.txt&quot;)</div>
+<div class="ttc" id="agroup__shortnames_html_ga23a7a92af469dfbba4905bb5c9c90a9b"><div class="ttname"><a href="group__shortnames.html#ga23a7a92af469dfbba4905bb5c9c90a9b">load_genotypefile</a></div><div class="ttdeci">#define load_genotypefile</div><div class="ttdef"><b>Definition:</b> <a href="sim-operations_8h_source.html#l00164">sim-operations.h:164</a></div></div>
+</div><!-- fragment --> </td><td><div class="fragment"><div class="line">init &lt;- load.data(genotype.file=&quot;genotype-file.txt&quot;, map.file=&quot;map-file.txt&quot;)</div>
+<div class="line">founders_a &lt;- init$groupNum</div>
 <div class="line">founders_b &lt;- load.genotypes(&quot;genotype-file2.txt&quot;)</div>
 </div><!-- fragment --> </td></tr>
 </table>
-<h2><a class="anchor" id="autotoc_md34"></a>
+<h2><a class="anchor" id="autotoc_md36"></a>
 Load a genetic map, a set of founder genotypes, and a set of additive trait effects</h2>
 <table class="doxtable">
 <tr>
@@ -379,16 +381,15 @@ Load a genetic map, a set of founder genotypes, and a set of additive trait effe
 <div class="line"><a class="code hl_define" href="group__shortnames.html#gadb2ef9b75828b244e0b3e1cb3680d7ca">GroupNum</a> founders = init.group;</div>
 <div class="line"><a class="code hl_define" href="group__shortnames.html#ga516a882a4bac611d495b8f454478d674">EffectID</a> eff1 = init.effectSet;</div>
 <div class="line"><a class="code hl_define" href="group__shortnames.html#gad11f85a6aae488f7efaab5abecaf1ac7">MapID</a> map1 = init.map;</div>
-<div class="ttc" id="agroup__shortnames_html_ga516a882a4bac611d495b8f454478d674"><div class="ttname"><a href="group__shortnames.html#ga516a882a4bac611d495b8f454478d674">EffectID</a></div><div class="ttdeci">#define EffectID</div><div class="ttdef"><b>Definition:</b> sim-operations.h:128</div></div>
-<div class="ttc" id="agroup__shortnames_html_gad11f85a6aae488f7efaab5abecaf1ac7"><div class="ttname"><a href="group__shortnames.html#gad11f85a6aae488f7efaab5abecaf1ac7">MapID</a></div><div class="ttdeci">#define MapID</div><div class="ttdef"><b>Definition:</b> sim-operations.h:132</div></div>
-</div><!-- fragment --> </td><td><div class="fragment"><div class="line"># Note that the output is slightly different when an effect file is loaded.</div>
-<div class="line">init &lt;- load.data(genotype.file=&quot;genotype-file.txt&quot;, map.file=&quot;map-file.txt&quot;, effect.file=&quot;eff-file.txt&quot;)</div>
+<div class="ttc" id="agroup__shortnames_html_ga516a882a4bac611d495b8f454478d674"><div class="ttname"><a href="group__shortnames.html#ga516a882a4bac611d495b8f454478d674">EffectID</a></div><div class="ttdeci">#define EffectID</div><div class="ttdef"><b>Definition:</b> <a href="sim-operations_8h_source.html#l00128">sim-operations.h:128</a></div></div>
+<div class="ttc" id="agroup__shortnames_html_gad11f85a6aae488f7efaab5abecaf1ac7"><div class="ttname"><a href="group__shortnames.html#gad11f85a6aae488f7efaab5abecaf1ac7">MapID</a></div><div class="ttdeci">#define MapID</div><div class="ttdef"><b>Definition:</b> <a href="sim-operations_8h_source.html#l00132">sim-operations.h:132</a></div></div>
+</div><!-- fragment --> </td><td><div class="fragment"><div class="line">init &lt;- load.data(genotype.file=&quot;genotype-file.txt&quot;, map.file=&quot;map-file.txt&quot;, effect.file=&quot;eff-file.txt&quot;)</div>
 <div class="line">founders &lt;- init$groupNum</div>
 <div class="line">eff1 &lt;- init$effectID</div>
 <div class="line">map1 &lt;- init$mapID</div>
 </div><!-- fragment --> </td></tr>
 </table>
-<h2><a class="anchor" id="autotoc_md35"></a>
+<h2><a class="anchor" id="autotoc_md37"></a>
 Load another set of additive trait effects</h2>
 <p >This assumes the simulation is set up, that is, one of <b>Load a genetic map and a set of founder genotypes</b>, <b>Load a genetic map and several sets of founder genotypes</b>, <b>Load a genetic map, a set of founder genotypes, and a set of additive trait effects</b> or equivalent has been carried out. If the simulation is not yet set up and you wish to load trait effect values, see the section above, titled <b>Load a genetic map, a set of founder genotypes, and a set of additive trait effects</b>.</p>
 <table class="doxtable">
@@ -399,11 +400,11 @@ Load another set of additive trait effects</h2>
 <li>File location: eff-file2.txt </li>
 </ul>
 </td><td><div class="fragment"><div class="line"><a class="code hl_define" href="group__shortnames.html#ga516a882a4bac611d495b8f454478d674">EffectID</a> eff2 = <a class="code hl_define" href="group__shortnames.html#ga7b891ecd001d68f60b379b1bb14e43d7">load_effectfile</a>(d, <span class="stringliteral">&quot;eff-file2.txt&quot;</span>);</div>
-<div class="ttc" id="agroup__shortnames_html_ga7b891ecd001d68f60b379b1bb14e43d7"><div class="ttname"><a href="group__shortnames.html#ga7b891ecd001d68f60b379b1bb14e43d7">load_effectfile</a></div><div class="ttdeci">#define load_effectfile</div><div class="ttdef"><b>Definition:</b> sim-operations.h:163</div></div>
+<div class="ttc" id="agroup__shortnames_html_ga7b891ecd001d68f60b379b1bb14e43d7"><div class="ttname"><a href="group__shortnames.html#ga7b891ecd001d68f60b379b1bb14e43d7">load_effectfile</a></div><div class="ttdeci">#define load_effectfile</div><div class="ttdef"><b>Definition:</b> <a href="sim-operations_8h_source.html#l00163">sim-operations.h:163</a></div></div>
 </div><!-- fragment --> </td><td><div class="fragment"><div class="line">eff2 &lt;- load.effects(&quot;eff-file2.txt&quot;)</div>
 </div><!-- fragment --> </td></tr>
 </table>
-<h2><a class="anchor" id="autotoc_md36"></a>
+<h2><a class="anchor" id="autotoc_md38"></a>
 Load another linkage map</h2>
 <p >Markers in this map that are not present in the primary linkage map will be ignored. (That is, the first genetic map loaded must contain all markers you wish to be tracked by the simulation. Later genetic maps can only provide different recombination frequencies or chromosome allocations).</p>
 <table class="doxtable">
@@ -414,28 +415,28 @@ Load another linkage map</h2>
 <li>File location: mapfile2.txt </li>
 </ul>
 </td><td><div class="fragment"><div class="line"><a class="code hl_define" href="group__shortnames.html#gad11f85a6aae488f7efaab5abecaf1ac7">MapID</a> map2 = <a class="code hl_define" href="group__shortnames.html#gaf16559ebf0798beeaea167422915ece1">load_mapfile</a>(d, <span class="stringliteral">&quot;mapfile2.txt&quot;</span>);</div>
-<div class="ttc" id="agroup__shortnames_html_gaf16559ebf0798beeaea167422915ece1"><div class="ttname"><a href="group__shortnames.html#gaf16559ebf0798beeaea167422915ece1">load_mapfile</a></div><div class="ttdeci">#define load_mapfile</div><div class="ttdef"><b>Definition:</b> sim-operations.h:162</div></div>
+<div class="ttc" id="agroup__shortnames_html_gaf16559ebf0798beeaea167422915ece1"><div class="ttname"><a href="group__shortnames.html#gaf16559ebf0798beeaea167422915ece1">load_mapfile</a></div><div class="ttdeci">#define load_mapfile</div><div class="ttdef"><b>Definition:</b> <a href="sim-operations_8h_source.html#l00162">sim-operations.h:162</a></div></div>
 </div><!-- fragment --> </td><td><div class="fragment"><div class="line">map2 &lt;- load.map(&quot;mapfile2.txt&quot;)</div>
 </div><!-- fragment --> </td></tr>
 </table>
-<h1><a class="anchor" id="autotoc_md37"></a>
+<h1><a class="anchor" id="autotoc_md39"></a>
 Crossing &amp; Other Ways to Generate New Genotypes: Plant-themed</h1>
 <p >Templates in this section assume you have loaded a set of founders whose group number is saved in the variable <code>founders</code>.</p>
-<h2><a class="anchor" id="autotoc_md38"></a>
+<h2><a class="anchor" id="autotoc_md40"></a>
 Single seed descent</h2>
 <table class="doxtable">
 <tr>
 <th>Task </th><th>genomicSimulationC (C) </th><th>genomicSimulation (R) </th></tr>
 <tr>
 <td>For six generations grow a single seed from each plant to maturity. </td><td><div class="fragment"><div class="line"><a class="code hl_define" href="group__shortnames.html#gadb2ef9b75828b244e0b3e1cb3680d7ca">GroupNum</a> f6 = <a class="code hl_define" href="group__shortnames.html#gaea0e2102f5a29f876e34fb234e8d7d65">self_n_times</a>(d, 6, founders, <a class="code hl_define" href="group__shortnames.html#ga3710da75e403e5a3da4e2deade0d50af">NO_MAP</a>, <a class="code hl_define" href="group__shortnames.html#ga4af98a71b0736f81c32df8e5e4fd6a83">BASIC_OPT</a>);</div>
-<div class="ttc" id="agroup__shortnames_html_ga3710da75e403e5a3da4e2deade0d50af"><div class="ttname"><a href="group__shortnames.html#ga3710da75e403e5a3da4e2deade0d50af">NO_MAP</a></div><div class="ttdeci">#define NO_MAP</div><div class="ttdef"><b>Definition:</b> sim-operations.h:133</div></div>
-<div class="ttc" id="agroup__shortnames_html_ga4af98a71b0736f81c32df8e5e4fd6a83"><div class="ttname"><a href="group__shortnames.html#ga4af98a71b0736f81c32df8e5e4fd6a83">BASIC_OPT</a></div><div class="ttdeci">#define BASIC_OPT</div><div class="ttdef"><b>Definition:</b> sim-operations.h:139</div></div>
-<div class="ttc" id="agroup__shortnames_html_gaea0e2102f5a29f876e34fb234e8d7d65"><div class="ttname"><a href="group__shortnames.html#gaea0e2102f5a29f876e34fb234e8d7d65">self_n_times</a></div><div class="ttdeci">#define self_n_times</div><div class="ttdef"><b>Definition:</b> sim-operations.h:222</div></div>
+<div class="ttc" id="agroup__shortnames_html_ga3710da75e403e5a3da4e2deade0d50af"><div class="ttname"><a href="group__shortnames.html#ga3710da75e403e5a3da4e2deade0d50af">NO_MAP</a></div><div class="ttdeci">#define NO_MAP</div><div class="ttdef"><b>Definition:</b> <a href="sim-operations_8h_source.html#l00133">sim-operations.h:133</a></div></div>
+<div class="ttc" id="agroup__shortnames_html_ga4af98a71b0736f81c32df8e5e4fd6a83"><div class="ttname"><a href="group__shortnames.html#ga4af98a71b0736f81c32df8e5e4fd6a83">BASIC_OPT</a></div><div class="ttdeci">#define BASIC_OPT</div><div class="ttdef"><b>Definition:</b> <a href="sim-operations_8h_source.html#l00139">sim-operations.h:139</a></div></div>
+<div class="ttc" id="agroup__shortnames_html_gaea0e2102f5a29f876e34fb234e8d7d65"><div class="ttname"><a href="group__shortnames.html#gaea0e2102f5a29f876e34fb234e8d7d65">self_n_times</a></div><div class="ttdeci">#define self_n_times</div><div class="ttdef"><b>Definition:</b> <a href="sim-operations_8h_source.html#l00222">sim-operations.h:222</a></div></div>
 </div><!-- fragment --> </td><td><div class="fragment"><div class="line">f6 &lt;- self.n.times(founders, n=6)</div>
 </div><!-- fragment --> </td></tr>
 </table>
 <p >Using NO_MAP for the recombination map parameter in any crossing function in the C version causes the tool to default to the first/primary recombination map. This is the same default as in the R version.</p>
-<h2><a class="anchor" id="autotoc_md39"></a>
+<h2><a class="anchor" id="autotoc_md41"></a>
 Creating halfsib or fullsib families</h2>
 <table class="doxtable">
 <tr>
@@ -444,16 +445,17 @@ Creating halfsib or fullsib families</h2>
 <td>Make 20 random crosses and collect families of 6 full siblings from the result of each cross. </td><td><div class="fragment"><div class="line"><a class="code hl_define" href="group__shortnames.html#gaa320efa0931830d69965beb2f5399acf">GenOptions</a> opt = {.will_name_offspring=<a class="code hl_define" href="group__shortnames.html#gaa93f0eb578d23995850d61f7d61c55c1">FALSE</a>, .offspring_name_prefix=NULL, .family_size=6,</div>
 <div class="line">        .will_track_pedigree=<a class="code hl_define" href="group__shortnames.html#gaa8cecfc5c5c054d2875c03e77b7be15d">TRUE</a>, .will_allocate_ids=<a class="code hl_define" href="group__shortnames.html#gaa8cecfc5c5c054d2875c03e77b7be15d">TRUE</a>,</div>
 <div class="line">        .filename_prefix=NULL, .will_save_pedigree_to_file=<a class="code hl_define" href="group__shortnames.html#gaa93f0eb578d23995850d61f7d61c55c1">FALSE</a>,</div>
-<div class="line">        .will_save_bvs_to_file=NOT_AN_EFFECT_ID, .will_save_alleles_to_file=<a class="code hl_define" href="group__shortnames.html#gaa93f0eb578d23995850d61f7d61c55c1">FALSE</a>,</div>
+<div class="line">        .will_save_bvs_to_file=<a class="code hl_define" href="group__shortnames.html#ga27b7a0c46aa95c0f127549d8ae007b8d">NO_EFFECTSET</a>, .will_save_alleles_to_file=<a class="code hl_define" href="group__shortnames.html#gaa93f0eb578d23995850d61f7d61c55c1">FALSE</a>,</div>
 <div class="line">        .will_save_to_simdata=<a class="code hl_define" href="group__shortnames.html#gaa8cecfc5c5c054d2875c03e77b7be15d">TRUE</a>};</div>
 <div class="line"><a class="code hl_define" href="group__shortnames.html#gadb2ef9b75828b244e0b3e1cb3680d7ca">GroupNum</a> crosses = <a class="code hl_define" href="group__shortnames.html#ga87aa2de59b68e428e5b6f07f5955c15a">make_random_crosses</a>(d, founders, 20, 0, <a class="code hl_define" href="group__shortnames.html#ga3710da75e403e5a3da4e2deade0d50af">NO_MAP</a>, opt);</div>
 <div class="line"><a class="code hl_define" href="group__shortnames.html#gadb2ef9b75828b244e0b3e1cb3680d7ca">GroupNum</a> families[20];</div>
 <div class="line"><a class="code hl_define" href="group__shortnames.html#ga9b6583f62a092756b6a06e08536ed42b">split_into_families</a>(d, crosses, families);</div>
-<div class="ttc" id="agroup__shortnames_html_ga87aa2de59b68e428e5b6f07f5955c15a"><div class="ttname"><a href="group__shortnames.html#ga87aa2de59b68e428e5b6f07f5955c15a">make_random_crosses</a></div><div class="ttdeci">#define make_random_crosses</div><div class="ttdef"><b>Definition:</b> sim-operations.h:219</div></div>
-<div class="ttc" id="agroup__shortnames_html_ga9b6583f62a092756b6a06e08536ed42b"><div class="ttname"><a href="group__shortnames.html#ga9b6583f62a092756b6a06e08536ed42b">split_into_families</a></div><div class="ttdeci">#define split_into_families</div><div class="ttdef"><b>Definition:</b> sim-operations.h:207</div></div>
-<div class="ttc" id="agroup__shortnames_html_gaa320efa0931830d69965beb2f5399acf"><div class="ttname"><a href="group__shortnames.html#gaa320efa0931830d69965beb2f5399acf">GenOptions</a></div><div class="ttdeci">#define GenOptions</div><div class="ttdef"><b>Definition:</b> sim-operations.h:138</div></div>
-<div class="ttc" id="agroup__shortnames_html_gaa8cecfc5c5c054d2875c03e77b7be15d"><div class="ttname"><a href="group__shortnames.html#gaa8cecfc5c5c054d2875c03e77b7be15d">TRUE</a></div><div class="ttdeci">#define TRUE</div><div class="ttdef"><b>Definition:</b> sim-operations.h:121</div></div>
-<div class="ttc" id="agroup__shortnames_html_gaa93f0eb578d23995850d61f7d61c55c1"><div class="ttname"><a href="group__shortnames.html#gaa93f0eb578d23995850d61f7d61c55c1">FALSE</a></div><div class="ttdeci">#define FALSE</div><div class="ttdef"><b>Definition:</b> sim-operations.h:122</div></div>
+<div class="ttc" id="agroup__shortnames_html_ga27b7a0c46aa95c0f127549d8ae007b8d"><div class="ttname"><a href="group__shortnames.html#ga27b7a0c46aa95c0f127549d8ae007b8d">NO_EFFECTSET</a></div><div class="ttdeci">#define NO_EFFECTSET</div><div class="ttdef"><b>Definition:</b> <a href="sim-operations_8h_source.html#l00129">sim-operations.h:129</a></div></div>
+<div class="ttc" id="agroup__shortnames_html_ga87aa2de59b68e428e5b6f07f5955c15a"><div class="ttname"><a href="group__shortnames.html#ga87aa2de59b68e428e5b6f07f5955c15a">make_random_crosses</a></div><div class="ttdeci">#define make_random_crosses</div><div class="ttdef"><b>Definition:</b> <a href="sim-operations_8h_source.html#l00219">sim-operations.h:219</a></div></div>
+<div class="ttc" id="agroup__shortnames_html_ga9b6583f62a092756b6a06e08536ed42b"><div class="ttname"><a href="group__shortnames.html#ga9b6583f62a092756b6a06e08536ed42b">split_into_families</a></div><div class="ttdeci">#define split_into_families</div><div class="ttdef"><b>Definition:</b> <a href="sim-operations_8h_source.html#l00207">sim-operations.h:207</a></div></div>
+<div class="ttc" id="agroup__shortnames_html_gaa320efa0931830d69965beb2f5399acf"><div class="ttname"><a href="group__shortnames.html#gaa320efa0931830d69965beb2f5399acf">GenOptions</a></div><div class="ttdeci">#define GenOptions</div><div class="ttdef"><b>Definition:</b> <a href="sim-operations_8h_source.html#l00138">sim-operations.h:138</a></div></div>
+<div class="ttc" id="agroup__shortnames_html_gaa8cecfc5c5c054d2875c03e77b7be15d"><div class="ttname"><a href="group__shortnames.html#gaa8cecfc5c5c054d2875c03e77b7be15d">TRUE</a></div><div class="ttdeci">#define TRUE</div><div class="ttdef"><b>Definition:</b> <a href="sim-operations_8h_source.html#l00121">sim-operations.h:121</a></div></div>
+<div class="ttc" id="agroup__shortnames_html_gaa93f0eb578d23995850d61f7d61c55c1"><div class="ttname"><a href="group__shortnames.html#gaa93f0eb578d23995850d61f7d61c55c1">FALSE</a></div><div class="ttdeci">#define FALSE</div><div class="ttdef"><b>Definition:</b> <a href="sim-operations_8h_source.html#l00122">sim-operations.h:122</a></div></div>
 </div><!-- fragment --> </td><td><div class="fragment"><div class="line">crosses &lt;- make.random.crosses(founders, n.crosses=20, offspring=6)</div>
 <div class="line">families &lt;- break.group.into.families(crosses)</div>
 </div><!-- fragment --> </td></tr>
@@ -468,15 +470,15 @@ Creating halfsib or fullsib families</h2>
 <div class="line"><a class="code hl_define" href="group__shortnames.html#gaa320efa0931830d69965beb2f5399acf">GenOptions</a> opt = {.will_name_offspring=<a class="code hl_define" href="group__shortnames.html#gaa93f0eb578d23995850d61f7d61c55c1">FALSE</a>, .offspring_name_prefix=NULL, .family_size=6,</div>
 <div class="line">        .will_track_pedigree=<a class="code hl_define" href="group__shortnames.html#gaa8cecfc5c5c054d2875c03e77b7be15d">TRUE</a>, .will_allocate_ids=<a class="code hl_define" href="group__shortnames.html#gaa8cecfc5c5c054d2875c03e77b7be15d">TRUE</a>,</div>
 <div class="line">        .filename_prefix=NULL, .will_save_pedigree_to_file=<a class="code hl_define" href="group__shortnames.html#gaa93f0eb578d23995850d61f7d61c55c1">FALSE</a>,</div>
-<div class="line">        .will_save_bvs_to_file=NOT_AN_EFFECT_ID, .will_save_alleles_to_file=<a class="code hl_define" href="group__shortnames.html#gaa93f0eb578d23995850d61f7d61c55c1">FALSE</a>,</div>
+<div class="line">        .will_save_bvs_to_file=<a class="code hl_define" href="group__shortnames.html#ga27b7a0c46aa95c0f127549d8ae007b8d">NO_EFFECTSET</a>, .will_save_alleles_to_file=<a class="code hl_define" href="group__shortnames.html#gaa93f0eb578d23995850d61f7d61c55c1">FALSE</a>,</div>
 <div class="line">        .will_save_to_simdata=<a class="code hl_define" href="group__shortnames.html#gaa8cecfc5c5c054d2875c03e77b7be15d">TRUE</a>};</div>
 <div class="line"><a class="code hl_define" href="group__shortnames.html#gadb2ef9b75828b244e0b3e1cb3680d7ca">GroupNum</a> crosses = <a class="code hl_define" href="group__shortnames.html#ga9d7d8919aa31f1cfb54c902800a2d063">make_random_crosses_between</a>(d, targetparent_group, founders, 10, 0, 0, <a class="code hl_define" href="group__shortnames.html#ga3710da75e403e5a3da4e2deade0d50af">NO_MAP</a>, <a class="code hl_define" href="group__shortnames.html#ga3710da75e403e5a3da4e2deade0d50af">NO_MAP</a>, opt);</div>
 <div class="line"> </div>
 <div class="line"><a class="code hl_define" href="group__shortnames.html#gadb2ef9b75828b244e0b3e1cb3680d7ca">GroupNum</a> families[10];</div>
 <div class="line"><a class="code hl_define" href="group__shortnames.html#ga4fa671550fea7b5c723986703a3078ca">split_into_halfsib_families</a>(d, crosses, 1, families);</div>
-<div class="ttc" id="agroup__shortnames_html_ga4fa671550fea7b5c723986703a3078ca"><div class="ttname"><a href="group__shortnames.html#ga4fa671550fea7b5c723986703a3078ca">split_into_halfsib_families</a></div><div class="ttdeci">#define split_into_halfsib_families</div><div class="ttdef"><b>Definition:</b> sim-operations.h:208</div></div>
-<div class="ttc" id="agroup__shortnames_html_ga702855cf67ebd337941ec9c13e40dfe9"><div class="ttname"><a href="group__shortnames.html#ga702855cf67ebd337941ec9c13e40dfe9">make_group_from</a></div><div class="ttdeci">#define make_group_from</div><div class="ttdef"><b>Definition:</b> sim-operations.h:203</div></div>
-<div class="ttc" id="agroup__shortnames_html_ga9d7d8919aa31f1cfb54c902800a2d063"><div class="ttname"><a href="group__shortnames.html#ga9d7d8919aa31f1cfb54c902800a2d063">make_random_crosses_between</a></div><div class="ttdeci">#define make_random_crosses_between</div><div class="ttdef"><b>Definition:</b> sim-operations.h:220</div></div>
+<div class="ttc" id="agroup__shortnames_html_ga4fa671550fea7b5c723986703a3078ca"><div class="ttname"><a href="group__shortnames.html#ga4fa671550fea7b5c723986703a3078ca">split_into_halfsib_families</a></div><div class="ttdeci">#define split_into_halfsib_families</div><div class="ttdef"><b>Definition:</b> <a href="sim-operations_8h_source.html#l00208">sim-operations.h:208</a></div></div>
+<div class="ttc" id="agroup__shortnames_html_ga702855cf67ebd337941ec9c13e40dfe9"><div class="ttname"><a href="group__shortnames.html#ga702855cf67ebd337941ec9c13e40dfe9">make_group_from</a></div><div class="ttdeci">#define make_group_from</div><div class="ttdef"><b>Definition:</b> <a href="sim-operations_8h_source.html#l00203">sim-operations.h:203</a></div></div>
+<div class="ttc" id="agroup__shortnames_html_ga9d7d8919aa31f1cfb54c902800a2d063"><div class="ttname"><a href="group__shortnames.html#ga9d7d8919aa31f1cfb54c902800a2d063">make_random_crosses_between</a></div><div class="ttdeci">#define make_random_crosses_between</div><div class="ttdef"><b>Definition:</b> <a href="sim-operations_8h_source.html#l00220">sim-operations.h:220</a></div></div>
 </div><!-- fragment --> </td><td><div class="fragment"><div class="line">targetparent_group &lt;- make.group(c(1L))</div>
 <div class="line"> </div>
 <div class="line">crosses &lt;- make.random.crosses.between(targetparent_group, founders, n.crosses=10, offspring=6)</div>
@@ -484,10 +486,10 @@ Creating halfsib or fullsib families</h2>
 <div class="line">families &lt;- break.group.into.halfsib.families(crosses)</div>
 </div><!-- fragment --> </td></tr>
 </table>
-<h2><a class="anchor" id="autotoc_md40"></a>
+<h2><a class="anchor" id="autotoc_md42"></a>
 Updating marker effects</h2>
 <p >Updating the marker effect estimates is a task that must be done outside of genomicSimulation. Export required data from the simulation, run the marker effect re-estimation, then re-import marker effects as in <b>Swap out the set of additive trait effects for another</b>.</p>
-<h2><a class="anchor" id="autotoc_md41"></a>
+<h2><a class="anchor" id="autotoc_md43"></a>
 Trials and locations</h2>
 <table class="doxtable">
 <tr>
@@ -495,13 +497,13 @@ Trials and locations</h2>
 <tr>
 <td>Suppose you want to simulate the success of the founder population in different environments. </td><td><div class="fragment"><div class="line"><a class="code hl_define" href="group__shortnames.html#gadb2ef9b75828b244e0b3e1cb3680d7ca">GroupNum</a> location1 = <a class="code hl_define" href="group__shortnames.html#gacd45e8b70bb44a78325f6947479db0ad">make_clones</a>(d, founders, <a class="code hl_define" href="group__shortnames.html#gaa8cecfc5c5c054d2875c03e77b7be15d">TRUE</a>, <a class="code hl_define" href="group__shortnames.html#ga4af98a71b0736f81c32df8e5e4fd6a83">BASIC_OPT</a>);</div>
 <div class="line"><a class="code hl_define" href="group__shortnames.html#gadb2ef9b75828b244e0b3e1cb3680d7ca">GroupNum</a> location2 = <a class="code hl_define" href="group__shortnames.html#gacd45e8b70bb44a78325f6947479db0ad">make_clones</a>(d, founders, <a class="code hl_define" href="group__shortnames.html#gaa8cecfc5c5c054d2875c03e77b7be15d">TRUE</a>, <a class="code hl_define" href="group__shortnames.html#ga4af98a71b0736f81c32df8e5e4fd6a83">BASIC_OPT</a>);</div>
-<div class="ttc" id="agroup__shortnames_html_gacd45e8b70bb44a78325f6947479db0ad"><div class="ttname"><a href="group__shortnames.html#gacd45e8b70bb44a78325f6947479db0ad">make_clones</a></div><div class="ttdeci">#define make_clones</div><div class="ttdef"><b>Definition:</b> sim-operations.h:224</div></div>
+<div class="ttc" id="agroup__shortnames_html_gacd45e8b70bb44a78325f6947479db0ad"><div class="ttname"><a href="group__shortnames.html#gacd45e8b70bb44a78325f6947479db0ad">make_clones</a></div><div class="ttdeci">#define make_clones</div><div class="ttdef"><b>Definition:</b> <a href="sim-operations_8h_source.html#l00224">sim-operations.h:224</a></div></div>
 </div><!-- fragment --> </td><td><div class="fragment"><div class="line">location1 &lt;- make.clones(founders)</div>
 <div class="line">location2 &lt;- make.clones(founders)</div>
 </div><!-- fragment --> </td></tr>
 </table>
 <p >Once separate copies exist for trials at different locations, simulate selection with different intensities or heritabilities for each different location group. Eg <b>Select on phenotype (simulated with a given heritability)</b>.</p>
-<h2><a class="anchor" id="autotoc_md42"></a>
+<h2><a class="anchor" id="autotoc_md44"></a>
 Backcrossing</h2>
 <table class="doxtable">
 <tr>
@@ -525,10 +527,10 @@ Backcrossing</h2>
 </div><!-- fragment --> </td></tr>
 </table>
 <p >For marker-assisted backcrossing, select each loop on presence of the marker and/or the estimated breeding value. See <b>Select on a qualitative trait</b> and <b>Select on a qualitative trait, then a quantitative trait.</b></p>
-<h1><a class="anchor" id="autotoc_md43"></a>
+<h1><a class="anchor" id="autotoc_md45"></a>
 Crossing &amp; Other Ways to Generate New Genotypes: Animal-themed</h1>
 <p >Templates in this section assume you have loaded two sets of founders whose group id are saved in the variables <code>cows</code> and <code>bulls</code>. See <b>Load a genetic map and several sets of founder genotypes</b>.</p>
-<h2><a class="anchor" id="autotoc_md44"></a>
+<h2><a class="anchor" id="autotoc_md46"></a>
 Split offspring into male and female</h2>
 <table class="doxtable">
 <tr>
@@ -538,7 +540,7 @@ Split offspring into male and female</h2>
 <div class="line"> </div>
 <div class="line"><a class="code hl_define" href="group__shortnames.html#gadb2ef9b75828b244e0b3e1cb3680d7ca">GroupNum</a> offspring_f = <a class="code hl_define" href="group__shortnames.html#ga846bceb22b2a254269d517342c60b189">split_randomly_into_two</a>(d, offspring);</div>
 <div class="line"><a class="code hl_define" href="group__shortnames.html#gadb2ef9b75828b244e0b3e1cb3680d7ca">GroupNum</a> offspring_m = offspring;</div>
-<div class="ttc" id="agroup__shortnames_html_ga846bceb22b2a254269d517342c60b189"><div class="ttname"><a href="group__shortnames.html#ga846bceb22b2a254269d517342c60b189">split_randomly_into_two</a></div><div class="ttdeci">#define split_randomly_into_two</div><div class="ttdef"><b>Definition:</b> sim-operations.h:212</div></div>
+<div class="ttc" id="agroup__shortnames_html_ga846bceb22b2a254269d517342c60b189"><div class="ttname"><a href="group__shortnames.html#ga846bceb22b2a254269d517342c60b189">split_randomly_into_two</a></div><div class="ttdeci">#define split_randomly_into_two</div><div class="ttdef"><b>Definition:</b> <a href="sim-operations_8h_source.html#l00212">sim-operations.h:212</a></div></div>
 </div><!-- fragment --> </td><td><div class="fragment"><div class="line">offspring &lt;- make.random.crosses.between(cows, bulls, n.crosses=10)</div>
 <div class="line"> </div>
 <div class="line">temporary &lt;- break.group.randomly(offspring, into.n = 2)</div>
@@ -548,7 +550,7 @@ Split offspring into male and female</h2>
 </div><!-- fragment --> </td></tr>
 </table>
 <p >split_randomly_into_two or break.group.randomly can be used to split a group into two sub-groups by flipping a coin on each group member. This may result in two groups that are not quite the same size. To split a group of eg. 10 offspring into two groups of exactly 5 members, the cousin functions, split_evenly_into_two or break.group.evenly, can be used instead.</p>
-<h2><a class="anchor" id="autotoc_md45"></a>
+<h2><a class="anchor" id="autotoc_md47"></a>
 Introducing fresh blood to male and female kernels</h2>
 <p >Suppose the <code>offspring_f</code> and <code>offspring_m</code> groups exist, as created in the previous section <b>Split offspring into male and female</b>.</p>
 <table class="doxtable">
@@ -566,12 +568,12 @@ Introducing fresh blood to male and female kernels</h2>
 <div class="line">bullGroups[1] = offspring_m;</div>
 <div class="line"> </div>
 <div class="line">bulls = <a class="code hl_define" href="group__shortnames.html#ga73e77b55777298bf0c2349ada77bc44b">combine_groups</a>(d, 2, bullGroups);</div>
-<div class="ttc" id="agroup__shortnames_html_ga73e77b55777298bf0c2349ada77bc44b"><div class="ttname"><a href="group__shortnames.html#ga73e77b55777298bf0c2349ada77bc44b">combine_groups</a></div><div class="ttdeci">#define combine_groups</div><div class="ttdef"><b>Definition:</b> sim-operations.h:202</div></div>
+<div class="ttc" id="agroup__shortnames_html_ga73e77b55777298bf0c2349ada77bc44b"><div class="ttname"><a href="group__shortnames.html#ga73e77b55777298bf0c2349ada77bc44b">combine_groups</a></div><div class="ttdeci">#define combine_groups</div><div class="ttdef"><b>Definition:</b> <a href="sim-operations_8h_source.html#l00202">sim-operations.h:202</a></div></div>
 </div><!-- fragment --> </td><td><div class="fragment"><div class="line">cows &lt;- combine.groups(c(cows,offspring_f))</div>
 <div class="line">bulls &lt;- combine.groups(c(bulls,offspring_m))</div>
 </div><!-- fragment --> </td></tr>
 </table>
-<h2><a class="anchor" id="autotoc_md46"></a>
+<h2><a class="anchor" id="autotoc_md48"></a>
 Random mating with caps on number of offspring per animal</h2>
 <table class="doxtable">
 <tr>
@@ -581,7 +583,7 @@ Random mating with caps on number of offspring per animal</h2>
 </div><!-- fragment --> </td><td><div class="fragment"><div class="line">offspring &lt;- make.random.crosses.between(cows, bulls, cap1=1, n.crosses=10)</div>
 </div><!-- fragment --> </td></tr>
 </table>
-<h2><a class="anchor" id="autotoc_md47"></a>
+<h2><a class="anchor" id="autotoc_md49"></a>
 Mating all females to a good male</h2>
 <table class="doxtable">
 <tr>
@@ -590,12 +592,12 @@ Mating all females to a good male</h2>
 <td>Suppose the best bull in the population is the only one that will father calves under the current breeding strategy. </td><td><div class="fragment"><div class="line"><a class="code hl_define" href="group__shortnames.html#gadb2ef9b75828b244e0b3e1cb3680d7ca">GroupNum</a> bestbull = <a class="code hl_define" href="group__shortnames.html#ga7359d7aff5260f43540819b922b4b8f9">split_by_bv</a>(d, bulls, eff1, 1, <a class="code hl_define" href="group__shortnames.html#gaa93f0eb578d23995850d61f7d61c55c1">FALSE</a>); # where eff1 is an <a class="code hl_define" href="group__shortnames.html#ga516a882a4bac611d495b8f454478d674">EffectID</a> representing the marker effect set to use to calculate bvs</div>
 <div class="line"> </div>
 <div class="line"><a class="code hl_define" href="group__shortnames.html#gadb2ef9b75828b244e0b3e1cb3680d7ca">GroupNum</a> offspring = <a class="code hl_define" href="group__shortnames.html#ga9d7d8919aa31f1cfb54c902800a2d063">make_random_crosses_between</a>(d, cows, bestbull, 10, 1, 0, <a class="code hl_define" href="group__shortnames.html#ga3710da75e403e5a3da4e2deade0d50af">NO_MAP</a>, <a class="code hl_define" href="group__shortnames.html#ga3710da75e403e5a3da4e2deade0d50af">NO_MAP</a>, <a class="code hl_define" href="group__shortnames.html#ga4af98a71b0736f81c32df8e5e4fd6a83">BASIC_OPT</a>);</div>
-<div class="ttc" id="agroup__shortnames_html_ga7359d7aff5260f43540819b922b4b8f9"><div class="ttname"><a href="group__shortnames.html#ga7359d7aff5260f43540819b922b4b8f9">split_by_bv</a></div><div class="ttdeci">#define split_by_bv</div><div class="ttdef"><b>Definition:</b> sim-operations.h:230</div></div>
+<div class="ttc" id="agroup__shortnames_html_ga7359d7aff5260f43540819b922b4b8f9"><div class="ttname"><a href="group__shortnames.html#ga7359d7aff5260f43540819b922b4b8f9">split_by_bv</a></div><div class="ttdeci">#define split_by_bv</div><div class="ttdef"><b>Definition:</b> <a href="sim-operations_8h_source.html#l00230">sim-operations.h:230</a></div></div>
 </div><!-- fragment --> </td><td><div class="fragment"><div class="line">bestbull &lt;- break.group.by.gebv(bulls, number=1, eff.set=eff1) # by default, this function uses the first effect set, so `eff.set=eff1` is optional</div>
 <div class="line">offspring &lt;- make.random.crosses.between(cows, bestbull, cap1=1, n.crosses=10)</div>
 </div><!-- fragment --> </td></tr>
 </table>
-<h2><a class="anchor" id="autotoc_md48"></a>
+<h2><a class="anchor" id="autotoc_md50"></a>
 Making specific chosen matings</h2>
 <table class="doxtable">
 <tr>
@@ -616,8 +618,8 @@ Making specific chosen matings</h2>
 <div class="line">crossingPlan[1][2] = bull1_index;</div>
 <div class="line"> </div>
 <div class="line"><a class="code hl_define" href="group__shortnames.html#gadb2ef9b75828b244e0b3e1cb3680d7ca">GroupNum</a> offspring = <a class="code hl_define" href="group__shortnames.html#ga56e71147b1f8a71151ef81b4a828aa9b">make_targeted_crosses</a>(d, 3, crossingPlan[0], crossingPlan[1], <a class="code hl_define" href="group__shortnames.html#ga3710da75e403e5a3da4e2deade0d50af">NO_MAP</a>, <a class="code hl_define" href="group__shortnames.html#ga3710da75e403e5a3da4e2deade0d50af">NO_MAP</a>, <a class="code hl_define" href="group__shortnames.html#ga4af98a71b0736f81c32df8e5e4fd6a83">BASIC_OPT</a>);</div>
-<div class="ttc" id="agroup__search_html_ga292d9c26b8d027c931a84fd09a32518f"><div class="ttname"><a href="group__search.html#ga292d9c26b8d027c931a84fd09a32518f">gsc_get_index_of_name</a></div><div class="ttdeci">int gsc_get_index_of_name(const gsc_AlleleMatrix *start, const char *name)</div><div class="ttdoc">Search for a genotype with a particular name in a linked list of gsc_AlleleMatrix,...</div><div class="ttdef"><b>Definition:</b> sim-operations.c:2393</div></div>
-<div class="ttc" id="agroup__shortnames_html_ga56e71147b1f8a71151ef81b4a828aa9b"><div class="ttname"><a href="group__shortnames.html#ga56e71147b1f8a71151ef81b4a828aa9b">make_targeted_crosses</a></div><div class="ttdeci">#define make_targeted_crosses</div><div class="ttdef"><b>Definition:</b> sim-operations.h:221</div></div>
+<div class="ttc" id="agroup__search_html_ga292d9c26b8d027c931a84fd09a32518f"><div class="ttname"><a href="group__search.html#ga292d9c26b8d027c931a84fd09a32518f">gsc_get_index_of_name</a></div><div class="ttdeci">int gsc_get_index_of_name(const gsc_AlleleMatrix *start, const char *name)</div><div class="ttdoc">Search for a genotype with a particular name in a linked list of gsc_AlleleMatrix,...</div><div class="ttdef"><b>Definition:</b> <a href="sim-operations_8c_source.html#l02278">sim-operations.c:2278</a></div></div>
+<div class="ttc" id="agroup__shortnames_html_ga56e71147b1f8a71151ef81b4a828aa9b"><div class="ttname"><a href="group__shortnames.html#ga56e71147b1f8a71151ef81b4a828aa9b">make_targeted_crosses</a></div><div class="ttdeci">#define make_targeted_crosses</div><div class="ttdef"><b>Definition:</b> <a href="sim-operations_8h_source.html#l00221">sim-operations.h:221</a></div></div>
 </div><!-- fragment --> </td><td><div class="fragment"><div class="line">offspring &lt;- make.targeted.crosses(c(&quot;Cow1&quot;, &quot;Cow2&quot;, &quot;Daisy&quot;), c(&quot;Bull1&quot;, &quot;Bull2&quot;, &quot;Bull1&quot;))</div>
 </div><!-- fragment --> </td></tr>
 </table>
@@ -625,7 +627,7 @@ Making specific chosen matings</h2>
 <div class="line">Cow2 Bull2</div>
 <div class="line">Daisy Bull1</div>
 </div><!-- fragment --><p> and call <code>make_crosses_from_file</code> or <code>make.crosses.from.file</code>.</p>
-<h2><a class="anchor" id="autotoc_md49"></a>
+<h2><a class="anchor" id="autotoc_md51"></a>
 Three-Way Crosses</h2>
 <table class="doxtable">
 <tr>
@@ -649,7 +651,7 @@ Three-Way Crosses</h2>
 <div class="line">free(f1_index);</div>
 <div class="line"> </div>
 <div class="line"><a class="code hl_define" href="group__shortnames.html#gadb2ef9b75828b244e0b3e1cb3680d7ca">GroupNum</a> f3way = <a class="code hl_define" href="group__shortnames.html#ga56e71147b1f8a71151ef81b4a828aa9b">make_targeted_crosses</a>(d, 1, crossingPlan[0], crossingPlan[1], <a class="code hl_define" href="group__shortnames.html#ga3710da75e403e5a3da4e2deade0d50af">NO_MAP</a>, <a class="code hl_define" href="group__shortnames.html#ga3710da75e403e5a3da4e2deade0d50af">NO_MAP</a>, <a class="code hl_define" href="group__shortnames.html#ga4af98a71b0736f81c32df8e5e4fd6a83">BASIC_OPT</a>);</div>
-<div class="ttc" id="agroup__shortnames_html_gaa7f7f1453a84746fa215fea171b80b97"><div class="ttname"><a href="group__shortnames.html#gaa7f7f1453a84746fa215fea171b80b97">get_group_indexes</a></div><div class="ttdeci">#define get_group_indexes</div><div class="ttdef"><b>Definition:</b> sim-operations.h:195</div></div>
+<div class="ttc" id="agroup__shortnames_html_gaa7f7f1453a84746fa215fea171b80b97"><div class="ttname"><a href="group__shortnames.html#gaa7f7f1453a84746fa215fea171b80b97">get_group_indexes</a></div><div class="ttdeci">#define get_group_indexes</div><div class="ttdef"><b>Definition:</b> <a href="sim-operations_8h_source.html#l00195">sim-operations.h:195</a></div></div>
 </div><!-- fragment --> </td><td><div class="fragment"><div class="line">f1 &lt;- make.targeted.crosses(c(&quot;Breed1&quot;), c(&quot;Breed2&quot;))</div>
 <div class="line">f1_index &lt;- see.group.data(f1, &quot;X&quot;)</div>
 <div class="line">f3way &lt;- make.targeted.crosses(c(&quot;Breed3&quot;), f1_index)</div>
@@ -671,7 +673,7 @@ Three-Way Crosses</h2>
 <div class="line">        .will_name_offspring=<a class="code hl_define" href="group__shortnames.html#gaa93f0eb578d23995850d61f7d61c55c1">FALSE</a>, .offspring_name_prefix=NULL,</div>
 <div class="line">        .will_track_pedigree=<a class="code hl_define" href="group__shortnames.html#gaa8cecfc5c5c054d2875c03e77b7be15d">TRUE</a>, .will_allocate_ids=<a class="code hl_define" href="group__shortnames.html#gaa8cecfc5c5c054d2875c03e77b7be15d">TRUE</a>,</div>
 <div class="line">        .filename_prefix=NULL, .will_save_pedigree_to_file=<a class="code hl_define" href="group__shortnames.html#gaa93f0eb578d23995850d61f7d61c55c1">FALSE</a>,</div>
-<div class="line">        .will_save_bvs_to_file=<a class="code hl_define" href="group__shortnames.html#gaa93f0eb578d23995850d61f7d61c55c1">FALSE</a>, .will_save_alleles_to_file=<a class="code hl_define" href="group__shortnames.html#gaa93f0eb578d23995850d61f7d61c55c1">FALSE</a>,</div>
+<div class="line">        .will_save_bvs_to_file=<a class="code hl_define" href="group__shortnames.html#ga27b7a0c46aa95c0f127549d8ae007b8d">NO_EFFECTSET</a>, .will_save_alleles_to_file=<a class="code hl_define" href="group__shortnames.html#gaa93f0eb578d23995850d61f7d61c55c1">FALSE</a>,</div>
 <div class="line">        .will_save_to_simdata=<a class="code hl_define" href="group__shortnames.html#gaa8cecfc5c5c054d2875c03e77b7be15d">TRUE</a>};</div>
 <div class="line"> </div>
 <div class="line"><a class="code hl_define" href="group__shortnames.html#gadb2ef9b75828b244e0b3e1cb3680d7ca">GroupNum</a> f1 = <a class="code hl_define" href="group__shortnames.html#ga87aa2de59b68e428e5b6f07f5955c15a">make_random_crosses</a>(d, 1, crossingPlan[0], crossingPlan[1], <a class="code hl_define" href="group__shortnames.html#ga3710da75e403e5a3da4e2deade0d50af">NO_MAP</a>, <a class="code hl_define" href="group__shortnames.html#ga3710da75e403e5a3da4e2deade0d50af">NO_MAP</a>, opt);</div>
@@ -694,7 +696,7 @@ Three-Way Crosses</h2>
 <div class="line">f3way &lt;- make.targeted.crosses(rep(&quot;Breed3&quot;, times=length(f1_indexes)), f1_indexes, offspring=5)</div>
 </div><!-- fragment --> </td></tr>
 </table>
-<h2><a class="anchor" id="autotoc_md50"></a>
+<h2><a class="anchor" id="autotoc_md52"></a>
 Tracking age and culling individuals that are too old</h2>
 <p >genomicSimulation's custom labels can be used to track age (or some other known trait that can be represented with an integer for each individual).</p>
 <table class="doxtable">
@@ -724,12 +726,13 @@ Tracking age and culling individuals that are too old</h2>
 <div class="line">    <span class="comment">// Increase age of all by 1</span></div>
 <div class="line">    <a class="code hl_define" href="group__shortnames.html#ga53c6a459f13ae342d8e2a3ed88847a9a">change_label_by_amount</a>(d, animals, ageLabel, 1);</div>
 <div class="line">}</div>
-<div class="ttc" id="agroup__shortnames_html_ga1c1680b1461267ccf7216e2b7ceb06dc"><div class="ttname"><a href="group__shortnames.html#ga1c1680b1461267ccf7216e2b7ceb06dc">change_label_to</a></div><div class="ttdeci">#define change_label_to</div><div class="ttdef"><b>Definition:</b> sim-operations.h:154</div></div>
-<div class="ttc" id="agroup__shortnames_html_ga53c6a459f13ae342d8e2a3ed88847a9a"><div class="ttname"><a href="group__shortnames.html#ga53c6a459f13ae342d8e2a3ed88847a9a">change_label_by_amount</a></div><div class="ttdeci">#define change_label_by_amount</div><div class="ttdef"><b>Definition:</b> sim-operations.h:155</div></div>
-<div class="ttc" id="agroup__shortnames_html_ga5c7e03838336e41c1782e75c4f9029d6"><div class="ttname"><a href="group__shortnames.html#ga5c7e03838336e41c1782e75c4f9029d6">LabelID</a></div><div class="ttdeci">#define LabelID</div><div class="ttdef"><b>Definition:</b> sim-operations.h:130</div></div>
-<div class="ttc" id="agroup__shortnames_html_ga719bf50a9ff52b983e11186d11734e06"><div class="ttname"><a href="group__shortnames.html#ga719bf50a9ff52b983e11186d11734e06">split_by_label_value</a></div><div class="ttdeci">#define split_by_label_value</div><div class="ttdef"><b>Definition:</b> sim-operations.h:204</div></div>
-<div class="ttc" id="agroup__shortnames_html_gaa976db4aa919852354fc11c5c14647cf"><div class="ttname"><a href="group__shortnames.html#gaa976db4aa919852354fc11c5c14647cf">create_new_label</a></div><div class="ttdeci">#define create_new_label</div><div class="ttdef"><b>Definition:</b> sim-operations.h:152</div></div>
-</div><!-- fragment --> </td><td><div class="fragment"><div class="line">animals &lt;- load.data(&quot;genotype-file.txt&quot;, &quot;map-file.txt&quot;)</div>
+<div class="ttc" id="agroup__shortnames_html_ga1c1680b1461267ccf7216e2b7ceb06dc"><div class="ttname"><a href="group__shortnames.html#ga1c1680b1461267ccf7216e2b7ceb06dc">change_label_to</a></div><div class="ttdeci">#define change_label_to</div><div class="ttdef"><b>Definition:</b> <a href="sim-operations_8h_source.html#l00154">sim-operations.h:154</a></div></div>
+<div class="ttc" id="agroup__shortnames_html_ga53c6a459f13ae342d8e2a3ed88847a9a"><div class="ttname"><a href="group__shortnames.html#ga53c6a459f13ae342d8e2a3ed88847a9a">change_label_by_amount</a></div><div class="ttdeci">#define change_label_by_amount</div><div class="ttdef"><b>Definition:</b> <a href="sim-operations_8h_source.html#l00155">sim-operations.h:155</a></div></div>
+<div class="ttc" id="agroup__shortnames_html_ga5c7e03838336e41c1782e75c4f9029d6"><div class="ttname"><a href="group__shortnames.html#ga5c7e03838336e41c1782e75c4f9029d6">LabelID</a></div><div class="ttdeci">#define LabelID</div><div class="ttdef"><b>Definition:</b> <a href="sim-operations_8h_source.html#l00130">sim-operations.h:130</a></div></div>
+<div class="ttc" id="agroup__shortnames_html_ga719bf50a9ff52b983e11186d11734e06"><div class="ttname"><a href="group__shortnames.html#ga719bf50a9ff52b983e11186d11734e06">split_by_label_value</a></div><div class="ttdeci">#define split_by_label_value</div><div class="ttdef"><b>Definition:</b> <a href="sim-operations_8h_source.html#l00204">sim-operations.h:204</a></div></div>
+<div class="ttc" id="agroup__shortnames_html_gaa976db4aa919852354fc11c5c14647cf"><div class="ttname"><a href="group__shortnames.html#gaa976db4aa919852354fc11c5c14647cf">create_new_label</a></div><div class="ttdeci">#define create_new_label</div><div class="ttdef"><b>Definition:</b> <a href="sim-operations_8h_source.html#l00152">sim-operations.h:152</a></div></div>
+</div><!-- fragment --> </td><td><div class="fragment"><div class="line">init &lt;- load.data(&quot;genotype-file.txt&quot;, &quot;map-file.txt&quot;)</div>
+<div class="line">animals &lt;- init$groupNum</div>
 <div class="line"> </div>
 <div class="line"># Create a new label to represent age, with default/at-birth value of 0.</div>
 <div class="line">ageLabel &lt;- create.new.label(0L)</div>
@@ -763,8 +766,8 @@ Tracking age and culling individuals that are too old</h2>
 <div class="line"><span class="keywordflow">if</span> (toCull &gt; 0) { <span class="comment">// split_by_label_range did find some animals to cull</span></div>
 <div class="line">    <a class="code hl_define" href="group__shortnames.html#gaed498b119b661a47824e76fece2b45df">delete_group</a>(d, toCull);</div>
 <div class="line">}</div>
-<div class="ttc" id="agroup__shortnames_html_ga083d4709ce763182d5a00310b9ec459e"><div class="ttname"><a href="group__shortnames.html#ga083d4709ce763182d5a00310b9ec459e">split_by_label_range</a></div><div class="ttdeci">#define split_by_label_range</div><div class="ttdef"><b>Definition:</b> sim-operations.h:205</div></div>
-<div class="ttc" id="agroup__shortnames_html_gaed498b119b661a47824e76fece2b45df"><div class="ttname"><a href="group__shortnames.html#gaed498b119b661a47824e76fece2b45df">delete_group</a></div><div class="ttdeci">#define delete_group</div><div class="ttdef"><b>Definition:</b> sim-operations.h:248</div></div>
+<div class="ttc" id="agroup__shortnames_html_ga083d4709ce763182d5a00310b9ec459e"><div class="ttname"><a href="group__shortnames.html#ga083d4709ce763182d5a00310b9ec459e">split_by_label_range</a></div><div class="ttdeci">#define split_by_label_range</div><div class="ttdef"><b>Definition:</b> <a href="sim-operations_8h_source.html#l00205">sim-operations.h:205</a></div></div>
+<div class="ttc" id="agroup__shortnames_html_gaed498b119b661a47824e76fece2b45df"><div class="ttname"><a href="group__shortnames.html#gaed498b119b661a47824e76fece2b45df">delete_group</a></div><div class="ttdeci">#define delete_group</div><div class="ttdef"><b>Definition:</b> <a href="sim-operations_8h_source.html#l00243">sim-operations.h:243</a></div></div>
 </div><!-- fragment --> or <div class="fragment"><div class="line"><a class="code hl_define" href="group__shortnames.html#gadb2ef9b75828b244e0b3e1cb3680d7ca">GroupNum</a> toKeep = <a class="code hl_define" href="group__shortnames.html#ga083d4709ce763182d5a00310b9ec459e">split_by_label_range</a>(d, animals, ageLabel, 0, 11); </div>
 <div class="line"> </div>
 <div class="line"><a class="code hl_define" href="group__shortnames.html#gaed498b119b661a47824e76fece2b45df">delete_group</a>(d, animals);</div>
@@ -780,7 +783,7 @@ Tracking age and culling individuals that are too old</h2>
 <div class="line">rm(animals)</div>
 </div><!-- fragment --> </td></tr>
 </table>
-<h2><a class="anchor" id="autotoc_md51"></a>
+<h2><a class="anchor" id="autotoc_md53"></a>
 Species with differing male and female recombination rates</h2>
 <table class="doxtable">
 <tr>
@@ -801,12 +804,12 @@ Species with differing male and female recombination rates</h2>
 <div class="line">offspring &lt;- make.random.crosses.between(female_pop, male_pop, 1, map1=female_map, map2=male_map)</div>
 </div><!-- fragment --> </td></tr>
 </table>
-<h1><a class="anchor" id="autotoc_md52"></a>
+<h1><a class="anchor" id="autotoc_md54"></a>
 Selection</h1>
 <p >Templates in this section assume you have a group <code>target</code> from which you want to select a subset of 'good' genotypes. Scripts are provided for selecting in different ways using the 'custom selection interface'. This interface is basically the existence the function <code>make.group</code>, allowing users to use any kind of scripting/data manipulation to choose the indexes of the genotypes they want to select.</p>
 <p >Templates will be formatted as functions, so that selecting the 'good' genotypes out of <code>target</code> is simply a matter of calling that section's selection function.</p>
 <p >Note the concept of the 'custom selection interface' is mainly appropriate to the R version of genomicSimulation. Due to C's lack of vector manipulation/sorting functionality compared to R, implementing these selection methods in C is less about scripting and more about knowing how to sort/loop through datasets efficiently in C. The writer of this page isn't going to bother to write up templates for all of these selection tasks in C. If the task is popular enough it will probably be written up as an easier-to-use library function instead of a template, anyway.</p>
-<h2><a class="anchor" id="autotoc_md53"></a>
+<h2><a class="anchor" id="autotoc_md55"></a>
 Manually select on true breeding value</h2>
 <p >The template selection template. This does the exact same thing as <code>split_by_bv</code> / <code>break.group.by.gebv</code>, but using the 'custom selection method interface'. Hopefully this aids in understanding the concept.</p>
 <table class="doxtable">
@@ -846,8 +849,8 @@ Manually select on true breeding value</h2>
 <div class="line"> </div>
 <div class="line">  <span class="keywordflow">return</span> <a class="code hl_define" href="group__shortnames.html#ga702855cf67ebd337941ec9c13e40dfe9">make_group_from</a>(d, 10, top_individuals);</div>
 <div class="line">}</div>
-<div class="ttc" id="agroup__shortnames_html_ga0f4fcc00561afa1f820d7f11a02be1c7"><div class="ttname"><a href="group__shortnames.html#ga0f4fcc00561afa1f820d7f11a02be1c7">get_group_size</a></div><div class="ttdeci">#define get_group_size</div><div class="ttdef"><b>Definition:</b> sim-operations.h:192</div></div>
-<div class="ttc" id="agroup__shortnames_html_gaa68a8ebf286aa6192948ab56851b125f"><div class="ttname"><a href="group__shortnames.html#gaa68a8ebf286aa6192948ab56851b125f">get_group_bvs</a></div><div class="ttdeci">#define get_group_bvs</div><div class="ttdef"><b>Definition:</b> sim-operations.h:197</div></div>
+<div class="ttc" id="agroup__shortnames_html_ga0f4fcc00561afa1f820d7f11a02be1c7"><div class="ttname"><a href="group__shortnames.html#ga0f4fcc00561afa1f820d7f11a02be1c7">get_group_size</a></div><div class="ttdeci">#define get_group_size</div><div class="ttdef"><b>Definition:</b> <a href="sim-operations_8h_source.html#l00192">sim-operations.h:192</a></div></div>
+<div class="ttc" id="agroup__shortnames_html_gaa68a8ebf286aa6192948ab56851b125f"><div class="ttname"><a href="group__shortnames.html#gaa68a8ebf286aa6192948ab56851b125f">get_group_bvs</a></div><div class="ttdeci">#define get_group_bvs</div><div class="ttdef"><b>Definition:</b> <a href="sim-operations_8h_source.html#l00197">sim-operations.h:197</a></div></div>
 </div><!-- fragment --> </td><td><div class="fragment"><div class="line">select.10.best.GEBV &lt;- function(group) {</div>
 <div class="line">  info &lt;- data.frame(Index=see.group.data(group,&quot;X&quot;),</div>
 <div class="line">                     GEBV=see.group.data(group,&quot;BV&quot;))</div>
@@ -857,7 +860,7 @@ Manually select on true breeding value</h2>
 <div class="line">}</div>
 </div><!-- fragment --> </td></tr>
 </table>
-<h2><a class="anchor" id="autotoc_md54"></a>
+<h2><a class="anchor" id="autotoc_md56"></a>
 Select on phenotype (simulated with a given heritability)</h2>
 <table class="doxtable">
 <tr>
@@ -880,7 +883,7 @@ Select on phenotype (simulated with a given heritability)</h2>
 <div class="line">}</div>
 </div><!-- fragment --> </td></tr>
 </table>
-<h2><a class="anchor" id="autotoc_md55"></a>
+<h2><a class="anchor" id="autotoc_md57"></a>
 Select on a qualitative trait</h2>
 <p >If you have a trait with only a small number of possible outcomes - perhaps a marker for which each individual can be homozygous, heterozygous, or carry no copies.</p>
 <table class="doxtable">
@@ -892,10 +895,10 @@ Select on a qualitative trait</h2>
 <p class="endtd"></p>
 </td></tr>
 </table>
-<h2><a class="anchor" id="autotoc_md56"></a>
+<h2><a class="anchor" id="autotoc_md58"></a>
 Select on a qualitative trait, then a quantitative trait.</h2>
 <p >Suppose you have an effect file for a quantitative trait, called <code>eff-large.txt</code>, as well as a one-line effect file for a qualitative trait, as described in the above section <b>Select on a qualitative trait</b>, named <code>eff-small.txt</code>.</p>
-<h2><a class="anchor" id="autotoc_md57"></a>
+<h2><a class="anchor" id="autotoc_md59"></a>
 Select on an index weighting two traits.</h2>
 <p >(this list of examples will continue to be expanded...) </p>
 </div></div><!-- contents -->

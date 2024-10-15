@@ -1,5 +1,0 @@
-<map id="has_same_alleles_window" name="has_same_alleles_window">
-<area shape="rect" id="node1" title="Simple operator to determine if at markers with indexes i to i+w inclusive, two genotypes share at le..." alt="" coords="492,13,666,41"/>
-<area shape="rect" id="node2" href="$group__recomb.html#ga9c9c066183d70aa46d4ed4d224116580" title="Identify markers in the genotype of offspring where recombination from its parents occured,..." alt="" coords="222,13,444,41"/>
-<area shape="rect" id="node3" href="$group__recomb.html#ga7813f256407ab2ea242df32ea9ad2c7e" title="Provides guesses as to the location of recombination events that led to the creation of certain genot..." alt="" coords="5,5,174,49"/>
-</map>

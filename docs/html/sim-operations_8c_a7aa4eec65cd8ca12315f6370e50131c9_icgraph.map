@@ -1,5 +1,0 @@
-<map id="gsc_helper_parentchooser_selfing" name="gsc_helper_parentchooser_selfing">
-<area shape="rect" id="node1" title="parentChooser function parameter for gsc_self_n_times." alt="" coords="242,24,415,68"/>
-<area shape="rect" id="node2" href="$group__crossers.html#ga1ef5764de6f02fd49e13b6859c469d78" title="Creates a doubled haploid from each member of a group." alt="" coords="5,5,194,33"/>
-<area shape="rect" id="node3" href="$group__crossers.html#ga5b9a8b6ed6d664a79fe31e8f56b4eea9" title="Selfs each member of a group for a certain number of generations." alt="" coords="38,57,161,85"/>
-</map>

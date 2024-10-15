@@ -1,4 +1,12 @@
 <map id="gsc_helper_genoptions_save_genotypes_setup" name="gsc_helper_genoptions_save_genotypes_setup">
-<area shape="rect" id="node1" title="Opens file for writing save&#45;as&#45;you&#45;go genotypes in accordance with gsc_GenOptions." alt="" coords="5,5,166,49"/>
-<area shape="rect" id="node2" href="$group__savers.html#ga12e6eb5a3dccf1c79fd1b68df69c2668" title="Prints a list of names as a tab&#45;separated row to a file." alt="" coords="214,13,381,41"/>
+<area shape="rect" id="node1" title="Opens file for writing save&#45;as&#45;you&#45;go genotypes in accordance with gsc_GenOptions." alt="" coords="5,103,166,147"/>
+<area shape="rect" id="node2" href="$group__savers.html#ga6037070d12fa45c78b642d611fae311e" title="Prints simulated genotypes to a file." alt="" coords="214,111,394,139"/>
+<area shape="rect" id="node3" href="$sim-operations_8c.html#a101ba1c1812ca6bb5d69042904e8fdaa" title="Kernel for gsc_scaffold_save_genotype_info, when the goal is to save the (phased) allele pairs of eac..." alt="" coords="442,45,692,73"/>
+<area shape="rect" id="node5" href="$sim-operations_8c.html#a11101d643d9ee74d16324d55cbb6682e" title="Prints a matrix of genotype information to a file." alt="" coords="461,136,674,164"/>
+<area shape="rect" id="node4" href="$group__liteget.html#ga5e1e89782604c9ab47f196e1da233362" title="Get the alleles of a genotype." alt="" coords="749,5,861,33"/>
+<area shape="rect" id="node6" href="$group__liteget.html#ga0ce82f67cb5e35a1c73bef54138202f6" title="Get the persistent id of a genotype." alt="" coords="763,57,847,85"/>
+<area shape="rect" id="node7" href="$group__liteget.html#ga22a270ae73aaa86d93212a4a40f999dc" title="Get the name of a genotype." alt="" coords="752,109,858,137"/>
+<area shape="rect" id="node8" href="$sim-operations_8c.html#aaaf3ebc75feaf901829232712e55677b" title="Replace calls to malloc direct with this function." alt="" coords="744,161,866,189"/>
+<area shape="rect" id="node9" href="$group__iterators.html#ga630ba7f8e864238e296cb9480dfbc728" title="Get the next location from a bidirectional iterator." alt="" coords="740,213,870,241"/>
+<area shape="rect" id="node10" href="$group__iterators.html#gaa4fa2aec3b7f49f9925fe82c8ff38dcd" title="Initialise a Bidirectional iterator to the start of its sequence." alt="" coords="918,232,1061,276"/>
 </map>

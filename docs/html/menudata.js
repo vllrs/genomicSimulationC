@@ -25,6 +25,7 @@
 var menudata={children:[
 {text:"Home",url:"index.html"},
 {text:"News",url:"news.html"},
+{text:"Version Migration",url:"migration.html"},
 {text:"Templates",url:"templates.html"},
 {text:"Concordances",url:"concordance.html"},
 {text:"Documentation",url:"modules.html"}]}

@@ -1,8 +1,0 @@
-<map id="delete_genmap" name="delete_genmap">
-<area shape="rect" id="node1" title="Deletes a GeneticMap object and frees its memory." alt="" coords="573,71,683,99"/>
-<area shape="rect" id="node2" href="$group__loaders.html#gac052ad3cb1f8975c21b28eea560a6e0b" title="Clear a SimData object on the heap." alt="" coords="205,5,308,33"/>
-<area shape="rect" id="node4" href="$group__deletors.html#ga6fc4a687a2186e9e9dcf3229d9141041" title="Deletes a SimData object and frees its memory." alt="" coords="403,44,512,72"/>
-<area shape="rect" id="node5" href="$group__supporters.html#gadebbfa88bf139ddca501ab158f3746c5" title="Takes a SimData object, and sorts its markers, the rows of its parent gen AlleleMatrix (because they ..." alt="" coords="389,96,525,124"/>
-<area shape="rect" id="node6" href="$group__loaders.html#ga8edb09b9b9eb27f84ac59cc4342ea855" title="Populates a SimData combination with data from a genetic map." alt="" coords="172,123,341,151"/>
-<area shape="rect" id="node3" href="$group__loaders.html#ga3d8878f2c2c5fafdae57ffc46a78dfbc" title="Populates a SimData combination from scratch with marker allele data, a genetic map,..." alt="" coords="5,71,124,99"/>
-</map>

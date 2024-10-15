@@ -1,6 +1,0 @@
-<map id="save_parents_of" name="save_parents_of">
-<area shape="rect" id="node1" title="Recursively save the parents of a particular id to a file." alt="" coords="5,32,120,60"/>
-<area shape="rect" id="node2" href="$group__search.html#gaaea63100f4c2639907cce72c29a413e8" title="Returns the name of the genotype with a given id." alt="" coords="173,5,286,33"/>
-<area shape="rect" id="node4" href="$group__search.html#gaa814762960a964cd0aaf82be0c18b8cb" title="Saves the ids of the parents of a genotype with a particular id to the output array output." alt="" coords="168,57,291,85"/>
-<area shape="rect" id="node3" href="$group__supporters.html#ga4e3d1fd7ae67dd133c4dbdec9a84d455" title="Returns the located index in an array of PedigreeIDs where the PedigreeID is target." alt="" coords="339,32,540,60"/>
-</map>

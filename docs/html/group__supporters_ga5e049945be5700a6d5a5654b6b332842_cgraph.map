@@ -1,4 +1,0 @@
-<map id="get_chromosome_locations" name="get_chromosome_locations">
-<area shape="rect" id="node1" title="Updates the chr_ends, n_chr and chr_lengths fields in SimData.map." alt="" coords="5,5,186,33"/>
-<area shape="rect" id="node2" href="$group__supporters.html#ga6072a152b624743eeafb30adaf9b7f17" title="Replace calls to malloc direct with this function, which errors and exits with status 2 if memory all..." alt="" coords="234,5,318,33"/>
-</map>

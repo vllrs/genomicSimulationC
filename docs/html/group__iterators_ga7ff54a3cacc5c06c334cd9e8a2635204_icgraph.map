@@ -1,5 +1,0 @@
-<map id="validate_bidirectional_cache" name="validate_bidirectional_cache">
-<area shape="rect" id="node1" title="Check nothing in the BidirectionalIterator is obviously invalid." alt="" coords="169,24,309,68"/>
-<area shape="rect" id="node2" href="$group__iterators.html#ga9431cd1ae9e15331a5464ac1c1204a8d" title="Get the previous location from a bidirectional iterator." alt="" coords="5,5,121,33"/>
-<area shape="rect" id="node3" href="$group__iterators.html#gadff0d81d4ef4fd1f5afcdc7885779389" title="Get the next location from a bidirectional iterator." alt="" coords="12,57,114,85"/>
-</map>

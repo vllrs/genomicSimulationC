@@ -1,5 +1,0 @@
-<map id="GroupAndEffectSet" name="GroupAndEffectSet">
-<area shape="rect" id="node1" title=" " alt="" coords="30,97,163,125"/>
-<area shape="rect" id="node2" href="$struct_group_num.html" title="A type representing the identifier of a group of genotypes." alt="" coords="5,5,89,33"/>
-<area shape="rect" id="node3" href="$struct_effect_i_d.html" title="A type representing a particular loaded set of marker effects." alt="" coords="113,5,179,33"/>
-</map>

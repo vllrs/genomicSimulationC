@@ -1,7 +1,0 @@
-<map id="load_transposed_genes_to_simdata" name="load_transposed_genes_to_simdata">
-<area shape="rect" id="node1" title="Populates a SimData combination with marker allele data." alt="" coords="5,76,164,120"/>
-<area shape="rect" id="node2" href="$group__loaders.html#gaf0399b852faa346adeab52d57fa9701b" title="Creator for an empty AlleleMatrix object of a given size." alt="" coords="212,5,385,33"/>
-<area shape="rect" id="node3" href="$group__supporters.html#ga6072a152b624743eeafb30adaf9b7f17" title="Replace calls to malloc direct with this function, which errors and exits with status 2 if memory all..." alt="" coords="433,32,517,60"/>
-<area shape="rect" id="node4" href="$group__supporters.html#ga10dddc2d2028b8c1341837897b6eee4d" title="Opens a table file and reads the number of columns and rows (including headers) separated by sep into..." alt="" coords="231,109,366,137"/>
-<area shape="rect" id="node5" href="$group__supporters.html#ga80c7861f7c1014e8c406ef279a54759f" title="Allocate lifetime&#45;unique ids to each genotype in the range of whole SimData indexes from_index to to_..." alt="" coords="267,161,330,189"/>
-</map>

@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['d_0',['d',['../structgsc___bidirectional_iterator.html#a9bef2393e4105a18574e6e45c49e540b',1,'gsc_BidirectionalIterator::d()'],['../structgsc___empty_list_navigator.html#aa9e16decddf7157becd1a46608c46f84',1,'gsc_EmptyListNavigator::d()'],['../structgsc___random_access_iterator.html#a7658a29d1714334618d45e28d94cf44c',1,'gsc_RandomAccessIterator::d()']]],
+  ['d_0',['d',['../structgsc___empty_list_navigator.html#aa9e16decddf7157becd1a46608c46f84',1,'gsc_EmptyListNavigator::d()'],['../structgsc___random_access_iterator.html#a7658a29d1714334618d45e28d94cf44c',1,'gsc_RandomAccessIterator::d()']]],
   ['data_20access_20and_20search_20functions_1',['Data Access and Search Functions',['../group__getters.html',1,'']]],
   ['data_20searching_20functions_2',['Data Searching Functions',['../group__search.html',1,'']]],
   ['data_20structures_3',['Data Structures',['../group__structs.html',1,'']]],

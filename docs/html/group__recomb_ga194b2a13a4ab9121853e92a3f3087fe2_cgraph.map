@@ -1,5 +1,0 @@
-<map id="gsc_calculate_min_recombinations_fw1" name="gsc_calculate_min_recombinations_fw1">
-<area shape="rect" id="node1" title="Identify markers in the genotype of offspring where recombination from its parents occured." alt="" coords="5,32,256,60"/>
-<area shape="rect" id="node2" href="$group__recomb.html#gaeac78d574a417dfcdad5ef091b464951" title="Simple operator to determine if at marker i, two genotypes share at least one allele." alt="" coords="304,5,457,33"/>
-<area shape="rect" id="node3" href="$sim-operations_8c.html#a13bf076f6441cb69d76fc5058371dec1" title="Replace calls to malloc direct with this function, which errors and exits with status 2 if memory all..." alt="" coords="320,57,441,85"/>
-</map>

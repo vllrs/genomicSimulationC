@@ -1,4 +1,0 @@
-<map id="save_group_full_pedigree" name="save_group_full_pedigree">
-<area shape="rect" id="node1" title="Print the full known pedigree of each genotype in a group to a file." alt="" coords="195,5,360,33"/>
-<area shape="rect" id="node2" href="$group__collgetters.html#ga31b649f4b57e0fa7ed2490b4cc48c97e" title="Gets the full pedigree string (as per save_group_full_pedigree() ) of each member of the group." alt="" coords="5,5,147,33"/>
-</map>

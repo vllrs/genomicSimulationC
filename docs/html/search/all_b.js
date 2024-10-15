@@ -24,5 +24,7 @@ var searchData=
   ['mathematical_20functions_21',['Mathematical functions',['../group__maths.html',1,'']]],
   ['matrix_22',['matrix',['../structgsc___decimal_matrix.html#a672a95f216a0ba3347038195fba46353',1,'gsc_DecimalMatrix::matrix()'],['../structgsc___file_format_spec.html#a9e7f3236fe7dc80e37a26ccaf3007c91',1,'gsc_FileFormatSpec::matrix()']]],
   ['meiosis_20simulation_20functions_23',['Meiosis Simulation Functions',['../group__meiosis.html',1,'']]],
-  ['multiidset_24',['MultiIDSet',['../group__shortnames.html#gab9139b22223d33aa0a762d3ec00b3072',1,'sim-operations.h']]]
+  ['migration_20guide_24',['Migration Guide',['../migration.html',1,'']]],
+  ['migration_2emd_25',['Migration.md',['../_migration_8md.html',1,'']]],
+  ['multiidset_26',['MultiIDSet',['../group__shortnames.html#gab9139b22223d33aa0a762d3ec00b3072',1,'sim-operations.h']]]
 ];

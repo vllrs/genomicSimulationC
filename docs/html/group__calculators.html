@@ -21,7 +21,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">genomicSimulationC<span id="projectnumber">&#160;0.2.5.02</span>
+   <div id="projectname">genomicSimulationC<span id="projectnumber">&#160;0.2.5.05</span>
    </div>
   </td>
  </tr>
@@ -76,27 +76,21 @@ Functions</h2></td></tr>
 <tr class="memitem:ga3b43d07c08ed861ed0f22a69bb57b94a"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structgsc___group_num.html">gsc_GroupNum</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__calculators.html#ga3b43d07c08ed861ed0f22a69bb57b94a">gsc_split_by_bv</a> (<a class="el" href="structgsc___sim_data.html">gsc_SimData</a> *d, const <a class="el" href="structgsc___group_num.html">gsc_GroupNum</a> group, const <a class="el" href="structgsc___effect_i_d.html">gsc_EffectID</a> effID, const int top_n, const int lowIsBest)</td></tr>
 <tr class="memdesc:ga3b43d07c08ed861ed0f22a69bb57b94a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Takes the <code>top_n</code> individuals in the group with the best breeding values/fitnesses and puts them in a new group.  <a href="group__calculators.html#ga3b43d07c08ed861ed0f22a69bb57b94a">More...</a><br /></td></tr>
 <tr class="separator:ga3b43d07c08ed861ed0f22a69bb57b94a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga381bf7e42397f428a322dd8e118a4243"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structgsc___decimal_matrix.html">gsc_DecimalMatrix</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__calculators.html#ga381bf7e42397f428a322dd8e118a4243">gsc_calculate_group_bvs</a> (const <a class="el" href="structgsc___sim_data.html">gsc_SimData</a> *d, const <a class="el" href="structgsc___group_num.html">gsc_GroupNum</a> group, const <a class="el" href="structgsc___effect_i_d.html">gsc_EffectID</a> effID)</td></tr>
-<tr class="memdesc:ga381bf7e42397f428a322dd8e118a4243"><td class="mdescLeft">&#160;</td><td class="mdescRight">Calculates the fitness metric/breeding value for each genotype in the <a class="el" href="structgsc___allele_matrix.html">gsc_AlleleMatrix</a> in a certain group, and returns the results in a <a class="el" href="structgsc___decimal_matrix.html" title="A row-major heap matrix that contains floating point numbers.">gsc_DecimalMatrix</a>.  <a href="group__calculators.html#ga381bf7e42397f428a322dd8e118a4243">More...</a><br /></td></tr>
-<tr class="separator:ga381bf7e42397f428a322dd8e118a4243"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gaae6cddc5291e4ad120ac28a7d043c7fa"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structgsc___decimal_matrix.html">gsc_DecimalMatrix</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__calculators.html#gaae6cddc5291e4ad120ac28a7d043c7fa">gsc_calculate_bvs</a> (const <a class="el" href="structgsc___allele_matrix.html">gsc_AlleleMatrix</a> *m, const <a class="el" href="structgsc___effect_matrix.html">gsc_EffectMatrix</a> *e)</td></tr>
-<tr class="memdesc:gaae6cddc5291e4ad120ac28a7d043c7fa"><td class="mdescLeft">&#160;</td><td class="mdescRight">Calculates the fitness metric/breeding value for each genotype in the <a class="el" href="structgsc___allele_matrix.html">gsc_AlleleMatrix</a>, and returns the results in a <a class="el" href="structgsc___decimal_matrix.html" title="A row-major heap matrix that contains floating point numbers.">gsc_DecimalMatrix</a> struct.  <a href="group__calculators.html#gaae6cddc5291e4ad120ac28a7d043c7fa">More...</a><br /></td></tr>
-<tr class="separator:gaae6cddc5291e4ad120ac28a7d043c7fa"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga12c13aaf31fccff2f9ddd612035c426a"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__calculators.html#ga12c13aaf31fccff2f9ddd612035c426a">gsc_calculate_group_count_matrix</a> (const <a class="el" href="structgsc___sim_data.html">gsc_SimData</a> *d, const <a class="el" href="structgsc___group_num.html">gsc_GroupNum</a> group, const char allele, <a class="el" href="structgsc___decimal_matrix.html">gsc_DecimalMatrix</a> *counts)</td></tr>
-<tr class="memdesc:ga12c13aaf31fccff2f9ddd612035c426a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Calculates the number of times at each marker that a particular allele appears for each genotype in a group.  <a href="group__calculators.html#ga12c13aaf31fccff2f9ddd612035c426a">More...</a><br /></td></tr>
-<tr class="separator:ga12c13aaf31fccff2f9ddd612035c426a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga160313a4276db1a2897ab0d161f5caa8"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__calculators.html#ga160313a4276db1a2897ab0d161f5caa8">gsc_calculate_group_count_matrix_pair</a> (const <a class="el" href="structgsc___sim_data.html">gsc_SimData</a> *d, const <a class="el" href="structgsc___group_num.html">gsc_GroupNum</a> group, const char allele, <a class="el" href="structgsc___decimal_matrix.html">gsc_DecimalMatrix</a> *counts, const char allele2, <a class="el" href="structgsc___decimal_matrix.html">gsc_DecimalMatrix</a> *counts2)</td></tr>
-<tr class="memdesc:ga160313a4276db1a2897ab0d161f5caa8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Calculates the number of times at each marker that two particular alleles appear for each genotype in a group.  <a href="group__calculators.html#ga160313a4276db1a2897ab0d161f5caa8">More...</a><br /></td></tr>
-<tr class="separator:ga160313a4276db1a2897ab0d161f5caa8"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gae37153681a5a2b78b3accbe7e01f65d8"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__calculators.html#gae37153681a5a2b78b3accbe7e01f65d8">gsc_calculate_count_matrix</a> (const <a class="el" href="structgsc___allele_matrix.html">gsc_AlleleMatrix</a> *m, const char allele, <a class="el" href="structgsc___decimal_matrix.html">gsc_DecimalMatrix</a> *counts)</td></tr>
-<tr class="memdesc:gae37153681a5a2b78b3accbe7e01f65d8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Calculates the number of times at each marker that a particular allele appears for each genotype in a particular <a class="el" href="structgsc___allele_matrix.html">gsc_AlleleMatrix</a> (does not go through the linked list).  <a href="group__calculators.html#gae37153681a5a2b78b3accbe7e01f65d8">More...</a><br /></td></tr>
-<tr class="separator:gae37153681a5a2b78b3accbe7e01f65d8"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga34b1d566ad458097f95823278f6bbd8e"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__calculators.html#ga34b1d566ad458097f95823278f6bbd8e">gsc_calculate_count_matrix_pair</a> (const <a class="el" href="structgsc___allele_matrix.html">gsc_AlleleMatrix</a> *m, const char allele, <a class="el" href="structgsc___decimal_matrix.html">gsc_DecimalMatrix</a> *counts, const char allele2, <a class="el" href="structgsc___decimal_matrix.html">gsc_DecimalMatrix</a> *counts2)</td></tr>
-<tr class="memdesc:ga34b1d566ad458097f95823278f6bbd8e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Calculates the number of times at each marker that two particular alleles appear for each genotype in an <a class="el" href="structgsc___allele_matrix.html">gsc_AlleleMatrix</a> (does not go through the linked list).  <a href="group__calculators.html#ga34b1d566ad458097f95823278f6bbd8e">More...</a><br /></td></tr>
-<tr class="separator:ga34b1d566ad458097f95823278f6bbd8e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gae2d46345f01bc74e45a4d07b2a531113"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structgsc___decimal_matrix.html">gsc_DecimalMatrix</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__calculators.html#gae2d46345f01bc74e45a4d07b2a531113">gsc_calculate_full_count_matrix</a> (const <a class="el" href="structgsc___allele_matrix.html">gsc_AlleleMatrix</a> *m, const char allele)</td></tr>
-<tr class="memdesc:gae2d46345f01bc74e45a4d07b2a531113"><td class="mdescLeft">&#160;</td><td class="mdescRight">Calculates the number of times at each marker that a particular allele appears for each genotype in the linked list starting at the given <a class="el" href="structgsc___allele_matrix.html">gsc_AlleleMatrix</a>.  <a href="group__calculators.html#gae2d46345f01bc74e45a4d07b2a531113">More...</a><br /></td></tr>
-<tr class="separator:gae2d46345f01bc74e45a4d07b2a531113"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gac94e98cc238a772aaa6151400df71629"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structgsc___decimal_matrix.html">gsc_DecimalMatrix</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__calculators.html#gac94e98cc238a772aaa6151400df71629">gsc_calculate_bvs</a> (<a class="el" href="structgsc___sim_data.html">gsc_SimData</a> *d, const <a class="el" href="structgsc___group_num.html">gsc_GroupNum</a> group, const <a class="el" href="structgsc___effect_i_d.html">gsc_EffectID</a> effID)</td></tr>
+<tr class="memdesc:gac94e98cc238a772aaa6151400df71629"><td class="mdescLeft">&#160;</td><td class="mdescRight">Calculate the fitness metric/breeding value for every genotype in the simulation or every genotype in a certain group.  <a href="group__calculators.html#gac94e98cc238a772aaa6151400df71629">More...</a><br /></td></tr>
+<tr class="separator:gac94e98cc238a772aaa6151400df71629"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga5eb332e54b2f90f399a28a65cdb25e36"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structgsc___decimal_matrix.html">gsc_DecimalMatrix</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__calculators.html#ga5eb332e54b2f90f399a28a65cdb25e36">gsc_calculate_utility_bvs</a> (<a class="el" href="structgsc___bidirectional_iterator.html">gsc_BidirectionalIterator</a> *targets, const <a class="el" href="structgsc___effect_matrix.html">gsc_EffectMatrix</a> *effset)</td></tr>
+<tr class="memdesc:ga5eb332e54b2f90f399a28a65cdb25e36"><td class="mdescLeft">&#160;</td><td class="mdescRight">Calculate the fitness metric/breeding value for a set of genotypes.  <a href="group__calculators.html#ga5eb332e54b2f90f399a28a65cdb25e36">More...</a><br /></td></tr>
+<tr class="separator:ga5eb332e54b2f90f399a28a65cdb25e36"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gafbf562b4479f030957c8955ada159b0e"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structgsc___decimal_matrix.html">gsc_DecimalMatrix</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__calculators.html#gafbf562b4479f030957c8955ada159b0e">gsc_calculate_allele_counts</a> (<a class="el" href="structgsc___sim_data.html">gsc_SimData</a> *d, const <a class="el" href="structgsc___group_num.html">gsc_GroupNum</a> group, const char allele)</td></tr>
+<tr class="memdesc:gafbf562b4479f030957c8955ada159b0e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Calculates the number of times at each marker that a particular allele appears.  <a href="group__calculators.html#gafbf562b4479f030957c8955ada159b0e">More...</a><br /></td></tr>
+<tr class="separator:gafbf562b4479f030957c8955ada159b0e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga8f765775d463c59f8437da21dad6fab4"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__calculators.html#ga8f765775d463c59f8437da21dad6fab4">gsc_calculate_utility_allele_counts</a> (const size_t n_markers, const size_t n_genotypes, const char **const genotypes, const char allele, <a class="el" href="structgsc___decimal_matrix.html">gsc_DecimalMatrix</a> *counts)</td></tr>
+<tr class="memdesc:ga8f765775d463c59f8437da21dad6fab4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Calculates the number of times at each marker that a particular allele appears.  <a href="group__calculators.html#ga8f765775d463c59f8437da21dad6fab4">More...</a><br /></td></tr>
+<tr class="separator:ga8f765775d463c59f8437da21dad6fab4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga19bbe4c5c9d867e9c627bbda7aa9bd22"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__calculators.html#ga19bbe4c5c9d867e9c627bbda7aa9bd22">gsc_calculate_utility_allele_counts_pair</a> (const size_t n_markers, const size_t n_genotypes, const char **const genotypes, const char allele, <a class="el" href="structgsc___decimal_matrix.html">gsc_DecimalMatrix</a> *counts, const char allele2, <a class="el" href="structgsc___decimal_matrix.html">gsc_DecimalMatrix</a> *counts2)</td></tr>
+<tr class="memdesc:ga19bbe4c5c9d867e9c627bbda7aa9bd22"><td class="mdescLeft">&#160;</td><td class="mdescRight">Calculates the number of times at each marker that two particular alleles appear.  <a href="group__calculators.html#ga19bbe4c5c9d867e9c627bbda7aa9bd22">More...</a><br /></td></tr>
+<tr class="separator:ga19bbe4c5c9d867e9c627bbda7aa9bd22"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga3f2aedf883cd7cadb039feac6bb28ef1"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structgsc___marker_blocks.html">gsc_MarkerBlocks</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__calculators.html#ga3f2aedf883cd7cadb039feac6bb28ef1">gsc_create_evenlength_blocks_each_chr</a> (const <a class="el" href="structgsc___sim_data.html">gsc_SimData</a> *d, const <a class="el" href="structgsc___map_i_d.html">gsc_MapID</a> mapid, const int n)</td></tr>
 <tr class="memdesc:ga3f2aedf883cd7cadb039feac6bb28ef1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Divide the genotype into blocks where each block contains all markers within a 1/n length section of each chromosome in the map, and return the resulting blocks in a struct.  <a href="group__calculators.html#ga3f2aedf883cd7cadb039feac6bb28ef1">More...</a><br /></td></tr>
 <tr class="separator:ga3f2aedf883cd7cadb039feac6bb28ef1"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -128,255 +122,23 @@ Functions</h2></td></tr>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <p >For calculations related to the loaded allele effects and internal additive breeding value model. </p>
 <h2 class="groupheader">Function Documentation</h2>
-<a id="gaae6cddc5291e4ad120ac28a7d043c7fa" name="gaae6cddc5291e4ad120ac28a7d043c7fa"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#gaae6cddc5291e4ad120ac28a7d043c7fa">&#9670;&nbsp;</a></span>gsc_calculate_bvs()</h2>
+<a id="gafbf562b4479f030957c8955ada159b0e" name="gafbf562b4479f030957c8955ada159b0e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gafbf562b4479f030957c8955ada159b0e">&#9670;&nbsp;</a></span>gsc_calculate_allele_counts()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="structgsc___decimal_matrix.html">gsc_DecimalMatrix</a> gsc_calculate_bvs </td>
+          <td class="memname"><a class="el" href="structgsc___decimal_matrix.html">gsc_DecimalMatrix</a> gsc_calculate_allele_counts </td>
           <td>(</td>
-          <td class="paramtype">const <a class="el" href="structgsc___allele_matrix.html">gsc_AlleleMatrix</a> *&#160;</td>
-          <td class="paramname"><em>m</em>, </td>
+          <td class="paramtype"><a class="el" href="structgsc___sim_data.html">gsc_SimData</a> *&#160;</td>
+          <td class="paramname"><em>d</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const <a class="el" href="structgsc___effect_matrix.html">gsc_EffectMatrix</a> *&#160;</td>
-          <td class="paramname"><em>e</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Calculates the fitness metric/breeding value for each genotype in the <a class="el" href="structgsc___allele_matrix.html">gsc_AlleleMatrix</a>, and returns the results in a <a class="el" href="structgsc___decimal_matrix.html" title="A row-major heap matrix that contains floating point numbers.">gsc_DecimalMatrix</a> struct. </p>
-<p >The breeding value is calculated for each genotype by taking the sum of (number of copies of this allele at this marker times this allele's effect at this marker) for each marker for each different allele. To do this, the vector containing each allele's effect values is multiplied by a matrix containing the counts of that allele at each marker.</p>
-<p >The function exits with error code 1 if no marker effect file is loaded.</p>
-<p ><em>Has short name:</em> <a class="el" href="group__shortnames.html#ga97373dbd0bb7c3a93715623796c90176">calculate_bvs</a></p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">m</td><td>pointer to the <a class="el" href="structgsc___allele_matrix.html">gsc_AlleleMatrix</a> object to which the genotypes belong. </td></tr>
-    <tr><td class="paramname">e</td><td>pointer to the <a class="el" href="structgsc___effect_matrix.html" title="A type that stores a matrix of effect values and their names.">gsc_EffectMatrix</a> that effect values have been loaded into. </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>A <a class="el" href="structgsc___decimal_matrix.html" title="A row-major heap matrix that contains floating point numbers.">gsc_DecimalMatrix</a> containing the score for each individual in the group. </dd></dl>
-<div id="dynsection-0" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
-  <img id="dynsection-0-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
-<div id="dynsection-0-summary" class="dynsummary" style="display:block;">
-</div>
-<div id="dynsection-0-content" class="dyncontent" style="display:none;">
-<div class="center"><img src="group__calculators_gaae6cddc5291e4ad120ac28a7d043c7fa_cgraph.png" border="0" usemap="#agroup__calculators_gaae6cddc5291e4ad120ac28a7d043c7fa_cgraph" alt=""/></div>
-<map name="agroup__calculators_gaae6cddc5291e4ad120ac28a7d043c7fa_cgraph" id="agroup__calculators_gaae6cddc5291e4ad120ac28a7d043c7fa_cgraph">
-<area shape="rect" title="Calculates the fitness metric/breeding value for each genotype in the gsc_AlleleMatrix,..." alt="" coords="5,184,133,212"/>
-<area shape="rect" href="group__maths.html#gadaec2ba547549392530e91e50a3c985d" title="Multiply two sets of a gsc_DecimalMatrix and vector, and add both products to the first column of a p..." alt="" coords="181,5,366,49"/>
-<area shape="rect" href="group__maths.html#ga6fdcedf004c9d08e5135d30deb5b12fa" title="Multiply a gsc_DecimalMatrix to a vector, and add that product to the first column of a provided gsc_..." alt="" coords="200,73,347,117"/>
-<area shape="rect" href="group__calculators.html#gae37153681a5a2b78b3accbe7e01f65d8" title="Calculates the number of times at each marker that a particular allele appears for each genotype in a..." alt="" coords="203,141,344,185"/>
-<area shape="rect" href="group__calculators.html#ga34b1d566ad458097f95823278f6bbd8e" title="Calculates the number of times at each marker that two particular alleles appear for each genotype in..." alt="" coords="203,209,344,253"/>
-<area shape="rect" href="group__deletors.html#ga99bbd9355f031efae628b27e6ae72f6a" title="Deletes a gsc_DecimalMatrix and frees its memory." alt="" coords="206,277,341,305"/>
-<area shape="rect" href="group__maths.html#gae001e0609ac52df335530f9473cb57e1" title="Generates a matrix of c columns, r rows with all 0." alt="" coords="183,329,364,357"/>
-<area shape="rect" href="sim-operations_8c.html#aaaf3ebc75feaf901829232712e55677b" title="Replace calls to malloc direct with this function." alt="" coords="414,329,535,357"/>
-</map>
-</div>
-<div id="dynsection-1" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
-  <img id="dynsection-1-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
-<div id="dynsection-1-summary" class="dynsummary" style="display:block;">
-</div>
-<div id="dynsection-1-content" class="dyncontent" style="display:none;">
-<div class="center"><img src="group__calculators_gaae6cddc5291e4ad120ac28a7d043c7fa_icgraph.png" border="0" usemap="#agroup__calculators_gaae6cddc5291e4ad120ac28a7d043c7fa_icgraph" alt=""/></div>
-<map name="agroup__calculators_gaae6cddc5291e4ad120ac28a7d043c7fa_icgraph" id="agroup__calculators_gaae6cddc5291e4ad120ac28a7d043c7fa_icgraph">
-<area shape="rect" title="Calculates the fitness metric/breeding value for each genotype in the gsc_AlleleMatrix,..." alt="" coords="892,171,1019,199"/>
-<area shape="rect" href="sim-operations_8c.html#a7072c6a3834472e7fbd768c0275fdc54" title="save&#45;as&#45;you&#45;go (breeding values)" alt="" coords="689,132,844,176"/>
-<area shape="rect" href="group__savers.html#ga9081436408a37abb9d37e035b3cfaa87" title="Print the breeding value of each genotype in the gsc_SimData to a file." alt="" coords="716,200,817,228"/>
-<area shape="rect" href="group__crossers.html#ga28b0fcf60b6a8f6e8ca470f7b5d0a4b7" title="Make new genotypes (generic function)" alt="" coords="479,132,641,176"/>
-<area shape="rect" href="group__crossers.html#ga15af204958dc69717334c46b19219a2d" title="Creates an identical copy of each member of a group." alt="" coords="274,5,400,33"/>
-<area shape="rect" href="group__crossers.html#ga6c230330ca9a9db9459d4477512a21af" title="Creates a doubled haploid from each member of a group." alt="" coords="243,57,431,85"/>
-<area shape="rect" href="group__crossers.html#ga03af5446006203244dd3080cf75af26f" title="Performs random crosses among members of a group." alt="" coords="245,109,429,137"/>
-<area shape="rect" href="group__crossers.html#ga652376b5a34d24f239e5fc0b167c067b" title="Performs random crosses where the first parent comes from one group and the second from another." alt="" coords="245,161,429,205"/>
-<area shape="rect" href="group__crossers.html#ga4450224009587f4cd4a972413423c96e" title="Performs the crosses of pairs of parents whose indexes are provided in an array." alt="" coords="243,229,431,257"/>
-<area shape="rect" href="group__crossers.html#gab625453074798be6ba8677a5d4986edf" title="Selfs each member of a group for a certain number of generations." alt="" coords="276,281,398,309"/>
-<area shape="rect" href="group__crossers.html#gab19b3eb80b5fe460d17c93e0c27f7aaf" title="Find the top m percent of a group and perform random crosses between those top individuals." alt="" coords="26,97,174,141"/>
-<area shape="rect" href="group__crossers.html#gaa70fd79312587d8e9fc166c64612cbce" title="Perform crosses between all pairs of parents in the group from_group and allocates the resulting offs..." alt="" coords="8,165,192,209"/>
-<area shape="rect" href="group__crossers.html#ga5c0be901d03d0e5dd3d74bc19a4bea70" title="Perform crosses between pairs of parents identified by name in a file and allocate the resulting offs..." alt="" coords="5,233,195,261"/>
-<area shape="rect" href="group__crossers.html#ga2b8100d2d30cf1ada0db8403663076ff" title="Perform crosses between previously&#45;generated offspring of pairs of parents identified by name in a fi..." alt="" coords="10,285,190,329"/>
-</map>
-</div>
-
-</div>
-</div>
-<a id="gae37153681a5a2b78b3accbe7e01f65d8" name="gae37153681a5a2b78b3accbe7e01f65d8"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#gae37153681a5a2b78b3accbe7e01f65d8">&#9670;&nbsp;</a></span>gsc_calculate_count_matrix()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">int gsc_calculate_count_matrix </td>
-          <td>(</td>
-          <td class="paramtype">const <a class="el" href="structgsc___allele_matrix.html">gsc_AlleleMatrix</a> *&#160;</td>
-          <td class="paramname"><em>m</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">const char&#160;</td>
-          <td class="paramname"><em>allele</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype"><a class="el" href="structgsc___decimal_matrix.html">gsc_DecimalMatrix</a> *&#160;</td>
-          <td class="paramname"><em>counts</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Calculates the number of times at each marker that a particular allele appears for each genotype in a particular <a class="el" href="structgsc___allele_matrix.html">gsc_AlleleMatrix</a> (does not go through the linked list). </p>
-<p >Returns the result in a pre-created <a class="el" href="structgsc___decimal_matrix.html" title="A row-major heap matrix that contains floating point numbers.">gsc_DecimalMatrix</a>. Useful for multiplying to effect matrix to calculate breeding values.</p>
-<p ><em>Has short name:</em> <a class="el" href="group__shortnames.html#ga29985b6330064e4ef5ed0faf3d4cd1fd">calculate_count_matrix</a></p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">m</td><td>pointer to the <a class="el" href="structgsc___allele_matrix.html">gsc_AlleleMatrix</a> that contains the genotypes to count alleles. </td></tr>
-    <tr><td class="paramname">allele</td><td>the single-character allele to be counting. </td></tr>
-    <tr><td class="paramname">counts</td><td>pointer to the <a class="el" href="structgsc___decimal_matrix.html" title="A row-major heap matrix that contains floating point numbers.">gsc_DecimalMatrix</a> into which to put the number of <code>allele</code> occurences at each row/marker for each column/genotype in the <a class="el" href="structgsc___allele_matrix.html">gsc_AlleleMatrix</a>. </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>0 on success, nonzero on failure. </dd></dl>
-<div id="dynsection-2" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
-  <img id="dynsection-2-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
-<div id="dynsection-2-summary" class="dynsummary" style="display:block;">
-</div>
-<div id="dynsection-2-content" class="dyncontent" style="display:none;">
-<div class="center"><img src="group__calculators_gae37153681a5a2b78b3accbe7e01f65d8_icgraph.png" border="0" usemap="#agroup__calculators_gae37153681a5a2b78b3accbe7e01f65d8_icgraph" alt=""/></div>
-<map name="agroup__calculators_gae37153681a5a2b78b3accbe7e01f65d8_icgraph" id="agroup__calculators_gae37153681a5a2b78b3accbe7e01f65d8_icgraph">
-<area shape="rect" title="Calculates the number of times at each marker that a particular allele appears for each genotype in a..." alt="" coords="1067,163,1207,207"/>
-<area shape="rect" href="group__calculators.html#gaae6cddc5291e4ad120ac28a7d043c7fa" title="Calculates the fitness metric/breeding value for each genotype in the gsc_AlleleMatrix,..." alt="" coords="892,171,1019,199"/>
-<area shape="rect" href="sim-operations_8c.html#a7072c6a3834472e7fbd768c0275fdc54" title="save&#45;as&#45;you&#45;go (breeding values)" alt="" coords="689,132,844,176"/>
-<area shape="rect" href="group__savers.html#ga9081436408a37abb9d37e035b3cfaa87" title="Print the breeding value of each genotype in the gsc_SimData to a file." alt="" coords="716,200,817,228"/>
-<area shape="rect" href="group__crossers.html#ga28b0fcf60b6a8f6e8ca470f7b5d0a4b7" title="Make new genotypes (generic function)" alt="" coords="479,132,641,176"/>
-<area shape="rect" href="group__crossers.html#ga15af204958dc69717334c46b19219a2d" title="Creates an identical copy of each member of a group." alt="" coords="274,5,400,33"/>
-<area shape="rect" href="group__crossers.html#ga6c230330ca9a9db9459d4477512a21af" title="Creates a doubled haploid from each member of a group." alt="" coords="243,57,431,85"/>
-<area shape="rect" href="group__crossers.html#ga03af5446006203244dd3080cf75af26f" title="Performs random crosses among members of a group." alt="" coords="245,109,429,137"/>
-<area shape="rect" href="group__crossers.html#ga652376b5a34d24f239e5fc0b167c067b" title="Performs random crosses where the first parent comes from one group and the second from another." alt="" coords="245,161,429,205"/>
-<area shape="rect" href="group__crossers.html#ga4450224009587f4cd4a972413423c96e" title="Performs the crosses of pairs of parents whose indexes are provided in an array." alt="" coords="243,229,431,257"/>
-<area shape="rect" href="group__crossers.html#gab625453074798be6ba8677a5d4986edf" title="Selfs each member of a group for a certain number of generations." alt="" coords="276,281,398,309"/>
-<area shape="rect" href="group__crossers.html#gab19b3eb80b5fe460d17c93e0c27f7aaf" title="Find the top m percent of a group and perform random crosses between those top individuals." alt="" coords="26,97,174,141"/>
-<area shape="rect" href="group__crossers.html#gaa70fd79312587d8e9fc166c64612cbce" title="Perform crosses between all pairs of parents in the group from_group and allocates the resulting offs..." alt="" coords="8,165,192,209"/>
-<area shape="rect" href="group__crossers.html#ga5c0be901d03d0e5dd3d74bc19a4bea70" title="Perform crosses between pairs of parents identified by name in a file and allocate the resulting offs..." alt="" coords="5,233,195,261"/>
-<area shape="rect" href="group__crossers.html#ga2b8100d2d30cf1ada0db8403663076ff" title="Perform crosses between previously&#45;generated offspring of pairs of parents identified by name in a fi..." alt="" coords="10,285,190,329"/>
-</map>
-</div>
-
-</div>
-</div>
-<a id="ga34b1d566ad458097f95823278f6bbd8e" name="ga34b1d566ad458097f95823278f6bbd8e"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ga34b1d566ad458097f95823278f6bbd8e">&#9670;&nbsp;</a></span>gsc_calculate_count_matrix_pair()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">int gsc_calculate_count_matrix_pair </td>
-          <td>(</td>
-          <td class="paramtype">const <a class="el" href="structgsc___allele_matrix.html">gsc_AlleleMatrix</a> *&#160;</td>
-          <td class="paramname"><em>m</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">const char&#160;</td>
-          <td class="paramname"><em>allele</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype"><a class="el" href="structgsc___decimal_matrix.html">gsc_DecimalMatrix</a> *&#160;</td>
-          <td class="paramname"><em>counts</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">const char&#160;</td>
-          <td class="paramname"><em>allele2</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype"><a class="el" href="structgsc___decimal_matrix.html">gsc_DecimalMatrix</a> *&#160;</td>
-          <td class="paramname"><em>counts2</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Calculates the number of times at each marker that two particular alleles appear for each genotype in an <a class="el" href="structgsc___allele_matrix.html">gsc_AlleleMatrix</a> (does not go through the linked list). </p>
-<p >Returns the result in two pre-created <a class="el" href="structgsc___decimal_matrix.html" title="A row-major heap matrix that contains floating point numbers.">gsc_DecimalMatrix</a>. Useful for multiplying to effect matrix to calculate breeding values.</p>
-<p >This function is the same as <a class="el" href="group__calculators.html#gae37153681a5a2b78b3accbe7e01f65d8" title="Calculates the number of times at each marker that a particular allele appears for each genotype in a...">gsc_calculate_count_matrix()</a>, but for two alleles at a time, for the purpose of loop unrolling in breeding value calculations.</p>
-<p ><em>Has short name:</em> <a class="el" href="group__shortnames.html#ga6378bf9728dac242123b7dba60b671de">calculate_count_matrix_pair</a></p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">m</td><td>pointer to the <a class="el" href="structgsc___allele_matrix.html">gsc_AlleleMatrix</a> that contains the genotypes to count alleles. </td></tr>
-    <tr><td class="paramname">allele</td><td>the first single-character allele to be counting. </td></tr>
-    <tr><td class="paramname">counts</td><td>pointer to the <a class="el" href="structgsc___decimal_matrix.html" title="A row-major heap matrix that contains floating point numbers.">gsc_DecimalMatrix</a> into which to put the number of <code>allele</code> occurences at each row/marker for each column/genotype in the group. </td></tr>
-    <tr><td class="paramname">allele2</td><td>the second single-character allele to be counting. </td></tr>
-    <tr><td class="paramname">counts2</td><td>pointer to the <a class="el" href="structgsc___decimal_matrix.html" title="A row-major heap matrix that contains floating point numbers.">gsc_DecimalMatrix</a> into which to put the number of <code>allele2</code> occurences at each row/marker for each column/genotype in the group. </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>0 on success, nonzero on failure. </dd></dl>
-<div id="dynsection-3" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
-  <img id="dynsection-3-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
-<div id="dynsection-3-summary" class="dynsummary" style="display:block;">
-</div>
-<div id="dynsection-3-content" class="dyncontent" style="display:none;">
-<div class="center"><img src="group__calculators_ga34b1d566ad458097f95823278f6bbd8e_icgraph.png" border="0" usemap="#agroup__calculators_ga34b1d566ad458097f95823278f6bbd8e_icgraph" alt=""/></div>
-<map name="agroup__calculators_ga34b1d566ad458097f95823278f6bbd8e_icgraph" id="agroup__calculators_ga34b1d566ad458097f95823278f6bbd8e_icgraph">
-<area shape="rect" title="Calculates the number of times at each marker that two particular alleles appear for each genotype in..." alt="" coords="1067,163,1207,207"/>
-<area shape="rect" href="group__calculators.html#gaae6cddc5291e4ad120ac28a7d043c7fa" title="Calculates the fitness metric/breeding value for each genotype in the gsc_AlleleMatrix,..." alt="" coords="892,171,1019,199"/>
-<area shape="rect" href="sim-operations_8c.html#a7072c6a3834472e7fbd768c0275fdc54" title="save&#45;as&#45;you&#45;go (breeding values)" alt="" coords="689,132,844,176"/>
-<area shape="rect" href="group__savers.html#ga9081436408a37abb9d37e035b3cfaa87" title="Print the breeding value of each genotype in the gsc_SimData to a file." alt="" coords="716,200,817,228"/>
-<area shape="rect" href="group__crossers.html#ga28b0fcf60b6a8f6e8ca470f7b5d0a4b7" title="Make new genotypes (generic function)" alt="" coords="479,132,641,176"/>
-<area shape="rect" href="group__crossers.html#ga15af204958dc69717334c46b19219a2d" title="Creates an identical copy of each member of a group." alt="" coords="274,5,400,33"/>
-<area shape="rect" href="group__crossers.html#ga6c230330ca9a9db9459d4477512a21af" title="Creates a doubled haploid from each member of a group." alt="" coords="243,57,431,85"/>
-<area shape="rect" href="group__crossers.html#ga03af5446006203244dd3080cf75af26f" title="Performs random crosses among members of a group." alt="" coords="245,109,429,137"/>
-<area shape="rect" href="group__crossers.html#ga652376b5a34d24f239e5fc0b167c067b" title="Performs random crosses where the first parent comes from one group and the second from another." alt="" coords="245,161,429,205"/>
-<area shape="rect" href="group__crossers.html#ga4450224009587f4cd4a972413423c96e" title="Performs the crosses of pairs of parents whose indexes are provided in an array." alt="" coords="243,229,431,257"/>
-<area shape="rect" href="group__crossers.html#gab625453074798be6ba8677a5d4986edf" title="Selfs each member of a group for a certain number of generations." alt="" coords="276,281,398,309"/>
-<area shape="rect" href="group__crossers.html#gab19b3eb80b5fe460d17c93e0c27f7aaf" title="Find the top m percent of a group and perform random crosses between those top individuals." alt="" coords="26,97,174,141"/>
-<area shape="rect" href="group__crossers.html#gaa70fd79312587d8e9fc166c64612cbce" title="Perform crosses between all pairs of parents in the group from_group and allocates the resulting offs..." alt="" coords="8,165,192,209"/>
-<area shape="rect" href="group__crossers.html#ga5c0be901d03d0e5dd3d74bc19a4bea70" title="Perform crosses between pairs of parents identified by name in a file and allocate the resulting offs..." alt="" coords="5,233,195,261"/>
-<area shape="rect" href="group__crossers.html#ga2b8100d2d30cf1ada0db8403663076ff" title="Perform crosses between previously&#45;generated offspring of pairs of parents identified by name in a fi..." alt="" coords="10,285,190,329"/>
-</map>
-</div>
-
-</div>
-</div>
-<a id="gae2d46345f01bc74e45a4d07b2a531113" name="gae2d46345f01bc74e45a4d07b2a531113"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#gae2d46345f01bc74e45a4d07b2a531113">&#9670;&nbsp;</a></span>gsc_calculate_full_count_matrix()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="structgsc___decimal_matrix.html">gsc_DecimalMatrix</a> gsc_calculate_full_count_matrix </td>
-          <td>(</td>
-          <td class="paramtype">const <a class="el" href="structgsc___allele_matrix.html">gsc_AlleleMatrix</a> *&#160;</td>
-          <td class="paramname"><em>m</em>, </td>
+          <td class="paramtype">const <a class="el" href="structgsc___group_num.html">gsc_GroupNum</a>&#160;</td>
+          <td class="paramname"><em>group</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -392,53 +154,50 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Calculates the number of times at each marker that a particular allele appears for each genotype in the linked list starting at the given <a class="el" href="structgsc___allele_matrix.html">gsc_AlleleMatrix</a>. </p>
-<p >Returns the result as a <a class="el" href="structgsc___decimal_matrix.html" title="A row-major heap matrix that contains floating point numbers.">gsc_DecimalMatrix</a>. Useful for multiplying to effect matrix to calculate breeding values.</p>
-<p ><em>Has short name:</em> <a class="el" href="group__shortnames.html#gab654e39489496d145a59d3baed33017d">calculate_full_count_matrix</a></p>
+<p>Calculates the number of times at each marker that a particular allele appears. </p>
+<p >Returns the results in a calculated DecimalMatrix. This structure should be deleted with <em>delete_dmatrix</em> once there is no more use for it.</p>
+<p ><em>Has short name:</em> <a class="el" href="group__shortnames.html#gaa3ae83304655bb5e3889c6920addc0f0">calculate_allele_counts</a></p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">m</td><td>pointer to the <a class="el" href="structgsc___allele_matrix.html">gsc_AlleleMatrix</a> that contains the genotypes to count alleles. </td></tr>
+    <tr><td class="paramname">d</td><td>simulation object containing the genotypes whose alleles will be counted </td></tr>
+    <tr><td class="paramname">group</td><td>NO_GROUP to count alleles of all genotypes in the simulation, or a specific group identifier to count only the alleles of members of that group. </td></tr>
     <tr><td class="paramname">allele</td><td>the single-character allele to be counting. </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd><a class="el" href="structgsc___decimal_matrix.html" title="A row-major heap matrix that contains floating point numbers.">gsc_DecimalMatrix</a> containing counts for every genotype in the <a class="el" href="structgsc___allele_matrix.html">gsc_AlleleMatrix</a> linked list. </dd></dl>
-<div id="dynsection-4" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
-  <img id="dynsection-4-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
-<div id="dynsection-4-summary" class="dynsummary" style="display:block;">
+<dl class="section return"><dt>Returns</dt><dd>a (num genotypes x num markers) <a class="el" href="structgsc___decimal_matrix.html" title="A row-major heap matrix that contains floating point numbers.">gsc_DecimalMatrix</a>, with each cell containing the number of incidences of the allele. The first axis of the DecimalMatrix corresponds to candidate genotypes, the second axis corresponds to genetic markers. </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="sim-operations_8c_source.html#l08798">8798</a> of file <a class="el" href="sim-operations_8c_source.html">sim-operations.c</a>.</p>
+<div id="dynsection-0" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-0-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
+<div id="dynsection-0-summary" class="dynsummary" style="display:block;">
 </div>
-<div id="dynsection-4-content" class="dyncontent" style="display:none;">
-<div class="center"><img src="group__calculators_gae2d46345f01bc74e45a4d07b2a531113_cgraph.png" border="0" usemap="#agroup__calculators_gae2d46345f01bc74e45a4d07b2a531113_cgraph" alt=""/></div>
-<map name="agroup__calculators_gae2d46345f01bc74e45a4d07b2a531113_cgraph" id="agroup__calculators_gae2d46345f01bc74e45a4d07b2a531113_cgraph">
-<area shape="rect" title="Calculates the number of times at each marker that a particular allele appears for each genotype in t..." alt="" coords="5,5,130,49"/>
-<area shape="rect" href="group__maths.html#gae001e0609ac52df335530f9473cb57e1" title="Generates a matrix of c columns, r rows with all 0." alt="" coords="178,13,359,41"/>
-<area shape="rect" href="sim-operations_8c.html#aaaf3ebc75feaf901829232712e55677b" title="Replace calls to malloc direct with this function." alt="" coords="407,13,528,41"/>
-</map>
-</div>
-<div id="dynsection-5" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
-  <img id="dynsection-5-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
-<div id="dynsection-5-summary" class="dynsummary" style="display:block;">
-</div>
-<div id="dynsection-5-content" class="dyncontent" style="display:none;">
-<div class="center"><img src="group__calculators_gae2d46345f01bc74e45a4d07b2a531113_icgraph.png" border="0" usemap="#agroup__calculators_gae2d46345f01bc74e45a4d07b2a531113_icgraph" alt=""/></div>
-<map name="agroup__calculators_gae2d46345f01bc74e45a4d07b2a531113_icgraph" id="agroup__calculators_gae2d46345f01bc74e45a4d07b2a531113_icgraph">
-<area shape="rect" title="Calculates the number of times at each marker that a particular allele appears for each genotype in t..." alt="" coords="211,5,335,49"/>
-<area shape="rect" href="group__savers.html#ga9678bbe9c8db5f7774188b9574c0c09c" title="Print the number of copies of a particular allele at each marker of each genotype in the gsc_SimData ..." alt="" coords="5,13,163,41"/>
+<div id="dynsection-0-content" class="dyncontent" style="display:none;">
+<div class="center"><img src="group__calculators_gafbf562b4479f030957c8955ada159b0e_cgraph.png" border="0" usemap="#agroup__calculators_gafbf562b4479f030957c8955ada159b0e_cgraph" alt=""/></div>
+<map name="agroup__calculators_gafbf562b4479f030957c8955ada159b0e_cgraph" id="agroup__calculators_gafbf562b4479f030957c8955ada159b0e_cgraph">
+<area shape="rect" title="Calculates the number of times at each marker that a particular allele appears." alt="" coords="5,144,144,188"/>
+<area shape="rect" href="group__calculators.html#ga8f765775d463c59f8437da21dad6fab4" title="Calculates the number of times at each marker that a particular allele appears." alt="" coords="215,5,354,49"/>
+<area shape="rect" href="group__deletors.html#ga83d81991036aca26e2ec5b03f8b33b8a" title="Deletes a gsc_BidirectionalIterator object." alt="" coords="192,73,377,101"/>
+<area shape="rect" href="group__maths.html#gae001e0609ac52df335530f9473cb57e1" title="Generates a matrix of c columns, r rows with all 0." alt="" coords="194,125,375,153"/>
+<area shape="rect" href="group__liteget.html#ga5e1e89782604c9ab47f196e1da233362" title="Get the alleles of a genotype." alt="" coords="229,177,340,205"/>
+<area shape="rect" href="group__iterators.html#ga630ba7f8e864238e296cb9480dfbc728" title="Get the next location from a bidirectional iterator." alt="" coords="220,229,349,257"/>
+<area shape="rect" href="group__iterators.html#gaa4fa2aec3b7f49f9925fe82c8ff38dcd" title="Initialise a Bidirectional iterator to the start of its sequence." alt="" coords="425,247,568,291"/>
+<area shape="rect" href="sim-operations_8c.html#aaaf3ebc75feaf901829232712e55677b" title="Replace calls to malloc direct with this function." alt="" coords="436,125,557,153"/>
 </map>
 </div>
 
 </div>
 </div>
-<a id="ga381bf7e42397f428a322dd8e118a4243" name="ga381bf7e42397f428a322dd8e118a4243"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ga381bf7e42397f428a322dd8e118a4243">&#9670;&nbsp;</a></span>gsc_calculate_group_bvs()</h2>
+<a id="gac94e98cc238a772aaa6151400df71629" name="gac94e98cc238a772aaa6151400df71629"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gac94e98cc238a772aaa6151400df71629">&#9670;&nbsp;</a></span>gsc_calculate_bvs()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="structgsc___decimal_matrix.html">gsc_DecimalMatrix</a> gsc_calculate_group_bvs </td>
+          <td class="memname"><a class="el" href="structgsc___decimal_matrix.html">gsc_DecimalMatrix</a> gsc_calculate_bvs </td>
           <td>(</td>
-          <td class="paramtype">const <a class="el" href="structgsc___sim_data.html">gsc_SimData</a> *&#160;</td>
+          <td class="paramtype"><a class="el" href="structgsc___sim_data.html">gsc_SimData</a> *&#160;</td>
           <td class="paramname"><em>d</em>, </td>
         </tr>
         <tr>
@@ -461,229 +220,56 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Calculates the fitness metric/breeding value for each genotype in the <a class="el" href="structgsc___allele_matrix.html">gsc_AlleleMatrix</a> in a certain group, and returns the results in a <a class="el" href="structgsc___decimal_matrix.html" title="A row-major heap matrix that contains floating point numbers.">gsc_DecimalMatrix</a>. </p>
-<p >The breeding value is calculated for each genotype by taking the sum of (number of copies of this allele at this marker times this allele's effect at this marker) for each marker for each different allele. To do this, the vector containing each allele's effect values is multiplied by a matrix containing the counts of that allele at each marker.</p>
-<p >The function exits with error code 1 if no marker effect file is loaded.</p>
-<p ><em>Has short name:</em> <a class="el" href="group__shortnames.html#gabcea271f2ed91a15fbf93dad56631ffe">calculate_group_bvs</a></p>
+<p>Calculate the fitness metric/breeding value for every genotype in the simulation or every genotype in a certain group. </p>
+<p >To calculate the breeding value, the number of copies of each allele at each marker for each genotype are counted. The counts of each allele are multiplied by the additive marker effect of that allele at that marker. Then, each genotype's allele effects across all markers are summed up.</p>
+<p ><em>Has short name:</em> <a class="el" href="group__shortnames.html#ga97373dbd0bb7c3a93715623796c90176">calculate_bvs</a></p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">d</td><td>pointer to the <a class="el" href="structgsc___sim_data.html" title="Composite type that is used to run crossing simulations.">gsc_SimData</a> object to which the groups and individuals belong. It must have a marker effect file loaded to successfully run this function. </td></tr>
-    <tr><td class="paramname">group</td><td>calculate breeding values for each genotype in the group with this group number. </td></tr>
+    <tr><td class="paramname">d</td><td>pointer to the <a class="el" href="structgsc___sim_data.html" title="Composite type that is used to run crossing simulations.">gsc_SimData</a> object in which the marker effects and genotypes to be used to calculate breeding values are stored. </td></tr>
+    <tr><td class="paramname">group</td><td>NO_GROUP to calculate breeding values for all genotypes in the simulation, or a group number to calculate breeding values for all members of that group. </td></tr>
     <tr><td class="paramname">effID</td><td>Identifier of the marker effect set to be used to calculate these breeding values </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>A <a class="el" href="structgsc___decimal_matrix.html" title="A row-major heap matrix that contains floating point numbers.">gsc_DecimalMatrix</a> containing the score for each individual in the group. </dd></dl>
-<div id="dynsection-6" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
-  <img id="dynsection-6-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
-<div id="dynsection-6-summary" class="dynsummary" style="display:block;">
+<dl class="section return"><dt>Returns</dt><dd>A (1 x number of genotypes) <a class="el" href="structgsc___decimal_matrix.html" title="A row-major heap matrix that contains floating point numbers.">gsc_DecimalMatrix</a> containing the breeding value scores </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="sim-operations_8c_source.html#l08707">8707</a> of file <a class="el" href="sim-operations_8c_source.html">sim-operations.c</a>.</p>
+<div id="dynsection-1" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-1-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
+<div id="dynsection-1-summary" class="dynsummary" style="display:block;">
 </div>
-<div id="dynsection-6-content" class="dyncontent" style="display:none;">
-<div class="center"><img src="group__calculators_ga381bf7e42397f428a322dd8e118a4243_cgraph.png" border="0" usemap="#agroup__calculators_ga381bf7e42397f428a322dd8e118a4243_cgraph" alt=""/></div>
-<map name="agroup__calculators_ga381bf7e42397f428a322dd8e118a4243_cgraph" id="agroup__calculators_ga381bf7e42397f428a322dd8e118a4243_cgraph">
-<area shape="rect" title="Calculates the fitness metric/breeding value for each genotype in the gsc_AlleleMatrix in a certain g..." alt="" coords="5,236,172,264"/>
-<area shape="rect" href="group__maths.html#gadaec2ba547549392530e91e50a3c985d" title="Multiply two sets of a gsc_DecimalMatrix and vector, and add both products to the first column of a p..." alt="" coords="220,5,405,49"/>
-<area shape="rect" href="group__maths.html#ga6fdcedf004c9d08e5135d30deb5b12fa" title="Multiply a gsc_DecimalMatrix to a vector, and add that product to the first column of a provided gsc_..." alt="" coords="239,73,386,117"/>
-<area shape="rect" href="group__calculators.html#ga12c13aaf31fccff2f9ddd612035c426a" title="Calculates the number of times at each marker that a particular allele appears for each genotype in a..." alt="" coords="242,261,383,305"/>
-<area shape="rect" href="group__collgetters.html#gae9131a8c72149706f67f6e4a48add79c" title="Function to count the number of genotypes that currently belong to the specified group." alt="" coords="649,219,787,247"/>
-<area shape="rect" href="group__calculators.html#ga160313a4276db1a2897ab0d161f5caa8" title="Calculates the number of times at each marker that two particular alleles appear for each genotype in..." alt="" coords="242,193,383,237"/>
-<area shape="rect" href="group__deletors.html#ga99bbd9355f031efae628b27e6ae72f6a" title="Deletes a gsc_DecimalMatrix and frees its memory." alt="" coords="245,329,380,357"/>
-<area shape="rect" href="group__maths.html#gae001e0609ac52df335530f9473cb57e1" title="Generates a matrix of c columns, r rows with all 0." alt="" coords="222,381,403,409"/>
-<area shape="rect" href="group__supporters.html#gac15b90373af3e2828a786215e90963a8" title="Function to identify the lookup index of a marker effect set identifier." alt="" coords="229,433,396,461"/>
-<area shape="rect" href="group__collgetters.html#gab256e999fe9540658a2a3aba11260cb5" title="Gets a shallow copy of the genes/alleles of each member of the group." alt="" coords="453,244,601,272"/>
-<area shape="rect" href="sim-operations_8c.html#aaaf3ebc75feaf901829232712e55677b" title="Replace calls to malloc direct with this function." alt="" coords="467,381,588,409"/>
+<div id="dynsection-1-content" class="dyncontent" style="display:none;">
+<div class="center"><img src="group__calculators_gac94e98cc238a772aaa6151400df71629_cgraph.png" border="0" usemap="#agroup__calculators_gac94e98cc238a772aaa6151400df71629_cgraph" alt=""/></div>
+<map name="agroup__calculators_gac94e98cc238a772aaa6151400df71629_cgraph" id="agroup__calculators_gac94e98cc238a772aaa6151400df71629_cgraph">
+<area shape="rect" title="Calculate the fitness metric/breeding value for every genotype in the simulation or every genotype in..." alt="" coords="5,537,133,565"/>
+<area shape="rect" href="group__calculators.html#ga5eb332e54b2f90f399a28a65cdb25e36" title="Calculate the fitness metric/breeding value for a set of genotypes." alt="" coords="191,288,357,316"/>
+<area shape="rect" href="group__maths.html#gae001e0609ac52df335530f9473cb57e1" title="Generates a matrix of c columns, r rows with all 0." alt="" coords="417,485,598,513"/>
+<area shape="rect" href="group__iterators.html#ga05da8d96593f8404938cc24f659db049" title="Create a bidirectional iterator." alt="" coords="181,537,367,565"/>
+<area shape="rect" href="group__deletors.html#ga83d81991036aca26e2ec5b03f8b33b8a" title="Deletes a gsc_BidirectionalIterator object." alt="" coords="181,589,367,617"/>
+<area shape="rect" href="group__supporters.html#gac15b90373af3e2828a786215e90963a8" title="Function to identify the lookup index of a marker effect set identifier." alt="" coords="190,641,358,669"/>
+<area shape="rect" href="group__maths.html#gadaec2ba547549392530e91e50a3c985d" title="Multiply two sets of a gsc_DecimalMatrix and vector, and add both products to the first column of a p..." alt="" coords="415,109,600,153"/>
+<area shape="rect" href="group__maths.html#ga6fdcedf004c9d08e5135d30deb5b12fa" title="Multiply a gsc_DecimalMatrix to a vector, and add that product to the first column of a provided gsc_..." alt="" coords="434,177,581,221"/>
+<area shape="rect" href="group__calculators.html#ga8f765775d463c59f8437da21dad6fab4" title="Calculates the number of times at each marker that a particular allele appears." alt="" coords="438,245,577,289"/>
+<area shape="rect" href="group__calculators.html#ga19bbe4c5c9d867e9c627bbda7aa9bd22" title="Calculates the number of times at each marker that two particular alleles appear." alt="" coords="438,313,577,357"/>
+<area shape="rect" href="group__deletors.html#ga99bbd9355f031efae628b27e6ae72f6a" title="Deletes a gsc_DecimalMatrix and frees its memory." alt="" coords="441,381,575,409"/>
+<area shape="rect" href="group__liteget.html#ga5e1e89782604c9ab47f196e1da233362" title="Get the alleles of a genotype." alt="" coords="452,433,563,461"/>
+<area shape="rect" href="group__iterators.html#ga630ba7f8e864238e296cb9480dfbc728" title="Get the next location from a bidirectional iterator." alt="" coords="443,5,572,33"/>
+<area shape="rect" href="group__iterators.html#gaa4fa2aec3b7f49f9925fe82c8ff38dcd" title="Initialise a Bidirectional iterator to the start of its sequence." alt="" coords="648,24,792,68"/>
+<area shape="rect" href="sim-operations_8c.html#aaaf3ebc75feaf901829232712e55677b" title="Replace calls to malloc direct with this function." alt="" coords="659,485,781,513"/>
+<area shape="rect" href="group__iterators.html#ga5cca400276ca83acceaab36d5f79aab1" title=" " alt="" coords="427,537,588,581"/>
 </map>
 </div>
-<div id="dynsection-7" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
-  <img id="dynsection-7-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
-<div id="dynsection-7-summary" class="dynsummary" style="display:block;">
+<div id="dynsection-2" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-2-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
+<div id="dynsection-2-summary" class="dynsummary" style="display:block;">
 </div>
-<div id="dynsection-7-content" class="dyncontent" style="display:none;">
-<div class="center"><img src="group__calculators_ga381bf7e42397f428a322dd8e118a4243_icgraph.png" border="0" usemap="#agroup__calculators_ga381bf7e42397f428a322dd8e118a4243_icgraph" alt=""/></div>
-<map name="agroup__calculators_ga381bf7e42397f428a322dd8e118a4243_icgraph" id="agroup__calculators_ga381bf7e42397f428a322dd8e118a4243_icgraph">
-<area shape="rect" title="Calculates the fitness metric/breeding value for each genotype in the gsc_AlleleMatrix in a certain g..." alt="" coords="390,57,556,85"/>
-<area shape="rect" href="group__collgetters.html#ga25310a2e8c9fbfabca0c90a355f0d522" title="Gets the breeding values/breeding values/fitnesses of each member of the group." alt="" coords="206,5,338,33"/>
-<area shape="rect" href="group__savers.html#ga3453d7fc7d552e7c254cf00788c45506" title="Print the breeding value of each genotype in a group to a file." alt="" coords="202,57,342,85"/>
-<area shape="rect" href="group__calculators.html#ga3b43d07c08ed861ed0f22a69bb57b94a" title="Takes the top_n individuals in the group with the best breeding values/fitnesses and puts them in a n..." alt="" coords="215,109,329,137"/>
-<area shape="rect" href="group__crossers.html#gab19b3eb80b5fe460d17c93e0c27f7aaf" title="Find the top m percent of a group and perform random crosses between those top individuals." alt="" coords="5,101,154,145"/>
-</map>
-</div>
-
-</div>
-</div>
-<a id="ga12c13aaf31fccff2f9ddd612035c426a" name="ga12c13aaf31fccff2f9ddd612035c426a"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ga12c13aaf31fccff2f9ddd612035c426a">&#9670;&nbsp;</a></span>gsc_calculate_group_count_matrix()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">int gsc_calculate_group_count_matrix </td>
-          <td>(</td>
-          <td class="paramtype">const <a class="el" href="structgsc___sim_data.html">gsc_SimData</a> *&#160;</td>
-          <td class="paramname"><em>d</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">const <a class="el" href="structgsc___group_num.html">gsc_GroupNum</a>&#160;</td>
-          <td class="paramname"><em>group</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">const char&#160;</td>
-          <td class="paramname"><em>allele</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype"><a class="el" href="structgsc___decimal_matrix.html">gsc_DecimalMatrix</a> *&#160;</td>
-          <td class="paramname"><em>counts</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Calculates the number of times at each marker that a particular allele appears for each genotype in a group. </p>
-<p >Returns the result in a pre-created <a class="el" href="structgsc___decimal_matrix.html" title="A row-major heap matrix that contains floating point numbers.">gsc_DecimalMatrix</a>. Useful for multiplying to effect matrix to calculate breeding values.</p>
-<p ><em>Has short name:</em> <a class="el" href="group__shortnames.html#ga45d7f2a795f4717a74facc234b4e246a">calculate_group_count_matrix</a></p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">d</td><td>pointer to the <a class="el" href="structgsc___sim_data.html" title="Composite type that is used to run crossing simulations.">gsc_SimData</a>. </td></tr>
-    <tr><td class="paramname">group</td><td>group number for which to calculate counts of the allele, or 0 to count alleles for all genotypes in the simulation </td></tr>
-    <tr><td class="paramname">allele</td><td>the single-character allele to be counting. </td></tr>
-    <tr><td class="paramname">counts</td><td>pointer to the <a class="el" href="structgsc___decimal_matrix.html" title="A row-major heap matrix that contains floating point numbers.">gsc_DecimalMatrix</a> into which to put the number of <code>allele</code> occurences at each row/marker for each column/genotype in the group. </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>0 on success, nonzero on failure. </dd></dl>
-<div id="dynsection-8" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
-  <img id="dynsection-8-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
-<div id="dynsection-8-summary" class="dynsummary" style="display:block;">
-</div>
-<div id="dynsection-8-content" class="dyncontent" style="display:none;">
-<div class="center"><img src="group__calculators_ga12c13aaf31fccff2f9ddd612035c426a_cgraph.png" border="0" usemap="#agroup__calculators_ga12c13aaf31fccff2f9ddd612035c426a_cgraph" alt=""/></div>
-<map name="agroup__calculators_ga12c13aaf31fccff2f9ddd612035c426a_cgraph" id="agroup__calculators_ga12c13aaf31fccff2f9ddd612035c426a_cgraph">
-<area shape="rect" title="Calculates the number of times at each marker that a particular allele appears for each genotype in a..." alt="" coords="5,24,146,68"/>
-<area shape="rect" href="group__collgetters.html#gab256e999fe9540658a2a3aba11260cb5" title="Gets a shallow copy of the genes/alleles of each member of the group." alt="" coords="194,5,342,33"/>
-<area shape="rect" href="group__collgetters.html#gae9131a8c72149706f67f6e4a48add79c" title="Function to count the number of genotypes that currently belong to the specified group." alt="" coords="390,32,527,60"/>
-</map>
-</div>
-<div id="dynsection-9" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
-  <img id="dynsection-9-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
-<div id="dynsection-9-summary" class="dynsummary" style="display:block;">
-</div>
-<div id="dynsection-9-content" class="dyncontent" style="display:none;">
-<div class="center"><img src="group__calculators_ga12c13aaf31fccff2f9ddd612035c426a_icgraph.png" border="0" usemap="#agroup__calculators_ga12c13aaf31fccff2f9ddd612035c426a_icgraph" alt=""/></div>
-<map name="agroup__calculators_ga12c13aaf31fccff2f9ddd612035c426a_icgraph" id="agroup__calculators_ga12c13aaf31fccff2f9ddd612035c426a_icgraph">
-<area shape="rect" title="Calculates the number of times at each marker that a particular allele appears for each genotype in a..." alt="" coords="604,80,745,124"/>
-<area shape="rect" href="group__calculators.html#ga381bf7e42397f428a322dd8e118a4243" title="Calculates the fitness metric/breeding value for each genotype in the gsc_AlleleMatrix in a certain g..." alt="" coords="390,57,556,85"/>
-<area shape="rect" href="group__savers.html#ga47adc7657700b186067b2c26dabf5b13" title="Print the number of copies of a particular allele at each marker of each genotype in a group to a fil..." alt="" coords="397,109,550,153"/>
-<area shape="rect" href="group__collgetters.html#ga25310a2e8c9fbfabca0c90a355f0d522" title="Gets the breeding values/breeding values/fitnesses of each member of the group." alt="" coords="206,5,338,33"/>
-<area shape="rect" href="group__savers.html#ga3453d7fc7d552e7c254cf00788c45506" title="Print the breeding value of each genotype in a group to a file." alt="" coords="202,57,342,85"/>
-<area shape="rect" href="group__calculators.html#ga3b43d07c08ed861ed0f22a69bb57b94a" title="Takes the top_n individuals in the group with the best breeding values/fitnesses and puts them in a n..." alt="" coords="215,109,329,137"/>
-<area shape="rect" href="group__crossers.html#gab19b3eb80b5fe460d17c93e0c27f7aaf" title="Find the top m percent of a group and perform random crosses between those top individuals." alt="" coords="5,101,154,145"/>
-</map>
-</div>
-
-</div>
-</div>
-<a id="ga160313a4276db1a2897ab0d161f5caa8" name="ga160313a4276db1a2897ab0d161f5caa8"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ga160313a4276db1a2897ab0d161f5caa8">&#9670;&nbsp;</a></span>gsc_calculate_group_count_matrix_pair()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">int gsc_calculate_group_count_matrix_pair </td>
-          <td>(</td>
-          <td class="paramtype">const <a class="el" href="structgsc___sim_data.html">gsc_SimData</a> *&#160;</td>
-          <td class="paramname"><em>d</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">const <a class="el" href="structgsc___group_num.html">gsc_GroupNum</a>&#160;</td>
-          <td class="paramname"><em>group</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">const char&#160;</td>
-          <td class="paramname"><em>allele</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype"><a class="el" href="structgsc___decimal_matrix.html">gsc_DecimalMatrix</a> *&#160;</td>
-          <td class="paramname"><em>counts</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">const char&#160;</td>
-          <td class="paramname"><em>allele2</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype"><a class="el" href="structgsc___decimal_matrix.html">gsc_DecimalMatrix</a> *&#160;</td>
-          <td class="paramname"><em>counts2</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Calculates the number of times at each marker that two particular alleles appear for each genotype in a group. </p>
-<p >Returns the result in two pre-created <a class="el" href="structgsc___decimal_matrix.html" title="A row-major heap matrix that contains floating point numbers.">gsc_DecimalMatrix</a>. Useful for multiplying to effect matrix to calculate breeding values.</p>
-<p >This function is the same as <a class="el" href="group__calculators.html#ga12c13aaf31fccff2f9ddd612035c426a" title="Calculates the number of times at each marker that a particular allele appears for each genotype in a...">gsc_calculate_group_count_matrix()</a>, but for two alleles at a time, for the purpose of loop unrolling in breeding value calculations.</p>
-<p ><em>Has short name:</em> <a class="el" href="group__shortnames.html#ga39b2a209b5b5e5594e3a9d9d54ee3e72">calculate_group_count_matrix_pair</a></p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">d</td><td>pointer to the <a class="el" href="structgsc___sim_data.html" title="Composite type that is used to run crossing simulations.">gsc_SimData</a>. </td></tr>
-    <tr><td class="paramname">group</td><td>group number for which to calculate counts of the allele, or 0 to count alleles for all genotypes in the simulation </td></tr>
-    <tr><td class="paramname">allele</td><td>the first single-character allele to be counting. </td></tr>
-    <tr><td class="paramname">counts</td><td>pointer to the <a class="el" href="structgsc___decimal_matrix.html" title="A row-major heap matrix that contains floating point numbers.">gsc_DecimalMatrix</a> into which to put the number of <code>allele</code> occurences at each row/marker for each column/genotype in the group. </td></tr>
-    <tr><td class="paramname">allele2</td><td>the second single-character allele to be counting. </td></tr>
-    <tr><td class="paramname">counts2</td><td>pointer to the <a class="el" href="structgsc___decimal_matrix.html" title="A row-major heap matrix that contains floating point numbers.">gsc_DecimalMatrix</a> into which to put the number of <code>allele2</code> occurences at each row/marker for each column/genotype in the group. </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>0 on success, nonzero on failure. </dd></dl>
-<div id="dynsection-10" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
-  <img id="dynsection-10-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
-<div id="dynsection-10-summary" class="dynsummary" style="display:block;">
-</div>
-<div id="dynsection-10-content" class="dyncontent" style="display:none;">
-<div class="center"><img src="group__calculators_ga160313a4276db1a2897ab0d161f5caa8_cgraph.png" border="0" usemap="#agroup__calculators_ga160313a4276db1a2897ab0d161f5caa8_cgraph" alt=""/></div>
-<map name="agroup__calculators_ga160313a4276db1a2897ab0d161f5caa8_cgraph" id="agroup__calculators_ga160313a4276db1a2897ab0d161f5caa8_cgraph">
-<area shape="rect" title="Calculates the number of times at each marker that two particular alleles appear for each genotype in..." alt="" coords="5,24,146,68"/>
-<area shape="rect" href="group__collgetters.html#gab256e999fe9540658a2a3aba11260cb5" title="Gets a shallow copy of the genes/alleles of each member of the group." alt="" coords="194,5,342,33"/>
-<area shape="rect" href="group__collgetters.html#gae9131a8c72149706f67f6e4a48add79c" title="Function to count the number of genotypes that currently belong to the specified group." alt="" coords="390,32,527,60"/>
-</map>
-</div>
-<div id="dynsection-11" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
-  <img id="dynsection-11-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
-<div id="dynsection-11-summary" class="dynsummary" style="display:block;">
-</div>
-<div id="dynsection-11-content" class="dyncontent" style="display:none;">
-<div class="center"><img src="group__calculators_ga160313a4276db1a2897ab0d161f5caa8_icgraph.png" border="0" usemap="#agroup__calculators_ga160313a4276db1a2897ab0d161f5caa8_icgraph" alt=""/></div>
-<map name="agroup__calculators_ga160313a4276db1a2897ab0d161f5caa8_icgraph" id="agroup__calculators_ga160313a4276db1a2897ab0d161f5caa8_icgraph">
-<area shape="rect" title="Calculates the number of times at each marker that two particular alleles appear for each genotype in..." alt="" coords="604,49,745,93"/>
-<area shape="rect" href="group__calculators.html#ga381bf7e42397f428a322dd8e118a4243" title="Calculates the fitness metric/breeding value for each genotype in the gsc_AlleleMatrix in a certain g..." alt="" coords="390,57,556,85"/>
-<area shape="rect" href="group__collgetters.html#ga25310a2e8c9fbfabca0c90a355f0d522" title="Gets the breeding values/breeding values/fitnesses of each member of the group." alt="" coords="206,5,338,33"/>
-<area shape="rect" href="group__savers.html#ga3453d7fc7d552e7c254cf00788c45506" title="Print the breeding value of each genotype in a group to a file." alt="" coords="202,57,342,85"/>
-<area shape="rect" href="group__calculators.html#ga3b43d07c08ed861ed0f22a69bb57b94a" title="Takes the top_n individuals in the group with the best breeding values/fitnesses and puts them in a n..." alt="" coords="215,109,329,137"/>
-<area shape="rect" href="group__crossers.html#gab19b3eb80b5fe460d17c93e0c27f7aaf" title="Find the top m percent of a group and perform random crosses between those top individuals." alt="" coords="5,101,154,145"/>
+<div id="dynsection-2-content" class="dyncontent" style="display:none;">
+<div class="center"><img src="group__calculators_gac94e98cc238a772aaa6151400df71629_icgraph.png" border="0" usemap="#agroup__calculators_gac94e98cc238a772aaa6151400df71629_icgraph" alt=""/></div>
+<map name="agroup__calculators_gac94e98cc238a772aaa6151400df71629_icgraph" id="agroup__calculators_gac94e98cc238a772aaa6151400df71629_icgraph">
+<area shape="rect" title="Calculate the fitness metric/breeding value for every genotype in the simulation or every genotype in..." alt="" coords="382,32,509,60"/>
+<area shape="rect" href="group__collgetters.html#ga25310a2e8c9fbfabca0c90a355f0d522" title="Gets the breeding values/breeding values/fitnesses of each member of the group." alt="" coords="202,5,334,33"/>
+<area shape="rect" href="group__calculators.html#ga3b43d07c08ed861ed0f22a69bb57b94a" title="Takes the top_n individuals in the group with the best breeding values/fitnesses and puts them in a n..." alt="" coords="211,57,325,85"/>
+<area shape="rect" href="group__crossers.html#gab19b3eb80b5fe460d17c93e0c27f7aaf" title="Find the top m percent of a group and perform random crosses between those top individuals." alt="" coords="5,49,154,93"/>
 </map>
 </div>
 
@@ -750,11 +336,13 @@ Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
-<div id="dynsection-12" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
-  <img id="dynsection-12-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
-<div id="dynsection-12-summary" class="dynsummary" style="display:block;">
+
+<p class="definition">Definition at line <a class="el" href="sim-operations_8c_source.html#l09185">9185</a> of file <a class="el" href="sim-operations_8c_source.html">sim-operations.c</a>.</p>
+<div id="dynsection-3" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-3-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
+<div id="dynsection-3-summary" class="dynsummary" style="display:block;">
 </div>
-<div id="dynsection-12-content" class="dyncontent" style="display:none;">
+<div id="dynsection-3-content" class="dyncontent" style="display:none;">
 <div class="center"><img src="group__calculators_ga7b5ad446b4cd825f6dca63e11e362749_cgraph.png" border="0" usemap="#agroup__calculators_ga7b5ad446b4cd825f6dca63e11e362749_cgraph" alt=""/></div>
 <map name="agroup__calculators_ga7b5ad446b4cd825f6dca63e11e362749_cgraph" id="agroup__calculators_ga7b5ad446b4cd825f6dca63e11e362749_cgraph">
 <area shape="rect" title="Given a set of blocks of markers in a file, for each genotype in a group, calculate the local fitness..." alt="" coords="5,101,146,145"/>
@@ -822,11 +410,13 @@ Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
-<div id="dynsection-13" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
-  <img id="dynsection-13-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
-<div id="dynsection-13-summary" class="dynsummary" style="display:block;">
+
+<p class="definition">Definition at line <a class="el" href="sim-operations_8c_source.html#l09298">9298</a> of file <a class="el" href="sim-operations_8c_source.html">sim-operations.c</a>.</p>
+<div id="dynsection-4" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-4-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
+<div id="dynsection-4-summary" class="dynsummary" style="display:block;">
 </div>
-<div id="dynsection-13-content" class="dyncontent" style="display:none;">
+<div id="dynsection-4-content" class="dyncontent" style="display:none;">
 <div class="center"><img src="group__calculators_gada411a339f47920e091fed1d586b1425_cgraph.png" border="0" usemap="#agroup__calculators_gada411a339f47920e091fed1d586b1425_cgraph" alt=""/></div>
 <map name="agroup__calculators_gada411a339f47920e091fed1d586b1425_cgraph" id="agroup__calculators_gada411a339f47920e091fed1d586b1425_cgraph">
 <area shape="rect" title="Given a set of blocks of markers in a file, for each genotype saved, calculate the local BV for the f..." alt="" coords="5,5,167,33"/>
@@ -873,11 +463,13 @@ Functions</h2></td></tr>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>the fitness metric/breeding value of the worst genotype. </dd></dl>
-<div id="dynsection-14" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
-  <img id="dynsection-14-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
-<div id="dynsection-14-summary" class="dynsummary" style="display:block;">
+
+<p class="definition">Definition at line <a class="el" href="sim-operations_8c_source.html#l09638">9638</a> of file <a class="el" href="sim-operations_8c_source.html">sim-operations.c</a>.</p>
+<div id="dynsection-5" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-5-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
+<div id="dynsection-5-summary" class="dynsummary" style="display:block;">
 </div>
-<div id="dynsection-14-content" class="dyncontent" style="display:none;">
+<div id="dynsection-5-content" class="dyncontent" style="display:none;">
 <div class="center"><img src="group__calculators_gae2af55ef05a2bb020ebbb2a9581ea60c_cgraph.png" border="0" usemap="#agroup__calculators_gae2af55ef05a2bb020ebbb2a9581ea60c_cgraph" alt=""/></div>
 <map name="agroup__calculators_gae2af55ef05a2bb020ebbb2a9581ea60c_cgraph" id="agroup__calculators_gae2af55ef05a2bb020ebbb2a9581ea60c_cgraph">
 <area shape="rect" title="Takes a look at the currently&#45;loaded effect values and returns the lowest possible breeding value any..." alt="" coords="5,5,178,33"/>
@@ -924,11 +516,13 @@ Functions</h2></td></tr>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>the fitness metric/breeding value of the best/ideal genotype. </dd></dl>
-<div id="dynsection-15" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
-  <img id="dynsection-15-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
-<div id="dynsection-15-summary" class="dynsummary" style="display:block;">
+
+<p class="definition">Definition at line <a class="el" href="sim-operations_8c_source.html#l09516">9516</a> of file <a class="el" href="sim-operations_8c_source.html">sim-operations.c</a>.</p>
+<div id="dynsection-6" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-6-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
+<div id="dynsection-6-summary" class="dynsummary" style="display:block;">
 </div>
-<div id="dynsection-15-content" class="dyncontent" style="display:none;">
+<div id="dynsection-6-content" class="dyncontent" style="display:none;">
 <div class="center"><img src="group__calculators_gaf950c24b4c08a7557ea74a771ebdc5d8_cgraph.png" border="0" usemap="#agroup__calculators_gaf950c24b4c08a7557ea74a771ebdc5d8_cgraph" alt=""/></div>
 <map name="agroup__calculators_gaf950c24b4c08a7557ea74a771ebdc5d8_cgraph" id="agroup__calculators_gaf950c24b4c08a7557ea74a771ebdc5d8_cgraph">
 <area shape="rect" title="Takes a look at the currently&#45;loaded effect values and returns the highest possible breeding value an..." alt="" coords="5,5,175,33"/>
@@ -977,11 +571,13 @@ Functions</h2></td></tr>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>a heap array filled with a null-terminated string containing the highest scoring allele at each marker. </dd></dl>
-<div id="dynsection-16" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
-  <img id="dynsection-16-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
-<div id="dynsection-16-summary" class="dynsummary" style="display:block;">
+
+<p class="definition">Definition at line <a class="el" href="sim-operations_8c_source.html#l09400">9400</a> of file <a class="el" href="sim-operations_8c_source.html">sim-operations.c</a>.</p>
+<div id="dynsection-7" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-7-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
+<div id="dynsection-7-summary" class="dynsummary" style="display:block;">
 </div>
-<div id="dynsection-16-content" class="dyncontent" style="display:none;">
+<div id="dynsection-7-content" class="dyncontent" style="display:none;">
 <div class="center"><img src="group__calculators_gae63afe0edeaf9eab31a0328fc72fc600_cgraph.png" border="0" usemap="#agroup__calculators_gae63afe0edeaf9eab31a0328fc72fc600_cgraph" alt=""/></div>
 <map name="agroup__calculators_gae63afe0edeaf9eab31a0328fc72fc600_cgraph" id="agroup__calculators_gae63afe0edeaf9eab31a0328fc72fc600_cgraph">
 <area shape="rect" title="Takes a look at the currently&#45;loaded effect values and creates a string containing the allele with th..." alt="" coords="5,24,156,68"/>
@@ -1037,11 +633,13 @@ Functions</h2></td></tr>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>the fitness metric/breeding value of the best genotype </dd></dl>
-<div id="dynsection-17" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
-  <img id="dynsection-17-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
-<div id="dynsection-17-summary" class="dynsummary" style="display:block;">
+
+<p class="definition">Definition at line <a class="el" href="sim-operations_8c_source.html#l09558">9558</a> of file <a class="el" href="sim-operations_8c_source.html">sim-operations.c</a>.</p>
+<div id="dynsection-8" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-8-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
+<div id="dynsection-8-summary" class="dynsummary" style="display:block;">
 </div>
-<div id="dynsection-17-content" class="dyncontent" style="display:none;">
+<div id="dynsection-8-content" class="dyncontent" style="display:none;">
 <div class="center"><img src="group__calculators_ga1f9eb57dc514f86c2923f5f91a140c4f_cgraph.png" border="0" usemap="#agroup__calculators_ga1f9eb57dc514f86c2923f5f91a140c4f_cgraph" alt=""/></div>
 <map name="agroup__calculators_ga1f9eb57dc514f86c2923f5f91a140c4f_cgraph" id="agroup__calculators_ga1f9eb57dc514f86c2923f5f91a140c4f_cgraph">
 <area shape="rect" title="Calculates the breeding value of the highest breeding&#45;value genotype that can be created from the all..." alt="" coords="5,49,156,93"/>
@@ -1098,11 +696,13 @@ Functions</h2></td></tr>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>a heap array filled with a null-terminated string containing the highest scoring allele at each marker. </dd></dl>
-<div id="dynsection-18" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
-  <img id="dynsection-18-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
-<div id="dynsection-18-summary" class="dynsummary" style="display:block;">
+
+<p class="definition">Definition at line <a class="el" href="sim-operations_8c_source.html#l09441">9441</a> of file <a class="el" href="sim-operations_8c_source.html">sim-operations.c</a>.</p>
+<div id="dynsection-9" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-9-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
+<div id="dynsection-9-summary" class="dynsummary" style="display:block;">
 </div>
-<div id="dynsection-18-content" class="dyncontent" style="display:none;">
+<div id="dynsection-9-content" class="dyncontent" style="display:none;">
 <div class="center"><img src="group__calculators_ga145430273fd296e49528a27489f0e520_cgraph.png" border="0" usemap="#agroup__calculators_ga145430273fd296e49528a27489f0e520_cgraph" alt=""/></div>
 <map name="agroup__calculators_ga145430273fd296e49528a27489f0e520_cgraph" id="agroup__calculators_ga145430273fd296e49528a27489f0e520_cgraph">
 <area shape="rect" title="Calculates the highest&#45;breeding&#45;value haplotype that can be created from the alleles present in a giv..." alt="" coords="5,76,156,120"/>
@@ -1110,6 +710,288 @@ Functions</h2></td></tr>
 <area shape="rect" href="group__collgetters.html#gae9131a8c72149706f67f6e4a48add79c" title="Function to count the number of genotypes that currently belong to the specified group." alt="" coords="419,32,556,60"/>
 <area shape="rect" href="group__supporters.html#gac15b90373af3e2828a786215e90963a8" title="Function to identify the lookup index of a marker effect set identifier." alt="" coords="204,109,371,137"/>
 <area shape="rect" href="sim-operations_8c.html#aaaf3ebc75feaf901829232712e55677b" title="Replace calls to malloc direct with this function." alt="" coords="227,161,348,189"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="ga8f765775d463c59f8437da21dad6fab4" name="ga8f765775d463c59f8437da21dad6fab4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga8f765775d463c59f8437da21dad6fab4">&#9670;&nbsp;</a></span>gsc_calculate_utility_allele_counts()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void gsc_calculate_utility_allele_counts </td>
+          <td>(</td>
+          <td class="paramtype">const size_t&#160;</td>
+          <td class="paramname"><em>n_markers</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const size_t&#160;</td>
+          <td class="paramname"><em>n_genotypes</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char **const&#160;</td>
+          <td class="paramname"><em>genotypes</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char&#160;</td>
+          <td class="paramname"><em>allele</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structgsc___decimal_matrix.html">gsc_DecimalMatrix</a> *&#160;</td>
+          <td class="paramname"><em>counts</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Calculates the number of times at each marker that a particular allele appears. </p>
+<p >Saves the result to a <a class="el" href="structgsc___decimal_matrix.html" title="A row-major heap matrix that contains floating point numbers.">gsc_DecimalMatrix</a> provided by the calling context.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">n_markers</td><td>number of genetic markers in each genotype. </td></tr>
+    <tr><td class="paramname">n_genotypes</td><td>number of genotypes to calculate counts for. (length of the following vector) </td></tr>
+    <tr><td class="paramname">genotypes</td><td>pointers to genotype strings for which to count the alleles at particular markers. </td></tr>
+    <tr><td class="paramname">allele</td><td>the single-character allele to be counting. </td></tr>
+    <tr><td class="paramname">counts</td><td>pointer to the <a class="el" href="structgsc___decimal_matrix.html" title="A row-major heap matrix that contains floating point numbers.">gsc_DecimalMatrix</a> into which to put the number of <code>allele</code> occurences at each row/marker for each column/genotype in the group. The DecimalMatrix should have at least <em>n_genotypes</em> rows and <em>n_markers</em> columns, if not, no output will be saved. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definition at line <a class="el" href="sim-operations_8c_source.html#l08837">8837</a> of file <a class="el" href="sim-operations_8c_source.html">sim-operations.c</a>.</p>
+<div id="dynsection-10" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-10-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
+<div id="dynsection-10-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-10-content" class="dyncontent" style="display:none;">
+<div class="center"><img src="group__calculators_ga8f765775d463c59f8437da21dad6fab4_icgraph.png" border="0" usemap="#agroup__calculators_ga8f765775d463c59f8437da21dad6fab4_icgraph" alt=""/></div>
+<map name="agroup__calculators_ga8f765775d463c59f8437da21dad6fab4_icgraph" id="agroup__calculators_ga8f765775d463c59f8437da21dad6fab4_icgraph">
+<area shape="rect" title="Calculates the number of times at each marker that a particular allele appears." alt="" coords="1292,51,1432,95"/>
+<area shape="rect" href="group__calculators.html#gafbf562b4479f030957c8955ada159b0e" title="Calculates the number of times at each marker that a particular allele appears." alt="" coords="1093,20,1231,64"/>
+<area shape="rect" href="group__calculators.html#ga5eb332e54b2f90f399a28a65cdb25e36" title="Calculate the fitness metric/breeding value for a set of genotypes." alt="" coords="1079,88,1244,116"/>
+<area shape="rect" href="group__calculators.html#gac94e98cc238a772aaa6151400df71629" title="Calculate the fitness metric/breeding value for every genotype in the simulation or every genotype in..." alt="" coords="898,57,1025,85"/>
+<area shape="rect" href="group__savers.html#ga710981b758de78c6dd9f4e5ab61971fc" title="Calculate and print breeding values to a file." alt="" coords="892,117,1031,145"/>
+<area shape="rect" href="group__collgetters.html#ga25310a2e8c9fbfabca0c90a355f0d522" title="Gets the breeding values/breeding values/fitnesses of each member of the group." alt="" coords="700,5,833,33"/>
+<area shape="rect" href="group__calculators.html#ga3b43d07c08ed861ed0f22a69bb57b94a" title="Takes the top_n individuals in the group with the best breeding values/fitnesses and puts them in a n..." alt="" coords="504,33,617,61"/>
+<area shape="rect" href="group__crossers.html#gab19b3eb80b5fe460d17c93e0c27f7aaf" title="Find the top m percent of a group and perform random crosses between those top individuals." alt="" coords="26,52,174,96"/>
+<area shape="rect" href="sim-operations_8c.html#a7072c6a3834472e7fbd768c0275fdc54" title="save&#45;as&#45;you&#45;go (breeding values)" alt="" coords="689,109,844,153"/>
+<area shape="rect" href="group__savers.html#ga6148ecde2587d6d37c313cfb88401771" title="Prints breeding values of genotypes in the simulation to a file." alt="" coords="716,177,817,205"/>
+<area shape="rect" href="group__crossers.html#ga28b0fcf60b6a8f6e8ca470f7b5d0a4b7" title="Make new genotypes (generic function)" alt="" coords="479,133,641,177"/>
+<area shape="rect" href="group__crossers.html#ga15af204958dc69717334c46b19219a2d" title="Creates an identical copy of each member of a group." alt="" coords="274,37,400,65"/>
+<area shape="rect" href="group__crossers.html#ga6c230330ca9a9db9459d4477512a21af" title="Creates a doubled haploid from each member of a group." alt="" coords="243,89,431,117"/>
+<area shape="rect" href="group__crossers.html#ga03af5446006203244dd3080cf75af26f" title="Performs random crosses among members of a group." alt="" coords="245,141,429,169"/>
+<area shape="rect" href="group__crossers.html#ga652376b5a34d24f239e5fc0b167c067b" title="Performs random crosses where the first parent comes from one group and the second from another." alt="" coords="245,193,429,237"/>
+<area shape="rect" href="group__crossers.html#ga4450224009587f4cd4a972413423c96e" title="Performs the crosses of pairs of parents whose indexes are provided in an array." alt="" coords="243,261,431,289"/>
+<area shape="rect" href="group__crossers.html#gab625453074798be6ba8677a5d4986edf" title="Selfs each member of a group for a certain number of generations." alt="" coords="276,313,398,341"/>
+<area shape="rect" href="group__crossers.html#gaa70fd79312587d8e9fc166c64612cbce" title="Perform crosses between all pairs of parents in the group from_group and allocates the resulting offs..." alt="" coords="8,193,192,237"/>
+<area shape="rect" href="group__crossers.html#ga5c0be901d03d0e5dd3d74bc19a4bea70" title="Perform crosses between pairs of parents identified by name in a file and allocate the resulting offs..." alt="" coords="5,261,195,289"/>
+<area shape="rect" href="group__crossers.html#ga2b8100d2d30cf1ada0db8403663076ff" title="Perform crosses between previously&#45;generated offspring of pairs of parents identified by name in a fi..." alt="" coords="10,313,190,357"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="ga19bbe4c5c9d867e9c627bbda7aa9bd22" name="ga19bbe4c5c9d867e9c627bbda7aa9bd22"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga19bbe4c5c9d867e9c627bbda7aa9bd22">&#9670;&nbsp;</a></span>gsc_calculate_utility_allele_counts_pair()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void gsc_calculate_utility_allele_counts_pair </td>
+          <td>(</td>
+          <td class="paramtype">const size_t&#160;</td>
+          <td class="paramname"><em>n_markers</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const size_t&#160;</td>
+          <td class="paramname"><em>n_genotypes</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char **const&#160;</td>
+          <td class="paramname"><em>genotypes</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char&#160;</td>
+          <td class="paramname"><em>allele</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structgsc___decimal_matrix.html">gsc_DecimalMatrix</a> *&#160;</td>
+          <td class="paramname"><em>counts</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char&#160;</td>
+          <td class="paramname"><em>allele2</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structgsc___decimal_matrix.html">gsc_DecimalMatrix</a> *&#160;</td>
+          <td class="paramname"><em>counts2</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Calculates the number of times at each marker that two particular alleles appear. </p>
+<p >Saves the results for each allele to a <a class="el" href="structgsc___decimal_matrix.html" title="A row-major heap matrix that contains floating point numbers.">gsc_DecimalMatrix</a> provided by the calling context.</p>
+<p >This function is the same as <em>gsc_calculate_utility_allele_counts</em>, but for two alleles at a time, for the purpose of loop unrolling in breeding value calculations.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">n_markers</td><td>number of genetic markers in each genotype. </td></tr>
+    <tr><td class="paramname">n_genotypes</td><td>number of genotypes to calculate counts for. (length of the following vector) </td></tr>
+    <tr><td class="paramname">genotypes</td><td>pointers to genotype strings for which to count the alleles at particular markers. </td></tr>
+    <tr><td class="paramname">allele</td><td>the first single-character allele to be counting. </td></tr>
+    <tr><td class="paramname">counts</td><td>pointer to the <a class="el" href="structgsc___decimal_matrix.html" title="A row-major heap matrix that contains floating point numbers.">gsc_DecimalMatrix</a> into which to put the number of <code>allele</code> occurences at each row/marker for each column/genotype in the group. The DecimalMatrix should have at least <em>n_genotypes</em> rows and <em>n_markers</em> columns, if not, no output will be saved. </td></tr>
+    <tr><td class="paramname">allele2</td><td>the second single-character allele to be counting. </td></tr>
+    <tr><td class="paramname">counts2</td><td>pointer to the <a class="el" href="structgsc___decimal_matrix.html" title="A row-major heap matrix that contains floating point numbers.">gsc_DecimalMatrix</a> into which to put the number of <code>allele2</code> occurences at each row/marker for each column/genotype in the group. The DecimalMatrix should have at least <em>n_genotypes</em> rows and <em>n_markers</em> columns, if not, no output will be saved. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definition at line <a class="el" href="sim-operations_8c_source.html#l08881">8881</a> of file <a class="el" href="sim-operations_8c_source.html">sim-operations.c</a>.</p>
+<div id="dynsection-11" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-11-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
+<div id="dynsection-11-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-11-content" class="dyncontent" style="display:none;">
+<div class="center"><img src="group__calculators_ga19bbe4c5c9d867e9c627bbda7aa9bd22_icgraph.png" border="0" usemap="#agroup__calculators_ga19bbe4c5c9d867e9c627bbda7aa9bd22_icgraph" alt=""/></div>
+<map name="agroup__calculators_ga19bbe4c5c9d867e9c627bbda7aa9bd22_icgraph" id="agroup__calculators_ga19bbe4c5c9d867e9c627bbda7aa9bd22_icgraph">
+<area shape="rect" title="Calculates the number of times at each marker that two particular alleles appear." alt="" coords="1292,80,1432,124"/>
+<area shape="rect" href="group__calculators.html#ga5eb332e54b2f90f399a28a65cdb25e36" title="Calculate the fitness metric/breeding value for a set of genotypes." alt="" coords="1079,88,1244,116"/>
+<area shape="rect" href="group__calculators.html#gac94e98cc238a772aaa6151400df71629" title="Calculate the fitness metric/breeding value for every genotype in the simulation or every genotype in..." alt="" coords="898,57,1025,85"/>
+<area shape="rect" href="group__savers.html#ga710981b758de78c6dd9f4e5ab61971fc" title="Calculate and print breeding values to a file." alt="" coords="892,117,1031,145"/>
+<area shape="rect" href="group__collgetters.html#ga25310a2e8c9fbfabca0c90a355f0d522" title="Gets the breeding values/breeding values/fitnesses of each member of the group." alt="" coords="700,5,833,33"/>
+<area shape="rect" href="group__calculators.html#ga3b43d07c08ed861ed0f22a69bb57b94a" title="Takes the top_n individuals in the group with the best breeding values/fitnesses and puts them in a n..." alt="" coords="504,33,617,61"/>
+<area shape="rect" href="group__crossers.html#gab19b3eb80b5fe460d17c93e0c27f7aaf" title="Find the top m percent of a group and perform random crosses between those top individuals." alt="" coords="26,52,174,96"/>
+<area shape="rect" href="sim-operations_8c.html#a7072c6a3834472e7fbd768c0275fdc54" title="save&#45;as&#45;you&#45;go (breeding values)" alt="" coords="689,109,844,153"/>
+<area shape="rect" href="group__savers.html#ga6148ecde2587d6d37c313cfb88401771" title="Prints breeding values of genotypes in the simulation to a file." alt="" coords="716,177,817,205"/>
+<area shape="rect" href="group__crossers.html#ga28b0fcf60b6a8f6e8ca470f7b5d0a4b7" title="Make new genotypes (generic function)" alt="" coords="479,133,641,177"/>
+<area shape="rect" href="group__crossers.html#ga15af204958dc69717334c46b19219a2d" title="Creates an identical copy of each member of a group." alt="" coords="274,37,400,65"/>
+<area shape="rect" href="group__crossers.html#ga6c230330ca9a9db9459d4477512a21af" title="Creates a doubled haploid from each member of a group." alt="" coords="243,89,431,117"/>
+<area shape="rect" href="group__crossers.html#ga03af5446006203244dd3080cf75af26f" title="Performs random crosses among members of a group." alt="" coords="245,141,429,169"/>
+<area shape="rect" href="group__crossers.html#ga652376b5a34d24f239e5fc0b167c067b" title="Performs random crosses where the first parent comes from one group and the second from another." alt="" coords="245,193,429,237"/>
+<area shape="rect" href="group__crossers.html#ga4450224009587f4cd4a972413423c96e" title="Performs the crosses of pairs of parents whose indexes are provided in an array." alt="" coords="243,261,431,289"/>
+<area shape="rect" href="group__crossers.html#gab625453074798be6ba8677a5d4986edf" title="Selfs each member of a group for a certain number of generations." alt="" coords="276,313,398,341"/>
+<area shape="rect" href="group__crossers.html#gaa70fd79312587d8e9fc166c64612cbce" title="Perform crosses between all pairs of parents in the group from_group and allocates the resulting offs..." alt="" coords="8,193,192,237"/>
+<area shape="rect" href="group__crossers.html#ga5c0be901d03d0e5dd3d74bc19a4bea70" title="Perform crosses between pairs of parents identified by name in a file and allocate the resulting offs..." alt="" coords="5,261,195,289"/>
+<area shape="rect" href="group__crossers.html#ga2b8100d2d30cf1ada0db8403663076ff" title="Perform crosses between previously&#45;generated offspring of pairs of parents identified by name in a fi..." alt="" coords="10,313,190,357"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="ga5eb332e54b2f90f399a28a65cdb25e36" name="ga5eb332e54b2f90f399a28a65cdb25e36"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga5eb332e54b2f90f399a28a65cdb25e36">&#9670;&nbsp;</a></span>gsc_calculate_utility_bvs()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structgsc___decimal_matrix.html">gsc_DecimalMatrix</a> gsc_calculate_utility_bvs </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structgsc___bidirectional_iterator.html">gsc_BidirectionalIterator</a> *&#160;</td>
+          <td class="paramname"><em>targets</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="structgsc___effect_matrix.html">gsc_EffectMatrix</a> *&#160;</td>
+          <td class="paramname"><em>effset</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Calculate the fitness metric/breeding value for a set of genotypes. </p>
+<p >The breeding value is calculated as the sum, across all alleles, of the (genotypes x markers) count matrix for that allele multiplied by the (markers x 1) marker effects for that allele.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">targets</td><td>Iterator for the genotypes whose breeding values are to be calculated. </td></tr>
+    <tr><td class="paramname">effset</td><td>Set of additive marker effects to use to calculate the breeding values. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>(1 x number of genotypes in iterator) <a class="el" href="structgsc___decimal_matrix.html" title="A row-major heap matrix that contains floating point numbers.">gsc_DecimalMatrix</a>, containing the breeding value scores </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="sim-operations_8c_source.html#l08734">8734</a> of file <a class="el" href="sim-operations_8c_source.html">sim-operations.c</a>.</p>
+<div id="dynsection-12" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-12-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
+<div id="dynsection-12-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-12-content" class="dyncontent" style="display:none;">
+<div class="center"><img src="group__calculators_ga5eb332e54b2f90f399a28a65cdb25e36_cgraph.png" border="0" usemap="#agroup__calculators_ga5eb332e54b2f90f399a28a65cdb25e36_cgraph" alt=""/></div>
+<map name="agroup__calculators_ga5eb332e54b2f90f399a28a65cdb25e36_cgraph" id="agroup__calculators_ga5eb332e54b2f90f399a28a65cdb25e36_cgraph">
+<area shape="rect" title="Calculate the fitness metric/breeding value for a set of genotypes." alt="" coords="5,277,171,305"/>
+<area shape="rect" href="group__maths.html#gadaec2ba547549392530e91e50a3c985d" title="Multiply two sets of a gsc_DecimalMatrix and vector, and add both products to the first column of a p..." alt="" coords="219,5,404,49"/>
+<area shape="rect" href="group__maths.html#ga6fdcedf004c9d08e5135d30deb5b12fa" title="Multiply a gsc_DecimalMatrix to a vector, and add that product to the first column of a provided gsc_..." alt="" coords="238,73,385,117"/>
+<area shape="rect" href="group__calculators.html#ga8f765775d463c59f8437da21dad6fab4" title="Calculates the number of times at each marker that a particular allele appears." alt="" coords="242,141,381,185"/>
+<area shape="rect" href="group__calculators.html#ga19bbe4c5c9d867e9c627bbda7aa9bd22" title="Calculates the number of times at each marker that two particular alleles appear." alt="" coords="242,209,381,253"/>
+<area shape="rect" href="group__deletors.html#ga99bbd9355f031efae628b27e6ae72f6a" title="Deletes a gsc_DecimalMatrix and frees its memory." alt="" coords="244,277,379,305"/>
+<area shape="rect" href="group__maths.html#gae001e0609ac52df335530f9473cb57e1" title="Generates a matrix of c columns, r rows with all 0." alt="" coords="221,329,402,357"/>
+<area shape="rect" href="group__liteget.html#ga5e1e89782604c9ab47f196e1da233362" title="Get the alleles of a genotype." alt="" coords="256,381,367,409"/>
+<area shape="rect" href="group__iterators.html#ga630ba7f8e864238e296cb9480dfbc728" title="Get the next location from a bidirectional iterator." alt="" coords="247,433,376,461"/>
+<area shape="rect" href="group__iterators.html#gaa4fa2aec3b7f49f9925fe82c8ff38dcd" title="Initialise a Bidirectional iterator to the start of its sequence." alt="" coords="452,451,595,495"/>
+<area shape="rect" href="sim-operations_8c.html#aaaf3ebc75feaf901829232712e55677b" title="Replace calls to malloc direct with this function." alt="" coords="463,329,584,357"/>
+</map>
+</div>
+<div id="dynsection-13" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-13-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
+<div id="dynsection-13-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-13-content" class="dyncontent" style="display:none;">
+<div class="center"><img src="group__calculators_ga5eb332e54b2f90f399a28a65cdb25e36_icgraph.png" border="0" usemap="#agroup__calculators_ga5eb332e54b2f90f399a28a65cdb25e36_icgraph" alt=""/></div>
+<map name="agroup__calculators_ga5eb332e54b2f90f399a28a65cdb25e36_icgraph" id="agroup__calculators_ga5eb332e54b2f90f399a28a65cdb25e36_icgraph">
+<area shape="rect" title="Calculate the fitness metric/breeding value for a set of genotypes." alt="" coords="1079,88,1244,116"/>
+<area shape="rect" href="group__calculators.html#gac94e98cc238a772aaa6151400df71629" title="Calculate the fitness metric/breeding value for every genotype in the simulation or every genotype in..." alt="" coords="898,57,1025,85"/>
+<area shape="rect" href="group__savers.html#ga710981b758de78c6dd9f4e5ab61971fc" title="Calculate and print breeding values to a file." alt="" coords="892,117,1031,145"/>
+<area shape="rect" href="group__collgetters.html#ga25310a2e8c9fbfabca0c90a355f0d522" title="Gets the breeding values/breeding values/fitnesses of each member of the group." alt="" coords="700,5,833,33"/>
+<area shape="rect" href="group__calculators.html#ga3b43d07c08ed861ed0f22a69bb57b94a" title="Takes the top_n individuals in the group with the best breeding values/fitnesses and puts them in a n..." alt="" coords="504,33,617,61"/>
+<area shape="rect" href="group__crossers.html#gab19b3eb80b5fe460d17c93e0c27f7aaf" title="Find the top m percent of a group and perform random crosses between those top individuals." alt="" coords="26,52,174,96"/>
+<area shape="rect" href="sim-operations_8c.html#a7072c6a3834472e7fbd768c0275fdc54" title="save&#45;as&#45;you&#45;go (breeding values)" alt="" coords="689,109,844,153"/>
+<area shape="rect" href="group__savers.html#ga6148ecde2587d6d37c313cfb88401771" title="Prints breeding values of genotypes in the simulation to a file." alt="" coords="716,177,817,205"/>
+<area shape="rect" href="group__crossers.html#ga28b0fcf60b6a8f6e8ca470f7b5d0a4b7" title="Make new genotypes (generic function)" alt="" coords="479,133,641,177"/>
+<area shape="rect" href="group__crossers.html#ga15af204958dc69717334c46b19219a2d" title="Creates an identical copy of each member of a group." alt="" coords="274,37,400,65"/>
+<area shape="rect" href="group__crossers.html#ga6c230330ca9a9db9459d4477512a21af" title="Creates a doubled haploid from each member of a group." alt="" coords="243,89,431,117"/>
+<area shape="rect" href="group__crossers.html#ga03af5446006203244dd3080cf75af26f" title="Performs random crosses among members of a group." alt="" coords="245,141,429,169"/>
+<area shape="rect" href="group__crossers.html#ga652376b5a34d24f239e5fc0b167c067b" title="Performs random crosses where the first parent comes from one group and the second from another." alt="" coords="245,193,429,237"/>
+<area shape="rect" href="group__crossers.html#ga4450224009587f4cd4a972413423c96e" title="Performs the crosses of pairs of parents whose indexes are provided in an array." alt="" coords="243,261,431,289"/>
+<area shape="rect" href="group__crossers.html#gab625453074798be6ba8677a5d4986edf" title="Selfs each member of a group for a certain number of generations." alt="" coords="276,313,398,341"/>
+<area shape="rect" href="group__crossers.html#gaa70fd79312587d8e9fc166c64612cbce" title="Perform crosses between all pairs of parents in the group from_group and allocates the resulting offs..." alt="" coords="8,193,192,237"/>
+<area shape="rect" href="group__crossers.html#ga5c0be901d03d0e5dd3d74bc19a4bea70" title="Perform crosses between pairs of parents identified by name in a file and allocate the resulting offs..." alt="" coords="5,261,195,289"/>
+<area shape="rect" href="group__crossers.html#ga2b8100d2d30cf1ada0db8403663076ff" title="Perform crosses between previously&#45;generated offspring of pairs of parents identified by name in a fi..." alt="" coords="10,313,190,357"/>
 </map>
 </div>
 
@@ -1163,11 +1045,13 @@ Functions</h2></td></tr>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>a struct containing the markers identified as belonging to each block. </dd></dl>
-<div id="dynsection-19" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
-  <img id="dynsection-19-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
-<div id="dynsection-19-summary" class="dynsummary" style="display:block;">
+
+<p class="definition">Definition at line <a class="el" href="sim-operations_8c_source.html#l08936">8936</a> of file <a class="el" href="sim-operations_8c_source.html">sim-operations.c</a>.</p>
+<div id="dynsection-14" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-14-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
+<div id="dynsection-14-summary" class="dynsummary" style="display:block;">
 </div>
-<div id="dynsection-19-content" class="dyncontent" style="display:none;">
+<div id="dynsection-14-content" class="dyncontent" style="display:none;">
 <div class="center"><img src="group__calculators_ga3f2aedf883cd7cadb039feac6bb28ef1_cgraph.png" border="0" usemap="#agroup__calculators_ga3f2aedf883cd7cadb039feac6bb28ef1_cgraph" alt=""/></div>
 <map name="agroup__calculators_ga3f2aedf883cd7cadb039feac6bb28ef1_cgraph" id="agroup__calculators_ga3f2aedf883cd7cadb039feac6bb28ef1_cgraph">
 <area shape="rect" title="Divide the genotype into blocks where each block contains all markers within a 1/n length section of ..." alt="" coords="5,24,159,68"/>
@@ -1218,11 +1102,13 @@ Functions</h2></td></tr>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>a struct containing the markers identified as belonging to each block according to their definitions in the file. </dd></dl>
-<div id="dynsection-20" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
-  <img id="dynsection-20-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
-<div id="dynsection-20-summary" class="dynsummary" style="display:block;">
+
+<p class="definition">Definition at line <a class="el" href="sim-operations_8c_source.html#l09089">9089</a> of file <a class="el" href="sim-operations_8c_source.html">sim-operations.c</a>.</p>
+<div id="dynsection-15" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-15-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
+<div id="dynsection-15-summary" class="dynsummary" style="display:block;">
 </div>
-<div id="dynsection-20-content" class="dyncontent" style="display:none;">
+<div id="dynsection-15-content" class="dyncontent" style="display:none;">
 <div class="center"><img src="group__calculators_gaf6f32f41ae7ca27c1a48f8947919794a_cgraph.png" border="0" usemap="#agroup__calculators_gaf6f32f41ae7ca27c1a48f8947919794a_cgraph" alt=""/></div>
 <map name="agroup__calculators_gaf6f32f41ae7ca27c1a48f8947919794a_cgraph" id="agroup__calculators_gaf6f32f41ae7ca27c1a48f8947919794a_cgraph">
 <area shape="rect" title="Given a file containing definitions of blocks of markers, process that file and return a struct conta..." alt="" coords="5,65,124,93"/>
@@ -1292,47 +1178,53 @@ Functions</h2></td></tr>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>the group number of the newly-created split-off group </dd></dl>
-<div id="dynsection-21" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
-  <img id="dynsection-21-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
-<div id="dynsection-21-summary" class="dynsummary" style="display:block;">
+
+<p class="definition">Definition at line <a class="el" href="sim-operations_8c_source.html#l08643">8643</a> of file <a class="el" href="sim-operations_8c_source.html">sim-operations.c</a>.</p>
+<div id="dynsection-16" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-16-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
+<div id="dynsection-16-summary" class="dynsummary" style="display:block;">
 </div>
-<div id="dynsection-21-content" class="dyncontent" style="display:none;">
+<div id="dynsection-16-content" class="dyncontent" style="display:none;">
 <div class="center"><img src="group__calculators_ga3b43d07c08ed861ed0f22a69bb57b94a_cgraph.png" border="0" usemap="#agroup__calculators_ga3b43d07c08ed861ed0f22a69bb57b94a_cgraph" alt=""/></div>
 <map name="agroup__calculators_ga3b43d07c08ed861ed0f22a69bb57b94a_cgraph" id="agroup__calculators_ga3b43d07c08ed861ed0f22a69bb57b94a_cgraph">
-<area shape="rect" title="Takes the top_n individuals in the group with the best breeding values/fitnesses and puts them in a n..." alt="" coords="5,435,119,463"/>
-<area shape="rect" href="group__calculators.html#ga381bf7e42397f428a322dd8e118a4243" title="Calculates the fitness metric/breeding value for each genotype in the gsc_AlleleMatrix in a certain g..." alt="" coords="167,358,333,386"/>
-<area shape="rect" href="group__collgetters.html#gae9131a8c72149706f67f6e4a48add79c" title="Function to count the number of genotypes that currently belong to the specified group." alt="" coords="857,130,995,158"/>
-<area shape="rect" href="group__deletors.html#ga99bbd9355f031efae628b27e6ae72f6a" title="Deletes a gsc_DecimalMatrix and frees its memory." alt="" coords="415,480,549,508"/>
-<area shape="rect" href="group__supporters.html#gac15b90373af3e2828a786215e90963a8" title="Function to identify the lookup index of a marker effect set identifier." alt="" coords="399,532,566,560"/>
-<area shape="rect" href="group__collgetters.html#ga90490b08f70757c55e06b842abc5d1ce" title="Gets the indexes (0&#45;based, from the start of the linked list in the gsc_SimData) of each member of th..." alt="" coords="636,52,794,80"/>
-<area shape="rect" href="sim-operations_8c.html#a3c42957f4439d2f2b00d9cc2fa54c6c7" title="Comparator function for qsort." alt="" coords="175,512,325,556"/>
-<area shape="rect" href="sim-operations_8c.html#a4d1427e76e7fd129c6585493e80be049" title="Comparator function for qsort." alt="" coords="171,580,329,624"/>
-<area shape="rect" href="group__groupmod.html#ga9a3bd44f93ffc4ee634a9c5d1aeb59a2" title="Take a list of indexes and allocate the genotypes at those indexes to a new group." alt="" coords="174,648,326,676"/>
-<area shape="rect" href="group__maths.html#gadaec2ba547549392530e91e50a3c985d" title="Multiply two sets of a gsc_DecimalMatrix and vector, and add both products to the first column of a p..." alt="" coords="390,292,575,336"/>
-<area shape="rect" href="group__maths.html#ga6fdcedf004c9d08e5135d30deb5b12fa" title="Multiply a gsc_DecimalMatrix to a vector, and add that product to the first column of a provided gsc_..." alt="" coords="409,360,556,404"/>
-<area shape="rect" href="group__calculators.html#ga12c13aaf31fccff2f9ddd612035c426a" title="Calculates the number of times at each marker that a particular allele appears for each genotype in a..." alt="" coords="412,224,552,268"/>
-<area shape="rect" href="group__calculators.html#ga160313a4276db1a2897ab0d161f5caa8" title="Calculates the number of times at each marker that two particular alleles appear for each genotype in..." alt="" coords="412,156,552,200"/>
-<area shape="rect" href="group__maths.html#gae001e0609ac52df335530f9473cb57e1" title="Generates a matrix of c columns, r rows with all 0." alt="" coords="392,428,573,456"/>
-<area shape="rect" href="group__collgetters.html#gab256e999fe9540658a2a3aba11260cb5" title="Gets a shallow copy of the genes/alleles of each member of the group." alt="" coords="641,207,789,235"/>
-<area shape="rect" href="sim-operations_8c.html#aaaf3ebc75feaf901829232712e55677b" title="Replace calls to malloc direct with this function." alt="" coords="654,558,776,586"/>
-<area shape="rect" href="group__iterators.html#gaa26377edd1339407af2070924d3596de" title="Create a Random Access Iterator." alt="" coords="381,584,583,612"/>
-<area shape="rect" href="group__supporters.html#ga22609353c4951dcf3ed54537ecb6eeda" title="Function to identify the next sequential integer that does not identify a group that currently has me..." alt="" coords="398,688,566,716"/>
-<area shape="rect" href="group__iterators.html#ga5b9b804b6c3b0c165f20a765942fa810" title="Get a location by index using a gsc_RandomAccessIterator." alt="" coords="420,636,544,664"/>
-<area shape="rect" href="group__liteget.html#ga7c88af63ccbce0c1e9026339d38fe53a" title="Set the current group membership of a genotype." alt="" coords="429,740,535,768"/>
-<area shape="rect" href="group__collgetters.html#gaf9692ce014cfe5439fd00e522a6bab9f" title="Identify group numbers that currently have members." alt="" coords="632,714,798,742"/>
-<area shape="rect" href="group__collgetters.html#gaddb8ea59b22bbe0ec8c61da7f5ba8a98" title="Identify group numbers that currently have members, and how many members they have." alt="" coords="847,700,1005,744"/>
-<area shape="rect" href="group__iterators.html#ga05da8d96593f8404938cc24f659db049" title="Create a bidirectional iterator." alt="" coords="1053,730,1239,758"/>
-<area shape="rect" href="group__liteget.html#gae5d12aca851dd2358b63dc60b8ac6e5f" title="Get the current group membership of a genotype." alt="" coords="1093,615,1199,643"/>
-<area shape="rect" href="group__iterators.html#ga630ba7f8e864238e296cb9480dfbc728" title="Get the next location from a bidirectional iterator." alt="" coords="1082,678,1211,706"/>
-<area shape="rect" href="group__iterators.html#gaa4fa2aec3b7f49f9925fe82c8ff38dcd" title="Initialise a Bidirectional iterator to the start of its sequence." alt="" coords="1287,670,1431,714"/>
-<area shape="rect" href="group__iterators.html#ga16615a5663b4d3bd768d8380f820aa66" title="Get an gsc_AlleleMatrix by index in the linked list." alt="" coords="631,662,799,690"/>
+<area shape="rect" title="Takes the top_n individuals in the group with the best breeding values/fitnesses and puts them in a n..." alt="" coords="5,651,119,679"/>
+<area shape="rect" href="group__calculators.html#gac94e98cc238a772aaa6151400df71629" title="Calculate the fitness metric/breeding value for every genotype in the simulation or every genotype in..." alt="" coords="182,444,310,472"/>
+<area shape="rect" href="group__deletors.html#ga99bbd9355f031efae628b27e6ae72f6a" title="Deletes a gsc_DecimalMatrix and frees its memory." alt="" coords="649,561,783,589"/>
+<area shape="rect" href="group__supporters.html#gac15b90373af3e2828a786215e90963a8" title="Function to identify the lookup index of a marker effect set identifier." alt="" coords="391,521,558,549"/>
+<area shape="rect" href="group__collgetters.html#ga90490b08f70757c55e06b842abc5d1ce" title="Gets the indexes (0&#45;based, from the start of the linked list in the gsc_SimData) of each member of th..." alt="" coords="167,624,325,652"/>
+<area shape="rect" href="group__collgetters.html#gae9131a8c72149706f67f6e4a48add79c" title="Function to count the number of genotypes that currently belong to the specified group." alt="" coords="406,629,543,657"/>
+<area shape="rect" href="sim-operations_8c.html#a3c42957f4439d2f2b00d9cc2fa54c6c7" title="Comparator function for qsort." alt="" coords="171,728,321,772"/>
+<area shape="rect" href="sim-operations_8c.html#a4d1427e76e7fd129c6585493e80be049" title="Comparator function for qsort." alt="" coords="167,796,325,840"/>
+<area shape="rect" href="group__groupmod.html#ga9a3bd44f93ffc4ee634a9c5d1aeb59a2" title="Take a list of indexes and allocate the genotypes at those indexes to a new group." alt="" coords="170,864,322,892"/>
+<area shape="rect" href="group__calculators.html#ga5eb332e54b2f90f399a28a65cdb25e36" title="Calculate the fitness metric/breeding value for a set of genotypes." alt="" coords="392,269,557,297"/>
+<area shape="rect" href="group__maths.html#gae001e0609ac52df335530f9473cb57e1" title="Generates a matrix of c columns, r rows with all 0." alt="" coords="625,432,807,460"/>
+<area shape="rect" href="group__iterators.html#ga05da8d96593f8404938cc24f659db049" title="Create a bidirectional iterator." alt="" coords="1072,671,1258,699"/>
+<area shape="rect" href="group__deletors.html#ga83d81991036aca26e2ec5b03f8b33b8a" title="Deletes a gsc_BidirectionalIterator object." alt="" coords="382,367,567,395"/>
+<area shape="rect" href="group__maths.html#gadaec2ba547549392530e91e50a3c985d" title="Multiply two sets of a gsc_DecimalMatrix and vector, and add both products to the first column of a p..." alt="" coords="623,160,809,204"/>
+<area shape="rect" href="group__maths.html#ga6fdcedf004c9d08e5135d30deb5b12fa" title="Multiply a gsc_DecimalMatrix to a vector, and add that product to the first column of a provided gsc_..." alt="" coords="642,228,790,272"/>
+<area shape="rect" href="group__calculators.html#ga8f765775d463c59f8437da21dad6fab4" title="Calculates the number of times at each marker that a particular allele appears." alt="" coords="646,296,786,340"/>
+<area shape="rect" href="group__calculators.html#ga19bbe4c5c9d867e9c627bbda7aa9bd22" title="Calculates the number of times at each marker that two particular alleles appear." alt="" coords="646,364,786,408"/>
+<area shape="rect" href="group__liteget.html#ga5e1e89782604c9ab47f196e1da233362" title="Get the alleles of a genotype." alt="" coords="660,5,772,33"/>
+<area shape="rect" href="group__iterators.html#ga630ba7f8e864238e296cb9480dfbc728" title="Get the next location from a bidirectional iterator." alt="" coords="1101,109,1230,137"/>
+<area shape="rect" href="group__iterators.html#gaa4fa2aec3b7f49f9925fe82c8ff38dcd" title="Initialise a Bidirectional iterator to the start of its sequence." alt="" coords="1315,76,1459,120"/>
+<area shape="rect" href="sim-operations_8c.html#aaaf3ebc75feaf901829232712e55677b" title="Replace calls to malloc direct with this function." alt="" coords="880,639,1001,667"/>
+<area shape="rect" href="group__iterators.html#ga5cca400276ca83acceaab36d5f79aab1" title=" " alt="" coords="1306,663,1468,707"/>
+<area shape="rect" href="group__iterators.html#gaa26377edd1339407af2070924d3596de" title="Create a Random Access Iterator." alt="" coords="373,689,575,717"/>
+<area shape="rect" href="group__deletors.html#ga3e88311f64b089f3d7a336f4efee3b05" title="Deletes a gsc_RandomAccessIterator object and frees its memory." alt="" coords="374,756,575,784"/>
+<area shape="rect" href="group__supporters.html#ga22609353c4951dcf3ed54537ecb6eeda" title="Function to identify the next sequential integer that does not identify a group that currently has me..." alt="" coords="390,808,558,836"/>
+<area shape="rect" href="group__iterators.html#ga5b9b804b6c3b0c165f20a765942fa810" title="Get a location by index using a gsc_RandomAccessIterator." alt="" coords="654,785,778,813"/>
+<area shape="rect" href="group__liteget.html#ga7c88af63ccbce0c1e9026339d38fe53a" title="Set the current group membership of a genotype." alt="" coords="421,912,527,940"/>
+<area shape="rect" href="group__collgetters.html#gaf9692ce014cfe5439fd00e522a6bab9f" title="Identify group numbers that currently have members." alt="" coords="633,716,799,744"/>
+<area shape="rect" href="group__collgetters.html#gaddb8ea59b22bbe0ec8c61da7f5ba8a98" title="Identify group numbers that currently have members, and how many members they have." alt="" coords="861,691,1020,735"/>
+<area shape="rect" href="group__liteget.html#gae5d12aca851dd2358b63dc60b8ac6e5f" title="Get the current group membership of a genotype." alt="" coords="1112,727,1218,755"/>
+<area shape="rect" href="group__iterators.html#ga16615a5663b4d3bd768d8380f820aa66" title="Get an gsc_AlleleMatrix by index in the linked list." alt="" coords="857,811,1024,839"/>
 </map>
 </div>
-<div id="dynsection-22" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
-  <img id="dynsection-22-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
-<div id="dynsection-22-summary" class="dynsummary" style="display:block;">
+<div id="dynsection-17" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-17-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
+<div id="dynsection-17-summary" class="dynsummary" style="display:block;">
 </div>
-<div id="dynsection-22-content" class="dyncontent" style="display:none;">
+<div id="dynsection-17-content" class="dyncontent" style="display:none;">
 <div class="center"><img src="group__calculators_ga3b43d07c08ed861ed0f22a69bb57b94a_icgraph.png" border="0" usemap="#agroup__calculators_ga3b43d07c08ed861ed0f22a69bb57b94a_icgraph" alt=""/></div>
 <map name="agroup__calculators_ga3b43d07c08ed861ed0f22a69bb57b94a_icgraph" id="agroup__calculators_ga3b43d07c08ed861ed0f22a69bb57b94a_icgraph">
 <area shape="rect" title="Takes the top_n individuals in the group with the best breeding values/fitnesses and puts them in a n..." alt="" coords="202,13,315,41"/>

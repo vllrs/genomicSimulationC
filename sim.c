@@ -35,9 +35,7 @@ int main(int argc, char* argv[]) {
 
 	// save data from the results of your cross. Search the docs for functions
 	// starting with `save_`
-	FILE* resultfile = fopen("f1all.txt", "w");
-	save_transposed_group_genotypes(resultfile, sd, f1);
-	fclose(resultfile);
+	save_genotypes("f1all.txt", sd, f1, GSC_FALSE);
 
 	// Other operations you might perform at this point:
 	// - Further crosses (maybe crossing from generation F1, or another cross from the founders)

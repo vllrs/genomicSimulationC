@@ -21,7 +21,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">genomicSimulationC<span id="projectnumber">&#160;0.2.5.02</span>
+   <div id="projectname">genomicSimulationC<span id="projectnumber">&#160;0.2.5.05</span>
    </div>
   </td>
  </tr>
@@ -73,78 +73,75 @@ $(function() {
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:ga364d2ea13aadfa347d9c12223b4cc4d1"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__savers.html#ga364d2ea13aadfa347d9c12223b4cc4d1">gsc_save_markerblocks</a> (FILE *f, const <a class="el" href="structgsc___sim_data.html">gsc_SimData</a> *d, const <a class="el" href="structgsc___marker_blocks.html">gsc_MarkerBlocks</a> b)</td></tr>
-<tr class="memdesc:ga364d2ea13aadfa347d9c12223b4cc4d1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Prints the markers contained in a set of blocks to a file.  <a href="group__savers.html#ga364d2ea13aadfa347d9c12223b4cc4d1">More...</a><br /></td></tr>
-<tr class="separator:ga364d2ea13aadfa347d9c12223b4cc4d1"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga12e6eb5a3dccf1c79fd1b68df69c2668"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__savers.html#ga12e6eb5a3dccf1c79fd1b68df69c2668">gsc_save_names_header</a> (FILE *f, size_t n, const char **names)</td></tr>
-<tr class="memdesc:ga12e6eb5a3dccf1c79fd1b68df69c2668"><td class="mdescLeft">&#160;</td><td class="mdescRight">Prints a list of names as a tab-separated row to a file.  <a href="group__savers.html#ga12e6eb5a3dccf1c79fd1b68df69c2668">More...</a><br /></td></tr>
-<tr class="separator:ga12e6eb5a3dccf1c79fd1b68df69c2668"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga7bca249d1a6132b5faff18069a0e37b5"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__savers.html#ga7bca249d1a6132b5faff18069a0e37b5">gsc_save_allele_matrix</a> (FILE *f, const <a class="el" href="structgsc___allele_matrix.html">gsc_AlleleMatrix</a> *m)</td></tr>
-<tr class="memdesc:ga7bca249d1a6132b5faff18069a0e37b5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Prints all the genotype data saved in the linked list of AlleleMatrices starting with <code>m</code> to a file.  <a href="group__savers.html#ga7bca249d1a6132b5faff18069a0e37b5">More...</a><br /></td></tr>
-<tr class="separator:ga7bca249d1a6132b5faff18069a0e37b5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga25ecc575d779bed4f46626cd61fbe65d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__savers.html#ga25ecc575d779bed4f46626cd61fbe65d">gsc_save_transposed_allele_matrix</a> (FILE *f, const <a class="el" href="structgsc___allele_matrix.html">gsc_AlleleMatrix</a> *m, const char **markers)</td></tr>
-<tr class="memdesc:ga25ecc575d779bed4f46626cd61fbe65d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Prints all the gene data saved in the linked list starting with <code>m</code> to the file.  <a href="group__savers.html#ga25ecc575d779bed4f46626cd61fbe65d">More...</a><br /></td></tr>
-<tr class="separator:ga25ecc575d779bed4f46626cd61fbe65d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gab849eb8ece54052720d78fe248d09298"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__savers.html#gab849eb8ece54052720d78fe248d09298">gsc_save_group_genotypes</a> (FILE *f, <a class="el" href="structgsc___sim_data.html">gsc_SimData</a> *d, const <a class="el" href="structgsc___group_num.html">gsc_GroupNum</a> group_id)</td></tr>
-<tr class="memdesc:gab849eb8ece54052720d78fe248d09298"><td class="mdescLeft">&#160;</td><td class="mdescRight">Prints the genotypes of each individual in a given group to a file, with the following format.  <a href="group__savers.html#gab849eb8ece54052720d78fe248d09298">More...</a><br /></td></tr>
-<tr class="separator:gab849eb8ece54052720d78fe248d09298"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gac0853546f2c1334ec45bc43b693f8ce0"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__savers.html#gac0853546f2c1334ec45bc43b693f8ce0">gsc_save_transposed_group_genotypes</a> (FILE *f, const <a class="el" href="structgsc___sim_data.html">gsc_SimData</a> *d, const <a class="el" href="structgsc___group_num.html">gsc_GroupNum</a> group_id)</td></tr>
-<tr class="memdesc:gac0853546f2c1334ec45bc43b693f8ce0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Prints the genotypes of each individual in a given group to a file, with the following format.  <a href="group__savers.html#gac0853546f2c1334ec45bc43b693f8ce0">More...</a><br /></td></tr>
-<tr class="separator:gac0853546f2c1334ec45bc43b693f8ce0"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga9678bbe9c8db5f7774188b9574c0c09c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__savers.html#ga9678bbe9c8db5f7774188b9574c0c09c">gsc_save_count_matrix</a> (FILE *f, const <a class="el" href="structgsc___sim_data.html">gsc_SimData</a> *d, const char allele)</td></tr>
-<tr class="memdesc:ga9678bbe9c8db5f7774188b9574c0c09c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Print the number of copies of a particular allele at each marker of each genotype in the <a class="el" href="structgsc___sim_data.html" title="Composite type that is used to run crossing simulations.">gsc_SimData</a> to a file.  <a href="group__savers.html#ga9678bbe9c8db5f7774188b9574c0c09c">More...</a><br /></td></tr>
-<tr class="separator:ga9678bbe9c8db5f7774188b9574c0c09c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga47adc7657700b186067b2c26dabf5b13"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__savers.html#ga47adc7657700b186067b2c26dabf5b13">gsc_save_group_count_matrix</a> (FILE *f, const <a class="el" href="structgsc___sim_data.html">gsc_SimData</a> *d, const char allele, const <a class="el" href="structgsc___group_num.html">gsc_GroupNum</a> group)</td></tr>
-<tr class="memdesc:ga47adc7657700b186067b2c26dabf5b13"><td class="mdescLeft">&#160;</td><td class="mdescRight">Print the number of copies of a particular allele at each marker of each genotype in a group to a file.  <a href="group__savers.html#ga47adc7657700b186067b2c26dabf5b13">More...</a><br /></td></tr>
-<tr class="separator:ga47adc7657700b186067b2c26dabf5b13"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga2bc846644aa32182f20feaa67ff3df8d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__savers.html#ga2bc846644aa32182f20feaa67ff3df8d">gsc_save_one_step_pedigree</a> (FILE *f, const <a class="el" href="structgsc___sim_data.html">gsc_SimData</a> *d)</td></tr>
-<tr class="memdesc:ga2bc846644aa32182f20feaa67ff3df8d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Print the parents of each genotype in the <a class="el" href="structgsc___sim_data.html" title="Composite type that is used to run crossing simulations.">gsc_SimData</a> to a file.  <a href="group__savers.html#ga2bc846644aa32182f20feaa67ff3df8d">More...</a><br /></td></tr>
-<tr class="separator:ga2bc846644aa32182f20feaa67ff3df8d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gad10b44011b806daa35f8378eb90c5365"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__savers.html#gad10b44011b806daa35f8378eb90c5365">gsc_save_group_one_step_pedigree</a> (FILE *f, const <a class="el" href="structgsc___sim_data.html">gsc_SimData</a> *d, const <a class="el" href="structgsc___group_num.html">gsc_GroupNum</a> group)</td></tr>
-<tr class="memdesc:gad10b44011b806daa35f8378eb90c5365"><td class="mdescLeft">&#160;</td><td class="mdescRight">Print the parents of each genotype in a group to a file.  <a href="group__savers.html#gad10b44011b806daa35f8378eb90c5365">More...</a><br /></td></tr>
-<tr class="separator:gad10b44011b806daa35f8378eb90c5365"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga6a5bcd7945c34e0ec99ccc92311d947c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__savers.html#ga6a5bcd7945c34e0ec99ccc92311d947c">gsc_save_full_pedigree</a> (FILE *f, const <a class="el" href="structgsc___sim_data.html">gsc_SimData</a> *d)</td></tr>
-<tr class="memdesc:ga6a5bcd7945c34e0ec99ccc92311d947c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Print the full known pedigree of each genotype in the <a class="el" href="structgsc___sim_data.html" title="Composite type that is used to run crossing simulations.">gsc_SimData</a> to a file.  <a href="group__savers.html#ga6a5bcd7945c34e0ec99ccc92311d947c">More...</a><br /></td></tr>
-<tr class="separator:ga6a5bcd7945c34e0ec99ccc92311d947c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga34df718dd14346f72cc20928351cc4d2"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__savers.html#ga34df718dd14346f72cc20928351cc4d2">gsc_save_group_full_pedigree</a> (FILE *f, const <a class="el" href="structgsc___sim_data.html">gsc_SimData</a> *d, const <a class="el" href="structgsc___group_num.html">gsc_GroupNum</a> group)</td></tr>
-<tr class="memdesc:ga34df718dd14346f72cc20928351cc4d2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Print the full known pedigree of each genotype in a group to a file.  <a href="group__savers.html#ga34df718dd14346f72cc20928351cc4d2">More...</a><br /></td></tr>
-<tr class="separator:ga34df718dd14346f72cc20928351cc4d2"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga78f467f0dd08c5501b804caca1e0c6b9"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__savers.html#ga78f467f0dd08c5501b804caca1e0c6b9">gsc_save_allelematrix_full_pedigree</a> (FILE *f, const <a class="el" href="structgsc___allele_matrix.html">gsc_AlleleMatrix</a> *m, const <a class="el" href="structgsc___sim_data.html">gsc_SimData</a> *parents)</td></tr>
-<tr class="memdesc:ga78f467f0dd08c5501b804caca1e0c6b9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Print the full known pedigree of each genotype in a single <a class="el" href="structgsc___allele_matrix.html">gsc_AlleleMatrix</a> to a file.  <a href="group__savers.html#ga78f467f0dd08c5501b804caca1e0c6b9">More...</a><br /></td></tr>
-<tr class="separator:ga78f467f0dd08c5501b804caca1e0c6b9"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga8e5d08dbcfc4cc77d1d1c6603b75a2ed"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__savers.html#ga8e5d08dbcfc4cc77d1d1c6603b75a2ed">gsc_save_parents_of</a> (FILE *f, const <a class="el" href="structgsc___allele_matrix.html">gsc_AlleleMatrix</a> *m, <a class="el" href="structgsc___pedigree_i_d.html">gsc_PedigreeID</a> p1, <a class="el" href="structgsc___pedigree_i_d.html">gsc_PedigreeID</a> p2)</td></tr>
-<tr class="memdesc:ga8e5d08dbcfc4cc77d1d1c6603b75a2ed"><td class="mdescLeft">&#160;</td><td class="mdescRight">Recursively save the parents of a particular id to a file.  <a href="group__savers.html#ga8e5d08dbcfc4cc77d1d1c6603b75a2ed">More...</a><br /></td></tr>
-<tr class="separator:ga8e5d08dbcfc4cc77d1d1c6603b75a2ed"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga9081436408a37abb9d37e035b3cfaa87"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__savers.html#ga9081436408a37abb9d37e035b3cfaa87">gsc_save_bvs</a> (FILE *f, const <a class="el" href="structgsc___sim_data.html">gsc_SimData</a> *d, const <a class="el" href="structgsc___effect_i_d.html">gsc_EffectID</a> effID)</td></tr>
-<tr class="memdesc:ga9081436408a37abb9d37e035b3cfaa87"><td class="mdescLeft">&#160;</td><td class="mdescRight">Print the breeding value of each genotype in the <a class="el" href="structgsc___sim_data.html" title="Composite type that is used to run crossing simulations.">gsc_SimData</a> to a file.  <a href="group__savers.html#ga9081436408a37abb9d37e035b3cfaa87">More...</a><br /></td></tr>
-<tr class="separator:ga9081436408a37abb9d37e035b3cfaa87"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga3453d7fc7d552e7c254cf00788c45506"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__savers.html#ga3453d7fc7d552e7c254cf00788c45506">gsc_save_group_bvs</a> (FILE *f, const <a class="el" href="structgsc___sim_data.html">gsc_SimData</a> *d, const <a class="el" href="structgsc___group_num.html">gsc_GroupNum</a> group, const <a class="el" href="structgsc___effect_i_d.html">gsc_EffectID</a> effID)</td></tr>
-<tr class="memdesc:ga3453d7fc7d552e7c254cf00788c45506"><td class="mdescLeft">&#160;</td><td class="mdescRight">Print the breeding value of each genotype in a group to a file.  <a href="group__savers.html#ga3453d7fc7d552e7c254cf00788c45506">More...</a><br /></td></tr>
-<tr class="separator:ga3453d7fc7d552e7c254cf00788c45506"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga707e7b98f0321e3f2460abb234e1bb88"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__savers.html#ga707e7b98f0321e3f2460abb234e1bb88">gsc_save_manual_bvs</a> (FILE *f, const <a class="el" href="structgsc___decimal_matrix.html">gsc_DecimalMatrix</a> *e, const <a class="el" href="structgsc___pedigree_i_d.html">gsc_PedigreeID</a> *ids, const char **names)</td></tr>
-<tr class="memdesc:ga707e7b98f0321e3f2460abb234e1bb88"><td class="mdescLeft">&#160;</td><td class="mdescRight">Print the provided breeding values of each provided name and id to a file, with the same format as a regular call to <code>gsc_save_bvs</code> or <code>gsc_save_group_bvs</code>.  <a href="group__savers.html#ga707e7b98f0321e3f2460abb234e1bb88">More...</a><br /></td></tr>
-<tr class="separator:ga707e7b98f0321e3f2460abb234e1bb88"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gabb38b85b4074a41e7de110aa7a289b6a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__savers.html#gabb38b85b4074a41e7de110aa7a289b6a">gsc_save_markerblocks</a> (const char *fname, <a class="el" href="structgsc___sim_data.html">gsc_SimData</a> *d, const <a class="el" href="structgsc___marker_blocks.html">gsc_MarkerBlocks</a> b, const <a class="el" href="structgsc___map_i_d.html">gsc_MapID</a> labelMapID)</td></tr>
+<tr class="memdesc:gabb38b85b4074a41e7de110aa7a289b6a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Prints the markers contained in a set of blocks to a file.  <a href="group__savers.html#gabb38b85b4074a41e7de110aa7a289b6a">More...</a><br /></td></tr>
+<tr class="separator:gabb38b85b4074a41e7de110aa7a289b6a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga443653ada89ee798e804b61f76d2b497"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__savers.html#ga443653ada89ee798e804b61f76d2b497">gsc_save_genotypes</a> (const char *fname, <a class="el" href="structgsc___sim_data.html">gsc_SimData</a> *d, const <a class="el" href="structgsc___group_num.html">gsc_GroupNum</a> groupID, const int markers_as_rows)</td></tr>
+<tr class="memdesc:ga443653ada89ee798e804b61f76d2b497"><td class="mdescLeft">&#160;</td><td class="mdescRight">Prints genotypes from the simulation to a file.  <a href="group__savers.html#ga443653ada89ee798e804b61f76d2b497">More...</a><br /></td></tr>
+<tr class="separator:ga443653ada89ee798e804b61f76d2b497"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga485b6a5b126a27c531ad26de07f332b3"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__savers.html#ga485b6a5b126a27c531ad26de07f332b3">gsc_save_allele_counts</a> (const char *fname, <a class="el" href="structgsc___sim_data.html">gsc_SimData</a> *d, const <a class="el" href="structgsc___group_num.html">gsc_GroupNum</a> groupID, const char allele, const int markers_as_rows)</td></tr>
+<tr class="memdesc:ga485b6a5b126a27c531ad26de07f332b3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Prints allele counts of genotypes from the simulation to a file.  <a href="group__savers.html#ga485b6a5b126a27c531ad26de07f332b3">More...</a><br /></td></tr>
+<tr class="separator:ga485b6a5b126a27c531ad26de07f332b3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga7033cc948a0521fea492fd0d45988ad6"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__savers.html#ga7033cc948a0521fea492fd0d45988ad6">gsc_save_pedigrees</a> (const char *fname, <a class="el" href="structgsc___sim_data.html">gsc_SimData</a> *d, const <a class="el" href="structgsc___group_num.html">gsc_GroupNum</a> groupID, const int full_pedigree)</td></tr>
+<tr class="memdesc:ga7033cc948a0521fea492fd0d45988ad6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Prints pedigrees of genotypes in the simulation to a file.  <a href="group__savers.html#ga7033cc948a0521fea492fd0d45988ad6">More...</a><br /></td></tr>
+<tr class="separator:ga7033cc948a0521fea492fd0d45988ad6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga6148ecde2587d6d37c313cfb88401771"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__savers.html#ga6148ecde2587d6d37c313cfb88401771">gsc_save_bvs</a> (const char *fname, <a class="el" href="structgsc___sim_data.html">gsc_SimData</a> *d, const <a class="el" href="structgsc___group_num.html">gsc_GroupNum</a> groupID, const <a class="el" href="structgsc___effect_i_d.html">gsc_EffectID</a> effID)</td></tr>
+<tr class="memdesc:ga6148ecde2587d6d37c313cfb88401771"><td class="mdescLeft">&#160;</td><td class="mdescRight">Prints breeding values of genotypes in the simulation to a file.  <a href="group__savers.html#ga6148ecde2587d6d37c313cfb88401771">More...</a><br /></td></tr>
+<tr class="separator:ga6148ecde2587d6d37c313cfb88401771"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaf17b391180e41d0b030404e49c8416bb"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__savers.html#gaf17b391180e41d0b030404e49c8416bb">gsc_save_utility_markerblocks</a> (FILE *f, const <a class="el" href="structgsc___marker_blocks.html">gsc_MarkerBlocks</a> b, const size_t n_markers, char **const marker_names, const <a class="el" href="structgsc___recombination_map.html">gsc_RecombinationMap</a> *map)</td></tr>
+<tr class="memdesc:gaf17b391180e41d0b030404e49c8416bb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Prints the markers contained in a set of blocks to a file.  <a href="group__savers.html#gaf17b391180e41d0b030404e49c8416bb">More...</a><br /></td></tr>
+<tr class="separator:gaf17b391180e41d0b030404e49c8416bb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga6037070d12fa45c78b642d611fae311e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__savers.html#ga6037070d12fa45c78b642d611fae311e">gsc_save_utility_genotypes</a> (FILE *f, <a class="el" href="structgsc___bidirectional_iterator.html">gsc_BidirectionalIterator</a> *targets, const size_t n_markers, char **const marker_names, const int markers_as_rows)</td></tr>
+<tr class="memdesc:ga6037070d12fa45c78b642d611fae311e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Prints simulated genotypes to a file.  <a href="group__savers.html#ga6037070d12fa45c78b642d611fae311e">More...</a><br /></td></tr>
+<tr class="separator:ga6037070d12fa45c78b642d611fae311e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga2d86e418dd2d1dea1f2783e5dfdda614"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__savers.html#ga2d86e418dd2d1dea1f2783e5dfdda614">gsc_save_utility_allele_counts</a> (FILE *f, <a class="el" href="structgsc___bidirectional_iterator.html">gsc_BidirectionalIterator</a> *targets, const size_t n_markers, char **const marker_names, const int markers_as_rows, const char allele)</td></tr>
+<tr class="memdesc:ga2d86e418dd2d1dea1f2783e5dfdda614"><td class="mdescLeft">&#160;</td><td class="mdescRight">Prints allele counts of simulated genotypes to a file.  <a href="group__savers.html#ga2d86e418dd2d1dea1f2783e5dfdda614">More...</a><br /></td></tr>
+<tr class="separator:ga2d86e418dd2d1dea1f2783e5dfdda614"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gad7643e196ad0f8e7db3c044894395de1"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__savers.html#gad7643e196ad0f8e7db3c044894395de1">gsc_save_utility_pedigrees</a> (FILE *f, <a class="el" href="structgsc___bidirectional_iterator.html">gsc_BidirectionalIterator</a> *targets, const int full_pedigree, const <a class="el" href="structgsc___allele_matrix.html">gsc_AlleleMatrix</a> *parent_pedigree_store)</td></tr>
+<tr class="memdesc:gad7643e196ad0f8e7db3c044894395de1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Prints pedigrees to a file.  <a href="group__savers.html#gad7643e196ad0f8e7db3c044894395de1">More...</a><br /></td></tr>
+<tr class="separator:gad7643e196ad0f8e7db3c044894395de1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga710981b758de78c6dd9f4e5ab61971fc"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__savers.html#ga710981b758de78c6dd9f4e5ab61971fc">gsc_save_utility_bvs</a> (FILE *f, <a class="el" href="structgsc___bidirectional_iterator.html">gsc_BidirectionalIterator</a> *targets, const <a class="el" href="structgsc___effect_matrix.html">gsc_EffectMatrix</a> *eff)</td></tr>
+<tr class="memdesc:ga710981b758de78c6dd9f4e5ab61971fc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Calculate and print breeding values to a file.  <a href="group__savers.html#ga710981b758de78c6dd9f4e5ab61971fc">More...</a><br /></td></tr>
+<tr class="separator:ga710981b758de78c6dd9f4e5ab61971fc"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <p >For saving persistent simulation results. </p>
 <h2 class="groupheader">Function Documentation</h2>
-<a id="ga7bca249d1a6132b5faff18069a0e37b5" name="ga7bca249d1a6132b5faff18069a0e37b5"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ga7bca249d1a6132b5faff18069a0e37b5">&#9670;&nbsp;</a></span>gsc_save_allele_matrix()</h2>
+<a id="ga485b6a5b126a27c531ad26de07f332b3" name="ga485b6a5b126a27c531ad26de07f332b3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga485b6a5b126a27c531ad26de07f332b3">&#9670;&nbsp;</a></span>gsc_save_allele_counts()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void gsc_save_allele_matrix </td>
+          <td class="memname">void gsc_save_allele_counts </td>
           <td>(</td>
-          <td class="paramtype">FILE *&#160;</td>
-          <td class="paramname"><em>f</em>, </td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>fname</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const <a class="el" href="structgsc___allele_matrix.html">gsc_AlleleMatrix</a> *&#160;</td>
-          <td class="paramname"><em>m</em>&#160;</td>
+          <td class="paramtype"><a class="el" href="structgsc___sim_data.html">gsc_SimData</a> *&#160;</td>
+          <td class="paramname"><em>d</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="structgsc___group_num.html">gsc_GroupNum</a>&#160;</td>
+          <td class="paramname"><em>groupID</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char&#160;</td>
+          <td class="paramname"><em>allele</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const int&#160;</td>
+          <td class="paramname"><em>markers_as_rows</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -154,136 +151,47 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Prints all the genotype data saved in the linked list of AlleleMatrices starting with <code>m</code> to a file. </p>
-<p >Uses the following format:</p>
-<p >[id]OR[name] [allele pairs for each marker]</p>
-<p >[id]OR[name] [allele pairs for each marker]</p>
-<p >...</p>
-<p >ID will be printed if the genotype does not have a name saved</p>
-<p ><em>Has short name:</em> <a class="el" href="group__shortnames.html#ga80f72e29ba4545cbe72a2cbb6cd023de">save_allele_matrix</a></p>
+<p>Prints allele counts of genotypes from the simulation to a file. </p>
+<p >The output file will contain a matrix of genetic markers by genotypes (or vice-versa), with each cell in the body of the matrix containing the the allele counts of a some allele for each genetic marker.</p>
+<p >For more details on printings format, </p><dl class="section see"><dt>See also</dt><dd><a class="el" href="group__savers.html#ga2d86e418dd2d1dea1f2783e5dfdda614" title="Prints allele counts of simulated genotypes to a file.">gsc_save_utility_allele_counts</a>.</dd></dl>
+<p><em>Has short name:</em> <a class="el" href="group__shortnames.html#ga426c3ea531ddbce3e71db72cbabc8b03">save_allele_counts</a></p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">f</td><td>file pointer opened for writing to put the output </td></tr>
-    <tr><td class="paramname">m</td><td>pointer to the <a class="el" href="structgsc___allele_matrix.html">gsc_AlleleMatrix</a> whose data we print </td></tr>
+    <tr><td class="paramname">fname</td><td>name of the file to which the output will be saved. Any prior file contents will be overwritten. </td></tr>
+    <tr><td class="paramname">d</td><td>pointer to the <a class="el" href="structgsc___sim_data.html" title="Composite type that is used to run crossing simulations.">gsc_SimData</a> in which the genotypes to be saved can be found. </td></tr>
+    <tr><td class="paramname">groupID</td><td>group number of the group of genotypes to save allele counts for, or NO_GROUP to save allele counts for all genotypes in the simulation. </td></tr>
+    <tr><td class="paramname">allele</td><td>the allele to count occurences of </td></tr>
+    <tr><td class="paramname">markers_as_rows</td><td>If true, genetic markers will be rows in the output matrix, and genotypes will be columns. If false, genetic markers will be columns in the output matrix, and genotypes will be rows. </td></tr>
   </table>
   </dd>
 </dl>
-<p >fprintf(f, "\n");</p>
+
+<p class="definition">Definition at line <a class="el" href="sim-operations_8c_source.html#l09753">9753</a> of file <a class="el" href="sim-operations_8c_source.html">sim-operations.c</a>.</p>
 <div id="dynsection-0" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
-  <img id="dynsection-0-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
+  <img id="dynsection-0-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
 <div id="dynsection-0-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-0-content" class="dyncontent" style="display:none;">
-<div class="center"><img src="group__savers_ga7bca249d1a6132b5faff18069a0e37b5_icgraph.png" border="0" usemap="#agroup__savers_ga7bca249d1a6132b5faff18069a0e37b5_icgraph" alt=""/></div>
-<map name="agroup__savers_ga7bca249d1a6132b5faff18069a0e37b5_icgraph" id="agroup__savers_ga7bca249d1a6132b5faff18069a0e37b5_icgraph">
-<area shape="rect" title="Prints all the genotype data saved in the linked list of AlleleMatrices starting with m to a file." alt="" coords="892,140,1047,168"/>
-<area shape="rect" href="sim-operations_8c.html#a0fe1d1ace12db253637f9df278cf1639" title="save&#45;as&#45;you&#45;go (genotypes/alleles)" alt="" coords="689,132,844,176"/>
-<area shape="rect" href="group__crossers.html#ga28b0fcf60b6a8f6e8ca470f7b5d0a4b7" title="Make new genotypes (generic function)" alt="" coords="479,132,641,176"/>
-<area shape="rect" href="group__crossers.html#ga15af204958dc69717334c46b19219a2d" title="Creates an identical copy of each member of a group." alt="" coords="274,5,400,33"/>
-<area shape="rect" href="group__crossers.html#ga6c230330ca9a9db9459d4477512a21af" title="Creates a doubled haploid from each member of a group." alt="" coords="243,57,431,85"/>
-<area shape="rect" href="group__crossers.html#ga03af5446006203244dd3080cf75af26f" title="Performs random crosses among members of a group." alt="" coords="245,109,429,137"/>
-<area shape="rect" href="group__crossers.html#ga652376b5a34d24f239e5fc0b167c067b" title="Performs random crosses where the first parent comes from one group and the second from another." alt="" coords="245,161,429,205"/>
-<area shape="rect" href="group__crossers.html#ga4450224009587f4cd4a972413423c96e" title="Performs the crosses of pairs of parents whose indexes are provided in an array." alt="" coords="243,229,431,257"/>
-<area shape="rect" href="group__crossers.html#gab625453074798be6ba8677a5d4986edf" title="Selfs each member of a group for a certain number of generations." alt="" coords="276,281,398,309"/>
-<area shape="rect" href="group__crossers.html#gab19b3eb80b5fe460d17c93e0c27f7aaf" title="Find the top m percent of a group and perform random crosses between those top individuals." alt="" coords="26,97,174,141"/>
-<area shape="rect" href="group__crossers.html#gaa70fd79312587d8e9fc166c64612cbce" title="Perform crosses between all pairs of parents in the group from_group and allocates the resulting offs..." alt="" coords="8,165,192,209"/>
-<area shape="rect" href="group__crossers.html#ga5c0be901d03d0e5dd3d74bc19a4bea70" title="Perform crosses between pairs of parents identified by name in a file and allocate the resulting offs..." alt="" coords="5,233,195,261"/>
-<area shape="rect" href="group__crossers.html#ga2b8100d2d30cf1ada0db8403663076ff" title="Perform crosses between previously&#45;generated offspring of pairs of parents identified by name in a fi..." alt="" coords="10,285,190,329"/>
+<div class="center"><img src="group__savers_ga485b6a5b126a27c531ad26de07f332b3_cgraph.png" border="0" usemap="#agroup__savers_ga485b6a5b126a27c531ad26de07f332b3_cgraph" alt=""/></div>
+<map name="agroup__savers_ga485b6a5b126a27c531ad26de07f332b3_cgraph" id="agroup__savers_ga485b6a5b126a27c531ad26de07f332b3_cgraph">
+<area shape="rect" title="Prints allele counts of genotypes from the simulation to a file." alt="" coords="5,44,164,72"/>
+<area shape="rect" href="group__iterators.html#ga05da8d96593f8404938cc24f659db049" title="Create a bidirectional iterator." alt="" coords="212,13,398,41"/>
+<area shape="rect" href="group__savers.html#ga2d86e418dd2d1dea1f2783e5dfdda614" title="Prints allele counts of simulated genotypes to a file." alt="" coords="230,65,380,109"/>
+<area shape="rect" href="group__iterators.html#ga5cca400276ca83acceaab36d5f79aab1" title=" " alt="" coords="480,5,641,49"/>
+<area shape="rect" href="sim-operations_8c.html#ac7f20afdbab67bfeece1a8dc2a6baab4" title="Kernel for gsc_scaffold_save_genotype_info, when the goal is to save the allele counts of a particula..." alt="" coords="446,73,675,101"/>
+<area shape="rect" href="sim-operations_8c.html#a11101d643d9ee74d16324d55cbb6682e" title="Prints a matrix of genotype information to a file." alt="" coords="454,125,667,153"/>
+<area shape="rect" href="group__liteget.html#ga0ce82f67cb5e35a1c73bef54138202f6" title="Get the persistent id of a genotype." alt="" coords="746,21,830,49"/>
+<area shape="rect" href="group__liteget.html#ga22a270ae73aaa86d93212a4a40f999dc" title="Get the name of a genotype." alt="" coords="735,73,841,101"/>
+<area shape="rect" href="sim-operations_8c.html#aaaf3ebc75feaf901829232712e55677b" title="Replace calls to malloc direct with this function." alt="" coords="727,125,849,153"/>
+<area shape="rect" href="group__iterators.html#ga630ba7f8e864238e296cb9480dfbc728" title="Get the next location from a bidirectional iterator." alt="" coords="723,177,853,205"/>
+<area shape="rect" href="group__iterators.html#gaa4fa2aec3b7f49f9925fe82c8ff38dcd" title="Initialise a Bidirectional iterator to the start of its sequence." alt="" coords="901,196,1044,240"/>
 </map>
 </div>
 
 </div>
 </div>
-<a id="ga78f467f0dd08c5501b804caca1e0c6b9" name="ga78f467f0dd08c5501b804caca1e0c6b9"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ga78f467f0dd08c5501b804caca1e0c6b9">&#9670;&nbsp;</a></span>gsc_save_allelematrix_full_pedigree()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void gsc_save_allelematrix_full_pedigree </td>
-          <td>(</td>
-          <td class="paramtype">FILE *&#160;</td>
-          <td class="paramname"><em>f</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">const <a class="el" href="structgsc___allele_matrix.html">gsc_AlleleMatrix</a> *&#160;</td>
-          <td class="paramname"><em>m</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">const <a class="el" href="structgsc___sim_data.html">gsc_SimData</a> *&#160;</td>
-          <td class="paramname"><em>parents</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Print the full known pedigree of each genotype in a single <a class="el" href="structgsc___allele_matrix.html">gsc_AlleleMatrix</a> to a file. </p>
-<p >The following tab-separated format is used:</p>
-<p >[id] [name]=([parent 1 pedigree],[parent 2 pedigree])</p>
-<p >[id] [name]=([parent pedigree])</p>
-<p >...</p>
-<p >Note that this pedigree is recursively constructed, so if a genotype's parents are known, [parent pedigree] is replaced with a string of format name=([parent1 pedigree],[parent2 pedigree]) alike. If the two parents of a genotype are the same individual (i.e. it was produced by selfing, the comma and second parent pedigree are ommitted, as in the second line sample in the format above.</p>
-<p >The parents of a genotype are identified by the two ids saved in the genotype's pedigrees field in the <a class="el" href="structgsc___allele_matrix.html">gsc_AlleleMatrix</a> struct.</p>
-<p >If a group member or parent has no name, the name will be replaced in the output file with its session-unique id. If the parent id of an individual is 0, the individual is printed without brackets or parent pedigrees and recursion stops here.</p>
-<p >Note this does not follow through the linked list of <a class="el" href="structgsc___allele_matrix.html">gsc_AlleleMatrix</a>.</p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">f</td><td>file pointer opened for writing to put the output </td></tr>
-    <tr><td class="paramname">m</td><td>pointer to the <a class="el" href="structgsc___allele_matrix.html">gsc_AlleleMatrix</a> containing the genotypes to print </td></tr>
-    <tr><td class="paramname">parents</td><td>pointer to an <a class="el" href="structgsc___allele_matrix.html">gsc_AlleleMatrix</a> that heads the linked list containing the parents and other ancestry of the given genotypes. </td></tr>
-  </table>
-  </dd>
-</dl>
-<div id="dynsection-1" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
-  <img id="dynsection-1-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
-<div id="dynsection-1-summary" class="dynsummary" style="display:block;">
-</div>
-<div id="dynsection-1-content" class="dyncontent" style="display:none;">
-<div class="center"><img src="group__savers_ga78f467f0dd08c5501b804caca1e0c6b9_cgraph.png" border="0" usemap="#agroup__savers_ga78f467f0dd08c5501b804caca1e0c6b9_cgraph" alt=""/></div>
-<map name="agroup__savers_ga78f467f0dd08c5501b804caca1e0c6b9_cgraph" id="agroup__savers_ga78f467f0dd08c5501b804caca1e0c6b9_cgraph">
-<area shape="rect" title="Print the full known pedigree of each genotype in a single gsc_AlleleMatrix to a file." alt="" coords="5,24,154,68"/>
-<area shape="rect" href="group__savers.html#ga8e5d08dbcfc4cc77d1d1c6603b75a2ed" title="Recursively save the parents of a particular id to a file." alt="" coords="202,32,344,60"/>
-<area shape="rect" href="group__search.html#ga5c7cd898a40e515c3164c98821068978" title="Returns the name of the genotype with a given id." alt="" coords="398,5,538,33"/>
-<area shape="rect" href="group__search.html#gad9d1d0b5575da681af7789354447612a" title="Saves the ids of the parents of a genotype with a particular id to the output array output." alt="" coords="392,57,543,85"/>
-<area shape="rect" href="group__supporters.html#ga8b0703c50a67ddcbe49f6b8d4ba3162b" title="Binary search through a list of PedigreeIDs." alt="" coords="591,24,741,68"/>
-</map>
-</div>
-<div id="dynsection-2" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
-  <img id="dynsection-2-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
-<div id="dynsection-2-summary" class="dynsummary" style="display:block;">
-</div>
-<div id="dynsection-2-content" class="dyncontent" style="display:none;">
-<div class="center"><img src="group__savers_ga78f467f0dd08c5501b804caca1e0c6b9_icgraph.png" border="0" usemap="#agroup__savers_ga78f467f0dd08c5501b804caca1e0c6b9_icgraph" alt=""/></div>
-<map name="agroup__savers_ga78f467f0dd08c5501b804caca1e0c6b9_icgraph" id="agroup__savers_ga78f467f0dd08c5501b804caca1e0c6b9_icgraph">
-<area shape="rect" title="Print the full known pedigree of each genotype in a single gsc_AlleleMatrix to a file." alt="" coords="892,132,1040,176"/>
-<area shape="rect" href="sim-operations_8c.html#aa66b6b0ec2f03012e39df20c6f35b532" title="save&#45;as&#45;you&#45;go (pedigrees)" alt="" coords="689,132,844,176"/>
-<area shape="rect" href="group__crossers.html#ga28b0fcf60b6a8f6e8ca470f7b5d0a4b7" title="Make new genotypes (generic function)" alt="" coords="479,132,641,176"/>
-<area shape="rect" href="group__crossers.html#ga15af204958dc69717334c46b19219a2d" title="Creates an identical copy of each member of a group." alt="" coords="274,5,400,33"/>
-<area shape="rect" href="group__crossers.html#ga6c230330ca9a9db9459d4477512a21af" title="Creates a doubled haploid from each member of a group." alt="" coords="243,57,431,85"/>
-<area shape="rect" href="group__crossers.html#ga03af5446006203244dd3080cf75af26f" title="Performs random crosses among members of a group." alt="" coords="245,109,429,137"/>
-<area shape="rect" href="group__crossers.html#ga652376b5a34d24f239e5fc0b167c067b" title="Performs random crosses where the first parent comes from one group and the second from another." alt="" coords="245,161,429,205"/>
-<area shape="rect" href="group__crossers.html#ga4450224009587f4cd4a972413423c96e" title="Performs the crosses of pairs of parents whose indexes are provided in an array." alt="" coords="243,229,431,257"/>
-<area shape="rect" href="group__crossers.html#gab625453074798be6ba8677a5d4986edf" title="Selfs each member of a group for a certain number of generations." alt="" coords="276,281,398,309"/>
-<area shape="rect" href="group__crossers.html#gab19b3eb80b5fe460d17c93e0c27f7aaf" title="Find the top m percent of a group and perform random crosses between those top individuals." alt="" coords="26,97,174,141"/>
-<area shape="rect" href="group__crossers.html#gaa70fd79312587d8e9fc166c64612cbce" title="Perform crosses between all pairs of parents in the group from_group and allocates the resulting offs..." alt="" coords="8,165,192,209"/>
-<area shape="rect" href="group__crossers.html#ga5c0be901d03d0e5dd3d74bc19a4bea70" title="Perform crosses between pairs of parents identified by name in a file and allocate the resulting offs..." alt="" coords="5,233,195,261"/>
-<area shape="rect" href="group__crossers.html#ga2b8100d2d30cf1ada0db8403663076ff" title="Perform crosses between previously&#45;generated offspring of pairs of parents identified by name in a fi..." alt="" coords="10,285,190,329"/>
-</map>
-</div>
-
-</div>
-</div>
-<a id="ga9081436408a37abb9d37e035b3cfaa87" name="ga9081436408a37abb9d37e035b3cfaa87"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ga9081436408a37abb9d37e035b3cfaa87">&#9670;&nbsp;</a></span>gsc_save_bvs()</h2>
+<a id="ga6148ecde2587d6d37c313cfb88401771" name="ga6148ecde2587d6d37c313cfb88401771"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga6148ecde2587d6d37c313cfb88401771">&#9670;&nbsp;</a></span>gsc_save_bvs()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -291,14 +199,20 @@ Functions</h2></td></tr>
         <tr>
           <td class="memname">void gsc_save_bvs </td>
           <td>(</td>
-          <td class="paramtype">FILE *&#160;</td>
-          <td class="paramname"><em>f</em>, </td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>fname</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const <a class="el" href="structgsc___sim_data.html">gsc_SimData</a> *&#160;</td>
+          <td class="paramtype"><a class="el" href="structgsc___sim_data.html">gsc_SimData</a> *&#160;</td>
           <td class="paramname"><em>d</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="structgsc___group_num.html">gsc_GroupNum</a>&#160;</td>
+          <td class="paramname"><em>groupID</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -314,51 +228,295 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Print the breeding value of each genotype in the <a class="el" href="structgsc___sim_data.html" title="Composite type that is used to run crossing simulations.">gsc_SimData</a> to a file. </p>
-<p >The following tab-separated format is used:</p>
-<p >[id] [name] [BV]</p>
-<p >[id] [name] [BV]</p>
-<p >...</p>
-<p >The <a class="el" href="structgsc___sim_data.html" title="Composite type that is used to run crossing simulations.">gsc_SimData</a> must have loaded marker effects for this function to succeed.</p>
-<p ><em>Has short name:</em> <a class="el" href="group__shortnames.html#gaf3caad0e03e9bac0a06acdb0e6d80e8f">save_bvs</a></p>
+<p>Prints breeding values of genotypes in the simulation to a file. </p>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="group__savers.html#ga710981b758de78c6dd9f4e5ab61971fc" title="Calculate and print breeding values to a file.">gsc_save_utility_bvs</a> for a description of the output format.</dd></dl>
+<p><em>Has short name:</em> <a class="el" href="group__shortnames.html#gaf3caad0e03e9bac0a06acdb0e6d80e8f">save_bvs</a></p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">f</td><td>file pointer opened for writing to put the output </td></tr>
-    <tr><td class="paramname">d</td><td>pointer to the <a class="el" href="structgsc___sim_data.html" title="Composite type that is used to run crossing simulations.">gsc_SimData</a> containing the group members. </td></tr>
-    <tr><td class="paramname">effID</td><td>Identifier of the marker effect set to be used to calculate these breeding values </td></tr>
+    <tr><td class="paramname">fname</td><td>name of the file to which the output will be saved. Any prior file contents will be overwritten. </td></tr>
+    <tr><td class="paramname">d</td><td>pointer to the <a class="el" href="structgsc___sim_data.html" title="Composite type that is used to run crossing simulations.">gsc_SimData</a> in which the genotypes whose breeding values will be calculated can be found. </td></tr>
+    <tr><td class="paramname">groupID</td><td>group number of the group of genotypes whose breeding values will be saved, or NO_GROUP to save breeding values of all genotypes in the simulation. </td></tr>
+    <tr><td class="paramname">effID</td><td>identifier of the set of marker effects in <em>d</em> that will be used to calculate the breeding values. </td></tr>
   </table>
   </dd>
 </dl>
-<div id="dynsection-3" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
-  <img id="dynsection-3-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
-<div id="dynsection-3-summary" class="dynsummary" style="display:block;">
+
+<p class="definition">Definition at line <a class="el" href="sim-operations_8c_source.html#l09819">9819</a> of file <a class="el" href="sim-operations_8c_source.html">sim-operations.c</a>.</p>
+<div id="dynsection-1" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-1-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
+<div id="dynsection-1-summary" class="dynsummary" style="display:block;">
 </div>
-<div id="dynsection-3-content" class="dyncontent" style="display:none;">
-<div class="center"><img src="group__savers_ga9081436408a37abb9d37e035b3cfaa87_cgraph.png" border="0" usemap="#agroup__savers_ga9081436408a37abb9d37e035b3cfaa87_cgraph" alt=""/></div>
-<map name="agroup__savers_ga9081436408a37abb9d37e035b3cfaa87_cgraph" id="agroup__savers_ga9081436408a37abb9d37e035b3cfaa87_cgraph">
-<area shape="rect" title="Print the breeding value of each genotype in the gsc_SimData to a file." alt="" coords="5,299,107,327"/>
-<area shape="rect" href="group__calculators.html#gaae6cddc5291e4ad120ac28a7d043c7fa" title="Calculates the fitness metric/breeding value for each genotype in the gsc_AlleleMatrix,..." alt="" coords="175,217,302,245"/>
-<area shape="rect" href="group__deletors.html#ga99bbd9355f031efae628b27e6ae72f6a" title="Deletes a gsc_DecimalMatrix and frees its memory." alt="" coords="396,329,530,357"/>
-<area shape="rect" href="group__supporters.html#gac15b90373af3e2828a786215e90963a8" title="Function to identify the lookup index of a marker effect set identifier." alt="" coords="155,351,322,379"/>
-<area shape="rect" href="group__maths.html#gadaec2ba547549392530e91e50a3c985d" title="Multiply two sets of a gsc_DecimalMatrix and vector, and add both products to the first column of a p..." alt="" coords="370,5,555,49"/>
-<area shape="rect" href="group__maths.html#ga6fdcedf004c9d08e5135d30deb5b12fa" title="Multiply a gsc_DecimalMatrix to a vector, and add that product to the first column of a provided gsc_..." alt="" coords="389,73,536,117"/>
-<area shape="rect" href="group__calculators.html#gae37153681a5a2b78b3accbe7e01f65d8" title="Calculates the number of times at each marker that a particular allele appears for each genotype in a..." alt="" coords="393,141,533,185"/>
-<area shape="rect" href="group__calculators.html#ga34b1d566ad458097f95823278f6bbd8e" title="Calculates the number of times at each marker that two particular alleles appear for each genotype in..." alt="" coords="393,209,533,253"/>
-<area shape="rect" href="group__maths.html#gae001e0609ac52df335530f9473cb57e1" title="Generates a matrix of c columns, r rows with all 0." alt="" coords="372,277,553,305"/>
-<area shape="rect" href="sim-operations_8c.html#aaaf3ebc75feaf901829232712e55677b" title="Replace calls to malloc direct with this function." alt="" coords="603,277,725,305"/>
+<div id="dynsection-1-content" class="dyncontent" style="display:none;">
+<div class="center"><img src="group__savers_ga6148ecde2587d6d37c313cfb88401771_cgraph.png" border="0" usemap="#agroup__savers_ga6148ecde2587d6d37c313cfb88401771_cgraph" alt=""/></div>
+<map name="agroup__savers_ga6148ecde2587d6d37c313cfb88401771_cgraph" id="agroup__savers_ga6148ecde2587d6d37c313cfb88401771_cgraph">
+<area shape="rect" title="Prints breeding values of genotypes in the simulation to a file." alt="" coords="5,96,107,124"/>
+<area shape="rect" href="group__iterators.html#ga05da8d96593f8404938cc24f659db049" title="Create a bidirectional iterator." alt="" coords="155,29,341,57"/>
+<area shape="rect" href="group__supporters.html#gac15b90373af3e2828a786215e90963a8" title="Function to identify the lookup index of a marker effect set identifier." alt="" coords="164,96,332,124"/>
+<area shape="rect" href="group__savers.html#ga710981b758de78c6dd9f4e5ab61971fc" title="Calculate and print breeding values to a file." alt="" coords="178,177,318,205"/>
+<area shape="rect" href="group__iterators.html#ga5cca400276ca83acceaab36d5f79aab1" title=" " alt="" coords="391,5,552,49"/>
+<area shape="rect" href="group__calculators.html#ga5eb332e54b2f90f399a28a65cdb25e36" title="Calculate the fitness metric/breeding value for a set of genotypes." alt="" coords="389,356,554,384"/>
+<area shape="rect" href="group__deletors.html#ga99bbd9355f031efae628b27e6ae72f6a" title="Deletes a gsc_DecimalMatrix and frees its memory." alt="" coords="628,605,762,633"/>
+<area shape="rect" href="group__iterators.html#ga630ba7f8e864238e296cb9480dfbc728" title="Get the next location from a bidirectional iterator." alt="" coords="630,125,760,153"/>
+<area shape="rect" href="group__iterators.html#gaa4fa2aec3b7f49f9925fe82c8ff38dcd" title="Initialise a Bidirectional iterator to the start of its sequence." alt="" coords="836,117,979,161"/>
+<area shape="rect" href="group__liteget.html#ga0ce82f67cb5e35a1c73bef54138202f6" title="Get the persistent id of a genotype." alt="" coords="430,125,514,153"/>
+<area shape="rect" href="group__liteget.html#ga22a270ae73aaa86d93212a4a40f999dc" title="Get the name of a genotype." alt="" coords="419,177,525,205"/>
+<area shape="rect" href="group__maths.html#gadaec2ba547549392530e91e50a3c985d" title="Multiply two sets of a gsc_DecimalMatrix and vector, and add both products to the first column of a p..." alt="" coords="602,177,788,221"/>
+<area shape="rect" href="group__maths.html#ga6fdcedf004c9d08e5135d30deb5b12fa" title="Multiply a gsc_DecimalMatrix to a vector, and add that product to the first column of a provided gsc_..." alt="" coords="621,245,769,289"/>
+<area shape="rect" href="group__calculators.html#ga8f765775d463c59f8437da21dad6fab4" title="Calculates the number of times at each marker that a particular allele appears." alt="" coords="625,313,765,357"/>
+<area shape="rect" href="group__calculators.html#ga19bbe4c5c9d867e9c627bbda7aa9bd22" title="Calculates the number of times at each marker that two particular alleles appear." alt="" coords="625,381,765,425"/>
+<area shape="rect" href="group__maths.html#gae001e0609ac52df335530f9473cb57e1" title="Generates a matrix of c columns, r rows with all 0." alt="" coords="604,553,786,581"/>
+<area shape="rect" href="group__liteget.html#ga5e1e89782604c9ab47f196e1da233362" title="Get the alleles of a genotype." alt="" coords="639,501,751,529"/>
+<area shape="rect" href="sim-operations_8c.html#aaaf3ebc75feaf901829232712e55677b" title="Replace calls to malloc direct with this function." alt="" coords="847,553,968,581"/>
 </map>
 </div>
 
 </div>
 </div>
-<a id="ga9678bbe9c8db5f7774188b9574c0c09c" name="ga9678bbe9c8db5f7774188b9574c0c09c"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ga9678bbe9c8db5f7774188b9574c0c09c">&#9670;&nbsp;</a></span>gsc_save_count_matrix()</h2>
+<a id="ga443653ada89ee798e804b61f76d2b497" name="ga443653ada89ee798e804b61f76d2b497"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga443653ada89ee798e804b61f76d2b497">&#9670;&nbsp;</a></span>gsc_save_genotypes()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void gsc_save_count_matrix </td>
+          <td class="memname">void gsc_save_genotypes </td>
+          <td>(</td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>fname</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structgsc___sim_data.html">gsc_SimData</a> *&#160;</td>
+          <td class="paramname"><em>d</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="structgsc___group_num.html">gsc_GroupNum</a>&#160;</td>
+          <td class="paramname"><em>groupID</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const int&#160;</td>
+          <td class="paramname"><em>markers_as_rows</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Prints genotypes from the simulation to a file. </p>
+<p >The output file will contain a matrix of genetic markers by genotypes (or vice-versa), with each cell in the body of the matrix containing the (phased) pair of alleles belonging to that genotype at that genetic marker.</p>
+<p >For more details on printings format, </p><dl class="section see"><dt>See also</dt><dd><a class="el" href="group__savers.html#ga6037070d12fa45c78b642d611fae311e" title="Prints simulated genotypes to a file.">gsc_save_utility_genotypes</a>.</dd></dl>
+<p><em>Has short name:</em> <a class="el" href="group__shortnames.html#gad0d696d1160922519097b9890dcb53da">save_genotypes</a></p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">fname</td><td>name of the file to which the output will be saved. Any prior file contents will be overwritten. </td></tr>
+    <tr><td class="paramname">d</td><td>pointer to the <a class="el" href="structgsc___sim_data.html" title="Composite type that is used to run crossing simulations.">gsc_SimData</a> in which the genotypes to be saved can be found. </td></tr>
+    <tr><td class="paramname">groupID</td><td>group number of the group of genotypes to save, or NO_GROUP to save all genotypes in the simulation. </td></tr>
+    <tr><td class="paramname">markers_as_rows</td><td>If true, genetic markers will be rows in the output matrix, and genotypes will be columns. If false, genetic markers will be columns in the output matrix, and genotypes will be rows. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definition at line <a class="el" href="sim-operations_8c_source.html#l09718">9718</a> of file <a class="el" href="sim-operations_8c_source.html">sim-operations.c</a>.</p>
+<div id="dynsection-2" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-2-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
+<div id="dynsection-2-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-2-content" class="dyncontent" style="display:none;">
+<div class="center"><img src="group__savers_ga443653ada89ee798e804b61f76d2b497_cgraph.png" border="0" usemap="#agroup__savers_ga443653ada89ee798e804b61f76d2b497_cgraph" alt=""/></div>
+<map name="agroup__savers_ga443653ada89ee798e804b61f76d2b497_cgraph" id="agroup__savers_ga443653ada89ee798e804b61f76d2b497_cgraph">
+<area shape="rect" title="Prints genotypes from the simulation to a file." alt="" coords="5,48,148,76"/>
+<area shape="rect" href="group__iterators.html#ga05da8d96593f8404938cc24f659db049" title="Create a bidirectional iterator." alt="" coords="196,17,382,45"/>
+<area shape="rect" href="group__savers.html#ga6037070d12fa45c78b642d611fae311e" title="Prints simulated genotypes to a file." alt="" coords="199,73,379,101"/>
+<area shape="rect" href="group__iterators.html#ga5cca400276ca83acceaab36d5f79aab1" title=" " alt="" coords="475,5,636,49"/>
+<area shape="rect" href="sim-operations_8c.html#a101ba1c1812ca6bb5d69042904e8fdaa" title="Kernel for gsc_scaffold_save_genotype_info, when the goal is to save the (phased) allele pairs of eac..." alt="" coords="430,73,680,101"/>
+<area shape="rect" href="sim-operations_8c.html#a11101d643d9ee74d16324d55cbb6682e" title="Prints a matrix of genotype information to a file." alt="" coords="449,164,662,192"/>
+<area shape="rect" href="group__liteget.html#ga5e1e89782604c9ab47f196e1da233362" title="Get the alleles of a genotype." alt="" coords="737,33,849,61"/>
+<area shape="rect" href="group__liteget.html#ga0ce82f67cb5e35a1c73bef54138202f6" title="Get the persistent id of a genotype." alt="" coords="751,85,835,113"/>
+<area shape="rect" href="group__liteget.html#ga22a270ae73aaa86d93212a4a40f999dc" title="Get the name of a genotype." alt="" coords="740,137,846,165"/>
+<area shape="rect" href="sim-operations_8c.html#aaaf3ebc75feaf901829232712e55677b" title="Replace calls to malloc direct with this function." alt="" coords="732,189,854,217"/>
+<area shape="rect" href="group__iterators.html#ga630ba7f8e864238e296cb9480dfbc728" title="Get the next location from a bidirectional iterator." alt="" coords="728,241,858,269"/>
+<area shape="rect" href="group__iterators.html#gaa4fa2aec3b7f49f9925fe82c8ff38dcd" title="Initialise a Bidirectional iterator to the start of its sequence." alt="" coords="906,260,1049,304"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="gabb38b85b4074a41e7de110aa7a289b6a" name="gabb38b85b4074a41e7de110aa7a289b6a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gabb38b85b4074a41e7de110aa7a289b6a">&#9670;&nbsp;</a></span>gsc_save_markerblocks()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void gsc_save_markerblocks </td>
+          <td>(</td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>fname</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structgsc___sim_data.html">gsc_SimData</a> *&#160;</td>
+          <td class="paramname"><em>d</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="structgsc___marker_blocks.html">gsc_MarkerBlocks</a>&#160;</td>
+          <td class="paramname"><em>b</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="structgsc___map_i_d.html">gsc_MapID</a>&#160;</td>
+          <td class="paramname"><em>labelMapID</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Prints the markers contained in a set of blocks to a file. </p>
+<p >Two printing formats are available. </p><dl class="section see"><dt>See also</dt><dd><a class="el" href="group__savers.html#gaf17b391180e41d0b030404e49c8416bb" title="Prints the markers contained in a set of blocks to a file.">gsc_save_utility_markerblocks</a> for a description of the two printing formats.</dd></dl>
+<p><em>Has short name:</em> <a class="el" href="group__shortnames.html#gad985933c857f19424a26483b0ca567de">save_markerblocks</a></p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">fname</td><td>name of the file to which the output will be saved. Any prior file contents will be overwritten. </td></tr>
+    <tr><td class="paramname">d</td><td>pointer to the <a class="el" href="structgsc___sim_data.html" title="Composite type that is used to run crossing simulations.">gsc_SimData</a> from which marker names and chromsome allocations will be accessed. </td></tr>
+    <tr><td class="paramname">b</td><td><a class="el" href="structgsc___marker_blocks.html" title="A struct used to store a set of blocks of markers.">gsc_MarkerBlocks</a> struct containing the groupings of markers to print. </td></tr>
+    <tr><td class="paramname">labelMapID</td><td>If this paramter is a valid map ID, the function will save the marker blocks in the three-column format, with their chromosome index and size. Otherwise, if this value is NO_MAP or an invalid map ID, the function will save the marker blocks in the simple format. The formats are described in the documentation of the function <em>gsc_save_utility_markerblocks</em> </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definition at line <a class="el" href="sim-operations_8c_source.html#l09684">9684</a> of file <a class="el" href="sim-operations_8c_source.html">sim-operations.c</a>.</p>
+<div id="dynsection-3" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-3-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
+<div id="dynsection-3-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-3-content" class="dyncontent" style="display:none;">
+<div class="center"><img src="group__savers_gabb38b85b4074a41e7de110aa7a289b6a_cgraph.png" border="0" usemap="#agroup__savers_gabb38b85b4074a41e7de110aa7a289b6a_cgraph" alt=""/></div>
+<map name="agroup__savers_gabb38b85b4074a41e7de110aa7a289b6a_cgraph" id="agroup__savers_gabb38b85b4074a41e7de110aa7a289b6a_cgraph">
+<area shape="rect" title="Prints the markers contained in a set of blocks to a file." alt="" coords="5,32,166,60"/>
+<area shape="rect" href="group__supporters.html#gaaa359f6aab15a4c27d344e1118e87457" title="Function to identify the lookup index of a recombination map identifier." alt="" coords="236,5,390,33"/>
+<area shape="rect" href="group__savers.html#gaf17b391180e41d0b030404e49c8416bb" title="Prints the markers contained in a set of blocks to a file." alt="" coords="214,57,412,85"/>
+<area shape="rect" href="sim-operations_8c.html#ae1ca4979efc8696d2d19ecf32b1289bb" title="Check if a marker index is found in a particular LinkageGroup, and provide its distance along the chr..." alt="" coords="460,49,608,93"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="ga7033cc948a0521fea492fd0d45988ad6" name="ga7033cc948a0521fea492fd0d45988ad6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga7033cc948a0521fea492fd0d45988ad6">&#9670;&nbsp;</a></span>gsc_save_pedigrees()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void gsc_save_pedigrees </td>
+          <td>(</td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>fname</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structgsc___sim_data.html">gsc_SimData</a> *&#160;</td>
+          <td class="paramname"><em>d</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="structgsc___group_num.html">gsc_GroupNum</a>&#160;</td>
+          <td class="paramname"><em>groupID</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const int&#160;</td>
+          <td class="paramname"><em>full_pedigree</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Prints pedigrees of genotypes in the simulation to a file. </p>
+<p >Two printing formats are available. </p><dl class="section see"><dt>See also</dt><dd><a class="el" href="group__savers.html#gad7643e196ad0f8e7db3c044894395de1" title="Prints pedigrees to a file.">gsc_save_utility_pedigrees</a> for a description of the two printing formats.</dd></dl>
+<p>Genotype information is not retained after deletion. This includes PedigreeIDs. This means that if the parents or ancestor genotypes have already been deleted, they will be deemed missing and will not appear in the pedigree.</p>
+<p ><em>Has short name:</em> <a class="el" href="group__shortnames.html#ga75039470712490da1771dcda69de5e36">save_pedigrees</a></p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">fname</td><td>name of the file to which the output will be saved. Any prior file contents will be overwritten. </td></tr>
+    <tr><td class="paramname">d</td><td>pointer to the <a class="el" href="structgsc___sim_data.html" title="Composite type that is used to run crossing simulations.">gsc_SimData</a> in which the genotypes whose pedigrees will be saved can be found. </td></tr>
+    <tr><td class="paramname">groupID</td><td>group number of the group of genotypes whose pedigrees will be saved, or NO_GROUP to save pedigrees of all genotypes in the simulation. </td></tr>
+    <tr><td class="paramname">full_pedigree</td><td>If true, pedigrees will be traced back recursively through all genotypes in the simulation. If false, only the two immediate parents of the genotype will be located. For more information </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definition at line <a class="el" href="sim-operations_8c_source.html#l09789">9789</a> of file <a class="el" href="sim-operations_8c_source.html">sim-operations.c</a>.</p>
+<div id="dynsection-4" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-4-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
+<div id="dynsection-4-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-4-content" class="dyncontent" style="display:none;">
+<div class="center"><img src="group__savers_ga7033cc948a0521fea492fd0d45988ad6_cgraph.png" border="0" usemap="#agroup__savers_ga7033cc948a0521fea492fd0d45988ad6_cgraph" alt=""/></div>
+<map name="agroup__savers_ga7033cc948a0521fea492fd0d45988ad6_cgraph" id="agroup__savers_ga7033cc948a0521fea492fd0d45988ad6_cgraph">
+<area shape="rect" title="Prints pedigrees of genotypes in the simulation to a file." alt="" coords="5,280,144,308"/>
+<area shape="rect" href="group__iterators.html#ga05da8d96593f8404938cc24f659db049" title="Create a bidirectional iterator." alt="" coords="192,133,378,161"/>
+<area shape="rect" href="group__savers.html#gad7643e196ad0f8e7db3c044894395de1" title="Prints pedigrees to a file." alt="" coords="197,305,373,333"/>
+<area shape="rect" href="group__iterators.html#ga5cca400276ca83acceaab36d5f79aab1" title=" " alt="" coords="446,5,607,49"/>
+<area shape="rect" href="group__liteget.html#ga847569827ccdd09ff54808c09aba742c" title="Get the first/left parent of a genotype." alt="" coords="457,149,595,177"/>
+<area shape="rect" href="group__liteget.html#ga0ce82f67cb5e35a1c73bef54138202f6" title="Get the persistent id of a genotype." alt="" coords="484,201,568,229"/>
+<area shape="rect" href="group__liteget.html#ga22a270ae73aaa86d93212a4a40f999dc" title="Get the name of a genotype." alt="" coords="473,253,579,281"/>
+<area shape="rect" href="group__search.html#ga5c7cd898a40e515c3164c98821068978" title="Returns the name of the genotype with a given id." alt="" coords="680,149,820,177"/>
+<area shape="rect" href="group__liteget.html#gab71ce9343a19dd2fc34da1af89fee00a" title="Get the second/right parent of a genotype." alt="" coords="447,357,606,385"/>
+<area shape="rect" href="sim-operations_8c.html#a55984ff6f744f118ee79589a8fc4dcfc" title="Kernel for scaffold functions that require printing an integer to a file (as opposed to saving the in..." alt="" coords="456,409,597,453"/>
+<area shape="rect" href="sim-operations_8c.html#af5808811b84717ecb459de3bc7565494" title="Kernel for scaffold functions that require printing a string to a file (as opposed to saving the stri..." alt="" coords="456,477,597,521"/>
+<area shape="rect" href="group__iterators.html#ga630ba7f8e864238e296cb9480dfbc728" title="Get the next location from a bidirectional iterator." alt="" coords="462,545,591,573"/>
+<area shape="rect" href="group__iterators.html#gaa4fa2aec3b7f49f9925fe82c8ff38dcd" title="Initialise a Bidirectional iterator to the start of its sequence." alt="" coords="678,563,822,607"/>
+<area shape="rect" href="sim-operations_8c.html#a6b80bf9dd00c35da0b57bbdae52098ec" title="Identifies and saves (recursively) the pedigree of a pair of parents." alt="" coords="426,97,626,125"/>
+<area shape="rect" href="group__supporters.html#ga8b0703c50a67ddcbe49f6b8d4ba3162b" title="Binary search through a list of PedigreeIDs." alt="" coords="874,116,1023,160"/>
+<area shape="rect" href="group__search.html#gad9d1d0b5575da681af7789354447612a" title="Saves the ids of the parents of a genotype with a particular id to the output array output." alt="" coords="674,97,826,125"/>
+</map>
+</div>
+<div id="dynsection-5" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-5-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
+<div id="dynsection-5-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-5-content" class="dyncontent" style="display:none;">
+<div class="center"><img src="group__savers_ga7033cc948a0521fea492fd0d45988ad6_icgraph.png" border="0" usemap="#agroup__savers_ga7033cc948a0521fea492fd0d45988ad6_icgraph" alt=""/></div>
+<map name="agroup__savers_ga7033cc948a0521fea492fd0d45988ad6_icgraph" id="agroup__savers_ga7033cc948a0521fea492fd0d45988ad6_icgraph">
+<area shape="rect" title="Prints pedigrees of genotypes in the simulation to a file." alt="" coords="223,5,361,33"/>
+<area shape="rect" href="group__collgetters.html#ga62d40b0b1cb6c5ded508b8a5f161d38a" title="Gets the full pedigree string (as per gsc_save_group_full_pedigree() ) of each member of the group." alt="" coords="5,5,175,33"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="ga2d86e418dd2d1dea1f2783e5dfdda614" name="ga2d86e418dd2d1dea1f2783e5dfdda614"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga2d86e418dd2d1dea1f2783e5dfdda614">&#9670;&nbsp;</a></span>gsc_save_utility_allele_counts()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void gsc_save_utility_allele_counts </td>
           <td>(</td>
           <td class="paramtype">FILE *&#160;</td>
           <td class="paramname"><em>f</em>, </td>
@@ -366,8 +524,26 @@ Functions</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const <a class="el" href="structgsc___sim_data.html">gsc_SimData</a> *&#160;</td>
-          <td class="paramname"><em>d</em>, </td>
+          <td class="paramtype"><a class="el" href="structgsc___bidirectional_iterator.html">gsc_BidirectionalIterator</a> *&#160;</td>
+          <td class="paramname"><em>targets</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname"><em>n_markers</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char **const&#160;</td>
+          <td class="paramname"><em>marker_names</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const int&#160;</td>
+          <td class="paramname"><em>markers_as_rows</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -383,260 +559,70 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Print the number of copies of a particular allele at each marker of each genotype in the <a class="el" href="structgsc___sim_data.html" title="Composite type that is used to run crossing simulations.">gsc_SimData</a> to a file. </p>
-<p >The following tab-separated format is used: </p><pre class="fragment">    [id]OR[name]    [id]OR[name] ...
-</pre><p> [marker name] [allele count for each marker]</p>
-<p >[marker name] [allele count for each marker]</p>
+<p>Prints allele counts of simulated genotypes to a file. </p>
+<p >For a more user-friendly interface to this function: </p><dl class="section see"><dt>See also</dt><dd><a class="el" href="group__savers.html#ga485b6a5b126a27c531ad26de07f332b3" title="Prints allele counts of genotypes from the simulation to a file.">gsc_save_allele_counts</a></dd></dl>
+<p>The output file will contain a matrix of genetic markers by genotypes (or vice-versa), with each cell in the body of the matrix containing the allele counts of a some allele for each genetic marker.</p>
+<p >If the genetic markers are the columns of the matrix (i.e. <em>markers_as_rows</em> = GSC_FALSE) the output file format will be approximately:</p>
+<p >1 [marker name] [marker name]</p>
+<p >[pedigree id]OR[genotype name] [allele count for each marker]</p>
+<p >[pedigree id]OR[genotype name] [allele count for each marker]</p>
 <p >...</p>
-<p >ID will be printed if the genotype does not have a name saved.</p>
-<p ><em>Has short name:</em> <a class="el" href="group__shortnames.html#ga311d03837ccf30973a719e2d751d1f48">save_count_matrix</a></p>
+<p >The top left corner cell will be blank, if the iterator <em>targets</em> is iterating through all genotypes. If the iterator is iterating through the members of a group, the top left corner cell will contain the group number.</p>
+<p >If a genetic marker does not have a name, the corresponding header row cell will be left blank. If a genotype does not have a name, the corresponding header column cell will contain its PedigreeID instead. If it has no name and no allocated PedigreeID, this cell will read 0 (because NO_PEDIGREE.id = 0).</p>
+<p >If the genetic markers are the rows of the matrix (i.e. <em>markers_as_rows</em> = GSC_TRUE), the above matrix will be transposed.</p>
+<p >This function can be called with <em>targets</em> = NULL. In that case, it will print only the marker names, as a header row or a header column, depending on the value of <em>markers_as_rows</em>.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">f</td><td>file pointer opened for writing to put the output </td></tr>
-    <tr><td class="paramname">d</td><td>pointer to the <a class="el" href="structgsc___sim_data.html" title="Composite type that is used to run crossing simulations.">gsc_SimData</a> containing the group members. </td></tr>
-    <tr><td class="paramname">allele</td><td>the allele character to count </td></tr>
+    <tr><td class="paramname">targets</td><td>iterator for the genotypes whose genotypes will be saved </td></tr>
+    <tr><td class="paramname">n_markers</td><td>length of the vector <em>marker_names</em> </td></tr>
+    <tr><td class="paramname">marker_names</td><td>list of marker names, ordered so that they correspond to the order of markers in the genotypes in <em>targets</em>. This is best achieved by taking <em>marker_names</em> from a <em>SimData.genome.marker_names</em>, and the AlleleMatrix input for <em>gsc_create_bidirectional_iter</em> for <em>targets</em> being the same SimData's <em>SimData-&gt;m</em>. </td></tr>
+    <tr><td class="paramname">markers_as_rows</td><td>If GSC_TRUE, genetic markers will be rows in the output matrix, and genotypes will be columns. If GSC_FALSE, genetic markers will be columns in the output matrix, and genotypes will be rows. </td></tr>
+    <tr><td class="paramname">allele</td><td>the allele to count </td></tr>
   </table>
   </dd>
 </dl>
-<div id="dynsection-4" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
-  <img id="dynsection-4-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
-<div id="dynsection-4-summary" class="dynsummary" style="display:block;">
-</div>
-<div id="dynsection-4-content" class="dyncontent" style="display:none;">
-<div class="center"><img src="group__savers_ga9678bbe9c8db5f7774188b9574c0c09c_cgraph.png" border="0" usemap="#agroup__savers_ga9678bbe9c8db5f7774188b9574c0c09c_cgraph" alt=""/></div>
-<map name="agroup__savers_ga9678bbe9c8db5f7774188b9574c0c09c_cgraph" id="agroup__savers_ga9678bbe9c8db5f7774188b9574c0c09c_cgraph">
-<area shape="rect" title="Print the number of copies of a particular allele at each marker of each genotype in the gsc_SimData ..." alt="" coords="5,44,163,72"/>
-<area shape="rect" href="group__calculators.html#gae2d46345f01bc74e45a4d07b2a531113" title="Calculates the number of times at each marker that a particular allele appears for each genotype in t..." alt="" coords="216,5,340,49"/>
-<area shape="rect" href="group__deletors.html#ga99bbd9355f031efae628b27e6ae72f6a" title="Deletes a gsc_DecimalMatrix and frees its memory." alt="" coords="211,73,345,101"/>
-<area shape="rect" href="group__maths.html#gae001e0609ac52df335530f9473cb57e1" title="Generates a matrix of c columns, r rows with all 0." alt="" coords="393,13,574,41"/>
-<area shape="rect" href="sim-operations_8c.html#aaaf3ebc75feaf901829232712e55677b" title="Replace calls to malloc direct with this function." alt="" coords="622,13,744,41"/>
-</map>
-</div>
 
-</div>
-</div>
-<a id="ga6a5bcd7945c34e0ec99ccc92311d947c" name="ga6a5bcd7945c34e0ec99ccc92311d947c"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ga6a5bcd7945c34e0ec99ccc92311d947c">&#9670;&nbsp;</a></span>gsc_save_full_pedigree()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void gsc_save_full_pedigree </td>
-          <td>(</td>
-          <td class="paramtype">FILE *&#160;</td>
-          <td class="paramname"><em>f</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">const <a class="el" href="structgsc___sim_data.html">gsc_SimData</a> *&#160;</td>
-          <td class="paramname"><em>d</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Print the full known pedigree of each genotype in the <a class="el" href="structgsc___sim_data.html" title="Composite type that is used to run crossing simulations.">gsc_SimData</a> to a file. </p>
-<p >The following tab-separated format is used:</p>
-<p >[id] [name]=([parent 1 pedigree],[parent 2 pedigree])</p>
-<p >[id] [name]=([parent pedigree])</p>
-<p >...</p>
-<p >Note that this pedigree is recursively constructed, so if a genotype's parents are known, [parent pedigree] is replaced with a string of format name=([parent1 pedigree],[parent2 pedigree]) alike. If the two parents of a genotype are the same individual (i.e. it was produced by selfing, the comma and second parent pedigree are ommitted, as in the second line sample in the format above.</p>
-<p >The parents of a genotype are identified by the two ids saved in the genotype's pedigrees field in the <a class="el" href="structgsc___allele_matrix.html">gsc_AlleleMatrix</a> struct.</p>
-<p >If a group member or parent has no name, the name will be replaced in the output file with its session-unique id. If the parent id of an individual is 0, the individual is printed without brackets or parent pedigrees and recursion stops here.</p>
-<p ><em>Has short name:</em> <a class="el" href="group__shortnames.html#ga6e1ab8f7cd21180ca9d6942ac3f4c026">save_full_pedigree</a></p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">f</td><td>file pointer opened for writing to put the output </td></tr>
-    <tr><td class="paramname">d</td><td>pointer to the <a class="el" href="structgsc___sim_data.html" title="Composite type that is used to run crossing simulations.">gsc_SimData</a> containing all genotypes to print. </td></tr>
-  </table>
-  </dd>
-</dl>
-<div id="dynsection-5" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
-  <img id="dynsection-5-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
-<div id="dynsection-5-summary" class="dynsummary" style="display:block;">
-</div>
-<div id="dynsection-5-content" class="dyncontent" style="display:none;">
-<div class="center"><img src="group__savers_ga6a5bcd7945c34e0ec99ccc92311d947c_cgraph.png" border="0" usemap="#agroup__savers_ga6a5bcd7945c34e0ec99ccc92311d947c_cgraph" alt=""/></div>
-<map name="agroup__savers_ga6a5bcd7945c34e0ec99ccc92311d947c_cgraph" id="agroup__savers_ga6a5bcd7945c34e0ec99ccc92311d947c_cgraph">
-<area shape="rect" title="Print the full known pedigree of each genotype in the gsc_SimData to a file." alt="" coords="5,32,160,60"/>
-<area shape="rect" href="group__savers.html#ga8e5d08dbcfc4cc77d1d1c6603b75a2ed" title="Recursively save the parents of a particular id to a file." alt="" coords="208,32,350,60"/>
-<area shape="rect" href="group__search.html#ga5c7cd898a40e515c3164c98821068978" title="Returns the name of the genotype with a given id." alt="" coords="404,5,544,33"/>
-<area shape="rect" href="group__search.html#gad9d1d0b5575da681af7789354447612a" title="Saves the ids of the parents of a genotype with a particular id to the output array output." alt="" coords="398,57,549,85"/>
-<area shape="rect" href="group__supporters.html#ga8b0703c50a67ddcbe49f6b8d4ba3162b" title="Binary search through a list of PedigreeIDs." alt="" coords="597,24,747,68"/>
-</map>
-</div>
-
-</div>
-</div>
-<a id="ga3453d7fc7d552e7c254cf00788c45506" name="ga3453d7fc7d552e7c254cf00788c45506"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ga3453d7fc7d552e7c254cf00788c45506">&#9670;&nbsp;</a></span>gsc_save_group_bvs()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void gsc_save_group_bvs </td>
-          <td>(</td>
-          <td class="paramtype">FILE *&#160;</td>
-          <td class="paramname"><em>f</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">const <a class="el" href="structgsc___sim_data.html">gsc_SimData</a> *&#160;</td>
-          <td class="paramname"><em>d</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">const <a class="el" href="structgsc___group_num.html">gsc_GroupNum</a>&#160;</td>
-          <td class="paramname"><em>group</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">const <a class="el" href="structgsc___effect_i_d.html">gsc_EffectID</a>&#160;</td>
-          <td class="paramname"><em>effID</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Print the breeding value of each genotype in a group to a file. </p>
-<p >The following tab-separated format is used:</p>
-<p >[group member id] [group member name] [BV]</p>
-<p >[group member id] [group member name] [BV]</p>
-<p >...</p>
-<p >The <a class="el" href="structgsc___sim_data.html" title="Composite type that is used to run crossing simulations.">gsc_SimData</a> must have loaded marker effects for this function to succeed.</p>
-<p ><em>Has short name:</em> <a class="el" href="group__shortnames.html#ga9de3a7edd3958006119e6e6ea30d9593">save_group_bvs</a></p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">f</td><td>file pointer opened for writing to put the output </td></tr>
-    <tr><td class="paramname">d</td><td>pointer to the <a class="el" href="structgsc___sim_data.html" title="Composite type that is used to run crossing simulations.">gsc_SimData</a> containing the group members. </td></tr>
-    <tr><td class="paramname">group</td><td>group number of the group of individuals to print the breeding values of. </td></tr>
-    <tr><td class="paramname">effID</td><td>Identifier of the marker effect set to be used to calculate these breeding values </td></tr>
-  </table>
-  </dd>
-</dl>
+<p class="definition">Definition at line <a class="el" href="sim-operations_8c_source.html#l10237">10237</a> of file <a class="el" href="sim-operations_8c_source.html">sim-operations.c</a>.</p>
 <div id="dynsection-6" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-6-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
 <div id="dynsection-6-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-6-content" class="dyncontent" style="display:none;">
-<div class="center"><img src="group__savers_ga3453d7fc7d552e7c254cf00788c45506_cgraph.png" border="0" usemap="#agroup__savers_ga3453d7fc7d552e7c254cf00788c45506_cgraph" alt=""/></div>
-<map name="agroup__savers_ga3453d7fc7d552e7c254cf00788c45506_cgraph" id="agroup__savers_ga3453d7fc7d552e7c254cf00788c45506_cgraph">
-<area shape="rect" title="Print the breeding value of each genotype in a group to a file." alt="" coords="5,254,146,282"/>
-<area shape="rect" href="group__calculators.html#ga381bf7e42397f428a322dd8e118a4243" title="Calculates the fitness metric/breeding value for each genotype in the gsc_AlleleMatrix in a certain g..." alt="" coords="194,377,360,405"/>
-<area shape="rect" href="group__collgetters.html#gae9131a8c72149706f67f6e4a48add79c" title="Function to count the number of genotypes that currently belong to the specified group." alt="" coords="838,181,975,209"/>
-<area shape="rect" href="group__deletors.html#ga99bbd9355f031efae628b27e6ae72f6a" title="Deletes a gsc_DecimalMatrix and frees its memory." alt="" coords="434,557,568,585"/>
-<area shape="rect" href="group__supporters.html#gac15b90373af3e2828a786215e90963a8" title="Function to identify the lookup index of a marker effect set identifier." alt="" coords="417,609,584,637"/>
-<area shape="rect" href="group__collgetters.html#gae5fac6863433c073871766b80aa6d966" title="Gets the ids of each member of the group." alt="" coords="650,27,781,55"/>
-<area shape="rect" href="group__collgetters.html#ga52a8eb90f5a6a1f9dabea81955d0bb79" title="Gets a shallow copy of the names of each member of the group." alt="" coords="201,79,353,107"/>
-<area shape="rect" href="group__maths.html#gadaec2ba547549392530e91e50a3c985d" title="Multiply two sets of a gsc_DecimalMatrix and vector, and add both products to the first column of a p..." alt="" coords="408,233,593,277"/>
-<area shape="rect" href="group__maths.html#ga6fdcedf004c9d08e5135d30deb5b12fa" title="Multiply a gsc_DecimalMatrix to a vector, and add that product to the first column of a provided gsc_..." alt="" coords="427,369,574,413"/>
-<area shape="rect" href="group__calculators.html#ga12c13aaf31fccff2f9ddd612035c426a" title="Calculates the number of times at each marker that a particular allele appears for each genotype in a..." alt="" coords="431,301,571,345"/>
-<area shape="rect" href="group__calculators.html#ga160313a4276db1a2897ab0d161f5caa8" title="Calculates the number of times at each marker that two particular alleles appear for each genotype in..." alt="" coords="431,437,571,481"/>
-<area shape="rect" href="group__maths.html#gae001e0609ac52df335530f9473cb57e1" title="Generates a matrix of c columns, r rows with all 0." alt="" coords="410,505,591,533"/>
-<area shape="rect" href="group__collgetters.html#gab256e999fe9540658a2a3aba11260cb5" title="Gets a shallow copy of the genes/alleles of each member of the group." alt="" coords="641,309,790,337"/>
-<area shape="rect" href="sim-operations_8c.html#aaaf3ebc75feaf901829232712e55677b" title="Replace calls to malloc direct with this function." alt="" coords="655,505,776,533"/>
+<div class="center"><img src="group__savers_ga2d86e418dd2d1dea1f2783e5dfdda614_cgraph.png" border="0" usemap="#agroup__savers_ga2d86e418dd2d1dea1f2783e5dfdda614_cgraph" alt=""/></div>
+<map name="agroup__savers_ga2d86e418dd2d1dea1f2783e5dfdda614_cgraph" id="agroup__savers_ga2d86e418dd2d1dea1f2783e5dfdda614_cgraph">
+<area shape="rect" title="Prints allele counts of simulated genotypes to a file." alt="" coords="5,76,156,120"/>
+<area shape="rect" href="sim-operations_8c.html#ac7f20afdbab67bfeece1a8dc2a6baab4" title="Kernel for gsc_scaffold_save_genotype_info, when the goal is to save the allele counts of a particula..." alt="" coords="204,57,433,85"/>
+<area shape="rect" href="sim-operations_8c.html#a11101d643d9ee74d16324d55cbb6682e" title="Prints a matrix of genotype information to a file." alt="" coords="212,109,425,137"/>
+<area shape="rect" href="group__liteget.html#ga0ce82f67cb5e35a1c73bef54138202f6" title="Get the persistent id of a genotype." alt="" coords="504,5,588,33"/>
+<area shape="rect" href="group__liteget.html#ga22a270ae73aaa86d93212a4a40f999dc" title="Get the name of a genotype." alt="" coords="493,57,599,85"/>
+<area shape="rect" href="sim-operations_8c.html#aaaf3ebc75feaf901829232712e55677b" title="Replace calls to malloc direct with this function." alt="" coords="485,109,606,137"/>
+<area shape="rect" href="group__iterators.html#ga630ba7f8e864238e296cb9480dfbc728" title="Get the next location from a bidirectional iterator." alt="" coords="481,161,610,189"/>
+<area shape="rect" href="group__iterators.html#gaa4fa2aec3b7f49f9925fe82c8ff38dcd" title="Initialise a Bidirectional iterator to the start of its sequence." alt="" coords="658,180,802,224"/>
 </map>
 </div>
-
-</div>
-</div>
-<a id="ga47adc7657700b186067b2c26dabf5b13" name="ga47adc7657700b186067b2c26dabf5b13"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ga47adc7657700b186067b2c26dabf5b13">&#9670;&nbsp;</a></span>gsc_save_group_count_matrix()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void gsc_save_group_count_matrix </td>
-          <td>(</td>
-          <td class="paramtype">FILE *&#160;</td>
-          <td class="paramname"><em>f</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">const <a class="el" href="structgsc___sim_data.html">gsc_SimData</a> *&#160;</td>
-          <td class="paramname"><em>d</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">const char&#160;</td>
-          <td class="paramname"><em>allele</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">const <a class="el" href="structgsc___group_num.html">gsc_GroupNum</a>&#160;</td>
-          <td class="paramname"><em>group</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Print the number of copies of a particular allele at each marker of each genotype in a group to a file. </p>
-<p >The following tab-separated format is used: </p><pre class="fragment">    [id]OR[name]    [id]OR[name] ...
-</pre><p> [marker name] [allele count for each marker]</p>
-<p >[marker name] [allele count for each marker]</p>
-<p >...</p>
-<p >ID will be printed if the genotype does not have a name saved.</p>
-<p ><em>Has short name:</em> <a class="el" href="group__shortnames.html#ga5c3ad1442e8ccb084fde3adc034c86ff">save_group_count_matrix</a></p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">f</td><td>file pointer opened for writing to put the output </td></tr>
-    <tr><td class="paramname">d</td><td>pointer to the <a class="el" href="structgsc___sim_data.html" title="Composite type that is used to run crossing simulations.">gsc_SimData</a> containing the group members. </td></tr>
-    <tr><td class="paramname">group</td><td>group number of the group of individuals to print the allele count of. </td></tr>
-    <tr><td class="paramname">allele</td><td>the allele character to count </td></tr>
-  </table>
-  </dd>
-</dl>
 <div id="dynsection-7" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
-  <img id="dynsection-7-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
+  <img id="dynsection-7-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
 <div id="dynsection-7-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-7-content" class="dyncontent" style="display:none;">
-<div class="center"><img src="group__savers_ga47adc7657700b186067b2c26dabf5b13_cgraph.png" border="0" usemap="#agroup__savers_ga47adc7657700b186067b2c26dabf5b13_cgraph" alt=""/></div>
-<map name="agroup__savers_ga47adc7657700b186067b2c26dabf5b13_cgraph" id="agroup__savers_ga47adc7657700b186067b2c26dabf5b13_cgraph">
-<area shape="rect" title="Print the number of copies of a particular allele at each marker of each genotype in a group to a fil..." alt="" coords="5,179,159,223"/>
-<area shape="rect" href="group__calculators.html#ga12c13aaf31fccff2f9ddd612035c426a" title="Calculates the number of times at each marker that a particular allele appears for each genotype in a..." alt="" coords="227,40,368,84"/>
-<area shape="rect" href="group__collgetters.html#gae9131a8c72149706f67f6e4a48add79c" title="Function to count the number of genotypes that currently belong to the specified group." alt="" coords="636,108,774,136"/>
-<area shape="rect" href="group__deletors.html#ga99bbd9355f031efae628b27e6ae72f6a" title="Deletes a gsc_DecimalMatrix and frees its memory." alt="" coords="230,160,365,188"/>
-<area shape="rect" href="group__maths.html#gae001e0609ac52df335530f9473cb57e1" title="Generates a matrix of c columns, r rows with all 0." alt="" coords="207,212,388,240"/>
-<area shape="rect" href="group__collgetters.html#gae5fac6863433c073871766b80aa6d966" title="Gets the ids of each member of the group." alt="" coords="447,263,577,291"/>
-<area shape="rect" href="group__collgetters.html#ga52a8eb90f5a6a1f9dabea81955d0bb79" title="Gets a shallow copy of the names of each member of the group." alt="" coords="436,315,588,343"/>
-<area shape="rect" href="group__collgetters.html#gab256e999fe9540658a2a3aba11260cb5" title="Gets a shallow copy of the genes/alleles of each member of the group." alt="" coords="438,5,586,33"/>
-<area shape="rect" href="sim-operations_8c.html#aaaf3ebc75feaf901829232712e55677b" title="Replace calls to malloc direct with this function." alt="" coords="452,211,573,239"/>
+<div class="center"><img src="group__savers_ga2d86e418dd2d1dea1f2783e5dfdda614_icgraph.png" border="0" usemap="#agroup__savers_ga2d86e418dd2d1dea1f2783e5dfdda614_icgraph" alt=""/></div>
+<map name="agroup__savers_ga2d86e418dd2d1dea1f2783e5dfdda614_icgraph" id="agroup__savers_ga2d86e418dd2d1dea1f2783e5dfdda614_icgraph">
+<area shape="rect" title="Prints allele counts of simulated genotypes to a file." alt="" coords="212,5,362,49"/>
+<area shape="rect" href="group__savers.html#ga485b6a5b126a27c531ad26de07f332b3" title="Prints allele counts of genotypes from the simulation to a file." alt="" coords="5,13,164,41"/>
 </map>
 </div>
 
 </div>
 </div>
-<a id="ga34df718dd14346f72cc20928351cc4d2" name="ga34df718dd14346f72cc20928351cc4d2"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ga34df718dd14346f72cc20928351cc4d2">&#9670;&nbsp;</a></span>gsc_save_group_full_pedigree()</h2>
+<a id="ga710981b758de78c6dd9f4e5ab61971fc" name="ga710981b758de78c6dd9f4e5ab61971fc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga710981b758de78c6dd9f4e5ab61971fc">&#9670;&nbsp;</a></span>gsc_save_utility_bvs()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void gsc_save_group_full_pedigree </td>
+          <td class="memname">void gsc_save_utility_bvs </td>
           <td>(</td>
           <td class="paramtype">FILE *&#160;</td>
           <td class="paramname"><em>f</em>, </td>
@@ -644,14 +630,14 @@ Functions</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const <a class="el" href="structgsc___sim_data.html">gsc_SimData</a> *&#160;</td>
-          <td class="paramname"><em>d</em>, </td>
+          <td class="paramtype"><a class="el" href="structgsc___bidirectional_iterator.html">gsc_BidirectionalIterator</a> *&#160;</td>
+          <td class="paramname"><em>targets</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const <a class="el" href="structgsc___group_num.html">gsc_GroupNum</a>&#160;</td>
-          <td class="paramname"><em>group</em>&#160;</td>
+          <td class="paramtype">const <a class="el" href="structgsc___effect_matrix.html">gsc_EffectMatrix</a> *&#160;</td>
+          <td class="paramname"><em>eff</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -661,39 +647,43 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Print the full known pedigree of each genotype in a group to a file. </p>
-<p >The following tab-separated format is used:</p>
-<p >[id] [name]=([parent 1 pedigree],[parent 2 pedigree])</p>
-<p >[id] [name]=([parent pedigree])</p>
+<p>Calculate and print breeding values to a file. </p>
+<p >For a more user-friendly interface to this function: </p><dl class="section see"><dt>See also</dt><dd><a class="el" href="group__savers.html#ga6148ecde2587d6d37c313cfb88401771" title="Prints breeding values of genotypes in the simulation to a file.">gsc_save_bvs</a></dd></dl>
+<p>The output file format will be a three-column tab-separated file. The three columns will contain the genotype's pedigree ID in the first column, its name (if it has one; blank if it has no name) in the second column, and the calculated breeding value in the third column:</p>
+<p >[genotype's PedigreeID] [genotype's name] [bv]</p>
 <p >...</p>
-<p >Note that this pedigree is recursively constructed, so if a genotype's parents are known, [parent pedigree] is replaced with a string of format name=([parent1 pedigree],[parent2 pedigree]) alike. If the two parents of a genotype are the same individual (i.e. it was produced by selfing, the comma and second parent pedigree are ommitted, as in the second line sample in the format above.</p>
-<p >The parents of a genotype are identified by the two ids saved in the genotype's pedigrees field in the <a class="el" href="structgsc___allele_matrix.html">gsc_AlleleMatrix</a> struct.</p>
-<p >If a group member or parent has no name, the name will be replaced in the output file with its session-unique id. If the parent id of an individual is 0, the individual is printed without brackets or parent pedigrees and recursion stops here.</p>
-<p ><em>Has short name:</em> <a class="el" href="group__shortnames.html#ga7eba288c46c5645de15761d784673c01">save_group_full_pedigree</a></p>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="group__calculators.html#gac94e98cc238a772aaa6151400df71629" title="Calculate the fitness metric/breeding value for every genotype in the simulation or every genotype in...">gsc_calculate_bvs</a> for how breeding values are calculated.</dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">f</td><td>file pointer opened for writing to put the output </td></tr>
-    <tr><td class="paramname">d</td><td>pointer to the <a class="el" href="structgsc___sim_data.html" title="Composite type that is used to run crossing simulations.">gsc_SimData</a> containing the group members. </td></tr>
-    <tr><td class="paramname">group</td><td>group number of the group of individuals to print the pedigree of. </td></tr>
+    <tr><td class="paramname">targets</td><td>iterator for the genotypes whose breeding values will be saved </td></tr>
+    <tr><td class="paramname">eff</td><td>matrix of additive marker effects to be used to calculate the breeding values </td></tr>
   </table>
   </dd>
 </dl>
+
+<p class="definition">Definition at line <a class="el" href="sim-operations_8c_source.html#l10471">10471</a> of file <a class="el" href="sim-operations_8c_source.html">sim-operations.c</a>.</p>
 <div id="dynsection-8" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-8-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
 <div id="dynsection-8-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-8-content" class="dyncontent" style="display:none;">
-<div class="center"><img src="group__savers_ga34df718dd14346f72cc20928351cc4d2_cgraph.png" border="0" usemap="#agroup__savers_ga34df718dd14346f72cc20928351cc4d2_cgraph" alt=""/></div>
-<map name="agroup__savers_ga34df718dd14346f72cc20928351cc4d2_cgraph" id="agroup__savers_ga34df718dd14346f72cc20928351cc4d2_cgraph">
-<area shape="rect" title="Print the full known pedigree of each genotype in a group to a file." alt="" coords="5,101,143,145"/>
-<area shape="rect" href="group__collgetters.html#gae5fac6863433c073871766b80aa6d966" title="Gets the ids of each member of the group." alt="" coords="212,5,343,33"/>
-<area shape="rect" href="group__collgetters.html#gae9131a8c72149706f67f6e4a48add79c" title="Function to count the number of genotypes that currently belong to the specified group." alt="" coords="419,84,556,112"/>
-<area shape="rect" href="group__collgetters.html#ga52a8eb90f5a6a1f9dabea81955d0bb79" title="Gets a shallow copy of the names of each member of the group." alt="" coords="201,109,354,137"/>
-<area shape="rect" href="group__collgetters.html#ga3010fa26c1c6a31c61286e6c60c97dd5" title="Gets the ids of either the first or second parent of each member of the group." alt="" coords="191,161,364,189"/>
-<area shape="rect" href="group__savers.html#ga8e5d08dbcfc4cc77d1d1c6603b75a2ed" title="Recursively save the parents of a particular id to a file." alt="" coords="206,237,349,265"/>
-<area shape="rect" href="group__search.html#ga5c7cd898a40e515c3164c98821068978" title="Returns the name of the genotype with a given id." alt="" coords="418,211,558,239"/>
-<area shape="rect" href="group__search.html#gad9d1d0b5575da681af7789354447612a" title="Saves the ids of the parents of a genotype with a particular id to the output array output." alt="" coords="412,263,563,291"/>
-<area shape="rect" href="group__supporters.html#ga8b0703c50a67ddcbe49f6b8d4ba3162b" title="Binary search through a list of PedigreeIDs." alt="" coords="611,229,761,273"/>
+<div class="center"><img src="group__savers_ga710981b758de78c6dd9f4e5ab61971fc_cgraph.png" border="0" usemap="#agroup__savers_ga710981b758de78c6dd9f4e5ab61971fc_cgraph" alt=""/></div>
+<map name="agroup__savers_ga710981b758de78c6dd9f4e5ab61971fc_cgraph" id="agroup__savers_ga710981b758de78c6dd9f4e5ab61971fc_cgraph">
+<area shape="rect" title="Calculate and print breeding values to a file." alt="" coords="5,512,145,540"/>
+<area shape="rect" href="group__calculators.html#ga5eb332e54b2f90f399a28a65cdb25e36" title="Calculate the fitness metric/breeding value for a set of genotypes." alt="" coords="193,287,358,315"/>
+<area shape="rect" href="group__deletors.html#ga99bbd9355f031efae628b27e6ae72f6a" title="Deletes a gsc_DecimalMatrix and frees its memory." alt="" coords="432,433,566,461"/>
+<area shape="rect" href="group__iterators.html#ga630ba7f8e864238e296cb9480dfbc728" title="Get the next location from a bidirectional iterator." alt="" coords="434,485,563,513"/>
+<area shape="rect" href="group__iterators.html#gaa4fa2aec3b7f49f9925fe82c8ff38dcd" title="Initialise a Bidirectional iterator to the start of its sequence." alt="" coords="639,477,783,521"/>
+<area shape="rect" href="group__liteget.html#ga0ce82f67cb5e35a1c73bef54138202f6" title="Get the persistent id of a genotype." alt="" coords="233,589,318,617"/>
+<area shape="rect" href="group__liteget.html#ga22a270ae73aaa86d93212a4a40f999dc" title="Get the name of a genotype." alt="" coords="222,641,329,669"/>
+<area shape="rect" href="group__maths.html#gadaec2ba547549392530e91e50a3c985d" title="Multiply two sets of a gsc_DecimalMatrix and vector, and add both products to the first column of a p..." alt="" coords="406,57,591,101"/>
+<area shape="rect" href="group__maths.html#ga6fdcedf004c9d08e5135d30deb5b12fa" title="Multiply a gsc_DecimalMatrix to a vector, and add that product to the first column of a provided gsc_..." alt="" coords="425,177,572,221"/>
+<area shape="rect" href="group__calculators.html#ga8f765775d463c59f8437da21dad6fab4" title="Calculates the number of times at each marker that a particular allele appears." alt="" coords="429,245,568,289"/>
+<area shape="rect" href="group__calculators.html#ga19bbe4c5c9d867e9c627bbda7aa9bd22" title="Calculates the number of times at each marker that two particular alleles appear." alt="" coords="429,313,568,357"/>
+<area shape="rect" href="group__maths.html#gae001e0609ac52df335530f9473cb57e1" title="Generates a matrix of c columns, r rows with all 0." alt="" coords="408,125,589,153"/>
+<area shape="rect" href="group__liteget.html#ga5e1e89782604c9ab47f196e1da233362" title="Get the alleles of a genotype." alt="" coords="443,5,554,33"/>
+<area shape="rect" href="sim-operations_8c.html#aaaf3ebc75feaf901829232712e55677b" title="Replace calls to malloc direct with this function." alt="" coords="650,125,772,153"/>
 </map>
 </div>
 <div id="dynsection-9" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
@@ -701,209 +691,11 @@ Functions</h2></td></tr>
 <div id="dynsection-9-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-9-content" class="dyncontent" style="display:none;">
-<div class="center"><img src="group__savers_ga34df718dd14346f72cc20928351cc4d2_icgraph.png" border="0" usemap="#agroup__savers_ga34df718dd14346f72cc20928351cc4d2_icgraph" alt=""/></div>
-<map name="agroup__savers_ga34df718dd14346f72cc20928351cc4d2_icgraph" id="agroup__savers_ga34df718dd14346f72cc20928351cc4d2_icgraph">
-<area shape="rect" title="Print the full known pedigree of each genotype in a group to a file." alt="" coords="223,5,360,49"/>
-<area shape="rect" href="group__collgetters.html#ga62d40b0b1cb6c5ded508b8a5f161d38a" title="Gets the full pedigree string (as per gsc_save_group_full_pedigree() ) of each member of the group." alt="" coords="5,13,175,41"/>
-</map>
-</div>
-
-</div>
-</div>
-<a id="gab849eb8ece54052720d78fe248d09298" name="gab849eb8ece54052720d78fe248d09298"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#gab849eb8ece54052720d78fe248d09298">&#9670;&nbsp;</a></span>gsc_save_group_genotypes()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void gsc_save_group_genotypes </td>
-          <td>(</td>
-          <td class="paramtype">FILE *&#160;</td>
-          <td class="paramname"><em>f</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype"><a class="el" href="structgsc___sim_data.html">gsc_SimData</a> *&#160;</td>
-          <td class="paramname"><em>d</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype"><a class="el" href="structgsc___group_num.html">gsc_GroupNum</a>&#160;</td>
-          <td class="paramname"><em>group_id</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Prints the genotypes of each individual in a given group to a file, with the following format. </p>
-<pre class="fragment">    [marker name]   [marker name]
-</pre><p> [id]OR[name] [allele pairs for each marker]</p>
-<p >[id]OR[name] [allele pairs for each marker]</p>
-<p >...</p>
-<p >ID will be printed if the genotype does not have a name saved</p>
-<p ><em>Has short name:</em> save_group_genotype</p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">f</td><td>file pointer opened for writing to put the output </td></tr>
-    <tr><td class="paramname">d</td><td>pointer to the <a class="el" href="structgsc___sim_data.html" title="Composite type that is used to run crossing simulations.">gsc_SimData</a> containing the genotypes of the group and the marker names. </td></tr>
-    <tr><td class="paramname">group_id</td><td>group number of the group of individuals whose genotypes to print. </td></tr>
-  </table>
-  </dd>
-</dl>
-<p >fprintf(f, "\n");</p>
-<div id="dynsection-10" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
-  <img id="dynsection-10-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
-<div id="dynsection-10-summary" class="dynsummary" style="display:block;">
-</div>
-<div id="dynsection-10-content" class="dyncontent" style="display:none;">
-<div class="center"><img src="group__savers_gab849eb8ece54052720d78fe248d09298_cgraph.png" border="0" usemap="#agroup__savers_gab849eb8ece54052720d78fe248d09298_cgraph" alt=""/></div>
-<map name="agroup__savers_gab849eb8ece54052720d78fe248d09298_cgraph" id="agroup__savers_gab849eb8ece54052720d78fe248d09298_cgraph">
-<area shape="rect" title="Prints the genotypes of each individual in a given group to a file, with the following format." alt="" coords="5,84,187,112"/>
-<area shape="rect" href="group__collgetters.html#gab256e999fe9540658a2a3aba11260cb5" title="Gets a shallow copy of the genes/alleles of each member of the group." alt="" coords="237,5,385,33"/>
-<area shape="rect" href="group__collgetters.html#gae9131a8c72149706f67f6e4a48add79c" title="Function to count the number of genotypes that currently belong to the specified group." alt="" coords="435,84,572,112"/>
-<area shape="rect" href="group__collgetters.html#gae5fac6863433c073871766b80aa6d966" title="Gets the ids of each member of the group." alt="" coords="246,109,376,137"/>
-<area shape="rect" href="group__collgetters.html#ga52a8eb90f5a6a1f9dabea81955d0bb79" title="Gets a shallow copy of the names of each member of the group." alt="" coords="235,161,387,189"/>
-</map>
-</div>
-
-</div>
-</div>
-<a id="gad10b44011b806daa35f8378eb90c5365" name="gad10b44011b806daa35f8378eb90c5365"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#gad10b44011b806daa35f8378eb90c5365">&#9670;&nbsp;</a></span>gsc_save_group_one_step_pedigree()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void gsc_save_group_one_step_pedigree </td>
-          <td>(</td>
-          <td class="paramtype">FILE *&#160;</td>
-          <td class="paramname"><em>f</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">const <a class="el" href="structgsc___sim_data.html">gsc_SimData</a> *&#160;</td>
-          <td class="paramname"><em>d</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">const <a class="el" href="structgsc___group_num.html">gsc_GroupNum</a>&#160;</td>
-          <td class="paramname"><em>group</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Print the parents of each genotype in a group to a file. </p>
-<p >The following tab-separated format is used:</p>
-<p >[group member name] [parent 1 name] [parent 2 name]</p>
-<p >[group member name] [parent 1 name] [parent 2 name]</p>
-<p >...</p>
-<p >The parents are identified by the two ids saved in the genotype's pedigrees field in the <a class="el" href="structgsc___allele_matrix.html">gsc_AlleleMatrix</a> struct.</p>
-<p >If a group member or parent has no name, the name will be replaced in the output file with its session-unique id. If the parent id of an individual is 0 (which means the parent is unknown) no name or id is printed for that parent.</p>
-<p ><em>Has short name:</em> <a class="el" href="group__shortnames.html#ga5ed0a70f29334b047cab8dfcdf63805f">save_group_one_step_pedigree</a></p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">f</td><td>file pointer opened for writing to put the output </td></tr>
-    <tr><td class="paramname">d</td><td>pointer to the <a class="el" href="structgsc___sim_data.html" title="Composite type that is used to run crossing simulations.">gsc_SimData</a> containing the group members. </td></tr>
-    <tr><td class="paramname">group</td><td>group number of the group of individuals to print the immediate parents of. </td></tr>
-  </table>
-  </dd>
-</dl>
-<div id="dynsection-11" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
-  <img id="dynsection-11-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
-<div id="dynsection-11-summary" class="dynsummary" style="display:block;">
-</div>
-<div id="dynsection-11-content" class="dyncontent" style="display:none;">
-<div class="center"><img src="group__savers_gad10b44011b806daa35f8378eb90c5365_cgraph.png" border="0" usemap="#agroup__savers_gad10b44011b806daa35f8378eb90c5365_cgraph" alt=""/></div>
-<map name="agroup__savers_gad10b44011b806daa35f8378eb90c5365_cgraph" id="agroup__savers_gad10b44011b806daa35f8378eb90c5365_cgraph">
-<area shape="rect" title="Print the parents of each genotype in a group to a file." alt="" coords="5,101,148,145"/>
-<area shape="rect" href="group__collgetters.html#gae5fac6863433c073871766b80aa6d966" title="Gets the ids of each member of the group." alt="" coords="217,5,348,33"/>
-<area shape="rect" href="group__collgetters.html#gae9131a8c72149706f67f6e4a48add79c" title="Function to count the number of genotypes that currently belong to the specified group." alt="" coords="423,84,560,112"/>
-<area shape="rect" href="group__collgetters.html#ga52a8eb90f5a6a1f9dabea81955d0bb79" title="Gets a shallow copy of the names of each member of the group." alt="" coords="206,109,359,137"/>
-<area shape="rect" href="group__collgetters.html#ga3010fa26c1c6a31c61286e6c60c97dd5" title="Gets the ids of either the first or second parent of each member of the group." alt="" coords="196,161,369,189"/>
-<area shape="rect" href="group__search.html#ga5c7cd898a40e515c3164c98821068978" title="Returns the name of the genotype with a given id." alt="" coords="212,213,353,241"/>
-<area shape="rect" href="group__supporters.html#ga8b0703c50a67ddcbe49f6b8d4ba3162b" title="Binary search through a list of PedigreeIDs." alt="" coords="417,205,566,249"/>
-</map>
-</div>
-
-</div>
-</div>
-<a id="ga707e7b98f0321e3f2460abb234e1bb88" name="ga707e7b98f0321e3f2460abb234e1bb88"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ga707e7b98f0321e3f2460abb234e1bb88">&#9670;&nbsp;</a></span>gsc_save_manual_bvs()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void gsc_save_manual_bvs </td>
-          <td>(</td>
-          <td class="paramtype">FILE *&#160;</td>
-          <td class="paramname"><em>f</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">const <a class="el" href="structgsc___decimal_matrix.html">gsc_DecimalMatrix</a> *&#160;</td>
-          <td class="paramname"><em>e</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">const <a class="el" href="structgsc___pedigree_i_d.html">gsc_PedigreeID</a> *&#160;</td>
-          <td class="paramname"><em>ids</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">const char **&#160;</td>
-          <td class="paramname"><em>names</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Print the provided breeding values of each provided name and id to a file, with the same format as a regular call to <code>gsc_save_bvs</code> or <code>gsc_save_group_bvs</code>. </p>
-<p >The following tab-separated format is used:</p>
-<p >[id] [name] [BV]</p>
-<p >[id] [name] [BV]</p>
-<p >...</p>
-<p >The function assumes the array of ids, array of names, and columns of the <a class="el" href="structgsc___decimal_matrix.html" title="A row-major heap matrix that contains floating point numbers.">gsc_DecimalMatrix</a> are ordered the same, so a single index produces the corresponding value from each. It is used by as-you-go savers within crossing functions. For general use consider <code>gsc_save_bvs</code> or <code>gsc_save_group_bvs</code> instead.</p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">f</td><td>file pointer opened for writing to put the output </td></tr>
-    <tr><td class="paramname">e</td><td>pointer to the <a class="el" href="structgsc___decimal_matrix.html" title="A row-major heap matrix that contains floating point numbers.">gsc_DecimalMatrix</a> containing the BVs in the first row. </td></tr>
-    <tr><td class="paramname">ids</td><td>array of ids to print alongside the BVs. </td></tr>
-    <tr><td class="paramname">names</td><td>array of names to print alongside the BVs. </td></tr>
-  </table>
-  </dd>
-</dl>
-<div id="dynsection-12" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
-  <img id="dynsection-12-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
-<div id="dynsection-12-summary" class="dynsummary" style="display:block;">
-</div>
-<div id="dynsection-12-content" class="dyncontent" style="display:none;">
-<div class="center"><img src="group__savers_ga707e7b98f0321e3f2460abb234e1bb88_icgraph.png" border="0" usemap="#agroup__savers_ga707e7b98f0321e3f2460abb234e1bb88_icgraph" alt=""/></div>
-<map name="agroup__savers_ga707e7b98f0321e3f2460abb234e1bb88_icgraph" id="agroup__savers_ga707e7b98f0321e3f2460abb234e1bb88_icgraph">
-<area shape="rect" title="Print the provided breeding values of each provided name and id to a file, with the same format as a ..." alt="" coords="892,140,1042,168"/>
+<div class="center"><img src="group__savers_ga710981b758de78c6dd9f4e5ab61971fc_icgraph.png" border="0" usemap="#agroup__savers_ga710981b758de78c6dd9f4e5ab61971fc_icgraph" alt=""/></div>
+<map name="agroup__savers_ga710981b758de78c6dd9f4e5ab61971fc_icgraph" id="agroup__savers_ga710981b758de78c6dd9f4e5ab61971fc_icgraph">
+<area shape="rect" title="Calculate and print breeding values to a file." alt="" coords="892,171,1031,199"/>
 <area shape="rect" href="sim-operations_8c.html#a7072c6a3834472e7fbd768c0275fdc54" title="save&#45;as&#45;you&#45;go (breeding values)" alt="" coords="689,132,844,176"/>
+<area shape="rect" href="group__savers.html#ga6148ecde2587d6d37c313cfb88401771" title="Prints breeding values of genotypes in the simulation to a file." alt="" coords="716,200,817,228"/>
 <area shape="rect" href="group__crossers.html#ga28b0fcf60b6a8f6e8ca470f7b5d0a4b7" title="Make new genotypes (generic function)" alt="" coords="479,132,641,176"/>
 <area shape="rect" href="group__crossers.html#ga15af204958dc69717334c46b19219a2d" title="Creates an identical copy of each member of a group." alt="" coords="274,5,400,33"/>
 <area shape="rect" href="group__crossers.html#ga6c230330ca9a9db9459d4477512a21af" title="Creates a doubled haploid from each member of a group." alt="" coords="243,57,431,85"/>
@@ -920,14 +712,14 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="ga364d2ea13aadfa347d9c12223b4cc4d1" name="ga364d2ea13aadfa347d9c12223b4cc4d1"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ga364d2ea13aadfa347d9c12223b4cc4d1">&#9670;&nbsp;</a></span>gsc_save_markerblocks()</h2>
+<a id="ga6037070d12fa45c78b642d611fae311e" name="ga6037070d12fa45c78b642d611fae311e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga6037070d12fa45c78b642d611fae311e">&#9670;&nbsp;</a></span>gsc_save_utility_genotypes()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void gsc_save_markerblocks </td>
+          <td class="memname">void gsc_save_utility_genotypes </td>
           <td>(</td>
           <td class="paramtype">FILE *&#160;</td>
           <td class="paramname"><em>f</em>, </td>
@@ -935,14 +727,139 @@ Functions</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const <a class="el" href="structgsc___sim_data.html">gsc_SimData</a> *&#160;</td>
-          <td class="paramname"><em>d</em>, </td>
+          <td class="paramtype"><a class="el" href="structgsc___bidirectional_iterator.html">gsc_BidirectionalIterator</a> *&#160;</td>
+          <td class="paramname"><em>targets</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname"><em>n_markers</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char **const&#160;</td>
+          <td class="paramname"><em>marker_names</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const int&#160;</td>
+          <td class="paramname"><em>markers_as_rows</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Prints simulated genotypes to a file. </p>
+<p >For a more user-friendly interface to this function: </p><dl class="section see"><dt>See also</dt><dd><a class="el" href="group__savers.html#ga443653ada89ee798e804b61f76d2b497" title="Prints genotypes from the simulation to a file.">gsc_save_genotypes</a></dd></dl>
+<p>The output file will contain a matrix of genetic markers by genotypes (or vice-versa), with each cell in the body of the matrix containing the (phased) pair of alleles belonging to that genotype at that genetic marker.</p>
+<p >If the genetic markers are the columns of the matrix (i.e. <em>markers_as_rows</em> = GSC_FALSE) the output file format will be approximately:</p>
+<p >1 [marker name] [marker name]</p>
+<p >[pedigree id]OR[genotype name] [allele pairs for each marker]</p>
+<p >[pedigree id]OR[genotype name] [allele pairs for each marker]</p>
+<p >...</p>
+<p >The top left corner cell will be blank, if the iterator <em>targets</em> is iterating through all genotypes. If the iterator is iterating through the members of a group, the top left corner cell will contain the group number.</p>
+<p >If a genetic marker does not have a name, the corresponding header row cell will be left blank. If a genotype does not have a name, the corresponding header column cell will contain its PedigreeID instead. If it has no name and no allocated PedigreeID, this cell will read 0 (because NO_PEDIGREE.id = 0).</p>
+<p >If the genetic markers are the rows of the matrix (i.e. <em>markers_as_rows</em> = GSC_TRUE), the above matrix will be transposed.</p>
+<p >This function can be called with <em>targets</em> = NULL. In that case, it will print only the marker names, as a header row or a header column, depending on the value of <em>markers_as_rows</em>.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">f</td><td>file pointer opened for writing to put the output </td></tr>
+    <tr><td class="paramname">targets</td><td>iterator for the genotypes whose genotypes will be saved </td></tr>
+    <tr><td class="paramname">n_markers</td><td>length of the vector <em>marker_names</em> </td></tr>
+    <tr><td class="paramname">marker_names</td><td>list of marker names, ordered so that they correspond to the order of markers in the genotypes in <em>targets</em>. This is best achieved by taking <em>marker_names</em> from a <em>SimData.genome.marker_names</em>, and the AlleleMatrix input for <em>gsc_create_bidirectional_iter</em> for <em>targets</em> being the same SimData's <em>SimData-&gt;m</em>. </td></tr>
+    <tr><td class="paramname">markers_as_rows</td><td>If GSC_TRUE, genetic markers will be rows in the output matrix, and genotypes will be columns. If GSC_FALSE, genetic markers will be columns in the output matrix, and genotypes will be rows. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definition at line <a class="el" href="sim-operations_8c_source.html#l10183">10183</a> of file <a class="el" href="sim-operations_8c_source.html">sim-operations.c</a>.</p>
+<div id="dynsection-10" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-10-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
+<div id="dynsection-10-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-10-content" class="dyncontent" style="display:none;">
+<div class="center"><img src="group__savers_ga6037070d12fa45c78b642d611fae311e_cgraph.png" border="0" usemap="#agroup__savers_ga6037070d12fa45c78b642d611fae311e_cgraph" alt=""/></div>
+<map name="agroup__savers_ga6037070d12fa45c78b642d611fae311e_cgraph" id="agroup__savers_ga6037070d12fa45c78b642d611fae311e_cgraph">
+<area shape="rect" title="Prints simulated genotypes to a file." alt="" coords="5,111,186,139"/>
+<area shape="rect" href="sim-operations_8c.html#a101ba1c1812ca6bb5d69042904e8fdaa" title="Kernel for gsc_scaffold_save_genotype_info, when the goal is to save the (phased) allele pairs of eac..." alt="" coords="234,45,484,73"/>
+<area shape="rect" href="sim-operations_8c.html#a11101d643d9ee74d16324d55cbb6682e" title="Prints a matrix of genotype information to a file." alt="" coords="252,136,466,164"/>
+<area shape="rect" href="group__liteget.html#ga5e1e89782604c9ab47f196e1da233362" title="Get the alleles of a genotype." alt="" coords="541,5,652,33"/>
+<area shape="rect" href="group__liteget.html#ga0ce82f67cb5e35a1c73bef54138202f6" title="Get the persistent id of a genotype." alt="" coords="555,57,639,85"/>
+<area shape="rect" href="group__liteget.html#ga22a270ae73aaa86d93212a4a40f999dc" title="Get the name of a genotype." alt="" coords="544,109,650,137"/>
+<area shape="rect" href="sim-operations_8c.html#aaaf3ebc75feaf901829232712e55677b" title="Replace calls to malloc direct with this function." alt="" coords="536,161,657,189"/>
+<area shape="rect" href="group__iterators.html#ga630ba7f8e864238e296cb9480dfbc728" title="Get the next location from a bidirectional iterator." alt="" coords="532,213,661,241"/>
+<area shape="rect" href="group__iterators.html#gaa4fa2aec3b7f49f9925fe82c8ff38dcd" title="Initialise a Bidirectional iterator to the start of its sequence." alt="" coords="709,232,853,276"/>
+</map>
+</div>
+<div id="dynsection-11" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-11-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
+<div id="dynsection-11-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-11-content" class="dyncontent" style="display:none;">
+<div class="center"><img src="group__savers_ga6037070d12fa45c78b642d611fae311e_icgraph.png" border="0" usemap="#agroup__savers_ga6037070d12fa45c78b642d611fae311e_icgraph" alt=""/></div>
+<map name="agroup__savers_ga6037070d12fa45c78b642d611fae311e_icgraph" id="agroup__savers_ga6037070d12fa45c78b642d611fae311e_icgraph">
+<area shape="rect" title="Prints simulated genotypes to a file." alt="" coords="898,173,1078,201"/>
+<area shape="rect" href="sim-operations_8c.html#a0fe1d1ace12db253637f9df278cf1639" title="save&#45;as&#45;you&#45;go (genotypes/alleles)" alt="" coords="692,97,847,141"/>
+<area shape="rect" href="sim-operations_8c.html#a311c08610c1a020fb05be94297d6f28f" title="Opens file for writing save&#45;as&#45;you&#45;go genotypes in accordance with gsc_GenOptions." alt="" coords="689,165,850,209"/>
+<area shape="rect" href="group__savers.html#ga443653ada89ee798e804b61f76d2b497" title="Prints genotypes from the simulation to a file." alt="" coords="698,233,841,261"/>
+<area shape="rect" href="group__crossers.html#ga28b0fcf60b6a8f6e8ca470f7b5d0a4b7" title="Make new genotypes (generic function)" alt="" coords="479,132,641,176"/>
+<area shape="rect" href="group__crossers.html#ga15af204958dc69717334c46b19219a2d" title="Creates an identical copy of each member of a group." alt="" coords="274,5,400,33"/>
+<area shape="rect" href="group__crossers.html#ga6c230330ca9a9db9459d4477512a21af" title="Creates a doubled haploid from each member of a group." alt="" coords="243,57,431,85"/>
+<area shape="rect" href="group__crossers.html#ga03af5446006203244dd3080cf75af26f" title="Performs random crosses among members of a group." alt="" coords="245,109,429,137"/>
+<area shape="rect" href="group__crossers.html#ga652376b5a34d24f239e5fc0b167c067b" title="Performs random crosses where the first parent comes from one group and the second from another." alt="" coords="245,161,429,205"/>
+<area shape="rect" href="group__crossers.html#ga4450224009587f4cd4a972413423c96e" title="Performs the crosses of pairs of parents whose indexes are provided in an array." alt="" coords="243,229,431,257"/>
+<area shape="rect" href="group__crossers.html#gab625453074798be6ba8677a5d4986edf" title="Selfs each member of a group for a certain number of generations." alt="" coords="276,281,398,309"/>
+<area shape="rect" href="group__crossers.html#gab19b3eb80b5fe460d17c93e0c27f7aaf" title="Find the top m percent of a group and perform random crosses between those top individuals." alt="" coords="26,97,174,141"/>
+<area shape="rect" href="group__crossers.html#gaa70fd79312587d8e9fc166c64612cbce" title="Perform crosses between all pairs of parents in the group from_group and allocates the resulting offs..." alt="" coords="8,165,192,209"/>
+<area shape="rect" href="group__crossers.html#ga5c0be901d03d0e5dd3d74bc19a4bea70" title="Perform crosses between pairs of parents identified by name in a file and allocate the resulting offs..." alt="" coords="5,233,195,261"/>
+<area shape="rect" href="group__crossers.html#ga2b8100d2d30cf1ada0db8403663076ff" title="Perform crosses between previously&#45;generated offspring of pairs of parents identified by name in a fi..." alt="" coords="10,285,190,329"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="gaf17b391180e41d0b030404e49c8416bb" name="gaf17b391180e41d0b030404e49c8416bb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gaf17b391180e41d0b030404e49c8416bb">&#9670;&nbsp;</a></span>gsc_save_utility_markerblocks()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void gsc_save_utility_markerblocks </td>
+          <td>(</td>
+          <td class="paramtype">FILE *&#160;</td>
+          <td class="paramname"><em>f</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">const <a class="el" href="structgsc___marker_blocks.html">gsc_MarkerBlocks</a>&#160;</td>
-          <td class="paramname"><em>b</em>&#160;</td>
+          <td class="paramname"><em>b</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const size_t&#160;</td>
+          <td class="paramname"><em>n_markers</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char **const&#160;</td>
+          <td class="paramname"><em>marker_names</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="structgsc___recombination_map.html">gsc_RecombinationMap</a> *&#160;</td>
+          <td class="paramname"><em>map</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -953,101 +870,66 @@ Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Prints the markers contained in a set of blocks to a file. </p>
-<p >Column separators are tabs.</p>
-<p >The printing format is:</p>
-<p >Chrom Pos Name Class Markers</p>
-<p >0 0 b0 b m1;m2;m3;m4;</p>
-<p >0 0 b0 b m7;m9;</p>
+<p >For a more user-friendly interface to this function: </p><dl class="section see"><dt>See also</dt><dd><a class="el" href="group__savers.html#gabb38b85b4074a41e7de110aa7a289b6a" title="Prints the markers contained in a set of blocks to a file.">gsc_save_markerblocks</a></dd></dl>
+<p>Two printing formats are available. The simple printing format each block's markers as a semicolon-separated list, with each line representing one block. Eg:</p>
+<p >m1;m2;m3;m4;</p>
+<p >m7;m9;</p>
 <p >...</p>
-<p >where m1, m2, m3, m4 are the names of the markers in the first block and m7 and m9 are the names of the markers in the second block. Note that chromosome numbers and positions are not actually specified, just replaced with 0. Only the last column is meaningful.</p>
-<p ><em>Has short name:</em> <a class="el" href="group__shortnames.html#gad985933c857f19424a26483b0ca567de">save_markerblocks</a></p>
+<p >where m1, m2, m3, m4 are the names of the markers in the first block and m7 and m9 are the names of the markers in the second block. This format will be printed if no genetic map is provided.</p>
+<p >Alternatively, if a valid genetic map is provided, this function will print out two extra columns of information. If all markers in the block belong to the same linkage group/chromosome, according to the suggested genetic map, then the first column of the file will contain the index of the chromosome in the map, and the second column will contain the length of the block in centimorgans. If not all markers in the block belong to the same chromosome, these columns' values will be replaced with dashes. Eg:</p>
+<p >Chrom Len Markers</p>
+<p >0 5.500000 m1;m2;m3;m4;</p>
+<ul>
+<li>- m7;m9;</li>
+</ul>
+<p >...</p>
+<p >where m7 and m9 from the second block are not on the same chromosome, but m1, m2, m3, and m4 are all on the first chromosome (index=0) in the map. The largest distance between two markers out of m1, m2, m3 and m4 is 5.5 centimorgans.</p>
+<p >Note that, since genomicSimulation does not save the names of chromosomes, the values in the "Chrom" column will not correspond to the names of the chromosomes in the input genetic map. To find which chromsomes correspond to which chromosome indexes in the output of this function, you can order the chromosome names from shortest to longest, and order chromosome names of the same length alphanumerically. Eg. Chromosome names "1A", "1B", and "2" would be ordered as: 2 (chrom index 0), 1A (chrom index 1), 1B (chrom index 2).</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">f</td><td>file pointer opened for writing to put the output </td></tr>
-    <tr><td class="paramname">d</td><td>pointer to the <a class="el" href="structgsc___sim_data.html" title="Composite type that is used to run crossing simulations.">gsc_SimData</a> whose data we print </td></tr>
-    <tr><td class="paramname">b</td><td><a class="el" href="structgsc___marker_blocks.html" title="A struct used to store a set of blocks of markers.">gsc_MarkerBlocks</a> struct containing the groupings of markers to print. </td></tr>
+    <tr><td class="paramname">b</td><td><a class="el" href="structgsc___marker_blocks.html" title="A struct used to store a set of blocks of markers.">gsc_MarkerBlocks</a> struct containing the groupings of markers to print </td></tr>
+    <tr><td class="paramname">n_markers</td><td>length of the vector <em>marker_names</em> </td></tr>
+    <tr><td class="paramname">marker_names</td><td>list of marker names, ordered so that indexes in <em>b</em> can be accessed to get the corresponding marker name </td></tr>
+    <tr><td class="paramname">map</td><td>If NULL, this function will save the marker blocks in the simple format. If not null, this function will save the marker blocks in the three-column format, with their chromosome index and length calculated from this genetic map. Both formats are described in this function's documentation. </td></tr>
   </table>
   </dd>
 </dl>
 
+<p class="definition">Definition at line <a class="el" href="sim-operations_8c_source.html#l09927">9927</a> of file <a class="el" href="sim-operations_8c_source.html">sim-operations.c</a>.</p>
+<div id="dynsection-12" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-12-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
+<div id="dynsection-12-summary" class="dynsummary" style="display:block;">
 </div>
+<div id="dynsection-12-content" class="dyncontent" style="display:none;">
+<div class="center"><img src="group__savers_gaf17b391180e41d0b030404e49c8416bb_cgraph.png" border="0" usemap="#agroup__savers_gaf17b391180e41d0b030404e49c8416bb_cgraph" alt=""/></div>
+<map name="agroup__savers_gaf17b391180e41d0b030404e49c8416bb_cgraph" id="agroup__savers_gaf17b391180e41d0b030404e49c8416bb_cgraph">
+<area shape="rect" title="Prints the markers contained in a set of blocks to a file." alt="" coords="5,13,204,41"/>
+<area shape="rect" href="sim-operations_8c.html#ae1ca4979efc8696d2d19ecf32b1289bb" title="Check if a marker index is found in a particular LinkageGroup, and provide its distance along the chr..." alt="" coords="252,5,400,49"/>
+</map>
 </div>
-<a id="ga12e6eb5a3dccf1c79fd1b68df69c2668" name="ga12e6eb5a3dccf1c79fd1b68df69c2668"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ga12e6eb5a3dccf1c79fd1b68df69c2668">&#9670;&nbsp;</a></span>gsc_save_names_header()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void gsc_save_names_header </td>
-          <td>(</td>
-          <td class="paramtype">FILE *&#160;</td>
-          <td class="paramname"><em>f</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">size_t&#160;</td>
-          <td class="paramname"><em>n</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">const char **&#160;</td>
-          <td class="paramname"><em>names</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Prints a list of names as a tab-separated row to a file. </p>
-<p >Used, for example, for printing marker names as a header in a genotype output file.</p>
-<p ><em>Has short name:</em> <a class="el" href="group__shortnames.html#ga0937dcb150cfddfc0b14e4df5322b760">save_names_header</a></p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">f</td><td>file pointer opened for writing to put the output </td></tr>
-    <tr><td class="paramname">n</td><td>number of names to print </td></tr>
-    <tr><td class="paramname">names</td><td>list of strings/names to print. Must contain at least [n] names. </td></tr>
-  </table>
-  </dd>
-</dl>
 <div id="dynsection-13" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-13-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
 <div id="dynsection-13-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-13-content" class="dyncontent" style="display:none;">
-<div class="center"><img src="group__savers_ga12e6eb5a3dccf1c79fd1b68df69c2668_icgraph.png" border="0" usemap="#agroup__savers_ga12e6eb5a3dccf1c79fd1b68df69c2668_icgraph" alt=""/></div>
-<map name="agroup__savers_ga12e6eb5a3dccf1c79fd1b68df69c2668_icgraph" id="agroup__savers_ga12e6eb5a3dccf1c79fd1b68df69c2668_icgraph">
-<area shape="rect" title="Prints a list of names as a tab&#45;separated row to a file." alt="" coords="898,140,1065,168"/>
-<area shape="rect" href="sim-operations_8c.html#a311c08610c1a020fb05be94297d6f28f" title="Opens file for writing save&#45;as&#45;you&#45;go genotypes in accordance with gsc_GenOptions." alt="" coords="689,132,850,176"/>
-<area shape="rect" href="group__crossers.html#ga28b0fcf60b6a8f6e8ca470f7b5d0a4b7" title="Make new genotypes (generic function)" alt="" coords="479,132,641,176"/>
-<area shape="rect" href="group__crossers.html#ga15af204958dc69717334c46b19219a2d" title="Creates an identical copy of each member of a group." alt="" coords="274,5,400,33"/>
-<area shape="rect" href="group__crossers.html#ga6c230330ca9a9db9459d4477512a21af" title="Creates a doubled haploid from each member of a group." alt="" coords="243,57,431,85"/>
-<area shape="rect" href="group__crossers.html#ga03af5446006203244dd3080cf75af26f" title="Performs random crosses among members of a group." alt="" coords="245,109,429,137"/>
-<area shape="rect" href="group__crossers.html#ga652376b5a34d24f239e5fc0b167c067b" title="Performs random crosses where the first parent comes from one group and the second from another." alt="" coords="245,161,429,205"/>
-<area shape="rect" href="group__crossers.html#ga4450224009587f4cd4a972413423c96e" title="Performs the crosses of pairs of parents whose indexes are provided in an array." alt="" coords="243,229,431,257"/>
-<area shape="rect" href="group__crossers.html#gab625453074798be6ba8677a5d4986edf" title="Selfs each member of a group for a certain number of generations." alt="" coords="276,281,398,309"/>
-<area shape="rect" href="group__crossers.html#gab19b3eb80b5fe460d17c93e0c27f7aaf" title="Find the top m percent of a group and perform random crosses between those top individuals." alt="" coords="26,97,174,141"/>
-<area shape="rect" href="group__crossers.html#gaa70fd79312587d8e9fc166c64612cbce" title="Perform crosses between all pairs of parents in the group from_group and allocates the resulting offs..." alt="" coords="8,165,192,209"/>
-<area shape="rect" href="group__crossers.html#ga5c0be901d03d0e5dd3d74bc19a4bea70" title="Perform crosses between pairs of parents identified by name in a file and allocate the resulting offs..." alt="" coords="5,233,195,261"/>
-<area shape="rect" href="group__crossers.html#ga2b8100d2d30cf1ada0db8403663076ff" title="Perform crosses between previously&#45;generated offspring of pairs of parents identified by name in a fi..." alt="" coords="10,285,190,329"/>
+<div class="center"><img src="group__savers_gaf17b391180e41d0b030404e49c8416bb_icgraph.png" border="0" usemap="#agroup__savers_gaf17b391180e41d0b030404e49c8416bb_icgraph" alt=""/></div>
+<map name="agroup__savers_gaf17b391180e41d0b030404e49c8416bb_icgraph" id="agroup__savers_gaf17b391180e41d0b030404e49c8416bb_icgraph">
+<area shape="rect" title="Prints the markers contained in a set of blocks to a file." alt="" coords="214,5,412,33"/>
+<area shape="rect" href="group__savers.html#gabb38b85b4074a41e7de110aa7a289b6a" title="Prints the markers contained in a set of blocks to a file." alt="" coords="5,5,166,33"/>
 </map>
 </div>
 
 </div>
 </div>
-<a id="ga2bc846644aa32182f20feaa67ff3df8d" name="ga2bc846644aa32182f20feaa67ff3df8d"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ga2bc846644aa32182f20feaa67ff3df8d">&#9670;&nbsp;</a></span>gsc_save_one_step_pedigree()</h2>
+<a id="gad7643e196ad0f8e7db3c044894395de1" name="gad7643e196ad0f8e7db3c044894395de1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gad7643e196ad0f8e7db3c044894395de1">&#9670;&nbsp;</a></span>gsc_save_utility_pedigrees()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void gsc_save_one_step_pedigree </td>
+          <td class="memname">void gsc_save_utility_pedigrees </td>
           <td>(</td>
           <td class="paramtype">FILE *&#160;</td>
           <td class="paramname"><em>f</em>, </td>
@@ -1055,8 +937,20 @@ Functions</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const <a class="el" href="structgsc___sim_data.html">gsc_SimData</a> *&#160;</td>
-          <td class="paramname"><em>d</em>&#160;</td>
+          <td class="paramtype"><a class="el" href="structgsc___bidirectional_iterator.html">gsc_BidirectionalIterator</a> *&#160;</td>
+          <td class="paramname"><em>targets</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const int&#160;</td>
+          <td class="paramname"><em>full_pedigree</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="structgsc___allele_matrix.html">gsc_AlleleMatrix</a> *&#160;</td>
+          <td class="paramname"><em>parent_pedigree_store</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -1066,116 +960,65 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Print the parents of each genotype in the <a class="el" href="structgsc___sim_data.html" title="Composite type that is used to run crossing simulations.">gsc_SimData</a> to a file. </p>
-<p >The following tab-separated format is used:</p>
-<p >[genotype name] [parent 1 name] [parent 2 name]</p>
-<p >[genotype name] [parent 1 name] [parent 2 name]</p>
+<p>Prints pedigrees to a file. </p>
+<p >For a more user-friendly interface to this function: </p><dl class="section see"><dt>See also</dt><dd><a class="el" href="group__savers.html#ga7033cc948a0521fea492fd0d45988ad6" title="Prints pedigrees of genotypes in the simulation to a file.">gsc_save_pedigrees</a></dd></dl>
+<p>Where genotypes and their parents have names, their names will be printed as their identifiers within the pedigrees. When an individual in the pedigree does not have a name, its PedigreeID will be printed in the pedigree instead. When an individual in the pedigree has no name and no PedigreeID, it is considered equivalent to an unknown individual and nothing is printed in the pedigree.</p>
+<p >There are two output formats available with this function.</p>
+<p >If only the immediate parents are to be printed (i.e. <em>full_pedigree</em> = false), then the output file format will be a three-column tab-delimited file, with the genotype's identifier in the first column and its parents' identifiers in the second and third columns. The second and third columns will be blank if no parent can be located in <em>parent_pedigree_store</em>. Example of this file format follows, where g1206 has unknown parents:</p>
+<p >g1204 g30 g31</p>
+<p >g1205 founderC founderC</p>
+<p >g1206</p>
 <p >...</p>
-<p >The parents are identified by the two ids saved in the genotype's pedigrees field in the <a class="el" href="structgsc___allele_matrix.html">gsc_AlleleMatrix</a> struct.</p>
-<p >If a group member or parent has no name, the name will be replaced in the output file with its session-unique id. If the parent id is 0 (which means the parent is unknown) no name or id is printed for that parent.</p>
-<p ><em>Has short name:</em> <a class="el" href="group__shortnames.html#gac4a53ada7d4ee19e988f3d1865c46cdf">save_one_step_pedigree</a></p>
+<p >The alternate output format is printed if <em>full_pedigree</em> = true. In this format, the first column of the file gives the pedigree ID of the genotype. The second column is a recursively constructed string. First, it contains the identifier of the genotype. If the genotype's parents can be located, it then prints an equals sign and open bracket ("=("), the (similarly generated) pedigree of the first and second parents, separated by a comma. Finally, it adds a closing bracket (")"). If the parent is repeated, its pedigree is only printed once (see second row of the example format below):</p>
+<p >204 g1204=(g30,g31=(founderA,founderB))</p>
+<p >205 g1205=(founderC)</p>
+<p >206 g1206</p>
+<p >...</p>
+<p >In the first column of this file format, a missing or untracked PedigreeID will be printed as 0. (As stated above in this documentation, elsewhere in these pedigree output files, missing/untracked PedigreeIDs are not printed.)</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">f</td><td>file pointer opened for writing to put the output </td></tr>
-    <tr><td class="paramname">d</td><td>pointer to the <a class="el" href="structgsc___sim_data.html" title="Composite type that is used to run crossing simulations.">gsc_SimData</a> containing the genotypes and their pedigrees </td></tr>
+    <tr><td class="paramname">targets</td><td>iterator for the genotypes whose pedigrees will be saved </td></tr>
+    <tr><td class="paramname">full_pedigree</td><td>If GSC_FALSE, the three-column immediate-parents-only file format will be printed. If GSC_TRUE, the file format with the recursively constructed full pedigrees will be printed. </td></tr>
+    <tr><td class="paramname">parent_pedigree_store</td><td>All parents and ancestors that are to be included in the printed pedigree must exist somewhere in this linked list of AlleleMatrix structures. Parents or ancestors that cannot be found in here will be deemed "unknown" and will not be printed. </td></tr>
   </table>
   </dd>
 </dl>
+
+<p class="definition">Definition at line <a class="el" href="sim-operations_8c_source.html#l10383">10383</a> of file <a class="el" href="sim-operations_8c_source.html">sim-operations.c</a>.</p>
 <div id="dynsection-14" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-14-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
 <div id="dynsection-14-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-14-content" class="dyncontent" style="display:none;">
-<div class="center"><img src="group__savers_ga2bc846644aa32182f20feaa67ff3df8d_cgraph.png" border="0" usemap="#agroup__savers_ga2bc846644aa32182f20feaa67ff3df8d_cgraph" alt=""/></div>
-<map name="agroup__savers_ga2bc846644aa32182f20feaa67ff3df8d_cgraph" id="agroup__savers_ga2bc846644aa32182f20feaa67ff3df8d_cgraph">
-<area shape="rect" title="Print the parents of each genotype in the gsc_SimData to a file." alt="" coords="5,13,197,41"/>
-<area shape="rect" href="group__search.html#ga5c7cd898a40e515c3164c98821068978" title="Returns the name of the genotype with a given id." alt="" coords="245,13,385,41"/>
-<area shape="rect" href="group__supporters.html#ga8b0703c50a67ddcbe49f6b8d4ba3162b" title="Binary search through a list of PedigreeIDs." alt="" coords="433,5,582,49"/>
+<div class="center"><img src="group__savers_gad7643e196ad0f8e7db3c044894395de1_cgraph.png" border="0" usemap="#agroup__savers_gad7643e196ad0f8e7db3c044894395de1_cgraph" alt=""/></div>
+<map name="agroup__savers_gad7643e196ad0f8e7db3c044894395de1_cgraph" id="agroup__savers_gad7643e196ad0f8e7db3c044894395de1_cgraph">
+<area shape="rect" title="Prints pedigrees to a file." alt="" coords="5,268,182,296"/>
+<area shape="rect" href="group__liteget.html#ga847569827ccdd09ff54808c09aba742c" title="Get the first/left parent of a genotype." alt="" coords="261,5,399,33"/>
+<area shape="rect" href="group__liteget.html#ga0ce82f67cb5e35a1c73bef54138202f6" title="Get the persistent id of a genotype." alt="" coords="288,57,372,85"/>
+<area shape="rect" href="group__liteget.html#ga22a270ae73aaa86d93212a4a40f999dc" title="Get the name of a genotype." alt="" coords="277,109,383,137"/>
+<area shape="rect" href="group__search.html#ga5c7cd898a40e515c3164c98821068978" title="Returns the name of the genotype with a given id." alt="" coords="484,237,624,265"/>
+<area shape="rect" href="group__liteget.html#gab71ce9343a19dd2fc34da1af89fee00a" title="Get the second/right parent of a genotype." alt="" coords="250,237,410,265"/>
+<area shape="rect" href="sim-operations_8c.html#a55984ff6f744f118ee79589a8fc4dcfc" title="Kernel for scaffold functions that require printing an integer to a file (as opposed to saving the in..." alt="" coords="259,289,401,333"/>
+<area shape="rect" href="sim-operations_8c.html#af5808811b84717ecb459de3bc7565494" title="Kernel for scaffold functions that require printing a string to a file (as opposed to saving the stri..." alt="" coords="259,357,401,401"/>
+<area shape="rect" href="group__iterators.html#ga630ba7f8e864238e296cb9480dfbc728" title="Get the next location from a bidirectional iterator." alt="" coords="265,477,395,505"/>
+<area shape="rect" href="group__iterators.html#gaa4fa2aec3b7f49f9925fe82c8ff38dcd" title="Initialise a Bidirectional iterator to the start of its sequence." alt="" coords="482,495,625,539"/>
+<area shape="rect" href="sim-operations_8c.html#a6b80bf9dd00c35da0b57bbdae52098ec" title="Identifies and saves (recursively) the pedigree of a pair of parents." alt="" coords="230,185,430,213"/>
+<area shape="rect" href="group__supporters.html#ga8b0703c50a67ddcbe49f6b8d4ba3162b" title="Binary search through a list of PedigreeIDs." alt="" coords="677,204,827,248"/>
+<area shape="rect" href="group__search.html#gad9d1d0b5575da681af7789354447612a" title="Saves the ids of the parents of a genotype with a particular id to the output array output." alt="" coords="478,185,629,213"/>
 </map>
 </div>
-
-</div>
-</div>
-<a id="ga8e5d08dbcfc4cc77d1d1c6603b75a2ed" name="ga8e5d08dbcfc4cc77d1d1c6603b75a2ed"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ga8e5d08dbcfc4cc77d1d1c6603b75a2ed">&#9670;&nbsp;</a></span>gsc_save_parents_of()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void gsc_save_parents_of </td>
-          <td>(</td>
-          <td class="paramtype">FILE *&#160;</td>
-          <td class="paramname"><em>f</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">const <a class="el" href="structgsc___allele_matrix.html">gsc_AlleleMatrix</a> *&#160;</td>
-          <td class="paramname"><em>m</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype"><a class="el" href="structgsc___pedigree_i_d.html">gsc_PedigreeID</a>&#160;</td>
-          <td class="paramname"><em>p1</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype"><a class="el" href="structgsc___pedigree_i_d.html">gsc_PedigreeID</a>&#160;</td>
-          <td class="paramname"><em>p2</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Recursively save the parents of a particular id to a file. </p>
-<p >It saves using the following format:</p>
-<ul>
-<li>no characters are saved if the parents of the id are unknown/0</li>
-<li>if the id has one parent, repeated twice (it was produced by selfing), print "=(parentname)", where parentname is the name of the parent or its id if it does not have one, followed by whatever is printed by a call to this function on the parent's id.</li>
-<li>if the id has two separate parents, print "=(parent1name,parent2name)", where parent1name and parent2name are the name2 of the two parents or their ids if they does not have names, each name immediately followed by whatever is printed by a call to this function on the corresponding parent's id.</li>
-</ul>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">f</td><td>file pointer opened for writing to put the output </td></tr>
-    <tr><td class="paramname">m</td><td>pointer to an <a class="el" href="structgsc___allele_matrix.html">gsc_AlleleMatrix</a> that heads the linked list containing the parents and other ancestry of the given id. </td></tr>
-    <tr><td class="paramname">p1</td><td>the session-unique id of the first parent to be saved. </td></tr>
-    <tr><td class="paramname">p2</td><td>the session-unique id of the second parent to be saved. </td></tr>
-  </table>
-  </dd>
-</dl>
 <div id="dynsection-15" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
-  <img id="dynsection-15-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
+  <img id="dynsection-15-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
 <div id="dynsection-15-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-15-content" class="dyncontent" style="display:none;">
-<div class="center"><img src="group__savers_ga8e5d08dbcfc4cc77d1d1c6603b75a2ed_cgraph.png" border="0" usemap="#agroup__savers_ga8e5d08dbcfc4cc77d1d1c6603b75a2ed_cgraph" alt=""/></div>
-<map name="agroup__savers_ga8e5d08dbcfc4cc77d1d1c6603b75a2ed_cgraph" id="agroup__savers_ga8e5d08dbcfc4cc77d1d1c6603b75a2ed_cgraph">
-<area shape="rect" title="Recursively save the parents of a particular id to a file." alt="" coords="5,32,148,60"/>
-<area shape="rect" href="group__search.html#ga5c7cd898a40e515c3164c98821068978" title="Returns the name of the genotype with a given id." alt="" coords="201,5,342,33"/>
-<area shape="rect" href="group__search.html#gad9d1d0b5575da681af7789354447612a" title="Saves the ids of the parents of a genotype with a particular id to the output array output." alt="" coords="196,57,347,85"/>
-<area shape="rect" href="group__supporters.html#ga8b0703c50a67ddcbe49f6b8d4ba3162b" title="Binary search through a list of PedigreeIDs." alt="" coords="395,24,544,68"/>
-</map>
-</div>
-<div id="dynsection-16" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
-  <img id="dynsection-16-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
-<div id="dynsection-16-summary" class="dynsummary" style="display:block;">
-</div>
-<div id="dynsection-16-content" class="dyncontent" style="display:none;">
-<div class="center"><img src="group__savers_ga8e5d08dbcfc4cc77d1d1c6603b75a2ed_icgraph.png" border="0" usemap="#agroup__savers_ga8e5d08dbcfc4cc77d1d1c6603b75a2ed_icgraph" alt=""/></div>
-<map name="agroup__savers_ga8e5d08dbcfc4cc77d1d1c6603b75a2ed_icgraph" id="agroup__savers_ga8e5d08dbcfc4cc77d1d1c6603b75a2ed_icgraph">
-<area shape="rect" title="Recursively save the parents of a particular id to a file." alt="" coords="1109,200,1251,228"/>
-<area shape="rect" href="group__savers.html#ga78f467f0dd08c5501b804caca1e0c6b9" title="Print the full known pedigree of each genotype in a single gsc_AlleleMatrix to a file." alt="" coords="910,132,1058,176"/>
-<area shape="rect" href="group__savers.html#ga6a5bcd7945c34e0ec99ccc92311d947c" title="Print the full known pedigree of each genotype in the gsc_SimData to a file." alt="" coords="907,200,1061,228"/>
-<area shape="rect" href="group__savers.html#ga34df718dd14346f72cc20928351cc4d2" title="Print the full known pedigree of each genotype in a group to a file." alt="" coords="915,252,1053,296"/>
-<area shape="rect" href="sim-operations_8c.html#aa66b6b0ec2f03012e39df20c6f35b532" title="save&#45;as&#45;you&#45;go (pedigrees)" alt="" coords="697,132,851,176"/>
-<area shape="rect" href="group__crossers.html#ga28b0fcf60b6a8f6e8ca470f7b5d0a4b7" title="Make new genotypes (generic function)" alt="" coords="479,132,641,176"/>
+<div class="center"><img src="group__savers_gad7643e196ad0f8e7db3c044894395de1_icgraph.png" border="0" usemap="#agroup__savers_gad7643e196ad0f8e7db3c044894395de1_icgraph" alt=""/></div>
+<map name="agroup__savers_gad7643e196ad0f8e7db3c044894395de1_icgraph" id="agroup__savers_gad7643e196ad0f8e7db3c044894395de1_icgraph">
+<area shape="rect" title="Prints pedigrees to a file." alt="" coords="899,171,1075,199"/>
+<area shape="rect" href="sim-operations_8c.html#aa66b6b0ec2f03012e39df20c6f35b532" title="save&#45;as&#45;you&#45;go (pedigrees)" alt="" coords="696,132,851,176"/>
+<area shape="rect" href="group__savers.html#ga7033cc948a0521fea492fd0d45988ad6" title="Prints pedigrees of genotypes in the simulation to a file." alt="" coords="704,200,843,228"/>
+<area shape="rect" href="group__crossers.html#ga28b0fcf60b6a8f6e8ca470f7b5d0a4b7" title="Make new genotypes (generic function)" alt="" coords="483,132,645,176"/>
 <area shape="rect" href="group__crossers.html#ga15af204958dc69717334c46b19219a2d" title="Creates an identical copy of each member of a group." alt="" coords="274,5,400,33"/>
 <area shape="rect" href="group__crossers.html#ga6c230330ca9a9db9459d4477512a21af" title="Creates a doubled haploid from each member of a group." alt="" coords="243,57,431,85"/>
 <area shape="rect" href="group__crossers.html#ga03af5446006203244dd3080cf75af26f" title="Performs random crosses among members of a group." alt="" coords="245,109,429,137"/>
@@ -1186,122 +1029,7 @@ Functions</h2></td></tr>
 <area shape="rect" href="group__crossers.html#gaa70fd79312587d8e9fc166c64612cbce" title="Perform crosses between all pairs of parents in the group from_group and allocates the resulting offs..." alt="" coords="8,165,192,209"/>
 <area shape="rect" href="group__crossers.html#ga5c0be901d03d0e5dd3d74bc19a4bea70" title="Perform crosses between pairs of parents identified by name in a file and allocate the resulting offs..." alt="" coords="5,233,195,261"/>
 <area shape="rect" href="group__crossers.html#ga2b8100d2d30cf1ada0db8403663076ff" title="Perform crosses between previously&#45;generated offspring of pairs of parents identified by name in a fi..." alt="" coords="10,285,190,329"/>
-<area shape="rect" href="group__collgetters.html#ga62d40b0b1cb6c5ded508b8a5f161d38a" title="Gets the full pedigree string (as per gsc_save_group_full_pedigree() ) of each member of the group." alt="" coords="689,260,859,288"/>
-</map>
-</div>
-
-</div>
-</div>
-<a id="ga25ecc575d779bed4f46626cd61fbe65d" name="ga25ecc575d779bed4f46626cd61fbe65d"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ga25ecc575d779bed4f46626cd61fbe65d">&#9670;&nbsp;</a></span>gsc_save_transposed_allele_matrix()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void gsc_save_transposed_allele_matrix </td>
-          <td>(</td>
-          <td class="paramtype">FILE *&#160;</td>
-          <td class="paramname"><em>f</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">const <a class="el" href="structgsc___allele_matrix.html">gsc_AlleleMatrix</a> *&#160;</td>
-          <td class="paramname"><em>m</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">const char **&#160;</td>
-          <td class="paramname"><em>markers</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Prints all the gene data saved in the linked list starting with <code>m</code> to the file. </p>
-<p >Uses the following format: </p><pre class="fragment">    [id]OR[name]    [id]OR[name] ...
-</pre><p> [marker name] [allele pairs for each marker]</p>
-<p >[marker name] [allele pairs for each marker]</p>
-<p >...</p>
-<p >ID will be printed if the genotype does not have a name saved</p>
-<p ><em>Has short name:</em> <a class="el" href="group__shortnames.html#gaa98ff50f311a1b8fa27f2c13ecfbd816">save_transposed_allele_matrix</a></p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">f</td><td>file pointer opened for writing to put the output </td></tr>
-    <tr><td class="paramname">m</td><td>pointer to the <a class="el" href="structgsc___allele_matrix.html">gsc_AlleleMatrix</a> whose data we print </td></tr>
-    <tr><td class="paramname">markers</td><td>array of strings that correspond to names of the markers. </td></tr>
-  </table>
-  </dd>
-</dl>
-
-</div>
-</div>
-<a id="gac0853546f2c1334ec45bc43b693f8ce0" name="gac0853546f2c1334ec45bc43b693f8ce0"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#gac0853546f2c1334ec45bc43b693f8ce0">&#9670;&nbsp;</a></span>gsc_save_transposed_group_genotypes()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void gsc_save_transposed_group_genotypes </td>
-          <td>(</td>
-          <td class="paramtype">FILE *&#160;</td>
-          <td class="paramname"><em>f</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">const <a class="el" href="structgsc___sim_data.html">gsc_SimData</a> *&#160;</td>
-          <td class="paramname"><em>d</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">const <a class="el" href="structgsc___group_num.html">gsc_GroupNum</a>&#160;</td>
-          <td class="paramname"><em>group_id</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Prints the genotypes of each individual in a given group to a file, with the following format. </p>
-<pre class="fragment">[id]OR[name]    [id]OR[name] ...
-</pre><p> [marker name] [allele pairs for each marker]</p>
-<p >[marker name] [allele pairs for each marker]</p>
-<p >...</p>
-<p >ID will be printed if the genotype does not have a name saved</p>
-<p ><em>Has short name:</em> save_transposed_group_genotype</p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">f</td><td>file pointer opened for writing to put the output </td></tr>
-    <tr><td class="paramname">d</td><td>pointer to the <a class="el" href="structgsc___sim_data.html" title="Composite type that is used to run crossing simulations.">gsc_SimData</a> containing the genotypes of the group and the marker names. </td></tr>
-    <tr><td class="paramname">group_id</td><td>group number of the group of individuals whose genotypes to print. </td></tr>
-  </table>
-  </dd>
-</dl>
-<p >fprintf(f, "\n");</p>
-<div id="dynsection-17" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
-  <img id="dynsection-17-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
-<div id="dynsection-17-summary" class="dynsummary" style="display:block;">
-</div>
-<div id="dynsection-17-content" class="dyncontent" style="display:none;">
-<div class="center"><img src="group__savers_gac0853546f2c1334ec45bc43b693f8ce0_cgraph.png" border="0" usemap="#agroup__savers_gac0853546f2c1334ec45bc43b693f8ce0_cgraph" alt=""/></div>
-<map name="agroup__savers_gac0853546f2c1334ec45bc43b693f8ce0_cgraph" id="agroup__savers_gac0853546f2c1334ec45bc43b693f8ce0_cgraph">
-<area shape="rect" title="Prints the genotypes of each individual in a given group to a file, with the following format." alt="" coords="5,76,152,120"/>
-<area shape="rect" href="group__collgetters.html#gab256e999fe9540658a2a3aba11260cb5" title="Gets a shallow copy of the genes/alleles of each member of the group." alt="" coords="202,5,350,33"/>
-<area shape="rect" href="group__collgetters.html#gae9131a8c72149706f67f6e4a48add79c" title="Function to count the number of genotypes that currently belong to the specified group." alt="" coords="400,84,537,112"/>
-<area shape="rect" href="group__collgetters.html#gae5fac6863433c073871766b80aa6d966" title="Gets the ids of each member of the group." alt="" coords="211,109,341,137"/>
-<area shape="rect" href="group__collgetters.html#ga52a8eb90f5a6a1f9dabea81955d0bb79" title="Gets a shallow copy of the names of each member of the group." alt="" coords="200,161,352,189"/>
+<area shape="rect" href="group__collgetters.html#ga62d40b0b1cb6c5ded508b8a5f161d38a" title="Gets the full pedigree string (as per gsc_save_group_full_pedigree() ) of each member of the group." alt="" coords="479,200,648,228"/>
 </map>
 </div>
 

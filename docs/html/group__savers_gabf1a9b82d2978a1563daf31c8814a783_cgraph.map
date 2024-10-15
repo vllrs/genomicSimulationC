@@ -1,7 +1,0 @@
-<map id="save_AM_pedigree" name="save_AM_pedigree">
-<area shape="rect" id="node1" title="Print the full known pedigree of each genotype in a single AlleleMatrix to a file." alt="" coords="5,32,136,60"/>
-<area shape="rect" id="node2" href="$group__savers.html#ga2ad03e903efdd56805722af554328592" title="Recursively save the parents of a particular id to a file." alt="" coords="184,32,298,60"/>
-<area shape="rect" id="node3" href="$group__search.html#gaaea63100f4c2639907cce72c29a413e8" title="Returns the name of the genotype with a given id." alt="" coords="352,5,464,33"/>
-<area shape="rect" id="node5" href="$group__search.html#gaa814762960a964cd0aaf82be0c18b8cb" title="Saves the ids of the parents of a genotype with a particular id to the output array output." alt="" coords="346,57,469,85"/>
-<area shape="rect" id="node4" href="$group__supporters.html#ga4e3d1fd7ae67dd133c4dbdec9a84d455" title="Returns the located index in an array of PedigreeIDs where the PedigreeID is target." alt="" coords="517,32,719,60"/>
-</map>

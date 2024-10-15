@@ -1,5 +1,0 @@
-<map id="gsc_calculate_group_count_matrix" name="gsc_calculate_group_count_matrix">
-<area shape="rect" id="node1" title="Calculates the number of times at each marker that a particular allele appears for each genotype in a..." alt="" coords="5,24,146,68"/>
-<area shape="rect" id="node2" href="$group__collgetters.html#gab256e999fe9540658a2a3aba11260cb5" title="Gets a shallow copy of the genes/alleles of each member of the group." alt="" coords="194,5,342,33"/>
-<area shape="rect" id="node3" href="$group__collgetters.html#gae9131a8c72149706f67f6e4a48add79c" title="Function to count the number of genotypes that currently belong to the specified group." alt="" coords="390,32,527,60"/>
-</map>

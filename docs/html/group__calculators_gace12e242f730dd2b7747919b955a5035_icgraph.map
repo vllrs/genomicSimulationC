@@ -1,9 +1,0 @@
-<map id="calculate_group_count_matrix_of_allele" name="calculate_group_count_matrix_of_allele">
-<area shape="rect" id="node1" title="Calculates the number of times at each marker that a particular allele appears for each genotype in a..." alt="" coords="560,80,712,124"/>
-<area shape="rect" id="node2" href="$group__calculators.html#gafd3faffcf504432504b50b669055f46b" title="Calculates the fitness metric/breeding value for each genotype in the AlleleMatrix in a certain group..." alt="" coords="370,57,508,85"/>
-<area shape="rect" id="node7" href="$group__savers.html#ga5c490bff6698ad221c9eeec1254623c5" title="Print the number of copies of a particular allele at each marker of each genotype in a group to a fil..." alt="" coords="366,109,512,153"/>
-<area shape="rect" id="node3" href="$group__collgetters.html#gaabe380985e14b55021634b3c687004e3" title="Gets the breeding values/breeding values/fitnesses of each member of the group." alt="" coords="210,5,314,33"/>
-<area shape="rect" id="node4" href="$group__savers.html#gadb547ac914ca6f84033394402ffece7e" title="Print the breeding value of each genotype in a group to a file." alt="" coords="206,57,318,85"/>
-<area shape="rect" id="node5" href="$group__calculators.html#ga88e086f459bf255ded35aff26f976ab8" title="Takes the top_n individuals in the group with the best breeding values/fitnesses and puts them in a n..." alt="" coords="219,109,305,137"/>
-<area shape="rect" id="node6" href="$group__crossers.html#gafdd1fa0e8dd54ba1f3089c05986686cb" title="Find the top m percent of a group and perform random crosses between those top individuals." alt="" coords="5,101,158,145"/>
-</map>

@@ -200,7 +200,8 @@ GroupNum founders = init.group;
 ```
 <td>
 ```{R}
-founders <- load.data(genotype.file="genotype-file.txt", map.file="map-file.txt")
+init <- load.data(genotype.file="genotype-file.txt", map.file="map-file.txt")
+founders = init$groupNum
 ```
 </table>
 
@@ -247,7 +248,7 @@ struct MultiIDSet init = load_data_files(d, "genotype-file.txt", "map-file.txt",
 <td>
 ```{R}
 mformat <- define.matrix.format.details(has.header=TRUE, markers.as.rows=TRUE, cell.style="Pair")
-founders <- load.data(genotype.file="genotype-file.txt", map.file="map-file.txt",format=mformat)
+init <- load.data(genotype.file="genotype-file.txt", map.file="map-file.txt",format=mformat)
 ```
 </table>
 
@@ -298,7 +299,8 @@ GroupNum founders_b = load_genotypefile(d, "genotype-file2.txt", DETECT_FILE_FOR
 ```
 <td>
 ```{R}
-founders_a <- load.data(genotype.file="genotype-file.txt", map.file="map-file.txt")
+init <- load.data(genotype.file="genotype-file.txt", map.file="map-file.txt")
+founders_a <- init$groupNum
 founders_b <- load.genotypes("genotype-file2.txt")
 ```
 </table>
@@ -349,7 +351,6 @@ MapID map1 = init.map;
 ```
 <td>
 ```{R}
-# Note that the output is slightly different when an effect file is loaded.
 init <- load.data(genotype.file="genotype-file.txt", map.file="map-file.txt", effect.file="eff-file.txt")
 founders <- init$groupNum
 eff1 <- init$effectID
@@ -759,7 +760,8 @@ for (int year = 0; year < 10; ++year) {
 ```
 <td>
 ```{R}
-animals <- load.data("genotype-file.txt", "map-file.txt")
+init <- load.data("genotype-file.txt", "map-file.txt")
+animals <- init$groupNum
 
 # Create a new label to represent age, with default/at-birth value of 0.
 ageLabel <- create.new.label(0L)

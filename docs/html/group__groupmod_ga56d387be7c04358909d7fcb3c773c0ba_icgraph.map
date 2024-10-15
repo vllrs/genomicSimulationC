@@ -1,7 +1,0 @@
-<map id="_split_by_someallocation" name="_split_by_someallocation">
-<area shape="rect" id="node1" title="Split by some allocator (generic function)" alt="" coords="217,112,384,140"/>
-<area shape="rect" id="node2" href="$group__groupmod.html#ga889a60d61224875b37dfb4f53d3b695a" title="Allocate each member of the group to one of n groups with custom probabilities for each group." alt="" coords="16,5,158,49"/>
-<area shape="rect" id="node3" href="$group__groupmod.html#ga8d06ca9e6265ec8a81194f23c904a570" title="Split a group into n groups of equal size (or size differing only by one, if n does not perfectly div..." alt="" coords="5,73,169,117"/>
-<area shape="rect" id="node4" href="$group__groupmod.html#ga3a2d416a661b8dfa98db541aab2aabde" title="Split a group into n groups of equal size (or size differing only by one, if n does not perfectly div..." alt="" coords="22,141,152,169"/>
-<area shape="rect" id="node5" href="$group__groupmod.html#ga6834d279d86a7ada27fb571e97fea13a" title="Allocate each member of the group to one of n groups with equal probability." alt="" coords="13,193,161,221"/>
-</map>

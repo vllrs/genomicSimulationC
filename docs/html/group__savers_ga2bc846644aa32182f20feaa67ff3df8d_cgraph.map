@@ -1,5 +1,0 @@
-<map id="gsc_save_one_step_pedigree" name="gsc_save_one_step_pedigree">
-<area shape="rect" id="node1" title="Print the parents of each genotype in the gsc_SimData to a file." alt="" coords="5,13,197,41"/>
-<area shape="rect" id="node2" href="$group__search.html#ga5c7cd898a40e515c3164c98821068978" title="Returns the name of the genotype with a given id." alt="" coords="245,13,385,41"/>
-<area shape="rect" id="node3" href="$group__supporters.html#ga8b0703c50a67ddcbe49f6b8d4ba3162b" title="Binary search through a list of PedigreeIDs." alt="" coords="433,5,582,49"/>
-</map>

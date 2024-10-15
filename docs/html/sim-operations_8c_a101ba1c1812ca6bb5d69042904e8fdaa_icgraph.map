@@ -1,0 +1,18 @@
+<map id="gsc_helper_output_genotypematrix_cell" name="gsc_helper_output_genotypematrix_cell">
+<area shape="rect" id="node1" title="Kernel for gsc_scaffold_save_genotype_info, when the goal is to save the (phased) allele pairs of eac..." alt="" coords="1126,173,1376,201"/>
+<area shape="rect" id="node2" href="$group__savers.html#ga6037070d12fa45c78b642d611fae311e" title="Prints simulated genotypes to a file." alt="" coords="898,173,1078,201"/>
+<area shape="rect" id="node3" href="$sim-operations_8c.html#a0fe1d1ace12db253637f9df278cf1639" title="save&#45;as&#45;you&#45;go (genotypes/alleles)" alt="" coords="692,97,847,141"/>
+<area shape="rect" id="node15" href="$sim-operations_8c.html#a311c08610c1a020fb05be94297d6f28f" title="Opens file for writing save&#45;as&#45;you&#45;go genotypes in accordance with gsc_GenOptions." alt="" coords="689,165,850,209"/>
+<area shape="rect" id="node16" href="$group__savers.html#ga443653ada89ee798e804b61f76d2b497" title="Prints genotypes from the simulation to a file." alt="" coords="698,233,841,261"/>
+<area shape="rect" id="node4" href="$group__crossers.html#ga28b0fcf60b6a8f6e8ca470f7b5d0a4b7" title="Make new genotypes (generic function)" alt="" coords="479,132,641,176"/>
+<area shape="rect" id="node5" href="$group__crossers.html#ga15af204958dc69717334c46b19219a2d" title="Creates an identical copy of each member of a group." alt="" coords="274,5,400,33"/>
+<area shape="rect" id="node6" href="$group__crossers.html#ga6c230330ca9a9db9459d4477512a21af" title="Creates a doubled haploid from each member of a group." alt="" coords="243,57,431,85"/>
+<area shape="rect" id="node7" href="$group__crossers.html#ga03af5446006203244dd3080cf75af26f" title="Performs random crosses among members of a group." alt="" coords="245,109,429,137"/>
+<area shape="rect" id="node9" href="$group__crossers.html#ga652376b5a34d24f239e5fc0b167c067b" title="Performs random crosses where the first parent comes from one group and the second from another." alt="" coords="245,161,429,205"/>
+<area shape="rect" id="node10" href="$group__crossers.html#ga4450224009587f4cd4a972413423c96e" title="Performs the crosses of pairs of parents whose indexes are provided in an array." alt="" coords="243,229,431,257"/>
+<area shape="rect" id="node14" href="$group__crossers.html#gab625453074798be6ba8677a5d4986edf" title="Selfs each member of a group for a certain number of generations." alt="" coords="276,281,398,309"/>
+<area shape="rect" id="node8" href="$group__crossers.html#gab19b3eb80b5fe460d17c93e0c27f7aaf" title="Find the top m percent of a group and perform random crosses between those top individuals." alt="" coords="26,97,174,141"/>
+<area shape="rect" id="node11" href="$group__crossers.html#gaa70fd79312587d8e9fc166c64612cbce" title="Perform crosses between all pairs of parents in the group from_group and allocates the resulting offs..." alt="" coords="8,165,192,209"/>
+<area shape="rect" id="node12" href="$group__crossers.html#ga5c0be901d03d0e5dd3d74bc19a4bea70" title="Perform crosses between pairs of parents identified by name in a file and allocate the resulting offs..." alt="" coords="5,233,195,261"/>
+<area shape="rect" id="node13" href="$group__crossers.html#ga2b8100d2d30cf1ada0db8403663076ff" title="Perform crosses between previously&#45;generated offspring of pairs of parents identified by name in a fi..." alt="" coords="10,285,190,329"/>
+</map>

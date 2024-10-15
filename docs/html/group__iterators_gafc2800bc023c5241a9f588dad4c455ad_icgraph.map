@@ -1,4 +1,0 @@
-<map id="isValidLocation" name="isValidLocation">
-<area shape="rect" id="node1" title="Identify whether a GenoLocation is INVALID_GENO_LOCATION." alt="" coords="150,5,259,33"/>
-<area shape="rect" id="node2" href="$group__iterators.html#ga0bc5b9ebb0857a471e41630fda00403b" title="Get a location by index using a RandomAccessIterator." alt="" coords="5,5,102,33"/>
-</map>

@@ -1,6 +1,0 @@
-<map id="gsc_generate_gamete" name="gsc_generate_gamete">
-<area shape="rect" id="node1" title="Fills a char* with the simulated result of meiosis (reduction and recombination) from the marker alle..." alt="" coords="5,73,155,101"/>
-<area shape="rect" id="node2" href="$sim-operations_8c.html#a74d1220882c91dc87cc8ccb6bab13f75" title="Comparator function for qsort." alt="" coords="203,5,353,49"/>
-<area shape="rect" id="node3" href="$sim-operations_8c.html#a13bf076f6441cb69d76fc5058371dec1" title="Replace calls to malloc direct with this function, which errors and exits with status 2 if memory all..." alt="" coords="217,73,339,101"/>
-<area shape="rect" id="node4" href="$group__maths.html#ga897c7abb536f30f0cbc1baf2abcd2067" title="Generates randomly a number from the Poisson distribution with parameter lambda, using the Knuth appr..." alt="" coords="232,125,324,153"/>
-</map>

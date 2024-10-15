@@ -21,7 +21,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">genomicSimulationC<span id="projectnumber">&#160;0.2.5.02</span>
+   <div id="projectname">genomicSimulationC<span id="projectnumber">&#160;0.2.5.05</span>
    </div>
   </td>
  </tr>
@@ -136,6 +136,8 @@ Data Fields</h2></td></tr>
 <div class="textblock"><p >Composite type that is used to run crossing simulations. </p>
 <p >The core of this type is a list of markers. These are used to index the rows of the allele matrix and the position map, and the columns of the effect matrix.</p>
 <p ><em>Has short name:</em> <a class="el" href="group__shortnames.html#gaa9b2f128bb156d36d9334281b158c56a">SimData</a> </p>
+
+<p class="definition">Definition at line <a class="el" href="sim-operations_8h_source.html#l00727">727</a> of file <a class="el" href="sim-operations_8h_source.html">sim-operations.h</a>.</p>
 </div><h2 class="groupheader">Field Documentation</h2>
 <a id="ac80a3d628c07efca0fa219c0517e5cf7" name="ac80a3d628c07efca0fa219c0517e5cf7"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ac80a3d628c07efca0fa219c0517e5cf7">&#9670;&nbsp;</a></span>current_id</h2>
@@ -151,6 +153,8 @@ Data Fields</h2></td></tr>
 
 <p>Highest SimData-unique ID that has been generated so far. </p>
 <p >Used to track which IDs have already been given out. </p>
+
+<p class="definition">Definition at line <a class="el" href="sim-operations_8h_source.html#l00750">750</a> of file <a class="el" href="sim-operations_8h_source.html">sim-operations.h</a>.</p>
 
 </div>
 </div>
@@ -169,6 +173,8 @@ Data Fields</h2></td></tr>
 <p>Array of n_eff_sets <a class="el" href="structgsc___effect_matrix.html" title="A type that stores a matrix of effect values and their names.">gsc_EffectMatrix</a>, optional for the use of the simulation. </p>
 <p >Used for calculating breeding values from which alleles a genotype has at each marker. </p>
 
+<p class="definition">Definition at line <a class="el" href="sim-operations_8h_source.html#l00745">745</a> of file <a class="el" href="sim-operations_8h_source.html">sim-operations.h</a>.</p>
+
 </div>
 </div>
 <a id="a51f8b9ea0ce9c916f213ef3df971e5d1" name="a51f8b9ea0ce9c916f213ef3df971e5d1"></a>
@@ -184,6 +190,8 @@ Data Fields</h2></td></tr>
 </div><div class="memdoc">
 
 <p>The identifier number of each set of allele effects in the simulation, ordered by their lookup index. </p>
+
+<p class="definition">Definition at line <a class="el" href="sim-operations_8h_source.html#l00743">743</a> of file <a class="el" href="sim-operations_8h_source.html">sim-operations.h</a>.</p>
 
 </div>
 </div>
@@ -201,6 +209,8 @@ Data Fields</h2></td></tr>
 
 <p>A <a class="el" href="structgsc___known_genome.html" title="A type that stores the genome structure used in simulation.">gsc_KnownGenome</a>, which stores the information of known markers and linkage groups, as well as one or more recombination maps for use in simulating meiosis. </p>
 
+<p class="definition">Definition at line <a class="el" href="sim-operations_8h_source.html#l00734">734</a> of file <a class="el" href="sim-operations_8h_source.html">sim-operations.h</a>.</p>
+
 </div>
 </div>
 <a id="a7a9281b3cfb7600f10b453cc18a03dc5" name="a7a9281b3cfb7600f10b453cc18a03dc5"></a>
@@ -217,6 +227,8 @@ Data Fields</h2></td></tr>
 
 <p>Array containing the default (birth) value of each custom label. </p>
 
+<p class="definition">Definition at line <a class="el" href="sim-operations_8h_source.html#l00731">731</a> of file <a class="el" href="sim-operations_8h_source.html">sim-operations.h</a>.</p>
+
 </div>
 </div>
 <a id="a4fe7c2197304c60459cf4d4b1c30ac29" name="a4fe7c2197304c60459cf4d4b1c30ac29"></a>
@@ -232,6 +244,8 @@ Data Fields</h2></td></tr>
 </div><div class="memdoc">
 
 <p>The identifier number of each label in the simulation, in order of their lookup index. </p>
+
+<p class="definition">Definition at line <a class="el" href="sim-operations_8h_source.html#l00729">729</a> of file <a class="el" href="sim-operations_8h_source.html">sim-operations.h</a>.</p>
 
 </div>
 </div>
@@ -250,6 +264,8 @@ Data Fields</h2></td></tr>
 <p>Pointer to an <a class="el" href="structgsc___allele_matrix.html">gsc_AlleleMatrix</a>, which stores data and metadata of founders and simulated offspring. </p>
 <p >The <a class="el" href="structgsc___allele_matrix.html">gsc_AlleleMatrix</a> is start of a linked list if there are many genotypes. </p>
 
+<p class="definition">Definition at line <a class="el" href="sim-operations_8h_source.html#l00737">737</a> of file <a class="el" href="sim-operations_8h_source.html">sim-operations.h</a>.</p>
+
 </div>
 </div>
 <a id="a6844dc5c3278f9789d13f11389bd3ac6" name="a6844dc5c3278f9789d13f11389bd3ac6"></a>
@@ -265,6 +281,8 @@ Data Fields</h2></td></tr>
 </div><div class="memdoc">
 
 <p>The number of sets of allele effects in the simulation. </p>
+
+<p class="definition">Definition at line <a class="el" href="sim-operations_8h_source.html#l00742">742</a> of file <a class="el" href="sim-operations_8h_source.html">sim-operations.h</a>.</p>
 
 </div>
 </div>
@@ -283,6 +301,8 @@ Data Fields</h2></td></tr>
 <p>Number of groups currently existing in simulation. </p>
 <p >It is guaranteed to never be less than the number of groups in simulation even if not perfectly accurate. </p>
 
+<p class="definition">Definition at line <a class="el" href="sim-operations_8h_source.html#l00753">753</a> of file <a class="el" href="sim-operations_8h_source.html">sim-operations.h</a>.</p>
+
 </div>
 </div>
 <a id="a2a011f1038d447e3762fa79e7e7af58f" name="a2a011f1038d447e3762fa79e7e7af58f"></a>
@@ -299,6 +319,8 @@ Data Fields</h2></td></tr>
 
 <p>The number of custom labels in the simulation. </p>
 
+<p class="definition">Definition at line <a class="el" href="sim-operations_8h_source.html#l00728">728</a> of file <a class="el" href="sim-operations_8h_source.html">sim-operations.h</a>.</p>
+
 </div>
 </div>
 <a id="ae89f2221bbc906622b44960c13b3a7af" name="ae89f2221bbc906622b44960c13b3a7af"></a>
@@ -314,6 +336,8 @@ Data Fields</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Random number generator working memory. </p>
+
+<p class="definition">Definition at line <a class="el" href="sim-operations_8h_source.html#l00749">749</a> of file <a class="el" href="sim-operations_8h_source.html">sim-operations.h</a>.</p>
 
 </div>
 </div>

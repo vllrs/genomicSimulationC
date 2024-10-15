@@ -21,7 +21,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">genomicSimulationC<span id="projectnumber">&#160;0.2.5.02</span>
+   <div id="projectname">genomicSimulationC<span id="projectnumber">&#160;0.2.5.05</span>
    </div>
   </td>
  </tr>
@@ -109,7 +109,7 @@ Functions</h2></td></tr>
 <tr class="memdesc:ga69155fb6c1a62f930f2a0a8b6c419cfb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the names of either the first or second parent of each member of the group.  <a href="group__collgetters.html#ga69155fb6c1a62f930f2a0a8b6c419cfb">More...</a><br /></td></tr>
 <tr class="separator:ga69155fb6c1a62f930f2a0a8b6c419cfb"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga62d40b0b1cb6c5ded508b8a5f161d38a"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__collgetters.html#ga62d40b0b1cb6c5ded508b8a5f161d38a">gsc_get_group_pedigrees</a> (const <a class="el" href="structgsc___sim_data.html">gsc_SimData</a> *d, const <a class="el" href="structgsc___group_num.html">gsc_GroupNum</a> group_id, int group_size, char **output)</td></tr>
-<tr class="memdesc:ga62d40b0b1cb6c5ded508b8a5f161d38a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the full pedigree string (as per <a class="el" href="group__savers.html#ga34df718dd14346f72cc20928351cc4d2" title="Print the full known pedigree of each genotype in a group to a file.">gsc_save_group_full_pedigree()</a> ) of each member of the group.  <a href="group__collgetters.html#ga62d40b0b1cb6c5ded508b8a5f161d38a">More...</a><br /></td></tr>
+<tr class="memdesc:ga62d40b0b1cb6c5ded508b8a5f161d38a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the full pedigree string (as per gsc_save_group_full_pedigree() ) of each member of the group.  <a href="group__collgetters.html#ga62d40b0b1cb6c5ded508b8a5f161d38a">More...</a><br /></td></tr>
 <tr class="separator:ga62d40b0b1cb6c5ded508b8a5f161d38a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gaf9692ce014cfe5439fd00e522a6bab9f"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__collgetters.html#gaf9692ce014cfe5439fd00e522a6bab9f">gsc_get_existing_groups</a> (<a class="el" href="structgsc___sim_data.html">gsc_SimData</a> *d, <a class="el" href="structgsc___group_num.html">gsc_GroupNum</a> *output)</td></tr>
 <tr class="memdesc:gaf9692ce014cfe5439fd00e522a6bab9f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Identify group numbers that currently have members.  <a href="group__collgetters.html#gaf9692ce014cfe5439fd00e522a6bab9f">More...</a><br /></td></tr>
@@ -166,6 +166,8 @@ Functions</h2></td></tr>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>The number of existing groups. </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="sim-operations_8c_source.html#l03363">3363</a> of file <a class="el" href="sim-operations_8c_source.html">sim-operations.c</a>.</p>
 <div id="dynsection-1" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-1-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
 <div id="dynsection-1-summary" class="dynsummary" style="display:block;">
@@ -173,11 +175,12 @@ Functions</h2></td></tr>
 <div id="dynsection-1-content" class="dyncontent" style="display:none;">
 <div class="center"><img src="group__collgetters_gaddb8ea59b22bbe0ec8c61da7f5ba8a98_cgraph.png" border="0" usemap="#agroup__collgetters_gaddb8ea59b22bbe0ec8c61da7f5ba8a98_cgraph" alt=""/></div>
 <map name="agroup__collgetters_gaddb8ea59b22bbe0ec8c61da7f5ba8a98_cgraph" id="agroup__collgetters_gaddb8ea59b22bbe0ec8c61da7f5ba8a98_cgraph">
-<area shape="rect" title="Identify group numbers that currently have members, and how many members they have." alt="" coords="5,49,164,93"/>
-<area shape="rect" href="group__iterators.html#ga05da8d96593f8404938cc24f659db049" title="Create a bidirectional iterator." alt="" coords="212,5,398,33"/>
-<area shape="rect" href="group__liteget.html#gae5d12aca851dd2358b63dc60b8ac6e5f" title="Get the current group membership of a genotype." alt="" coords="252,57,358,85"/>
-<area shape="rect" href="group__iterators.html#ga630ba7f8e864238e296cb9480dfbc728" title="Get the next location from a bidirectional iterator." alt="" coords="240,109,370,137"/>
-<area shape="rect" href="group__iterators.html#gaa4fa2aec3b7f49f9925fe82c8ff38dcd" title="Initialise a Bidirectional iterator to the start of its sequence." alt="" coords="446,101,589,145"/>
+<area shape="rect" title="Identify group numbers that currently have members, and how many members they have." alt="" coords="5,57,164,101"/>
+<area shape="rect" href="group__iterators.html#ga05da8d96593f8404938cc24f659db049" title="Create a bidirectional iterator." alt="" coords="212,13,398,41"/>
+<area shape="rect" href="group__liteget.html#gae5d12aca851dd2358b63dc60b8ac6e5f" title="Get the current group membership of a genotype." alt="" coords="252,65,358,93"/>
+<area shape="rect" href="group__iterators.html#ga630ba7f8e864238e296cb9480dfbc728" title="Get the next location from a bidirectional iterator." alt="" coords="240,117,370,145"/>
+<area shape="rect" href="group__iterators.html#ga5cca400276ca83acceaab36d5f79aab1" title=" " alt="" coords="446,5,607,49"/>
+<area shape="rect" href="group__iterators.html#gaa4fa2aec3b7f49f9925fe82c8ff38dcd" title="Initialise a Bidirectional iterator to the start of its sequence." alt="" coords="455,109,598,153"/>
 </map>
 </div>
 <div id="dynsection-2" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
@@ -263,6 +266,8 @@ Functions</h2></td></tr>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>The number of entries that have been placed in <code>output</code>. That is, the number of existing groups. </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="sim-operations_8c_source.html#l03343">3343</a> of file <a class="el" href="sim-operations_8c_source.html">sim-operations.c</a>.</p>
 <div id="dynsection-3" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-3-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
 <div id="dynsection-3-summary" class="dynsummary" style="display:block;">
@@ -270,12 +275,13 @@ Functions</h2></td></tr>
 <div id="dynsection-3-content" class="dyncontent" style="display:none;">
 <div class="center"><img src="group__collgetters_gaf9692ce014cfe5439fd00e522a6bab9f_cgraph.png" border="0" usemap="#agroup__collgetters_gaf9692ce014cfe5439fd00e522a6bab9f_cgraph" alt=""/></div>
 <map name="agroup__collgetters_gaf9692ce014cfe5439fd00e522a6bab9f_cgraph" id="agroup__collgetters_gaf9692ce014cfe5439fd00e522a6bab9f_cgraph">
-<area shape="rect" title="Identify group numbers that currently have members." alt="" coords="5,57,171,85"/>
-<area shape="rect" href="group__collgetters.html#gaddb8ea59b22bbe0ec8c61da7f5ba8a98" title="Identify group numbers that currently have members, and how many members they have." alt="" coords="219,49,377,93"/>
-<area shape="rect" href="group__iterators.html#ga05da8d96593f8404938cc24f659db049" title="Create a bidirectional iterator." alt="" coords="425,5,611,33"/>
-<area shape="rect" href="group__liteget.html#gae5d12aca851dd2358b63dc60b8ac6e5f" title="Get the current group membership of a genotype." alt="" coords="465,57,571,85"/>
-<area shape="rect" href="group__iterators.html#ga630ba7f8e864238e296cb9480dfbc728" title="Get the next location from a bidirectional iterator." alt="" coords="454,109,583,137"/>
-<area shape="rect" href="group__iterators.html#gaa4fa2aec3b7f49f9925fe82c8ff38dcd" title="Initialise a Bidirectional iterator to the start of its sequence." alt="" coords="659,101,803,145"/>
+<area shape="rect" title="Identify group numbers that currently have members." alt="" coords="5,65,171,93"/>
+<area shape="rect" href="group__collgetters.html#gaddb8ea59b22bbe0ec8c61da7f5ba8a98" title="Identify group numbers that currently have members, and how many members they have." alt="" coords="219,57,377,101"/>
+<area shape="rect" href="group__iterators.html#ga05da8d96593f8404938cc24f659db049" title="Create a bidirectional iterator." alt="" coords="425,13,611,41"/>
+<area shape="rect" href="group__liteget.html#gae5d12aca851dd2358b63dc60b8ac6e5f" title="Get the current group membership of a genotype." alt="" coords="465,65,571,93"/>
+<area shape="rect" href="group__iterators.html#ga630ba7f8e864238e296cb9480dfbc728" title="Get the next location from a bidirectional iterator." alt="" coords="454,117,583,145"/>
+<area shape="rect" href="group__iterators.html#ga5cca400276ca83acceaab36d5f79aab1" title=" " alt="" coords="659,5,821,49"/>
+<area shape="rect" href="group__iterators.html#gaa4fa2aec3b7f49f9925fe82c8ff38dcd" title="Initialise a Bidirectional iterator to the start of its sequence." alt="" coords="668,109,812,153"/>
 </map>
 </div>
 <div id="dynsection-4" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
@@ -390,6 +396,8 @@ Functions</h2></td></tr>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>The number of entries of <code>output</code> that have been filled. Equal to <code>group_size</code> if group size was set; equal to the actual size of the group if <code>group_size</code> was -1. </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="sim-operations_8c_source.html#l03984">3984</a> of file <a class="el" href="sim-operations_8c_source.html">sim-operations.c</a>.</p>
 <div id="dynsection-5" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-5-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
 <div id="dynsection-5-summary" class="dynsummary" style="display:block;">
@@ -397,18 +405,24 @@ Functions</h2></td></tr>
 <div id="dynsection-5-content" class="dyncontent" style="display:none;">
 <div class="center"><img src="group__collgetters_ga25310a2e8c9fbfabca0c90a355f0d522_cgraph.png" border="0" usemap="#agroup__collgetters_ga25310a2e8c9fbfabca0c90a355f0d522_cgraph" alt=""/></div>
 <map name="agroup__collgetters_ga25310a2e8c9fbfabca0c90a355f0d522_cgraph" id="agroup__collgetters_ga25310a2e8c9fbfabca0c90a355f0d522_cgraph">
-<area shape="rect" title="Gets the breeding values/breeding values/fitnesses of each member of the group." alt="" coords="5,286,138,314"/>
-<area shape="rect" href="group__calculators.html#ga381bf7e42397f428a322dd8e118a4243" title="Calculates the fitness metric/breeding value for each genotype in the gsc_AlleleMatrix in a certain g..." alt="" coords="186,286,352,314"/>
-<area shape="rect" href="group__collgetters.html#gae9131a8c72149706f67f6e4a48add79c" title="Function to count the number of genotypes that currently belong to the specified group." alt="" coords="830,366,967,394"/>
-<area shape="rect" href="group__deletors.html#ga99bbd9355f031efae628b27e6ae72f6a" title="Deletes a gsc_DecimalMatrix and frees its memory." alt="" coords="426,504,560,532"/>
-<area shape="rect" href="group__maths.html#gadaec2ba547549392530e91e50a3c985d" title="Multiply two sets of a gsc_DecimalMatrix and vector, and add both products to the first column of a p..." alt="" coords="400,180,585,224"/>
-<area shape="rect" href="group__maths.html#ga6fdcedf004c9d08e5135d30deb5b12fa" title="Multiply a gsc_DecimalMatrix to a vector, and add that product to the first column of a provided gsc_..." alt="" coords="419,248,566,292"/>
-<area shape="rect" href="group__calculators.html#ga12c13aaf31fccff2f9ddd612035c426a" title="Calculates the number of times at each marker that a particular allele appears for each genotype in a..." alt="" coords="423,368,563,412"/>
-<area shape="rect" href="group__calculators.html#ga160313a4276db1a2897ab0d161f5caa8" title="Calculates the number of times at each marker that two particular alleles appear for each genotype in..." alt="" coords="423,436,563,480"/>
-<area shape="rect" href="group__maths.html#gae001e0609ac52df335530f9473cb57e1" title="Generates a matrix of c columns, r rows with all 0." alt="" coords="402,76,583,104"/>
-<area shape="rect" href="group__supporters.html#gac15b90373af3e2828a786215e90963a8" title="Function to identify the lookup index of a marker effect set identifier." alt="" coords="409,128,576,156"/>
-<area shape="rect" href="group__collgetters.html#gab256e999fe9540658a2a3aba11260cb5" title="Gets a shallow copy of the genes/alleles of each member of the group." alt="" coords="633,418,782,446"/>
-<area shape="rect" href="sim-operations_8c.html#aaaf3ebc75feaf901829232712e55677b" title="Replace calls to malloc direct with this function." alt="" coords="647,76,768,104"/>
+<area shape="rect" title="Gets the breeding values/breeding values/fitnesses of each member of the group." alt="" coords="5,283,138,311"/>
+<area shape="rect" href="group__calculators.html#gac94e98cc238a772aaa6151400df71629" title="Calculate the fitness metric/breeding value for every genotype in the simulation or every genotype in..." alt="" coords="191,283,318,311"/>
+<area shape="rect" href="group__deletors.html#ga99bbd9355f031efae628b27e6ae72f6a" title="Deletes a gsc_DecimalMatrix and frees its memory." alt="" coords="631,5,765,33"/>
+<area shape="rect" href="group__collgetters.html#gae9131a8c72149706f67f6e4a48add79c" title="Function to count the number of genotypes that currently belong to the specified group." alt="" coords="186,335,323,363"/>
+<area shape="rect" href="group__calculators.html#ga5eb332e54b2f90f399a28a65cdb25e36" title="Calculate the fitness metric/breeding value for a set of genotypes." alt="" coords="382,256,547,284"/>
+<area shape="rect" href="group__maths.html#gae001e0609ac52df335530f9473cb57e1" title="Generates a matrix of c columns, r rows with all 0." alt="" coords="607,485,789,513"/>
+<area shape="rect" href="group__iterators.html#ga05da8d96593f8404938cc24f659db049" title="Create a bidirectional iterator." alt="" coords="371,360,557,388"/>
+<area shape="rect" href="group__deletors.html#ga83d81991036aca26e2ec5b03f8b33b8a" title="Deletes a gsc_BidirectionalIterator object." alt="" coords="372,412,557,440"/>
+<area shape="rect" href="group__supporters.html#gac15b90373af3e2828a786215e90963a8" title="Function to identify the lookup index of a marker effect set identifier." alt="" coords="381,204,548,232"/>
+<area shape="rect" href="group__maths.html#gadaec2ba547549392530e91e50a3c985d" title="Multiply two sets of a gsc_DecimalMatrix and vector, and add both products to the first column of a p..." alt="" coords="605,213,791,257"/>
+<area shape="rect" href="group__maths.html#ga6fdcedf004c9d08e5135d30deb5b12fa" title="Multiply a gsc_DecimalMatrix to a vector, and add that product to the first column of a provided gsc_..." alt="" coords="624,281,772,325"/>
+<area shape="rect" href="group__calculators.html#ga8f765775d463c59f8437da21dad6fab4" title="Calculates the number of times at each marker that a particular allele appears." alt="" coords="628,349,768,393"/>
+<area shape="rect" href="group__calculators.html#ga19bbe4c5c9d867e9c627bbda7aa9bd22" title="Calculates the number of times at each marker that two particular alleles appear." alt="" coords="628,417,768,461"/>
+<area shape="rect" href="group__liteget.html#ga5e1e89782604c9ab47f196e1da233362" title="Get the alleles of a genotype." alt="" coords="642,57,754,85"/>
+<area shape="rect" href="group__iterators.html#ga630ba7f8e864238e296cb9480dfbc728" title="Get the next location from a bidirectional iterator." alt="" coords="633,161,763,189"/>
+<area shape="rect" href="group__iterators.html#gaa4fa2aec3b7f49f9925fe82c8ff38dcd" title="Initialise a Bidirectional iterator to the start of its sequence." alt="" coords="839,128,982,172"/>
+<area shape="rect" href="sim-operations_8c.html#aaaf3ebc75feaf901829232712e55677b" title="Replace calls to malloc direct with this function." alt="" coords="850,485,971,513"/>
+<area shape="rect" href="group__iterators.html#ga5cca400276ca83acceaab36d5f79aab1" title=" " alt="" coords="617,537,779,581"/>
 </map>
 </div>
 
@@ -479,6 +493,8 @@ Functions</h2></td></tr>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>The number of entries of <code>output</code> that have been filled. Equal to <code>group_size</code> if group size was set; equal to the actual size of the group if <code>group_size</code> was -1. </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="sim-operations_8c_source.html#l03800">3800</a> of file <a class="el" href="sim-operations_8c_source.html">sim-operations.c</a>.</p>
 <div id="dynsection-6" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-6-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
 <div id="dynsection-6-summary" class="dynsummary" style="display:block;">
@@ -497,20 +513,10 @@ Functions</h2></td></tr>
 <div id="dynsection-7-content" class="dyncontent" style="display:none;">
 <div class="center"><img src="group__collgetters_gab256e999fe9540658a2a3aba11260cb5_icgraph.png" border="0" usemap="#agroup__collgetters_gab256e999fe9540658a2a3aba11260cb5_icgraph" alt=""/></div>
 <map name="agroup__collgetters_gab256e999fe9540658a2a3aba11260cb5_icgraph" id="agroup__collgetters_gab256e999fe9540658a2a3aba11260cb5_icgraph">
-<area shape="rect" title="Gets a shallow copy of the genes/alleles of each member of the group." alt="" coords="834,257,982,285"/>
-<area shape="rect" href="group__calculators.html#ga12c13aaf31fccff2f9ddd612035c426a" title="Calculates the number of times at each marker that a particular allele appears for each genotype in a..." alt="" coords="625,113,765,157"/>
-<area shape="rect" href="group__calculators.html#ga160313a4276db1a2897ab0d161f5caa8" title="Calculates the number of times at each marker that two particular alleles appear for each genotype in..." alt="" coords="625,45,765,89"/>
-<area shape="rect" href="group__calculators.html#ga7b5ad446b4cd825f6dca63e11e362749" title="Given a set of blocks of markers in a file, for each genotype in a group, calculate the local fitness..." alt="" coords="625,181,765,225"/>
-<area shape="rect" href="group__calculators.html#ga1f9eb57dc514f86c2923f5f91a140c4f" title="Calculates the breeding value of the highest breeding&#45;value genotype that can be created from the all..." alt="" coords="620,249,770,293"/>
-<area shape="rect" href="group__calculators.html#ga145430273fd296e49528a27489f0e520" title="Calculates the highest&#45;breeding&#45;value haplotype that can be created from the alleles present in a giv..." alt="" coords="620,317,770,361"/>
-<area shape="rect" href="group__savers.html#gab849eb8ece54052720d78fe248d09298" title="Prints the genotypes of each individual in a given group to a file, with the following format." alt="" coords="604,385,786,413"/>
-<area shape="rect" href="group__savers.html#gac0853546f2c1334ec45bc43b693f8ce0" title="Prints the genotypes of each individual in a given group to a file, with the following format." alt="" coords="622,437,768,481"/>
-<area shape="rect" href="group__calculators.html#ga381bf7e42397f428a322dd8e118a4243" title="Calculates the fitness metric/breeding value for each genotype in the gsc_AlleleMatrix in a certain g..." alt="" coords="390,57,556,85"/>
-<area shape="rect" href="group__savers.html#ga47adc7657700b186067b2c26dabf5b13" title="Print the number of copies of a particular allele at each marker of each genotype in a group to a fil..." alt="" coords="397,113,550,157"/>
-<area shape="rect" href="group__collgetters.html#ga25310a2e8c9fbfabca0c90a355f0d522" title="Gets the breeding values/breeding values/fitnesses of each member of the group." alt="" coords="206,5,338,33"/>
-<area shape="rect" href="group__savers.html#ga3453d7fc7d552e7c254cf00788c45506" title="Print the breeding value of each genotype in a group to a file." alt="" coords="202,57,342,85"/>
-<area shape="rect" href="group__calculators.html#ga3b43d07c08ed861ed0f22a69bb57b94a" title="Takes the top_n individuals in the group with the best breeding values/fitnesses and puts them in a n..." alt="" coords="215,109,329,137"/>
-<area shape="rect" href="group__crossers.html#gab19b3eb80b5fe460d17c93e0c27f7aaf" title="Find the top m percent of a group and perform random crosses between those top individuals." alt="" coords="5,101,154,145"/>
+<area shape="rect" title="Gets a shallow copy of the genes/alleles of each member of the group." alt="" coords="204,81,352,109"/>
+<area shape="rect" href="group__calculators.html#ga7b5ad446b4cd825f6dca63e11e362749" title="Given a set of blocks of markers in a file, for each genotype in a group, calculate the local fitness..." alt="" coords="10,5,151,49"/>
+<area shape="rect" href="group__calculators.html#ga1f9eb57dc514f86c2923f5f91a140c4f" title="Calculates the breeding value of the highest breeding&#45;value genotype that can be created from the all..." alt="" coords="5,73,156,117"/>
+<area shape="rect" href="group__calculators.html#ga145430273fd296e49528a27489f0e520" title="Calculates the highest&#45;breeding&#45;value haplotype that can be created from the alleles present in a giv..." alt="" coords="5,141,156,185"/>
 </map>
 </div>
 
@@ -581,6 +587,8 @@ Functions</h2></td></tr>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>The number of entries of <code>output</code> that have been filled. Equal to <code>group_size</code> if group size was set; equal to the actual size of the group if <code>group_size</code> was -1. </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="sim-operations_8c_source.html#l03892">3892</a> of file <a class="el" href="sim-operations_8c_source.html">sim-operations.c</a>.</p>
 <div id="dynsection-8" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-8-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
 <div id="dynsection-8-summary" class="dynsummary" style="display:block;">
@@ -599,15 +607,8 @@ Functions</h2></td></tr>
 <div id="dynsection-9-content" class="dyncontent" style="display:none;">
 <div class="center"><img src="group__collgetters_gae5fac6863433c073871766b80aa6d966_icgraph.png" border="0" usemap="#agroup__collgetters_gae5fac6863433c073871766b80aa6d966_icgraph" alt=""/></div>
 <map name="agroup__collgetters_gae5fac6863433c073871766b80aa6d966_icgraph" id="agroup__collgetters_gae5fac6863433c073871766b80aa6d966_icgraph">
-<area shape="rect" title="Gets the ids of each member of the group." alt="" coords="452,201,582,229"/>
-<area shape="rect" href="group__calculators.html#ga7b5ad446b4cd825f6dca63e11e362749" title="Given a set of blocks of markers in a file, for each genotype in a group, calculate the local fitness..." alt="" coords="243,5,384,49"/>
-<area shape="rect" href="group__savers.html#ga3453d7fc7d552e7c254cf00788c45506" title="Print the breeding value of each genotype in a group to a file." alt="" coords="243,73,384,101"/>
-<area shape="rect" href="group__savers.html#ga47adc7657700b186067b2c26dabf5b13" title="Print the number of copies of a particular allele at each marker of each genotype in a group to a fil..." alt="" coords="237,125,390,169"/>
-<area shape="rect" href="group__savers.html#ga34df718dd14346f72cc20928351cc4d2" title="Print the full known pedigree of each genotype in a group to a file." alt="" coords="245,193,382,237"/>
-<area shape="rect" href="group__savers.html#gab849eb8ece54052720d78fe248d09298" title="Prints the genotypes of each individual in a given group to a file, with the following format." alt="" coords="223,261,404,289"/>
-<area shape="rect" href="group__savers.html#gad10b44011b806daa35f8378eb90c5365" title="Print the parents of each genotype in a group to a file." alt="" coords="242,313,385,357"/>
-<area shape="rect" href="group__savers.html#gac0853546f2c1334ec45bc43b693f8ce0" title="Prints the genotypes of each individual in a given group to a file, with the following format." alt="" coords="240,381,387,425"/>
-<area shape="rect" href="group__collgetters.html#ga62d40b0b1cb6c5ded508b8a5f161d38a" title="Gets the full pedigree string (as per gsc_save_group_full_pedigree() ) of each member of the group." alt="" coords="5,201,175,229"/>
+<area shape="rect" title="Gets the ids of each member of the group." alt="" coords="194,13,324,41"/>
+<area shape="rect" href="group__calculators.html#ga7b5ad446b4cd825f6dca63e11e362749" title="Given a set of blocks of markers in a file, for each genotype in a group, calculate the local fitness..." alt="" coords="5,5,146,49"/>
 </map>
 </div>
 
@@ -678,6 +679,8 @@ Functions</h2></td></tr>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>The number of entries of <code>output</code> that have been filled. Equal to <code>group_size</code> if group size was set; equal to the actual size of the group if <code>group_size</code> was -1. </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="sim-operations_8c_source.html#l03938">3938</a> of file <a class="el" href="sim-operations_8c_source.html">sim-operations.c</a>.</p>
 <div id="dynsection-10" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-10-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
 <div id="dynsection-10-summary" class="dynsummary" style="display:block;">
@@ -770,6 +773,8 @@ Functions</h2></td></tr>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>The number of entries of <code>output</code> that have been filled. Equal to <code>group_size</code> if group size was set; equal to the actual size of the group if <code>group_size</code> was -1. </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="sim-operations_8c_source.html#l03847">3847</a> of file <a class="el" href="sim-operations_8c_source.html">sim-operations.c</a>.</p>
 <div id="dynsection-12" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-12-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
 <div id="dynsection-12-summary" class="dynsummary" style="display:block;">
@@ -788,15 +793,8 @@ Functions</h2></td></tr>
 <div id="dynsection-13-content" class="dyncontent" style="display:none;">
 <div class="center"><img src="group__collgetters_ga52a8eb90f5a6a1f9dabea81955d0bb79_icgraph.png" border="0" usemap="#agroup__collgetters_ga52a8eb90f5a6a1f9dabea81955d0bb79_icgraph" alt=""/></div>
 <map name="agroup__collgetters_ga52a8eb90f5a6a1f9dabea81955d0bb79_icgraph" id="agroup__collgetters_ga52a8eb90f5a6a1f9dabea81955d0bb79_icgraph">
-<area shape="rect" title="Gets a shallow copy of the names of each member of the group." alt="" coords="452,201,604,229"/>
-<area shape="rect" href="group__calculators.html#ga7b5ad446b4cd825f6dca63e11e362749" title="Given a set of blocks of markers in a file, for each genotype in a group, calculate the local fitness..." alt="" coords="243,5,384,49"/>
-<area shape="rect" href="group__savers.html#ga3453d7fc7d552e7c254cf00788c45506" title="Print the breeding value of each genotype in a group to a file." alt="" coords="243,73,384,101"/>
-<area shape="rect" href="group__savers.html#ga47adc7657700b186067b2c26dabf5b13" title="Print the number of copies of a particular allele at each marker of each genotype in a group to a fil..." alt="" coords="237,125,390,169"/>
-<area shape="rect" href="group__savers.html#ga34df718dd14346f72cc20928351cc4d2" title="Print the full known pedigree of each genotype in a group to a file." alt="" coords="245,193,382,237"/>
-<area shape="rect" href="group__savers.html#gab849eb8ece54052720d78fe248d09298" title="Prints the genotypes of each individual in a given group to a file, with the following format." alt="" coords="223,261,404,289"/>
-<area shape="rect" href="group__savers.html#gad10b44011b806daa35f8378eb90c5365" title="Print the parents of each genotype in a group to a file." alt="" coords="242,313,385,357"/>
-<area shape="rect" href="group__savers.html#gac0853546f2c1334ec45bc43b693f8ce0" title="Prints the genotypes of each individual in a given group to a file, with the following format." alt="" coords="240,381,387,425"/>
-<area shape="rect" href="group__collgetters.html#ga62d40b0b1cb6c5ded508b8a5f161d38a" title="Gets the full pedigree string (as per gsc_save_group_full_pedigree() ) of each member of the group." alt="" coords="5,201,175,229"/>
+<area shape="rect" title="Gets a shallow copy of the names of each member of the group." alt="" coords="194,13,346,41"/>
+<area shape="rect" href="group__calculators.html#ga7b5ad446b4cd825f6dca63e11e362749" title="Given a set of blocks of markers in a file, for each genotype in a group, calculate the local fitness..." alt="" coords="5,5,146,49"/>
 </map>
 </div>
 
@@ -874,6 +872,8 @@ Functions</h2></td></tr>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>GSC_UNINIT if <code>parent</code>'s value is incorrect; otherwise the number of entries of <code>output</code> that have been filled. This is to <code>group_size</code> if group size was set; equal to the actual size of the group if <code>group_size</code> was -1. </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="sim-operations_8c_source.html#l04027">4027</a> of file <a class="el" href="sim-operations_8c_source.html">sim-operations.c</a>.</p>
 <div id="dynsection-14" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-14-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
 <div id="dynsection-14-summary" class="dynsummary" style="display:block;">
@@ -883,19 +883,6 @@ Functions</h2></td></tr>
 <map name="agroup__collgetters_ga3010fa26c1c6a31c61286e6c60c97dd5_cgraph" id="agroup__collgetters_ga3010fa26c1c6a31c61286e6c60c97dd5_cgraph">
 <area shape="rect" title="Gets the ids of either the first or second parent of each member of the group." alt="" coords="5,5,179,33"/>
 <area shape="rect" href="group__collgetters.html#gae9131a8c72149706f67f6e4a48add79c" title="Function to count the number of genotypes that currently belong to the specified group." alt="" coords="227,5,364,33"/>
-</map>
-</div>
-<div id="dynsection-15" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
-  <img id="dynsection-15-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
-<div id="dynsection-15-summary" class="dynsummary" style="display:block;">
-</div>
-<div id="dynsection-15-content" class="dyncontent" style="display:none;">
-<div class="center"><img src="group__collgetters_ga3010fa26c1c6a31c61286e6c60c97dd5_icgraph.png" border="0" usemap="#agroup__collgetters_ga3010fa26c1c6a31c61286e6c60c97dd5_icgraph" alt=""/></div>
-<map name="agroup__collgetters_ga3010fa26c1c6a31c61286e6c60c97dd5_icgraph" id="agroup__collgetters_ga3010fa26c1c6a31c61286e6c60c97dd5_icgraph">
-<area shape="rect" title="Gets the ids of either the first or second parent of each member of the group." alt="" coords="413,48,586,76"/>
-<area shape="rect" href="group__savers.html#ga34df718dd14346f72cc20928351cc4d2" title="Print the full known pedigree of each genotype in a group to a file." alt="" coords="225,5,363,49"/>
-<area shape="rect" href="group__savers.html#gad10b44011b806daa35f8378eb90c5365" title="Print the parents of each genotype in a group to a file." alt="" coords="223,73,365,117"/>
-<area shape="rect" href="group__collgetters.html#ga62d40b0b1cb6c5ded508b8a5f161d38a" title="Gets the full pedigree string (as per gsc_save_group_full_pedigree() ) of each member of the group." alt="" coords="5,13,175,41"/>
 </map>
 </div>
 
@@ -973,11 +960,13 @@ Functions</h2></td></tr>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>GSC_UNINIT if <code>parent</code>'s value is incorrect; otherwise the number of entries of <code>output</code> that have been filled. This is to <code>group_size</code> if group size was set; equal to the actual size of the group if <code>group_size</code> was -1. </dd></dl>
-<div id="dynsection-16" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
-  <img id="dynsection-16-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
-<div id="dynsection-16-summary" class="dynsummary" style="display:block;">
+
+<p class="definition">Definition at line <a class="el" href="sim-operations_8c_source.html#l04084">4084</a> of file <a class="el" href="sim-operations_8c_source.html">sim-operations.c</a>.</p>
+<div id="dynsection-15" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-15-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
+<div id="dynsection-15-summary" class="dynsummary" style="display:block;">
 </div>
-<div id="dynsection-16-content" class="dyncontent" style="display:none;">
+<div id="dynsection-15-content" class="dyncontent" style="display:none;">
 <div class="center"><img src="group__collgetters_ga69155fb6c1a62f930f2a0a8b6c419cfb_cgraph.png" border="0" usemap="#agroup__collgetters_ga69155fb6c1a62f930f2a0a8b6c419cfb_cgraph" alt=""/></div>
 <map name="agroup__collgetters_ga69155fb6c1a62f930f2a0a8b6c419cfb_cgraph" id="agroup__collgetters_ga69155fb6c1a62f930f2a0a8b6c419cfb_cgraph">
 <area shape="rect" title="Gets the names of either the first or second parent of each member of the group." alt="" coords="5,24,155,68"/>
@@ -1027,9 +1016,9 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Gets the full pedigree string (as per <a class="el" href="group__savers.html#ga34df718dd14346f72cc20928351cc4d2" title="Print the full known pedigree of each genotype in a group to a file.">gsc_save_group_full_pedigree()</a> ) of each member of the group. </p>
-<p >This function is not fast, or particularly memory-efficient. To avoid recursive string-building/concatenation because that's pretty tricky in C, this just calls <a class="el" href="group__savers.html#ga34df718dd14346f72cc20928351cc4d2" title="Print the full known pedigree of each genotype in a group to a file.">gsc_save_group_full_pedigree()</a> to a temporary file, then reads that file back in to make a list of strings. Contact the package maintainers if you'd benefit from a faster version of this function, otherwise I probably won't bother improving this.</p>
-<p >If you just want to have the full pedigrees for further analysis, consider <a class="el" href="group__savers.html#ga34df718dd14346f72cc20928351cc4d2">gsc_save_group_full_pedigree()</a>. With the current implementation that one will be faster than this anyway.</p>
+<p>Gets the full pedigree string (as per gsc_save_group_full_pedigree() ) of each member of the group. </p>
+<p >This function is not fast, or particularly memory-efficient. To avoid recursive string-building/concatenation because that's pretty tricky in C, this just calls gsc_save_group_full_pedigree() to a temporary file, then reads that file back in to make a list of strings. Contact the package maintainers if you'd benefit from a faster version of this function, otherwise I probably won't bother improving this.</p>
+<p >If you just want to have the full pedigrees for further analysis, consider gsc_save_group_full_pedigree(). With the current implementation that one will be faster than this anyway.</p>
 <p ><em>Has short name:</em> <a class="el" href="group__shortnames.html#gab20e894edd1cdef1f2c9c4257edd50d6">get_group_pedigrees</a></p>
 <dl class="section see"><dt>See also</dt><dd><a class="el" href="group__collgetters.html#gae9131a8c72149706f67f6e4a48add79c" title="Function to count the number of genotypes that currently belong to the specified group.">gsc_get_group_size()</a> </dd>
 <dd>
@@ -1047,7 +1036,7 @@ Functions</h2></td></tr>
 <dd>
 <a class="el" href="group__collgetters.html#ga69155fb6c1a62f930f2a0a8b6c419cfb" title="Gets the names of either the first or second parent of each member of the group.">gsc_get_group_parent_names()</a> </dd>
 <dd>
-<a class="el" href="group__savers.html#ga34df718dd14346f72cc20928351cc4d2" title="Print the full known pedigree of each genotype in a group to a file.">gsc_save_group_full_pedigree()</a></dd></dl>
+gsc_save_group_full_pedigree()</dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">d</td><td>the <a class="el" href="structgsc___sim_data.html" title="Composite type that is used to run crossing simulations.">gsc_SimData</a> struct on which to perform the operation </td></tr>
@@ -1060,24 +1049,34 @@ Functions</h2></td></tr>
 <dl class="section return"><dt>Returns</dt><dd>GSC_UNINIT if there are no genotypes in the group or if reading/writing to the temporary file failed; 0 otherwise. </dd>
 <dd>
 GSC_UNINIT if reading/writing to the temporary file failed; otherwise the number of entries of <code>output</code> that have been filled. This is to <code>group_size</code> if group size was set; equal to the actual size of the group if <code>group_size</code> was -1. </dd></dl>
-<div id="dynsection-17" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
-  <img id="dynsection-17-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
-<div id="dynsection-17-summary" class="dynsummary" style="display:block;">
+
+<p class="definition">Definition at line <a class="el" href="sim-operations_8c_source.html#l04161">4161</a> of file <a class="el" href="sim-operations_8c_source.html">sim-operations.c</a>.</p>
+<div id="dynsection-16" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-16-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
+<div id="dynsection-16-summary" class="dynsummary" style="display:block;">
 </div>
-<div id="dynsection-17-content" class="dyncontent" style="display:none;">
+<div id="dynsection-16-content" class="dyncontent" style="display:none;">
 <div class="center"><img src="group__collgetters_ga62d40b0b1cb6c5ded508b8a5f161d38a_cgraph.png" border="0" usemap="#agroup__collgetters_ga62d40b0b1cb6c5ded508b8a5f161d38a_cgraph" alt=""/></div>
 <map name="agroup__collgetters_ga62d40b0b1cb6c5ded508b8a5f161d38a_cgraph" id="agroup__collgetters_ga62d40b0b1cb6c5ded508b8a5f161d38a_cgraph">
-<area shape="rect" title="Gets the full pedigree string (as per gsc_save_group_full_pedigree() ) of each member of the group." alt="" coords="5,30,175,58"/>
-<area shape="rect" href="group__collgetters.html#gae9131a8c72149706f67f6e4a48add79c" title="Function to count the number of genotypes that currently belong to the specified group." alt="" coords="636,70,774,98"/>
-<area shape="rect" href="sim-operations_8c.html#aaaf3ebc75feaf901829232712e55677b" title="Replace calls to malloc direct with this function." alt="" coords="231,30,352,58"/>
-<area shape="rect" href="group__savers.html#ga34df718dd14346f72cc20928351cc4d2" title="Print the full known pedigree of each genotype in a group to a file." alt="" coords="223,103,360,147"/>
-<area shape="rect" href="group__collgetters.html#gae5fac6863433c073871766b80aa6d966" title="Gets the ids of each member of the group." alt="" coords="430,70,560,98"/>
-<area shape="rect" href="group__collgetters.html#ga52a8eb90f5a6a1f9dabea81955d0bb79" title="Gets a shallow copy of the names of each member of the group." alt="" coords="419,122,571,150"/>
-<area shape="rect" href="group__collgetters.html#ga3010fa26c1c6a31c61286e6c60c97dd5" title="Gets the ids of either the first or second parent of each member of the group." alt="" coords="408,174,581,202"/>
-<area shape="rect" href="group__savers.html#ga8e5d08dbcfc4cc77d1d1c6603b75a2ed" title="Recursively save the parents of a particular id to a file." alt="" coords="424,250,566,278"/>
-<area shape="rect" href="group__search.html#ga5c7cd898a40e515c3164c98821068978" title="Returns the name of the genotype with a given id." alt="" coords="635,223,775,251"/>
-<area shape="rect" href="group__search.html#gad9d1d0b5575da681af7789354447612a" title="Saves the ids of the parents of a genotype with a particular id to the output array output." alt="" coords="629,275,781,303"/>
-<area shape="rect" href="group__supporters.html#ga8b0703c50a67ddcbe49f6b8d4ba3162b" title="Binary search through a list of PedigreeIDs." alt="" coords="829,242,978,286"/>
+<area shape="rect" title="Gets the full pedigree string (as per gsc_save_group_full_pedigree() ) of each member of the group." alt="" coords="5,228,175,256"/>
+<area shape="rect" href="group__collgetters.html#gae9131a8c72149706f67f6e4a48add79c" title="Function to count the number of genotypes that currently belong to the specified group." alt="" coords="223,176,361,204"/>
+<area shape="rect" href="sim-operations_8c.html#aaaf3ebc75feaf901829232712e55677b" title="Replace calls to malloc direct with this function." alt="" coords="231,228,353,256"/>
+<area shape="rect" href="group__savers.html#ga7033cc948a0521fea492fd0d45988ad6" title="Prints pedigrees of genotypes in the simulation to a file." alt="" coords="223,280,361,308"/>
+<area shape="rect" href="group__iterators.html#ga05da8d96593f8404938cc24f659db049" title="Create a bidirectional iterator." alt="" coords="409,133,595,161"/>
+<area shape="rect" href="group__savers.html#gad7643e196ad0f8e7db3c044894395de1" title="Prints pedigrees to a file." alt="" coords="414,305,590,333"/>
+<area shape="rect" href="group__iterators.html#ga5cca400276ca83acceaab36d5f79aab1" title=" " alt="" coords="663,5,824,49"/>
+<area shape="rect" href="group__liteget.html#ga847569827ccdd09ff54808c09aba742c" title="Get the first/left parent of a genotype." alt="" coords="674,149,813,177"/>
+<area shape="rect" href="group__liteget.html#ga0ce82f67cb5e35a1c73bef54138202f6" title="Get the persistent id of a genotype." alt="" coords="701,201,786,229"/>
+<area shape="rect" href="group__liteget.html#ga22a270ae73aaa86d93212a4a40f999dc" title="Get the name of a genotype." alt="" coords="690,253,797,281"/>
+<area shape="rect" href="group__search.html#ga5c7cd898a40e515c3164c98821068978" title="Returns the name of the genotype with a given id." alt="" coords="897,149,1038,177"/>
+<area shape="rect" href="group__liteget.html#gab71ce9343a19dd2fc34da1af89fee00a" title="Get the second/right parent of a genotype." alt="" coords="664,357,823,385"/>
+<area shape="rect" href="sim-operations_8c.html#a55984ff6f744f118ee79589a8fc4dcfc" title="Kernel for scaffold functions that require printing an integer to a file (as opposed to saving the in..." alt="" coords="673,409,814,453"/>
+<area shape="rect" href="sim-operations_8c.html#af5808811b84717ecb459de3bc7565494" title="Kernel for scaffold functions that require printing a string to a file (as opposed to saving the stri..." alt="" coords="673,477,814,521"/>
+<area shape="rect" href="group__iterators.html#ga630ba7f8e864238e296cb9480dfbc728" title="Get the next location from a bidirectional iterator." alt="" coords="679,545,808,573"/>
+<area shape="rect" href="group__iterators.html#gaa4fa2aec3b7f49f9925fe82c8ff38dcd" title="Initialise a Bidirectional iterator to the start of its sequence." alt="" coords="896,563,1039,607"/>
+<area shape="rect" href="sim-operations_8c.html#a6b80bf9dd00c35da0b57bbdae52098ec" title="Identifies and saves (recursively) the pedigree of a pair of parents." alt="" coords="643,97,844,125"/>
+<area shape="rect" href="group__supporters.html#ga8b0703c50a67ddcbe49f6b8d4ba3162b" title="Binary search through a list of PedigreeIDs." alt="" coords="1091,116,1240,160"/>
+<area shape="rect" href="group__search.html#gad9d1d0b5575da681af7789354447612a" title="Saves the ids of the parents of a genotype with a particular id to the output array output." alt="" coords="892,97,1043,125"/>
 </map>
 </div>
 
@@ -1135,45 +1134,38 @@ GSC_UNINIT if reading/writing to the temporary file failed; otherwise the number
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>the number of genotypes currently belonging to this group. </dd></dl>
-<div id="dynsection-18" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
-  <img id="dynsection-18-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
-<div id="dynsection-18-summary" class="dynsummary" style="display:block;">
+
+<p class="definition">Definition at line <a class="el" href="sim-operations_8c_source.html#l03753">3753</a> of file <a class="el" href="sim-operations_8c_source.html">sim-operations.c</a>.</p>
+<div id="dynsection-17" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-17-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
+<div id="dynsection-17-summary" class="dynsummary" style="display:block;">
 </div>
-<div id="dynsection-18-content" class="dyncontent" style="display:none;">
+<div id="dynsection-17-content" class="dyncontent" style="display:none;">
 <div class="center"><img src="group__collgetters_gae9131a8c72149706f67f6e4a48add79c_icgraph.png" border="0" usemap="#agroup__collgetters_gae9131a8c72149706f67f6e4a48add79c_icgraph" alt=""/></div>
 <map name="agroup__collgetters_gae9131a8c72149706f67f6e4a48add79c_icgraph" id="agroup__collgetters_gae9131a8c72149706f67f6e4a48add79c_icgraph">
-<area shape="rect" title="Function to count the number of genotypes that currently belong to the specified group." alt="" coords="1076,857,1213,885"/>
-<area shape="rect" href="group__calculators.html#ga381bf7e42397f428a322dd8e118a4243" title="Calculates the fitness metric/breeding value for each genotype in the gsc_AlleleMatrix in a certain g..." alt="" coords="399,289,565,317"/>
-<area shape="rect" href="group__collgetters.html#ga25310a2e8c9fbfabca0c90a355f0d522" title="Gets the breeding values/breeding values/fitnesses of each member of the group." alt="" coords="206,132,338,160"/>
-<area shape="rect" href="group__savers.html#ga3453d7fc7d552e7c254cf00788c45506" title="Print the breeding value of each genotype in a group to a file." alt="" coords="202,691,342,719"/>
-<area shape="rect" href="group__calculators.html#ga3b43d07c08ed861ed0f22a69bb57b94a" title="Takes the top_n individuals in the group with the best breeding values/fitnesses and puts them in a n..." alt="" coords="215,1125,329,1153"/>
-<area shape="rect" href="group__crossers.html#gab19b3eb80b5fe460d17c93e0c27f7aaf" title="Find the top m percent of a group and perform random crosses between those top individuals." alt="" coords="5,1296,154,1340"/>
-<area shape="rect" href="group__calculators.html#ga12c13aaf31fccff2f9ddd612035c426a" title="Calculates the number of times at each marker that a particular allele appears for each genotype in a..." alt="" coords="644,315,785,359"/>
-<area shape="rect" href="group__savers.html#ga47adc7657700b186067b2c26dabf5b13" title="Print the number of copies of a particular allele at each marker of each genotype in a group to a fil..." alt="" coords="406,423,559,467"/>
-<area shape="rect" href="group__calculators.html#ga160313a4276db1a2897ab0d161f5caa8" title="Calculates the number of times at each marker that two particular alleles appear for each genotype in..." alt="" coords="644,247,785,291"/>
-<area shape="rect" href="group__calculators.html#ga7b5ad446b4cd825f6dca63e11e362749" title="Given a set of blocks of markers in a file, for each genotype in a group, calculate the local fitness..." alt="" coords="644,435,785,479"/>
-<area shape="rect" href="group__calculators.html#ga1f9eb57dc514f86c2923f5f91a140c4f" title="Calculates the breeding value of the highest breeding&#45;value genotype that can be created from the all..." alt="" coords="639,111,790,155"/>
-<area shape="rect" href="group__calculators.html#ga145430273fd296e49528a27489f0e520" title="Calculates the highest&#45;breeding&#45;value haplotype that can be created from the alleles present in a giv..." alt="" coords="639,179,790,223"/>
-<area shape="rect" href="group__collgetters.html#gab256e999fe9540658a2a3aba11260cb5" title="Gets a shallow copy of the genes/alleles of each member of the group." alt="" coords="867,307,1016,335"/>
-<area shape="rect" href="group__savers.html#gab849eb8ece54052720d78fe248d09298" title="Prints the genotypes of each individual in a given group to a file, with the following format." alt="" coords="624,503,805,531"/>
-<area shape="rect" href="group__savers.html#gac0853546f2c1334ec45bc43b693f8ce0" title="Prints the genotypes of each individual in a given group to a file, with the following format." alt="" coords="641,657,788,701"/>
-<area shape="rect" href="group__collgetters.html#gae5fac6863433c073871766b80aa6d966" title="Gets the ids of each member of the group." alt="" coords="876,739,1007,767"/>
-<area shape="rect" href="group__savers.html#ga34df718dd14346f72cc20928351cc4d2" title="Print the full known pedigree of each genotype in a group to a file." alt="" coords="646,896,783,940"/>
-<area shape="rect" href="group__collgetters.html#ga62d40b0b1cb6c5ded508b8a5f161d38a" title="Gets the full pedigree string (as per gsc_save_group_full_pedigree() ) of each member of the group." alt="" coords="398,933,567,961"/>
-<area shape="rect" href="group__savers.html#gad10b44011b806daa35f8378eb90c5365" title="Print the parents of each genotype in a group to a file." alt="" coords="643,828,786,872"/>
-<area shape="rect" href="group__collgetters.html#ga90490b08f70757c55e06b842abc5d1ce" title="Gets the indexes (0&#45;based, from the start of the linked list in the gsc_SimData) of each member of th..." alt="" coords="862,1168,1021,1196"/>
-<area shape="rect" href="group__crossers.html#gaa70fd79312587d8e9fc166c64612cbce" title="Perform crosses between all pairs of parents in the group from_group and allocates the resulting offs..." alt="" coords="622,1117,807,1161"/>
-<area shape="rect" href="group__collgetters.html#ga52a8eb90f5a6a1f9dabea81955d0bb79" title="Gets a shallow copy of the names of each member of the group." alt="" coords="865,615,1018,643"/>
-<area shape="rect" href="group__collgetters.html#ga3010fa26c1c6a31c61286e6c60c97dd5" title="Gets the ids of either the first or second parent of each member of the group." alt="" coords="855,857,1028,885"/>
-<area shape="rect" href="group__collgetters.html#ga69155fb6c1a62f930f2a0a8b6c419cfb" title="Gets the names of either the first or second parent of each member of the group." alt="" coords="867,1288,1016,1332"/>
-<area shape="rect" href="sim-operations_8c.html#adcdd291d7f58d677ec9fb7f05baa5dff" title="Check input parameters of random crossing functions." alt="" coords="855,1220,1028,1264"/>
-<area shape="rect" href="group__groupmod.html#ga07b4f4c7ffe4c40e0ed0658f56872cc7" title="Split a group into n groups of equal size (or size differing only by one, if n does not perfectly div..." alt="" coords="862,1408,1021,1436"/>
-<area shape="rect" href="group__groupmod.html#ga47292b150273a395fe282f86c0f78e0b" title="Split a group into two groups of equal size (or size differing only by one, if the original group had..." alt="" coords="856,1460,1027,1488"/>
-<area shape="rect" href="group__groupmod.html#ga750ec838a37133c3f26428647868b310" title="Split a group into n groups of equal size (or size differing only by one, if n does not perfectly div..." alt="" coords="864,1512,1019,1540"/>
-<area shape="rect" href="group__groupmod.html#ga4e2399c23a2a123d275f3cffbe46c74f" title="Split a group into families by their pedigrees." alt="" coords="865,1564,1018,1592"/>
-<area shape="rect" href="group__groupmod.html#gadf875ab8f9f992dba4497258291b1ccd" title="Split a group into families of half&#45;siblings by shared first or second parent." alt="" coords="869,1616,1014,1660"/>
-<area shape="rect" href="group__crossers.html#ga03af5446006203244dd3080cf75af26f" title="Performs random crosses among members of a group." alt="" coords="390,1304,574,1332"/>
-<area shape="rect" href="group__crossers.html#ga652376b5a34d24f239e5fc0b167c067b" title="Performs random crosses where the first parent comes from one group and the second from another." alt="" coords="622,1237,807,1281"/>
+<area shape="rect" title="Function to count the number of genotypes that currently belong to the specified group." alt="" coords="655,491,793,519"/>
+<area shape="rect" href="group__calculators.html#ga7b5ad446b4cd825f6dca63e11e362749" title="Given a set of blocks of markers in a file, for each genotype in a group, calculate the local fitness..." alt="" coords="224,77,364,121"/>
+<area shape="rect" href="group__calculators.html#ga1f9eb57dc514f86c2923f5f91a140c4f" title="Calculates the breeding value of the highest breeding&#45;value genotype that can be created from the all..." alt="" coords="219,155,369,199"/>
+<area shape="rect" href="group__calculators.html#ga145430273fd296e49528a27489f0e520" title="Calculates the highest&#45;breeding&#45;value haplotype that can be created from the alleles present in a giv..." alt="" coords="219,240,369,284"/>
+<area shape="rect" href="group__collgetters.html#ga25310a2e8c9fbfabca0c90a355f0d522" title="Gets the breeding values/breeding values/fitnesses of each member of the group." alt="" coords="455,304,587,332"/>
+<area shape="rect" href="group__collgetters.html#gab256e999fe9540658a2a3aba11260cb5" title="Gets a shallow copy of the genes/alleles of each member of the group." alt="" coords="447,149,595,177"/>
+<area shape="rect" href="group__collgetters.html#gae5fac6863433c073871766b80aa6d966" title="Gets the ids of each member of the group." alt="" coords="456,45,586,73"/>
+<area shape="rect" href="group__collgetters.html#ga90490b08f70757c55e06b842abc5d1ce" title="Gets the indexes (0&#45;based, from the start of the linked list in the gsc_SimData) of each member of th..." alt="" coords="442,408,600,436"/>
+<area shape="rect" href="group__crossers.html#gaa70fd79312587d8e9fc166c64612cbce" title="Perform crosses between all pairs of parents in the group from_group and allocates the resulting offs..." alt="" coords="202,396,386,440"/>
+<area shape="rect" href="group__calculators.html#ga3b43d07c08ed861ed0f22a69bb57b94a" title="Takes the top_n individuals in the group with the best breeding values/fitnesses and puts them in a n..." alt="" coords="237,344,351,372"/>
+<area shape="rect" href="group__crossers.html#gab19b3eb80b5fe460d17c93e0c27f7aaf" title="Find the top m percent of a group and perform random crosses between those top individuals." alt="" coords="5,524,154,568"/>
+<area shape="rect" href="group__collgetters.html#ga52a8eb90f5a6a1f9dabea81955d0bb79" title="Gets a shallow copy of the names of each member of the group." alt="" coords="445,97,597,125"/>
+<area shape="rect" href="group__collgetters.html#ga3010fa26c1c6a31c61286e6c60c97dd5" title="Gets the ids of either the first or second parent of each member of the group." alt="" coords="434,632,607,660"/>
+<area shape="rect" href="group__collgetters.html#ga69155fb6c1a62f930f2a0a8b6c419cfb" title="Gets the names of either the first or second parent of each member of the group." alt="" coords="446,684,595,728"/>
+<area shape="rect" href="group__collgetters.html#ga62d40b0b1cb6c5ded508b8a5f161d38a" title="Gets the full pedigree string (as per gsc_save_group_full_pedigree() ) of each member of the group." alt="" coords="436,752,605,780"/>
+<area shape="rect" href="sim-operations_8c.html#adcdd291d7f58d677ec9fb7f05baa5dff" title="Check input parameters of random crossing functions." alt="" coords="434,512,607,556"/>
+<area shape="rect" href="group__groupmod.html#ga07b4f4c7ffe4c40e0ed0658f56872cc7" title="Split a group into n groups of equal size (or size differing only by one, if n does not perfectly div..." alt="" coords="442,804,600,832"/>
+<area shape="rect" href="group__groupmod.html#ga47292b150273a395fe282f86c0f78e0b" title="Split a group into two groups of equal size (or size differing only by one, if the original group had..." alt="" coords="435,856,606,884"/>
+<area shape="rect" href="group__groupmod.html#ga750ec838a37133c3f26428647868b310" title="Split a group into n groups of equal size (or size differing only by one, if n does not perfectly div..." alt="" coords="444,908,598,936"/>
+<area shape="rect" href="group__groupmod.html#ga4e2399c23a2a123d275f3cffbe46c74f" title="Split a group into families by their pedigrees." alt="" coords="445,960,597,988"/>
+<area shape="rect" href="group__groupmod.html#gadf875ab8f9f992dba4497258291b1ccd" title="Split a group into families of half&#45;siblings by shared first or second parent." alt="" coords="448,1012,593,1056"/>
+<area shape="rect" href="group__crossers.html#ga03af5446006203244dd3080cf75af26f" title="Performs random crosses among members of a group." alt="" coords="202,532,386,560"/>
+<area shape="rect" href="group__crossers.html#ga652376b5a34d24f239e5fc0b167c067b" title="Performs random crosses where the first parent comes from one group and the second from another." alt="" coords="202,464,386,508"/>
 </map>
 </div>
 

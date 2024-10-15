@@ -1,6 +1,0 @@
-<map id="generate_doubled_haploid" name="generate_doubled_haploid">
-<area shape="rect" id="node1" title="Get the alleles of the outcome of producing a doubled haploid from a gamete from a given parent." alt="" coords="5,57,177,85"/>
-<area shape="rect" id="node2" href="$group__supporters.html#ga3744bc6f3fcb52952d520029055e8af8" title="Comparator function for qsort." alt="" coords="225,5,404,33"/>
-<area shape="rect" id="node3" href="$group__supporters.html#ga6072a152b624743eeafb30adaf9b7f17" title="Replace calls to malloc direct with this function, which errors and exits with status 2 if memory all..." alt="" coords="272,57,357,85"/>
-<area shape="rect" id="node4" href="$group__maths.html#gac0aed93b85c3ff464c1e29bd2093e066" title="Generates randomly a number from the Poisson distribution with parameter lambda, using the Knuth appr..." alt="" coords="283,109,346,137"/>
-</map>

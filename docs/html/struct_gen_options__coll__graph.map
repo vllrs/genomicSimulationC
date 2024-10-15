@@ -1,4 +1,0 @@
-<map id="GenOptions" name="GenOptions">
-<area shape="rect" id="node1" title="A type that contains choices of settings for SimData functions that create a new AlleleMatrix/generat..." alt="" coords="5,97,96,125"/>
-<area shape="rect" id="node2" href="$struct_effect_i_d.html" title="A type representing a particular loaded set of marker effects." alt="" coords="17,5,84,33"/>
-</map>

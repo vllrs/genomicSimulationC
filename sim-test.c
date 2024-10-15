@@ -74,14 +74,15 @@ int test_savers(unsigned int rseed) {
     memset(ref,0,sizeof(ref));*/
 
     // try saving genotypes save_allele_matrix save_transposed_allele_matrix save_group_genotypes save_transposed_group_genotypes
-    FILE* fp;
+    /*FILE* fp;
     if ((fp = fopen("test1_save_allele_matrix.txt", "w")) == NULL) {
         fprintf(stderr, "Failed to create file.\n");
         exit(1);
     }
     save_names_header(fp,d->genome.n_markers,(const char**) d->genome.marker_names);
-    save_allele_matrix(fp,d->m);
-    fclose(fp);
+    save_allele_matrix(fp,d->m);*/
+    save_genotypes("test1_save_allele_matrix.txt",d,NO_GROUP,GSC_FALSE);
+    //fclose(fp);
     /*strcat(ref,"\tm1\tm2\tam3\n");
     for (int i = 0; i < d->m->n_genotypes; ++i) {
         if (d->m->names[i] == NULL) {
@@ -96,53 +97,58 @@ int test_savers(unsigned int rseed) {
     remove("test1_save_allele_matrix.txt");
 
 
-    if ((fp = fopen("test1_save_transposed_allele_matrix.txt", "w")) == NULL) {
+    /*if ((fp = fopen("test1_save_transposed_allele_matrix.txt", "w")) == NULL) {
         fprintf(stderr, "Failed to create file.\n");
         exit(1);
     }
-    save_transposed_allele_matrix(fp,d->m,(const char**) d->genome.marker_names);
-    fclose(fp);
+    save_transposed_allele_matrix(fp,d->m,(const char**) d->genome.marker_names);*/ 
+    save_genotypes("test1_save_transposed_allele_matrix.txt",d,NO_GROUP,GSC_TRUE);
+    //fclose(fp);
     assert(compareFileToString("test1_save_transposed_allele_matrix.txt", TEST1_TRUTH_save_transposed_allele_matrix)==0);
     remove("test1_save_transposed_allele_matrix.txt");
 
 
-    if ((fp = fopen("test1_save_group_genotypes.txt", "w")) == NULL) {
+    /*if ((fp = fopen("test1_save_group_genotypes.txt", "w")) == NULL) {
         fprintf(stderr, "Failed to create file.\n");
         exit(1);
-    }
-    save_group_genotypes(fp,d,printingGroup);
-    fclose(fp);
+    }*/
+    //save_group_genotypes(fp,d,printingGroup);
+    save_genotypes("test1_save_group_genotypes.txt",d,printingGroup,GSC_FALSE);
+    //fclose(fp);
     assert(compareFileToString("test1_save_group_genotypes.txt", TEST1_TRUTH_save_group_alleles)==0);
     remove("test1_save_group_genotypes.txt");
 
 
-    if ((fp = fopen("test1_save_transposed_group_genotypes.txt", "w")) == NULL) {
+    /*if ((fp = fopen("test1_save_transposed_group_genotypes.txt", "w")) == NULL) {
         fprintf(stderr, "Failed to create file.\n");
         exit(1);
     }
-    save_transposed_group_genotypes(fp,d,printingGroup);
-    fclose(fp);
+    save_transposed_group_genotypes(fp,d,printingGroup);*/
+    save_genotypes("test1_save_transposed_group_genotypes.txt",d,printingGroup,GSC_TRUE);
+    //fclose(fp);
     assert(compareFileToString("test1_save_transposed_group_genotypes.txt", TEST1_TRUTH_save_transposed_group_alleles)==0);
     remove("test1_save_transposed_group_genotypes.txt");
 
 
     // try saving counts save_count_matrix save_group_count_matrix
-    if ((fp = fopen("test1_save_count_matrix.txt", "w")) == NULL) {
+    /*if ((fp = fopen("test1_save_count_matrix.txt", "w")) == NULL) {
         fprintf(stderr, "Failed to create file.\n");
         exit(1);
     }
-    save_count_matrix(fp,d,'A');
-    fclose(fp);
+    save_count_matrix(fp,d,'A');*/
+    save_allele_counts("test1_save_count_matrix.txt",d,NO_GROUP,'A',GSC_TRUE);
+    //fclose(fp);
     assert(compareFileToString("test1_save_count_matrix.txt", TEST1_TRUTH_save_count_matrix)==0);
     remove("test1_save_count_matrix.txt");
 
 
-    if ((fp = fopen("test1_save_group_count_matrix.txt", "w")) == NULL) {
+    /*if ((fp = fopen("test1_save_group_count_matrix.txt", "w")) == NULL) {
         fprintf(stderr, "Failed to create file.\n");
         exit(1);
     }
-    save_group_count_matrix(fp,d,'T',printingGroup);
-    fclose(fp);
+    save_group_count_matrix(fp,d,'T',printingGroup);*/
+    save_allele_counts("test1_save_group_count_matrix.txt",d,printingGroup,'T',GSC_TRUE);
+    //fclose(fp);
     assert(compareFileToString("test1_save_group_count_matrix.txt", TEST1_TRUTH_save_count_matrix_of_group)==0);
     remove("test1_save_group_count_matrix.txt");
 
@@ -153,22 +159,24 @@ int test_savers(unsigned int rseed) {
     // try saving bvs save_bvs save_group_bvs
     EffectID effSet1 = {.id=1};
 
-    if ((fp = fopen("test1_save_bvs.txt", "w")) == NULL) {
+    /*if ((fp = fopen("test1_save_bvs.txt", "w")) == NULL) {
         fprintf(stderr, "Failed to create file.\n");
         exit(1);
     }
-    save_bvs(fp,d,effSet1);
-    fclose(fp);
+    save_bvs(fp,d,effSet1);*/
+    save_bvs("test1_save_bvs.txt",d,NO_GROUP,effSet1);
+    //fclose(fp);
     assert(compareFileToString("test1_save_bvs.txt", TEST1_TRUTH_save_bvs)==0);
     remove("test1_save_bvs.txt");
 
 
-    if ((fp = fopen("test1_save_group_bvs.txt", "w")) == NULL) {
+    /*if ((fp = fopen("test1_save_group_bvs.txt", "w")) == NULL) {
         fprintf(stderr, "Failed to create file.\n");
         exit(1);
     }
-    save_group_bvs(fp,d,printingGroup,effSet1);
-    fclose(fp);
+    save_group_bvs(fp,d,printingGroup,effSet1);*/
+    save_bvs("test1_save_group_bvs.txt",d,printingGroup,effSet1);
+    //fclose(fp);
     assert(compareFileToString("test1_save_group_bvs.txt", TEST1_TRUTH_save_group_bvs)==0);
     remove("test1_save_group_bvs.txt");
 
@@ -176,15 +184,19 @@ int test_savers(unsigned int rseed) {
     // try saving local gebvs save_marker_blocks calculate_local_bvs
     MarkerBlocks exampleMB = create_evenlength_blocks_each_chr(d, NO_MAP,1);
 
-    if ((fp = fopen("test1_save_marker_blocks.txt", "w")) == NULL) {
+    /*if ((fp = fopen("test1_save_marker_blocks.txt", "w")) == NULL) {
         fprintf(stderr, "Failed to create file.\n");
         exit(1);
     }
-    save_markerblocks(fp,d,exampleMB);
-    fclose(fp);
-    assert(compareFileToString("test1_save_marker_blocks.txt", TEST1_TRUTH_save_marker_blocks)==0);
+    save_markerblocks(fp,d,exampleMB);*/
+    save_markerblocks("test1_save_marker_blocks.txt",d,exampleMB,NO_MAP);
+    //fclose(fp);
+    assert(compareFileToString("test1_save_marker_blocks.txt", TEST1_TRUTH_save_marker_blocks_blocksonly)==0);
     remove("test1_save_marker_blocks.txt");
 
+    save_markerblocks("test1_save_marker_blocks_moreinfo.txt",d,exampleMB,(MapID){.id=1});
+    assert(compareFileToString("test1_save_marker_blocks_moreinfo.txt", TEST1_TRUTH_save_marker_blocks_chrinfo)==0);
+    remove("test1_save_marker_blocks_moreinfo.txt");
 
     calculate_local_bvs(d,exampleMB,effSet1,"test1_save_local_bvs.txt");
     assert(compareFileToString("test1_save_local_bvs.txt", TEST1_TRUTH_save_local_bvs)==0);
@@ -213,43 +225,47 @@ int test_savers(unsigned int rseed) {
             .will_save_to_simdata=GSC_TRUE};
     make_random_crosses(d,f1,1,1, NO_MAP,g);
 
-    if ((fp = fopen("test1_save_one_step_pedigree.txt", "w")) == NULL) {
+    /*if ((fp = fopen("test1_save_one_step_pedigree.txt", "w")) == NULL) {
         fprintf(stderr, "Failed to create file.\n");
         exit(1);
     }
-    save_one_step_pedigree(fp,d);
-    fclose(fp);
+    save_one_step_pedigree(fp,d);*/
+    save_pedigrees("test1_save_one_step_pedigree.txt",d,NO_GROUP,GSC_FALSE);
+    //fclose(fp);
     assert(compareFileToString("test1_save_one_step_pedigree.txt", TEST1_TRUTH_save_one_step_pedigrees)==0);
     remove("test1_save_one_step_pedigree.txt");
 
 
-    if ((fp = fopen("test1_save_group_one_step_pedigree.txt", "w")) == NULL) {
+    /*if ((fp = fopen("test1_save_group_one_step_pedigree.txt", "w")) == NULL) {
         fprintf(stderr, "Failed to create file.\n");
         exit(1);
     }
-    save_group_one_step_pedigree(fp,d,printingGroup);
-    fclose(fp);
+    save_group_one_step_pedigree(fp,d,printingGroup);*/
+    save_pedigrees("test1_save_group_one_step_pedigree.txt",d,printingGroup,GSC_FALSE);
+    //fclose(fp);
     assert(compareFileToString("test1_save_group_one_step_pedigree.txt", TEST1_TRUTH_save_group_one_step_pedigrees)==0);
     remove("test1_save_group_one_step_pedigree.txt");
 
 
     // try saving full pedigrees save_group_full_pedigree save_full_pedigree
-    if ((fp = fopen("test1_save_full_pedigree.txt", "w")) == NULL) {
+    /*if ((fp = fopen("test1_save_full_pedigree.txt", "w")) == NULL) {
         fprintf(stderr, "Failed to create file.\n");
         exit(1);
     }
-    save_full_pedigree(fp,d);
-    fclose(fp);
+    save_full_pedigree(fp,d);*/
+    save_pedigrees("test1_save_full_pedigree.txt",d,NO_GROUP,GSC_TRUE);
+    //fclose(fp);
     assert(compareFileToString("test1_save_full_pedigree.txt", TEST1_TRUTH_save_full_pedigrees)==0);
     remove("test1_save_full_pedigree.txt");
 
 
-    if ((fp = fopen("test1_save_group_full_pedigree.txt", "w")) == NULL) {
+    /*if ((fp = fopen("test1_save_group_full_pedigree.txt", "w")) == NULL) {
         fprintf(stderr, "Failed to create file.\n");
         exit(1);
     }
-    save_group_full_pedigree(fp,d,printingGroup);
-    fclose(fp);
+    save_group_full_pedigree(fp,d,printingGroup);*/
+    save_pedigrees("test1_save_group_full_pedigree.txt",d,printingGroup,GSC_TRUE);
+    //fclose(fp);
     assert(compareFileToString("test1_save_group_full_pedigree.txt", TEST1_TRUTH_save_group_full_pedigrees)==0);
     remove("test1_save_group_full_pedigree.txt");
 
@@ -2459,8 +2475,58 @@ GroupNum test_grouping(SimData *d, GroupNum g0) {
     return g0;
 }
 
+int test_count_calculators(SimData *d, GroupNum g0) {
+    DecimalMatrix dec = calculate_allele_counts(d, g0, 'A');
+
+    assert(dec.rows == 6);
+    assert(dec.cols == 3);
+    assert(strcmp(d->genome.marker_names[0], "m1") == 0);
+    assert(strcmp(d->genome.marker_names[1], "m2") == 0);
+    assert(strcmp(d->genome.marker_names[2], "am3") == 0);
+
+    assert(dec.matrix[0][0] == 0);
+    assert(dec.matrix[0][1] == 2);
+    assert(dec.matrix[0][2] == 0);
+
+    assert(dec.matrix[1][0] == 0);
+    assert(dec.matrix[1][1] == 2);
+    assert(dec.matrix[1][2] == 0);
+
+    assert(dec.matrix[2][0] == 0);
+    assert(dec.matrix[2][1] == 2);
+    assert(dec.matrix[2][2] == 1);
+
+    assert(dec.matrix[3][0] == 1);
+    assert(dec.matrix[3][1] == 2);
+    assert(dec.matrix[3][2] == 1);
+
+    assert(dec.matrix[4][0] == 0);
+    assert(dec.matrix[4][1] == 0);
+    assert(dec.matrix[4][2] == 0);
+
+    assert(dec.matrix[5][0] == 1);
+    assert(dec.matrix[5][1] == 2);
+    assert(dec.matrix[5][2] == 0);
+
+    delete_dmatrix(&dec);
+
+    // & check for an allele whose counts should all be 0
+    dec = calculate_allele_counts(d, g0, '\t');
+
+    assert(dec.rows == 6);
+    assert(dec.cols == d->m->n_markers && d->m->n_markers == 3);
+    for (int row = 0; row < 6; ++row) {
+        for (int col = 0; col < d->m->n_markers; ++col) {
+            assert(dec.matrix[row][col] == 0);
+        }
+    }
+
+    delete_dmatrix(&dec);
+    return 0;
+}
+
 int test_effect_calculators(SimData *d, GroupNum g0) {
-    DecimalMatrix dec = calculate_group_bvs(d, g0, (EffectID){.id=1});
+    DecimalMatrix dec = calculate_bvs(d, g0, (EffectID){.id=1});
 
 	assert(dec.rows == 1);
 	assert(dec.cols == 6);
@@ -2473,7 +2539,7 @@ int test_effect_calculators(SimData *d, GroupNum g0) {
 
     delete_dmatrix(&dec);
     // and with the second set of effects:
-    DecimalMatrix dec2 = calculate_group_bvs(d, g0, (EffectID){.id=2});
+    DecimalMatrix dec2 = calculate_bvs(d, g0, (EffectID){.id=2});
 
     assert(dec2.rows == 1);
     assert(dec2.cols == 6);
@@ -2489,7 +2555,7 @@ int test_effect_calculators(SimData *d, GroupNum g0) {
     fwrite(HELPER_EFF2, sizeof(char), strlen(HELPER_EFF2), fp);
     fclose(fp);
     EffectID e3 = load_effectfile(d,"a-test-eff3.txt");
-    DecimalMatrix dec3 = calculate_group_bvs(d, g0, e3);
+    DecimalMatrix dec3 = calculate_bvs(d, g0, e3);
     assert(fabs(dec3.matrix[0][0] - 0) < TOL);
     assert(fabs(dec3.matrix[0][1] - 0) < TOL);
     assert(fabs(dec3.matrix[0][2] - 0) < TOL);
@@ -3322,6 +3388,7 @@ int main(int argc, char* argv[]) {
 
 	// test effect calculators
 	printf("\nNow testing GEBV calculator:\n");
+	test_count_calculators(d, g0);
     test_effect_calculators(d, g0);
     test_optimal_calculators(d, g0);
 	printf("\t\t-> GEBV calculators all clear\n");

@@ -1,5 +1,0 @@
-<map id="create_new_label" name="create_new_label">
-<area shape="rect" id="node1" title="Initialises a new custom label." alt="" coords="5,32,127,60"/>
-<area shape="rect" id="node2" href="$group__supporters.html#ga6072a152b624743eeafb30adaf9b7f17" title="Replace calls to malloc direct with this function, which errors and exits with status 2 if memory all..." alt="" coords="193,5,277,33"/>
-<area shape="rect" id="node3" href="$group__supporters.html#ga3dd65057ec4a330cf33fce01a5956d5f" title="Function to identify the next sequential integer that is not already allocated to a label in the simu..." alt="" coords="175,57,295,85"/>
-</map>

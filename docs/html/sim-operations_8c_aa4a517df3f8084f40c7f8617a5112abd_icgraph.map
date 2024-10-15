@@ -1,6 +1,0 @@
-<map id="gsc_helper_genotypefile_matrix_check_markers_are_rows" name="gsc_helper_genotypefile_matrix_check_markers_are_rows">
-<area shape="rect" id="node1" title="Determine whether a genotype matrix is row&#45; or column&#45;oriented based on header and first cell of seco..." alt="" coords="583,5,744,65"/>
-<area shape="rect" id="node2" href="$sim-operations_8c.html#a0f9bc7d42b9a98a1f4ea30c4a5f49312" title="Loads a genotype file, with or without existing genome model in the SimData." alt="" coords="386,13,535,57"/>
-<area shape="rect" id="node3" href="$group__loaders.html#gac7f5d37f0a3fd81aa26f1eae2ebae2db" title="Populates a gsc_SimData object with marker allele data, a genetic map, and (optionally) marker effect..." alt="" coords="203,21,338,49"/>
-<area shape="rect" id="node4" href="$group__loaders.html#gabbe46ffa8009c748d895d4215a6c8bb8" title="Load a set of genotypes to a gsc_SimData object." alt="" coords="5,21,155,49"/>
-</map>

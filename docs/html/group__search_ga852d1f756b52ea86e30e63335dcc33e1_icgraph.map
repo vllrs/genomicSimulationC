@@ -1,5 +1,0 @@
-<map id="get_index_of_name" name="get_index_of_name">
-<area shape="rect" id="node1" title="Search for a genotype with a particular name in a linked list of AlleleMatrix, and return its index." alt="" coords="222,44,355,72"/>
-<area shape="rect" id="node2" href="$group__recomb.html#ga7813f256407ab2ea242df32ea9ad2c7e" title="Provides guesses as to the location of recombination events that led to the creation of certain genot..." alt="" coords="5,5,174,49"/>
-<area shape="rect" id="node3" href="$group__crossers.html#ga18a22fc990289359e790fa207613c121" title="Perform crosses between pairs of parents identified by name in a file and allocate the resulting offs..." alt="" coords="9,73,170,101"/>
-</map>

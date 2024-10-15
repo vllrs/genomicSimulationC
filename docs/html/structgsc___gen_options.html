@@ -21,7 +21,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">genomicSimulationC<span id="projectnumber">&#160;0.2.5.02</span>
+   <div id="projectname">genomicSimulationC<span id="projectnumber">&#160;0.2.5.05</span>
    </div>
   </td>
  </tr>
@@ -108,7 +108,7 @@ Data Fields</h2></td></tr>
 <tr class="memdesc:a3278b9a3b040426c828a0b7679988b24"><td class="mdescLeft">&#160;</td><td class="mdescRight">A boolean.  <a href="structgsc___gen_options.html#a3278b9a3b040426c828a0b7679988b24">More...</a><br /></td></tr>
 <tr class="separator:a3278b9a3b040426c828a0b7679988b24"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a77580e38741c56b679738d4aff067b00"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structgsc___effect_i_d.html">gsc_EffectID</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structgsc___gen_options.html#a77580e38741c56b679738d4aff067b00">will_save_bvs_to_file</a></td></tr>
-<tr class="memdesc:a77580e38741c56b679738d4aff067b00"><td class="mdescLeft">&#160;</td><td class="mdescRight">If equal to NOT_AN_EFFECT_SET, no bvs are calculated or saved.  <a href="structgsc___gen_options.html#a77580e38741c56b679738d4aff067b00">More...</a><br /></td></tr>
+<tr class="memdesc:a77580e38741c56b679738d4aff067b00"><td class="mdescLeft">&#160;</td><td class="mdescRight">If equal to NO_EFFECTSET, no bvs are calculated or saved.  <a href="structgsc___gen_options.html#a77580e38741c56b679738d4aff067b00">More...</a><br /></td></tr>
 <tr class="separator:a77580e38741c56b679738d4aff067b00"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9ffdb2ecf371c2380a05e506929e66eb"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structgsc___gen_options.html#a9ffdb2ecf371c2380a05e506929e66eb">will_save_alleles_to_file</a></td></tr>
 <tr class="memdesc:a9ffdb2ecf371c2380a05e506929e66eb"><td class="mdescLeft">&#160;</td><td class="mdescRight">A boolean.  <a href="structgsc___gen_options.html#a9ffdb2ecf371c2380a05e506929e66eb">More...</a><br /></td></tr>
@@ -123,6 +123,8 @@ Data Fields</h2></td></tr>
 <p >The will_name_offspring, will_track_pedigree, and will_allocate_ids parameters affect how much extra detail about the offspring is generated/saved.</p>
 <p >The will_save_to_simdata toggle allows you the option of generating offspring without saving them in memory. This may be useful in combination with save-as-you-go toggles will_save_pedigree_to_file, will_save_bvs_to_file, and will_save_alleles_to_file, to generate a larger number of offspring than will fit in memory.</p>
 <p ><em>Has short name:</em> <a class="el" href="group__shortnames.html#gaa320efa0931830d69965beb2f5399acf">GenOptions</a> </p>
+
+<p class="definition">Definition at line <a class="el" href="sim-operations_8h_source.html#l00531">531</a> of file <a class="el" href="sim-operations_8h_source.html">sim-operations.h</a>.</p>
 </div><h2 class="groupheader">Field Documentation</h2>
 <a id="a46ce6f624c8c8a7e8e2f611e638370ba" name="a46ce6f624c8c8a7e8e2f611e638370ba"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a46ce6f624c8c8a7e8e2f611e638370ba">&#9670;&nbsp;</a></span>family_size</h2>
@@ -137,6 +139,8 @@ Data Fields</h2></td></tr>
 </div><div class="memdoc">
 
 <p>The number of offspring to produce from each cross. </p>
+
+<p class="definition">Definition at line <a class="el" href="sim-operations_8h_source.html#l00536">536</a> of file <a class="el" href="sim-operations_8h_source.html">sim-operations.h</a>.</p>
 
 </div>
 </div>
@@ -154,6 +158,8 @@ Data Fields</h2></td></tr>
 
 <p>A string used in save-as-you-go file names. </p>
 
+<p class="definition">Definition at line <a class="el" href="sim-operations_8h_source.html#l00544">544</a> of file <a class="el" href="sim-operations_8h_source.html">sim-operations.h</a>.</p>
+
 </div>
 </div>
 <a id="a6b8ee6897b0b6fede42ea39f32054c12" name="a6b8ee6897b0b6fede42ea39f32054c12"></a>
@@ -169,6 +175,8 @@ Data Fields</h2></td></tr>
 </div><div class="memdoc">
 
 <p>If <code>will_name_offspring</code> is true, generated offspring are named with the concatenation {offspring_name_prefix}{index}. </p>
+
+<p class="definition">Definition at line <a class="el" href="sim-operations_8h_source.html#l00533">533</a> of file <a class="el" href="sim-operations_8h_source.html">sim-operations.h</a>.</p>
 
 </div>
 </div>
@@ -187,6 +195,8 @@ Data Fields</h2></td></tr>
 <p>A boolean: whether to allocate generated offspring session- unique IDs. </p>
 <p >IDs are used for pedigree tracking. The offspring of an anonymous individual (one without an ID) cannot identify that individual as their parent. </p>
 
+<p class="definition">Definition at line <a class="el" href="sim-operations_8h_source.html#l00539">539</a> of file <a class="el" href="sim-operations_8h_source.html">sim-operations.h</a>.</p>
+
 </div>
 </div>
 <a id="a2b2f62ca4ae10b9da540c7b7b48e32a3" name="a2b2f62ca4ae10b9da540c7b7b48e32a3"></a>
@@ -203,6 +213,8 @@ Data Fields</h2></td></tr>
 
 <p>A boolean: whether generated offspring should be given names. </p>
 
+<p class="definition">Definition at line <a class="el" href="sim-operations_8h_source.html#l00532">532</a> of file <a class="el" href="sim-operations_8h_source.html">sim-operations.h</a>.</p>
+
 </div>
 </div>
 <a id="a9ffdb2ecf371c2380a05e506929e66eb" name="a9ffdb2ecf371c2380a05e506929e66eb"></a>
@@ -218,7 +230,9 @@ Data Fields</h2></td></tr>
 </div><div class="memdoc">
 
 <p>A boolean. </p>
-<p >If true, the set of alleles of every offspring generated in the cross are saved to "{filename_prefix}-genotype.txt", even if <code>will_save_to_simdata</code> is false. Genotypes are saved in the format of <a class="el" href="group__savers.html#ga7bca249d1a6132b5faff18069a0e37b5" title="Prints all the genotype data saved in the linked list of AlleleMatrices starting with m to a file.">gsc_save_allele_matrix()</a> </p>
+<p >If true, the set of alleles of every offspring generated in the cross are saved to "{filename_prefix}-genotype.txt", even if <code>will_save_to_simdata</code> is false. Genotypes are saved in the format of gsc_save_allele_matrix() </p>
+
+<p class="definition">Definition at line <a class="el" href="sim-operations_8h_source.html#l00557">557</a> of file <a class="el" href="sim-operations_8h_source.html">sim-operations.h</a>.</p>
 
 </div>
 </div>
@@ -234,8 +248,10 @@ Data Fields</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>If equal to NOT_AN_EFFECT_SET, no bvs are calculated or saved. </p>
-<p >Otherwise, for each offspring in the cross, the breeding values according to the marker effect set with this <a class="el" href="structgsc___effect_i_d.html" title="A type representing a particular loaded set of marker effects.">gsc_EffectID</a> are saved to "{filename_prefix}-bv.txt", even if <code>will_save_to_simdata</code> is false. BVs are saved in the format of <a class="el" href="group__savers.html#ga9081436408a37abb9d37e035b3cfaa87" title="Print the breeding value of each genotype in the gsc_SimData to a file.">gsc_save_bvs()</a> </p>
+<p>If equal to NO_EFFECTSET, no bvs are calculated or saved. </p>
+<p >Otherwise, for each offspring in the cross, the breeding values according to the marker effect set with this <a class="el" href="structgsc___effect_i_d.html" title="A type representing a particular loaded set of marker effects.">gsc_EffectID</a> are saved to "{filename_prefix}-bv.txt", even if <code>will_save_to_simdata</code> is false. BVs are saved in the format of <a class="el" href="group__savers.html#ga6148ecde2587d6d37c313cfb88401771" title="Prints breeding values of genotypes in the simulation to a file.">gsc_save_bvs()</a> </p>
+
+<p class="definition">Definition at line <a class="el" href="sim-operations_8h_source.html#l00550">550</a> of file <a class="el" href="sim-operations_8h_source.html">sim-operations.h</a>.</p>
 
 </div>
 </div>
@@ -252,7 +268,9 @@ Data Fields</h2></td></tr>
 </div><div class="memdoc">
 
 <p>A boolean. </p>
-<p >If true, the full/recursive pedigrees of every offspring generated in the cross are saved to "{filename_prefix}-pedigree.txt", even if <code>will_save_to_simdata</code> is false. Pedigrees are saved in the format of <a class="el" href="group__savers.html#ga6a5bcd7945c34e0ec99ccc92311d947c" title="Print the full known pedigree of each genotype in the gsc_SimData to a file.">gsc_save_full_pedigree()</a> </p>
+<p >If true, the full/recursive pedigrees of every offspring generated in the cross are saved to "{filename_prefix}-pedigree.txt", even if <code>will_save_to_simdata</code> is false. Pedigrees are saved in the format of gsc_save_full_pedigree() </p>
+
+<p class="definition">Definition at line <a class="el" href="sim-operations_8h_source.html#l00545">545</a> of file <a class="el" href="sim-operations_8h_source.html">sim-operations.h</a>.</p>
 
 </div>
 </div>
@@ -271,6 +289,8 @@ Data Fields</h2></td></tr>
 <p>A boolean. </p>
 <p >If true, the generated offspring exist in the <a class="el" href="structgsc___sim_data.html" title="Composite type that is used to run crossing simulations.">gsc_SimData</a> struct after the function executes. If false, they are discarded after creation. </p>
 
+<p class="definition">Definition at line <a class="el" href="sim-operations_8h_source.html#l00562">562</a> of file <a class="el" href="sim-operations_8h_source.html">sim-operations.h</a>.</p>
+
 </div>
 </div>
 <a id="a4868b5c5e2ae247413bd4efb377fe496" name="a4868b5c5e2ae247413bd4efb377fe496"></a>
@@ -286,6 +306,8 @@ Data Fields</h2></td></tr>
 </div><div class="memdoc">
 
 <p>A boolean: whether to track parentage of generated offspring. </p>
+
+<p class="definition">Definition at line <a class="el" href="sim-operations_8h_source.html#l00538">538</a> of file <a class="el" href="sim-operations_8h_source.html">sim-operations.h</a>.</p>
 
 </div>
 </div>

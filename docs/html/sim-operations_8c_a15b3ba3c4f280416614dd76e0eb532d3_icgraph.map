@@ -1,5 +1,0 @@
-<map id="gsc_get_sorted_markers" name="gsc_get_sorted_markers">
-<area shape="rect" id="node1" title="Takes a gsc_SimData object, and sorts its markers, the rows of its parent gen gsc_AlleleMatrix (becau..." alt="" coords="353,5,517,33"/>
-<area shape="rect" id="node2" href="$group__loaders.html#ga2361e1185a626fbac89cdcf504af82c7" title="Populates a gsc_SimData combination from scratch with marker allele data, a genetic map,..." alt="" coords="5,5,131,33"/>
-<area shape="rect" id="node3" href="$group__loaders.html#gaf70cc3ef92b5f3220b35e10964a75e32" title="Populates a gsc_SimData combination with data from a genetic map." alt="" coords="179,31,305,59"/>
-</map>

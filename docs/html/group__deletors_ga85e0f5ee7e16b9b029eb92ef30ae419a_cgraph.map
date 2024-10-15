@@ -1,7 +1,0 @@
-<map id="delete_eff_set" name="delete_eff_set">
-<area shape="rect" id="node1" title="Deletes a particular set of marker effects from memory." alt="" coords="5,57,107,85"/>
-<area shape="rect" id="node2" href="$group__deletors.html#ga961f4b0757752fee2bd08adde7ece8ad" title="Deletes an EffectMatrix object and frees its memory." alt="" coords="156,5,293,33"/>
-<area shape="rect" id="node4" href="$group__supporters.html#gaa605100835fdec6b250fde0ad5a9cc8f" title="Function to identify the lookup index of a marker effect set identifier." alt="" coords="155,57,294,85"/>
-<area shape="rect" id="node5" href="$group__supporters.html#ga6072a152b624743eeafb30adaf9b7f17" title="Replace calls to malloc direct with this function, which errors and exits with status 2 if memory all..." alt="" coords="182,109,267,137"/>
-<area shape="rect" id="node3" href="$group__deletors.html#gaaf6542d59034f88f9e1ec48e5f053c4a" title="Deletes a DecimalMatrix and frees its memory." alt="" coords="342,5,448,33"/>
-</map>

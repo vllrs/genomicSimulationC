@@ -1,4 +1,0 @@
-<map id="gsc_create_evenlength_blocks_each_chr" name="gsc_create_evenlength_blocks_each_chr">
-<area shape="rect" id="node1" title="Divide the genotype into blocks where each block contains all markers within a 1/n length section of ..." alt="" coords="5,5,159,49"/>
-<area shape="rect" id="node2" href="$sim-operations_8c.html#a13bf076f6441cb69d76fc5058371dec1" title="Replace calls to malloc direct with this function, which errors and exits with status 2 if memory all..." alt="" coords="207,13,328,41"/>
-</map>

@@ -1,4 +1,0 @@
-<map id="calculate_full_count_matrix_of_allele" name="calculate_full_count_matrix_of_allele">
-<area shape="rect" id="node1" title="Calculates the number of times at each marker that a particular allele appears for each genotype in t..." alt="" coords="183,5,318,49"/>
-<area shape="rect" id="node2" href="$group__savers.html#ga38b0958216f509a3b0a10c4c49183f44" title="Print the number of copies of a particular allele at each marker of each genotype in the SimData to a..." alt="" coords="5,13,135,41"/>
-</map>

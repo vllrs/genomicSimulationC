@@ -1,4 +1,0 @@
-<map id="gsc_helper_genotypefile_matrix_check_markers_are_rows" name="gsc_helper_genotypefile_matrix_check_markers_are_rows">
-<area shape="rect" id="node1" title="Determine whether a genotype matrix is row&#45; or column&#45;oriented based on header and first cell of seco..." alt="" coords="5,5,166,65"/>
-<area shape="rect" id="node2" href="$group__supporters.html#gac77f7337a190c68f84bb95181f365cca" title="Return whether or not a marker name is present in the tracked markers, and at what index." alt="" coords="214,13,385,57"/>
-</map>

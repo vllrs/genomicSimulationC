@@ -1,6 +1,0 @@
-<map id="gsc_helper_simdata_pos_compare" name="gsc_helper_simdata_pos_compare">
-<area shape="rect" id="node1" title="Comparator function for qsort." alt="" coords="565,5,703,49"/>
-<area shape="rect" id="node2" href="$sim-operations_8c.html#a15b3ba3c4f280416614dd76e0eb532d3" title="Takes a gsc_SimData object, and sorts its markers, the rows of its parent gen gsc_AlleleMatrix (becau..." alt="" coords="353,13,517,41"/>
-<area shape="rect" id="node3" href="$group__loaders.html#ga2361e1185a626fbac89cdcf504af82c7" title="Populates a gsc_SimData combination from scratch with marker allele data, a genetic map,..." alt="" coords="5,13,131,41"/>
-<area shape="rect" id="node4" href="$group__loaders.html#gaf70cc3ef92b5f3220b35e10964a75e32" title="Populates a gsc_SimData combination with data from a genetic map." alt="" coords="179,39,305,67"/>
-</map>

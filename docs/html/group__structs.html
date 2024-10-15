@@ -21,7 +21,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">genomicSimulationC<span id="projectnumber">&#160;0.2.5.02</span>
+   <div id="projectname">genomicSimulationC<span id="projectnumber">&#160;0.2.5.05</span>
    </div>
   </td>
  </tr>
@@ -310,6 +310,8 @@ Variables</h2></td></tr>
 <dd>
 <a class="el" href="group__structs.html#ga9675b4bd2688e5f56acbb2346b884a24" title="Macro to delete a stretchy buffer.">GSC_DELETE_BUFFER</a> </dd></dl>
 
+<p class="definition">Definition at line <a class="el" href="sim-operations_8h_source.html#l00327">327</a> of file <a class="el" href="sim-operations_8h_source.html">sim-operations.h</a>.</p>
+
 </div>
 </div>
 <a id="gab0154f9408fe4a3f8e82e470161ec18e" name="gab0154f9408fe4a3f8e82e470161ec18e"></a>
@@ -345,9 +347,9 @@ Variables</h2></td></tr>
 </div><div class="memdoc">
 <b>Value:</b><div class="fragment"><div class="line">type n##stack[<span class="keyword">sizeof</span>(int)*<a class="code hl_define" href="sim-operations_8h.html#af5eaa46085f7cc2b20091cdf17eea54a">CONTIG_WIDTH</a>/<span class="keyword">sizeof</span>(type)]; <span class="keywordtype">size_t</span> n##cap = length; \</div>
 <div class="line">type* n = (n##cap &gt;= <span class="keyword">sizeof</span>(n##stack)/<span class="keyword">sizeof</span>(type)) ? <a class="code hl_function" href="sim-operations_8c.html#aaaf3ebc75feaf901829232712e55677b">gsc_malloc_wrap</a>(<span class="keyword">sizeof</span>(type)*n##cap,<a class="code hl_define" href="sim-operations_8h.html#ad3981037d5b9c99a0c49de9f0dfc1e8c">GSC_TRUE</a>) : n##stack;</div>
-<div class="ttc" id="asim-operations_8c_html_aaaf3ebc75feaf901829232712e55677b"><div class="ttname"><a href="sim-operations_8c.html#aaaf3ebc75feaf901829232712e55677b">gsc_malloc_wrap</a></div><div class="ttdeci">static void * gsc_malloc_wrap(const size_t size, char exitonfail)</div><div class="ttdoc">Replace calls to malloc direct with this function.</div><div class="ttdef"><b>Definition:</b> sim-operations.c:33</div></div>
-<div class="ttc" id="asim-operations_8h_html_ad3981037d5b9c99a0c49de9f0dfc1e8c"><div class="ttname"><a href="sim-operations_8h.html#ad3981037d5b9c99a0c49de9f0dfc1e8c">GSC_TRUE</a></div><div class="ttdeci">#define GSC_TRUE</div><div class="ttdef"><b>Definition:</b> sim-operations.h:80</div></div>
-<div class="ttc" id="asim-operations_8h_html_af5eaa46085f7cc2b20091cdf17eea54a"><div class="ttname"><a href="sim-operations_8h.html#af5eaa46085f7cc2b20091cdf17eea54a">CONTIG_WIDTH</a></div><div class="ttdeci">#define CONTIG_WIDTH</div><div class="ttdef"><b>Definition:</b> sim-operations.h:85</div></div>
+<div class="ttc" id="asim-operations_8c_html_aaaf3ebc75feaf901829232712e55677b"><div class="ttname"><a href="sim-operations_8c.html#aaaf3ebc75feaf901829232712e55677b">gsc_malloc_wrap</a></div><div class="ttdeci">static void * gsc_malloc_wrap(const size_t size, char exitonfail)</div><div class="ttdoc">Replace calls to malloc direct with this function.</div><div class="ttdef"><b>Definition:</b> <a href="sim-operations_8c_source.html#l00033">sim-operations.c:33</a></div></div>
+<div class="ttc" id="asim-operations_8h_html_ad3981037d5b9c99a0c49de9f0dfc1e8c"><div class="ttname"><a href="sim-operations_8h.html#ad3981037d5b9c99a0c49de9f0dfc1e8c">GSC_TRUE</a></div><div class="ttdeci">#define GSC_TRUE</div><div class="ttdef"><b>Definition:</b> <a href="sim-operations_8h_source.html#l00080">sim-operations.h:80</a></div></div>
+<div class="ttc" id="asim-operations_8h_html_af5eaa46085f7cc2b20091cdf17eea54a"><div class="ttname"><a href="sim-operations_8h.html#af5eaa46085f7cc2b20091cdf17eea54a">CONTIG_WIDTH</a></div><div class="ttdeci">#define CONTIG_WIDTH</div><div class="ttdef"><b>Definition:</b> <a href="sim-operations_8h_source.html#l00085">sim-operations.h:85</a></div></div>
 </div><!-- fragment -->
 <p>Macro to create a stretchy buffer of any type and some length. </p>
 <p >After this macro is run, a buffer with the requested type and capacity will exist in the scope under the requested name.</p>
@@ -369,6 +371,8 @@ Variables</h2></td></tr>
   </dd>
 </dl>
 
+<p class="definition">Definition at line <a class="el" href="sim-operations_8h_source.html#l00317">317</a> of file <a class="el" href="sim-operations_8h_source.html">sim-operations.h</a>.</p>
+
 </div>
 </div>
 <a id="ga9675b4bd2688e5f56acbb2346b884a24" name="ga9675b4bd2688e5f56acbb2346b884a24"></a>
@@ -388,7 +392,7 @@ Variables</h2></td></tr>
 </div><div class="memdoc">
 <b>Value:</b><div class="fragment"><div class="line"><span class="keywordflow">do</span> { <span class="keywordflow">if</span> (n##cap &gt;= <span class="keyword">sizeof</span>(n##stack)/<span class="keyword">sizeof</span>(n##stack[0])) { <a class="code hl_define" href="sim-operations_8h.html#adf944aa49cef9f70a33ab114a0f071a9">GSC_FREE</a>(n); } \</div>
 <div class="line">n = NULL; n##cap = 0; } <span class="keywordflow">while</span> (0)</div>
-<div class="ttc" id="asim-operations_8h_html_adf944aa49cef9f70a33ab114a0f071a9"><div class="ttname"><a href="sim-operations_8h.html#adf944aa49cef9f70a33ab114a0f071a9">GSC_FREE</a></div><div class="ttdeci">#define GSC_FREE(ptr)</div><div class="ttdef"><b>Definition:</b> sim-operations.h:96</div></div>
+<div class="ttc" id="asim-operations_8h_html_adf944aa49cef9f70a33ab114a0f071a9"><div class="ttname"><a href="sim-operations_8h.html#adf944aa49cef9f70a33ab114a0f071a9">GSC_FREE</a></div><div class="ttdeci">#define GSC_FREE(ptr)</div><div class="ttdef"><b>Definition:</b> <a href="sim-operations_8h_source.html#l00096">sim-operations.h:96</a></div></div>
 </div><!-- fragment -->
 <p>Macro to delete a stretchy buffer. </p>
 <dl class="section see"><dt>See also</dt><dd><a class="el" href="group__structs.html#gab0154f9408fe4a3f8e82e470161ec18e" title="Macro to create a stretchy buffer of any type and some length.">GSC_CREATE_BUFFER</a> </dd>
@@ -403,6 +407,8 @@ Variables</h2></td></tr>
   </table>
   </dd>
 </dl>
+
+<p class="definition">Definition at line <a class="el" href="sim-operations_8h_source.html#l00356">356</a> of file <a class="el" href="sim-operations_8h_source.html">sim-operations.h</a>.</p>
 
 </div>
 </div>
@@ -419,6 +425,8 @@ Variables</h2></td></tr>
 </div><div class="memdoc">
 
 <p>File format specifier to instruct genomicSimulation loaders to auto-detect all details of the file format. </p>
+
+<p class="definition">Definition at line <a class="el" href="sim-operations_8h_source.html#l00947">947</a> of file <a class="el" href="sim-operations_8h_source.html">sim-operations.h</a>.</p>
 
 </div>
 </div>
@@ -469,6 +477,8 @@ Variables</h2></td></tr>
   </dd>
 </dl>
 
+<p class="definition">Definition at line <a class="el" href="sim-operations_8h_source.html#l00342">342</a> of file <a class="el" href="sim-operations_8h_source.html">sim-operations.h</a>.</p>
+
 </div>
 </div>
 <a id="ga97b47270a34b2e77032cac2257d1cb8d" name="ga97b47270a34b2e77032cac2257d1cb8d"></a>
@@ -485,6 +495,8 @@ Variables</h2></td></tr>
 
 <p>Empty/null value for effect set identifiers. </p>
 <p ><em>Has short name:</em> <a class="el" href="group__shortnames.html#ga27b7a0c46aa95c0f127549d8ae007b8d">NO_EFFECTSET</a> </p>
+
+<p class="definition">Definition at line <a class="el" href="sim-operations_8h_source.html#l00481">481</a> of file <a class="el" href="sim-operations_8h_source.html">sim-operations.h</a>.</p>
 
 </div>
 </div>
@@ -503,6 +515,8 @@ Variables</h2></td></tr>
 <p>Empty/null value for group allocations. </p>
 <p ><em>Has short name:</em> <a class="el" href="group__shortnames.html#ga9f261279a53dfe33021f00801df5709b">NO_GROUP</a> </p>
 
+<p class="definition">Definition at line <a class="el" href="sim-operations_8h_source.html#l00469">469</a> of file <a class="el" href="sim-operations_8h_source.html">sim-operations.h</a>.</p>
+
 </div>
 </div>
 <a id="ga3cdd645c31e3c14d365c8cba62928a4f" name="ga3cdd645c31e3c14d365c8cba62928a4f"></a>
@@ -519,6 +533,8 @@ Variables</h2></td></tr>
 
 <p>Empty/null value for custom label identifiers. </p>
 <p ><em>Has short name:</em> <a class="el" href="group__shortnames.html#ga656701d3e780d6e6bd991aac853c0433">NO_LABEL</a> </p>
+
+<p class="definition">Definition at line <a class="el" href="sim-operations_8h_source.html#l00493">493</a> of file <a class="el" href="sim-operations_8h_source.html">sim-operations.h</a>.</p>
 
 </div>
 </div>
@@ -537,6 +553,8 @@ Variables</h2></td></tr>
 <p>Empty/null value for recombination map identifiers. </p>
 <p ><em>Has short name:</em> <a class="el" href="group__shortnames.html#ga3710da75e403e5a3da4e2deade0d50af">NO_MAP</a> </p>
 
+<p class="definition">Definition at line <a class="el" href="sim-operations_8h_source.html#l00505">505</a> of file <a class="el" href="sim-operations_8h_source.html">sim-operations.h</a>.</p>
+
 </div>
 </div>
 <a id="gac4ac4cc8992764b6fbae9c569d06c427" name="gac4ac4cc8992764b6fbae9c569d06c427"></a>
@@ -553,6 +571,8 @@ Variables</h2></td></tr>
 
 <p>Empty/null value for pedigree fields. </p>
 <p ><em>Has short name:</em> <a class="el" href="group__shortnames.html#ga8ad73d9697c47aa32a926fbfc36d2a87">NO_PEDIGREE</a> </p>
+
+<p class="definition">Definition at line <a class="el" href="sim-operations_8h_source.html#l00456">456</a> of file <a class="el" href="sim-operations_8h_source.html">sim-operations.h</a>.</p>
 
 </div>
 </div>
@@ -594,7 +614,7 @@ Variables</h2></td></tr>
 <div class="line">        memcpy(n,n##stack,<span class="keyword">sizeof</span>(n##stack[0])*n##cap); n##cap = newlen; }} \</div>
 <div class="line">    else <span class="keywordflow">if</span> (newlen &lt; <a class="code hl_define" href="sim-operations_8h.html#af5eaa46085f7cc2b20091cdf17eea54a">CONTIG_WIDTH</a>) { n##cap = newlen; } \</div>
 <div class="line">} <span class="keywordflow">while</span> (0)</div>
-<div class="ttc" id="asim-operations_8h_html_ad7e35da105ef91e548f815227171d1df"><div class="ttname"><a href="sim-operations_8h.html#ad7e35da105ef91e548f815227171d1df">GSC_FALSE</a></div><div class="ttdeci">#define GSC_FALSE</div><div class="ttdef"><b>Definition:</b> sim-operations.h:81</div></div>
+<div class="ttc" id="asim-operations_8h_html_ad7e35da105ef91e548f815227171d1df"><div class="ttname"><a href="sim-operations_8h.html#ad7e35da105ef91e548f815227171d1df">GSC_FALSE</a></div><div class="ttdeci">#define GSC_FALSE</div><div class="ttdef"><b>Definition:</b> <a href="sim-operations_8h_source.html#l00081">sim-operations.h:81</a></div></div>
 </div><!-- fragment -->
 <p>Macro to expand the capacity of a stretchy buffer. </p>
 <dl class="section see"><dt>See also</dt><dd><a class="el" href="group__structs.html#gab0154f9408fe4a3f8e82e470161ec18e" title="Macro to create a stretchy buffer of any type and some length.">GSC_CREATE_BUFFER</a> </dd>
@@ -609,6 +629,8 @@ Variables</h2></td></tr>
   </table>
   </dd>
 </dl>
+
+<p class="definition">Definition at line <a class="el" href="sim-operations_8h_source.html#l00377">377</a> of file <a class="el" href="sim-operations_8h_source.html">sim-operations.h</a>.</p>
 
 </div>
 </div>
@@ -628,6 +650,8 @@ Variables</h2></td></tr>
 <p>A linked list entry that stores a matrix of alleles for a set of SNP markers and genotypes. </p>
 <p >The simulation stores its genotypes in a list of AlleleMatrix nodes. Each node can store up to CONTIG_WIDTH genotypes.</p>
 <p ><em>Has short name:</em> <a class="el" href="group__shortnames.html#ga029c9078fc19e20d1e2fda468f92f35b">AlleleMatrix</a> </p>
+
+<p class="definition">Definition at line <a class="el" href="sim-operations_8h_source.html#l00677">677</a> of file <a class="el" href="sim-operations_8h_source.html">sim-operations.h</a>.</p>
 
 </div>
 </div>
@@ -652,6 +676,8 @@ Variables</h2></td></tr>
 <tr><td class="fieldname"><a id="gga169da3c2b32a6f9afd92e2e0801ad741a4838ce244876aa72916bf4d96423491a" name="gga169da3c2b32a6f9afd92e2e0801ad741a4838ce244876aa72916bf4d96423491a"></a>GSC_GENOTYPECELLSTYLE_SLASHPAIR&#160;</td><td class="fielddoc"></td></tr>
 <tr><td class="fieldname"><a id="gga169da3c2b32a6f9afd92e2e0801ad741ab1a4bcd4b13e83b2a14a9db0cf23c118" name="gga169da3c2b32a6f9afd92e2e0801ad741ab1a4bcd4b13e83b2a14a9db0cf23c118"></a>GSC_GENOTYPECELLSTYLE_UNKNOWN&#160;</td><td class="fielddoc"></td></tr>
 </table>
+
+<p class="definition">Definition at line <a class="el" href="sim-operations_8h_source.html#l00821">821</a> of file <a class="el" href="sim-operations_8h_source.html">sim-operations.h</a>.</p>
 
 </div>
 </div>
@@ -706,6 +732,8 @@ Details</h1>
 <tr><td class="fieldname"><a id="ggae49f64d8275e0072f6e36c13622e89b8a6ea230ca7286da7d1354472a6c837fc5" name="ggae49f64d8275e0072f6e36c13622e89b8a6ea230ca7286da7d1354472a6c837fc5"></a>GSC_GENOTYPEFILE_VCF&#160;</td><td class="fielddoc"></td></tr>
 </table>
 
+<p class="definition">Definition at line <a class="el" href="sim-operations_8h_source.html#l00865">865</a> of file <a class="el" href="sim-operations_8h_source.html">sim-operations.h</a>.</p>
+
 </div>
 </div>
 <a id="gabaab9ae5c2f4689211a8f1a2b33d23bc" name="gabaab9ae5c2f4689211a8f1a2b33d23bc"></a>
@@ -729,6 +757,8 @@ Details</h1>
 </td></tr>
 </table>
 
+<p class="definition">Definition at line <a class="el" href="sim-operations_8h_source.html#l00620">620</a> of file <a class="el" href="sim-operations_8h_source.html">sim-operations.h</a>.</p>
+
 </div>
 </div>
 <a id="gaa092055f7433a18bae99970ac6d2b79f" name="gaa092055f7433a18bae99970ac6d2b79f"></a>
@@ -751,6 +781,8 @@ Details</h1>
 <tr><td class="fieldname"><a id="ggaa092055f7433a18bae99970ac6d2b79fa10ff766349027085d393d3037a1b9e59" name="ggaa092055f7433a18bae99970ac6d2b79fa10ff766349027085d393d3037a1b9e59"></a>GSC_TABLEFILE_ERROR_EOF&#160;</td><td class="fielddoc"></td></tr>
 <tr><td class="fieldname"><a id="ggaa092055f7433a18bae99970ac6d2b79fa50b3c2e2c5ebda41b27f8bea704b49ab" name="ggaa092055f7433a18bae99970ac6d2b79fa50b3c2e2c5ebda41b27f8bea704b49ab"></a>GSC_TABLEFILE_ERROR_EOBUF&#160;</td><td class="fielddoc"></td></tr>
 </table>
+
+<p class="definition">Definition at line <a class="el" href="sim-operations_8h_source.html#l00760">760</a> of file <a class="el" href="sim-operations_8h_source.html">sim-operations.h</a>.</p>
 
 </div>
 </div>
@@ -805,6 +837,8 @@ Details</h1>
 <dd>
 <a class="el" href="group__loaders.html#ga394371951741d8c2db18a85069d6b61e" title="Populates a gsc_SimData object with marker allele data, a genetic map, and (optionally) marker effect...">gsc_load_data_files</a> </dd></dl>
 
+<p class="definition">Definition at line <a class="el" href="sim-operations_8c_source.html#l06491">6491</a> of file <a class="el" href="sim-operations_8c_source.html">sim-operations.c</a>.</p>
+
 </div>
 </div>
 <a id="ga9861b51e8a5c74f843aac748c932c3a0" name="ga9861b51e8a5c74f843aac748c932c3a0"></a>
@@ -825,6 +859,8 @@ Details</h1>
 
 <p>Classify the character under the cursor of a TableFileReader as cell contents or otherwise. </p>
 <p >Does not update <em>tbl-&gt;cursor</em>, so repeated calls of this same function without updating the cursor in between will return the same result. </p>
+
+<p class="definition">Definition at line <a class="el" href="sim-operations_8c_source.html#l04899">4899</a> of file <a class="el" href="sim-operations_8c_source.html">sim-operations.c</a>.</p>
 <div id="dynsection-1" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-1-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
 <div id="dynsection-1-summary" class="dynsummary" style="display:block;">
@@ -865,6 +901,8 @@ Details</h1>
 
 <p>Read another buffer's worth of characters from a <a class="el" href="structgsc___table_file_reader.html" title="Stream reader for files of some tabular format.">gsc_TableFileReader</a>'s file. </p>
 <dl class="section warning"><dt>Warning</dt><dd>This overwrites any characters previously saved in the TableFileReader buffer. The pointers of any <em><a class="el" href="structgsc___table_file_cell.html" title="Represent a cell read by a gsc_TableFileReader.">gsc_TableFileCell</a></em> read from this table may become invalid if they are shallow copies. If you need to retain any cell values, consider using <em><a class="el" href="group__structs.html#ga85446dd929940e823745067d0a1d1d5d" title="Allocate memory to store a deep copy of a gsc_TableFileCell, if previously only a shallow copy.">gsc_tablefilecell_deep_copy()</a></em> before calling this function. </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="sim-operations_8c_source.html#l04885">4885</a> of file <a class="el" href="sim-operations_8c_source.html">sim-operations.c</a>.</p>
 <div id="dynsection-2" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-2-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
 <div id="dynsection-2-summary" class="dynsummary" style="display:block;">
@@ -906,6 +944,8 @@ Details</h1>
 <p>Allocate memory to store a deep copy of a <a class="el" href="structgsc___table_file_cell.html" title="Represent a cell read by a gsc_TableFileReader.">gsc_TableFileCell</a>, if previously only a shallow copy. </p>
 <p >The deep copy will be a null-terminated string even if the shallow copy was not null-terminated.</p>
 <p >After this call, the cell is stored in heap memory and will need to be freed once the cell is no longer needed. Schema for doing this: if (!mycell.isCellShallow) { GSC_FREE(mycell.cell); } </p>
+
+<p class="definition">Definition at line <a class="el" href="sim-operations_8c_source.html#l04928">4928</a> of file <a class="el" href="sim-operations_8c_source.html">sim-operations.c</a>.</p>
 <div id="dynsection-3" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-3-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
 <div id="dynsection-3-summary" class="dynsummary" style="display:block;">
@@ -954,6 +994,8 @@ Details</h1>
 </div><div class="memdoc">
 
 <p>Close a <a class="el" href="structgsc___table_file_reader.html" title="Stream reader for files of some tabular format.">gsc_TableFileReader</a>'s file pointer. </p>
+
+<p class="definition">Definition at line <a class="el" href="sim-operations_8c_source.html#l04873">4873</a> of file <a class="el" href="sim-operations_8c_source.html">sim-operations.c</a>.</p>
 <div id="dynsection-5" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-5-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
 <div id="dynsection-5-summary" class="dynsummary" style="display:block;">
@@ -991,6 +1033,8 @@ Details</h1>
 
 <p>Open a file for reading with <a class="el" href="structgsc___table_file_reader.html" title="Stream reader for files of some tabular format.">gsc_TableFileReader</a>. </p>
 <p >On successfully opening file, fills the TableFileReader buffer for the first time. </p>
+
+<p class="definition">Definition at line <a class="el" href="sim-operations_8c_source.html#l04853">4853</a> of file <a class="el" href="sim-operations_8c_source.html">sim-operations.c</a>.</p>
 <div id="dynsection-6" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-6-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
 <div id="dynsection-6-summary" class="dynsummary" style="display:block;">
@@ -1028,6 +1072,8 @@ Details</h1>
 
 <p>Read forwards in TableFileReader and return the next cell's contents, as well as how many column gaps and newlines preceeded it. </p>
 <p >Cells can be of unlimited length, as long as they fit in memory. </p>
+
+<p class="definition">Definition at line <a class="el" href="sim-operations_8c_source.html#l04943">4943</a> of file <a class="el" href="sim-operations_8c_source.html">sim-operations.c</a>.</p>
 <div id="dynsection-7" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-7-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
 <div id="dynsection-7-summary" class="dynsummary" style="display:block;">
@@ -1085,6 +1131,8 @@ Details</h1>
 
 <p>Default parameter values for GenOptions, to help with quick scripts and prototypes. </p>
 <p ><em>Has short name:</em> <a class="el" href="group__shortnames.html#ga4af98a71b0736f81c32df8e5e4fd6a83">BASIC_OPT</a> </p>
+
+<p class="definition">Definition at line <a class="el" href="sim-operations_8c_source.html#l00010">10</a> of file <a class="el" href="sim-operations_8c_source.html">sim-operations.c</a>.</p>
 
 </div>
 </div>

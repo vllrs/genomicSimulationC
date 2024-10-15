@@ -1,4 +1,0 @@
-<map id="calculate_optimum_bv" name="calculate_optimum_bv">
-<area shape="rect" id="node1" title="Takes a look at the currently&#45;loaded effect values and returns the highest possible breeding value an..." alt="" coords="5,5,155,33"/>
-<area shape="rect" id="node2" href="$group__supporters.html#gaa605100835fdec6b250fde0ad5a9cc8f" title="Function to identify the lookup index of a marker effect set identifier." alt="" coords="203,5,342,33"/>
-</map>

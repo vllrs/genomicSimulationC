@@ -1,0 +1,6 @@
+<map id="gsc_scaffold_save_ancestry_of" name="gsc_scaffold_save_ancestry_of">
+<area shape="rect" id="node1" title="Identifies and saves (recursively) the pedigree of a pair of parents." alt="" coords="5,32,206,60"/>
+<area shape="rect" id="node2" href="$group__search.html#ga5c7cd898a40e515c3164c98821068978" title="Returns the name of the genotype with a given id." alt="" coords="259,5,400,33"/>
+<area shape="rect" id="node4" href="$group__search.html#gad9d1d0b5575da681af7789354447612a" title="Saves the ids of the parents of a genotype with a particular id to the output array output." alt="" coords="254,57,405,85"/>
+<area shape="rect" id="node3" href="$group__supporters.html#ga8b0703c50a67ddcbe49f6b8d4ba3162b" title="Binary search through a list of PedigreeIDs." alt="" coords="453,24,602,68"/>
+</map>

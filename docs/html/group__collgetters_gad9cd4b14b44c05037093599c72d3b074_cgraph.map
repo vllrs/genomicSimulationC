@@ -1,6 +1,0 @@
-<map id="get_group_parent_names" name="get_group_parent_names">
-<area shape="rect" id="node1" title="Gets the names of either the first or second parent of each member of the group." alt="" coords="5,32,173,60"/>
-<area shape="rect" id="node2" href="$group__collgetters.html#ga6773f2b434edda042163890dea8f8dbd" title="Function to count the number of genotypes that currently belong to the specified group." alt="" coords="222,5,332,33"/>
-<area shape="rect" id="node3" href="$group__search.html#gaaea63100f4c2639907cce72c29a413e8" title="Returns the name of the genotype with a given id." alt="" coords="221,57,333,85"/>
-<area shape="rect" id="node4" href="$group__supporters.html#ga4e3d1fd7ae67dd133c4dbdec9a84d455" title="Returns the located index in an array of PedigreeIDs where the PedigreeID is target." alt="" coords="381,57,582,85"/>
-</map>

@@ -1,4 +1,0 @@
-<map id="clear_simdata" name="clear_simdata">
-<area shape="rect" id="node1" title="Clear a SimData object on the heap." alt="" coords="172,5,274,33"/>
-<area shape="rect" id="node2" href="$group__loaders.html#ga3d8878f2c2c5fafdae57ffc46a78dfbc" title="Populates a SimData combination from scratch with marker allele data, a genetic map,..." alt="" coords="5,5,124,33"/>
-</map>

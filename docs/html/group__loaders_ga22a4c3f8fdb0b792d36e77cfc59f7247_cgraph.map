@@ -1,4 +1,0 @@
-<map id="gsc_create_empty_simdata" name="gsc_create_empty_simdata">
-<area shape="rect" id="node1" title="Creator for an empty gsc_SimData object on the heap." alt="" coords="5,5,187,33"/>
-<area shape="rect" id="node2" href="$sim-operations_8c.html#a13bf076f6441cb69d76fc5058371dec1" title="Replace calls to malloc direct with this function, which errors and exits with status 2 if memory all..." alt="" coords="235,5,356,33"/>
-</map>

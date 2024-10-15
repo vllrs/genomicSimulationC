@@ -1,6 +1,0 @@
-<map id="generate_cross" name="generate_cross">
-<area shape="rect" id="node1" title="Get the alleles of the outcome of crossing two genotypes." alt="" coords="5,57,116,85"/>
-<area shape="rect" id="node2" href="$group__supporters.html#ga3744bc6f3fcb52952d520029055e8af8" title="Comparator function for qsort." alt="" coords="164,5,343,33"/>
-<area shape="rect" id="node3" href="$group__supporters.html#ga6072a152b624743eeafb30adaf9b7f17" title="Replace calls to malloc direct with this function, which errors and exits with status 2 if memory all..." alt="" coords="211,57,296,85"/>
-<area shape="rect" id="node4" href="$group__maths.html#gac0aed93b85c3ff464c1e29bd2093e066" title="Generates randomly a number from the Poisson distribution with parameter lambda, using the Knuth appr..." alt="" coords="222,109,285,137"/>
-</map>

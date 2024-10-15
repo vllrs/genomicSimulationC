@@ -1,0 +1,13 @@
+<map id="gsc_calculate_utility_bvs" name="gsc_calculate_utility_bvs">
+<area shape="rect" id="node1" title="Calculate the fitness metric/breeding value for a set of genotypes." alt="" coords="5,277,171,305"/>
+<area shape="rect" id="node2" href="$group__maths.html#gadaec2ba547549392530e91e50a3c985d" title="Multiply two sets of a gsc_DecimalMatrix and vector, and add both products to the first column of a p..." alt="" coords="219,5,404,49"/>
+<area shape="rect" id="node3" href="$group__maths.html#ga6fdcedf004c9d08e5135d30deb5b12fa" title="Multiply a gsc_DecimalMatrix to a vector, and add that product to the first column of a provided gsc_..." alt="" coords="238,73,385,117"/>
+<area shape="rect" id="node4" href="$group__calculators.html#ga8f765775d463c59f8437da21dad6fab4" title="Calculates the number of times at each marker that a particular allele appears." alt="" coords="242,141,381,185"/>
+<area shape="rect" id="node5" href="$group__calculators.html#ga19bbe4c5c9d867e9c627bbda7aa9bd22" title="Calculates the number of times at each marker that two particular alleles appear." alt="" coords="242,209,381,253"/>
+<area shape="rect" id="node6" href="$group__deletors.html#ga99bbd9355f031efae628b27e6ae72f6a" title="Deletes a gsc_DecimalMatrix and frees its memory." alt="" coords="244,277,379,305"/>
+<area shape="rect" id="node7" href="$group__maths.html#gae001e0609ac52df335530f9473cb57e1" title="Generates a matrix of c columns, r rows with all 0." alt="" coords="221,329,402,357"/>
+<area shape="rect" id="node9" href="$group__liteget.html#ga5e1e89782604c9ab47f196e1da233362" title="Get the alleles of a genotype." alt="" coords="256,381,367,409"/>
+<area shape="rect" id="node10" href="$group__iterators.html#ga630ba7f8e864238e296cb9480dfbc728" title="Get the next location from a bidirectional iterator." alt="" coords="247,433,376,461"/>
+<area shape="rect" id="node11" href="$group__iterators.html#gaa4fa2aec3b7f49f9925fe82c8ff38dcd" title="Initialise a Bidirectional iterator to the start of its sequence." alt="" coords="452,451,595,495"/>
+<area shape="rect" id="node8" href="$sim-operations_8c.html#aaaf3ebc75feaf901829232712e55677b" title="Replace calls to malloc direct with this function." alt="" coords="463,329,584,357"/>
+</map>

@@ -1,11 +1,4 @@
 <map id="gsc_get_group_ids" name="gsc_get_group_ids">
-<area shape="rect" id="node1" title="Gets the ids of each member of the group." alt="" coords="452,201,582,229"/>
-<area shape="rect" id="node2" href="$group__calculators.html#ga7b5ad446b4cd825f6dca63e11e362749" title="Given a set of blocks of markers in a file, for each genotype in a group, calculate the local fitness..." alt="" coords="243,5,384,49"/>
-<area shape="rect" id="node3" href="$group__savers.html#ga3453d7fc7d552e7c254cf00788c45506" title="Print the breeding value of each genotype in a group to a file." alt="" coords="243,73,384,101"/>
-<area shape="rect" id="node4" href="$group__savers.html#ga47adc7657700b186067b2c26dabf5b13" title="Print the number of copies of a particular allele at each marker of each genotype in a group to a fil..." alt="" coords="237,125,390,169"/>
-<area shape="rect" id="node5" href="$group__savers.html#ga34df718dd14346f72cc20928351cc4d2" title="Print the full known pedigree of each genotype in a group to a file." alt="" coords="245,193,382,237"/>
-<area shape="rect" id="node7" href="$group__savers.html#gab849eb8ece54052720d78fe248d09298" title="Prints the genotypes of each individual in a given group to a file, with the following format." alt="" coords="223,261,404,289"/>
-<area shape="rect" id="node8" href="$group__savers.html#gad10b44011b806daa35f8378eb90c5365" title="Print the parents of each genotype in a group to a file." alt="" coords="242,313,385,357"/>
-<area shape="rect" id="node9" href="$group__savers.html#gac0853546f2c1334ec45bc43b693f8ce0" title="Prints the genotypes of each individual in a given group to a file, with the following format." alt="" coords="240,381,387,425"/>
-<area shape="rect" id="node6" href="$group__collgetters.html#ga62d40b0b1cb6c5ded508b8a5f161d38a" title="Gets the full pedigree string (as per gsc_save_group_full_pedigree() ) of each member of the group." alt="" coords="5,201,175,229"/>
+<area shape="rect" id="node1" title="Gets the ids of each member of the group." alt="" coords="194,13,324,41"/>
+<area shape="rect" id="node2" href="$group__calculators.html#ga7b5ad446b4cd825f6dca63e11e362749" title="Given a set of blocks of markers in a file, for each genotype in a group, calculate the local fitness..." alt="" coords="5,5,146,49"/>
 </map>

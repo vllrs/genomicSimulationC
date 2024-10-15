@@ -1,6 +1,0 @@
-<map id="shuffle_up_to" name="shuffle_up_to">
-<area shape="rect" id="node1" title="Produce a random ordering of the first n elements in an array of integers using a (partial) Fisher&#45;Ya..." alt="" coords="395,44,492,72"/>
-<area shape="rect" id="node2" href="$group__groupmod.html#gaf4934fda59a428b74bccc307d7f505b1" title="Split a group into n groups of equal size (or size differing only by one, if n does not perfectly div..." alt="" coords="184,5,347,49"/>
-<area shape="rect" id="node4" href="$group__groupmod.html#gaf21b446a646f846db7c4053f9e8bcb65" title="Split a group into two groups of equal size (or size differing only by one, if the original group had..." alt="" coords="194,73,337,101"/>
-<area shape="rect" id="node3" href="$group__groupmod.html#gac3eb8cc70c4df57ca456af66b25bdc66" title="Split a group into n groups of equal size (or size differing only by one, if n does not perfectly div..." alt="" coords="5,13,136,41"/>
-</map>

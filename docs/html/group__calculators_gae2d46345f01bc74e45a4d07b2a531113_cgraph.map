@@ -1,5 +1,0 @@
-<map id="gsc_calculate_full_count_matrix" name="gsc_calculate_full_count_matrix">
-<area shape="rect" id="node1" title="Calculates the number of times at each marker that a particular allele appears for each genotype in t..." alt="" coords="5,5,130,49"/>
-<area shape="rect" id="node2" href="$group__maths.html#gae001e0609ac52df335530f9473cb57e1" title="Generates a matrix of c columns, r rows with all 0." alt="" coords="178,13,359,41"/>
-<area shape="rect" id="node3" href="$sim-operations_8c.html#aaaf3ebc75feaf901829232712e55677b" title="Replace calls to malloc direct with this function." alt="" coords="407,13,528,41"/>
-</map>

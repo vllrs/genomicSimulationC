@@ -1,7 +1,0 @@
-<map id="gsc_set_ids" name="gsc_set_ids">
-<area shape="rect" id="node1" title="Allocate lifetime&#45;unique ids to each genotype in the range of whole gsc_SimData indexes from_index to..." alt="" coords="591,73,683,101"/>
-<area shape="rect" id="node2" href="$group__loaders.html#ga38fc746299d5bff4e2d92edbd4ae0647" title="Populates a gsc_SimData combination with marker allele data." alt="" coords="367,5,543,49"/>
-<area shape="rect" id="node3" href="$group__loaders.html#gaaa55b74115cd110bb111e9dfb28dd2aa" title="Populates a gsc_SimData combination with marker allele data." alt="" coords="179,96,319,140"/>
-<area shape="rect" id="node5" href="$group__loaders.html#ga9b948ef0483a6b190916b1b1d15d4c60" title="Appends genotype data from a file to an existing gsc_SimData." alt="" coords="367,125,543,169"/>
-<area shape="rect" id="node4" href="$group__loaders.html#ga2361e1185a626fbac89cdcf504af82c7" title="Populates a gsc_SimData combination from scratch with marker allele data, a genetic map,..." alt="" coords="5,104,131,132"/>
-</map>

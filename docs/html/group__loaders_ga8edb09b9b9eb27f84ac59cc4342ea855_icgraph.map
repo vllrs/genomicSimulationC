@@ -1,4 +1,0 @@
-<map id="load_genmap_to_simdata" name="load_genmap_to_simdata">
-<area shape="rect" id="node1" title="Populates a SimData combination with data from a genetic map." alt="" coords="172,5,341,33"/>
-<area shape="rect" id="node2" href="$group__loaders.html#ga3d8878f2c2c5fafdae57ffc46a78dfbc" title="Populates a SimData combination from scratch with marker allele data, a genetic map,..." alt="" coords="5,5,124,33"/>
-</map>

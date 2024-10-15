@@ -18,7 +18,15 @@ Latest News       {#news}
 - Improvements to input file loading tests, to cover more cases and be easier to expand further in future.
 - Improved documentation in Templates and in docstrings of valid input file formats and of how automatic genotype file layout detection works.
 - Improved Makefile. It now supports both debug and release builds. Fixed compilation warnings, including initialising an EffectID with an integer and potentially uninitialised variable accesses. Fixed memory leaks in `load_genotypefile` and `delete_simdata` introduced in v0.2.5.
-
+- BREAKING CHANGE: The file output interface (functions with prefix `save_`) has undergone a simplification and rewrite. There is now one function per data type, which offers whole-simulation vs single-group output and output file format choices as parameters, much like the R version of genomicSimulation (as opposed to separate function whether the output was for a single group or all genotypes, and also different functions per ouput formats). All user-facing functions now take a file name instead of a file pointer. See below for details.
+	- BREAKING CHANGE: `save_markerblocks` now offers two file output formats, but neither exactly matches the old file format. To create a marker blocks file with the old format, call `save_markerblocks` without a map, then run `sed 's/^/0\t0\tb0\tb\t/' f.txt | sed '1i\Chrom\tPos\tName\tClass\tMarkers'`.
+	- BREAKING CHANGE: `save_names_header`, `save_allele_matrix`, `save_transposed_allele_matrix`, `save_group_genotypes`, and `save_transposed_group_genotypes` have been replaced with the single function `save_genotypes`. 
+	- BREAKING CHANGE: `save_group_count_matrix` and `save_count_matrix` have been replaced with the single function `save_allele_counts`. This new combined function also allows for printing a "transposed" count matrix (where genetic markers are rows, rather than columns), as was possible for a genotype matrix prior to this update. 
+	- BREAKING CHANGE: `save_one_step_pedigree`, `save_group_one_step_pedigree`, `save_full_pedigree`, and `save_group_full_pedigree` have been replaced with the single function `save_pedigrees`.
+	- BREAKING CHANGE: `save_bvs`, `save_group_bvs`, and `save_manual_bvs` have been combined into the single function (with updated function signature) `save_bvs`.
+- BREAKING CHANGE: Several features among the calculation functions interface (functions with prefix `calculate_`) have undergone a restructure and rewrite.
+	- BREAKING CHANGE: `calculate_group_count_matrix`, `calculate_count_matrix`, and `calculate_full_count_matrix` have been combined into the single function (with updated function signature) `calculate_allele_counts`.
+	- BREAKING CHANGE: `calculate_bvs` and `calculate_group_bvs` have been combined into the single function (with updated function signature) `calculate_bvs`. 
 
 # genomicSimulation v0.2.5
 

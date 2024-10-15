@@ -1,6 +1,0 @@
-<map id="gsc_load_effects" name="gsc_load_effects">
-<area shape="rect" id="node1" title="Populates a gsc_SimData combination with effect values." alt="" coords="5,73,124,101"/>
-<area shape="rect" id="node2" href="$group__supporters.html#ga0aa39530f66f1d3b69f137c1ff4e29f3" title="Returns the first located index in an array of strings where the string is the same as the string tar..." alt="" coords="172,5,335,49"/>
-<area shape="rect" id="node3" href="$group__supporters.html#ga7881c537673d2d2d9dc3bb285676bfd4" title="Function to identify the next sequential integer that is not already allocated to a marker effect set..." alt="" coords="174,73,333,101"/>
-<area shape="rect" id="node4" href="$sim-operations_8c.html#a13bf076f6441cb69d76fc5058371dec1" title="Replace calls to malloc direct with this function, which errors and exits with status 2 if memory all..." alt="" coords="193,125,314,153"/>
-</map>

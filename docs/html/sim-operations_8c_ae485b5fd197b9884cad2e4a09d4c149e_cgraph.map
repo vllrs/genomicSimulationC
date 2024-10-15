@@ -1,7 +1,0 @@
-<map id="gsc_helper_make_offspring_clones" name="gsc_helper_make_offspring_clones">
-<area shape="rect" id="node1" title="offspringGenerator function parameter for gsc_make_clones." alt="" coords="5,76,184,120"/>
-<area shape="rect" id="node2" href="$group__meiosis.html#ga3793a9acc76baad86c7f3c31afd71999" title="Get an identical copy of a given genotype." alt="" coords="232,5,369,33"/>
-<area shape="rect" id="node3" href="$group__liteget.html#ga5e1e89782604c9ab47f196e1da233362" title="Get the alleles of a genotype." alt="" coords="245,57,356,85"/>
-<area shape="rect" id="node4" href="$sim-operations_8c.html#a13bf076f6441cb69d76fc5058371dec1" title="Replace calls to malloc direct with this function, which errors and exits with status 2 if memory all..." alt="" coords="240,109,361,137"/>
-<area shape="rect" id="node5" href="$group__liteget.html#gadff19e04cab018dd64ae232e0adcb3cc" title="Set the name of a genotype." alt="" coords="247,161,354,189"/>
-</map>

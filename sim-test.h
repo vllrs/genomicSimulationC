@@ -100,9 +100,13 @@ const char TEST1_TRUTH_save_group_bvs[] = "1	G01	1.400000\n"
         "0	s16	1.400000\n"
         "12		1.400000\n"
         "13		1.400000\n";
-const char TEST1_TRUTH_save_marker_blocks[] = "Chrom	Pos	Name	Class	Markers\n"
+/*const char TEST1_TRUTH_save_marker_blocks[] = "Chrom	Pos	Name	Class	Markers\n"
         "0	0	b0	b	m1;m2;\n"
-        "0	0	b0	b	am3;\n";
+        "0	0	b0	b	am3;\n";*/
+const char TEST1_TRUTH_save_marker_blocks_blocksonly[] = "m1;m2;\nam3;\n";
+const char TEST1_TRUTH_save_marker_blocks_chrinfo[] = "Chrom	Len	Markers\n"
+        "0	3.100000	m1;m2;\n"
+        "1	0.000000	am3;\n";
 const char TEST1_TRUTH_save_local_bvs[] = "G01_1 0.800000 -0.100000\n"
         "G01_2 0.800000 -0.100000\n"
         "G02_1 0.800000 -0.100000\n"

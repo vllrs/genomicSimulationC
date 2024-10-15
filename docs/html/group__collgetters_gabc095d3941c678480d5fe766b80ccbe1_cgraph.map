@@ -1,4 +1,0 @@
-<map id="get_group_indexes" name="get_group_indexes">
-<area shape="rect" id="node1" title="Gets the indexes (0&#45;based, from the start of the linked list in the SimData) of each member of the gr..." alt="" coords="5,5,136,33"/>
-<area shape="rect" id="node2" href="$group__collgetters.html#ga6773f2b434edda042163890dea8f8dbd" title="Function to count the number of genotypes that currently belong to the specified group." alt="" coords="184,5,293,33"/>
-</map>

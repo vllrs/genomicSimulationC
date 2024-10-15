@@ -63,27 +63,10 @@ This can also be interpreted as the list of user-facing functions in genomicSimu
 | make_group_from | make.group |
 | combine_groups | combine.groups |
 | ~ ||
-| save_count_matrix | save.allele.counts(group=NULL) |
-| save_count_matrix_of_group | save.allele.counts |
-| save_bvs | save.GEBVs(group=NULL) |
-| save_group_bvs | save.GEBVs |
-| save_allele_matrix | save.genotypes(group=NULL, type="R") |
-| save_transposed_allele_matrix | save.genotypes(group=NULL,  type="T") |
-| save_genotypes_of_group | save.genotypes(type="R") |
-| save_transposed_group_genotypes | save.genotypes(type="T") |
-| save_full_pedigree | save.pedigrees(group=NULL, type="R") |
-| save_one_step_pedigree | save.pedigrees(group=NULL, type="P") |
-| save_group_full_pedigree | save.pedigrees(type="R") |
-| save_group_one_step_pedigree | save.pedigrees(type="P") |
+| save_allele_counts | save.allele.counts |
+| save_bvs | save.GEBVs |
+| save_genotypes | save.genotypes |
+| save_pedigrees | save.pedigrees |
 | create_evenlength_blocks_each_chr; calculate_group_local_bvs | save.local.GEBVs.blocks.from.chrsplit |
 | read_block_file; calculate_group_local_bvs | save.local.GEBVs.blocks.from.file |
 | calculate_recombinations_from_file | find.crossovers |
-
-Several function names were changed between versions 0.2.4 and 0.2.5. To update a C script from v0.2.4 to v0.2.5, download `names_stopgap.h` from the v0.2.5 release and add the following lines to the preamble:
-
-```
-#define GSC_DEPRECATED_VERBOSE
-#include "names_stopgap.h"
-```
-
-then run the code and follow the instructions printed to stderr to update to v0.2.5 names. An R script that runs in v0.2.4 should still run in v0.2.5, and will automatically print warnings as to which functions in the script should be called by different names from v0.2.5 onwards.
