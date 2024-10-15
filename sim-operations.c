@@ -1,7 +1,7 @@
 #ifndef SIM_OPERATIONS
 #define SIM_OPERATIONS
 #include "sim-operations.h"
-/* genomicSimulationC v0.2.5.05 - last edit 15 October 2024 */
+/* genomicSimulationC v0.2.5.06 - last edit 15 October 2024 */
 
 /** Default parameter values for GenOptions, to help with quick scripts and prototypes.
  *
@@ -8704,7 +8704,7 @@ gsc_GroupNum gsc_split_by_bv(gsc_SimData* d, const gsc_GroupNum group, const gsc
  * @param effID Identifier of the marker effect set to be used to calculate these breeding values
  * @returns A (1 x number of genotypes) gsc_DecimalMatrix containing the breeding value scores
 */
-gsc_DecimalMatrix gsc_calculate_bvs( gsc_SimData* d, const gsc_GroupNum group, const gsc_EffectID effID) {
+gsc_DecimalMatrix gsc_calculate_bvs( const gsc_SimData* d, const gsc_GroupNum group, const gsc_EffectID effID) {
     const int effIndex = gsc_get_index_of_eff_set(d, effID);
     if (effIndex == GSC_UNINIT || d->e[effIndex].effects.rows < 1 || d->m == NULL) {
 		fprintf(stderr, "Effect matrix does not exist\n"); 
@@ -8712,8 +8712,9 @@ gsc_DecimalMatrix gsc_calculate_bvs( gsc_SimData* d, const gsc_GroupNum group, c
 	}
     gsc_EffectMatrix e = d->e[effIndex];
 
-    gsc_BidirectionalIterator it = gsc_create_bidirectional_iter(d, group);
-
+    // casing away const but I promise not to use the iterator to change anything
+	gsc_BidirectionalIterator it = gsc_create_bidirectional_iter((gsc_SimData*) d, group);
+	
     gsc_DecimalMatrix bvs = gsc_calculate_utility_bvs(&it, &e);
 
     gsc_delete_bidirectional_iter(&it);
@@ -8795,11 +8796,13 @@ gsc_DecimalMatrix gsc_calculate_utility_bvs(gsc_BidirectionalIterator* targets, 
  * The first axis of the DecimalMatrix corresponds to candidate genotypes, 
  * the second axis corresponds to genetic markers.
  * */
-gsc_DecimalMatrix gsc_calculate_allele_counts( gsc_SimData* d, const gsc_GroupNum group, const char allele) {
+gsc_DecimalMatrix gsc_calculate_allele_counts(const gsc_SimData* d, const gsc_GroupNum group, const char allele) {
     // To upgrade this to use iterators instead, we'll need some modifications to DecimalMatrix. Future work.
     GSC_CREATE_BUFFER(genotypes, char*, 50);
     size_t n_genotypes = 0;
-    gsc_BidirectionalIterator it = create_bidirectional_iter(d, group);
+    // casing away const but I promise not to use the iterator to change anything
+	gsc_BidirectionalIterator it = gsc_create_bidirectional_iter((gsc_SimData*) d, group);
+
     gsc_GenoLocation loc = gsc_set_bidirectional_iter_to_start(&it);
     while (IS_VALID_LOCATION(loc)) {
         if (n_genotypes >= genotypescap) {
@@ -9681,7 +9684,7 @@ double gsc_calculate_minimal_bv(const gsc_SimData* d, const gsc_EffectID effID) 
  * the marker blocks in the simple format. The formats are described in the 
  * documentation of the function @a gsc_save_utility_markerblocks
 */
-void gsc_save_markerblocks(const char* fname, gsc_SimData* d, const gsc_MarkerBlocks b, 
+void gsc_save_markerblocks(const char* fname, const gsc_SimData* d, const gsc_MarkerBlocks b, 
                            const gsc_MapID labelMapID) {
     FILE* f;
     if ((f = fopen(fname, "w")) == NULL) {
@@ -9715,14 +9718,15 @@ void gsc_save_markerblocks(const char* fname, gsc_SimData* d, const gsc_MarkerBl
  * matrix, and genotypes will be columns. If false, genetic markers will be columns 
  * in the output matrix, and genotypes will be rows.
 */
-void gsc_save_genotypes(const char* fname, gsc_SimData* d, const gsc_GroupNum groupID, 
+void gsc_save_genotypes(const char* fname, const gsc_SimData* d, const gsc_GroupNum groupID, 
                         const int markers_as_rows) {
     FILE* f;
     if ((f = fopen(fname, "w")) == NULL) {
 		fprintf(stderr, "Failed to open file %s for writing output\n", fname); return;
 	}
 
-	gsc_BidirectionalIterator it = gsc_create_bidirectional_iter(d, groupID);
+    // casing away const but I promise not to use the iterator to change anything
+	gsc_BidirectionalIterator it = gsc_create_bidirectional_iter((gsc_SimData*) d, groupID);
 
 	gsc_save_utility_genotypes(f, &it, d->genome.n_markers, d->genome.marker_names, markers_as_rows);
 
@@ -9750,14 +9754,15 @@ void gsc_save_genotypes(const char* fname, gsc_SimData* d, const gsc_GroupNum gr
  * matrix, and genotypes will be columns. If false, genetic markers will be columns 
  * in the output matrix, and genotypes will be rows.
 */
-void gsc_save_allele_counts(const char* fname, gsc_SimData* d, const gsc_GroupNum groupID, 
+void gsc_save_allele_counts(const char* fname, const gsc_SimData* d, const gsc_GroupNum groupID, 
 													 const char allele, const int markers_as_rows) {
     FILE* f;
     if ((f = fopen(fname, "w")) == NULL) {
 		fprintf(stderr, "Failed to open file %s for writing output\n", fname); return;
 	}
 
-    gsc_BidirectionalIterator it = gsc_create_bidirectional_iter(d, groupID);
+    // casing away const but I promise not to use the iterator to change anything
+	gsc_BidirectionalIterator it = gsc_create_bidirectional_iter((gsc_SimData*) d, groupID);
 
 	gsc_save_utility_allele_counts(f, &it, d->genome.n_markers, d->genome.marker_names, markers_as_rows, allele);
 
@@ -9786,14 +9791,15 @@ void gsc_save_allele_counts(const char* fname, gsc_SimData* d, const gsc_GroupNu
  * through all genotypes in the simulation. If false, only the two immediate 
  * parents of the genotype will be located. For more information 
 */
-void gsc_save_pedigrees(const char* fname, gsc_SimData* d,
+void gsc_save_pedigrees(const char* fname, const gsc_SimData* d,
                         const gsc_GroupNum groupID, const int full_pedigree) { 
     FILE* f;
     if ((f = fopen(fname, "w")) == NULL) {
 		fprintf(stderr, "Failed to open file %s for writing output\n", fname); return;
 	}
 
-    gsc_BidirectionalIterator it = gsc_create_bidirectional_iter(d, groupID);
+    // casing away const but I promise not to use the iterator to change anything
+	gsc_BidirectionalIterator it = gsc_create_bidirectional_iter((gsc_SimData*) d, groupID);
 
     gsc_save_utility_pedigrees(f, &it, full_pedigree, d->m);
 
@@ -9816,7 +9822,7 @@ void gsc_save_pedigrees(const char* fname, gsc_SimData* d,
  * @param effID identifier of the set of marker effects in @a d that will be 
  * used to calculate the breeding values.
 */
-void gsc_save_bvs(const char* fname, gsc_SimData* d, const gsc_GroupNum groupID, 
+void gsc_save_bvs(const char* fname, const gsc_SimData* d, const gsc_GroupNum groupID, 
                  const gsc_EffectID effID) {
     FILE* f;
     if ((f = fopen(fname, "w")) == NULL) {
@@ -9828,7 +9834,8 @@ void gsc_save_bvs(const char* fname, gsc_SimData* d, const gsc_GroupNum groupID,
         fprintf(stderr, "Marker effect set %i does not exist: cannot calculate breeding values\n", effID.id); return;
     }
 
-    gsc_BidirectionalIterator it = gsc_create_bidirectional_iter(d, groupID);
+    // casing away const but I promise not to use the iterator to change anything
+	gsc_BidirectionalIterator it = gsc_create_bidirectional_iter((gsc_SimData*) d, groupID);
 
     gsc_save_utility_bvs(f, &it, &d->e[effix]);
 

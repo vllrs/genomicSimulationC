@@ -1,7 +1,7 @@
 #ifndef SIM_OPERATIONS_H
 #define SIM_OPERATIONS_H
 /* 
-genomicSimulationC v0.2.5.05
+genomicSimulationC v0.2.5.06
 
     Last edit: 15 October 2024
 	License: MIT License
@@ -1517,9 +1517,9 @@ gsc_GroupNum gsc_make_double_crosses_from_file(gsc_SimData* d, const char* input
  * @{
  */
 gsc_GroupNum gsc_split_by_bv(gsc_SimData* d, const gsc_GroupNum group, const gsc_EffectID effID, const int top_n, const int lowIsBest);
-gsc_DecimalMatrix gsc_calculate_bvs( gsc_SimData* d, const gsc_GroupNum group, const gsc_EffectID effID);
+gsc_DecimalMatrix gsc_calculate_bvs( const gsc_SimData* d, const gsc_GroupNum group, const gsc_EffectID effID);
 gsc_DecimalMatrix gsc_calculate_utility_bvs(gsc_BidirectionalIterator* targets, const gsc_EffectMatrix* effset);
-gsc_DecimalMatrix gsc_calculate_allele_counts( gsc_SimData* d, const gsc_GroupNum group, const char allele);
+gsc_DecimalMatrix gsc_calculate_allele_counts( const gsc_SimData* d, const gsc_GroupNum group, const char allele);
 void gsc_calculate_utility_allele_counts( const size_t n_markers, const size_t n_genotypes, const char** const genotypes,  const char allele, gsc_DecimalMatrix* counts);
 void gsc_calculate_utility_allele_counts_pair( const size_t n_markers, const size_t n_genotypes, const char** const genotypes, 
                         const char allele, gsc_DecimalMatrix* counts, const char allele2, gsc_DecimalMatrix* counts2);
@@ -1570,12 +1570,12 @@ void gsc_move_genotype(gsc_GenoLocation from, gsc_GenoLocation to, int* label_de
  */
 
 // User-facing saving functions
-void gsc_save_markerblocks(const char* fname, gsc_SimData* d, const gsc_MarkerBlocks b, const gsc_MapID labelMapID);
-void gsc_save_genotypes(const char* fname, gsc_SimData* d, const gsc_GroupNum groupID, const int markers_as_rows);
-void gsc_save_allele_counts(const char* fname, gsc_SimData* d, const gsc_GroupNum groupID, 
+void gsc_save_markerblocks(const char* fname, const gsc_SimData* d, const gsc_MarkerBlocks b, const gsc_MapID labelMapID);
+void gsc_save_genotypes(const char* fname, const gsc_SimData* d, const gsc_GroupNum groupID, const int markers_as_rows);
+void gsc_save_allele_counts(const char* fname, const gsc_SimData* d, const gsc_GroupNum groupID, 
 											 		 const char allele, const int markers_as_rows);
-void gsc_save_pedigrees(const char* fname, gsc_SimData* d, const gsc_GroupNum groupID, const int full_pedigree);
-void gsc_save_bvs(const char* fname, gsc_SimData* d, const gsc_GroupNum groupID, const gsc_EffectID effID);
+void gsc_save_pedigrees(const char* fname, const gsc_SimData* d, const gsc_GroupNum groupID, const int full_pedigree);
+void gsc_save_bvs(const char* fname, const gsc_SimData* d, const gsc_GroupNum groupID, const gsc_EffectID effID);
 
 // Utility and helper saving functions
 void gsc_save_utility_markerblocks(FILE* f, const gsc_MarkerBlocks b, const size_t n_markers, 
