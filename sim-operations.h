@@ -1,9 +1,9 @@
 #ifndef SIM_OPERATIONS_H
 #define SIM_OPERATIONS_H
 /* 
-genomicSimulationC v0.2.5.06
+genomicSimulationC v0.2.5.07
 
-    Last edit: 15 October 2024
+    Last edit: 16 October 2024
 	License: MIT License
 
 Copyright (c) 2021 Kira Villiers
@@ -1579,12 +1579,12 @@ void gsc_save_bvs(const char* fname, const gsc_SimData* d, const gsc_GroupNum gr
 
 // Utility and helper saving functions
 void gsc_save_utility_markerblocks(FILE* f, const gsc_MarkerBlocks b, const size_t n_markers, 
-		char** const marker_names, const RecombinationMap* map);
+		char** const marker_names, const gsc_RecombinationMap* map);
 void gsc_save_utility_genotypes(FILE* f, gsc_BidirectionalIterator* targets, const size_t n_markers, char** const marker_names, const int markers_as_rows);
 void gsc_save_utility_allele_counts(FILE* f, gsc_BidirectionalIterator* targets, const size_t n_markers,
 		char** const marker_names, const int markers_as_rows, const char allele);
 void gsc_save_utility_pedigrees(FILE* f, gsc_BidirectionalIterator* targets,
-		const int full_pedigree, const AlleleMatrix* parent_pedigree_store);
+		const int full_pedigree, const gsc_AlleleMatrix* parent_pedigree_store);
 void gsc_save_utility_bvs(FILE* f, gsc_BidirectionalIterator* targets, const gsc_EffectMatrix* eff);
 
 // static int gsc_helper_is_marker_in_chr(const size_t markerix, const gsc_LinkageGroup chr, double* pos);

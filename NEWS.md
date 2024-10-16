@@ -11,6 +11,7 @@ Latest News       {#news}
 
 - Log messages printed during genotype file loading now accurately reflect the number of markers per genotype that were successfully loaded. Previously, it incorrectly printed out the total number of markers in the stored genetic map, while claiming it was the number of markers in the genotype file that had been accurately matched to the map.
 - Input genotype files now have `fclose` called on them after being parsed.
+- Fixed segmentation fault when calling `make_clones` with `inherit_names = GSC_TRUE` on genotypes with no names.
 
 ## Improvements 
 
@@ -28,6 +29,8 @@ Latest News       {#news}
 - BREAKING CHANGE: Several features among the calculation functions interface (functions with prefix `calculate_`) have undergone a restructure and rewrite.
 	- BREAKING CHANGE: `calculate_group_count_matrix`, `calculate_count_matrix`, and `calculate_full_count_matrix` have been combined into the single function (with updated function signature) `calculate_allele_counts`.
 	- BREAKING CHANGE: `calculate_bvs` and `calculate_group_bvs` have been combined into the single function (with updated function signature) `calculate_bvs`. 
+- More informative error message when calling `split_by_bv` on a nonexistent group. 
+- More edge cases covered in `condense_allele_matrix`, to patch a rare memory leak.
 
 # genomicSimulation v0.2.5
 

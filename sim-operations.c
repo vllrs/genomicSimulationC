@@ -1,7 +1,7 @@
 #ifndef SIM_OPERATIONS
 #define SIM_OPERATIONS
 #include "sim-operations.h"
-/* genomicSimulationC v0.2.5.06 - last edit 15 October 2024 */
+/* genomicSimulationC v0.2.5.07 - last edit 16 October 2024 */
 
 /** Default parameter values for GenOptions, to help with quick scripts and prototypes.
  *
@@ -1232,6 +1232,7 @@ static gsc_GenoLocation gsc_nextgappy_get_gap(struct gsc_GappyIterator* it) {
         // Trusts that n_genotypes is correct.
         if (it->cursor.localAM->n_genotypes == CONTIG_WIDTH) { // work-saver: skip this gsc_AlleleMatrix if it is already known to be full.
             it->cursor.localAM = it->cursor.localAM->next;
+            ++it->cursorAMIndex;
         } else {
             ++it->cursor.localPos;
         }
@@ -1267,7 +1268,9 @@ static gsc_GenoLocation gsc_nextgappy_get_nongap(struct gsc_GappyIterator* it) {
 
 
 /** A function to tidy the internal storage of genotypes after addition
- * or deletion of genotypes in the gsc_SimData. Not intended to be called by an
+ * or deletion of genotypes in the gsc_SimData. 
+ *
+ * Not intended to be called by an
  * end user - functions which require it should be calling it already.
  *
  * Ideally, we want all gsc_AlleleMatrix structs in the gsc_SimData's linked list
@@ -1275,6 +1278,9 @@ static gsc_GenoLocation gsc_nextgappy_get_nongap(struct gsc_GappyIterator* it) {
  * all gsc_AlleleMatrix structs except the last should be full (contain CONTIG_WIDTH genotypes),
  * and the last should have the remaining n genotypes at local indexes 0 to n-1
  * (so all at the start of the gsc_AlleleMatrix, with no gaps between them).
+ *
+ * This function will also clear any pre-allocated space that does not belong to
+ * any genotype (as determined by belonging to a index past AlleleMatrix->n_genotypes).
  *
  * We trust that each gsc_AlleleMatrix's n_genotypes is correct.
  *
@@ -1298,6 +1304,7 @@ void gsc_condense_allele_matrix( gsc_SimData* d) {
     ++checker.cursor.localPos;
     gsc_nextgappy_get_nongap(&checker);
 
+    // Shuffle all candidates back
     while (GSC_IS_VALID_LOCATION(filler.cursor) && GSC_IS_VALID_LOCATION(checker.cursor)) {
         gsc_move_genotype(checker.cursor, filler.cursor, d->label_defaults);
 
@@ -1308,9 +1315,35 @@ void gsc_condense_allele_matrix( gsc_SimData* d) {
         gsc_nextgappy_get_nongap(&checker);
     }
 
-    if (filler.cursor.localAM->next != NULL && filler.cursor.localAM->next->n_genotypes == 0) {
-        gsc_delete_allele_matrix(filler.cursor.localAM->next);
-        filler.cursor.localAM->next = NULL;
+    // Then, free any other pre-allocated space
+    while (GSC_IS_VALID_LOCATION(filler.cursor)) {
+        if (filler.cursor.localAM->n_genotypes == 0) {
+            // no genotypes after this point
+            AlleleMatrix* previous = gsc_get_nth_AlleleMatrix(d->m, filler.cursorAMIndex - 1);
+            if (previous != NULL) { 
+                previous->next = NULL; 
+                gsc_delete_allele_matrix(filler.cursor.localAM);
+            }     
+            filler.cursor.localAM = NULL; 
+            
+        } else {
+            // If this gap has allocated space, clear it.
+            if (gsc_get_alleles(filler.cursor) != NULL) {
+                GSC_FREE(gsc_get_alleles(filler.cursor));
+                filler.cursor.localAM->alleles[filler.cursor.localPos] = NULL;
+            }
+            if (gsc_get_name(filler.cursor) != NULL) {
+                GSC_FREE(gsc_get_name(filler.cursor));
+                filler.cursor.localAM->names[filler.cursor.localPos] = NULL;
+            }
+            filler.cursor.localAM->ids[filler.cursor.localPos] = GSC_NO_PEDIGREE;
+            filler.cursor.localAM->pedigrees[0][filler.cursor.localPos] = GSC_NO_PEDIGREE;
+            filler.cursor.localAM->pedigrees[1][filler.cursor.localPos] = GSC_NO_PEDIGREE;
+            filler.cursor.localAM->groups[filler.cursor.localPos] = GSC_NO_GROUP;
+
+            ++filler.cursor.localPos;
+            gsc_nextgappy_get_gap(&filler);
+        }
     }
 }
 
@@ -4716,7 +4749,9 @@ void gsc_delete_allele_matrix(gsc_AlleleMatrix* m) {
                 GSC_FREE(m->labels[i]);
             }
         }
-        GSC_FREE(m->labels);
+        if (m->labels != NULL) {
+            GSC_FREE(m->labels);
+        }
 
 		next = m->next;
 		GSC_FREE(m);
@@ -8308,8 +8343,9 @@ static int gsc_helper_parentchooser_cloning(void* parentIterator, void* datastor
  */
 static void gsc_helper_make_offspring_clones(gsc_SimData* d, void* datastore, gsc_ParentChoice parents[static 2], gsc_GenoLocation putHere) {
 	char inherit_names = *( ((char**) datastore)[0] );
-	if (inherit_names) {
-        char* tmpname = gsc_malloc_wrap(sizeof(char)*(strlen(((char**) datastore)[1]) + 1),GSC_TRUE);
+	char* parent_name = ((char**) datastore)[1];
+	if (inherit_names && parent_name != NULL) {
+        char* tmpname = gsc_malloc_wrap(sizeof(char)*(strlen(parent_name) + 1),GSC_TRUE);
         strcpy(tmpname, ((char**) datastore)[1]);
         gsc_set_name(putHere,tmpname);
 	}
@@ -8643,10 +8679,15 @@ gsc_GroupNum gsc_make_double_crosses_from_file(gsc_SimData* d, const char* input
 gsc_GroupNum gsc_split_by_bv(gsc_SimData* d, const gsc_GroupNum group, const gsc_EffectID effID, const int top_n, const int lowIsBest) {
     const int effIndex = gsc_get_index_of_eff_set(d, effID);
     if (effIndex == GSC_UNINIT || d->e[effIndex].effects.rows < 1 || d->m == NULL) {
-        fprintf(stderr, "Either effect matrix or allele matrix does not exist\n"); exit(1);
+        fprintf(stderr, "Either effect matrix or allele matrix does not exist\n");
+        return GSC_NO_GROUP;
     }
 
     unsigned int group_size = gsc_get_group_size( d, group );
+    if (group_size == 0) {
+        fprintf(stderr,"Group %d does not exist\n", group.num);
+        return GSC_NO_GROUP;
+    }
     GSC_CREATE_BUFFER(group_indexes,size_t,group_size);
     gsc_get_group_indexes( d, group, group_size, group_indexes );
 	

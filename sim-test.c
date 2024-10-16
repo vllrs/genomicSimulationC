@@ -3324,10 +3324,22 @@ int main(int argc, char* argv[]) {
 
 	//Small test that it can load a larger file alright.
     d = create_empty_simdata(randomSeed);
-    // struct MultiIDSet init =
+    struct MultiIDSet init =
             load_data_files(d, "./gt_parents_mr2_50-trimto-5000.txt",
 			 "./genetic-map_5112-trimto5000.txt",
              "./qtl_mr2.eff-processed.txt",DETECT_FILE_FORMAT);
+
+    // Testing a lot of variant uses to find a crash in make_clones
+    GroupNum g2 = make_random_crosses(d, init.group, 950, 0, NO_MAP, BASIC_OPT);
+    GroupNum g3 = make_clones(d, g2, GSC_FALSE, BASIC_OPT);
+    GroupNum g4 = make_clones(d, g3, GSC_FALSE, BASIC_OPT);
+    GroupNum g5 = make_random_crosses(d, g4, 50, 0, NO_MAP, BASIC_OPT);
+    GroupNum g5c = make_clones(d, g5, GSC_FALSE, BASIC_OPT);
+    GroupNum g5best = split_by_bv(d, g5, init.effSet, 5, GSC_FALSE);
+    GroupNum g6 = make_clones(d, g5best, GSC_TRUE, BASIC_OPT); // it only segfaults once inherit_names = TRUE
+    delete_group(d, g5);
+    GroupNum g4best = split_by_bv(d, g4, init.effSet, 50, GSC_FALSE);
+    
     delete_simdata(d);
 
 	printf("\nAll done\n");
