@@ -12,6 +12,7 @@ Latest News       {#news}
 - Log messages printed during genotype file loading now accurately reflect the number of markers per genotype that were successfully loaded. Previously, it incorrectly printed out the total number of markers in the stored genetic map, while claiming it was the number of markers in the genotype file that had been accurately matched to the map.
 - Input genotype files now have `fclose` called on them after being parsed.
 - Fixed segmentation fault when calling `make_clones` with `inherit_names = GSC_TRUE` on genotypes with no names.
+- Fixed memory access error in `make_random_crosses_between` when the function was called with breeding caps on both groups.
 
 ## Improvements 
 
