@@ -1,9 +1,9 @@
 #ifndef SIM_OPERATIONS_H
 #define SIM_OPERATIONS_H
 /* 
-genomicSimulationC v0.2.5.08
+genomicSimulationC v0.2.5.09
 
-    Last edit: 22 October 2024
+    Last edit: 6 November 2024
 	License: MIT License
 
 Copyright (c) 2021 Kira Villiers
@@ -559,6 +559,13 @@ typedef struct {
                             * are saved to "{filename_prefix}-genotype.txt", even
                             * if `will_save_to_simdata` is false.
                             * Genotypes are saved in the format of gsc_save_allele_matrix()*/
+    int will_save_recombinations_to_file; /**< A boolean. If true, will log recombination
+                            * events to "{filename_prefix}-recomb.txt". This information
+                            * is not accessible by another saver function - it is only accessible
+                            * if logged by the function generating a new set of offspring.
+                            * The columns of the log file are:
+                            * See documentation for caveats on chromosome number representation (@unless we can print in "base36")
+                            */
 	int will_save_to_simdata; /**< A boolean. If true, the generated offspring exist
                             * in the gsc_SimData struct after the function executes.
                             * If false, they are discarded after creation. */

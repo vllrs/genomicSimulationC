@@ -1,7 +1,7 @@
 #ifndef SIM_OPERATIONS
 #define SIM_OPERATIONS
 #include "sim-operations.h"
-/* genomicSimulationC v0.2.5.08 - last edit 22 October 2024 */
+/* genomicSimulationC v0.2.5.09 - last edit 6 November 2024 */
 
 /** Default parameter values for GenOptions, to help with quick scripts and prototypes.
  *
@@ -15,8 +15,9 @@ const gsc_GenOptions GSC_BASIC_OPT = {
 	.will_allocate_ids = GSC_TRUE,
 	.filename_prefix = NULL,
 	.will_save_pedigree_to_file = GSC_FALSE,
-    .will_save_bvs_to_file = GSC_NO_EFFECTSET,
+   .will_save_bvs_to_file = GSC_NO_EFFECTSET,
 	.will_save_alleles_to_file = GSC_FALSE,
+   .will_save_recombinations_to_file = GSC_FALSE,
 	.will_save_to_simdata = GSC_TRUE
 };
 
@@ -2306,9 +2307,13 @@ int gsc_get_index_of_child( const gsc_AlleleMatrix* start, const gsc_PedigreeID 
  * the genotype is assumed to be found.
  * @param name a string to match to the name of the target
  * @returns the index (0-based, starting at the start of `start`) of the first sequentially
- * located genotype whose name is the same as the provided name.
+ * located genotype whose name is the same as the provided name, or GSC_UNINIT if the name
+ * could not be found.
  */
 int gsc_get_index_of_name( const gsc_AlleleMatrix* start, const char* name) {
+    if (name == NULL) {
+        return GSC_UNINIT;
+    }
     if (start == NULL || (start->n_genotypes <= 0 && start->next == NULL)) {
         fprintf(stderr,"Invalid start parameter: gsc_AlleleMatrix* `start` must exist\n");
         return GSC_UNINIT;
@@ -2319,13 +2324,14 @@ int gsc_get_index_of_name( const gsc_AlleleMatrix* start, const char* name) {
 	while (1) {
 		// try to identify the child in this AM
 		for (j = 0; j < m->n_genotypes; ++j, ++total_j) {
-			if (strcmp(m->names[j], name) == 0) {
+			if (m->names[j] != NULL && strcmp(m->names[j], name) == 0) {
 				return total_j;
 			}
 		}
 
 		if ((m = m->next) == NULL) {
-			fprintf(stderr, "Didn't find the name %s\n", name); exit(1);
+			fprintf(stderr, "Didn't find the name %s\n", name);
+                        return GSC_UNINIT;
 		}
 	}
 }
@@ -7234,6 +7240,10 @@ int gsc_calculate_recombinations_from_file(gsc_SimData* d, const char* input_fil
 		combin_i[0] = gsc_get_index_of_name(d->m, buffer[0]);
 		combin_i[1] = gsc_get_index_of_name(d->m, buffer[1]);
 		combin_i[2] = gsc_get_index_of_name(d->m, buffer[2]);
+		if (combin_i[0] < 0 || combin_i[1] < 0 || combin_i[2] < 0) {
+			fprintf(stderr, "Genotypes at file %s line %i could not be found\n", input_file, i);
+			continue;
+		}
 		combin_genes[0] = gsc_get_genes_of_index(d->m, combin_i[0]);
 		combin_genes[1] = gsc_get_genes_of_index(d->m, combin_i[1]);
 		combin_genes[2] = gsc_get_genes_of_index(d->m, combin_i[2]);
@@ -7546,6 +7556,7 @@ static FILE* gsc_helper_genoptions_save_genotypes_setup(const gsc_SimData* d, co
 	}
 	return fg;
 }
+
 /** save-as-you-go (pedigrees)
  *
  * Saves pedigrees in gsc_AlleleMatrix @a tosave to a file. Performs 
@@ -7583,6 +7594,7 @@ static void gsc_helper_genoptions_save_genotypes(FILE* fg, gsc_AlleleMatrix* tos
         gsc_delete_bidirectional_iter(&it);
 	}
 }
+
 /** Apply gsc_GenOptions naming scheme and gsc_PedigreeID allocation to a single 
  * gsc_AlleleMatrix.
  */
@@ -8071,6 +8083,11 @@ static int gsc_helper_parentchooser_cross_targeted(void* parentIterator, void* d
     int** crosses = datastoreintp+1;
     int* maps = datastoreintp[3];
 	
+	if (crosses[0][*counter] < 0 || crosses[1][*counter] < 0) {
+		// because gsc_next_get_nth expects a size_t but our crossing plan is passed as integers.
+		fprintf(stderr, "Parent chooser found invalid indexes in crossing plan");
+		return GSC_FALSE;
+	}
     parents[0].loc = gsc_next_get_nth(it, crosses[0][*counter]);
     parents[1].loc = gsc_next_get_nth(it, crosses[1][*counter]);
     parents[0].mapindex = maps[0];
@@ -8551,15 +8568,21 @@ gsc_GroupNum gsc_make_crosses_from_file(gsc_SimData* d, const char* input_file, 
     int* combinations[2] = {combos0,combos1};
     char buffer[2][NAME_LENGTH];
 	// for each row in file
-	for (int i = 0; i < t.num_rows; ++i) {
+    int bufferi = 0;
+	for (int filei = 0; filei < t.num_rows; ++filei) {
 		// load the four grandparents
 		fscanf(fp, "%s %s \n", buffer[0], buffer[1]);
-		combinations[0][i] = gsc_get_index_of_name(d->m, buffer[0]);
-		combinations[1][i] = gsc_get_index_of_name(d->m, buffer[1]);
+		combinations[0][bufferi] = gsc_get_index_of_name(d->m, buffer[0]);
+		combinations[1][bufferi] = gsc_get_index_of_name(d->m, buffer[1]);
+		if (combinations[0][bufferi] < 0 || combinations[1][bufferi] < 0) {
+			fprintf(stderr, "Parents on file %s line %i could not be found\n", input_file, filei);
+		} else {
+			++bufferi;
+		}
 	}
 
 	fclose(fp);
-    gsc_GroupNum out = gsc_make_targeted_crosses(d, t.num_rows, combinations[0], combinations[1], map1, map2, g);
+    gsc_GroupNum out = gsc_make_targeted_crosses(d, bufferi, combinations[0], combinations[1], map1, map2, g);
     GSC_DELETE_BUFFER(combos0);
     GSC_DELETE_BUFFER(combos1);
     return out;

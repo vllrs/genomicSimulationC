@@ -13,6 +13,7 @@ Latest News       {#news}
 - Input genotype files now have `fclose` called on them after being parsed.
 - Fixed segmentation fault when calling `make_clones` with `inherit_names = GSC_TRUE` on genotypes with no names.
 - Fixed memory access error in `make_random_crosses_between` when the function was called with breeding caps on both groups.
+- get_index_of_name no longer tries to compare its target name to the names of nameless genotypes. Also, it now prints a warning and returns an invalid value when it cannot find the target name, instead of calling exit().
 
 ## Improvements 
 
