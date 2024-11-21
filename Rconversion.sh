@@ -6,9 +6,9 @@
 #    -> replaces C standard libraries with R library equivalents
 
 echo ">>> Deleting lines from sim-operations.c:"
-awk 'NR>=175 && NR<=209' ./sim-operations.c
+awk 'NR>=176 && NR<=210' ./sim-operations.c
 
-awk 'NR<175 || NR>209' ./sim-operations.c | sed \
+awk 'NR<176 || NR>210' ./sim-operations.c | sed \
 	-e 's+//RPACKINSERT ++g' \
 	-e 's/fprintf(stderr,\(.*\)); exit([0-9]);/error(\1);/g' \
 	-e 's/fprintf(stderr,\(.*\));/warning(\1);/g' \
@@ -25,9 +25,9 @@ awk 'NR<175 || NR>209' ./sim-operations.c | sed \
 	> ../sim-operations-for-R.c
 	
 echo ">>> Deleting lines from sim-operations.h:"
-awk 'NR>=952 && NR<=971' ./sim-operations.h
+awk 'NR>=959 && NR<=976' ./sim-operations.h
 
-awk 'NR<952 || NR>971' ./sim-operations.h | sed \
+awk 'NR<959 || NR>976' ./sim-operations.h | sed \
 	-e 's+#include "lib/rnd.h"++g' \
 	-e 's/RND_U32 RNGseed//g' \
 	-e 's+rnd_pcg_t rng;+//CRANDOMGENERATOR+g' \

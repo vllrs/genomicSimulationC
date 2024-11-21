@@ -1,9 +1,9 @@
 #ifndef SIM_OPERATIONS_H
 #define SIM_OPERATIONS_H
 /* 
-genomicSimulationC v0.2.5.09
+genomicSimulationC v0.2.5.10
 
-    Last edit: 6 November 2024
+    Last edit: 19 November 2024
 	License: MIT License
 
 Copyright (c) 2021 Kira Villiers
@@ -1479,31 +1479,33 @@ void gsc_generate_clone(gsc_SimData* d, const char* parent_genome, char* output)
 // static void gsc_helper_genoptions_give_names_and_ids(gsc_AlleleMatrix* am, gsc_SimData* d, const gsc_GenOptions g);
 
 // PARAMETER FUNCTIONS FOR THE FOLLOWING GENERIC
-// static void gsc_helper_make_offspring_cross(gsc_SimData* d, void* datastore, gsc_ParentChoice parents[static 2], gsc_GenoLocation putHere);
-// static void gsc_helper_make_offspring_self_n_times(gsc_SimData* d, void* datastore, gsc_ParentChoice parents[static 2], gsc_GenoLocation putHere);
-// static void gsc_helper_make_offspring_doubled_haploids(gsc_SimData* d, void* datastore, gsc_ParentChoice parents[static 2], gsc_GenoLocation putHere);
-// static void gsc_helper_make_offspring_clones(gsc_SimData* d, void* datastore, gsc_ParentChoice parents[static 2], gsc_GenoLocation putHere);
+// static void gsc_helper_make_offspring_cross(gsc_SimData* d, union gsc_datastore_make_genotype* datastore, gsc_ParentChoice parents[static 2], gsc_GenoLocation putHere);
+// static void gsc_helper_make_offspring_self_n_times(gsc_SimData* d, union gsc_datastore_make_genotype* datastore, gsc_ParentChoice parents[static 2], gsc_GenoLocation putHere);
+// static void gsc_helper_make_offspring_doubled_haploids(gsc_SimData* d, union gsc_datastore_make_genotype* datastore, gsc_ParentChoice parents[static 2], gsc_GenoLocation putHere);
+// static void gsc_helper_make_offspring_clones(gsc_SimData* d, union gsc_datastore_make_genotype* datastore, gsc_ParentChoice parents[static 2], gsc_GenoLocation putHere);
 
-// static int gsc_helper_parentchooser_cross_randomly(void* parentIterator, void* datastore, unsigned int* counter, gsc_ParentChoice parents[static 2]);
-// static int gsc_helper_parentchooser_cross_randomly_between(void* parentIterator, void* datastore, unsigned int* counter, gsc_ParentChoice parents[static 2]);
-// static int gsc_helper_parentchooser_cross_targeted(void* parentIterator, void* datastore, unsigned int* counter, gsc_ParentChoice parents[static 2]);
-// static int gsc_helper_parentchooser_selfing(void* parentIterator, void* datastore, unsigned int* counter, gsc_ParentChoice parents[static 2]);
-// static int gsc_helper_parentchooser_cloning(void* parentIterator, void* datastore, unsigned int* counter, gsc_ParentChoice parents[static 2]);
+// static int gsc_helper_parentchooser_cross_randomly(void* parentIterator, union gsc_datastore_make_genotype* datastore, unsigned int* counter, gsc_ParentChoice parents[static 2]);
+// static int gsc_helper_parentchooser_cross_randomly_between(void* parentIterator, union gsc_datastore_make_genotype* datastore, unsigned int* counter, gsc_ParentChoice parents[static 2]);
+// static int gsc_helper_parentchooser_cross_targeted(void* parentIterator, union gsc_datastore_make_genotype* datastore, unsigned int* counter, gsc_ParentChoice parents[static 2]);
+// static int gsc_helper_parentchooser_selfing(void* parentIterator, union gsc_datastore_make_genotype* datastore, unsigned int* counter, gsc_ParentChoice parents[static 2]);
+// static int gsc_helper_parentchooser_cloning(void* parentIterator, union gsc_datastore_make_genotype* datastore, unsigned int* counter, gsc_ParentChoice parents[static 2]);
 
 // static int gsc_helper_random_cross_checks(gsc_SimData* d, const gsc_GroupNum from_group, const int n_crosses, const int cap);
 
 // GENERIC
+union gsc_datastore_make_genotypes;
 gsc_GroupNum gsc_scaffold_make_new_genotypes(gsc_SimData* d, const gsc_GenOptions g,
-        void* parentIterator, void* datastore,
-        int (*parentChooser)(void*, void*, unsigned int*, gsc_ParentChoice[static 2]),
-        void (*offspringGenerator)(gsc_SimData*, void*, gsc_ParentChoice[static 2], gsc_GenoLocation) );
+        void* parentIterator, union gsc_datastore_make_genotypes* datastore,
+        int (*parentChooser)(void*, union gsc_datastore_make_genotypes*, unsigned int*, gsc_ParentChoice[static 2]),
+        void (*offspringGenerator)(gsc_SimData*, union gsc_datastore_make_genotypes*, gsc_ParentChoice[static 2], gsc_GenoLocation));
 // APPLICATIONS
 gsc_GroupNum gsc_make_random_crosses(gsc_SimData* d, const gsc_GroupNum from_group, const int n_crosses,
                                      const int cap, const gsc_MapID which_map, const gsc_GenOptions g);
 gsc_GroupNum gsc_make_random_crosses_between(gsc_SimData*d, const gsc_GroupNum group1, const gsc_GroupNum group2,
-                                             const int n_crosses, const int cap1, const int cap2,
+                                             const int n_crosses, const unsigned int cap1, const unsigned int cap2,
                                              const gsc_MapID map1, const gsc_MapID map2, const gsc_GenOptions g);
-gsc_GroupNum gsc_make_targeted_crosses(gsc_SimData* d, const int n_combinations, const int* firstParents, const int* secondParents,
+gsc_GroupNum gsc_make_targeted_crosses(gsc_SimData* d, const int n_combinations,
+                                       const unsigned int* firstParents, const unsigned int* secondParents,
                                        const gsc_MapID map1, const gsc_MapID map2, const gsc_GenOptions g);
 gsc_GroupNum gsc_self_n_times(gsc_SimData* d, const unsigned int n, const gsc_GroupNum group, const gsc_MapID which_map, const gsc_GenOptions g);
 gsc_GroupNum gsc_make_doubled_haploids(gsc_SimData* d, const gsc_GroupNum group, const gsc_MapID which_map, const gsc_GenOptions g);

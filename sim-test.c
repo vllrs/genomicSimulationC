@@ -47,8 +47,8 @@ int test_savers(unsigned int rseed) {
             .will_save_alleles_to_file=GSC_FALSE,
             .will_save_to_simdata=GSC_TRUE};
 
-    int firstparents[] = {2, 3, 1, 4, 0};
-    int secondparents[] = {4, 1, 3, 2, 5};
+    unsigned int firstparents[] = {2, 3, 1, 4, 0};
+    unsigned int secondparents[] = {4, 1, 3, 2, 5};
     GroupNum f1 = gsc_make_targeted_crosses(d, 5, firstparents, secondparents, NO_MAP, NO_MAP, g); // produce 5 offspring
     g.will_track_pedigree = GSC_TRUE;
     g.will_allocate_ids = GSC_FALSE;
@@ -2243,7 +2243,7 @@ GroupNum test_specific_splits(SimData *d, GroupNum g0) {
     assert(d->n_groups == 1);
 
     // Can split into halfsib families
-    int combinations[2][4];
+    unsigned int combinations[2][4];
     combinations[0][0] = 0; combinations[1][0] = 1;
     combinations[0][1] = 0; combinations[1][1] = 2;
     combinations[0][2] = 3; combinations[1][2] = 1;
@@ -2879,7 +2879,7 @@ int test_iterators(SimData* d, GroupNum gp) {
         .will_save_alleles_to_file = GSC_FALSE,
         .will_save_to_simdata = GSC_TRUE
     };
-    int combos[2][3];
+    unsigned int combos[2][3];
     combos[0][0] = 0; combos[1][0] = 0;
     combos[0][1] = 1; combos[1][1] = 2;
     combos[0][2] = 1; combos[1][2] = 5;
@@ -3004,7 +3004,7 @@ int test_getters(SimData* d, GroupNum gp) {
     assert(fabs(bvs[4] - 0.6) < TOL);
     assert(fabs(bvs[5] - (-0.3)) < TOL);
 
-    int combos[2][3];
+    unsigned int combos[2][3];
     combos[0][0] = 0; combos[1][0] = 0;
     combos[0][1] = 1; combos[1][1] = 2;
     combos[0][2] = 1; combos[1][2] = 5;

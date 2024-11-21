@@ -1,7 +1,7 @@
 #ifndef SIM_OPERATIONS
 #define SIM_OPERATIONS
 #include "sim-operations.h"
-/* genomicSimulationC v0.2.5.09 - last edit 6 November 2024 */
+/* genomicSimulationC v0.2.5.10 - last edit 19 November 2024 */
 
 /** Default parameter values for GenOptions, to help with quick scripts and prototypes.
  *
@@ -7498,7 +7498,6 @@ void gsc_generate_clone(gsc_SimData* d, const char* parent_genome, char* output)
     return;
 }
 
-
 /** Opens file for writing save-as-you-go pedigrees in accordance with gsc_GenOptions */
 static FILE* gsc_helper_genoptions_save_pedigrees_setup(const gsc_GenOptions g) {
 	FILE* fp = NULL;
@@ -7609,6 +7608,48 @@ static void gsc_helper_genoptions_give_names_and_ids(gsc_AlleleMatrix* am, gsc_S
 		}
 	}
 }
+
+
+union gsc_datastore_make_genotypes { 
+	struct {
+		unsigned int n_crosses;
+		size_t group_size;
+		unsigned int map_index;
+		unsigned int cap;
+		unsigned int* uses;
+	} rand;
+	struct {
+		unsigned int n_crosses;
+		size_t group1_size;
+		size_t group2_size;
+		unsigned int map1_index;
+		unsigned int map2_index;
+		unsigned int cap1;
+		unsigned int cap2;
+		unsigned int* uses1;
+		unsigned int* uses2;
+	} rand_btwn;
+	struct {
+		unsigned int n_crosses;
+		unsigned int map1_index;
+		unsigned int map2_index;
+		unsigned int* first_parents;
+		unsigned int* second_parents;
+	} targeted;
+	struct {
+		unsigned int map_index;
+		unsigned int n_gens_selfing;
+	} selfing;
+	struct {
+		unsigned int map_index; // needs to be in first spot to match selfing.map_index
+	} doub_haps;
+	struct {
+		int inherit_names;
+        char* parent_name;
+	} clones;
+};
+
+
 /** Make new genotypes (generic function)
  *
  * Applies all settings from gsc_GenOptions @a g. 
@@ -7643,10 +7684,15 @@ static void gsc_helper_genoptions_give_names_and_ids(gsc_AlleleMatrix* am, gsc_S
  * @return group number of new group created, or GSC_NO_GROUP if no group
  * was created or the new group was empty.
  */
-gsc_GroupNum gsc_scaffold_make_new_genotypes(gsc_SimData* d, const gsc_GenOptions g,
-		void* parentIterator, void* datastore, 
-        int (*parentChooser)(void*, void*, unsigned int*, gsc_ParentChoice[static 2]),
-        void (*offspringGenerator)(gsc_SimData*, void*, gsc_ParentChoice[static 2], gsc_GenoLocation) ) {
+gsc_GroupNum gsc_scaffold_make_new_genotypes(gsc_SimData* d, 
+                                             const gsc_GenOptions g,
+                                             void* parentIterator, 
+                                             union gsc_datastore_make_genotypes* datastore,
+                                             int (*parentChooser)(void*, union gsc_datastore_make_genotypes*,
+                                                                  unsigned int*, gsc_ParentChoice[static 2]),
+                                             void (*offspringGenerator)(gsc_SimData*, union gsc_datastore_make_genotypes*, 
+                                                                        gsc_ParentChoice[static 2], gsc_GenoLocation) 
+                                             ) {
     if (g.family_size < 1 || d == NULL ||
 		parentChooser == NULL || offspringGenerator == NULL) {
         return GSC_NO_GROUP;
@@ -7739,33 +7785,39 @@ gsc_GroupNum gsc_scaffold_make_new_genotypes(gsc_SimData* d, const gsc_GenOption
  * and without permitting selfing. Guarantees @a parents contains 
  * two valid gsc_GenoLocations at the time it returns a truthy value.
  */
-static int gsc_helper_parentchooser_cross_randomly(void* parentIterator, void* datastore, unsigned int* counter,
+static int gsc_helper_parentchooser_cross_randomly(void* parentIterator, 
+                                                   union gsc_datastore_make_genotypes* datastore, 
+                                                   unsigned int* counter, 
                                                    gsc_ParentChoice parents[static 2]) {
 	gsc_RandomAccessIterator* it = (gsc_RandomAccessIterator*) parentIterator;
-	unsigned int* datastoreint = (unsigned int*) datastore;
-	unsigned int n_crosses = datastoreint[0];
-	unsigned int cap = datastoreint[1];
-	unsigned int nparents = datastoreint[2];
-    //unsigned int mapindex = datastoreint[3];
-    unsigned int* parent_uses = datastoreint + 4;
-	unsigned int parentixs[2] = { 0 };
+	
+    unsigned int parentixs[2] = { 0 };
 
-    if (*counter < n_crosses && (cap == 0 || (*counter) < cap * nparents)) {
+    if (*counter < datastore->rand.n_crosses && 
+        (datastore->rand.cap == 0 || (*counter) < datastore->rand.cap * datastore->rand.group_size)) {
 		// get parents, randomly. Must not be identical or already been used too many times.
-		parentixs[0] = gsc_randomdraw_replacementrules(it[0].d, nparents, cap, parent_uses, GSC_UNINIT);
-		parentixs[1] = gsc_randomdraw_replacementrules(it[0].d, nparents, cap, parent_uses, parentixs[0]);
+		parentixs[0] = gsc_randomdraw_replacementrules(it[0].d, 
+                                                       datastore->rand.group_size,
+                                                       datastore->rand.cap,
+                                                       datastore->rand.uses,
+                                                       GSC_UNINIT);
+		parentixs[1] = gsc_randomdraw_replacementrules(it[0].d, 
+                                                       datastore->rand.group_size,
+                                                       datastore->rand.cap,
+                                                       datastore->rand.uses,
+                                                       parentixs[0]);
 		
-		if (cap > 0) { 
-			parent_uses[parentixs[0]] += 1; 
-			parent_uses[parentixs[1]] += 1;
+		if (datastore->rand.cap > 0) { 
+			datastore->rand.uses[parentixs[0]] += 1; 
+			datastore->rand.uses[parentixs[1]] += 1;
 		}
 		
 		// Neither of these should fail, if nparents is good. 
         parents[0].loc = gsc_next_get_nth(parentIterator, parentixs[0]);
         parents[1].loc = gsc_next_get_nth(parentIterator, parentixs[1]);
         // Reiterate map. Might save us a read to not bother checking their values first.
-        parents[0].mapindex = datastoreint[3];
-        parents[1].mapindex = datastoreint[3];
+        parents[0].mapindex = datastore->rand.map_index;
+        parents[1].mapindex = datastore->rand.map_index;
 		// This will cut short gsc_scaffold_make_new_genotypes execution if either parent is invalid.
         return GSC_IS_VALID_LOCATION(parents[0].loc) && GSC_IS_VALID_LOCATION(parents[1].loc);
 	} else {
@@ -7773,15 +7825,22 @@ static int gsc_helper_parentchooser_cross_randomly(void* parentIterator, void* d
 	}
 }
 
-/** offspringGenerator function parameter for gsc_make_random_crosses.
+/** offspringGenerator function parameter for all crossing functions
  *
  * @see gsc_scaffold_make_new_genotypes
  * @see gsc_make_random_crosses
+ * @see gsc_make_random_crosses_between
+ * @see gsc_make_targeted_crosses
  *
  * Generates new alleles from two separate parents. Does not check 
  * they are valid parents.
+ *
+ * @a datastore parameter goes unused
  */
-static void gsc_helper_make_offspring_cross(gsc_SimData* d, void* datastore, gsc_ParentChoice parents[static 2], gsc_GenoLocation putHere) {
+static void gsc_helper_make_offspring_cross(gsc_SimData* d, 
+                                            union gsc_datastore_make_genotypes* datastore, 
+                                            gsc_ParentChoice parents[static 2], 
+                                            gsc_GenoLocation putHere) {
 	// (silly name)
     gsc_generate_gamete(d, gsc_get_alleles(parents[0].loc), (gsc_get_alleles(putHere)  ), parents[0].mapindex);
     gsc_generate_gamete(d, gsc_get_alleles(parents[1].loc), (gsc_get_alleles(putHere)+1), parents[1].mapindex);
@@ -7792,7 +7851,10 @@ static void gsc_helper_make_offspring_cross(gsc_SimData* d, void* datastore, gsc
  * @return 0 if the parameters fail these checks, number of members of 
  * @a from_group otherwise.
  */
-static int gsc_helper_random_cross_checks(gsc_SimData* d, const gsc_GroupNum from_group, const int n_crosses, const int cap) {
+static int gsc_helper_random_cross_checks(gsc_SimData* d, 
+                                          const gsc_GroupNum from_group, 
+                                          const int n_crosses, 
+                                          const int cap) {
 	int g_size = gsc_get_group_size( d, from_group); // might be a better way to do this using the iterator.
     if (g_size < 1) {
         fprintf(stderr,"Group %d does not exist.\n", from_group.num);
@@ -7841,8 +7903,12 @@ static int gsc_helper_random_cross_checks(gsc_SimData* d, const gsc_GroupNum fro
  * @param g options for the genotypes created. @see gsc_GenOptions
  * @returns the group number of the group to which the produced offspring were allocated.
 */
-gsc_GroupNum gsc_make_random_crosses(gsc_SimData* d, const gsc_GroupNum from_group, const int n_crosses, const int cap,
-                                     const gsc_MapID which_map, const gsc_GenOptions g) {
+gsc_GroupNum gsc_make_random_crosses(gsc_SimData* d, 
+                                     const gsc_GroupNum from_group, 
+                                     const int n_crosses, 
+                                     const int cap,
+                                     const gsc_MapID which_map, 
+                                     const gsc_GenOptions g) {
     int g_size = gsc_helper_random_cross_checks(d, from_group, n_crosses*2, cap);
 	if (g_size == 0) {
         return GSC_NO_GROUP;
@@ -7854,33 +7920,36 @@ gsc_GroupNum gsc_make_random_crosses(gsc_SimData* d, const gsc_GroupNum from_gro
         fprintf(stderr,"Crossing requires at least one recombination map loaded\n");
         return GSC_NO_GROUP;
     }
-    unsigned int map_index = 0;
-    if (which_map.id != NO_MAP.id) { map_index = gsc_get_index_of_map(d, which_map); }
-    if (map_index < 0) {
+    
+    union gsc_datastore_make_genotypes paramstore = { 0 };
+    paramstore.rand.n_crosses = n_crosses;
+    paramstore.rand.group_size = g_size;
+    paramstore.rand.map_index = 0;
+    paramstore.rand.cap = cap;
+    if (cap > 0) {
+        paramstore.rand.uses = gsc_malloc_wrap(sizeof(*paramstore.rand.uses)*g_size,GSC_TRUE);
+        memset(paramstore.rand.uses, 0, sizeof(*paramstore.rand.uses)*g_size);
+    } else {
+        paramstore.rand.uses = NULL;
+    }
+    
+    if (which_map.id != NO_MAP.id) { 
+        paramstore.rand.map_index = gsc_get_index_of_map(d, which_map); 
+    }
+    if (paramstore.rand.map_index < 0) {
         fprintf(stderr,"Could not find recombination map with identifier %i.\n", which_map.id);
         return GSC_NO_GROUP;
     }
 	
-    unsigned int* datastore = NULL; // cap = 0 means unlimited uses. Otherwise we need to track number of times each is used.
-    if (cap > 0) {
-        datastore = gsc_malloc_wrap(sizeof(unsigned int)*(g_size+4),GSC_TRUE);
-        memset(datastore + 4,0,sizeof(unsigned int)*g_size);
-    } else {
-        datastore = gsc_malloc_wrap(sizeof(unsigned int)*4,GSC_TRUE);
-	}
-	datastore[0] = n_crosses;
-	datastore[1] = cap;
-	datastore[2] = g_size;
-    datastore[3] = map_index;
-
-	gsc_RandomAccessIterator parentit = gsc_create_randomaccess_iter( d, from_group);
+    RandomAccessIterator parentit = gsc_create_randomaccess_iter( d, from_group);
 	
-    gsc_GroupNum offspring = gsc_scaffold_make_new_genotypes(d, g, (void*) &parentit, (void*) datastore,
+    gsc_GroupNum offspring = gsc_scaffold_make_new_genotypes(d, g, (void*) &parentit,
+                                                             &paramstore,
                                                              gsc_helper_parentchooser_cross_randomly,
                                                              gsc_helper_make_offspring_cross );
 
 	gsc_delete_randomaccess_iter(&parentit);
-	GSC_FREE(datastore);
+	GSC_FREE(paramstore.rand.uses);
 	return offspring;
 }
 
@@ -7906,9 +7975,11 @@ gsc_GroupNum gsc_make_random_crosses(gsc_SimData* d, const gsc_GroupNum from_gro
  * the @a cap and @a noCollision conditions, or GSC_UNINIT if input parameters made it 
  * impossible to draw any number.
  */
-unsigned int gsc_randomdraw_replacementrules(gsc_SimData* d, unsigned int max, unsigned int cap, 
-        unsigned int* member_uses, unsigned int noCollision) {
-        
+unsigned int gsc_randomdraw_replacementrules(gsc_SimData* d, 
+                                             unsigned int max, 
+                                             unsigned int cap, 
+                                             unsigned int* member_uses, 
+                                             unsigned int noCollision) {
     if (max < 1 || (max == 1 && noCollision == 0)) {
         return GSC_UNINIT;
     }
@@ -7936,35 +8007,40 @@ unsigned int gsc_randomdraw_replacementrules(gsc_SimData* d, unsigned int max, u
  * Guarantees @a parents contains 
  * two valid gsc_GenoLocations at the time it returns a truthy value.
  */
-static int gsc_helper_parentchooser_cross_randomly_between(void* parentIterator, void* datastore, unsigned int* counter,
+static int gsc_helper_parentchooser_cross_randomly_between(void* parentIterator, 
+                                                           union gsc_datastore_make_genotypes* datastore, 
+                                                           unsigned int* counter,
                                                            gsc_ParentChoice parents[static 2]) {
     // caller function should guarantee that nparents is not 1. How would you make a nonselfed cross then?
     gsc_RandomAccessIterator* it = (gsc_RandomAccessIterator*) parentIterator;
-    unsigned int* datastoreint = (unsigned int*) datastore;
-    unsigned int n_crosses = datastoreint[0];
-    unsigned int* caps = datastoreint + 1; // caps[0], caps[1]
-    unsigned int* nparents = datastoreint + 3; //nparents[0], nparents[1]
-    unsigned int* map_index = datastoreint + 5; // map_index[0], map_index[1]
-    unsigned int* parent_uses = datastoreint + 7; // parent_uses (nparents[0] + nparents[1] long)
     unsigned int parentixs[2] = { 0 };
 	
-    if (*counter < n_crosses && (caps[0] == 0 || (*counter) < caps[0] * nparents[0])
-                             && (caps[1] == 0 || (*counter) < caps[1] * nparents[1])) {
+    if (*counter < datastore->rand_btwn.n_crosses &&
+        (datastore->rand_btwn.cap1 == 0 || (*counter) < datastore->rand_btwn.cap1 * datastore->rand_btwn.group1_size) &&
+        (datastore->rand_btwn.cap2 == 0 || (*counter) < datastore->rand_btwn.cap2 * datastore->rand_btwn.group2_size)) {
 		// get parents, randomly. Must not be identical or already been used too many times.
-		parentixs[0] = gsc_randomdraw_replacementrules(it[0].d, nparents[0], caps[0], parent_uses, GSC_UNINIT);
-		parentixs[1] = gsc_randomdraw_replacementrules(it[1].d, nparents[1], caps[1],  parent_uses + nparents[0], GSC_UNINIT);
+		parentixs[0] = gsc_randomdraw_replacementrules(it[0].d, 
+                                                       datastore->rand_btwn.group1_size,
+                                                       datastore->rand_btwn.cap1, 
+                                                       datastore->rand_btwn.uses1, 
+                                                       GSC_UNINIT);
+		parentixs[1] = gsc_randomdraw_replacementrules(it[1].d, 
+                                                       datastore->rand_btwn.group2_size,
+                                                       datastore->rand_btwn.cap2, 
+                                                       datastore->rand_btwn.uses2, 
+                                                       GSC_UNINIT);
 			
-		if (caps[0] > 0) { 
-			parent_uses[parentixs[0]] += 1; 
+		if (datastore->rand_btwn.cap1 > 0) { 
+			datastore->rand_btwn.uses1[parentixs[0]] += 1; 
 		} 
-		if (caps[1] > 0) {
-			parent_uses[nparents[0] + parentixs[1]] += 1;
+		if (datastore->rand_btwn.cap2 > 0) {
+			datastore->rand_btwn.uses2[parentixs[1]] += 1;
 		}
 
         parents[0].loc = gsc_next_get_nth(it+0, parentixs[0]);
         parents[1].loc = gsc_next_get_nth(it+1, parentixs[1]);
-        parents[0].mapindex = map_index[0];
-        parents[1].mapindex = map_index[1];
+        parents[0].mapindex = datastore->rand_btwn.map1_index;
+        parents[1].mapindex = datastore->rand_btwn.map2_index;
         return GSC_IS_VALID_LOCATION(parents[0].loc) && GSC_IS_VALID_LOCATION(parents[1].loc);
     }
     return GSC_FALSE;
@@ -8006,8 +8082,15 @@ static int gsc_helper_parentchooser_cross_randomly_between(void* parentIterator,
  * @param g options for the genotypes created. @see gsc_GenOptions
  * @returns the group number of the group to which the produced offspring were allocated.
 */
-gsc_GroupNum gsc_make_random_crosses_between(gsc_SimData*d, const gsc_GroupNum group1, const gsc_GroupNum group2, const int n_crosses,
-                                             const int cap1, const int cap2, const gsc_MapID map1, const gsc_MapID map2, const gsc_GenOptions g) {
+gsc_GroupNum gsc_make_random_crosses_between(gsc_SimData*d, 
+                                             const gsc_GroupNum group1, 
+                                             const gsc_GroupNum group2, 
+                                             const int n_crosses,
+                                             const unsigned int cap1, 
+                                             const unsigned int cap2, 
+                                             const gsc_MapID map1, 
+                                             const gsc_MapID map2, 
+                                             const gsc_GenOptions g) {
     int group1_size = gsc_helper_random_cross_checks(d, group1, n_crosses, cap1);
     int group2_size = gsc_helper_random_cross_checks(d, group2, n_crosses, cap2);
 	if (group1_size == 0 || group2_size == 0) {
@@ -8017,47 +8100,57 @@ gsc_GroupNum gsc_make_random_crosses_between(gsc_SimData*d, const gsc_GroupNum g
         fprintf(stderr,"Crossing requires at least one recombination map loaded\n");
         return GSC_NO_GROUP;
     }
-    unsigned int map1_index = 0;
-    if (map1.id != NO_MAP.id) { map1_index = gsc_get_index_of_map(d, map1); }
-    if (map1_index == GSC_UNINIT) {  //|| map_index > d->genome.n_maps) {
+    
+    union gsc_datastore_make_genotypes paramstore;
+    paramstore.rand_btwn.n_crosses = n_crosses;
+    paramstore.rand_btwn.group1_size = group1_size;
+    paramstore.rand_btwn.group2_size = group2_size;
+    paramstore.rand_btwn.map1_index = 0;
+    paramstore.rand_btwn.map2_index = 0;
+    paramstore.rand_btwn.cap1 = cap1;
+    paramstore.rand_btwn.cap2 = cap2;
+    if (cap1 > 0) {
+        paramstore.rand_btwn.uses1 = 
+            gsc_malloc_wrap(sizeof(*paramstore.rand_btwn.uses1)*group1_size,GSC_TRUE);
+        memset(paramstore.rand_btwn.uses1, 0, sizeof(*paramstore.rand_btwn.uses1)*group1_size);
+    } else {
+        paramstore.rand_btwn.uses1 = NULL;
+    }
+    if (cap2 > 0) {
+        paramstore.rand_btwn.uses2 = 
+            gsc_malloc_wrap(sizeof(*paramstore.rand_btwn.uses2)*group2_size,GSC_TRUE);
+        memset(paramstore.rand_btwn.uses2, 0, sizeof(*paramstore.rand_btwn.uses2)*group2_size);
+    } else {
+        paramstore.rand_btwn.uses2 = NULL;
+    }
+    
+    if (map1.id != NO_MAP.id) { 
+        paramstore.rand_btwn.map1_index = gsc_get_index_of_map(d, map1); 
+    }
+    if (paramstore.rand_btwn.map1_index == GSC_UNINIT) {
         fprintf(stderr,"Could not find recombination map with identifier %i.\n", map1.id);
         return GSC_NO_GROUP;
     }
-    unsigned int map2_index = 0;
-    if (map2.id != NO_MAP.id) { map2_index = gsc_get_index_of_map(d, map2); }
-    if (map2_index == GSC_UNINIT) {  //|| map_index > d->genome.n_maps) {
+    if (map2.id != NO_MAP.id) { 
+        paramstore.rand_btwn.map2_index = gsc_get_index_of_map(d, map2); 
+    }
+    if (paramstore.rand_btwn.map2_index == GSC_UNINIT) {
         fprintf(stderr,"Could not find recombination map with identifier %i.\n", map2.id);
         return GSC_NO_GROUP;
     }
 
-	unsigned int* datastore = NULL;
-	int hascap1 = cap1 > 0 ? 1 : 0;
-	int hascap2 = cap2 > 0 ? 1 : 0;
-	if (hascap1 || hascap2) {
-        datastore = gsc_malloc_wrap(sizeof(unsigned int)*(hascap1*group1_size + hascap2*group2_size + 7),GSC_TRUE);
-        memset(datastore + 7,0,sizeof(unsigned int)*(hascap1*group1_size + hascap2*group2_size));
-    } else {
-        datastore = gsc_malloc_wrap(sizeof(unsigned int)*7,GSC_TRUE);
-	}
-    datastore[0] = n_crosses;
-    datastore[1] = cap1;
-    datastore[2] = cap2;
-    datastore[3] = group1_size;
-    datastore[4] = group2_size;
-    datastore[5] = map1_index;
-    datastore[6] = map2_index;
-	
 	gsc_RandomAccessIterator parentit[2] = { gsc_create_randomaccess_iter( d, group1 ),
-										 gsc_create_randomaccess_iter( d, group2 ),
-										};
-	
-    gsc_GroupNum offspring = gsc_scaffold_make_new_genotypes(d, g, (void*) parentit, (void*) datastore,
+										     gsc_create_randomaccess_iter( d, group2 ) };
+                                             	
+    gsc_GroupNum offspring = gsc_scaffold_make_new_genotypes(d, g, (void*) parentit, 
+                                                             &paramstore,
                                                              gsc_helper_parentchooser_cross_randomly_between,
                                                              gsc_helper_make_offspring_cross );
 
 	gsc_delete_randomaccess_iter(&parentit[0]);
 	gsc_delete_randomaccess_iter(&parentit[1]);
-	GSC_FREE(datastore);
+    GSC_FREE(paramstore.rand_btwn.uses1);
+    GSC_FREE(paramstore.rand_btwn.uses2);
 	return offspring;
 	
 }
@@ -8071,27 +8164,25 @@ gsc_GroupNum gsc_make_random_crosses_between(gsc_SimData*d, const gsc_GroupNum g
  * Guarantees @a parents contains 
  * two valid gsc_GenoLocations at the time it returns a truthy value.
  */
-static int gsc_helper_parentchooser_cross_targeted(void* parentIterator, void* datastore, unsigned int* counter,
+static int gsc_helper_parentchooser_cross_targeted(void* parentIterator, 
+                                                   union gsc_datastore_make_genotypes* datastore, 
+                                                   unsigned int* counter,
                                                    gsc_ParentChoice parents[static 2]) {
 	gsc_RandomAccessIterator* it = (gsc_RandomAccessIterator*) parentIterator;
-    int** datastoreintp = (int**) datastore;
-    int ncrosses = **datastoreintp;
-    if (*counter >= ncrosses) {
+    if (*counter >= datastore->targeted.n_crosses) {
         return GSC_FALSE;
     }
-
-    int** crosses = datastoreintp+1;
-    int* maps = datastoreintp[3];
 	
-	if (crosses[0][*counter] < 0 || crosses[1][*counter] < 0) {
+	if (datastore->targeted.first_parents[*counter] == GSC_UNINIT || 
+        datastore->targeted.second_parents[*counter] == GSC_UNINIT) {
 		// because gsc_next_get_nth expects a size_t but our crossing plan is passed as integers.
 		fprintf(stderr, "Parent chooser found invalid indexes in crossing plan");
 		return GSC_FALSE;
 	}
-    parents[0].loc = gsc_next_get_nth(it, crosses[0][*counter]);
-    parents[1].loc = gsc_next_get_nth(it, crosses[1][*counter]);
-    parents[0].mapindex = maps[0];
-    parents[1].mapindex = maps[1];
+    parents[0].loc = gsc_next_get_nth(it, datastore->targeted.first_parents[*counter]);
+    parents[1].loc = gsc_next_get_nth(it, datastore->targeted.second_parents[*counter]);
+    parents[0].mapindex = datastore->targeted.map1_index;
+    parents[1].mapindex = datastore->targeted.map2_index;
 
 	// This will cut short gsc_scaffold_make_new_genotypes execution if either parent is invalid.
     return GSC_IS_VALID_LOCATION(parents[0].loc) && GSC_IS_VALID_LOCATION(parents[1].loc);
@@ -8129,8 +8220,13 @@ static int gsc_helper_parentchooser_cross_targeted(void* parentIterator, void* d
  * @param g options for the genotypes created. @see gsc_GenOptions
  * @returns the group number of the group to which the produced offspring were allocated.
  */
-gsc_GroupNum gsc_make_targeted_crosses(gsc_SimData* d, const int n_combinations, const int* firstParents, const int* secondParents,
-                                       const gsc_MapID map1, const gsc_MapID map2, const gsc_GenOptions g) {
+gsc_GroupNum gsc_make_targeted_crosses(gsc_SimData* d, 
+                                       const int n_combinations, 
+                                       const unsigned int* firstParents, 
+                                       const unsigned int* secondParents,
+                                       const gsc_MapID map1, 
+                                       const gsc_MapID map2, 
+                                       const gsc_GenOptions g) {
 	if (n_combinations < 1) {
         fprintf(stderr,"Invalid n_combinations value provided: n_combinations must be greater than 0.\n");
         return GSC_NO_GROUP;
@@ -8139,22 +8235,34 @@ gsc_GroupNum gsc_make_targeted_crosses(gsc_SimData* d, const int n_combinations,
         fprintf(stderr,"Crossing requires at least one recombination map loaded\n");
         return GSC_NO_GROUP;
     }
-    int mapindexes[2] = { 0, 0 };
-    if (map1.id != NO_MAP.id) { mapindexes[0] = gsc_get_index_of_map(d, map1); }
-    if (mapindexes[0] == GSC_UNINIT) {  //|| map_index > d->genome.n_maps) {
+    
+    union gsc_datastore_make_genotypes paramstore;
+    paramstore.targeted.n_crosses = n_combinations;
+    paramstore.targeted.map1_index = 0;
+    paramstore.targeted.map2_index = 0;
+    // casting away const but is being used as readonly
+    paramstore.targeted.first_parents = (unsigned int*) firstParents;
+    paramstore.targeted.second_parents = (unsigned int*) secondParents;
+    
+    if (map1.id != NO_MAP.id) { 
+        paramstore.targeted.map1_index = gsc_get_index_of_map(d, map1); 
+    }
+    if (paramstore.targeted.map1_index == GSC_UNINIT) {
         fprintf(stderr,"Could not find recombination map with identifier %i.\n", map1.id);
         return GSC_NO_GROUP;
     }
-    if (map2.id != NO_MAP.id) { mapindexes[1] = gsc_get_index_of_map(d, map2); }
-    if (mapindexes[1] == GSC_UNINIT) {  //|| map_index > d->genome.n_maps) {
+    if (map2.id != NO_MAP.id) { 
+        paramstore.targeted.map2_index = gsc_get_index_of_map(d, map2); 
+    }
+    if (paramstore.targeted.map2_index == GSC_UNINIT) {
         fprintf(stderr,"Could not find recombination map with identifier %i.\n", map2.id);
         return GSC_NO_GROUP;
     }
 	
-    const int* datastore[4] = { &n_combinations, firstParents, secondParents, mapindexes } ;
     gsc_RandomAccessIterator parentit = gsc_create_randomaccess_iter( d, GSC_NO_GROUP );
 	
-    gsc_GroupNum offspring = gsc_scaffold_make_new_genotypes(d, g, (void*) &parentit, (void*) datastore,
+    gsc_GroupNum offspring = gsc_scaffold_make_new_genotypes(d, g, (void*) &parentit,
+                                                             &paramstore,
                                                              gsc_helper_parentchooser_cross_targeted,
                                                              gsc_helper_make_offspring_cross );
 
@@ -8171,11 +8279,14 @@ gsc_GroupNum gsc_make_targeted_crosses(gsc_SimData* d, const int n_combinations,
  * Locates the next group member. Guarantees @a parents contains 
  * two valid gsc_GenoLocations (which are the same) at the time it returns a truthy value.
  */
-static int gsc_helper_parentchooser_selfing(void* parentIterator, void* datastore, unsigned int* counter, gsc_ParentChoice parents[static 2]) {
+static int gsc_helper_parentchooser_selfing(void* parentIterator, 
+                                            union gsc_datastore_make_genotypes* datastore, 
+                                            unsigned int* counter, 
+                                            gsc_ParentChoice parents[static 2]) {
 	gsc_BidirectionalIterator* it = (gsc_BidirectionalIterator*) parentIterator;
 	
     parents[0].loc = gsc_next_forwards(it);
-    parents[0].mapindex = *((unsigned int*) datastore);
+    parents[0].mapindex = datastore->selfing.map_index;
     parents[1] = parents[0];
 
     return GSC_IS_VALID_LOCATION(parents[0].loc);
@@ -8192,8 +8303,11 @@ static int gsc_helper_parentchooser_selfing(void* parentIterator, void* datastor
  * Generates new alleles by selfing from one parent. Only 
  * looks at the first parent and does not check it is valid.
  */
-static void gsc_helper_make_offspring_self_n_times(gsc_SimData* d, void* datastore, gsc_ParentChoice parents[static 2], gsc_GenoLocation putHere) {
-    unsigned int n = ((unsigned int*) datastore)[1];
+static void gsc_helper_make_offspring_self_n_times(gsc_SimData* d, 
+                                                   union gsc_datastore_make_genotypes* datastore, 
+                                                   gsc_ParentChoice parents[static 2], 
+                                                   gsc_GenoLocation putHere) {
+    unsigned int n = datastore->selfing.n_gens_selfing;
 	
 	// error checking parents are the same is not done.
 	// error checking n >= 1 is not done.
@@ -8240,7 +8354,11 @@ static void gsc_helper_make_offspring_self_n_times(gsc_SimData* d, void* datasto
  * @param g options for the genotypes created. @see gsc_GenOptions
  * @returns the group number of the group to which the produced offspring were allocated.
 */
-gsc_GroupNum gsc_self_n_times(gsc_SimData* d, const unsigned int n, const gsc_GroupNum group, const gsc_MapID which_map, const gsc_GenOptions g) {
+gsc_GroupNum gsc_self_n_times(gsc_SimData* d, 
+                              const unsigned int n, 
+                              const gsc_GroupNum group, 
+                              const gsc_MapID which_map, 
+                              const gsc_GenOptions g) {
 	/*int group_size = gsc_get_group_size( d, group);
 	if (group_size < 1) {
         fprintf(stderr,"Group %d does not exist.\n", group.num);
@@ -8254,17 +8372,23 @@ gsc_GroupNum gsc_self_n_times(gsc_SimData* d, const unsigned int n, const gsc_Gr
         fprintf(stderr,"Selfing requires at least one recombination map loaded\n");
         return GSC_NO_GROUP;
     }
-    unsigned int map_index = 0;
-    if (which_map.id != NO_MAP.id) { map_index = gsc_get_index_of_map(d, which_map); }
-    if (map_index == GSC_UNINIT) {  //|| map_index > d->genome.n_maps) {
-        fprintf(stderr,"Could not find recombination map with identifier %i.\n", which_map.id);
-        return GSC_NO_GROUP;
+        
+    union gsc_datastore_make_genotypes paramstore;
+    paramstore.selfing.map_index = 0;
+    paramstore.selfing.n_gens_selfing = n;
+
+    if (which_map.id != NO_MAP.id) { 
+        paramstore.selfing.map_index = gsc_get_index_of_map(d, which_map); 
     }
-    unsigned int datastore[2] = { map_index, n };
-	
+    if (paramstore.selfing.map_index == GSC_UNINIT) {
+        fprintf(stderr,"Could not find recombination map with identifier %i.\n", which_map.id);
+        return GSC_NO_GROUP;                          
+    }
+    
 	gsc_BidirectionalIterator parentit = gsc_create_bidirectional_iter( d, group );
 	
-    return gsc_scaffold_make_new_genotypes(d, g, (void*) &parentit, (void*) datastore,
+    return gsc_scaffold_make_new_genotypes(d, g, (void*) &parentit,
+                                           &paramstore,
                                            gsc_helper_parentchooser_selfing,
                                            gsc_helper_make_offspring_self_n_times );
 }
@@ -8277,7 +8401,10 @@ gsc_GroupNum gsc_self_n_times(gsc_SimData* d, const unsigned int n, const gsc_Gr
  * Generates new alleles by making a doubled haploid. Only 
  * looks at the first parent and does not check it is valid.
  */
-static void gsc_helper_make_offspring_doubled_haploids(gsc_SimData* d, void* datastore, gsc_ParentChoice parents[static 2], gsc_GenoLocation putHere) {
+static void gsc_helper_make_offspring_doubled_haploids(gsc_SimData* d, 
+                                                       union gsc_datastore_make_genotypes* datastore, 
+                                                       gsc_ParentChoice parents[static 2], 
+                                                       gsc_GenoLocation putHere) {
     gsc_generate_doubled_haploid(d, gsc_get_alleles(parents[0].loc), gsc_get_alleles(putHere), parents[0].mapindex);
 }
 
@@ -8300,7 +8427,10 @@ static void gsc_helper_make_offspring_doubled_haploids(gsc_SimData* d, void* dat
  * @param g options for the genotypes created. @see gsc_GenOptions
  * @returns the group number of the group to which the produced offspring were allocated.
 */
-gsc_GroupNum gsc_make_doubled_haploids(gsc_SimData* d, const gsc_GroupNum group, const gsc_MapID which_map, const gsc_GenOptions g) {
+gsc_GroupNum gsc_make_doubled_haploids(gsc_SimData* d, 
+                                       const gsc_GroupNum group, 
+                                       const gsc_MapID which_map, 
+                                       const gsc_GenOptions g) {
 	/*int group_size = gsc_get_group_size( d, group);
 	if (group_size < 1) {
         fprintf(stderr,"Group %d does not exist.\n", group.num);
@@ -8310,16 +8440,21 @@ gsc_GroupNum gsc_make_doubled_haploids(gsc_SimData* d, const gsc_GroupNum group,
         fprintf(stderr,"Crossing requires at least one recombination map loaded\n");
         return GSC_NO_GROUP;
     }
-    unsigned int map_index = 0;
-    if (which_map.id != NO_MAP.id) { map_index = gsc_get_index_of_map(d, which_map); }
-    if (map_index == GSC_UNINIT) {
+    
+    union gsc_datastore_make_genotypes paramstore = { 0 };
+    
+    if (which_map.id != NO_MAP.id) { 
+        paramstore.doub_haps.map_index = gsc_get_index_of_map(d, which_map); 
+    }
+    if (paramstore.doub_haps.map_index == GSC_UNINIT) {
         fprintf(stderr,"Could not find recombination map with identifier %i.\n", which_map.id);
         return GSC_NO_GROUP;
-    }
+    }                                    
 	
 	gsc_BidirectionalIterator parentit = gsc_create_bidirectional_iter( d, group );
 	
-    return gsc_scaffold_make_new_genotypes(d, g, (void*) &parentit, (void*) &map_index,
+    return gsc_scaffold_make_new_genotypes(d, g, (void*) &parentit,
+                                           &paramstore,
                                            gsc_helper_parentchooser_selfing,
                                            gsc_helper_make_offspring_doubled_haploids );
 }
@@ -8335,16 +8470,18 @@ gsc_GroupNum gsc_make_doubled_haploids(gsc_SimData* d, const gsc_GroupNum group,
  * Locates the next group member. Guarantees @a parents contains 
  * two valid gsc_GenoLocations (which are the same) at the time it returns a truthy value.
  */
-static int gsc_helper_parentchooser_cloning(void* parentIterator, void* datastore, unsigned int* counter, gsc_ParentChoice parents[static 2]) {
+static int gsc_helper_parentchooser_cloning(void* parentIterator, 
+                                            union gsc_datastore_make_genotypes* datastore, 
+                                            unsigned int* counter, 
+                                            gsc_ParentChoice parents[static 2]) {
 	gsc_BidirectionalIterator* it = (gsc_BidirectionalIterator*) parentIterator;
 	
     parents[0].loc = gsc_next_forwards(it);
 	parents[1] = parents[0];
 
     if (GSC_IS_VALID_LOCATION(parents[0].loc)) {
-		char inherit_names = *( ((char**) datastore)[0] );
-		if (inherit_names) {
-            ((char**) datastore)[1] = gsc_get_name(parents[0].loc);
+		if (datastore->clones.inherit_names) {
+            datastore->clones.parent_name = gsc_get_name(parents[0].loc);
 		}
 		return GSC_TRUE;
 	} else {
@@ -8360,12 +8497,13 @@ static int gsc_helper_parentchooser_cloning(void* parentIterator, void* datastor
  * Generates new alleles by making a clone of its parent. Only 
  * looks at the first parent and does not check it is valid.
  */
-static void gsc_helper_make_offspring_clones(gsc_SimData* d, void* datastore, gsc_ParentChoice parents[static 2], gsc_GenoLocation putHere) {
-	char inherit_names = *( ((char**) datastore)[0] );
-	char* parent_name = ((char**) datastore)[1];
-	if (inherit_names && parent_name != NULL) {
-        char* tmpname = gsc_malloc_wrap(sizeof(char)*(strlen(parent_name) + 1),GSC_TRUE);
-        strcpy(tmpname, ((char**) datastore)[1]);
+static void gsc_helper_make_offspring_clones(gsc_SimData* d, 
+                                             union gsc_datastore_make_genotypes* datastore, 
+                                             gsc_ParentChoice parents[static 2], 
+                                             gsc_GenoLocation putHere) {
+    if (datastore->clones.inherit_names && datastore->clones.parent_name != NULL) {
+        char* tmpname = gsc_malloc_wrap(sizeof(char)*(strlen(datastore->clones.parent_name) + 1),GSC_TRUE);
+        strcpy(tmpname, datastore->clones.parent_name);
         gsc_set_name(putHere,tmpname);
 	}
 	
@@ -8395,19 +8533,23 @@ static void gsc_helper_make_offspring_clones(gsc_SimData* d, void* datastore, gs
  * @param g options for the genotypes created. @see gsc_GenOptions
  * @returns the group number of the group to which the produced offspring were allocated.
 */
-gsc_GroupNum gsc_make_clones(gsc_SimData* d, const gsc_GroupNum group, const int inherit_names, gsc_GenOptions g) {
+gsc_GroupNum gsc_make_clones(gsc_SimData* d, 
+                             const gsc_GroupNum group, 
+                             const int inherit_names, 
+                             gsc_GenOptions g) {
     /*int group_size = gsc_get_group_size( d, group);
     if (group_size < 1) {
         fprintf(stderr,"Group %d does not exist.\n", group.num);
         return GSC_NO_GROUP;
     }*/
 	
-	char do_inherit_names = inherit_names;
-	char* nameinherit[2] = {&do_inherit_names, NULL };
-
+    union gsc_datastore_make_genotypes paramstore; 
+    paramstore.clones.inherit_names = inherit_names;
+    
     gsc_BidirectionalIterator parentit = gsc_create_bidirectional_iter( d, group );
 	
-    return gsc_scaffold_make_new_genotypes(d, g, (void*) &parentit, (void*) nameinherit,
+    return gsc_scaffold_make_new_genotypes(d, g, (void*) &parentit,
+                                           &paramstore,
                                            gsc_helper_parentchooser_cloning,
                                            gsc_helper_make_offspring_clones );
 }
@@ -8447,9 +8589,9 @@ gsc_GroupNum gsc_make_all_unidirectional_crosses(gsc_SimData* d, const gsc_Group
 	// 	  = half of (lmatrix * lmatrix - lmatrix);
 	int n_crosses = group_size * (group_size - 1) / 2; //* g.family_size;
 
-    GSC_CREATE_BUFFER(combos0,int,n_crosses);
-    GSC_CREATE_BUFFER(combos1,int,n_crosses);
-    int* combinations[2] = {combos0, combos1};
+    GSC_CREATE_BUFFER(combos0,unsigned int,n_crosses);
+    GSC_CREATE_BUFFER(combos1,unsigned int,n_crosses);
+    unsigned int* combinations[2] = {combos0, combos1};
 	int cross_index = 0;
 	for (int i = 0; i < group_size; ++i) {
 		for (int j = i + 1; j < group_size; ++j) {
@@ -8563,9 +8705,9 @@ gsc_GroupNum gsc_make_crosses_from_file(gsc_SimData* d, const char* input_file, 
 		fprintf(stderr, "Failed to open file %s.\n", input_file); exit(1);
 	}
 
-    GSC_CREATE_BUFFER(combos0,int,t.num_rows);
-    GSC_CREATE_BUFFER(combos1,int,t.num_rows);
-    int* combinations[2] = {combos0,combos1};
+    GSC_CREATE_BUFFER(combos0,unsigned int,t.num_rows);
+    GSC_CREATE_BUFFER(combos1,unsigned int,t.num_rows);
+    unsigned int* combinations[2] = {combos0,combos1};
     char buffer[2][NAME_LENGTH];
 	// for each row in file
     int bufferi = 0;
@@ -8633,9 +8775,9 @@ gsc_GroupNum gsc_make_double_crosses_from_file(gsc_SimData* d, const char* input
 		fprintf(stderr, "Failed to open file %s.\n", input_file); exit(1);
 	}
 
-    GSC_CREATE_BUFFER(combos0,int,t.num_rows);
-    GSC_CREATE_BUFFER(combos1,int,t.num_rows);
-    int* combinations[2] = {combos0,combos1};
+    GSC_CREATE_BUFFER(combos0,unsigned int,t.num_rows);
+    GSC_CREATE_BUFFER(combos1,unsigned int,t.num_rows);
+    unsigned int* combinations[2] = {combos0,combos1};
     char buffer[4][NAME_LENGTH];
     const char* to_buffer[] = {buffer[0], buffer[1], buffer[2], buffer[3]};
     gsc_PedigreeID g0_id[4];
