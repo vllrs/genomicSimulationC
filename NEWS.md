@@ -6,6 +6,7 @@ Latest News       {#news}
 ## New Features
 
 - BREAKING CHANGE: `load_genotypefile` and `load_data_files` now take an extra final parameter of type `FileFormatSpec`. This parameters allows users to specify some or all of the layout and formatting details of an input genotype file. During the loading process, the sections tasked with detecting the already-specified features of the layout are then skipped.
+- BREAKING CHANGE: Introduced new type aliases: `GSC_ID_T`, `GSC_GLOBALX_T`, `GSC_LOCALX_T`, `GSC_GENOLEN_T`. Some function type signatures may have changed, as they are now using these type aliases, and the type aliases have consistent definitions across all functions in the library.
 
 ## Bug Fixes
 
@@ -13,7 +14,7 @@ Latest News       {#news}
 - Input genotype files now have `fclose` called on them after being parsed.
 - Fixed segmentation fault when calling `make_clones` with `inherit_names = GSC_TRUE` on genotypes with no names.
 - Fixed memory access error in `make_random_crosses_between` when the function was called with breeding caps on both groups.
-- get_index_of_name no longer tries to compare its target name to the names of nameless genotypes. Also, it now prints a warning and returns an invalid value when it cannot find the target name, instead of calling exit().
+- `get_index_of_name` no longer tries to compare its target name to the names of nameless genotypes. Also, it now prints a warning and returns an invalid value when it cannot find the target name, instead of calling exit().
 
 ## Improvements 
 
@@ -33,6 +34,12 @@ Latest News       {#news}
 	- BREAKING CHANGE: `calculate_bvs` and `calculate_group_bvs` have been combined into the single function (with updated function signature) `calculate_bvs`. 
 - More informative error message when calling `split_by_bv` on a nonexistent group. 
 - More edge cases covered in `condense_allele_matrix`, to patch a rare memory leak.
+- BREAKING CHANGE: Now using _Bool type for true/false values. The GSC_LOGICVAL type is used only for variables that need three values: true/false/invalid. GSC_UNINIT has been renamed to GSC_NA.
+- The dimensions of a DecimalMatrix are now stored in larger size_t variables.
+- Removed unused struct MarkerPosition.
+- BREAKING CHANGE: Removed function `make_n_crosses_from_top_m_percent` for disobeying standard genomicSimulation rules of division of functionality. A section has been added to the Templates section of the documentation with a drop-in replacement of this function.
+- Fixed a formula typo and a broken table in the documentation's Templates page.
+
 
 # genomicSimulation v0.2.5
 

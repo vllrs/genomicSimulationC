@@ -1,7 +1,7 @@
 Features and Templates Guide        {#templates}
 ============================
 
-While [the documentation pages of genomicSimulationC](@ref modules) and its counterpart [genomicSimulation](https://github.com/vllrs/genomicSimulation) do describe all the features the simulation tool offers, they don't do so in a way that is necessarily easy to browse or that's helpful for new users to understand the simulation tool.
+While [the documentation pages of genomicSimulationC](@ref modules) and its counterpart [genomicSimulation](https://github.com/vllrs/genomicSimulation) do describe all the features the simulation tool offers, they don't do so in a way that facilitates quick prototyping or help new users get insight into setting up simulations.
 
 This page provides a set of templates for implementing common breeding project actions in genomicSimulationC and its R counterpart.
 
@@ -92,17 +92,17 @@ There are several options for how the alleles at each marker can be presented. A
 
 <table>
 <tr><th>IUPAC symbol <th>genomicSimulation genotype
-<tr>G<td>GG
-<tr>A<td>AA
-<tr>T<td>TT
-<tr>C<td>CC
-<tr>R<td>GA or AG
-<tr>Y<td>TC or CT
-<tr>M<td>AC or CA
-<tr>K<td>GT or TG
-<tr>S<td>GC or CG
-<tr>W<td>AT or TA
-<tr>N<td>\\0\\0 (nulls represent unknown genotype)
+<tr><td>G<td>GG
+<tr><td>A<td>AA
+<tr><td>T<td>TT
+<tr><td>C<td>CC
+<tr><td>R<td>GA or AG
+<tr><td>Y<td>TC or CT
+<tr><td>M<td>AC or CA
+<tr><td>K<td>GT or TG
+<tr><td>S<td>GC or CG
+<tr><td>W<td>AT or TA
+<tr><td>N<td>\\0\\0 (nulls represent unknown genotype)
 </table>
 
 **Note you might have a genotype matrix of only "AA", "AT", and "TT". This uses "alternate allele counts"-style encoding (like format 3) but presents it in a format that looks like pairs of alleles (format 1).** genomicSimulation expects allele pair encodings to include haplotype phase, (that is, to have four possible values for genotypes of two alleles, not three: eg. "AA", "AT", "TA", and "TT" instead of just "AA", "AT", "TT"). 
@@ -591,6 +591,51 @@ offspring <- make.random.crosses.between(cows, bulls, cap1=1, n.crosses=10)
 ```
 </table>
 
+## Random mating between the best performing individuals in a group
+
+genomicSimulation used to have a function `make_n_crosses_from_top_m_percent`, which would identify a highest-performing slice of a group (of a chosen size), make random crosses between them, but leave the high performers as members of their original group. This function was removed because . Here is an implementation that can be used to replicated its functionality:
+
+<table>
+<tr><th>Task <th>genomicSimulationC (C) <th>genomicSimulation (R)
+<tr><td>Function to make n crosses from the m percent of candidates in a group that have the highest breeding values.
+<td>
+```{C}
+GroupNum make_n_crosses_from_top_m_percent(SimData* d, GroupNum* group, const int n, const float m) {
+	# Split off the best candidates 
+	int mcount = (int)(get_group_size(d,*group) * m / 100); # close enough, you could round differently if you preferred
+	GroupNum best_candidates = split_by_bv(d, *group, NO_EFFECTSET, mcount, 0);
+	
+	# Make random crosses to get offspring 
+	GroupNum offspring = make_random_crosses(d, best_candidates, n, 0, NO_MAP, BASIC_OPT);
+	
+	# Put the best candidates back into their original group
+	# Note: you cannot assume that the group number representing "group"
+	# will not change during a combine_groups operation
+	GroupNum tmp[2] = {*group, best_candidates};
+	*group = combine_groups(d, 2, tmp);
+	
+	return offspring;
+}
+```
+<td>
+```{R}
+make.n.crosses.from.top.m.percent <- function(group, n, m) {
+	# Split off the best candidates 
+	best.candidates <- break.group.by.gebv(group, percentage=m)
+	
+	# Make random crosses to get offspring 
+	offspring <- make.random.crosses(best.candidates, n.crosses=n)
+	
+	# Put the best candidates back into their original group
+	# Note: you cannot assume that the group number representing "group"
+	# will not change as a result of this line
+	group <<- combine.groups(c(group, best.candidates))
+	
+	return(offspring)
+}
+```
+</table>
+
 ## Mating all females to a good male
 
 <table>
@@ -860,7 +905,7 @@ Note the concept of the 'custom selection interface' is mainly appropriate to th
 
 ## Manually select on true breeding value
 
-The template selection template. This does the exact same thing as `split_by_bv` / `break.group.by.gebv`, but using the 'custom selection method interface'. Hopefully this aids in understanding the concept.
+The template selection template. This does the exact same thing as `split_by_bv` / `break.group.by.gebv`, but using the 'custom selection method interface' of `make_group`/`make.group`. The following sections will show how to simulate different selection strategies using this procedure.
 
 <table>
 <tr><th>Task <th>genomicSimulationC (C) <th>genomicSimulation (R)
@@ -926,7 +971,7 @@ select.top.10.phenotypes <- function(group, heritability) {
                      GEBV=see.group.data(group,"BV"))
 
   # simulate phenotype = genotype + environmental variation
-  # using normally distributed Ve and heritability H^2 = (Ve + Vg)/Vg
+  # using normally distributed Ve and heritability H^2 = Vg/(Vg + Ve)  
   Vg <- var(info$GEBV)
   Ve <- Vg/heritability - Vg
   info$Pheno <- info$GEBV + rnorm(length(info$GEBV), mean=0, sd = sqrt(Ve))

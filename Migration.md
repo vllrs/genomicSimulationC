@@ -87,6 +87,9 @@ Function signatures for file output functions were simplified. So were function 
 	<td>`gsc_BidirectionalIterator it = gsc_create_bidirectional_iter_fromAM(<m>, NO_GROUP);`<br>`gsc_save_utility_bvs(<f>, &it, <eff>);`<br>`gsc_delete_bidirectional_iter(&it);`
 </table>
 
+The signedness and size of integer parameters may have changed as part of an effort to increase consistency in integer types. The changes will depend on the definitions given to type aliases `GSC_ID_T`, `GSC_GLOBALX_T`, `GSC_LOCALX_T`, `GSC_GENOLEN_T`, so a list exact type casts you need to add to upgrade a script from v0.2.5 to v0.2.6 cannot be made. You will need to add your own type casts as requested by the compiler.
+
+
 
 # 0.2.4 → 0.2.5
 

@@ -1,15 +1,15 @@
 #include "sim-test.h"
 
 float calculate_heterozygosity(SimData* d, GroupNum group_number) {
-	int hetcount = 0;
-    int gn = get_group_size(d, group_number);
+	size_t hetcount = 0;
+    size_t gn = get_group_size(d, group_number);
     assert(gn < 1000);
     char* galleles[1000];
     get_group_genes(d, group_number, gn, galleles);
 
 	// uses subjects as the first index
-	for (int i = 0; i < gn; i++) {
-        for (int j = 0; j < d->genome.n_markers; j += 2) {
+	for (size_t i = 0; i < gn; i++) {
+        for (size_t j = 0; j < d->genome.n_markers; j += 2) {
 			if (galleles[i][j] != galleles[i][j + 1]) {
 				hetcount += 1;
 			}
@@ -47,8 +47,8 @@ int test_savers(unsigned int rseed) {
             .will_save_alleles_to_file=GSC_FALSE,
             .will_save_to_simdata=GSC_TRUE};
 
-    unsigned int firstparents[] = {2, 3, 1, 4, 0};
-    unsigned int secondparents[] = {4, 1, 3, 2, 5};
+    GSC_GLOBALX_T firstparents[] = {2, 3, 1, 4, 0};
+    GSC_GLOBALX_T secondparents[] = {4, 1, 3, 2, 5};
     GroupNum f1 = gsc_make_targeted_crosses(d, 5, firstparents, secondparents, NO_MAP, NO_MAP, g); // produce 5 offspring
     g.will_track_pedigree = GSC_TRUE;
     g.will_allocate_ids = GSC_FALSE;
@@ -58,7 +58,7 @@ int test_savers(unsigned int rseed) {
     g.will_allocate_ids = GSC_TRUE;
     make_doubled_haploids(d,f2, NO_MAP,g); // produce 5 offspring that don't have names or know their parents.
 
-    size_t toprint[] = {0,1,//2,3,4,5 from g0
+    GSC_GLOBALX_T toprint[] = {0,1,//2,3,4,5 from g0
                      6,7,//8,9,10 from f1
                      11,15,//11,12,13,14,15 from f2
                      16,17//18,19,20 from f3
@@ -174,7 +174,7 @@ int test_savers(unsigned int rseed) {
 
 
     // try save-as-you-go savers (ideally you'd run this with a very low CONTIG_WIDTH, and also for all crossing funcs.
-    size_t parentix[] = {20};
+    GSC_GLOBALX_T parentix[] = {20};
     GroupNum parent = make_group_from(d,1,parentix);
     g = (GenOptions){.will_name_offspring=GSC_FALSE,
             .offspring_name_prefix="",
@@ -738,21 +738,21 @@ static void check_matrix_with_different_specification_levels(int seed, char* fil
 
         // only header
         spec.spec.matrix.has_header = has_header;
-        spec.spec.matrix.markers_as_rows = GSC_UNINIT;
+        spec.spec.matrix.markers_as_rows = GSC_NA;
         spec.spec.matrix.cell_style = GSC_GENOTYPECELLSTYLE_UNKNOWN;
         load_genotypefile(d2,filename,spec);
         ++it; check_genotypes(d2,it,0);
 
         // only orientation
-        spec.spec.matrix.has_header = GSC_UNINIT;
+        spec.spec.matrix.has_header = GSC_NA;
         spec.spec.matrix.markers_as_rows = markers_as_rows;
         spec.spec.matrix.cell_style = GSC_GENOTYPECELLSTYLE_UNKNOWN;
         load_genotypefile(d2,filename,spec);
         ++it; check_genotypes(d2,it,0);
 
         // only style
-        spec.spec.matrix.has_header = GSC_UNINIT;
-        spec.spec.matrix.markers_as_rows = GSC_UNINIT;
+        spec.spec.matrix.has_header = GSC_NA;
+        spec.spec.matrix.markers_as_rows = GSC_NA;
         spec.spec.matrix.cell_style = style;
         load_genotypefile(d2,filename,spec);
         ++it; check_genotypes(d2,it,0);
@@ -791,7 +791,7 @@ m2 AT AA TT
 	assert(it == 1);
     f1 = TEST1_GENOMATRIX_LOADERS[it-1];
     write_to_file(filename, f1);
-    load_genotypefile(d,filename,define_matrix_format_details(GSC_UNINIT,GSC_FALSE,GSC_GENOTYPECELLSTYLE_UNKNOWN));
+    load_genotypefile(d,filename,define_matrix_format_details(GSC_NA,GSC_FALSE,GSC_GENOTYPECELLSTYLE_UNKNOWN));
     check_genotypes(d,it,0);
     check_matrix_with_different_specification_levels(seed, filename, fmap, GSC_FALSE,
                                                      GSC_TRUE,GSC_FALSE,GSC_GENOTYPECELLSTYLE_PAIR);
@@ -1254,7 +1254,7 @@ m2 AT AA TT
     ++it; filename[it / 26] = (it % 26) + 'A';
     f1 = TEST1_GENOMATRIX_LOADERS[it-1];
     write_to_file(filename, f1);
-    load_genotypefile(d2,filename,define_matrix_format_details(GSC_FALSE,GSC_UNINIT,GSC_GENOTYPECELLSTYLE_UNKNOWN));
+    load_genotypefile(d2,filename,define_matrix_format_details(GSC_FALSE,GSC_NA,GSC_GENOTYPECELLSTYLE_UNKNOWN));
     cid += 3;
     fflush(stdout);
     assert(d2->n_groups == 1);
@@ -1395,7 +1395,7 @@ m2 AT AA TT
     ++it; filename[it / 26] = (it % 26) + 'A';
     f1 = TEST1_GENOMATRIX_LOADERS[it-1];
     write_to_file(filename, f1);
-    load_genotypefile(d2,filename,define_matrix_format_details(GSC_UNINIT,GSC_FALSE,GSC_GENOTYPECELLSTYLE_UNKNOWN));
+    load_genotypefile(d2,filename,define_matrix_format_details(GSC_NA,GSC_FALSE,GSC_GENOTYPECELLSTYLE_UNKNOWN));
     cid += 3;
     fflush(stdout);
     assert(d2->n_groups == 1);
@@ -1850,6 +1850,28 @@ GroupNum test_labels(SimData *d, GroupNum g0) {
     assert(d->m->labels[label1index][3] == newerlabel1values[2]);
     assert(d->m->labels[label1index][4] == newerlabel1values[3]);
     assert(d->m->labels[label1index][5] == newlabel1value);
+    
+    // & repeat, without specific choice of group
+    const int newestlabel1values[] = {2,4,6};
+    change_label_to_values(d, NO_GROUP, 2, label1, 3, newestlabel1values);
+    assert(d->n_labels == 2);
+    assert(d->m->n_labels == 2);
+    assert(d->m->labels != NULL);
+    assert(d->m->labels[label1index] != NULL);
+    assert(d->m->labels[label2index] != NULL);
+    assert(d->m->labels[label1index][0] == newlabel1value);
+    assert(d->m->labels[label1index][1] == newerlabel1values[0]);
+    assert(d->m->labels[label1index][2] == newestlabel1values[0]);
+    assert(d->m->labels[label1index][3] == newestlabel1values[1]);
+    assert(d->m->labels[label1index][4] == newestlabel1values[2]);
+    assert(d->m->labels[label1index][5] == newlabel1value);
+    const int fixlabel1values[] = {newerlabel1values[1],newerlabel1values[2],newerlabel1values[3],newlabel1value};
+    change_label_to_values(d, g0, 2, label1, 4, fixlabel1values); // fix for further tests
+    assert(d->m->labels[label1index][1] == newerlabel1values[0]);
+    assert(d->m->labels[label1index][2] == newerlabel1values[1]);
+    assert(d->m->labels[label1index][3] == newerlabel1values[2]);
+    assert(d->m->labels[label1index][4] == newerlabel1values[3]);
+    assert(d->m->labels[label1index][5] == newlabel1value);
 
     // Test name-setters here too, they use the same procedure as change_label_to_values
     // (Tests when setting whole body not just group)
@@ -1918,13 +1940,13 @@ GroupNum test_labels(SimData *d, GroupNum g0) {
     assert(d->n_groups == 3);
     assert(g0.num != groupB.num && f1.num != groupB.num);
     assert(get_group_size(d, groupB) == 2+4);
-    size_t Bindexes[2+4];
+    GSC_GLOBALX_T Bindexes[2+4];
     get_group_indexes(d, groupB, 2+4, Bindexes);
     assert(Bindexes[0] == 0);
     assert(Bindexes[1] == 5);
     assert(Bindexes[2] == 6 && Bindexes[3] == 7 && Bindexes[4] == 8 && Bindexes[5] == 9);
 
-    size_t outtakes[4] = {6,7,8,9};
+    GSC_GLOBALX_T outtakes[4] = {6,7,8,9};
     GroupNum f1outtakes = make_group_from(d,4,outtakes);
     assert(d->n_groups == 3); // not 4, because it's corrected by get_new_group_num inside make_group_from
     GroupNum toCombine[2] = {f1, f1outtakes};
@@ -2049,7 +2071,7 @@ GroupNum test_random_splits(SimData *d, GroupNum g0) {
     // Can split into bins; repeat 10x for confidence
     for (int i = 0; i < 10; ++i) {
         GroupNum grpB[3];
-        int grpBsizes[3] = {1,3,2};
+        GSC_GLOBALX_T grpBsizes[3] = {1,3,2};
         split_into_buckets(d,g0,3,grpBsizes,grpB);
         assert(d->n_groups == 3);
         assert(get_group_size(d,grpB[0]) == 1);
@@ -2196,7 +2218,7 @@ GroupNum test_specific_splits(SimData *d, GroupNum g0) {
     assert(get_group_size(d,families[1]) == 5);
     assert(get_group_size(d,families[2]) == 5);
     // Check all groups contain families
-    size_t f1family1[5];
+    GSC_GLOBALX_T f1family1[5];
     assert(get_group_indexes(d,families[0],5,f1family1) == 5);
     assert(d->m->pedigrees[0][f1family1[0]].id == d->m->pedigrees[0][f1family1[1]].id &&
             d->m->pedigrees[0][f1family1[0]].id == d->m->pedigrees[0][f1family1[2]].id &&
@@ -2207,7 +2229,7 @@ GroupNum test_specific_splits(SimData *d, GroupNum g0) {
             d->m->pedigrees[1][f1family1[0]].id == d->m->pedigrees[1][f1family1[3]].id &&
             d->m->pedigrees[1][f1family1[0]].id == d->m->pedigrees[1][f1family1[4]].id);
 
-    size_t f1family2[5];
+    GSC_GLOBALX_T f1family2[5];
     assert(get_group_indexes(d,families[1],5,f1family2) == 5);
     assert(d->m->pedigrees[0][f1family1[0]].id == d->m->pedigrees[0][f1family1[1]].id &&
             d->m->pedigrees[0][f1family1[0]].id == d->m->pedigrees[0][f1family1[2]].id &&
@@ -2218,7 +2240,7 @@ GroupNum test_specific_splits(SimData *d, GroupNum g0) {
             d->m->pedigrees[1][f1family1[0]].id == d->m->pedigrees[1][f1family1[3]].id &&
             d->m->pedigrees[1][f1family1[0]].id == d->m->pedigrees[1][f1family1[4]].id);
 
-    size_t f1family3[5];
+    GSC_GLOBALX_T f1family3[5];
     assert(get_group_indexes(d,families[2],5,f1family3) == 5);
     assert(d->m->pedigrees[0][f1family1[0]].id == d->m->pedigrees[0][f1family1[1]].id &&
             d->m->pedigrees[0][f1family1[0]].id == d->m->pedigrees[0][f1family1[2]].id &&
@@ -2243,7 +2265,7 @@ GroupNum test_specific_splits(SimData *d, GroupNum g0) {
     assert(d->n_groups == 1);
 
     // Can split into halfsib families
-    unsigned int combinations[2][4];
+    GSC_GLOBALX_T combinations[2][4];
     combinations[0][0] = 0; combinations[1][0] = 1;
     combinations[0][1] = 0; combinations[1][1] = 2;
     combinations[0][2] = 3; combinations[1][2] = 1;
@@ -2261,7 +2283,7 @@ GroupNum test_specific_splits(SimData *d, GroupNum g0) {
     // Check all halfsib families share the same parent 1
     int fhsfamily1size = get_group_size(d,halfsibfamilies[0]); // assumes the largest hsfamily will be the first one seen
     assert(fhsfamily1size == 10);
-    size_t fhsfamily1[10];
+    GSC_GLOBALX_T fhsfamily1[10];
     assert(get_group_indexes(d,halfsibfamilies[0],10,fhsfamily1) == fhsfamily1size);
     assert(d->m->pedigrees[0][fhsfamily1[0]].id == d->m->pedigrees[0][fhsfamily1[1]].id &&
             d->m->pedigrees[0][fhsfamily1[0]].id == d->m->pedigrees[0][fhsfamily1[2]].id &&
@@ -2275,7 +2297,7 @@ GroupNum test_specific_splits(SimData *d, GroupNum g0) {
 
     int fhsfamily2size = get_group_size(d,halfsibfamilies[1]);
     assert(fhsfamily2size == 5);
-    size_t fhsfamily2[5];
+    GSC_GLOBALX_T fhsfamily2[5];
     assert(get_group_indexes(d,halfsibfamilies[1],5,fhsfamily2) == fhsfamily2size);
     assert(d->m->pedigrees[0][fhsfamily2[0]].id == d->m->pedigrees[0][fhsfamily2[1]].id &&
             d->m->pedigrees[0][fhsfamily2[0]].id == d->m->pedigrees[0][fhsfamily2[2]].id &&
@@ -2284,7 +2306,7 @@ GroupNum test_specific_splits(SimData *d, GroupNum g0) {
 
     int fhsfamily3size = get_group_size(d,halfsibfamilies[2]);
     assert(fhsfamily3size == 5);
-    size_t fhsfamily3[5];
+    GSC_GLOBALX_T fhsfamily3[5];
     assert(get_group_indexes(d,halfsibfamilies[2],5,fhsfamily3) == fhsfamily3size);
     assert(d->m->pedigrees[0][fhsfamily3[0]].id == d->m->pedigrees[0][fhsfamily3[1]].id &&
             d->m->pedigrees[0][fhsfamily3[0]].id == d->m->pedigrees[0][fhsfamily3[2]].id &&
@@ -2344,11 +2366,11 @@ GroupNum test_specific_splits(SimData *d, GroupNum g0) {
     assert(d->n_groups == 2);
 
     // Can create a group from indexes
-    size_t splitters[4] = {0, 2, 5, 6};
+    GSC_GLOBALX_T splitters[4] = {0, 2, 5, 6};
     GroupNum g0b = make_group_from(d, 4, splitters);
     assert(d->n_groups == 3);
     assert(get_group_size(d,g0) == 3 && get_group_size(d,g0b) == 4);
-    size_t g0bi[4];
+    GSC_GLOBALX_T g0bi[4];
     assert(get_group_indexes(d,g0b,4,g0bi) == 4);
     assert(g0bi[0] == 0 && g0bi[1] == 2 && g0bi[2] == 5 && g0bi[3] == 6);
 
@@ -2360,7 +2382,7 @@ GroupNum test_specific_splits(SimData *d, GroupNum g0) {
     delete_group(d, fhs);
     assert(d->n_groups == 2);
 
-    size_t g0members[6] = {0,1,2,3,4,5};
+    GSC_GLOBALX_T g0members[6] = {0,1,2,3,4,5};
     g0 = make_group_from(d,6,g0members);
     assert(d->n_groups >= 1);
 
@@ -2504,7 +2526,7 @@ int test_optimal_calculators(SimData *d, GroupNum g0) {
     assert(fabs(founderoptimal - 1.8) < TOL);
     assert(fabs(calculate_optimal_possible_bv(d, g0, (EffectID){.id=2}) - 2) < TOL);
 
-    size_t factorout[2] = {4,5};
+    GSC_GLOBALX_T factorout[2] = {4,5};
     GroupNum g0partial = make_group_from(d,2, factorout);
     char* founderhaplo2 = calculate_optimal_possible_haplotype(d, g0partial, eff_set);
     assert(founderhaplo2[0] == 'T');
@@ -2709,18 +2731,18 @@ int test_crossing_randomly(SimData *d, GroupNum g1) {
     gopt.will_track_pedigree = GSC_TRUE;
     // Test random crossing seems about right
     GroupNum g2 = make_random_crosses( d , g1, 4, 0, NO_MAP, gopt);
-    size_t g2ixs[4];
-    assert(get_group_indexes(d, g2, -1, g2ixs) == 4);
+    GSC_GLOBALX_T g2ixs[4];
+    assert(get_group_indexes(d, g2, 0, g2ixs) == 4);
 
     assert(get_group_size(d, g2) == 4);
-    int g2minid = d->m->ids[g2ixs[0]].id;
-    int g2maxid = d->m->ids[g2ixs[3]].id;
+    GSC_ID_T g2minid = d->m->ids[g2ixs[0]].id;
+    GSC_ID_T g2maxid = d->m->ids[g2ixs[3]].id;
     fprintf(stdout, "Should be random parents: %d, %d, %d, %d\n",
-            d->m->pedigrees[0][g2ixs[0]].id, d->m->pedigrees[0][g2ixs[1]].id,
-            d->m->pedigrees[0][g2ixs[2]].id, d->m->pedigrees[0][g2ixs[3]].id);
+            (int) d->m->pedigrees[0][g2ixs[0]].id, (int) d->m->pedigrees[0][g2ixs[1]].id,
+            (int) d->m->pedigrees[0][g2ixs[2]].id, (int) d->m->pedigrees[0][g2ixs[3]].id);
     fprintf(stdout, "Should be random parents: %d, %d, %d, %d\n\n",
-            d->m->pedigrees[1][g2ixs[0]].id, d->m->pedigrees[1][g2ixs[1]].id,
-            d->m->pedigrees[1][g2ixs[2]].id, d->m->pedigrees[1][g2ixs[3]].id);
+            (int) d->m->pedigrees[1][g2ixs[0]].id, (int) d->m->pedigrees[1][g2ixs[1]].id,
+            (int) d->m->pedigrees[1][g2ixs[2]].id, (int) d->m->pedigrees[1][g2ixs[3]].id);
 
     printf("...crossed randomly within a group\n");
 
@@ -2734,11 +2756,11 @@ int test_crossing_randomly(SimData *d, GroupNum g1) {
     assert(d->m->pedigrees[1][g2ixs[3] + 3].id >= g2minid && d->m->pedigrees[1][g2ixs[3] + 3].id <= g2maxid ); //right parent groupings
     assert(d->m->pedigrees[0][g2ixs[3] + 3].id < g2minid); //right parent groupings
     fprintf(stdout, "Should be random parents: %d, %d, %d\n",
-            d->m->pedigrees[0][g2ixs[3] + 1].id, d->m->pedigrees[0][g2ixs[3] + 3].id,
-            d->m->pedigrees[0][g2ixs[3] + 5].id);
+            (int) d->m->pedigrees[0][g2ixs[3] + 1].id, (int) d->m->pedigrees[0][g2ixs[3] + 3].id,
+            (int) d->m->pedigrees[0][g2ixs[3] + 5].id);
     fprintf(stdout, "Should be random parents: %d, %d, %d\n",
-            d->m->pedigrees[1][g2ixs[3] + 1].id, d->m->pedigrees[1][g2ixs[3] + 3].id,
-            d->m->pedigrees[1][g2ixs[3] + 5].id);
+            (int) d->m->pedigrees[1][g2ixs[3] + 1].id, (int) d->m->pedigrees[1][g2ixs[3] + 3].id,
+            (int) d->m->pedigrees[1][g2ixs[3] + 5].id);
 
     delete_group(d, g3);
 
@@ -2774,7 +2796,7 @@ int test_deletors(SimData *d, GroupNum g0) {
     assert(d->n_groups == ngroups1);
 
     GroupNum groups1b[1000];
-    size_t groupcounts1b[1000];
+    GSC_GLOBALX_T groupcounts1b[1000];
     int ngroups1b = get_existing_group_counts(d, groups1b, groupcounts1b);
     assert(d->n_groups == ngroups1b);
     assert(ngroups1b == ngroups1);
@@ -2879,7 +2901,7 @@ int test_iterators(SimData* d, GroupNum gp) {
         .will_save_alleles_to_file = GSC_FALSE,
         .will_save_to_simdata = GSC_TRUE
     };
-    unsigned int combos[2][3];
+    GSC_GLOBALX_T combos[2][3];
     combos[0][0] = 0; combos[1][0] = 0;
     combos[0][1] = 1; combos[1][1] = 2;
     combos[0][2] = 1; combos[1][2] = 5;
@@ -2975,7 +2997,7 @@ int test_getters(SimData* d, GroupNum gp) {
     assert(strncmp(alleles[5],"ATAATT", 6) == 0); // G06
 
     char* names[6];
-    assert(get_group_names(d, gp, -1, names) == 6);
+    assert(get_group_names(d, gp, 0, names) == 6);
     assert(strcmp(names[0], "G01") == 0);
     assert(strcmp(names[1], "G02") == 0);
     assert(strcmp(names[2], "G03") == 0);
@@ -2984,12 +3006,12 @@ int test_getters(SimData* d, GroupNum gp) {
     assert(strcmp(names[5], "G06") == 0);
 
     PedigreeID ids[10];
-    assert(get_group_ids(d, gp, -1, ids) == 6);
+    assert(get_group_ids(d, gp, -1, ids) == 6); // one old-style form using -1 to mean unknown group size.
     for (int i = 0; i < 6; ++i) {
         assert(ids[i].id == i+1);
     }
 
-    size_t indexes[6];
+    GSC_GLOBALX_T indexes[6];
     assert(get_group_indexes(d, gp, 6, indexes) == 6);
     for (int i = 0; i < 6; ++i) {
         assert(indexes[i] == i);
@@ -3004,7 +3026,7 @@ int test_getters(SimData* d, GroupNum gp) {
     assert(fabs(bvs[4] - 0.6) < TOL);
     assert(fabs(bvs[5] - (-0.3)) < TOL);
 
-    unsigned int combos[2][3];
+    GSC_GLOBALX_T combos[2][3];
     combos[0][0] = 0; combos[1][0] = 0;
     combos[0][1] = 1; combos[1][1] = 2;
     combos[0][2] = 1; combos[1][2] = 5;
@@ -3023,7 +3045,7 @@ int test_getters(SimData* d, GroupNum gp) {
     GroupNum f1 = make_targeted_crosses(d,3,combos[0],combos[1], NO_MAP, NO_MAP, g);
 
     PedigreeID p1s[3]; PedigreeID p2s[6];
-    assert(get_group_parent_ids(d, f1, GSC_UNINIT, 1, p1s) == 3);
+    assert(get_group_parent_ids(d, f1, 0, 1, p1s) == 3);
     assert(get_group_parent_ids(d, f1, 3, 2, p2s) == 3);
     assert(p1s[0].id == 1);
     assert(p1s[1].id == 2);
@@ -3034,7 +3056,7 @@ int test_getters(SimData* d, GroupNum gp) {
 
     char* p1ns[3]; char* p2ns[3];
     assert(get_group_parent_names(d, f1, 3, 1, p1ns) == 3);
-    assert(get_group_parent_names(d, f1, GSC_UNINIT, 2, p2ns) == 3);
+    assert(get_group_parent_names(d, f1, 0, 2, p2ns) == 3);
     assert(strncmp(p1ns[0],"G01",sizeof(char)*5)==0);
     assert(strncmp(p1ns[1],"G02",sizeof(char)*5)==0);
     assert(strncmp(p1ns[2],"G02",sizeof(char)*5)==0);
