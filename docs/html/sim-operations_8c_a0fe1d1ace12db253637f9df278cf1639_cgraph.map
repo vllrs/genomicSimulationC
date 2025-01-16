@@ -2,9 +2,9 @@
 <area shape="rect" id="node1" title="save&#45;as&#45;you&#45;go (genotypes/alleles)" alt="" coords="5,65,160,109"/>
 <area shape="rect" id="node2" href="$group__iterators.html#ga5cca400276ca83acceaab36d5f79aab1" title=" " alt="" coords="220,5,381,49"/>
 <area shape="rect" id="node3" href="$group__deletors.html#ga83d81991036aca26e2ec5b03f8b33b8a" title="Deletes a gsc_BidirectionalIterator object." alt="" coords="208,73,393,101"/>
-<area shape="rect" id="node4" href="$group__savers.html#ga6037070d12fa45c78b642d611fae311e" title="Prints simulated genotypes to a file." alt="" coords="210,125,391,153"/>
-<area shape="rect" id="node5" href="$sim-operations_8c.html#a101ba1c1812ca6bb5d69042904e8fdaa" title="Kernel for gsc_scaffold_save_genotype_info, when the goal is to save the (phased) allele pairs of eac..." alt="" coords="441,60,691,88"/>
-<area shape="rect" id="node7" href="$sim-operations_8c.html#a11101d643d9ee74d16324d55cbb6682e" title="Prints a matrix of genotype information to a file." alt="" coords="460,151,673,179"/>
+<area shape="rect" id="node4" href="$group__savers.html#gad5a9b943294b42f094bd347f990967cb" title="Prints simulated genotypes to a file." alt="" coords="210,125,391,153"/>
+<area shape="rect" id="node5" href="$sim-operations_8c.html#a223d292e567ad088b1582c24b9d894ab" title="Kernel for gsc_scaffold_save_genotype_info, when the goal is to save the (phased) allele pairs of eac..." alt="" coords="441,60,691,88"/>
+<area shape="rect" id="node7" href="$sim-operations_8c.html#a3bbb853ca13c593a940d86882dda2361" title="Prints a matrix of genotype information to a file." alt="" coords="460,151,673,179"/>
 <area shape="rect" id="node6" href="$group__liteget.html#ga5e1e89782604c9ab47f196e1da233362" title="Get the alleles of a genotype." alt="" coords="748,20,860,48"/>
 <area shape="rect" id="node8" href="$group__liteget.html#ga0ce82f67cb5e35a1c73bef54138202f6" title="Get the persistent id of a genotype." alt="" coords="762,72,846,100"/>
 <area shape="rect" id="node9" href="$group__liteget.html#ga22a270ae73aaa86d93212a4a40f999dc" title="Get the name of a genotype." alt="" coords="751,124,857,152"/>

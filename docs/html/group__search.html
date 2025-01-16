@@ -21,7 +21,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">genomicSimulationC<span id="projectnumber">&#160;0.2.5.05</span>
+   <div id="projectname">genomicSimulationC<span id="projectnumber">&#160;0.2.5.11</span>
    </div>
   </td>
  </tr>
@@ -90,28 +90,28 @@ Functions</h2></td></tr>
 <tr class="memitem:gad9d1d0b5575da681af7789354447612a"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__search.html#gad9d1d0b5575da681af7789354447612a">gsc_get_parents_of_id</a> (const <a class="el" href="structgsc___allele_matrix.html">gsc_AlleleMatrix</a> *start, const <a class="el" href="structgsc___pedigree_i_d.html">gsc_PedigreeID</a> id, <a class="el" href="structgsc___pedigree_i_d.html">gsc_PedigreeID</a> output[static 2])</td></tr>
 <tr class="memdesc:gad9d1d0b5575da681af7789354447612a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Saves the ids of the parents of a genotype with a particular id to the output array <code>output</code>.  <a href="group__search.html#gad9d1d0b5575da681af7789354447612a">More...</a><br /></td></tr>
 <tr class="separator:gad9d1d0b5575da681af7789354447612a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga2678c4659fdb74d5b5fb074ad40137a3"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__search.html#ga2678c4659fdb74d5b5fb074ad40137a3">gsc_get_ids_of_names</a> (const <a class="el" href="structgsc___allele_matrix.html">gsc_AlleleMatrix</a> *start, const int n_names, const char **names, <a class="el" href="structgsc___pedigree_i_d.html">gsc_PedigreeID</a> *output)</td></tr>
-<tr class="memdesc:ga2678c4659fdb74d5b5fb074ad40137a3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Search for genotypes with certain names in a linked list of <a class="el" href="structgsc___allele_matrix.html">gsc_AlleleMatrix</a> and save the ids of those names.  <a href="group__search.html#ga2678c4659fdb74d5b5fb074ad40137a3">More...</a><br /></td></tr>
-<tr class="separator:ga2678c4659fdb74d5b5fb074ad40137a3"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gaefd205844e67944ce7017049516db3bd"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__search.html#gaefd205844e67944ce7017049516db3bd">gsc_get_index_of_child</a> (const <a class="el" href="structgsc___allele_matrix.html">gsc_AlleleMatrix</a> *start, const <a class="el" href="structgsc___pedigree_i_d.html">gsc_PedigreeID</a> parent1id, const <a class="el" href="structgsc___pedigree_i_d.html">gsc_PedigreeID</a> parent2id)</td></tr>
-<tr class="memdesc:gaefd205844e67944ce7017049516db3bd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Search for a genotype with parentage matching two given parent ids in a linked list of <a class="el" href="structgsc___allele_matrix.html">gsc_AlleleMatrix</a>, and return its index.  <a href="group__search.html#gaefd205844e67944ce7017049516db3bd">More...</a><br /></td></tr>
-<tr class="separator:gaefd205844e67944ce7017049516db3bd"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga292d9c26b8d027c931a84fd09a32518f"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__search.html#ga292d9c26b8d027c931a84fd09a32518f">gsc_get_index_of_name</a> (const <a class="el" href="structgsc___allele_matrix.html">gsc_AlleleMatrix</a> *start, const char *name)</td></tr>
-<tr class="memdesc:ga292d9c26b8d027c931a84fd09a32518f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Search for a genotype with a particular name in a linked list of <a class="el" href="structgsc___allele_matrix.html">gsc_AlleleMatrix</a>, and return its index.  <a href="group__search.html#ga292d9c26b8d027c931a84fd09a32518f">More...</a><br /></td></tr>
-<tr class="separator:ga292d9c26b8d027c931a84fd09a32518f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga7cab70998890225a5cac0d4f08850a55"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structgsc___pedigree_i_d.html">gsc_PedigreeID</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__search.html#ga7cab70998890225a5cac0d4f08850a55">gsc_get_id_of_index</a> (const <a class="el" href="structgsc___allele_matrix.html">gsc_AlleleMatrix</a> *start, const int index)</td></tr>
-<tr class="memdesc:ga7cab70998890225a5cac0d4f08850a55"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the id of a genotype by its index.  <a href="group__search.html#ga7cab70998890225a5cac0d4f08850a55">More...</a><br /></td></tr>
-<tr class="separator:ga7cab70998890225a5cac0d4f08850a55"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga6bf46b86dfd6f562de44b86f64ba6eda"><td class="memItemLeft" align="right" valign="top">char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__search.html#ga6bf46b86dfd6f562de44b86f64ba6eda">gsc_get_genes_of_index</a> (const <a class="el" href="structgsc___allele_matrix.html">gsc_AlleleMatrix</a> *start, const int index)</td></tr>
-<tr class="memdesc:ga6bf46b86dfd6f562de44b86f64ba6eda"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the alleles of a genotype by its index.  <a href="group__search.html#ga6bf46b86dfd6f562de44b86f64ba6eda">More...</a><br /></td></tr>
-<tr class="separator:ga6bf46b86dfd6f562de44b86f64ba6eda"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga7dd3ac972d163ae0c8792a5989387b29"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__search.html#ga7dd3ac972d163ae0c8792a5989387b29">gsc_get_ids_of_names</a> (const <a class="el" href="structgsc___allele_matrix.html">gsc_AlleleMatrix</a> *start, const size_t n_names, const char **names, <a class="el" href="structgsc___pedigree_i_d.html">gsc_PedigreeID</a> *output)</td></tr>
+<tr class="memdesc:ga7dd3ac972d163ae0c8792a5989387b29"><td class="mdescLeft">&#160;</td><td class="mdescRight">Search for genotypes with certain names in a linked list of <a class="el" href="structgsc___allele_matrix.html">gsc_AlleleMatrix</a> and save the ids of those names.  <a href="group__search.html#ga7dd3ac972d163ae0c8792a5989387b29">More...</a><br /></td></tr>
+<tr class="separator:ga7dd3ac972d163ae0c8792a5989387b29"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaa6663c53f59634d0ea5f865accf2173c"><td class="memItemLeft" align="right" valign="top">unsigned int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__search.html#gaa6663c53f59634d0ea5f865accf2173c">gsc_get_index_of_child</a> (const <a class="el" href="structgsc___allele_matrix.html">gsc_AlleleMatrix</a> *start, const <a class="el" href="structgsc___pedigree_i_d.html">gsc_PedigreeID</a> parent1id, const <a class="el" href="structgsc___pedigree_i_d.html">gsc_PedigreeID</a> parent2id)</td></tr>
+<tr class="memdesc:gaa6663c53f59634d0ea5f865accf2173c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Search for a genotype with parentage matching two given parent ids in a linked list of <a class="el" href="structgsc___allele_matrix.html">gsc_AlleleMatrix</a>, and return its index.  <a href="group__search.html#gaa6663c53f59634d0ea5f865accf2173c">More...</a><br /></td></tr>
+<tr class="separator:gaa6663c53f59634d0ea5f865accf2173c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gad6c28080cf3e1f85fd78229aba53bf78"><td class="memItemLeft" align="right" valign="top">unsigned int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__search.html#gad6c28080cf3e1f85fd78229aba53bf78">gsc_get_index_of_name</a> (const <a class="el" href="structgsc___allele_matrix.html">gsc_AlleleMatrix</a> *start, const char *name)</td></tr>
+<tr class="memdesc:gad6c28080cf3e1f85fd78229aba53bf78"><td class="mdescLeft">&#160;</td><td class="mdescRight">Search for a genotype with a particular name in a linked list of <a class="el" href="structgsc___allele_matrix.html">gsc_AlleleMatrix</a>, and return its global index in the list.  <a href="group__search.html#gad6c28080cf3e1f85fd78229aba53bf78">More...</a><br /></td></tr>
+<tr class="separator:gad6c28080cf3e1f85fd78229aba53bf78"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gad771fc548df03810adee69ab36cfce9d"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structgsc___pedigree_i_d.html">gsc_PedigreeID</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__search.html#gad771fc548df03810adee69ab36cfce9d">gsc_get_id_of_index</a> (const <a class="el" href="structgsc___allele_matrix.html">gsc_AlleleMatrix</a> *start, const unsigned int index)</td></tr>
+<tr class="memdesc:gad771fc548df03810adee69ab36cfce9d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the id of a genotype by its index.  <a href="group__search.html#gad771fc548df03810adee69ab36cfce9d">More...</a><br /></td></tr>
+<tr class="separator:gad771fc548df03810adee69ab36cfce9d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga560870b592f5936255e9bd2a55e7eb56"><td class="memItemLeft" align="right" valign="top">char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__search.html#ga560870b592f5936255e9bd2a55e7eb56">gsc_get_genes_of_index</a> (const <a class="el" href="structgsc___allele_matrix.html">gsc_AlleleMatrix</a> *start, const unsigned int index)</td></tr>
+<tr class="memdesc:ga560870b592f5936255e9bd2a55e7eb56"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the alleles of a genotype by its index.  <a href="group__search.html#ga560870b592f5936255e9bd2a55e7eb56">More...</a><br /></td></tr>
+<tr class="separator:ga560870b592f5936255e9bd2a55e7eb56"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <p >These functions search the simulation data for the genotype that matches a particular known piece of information, eg a name, id, global index, or set of parents. </p>
 <p >Depending on the size of the simulation, they may not be fast. </p>
 <h2 class="groupheader">Function Documentation</h2>
-<a id="ga6bf46b86dfd6f562de44b86f64ba6eda" name="ga6bf46b86dfd6f562de44b86f64ba6eda"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ga6bf46b86dfd6f562de44b86f64ba6eda">&#9670;&nbsp;</a></span>gsc_get_genes_of_index()</h2>
+<a id="ga560870b592f5936255e9bd2a55e7eb56" name="ga560870b592f5936255e9bd2a55e7eb56"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga560870b592f5936255e9bd2a55e7eb56">&#9670;&nbsp;</a></span>gsc_get_genes_of_index()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -125,7 +125,7 @@ Functions</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const int&#160;</td>
+          <td class="paramtype">const unsigned int&#160;</td>
           <td class="paramname"><em>index</em>&#160;</td>
         </tr>
         <tr>
@@ -137,7 +137,7 @@ Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Get the alleles of a genotype by its index. </p>
-<p >The index is assumed to be 0-based, starting at the first entry of <code>start</code> and continuing through the linked list to which <code>start</code> belongs. Exits if the linked list does not contain that index.</p>
+<p >The index is assumed to be 0-based, starting at the first entry of <code>start</code> and continuing through the linked list to which <code>start</code> belongs.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">start</td><td>Pointer to the first of a linked list of gsc_AlleleMatrixes in which to locate the id at a particular index. </td></tr>
@@ -145,16 +145,16 @@ Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>the alleles of the genotype that has idnex <code>index</code>, as a copy of the pointer to the heap memory where the genotype is saved (so <em>don't</em> free the pointer returned from this function). It points to a sequence of characters, ordered according to the markers in the <a class="el" href="structgsc___sim_data.html" title="Composite type that is used to run crossing simulations.">gsc_SimData</a> to which the <a class="el" href="structgsc___allele_matrix.html">gsc_AlleleMatrix</a> belongs. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>the alleles of the genotype that has idnex <code>index</code>, as a copy of the pointer to the heap memory where the genotype is saved (so <em>don't</em> free the pointer returned from this function). It points to a sequence of characters, ordered according to the markers in the <a class="el" href="structgsc___sim_data.html" title="Composite type that is used to run crossing simulations.">gsc_SimData</a> to which the <a class="el" href="structgsc___allele_matrix.html">gsc_AlleleMatrix</a> belongs. If there is an error in locating the genotype, it returns NULL instead. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="sim-operations_8c_source.html#l02348">2348</a> of file <a class="el" href="sim-operations_8c_source.html">sim-operations.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="sim-operations_8c_source.html#l02457">2457</a> of file <a class="el" href="sim-operations_8c_source.html">sim-operations.c</a>.</p>
 <div id="dynsection-1" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-1-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
 <div id="dynsection-1-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-1-content" class="dyncontent" style="display:none;">
-<div class="center"><img src="group__search_ga6bf46b86dfd6f562de44b86f64ba6eda_icgraph.png" border="0" usemap="#agroup__search_ga6bf46b86dfd6f562de44b86f64ba6eda_icgraph" alt=""/></div>
-<map name="agroup__search_ga6bf46b86dfd6f562de44b86f64ba6eda_icgraph" id="agroup__search_ga6bf46b86dfd6f562de44b86f64ba6eda_icgraph">
+<div class="center"><img src="group__search_ga560870b592f5936255e9bd2a55e7eb56_icgraph.png" border="0" usemap="#agroup__search_ga560870b592f5936255e9bd2a55e7eb56_icgraph" alt=""/></div>
+<map name="agroup__search_ga560870b592f5936255e9bd2a55e7eb56_icgraph" id="agroup__search_ga560870b592f5936255e9bd2a55e7eb56_icgraph">
 <area shape="rect" title="Get the alleles of a genotype by its index." alt="" coords="250,13,414,41"/>
 <area shape="rect" href="group__recomb.html#ga17bf2aa42201490431e56ba42ace85fc" title="Provides guesses as to the location of recombination events that led to the creation of certain genot..." alt="" coords="5,5,202,49"/>
 </map>
@@ -162,8 +162,8 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="ga7cab70998890225a5cac0d4f08850a55" name="ga7cab70998890225a5cac0d4f08850a55"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ga7cab70998890225a5cac0d4f08850a55">&#9670;&nbsp;</a></span>gsc_get_id_of_index()</h2>
+<a id="gad771fc548df03810adee69ab36cfce9d" name="gad771fc548df03810adee69ab36cfce9d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gad771fc548df03810adee69ab36cfce9d">&#9670;&nbsp;</a></span>gsc_get_id_of_index()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -177,7 +177,7 @@ Functions</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const int&#160;</td>
+          <td class="paramtype">const unsigned int&#160;</td>
           <td class="paramname"><em>index</em>&#160;</td>
         </tr>
         <tr>
@@ -199,14 +199,14 @@ Functions</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>the lifetime-unique id of the genotype found at that index. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="sim-operations_8c_source.html#l02311">2311</a> of file <a class="el" href="sim-operations_8c_source.html">sim-operations.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="sim-operations_8c_source.html#l02418">2418</a> of file <a class="el" href="sim-operations_8c_source.html">sim-operations.c</a>.</p>
 <div id="dynsection-2" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-2-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
 <div id="dynsection-2-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-2-content" class="dyncontent" style="display:none;">
-<div class="center"><img src="group__search_ga7cab70998890225a5cac0d4f08850a55_icgraph.png" border="0" usemap="#agroup__search_ga7cab70998890225a5cac0d4f08850a55_icgraph" alt=""/></div>
-<map name="agroup__search_ga7cab70998890225a5cac0d4f08850a55_icgraph" id="agroup__search_ga7cab70998890225a5cac0d4f08850a55_icgraph">
+<div class="center"><img src="group__search_gad771fc548df03810adee69ab36cfce9d_icgraph.png" border="0" usemap="#agroup__search_gad771fc548df03810adee69ab36cfce9d_icgraph" alt=""/></div>
+<map name="agroup__search_gad771fc548df03810adee69ab36cfce9d_icgraph" id="agroup__search_gad771fc548df03810adee69ab36cfce9d_icgraph">
 <area shape="rect" title="Get the id of a genotype by its index." alt="" coords="250,13,389,41"/>
 <area shape="rect" href="group__recomb.html#ga17bf2aa42201490431e56ba42ace85fc" title="Provides guesses as to the location of recombination events that led to the creation of certain genot..." alt="" coords="5,5,202,49"/>
 </map>
@@ -214,8 +214,8 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="ga2678c4659fdb74d5b5fb074ad40137a3" name="ga2678c4659fdb74d5b5fb074ad40137a3"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ga2678c4659fdb74d5b5fb074ad40137a3">&#9670;&nbsp;</a></span>gsc_get_ids_of_names()</h2>
+<a id="ga7dd3ac972d163ae0c8792a5989387b29" name="ga7dd3ac972d163ae0c8792a5989387b29"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga7dd3ac972d163ae0c8792a5989387b29">&#9670;&nbsp;</a></span>gsc_get_ids_of_names()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -229,7 +229,7 @@ Functions</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const int&#160;</td>
+          <td class="paramtype">const size_t&#160;</td>
           <td class="paramname"><em>n_names</em>, </td>
         </tr>
         <tr>
@@ -266,14 +266,14 @@ Functions</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="sim-operations_8c_source.html#l02191">2191</a> of file <a class="el" href="sim-operations_8c_source.html">sim-operations.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="sim-operations_8c_source.html#l02287">2287</a> of file <a class="el" href="sim-operations_8c_source.html">sim-operations.c</a>.</p>
 <div id="dynsection-3" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-3-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
 <div id="dynsection-3-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-3-content" class="dyncontent" style="display:none;">
-<div class="center"><img src="group__search_ga2678c4659fdb74d5b5fb074ad40137a3_icgraph.png" border="0" usemap="#agroup__search_ga2678c4659fdb74d5b5fb074ad40137a3_icgraph" alt=""/></div>
-<map name="agroup__search_ga2678c4659fdb74d5b5fb074ad40137a3_icgraph" id="agroup__search_ga2678c4659fdb74d5b5fb074ad40137a3_icgraph">
+<div class="center"><img src="group__search_ga7dd3ac972d163ae0c8792a5989387b29_icgraph.png" border="0" usemap="#agroup__search_ga7dd3ac972d163ae0c8792a5989387b29_icgraph" alt=""/></div>
+<map name="agroup__search_ga7dd3ac972d163ae0c8792a5989387b29_icgraph" id="agroup__search_ga7dd3ac972d163ae0c8792a5989387b29_icgraph">
 <area shape="rect" title="Search for genotypes with certain names in a linked list of gsc_AlleleMatrix and save the ids of thos..." alt="" coords="233,13,387,41"/>
 <area shape="rect" href="group__crossers.html#ga2b8100d2d30cf1ada0db8403663076ff" title="Perform crosses between previously&#45;generated offspring of pairs of parents identified by name in a fi..." alt="" coords="5,5,185,49"/>
 </map>
@@ -281,14 +281,14 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="gaefd205844e67944ce7017049516db3bd" name="gaefd205844e67944ce7017049516db3bd"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#gaefd205844e67944ce7017049516db3bd">&#9670;&nbsp;</a></span>gsc_get_index_of_child()</h2>
+<a id="gaa6663c53f59634d0ea5f865accf2173c" name="gaa6663c53f59634d0ea5f865accf2173c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gaa6663c53f59634d0ea5f865accf2173c">&#9670;&nbsp;</a></span>gsc_get_index_of_child()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">int gsc_get_index_of_child </td>
+          <td class="memname">unsigned int gsc_get_index_of_child </td>
           <td>(</td>
           <td class="paramtype">const <a class="el" href="structgsc___allele_matrix.html">gsc_AlleleMatrix</a> *&#160;</td>
           <td class="paramname"><em>start</em>, </td>
@@ -324,16 +324,16 @@ Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>the index (0-based, starting at the start of <code>start</code>) of the first sequentially located genotype whose parents match the two parent ids provided </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>the index (0-based, starting at the start of <code>start</code>) of the first sequentially located genotype whose parents match the two parent ids provided, or GSC_NA_GLOBALX if no child of those parents could be found </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="sim-operations_8c_source.html#l02243">2243</a> of file <a class="el" href="sim-operations_8c_source.html">sim-operations.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="sim-operations_8c_source.html#l02341">2341</a> of file <a class="el" href="sim-operations_8c_source.html">sim-operations.c</a>.</p>
 <div id="dynsection-4" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-4-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
 <div id="dynsection-4-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-4-content" class="dyncontent" style="display:none;">
-<div class="center"><img src="group__search_gaefd205844e67944ce7017049516db3bd_icgraph.png" border="0" usemap="#agroup__search_gaefd205844e67944ce7017049516db3bd_icgraph" alt=""/></div>
-<map name="agroup__search_gaefd205844e67944ce7017049516db3bd_icgraph" id="agroup__search_gaefd205844e67944ce7017049516db3bd_icgraph">
+<div class="center"><img src="group__search_gaa6663c53f59634d0ea5f865accf2173c_icgraph.png" border="0" usemap="#agroup__search_gaa6663c53f59634d0ea5f865accf2173c_icgraph" alt=""/></div>
+<map name="agroup__search_gaa6663c53f59634d0ea5f865accf2173c_icgraph" id="agroup__search_gaa6663c53f59634d0ea5f865accf2173c_icgraph">
 <area shape="rect" title="Search for a genotype with parentage matching two given parent ids in a linked list of gsc_AlleleMatr..." alt="" coords="233,13,389,41"/>
 <area shape="rect" href="group__crossers.html#ga2b8100d2d30cf1ada0db8403663076ff" title="Perform crosses between previously&#45;generated offspring of pairs of parents identified by name in a fi..." alt="" coords="5,5,185,49"/>
 </map>
@@ -341,14 +341,14 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="ga292d9c26b8d027c931a84fd09a32518f" name="ga292d9c26b8d027c931a84fd09a32518f"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ga292d9c26b8d027c931a84fd09a32518f">&#9670;&nbsp;</a></span>gsc_get_index_of_name()</h2>
+<a id="gad6c28080cf3e1f85fd78229aba53bf78" name="gad6c28080cf3e1f85fd78229aba53bf78"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gad6c28080cf3e1f85fd78229aba53bf78">&#9670;&nbsp;</a></span>gsc_get_index_of_name()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">int gsc_get_index_of_name </td>
+          <td class="memname">unsigned int gsc_get_index_of_name </td>
           <td>(</td>
           <td class="paramtype">const <a class="el" href="structgsc___allele_matrix.html">gsc_AlleleMatrix</a> *&#160;</td>
           <td class="paramname"><em>start</em>, </td>
@@ -367,8 +367,7 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Search for a genotype with a particular name in a linked list of <a class="el" href="structgsc___allele_matrix.html">gsc_AlleleMatrix</a>, and return its index. </p>
-<p >Exits if such a child cannot be found.</p>
+<p>Search for a genotype with a particular name in a linked list of <a class="el" href="structgsc___allele_matrix.html">gsc_AlleleMatrix</a>, and return its global index in the list. </p>
 <p >This function must check every genotype in the linked list for matches, so will be relatively slow.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
@@ -377,16 +376,16 @@ Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>the index (0-based, starting at the start of <code>start</code>) of the first sequentially located genotype whose name is the same as the provided name. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>the index (0-based, starting at the start of <code>start</code>) of the first sequentially located genotype whose name is the same as the provided name, or GSC_NA_GLOBALX if the name could not be found. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="sim-operations_8c_source.html#l02278">2278</a> of file <a class="el" href="sim-operations_8c_source.html">sim-operations.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="sim-operations_8c_source.html#l02381">2381</a> of file <a class="el" href="sim-operations_8c_source.html">sim-operations.c</a>.</p>
 <div id="dynsection-5" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-5-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
 <div id="dynsection-5-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-5-content" class="dyncontent" style="display:none;">
-<div class="center"><img src="group__search_ga292d9c26b8d027c931a84fd09a32518f_icgraph.png" border="0" usemap="#agroup__search_ga292d9c26b8d027c931a84fd09a32518f_icgraph" alt=""/></div>
-<map name="agroup__search_ga292d9c26b8d027c931a84fd09a32518f_icgraph" id="agroup__search_ga292d9c26b8d027c931a84fd09a32518f_icgraph">
+<div class="center"><img src="group__search_gad6c28080cf3e1f85fd78229aba53bf78_icgraph.png" border="0" usemap="#agroup__search_gad6c28080cf3e1f85fd78229aba53bf78_icgraph" alt=""/></div>
+<map name="agroup__search_gad6c28080cf3e1f85fd78229aba53bf78_icgraph" id="agroup__search_gad6c28080cf3e1f85fd78229aba53bf78_icgraph">
 <area shape="rect" title="Search for a genotype with a particular name in a linked list of gsc_AlleleMatrix,..." alt="" coords="250,44,411,72"/>
 <area shape="rect" href="group__recomb.html#ga17bf2aa42201490431e56ba42ace85fc" title="Provides guesses as to the location of recombination events that led to the creation of certain genot..." alt="" coords="5,5,202,49"/>
 <area shape="rect" href="group__crossers.html#ga5c0be901d03d0e5dd3d74bc19a4bea70" title="Perform crosses between pairs of parents identified by name in a file and allocate the resulting offs..." alt="" coords="9,73,198,101"/>
@@ -422,7 +421,7 @@ Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Returns the name of the genotype with a given id. </p>
-<p >The function uses a bisection search on the <a class="el" href="structgsc___allele_matrix.html">gsc_AlleleMatrix</a> where it should be found. Searching by id is therefore fast. </p><dl class="section see"><dt>See also</dt><dd><a class="el" href="group__supporters.html#ga8b0703c50a67ddcbe49f6b8d4ba3162b" title="Binary search through a list of PedigreeIDs.">gsc_get_from_ordered_pedigree_list()</a></dd></dl>
+<p >The function uses a bisection search on the <a class="el" href="structgsc___allele_matrix.html">gsc_AlleleMatrix</a> where it should be found. Searching by id is therefore fast. </p><dl class="section see"><dt>See also</dt><dd><a class="el" href="group__supporters.html#ga094a7c1d7f83050cce4d00fdcc89d6b3" title="Binary search through list of unsigned integers.">gsc_get_from_ordered_pedigree_list()</a></dd></dl>
 <p>This function assumes that ids are never reshuffled in the <a class="el" href="structgsc___sim_data.html" title="Composite type that is used to run crossing simulations.">gsc_SimData</a>. This is true as long as gsc_condense_allele_matrix's process of moving genotypes while retaining their order is the only genotype-rearranging function in use. This function's algorithm will need to be revisited if different genotype-rearranging processes are implemented.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
@@ -433,7 +432,7 @@ Functions</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>the name of the genotype that has id <code>id</code>, as a copy of the pointer to the heap memory where the name is saved (so <em>don't</em> free the pointer returned from this function). Returns NULL if the ID does not exist. Note the return value might also be NULL if the genotype of this ID has no name. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="sim-operations_8c_source.html#l02066">2066</a> of file <a class="el" href="sim-operations_8c_source.html">sim-operations.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="sim-operations_8c_source.html#l02160">2160</a> of file <a class="el" href="sim-operations_8c_source.html">sim-operations.c</a>.</p>
 <div id="dynsection-6" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-6-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
 <div id="dynsection-6-summary" class="dynsummary" style="display:block;">
@@ -442,7 +441,7 @@ Functions</h2></td></tr>
 <div class="center"><img src="group__search_ga5c7cd898a40e515c3164c98821068978_cgraph.png" border="0" usemap="#agroup__search_ga5c7cd898a40e515c3164c98821068978_cgraph" alt=""/></div>
 <map name="agroup__search_ga5c7cd898a40e515c3164c98821068978_cgraph" id="agroup__search_ga5c7cd898a40e515c3164c98821068978_cgraph">
 <area shape="rect" title="Returns the name of the genotype with a given id." alt="" coords="5,13,146,41"/>
-<area shape="rect" href="group__supporters.html#ga8b0703c50a67ddcbe49f6b8d4ba3162b" title="Binary search through a list of PedigreeIDs." alt="" coords="194,5,343,49"/>
+<area shape="rect" href="group__supporters.html#ga094a7c1d7f83050cce4d00fdcc89d6b3" title="Binary search through list of unsigned integers." alt="" coords="194,5,343,49"/>
 </map>
 </div>
 <div id="dynsection-7" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
@@ -453,23 +452,22 @@ Functions</h2></td></tr>
 <div class="center"><img src="group__search_ga5c7cd898a40e515c3164c98821068978_icgraph.png" border="0" usemap="#agroup__search_ga5c7cd898a40e515c3164c98821068978_icgraph" alt=""/></div>
 <map name="agroup__search_ga5c7cd898a40e515c3164c98821068978_icgraph" id="agroup__search_ga5c7cd898a40e515c3164c98821068978_icgraph">
 <area shape="rect" title="Returns the name of the genotype with a given id." alt="" coords="1371,132,1512,160"/>
-<area shape="rect" href="group__collgetters.html#ga69155fb6c1a62f930f2a0a8b6c419cfb" title="Gets the names of either the first or second parent of each member of the group." alt="" coords="1149,64,1298,108"/>
-<area shape="rect" href="group__savers.html#gad7643e196ad0f8e7db3c044894395de1" title="Prints pedigrees to a file." alt="" coords="899,171,1075,199"/>
-<area shape="rect" href="sim-operations_8c.html#a6b80bf9dd00c35da0b57bbdae52098ec" title="Identifies and saves (recursively) the pedigree of a pair of parents." alt="" coords="1123,208,1323,236"/>
+<area shape="rect" href="group__collgetters.html#ga7eeb668312d559b35df34dfe8727f814" title="Gets the names of either the first or second parent of each member of the group." alt="" coords="1149,64,1298,108"/>
+<area shape="rect" href="group__savers.html#ga23f6de68db1db7fd293a1e3207eeef6c" title="Prints pedigrees to a file." alt="" coords="899,171,1075,199"/>
+<area shape="rect" href="sim-operations_8c.html#a8102058ad778cb4a23bd645d6786244d" title="Identifies and saves (recursively) the pedigree of a pair of parents." alt="" coords="1123,208,1323,236"/>
 <area shape="rect" href="sim-operations_8c.html#aa66b6b0ec2f03012e39df20c6f35b532" title="save&#45;as&#45;you&#45;go (pedigrees)" alt="" coords="696,132,851,176"/>
-<area shape="rect" href="group__savers.html#ga7033cc948a0521fea492fd0d45988ad6" title="Prints pedigrees of genotypes in the simulation to a file." alt="" coords="704,200,843,228"/>
-<area shape="rect" href="group__crossers.html#ga28b0fcf60b6a8f6e8ca470f7b5d0a4b7" title="Make new genotypes (generic function)" alt="" coords="483,132,645,176"/>
-<area shape="rect" href="group__crossers.html#ga15af204958dc69717334c46b19219a2d" title="Creates an identical copy of each member of a group." alt="" coords="274,5,400,33"/>
+<area shape="rect" href="group__savers.html#gadce5deef59fa66f9208c2ed4d53a4768" title="Prints pedigrees of genotypes in the simulation to a file." alt="" coords="704,200,843,228"/>
+<area shape="rect" href="group__crossers.html#gaa5a1b4a1a80f8baf5b5730d7b7db0b77" title="Make new genotypes (generic function)" alt="" coords="483,132,645,176"/>
+<area shape="rect" href="group__crossers.html#gaa3907b6b8ad3de641916b2df83e43a01" title="Creates an identical copy of each member of a group." alt="" coords="274,5,400,33"/>
 <area shape="rect" href="group__crossers.html#ga6c230330ca9a9db9459d4477512a21af" title="Creates a doubled haploid from each member of a group." alt="" coords="243,57,431,85"/>
-<area shape="rect" href="group__crossers.html#ga03af5446006203244dd3080cf75af26f" title="Performs random crosses among members of a group." alt="" coords="245,109,429,137"/>
-<area shape="rect" href="group__crossers.html#ga652376b5a34d24f239e5fc0b167c067b" title="Performs random crosses where the first parent comes from one group and the second from another." alt="" coords="245,161,429,205"/>
-<area shape="rect" href="group__crossers.html#ga4450224009587f4cd4a972413423c96e" title="Performs the crosses of pairs of parents whose indexes are provided in an array." alt="" coords="243,229,431,257"/>
+<area shape="rect" href="group__crossers.html#ga4bfb4f901f7a921e6a3a2f1d8a9ac249" title="Performs random crosses among members of a group." alt="" coords="245,109,429,137"/>
+<area shape="rect" href="group__crossers.html#gaa43222283d6fb3745f5fab73b36af22d" title="Performs random crosses where the first parent comes from one group and the second from another." alt="" coords="245,161,429,205"/>
+<area shape="rect" href="group__crossers.html#gafe3072701f2dea2a505dd8fc9e8bc936" title="Performs the crosses of pairs of parents whose indexes are provided in an array." alt="" coords="243,229,431,257"/>
 <area shape="rect" href="group__crossers.html#gab625453074798be6ba8677a5d4986edf" title="Selfs each member of a group for a certain number of generations." alt="" coords="276,281,398,309"/>
-<area shape="rect" href="group__crossers.html#gab19b3eb80b5fe460d17c93e0c27f7aaf" title="Find the top m percent of a group and perform random crosses between those top individuals." alt="" coords="26,97,174,141"/>
-<area shape="rect" href="group__crossers.html#gaa70fd79312587d8e9fc166c64612cbce" title="Perform crosses between all pairs of parents in the group from_group and allocates the resulting offs..." alt="" coords="8,165,192,209"/>
-<area shape="rect" href="group__crossers.html#ga5c0be901d03d0e5dd3d74bc19a4bea70" title="Perform crosses between pairs of parents identified by name in a file and allocate the resulting offs..." alt="" coords="5,233,195,261"/>
-<area shape="rect" href="group__crossers.html#ga2b8100d2d30cf1ada0db8403663076ff" title="Perform crosses between previously&#45;generated offspring of pairs of parents identified by name in a fi..." alt="" coords="10,285,190,329"/>
-<area shape="rect" href="group__collgetters.html#ga62d40b0b1cb6c5ded508b8a5f161d38a" title="Gets the full pedigree string (as per gsc_save_group_full_pedigree() ) of each member of the group." alt="" coords="479,200,648,228"/>
+<area shape="rect" href="group__crossers.html#gaa70fd79312587d8e9fc166c64612cbce" title="Perform crosses between all pairs of parents in the group from_group and allocates the resulting offs..." alt="" coords="8,161,192,205"/>
+<area shape="rect" href="group__crossers.html#ga5c0be901d03d0e5dd3d74bc19a4bea70" title="Perform crosses between pairs of parents identified by name in a file and allocate the resulting offs..." alt="" coords="5,229,195,257"/>
+<area shape="rect" href="group__crossers.html#ga2b8100d2d30cf1ada0db8403663076ff" title="Perform crosses between previously&#45;generated offspring of pairs of parents identified by name in a fi..." alt="" coords="10,281,190,325"/>
+<area shape="rect" href="group__collgetters.html#ga9e31fa104eccb5ed54832b21b7c5d73e" title="Gets the full pedigree string (as per gsc_save_group_full_pedigree() ) of each member of the group." alt="" coords="479,200,648,228"/>
 </map>
 </div>
 
@@ -508,7 +506,7 @@ Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Saves the ids of the parents of a genotype with a particular id to the output array <code>output</code>. </p>
-<p >The function uses a bisection search on the <a class="el" href="structgsc___allele_matrix.html">gsc_AlleleMatrix</a> where it should be found. Searching by id is therefore fast. </p><dl class="section see"><dt>See also</dt><dd><a class="el" href="group__supporters.html#ga8b0703c50a67ddcbe49f6b8d4ba3162b" title="Binary search through a list of PedigreeIDs.">gsc_get_from_ordered_pedigree_list()</a></dd></dl>
+<p >The function uses a bisection search on the <a class="el" href="structgsc___allele_matrix.html">gsc_AlleleMatrix</a> where it should be found. Searching by id is therefore fast. </p><dl class="section see"><dt>See also</dt><dd><a class="el" href="group__supporters.html#ga094a7c1d7f83050cce4d00fdcc89d6b3" title="Binary search through list of unsigned integers.">gsc_get_from_ordered_pedigree_list()</a></dd></dl>
 <p>This function assumes that ids are never reshuffled in the <a class="el" href="structgsc___sim_data.html" title="Composite type that is used to run crossing simulations.">gsc_SimData</a>. This is true as long as gsc_condense_allele_matrix's process of moving genotypes while retaining their order is the only genotype-rearranging function in use. This function's algorithm will need to be revisited if different genotype-rearranging processes are implemented.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
@@ -520,7 +518,7 @@ Functions</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>0 when the id is successfully identified and at least one parent's id is known, 1 if neither parent is known, and 2 if the ID passed in does not exist. The ids of both parents if at least one parent is known/nonzero are saved to the array <code>output</code>. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="sim-operations_8c_source.html#l02132">2132</a> of file <a class="el" href="sim-operations_8c_source.html">sim-operations.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="sim-operations_8c_source.html#l02226">2226</a> of file <a class="el" href="sim-operations_8c_source.html">sim-operations.c</a>.</p>
 <div id="dynsection-8" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-8-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
 <div id="dynsection-8-summary" class="dynsummary" style="display:block;">
@@ -529,7 +527,7 @@ Functions</h2></td></tr>
 <div class="center"><img src="group__search_gad9d1d0b5575da681af7789354447612a_cgraph.png" border="0" usemap="#agroup__search_gad9d1d0b5575da681af7789354447612a_cgraph" alt=""/></div>
 <map name="agroup__search_gad9d1d0b5575da681af7789354447612a_cgraph" id="agroup__search_gad9d1d0b5575da681af7789354447612a_cgraph">
 <area shape="rect" title="Saves the ids of the parents of a genotype with a particular id to the output array output." alt="" coords="5,13,157,41"/>
-<area shape="rect" href="group__supporters.html#ga8b0703c50a67ddcbe49f6b8d4ba3162b" title="Binary search through a list of PedigreeIDs." alt="" coords="205,5,354,49"/>
+<area shape="rect" href="group__supporters.html#ga094a7c1d7f83050cce4d00fdcc89d6b3" title="Binary search through list of unsigned integers." alt="" coords="205,5,354,49"/>
 </map>
 </div>
 <div id="dynsection-9" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
@@ -540,22 +538,21 @@ Functions</h2></td></tr>
 <div class="center"><img src="group__search_gad9d1d0b5575da681af7789354447612a_icgraph.png" border="0" usemap="#agroup__search_gad9d1d0b5575da681af7789354447612a_icgraph" alt=""/></div>
 <map name="agroup__search_gad9d1d0b5575da681af7789354447612a_icgraph" id="agroup__search_gad9d1d0b5575da681af7789354447612a_icgraph">
 <area shape="rect" title="Saves the ids of the parents of a genotype with a particular id to the output array output." alt="" coords="1371,171,1523,199"/>
-<area shape="rect" href="sim-operations_8c.html#a6b80bf9dd00c35da0b57bbdae52098ec" title="Identifies and saves (recursively) the pedigree of a pair of parents." alt="" coords="1123,171,1323,199"/>
-<area shape="rect" href="group__savers.html#gad7643e196ad0f8e7db3c044894395de1" title="Prints pedigrees to a file." alt="" coords="899,171,1075,199"/>
+<area shape="rect" href="sim-operations_8c.html#a8102058ad778cb4a23bd645d6786244d" title="Identifies and saves (recursively) the pedigree of a pair of parents." alt="" coords="1123,171,1323,199"/>
+<area shape="rect" href="group__savers.html#ga23f6de68db1db7fd293a1e3207eeef6c" title="Prints pedigrees to a file." alt="" coords="899,171,1075,199"/>
 <area shape="rect" href="sim-operations_8c.html#aa66b6b0ec2f03012e39df20c6f35b532" title="save&#45;as&#45;you&#45;go (pedigrees)" alt="" coords="696,132,851,176"/>
-<area shape="rect" href="group__savers.html#ga7033cc948a0521fea492fd0d45988ad6" title="Prints pedigrees of genotypes in the simulation to a file." alt="" coords="704,200,843,228"/>
-<area shape="rect" href="group__crossers.html#ga28b0fcf60b6a8f6e8ca470f7b5d0a4b7" title="Make new genotypes (generic function)" alt="" coords="483,132,645,176"/>
-<area shape="rect" href="group__crossers.html#ga15af204958dc69717334c46b19219a2d" title="Creates an identical copy of each member of a group." alt="" coords="274,5,400,33"/>
+<area shape="rect" href="group__savers.html#gadce5deef59fa66f9208c2ed4d53a4768" title="Prints pedigrees of genotypes in the simulation to a file." alt="" coords="704,200,843,228"/>
+<area shape="rect" href="group__crossers.html#gaa5a1b4a1a80f8baf5b5730d7b7db0b77" title="Make new genotypes (generic function)" alt="" coords="483,132,645,176"/>
+<area shape="rect" href="group__crossers.html#gaa3907b6b8ad3de641916b2df83e43a01" title="Creates an identical copy of each member of a group." alt="" coords="274,5,400,33"/>
 <area shape="rect" href="group__crossers.html#ga6c230330ca9a9db9459d4477512a21af" title="Creates a doubled haploid from each member of a group." alt="" coords="243,57,431,85"/>
-<area shape="rect" href="group__crossers.html#ga03af5446006203244dd3080cf75af26f" title="Performs random crosses among members of a group." alt="" coords="245,109,429,137"/>
-<area shape="rect" href="group__crossers.html#ga652376b5a34d24f239e5fc0b167c067b" title="Performs random crosses where the first parent comes from one group and the second from another." alt="" coords="245,161,429,205"/>
-<area shape="rect" href="group__crossers.html#ga4450224009587f4cd4a972413423c96e" title="Performs the crosses of pairs of parents whose indexes are provided in an array." alt="" coords="243,229,431,257"/>
+<area shape="rect" href="group__crossers.html#ga4bfb4f901f7a921e6a3a2f1d8a9ac249" title="Performs random crosses among members of a group." alt="" coords="245,109,429,137"/>
+<area shape="rect" href="group__crossers.html#gaa43222283d6fb3745f5fab73b36af22d" title="Performs random crosses where the first parent comes from one group and the second from another." alt="" coords="245,161,429,205"/>
+<area shape="rect" href="group__crossers.html#gafe3072701f2dea2a505dd8fc9e8bc936" title="Performs the crosses of pairs of parents whose indexes are provided in an array." alt="" coords="243,229,431,257"/>
 <area shape="rect" href="group__crossers.html#gab625453074798be6ba8677a5d4986edf" title="Selfs each member of a group for a certain number of generations." alt="" coords="276,281,398,309"/>
-<area shape="rect" href="group__crossers.html#gab19b3eb80b5fe460d17c93e0c27f7aaf" title="Find the top m percent of a group and perform random crosses between those top individuals." alt="" coords="26,97,174,141"/>
-<area shape="rect" href="group__crossers.html#gaa70fd79312587d8e9fc166c64612cbce" title="Perform crosses between all pairs of parents in the group from_group and allocates the resulting offs..." alt="" coords="8,165,192,209"/>
-<area shape="rect" href="group__crossers.html#ga5c0be901d03d0e5dd3d74bc19a4bea70" title="Perform crosses between pairs of parents identified by name in a file and allocate the resulting offs..." alt="" coords="5,233,195,261"/>
-<area shape="rect" href="group__crossers.html#ga2b8100d2d30cf1ada0db8403663076ff" title="Perform crosses between previously&#45;generated offspring of pairs of parents identified by name in a fi..." alt="" coords="10,285,190,329"/>
-<area shape="rect" href="group__collgetters.html#ga62d40b0b1cb6c5ded508b8a5f161d38a" title="Gets the full pedigree string (as per gsc_save_group_full_pedigree() ) of each member of the group." alt="" coords="479,200,648,228"/>
+<area shape="rect" href="group__crossers.html#gaa70fd79312587d8e9fc166c64612cbce" title="Perform crosses between all pairs of parents in the group from_group and allocates the resulting offs..." alt="" coords="8,161,192,205"/>
+<area shape="rect" href="group__crossers.html#ga5c0be901d03d0e5dd3d74bc19a4bea70" title="Perform crosses between pairs of parents identified by name in a file and allocate the resulting offs..." alt="" coords="5,229,195,257"/>
+<area shape="rect" href="group__crossers.html#ga2b8100d2d30cf1ada0db8403663076ff" title="Perform crosses between previously&#45;generated offspring of pairs of parents identified by name in a fi..." alt="" coords="10,281,190,325"/>
+<area shape="rect" href="group__collgetters.html#ga9e31fa104eccb5ed54832b21b7c5d73e" title="Gets the full pedigree string (as per gsc_save_group_full_pedigree() ) of each member of the group." alt="" coords="479,200,648,228"/>
 </map>
 </div>
 

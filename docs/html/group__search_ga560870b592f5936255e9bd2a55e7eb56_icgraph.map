@@ -1,0 +1,4 @@
+<map id="gsc_get_genes_of_index" name="gsc_get_genes_of_index">
+<area shape="rect" id="node1" title="Get the alleles of a genotype by its index." alt="" coords="250,13,414,41"/>
+<area shape="rect" id="node2" href="$group__recomb.html#ga17bf2aa42201490431e56ba42ace85fc" title="Provides guesses as to the location of recombination events that led to the creation of certain genot..." alt="" coords="5,5,202,49"/>
+</map>

@@ -1,8 +1,8 @@
 <map id="gsc_calculate_group_local_bvs" name="gsc_calculate_group_local_bvs">
 <area shape="rect" id="node1" title="Given a set of blocks of markers in a file, for each genotype in a group, calculate the local fitness..." alt="" coords="5,101,146,145"/>
-<area shape="rect" id="node2" href="$group__collgetters.html#gab256e999fe9540658a2a3aba11260cb5" title="Gets a shallow copy of the genes/alleles of each member of the group." alt="" coords="203,5,352,33"/>
-<area shape="rect" id="node3" href="$group__collgetters.html#gae9131a8c72149706f67f6e4a48add79c" title="Function to count the number of genotypes that currently belong to the specified group." alt="" coords="409,84,546,112"/>
-<area shape="rect" id="node4" href="$group__collgetters.html#gae5fac6863433c073871766b80aa6d966" title="Gets the ids of each member of the group." alt="" coords="212,109,343,137"/>
-<area shape="rect" id="node5" href="$group__collgetters.html#ga52a8eb90f5a6a1f9dabea81955d0bb79" title="Gets a shallow copy of the names of each member of the group." alt="" coords="201,161,354,189"/>
-<area shape="rect" id="node6" href="$group__supporters.html#gac15b90373af3e2828a786215e90963a8" title="Function to identify the lookup index of a marker effect set identifier." alt="" coords="194,213,361,241"/>
+<area shape="rect" id="node2" href="$group__collgetters.html#ga2b7c79c5606acd2acd0bf4025c56970a" title="Gets a shallow copy of the genes/alleles of each member of the group." alt="" coords="203,5,352,33"/>
+<area shape="rect" id="node3" href="$group__collgetters.html#gae7e7c996acde461041a47f3800c77f46" title="Gets the ids of each member of the group." alt="" coords="212,57,343,85"/>
+<area shape="rect" id="node4" href="$group__collgetters.html#gac338e0b139b4f50a55e91fa6aaf87b25" title="Gets a shallow copy of the names of each member of the group." alt="" coords="201,109,354,137"/>
+<area shape="rect" id="node5" href="$group__collgetters.html#gafd291a4e0e38f9cf8963c3cd972fe8a7" title="Function to count the number of genotypes that currently belong to the specified group." alt="" coords="209,161,346,189"/>
+<area shape="rect" id="node6" href="$group__supporters.html#gaaccd39d5505c6a05a95fb8469662c9a0" title="Function to identify the lookup index of a marker effect set identifier." alt="" coords="194,213,361,241"/>
 </map>

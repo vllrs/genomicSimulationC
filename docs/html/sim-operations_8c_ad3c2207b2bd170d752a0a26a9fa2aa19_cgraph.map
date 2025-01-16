@@ -1,6 +1,6 @@
 <map id="gsc_helper_parse_mapfile" name="gsc_helper_parse_mapfile">
 <area shape="rect" id="node1" title="Extract the contents of a genetic map file." alt="" coords="5,113,177,141"/>
-<area shape="rect" id="node2" href="$sim-operations_8c.html#a890aa11fc3f54d411dff950b77931835" title="Header row reading and processing for map and effect set files." alt="" coords="232,37,389,81"/>
+<area shape="rect" id="node2" href="$sim-operations_8c.html#a11ff196fb220dfd8336587f016767b66" title="Header row reading and processing for map and effect set files." alt="" coords="232,37,389,81"/>
 <area shape="rect" id="node3" href="$group__structs.html#ga85446dd929940e823745067d0a1d1d5d" title="Allocate memory to store a deep copy of a gsc_TableFileCell, if previously only a shallow copy." alt="" coords="444,15,627,43"/>
 <area shape="rect" id="node8" href="$sim-operations_8c.html#a9022b0b2e12395904757c59db6010d5b" title="Return the next cell from a queue of cells until the queue is exhausted, and thereafter read new cell..." alt="" coords="225,105,396,149"/>
 <area shape="rect" id="node9" href="$group__structs.html#ga85b05dcdc5ec484d918ed2d3330c3ae8" title="Close a gsc_TableFileReader&#39;s file pointer." alt="" coords="246,173,375,217"/>

@@ -1,0 +1,5 @@
+<map id="gsc_helper_output_countmatrix_cell" name="gsc_helper_output_countmatrix_cell">
+<area shape="rect" id="node1" title="Kernel for gsc_scaffold_save_genotype_info, when the goal is to save the allele counts of a particula..." alt="" coords="410,13,639,41"/>
+<area shape="rect" id="node2" href="$group__savers.html#ga37bba3dd2808aad1e2e8df7581d74561" title="Prints allele counts of simulated genotypes to a file." alt="" coords="212,5,362,49"/>
+<area shape="rect" id="node3" href="$group__savers.html#ga7636ac81969c8d41c8da27977bb19150" title="Prints allele counts of genotypes from the simulation to a file." alt="" coords="5,13,164,41"/>
+</map>

@@ -1,5 +1,5 @@
 <map id="gsc_generate_clone" name="gsc_generate_clone">
 <area shape="rect" id="node1" title="Get an identical copy of a given genotype." alt="" coords="406,13,543,41"/>
-<area shape="rect" id="node2" href="$sim-operations_8c.html#a4d4dab463fbb14fdb47834b2b9d1170f" title="offspringGenerator function parameter for gsc_make_clones." alt="" coords="180,5,358,49"/>
-<area shape="rect" id="node3" href="$group__crossers.html#ga15af204958dc69717334c46b19219a2d" title="Creates an identical copy of each member of a group." alt="" coords="5,13,132,41"/>
+<area shape="rect" id="node2" href="$sim-operations_8c.html#ab0152d52dcce6514ebba0fa08810ee8a" title="offspringGenerator function parameter for gsc_make_clones." alt="" coords="180,5,358,49"/>
+<area shape="rect" id="node3" href="$group__crossers.html#gaa3907b6b8ad3de641916b2df83e43a01" title="Creates an identical copy of each member of a group." alt="" coords="5,13,132,41"/>
 </map>

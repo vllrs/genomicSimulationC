@@ -1,0 +1,20 @@
+<map id="gsc_calculate_utility_allele_counts_pair" name="gsc_calculate_utility_allele_counts_pair">
+<area shape="rect" id="node1" title="Calculates the number of times at each marker that two particular alleles appear." alt="" coords="1292,103,1432,147"/>
+<area shape="rect" id="node2" href="$group__calculators.html#ga5eb332e54b2f90f399a28a65cdb25e36" title="Calculate the fitness metric/breeding value for a set of genotypes." alt="" coords="1079,111,1244,139"/>
+<area shape="rect" id="node3" href="$group__calculators.html#ga30689b0f03641259091a72d065951e29" title="Calculate the fitness metric/breeding value for every genotype in the simulation or every genotype in..." alt="" coords="898,80,1025,108"/>
+<area shape="rect" id="node6" href="$group__savers.html#ga710981b758de78c6dd9f4e5ab61971fc" title="Calculate and print breeding values to a file." alt="" coords="892,140,1031,168"/>
+<area shape="rect" id="node4" href="$group__collgetters.html#gaeb456f1672fa37415f985e07baae49a6" title="Gets the breeding values/breeding values/fitnesses of each member of the group." alt="" coords="700,28,833,56"/>
+<area shape="rect" id="node5" href="$group__calculators.html#ga70ea35197fe4dc0eedf17e1c7bb993cb" title="Takes the top_n individuals in the group with the best breeding values/fitnesses and puts them in a n..." alt="" coords="710,80,823,108"/>
+<area shape="rect" id="node7" href="$sim-operations_8c.html#a240267fbee56d8075f7b8fe10c81aaa4" title="save&#45;as&#45;you&#45;go (breeding values)" alt="" coords="689,132,844,176"/>
+<area shape="rect" id="node18" href="$group__savers.html#ga51cba5fcfb6d036614262c57b88a1ee1" title="Prints breeding values of genotypes in the simulation to a file." alt="" coords="716,200,817,228"/>
+<area shape="rect" id="node8" href="$group__crossers.html#gaa5a1b4a1a80f8baf5b5730d7b7db0b77" title="Make new genotypes (generic function)" alt="" coords="479,132,641,176"/>
+<area shape="rect" id="node9" href="$group__crossers.html#gaa3907b6b8ad3de641916b2df83e43a01" title="Creates an identical copy of each member of a group." alt="" coords="274,5,400,33"/>
+<area shape="rect" id="node10" href="$group__crossers.html#ga6c230330ca9a9db9459d4477512a21af" title="Creates a doubled haploid from each member of a group." alt="" coords="243,57,431,85"/>
+<area shape="rect" id="node11" href="$group__crossers.html#ga4bfb4f901f7a921e6a3a2f1d8a9ac249" title="Performs random crosses among members of a group." alt="" coords="245,109,429,137"/>
+<area shape="rect" id="node12" href="$group__crossers.html#gaa43222283d6fb3745f5fab73b36af22d" title="Performs random crosses where the first parent comes from one group and the second from another." alt="" coords="245,161,429,205"/>
+<area shape="rect" id="node13" href="$group__crossers.html#gafe3072701f2dea2a505dd8fc9e8bc936" title="Performs the crosses of pairs of parents whose indexes are provided in an array." alt="" coords="243,229,431,257"/>
+<area shape="rect" id="node17" href="$group__crossers.html#gab625453074798be6ba8677a5d4986edf" title="Selfs each member of a group for a certain number of generations." alt="" coords="276,281,398,309"/>
+<area shape="rect" id="node14" href="$group__crossers.html#gaa70fd79312587d8e9fc166c64612cbce" title="Perform crosses between all pairs of parents in the group from_group and allocates the resulting offs..." alt="" coords="8,161,192,205"/>
+<area shape="rect" id="node15" href="$group__crossers.html#ga5c0be901d03d0e5dd3d74bc19a4bea70" title="Perform crosses between pairs of parents identified by name in a file and allocate the resulting offs..." alt="" coords="5,229,195,257"/>
+<area shape="rect" id="node16" href="$group__crossers.html#ga2b8100d2d30cf1ada0db8403663076ff" title="Perform crosses between previously&#45;generated offspring of pairs of parents identified by name in a fi..." alt="" coords="10,281,190,325"/>
+</map>

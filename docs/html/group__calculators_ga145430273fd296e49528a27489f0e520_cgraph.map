@@ -1,7 +1,7 @@
 <map id="gsc_calculate_optimal_possible_haplotype" name="gsc_calculate_optimal_possible_haplotype">
 <area shape="rect" id="node1" title="Calculates the highest&#45;breeding&#45;value haplotype that can be created from the alleles present in a giv..." alt="" coords="5,76,156,120"/>
-<area shape="rect" id="node2" href="$group__collgetters.html#gab256e999fe9540658a2a3aba11260cb5" title="Gets a shallow copy of the genes/alleles of each member of the group." alt="" coords="213,5,362,33"/>
-<area shape="rect" id="node3" href="$group__collgetters.html#gae9131a8c72149706f67f6e4a48add79c" title="Function to count the number of genotypes that currently belong to the specified group." alt="" coords="419,32,556,60"/>
-<area shape="rect" id="node4" href="$group__supporters.html#gac15b90373af3e2828a786215e90963a8" title="Function to identify the lookup index of a marker effect set identifier." alt="" coords="204,109,371,137"/>
+<area shape="rect" id="node2" href="$group__collgetters.html#ga2b7c79c5606acd2acd0bf4025c56970a" title="Gets a shallow copy of the genes/alleles of each member of the group." alt="" coords="213,5,362,33"/>
+<area shape="rect" id="node3" href="$group__collgetters.html#gafd291a4e0e38f9cf8963c3cd972fe8a7" title="Function to count the number of genotypes that currently belong to the specified group." alt="" coords="219,57,356,85"/>
+<area shape="rect" id="node4" href="$group__supporters.html#gaaccd39d5505c6a05a95fb8469662c9a0" title="Function to identify the lookup index of a marker effect set identifier." alt="" coords="204,109,371,137"/>
 <area shape="rect" id="node5" href="$sim-operations_8c.html#aaaf3ebc75feaf901829232712e55677b" title="Replace calls to malloc direct with this function." alt="" coords="227,161,348,189"/>
 </map>

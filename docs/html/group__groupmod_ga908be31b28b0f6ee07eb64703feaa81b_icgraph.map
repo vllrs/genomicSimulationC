@@ -1,0 +1,7 @@
+<map id="gsc_scaffold_split_by_someallocation" name="gsc_scaffold_split_by_someallocation">
+<area shape="rect" id="node1" title="Split by some allocator (generic function)" alt="" coords="224,76,360,120"/>
+<area shape="rect" id="node2" href="$group__groupmod.html#ga0433ee84c0760569489e2f1ed31dc7c5" title="Allocate each member of the group to one of n groups with custom probabilities for each group." alt="" coords="5,5,176,33"/>
+<area shape="rect" id="node3" href="$group__groupmod.html#ga68012ed8f95ac60ae4875dbf605f5f95" title="Split a group into n groups of equal size (or size differing only by one, if n does not perfectly div..." alt="" coords="11,57,170,85"/>
+<area shape="rect" id="node4" href="$group__groupmod.html#ga02433970bb02f719e2de61c44f573ff4" title="Split a group into n groups of equal size (or size differing only by one, if n does not perfectly div..." alt="" coords="13,109,168,137"/>
+<area shape="rect" id="node5" href="$group__groupmod.html#gae44e90e4bb377a0a2d882d3ee0932621" title="Allocate each member of the group to one of n groups with equal probability." alt="" coords="24,161,157,205"/>
+</map>

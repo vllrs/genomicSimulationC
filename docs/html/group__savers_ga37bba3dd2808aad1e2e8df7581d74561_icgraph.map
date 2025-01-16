@@ -1,0 +1,4 @@
+<map id="gsc_save_utility_allele_counts" name="gsc_save_utility_allele_counts">
+<area shape="rect" id="node1" title="Prints allele counts of simulated genotypes to a file." alt="" coords="212,5,362,49"/>
+<area shape="rect" id="node2" href="$group__savers.html#ga7636ac81969c8d41c8da27977bb19150" title="Prints allele counts of genotypes from the simulation to a file." alt="" coords="5,13,164,41"/>
+</map>

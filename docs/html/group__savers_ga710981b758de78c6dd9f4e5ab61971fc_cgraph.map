@@ -8,9 +8,9 @@
 <area shape="rect" id="node14" href="$group__liteget.html#ga22a270ae73aaa86d93212a4a40f999dc" title="Get the name of a genotype." alt="" coords="222,641,329,669"/>
 <area shape="rect" id="node3" href="$group__maths.html#gadaec2ba547549392530e91e50a3c985d" title="Multiply two sets of a gsc_DecimalMatrix and vector, and add both products to the first column of a p..." alt="" coords="406,57,591,101"/>
 <area shape="rect" id="node4" href="$group__maths.html#ga6fdcedf004c9d08e5135d30deb5b12fa" title="Multiply a gsc_DecimalMatrix to a vector, and add that product to the first column of a provided gsc_..." alt="" coords="425,177,572,221"/>
-<area shape="rect" id="node5" href="$group__calculators.html#ga8f765775d463c59f8437da21dad6fab4" title="Calculates the number of times at each marker that a particular allele appears." alt="" coords="429,245,568,289"/>
-<area shape="rect" id="node6" href="$group__calculators.html#ga19bbe4c5c9d867e9c627bbda7aa9bd22" title="Calculates the number of times at each marker that two particular alleles appear." alt="" coords="429,313,568,357"/>
-<area shape="rect" id="node8" href="$group__maths.html#gae001e0609ac52df335530f9473cb57e1" title="Generates a matrix of c columns, r rows with all 0." alt="" coords="408,125,589,153"/>
+<area shape="rect" id="node5" href="$group__calculators.html#ga82f4e25fa7f7a6f614c9101fa78843ea" title="Calculates the number of times at each marker that a particular allele appears." alt="" coords="429,245,568,289"/>
+<area shape="rect" id="node6" href="$group__calculators.html#ga38627a2841854474e89769ebd5e10902" title="Calculates the number of times at each marker that two particular alleles appear." alt="" coords="429,313,568,357"/>
+<area shape="rect" id="node8" href="$group__maths.html#ga9c1e4641b679df1d6ec3d885ef6d1fd2" title="Generates a matrix of c columns, r rows with all 0." alt="" coords="408,125,589,153"/>
 <area shape="rect" id="node10" href="$group__liteget.html#ga5e1e89782604c9ab47f196e1da233362" title="Get the alleles of a genotype." alt="" coords="443,5,554,33"/>
 <area shape="rect" id="node9" href="$sim-operations_8c.html#aaaf3ebc75feaf901829232712e55677b" title="Replace calls to malloc direct with this function." alt="" coords="650,125,772,153"/>
 </map>

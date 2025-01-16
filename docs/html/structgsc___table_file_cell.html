@@ -21,7 +21,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">genomicSimulationC<span id="projectnumber">&#160;0.2.5.05</span>
+   <div id="projectname">genomicSimulationC<span id="projectnumber">&#160;0.2.5.11</span>
    </div>
   </td>
  </tr>
@@ -75,9 +75,9 @@ $(function() {
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
 Data Fields</h2></td></tr>
-<tr class="memitem:a5903b42c933211a52d3e645af5efcb87"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structgsc___table_file_cell.html#a5903b42c933211a52d3e645af5efcb87">isCellShallow</a></td></tr>
-<tr class="memdesc:a5903b42c933211a52d3e645af5efcb87"><td class="mdescLeft">&#160;</td><td class="mdescRight">is the string in 'cell' a shallow copy or deep copy?  <a href="structgsc___table_file_cell.html#a5903b42c933211a52d3e645af5efcb87">More...</a><br /></td></tr>
-<tr class="separator:a5903b42c933211a52d3e645af5efcb87"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4dfe5d4b243232c240e001e67a88ae0c"><td class="memItemLeft" align="right" valign="top">_Bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structgsc___table_file_cell.html#a4dfe5d4b243232c240e001e67a88ae0c">isCellShallow</a></td></tr>
+<tr class="memdesc:a4dfe5d4b243232c240e001e67a88ae0c"><td class="mdescLeft">&#160;</td><td class="mdescRight">is the string in 'cell' a shallow copy or deep copy?  <a href="structgsc___table_file_cell.html#a4dfe5d4b243232c240e001e67a88ae0c">More...</a><br /></td></tr>
+<tr class="separator:a4dfe5d4b243232c240e001e67a88ae0c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2755fa841d2d0056aa992adfb9361d7d"><td class="memItemLeft" align="right" valign="top">char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structgsc___table_file_cell.html#a2755fa841d2d0056aa992adfb9361d7d">cell</a></td></tr>
 <tr class="memdesc:a2755fa841d2d0056aa992adfb9361d7d"><td class="mdescLeft">&#160;</td><td class="mdescRight">deep copy of the cell contents, or NULL  <a href="structgsc___table_file_cell.html#a2755fa841d2d0056aa992adfb9361d7d">More...</a><br /></td></tr>
 <tr class="separator:a2755fa841d2d0056aa992adfb9361d7d"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -90,14 +90,14 @@ Data Fields</h2></td></tr>
 <tr class="memitem:a671da847c37798cee4e186239b90edf9"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structgsc___table_file_cell.html#a671da847c37798cee4e186239b90edf9">predNewline</a></td></tr>
 <tr class="memdesc:a671da847c37798cee4e186239b90edf9"><td class="mdescLeft">&#160;</td><td class="mdescRight">since last read, how many newlines have there been?  <a href="structgsc___table_file_cell.html#a671da847c37798cee4e186239b90edf9">More...</a><br /></td></tr>
 <tr class="separator:a671da847c37798cee4e186239b90edf9"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aced8f8308ec1acf4b8bd309a97e2c3f7"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structgsc___table_file_cell.html#aced8f8308ec1acf4b8bd309a97e2c3f7">eof</a></td></tr>
-<tr class="memdesc:aced8f8308ec1acf4b8bd309a97e2c3f7"><td class="mdescLeft">&#160;</td><td class="mdescRight">are we (this cell) at end of file  <a href="structgsc___table_file_cell.html#aced8f8308ec1acf4b8bd309a97e2c3f7">More...</a><br /></td></tr>
-<tr class="separator:aced8f8308ec1acf4b8bd309a97e2c3f7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac3d9a2efd21993e7957cb26b8ecbe3c2"><td class="memItemLeft" align="right" valign="top">_Bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structgsc___table_file_cell.html#ac3d9a2efd21993e7957cb26b8ecbe3c2">eof</a></td></tr>
+<tr class="memdesc:ac3d9a2efd21993e7957cb26b8ecbe3c2"><td class="mdescLeft">&#160;</td><td class="mdescRight">are we (this cell) at end of file  <a href="structgsc___table_file_cell.html#ac3d9a2efd21993e7957cb26b8ecbe3c2">More...</a><br /></td></tr>
+<tr class="separator:ac3d9a2efd21993e7957cb26b8ecbe3c2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p >Represent a cell read by a <em><a class="el" href="structgsc___table_file_reader.html" title="Stream reader for files of some tabular format.">gsc_TableFileReader</a></em>. </p>
 
-<p class="definition">Definition at line <a class="el" href="sim-operations_8h_source.html#l00801">801</a> of file <a class="el" href="sim-operations_8h_source.html">sim-operations.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="sim-operations_8h_source.html#l00908">908</a> of file <a class="el" href="sim-operations_8h_source.html">sim-operations.h</a>.</p>
 </div><h2 class="groupheader">Field Documentation</h2>
 <a id="a2755fa841d2d0056aa992adfb9361d7d" name="a2755fa841d2d0056aa992adfb9361d7d"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a2755fa841d2d0056aa992adfb9361d7d">&#9670;&nbsp;</a></span>cell</h2>
@@ -113,7 +113,7 @@ Data Fields</h2></td></tr>
 
 <p>deep copy of the cell contents, or NULL </p>
 
-<p class="definition">Definition at line <a class="el" href="sim-operations_8h_source.html#l00803">803</a> of file <a class="el" href="sim-operations_8h_source.html">sim-operations.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="sim-operations_8h_source.html#l00910">910</a> of file <a class="el" href="sim-operations_8h_source.html">sim-operations.h</a>.</p>
 
 </div>
 </div>
@@ -131,43 +131,43 @@ Data Fields</h2></td></tr>
 
 <p>length of cell contents (because a shallow copy may not be null-terminated) </p>
 
-<p class="definition">Definition at line <a class="el" href="sim-operations_8h_source.html#l00804">804</a> of file <a class="el" href="sim-operations_8h_source.html">sim-operations.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="sim-operations_8h_source.html#l00911">911</a> of file <a class="el" href="sim-operations_8h_source.html">sim-operations.h</a>.</p>
 
 </div>
 </div>
-<a id="aced8f8308ec1acf4b8bd309a97e2c3f7" name="aced8f8308ec1acf4b8bd309a97e2c3f7"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aced8f8308ec1acf4b8bd309a97e2c3f7">&#9670;&nbsp;</a></span>eof</h2>
+<a id="ac3d9a2efd21993e7957cb26b8ecbe3c2" name="ac3d9a2efd21993e7957cb26b8ecbe3c2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac3d9a2efd21993e7957cb26b8ecbe3c2">&#9670;&nbsp;</a></span>eof</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">int gsc_TableFileCell::eof</td>
+          <td class="memname">_Bool gsc_TableFileCell::eof</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
 <p>are we (this cell) at end of file </p>
 
-<p class="definition">Definition at line <a class="el" href="sim-operations_8h_source.html#l00807">807</a> of file <a class="el" href="sim-operations_8h_source.html">sim-operations.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="sim-operations_8h_source.html#l00914">914</a> of file <a class="el" href="sim-operations_8h_source.html">sim-operations.h</a>.</p>
 
 </div>
 </div>
-<a id="a5903b42c933211a52d3e645af5efcb87" name="a5903b42c933211a52d3e645af5efcb87"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a5903b42c933211a52d3e645af5efcb87">&#9670;&nbsp;</a></span>isCellShallow</h2>
+<a id="a4dfe5d4b243232c240e001e67a88ae0c" name="a4dfe5d4b243232c240e001e67a88ae0c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4dfe5d4b243232c240e001e67a88ae0c">&#9670;&nbsp;</a></span>isCellShallow</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">int gsc_TableFileCell::isCellShallow</td>
+          <td class="memname">_Bool gsc_TableFileCell::isCellShallow</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
 <p>is the string in 'cell' a shallow copy or deep copy? </p>
 
-<p class="definition">Definition at line <a class="el" href="sim-operations_8h_source.html#l00802">802</a> of file <a class="el" href="sim-operations_8h_source.html">sim-operations.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="sim-operations_8h_source.html#l00909">909</a> of file <a class="el" href="sim-operations_8h_source.html">sim-operations.h</a>.</p>
 
 </div>
 </div>
@@ -185,7 +185,7 @@ Data Fields</h2></td></tr>
 
 <p>since last read, how many column gaps have there been? </p>
 
-<p class="definition">Definition at line <a class="el" href="sim-operations_8h_source.html#l00805">805</a> of file <a class="el" href="sim-operations_8h_source.html">sim-operations.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="sim-operations_8h_source.html#l00912">912</a> of file <a class="el" href="sim-operations_8h_source.html">sim-operations.h</a>.</p>
 
 </div>
 </div>
@@ -203,7 +203,7 @@ Data Fields</h2></td></tr>
 
 <p>since last read, how many newlines have there been? </p>
 
-<p class="definition">Definition at line <a class="el" href="sim-operations_8h_source.html#l00806">806</a> of file <a class="el" href="sim-operations_8h_source.html">sim-operations.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="sim-operations_8h_source.html#l00913">913</a> of file <a class="el" href="sim-operations_8h_source.html">sim-operations.h</a>.</p>
 
 </div>
 </div>

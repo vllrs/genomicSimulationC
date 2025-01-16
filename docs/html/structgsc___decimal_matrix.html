@@ -21,7 +21,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">genomicSimulationC<span id="projectnumber">&#160;0.2.5.05</span>
+   <div id="projectname">genomicSimulationC<span id="projectnumber">&#160;0.2.5.11</span>
    </div>
   </td>
  </tr>
@@ -78,12 +78,12 @@ Data Fields</h2></td></tr>
 <tr class="memitem:a672a95f216a0ba3347038195fba46353"><td class="memItemLeft" align="right" valign="top">double **&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structgsc___decimal_matrix.html#a672a95f216a0ba3347038195fba46353">matrix</a></td></tr>
 <tr class="memdesc:a672a95f216a0ba3347038195fba46353"><td class="mdescLeft">&#160;</td><td class="mdescRight">The actual matrix and contents.  <a href="structgsc___decimal_matrix.html#a672a95f216a0ba3347038195fba46353">More...</a><br /></td></tr>
 <tr class="separator:a672a95f216a0ba3347038195fba46353"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a61dada5efc7195436757ca9171fbbab9"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structgsc___decimal_matrix.html#a61dada5efc7195436757ca9171fbbab9">rows</a></td></tr>
-<tr class="memdesc:a61dada5efc7195436757ca9171fbbab9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Number of rows in the matrix.  <a href="structgsc___decimal_matrix.html#a61dada5efc7195436757ca9171fbbab9">More...</a><br /></td></tr>
-<tr class="separator:a61dada5efc7195436757ca9171fbbab9"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3f42f23ea8e432714743ae7a63a9e98a"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structgsc___decimal_matrix.html#a3f42f23ea8e432714743ae7a63a9e98a">cols</a></td></tr>
-<tr class="memdesc:a3f42f23ea8e432714743ae7a63a9e98a"><td class="mdescLeft">&#160;</td><td class="mdescRight">number of columns in the matrix  <a href="structgsc___decimal_matrix.html#a3f42f23ea8e432714743ae7a63a9e98a">More...</a><br /></td></tr>
-<tr class="separator:a3f42f23ea8e432714743ae7a63a9e98a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad921aa5e22ee935e12e5379f6237a7f0"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structgsc___decimal_matrix.html#ad921aa5e22ee935e12e5379f6237a7f0">rows</a></td></tr>
+<tr class="memdesc:ad921aa5e22ee935e12e5379f6237a7f0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Number of rows in the matrix.  <a href="structgsc___decimal_matrix.html#ad921aa5e22ee935e12e5379f6237a7f0">More...</a><br /></td></tr>
+<tr class="separator:ad921aa5e22ee935e12e5379f6237a7f0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8d65cf6438aa095738050a459373a41c"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structgsc___decimal_matrix.html#a8d65cf6438aa095738050a459373a41c">cols</a></td></tr>
+<tr class="memdesc:a8d65cf6438aa095738050a459373a41c"><td class="mdescLeft">&#160;</td><td class="mdescRight">number of columns in the matrix  <a href="structgsc___decimal_matrix.html#a8d65cf6438aa095738050a459373a41c">More...</a><br /></td></tr>
+<tr class="separator:a8d65cf6438aa095738050a459373a41c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p >A row-major heap matrix that contains floating point numbers. </p>
@@ -91,23 +91,23 @@ Data Fields</h2></td></tr>
 <p >Rows make the first index of the matrix and columns the second.</p>
 <p ><em>Has short name:</em> <a class="el" href="group__shortnames.html#gac292418a3dca2ac8ddd6f78ec25ad285">DecimalMatrix</a> </p>
 
-<p class="definition">Definition at line <a class="el" href="sim-operations_8h_source.html#l00438">438</a> of file <a class="el" href="sim-operations_8h_source.html">sim-operations.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="sim-operations_8h_source.html#l00545">545</a> of file <a class="el" href="sim-operations_8h_source.html">sim-operations.h</a>.</p>
 </div><h2 class="groupheader">Field Documentation</h2>
-<a id="a3f42f23ea8e432714743ae7a63a9e98a" name="a3f42f23ea8e432714743ae7a63a9e98a"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a3f42f23ea8e432714743ae7a63a9e98a">&#9670;&nbsp;</a></span>cols</h2>
+<a id="a8d65cf6438aa095738050a459373a41c" name="a8d65cf6438aa095738050a459373a41c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8d65cf6438aa095738050a459373a41c">&#9670;&nbsp;</a></span>cols</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">int gsc_DecimalMatrix::cols</td>
+          <td class="memname">size_t gsc_DecimalMatrix::cols</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
 <p>number of columns in the matrix </p>
 
-<p class="definition">Definition at line <a class="el" href="sim-operations_8h_source.html#l00441">441</a> of file <a class="el" href="sim-operations_8h_source.html">sim-operations.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="sim-operations_8h_source.html#l00548">548</a> of file <a class="el" href="sim-operations_8h_source.html">sim-operations.h</a>.</p>
 
 </div>
 </div>
@@ -125,25 +125,25 @@ Data Fields</h2></td></tr>
 
 <p>The actual matrix and contents. </p>
 
-<p class="definition">Definition at line <a class="el" href="sim-operations_8h_source.html#l00439">439</a> of file <a class="el" href="sim-operations_8h_source.html">sim-operations.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="sim-operations_8h_source.html#l00546">546</a> of file <a class="el" href="sim-operations_8h_source.html">sim-operations.h</a>.</p>
 
 </div>
 </div>
-<a id="a61dada5efc7195436757ca9171fbbab9" name="a61dada5efc7195436757ca9171fbbab9"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a61dada5efc7195436757ca9171fbbab9">&#9670;&nbsp;</a></span>rows</h2>
+<a id="ad921aa5e22ee935e12e5379f6237a7f0" name="ad921aa5e22ee935e12e5379f6237a7f0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad921aa5e22ee935e12e5379f6237a7f0">&#9670;&nbsp;</a></span>rows</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">int gsc_DecimalMatrix::rows</td>
+          <td class="memname">size_t gsc_DecimalMatrix::rows</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
 <p>Number of rows in the matrix. </p>
 
-<p class="definition">Definition at line <a class="el" href="sim-operations_8h_source.html#l00440">440</a> of file <a class="el" href="sim-operations_8h_source.html">sim-operations.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="sim-operations_8h_source.html#l00547">547</a> of file <a class="el" href="sim-operations_8h_source.html">sim-operations.h</a>.</p>
 
 </div>
 </div>

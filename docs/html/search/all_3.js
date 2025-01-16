@@ -17,5 +17,6 @@ var searchData=
   ['delete_5fsimdata_14',['delete_simdata',['../group__shortnames.html#gab939944f7ef0e901b0078b9b289022c4',1,'sim-operations.h']]],
   ['deletor_20functions_15',['Deletor Functions',['../group__deletors.html',1,'']]],
   ['detect_5ffile_5fformat_16',['DETECT_FILE_FORMAT',['../group__shortnames.html#ga1b342f7327286629391ccbad90ea19e4',1,'sim-operations.h']]],
-  ['dists_17',['dists',['../structgsc___simple_linkage_group.html#a6b99af0287ca637c1ff494c751bb8489',1,'gsc_SimpleLinkageGroup::dists()'],['../structgsc___reordered_linkage_group.html#acd602cafd52bba593d48fc5e86f33dd5',1,'gsc_ReorderedLinkageGroup::dists()']]]
+  ['dists_17',['dists',['../structgsc___simple_linkage_group.html#a6b99af0287ca637c1ff494c751bb8489',1,'gsc_SimpleLinkageGroup::dists()'],['../structgsc___reordered_linkage_group.html#acd602cafd52bba593d48fc5e86f33dd5',1,'gsc_ReorderedLinkageGroup::dists()']]],
+  ['doub_5fhaps_18',['doub_haps',['../uniongsc__datastore__make__genotypes.html#af4c4115b86cf382a9c371975437becce',1,'gsc_datastore_make_genotypes']]]
 ];

@@ -1,0 +1,17 @@
+<map id="gsc_get_index_of_map" name="gsc_get_index_of_map">
+<area shape="rect" id="node1" title="Function to identify the lookup index of a recombination map identifier." alt="" coords="548,256,702,284"/>
+<area shape="rect" id="node2" href="$group__recomb.html#gaecfe54dacdba616a25212ff12a32398c" title="Identify markers in the genotype of offspring where recombination from its parents occured." alt="" coords="250,5,500,33"/>
+<area shape="rect" id="node4" href="$group__recomb.html#gaf955aa7d648a243e559ac23040e35fc5" title="Identify markers in the genotype of offspring where recombination from its parents occured,..." alt="" coords="250,57,500,85"/>
+<area shape="rect" id="node5" href="$group__calculators.html#ga44e3a2d5e4041091deec1954b4f62a86" title="Divide the genotype into blocks where each block contains all markers within a 1/n length section of ..." alt="" coords="298,109,452,153"/>
+<area shape="rect" id="node6" href="$group__deletors.html#ga6075a65332dee0dc0032f29cad35fd74" title="Deletes a particular recombination map from memory." alt="" coords="273,177,477,205"/>
+<area shape="rect" id="node7" href="$group__crossers.html#ga6c230330ca9a9db9459d4477512a21af" title="Creates a doubled haploid from each member of a group." alt="" coords="281,229,469,257"/>
+<area shape="rect" id="node8" href="$group__crossers.html#ga4bfb4f901f7a921e6a3a2f1d8a9ac249" title="Performs random crosses among members of a group." alt="" coords="283,281,467,309"/>
+<area shape="rect" id="node9" href="$group__crossers.html#gaa43222283d6fb3745f5fab73b36af22d" title="Performs random crosses where the first parent comes from one group and the second from another." alt="" coords="283,333,467,377"/>
+<area shape="rect" id="node10" href="$group__crossers.html#gafe3072701f2dea2a505dd8fc9e8bc936" title="Performs the crosses of pairs of parents whose indexes are provided in an array." alt="" coords="281,401,469,429"/>
+<area shape="rect" id="node14" href="$group__savers.html#ga26462f6816264c01ce29e3e56efb2dc3" title="Prints the markers contained in a set of blocks to a file." alt="" coords="295,453,455,481"/>
+<area shape="rect" id="node15" href="$group__crossers.html#gab625453074798be6ba8677a5d4986edf" title="Selfs each member of a group for a certain number of generations." alt="" coords="314,505,436,533"/>
+<area shape="rect" id="node3" href="$group__recomb.html#ga17bf2aa42201490431e56ba42ace85fc" title="Provides guesses as to the location of recombination events that led to the creation of certain genot..." alt="" coords="5,24,202,68"/>
+<area shape="rect" id="node11" href="$group__crossers.html#gaa70fd79312587d8e9fc166c64612cbce" title="Perform crosses between all pairs of parents in the group from_group and allocates the resulting offs..." alt="" coords="11,333,196,377"/>
+<area shape="rect" id="node12" href="$group__crossers.html#ga5c0be901d03d0e5dd3d74bc19a4bea70" title="Perform crosses between pairs of parents identified by name in a file and allocate the resulting offs..." alt="" coords="9,401,198,429"/>
+<area shape="rect" id="node13" href="$group__crossers.html#ga2b8100d2d30cf1ada0db8403663076ff" title="Perform crosses between previously&#45;generated offspring of pairs of parents identified by name in a fi..." alt="" coords="14,453,193,497"/>
+</map>

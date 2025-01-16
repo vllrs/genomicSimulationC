@@ -1,0 +1,6 @@
+<map id="gsc_save_markerblocks" name="gsc_save_markerblocks">
+<area shape="rect" id="node1" title="Prints the markers contained in a set of blocks to a file." alt="" coords="5,32,166,60"/>
+<area shape="rect" id="node2" href="$group__supporters.html#ga3a07c81d30aa7738de1672420031b3da" title="Function to identify the lookup index of a recombination map identifier." alt="" coords="236,5,390,33"/>
+<area shape="rect" id="node3" href="$group__savers.html#ga193bc97c400e318504cdc9bd03684095" title="Prints the markers contained in a set of blocks to a file." alt="" coords="214,57,412,85"/>
+<area shape="rect" id="node4" href="$sim-operations_8c.html#a7c0584559c66e7c6da1452f9a804958d" title="Check if a marker index is found in a particular LinkageGroup, and provide its distance along the chr..." alt="" coords="460,49,608,93"/>
+</map>

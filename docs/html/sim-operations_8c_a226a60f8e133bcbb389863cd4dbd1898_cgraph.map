@@ -1,0 +1,7 @@
+<map id="gsc_helper_make_offspring_doubled_haploids" name="gsc_helper_make_offspring_doubled_haploids">
+<area shape="rect" id="node1" title="offspringGenerator function parameter for gsc_make_doubled_haploids." alt="" coords="5,65,184,109"/>
+<area shape="rect" id="node2" href="$group__meiosis.html#ga6a07e899a26f8aff2b241e3a6f7d8665" title="Get the alleles of the outcome of producing a doubled haploid from a gamete from a given parent." alt="" coords="232,35,383,79"/>
+<area shape="rect" id="node5" href="$group__liteget.html#ga5e1e89782604c9ab47f196e1da233362" title="Get the alleles of a genotype." alt="" coords="252,103,363,131"/>
+<area shape="rect" id="node3" href="$sim-operations_8c.html#a50de1f9769153df70263edc86de41fa5" title="Comparator function for qsort." alt="" coords="431,5,581,49"/>
+<area shape="rect" id="node4" href="$group__maths.html#ga897c7abb536f30f0cbc1baf2abcd2067" title="Generates randomly a number from the Poisson distribution with parameter lambda, using the Knuth appr..." alt="" coords="461,73,552,101"/>
+</map>

@@ -1,5 +1,5 @@
 <map id="gsc_emptylistnavigator_get_next" name="gsc_emptylistnavigator_get_next">
 <area shape="rect" id="node1" title="Get the next sequential genotype in an gsc_EmptyListNavigator." alt="" coords="5,24,159,68"/>
-<area shape="rect" id="node2" href="$group__loaders.html#ga0baf4341fe54309d7c3b2ba395eb1975" title="Creator for an empty gsc_AlleleMatrix object of a given size." alt="" coords="207,5,408,33"/>
+<area shape="rect" id="node2" href="$group__loaders.html#ga104fcea7a8f69cb80c136ab45c4eab76" title="Creator for an empty gsc_AlleleMatrix object of a given size." alt="" coords="207,5,408,33"/>
 <area shape="rect" id="node3" href="$sim-operations_8c.html#aaaf3ebc75feaf901829232712e55677b" title="Replace calls to malloc direct with this function." alt="" coords="456,32,577,60"/>
 </map>

@@ -38,7 +38,7 @@ Latest News       {#news}
 - The dimensions of a DecimalMatrix are now stored in larger size_t variables.
 - Removed unused struct MarkerPosition.
 - BREAKING CHANGE: Removed function `make_n_crosses_from_top_m_percent` for disobeying standard genomicSimulation rules of division of functionality. A section has been added to the Templates section of the documentation with a drop-in replacement of this function.
-- Fixed a formula typo and a broken table in the documentation's Templates page.
+- Polish and improve the Templates page of the documentation.
 
 
 # genomicSimulation v0.2.5

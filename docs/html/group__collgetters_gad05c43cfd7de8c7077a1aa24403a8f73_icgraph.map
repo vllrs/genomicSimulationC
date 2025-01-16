@@ -1,0 +1,5 @@
+<map id="gsc_get_group_indexes" name="gsc_get_group_indexes">
+<area shape="rect" id="node1" title="Gets the 0&#45;based global indexes of each member of the group." alt="" coords="238,44,396,72"/>
+<area shape="rect" id="node2" href="$group__crossers.html#gaa70fd79312587d8e9fc166c64612cbce" title="Perform crosses between all pairs of parents in the group from_group and allocates the resulting offs..." alt="" coords="5,5,190,49"/>
+<area shape="rect" id="node3" href="$group__calculators.html#ga70ea35197fe4dc0eedf17e1c7bb993cb" title="Takes the top_n individuals in the group with the best breeding values/fitnesses and puts them in a n..." alt="" coords="41,73,154,101"/>
+</map>

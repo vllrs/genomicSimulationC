@@ -21,7 +21,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">genomicSimulationC<span id="projectnumber">&#160;0.2.5.05</span>
+   <div id="projectname">genomicSimulationC<span id="projectnumber">&#160;0.2.5.11</span>
    </div>
   </td>
  </tr>
@@ -75,73 +75,73 @@ $(function() {
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
 Data Fields</h2></td></tr>
-<tr class="memitem:a9c39b94068c867ff7c5652b72dd3db77"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structgsc___marker_blocks.html#a9c39b94068c867ff7c5652b72dd3db77">num_blocks</a></td></tr>
-<tr class="memdesc:a9c39b94068c867ff7c5652b72dd3db77"><td class="mdescLeft">&#160;</td><td class="mdescRight">The number of blocks whose details are stored here.  <a href="structgsc___marker_blocks.html#a9c39b94068c867ff7c5652b72dd3db77">More...</a><br /></td></tr>
-<tr class="separator:a9c39b94068c867ff7c5652b72dd3db77"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8fa1093ba7a6bc8ef7db8f49256691d6"><td class="memItemLeft" align="right" valign="top">int *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structgsc___marker_blocks.html#a8fa1093ba7a6bc8ef7db8f49256691d6">num_markers_in_block</a></td></tr>
-<tr class="memdesc:a8fa1093ba7a6bc8ef7db8f49256691d6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Pointer to a heap array of length num_blocks containing the number of markers that make up each block.  <a href="structgsc___marker_blocks.html#a8fa1093ba7a6bc8ef7db8f49256691d6">More...</a><br /></td></tr>
-<tr class="separator:a8fa1093ba7a6bc8ef7db8f49256691d6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2d67c10cd04596e2d0b382a00421dcfe"><td class="memItemLeft" align="right" valign="top">int **&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structgsc___marker_blocks.html#a2d67c10cd04596e2d0b382a00421dcfe">markers_in_block</a></td></tr>
-<tr class="memdesc:a2d67c10cd04596e2d0b382a00421dcfe"><td class="mdescLeft">&#160;</td><td class="mdescRight">Pointer to a heap array of length num_blocks, each entry in which is a pointer to a heap array with length corresponding to the value of the corresponding entry in num_markers_in_block whose values are the indexes in the <a class="el" href="structgsc___sim_data.html" title="Composite type that is used to run crossing simulations.">gsc_SimData</a> of the markers that make up that block.  <a href="structgsc___marker_blocks.html#a2d67c10cd04596e2d0b382a00421dcfe">More...</a><br /></td></tr>
-<tr class="separator:a2d67c10cd04596e2d0b382a00421dcfe"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acf9598d55e47574e331159e9950ddaa2"><td class="memItemLeft" align="right" valign="top">unsigned int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structgsc___marker_blocks.html#acf9598d55e47574e331159e9950ddaa2">num_blocks</a></td></tr>
+<tr class="memdesc:acf9598d55e47574e331159e9950ddaa2"><td class="mdescLeft">&#160;</td><td class="mdescRight">The number of blocks whose details are stored here.  <a href="structgsc___marker_blocks.html#acf9598d55e47574e331159e9950ddaa2">More...</a><br /></td></tr>
+<tr class="separator:acf9598d55e47574e331159e9950ddaa2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae0a412688edcc84ec9bee269f6d77ded"><td class="memItemLeft" align="right" valign="top">unsigned int *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structgsc___marker_blocks.html#ae0a412688edcc84ec9bee269f6d77ded">num_markers_in_block</a></td></tr>
+<tr class="memdesc:ae0a412688edcc84ec9bee269f6d77ded"><td class="mdescLeft">&#160;</td><td class="mdescRight">Pointer to a heap array of length num_blocks containing the number of markers that make up each block.  <a href="structgsc___marker_blocks.html#ae0a412688edcc84ec9bee269f6d77ded">More...</a><br /></td></tr>
+<tr class="separator:ae0a412688edcc84ec9bee269f6d77ded"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af123c60e5af7129fb912beb70e144323"><td class="memItemLeft" align="right" valign="top">unsigned int **&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structgsc___marker_blocks.html#af123c60e5af7129fb912beb70e144323">markers_in_block</a></td></tr>
+<tr class="memdesc:af123c60e5af7129fb912beb70e144323"><td class="mdescLeft">&#160;</td><td class="mdescRight">Pointer to a heap array of length num_blocks, each entry in which is a pointer to a heap array with length corresponding to the value of the corresponding entry in num_markers_in_block whose values are the indexes in the <a class="el" href="structgsc___sim_data.html" title="Composite type that is used to run crossing simulations.">gsc_SimData</a> of the markers that make up that block.  <a href="structgsc___marker_blocks.html#af123c60e5af7129fb912beb70e144323">More...</a><br /></td></tr>
+<tr class="separator:af123c60e5af7129fb912beb70e144323"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p >A struct used to store a set of blocks of markers. </p>
 <p ><em>Has short name:</em> <a class="el" href="group__shortnames.html#gaf5de14f9dda7d2c092059196bdadcd6b">MarkerBlocks</a> </p>
 
-<p class="definition">Definition at line <a class="el" href="sim-operations_8h_source.html#l00416">416</a> of file <a class="el" href="sim-operations_8h_source.html">sim-operations.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="sim-operations_8h_source.html#l00523">523</a> of file <a class="el" href="sim-operations_8h_source.html">sim-operations.h</a>.</p>
 </div><h2 class="groupheader">Field Documentation</h2>
-<a id="a2d67c10cd04596e2d0b382a00421dcfe" name="a2d67c10cd04596e2d0b382a00421dcfe"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a2d67c10cd04596e2d0b382a00421dcfe">&#9670;&nbsp;</a></span>markers_in_block</h2>
+<a id="af123c60e5af7129fb912beb70e144323" name="af123c60e5af7129fb912beb70e144323"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af123c60e5af7129fb912beb70e144323">&#9670;&nbsp;</a></span>markers_in_block</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">int** gsc_MarkerBlocks::markers_in_block</td>
+          <td class="memname">unsigned int** gsc_MarkerBlocks::markers_in_block</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
 <p>Pointer to a heap array of length num_blocks, each entry in which is a pointer to a heap array with length corresponding to the value of the corresponding entry in num_markers_in_block whose values are the indexes in the <a class="el" href="structgsc___sim_data.html" title="Composite type that is used to run crossing simulations.">gsc_SimData</a> of the markers that make up that block. </p>
 
-<p class="definition">Definition at line <a class="el" href="sim-operations_8h_source.html#l00428">428</a> of file <a class="el" href="sim-operations_8h_source.html">sim-operations.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="sim-operations_8h_source.html#l00535">535</a> of file <a class="el" href="sim-operations_8h_source.html">sim-operations.h</a>.</p>
 
 </div>
 </div>
-<a id="a9c39b94068c867ff7c5652b72dd3db77" name="a9c39b94068c867ff7c5652b72dd3db77"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a9c39b94068c867ff7c5652b72dd3db77">&#9670;&nbsp;</a></span>num_blocks</h2>
+<a id="acf9598d55e47574e331159e9950ddaa2" name="acf9598d55e47574e331159e9950ddaa2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acf9598d55e47574e331159e9950ddaa2">&#9670;&nbsp;</a></span>num_blocks</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">int gsc_MarkerBlocks::num_blocks</td>
+          <td class="memname">unsigned int gsc_MarkerBlocks::num_blocks</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
 <p>The number of blocks whose details are stored here. </p>
 
-<p class="definition">Definition at line <a class="el" href="sim-operations_8h_source.html#l00418">418</a> of file <a class="el" href="sim-operations_8h_source.html">sim-operations.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="sim-operations_8h_source.html#l00525">525</a> of file <a class="el" href="sim-operations_8h_source.html">sim-operations.h</a>.</p>
 
 </div>
 </div>
-<a id="a8fa1093ba7a6bc8ef7db8f49256691d6" name="a8fa1093ba7a6bc8ef7db8f49256691d6"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a8fa1093ba7a6bc8ef7db8f49256691d6">&#9670;&nbsp;</a></span>num_markers_in_block</h2>
+<a id="ae0a412688edcc84ec9bee269f6d77ded" name="ae0a412688edcc84ec9bee269f6d77ded"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae0a412688edcc84ec9bee269f6d77ded">&#9670;&nbsp;</a></span>num_markers_in_block</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">int* gsc_MarkerBlocks::num_markers_in_block</td>
+          <td class="memname">unsigned int* gsc_MarkerBlocks::num_markers_in_block</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
 <p>Pointer to a heap array of length num_blocks containing the number of markers that make up each block. </p>
 
-<p class="definition">Definition at line <a class="el" href="sim-operations_8h_source.html#l00422">422</a> of file <a class="el" href="sim-operations_8h_source.html">sim-operations.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="sim-operations_8h_source.html#l00529">529</a> of file <a class="el" href="sim-operations_8h_source.html">sim-operations.h</a>.</p>
 
 </div>
 </div>

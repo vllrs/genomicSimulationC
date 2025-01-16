@@ -1,0 +1,5 @@
+<map id="gsc_calculate_bvs" name="gsc_calculate_bvs">
+<area shape="rect" id="node1" title="Calculate the fitness metric/breeding value for every genotype in the simulation or every genotype in..." alt="" coords="186,32,313,60"/>
+<area shape="rect" id="node2" href="$group__collgetters.html#gaeb456f1672fa37415f985e07baae49a6" title="Gets the breeding values/breeding values/fitnesses of each member of the group." alt="" coords="5,5,138,33"/>
+<area shape="rect" id="node3" href="$group__calculators.html#ga70ea35197fe4dc0eedf17e1c7bb993cb" title="Takes the top_n individuals in the group with the best breeding values/fitnesses and puts them in a n..." alt="" coords="15,57,128,85"/>
+</map>

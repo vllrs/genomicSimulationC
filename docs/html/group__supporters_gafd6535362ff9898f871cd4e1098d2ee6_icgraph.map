@@ -1,8 +1,7 @@
 <map id="gsc_randomdraw_replacementrules" name="gsc_randomdraw_replacementrules">
-<area shape="rect" id="node1" title="Randomly pick a number in a range, optionally with a cap on how many times a number can be picked,..." alt="" coords="657,48,883,76"/>
-<area shape="rect" id="node2" href="$sim-operations_8c.html#a1908f6e821f03205fcdf8bd0bfbc7050" title="parentChooser function parameter for gsc_make_random_crosses." alt="" coords="435,5,608,49"/>
-<area shape="rect" id="node5" href="$sim-operations_8c.html#a301f5b32dfc3d0a700fefa366b8a937e" title="parentChooser function parameter for gsc_make_random_crosses_between." alt="" coords="434,73,609,117"/>
-<area shape="rect" id="node3" href="$group__crossers.html#ga03af5446006203244dd3080cf75af26f" title="Performs random crosses among members of a group." alt="" coords="202,13,386,41"/>
-<area shape="rect" id="node4" href="$group__crossers.html#gab19b3eb80b5fe460d17c93e0c27f7aaf" title="Find the top m percent of a group and perform random crosses between those top individuals." alt="" coords="5,5,154,49"/>
-<area shape="rect" id="node6" href="$group__crossers.html#ga652376b5a34d24f239e5fc0b167c067b" title="Performs random crosses where the first parent comes from one group and the second from another." alt="" coords="202,73,386,117"/>
+<area shape="rect" id="node1" title="Randomly pick a number in a range, optionally with a cap on how many times a number can be picked,..." alt="" coords="461,48,686,76"/>
+<area shape="rect" id="node2" href="$sim-operations_8c.html#a0fcef09a211d57fadb1dfa0b6d102901" title="parentChooser function parameter for gsc_make_random_crosses." alt="" coords="239,5,412,49"/>
+<area shape="rect" id="node4" href="$sim-operations_8c.html#a2cee0d2e90de12744fd077b20a7db9bd" title="parentChooser function parameter for gsc_make_random_crosses_between." alt="" coords="238,73,413,117"/>
+<area shape="rect" id="node3" href="$group__crossers.html#ga4bfb4f901f7a921e6a3a2f1d8a9ac249" title="Performs random crosses among members of a group." alt="" coords="5,13,190,41"/>
+<area shape="rect" id="node5" href="$group__crossers.html#gaa43222283d6fb3745f5fab73b36af22d" title="Performs random crosses where the first parent comes from one group and the second from another." alt="" coords="5,73,190,117"/>
 </map>

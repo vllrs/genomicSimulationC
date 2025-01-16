@@ -1,15 +1,15 @@
 <map id="gsc_load_mapfile" name="gsc_load_mapfile">
 <area shape="rect" id="node1" title="Load a genetic map to a gsc_SimData object." alt="" coords="5,175,127,203"/>
-<area shape="rect" id="node2" href="$group__loaders.html#ga77e0915b84492088f60ab8e74da55066" title="Parse a list of markers/chrs/positions into a gsc_RecombinationMap and save to SimData." alt="" coords="185,200,345,244"/>
+<area shape="rect" id="node2" href="$group__loaders.html#gada5c2aaacd8b8a145493a0db5c017068" title="Parse a list of markers/chrs/positions into a gsc_RecombinationMap and save to SimData." alt="" coords="185,200,345,244"/>
 <area shape="rect" id="node6" href="$sim-operations_8c.html#aaaf3ebc75feaf901829232712e55677b" title="Replace calls to malloc direct with this function." alt="" coords="906,236,1027,264"/>
 <area shape="rect" id="node7" href="$sim-operations_8c.html#acf2e8ece7fb3470e814da69e8f162813" title="Comparator function for qsort." alt="" coords="175,132,355,176"/>
 <area shape="rect" id="node8" href="$sim-operations_8c.html#ad3c2207b2bd170d752a0a26a9fa2aa19" title="Extract the contents of a genetic map file." alt="" coords="179,345,351,373"/>
-<area shape="rect" id="node17" href="$sim-operations_8c.html#a041ce3c792a881ab98e82b334712f3f6" title="Sort markerlist by chromosome name, and by position within each chromosome." alt="" coords="176,584,354,612"/>
-<area shape="rect" id="node20" href="$sim-operations_8c.html#a7d949c9d8650f7744c84c20eb28c14ff" title="Discard markers whose names are not present in a gsc_KnownGenome." alt="" coords="180,64,350,108"/>
-<area shape="rect" id="node3" href="$group__supporters.html#gac77f7337a190c68f84bb95181f365cca" title="Return whether or not a marker name is present in the tracked markers, and at what index." alt="" coords="417,64,588,108"/>
+<area shape="rect" id="node17" href="$sim-operations_8c.html#ac1d97be6bdb21bbb271fc44616461fd8" title="Sort markerlist by chromosome name, and by position within each chromosome." alt="" coords="176,584,354,612"/>
+<area shape="rect" id="node20" href="$sim-operations_8c.html#acf770138dc0f9f33bc715156c83ccfd0" title="Discard markers whose names are not present in a gsc_KnownGenome." alt="" coords="180,64,350,108"/>
+<area shape="rect" id="node3" href="$group__supporters.html#gad57230a4c812ba8a6deed26100beae7b" title="Return whether or not a marker name is present in the tracked markers, and at what index." alt="" coords="417,64,588,108"/>
 <area shape="rect" id="node4" href="$sim-operations_8c.html#a337459fb31ef07b88a77068780ab746e" title="Save a RecombinationMap to the SimData and allocate it a mapID." alt="" coords="403,184,601,228"/>
 <area shape="rect" id="node5" href="$group__supporters.html#ga48ab10327d06674174428ca2db0b32ed" title="Function to identify the next sequential integer that is not already allocated to a map ID in the sim..." alt="" coords="668,184,814,212"/>
-<area shape="rect" id="node9" href="$sim-operations_8c.html#a890aa11fc3f54d411dff950b77931835" title="Header row reading and processing for map and effect set files." alt="" coords="424,372,581,416"/>
+<area shape="rect" id="node9" href="$sim-operations_8c.html#a11ff196fb220dfd8336587f016767b66" title="Header row reading and processing for map and effect set files." alt="" coords="424,372,581,416"/>
 <area shape="rect" id="node10" href="$group__structs.html#ga85446dd929940e823745067d0a1d1d5d" title="Allocate memory to store a deep copy of a gsc_TableFileCell, if previously only a shallow copy." alt="" coords="649,288,833,316"/>
 <area shape="rect" id="node14" href="$sim-operations_8c.html#a9022b0b2e12395904757c59db6010d5b" title="Return the next cell from a queue of cells until the queue is exhausted, and thereafter read new cell..." alt="" coords="417,440,588,484"/>
 <area shape="rect" id="node15" href="$group__structs.html#ga85b05dcdc5ec484d918ed2d3330c3ae8" title="Close a gsc_TableFileReader&#39;s file pointer." alt="" coords="438,508,567,552"/>

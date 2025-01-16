@@ -21,7 +21,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">genomicSimulationC<span id="projectnumber">&#160;0.2.5.05</span>
+   <div id="projectname">genomicSimulationC<span id="projectnumber">&#160;0.2.5.11</span>
    </div>
   </td>
  </tr>
@@ -63,6 +63,7 @@ $(function() {
 </div><!-- top -->
 <div class="header">
   <div class="summary">
+<a href="#pub-types">Public Types</a> &#124;
 <a href="#pub-attribs">Data Fields</a>  </div>
   <div class="headertitle"><div class="title">gsc_LinkageGroup Struct Reference<div class="ingroups"><a class="el" href="group__structs.html">Data Structures</a></div></div></div>
 </div><!--header-->
@@ -85,26 +86,56 @@ $(function() {
 </map>
 <center><span class="legend">[<a href="graph_legend.html">legend</a>]</span></center></div>
 <table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-types" name="pub-types"></a>
+Public Types</h2></td></tr>
+<tr class="memitem:a88232f63f17496363e0de7fde2023fd9"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structgsc___linkage_group.html#a88232f63f17496363e0de7fde2023fd9">gsc_LinkageGroupType</a> { <a class="el" href="structgsc___linkage_group.html#a88232f63f17496363e0de7fde2023fd9a98275b629ac6d200434631deba15b46c">GSC_LINKAGEGROUP_SIMPLE</a>
+, <a class="el" href="structgsc___linkage_group.html#a88232f63f17496363e0de7fde2023fd9a3a769358041de30a99df8f95b262abfa">GSC_LINKAGEGROUP_REORDER</a>
+ }</td></tr>
+<tr class="separator:a88232f63f17496363e0de7fde2023fd9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
 Data Fields</h2></td></tr>
-<tr class="memitem:a692a6535941ef7e4cb0ede9752376b9c"><td class="memItemLeft" align="right" valign="top">enum <a class="el" href="group__structs.html#gabaab9ae5c2f4689211a8f1a2b33d23bc">gsc_LinkageGroupType</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structgsc___linkage_group.html#a692a6535941ef7e4cb0ede9752376b9c">type</a></td></tr>
-<tr class="separator:a692a6535941ef7e4cb0ede9752376b9c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:acf1fcfb4743a14f241900e3d08355bf6"><td class="memItemLeft" >union {</td></tr>
-<tr class="memitem:a4f14b2d7b09123ad0594bcc9e1e8eb3d"><td class="memItemLeft" >&#160;&#160;&#160;<a class="el" href="structgsc___simple_linkage_group.html">gsc_SimpleLinkageGroup</a>&#160;&#160;&#160;<a class="el" href="structgsc___linkage_group.html#aa7912a5331e202fa8c3d14fc4067fc88">simple</a></td></tr>
-<tr class="separator:a4f14b2d7b09123ad0594bcc9e1e8eb3d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8c3e4169e2e66ca9eae9c13939561be4"><td class="memItemLeft" >&#160;&#160;&#160;<a class="el" href="structgsc___reordered_linkage_group.html">gsc_ReorderedLinkageGroup</a>&#160;&#160;&#160;<a class="el" href="structgsc___linkage_group.html#a71d5ac5c48e10cb282731a5f89a4ba00">reorder</a></td></tr>
-<tr class="separator:a8c3e4169e2e66ca9eae9c13939561be4"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:acf1fcfb4743a14f241900e3d08355bf6"><td class="memItemLeft" valign="top">}&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structgsc___linkage_group.html#acf1fcfb4743a14f241900e3d08355bf6">map</a></td></tr>
-<tr class="separator:acf1fcfb4743a14f241900e3d08355bf6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8cecca770140941c0a5f463d2978be21"><td class="memItemLeft" align="right" valign="top">enum <a class="el" href="structgsc___linkage_group.html#a88232f63f17496363e0de7fde2023fd9">gsc_LinkageGroup::gsc_LinkageGroupType</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structgsc___linkage_group.html#a8cecca770140941c0a5f463d2978be21">type</a></td></tr>
+<tr class="separator:a8cecca770140941c0a5f463d2978be21"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad982eb931cdc409b1e7f82710052aa6a"><td class="memItemLeft" >union {</td></tr>
+<tr class="memitem:afbc1c1959c2497eb18575f879c23b192"><td class="memItemLeft" >&#160;&#160;&#160;<a class="el" href="structgsc___simple_linkage_group.html">gsc_SimpleLinkageGroup</a>&#160;&#160;&#160;<a class="el" href="structgsc___linkage_group.html#aa7912a5331e202fa8c3d14fc4067fc88">simple</a></td></tr>
+<tr class="separator:afbc1c1959c2497eb18575f879c23b192"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8f0289445f52572fb92d3ea7b4e2f47c"><td class="memItemLeft" >&#160;&#160;&#160;<a class="el" href="structgsc___reordered_linkage_group.html">gsc_ReorderedLinkageGroup</a>&#160;&#160;&#160;<a class="el" href="structgsc___linkage_group.html#a71d5ac5c48e10cb282731a5f89a4ba00">reorder</a></td></tr>
+<tr class="separator:a8f0289445f52572fb92d3ea7b4e2f47c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad982eb931cdc409b1e7f82710052aa6a"><td class="memItemLeft" valign="top">}&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structgsc___linkage_group.html#ad982eb931cdc409b1e7f82710052aa6a">map</a></td></tr>
+<tr class="separator:ad982eb931cdc409b1e7f82710052aa6a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p >A generic store for a linkage group, used to simulate meiosis on a certain subset of markers. </p>
 <p ><em>Has short name:</em> LinkageGroup </p>
 
-<p class="definition">Definition at line <a class="el" href="sim-operations_8h_source.html#l00630">630</a> of file <a class="el" href="sim-operations_8h_source.html">sim-operations.h</a>.</p>
-</div><h2 class="groupheader">Field Documentation</h2>
-<a id="acf1fcfb4743a14f241900e3d08355bf6" name="acf1fcfb4743a14f241900e3d08355bf6"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#acf1fcfb4743a14f241900e3d08355bf6">&#9670;&nbsp;</a></span></h2>
+<p class="definition">Definition at line <a class="el" href="sim-operations_8h_source.html#l00734">734</a> of file <a class="el" href="sim-operations_8h_source.html">sim-operations.h</a>.</p>
+</div><h2 class="groupheader">Member Enumeration Documentation</h2>
+<a id="a88232f63f17496363e0de7fde2023fd9" name="a88232f63f17496363e0de7fde2023fd9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a88232f63f17496363e0de7fde2023fd9">&#9670;&nbsp;</a></span>gsc_LinkageGroupType</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum <a class="el" href="structgsc___linkage_group.html#a88232f63f17496363e0de7fde2023fd9">gsc_LinkageGroup::gsc_LinkageGroupType</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<table class="fieldtable">
+<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="a88232f63f17496363e0de7fde2023fd9a98275b629ac6d200434631deba15b46c" name="a88232f63f17496363e0de7fde2023fd9a98275b629ac6d200434631deba15b46c"></a>GSC_LINKAGEGROUP_SIMPLE&#160;</td><td class="fielddoc"><dl class="section see"><dt>See also</dt><dd><a class="el" href="structgsc___simple_linkage_group.html" title="Parameters for simulating meiosis on a linkage group whose markers are stored contiguously in the sim...">gsc_SimpleLinkageGroup</a> </dd></dl>
+</td></tr>
+<tr><td class="fieldname"><a id="a88232f63f17496363e0de7fde2023fd9a3a769358041de30a99df8f95b262abfa" name="a88232f63f17496363e0de7fde2023fd9a3a769358041de30a99df8f95b262abfa"></a>GSC_LINKAGEGROUP_REORDER&#160;</td><td class="fielddoc"><dl class="section see"><dt>See also</dt><dd><a class="el" href="structgsc___reordered_linkage_group.html" title="Parameters for simulating meiosis on a linkage group whose markers are re-ordered compared to the fir...">gsc_ReorderedLinkageGroup</a> </dd></dl>
+</td></tr>
+</table>
+
+<p class="definition">Definition at line <a class="el" href="sim-operations_8h_source.html#l00735">735</a> of file <a class="el" href="sim-operations_8h_source.html">sim-operations.h</a>.</p>
+
+</div>
+</div>
+<h2 class="groupheader">Field Documentation</h2>
+<a id="ad982eb931cdc409b1e7f82710052aa6a" name="ad982eb931cdc409b1e7f82710052aa6a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad982eb931cdc409b1e7f82710052aa6a">&#9670;&nbsp;</a></span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -129,7 +160,7 @@ Data Fields</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="sim-operations_8h_source.html#l00634">634</a> of file <a class="el" href="sim-operations_8h_source.html">sim-operations.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="sim-operations_8h_source.html#l00741">741</a> of file <a class="el" href="sim-operations_8h_source.html">sim-operations.h</a>.</p>
 
 </div>
 </div>
@@ -145,23 +176,21 @@ Data Fields</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="sim-operations_8h_source.html#l00633">633</a> of file <a class="el" href="sim-operations_8h_source.html">sim-operations.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="sim-operations_8h_source.html#l00740">740</a> of file <a class="el" href="sim-operations_8h_source.html">sim-operations.h</a>.</p>
 
 </div>
 </div>
-<a id="a692a6535941ef7e4cb0ede9752376b9c" name="a692a6535941ef7e4cb0ede9752376b9c"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a692a6535941ef7e4cb0ede9752376b9c">&#9670;&nbsp;</a></span>type</h2>
+<a id="a8cecca770140941c0a5f463d2978be21" name="a8cecca770140941c0a5f463d2978be21"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8cecca770140941c0a5f463d2978be21">&#9670;&nbsp;</a></span>type</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">enum <a class="el" href="group__structs.html#gabaab9ae5c2f4689211a8f1a2b33d23bc">gsc_LinkageGroupType</a> gsc_LinkageGroup::type</td>
+          <td class="memname">enum <a class="el" href="structgsc___linkage_group.html#a88232f63f17496363e0de7fde2023fd9">gsc_LinkageGroup::gsc_LinkageGroupType</a> gsc_LinkageGroup::type</td>
         </tr>
       </table>
 </div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="sim-operations_8h_source.html#l00631">631</a> of file <a class="el" href="sim-operations_8h_source.html">sim-operations.h</a>.</p>
 
 </div>
 </div>

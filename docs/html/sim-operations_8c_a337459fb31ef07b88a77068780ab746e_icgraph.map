@@ -1,7 +1,7 @@
 <map id="gsc_helper_insert_recombmap_into_simdata" name="gsc_helper_insert_recombmap_into_simdata">
 <area shape="rect" id="node1" title="Save a RecombinationMap to the SimData and allocate it a mapID." alt="" coords="808,40,1006,84"/>
-<area shape="rect" id="node2" href="$group__loaders.html#ga77e0915b84492088f60ab8e74da55066" title="Parse a list of markers/chrs/positions into a gsc_RecombinationMap and save to SimData." alt="" coords="591,5,752,49"/>
-<area shape="rect" id="node6" href="$group__loaders.html#ga3a2324888dbd9cfdc228554cd15597af" title="Create a uniformly&#45;spaced gsc_RecombinationMap from a list of marker names and save to SimData." alt="" coords="583,73,760,117"/>
+<area shape="rect" id="node2" href="$group__loaders.html#gada5c2aaacd8b8a145493a0db5c017068" title="Parse a list of markers/chrs/positions into a gsc_RecombinationMap and save to SimData." alt="" coords="591,5,752,49"/>
+<area shape="rect" id="node6" href="$group__loaders.html#ga5cbe0b821180b257b21d9551ec797f20" title="Create a uniformly&#45;spaced gsc_RecombinationMap from a list of marker names and save to SimData." alt="" coords="583,73,760,117"/>
 <area shape="rect" id="node3" href="$group__loaders.html#gac180eb5f1d27907a69314e68cc0d37af" title="Load a genetic map to a gsc_SimData object." alt="" coords="400,16,521,44"/>
 <area shape="rect" id="node4" href="$group__loaders.html#ga394371951741d8c2db18a85069d6b61e" title="Populates a gsc_SimData object with marker allele data, a genetic map, and (optionally) marker effect..." alt="" coords="203,48,338,76"/>
 <area shape="rect" id="node5" href="$group__loaders.html#ga50888a3ffcd2853e07bb4c1b6f0d067a" title="Load a set of genotypes to a gsc_SimData object." alt="" coords="5,48,155,76"/>

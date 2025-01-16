@@ -1,0 +1,11 @@
+<map id="gsc_save_utility_genotypes" name="gsc_save_utility_genotypes">
+<area shape="rect" id="node1" title="Prints simulated genotypes to a file." alt="" coords="5,111,186,139"/>
+<area shape="rect" id="node2" href="$sim-operations_8c.html#a223d292e567ad088b1582c24b9d894ab" title="Kernel for gsc_scaffold_save_genotype_info, when the goal is to save the (phased) allele pairs of eac..." alt="" coords="234,45,484,73"/>
+<area shape="rect" id="node4" href="$sim-operations_8c.html#a3bbb853ca13c593a940d86882dda2361" title="Prints a matrix of genotype information to a file." alt="" coords="252,136,466,164"/>
+<area shape="rect" id="node3" href="$group__liteget.html#ga5e1e89782604c9ab47f196e1da233362" title="Get the alleles of a genotype." alt="" coords="541,5,652,33"/>
+<area shape="rect" id="node5" href="$group__liteget.html#ga0ce82f67cb5e35a1c73bef54138202f6" title="Get the persistent id of a genotype." alt="" coords="555,57,639,85"/>
+<area shape="rect" id="node6" href="$group__liteget.html#ga22a270ae73aaa86d93212a4a40f999dc" title="Get the name of a genotype." alt="" coords="544,109,650,137"/>
+<area shape="rect" id="node7" href="$sim-operations_8c.html#aaaf3ebc75feaf901829232712e55677b" title="Replace calls to malloc direct with this function." alt="" coords="536,161,657,189"/>
+<area shape="rect" id="node8" href="$group__iterators.html#ga630ba7f8e864238e296cb9480dfbc728" title="Get the next location from a bidirectional iterator." alt="" coords="532,213,661,241"/>
+<area shape="rect" id="node9" href="$group__iterators.html#gaa4fa2aec3b7f49f9925fe82c8ff38dcd" title="Initialise a Bidirectional iterator to the start of its sequence." alt="" coords="709,232,853,276"/>
+</map>

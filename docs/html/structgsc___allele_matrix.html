@@ -21,7 +21,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">genomicSimulationC<span id="projectnumber">&#160;0.2.5.05</span>
+   <div id="projectname">genomicSimulationC<span id="projectnumber">&#160;0.2.5.11</span>
    </div>
   </td>
  </tr>
@@ -87,12 +87,12 @@ Data Fields</h2></td></tr>
 <tr class="memitem:a8c6f8fff4e59cd7be4a889712fc70b93"><td class="memItemLeft" align="right" valign="top">char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structgsc___allele_matrix.html#a8c6f8fff4e59cd7be4a889712fc70b93">alleles</a> [1000]</td></tr>
 <tr class="memdesc:a8c6f8fff4e59cd7be4a889712fc70b93"><td class="mdescLeft">&#160;</td><td class="mdescRight">A matrix of SNP markers by lines/genotypes containing pairs of alleles eg TT, TA.  <a href="structgsc___allele_matrix.html#a8c6f8fff4e59cd7be4a889712fc70b93">More...</a><br /></td></tr>
 <tr class="separator:a8c6f8fff4e59cd7be4a889712fc70b93"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6b6812558a2182e262a7c86db96a0db1"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structgsc___allele_matrix.html#a6b6812558a2182e262a7c86db96a0db1">n_genotypes</a></td></tr>
-<tr class="memdesc:a6b6812558a2182e262a7c86db96a0db1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Number of genotypes currently loaded in this matrix.  <a href="structgsc___allele_matrix.html#a6b6812558a2182e262a7c86db96a0db1">More...</a><br /></td></tr>
-<tr class="separator:a6b6812558a2182e262a7c86db96a0db1"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa2329e175837d3a08f6bc15f5e7884b0"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structgsc___allele_matrix.html#aa2329e175837d3a08f6bc15f5e7884b0">n_markers</a></td></tr>
-<tr class="memdesc:aa2329e175837d3a08f6bc15f5e7884b0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Number of markers across which genotypes are tracked.  <a href="structgsc___allele_matrix.html#aa2329e175837d3a08f6bc15f5e7884b0">More...</a><br /></td></tr>
-<tr class="separator:aa2329e175837d3a08f6bc15f5e7884b0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a17c2d6847adcfc4bb3491b662007b2b3"><td class="memItemLeft" align="right" valign="top">unsigned int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structgsc___allele_matrix.html#a17c2d6847adcfc4bb3491b662007b2b3">n_genotypes</a></td></tr>
+<tr class="memdesc:a17c2d6847adcfc4bb3491b662007b2b3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Number of genotypes currently loaded in this matrix.  <a href="structgsc___allele_matrix.html#a17c2d6847adcfc4bb3491b662007b2b3">More...</a><br /></td></tr>
+<tr class="separator:a17c2d6847adcfc4bb3491b662007b2b3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a29f167572e82c2969b9bfda8098a5186"><td class="memItemLeft" align="right" valign="top">unsigned int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structgsc___allele_matrix.html#a29f167572e82c2969b9bfda8098a5186">n_markers</a></td></tr>
+<tr class="memdesc:a29f167572e82c2969b9bfda8098a5186"><td class="mdescLeft">&#160;</td><td class="mdescRight">Number of markers across which genotypes are tracked.  <a href="structgsc___allele_matrix.html#a29f167572e82c2969b9bfda8098a5186">More...</a><br /></td></tr>
+<tr class="separator:a29f167572e82c2969b9bfda8098a5186"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0aff5c12c25e307435ac50e08e2e8cb9"><td class="memItemLeft" align="right" valign="top">char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structgsc___allele_matrix.html#a0aff5c12c25e307435ac50e08e2e8cb9">names</a> [1000]</td></tr>
 <tr class="memdesc:a0aff5c12c25e307435ac50e08e2e8cb9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Array of dynamically allocated strings containing the names of the lines/genotypes in this matrix.  <a href="structgsc___allele_matrix.html#a0aff5c12c25e307435ac50e08e2e8cb9">More...</a><br /></td></tr>
 <tr class="separator:a0aff5c12c25e307435ac50e08e2e8cb9"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -105,9 +105,9 @@ Data Fields</h2></td></tr>
 <tr class="memitem:acf7fd5c8810571780c73eca2c46a590a"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structgsc___group_num.html">gsc_GroupNum</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structgsc___allele_matrix.html#acf7fd5c8810571780c73eca2c46a590a">groups</a> [1000]</td></tr>
 <tr class="memdesc:acf7fd5c8810571780c73eca2c46a590a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Group allocation of each genotype.  <a href="structgsc___allele_matrix.html#acf7fd5c8810571780c73eca2c46a590a">More...</a><br /></td></tr>
 <tr class="separator:acf7fd5c8810571780c73eca2c46a590a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:afacf4a7c5f722e91183e9f27cc275b90"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structgsc___allele_matrix.html#afacf4a7c5f722e91183e9f27cc275b90">n_labels</a></td></tr>
-<tr class="memdesc:afacf4a7c5f722e91183e9f27cc275b90"><td class="mdescLeft">&#160;</td><td class="mdescRight">Number of custom labels currently available to this <a class="el" href="structgsc___allele_matrix.html">gsc_AlleleMatrix</a>.  <a href="structgsc___allele_matrix.html#afacf4a7c5f722e91183e9f27cc275b90">More...</a><br /></td></tr>
-<tr class="separator:afacf4a7c5f722e91183e9f27cc275b90"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a904c98b188a7842efbbd03862161362f"><td class="memItemLeft" align="right" valign="top">unsigned int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structgsc___allele_matrix.html#a904c98b188a7842efbbd03862161362f">n_labels</a></td></tr>
+<tr class="memdesc:a904c98b188a7842efbbd03862161362f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Number of custom labels currently available to this <a class="el" href="structgsc___allele_matrix.html">gsc_AlleleMatrix</a>.  <a href="structgsc___allele_matrix.html#a904c98b188a7842efbbd03862161362f">More...</a><br /></td></tr>
+<tr class="separator:a904c98b188a7842efbbd03862161362f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aad61eac7fadad1b87591f6bbf452bf67"><td class="memItemLeft" align="right" valign="top">int **&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structgsc___allele_matrix.html#aad61eac7fadad1b87591f6bbf452bf67">labels</a></td></tr>
 <tr class="memdesc:aad61eac7fadad1b87591f6bbf452bf67"><td class="mdescLeft">&#160;</td><td class="mdescRight">Pointer to list of labels.  <a href="structgsc___allele_matrix.html#aad61eac7fadad1b87591f6bbf452bf67">More...</a><br /></td></tr>
 <tr class="separator:aad61eac7fadad1b87591f6bbf452bf67"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -117,7 +117,7 @@ Data Fields</h2></td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock">
-<p class="definition">Definition at line <a class="el" href="sim-operations_8h_source.html#l00678">678</a> of file <a class="el" href="sim-operations_8h_source.html">sim-operations.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="sim-operations_8h_source.html#l00785">785</a> of file <a class="el" href="sim-operations_8h_source.html">sim-operations.h</a>.</p>
 </div><h2 class="groupheader">Field Documentation</h2>
 <a id="a8c6f8fff4e59cd7be4a889712fc70b93" name="a8c6f8fff4e59cd7be4a889712fc70b93"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a8c6f8fff4e59cd7be4a889712fc70b93">&#9670;&nbsp;</a></span>alleles</h2>
@@ -134,7 +134,7 @@ Data Fields</h2></td></tr>
 <p>A matrix of SNP markers by lines/genotypes containing pairs of alleles eg TT, TA. </p>
 <p >Use <code>alleles[genotype index][marker index * 2]</code> to get the first allele and <code>alleles[genotype index][marker index * 2 + 1]</code> to get the second. If CONTIG_WIDTH lines are saved here, another <a class="el" href="structgsc___allele_matrix.html">gsc_AlleleMatrix</a> is added to the linked list when there's a need to save more. </p>
 
-<p class="definition">Definition at line <a class="el" href="sim-operations_8h_source.html#l00684">684</a> of file <a class="el" href="sim-operations_8h_source.html">sim-operations.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="sim-operations_8h_source.html#l00791">791</a> of file <a class="el" href="sim-operations_8h_source.html">sim-operations.h</a>.</p>
 
 </div>
 </div>
@@ -152,7 +152,7 @@ Data Fields</h2></td></tr>
 
 <p>Group allocation of each genotype. </p>
 
-<p class="definition">Definition at line <a class="el" href="sim-operations_8h_source.html#l00697">697</a> of file <a class="el" href="sim-operations_8h_source.html">sim-operations.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="sim-operations_8h_source.html#l00804">804</a> of file <a class="el" href="sim-operations_8h_source.html">sim-operations.h</a>.</p>
 
 </div>
 </div>
@@ -170,7 +170,7 @@ Data Fields</h2></td></tr>
 
 <p>Unique ID for each genotype. </p>
 
-<p class="definition">Definition at line <a class="el" href="sim-operations_8h_source.html#l00694">694</a> of file <a class="el" href="sim-operations_8h_source.html">sim-operations.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="sim-operations_8h_source.html#l00801">801</a> of file <a class="el" href="sim-operations_8h_source.html">sim-operations.h</a>.</p>
 
 </div>
 </div>
@@ -189,36 +189,36 @@ Data Fields</h2></td></tr>
 <p>Pointer to list of labels. </p>
 <p >Size of first dimension is n_labels, of second dimension is arrays of labels of length CONTIG_WIDTH </p>
 
-<p class="definition">Definition at line <a class="el" href="sim-operations_8h_source.html#l00702">702</a> of file <a class="el" href="sim-operations_8h_source.html">sim-operations.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="sim-operations_8h_source.html#l00809">809</a> of file <a class="el" href="sim-operations_8h_source.html">sim-operations.h</a>.</p>
 
 </div>
 </div>
-<a id="a6b6812558a2182e262a7c86db96a0db1" name="a6b6812558a2182e262a7c86db96a0db1"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a6b6812558a2182e262a7c86db96a0db1">&#9670;&nbsp;</a></span>n_genotypes</h2>
+<a id="a17c2d6847adcfc4bb3491b662007b2b3" name="a17c2d6847adcfc4bb3491b662007b2b3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a17c2d6847adcfc4bb3491b662007b2b3">&#9670;&nbsp;</a></span>n_genotypes</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">int gsc_AlleleMatrix::n_genotypes</td>
+          <td class="memname">unsigned int gsc_AlleleMatrix::n_genotypes</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
 <p>Number of genotypes currently loaded in this matrix. </p>
 
-<p class="definition">Definition at line <a class="el" href="sim-operations_8h_source.html#l00686">686</a> of file <a class="el" href="sim-operations_8h_source.html">sim-operations.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="sim-operations_8h_source.html#l00793">793</a> of file <a class="el" href="sim-operations_8h_source.html">sim-operations.h</a>.</p>
 
 </div>
 </div>
-<a id="afacf4a7c5f722e91183e9f27cc275b90" name="afacf4a7c5f722e91183e9f27cc275b90"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#afacf4a7c5f722e91183e9f27cc275b90">&#9670;&nbsp;</a></span>n_labels</h2>
+<a id="a904c98b188a7842efbbd03862161362f" name="a904c98b188a7842efbbd03862161362f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a904c98b188a7842efbbd03862161362f">&#9670;&nbsp;</a></span>n_labels</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">int gsc_AlleleMatrix::n_labels</td>
+          <td class="memname">unsigned int gsc_AlleleMatrix::n_labels</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -226,18 +226,18 @@ Data Fields</h2></td></tr>
 <p>Number of custom labels currently available to this <a class="el" href="structgsc___allele_matrix.html">gsc_AlleleMatrix</a>. </p>
 <p >This has redundancy with <a class="el" href="structgsc___sim_data.html" title="Composite type that is used to run crossing simulations.">gsc_SimData</a> and other members of its linked list but it's good to know how big your own <code>labels</code> array is. </p>
 
-<p class="definition">Definition at line <a class="el" href="sim-operations_8h_source.html#l00699">699</a> of file <a class="el" href="sim-operations_8h_source.html">sim-operations.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="sim-operations_8h_source.html#l00806">806</a> of file <a class="el" href="sim-operations_8h_source.html">sim-operations.h</a>.</p>
 
 </div>
 </div>
-<a id="aa2329e175837d3a08f6bc15f5e7884b0" name="aa2329e175837d3a08f6bc15f5e7884b0"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aa2329e175837d3a08f6bc15f5e7884b0">&#9670;&nbsp;</a></span>n_markers</h2>
+<a id="a29f167572e82c2969b9bfda8098a5186" name="a29f167572e82c2969b9bfda8098a5186"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a29f167572e82c2969b9bfda8098a5186">&#9670;&nbsp;</a></span>n_markers</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">int gsc_AlleleMatrix::n_markers</td>
+          <td class="memname">unsigned int gsc_AlleleMatrix::n_markers</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -245,7 +245,7 @@ Data Fields</h2></td></tr>
 <p>Number of markers across which genotypes are tracked. </p>
 <p >This has redundancy with <a class="el" href="structgsc___sim_data.html" title="Composite type that is used to run crossing simulations.">gsc_SimData</a> and other members of its linked list but it's good to know how big your own <code>alleles</code> array is. </p>
 
-<p class="definition">Definition at line <a class="el" href="sim-operations_8h_source.html#l00687">687</a> of file <a class="el" href="sim-operations_8h_source.html">sim-operations.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="sim-operations_8h_source.html#l00794">794</a> of file <a class="el" href="sim-operations_8h_source.html">sim-operations.h</a>.</p>
 
 </div>
 </div>
@@ -264,7 +264,7 @@ Data Fields</h2></td></tr>
 <p>Array of dynamically allocated strings containing the names of the lines/genotypes in this matrix. </p>
 <p >Guaranteed to be NULL if they do not have names. </p>
 
-<p class="definition">Definition at line <a class="el" href="sim-operations_8h_source.html#l00691">691</a> of file <a class="el" href="sim-operations_8h_source.html">sim-operations.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="sim-operations_8h_source.html#l00798">798</a> of file <a class="el" href="sim-operations_8h_source.html">sim-operations.h</a>.</p>
 
 </div>
 </div>
@@ -282,7 +282,7 @@ Data Fields</h2></td></tr>
 
 <p>Pointer to the next <a class="el" href="structgsc___allele_matrix.html">gsc_AlleleMatrix</a> in the linked list, or NULL if this entry is the last. </p>
 
-<p class="definition">Definition at line <a class="el" href="sim-operations_8h_source.html#l00705">705</a> of file <a class="el" href="sim-operations_8h_source.html">sim-operations.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="sim-operations_8h_source.html#l00812">812</a> of file <a class="el" href="sim-operations_8h_source.html">sim-operations.h</a>.</p>
 
 </div>
 </div>
@@ -300,7 +300,7 @@ Data Fields</h2></td></tr>
 
 <p>Two lists of integer IDs of the parents of this genotype (if tracked), or 0 if we don't know/care. </p>
 
-<p class="definition">Definition at line <a class="el" href="sim-operations_8h_source.html#l00695">695</a> of file <a class="el" href="sim-operations_8h_source.html">sim-operations.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="sim-operations_8h_source.html#l00802">802</a> of file <a class="el" href="sim-operations_8h_source.html">sim-operations.h</a>.</p>
 
 </div>
 </div>

@@ -21,7 +21,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">genomicSimulationC<span id="projectnumber">&#160;0.2.5.05</span>
+   <div id="projectname">genomicSimulationC<span id="projectnumber">&#160;0.2.5.11</span>
    </div>
   </td>
  </tr>
@@ -91,16 +91,16 @@ Data Fields</h2></td></tr>
 <tr class="memitem:a65274c815a4a03569fc56607abc3f4ee"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structgsc___allele_matrix.html">gsc_AlleleMatrix</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structgsc___geno_location.html#a65274c815a4a03569fc56607abc3f4ee">localAM</a></td></tr>
 <tr class="memdesc:a65274c815a4a03569fc56607abc3f4ee"><td class="mdescLeft">&#160;</td><td class="mdescRight">Pointer to the <a class="el" href="structgsc___allele_matrix.html">gsc_AlleleMatrix</a> in which the genotype can be found.  <a href="structgsc___geno_location.html#a65274c815a4a03569fc56607abc3f4ee">More...</a><br /></td></tr>
 <tr class="separator:a65274c815a4a03569fc56607abc3f4ee"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a25f2edd6ff616e8e242d9eb69aea46e7"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structgsc___geno_location.html#a25f2edd6ff616e8e242d9eb69aea46e7">localPos</a></td></tr>
-<tr class="memdesc:a25f2edd6ff616e8e242d9eb69aea46e7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Index in the localAM where the genotype can be found (min value: 0.  <a href="structgsc___geno_location.html#a25f2edd6ff616e8e242d9eb69aea46e7">More...</a><br /></td></tr>
-<tr class="separator:a25f2edd6ff616e8e242d9eb69aea46e7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aff8175d9064da327313b572a02827a18"><td class="memItemLeft" align="right" valign="top">unsigned int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structgsc___geno_location.html#aff8175d9064da327313b572a02827a18">localPos</a></td></tr>
+<tr class="memdesc:aff8175d9064da327313b572a02827a18"><td class="mdescLeft">&#160;</td><td class="mdescRight">Index in the localAM where the genotype can be found (min value: 0.  <a href="structgsc___geno_location.html#aff8175d9064da327313b572a02827a18">More...</a><br /></td></tr>
+<tr class="separator:aff8175d9064da327313b572a02827a18"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p >An gsc_AlleleMatrix/gsc_AlleleMatrix index coordinate of a particular genotype in the simulation. </p>
 <p >To be used to look up details of that genotype using the <code>get_</code> family of functions.</p>
 <p ><em>Has short name:</em> <a class="el" href="group__shortnames.html#ga86d2d8f2c416cdbd37c3f99e5d80c4e3">GenoLocation</a> </p>
 
-<p class="definition">Definition at line <a class="el" href="sim-operations_8h_source.html#l01085">1085</a> of file <a class="el" href="sim-operations_8h_source.html">sim-operations.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="sim-operations_8h_source.html#l01209">1209</a> of file <a class="el" href="sim-operations_8h_source.html">sim-operations.h</a>.</p>
 </div><h2 class="groupheader">Field Documentation</h2>
 <a id="a65274c815a4a03569fc56607abc3f4ee" name="a65274c815a4a03569fc56607abc3f4ee"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a65274c815a4a03569fc56607abc3f4ee">&#9670;&nbsp;</a></span>localAM</h2>
@@ -116,18 +116,18 @@ Data Fields</h2></td></tr>
 
 <p>Pointer to the <a class="el" href="structgsc___allele_matrix.html">gsc_AlleleMatrix</a> in which the genotype can be found. </p>
 
-<p class="definition">Definition at line <a class="el" href="sim-operations_8h_source.html#l01086">1086</a> of file <a class="el" href="sim-operations_8h_source.html">sim-operations.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="sim-operations_8h_source.html#l01210">1210</a> of file <a class="el" href="sim-operations_8h_source.html">sim-operations.h</a>.</p>
 
 </div>
 </div>
-<a id="a25f2edd6ff616e8e242d9eb69aea46e7" name="a25f2edd6ff616e8e242d9eb69aea46e7"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a25f2edd6ff616e8e242d9eb69aea46e7">&#9670;&nbsp;</a></span>localPos</h2>
+<a id="aff8175d9064da327313b572a02827a18" name="aff8175d9064da327313b572a02827a18"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aff8175d9064da327313b572a02827a18">&#9670;&nbsp;</a></span>localPos</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">int gsc_GenoLocation::localPos</td>
+          <td class="memname">unsigned int gsc_GenoLocation::localPos</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -135,7 +135,7 @@ Data Fields</h2></td></tr>
 <p>Index in the localAM where the genotype can be found (min value: 0. </p>
 <p >Max value: CONTIG_WIDTH-1). </p>
 
-<p class="definition">Definition at line <a class="el" href="sim-operations_8h_source.html#l01088">1088</a> of file <a class="el" href="sim-operations_8h_source.html">sim-operations.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="sim-operations_8h_source.html#l01212">1212</a> of file <a class="el" href="sim-operations_8h_source.html">sim-operations.h</a>.</p>
 
 </div>
 </div>

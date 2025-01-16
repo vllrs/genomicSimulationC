@@ -1,0 +1,4 @@
+<map id="gsc_make_group_from" name="gsc_make_group_from">
+<area shape="rect" id="node1" title="Take a list of indexes and allocate the genotypes at those indexes to a new group." alt="" coords="167,5,319,33"/>
+<area shape="rect" id="node2" href="$group__calculators.html#ga70ea35197fe4dc0eedf17e1c7bb993cb" title="Takes the top_n individuals in the group with the best breeding values/fitnesses and puts them in a n..." alt="" coords="5,5,119,33"/>
+</map>

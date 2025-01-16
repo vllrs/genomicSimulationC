@@ -1,0 +1,6 @@
+<map id="gsc_get_group_genes" name="gsc_get_group_genes">
+<area shape="rect" id="node1" title="Gets a shallow copy of the genes/alleles of each member of the group." alt="" coords="204,81,352,109"/>
+<area shape="rect" id="node2" href="$group__calculators.html#ga7b5ad446b4cd825f6dca63e11e362749" title="Given a set of blocks of markers in a file, for each genotype in a group, calculate the local fitness..." alt="" coords="10,5,151,49"/>
+<area shape="rect" id="node3" href="$group__calculators.html#ga1f9eb57dc514f86c2923f5f91a140c4f" title="Calculates the breeding value of the highest breeding&#45;value genotype that can be created from the all..." alt="" coords="5,73,156,117"/>
+<area shape="rect" id="node4" href="$group__calculators.html#ga145430273fd296e49528a27489f0e520" title="Calculates the highest&#45;breeding&#45;value haplotype that can be created from the alleles present in a giv..." alt="" coords="5,141,156,185"/>
+</map>

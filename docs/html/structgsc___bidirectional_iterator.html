@@ -21,7 +21,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">genomicSimulationC<span id="projectnumber">&#160;0.2.5.05</span>
+   <div id="projectname">genomicSimulationC<span id="projectnumber">&#160;0.2.5.11</span>
    </div>
   </td>
  </tr>
@@ -94,28 +94,28 @@ Data Fields</h2></td></tr>
 <tr class="memitem:a61d64539a502a6aeb96217e975b0c5bb"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="structgsc___group_num.html">gsc_GroupNum</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structgsc___bidirectional_iterator.html#a61d64539a502a6aeb96217e975b0c5bb">group</a></td></tr>
 <tr class="memdesc:a61d64539a502a6aeb96217e975b0c5bb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Group through which to iterate.  <a href="structgsc___bidirectional_iterator.html#a61d64539a502a6aeb96217e975b0c5bb">More...</a><br /></td></tr>
 <tr class="separator:a61d64539a502a6aeb96217e975b0c5bb"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5836b24a72fd54a1eeea16fb1df982db"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structgsc___bidirectional_iterator.html#a5836b24a72fd54a1eeea16fb1df982db">localPos</a></td></tr>
-<tr class="memdesc:a5836b24a72fd54a1eeea16fb1df982db"><td class="mdescLeft">&#160;</td><td class="mdescRight">Local index (index within the cachedAM) of the genotype in the linked list of <a class="el" href="structgsc___allele_matrix.html">gsc_AlleleMatrix</a> beginning at <code>d-&gt;m</code> where the iterator's 'cursor' currently sits.  <a href="structgsc___bidirectional_iterator.html#a5836b24a72fd54a1eeea16fb1df982db">More...</a><br /></td></tr>
-<tr class="separator:a5836b24a72fd54a1eeea16fb1df982db"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa96671cc415e4d23635df6612ea8c24a"><td class="memItemLeft" align="right" valign="top">unsigned int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structgsc___bidirectional_iterator.html#aa96671cc415e4d23635df6612ea8c24a">localPos</a></td></tr>
+<tr class="memdesc:aa96671cc415e4d23635df6612ea8c24a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Local index (index within the cachedAM) of the genotype in the linked list of <a class="el" href="structgsc___allele_matrix.html">gsc_AlleleMatrix</a> beginning at <code>d-&gt;m</code> where the iterator's 'cursor' currently sits.  <a href="structgsc___bidirectional_iterator.html#aa96671cc415e4d23635df6612ea8c24a">More...</a><br /></td></tr>
+<tr class="separator:aa96671cc415e4d23635df6612ea8c24a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a80fb1aaf7412e42aad43b3f826ef2afe"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structgsc___allele_matrix.html">gsc_AlleleMatrix</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structgsc___bidirectional_iterator.html#a80fb1aaf7412e42aad43b3f826ef2afe">cachedAM</a></td></tr>
 <tr class="memdesc:a80fb1aaf7412e42aad43b3f826ef2afe"><td class="mdescLeft">&#160;</td><td class="mdescRight">Pointer to the <a class="el" href="structgsc___allele_matrix.html">gsc_AlleleMatrix</a> from the linked list of <a class="el" href="structgsc___allele_matrix.html">gsc_AlleleMatrix</a> beginning at <code>d-&gt;m</code> where the iterator's 'cursor' currently sits.  <a href="structgsc___bidirectional_iterator.html#a80fb1aaf7412e42aad43b3f826ef2afe">More...</a><br /></td></tr>
 <tr class="separator:a80fb1aaf7412e42aad43b3f826ef2afe"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a49fdf0c3e0da208a3e02e8e350bcd885"><td class="memItemLeft" align="right" valign="top">unsigned int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structgsc___bidirectional_iterator.html#a49fdf0c3e0da208a3e02e8e350bcd885">cachedAMIndex</a></td></tr>
 <tr class="memdesc:a49fdf0c3e0da208a3e02e8e350bcd885"><td class="mdescLeft">&#160;</td><td class="mdescRight">Index of <code>cachedAM</code> in the linked list of <a class="el" href="structgsc___allele_matrix.html">gsc_AlleleMatrix</a> beginning at <code>d-&gt;m</code>.  <a href="structgsc___bidirectional_iterator.html#a49fdf0c3e0da208a3e02e8e350bcd885">More...</a><br /></td></tr>
 <tr class="separator:a49fdf0c3e0da208a3e02e8e350bcd885"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a88aa6399eb36bf9b8a904b60c7ece7c9"><td class="memItemLeft" align="right" valign="top">char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structgsc___bidirectional_iterator.html#a88aa6399eb36bf9b8a904b60c7ece7c9">atEnd</a></td></tr>
-<tr class="memdesc:a88aa6399eb36bf9b8a904b60c7ece7c9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Boolean that is TRUE if the iterator's 'cursor' is on the last genotype (genotype with the highest index in the <a class="el" href="structgsc___sim_data.html" title="Composite type that is used to run crossing simulations.">gsc_SimData</a>) that fulfils the <code>group</code> critera of this iterator.  <a href="structgsc___bidirectional_iterator.html#a88aa6399eb36bf9b8a904b60c7ece7c9">More...</a><br /></td></tr>
-<tr class="separator:a88aa6399eb36bf9b8a904b60c7ece7c9"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aab3b451fc5af1bda1c0ce2de0febaf91"><td class="memItemLeft" align="right" valign="top">char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structgsc___bidirectional_iterator.html#aab3b451fc5af1bda1c0ce2de0febaf91">atStart</a></td></tr>
-<tr class="memdesc:aab3b451fc5af1bda1c0ce2de0febaf91"><td class="mdescLeft">&#160;</td><td class="mdescRight">Boolean that is TRUE if the iterator's 'cursor' is on the first genotype (genotype with the lowest index in the <a class="el" href="structgsc___sim_data.html" title="Composite type that is used to run crossing simulations.">gsc_SimData</a>) that fulfils the <code>group</code> critera of this iterator.  <a href="structgsc___bidirectional_iterator.html#aab3b451fc5af1bda1c0ce2de0febaf91">More...</a><br /></td></tr>
-<tr class="separator:aab3b451fc5af1bda1c0ce2de0febaf91"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2c91e2fb531a78d340c40c78396349fc"><td class="memItemLeft" align="right" valign="top">_Bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structgsc___bidirectional_iterator.html#a2c91e2fb531a78d340c40c78396349fc">atEnd</a></td></tr>
+<tr class="memdesc:a2c91e2fb531a78d340c40c78396349fc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Boolean that is TRUE if the iterator's 'cursor' is on the last genotype (genotype with the highest index in the <a class="el" href="structgsc___sim_data.html" title="Composite type that is used to run crossing simulations.">gsc_SimData</a>) that fulfils the <code>group</code> critera of this iterator.  <a href="structgsc___bidirectional_iterator.html#a2c91e2fb531a78d340c40c78396349fc">More...</a><br /></td></tr>
+<tr class="separator:a2c91e2fb531a78d340c40c78396349fc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8adf27012dbbb6364a0c6f354c879aeb"><td class="memItemLeft" align="right" valign="top">_Bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structgsc___bidirectional_iterator.html#a8adf27012dbbb6364a0c6f354c879aeb">atStart</a></td></tr>
+<tr class="memdesc:a8adf27012dbbb6364a0c6f354c879aeb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Boolean that is TRUE if the iterator's 'cursor' is on the first genotype (genotype with the lowest index in the <a class="el" href="structgsc___sim_data.html" title="Composite type that is used to run crossing simulations.">gsc_SimData</a>) that fulfils the <code>group</code> critera of this iterator.  <a href="structgsc___bidirectional_iterator.html#a8adf27012dbbb6364a0c6f354c879aeb">More...</a><br /></td></tr>
+<tr class="separator:a8adf27012dbbb6364a0c6f354c879aeb"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p >A structure to iterate forwards and backwards through all genotypes in a <a class="el" href="structgsc___sim_data.html" title="Composite type that is used to run crossing simulations.">gsc_SimData</a> or through only the members of a group. </p>
 <p ><em>Has short name:</em> <a class="el" href="group__shortnames.html#gab51c8cf307b7e6baaf9af222d1406ea3">BidirectionalIterator</a></p>
 <dl class="section see"><dt>See also</dt><dd><a class="el" href="group__iterators.html#ga05da8d96593f8404938cc24f659db049" title="Create a bidirectional iterator.">gsc_create_bidirectional_iter</a> </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="sim-operations_8h_source.html#l01128">1128</a> of file <a class="el" href="sim-operations_8h_source.html">sim-operations.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="sim-operations_8h_source.html#l01253">1253</a> of file <a class="el" href="sim-operations_8h_source.html">sim-operations.h</a>.</p>
 </div><h2 class="groupheader">Field Documentation</h2>
 <a id="af96af8f4da7536a8ac9cfba1fa134150" name="af96af8f4da7536a8ac9cfba1fa134150"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#af96af8f4da7536a8ac9cfba1fa134150">&#9670;&nbsp;</a></span>am</h2>
@@ -131,43 +131,43 @@ Data Fields</h2></td></tr>
 
 <p>Simulation genotypes through which to iterate. </p>
 
-<p class="definition">Definition at line <a class="el" href="sim-operations_8h_source.html#l01129">1129</a> of file <a class="el" href="sim-operations_8h_source.html">sim-operations.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="sim-operations_8h_source.html#l01254">1254</a> of file <a class="el" href="sim-operations_8h_source.html">sim-operations.h</a>.</p>
 
 </div>
 </div>
-<a id="a88aa6399eb36bf9b8a904b60c7ece7c9" name="a88aa6399eb36bf9b8a904b60c7ece7c9"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a88aa6399eb36bf9b8a904b60c7ece7c9">&#9670;&nbsp;</a></span>atEnd</h2>
+<a id="a2c91e2fb531a78d340c40c78396349fc" name="a2c91e2fb531a78d340c40c78396349fc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2c91e2fb531a78d340c40c78396349fc">&#9670;&nbsp;</a></span>atEnd</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">char gsc_BidirectionalIterator::atEnd</td>
+          <td class="memname">_Bool gsc_BidirectionalIterator::atEnd</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
 <p>Boolean that is TRUE if the iterator's 'cursor' is on the last genotype (genotype with the highest index in the <a class="el" href="structgsc___sim_data.html" title="Composite type that is used to run crossing simulations.">gsc_SimData</a>) that fulfils the <code>group</code> critera of this iterator. </p>
 
-<p class="definition">Definition at line <a class="el" href="sim-operations_8h_source.html#l01146">1146</a> of file <a class="el" href="sim-operations_8h_source.html">sim-operations.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="sim-operations_8h_source.html#l01271">1271</a> of file <a class="el" href="sim-operations_8h_source.html">sim-operations.h</a>.</p>
 
 </div>
 </div>
-<a id="aab3b451fc5af1bda1c0ce2de0febaf91" name="aab3b451fc5af1bda1c0ce2de0febaf91"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aab3b451fc5af1bda1c0ce2de0febaf91">&#9670;&nbsp;</a></span>atStart</h2>
+<a id="a8adf27012dbbb6364a0c6f354c879aeb" name="a8adf27012dbbb6364a0c6f354c879aeb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8adf27012dbbb6364a0c6f354c879aeb">&#9670;&nbsp;</a></span>atStart</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">char gsc_BidirectionalIterator::atStart</td>
+          <td class="memname">_Bool gsc_BidirectionalIterator::atStart</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
 <p>Boolean that is TRUE if the iterator's 'cursor' is on the first genotype (genotype with the lowest index in the <a class="el" href="structgsc___sim_data.html" title="Composite type that is used to run crossing simulations.">gsc_SimData</a>) that fulfils the <code>group</code> critera of this iterator. </p>
 
-<p class="definition">Definition at line <a class="el" href="sim-operations_8h_source.html#l01149">1149</a> of file <a class="el" href="sim-operations_8h_source.html">sim-operations.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="sim-operations_8h_source.html#l01274">1274</a> of file <a class="el" href="sim-operations_8h_source.html">sim-operations.h</a>.</p>
 
 </div>
 </div>
@@ -186,7 +186,7 @@ Data Fields</h2></td></tr>
 <p>Pointer to the <a class="el" href="structgsc___allele_matrix.html">gsc_AlleleMatrix</a> from the linked list of <a class="el" href="structgsc___allele_matrix.html">gsc_AlleleMatrix</a> beginning at <code>d-&gt;m</code> where the iterator's 'cursor' currently sits. </p>
 <p >Contains the genotype at <code>localPos</code>. </p>
 
-<p class="definition">Definition at line <a class="el" href="sim-operations_8h_source.html#l01138">1138</a> of file <a class="el" href="sim-operations_8h_source.html">sim-operations.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="sim-operations_8h_source.html#l01263">1263</a> of file <a class="el" href="sim-operations_8h_source.html">sim-operations.h</a>.</p>
 
 </div>
 </div>
@@ -205,7 +205,7 @@ Data Fields</h2></td></tr>
 <p>Index of <code>cachedAM</code> in the linked list of <a class="el" href="structgsc___allele_matrix.html">gsc_AlleleMatrix</a> beginning at <code>d-&gt;m</code>. </p>
 <p ><code>d-&gt;m</code> is considered to be index 0. </p>
 
-<p class="definition">Definition at line <a class="el" href="sim-operations_8h_source.html#l01142">1142</a> of file <a class="el" href="sim-operations_8h_source.html">sim-operations.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="sim-operations_8h_source.html#l01267">1267</a> of file <a class="el" href="sim-operations_8h_source.html">sim-operations.h</a>.</p>
 
 </div>
 </div>
@@ -224,25 +224,25 @@ Data Fields</h2></td></tr>
 <p>Group through which to iterate. </p>
 <p >If it is 0, then iterate through all genotypes in the simulation. Otherwise, iterate through members of the group with this as their group number. </p>
 
-<p class="definition">Definition at line <a class="el" href="sim-operations_8h_source.html#l01130">1130</a> of file <a class="el" href="sim-operations_8h_source.html">sim-operations.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="sim-operations_8h_source.html#l01255">1255</a> of file <a class="el" href="sim-operations_8h_source.html">sim-operations.h</a>.</p>
 
 </div>
 </div>
-<a id="a5836b24a72fd54a1eeea16fb1df982db" name="a5836b24a72fd54a1eeea16fb1df982db"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a5836b24a72fd54a1eeea16fb1df982db">&#9670;&nbsp;</a></span>localPos</h2>
+<a id="aa96671cc415e4d23635df6612ea8c24a" name="aa96671cc415e4d23635df6612ea8c24a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa96671cc415e4d23635df6612ea8c24a">&#9670;&nbsp;</a></span>localPos</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">size_t gsc_BidirectionalIterator::localPos</td>
+          <td class="memname">unsigned int gsc_BidirectionalIterator::localPos</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
 <p>Local index (index within the cachedAM) of the genotype in the linked list of <a class="el" href="structgsc___allele_matrix.html">gsc_AlleleMatrix</a> beginning at <code>d-&gt;m</code> where the iterator's 'cursor' currently sits. </p>
 
-<p class="definition">Definition at line <a class="el" href="sim-operations_8h_source.html#l01134">1134</a> of file <a class="el" href="sim-operations_8h_source.html">sim-operations.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="sim-operations_8h_source.html#l01259">1259</a> of file <a class="el" href="sim-operations_8h_source.html">sim-operations.h</a>.</p>
 
 </div>
 </div>

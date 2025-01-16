@@ -21,7 +21,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">genomicSimulationC<span id="projectnumber">&#160;0.2.5.05</span>
+   <div id="projectname">genomicSimulationC<span id="projectnumber">&#160;0.2.5.11</span>
    </div>
   </td>
  </tr>
@@ -68,7 +68,7 @@ $(function() {
 <div class="textblock"><p ><a class="anchor" id="md_Migration"></a></p>
 <p >Sometimes, function signatures may need to be changed at a version update. The changes needed for a script to be updated to run in a newer version of genomicSimulation can be found in this guide. Angled brackets represent function inputs.</p>
 <p >This guide belongs to the C version of genomicSimulation. Function signature changes in the R version of genomicSimulation will be managed with <code>.Deprecated</code> warnings.</p>
-<h1><a class="anchor" id="autotoc_md60"></a>
+<h1><a class="anchor" id="autotoc_md64"></a>
 0.2.5 → 0.2.6</h1>
 <p >Function signatures for file output functions were simplified. So were function signatures of breeding value and allele count matrix calculation functions. One extra parameter was added to <code>load_data_files</code>.</p>
 <table class="doxtable">
@@ -160,7 +160,8 @@ The result is in <code>counts</code> </td></tr>
 <code>gsc_save_utility_bvs(&lt;f&gt;, &amp;it, &lt;eff&gt;);</code><br  />
 <code>gsc_delete_bidirectional_iter(&amp;it);</code> </td></tr>
 </table>
-<h1><a class="anchor" id="autotoc_md61"></a>
+<p >The signedness and size of integer parameters may have changed as part of an effort to increase consistency in integer types. The changes will depend on the definitions given to type aliases <code>GSC_ID_T</code>, <code>GSC_GLOBALX_T</code>, <code>GSC_LOCALX_T</code>, <code>GSC_GENOLEN_T</code>, so a list exact type casts you need to add to upgrade a script from v0.2.5 to v0.2.6 cannot be made. You will need to add your own type casts as requested by the compiler.</p>
+<h1><a class="anchor" id="autotoc_md65"></a>
 0.2.4 → 0.2.5</h1>
 <p >See the file <code>names_stopgap.h</code> in the v0.2.5 release.</p>
 <div class="fragment"><div class="line">#define GSC_DEPRECATED_VERBOSE</div>

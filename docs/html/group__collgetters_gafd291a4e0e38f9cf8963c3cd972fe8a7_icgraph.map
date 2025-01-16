@@ -1,0 +1,17 @@
+<map id="gsc_get_group_size" name="gsc_get_group_size">
+<area shape="rect" id="node1" title="Function to count the number of genotypes that currently belong to the specified group." alt="" coords="470,368,607,396"/>
+<area shape="rect" id="node2" href="$group__calculators.html#ga7b5ad446b4cd825f6dca63e11e362749" title="Given a set of blocks of markers in a file, for each genotype in a group, calculate the local fitness..." alt="" coords="260,5,400,49"/>
+<area shape="rect" id="node3" href="$group__calculators.html#ga1f9eb57dc514f86c2923f5f91a140c4f" title="Calculates the breeding value of the highest breeding&#45;value genotype that can be created from the all..." alt="" coords="255,73,405,117"/>
+<area shape="rect" id="node4" href="$group__calculators.html#ga145430273fd296e49528a27489f0e520" title="Calculates the highest&#45;breeding&#45;value haplotype that can be created from the alleles present in a giv..." alt="" coords="255,141,405,185"/>
+<area shape="rect" id="node5" href="$group__collgetters.html#ga9e31fa104eccb5ed54832b21b7c5d73e" title="Gets the full pedigree string (as per gsc_save_group_full_pedigree() ) of each member of the group." alt="" coords="245,209,415,237"/>
+<area shape="rect" id="node6" href="$sim-operations_8c.html#ae9f10c91e8c7f77b536ef19e2222182c" title="Check input parameters of random crossing functions." alt="" coords="243,261,417,305"/>
+<area shape="rect" id="node9" href="$group__crossers.html#gaa70fd79312587d8e9fc166c64612cbce" title="Perform crosses between all pairs of parents in the group from_group and allocates the resulting offs..." alt="" coords="238,329,422,373"/>
+<area shape="rect" id="node10" href="$group__calculators.html#ga70ea35197fe4dc0eedf17e1c7bb993cb" title="Takes the top_n individuals in the group with the best breeding values/fitnesses and puts them in a n..." alt="" coords="273,397,387,425"/>
+<area shape="rect" id="node11" href="$group__groupmod.html#ga68012ed8f95ac60ae4875dbf605f5f95" title="Split a group into n groups of equal size (or size differing only by one, if n does not perfectly div..." alt="" coords="251,449,409,477"/>
+<area shape="rect" id="node12" href="$group__groupmod.html#ga47292b150273a395fe282f86c0f78e0b" title="Split a group into two groups of equal size (or size differing only by one, if the original group had..." alt="" coords="244,501,416,529"/>
+<area shape="rect" id="node13" href="$group__groupmod.html#ga02433970bb02f719e2de61c44f573ff4" title="Split a group into n groups of equal size (or size differing only by one, if n does not perfectly div..." alt="" coords="253,553,407,581"/>
+<area shape="rect" id="node14" href="$group__groupmod.html#gaf863cc5728f3a83f0002a9e43ada3a33" title="Split a group into families by their pedigrees." alt="" coords="254,605,406,633"/>
+<area shape="rect" id="node15" href="$group__groupmod.html#ga556be18433d7185e212112028e22a425" title="Split a group into families of half&#45;siblings by shared first or second parent." alt="" coords="257,657,403,701"/>
+<area shape="rect" id="node7" href="$group__crossers.html#ga4bfb4f901f7a921e6a3a2f1d8a9ac249" title="Performs random crosses among members of a group." alt="" coords="5,240,190,268"/>
+<area shape="rect" id="node8" href="$group__crossers.html#gaa43222283d6fb3745f5fab73b36af22d" title="Performs random crosses where the first parent comes from one group and the second from another." alt="" coords="5,292,190,336"/>
+</map>

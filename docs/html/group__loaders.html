@@ -21,7 +21,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">genomicSimulationC<span id="projectnumber">&#160;0.2.5.05</span>
+   <div id="projectname">genomicSimulationC<span id="projectnumber">&#160;0.2.5.11</span>
    </div>
   </td>
  </tr>
@@ -73,9 +73,9 @@ $(function() {
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:ga0baf4341fe54309d7c3b2ba395eb1975"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structgsc___allele_matrix.html">gsc_AlleleMatrix</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__loaders.html#ga0baf4341fe54309d7c3b2ba395eb1975">gsc_create_empty_allelematrix</a> (const int n_markers, const int n_labels, const int *labelDefaults, const int n_genotypes)</td></tr>
-<tr class="memdesc:ga0baf4341fe54309d7c3b2ba395eb1975"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creator for an empty <a class="el" href="structgsc___allele_matrix.html">gsc_AlleleMatrix</a> object of a given size.  <a href="group__loaders.html#ga0baf4341fe54309d7c3b2ba395eb1975">More...</a><br /></td></tr>
-<tr class="separator:ga0baf4341fe54309d7c3b2ba395eb1975"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga104fcea7a8f69cb80c136ab45c4eab76"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structgsc___allele_matrix.html">gsc_AlleleMatrix</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__loaders.html#ga104fcea7a8f69cb80c136ab45c4eab76">gsc_create_empty_allelematrix</a> (const unsigned int n_markers, const unsigned int n_labels, const int *labelDefaults, const unsigned int n_genotypes)</td></tr>
+<tr class="memdesc:ga104fcea7a8f69cb80c136ab45c4eab76"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creator for an empty <a class="el" href="structgsc___allele_matrix.html">gsc_AlleleMatrix</a> object of a given size.  <a href="group__loaders.html#ga104fcea7a8f69cb80c136ab45c4eab76">More...</a><br /></td></tr>
+<tr class="separator:ga104fcea7a8f69cb80c136ab45c4eab76"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gab37984b371a35d44dbce9d954bbf2366"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structgsc___sim_data.html">gsc_SimData</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__loaders.html#gab37984b371a35d44dbce9d954bbf2366">gsc_create_empty_simdata</a> (unsigned int RNGseed)</td></tr>
 <tr class="memdesc:gab37984b371a35d44dbce9d954bbf2366"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creator for an empty <a class="el" href="structgsc___sim_data.html" title="Composite type that is used to run crossing simulations.">gsc_SimData</a> object on the heap.  <a href="group__loaders.html#gab37984b371a35d44dbce9d954bbf2366">More...</a><br /></td></tr>
 <tr class="separator:gab37984b371a35d44dbce9d954bbf2366"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -88,12 +88,12 @@ Functions</h2></td></tr>
 <tr class="memitem:gac180eb5f1d27907a69314e68cc0d37af"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structgsc___map_i_d.html">gsc_MapID</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__loaders.html#gac180eb5f1d27907a69314e68cc0d37af">gsc_load_mapfile</a> (<a class="el" href="structgsc___sim_data.html">gsc_SimData</a> *d, const char *filename)</td></tr>
 <tr class="memdesc:gac180eb5f1d27907a69314e68cc0d37af"><td class="mdescLeft">&#160;</td><td class="mdescRight">Load a genetic map to a <a class="el" href="structgsc___sim_data.html" title="Composite type that is used to run crossing simulations.">gsc_SimData</a> object.  <a href="group__loaders.html#gac180eb5f1d27907a69314e68cc0d37af">More...</a><br /></td></tr>
 <tr class="separator:gac180eb5f1d27907a69314e68cc0d37af"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga77e0915b84492088f60ab8e74da55066"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structgsc___map_i_d.html">gsc_MapID</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__loaders.html#ga77e0915b84492088f60ab8e74da55066">gsc_create_recombmap_from_markerlist</a> (<a class="el" href="structgsc___sim_data.html">gsc_SimData</a> *d, size_t n_markers, struct <a class="el" href="structgsc___mapfile_unit.html">gsc_MapfileUnit</a> *markerlist)</td></tr>
-<tr class="memdesc:ga77e0915b84492088f60ab8e74da55066"><td class="mdescLeft">&#160;</td><td class="mdescRight">Parse a list of markers/chrs/positions into a <a class="el" href="structgsc___recombination_map.html" title="A type that stores linkage groups and crossover probabilities for simulating meiosis.">gsc_RecombinationMap</a> and save to SimData.  <a href="group__loaders.html#ga77e0915b84492088f60ab8e74da55066">More...</a><br /></td></tr>
-<tr class="separator:ga77e0915b84492088f60ab8e74da55066"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga3a2324888dbd9cfdc228554cd15597af"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structgsc___map_i_d.html">gsc_MapID</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__loaders.html#ga3a2324888dbd9cfdc228554cd15597af">gsc_create_uniformspaced_recombmap</a> (<a class="el" href="structgsc___sim_data.html">gsc_SimData</a> *d, size_t n_markers, char **markernames, double expected_n_recombinations)</td></tr>
-<tr class="memdesc:ga3a2324888dbd9cfdc228554cd15597af"><td class="mdescLeft">&#160;</td><td class="mdescRight">Create a uniformly-spaced <a class="el" href="structgsc___recombination_map.html" title="A type that stores linkage groups and crossover probabilities for simulating meiosis.">gsc_RecombinationMap</a> from a list of marker names and save to SimData.  <a href="group__loaders.html#ga3a2324888dbd9cfdc228554cd15597af">More...</a><br /></td></tr>
-<tr class="separator:ga3a2324888dbd9cfdc228554cd15597af"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gada5c2aaacd8b8a145493a0db5c017068"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structgsc___map_i_d.html">gsc_MapID</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__loaders.html#gada5c2aaacd8b8a145493a0db5c017068">gsc_create_recombmap_from_markerlist</a> (<a class="el" href="structgsc___sim_data.html">gsc_SimData</a> *d, unsigned int n_markers, struct <a class="el" href="structgsc___mapfile_unit.html">gsc_MapfileUnit</a> *markerlist)</td></tr>
+<tr class="memdesc:gada5c2aaacd8b8a145493a0db5c017068"><td class="mdescLeft">&#160;</td><td class="mdescRight">Parse a list of markers/chrs/positions into a <a class="el" href="structgsc___recombination_map.html" title="A type that stores linkage groups and crossover probabilities for simulating meiosis.">gsc_RecombinationMap</a> and save to SimData.  <a href="group__loaders.html#gada5c2aaacd8b8a145493a0db5c017068">More...</a><br /></td></tr>
+<tr class="separator:gada5c2aaacd8b8a145493a0db5c017068"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga5cbe0b821180b257b21d9551ec797f20"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structgsc___map_i_d.html">gsc_MapID</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__loaders.html#ga5cbe0b821180b257b21d9551ec797f20">gsc_create_uniformspaced_recombmap</a> (<a class="el" href="structgsc___sim_data.html">gsc_SimData</a> *d, unsigned int n_markers, char **markernames, double expected_n_recombinations)</td></tr>
+<tr class="memdesc:ga5cbe0b821180b257b21d9551ec797f20"><td class="mdescLeft">&#160;</td><td class="mdescRight">Create a uniformly-spaced <a class="el" href="structgsc___recombination_map.html" title="A type that stores linkage groups and crossover probabilities for simulating meiosis.">gsc_RecombinationMap</a> from a list of marker names and save to SimData.  <a href="group__loaders.html#ga5cbe0b821180b257b21d9551ec797f20">More...</a><br /></td></tr>
+<tr class="separator:ga5cbe0b821180b257b21d9551ec797f20"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga176416bff8f5e258dbe1619637c8b831"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structgsc___effect_i_d.html">gsc_EffectID</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__loaders.html#ga176416bff8f5e258dbe1619637c8b831">gsc_load_effectfile</a> (<a class="el" href="structgsc___sim_data.html">gsc_SimData</a> *d, const char *filename)</td></tr>
 <tr class="memdesc:ga176416bff8f5e258dbe1619637c8b831"><td class="mdescLeft">&#160;</td><td class="mdescRight">Populates a <a class="el" href="structgsc___sim_data.html" title="Composite type that is used to run crossing simulations.">gsc_SimData</a> combination with effect values.  <a href="group__loaders.html#ga176416bff8f5e258dbe1619637c8b831">More...</a><br /></td></tr>
 <tr class="separator:ga176416bff8f5e258dbe1619637c8b831"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -130,7 +130,7 @@ Functions</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="sim-operations_8c_source.html#l00138">138</a> of file <a class="el" href="sim-operations_8c_source.html">sim-operations.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="sim-operations_8c_source.html#l00142">142</a> of file <a class="el" href="sim-operations_8c_source.html">sim-operations.c</a>.</p>
 <div id="dynsection-0" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-0-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
 <div id="dynsection-0-summary" class="dynsummary" style="display:block;">
@@ -149,8 +149,8 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="ga0baf4341fe54309d7c3b2ba395eb1975" name="ga0baf4341fe54309d7c3b2ba395eb1975"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ga0baf4341fe54309d7c3b2ba395eb1975">&#9670;&nbsp;</a></span>gsc_create_empty_allelematrix()</h2>
+<a id="ga104fcea7a8f69cb80c136ab45c4eab76" name="ga104fcea7a8f69cb80c136ab45c4eab76"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga104fcea7a8f69cb80c136ab45c4eab76">&#9670;&nbsp;</a></span>gsc_create_empty_allelematrix()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -158,13 +158,13 @@ Functions</h2></td></tr>
         <tr>
           <td class="memname"><a class="el" href="structgsc___allele_matrix.html">gsc_AlleleMatrix</a> * gsc_create_empty_allelematrix </td>
           <td>(</td>
-          <td class="paramtype">const int&#160;</td>
+          <td class="paramtype">const unsigned int&#160;</td>
           <td class="paramname"><em>n_markers</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const int&#160;</td>
+          <td class="paramtype">const unsigned int&#160;</td>
           <td class="paramname"><em>n_labels</em>, </td>
         </tr>
         <tr>
@@ -176,7 +176,7 @@ Functions</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const int&#160;</td>
+          <td class="paramtype">const unsigned int&#160;</td>
           <td class="paramname"><em>n_genotypes</em>&#160;</td>
         </tr>
         <tr>
@@ -200,14 +200,14 @@ Functions</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>pointer to the empty created <a class="el" href="structgsc___allele_matrix.html">gsc_AlleleMatrix</a> </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="sim-operations_8c_source.html#l00061">61</a> of file <a class="el" href="sim-operations_8c_source.html">sim-operations.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="sim-operations_8c_source.html#l00062">62</a> of file <a class="el" href="sim-operations_8c_source.html">sim-operations.c</a>.</p>
 <div id="dynsection-1" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-1-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
 <div id="dynsection-1-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-1-content" class="dyncontent" style="display:none;">
-<div class="center"><img src="group__loaders_ga0baf4341fe54309d7c3b2ba395eb1975_cgraph.png" border="0" usemap="#agroup__loaders_ga0baf4341fe54309d7c3b2ba395eb1975_cgraph" alt=""/></div>
-<map name="agroup__loaders_ga0baf4341fe54309d7c3b2ba395eb1975_cgraph" id="agroup__loaders_ga0baf4341fe54309d7c3b2ba395eb1975_cgraph">
+<div class="center"><img src="group__loaders_ga104fcea7a8f69cb80c136ab45c4eab76_cgraph.png" border="0" usemap="#agroup__loaders_ga104fcea7a8f69cb80c136ab45c4eab76_cgraph" alt=""/></div>
+<map name="agroup__loaders_ga104fcea7a8f69cb80c136ab45c4eab76_cgraph" id="agroup__loaders_ga104fcea7a8f69cb80c136ab45c4eab76_cgraph">
 <area shape="rect" title="Creator for an empty gsc_AlleleMatrix object of a given size." alt="" coords="5,5,207,33"/>
 <area shape="rect" href="sim-operations_8c.html#aaaf3ebc75feaf901829232712e55677b" title="Replace calls to malloc direct with this function." alt="" coords="255,5,376,33"/>
 </map>
@@ -217,25 +217,24 @@ Functions</h2></td></tr>
 <div id="dynsection-2-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-2-content" class="dyncontent" style="display:none;">
-<div class="center"><img src="group__loaders_ga0baf4341fe54309d7c3b2ba395eb1975_icgraph.png" border="0" usemap="#agroup__loaders_ga0baf4341fe54309d7c3b2ba395eb1975_icgraph" alt=""/></div>
-<map name="agroup__loaders_ga0baf4341fe54309d7c3b2ba395eb1975_icgraph" id="agroup__loaders_ga0baf4341fe54309d7c3b2ba395eb1975_icgraph">
+<div class="center"><img src="group__loaders_ga104fcea7a8f69cb80c136ab45c4eab76_icgraph.png" border="0" usemap="#agroup__loaders_ga104fcea7a8f69cb80c136ab45c4eab76_icgraph" alt=""/></div>
+<map name="agroup__loaders_ga104fcea7a8f69cb80c136ab45c4eab76_icgraph" id="agroup__loaders_ga104fcea7a8f69cb80c136ab45c4eab76_icgraph">
 <area shape="rect" title="Creator for an empty gsc_AlleleMatrix object of a given size." alt="" coords="921,73,1122,101"/>
 <area shape="rect" href="sim-operations_8c.html#a14bf1934790250afa4e708fe902c44a0" title="Create a new gsc_EmptyListNavigator, including an empty AlleleMatrix suitable for inserting into the ..." alt="" coords="676,13,873,41"/>
 <area shape="rect" href="sim-operations_8c.html#a67c2447b0d771997a444efe026cf0600" title="Get the next sequential genotype in an gsc_EmptyListNavigator." alt="" coords="698,65,851,109"/>
-<area shape="rect" href="group__crossers.html#ga28b0fcf60b6a8f6e8ca470f7b5d0a4b7" title="Make new genotypes (generic function)" alt="" coords="693,169,856,213"/>
+<area shape="rect" href="group__crossers.html#gaa5a1b4a1a80f8baf5b5730d7b7db0b77" title="Make new genotypes (generic function)" alt="" coords="693,169,856,213"/>
 <area shape="rect" href="sim-operations_8c.html#aca78dbac4d7154e95b6ddca575937d77" title="Loads a genotype file, with or without existing genome model in the SimData." alt="" coords="460,5,609,49"/>
 <area shape="rect" href="group__loaders.html#ga394371951741d8c2db18a85069d6b61e" title="Populates a gsc_SimData object with marker allele data, a genetic map, and (optionally) marker effect..." alt="" coords="230,13,365,41"/>
 <area shape="rect" href="group__loaders.html#ga50888a3ffcd2853e07bb4c1b6f0d067a" title="Load a set of genotypes to a gsc_SimData object." alt="" coords="5,13,155,41"/>
-<area shape="rect" href="group__crossers.html#ga15af204958dc69717334c46b19219a2d" title="Creates an identical copy of each member of a group." alt="" coords="471,73,597,101"/>
+<area shape="rect" href="group__crossers.html#gaa3907b6b8ad3de641916b2df83e43a01" title="Creates an identical copy of each member of a group." alt="" coords="471,73,597,101"/>
 <area shape="rect" href="group__crossers.html#ga6c230330ca9a9db9459d4477512a21af" title="Creates a doubled haploid from each member of a group." alt="" coords="440,125,628,153"/>
-<area shape="rect" href="group__crossers.html#ga03af5446006203244dd3080cf75af26f" title="Performs random crosses among members of a group." alt="" coords="442,177,626,205"/>
-<area shape="rect" href="group__crossers.html#ga652376b5a34d24f239e5fc0b167c067b" title="Performs random crosses where the first parent comes from one group and the second from another." alt="" coords="442,229,626,273"/>
-<area shape="rect" href="group__crossers.html#ga4450224009587f4cd4a972413423c96e" title="Performs the crosses of pairs of parents whose indexes are provided in an array." alt="" coords="440,297,628,325"/>
+<area shape="rect" href="group__crossers.html#ga4bfb4f901f7a921e6a3a2f1d8a9ac249" title="Performs random crosses among members of a group." alt="" coords="442,177,626,205"/>
+<area shape="rect" href="group__crossers.html#gaa43222283d6fb3745f5fab73b36af22d" title="Performs random crosses where the first parent comes from one group and the second from another." alt="" coords="442,229,626,273"/>
+<area shape="rect" href="group__crossers.html#gafe3072701f2dea2a505dd8fc9e8bc936" title="Performs the crosses of pairs of parents whose indexes are provided in an array." alt="" coords="440,297,628,325"/>
 <area shape="rect" href="group__crossers.html#gab625453074798be6ba8677a5d4986edf" title="Selfs each member of a group for a certain number of generations." alt="" coords="473,349,595,377"/>
-<area shape="rect" href="group__crossers.html#gab19b3eb80b5fe460d17c93e0c27f7aaf" title="Find the top m percent of a group and perform random crosses between those top individuals." alt="" coords="223,165,372,209"/>
-<area shape="rect" href="group__crossers.html#gaa70fd79312587d8e9fc166c64612cbce" title="Perform crosses between all pairs of parents in the group from_group and allocates the resulting offs..." alt="" coords="205,233,390,277"/>
-<area shape="rect" href="group__crossers.html#ga5c0be901d03d0e5dd3d74bc19a4bea70" title="Perform crosses between pairs of parents identified by name in a file and allocate the resulting offs..." alt="" coords="203,301,392,329"/>
-<area shape="rect" href="group__crossers.html#ga2b8100d2d30cf1ada0db8403663076ff" title="Perform crosses between previously&#45;generated offspring of pairs of parents identified by name in a fi..." alt="" coords="208,353,387,397"/>
+<area shape="rect" href="group__crossers.html#gaa70fd79312587d8e9fc166c64612cbce" title="Perform crosses between all pairs of parents in the group from_group and allocates the resulting offs..." alt="" coords="205,229,390,273"/>
+<area shape="rect" href="group__crossers.html#ga5c0be901d03d0e5dd3d74bc19a4bea70" title="Perform crosses between pairs of parents identified by name in a file and allocate the resulting offs..." alt="" coords="203,297,392,325"/>
+<area shape="rect" href="group__crossers.html#ga2b8100d2d30cf1ada0db8403663076ff" title="Perform crosses between previously&#45;generated offspring of pairs of parents identified by name in a fi..." alt="" coords="208,349,387,393"/>
 </map>
 </div>
 
@@ -262,7 +261,7 @@ Functions</h2></td></tr>
 <p ><em>Has short name:</em> <a class="el" href="group__shortnames.html#gacbedd673ae83f70154d663852acfea70">create_empty_simdata</a></p>
 <dl class="section return"><dt>Returns</dt><dd>pointer to the empty created <a class="el" href="structgsc___sim_data.html" title="Composite type that is used to run crossing simulations.">gsc_SimData</a> </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="sim-operations_8c_source.html#l00108">108</a> of file <a class="el" href="sim-operations_8c_source.html">sim-operations.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="sim-operations_8c_source.html#l00112">112</a> of file <a class="el" href="sim-operations_8c_source.html">sim-operations.c</a>.</p>
 <div id="dynsection-3" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-3-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
 <div id="dynsection-3-summary" class="dynsummary" style="display:block;">
@@ -277,8 +276,8 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="ga77e0915b84492088f60ab8e74da55066" name="ga77e0915b84492088f60ab8e74da55066"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ga77e0915b84492088f60ab8e74da55066">&#9670;&nbsp;</a></span>gsc_create_recombmap_from_markerlist()</h2>
+<a id="gada5c2aaacd8b8a145493a0db5c017068" name="gada5c2aaacd8b8a145493a0db5c017068"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gada5c2aaacd8b8a145493a0db5c017068">&#9670;&nbsp;</a></span>gsc_create_recombmap_from_markerlist()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -292,7 +291,7 @@ Functions</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">size_t&#160;</td>
+          <td class="paramtype">unsigned int&#160;</td>
           <td class="paramname"><em>n_markers</em>, </td>
         </tr>
         <tr>
@@ -328,16 +327,16 @@ Functions</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd><a class="el" href="structgsc___map_i_d.html" title="A type representing a particular loaded recombination map.">gsc_MapID</a> of the <a class="el" href="structgsc___recombination_map.html" title="A type that stores linkage groups and crossover probabilities for simulating meiosis.">gsc_RecombinationMap</a> that was just loaded into the simulation. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="sim-operations_8c_source.html#l05482">5482</a> of file <a class="el" href="sim-operations_8c_source.html">sim-operations.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="sim-operations_8c_source.html#l05680">5680</a> of file <a class="el" href="sim-operations_8c_source.html">sim-operations.c</a>.</p>
 <div id="dynsection-4" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-4-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
 <div id="dynsection-4-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-4-content" class="dyncontent" style="display:none;">
-<div class="center"><img src="group__loaders_ga77e0915b84492088f60ab8e74da55066_cgraph.png" border="0" usemap="#agroup__loaders_ga77e0915b84492088f60ab8e74da55066_cgraph" alt=""/></div>
-<map name="agroup__loaders_ga77e0915b84492088f60ab8e74da55066_cgraph" id="agroup__loaders_ga77e0915b84492088f60ab8e74da55066_cgraph">
+<div class="center"><img src="group__loaders_gada5c2aaacd8b8a145493a0db5c017068_cgraph.png" border="0" usemap="#agroup__loaders_gada5c2aaacd8b8a145493a0db5c017068_cgraph" alt=""/></div>
+<map name="agroup__loaders_gada5c2aaacd8b8a145493a0db5c017068_cgraph" id="agroup__loaders_gada5c2aaacd8b8a145493a0db5c017068_cgraph">
 <area shape="rect" title="Parse a list of markers/chrs/positions into a gsc_RecombinationMap and save to SimData." alt="" coords="5,73,166,117"/>
-<area shape="rect" href="group__supporters.html#gac77f7337a190c68f84bb95181f365cca" title="Return whether or not a marker name is present in the tracked markers, and at what index." alt="" coords="227,5,399,49"/>
+<area shape="rect" href="group__supporters.html#gad57230a4c812ba8a6deed26100beae7b" title="Return whether or not a marker name is present in the tracked markers, and at what index." alt="" coords="227,5,399,49"/>
 <area shape="rect" href="sim-operations_8c.html#a337459fb31ef07b88a77068780ab746e" title="Save a RecombinationMap to the SimData and allocate it a mapID." alt="" coords="214,73,412,117"/>
 <area shape="rect" href="sim-operations_8c.html#aaaf3ebc75feaf901829232712e55677b" title="Replace calls to malloc direct with this function." alt="" coords="473,137,594,165"/>
 <area shape="rect" href="group__supporters.html#ga48ab10327d06674174428ca2db0b32ed" title="Function to identify the next sequential integer that is not already allocated to a map ID in the sim..." alt="" coords="460,81,606,109"/>
@@ -348,8 +347,8 @@ Functions</h2></td></tr>
 <div id="dynsection-5-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-5-content" class="dyncontent" style="display:none;">
-<div class="center"><img src="group__loaders_ga77e0915b84492088f60ab8e74da55066_icgraph.png" border="0" usemap="#agroup__loaders_ga77e0915b84492088f60ab8e74da55066_icgraph" alt=""/></div>
-<map name="agroup__loaders_ga77e0915b84492088f60ab8e74da55066_icgraph" id="agroup__loaders_ga77e0915b84492088f60ab8e74da55066_icgraph">
+<div class="center"><img src="group__loaders_gada5c2aaacd8b8a145493a0db5c017068_icgraph.png" border="0" usemap="#agroup__loaders_gada5c2aaacd8b8a145493a0db5c017068_icgraph" alt=""/></div>
+<map name="agroup__loaders_gada5c2aaacd8b8a145493a0db5c017068_icgraph" id="agroup__loaders_gada5c2aaacd8b8a145493a0db5c017068_icgraph">
 <area shape="rect" title="Parse a list of markers/chrs/positions into a gsc_RecombinationMap and save to SimData." alt="" coords="555,5,716,49"/>
 <area shape="rect" href="group__loaders.html#gac180eb5f1d27907a69314e68cc0d37af" title="Load a genetic map to a gsc_SimData object." alt="" coords="386,13,507,41"/>
 <area shape="rect" href="group__loaders.html#ga394371951741d8c2db18a85069d6b61e" title="Populates a gsc_SimData object with marker allele data, a genetic map, and (optionally) marker effect..." alt="" coords="203,13,338,41"/>
@@ -359,8 +358,8 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="ga3a2324888dbd9cfdc228554cd15597af" name="ga3a2324888dbd9cfdc228554cd15597af"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ga3a2324888dbd9cfdc228554cd15597af">&#9670;&nbsp;</a></span>gsc_create_uniformspaced_recombmap()</h2>
+<a id="ga5cbe0b821180b257b21d9551ec797f20" name="ga5cbe0b821180b257b21d9551ec797f20"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga5cbe0b821180b257b21d9551ec797f20">&#9670;&nbsp;</a></span>gsc_create_uniformspaced_recombmap()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -374,7 +373,7 @@ Functions</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">size_t&#160;</td>
+          <td class="paramtype">unsigned int&#160;</td>
           <td class="paramname"><em>n_markers</em>, </td>
         </tr>
         <tr>
@@ -411,16 +410,16 @@ Functions</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd><a class="el" href="structgsc___map_i_d.html" title="A type representing a particular loaded recombination map.">gsc_MapID</a> of the <a class="el" href="structgsc___recombination_map.html" title="A type that stores linkage groups and crossover probabilities for simulating meiosis.">gsc_RecombinationMap</a> that was just loaded into the simulation. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="sim-operations_8c_source.html#l05618">5618</a> of file <a class="el" href="sim-operations_8c_source.html">sim-operations.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="sim-operations_8c_source.html#l05818">5818</a> of file <a class="el" href="sim-operations_8c_source.html">sim-operations.c</a>.</p>
 <div id="dynsection-6" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-6-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
 <div id="dynsection-6-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-6-content" class="dyncontent" style="display:none;">
-<div class="center"><img src="group__loaders_ga3a2324888dbd9cfdc228554cd15597af_cgraph.png" border="0" usemap="#agroup__loaders_ga3a2324888dbd9cfdc228554cd15597af_cgraph" alt=""/></div>
-<map name="agroup__loaders_ga3a2324888dbd9cfdc228554cd15597af_cgraph" id="agroup__loaders_ga3a2324888dbd9cfdc228554cd15597af_cgraph">
+<div class="center"><img src="group__loaders_ga5cbe0b821180b257b21d9551ec797f20_cgraph.png" border="0" usemap="#agroup__loaders_ga5cbe0b821180b257b21d9551ec797f20_cgraph" alt=""/></div>
+<map name="agroup__loaders_ga5cbe0b821180b257b21d9551ec797f20_cgraph" id="agroup__loaders_ga5cbe0b821180b257b21d9551ec797f20_cgraph">
 <area shape="rect" title="Create a uniformly&#45;spaced gsc_RecombinationMap from a list of marker names and save to SimData." alt="" coords="5,73,182,117"/>
-<area shape="rect" href="group__supporters.html#gac77f7337a190c68f84bb95181f365cca" title="Return whether or not a marker name is present in the tracked markers, and at what index." alt="" coords="243,5,415,49"/>
+<area shape="rect" href="group__supporters.html#gad57230a4c812ba8a6deed26100beae7b" title="Return whether or not a marker name is present in the tracked markers, and at what index." alt="" coords="243,5,415,49"/>
 <area shape="rect" href="sim-operations_8c.html#a337459fb31ef07b88a77068780ab746e" title="Save a RecombinationMap to the SimData and allocate it a mapID." alt="" coords="230,73,428,117"/>
 <area shape="rect" href="sim-operations_8c.html#aaaf3ebc75feaf901829232712e55677b" title="Replace calls to malloc direct with this function." alt="" coords="489,137,610,165"/>
 <area shape="rect" href="group__supporters.html#ga48ab10327d06674174428ca2db0b32ed" title="Function to identify the next sequential integer that is not already allocated to a map ID in the sim..." alt="" coords="476,81,622,109"/>
@@ -431,8 +430,8 @@ Functions</h2></td></tr>
 <div id="dynsection-7-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-7-content" class="dyncontent" style="display:none;">
-<div class="center"><img src="group__loaders_ga3a2324888dbd9cfdc228554cd15597af_icgraph.png" border="0" usemap="#agroup__loaders_ga3a2324888dbd9cfdc228554cd15597af_icgraph" alt=""/></div>
-<map name="agroup__loaders_ga3a2324888dbd9cfdc228554cd15597af_icgraph" id="agroup__loaders_ga3a2324888dbd9cfdc228554cd15597af_icgraph">
+<div class="center"><img src="group__loaders_ga5cbe0b821180b257b21d9551ec797f20_icgraph.png" border="0" usemap="#agroup__loaders_ga5cbe0b821180b257b21d9551ec797f20_icgraph" alt=""/></div>
+<map name="agroup__loaders_ga5cbe0b821180b257b21d9551ec797f20_icgraph" id="agroup__loaders_ga5cbe0b821180b257b21d9551ec797f20_icgraph">
 <area shape="rect" title="Create a uniformly&#45;spaced gsc_RecombinationMap from a list of marker names and save to SimData." alt="" coords="583,5,760,49"/>
 <area shape="rect" href="sim-operations_8c.html#aca78dbac4d7154e95b6ddca575937d77" title="Loads a genotype file, with or without existing genome model in the SimData." alt="" coords="386,5,535,49"/>
 <area shape="rect" href="group__loaders.html#ga394371951741d8c2db18a85069d6b61e" title="Populates a gsc_SimData object with marker allele data, a genetic map, and (optionally) marker effect..." alt="" coords="203,13,338,41"/>
@@ -502,7 +501,7 @@ Functions</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>a <em><a class="el" href="structgsc___multi_i_d_set.html" title="Simple crate that stores a GroupNum, a MapID, and an EffectID.">gsc_MultiIDSet</a></em> entry, containing the group number of the founding group, the map id of the recombination map loaded, and the effect set id of the loaded effect file if applicable. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="sim-operations_8c_source.html#l06869">6869</a> of file <a class="el" href="sim-operations_8c_source.html">sim-operations.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="sim-operations_8c_source.html#l07106">7106</a> of file <a class="el" href="sim-operations_8c_source.html">sim-operations.c</a>.</p>
 <div id="dynsection-8" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-8-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
 <div id="dynsection-8-summary" class="dynsummary" style="display:block;">
@@ -514,50 +513,50 @@ Functions</h2></td></tr>
 <area shape="rect" href="group__loaders.html#ga176416bff8f5e258dbe1619637c8b831" title="Populates a gsc_SimData combination with effect values." alt="" coords="383,1496,510,1524"/>
 <area shape="rect" href="sim-operations_8c.html#aca78dbac4d7154e95b6ddca575937d77" title="Loads a genotype file, with or without existing genome model in the SimData." alt="" coords="372,651,521,695"/>
 <area shape="rect" href="group__loaders.html#gac180eb5f1d27907a69314e68cc0d37af" title="Load a genetic map to a gsc_SimData object." alt="" coords="189,1188,310,1216"/>
-<area shape="rect" href="group__supporters.html#gac77f7337a190c68f84bb95181f365cca" title="Return whether or not a marker name is present in the tracked markers, and at what index." alt="" coords="843,864,1014,908"/>
+<area shape="rect" href="group__supporters.html#gad57230a4c812ba8a6deed26100beae7b" title="Return whether or not a marker name is present in the tracked markers, and at what index." alt="" coords="843,861,1014,905"/>
 <area shape="rect" href="sim-operations_8c.html#a3717c5ed02cf2a321b7424dc0e668e19" title="Save an EffectMatrix to the SimData and allocate it an EffectID." alt="" coords="610,1697,753,1741"/>
-<area shape="rect" href="sim-operations_8c.html#aaaf3ebc75feaf901829232712e55677b" title="Replace calls to malloc direct with this function." alt="" coords="1108,869,1229,897"/>
-<area shape="rect" href="sim-operations_8c.html#a890aa11fc3f54d411dff950b77931835" title="Header row reading and processing for map and effect set files." alt="" coords="603,1577,760,1621"/>
+<area shape="rect" href="sim-operations_8c.html#aaaf3ebc75feaf901829232712e55677b" title="Replace calls to malloc direct with this function." alt="" coords="1108,868,1229,896"/>
+<area shape="rect" href="sim-operations_8c.html#a11ff196fb220dfd8336587f016767b66" title="Header row reading and processing for map and effect set files." alt="" coords="603,1577,760,1621"/>
 <area shape="rect" href="sim-operations_8c.html#a9022b0b2e12395904757c59db6010d5b" title="Return the next cell from a queue of cells until the queue is exhausted, and thereafter read new cell..." alt="" coords="596,1457,767,1501"/>
 <area shape="rect" href="group__structs.html#ga85b05dcdc5ec484d918ed2d3330c3ae8" title="Close a gsc_TableFileReader&#39;s file pointer." alt="" coords="617,1269,746,1313"/>
 <area shape="rect" href="group__structs.html#ga1a3a39309d4ce6447581e73f7483fbfb" title="Open a file for reading with gsc_TableFileReader." alt="" coords="617,1389,746,1433"/>
 <area shape="rect" href="group__supporters.html#ga7881c537673d2d2d9dc3bb285676bfd4" title="Function to identify the next sequential integer that is not already allocated to a marker effect set..." alt="" coords="849,1748,1008,1776"/>
 <area shape="rect" href="group__structs.html#ga85446dd929940e823745067d0a1d1d5d" title="Allocate memory to store a deep copy of a gsc_TableFileCell, if previously only a shallow copy." alt="" coords="837,1303,1020,1331"/>
-<area shape="rect" href="group__structs.html#ga9b389be1c0eada385d1015e445886c05" title="Read forwards in TableFileReader and return the next cell&#39;s contents, as well as how many column gaps..." alt="" coords="864,1423,993,1467"/>
-<area shape="rect" href="group__structs.html#ga9861b51e8a5c74f843aac748c932c3a0" title="Classify the character under the cursor of a TableFileReader as cell contents or otherwise." alt="" coords="1083,1456,1254,1500"/>
-<area shape="rect" href="group__structs.html#gac2206b9a58abb4b533d11dec4bd9f322" title="Read another buffer&#39;s worth of characters from a gsc_TableFileReader&#39;s file." alt="" coords="1083,1388,1254,1432"/>
+<area shape="rect" href="group__structs.html#ga9b389be1c0eada385d1015e445886c05" title="Read forwards in TableFileReader and return the next cell&#39;s contents, as well as how many column gaps..." alt="" coords="864,1389,993,1433"/>
+<area shape="rect" href="group__structs.html#ga9861b51e8a5c74f843aac748c932c3a0" title="Classify the character under the cursor of a TableFileReader as cell contents or otherwise." alt="" coords="1083,1355,1254,1399"/>
+<area shape="rect" href="group__structs.html#gac2206b9a58abb4b533d11dec4bd9f322" title="Read another buffer&#39;s worth of characters from a gsc_TableFileReader&#39;s file." alt="" coords="1083,1423,1254,1467"/>
 <area shape="rect" href="sim-operations_8c.html#a14bf1934790250afa4e708fe902c44a0" title="Create a new gsc_EmptyListNavigator, including an empty AlleleMatrix suitable for inserting into the ..." alt="" coords="583,688,780,716"/>
-<area shape="rect" href="group__loaders.html#ga3a2324888dbd9cfdc228554cd15597af" title="Create a uniformly&#45;spaced gsc_RecombinationMap from a list of marker names and save to SimData." alt="" coords="593,449,770,493"/>
-<area shape="rect" href="group__deletors.html#ga9c647cacb393998930c560962c1f7f6d" title="Delete the gsc_AlleleMatrix linked list from m onwards and frees its memory." alt="" coords="1087,165,1251,193"/>
+<area shape="rect" href="group__loaders.html#ga5cbe0b821180b257b21d9551ec797f20" title="Create a uniformly&#45;spaced gsc_RecombinationMap from a list of marker names and save to SimData." alt="" coords="593,449,770,493"/>
+<area shape="rect" href="group__deletors.html#ga9c647cacb393998930c560962c1f7f6d" title="Delete the gsc_AlleleMatrix linked list from m onwards and frees its memory." alt="" coords="1087,135,1251,163"/>
 <area shape="rect" href="sim-operations_8c.html#a622965bf813b7d185c0effe64aca6bad" title="Push emptylist edited genotypes into the SimData." alt="" coords="605,329,758,373"/>
 <area shape="rect" href="sim-operations_8c.html#a52e6f87fe92eca15a0f4da957c5f8e19" title="Reset the cursor of a gsc_EmptyListNavigator to the first genotype." alt="" coords="852,569,1005,613"/>
 <area shape="rect" href="sim-operations_8c.html#a67c2447b0d771997a444efe026cf0600" title="Get the next sequential genotype in an gsc_EmptyListNavigator." alt="" coords="605,740,758,784"/>
 <area shape="rect" href="group__supporters.html#ga22609353c4951dcf3ed54537ecb6eeda" title="Function to identify the next sequential integer that does not identify a group that currently has me..." alt="" coords="597,397,766,425"/>
-<area shape="rect" href="sim-operations_8c.html#a83a29664b38e9ed249664617fd9095f8" title="Parse a string and save it as the alleles of a genotype at a particular location and genetic marker." alt="" coords="599,620,764,664"/>
+<area shape="rect" href="sim-operations_8c.html#a7c6136857e4f65bff718565b48e18afa" title="Parse a string and save it as the alleles of a genotype at a particular location and genetic marker." alt="" coords="599,620,764,664"/>
 <area shape="rect" href="sim-operations_8c.html#ac22c96ec7ddd91b676805d17de44689c" title="Determine the style in which alleles are stored in a genotype matrix." alt="" coords="600,193,763,237"/>
-<area shape="rect" href="sim-operations_8c.html#a4252992dd10c70393462165392fa4f73" title="Determine whether a genotype matrix has a corner cell or not." alt="" coords="596,5,767,65"/>
+<area shape="rect" href="sim-operations_8c.html#ae903fb523337566ac34b578f02435c2c" title="Determine whether a genotype matrix has a corner cell or not." alt="" coords="596,5,767,65"/>
 <area shape="rect" href="sim-operations_8c.html#a410d2515f415529d8efe2abd9ab62048" title="Determine whether a genotype matrix has a header row or not." alt="" coords="601,261,762,305"/>
 <area shape="rect" href="sim-operations_8c.html#a39561a6563fa3b016f8833252acc5e5a" title="Determine whether a genotype matrix is row&#45; or column&#45;oriented." alt="" coords="594,860,769,904"/>
 <area shape="rect" href="sim-operations_8c.html#acf2e8ece7fb3470e814da69e8f162813" title="Comparator function for qsort." alt="" coords="591,1099,772,1143"/>
 <area shape="rect" href="group__liteget.html#gadff19e04cab018dd64ae232e0adcb3cc" title="Set the name of a genotype." alt="" coords="628,89,735,117"/>
-<area shape="rect" href="group__loaders.html#ga0baf4341fe54309d7c3b2ba395eb1975" title="Creator for an empty gsc_AlleleMatrix object of a given size." alt="" coords="828,748,1029,776"/>
+<area shape="rect" href="group__loaders.html#ga104fcea7a8f69cb80c136ab45c4eab76" title="Creator for an empty gsc_AlleleMatrix object of a given size." alt="" coords="828,748,1029,776"/>
 <area shape="rect" href="sim-operations_8c.html#a337459fb31ef07b88a77068780ab746e" title="Save a RecombinationMap to the SimData and allocate it a mapID." alt="" coords="829,449,1028,493"/>
-<area shape="rect" href="group__supporters.html#ga48ab10327d06674174428ca2db0b32ed" title="Function to identify the next sequential integer that is not already allocated to a map ID in the sim..." alt="" coords="1096,457,1242,485"/>
-<area shape="rect" href="group__supporters.html#gafa617e95d5ed52b4e25434a20006809c" title="A function to tidy the internal storage of genotypes after addition or deletion of genotypes in the g..." alt="" coords="857,273,1000,317"/>
-<area shape="rect" href="group__deletors.html#gae46ff71b819d28408e8b55dd4281a4f3" title="Move all details of the genotype at one gsc_GenoLocation to another gsc_GenoLocation." alt="" coords="1099,281,1238,309"/>
-<area shape="rect" href="sim-operations_8c.html#adf656d2e43014ca8dd4f5d39adeb68f6" title="Sets the current cursor position in a gsc_GappyIterator to the next empty position,..." alt="" coords="1088,333,1250,361"/>
-<area shape="rect" href="sim-operations_8c.html#af5486daced98d9bab2126b9d7af11356" title="Sets the current cursor position in a gsc_GappyIterator to the next filled position,..." alt="" coords="1077,229,1260,257"/>
-<area shape="rect" href="sim-operations_8c.html#a6d94248d1163c9c40e2910e578ce4708" title="Sets the current cursor position in a gsc_GappyIterator to the next valid position,..." alt="" coords="1317,256,1486,284"/>
-<area shape="rect" href="group__collgetters.html#gaf9692ce014cfe5439fd00e522a6bab9f" title="Identify group numbers that currently have members." alt="" coords="846,397,1011,425"/>
-<area shape="rect" href="group__collgetters.html#gaddb8ea59b22bbe0ec8c61da7f5ba8a98" title="Identify group numbers that currently have members, and how many members they have." alt="" coords="1090,389,1248,433"/>
-<area shape="rect" href="group__iterators.html#ga05da8d96593f8404938cc24f659db049" title="Create a bidirectional iterator." alt="" coords="1308,397,1495,425"/>
-<area shape="rect" href="group__liteget.html#gae5d12aca851dd2358b63dc60b8ac6e5f" title="Get the current group membership of a genotype." alt="" coords="1348,449,1455,477"/>
-<area shape="rect" href="group__iterators.html#ga630ba7f8e864238e296cb9480dfbc728" title="Get the next location from a bidirectional iterator." alt="" coords="1337,345,1466,373"/>
-<area shape="rect" href="sim-operations_8c.html#aaaec31480065a89defa3e02a0f902cb8" title="Identify what formatting a genotype matrix is representing alleles as." alt="" coords="841,197,1016,241"/>
-<area shape="rect" href="group__loaders.html#ga77e0915b84492088f60ab8e74da55066" title="Parse a list of markers/chrs/positions into a gsc_RecombinationMap and save to SimData." alt="" coords="601,928,762,972"/>
+<area shape="rect" href="group__supporters.html#ga48ab10327d06674174428ca2db0b32ed" title="Function to identify the next sequential integer that is not already allocated to a map ID in the sim..." alt="" coords="1096,567,1242,595"/>
+<area shape="rect" href="group__supporters.html#gafa617e95d5ed52b4e25434a20006809c" title="A function to tidy the internal storage of genotypes after addition or deletion of genotypes in the g..." alt="" coords="857,305,1000,349"/>
+<area shape="rect" href="group__liteget.html#ga5e1e89782604c9ab47f196e1da233362" title="Get the alleles of a genotype." alt="" coords="1113,395,1224,423"/>
+<area shape="rect" href="group__liteget.html#ga22a270ae73aaa86d93212a4a40f999dc" title="Get the name of a genotype." alt="" coords="1116,447,1222,475"/>
+<area shape="rect" href="group__iterators.html#ga16615a5663b4d3bd768d8380f820aa66" title="Get an gsc_AlleleMatrix by index in the linked list." alt="" coords="1085,187,1252,215"/>
+<area shape="rect" href="group__deletors.html#gae46ff71b819d28408e8b55dd4281a4f3" title="Move all details of the genotype at one gsc_GenoLocation to another gsc_GenoLocation." alt="" coords="1099,239,1238,267"/>
+<area shape="rect" href="sim-operations_8c.html#adf656d2e43014ca8dd4f5d39adeb68f6" title="Sets the current cursor position in a gsc_GappyIterator to the next empty position,..." alt="" coords="1088,291,1250,319"/>
+<area shape="rect" href="sim-operations_8c.html#af5486daced98d9bab2126b9d7af11356" title="Sets the current cursor position in a gsc_GappyIterator to the next filled position,..." alt="" coords="1077,343,1260,371"/>
+<area shape="rect" href="sim-operations_8c.html#a6d94248d1163c9c40e2910e578ce4708" title="Sets the current cursor position in a gsc_GappyIterator to the next valid position,..." alt="" coords="1308,317,1478,345"/>
+<area shape="rect" href="group__collgetters.html#gaf76f5cdc38c881c9ee8eee32a1770e83" title="Identify group numbers that currently have members." alt="" coords="846,397,1011,425"/>
+<area shape="rect" href="group__collgetters.html#gaf344362b92201c509c3efd9fba21f6a9" title="Identify group numbers that currently have members, and how many members they have." alt="" coords="1090,499,1248,543"/>
+<area shape="rect" href="sim-operations_8c.html#aaaec31480065a89defa3e02a0f902cb8" title="Identify what formatting a genotype matrix is representing alleles as." alt="" coords="841,207,1016,251"/>
+<area shape="rect" href="group__loaders.html#gada5c2aaacd8b8a145493a0db5c017068" title="Parse a list of markers/chrs/positions into a gsc_RecombinationMap and save to SimData." alt="" coords="601,928,762,972"/>
 <area shape="rect" href="sim-operations_8c.html#ad3c2207b2bd170d752a0a26a9fa2aa19" title="Extract the contents of a genetic map file." alt="" coords="361,1367,532,1395"/>
-<area shape="rect" href="sim-operations_8c.html#a041ce3c792a881ab98e82b334712f3f6" title="Sort markerlist by chromosome name, and by position within each chromosome." alt="" coords="358,1773,535,1801"/>
-<area shape="rect" href="sim-operations_8c.html#a7d949c9d8650f7744c84c20eb28c14ff" title="Discard markers whose names are not present in a gsc_KnownGenome." alt="" coords="362,1149,532,1193"/>
+<area shape="rect" href="sim-operations_8c.html#ac1d97be6bdb21bbb271fc44616461fd8" title="Sort markerlist by chromosome name, and by position within each chromosome." alt="" coords="358,1773,535,1801"/>
+<area shape="rect" href="sim-operations_8c.html#acf770138dc0f9f33bc715156c83ccfd0" title="Discard markers whose names are not present in a gsc_KnownGenome." alt="" coords="362,1149,532,1193"/>
 <area shape="rect" href="sim-operations_8c.html#aaa406c38a85c3953b1cda622ff535d12" title="Comparator function for qsort." alt="" coords="595,1765,768,1809"/>
 <area shape="rect" href="sim-operations_8c.html#a6899282e8507284be584200d05e786cf" title="Comparator function for qsort." alt="" coords="600,1833,763,1877"/>
 </map>
@@ -622,7 +621,7 @@ Functions</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>the ID of the set of marker effects just loaded </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="sim-operations_8c_source.html#l05831">5831</a> of file <a class="el" href="sim-operations_8c_source.html">sim-operations.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="sim-operations_8c_source.html#l06034">6034</a> of file <a class="el" href="sim-operations_8c_source.html">sim-operations.c</a>.</p>
 <div id="dynsection-10" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-10-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
 <div id="dynsection-10-summary" class="dynsummary" style="display:block;">
@@ -631,10 +630,10 @@ Functions</h2></td></tr>
 <div class="center"><img src="group__loaders_ga176416bff8f5e258dbe1619637c8b831_cgraph.png" border="0" usemap="#agroup__loaders_ga176416bff8f5e258dbe1619637c8b831_cgraph" alt=""/></div>
 <map name="agroup__loaders_ga176416bff8f5e258dbe1619637c8b831_cgraph" id="agroup__loaders_ga176416bff8f5e258dbe1619637c8b831_cgraph">
 <area shape="rect" title="Populates a gsc_SimData combination with effect values." alt="" coords="5,201,133,229"/>
-<area shape="rect" href="group__supporters.html#gac77f7337a190c68f84bb95181f365cca" title="Return whether or not a marker name is present in the tracked markers, and at what index." alt="" coords="181,5,352,49"/>
+<area shape="rect" href="group__supporters.html#gad57230a4c812ba8a6deed26100beae7b" title="Return whether or not a marker name is present in the tracked markers, and at what index." alt="" coords="181,5,352,49"/>
 <area shape="rect" href="sim-operations_8c.html#a3717c5ed02cf2a321b7424dc0e668e19" title="Save an EffectMatrix to the SimData and allocate it an EffectID." alt="" coords="195,73,338,117"/>
 <area shape="rect" href="sim-operations_8c.html#aaaf3ebc75feaf901829232712e55677b" title="Replace calls to malloc direct with this function." alt="" coords="656,155,778,183"/>
-<area shape="rect" href="sim-operations_8c.html#a890aa11fc3f54d411dff950b77931835" title="Header row reading and processing for map and effect set files." alt="" coords="188,193,345,237"/>
+<area shape="rect" href="sim-operations_8c.html#a11ff196fb220dfd8336587f016767b66" title="Header row reading and processing for map and effect set files." alt="" coords="188,193,345,237"/>
 <area shape="rect" href="sim-operations_8c.html#a9022b0b2e12395904757c59db6010d5b" title="Return the next cell from a queue of cells until the queue is exhausted, and thereafter read new cell..." alt="" coords="181,261,352,305"/>
 <area shape="rect" href="group__structs.html#ga85b05dcdc5ec484d918ed2d3330c3ae8" title="Close a gsc_TableFileReader&#39;s file pointer." alt="" coords="202,329,331,373"/>
 <area shape="rect" href="group__structs.html#ga1a3a39309d4ce6447581e73f7483fbfb" title="Open a file for reading with gsc_TableFileReader." alt="" coords="202,397,331,441"/>
@@ -705,7 +704,7 @@ Functions</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="sim-operations_8c_source.html#l06847">6847</a> of file <a class="el" href="sim-operations_8c_source.html">sim-operations.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="sim-operations_8c_source.html#l07082">7082</a> of file <a class="el" href="sim-operations_8c_source.html">sim-operations.c</a>.</p>
 <div id="dynsection-12" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-12-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
 <div id="dynsection-12-summary" class="dynsummary" style="display:block;">
@@ -718,49 +717,49 @@ Functions</h2></td></tr>
 <area shape="rect" href="group__loaders.html#ga176416bff8f5e258dbe1619637c8b831" title="Populates a gsc_SimData combination with effect values." alt="" coords="580,1496,708,1524"/>
 <area shape="rect" href="sim-operations_8c.html#aca78dbac4d7154e95b6ddca575937d77" title="Loads a genotype file, with or without existing genome model in the SimData." alt="" coords="569,651,719,695"/>
 <area shape="rect" href="group__loaders.html#gac180eb5f1d27907a69314e68cc0d37af" title="Load a genetic map to a gsc_SimData object." alt="" coords="386,1188,507,1216"/>
-<area shape="rect" href="group__supporters.html#gac77f7337a190c68f84bb95181f365cca" title="Return whether or not a marker name is present in the tracked markers, and at what index." alt="" coords="1040,863,1211,907"/>
+<area shape="rect" href="group__supporters.html#gad57230a4c812ba8a6deed26100beae7b" title="Return whether or not a marker name is present in the tracked markers, and at what index." alt="" coords="1040,861,1211,905"/>
 <area shape="rect" href="sim-operations_8c.html#a3717c5ed02cf2a321b7424dc0e668e19" title="Save an EffectMatrix to the SimData and allocate it an EffectID." alt="" coords="807,1697,951,1741"/>
-<area shape="rect" href="sim-operations_8c.html#aaaf3ebc75feaf901829232712e55677b" title="Replace calls to malloc direct with this function." alt="" coords="1305,871,1427,899"/>
-<area shape="rect" href="sim-operations_8c.html#a890aa11fc3f54d411dff950b77931835" title="Header row reading and processing for map and effect set files." alt="" coords="800,1577,958,1621"/>
+<area shape="rect" href="sim-operations_8c.html#aaaf3ebc75feaf901829232712e55677b" title="Replace calls to malloc direct with this function." alt="" coords="1305,868,1427,896"/>
+<area shape="rect" href="sim-operations_8c.html#a11ff196fb220dfd8336587f016767b66" title="Header row reading and processing for map and effect set files." alt="" coords="800,1577,958,1621"/>
 <area shape="rect" href="sim-operations_8c.html#a9022b0b2e12395904757c59db6010d5b" title="Return the next cell from a queue of cells until the queue is exhausted, and thereafter read new cell..." alt="" coords="793,1457,965,1501"/>
 <area shape="rect" href="group__structs.html#ga85b05dcdc5ec484d918ed2d3330c3ae8" title="Close a gsc_TableFileReader&#39;s file pointer." alt="" coords="814,1269,944,1313"/>
 <area shape="rect" href="group__structs.html#ga1a3a39309d4ce6447581e73f7483fbfb" title="Open a file for reading with gsc_TableFileReader." alt="" coords="814,1389,944,1433"/>
 <area shape="rect" href="group__supporters.html#ga7881c537673d2d2d9dc3bb285676bfd4" title="Function to identify the next sequential integer that is not already allocated to a marker effect set..." alt="" coords="1046,1748,1205,1776"/>
 <area shape="rect" href="group__structs.html#ga85446dd929940e823745067d0a1d1d5d" title="Allocate memory to store a deep copy of a gsc_TableFileCell, if previously only a shallow copy." alt="" coords="1034,1303,1217,1331"/>
-<area shape="rect" href="group__structs.html#ga9b389be1c0eada385d1015e445886c05" title="Read forwards in TableFileReader and return the next cell&#39;s contents, as well as how many column gaps..." alt="" coords="1061,1423,1190,1467"/>
-<area shape="rect" href="group__structs.html#ga9861b51e8a5c74f843aac748c932c3a0" title="Classify the character under the cursor of a TableFileReader as cell contents or otherwise." alt="" coords="1280,1457,1452,1501"/>
-<area shape="rect" href="group__structs.html#gac2206b9a58abb4b533d11dec4bd9f322" title="Read another buffer&#39;s worth of characters from a gsc_TableFileReader&#39;s file." alt="" coords="1280,1389,1452,1433"/>
+<area shape="rect" href="group__structs.html#ga9b389be1c0eada385d1015e445886c05" title="Read forwards in TableFileReader and return the next cell&#39;s contents, as well as how many column gaps..." alt="" coords="1061,1389,1190,1433"/>
+<area shape="rect" href="group__structs.html#ga9861b51e8a5c74f843aac748c932c3a0" title="Classify the character under the cursor of a TableFileReader as cell contents or otherwise." alt="" coords="1280,1355,1452,1399"/>
+<area shape="rect" href="group__structs.html#gac2206b9a58abb4b533d11dec4bd9f322" title="Read another buffer&#39;s worth of characters from a gsc_TableFileReader&#39;s file." alt="" coords="1280,1423,1452,1467"/>
 <area shape="rect" href="sim-operations_8c.html#a14bf1934790250afa4e708fe902c44a0" title="Create a new gsc_EmptyListNavigator, including an empty AlleleMatrix suitable for inserting into the ..." alt="" coords="781,688,977,716"/>
-<area shape="rect" href="group__loaders.html#ga3a2324888dbd9cfdc228554cd15597af" title="Create a uniformly&#45;spaced gsc_RecombinationMap from a list of marker names and save to SimData." alt="" coords="791,449,967,493"/>
-<area shape="rect" href="group__deletors.html#ga9c647cacb393998930c560962c1f7f6d" title="Delete the gsc_AlleleMatrix linked list from m onwards and frees its memory." alt="" coords="1284,165,1448,193"/>
+<area shape="rect" href="group__loaders.html#ga5cbe0b821180b257b21d9551ec797f20" title="Create a uniformly&#45;spaced gsc_RecombinationMap from a list of marker names and save to SimData." alt="" coords="791,449,967,493"/>
+<area shape="rect" href="group__deletors.html#ga9c647cacb393998930c560962c1f7f6d" title="Delete the gsc_AlleleMatrix linked list from m onwards and frees its memory." alt="" coords="1284,135,1448,163"/>
 <area shape="rect" href="sim-operations_8c.html#a622965bf813b7d185c0effe64aca6bad" title="Push emptylist edited genotypes into the SimData." alt="" coords="802,329,956,373"/>
 <area shape="rect" href="sim-operations_8c.html#a52e6f87fe92eca15a0f4da957c5f8e19" title="Reset the cursor of a gsc_EmptyListNavigator to the first genotype." alt="" coords="1049,569,1202,613"/>
 <area shape="rect" href="sim-operations_8c.html#a67c2447b0d771997a444efe026cf0600" title="Get the next sequential genotype in an gsc_EmptyListNavigator." alt="" coords="802,740,956,784"/>
 <area shape="rect" href="group__supporters.html#ga22609353c4951dcf3ed54537ecb6eeda" title="Function to identify the next sequential integer that does not identify a group that currently has me..." alt="" coords="795,397,963,425"/>
-<area shape="rect" href="sim-operations_8c.html#a83a29664b38e9ed249664617fd9095f8" title="Parse a string and save it as the alleles of a genotype at a particular location and genetic marker." alt="" coords="797,620,961,664"/>
+<area shape="rect" href="sim-operations_8c.html#a7c6136857e4f65bff718565b48e18afa" title="Parse a string and save it as the alleles of a genotype at a particular location and genetic marker." alt="" coords="797,620,961,664"/>
 <area shape="rect" href="sim-operations_8c.html#ac22c96ec7ddd91b676805d17de44689c" title="Determine the style in which alleles are stored in a genotype matrix." alt="" coords="798,193,960,237"/>
-<area shape="rect" href="sim-operations_8c.html#a4252992dd10c70393462165392fa4f73" title="Determine whether a genotype matrix has a corner cell or not." alt="" coords="794,5,964,65"/>
+<area shape="rect" href="sim-operations_8c.html#ae903fb523337566ac34b578f02435c2c" title="Determine whether a genotype matrix has a corner cell or not." alt="" coords="794,5,964,65"/>
 <area shape="rect" href="sim-operations_8c.html#a410d2515f415529d8efe2abd9ab62048" title="Determine whether a genotype matrix has a header row or not." alt="" coords="799,261,959,305"/>
 <area shape="rect" href="sim-operations_8c.html#a39561a6563fa3b016f8833252acc5e5a" title="Determine whether a genotype matrix is row&#45; or column&#45;oriented." alt="" coords="792,860,966,904"/>
 <area shape="rect" href="sim-operations_8c.html#acf2e8ece7fb3470e814da69e8f162813" title="Comparator function for qsort." alt="" coords="789,1099,969,1143"/>
 <area shape="rect" href="group__liteget.html#gadff19e04cab018dd64ae232e0adcb3cc" title="Set the name of a genotype." alt="" coords="826,89,932,117"/>
-<area shape="rect" href="group__loaders.html#ga0baf4341fe54309d7c3b2ba395eb1975" title="Creator for an empty gsc_AlleleMatrix object of a given size." alt="" coords="1025,748,1226,776"/>
+<area shape="rect" href="group__loaders.html#ga104fcea7a8f69cb80c136ab45c4eab76" title="Creator for an empty gsc_AlleleMatrix object of a given size." alt="" coords="1025,748,1226,776"/>
 <area shape="rect" href="sim-operations_8c.html#a337459fb31ef07b88a77068780ab746e" title="Save a RecombinationMap to the SimData and allocate it a mapID." alt="" coords="1027,449,1225,493"/>
-<area shape="rect" href="group__supporters.html#ga48ab10327d06674174428ca2db0b32ed" title="Function to identify the next sequential integer that is not already allocated to a map ID in the sim..." alt="" coords="1293,457,1439,485"/>
-<area shape="rect" href="group__supporters.html#gafa617e95d5ed52b4e25434a20006809c" title="A function to tidy the internal storage of genotypes after addition or deletion of genotypes in the g..." alt="" coords="1055,273,1197,317"/>
-<area shape="rect" href="group__deletors.html#gae46ff71b819d28408e8b55dd4281a4f3" title="Move all details of the genotype at one gsc_GenoLocation to another gsc_GenoLocation." alt="" coords="1296,281,1436,309"/>
-<area shape="rect" href="sim-operations_8c.html#adf656d2e43014ca8dd4f5d39adeb68f6" title="Sets the current cursor position in a gsc_GappyIterator to the next empty position,..." alt="" coords="1285,333,1447,361"/>
-<area shape="rect" href="sim-operations_8c.html#af5486daced98d9bab2126b9d7af11356" title="Sets the current cursor position in a gsc_GappyIterator to the next filled position,..." alt="" coords="1274,229,1458,257"/>
-<area shape="rect" href="sim-operations_8c.html#a6d94248d1163c9c40e2910e578ce4708" title="Sets the current cursor position in a gsc_GappyIterator to the next valid position,..." alt="" coords="1514,281,1684,309"/>
-<area shape="rect" href="group__collgetters.html#gaf9692ce014cfe5439fd00e522a6bab9f" title="Identify group numbers that currently have members." alt="" coords="1043,397,1208,425"/>
-<area shape="rect" href="group__collgetters.html#gaddb8ea59b22bbe0ec8c61da7f5ba8a98" title="Identify group numbers that currently have members, and how many members they have." alt="" coords="1287,389,1445,433"/>
-<area shape="rect" href="group__iterators.html#ga05da8d96593f8404938cc24f659db049" title="Create a bidirectional iterator." alt="" coords="1506,371,1692,399"/>
-<area shape="rect" href="group__liteget.html#gae5d12aca851dd2358b63dc60b8ac6e5f" title="Get the current group membership of a genotype." alt="" coords="1546,423,1652,451"/>
-<area shape="rect" href="sim-operations_8c.html#aaaec31480065a89defa3e02a0f902cb8" title="Identify what formatting a genotype matrix is representing alleles as." alt="" coords="1039,197,1213,241"/>
-<area shape="rect" href="group__loaders.html#ga77e0915b84492088f60ab8e74da55066" title="Parse a list of markers/chrs/positions into a gsc_RecombinationMap and save to SimData." alt="" coords="799,928,959,972"/>
+<area shape="rect" href="group__supporters.html#ga48ab10327d06674174428ca2db0b32ed" title="Function to identify the next sequential integer that is not already allocated to a map ID in the sim..." alt="" coords="1293,567,1439,595"/>
+<area shape="rect" href="group__supporters.html#gafa617e95d5ed52b4e25434a20006809c" title="A function to tidy the internal storage of genotypes after addition or deletion of genotypes in the g..." alt="" coords="1055,305,1197,349"/>
+<area shape="rect" href="group__liteget.html#ga5e1e89782604c9ab47f196e1da233362" title="Get the alleles of a genotype." alt="" coords="1310,395,1422,423"/>
+<area shape="rect" href="group__liteget.html#ga22a270ae73aaa86d93212a4a40f999dc" title="Get the name of a genotype." alt="" coords="1313,447,1419,475"/>
+<area shape="rect" href="group__iterators.html#ga16615a5663b4d3bd768d8380f820aa66" title="Get an gsc_AlleleMatrix by index in the linked list." alt="" coords="1282,187,1450,215"/>
+<area shape="rect" href="group__deletors.html#gae46ff71b819d28408e8b55dd4281a4f3" title="Move all details of the genotype at one gsc_GenoLocation to another gsc_GenoLocation." alt="" coords="1296,239,1436,267"/>
+<area shape="rect" href="sim-operations_8c.html#adf656d2e43014ca8dd4f5d39adeb68f6" title="Sets the current cursor position in a gsc_GappyIterator to the next empty position,..." alt="" coords="1285,291,1447,319"/>
+<area shape="rect" href="sim-operations_8c.html#af5486daced98d9bab2126b9d7af11356" title="Sets the current cursor position in a gsc_GappyIterator to the next filled position,..." alt="" coords="1274,343,1458,371"/>
+<area shape="rect" href="group__collgetters.html#gaf76f5cdc38c881c9ee8eee32a1770e83" title="Identify group numbers that currently have members." alt="" coords="1043,397,1208,425"/>
+<area shape="rect" href="group__collgetters.html#gaf344362b92201c509c3efd9fba21f6a9" title="Identify group numbers that currently have members, and how many members they have." alt="" coords="1287,499,1445,543"/>
+<area shape="rect" href="sim-operations_8c.html#aaaec31480065a89defa3e02a0f902cb8" title="Identify what formatting a genotype matrix is representing alleles as." alt="" coords="1039,207,1213,251"/>
+<area shape="rect" href="group__loaders.html#gada5c2aaacd8b8a145493a0db5c017068" title="Parse a list of markers/chrs/positions into a gsc_RecombinationMap and save to SimData." alt="" coords="799,928,959,972"/>
 <area shape="rect" href="sim-operations_8c.html#ad3c2207b2bd170d752a0a26a9fa2aa19" title="Extract the contents of a genetic map file." alt="" coords="558,1367,730,1395"/>
-<area shape="rect" href="sim-operations_8c.html#a041ce3c792a881ab98e82b334712f3f6" title="Sort markerlist by chromosome name, and by position within each chromosome." alt="" coords="555,1773,733,1801"/>
-<area shape="rect" href="sim-operations_8c.html#a7d949c9d8650f7744c84c20eb28c14ff" title="Discard markers whose names are not present in a gsc_KnownGenome." alt="" coords="559,1149,729,1193"/>
+<area shape="rect" href="sim-operations_8c.html#ac1d97be6bdb21bbb271fc44616461fd8" title="Sort markerlist by chromosome name, and by position within each chromosome." alt="" coords="555,1773,733,1801"/>
+<area shape="rect" href="sim-operations_8c.html#acf770138dc0f9f33bc715156c83ccfd0" title="Discard markers whose names are not present in a gsc_KnownGenome." alt="" coords="559,1149,729,1193"/>
 <area shape="rect" href="sim-operations_8c.html#aaa406c38a85c3953b1cda622ff535d12" title="Comparator function for qsort." alt="" coords="792,1765,966,1809"/>
 <area shape="rect" href="sim-operations_8c.html#a6899282e8507284be584200d05e786cf" title="Comparator function for qsort." alt="" coords="798,1833,960,1877"/>
 </map>
@@ -814,7 +813,7 @@ Functions</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="sim-operations_8c_source.html#l05742">5742</a> of file <a class="el" href="sim-operations_8c_source.html">sim-operations.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="sim-operations_8c_source.html#l05945">5945</a> of file <a class="el" href="sim-operations_8c_source.html">sim-operations.c</a>.</p>
 <div id="dynsection-13" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-13-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
 <div id="dynsection-13-summary" class="dynsummary" style="display:block;">
@@ -823,16 +822,16 @@ Functions</h2></td></tr>
 <div class="center"><img src="group__loaders_gac180eb5f1d27907a69314e68cc0d37af_cgraph.png" border="0" usemap="#agroup__loaders_gac180eb5f1d27907a69314e68cc0d37af_cgraph" alt=""/></div>
 <map name="agroup__loaders_gac180eb5f1d27907a69314e68cc0d37af_cgraph" id="agroup__loaders_gac180eb5f1d27907a69314e68cc0d37af_cgraph">
 <area shape="rect" title="Load a genetic map to a gsc_SimData object." alt="" coords="5,175,127,203"/>
-<area shape="rect" href="group__loaders.html#ga77e0915b84492088f60ab8e74da55066" title="Parse a list of markers/chrs/positions into a gsc_RecombinationMap and save to SimData." alt="" coords="185,200,345,244"/>
+<area shape="rect" href="group__loaders.html#gada5c2aaacd8b8a145493a0db5c017068" title="Parse a list of markers/chrs/positions into a gsc_RecombinationMap and save to SimData." alt="" coords="185,200,345,244"/>
 <area shape="rect" href="sim-operations_8c.html#aaaf3ebc75feaf901829232712e55677b" title="Replace calls to malloc direct with this function." alt="" coords="906,236,1027,264"/>
 <area shape="rect" href="sim-operations_8c.html#acf2e8ece7fb3470e814da69e8f162813" title="Comparator function for qsort." alt="" coords="175,132,355,176"/>
 <area shape="rect" href="sim-operations_8c.html#ad3c2207b2bd170d752a0a26a9fa2aa19" title="Extract the contents of a genetic map file." alt="" coords="179,345,351,373"/>
-<area shape="rect" href="sim-operations_8c.html#a041ce3c792a881ab98e82b334712f3f6" title="Sort markerlist by chromosome name, and by position within each chromosome." alt="" coords="176,584,354,612"/>
-<area shape="rect" href="sim-operations_8c.html#a7d949c9d8650f7744c84c20eb28c14ff" title="Discard markers whose names are not present in a gsc_KnownGenome." alt="" coords="180,64,350,108"/>
-<area shape="rect" href="group__supporters.html#gac77f7337a190c68f84bb95181f365cca" title="Return whether or not a marker name is present in the tracked markers, and at what index." alt="" coords="417,64,588,108"/>
+<area shape="rect" href="sim-operations_8c.html#ac1d97be6bdb21bbb271fc44616461fd8" title="Sort markerlist by chromosome name, and by position within each chromosome." alt="" coords="176,584,354,612"/>
+<area shape="rect" href="sim-operations_8c.html#acf770138dc0f9f33bc715156c83ccfd0" title="Discard markers whose names are not present in a gsc_KnownGenome." alt="" coords="180,64,350,108"/>
+<area shape="rect" href="group__supporters.html#gad57230a4c812ba8a6deed26100beae7b" title="Return whether or not a marker name is present in the tracked markers, and at what index." alt="" coords="417,64,588,108"/>
 <area shape="rect" href="sim-operations_8c.html#a337459fb31ef07b88a77068780ab746e" title="Save a RecombinationMap to the SimData and allocate it a mapID." alt="" coords="403,184,601,228"/>
 <area shape="rect" href="group__supporters.html#ga48ab10327d06674174428ca2db0b32ed" title="Function to identify the next sequential integer that is not already allocated to a map ID in the sim..." alt="" coords="668,184,814,212"/>
-<area shape="rect" href="sim-operations_8c.html#a890aa11fc3f54d411dff950b77931835" title="Header row reading and processing for map and effect set files." alt="" coords="424,372,581,416"/>
+<area shape="rect" href="sim-operations_8c.html#a11ff196fb220dfd8336587f016767b66" title="Header row reading and processing for map and effect set files." alt="" coords="424,372,581,416"/>
 <area shape="rect" href="group__structs.html#ga85446dd929940e823745067d0a1d1d5d" title="Allocate memory to store a deep copy of a gsc_TableFileCell, if previously only a shallow copy." alt="" coords="649,288,833,316"/>
 <area shape="rect" href="sim-operations_8c.html#a9022b0b2e12395904757c59db6010d5b" title="Return the next cell from a queue of cells until the queue is exhausted, and thereafter read new cell..." alt="" coords="417,440,588,484"/>
 <area shape="rect" href="group__structs.html#ga85b05dcdc5ec484d918ed2d3330c3ae8" title="Close a gsc_TableFileReader&#39;s file pointer." alt="" coords="438,508,567,552"/>

@@ -21,7 +21,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">genomicSimulationC<span id="projectnumber">&#160;0.2.5.05</span>
+   <div id="projectname">genomicSimulationC<span id="projectnumber">&#160;0.2.5.11</span>
    </div>
   </td>
  </tr>
@@ -96,11 +96,7 @@ Modules</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="nested-classes" name="nested-classes"></a>
 Data Structures</h2></td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structgsc___marker_position.html">gsc_MarkerPosition</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">A struct representing a single marker location.  <a href="structgsc___marker_position.html#details">More...</a><br /></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structgsc___table_size.html">gsc_TableSize</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">A simple struct used for returning the dimensions of a matrix or table.  <a href="structgsc___table_size.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structgsc___marker_blocks.html">gsc_MarkerBlocks</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">A struct used to store a set of blocks of markers.  <a href="structgsc___marker_blocks.html#details">More...</a><br /></td></tr>
@@ -185,19 +181,19 @@ Macros</h2></td></tr>
 <tr class="memitem:ga4986c9d56e02f8cc9240f29a39555f03"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__structs.html#ga4986c9d56e02f8cc9240f29a39555f03">GSC_STRETCH_BUFFER</a>(n,  newlen)</td></tr>
 <tr class="memdesc:ga4986c9d56e02f8cc9240f29a39555f03"><td class="mdescLeft">&#160;</td><td class="mdescRight">Macro to expand the capacity of a stretchy buffer.  <a href="group__structs.html#ga4986c9d56e02f8cc9240f29a39555f03">More...</a><br /></td></tr>
 <tr class="separator:ga4986c9d56e02f8cc9240f29a39555f03"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gac4ac4cc8992764b6fbae9c569d06c427"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__structs.html#gac4ac4cc8992764b6fbae9c569d06c427">GSC_NO_PEDIGREE</a>&#160;&#160;&#160;(<a class="el" href="structgsc___pedigree_i_d.html">gsc_PedigreeID</a>){.id=0}</td></tr>
+<tr class="memitem:gac4ac4cc8992764b6fbae9c569d06c427"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__structs.html#gac4ac4cc8992764b6fbae9c569d06c427">GSC_NO_PEDIGREE</a>&#160;&#160;&#160;(<a class="el" href="structgsc___pedigree_i_d.html">gsc_PedigreeID</a>){.id=<a class="el" href="sim-operations_8h.html#accca56a8da876771fcdb32097632626a">GSC_NA_ID</a>}</td></tr>
 <tr class="memdesc:gac4ac4cc8992764b6fbae9c569d06c427"><td class="mdescLeft">&#160;</td><td class="mdescRight">Empty/null value for pedigree fields.  <a href="group__structs.html#gac4ac4cc8992764b6fbae9c569d06c427">More...</a><br /></td></tr>
 <tr class="separator:gac4ac4cc8992764b6fbae9c569d06c427"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gaf109f463dff93122baf7caa500e83eef"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__structs.html#gaf109f463dff93122baf7caa500e83eef">GSC_NO_GROUP</a>&#160;&#160;&#160;(<a class="el" href="structgsc___group_num.html">gsc_GroupNum</a>){.num=0}</td></tr>
+<tr class="memitem:gaf109f463dff93122baf7caa500e83eef"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__structs.html#gaf109f463dff93122baf7caa500e83eef">GSC_NO_GROUP</a>&#160;&#160;&#160;(<a class="el" href="structgsc___group_num.html">gsc_GroupNum</a>){.num=<a class="el" href="sim-operations_8h.html#accca56a8da876771fcdb32097632626a">GSC_NA_ID</a>}</td></tr>
 <tr class="memdesc:gaf109f463dff93122baf7caa500e83eef"><td class="mdescLeft">&#160;</td><td class="mdescRight">Empty/null value for group allocations.  <a href="group__structs.html#gaf109f463dff93122baf7caa500e83eef">More...</a><br /></td></tr>
 <tr class="separator:gaf109f463dff93122baf7caa500e83eef"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga97b47270a34b2e77032cac2257d1cb8d"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__structs.html#ga97b47270a34b2e77032cac2257d1cb8d">GSC_NO_EFFECTSET</a>&#160;&#160;&#160;(<a class="el" href="structgsc___effect_i_d.html">gsc_EffectID</a>){.id=0}</td></tr>
+<tr class="memitem:ga97b47270a34b2e77032cac2257d1cb8d"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__structs.html#ga97b47270a34b2e77032cac2257d1cb8d">GSC_NO_EFFECTSET</a>&#160;&#160;&#160;(<a class="el" href="structgsc___effect_i_d.html">gsc_EffectID</a>){.id=<a class="el" href="sim-operations_8h.html#accca56a8da876771fcdb32097632626a">GSC_NA_ID</a>}</td></tr>
 <tr class="memdesc:ga97b47270a34b2e77032cac2257d1cb8d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Empty/null value for effect set identifiers.  <a href="group__structs.html#ga97b47270a34b2e77032cac2257d1cb8d">More...</a><br /></td></tr>
 <tr class="separator:ga97b47270a34b2e77032cac2257d1cb8d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga3cdd645c31e3c14d365c8cba62928a4f"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__structs.html#ga3cdd645c31e3c14d365c8cba62928a4f">GSC_NO_LABEL</a>&#160;&#160;&#160;(<a class="el" href="structgsc___label_i_d.html">gsc_LabelID</a>){.id=0}</td></tr>
+<tr class="memitem:ga3cdd645c31e3c14d365c8cba62928a4f"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__structs.html#ga3cdd645c31e3c14d365c8cba62928a4f">GSC_NO_LABEL</a>&#160;&#160;&#160;(<a class="el" href="structgsc___label_i_d.html">gsc_LabelID</a>){.id=<a class="el" href="sim-operations_8h.html#accca56a8da876771fcdb32097632626a">GSC_NA_ID</a>}</td></tr>
 <tr class="memdesc:ga3cdd645c31e3c14d365c8cba62928a4f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Empty/null value for custom label identifiers.  <a href="group__structs.html#ga3cdd645c31e3c14d365c8cba62928a4f">More...</a><br /></td></tr>
 <tr class="separator:ga3cdd645c31e3c14d365c8cba62928a4f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga50f9d8210e1cb0c644cdf90fe0d23477"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__structs.html#ga50f9d8210e1cb0c644cdf90fe0d23477">GSC_NO_MAP</a>&#160;&#160;&#160;(<a class="el" href="structgsc___map_i_d.html">gsc_MapID</a>){.id=0}</td></tr>
+<tr class="memitem:ga50f9d8210e1cb0c644cdf90fe0d23477"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__structs.html#ga50f9d8210e1cb0c644cdf90fe0d23477">GSC_NO_MAP</a>&#160;&#160;&#160;(<a class="el" href="structgsc___map_i_d.html">gsc_MapID</a>){.id=<a class="el" href="sim-operations_8h.html#accca56a8da876771fcdb32097632626a">GSC_NA_ID</a>}</td></tr>
 <tr class="memdesc:ga50f9d8210e1cb0c644cdf90fe0d23477"><td class="mdescLeft">&#160;</td><td class="mdescRight">Empty/null value for recombination map identifiers.  <a href="group__structs.html#ga50f9d8210e1cb0c644cdf90fe0d23477">More...</a><br /></td></tr>
 <tr class="separator:ga50f9d8210e1cb0c644cdf90fe0d23477"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga1c50186040a14da8e863906537bbfc5d"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__structs.html#ga1c50186040a14da8e863906537bbfc5d">GSC_DETECT_FILE_FORMAT</a>&#160;&#160;&#160;((<a class="el" href="structgsc___file_format_spec.html">gsc_FileFormatSpec</a>){.filetype=<a class="el" href="group__structs.html#ggae49f64d8275e0072f6e36c13622e89b8a6cc09f4028885e2846d7c99f9f412823">GSC_GENOTYPEFILE_UNKNOWN</a>})</td></tr>
@@ -212,11 +208,6 @@ Typedefs</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="enum-members" name="enum-members"></a>
 Enumerations</h2></td></tr>
-<tr class="memitem:gabaab9ae5c2f4689211a8f1a2b33d23bc"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__structs.html#gabaab9ae5c2f4689211a8f1a2b33d23bc">gsc_LinkageGroupType</a> { <a class="el" href="group__structs.html#ggabaab9ae5c2f4689211a8f1a2b33d23bca43305e4386c6a4c2b8a538e49bd22d50">GSC_LINKAGEGROUP_SIMPLE</a>
-, <a class="el" href="group__structs.html#ggabaab9ae5c2f4689211a8f1a2b33d23bca2dda577345113ce4397822dc484fe34a">GSC_LINKAGEGROUP_REORDER</a>
- }</td></tr>
-<tr class="memdesc:gabaab9ae5c2f4689211a8f1a2b33d23bc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Enumerate possible types of recombination within linkage groups.  <a href="group__structs.html#gabaab9ae5c2f4689211a8f1a2b33d23bc">More...</a><br /></td></tr>
-<tr class="separator:gabaab9ae5c2f4689211a8f1a2b33d23bc"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gaa092055f7433a18bae99970ac6d2b79f"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__structs.html#gaa092055f7433a18bae99970ac6d2b79f">gsc_TableFileCurrentStatus</a> { <br />
 &#160;&#160;<a class="el" href="group__structs.html#ggaa092055f7433a18bae99970ac6d2b79fa826f62ac640f635777d762e6129cf1e2">GSC_TABLEFILE_NEWLINE</a>
 , <a class="el" href="group__structs.html#ggaa092055f7433a18bae99970ac6d2b79fa570d82d0d78f9dc4f991df3a492ad922">GSC_TABLEFILE_COLUMNGAP</a>
@@ -271,9 +262,9 @@ Functions</h2></td></tr>
 <tr class="memitem:ga9b389be1c0eada385d1015e445886c05"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structgsc___table_file_cell.html">gsc_TableFileCell</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__structs.html#ga9b389be1c0eada385d1015e445886c05">gsc_tablefilereader_get_next_cell</a> (<a class="el" href="structgsc___table_file_reader.html">gsc_TableFileReader</a> *tbl)</td></tr>
 <tr class="memdesc:ga9b389be1c0eada385d1015e445886c05"><td class="mdescLeft">&#160;</td><td class="mdescRight">Read forwards in TableFileReader and return the next cell's contents, as well as how many column gaps and newlines preceeded it.  <a href="group__structs.html#ga9b389be1c0eada385d1015e445886c05">More...</a><br /></td></tr>
 <tr class="separator:ga9b389be1c0eada385d1015e445886c05"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga8320bfd5851475e8fcbfddce854b35b1"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structgsc___file_format_spec.html">gsc_FileFormatSpec</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__structs.html#ga8320bfd5851475e8fcbfddce854b35b1">gsc_define_matrix_format_details</a> (const int has_header, const int markers_as_rows, const enum <a class="el" href="group__structs.html#ga169da3c2b32a6f9afd92e2e0801ad741">gsc_GenotypeFileCellStyle</a> cell_style)</td></tr>
-<tr class="memdesc:ga8320bfd5851475e8fcbfddce854b35b1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Give genomicSimulation hints on the format of a genotype matrix file to be loaded.  <a href="group__structs.html#ga8320bfd5851475e8fcbfddce854b35b1">More...</a><br /></td></tr>
-<tr class="separator:ga8320bfd5851475e8fcbfddce854b35b1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gac16e627ca627fc79dd175d17b3ca96af"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structgsc___file_format_spec.html">gsc_FileFormatSpec</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__structs.html#gac16e627ca627fc79dd175d17b3ca96af">gsc_define_matrix_format_details</a> (const <a class="el" href="sim-operations_8h.html#a55485f3a8263f660077a88c6a7d05c8f">GSC_LOGICVAL</a> has_header, const <a class="el" href="sim-operations_8h.html#a55485f3a8263f660077a88c6a7d05c8f">GSC_LOGICVAL</a> markers_as_rows, const enum <a class="el" href="group__structs.html#ga169da3c2b32a6f9afd92e2e0801ad741">gsc_GenotypeFileCellStyle</a> cell_style)</td></tr>
+<tr class="memdesc:gac16e627ca627fc79dd175d17b3ca96af"><td class="mdescLeft">&#160;</td><td class="mdescRight">Give genomicSimulation hints on the format of a genotype matrix file to be loaded.  <a href="group__structs.html#gac16e627ca627fc79dd175d17b3ca96af">More...</a><br /></td></tr>
+<tr class="separator:gac16e627ca627fc79dd175d17b3ca96af"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="var-members" name="var-members"></a>
 Variables</h2></td></tr>
@@ -285,7 +276,7 @@ Variables</h2></td></tr>
 <p >How the simulation stores data. </p>
 <p >genomicSimulation is a state-based package. These data structures are used to store the library's data/state. Many use dynamically allocated memory so call the relevant delete_ function if one exists when you are finished with them.</p>
 <p ><a class="el" href="structgsc___sim_data.html" title="Composite type that is used to run crossing simulations.">gsc_SimData</a> is the central state/data storage struct, and so is a required parameter to most user-facing functions. It contains pointers to a <a class="el" href="structgsc___known_genome.html" title="A type that stores the genome structure used in simulation.">gsc_KnownGenome</a> (storing the loaded markers and any recombination maps), an <a class="el" href="structgsc___effect_matrix.html" title="A type that stores a matrix of effect values and their names.">gsc_EffectMatrix</a> (storing the loaded allele effects), and an <a class="el" href="structgsc___allele_matrix.html">gsc_AlleleMatrix</a> (storing metadata and genotypes of founders and simulated offspring).</p>
-<p >Other structs in this group (<a class="el" href="structgsc___table_size.html" title="A simple struct used for returning the dimensions of a matrix or table.">gsc_TableSize</a>, <a class="el" href="structgsc___marker_blocks.html" title="A struct used to store a set of blocks of markers.">gsc_MarkerBlocks</a>, <a class="el" href="structgsc___gen_options.html" title="A type that contains choices of settings for gsc_SimData functions that create a new gsc_AlleleMatrix...">gsc_GenOptions</a>) represented specific types of data and are used as parameters and return value of certain functions. </p>
+<p >Other structs in this group (<a class="el" href="structgsc___table_size.html">gsc_TableSize</a>, <a class="el" href="structgsc___marker_blocks.html" title="A struct used to store a set of blocks of markers.">gsc_MarkerBlocks</a>, <a class="el" href="structgsc___gen_options.html" title="A type that contains choices of settings for gsc_SimData functions that create a new gsc_AlleleMatrix...">gsc_GenOptions</a>) represented specific types of data and are used as parameters and return value of certain functions. </p>
 <h2 class="groupheader">Macro Definition Documentation</h2>
 <a id="gaf01630972193f6f49176afeb3916306f" name="gaf01630972193f6f49176afeb3916306f"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#gaf01630972193f6f49176afeb3916306f">&#9670;&nbsp;</a></span>GSC_BUFFER_ISHEAP</h2>
@@ -310,7 +301,7 @@ Variables</h2></td></tr>
 <dd>
 <a class="el" href="group__structs.html#ga9675b4bd2688e5f56acbb2346b884a24" title="Macro to delete a stretchy buffer.">GSC_DELETE_BUFFER</a> </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="sim-operations_8h_source.html#l00327">327</a> of file <a class="el" href="sim-operations_8h_source.html">sim-operations.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="sim-operations_8h_source.html#l00445">445</a> of file <a class="el" href="sim-operations_8h_source.html">sim-operations.h</a>.</p>
 
 </div>
 </div>
@@ -346,10 +337,10 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 <b>Value:</b><div class="fragment"><div class="line">type n##stack[<span class="keyword">sizeof</span>(int)*<a class="code hl_define" href="sim-operations_8h.html#af5eaa46085f7cc2b20091cdf17eea54a">CONTIG_WIDTH</a>/<span class="keyword">sizeof</span>(type)]; <span class="keywordtype">size_t</span> n##cap = length; \</div>
-<div class="line">type* n = (n##cap &gt;= <span class="keyword">sizeof</span>(n##stack)/<span class="keyword">sizeof</span>(type)) ? <a class="code hl_function" href="sim-operations_8c.html#aaaf3ebc75feaf901829232712e55677b">gsc_malloc_wrap</a>(<span class="keyword">sizeof</span>(type)*n##cap,<a class="code hl_define" href="sim-operations_8h.html#ad3981037d5b9c99a0c49de9f0dfc1e8c">GSC_TRUE</a>) : n##stack;</div>
-<div class="ttc" id="asim-operations_8c_html_aaaf3ebc75feaf901829232712e55677b"><div class="ttname"><a href="sim-operations_8c.html#aaaf3ebc75feaf901829232712e55677b">gsc_malloc_wrap</a></div><div class="ttdeci">static void * gsc_malloc_wrap(const size_t size, char exitonfail)</div><div class="ttdoc">Replace calls to malloc direct with this function.</div><div class="ttdef"><b>Definition:</b> <a href="sim-operations_8c_source.html#l00033">sim-operations.c:33</a></div></div>
-<div class="ttc" id="asim-operations_8h_html_ad3981037d5b9c99a0c49de9f0dfc1e8c"><div class="ttname"><a href="sim-operations_8h.html#ad3981037d5b9c99a0c49de9f0dfc1e8c">GSC_TRUE</a></div><div class="ttdeci">#define GSC_TRUE</div><div class="ttdef"><b>Definition:</b> <a href="sim-operations_8h_source.html#l00080">sim-operations.h:80</a></div></div>
-<div class="ttc" id="asim-operations_8h_html_af5eaa46085f7cc2b20091cdf17eea54a"><div class="ttname"><a href="sim-operations_8h.html#af5eaa46085f7cc2b20091cdf17eea54a">CONTIG_WIDTH</a></div><div class="ttdeci">#define CONTIG_WIDTH</div><div class="ttdef"><b>Definition:</b> <a href="sim-operations_8h_source.html#l00085">sim-operations.h:85</a></div></div>
+<div class="line">type* n = (n##cap &gt;= <span class="keyword">sizeof</span>(n##stack)/<span class="keyword">sizeof</span>(type)) ? <a class="code hl_function" href="sim-operations_8c.html#aaaf3ebc75feaf901829232712e55677b">gsc_malloc_wrap</a>(<span class="keyword">sizeof</span>(type)*n##cap,<a class="code hl_enumvalue" href="sim-operations_8h.html#a55485f3a8263f660077a88c6a7d05c8fa3587ddd94a959fe316d38be7023abb30">GSC_TRUE</a>) : n##stack;</div>
+<div class="ttc" id="asim-operations_8c_html_aaaf3ebc75feaf901829232712e55677b"><div class="ttname"><a href="sim-operations_8c.html#aaaf3ebc75feaf901829232712e55677b">gsc_malloc_wrap</a></div><div class="ttdeci">static void * gsc_malloc_wrap(const size_t size, char exitonfail)</div><div class="ttdoc">Replace calls to malloc direct with this function.</div><div class="ttdef"><b>Definition:</b> <a href="sim-operations_8c_source.html#l00034">sim-operations.c:34</a></div></div>
+<div class="ttc" id="asim-operations_8h_html_a55485f3a8263f660077a88c6a7d05c8fa3587ddd94a959fe316d38be7023abb30"><div class="ttname"><a href="sim-operations_8h.html#a55485f3a8263f660077a88c6a7d05c8fa3587ddd94a959fe316d38be7023abb30">GSC_TRUE</a></div><div class="ttdeci">@ GSC_TRUE</div><div class="ttdef"><b>Definition:</b> <a href="sim-operations_8h_source.html#l00095">sim-operations.h:95</a></div></div>
+<div class="ttc" id="asim-operations_8h_html_af5eaa46085f7cc2b20091cdf17eea54a"><div class="ttname"><a href="sim-operations_8h.html#af5eaa46085f7cc2b20091cdf17eea54a">CONTIG_WIDTH</a></div><div class="ttdeci">#define CONTIG_WIDTH</div><div class="ttdef"><b>Definition:</b> <a href="sim-operations_8h_source.html#l00179">sim-operations.h:179</a></div></div>
 </div><!-- fragment -->
 <p>Macro to create a stretchy buffer of any type and some length. </p>
 <p >After this macro is run, a buffer with the requested type and capacity will exist in the scope under the requested name.</p>
@@ -371,7 +362,7 @@ Variables</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="sim-operations_8h_source.html#l00317">317</a> of file <a class="el" href="sim-operations_8h_source.html">sim-operations.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="sim-operations_8h_source.html#l00435">435</a> of file <a class="el" href="sim-operations_8h_source.html">sim-operations.h</a>.</p>
 
 </div>
 </div>
@@ -392,7 +383,7 @@ Variables</h2></td></tr>
 </div><div class="memdoc">
 <b>Value:</b><div class="fragment"><div class="line"><span class="keywordflow">do</span> { <span class="keywordflow">if</span> (n##cap &gt;= <span class="keyword">sizeof</span>(n##stack)/<span class="keyword">sizeof</span>(n##stack[0])) { <a class="code hl_define" href="sim-operations_8h.html#adf944aa49cef9f70a33ab114a0f071a9">GSC_FREE</a>(n); } \</div>
 <div class="line">n = NULL; n##cap = 0; } <span class="keywordflow">while</span> (0)</div>
-<div class="ttc" id="asim-operations_8h_html_adf944aa49cef9f70a33ab114a0f071a9"><div class="ttname"><a href="sim-operations_8h.html#adf944aa49cef9f70a33ab114a0f071a9">GSC_FREE</a></div><div class="ttdeci">#define GSC_FREE(ptr)</div><div class="ttdef"><b>Definition:</b> <a href="sim-operations_8h_source.html#l00096">sim-operations.h:96</a></div></div>
+<div class="ttc" id="asim-operations_8h_html_adf944aa49cef9f70a33ab114a0f071a9"><div class="ttname"><a href="sim-operations_8h.html#adf944aa49cef9f70a33ab114a0f071a9">GSC_FREE</a></div><div class="ttdeci">#define GSC_FREE(ptr)</div><div class="ttdef"><b>Definition:</b> <a href="sim-operations_8h_source.html#l00204">sim-operations.h:204</a></div></div>
 </div><!-- fragment -->
 <p>Macro to delete a stretchy buffer. </p>
 <dl class="section see"><dt>See also</dt><dd><a class="el" href="group__structs.html#gab0154f9408fe4a3f8e82e470161ec18e" title="Macro to create a stretchy buffer of any type and some length.">GSC_CREATE_BUFFER</a> </dd>
@@ -408,7 +399,7 @@ Variables</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="sim-operations_8h_source.html#l00356">356</a> of file <a class="el" href="sim-operations_8h_source.html">sim-operations.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="sim-operations_8h_source.html#l00474">474</a> of file <a class="el" href="sim-operations_8h_source.html">sim-operations.h</a>.</p>
 
 </div>
 </div>
@@ -426,7 +417,7 @@ Variables</h2></td></tr>
 
 <p>File format specifier to instruct genomicSimulation loaders to auto-detect all details of the file format. </p>
 
-<p class="definition">Definition at line <a class="el" href="sim-operations_8h_source.html#l00947">947</a> of file <a class="el" href="sim-operations_8h_source.html">sim-operations.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="sim-operations_8h_source.html#l01054">1054</a> of file <a class="el" href="sim-operations_8h_source.html">sim-operations.h</a>.</p>
 
 </div>
 </div>
@@ -462,7 +453,7 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 <b>Value:</b><div class="fragment"><div class="line"><span class="keywordflow">do</span> { <span class="keywordflow">if</span> (n##cap &gt;= <span class="keyword">sizeof</span>(n##stack)/<span class="keyword">sizeof</span>(n##stack[0])) { as = n; } <span class="keywordflow">else</span> \</div>
-<div class="line">{ <span class="keywordtype">size_t</span> len = nentries &gt; n##cap ? n##cap : nentries; as = <a class="code hl_function" href="sim-operations_8c.html#aaaf3ebc75feaf901829232712e55677b">gsc_malloc_wrap</a>(<span class="keyword">sizeof</span>(n##stack[0])*len,<a class="code hl_define" href="sim-operations_8h.html#ad3981037d5b9c99a0c49de9f0dfc1e8c">GSC_TRUE</a>); memcpy(as,n,<span class="keyword">sizeof</span>(n##stack[0])*len); } } <span class="keywordflow">while</span> (0)</div>
+<div class="line">{ <span class="keywordtype">size_t</span> len = nentries &gt; n##cap ? n##cap : nentries; as = <a class="code hl_function" href="sim-operations_8c.html#aaaf3ebc75feaf901829232712e55677b">gsc_malloc_wrap</a>(<span class="keyword">sizeof</span>(n##stack[0])*len,<a class="code hl_enumvalue" href="sim-operations_8h.html#a55485f3a8263f660077a88c6a7d05c8fa3587ddd94a959fe316d38be7023abb30">GSC_TRUE</a>); memcpy(as,n,<span class="keyword">sizeof</span>(n##stack[0])*len); } } <span class="keywordflow">while</span> (0)</div>
 </div><!-- fragment -->
 <p>Macro to convert a stretchy buffer to a solid heap vector. </p>
 <dl class="section see"><dt>See also</dt><dd><a class="el" href="group__structs.html#ga9675b4bd2688e5f56acbb2346b884a24" title="Macro to delete a stretchy buffer.">GSC_DELETE_BUFFER</a></dd></dl>
@@ -477,7 +468,7 @@ Variables</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="sim-operations_8h_source.html#l00342">342</a> of file <a class="el" href="sim-operations_8h_source.html">sim-operations.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="sim-operations_8h_source.html#l00460">460</a> of file <a class="el" href="sim-operations_8h_source.html">sim-operations.h</a>.</p>
 
 </div>
 </div>
@@ -488,7 +479,7 @@ Variables</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">#define GSC_NO_EFFECTSET&#160;&#160;&#160;(<a class="el" href="structgsc___effect_i_d.html">gsc_EffectID</a>){.id=0}</td>
+          <td class="memname">#define GSC_NO_EFFECTSET&#160;&#160;&#160;(<a class="el" href="structgsc___effect_i_d.html">gsc_EffectID</a>){.id=<a class="el" href="sim-operations_8h.html#accca56a8da876771fcdb32097632626a">GSC_NA_ID</a>}</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -496,7 +487,7 @@ Variables</h2></td></tr>
 <p>Empty/null value for effect set identifiers. </p>
 <p ><em>Has short name:</em> <a class="el" href="group__shortnames.html#ga27b7a0c46aa95c0f127549d8ae007b8d">NO_EFFECTSET</a> </p>
 
-<p class="definition">Definition at line <a class="el" href="sim-operations_8h_source.html#l00481">481</a> of file <a class="el" href="sim-operations_8h_source.html">sim-operations.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="sim-operations_8h_source.html#l00588">588</a> of file <a class="el" href="sim-operations_8h_source.html">sim-operations.h</a>.</p>
 
 </div>
 </div>
@@ -507,7 +498,7 @@ Variables</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">#define GSC_NO_GROUP&#160;&#160;&#160;(<a class="el" href="structgsc___group_num.html">gsc_GroupNum</a>){.num=0}</td>
+          <td class="memname">#define GSC_NO_GROUP&#160;&#160;&#160;(<a class="el" href="structgsc___group_num.html">gsc_GroupNum</a>){.num=<a class="el" href="sim-operations_8h.html#accca56a8da876771fcdb32097632626a">GSC_NA_ID</a>}</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -515,7 +506,7 @@ Variables</h2></td></tr>
 <p>Empty/null value for group allocations. </p>
 <p ><em>Has short name:</em> <a class="el" href="group__shortnames.html#ga9f261279a53dfe33021f00801df5709b">NO_GROUP</a> </p>
 
-<p class="definition">Definition at line <a class="el" href="sim-operations_8h_source.html#l00469">469</a> of file <a class="el" href="sim-operations_8h_source.html">sim-operations.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="sim-operations_8h_source.html#l00576">576</a> of file <a class="el" href="sim-operations_8h_source.html">sim-operations.h</a>.</p>
 
 </div>
 </div>
@@ -526,7 +517,7 @@ Variables</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">#define GSC_NO_LABEL&#160;&#160;&#160;(<a class="el" href="structgsc___label_i_d.html">gsc_LabelID</a>){.id=0}</td>
+          <td class="memname">#define GSC_NO_LABEL&#160;&#160;&#160;(<a class="el" href="structgsc___label_i_d.html">gsc_LabelID</a>){.id=<a class="el" href="sim-operations_8h.html#accca56a8da876771fcdb32097632626a">GSC_NA_ID</a>}</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -534,7 +525,7 @@ Variables</h2></td></tr>
 <p>Empty/null value for custom label identifiers. </p>
 <p ><em>Has short name:</em> <a class="el" href="group__shortnames.html#ga656701d3e780d6e6bd991aac853c0433">NO_LABEL</a> </p>
 
-<p class="definition">Definition at line <a class="el" href="sim-operations_8h_source.html#l00493">493</a> of file <a class="el" href="sim-operations_8h_source.html">sim-operations.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="sim-operations_8h_source.html#l00600">600</a> of file <a class="el" href="sim-operations_8h_source.html">sim-operations.h</a>.</p>
 
 </div>
 </div>
@@ -545,7 +536,7 @@ Variables</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">#define GSC_NO_MAP&#160;&#160;&#160;(<a class="el" href="structgsc___map_i_d.html">gsc_MapID</a>){.id=0}</td>
+          <td class="memname">#define GSC_NO_MAP&#160;&#160;&#160;(<a class="el" href="structgsc___map_i_d.html">gsc_MapID</a>){.id=<a class="el" href="sim-operations_8h.html#accca56a8da876771fcdb32097632626a">GSC_NA_ID</a>}</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -553,7 +544,7 @@ Variables</h2></td></tr>
 <p>Empty/null value for recombination map identifiers. </p>
 <p ><em>Has short name:</em> <a class="el" href="group__shortnames.html#ga3710da75e403e5a3da4e2deade0d50af">NO_MAP</a> </p>
 
-<p class="definition">Definition at line <a class="el" href="sim-operations_8h_source.html#l00505">505</a> of file <a class="el" href="sim-operations_8h_source.html">sim-operations.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="sim-operations_8h_source.html#l00612">612</a> of file <a class="el" href="sim-operations_8h_source.html">sim-operations.h</a>.</p>
 
 </div>
 </div>
@@ -564,7 +555,7 @@ Variables</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">#define GSC_NO_PEDIGREE&#160;&#160;&#160;(<a class="el" href="structgsc___pedigree_i_d.html">gsc_PedigreeID</a>){.id=0}</td>
+          <td class="memname">#define GSC_NO_PEDIGREE&#160;&#160;&#160;(<a class="el" href="structgsc___pedigree_i_d.html">gsc_PedigreeID</a>){.id=<a class="el" href="sim-operations_8h.html#accca56a8da876771fcdb32097632626a">GSC_NA_ID</a>}</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -572,7 +563,7 @@ Variables</h2></td></tr>
 <p>Empty/null value for pedigree fields. </p>
 <p ><em>Has short name:</em> <a class="el" href="group__shortnames.html#ga8ad73d9697c47aa32a926fbfc36d2a87">NO_PEDIGREE</a> </p>
 
-<p class="definition">Definition at line <a class="el" href="sim-operations_8h_source.html#l00456">456</a> of file <a class="el" href="sim-operations_8h_source.html">sim-operations.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="sim-operations_8h_source.html#l00563">563</a> of file <a class="el" href="sim-operations_8h_source.html">sim-operations.h</a>.</p>
 
 </div>
 </div>
@@ -604,17 +595,17 @@ Variables</h2></td></tr>
 <b>Value:</b><div class="fragment"><div class="line">    <span class="keywordflow">do</span> {    \</div>
 <div class="line">    if (newlen &lt; n##cap) { } \</div>
 <div class="line">    else <span class="keywordflow">if</span> (n##cap &gt;= <span class="keyword">sizeof</span>(n##stack)/<span class="keyword">sizeof</span>(n##stack[0])) { \</div>
-<div class="line">        void* tmp = <a class="code hl_function" href="sim-operations_8c.html#aaaf3ebc75feaf901829232712e55677b">gsc_malloc_wrap</a>(<span class="keyword">sizeof</span>(n##stack[0])*newlen,<a class="code hl_define" href="sim-operations_8h.html#ad7e35da105ef91e548f815227171d1df">GSC_FALSE</a>); \</div>
+<div class="line">        void* tmp = <a class="code hl_function" href="sim-operations_8c.html#aaaf3ebc75feaf901829232712e55677b">gsc_malloc_wrap</a>(<span class="keyword">sizeof</span>(n##stack[0])*newlen,<a class="code hl_enumvalue" href="sim-operations_8h.html#a55485f3a8263f660077a88c6a7d05c8fa4a2acbf42f8741eac5ab139c209e9778">GSC_FALSE</a>); \</div>
 <div class="line">        if (tmp != NULL) { \</div>
 <div class="line">        memcpy(tmp,n,<span class="keyword">sizeof</span>(n[0])*n##cap); \</div>
 <div class="line">        GSC_FREE(n); n = tmp; n##cap = newlen; }} \</div>
 <div class="line">    else <span class="keywordflow">if</span> (newlen &gt;= <span class="keyword">sizeof</span>(n##stack)/<span class="keyword">sizeof</span>(n##stack[0])) { \</div>
-<div class="line">        n = <a class="code hl_function" href="sim-operations_8c.html#aaaf3ebc75feaf901829232712e55677b">gsc_malloc_wrap</a>(<span class="keyword">sizeof</span>(n##stack[0])*newlen,<a class="code hl_define" href="sim-operations_8h.html#ad7e35da105ef91e548f815227171d1df">GSC_FALSE</a>); \</div>
+<div class="line">        n = <a class="code hl_function" href="sim-operations_8c.html#aaaf3ebc75feaf901829232712e55677b">gsc_malloc_wrap</a>(<span class="keyword">sizeof</span>(n##stack[0])*newlen,<a class="code hl_enumvalue" href="sim-operations_8h.html#a55485f3a8263f660077a88c6a7d05c8fa4a2acbf42f8741eac5ab139c209e9778">GSC_FALSE</a>); \</div>
 <div class="line">        if (n != NULL) { \</div>
 <div class="line">        memcpy(n,n##stack,<span class="keyword">sizeof</span>(n##stack[0])*n##cap); n##cap = newlen; }} \</div>
 <div class="line">    else <span class="keywordflow">if</span> (newlen &lt; <a class="code hl_define" href="sim-operations_8h.html#af5eaa46085f7cc2b20091cdf17eea54a">CONTIG_WIDTH</a>) { n##cap = newlen; } \</div>
 <div class="line">} <span class="keywordflow">while</span> (0)</div>
-<div class="ttc" id="asim-operations_8h_html_ad7e35da105ef91e548f815227171d1df"><div class="ttname"><a href="sim-operations_8h.html#ad7e35da105ef91e548f815227171d1df">GSC_FALSE</a></div><div class="ttdeci">#define GSC_FALSE</div><div class="ttdef"><b>Definition:</b> <a href="sim-operations_8h_source.html#l00081">sim-operations.h:81</a></div></div>
+<div class="ttc" id="asim-operations_8h_html_a55485f3a8263f660077a88c6a7d05c8fa4a2acbf42f8741eac5ab139c209e9778"><div class="ttname"><a href="sim-operations_8h.html#a55485f3a8263f660077a88c6a7d05c8fa4a2acbf42f8741eac5ab139c209e9778">GSC_FALSE</a></div><div class="ttdeci">@ GSC_FALSE</div><div class="ttdef"><b>Definition:</b> <a href="sim-operations_8h_source.html#l00096">sim-operations.h:96</a></div></div>
 </div><!-- fragment -->
 <p>Macro to expand the capacity of a stretchy buffer. </p>
 <dl class="section see"><dt>See also</dt><dd><a class="el" href="group__structs.html#gab0154f9408fe4a3f8e82e470161ec18e" title="Macro to create a stretchy buffer of any type and some length.">GSC_CREATE_BUFFER</a> </dd>
@@ -630,7 +621,7 @@ Variables</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="sim-operations_8h_source.html#l00377">377</a> of file <a class="el" href="sim-operations_8h_source.html">sim-operations.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="sim-operations_8h_source.html#l00495">495</a> of file <a class="el" href="sim-operations_8h_source.html">sim-operations.h</a>.</p>
 
 </div>
 </div>
@@ -651,7 +642,7 @@ Variables</h2></td></tr>
 <p >The simulation stores its genotypes in a list of AlleleMatrix nodes. Each node can store up to CONTIG_WIDTH genotypes.</p>
 <p ><em>Has short name:</em> <a class="el" href="group__shortnames.html#ga029c9078fc19e20d1e2fda468f92f35b">AlleleMatrix</a> </p>
 
-<p class="definition">Definition at line <a class="el" href="sim-operations_8h_source.html#l00677">677</a> of file <a class="el" href="sim-operations_8h_source.html">sim-operations.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="sim-operations_8h_source.html#l00784">784</a> of file <a class="el" href="sim-operations_8h_source.html">sim-operations.h</a>.</p>
 
 </div>
 </div>
@@ -677,7 +668,7 @@ Variables</h2></td></tr>
 <tr><td class="fieldname"><a id="gga169da3c2b32a6f9afd92e2e0801ad741ab1a4bcd4b13e83b2a14a9db0cf23c118" name="gga169da3c2b32a6f9afd92e2e0801ad741ab1a4bcd4b13e83b2a14a9db0cf23c118"></a>GSC_GENOTYPECELLSTYLE_UNKNOWN&#160;</td><td class="fielddoc"></td></tr>
 </table>
 
-<p class="definition">Definition at line <a class="el" href="sim-operations_8h_source.html#l00821">821</a> of file <a class="el" href="sim-operations_8h_source.html">sim-operations.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="sim-operations_8h_source.html#l00928">928</a> of file <a class="el" href="sim-operations_8h_source.html">sim-operations.h</a>.</p>
 
 </div>
 </div>
@@ -732,32 +723,7 @@ Details</h1>
 <tr><td class="fieldname"><a id="ggae49f64d8275e0072f6e36c13622e89b8a6ea230ca7286da7d1354472a6c837fc5" name="ggae49f64d8275e0072f6e36c13622e89b8a6ea230ca7286da7d1354472a6c837fc5"></a>GSC_GENOTYPEFILE_VCF&#160;</td><td class="fielddoc"></td></tr>
 </table>
 
-<p class="definition">Definition at line <a class="el" href="sim-operations_8h_source.html#l00865">865</a> of file <a class="el" href="sim-operations_8h_source.html">sim-operations.h</a>.</p>
-
-</div>
-</div>
-<a id="gabaab9ae5c2f4689211a8f1a2b33d23bc" name="gabaab9ae5c2f4689211a8f1a2b33d23bc"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#gabaab9ae5c2f4689211a8f1a2b33d23bc">&#9670;&nbsp;</a></span>gsc_LinkageGroupType</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">enum <a class="el" href="group__structs.html#gabaab9ae5c2f4689211a8f1a2b33d23bc">gsc_LinkageGroupType</a></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Enumerate possible types of recombination within linkage groups. </p>
-<p ><em>Has short name:</em> LinkageGroupType </p>
-<table class="fieldtable">
-<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="ggabaab9ae5c2f4689211a8f1a2b33d23bca43305e4386c6a4c2b8a538e49bd22d50" name="ggabaab9ae5c2f4689211a8f1a2b33d23bca43305e4386c6a4c2b8a538e49bd22d50"></a>GSC_LINKAGEGROUP_SIMPLE&#160;</td><td class="fielddoc"><dl class="section see"><dt>See also</dt><dd><a class="el" href="structgsc___simple_linkage_group.html" title="Parameters for simulating meiosis on a linkage group whose markers are stored contiguously in the sim...">gsc_SimpleLinkageGroup</a> </dd></dl>
-</td></tr>
-<tr><td class="fieldname"><a id="ggabaab9ae5c2f4689211a8f1a2b33d23bca2dda577345113ce4397822dc484fe34a" name="ggabaab9ae5c2f4689211a8f1a2b33d23bca2dda577345113ce4397822dc484fe34a"></a>GSC_LINKAGEGROUP_REORDER&#160;</td><td class="fielddoc"><dl class="section see"><dt>See also</dt><dd><a class="el" href="structgsc___reordered_linkage_group.html" title="Parameters for simulating meiosis on a linkage group whose markers are re-ordered compared to the fir...">gsc_ReorderedLinkageGroup</a> </dd></dl>
-</td></tr>
-</table>
-
-<p class="definition">Definition at line <a class="el" href="sim-operations_8h_source.html#l00620">620</a> of file <a class="el" href="sim-operations_8h_source.html">sim-operations.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="sim-operations_8h_source.html#l00972">972</a> of file <a class="el" href="sim-operations_8h_source.html">sim-operations.h</a>.</p>
 
 </div>
 </div>
@@ -782,13 +748,13 @@ Details</h1>
 <tr><td class="fieldname"><a id="ggaa092055f7433a18bae99970ac6d2b79fa50b3c2e2c5ebda41b27f8bea704b49ab" name="ggaa092055f7433a18bae99970ac6d2b79fa50b3c2e2c5ebda41b27f8bea704b49ab"></a>GSC_TABLEFILE_ERROR_EOBUF&#160;</td><td class="fielddoc"></td></tr>
 </table>
 
-<p class="definition">Definition at line <a class="el" href="sim-operations_8h_source.html#l00760">760</a> of file <a class="el" href="sim-operations_8h_source.html">sim-operations.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="sim-operations_8h_source.html#l00867">867</a> of file <a class="el" href="sim-operations_8h_source.html">sim-operations.h</a>.</p>
 
 </div>
 </div>
 <h2 class="groupheader">Function Documentation</h2>
-<a id="ga8320bfd5851475e8fcbfddce854b35b1" name="ga8320bfd5851475e8fcbfddce854b35b1"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ga8320bfd5851475e8fcbfddce854b35b1">&#9670;&nbsp;</a></span>gsc_define_matrix_format_details()</h2>
+<a id="gac16e627ca627fc79dd175d17b3ca96af" name="gac16e627ca627fc79dd175d17b3ca96af"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gac16e627ca627fc79dd175d17b3ca96af">&#9670;&nbsp;</a></span>gsc_define_matrix_format_details()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -796,13 +762,13 @@ Details</h1>
         <tr>
           <td class="memname"><a class="el" href="structgsc___file_format_spec.html">gsc_FileFormatSpec</a> gsc_define_matrix_format_details </td>
           <td>(</td>
-          <td class="paramtype">const int&#160;</td>
+          <td class="paramtype">const <a class="el" href="sim-operations_8h.html#a55485f3a8263f660077a88c6a7d05c8f">GSC_LOGICVAL</a>&#160;</td>
           <td class="paramname"><em>has_header</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const int&#160;</td>
+          <td class="paramtype">const <a class="el" href="sim-operations_8h.html#a55485f3a8263f660077a88c6a7d05c8f">GSC_LOGICVAL</a>&#160;</td>
           <td class="paramname"><em>markers_as_rows</em>, </td>
         </tr>
         <tr>
@@ -826,8 +792,8 @@ Details</h1>
 <a class="el" href="group__loaders.html#ga394371951741d8c2db18a85069d6b61e" title="Populates a gsc_SimData object with marker allele data, a genetic map, and (optionally) marker effect...">gsc_load_data_files</a>.</dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">has_header</td><td>GSC_TRUE if the genotype matrix to be imported definitely has a header row, GSC_FALSE if the genotype matrix has no header row, or some other value (eg GSC_UNINIT) to not bypass the header detection steps of the import process. </td></tr>
-    <tr><td class="paramname">markers_as_rows</td><td>GSC_TRUE if each row in the genotype matrix represents a genetic marker, GSC_FALSE if each column of the genotype matrix represents a genetic marker, or some other value (eg GSC_UNINIT) to not bypass the orientation detection steps of the import process. </td></tr>
+    <tr><td class="paramname">has_header</td><td>GSC_TRUE if the genotype matrix to be imported definitely has a header row, GSC_FALSE if the genotype matrix has no header row, or some other value (eg GSC_NAGSC_NA) to not bypass the header detection steps of the import process. </td></tr>
+    <tr><td class="paramname">markers_as_rows</td><td>GSC_TRUE if each row in the genotype matrix represents a genetic marker, GSC_FALSE if each column of the genotype matrix represents a genetic marker, or some other value (eg GSC_NA) to not bypass the orientation detection steps of the import process. </td></tr>
     <tr><td class="paramname">cell_style</td><td>The style in which the alleles of a candidate at a marker are encoded in the body cells of the genotype matrix. Use GSC_GENOTYPECELLSTYLE_UNKNOWN to not bypass the cell style detection step of the import process. </td></tr>
   </table>
   </dd>
@@ -837,7 +803,7 @@ Details</h1>
 <dd>
 <a class="el" href="group__loaders.html#ga394371951741d8c2db18a85069d6b61e" title="Populates a gsc_SimData object with marker allele data, a genetic map, and (optionally) marker effect...">gsc_load_data_files</a> </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="sim-operations_8c_source.html#l06491">6491</a> of file <a class="el" href="sim-operations_8c_source.html">sim-operations.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="sim-operations_8c_source.html#l06721">6721</a> of file <a class="el" href="sim-operations_8c_source.html">sim-operations.c</a>.</p>
 
 </div>
 </div>
@@ -860,7 +826,7 @@ Details</h1>
 <p>Classify the character under the cursor of a TableFileReader as cell contents or otherwise. </p>
 <p >Does not update <em>tbl-&gt;cursor</em>, so repeated calls of this same function without updating the cursor in between will return the same result. </p>
 
-<p class="definition">Definition at line <a class="el" href="sim-operations_8c_source.html#l04899">4899</a> of file <a class="el" href="sim-operations_8c_source.html">sim-operations.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="sim-operations_8c_source.html#l05089">5089</a> of file <a class="el" href="sim-operations_8c_source.html">sim-operations.c</a>.</p>
 <div id="dynsection-1" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-1-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
 <div id="dynsection-1-summary" class="dynsummary" style="display:block;">
@@ -870,7 +836,7 @@ Details</h1>
 <map name="agroup__structs_ga9861b51e8a5c74f843aac748c932c3a0_icgraph" id="agroup__structs_ga9861b51e8a5c74f843aac748c932c3a0_icgraph">
 <area shape="rect" title="Classify the character under the cursor of a TableFileReader as cell contents or otherwise." alt="" coords="1171,73,1343,117"/>
 <area shape="rect" href="group__structs.html#ga9b389be1c0eada385d1015e445886c05" title="Read forwards in TableFileReader and return the next cell&#39;s contents, as well as how many column gaps..." alt="" coords="994,73,1123,117"/>
-<area shape="rect" href="sim-operations_8c.html#a890aa11fc3f54d411dff950b77931835" title="Header row reading and processing for map and effect set files." alt="" coords="782,5,939,49"/>
+<area shape="rect" href="sim-operations_8c.html#a11ff196fb220dfd8336587f016767b66" title="Header row reading and processing for map and effect set files." alt="" coords="782,5,939,49"/>
 <area shape="rect" href="sim-operations_8c.html#a9022b0b2e12395904757c59db6010d5b" title="Return the next cell from a queue of cells until the queue is exhausted, and thereafter read new cell..." alt="" coords="775,73,946,117"/>
 <area shape="rect" href="sim-operations_8c.html#aca78dbac4d7154e95b6ddca575937d77" title="Loads a genotype file, with or without existing genome model in the SimData." alt="" coords="566,125,716,169"/>
 <area shape="rect" href="sim-operations_8c.html#ad3c2207b2bd170d752a0a26a9fa2aa19" title="Extract the contents of a genetic map file." alt="" coords="555,73,727,101"/>
@@ -902,7 +868,7 @@ Details</h1>
 <p>Read another buffer's worth of characters from a <a class="el" href="structgsc___table_file_reader.html" title="Stream reader for files of some tabular format.">gsc_TableFileReader</a>'s file. </p>
 <dl class="section warning"><dt>Warning</dt><dd>This overwrites any characters previously saved in the TableFileReader buffer. The pointers of any <em><a class="el" href="structgsc___table_file_cell.html" title="Represent a cell read by a gsc_TableFileReader.">gsc_TableFileCell</a></em> read from this table may become invalid if they are shallow copies. If you need to retain any cell values, consider using <em><a class="el" href="group__structs.html#ga85446dd929940e823745067d0a1d1d5d" title="Allocate memory to store a deep copy of a gsc_TableFileCell, if previously only a shallow copy.">gsc_tablefilecell_deep_copy()</a></em> before calling this function. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="sim-operations_8c_source.html#l04885">4885</a> of file <a class="el" href="sim-operations_8c_source.html">sim-operations.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="sim-operations_8c_source.html#l05075">5075</a> of file <a class="el" href="sim-operations_8c_source.html">sim-operations.c</a>.</p>
 <div id="dynsection-2" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-2-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
 <div id="dynsection-2-summary" class="dynsummary" style="display:block;">
@@ -912,7 +878,7 @@ Details</h1>
 <map name="agroup__structs_gac2206b9a58abb4b533d11dec4bd9f322_icgraph" id="agroup__structs_gac2206b9a58abb4b533d11dec4bd9f322_icgraph">
 <area shape="rect" title="Read another buffer&#39;s worth of characters from a gsc_TableFileReader&#39;s file." alt="" coords="1171,73,1343,117"/>
 <area shape="rect" href="group__structs.html#ga9b389be1c0eada385d1015e445886c05" title="Read forwards in TableFileReader and return the next cell&#39;s contents, as well as how many column gaps..." alt="" coords="994,73,1123,117"/>
-<area shape="rect" href="sim-operations_8c.html#a890aa11fc3f54d411dff950b77931835" title="Header row reading and processing for map and effect set files." alt="" coords="782,5,939,49"/>
+<area shape="rect" href="sim-operations_8c.html#a11ff196fb220dfd8336587f016767b66" title="Header row reading and processing for map and effect set files." alt="" coords="782,5,939,49"/>
 <area shape="rect" href="sim-operations_8c.html#a9022b0b2e12395904757c59db6010d5b" title="Return the next cell from a queue of cells until the queue is exhausted, and thereafter read new cell..." alt="" coords="775,73,946,117"/>
 <area shape="rect" href="sim-operations_8c.html#aca78dbac4d7154e95b6ddca575937d77" title="Loads a genotype file, with or without existing genome model in the SimData." alt="" coords="566,125,716,169"/>
 <area shape="rect" href="sim-operations_8c.html#ad3c2207b2bd170d752a0a26a9fa2aa19" title="Extract the contents of a genetic map file." alt="" coords="555,73,727,101"/>
@@ -945,7 +911,7 @@ Details</h1>
 <p >The deep copy will be a null-terminated string even if the shallow copy was not null-terminated.</p>
 <p >After this call, the cell is stored in heap memory and will need to be freed once the cell is no longer needed. Schema for doing this: if (!mycell.isCellShallow) { GSC_FREE(mycell.cell); } </p>
 
-<p class="definition">Definition at line <a class="el" href="sim-operations_8c_source.html#l04928">4928</a> of file <a class="el" href="sim-operations_8c_source.html">sim-operations.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="sim-operations_8c_source.html#l05118">5118</a> of file <a class="el" href="sim-operations_8c_source.html">sim-operations.c</a>.</p>
 <div id="dynsection-3" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-3-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
 <div id="dynsection-3-summary" class="dynsummary" style="display:block;">
@@ -965,7 +931,7 @@ Details</h1>
 <div class="center"><img src="group__structs_ga85446dd929940e823745067d0a1d1d5d_icgraph.png" border="0" usemap="#agroup__structs_ga85446dd929940e823745067d0a1d1d5d_icgraph" alt=""/></div>
 <map name="agroup__structs_ga85446dd929940e823745067d0a1d1d5d_icgraph" id="agroup__structs_ga85446dd929940e823745067d0a1d1d5d_icgraph">
 <area shape="rect" title="Allocate memory to store a deep copy of a gsc_TableFileCell, if previously only a shallow copy." alt="" coords="1008,57,1191,85"/>
-<area shape="rect" href="sim-operations_8c.html#a890aa11fc3f54d411dff950b77931835" title="Header row reading and processing for map and effect set files." alt="" coords="803,49,960,93"/>
+<area shape="rect" href="sim-operations_8c.html#a11ff196fb220dfd8336587f016767b66" title="Header row reading and processing for map and effect set files." alt="" coords="803,49,960,93"/>
 <area shape="rect" href="sim-operations_8c.html#ad3c2207b2bd170d752a0a26a9fa2aa19" title="Extract the contents of a genetic map file." alt="" coords="583,5,755,33"/>
 <area shape="rect" href="sim-operations_8c.html#aca78dbac4d7154e95b6ddca575937d77" title="Loads a genotype file, with or without existing genome model in the SimData." alt="" coords="386,109,535,153"/>
 <area shape="rect" href="group__loaders.html#ga176416bff8f5e258dbe1619637c8b831" title="Populates a gsc_SimData combination with effect values." alt="" coords="605,57,733,85"/>
@@ -995,7 +961,7 @@ Details</h1>
 
 <p>Close a <a class="el" href="structgsc___table_file_reader.html" title="Stream reader for files of some tabular format.">gsc_TableFileReader</a>'s file pointer. </p>
 
-<p class="definition">Definition at line <a class="el" href="sim-operations_8c_source.html#l04873">4873</a> of file <a class="el" href="sim-operations_8c_source.html">sim-operations.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="sim-operations_8c_source.html#l05063">5063</a> of file <a class="el" href="sim-operations_8c_source.html">sim-operations.c</a>.</p>
 <div id="dynsection-5" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-5-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
 <div id="dynsection-5-summary" class="dynsummary" style="display:block;">
@@ -1034,7 +1000,7 @@ Details</h1>
 <p>Open a file for reading with <a class="el" href="structgsc___table_file_reader.html" title="Stream reader for files of some tabular format.">gsc_TableFileReader</a>. </p>
 <p >On successfully opening file, fills the TableFileReader buffer for the first time. </p>
 
-<p class="definition">Definition at line <a class="el" href="sim-operations_8c_source.html#l04853">4853</a> of file <a class="el" href="sim-operations_8c_source.html">sim-operations.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="sim-operations_8c_source.html#l05043">5043</a> of file <a class="el" href="sim-operations_8c_source.html">sim-operations.c</a>.</p>
 <div id="dynsection-6" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-6-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
 <div id="dynsection-6-summary" class="dynsummary" style="display:block;">
@@ -1073,7 +1039,7 @@ Details</h1>
 <p>Read forwards in TableFileReader and return the next cell's contents, as well as how many column gaps and newlines preceeded it. </p>
 <p >Cells can be of unlimited length, as long as they fit in memory. </p>
 
-<p class="definition">Definition at line <a class="el" href="sim-operations_8c_source.html#l04943">4943</a> of file <a class="el" href="sim-operations_8c_source.html">sim-operations.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="sim-operations_8c_source.html#l05133">5133</a> of file <a class="el" href="sim-operations_8c_source.html">sim-operations.c</a>.</p>
 <div id="dynsection-7" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-7-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
 <div id="dynsection-7-summary" class="dynsummary" style="display:block;">
@@ -1095,7 +1061,7 @@ Details</h1>
 <div class="center"><img src="group__structs_ga9b389be1c0eada385d1015e445886c05_icgraph.png" border="0" usemap="#agroup__structs_ga9b389be1c0eada385d1015e445886c05_icgraph" alt=""/></div>
 <map name="agroup__structs_ga9b389be1c0eada385d1015e445886c05_icgraph" id="agroup__structs_ga9b389be1c0eada385d1015e445886c05_icgraph">
 <area shape="rect" title="Read forwards in TableFileReader and return the next cell&#39;s contents, as well as how many column gaps..." alt="" coords="994,73,1123,117"/>
-<area shape="rect" href="sim-operations_8c.html#a890aa11fc3f54d411dff950b77931835" title="Header row reading and processing for map and effect set files." alt="" coords="782,5,939,49"/>
+<area shape="rect" href="sim-operations_8c.html#a11ff196fb220dfd8336587f016767b66" title="Header row reading and processing for map and effect set files." alt="" coords="782,5,939,49"/>
 <area shape="rect" href="sim-operations_8c.html#a9022b0b2e12395904757c59db6010d5b" title="Return the next cell from a queue of cells until the queue is exhausted, and thereafter read new cell..." alt="" coords="775,73,946,117"/>
 <area shape="rect" href="sim-operations_8c.html#aca78dbac4d7154e95b6ddca575937d77" title="Loads a genotype file, with or without existing genome model in the SimData." alt="" coords="566,125,716,169"/>
 <area shape="rect" href="sim-operations_8c.html#ad3c2207b2bd170d752a0a26a9fa2aa19" title="Extract the contents of a genetic map file." alt="" coords="555,73,727,101"/>

@@ -1,7 +1,7 @@
 <map id="gsc_get_new_group_num" name="gsc_get_new_group_num">
 <area shape="rect" id="node1" title="Function to identify the next sequential integer that does not identify a group that currently has me..." alt="" coords="5,65,174,93"/>
-<area shape="rect" id="node2" href="$group__collgetters.html#gaf9692ce014cfe5439fd00e522a6bab9f" title="Identify group numbers that currently have members." alt="" coords="222,65,387,93"/>
-<area shape="rect" id="node3" href="$group__collgetters.html#gaddb8ea59b22bbe0ec8c61da7f5ba8a98" title="Identify group numbers that currently have members, and how many members they have." alt="" coords="435,57,593,101"/>
+<area shape="rect" id="node2" href="$group__collgetters.html#gaf76f5cdc38c881c9ee8eee32a1770e83" title="Identify group numbers that currently have members." alt="" coords="222,65,387,93"/>
+<area shape="rect" id="node3" href="$group__collgetters.html#gaf344362b92201c509c3efd9fba21f6a9" title="Identify group numbers that currently have members, and how many members they have." alt="" coords="435,57,593,101"/>
 <area shape="rect" id="node4" href="$group__iterators.html#ga05da8d96593f8404938cc24f659db049" title="Create a bidirectional iterator." alt="" coords="641,13,828,41"/>
 <area shape="rect" id="node6" href="$group__liteget.html#gae5d12aca851dd2358b63dc60b8ac6e5f" title="Get the current group membership of a genotype." alt="" coords="681,65,788,93"/>
 <area shape="rect" id="node7" href="$group__iterators.html#ga630ba7f8e864238e296cb9480dfbc728" title="Get the next location from a bidirectional iterator." alt="" coords="670,117,799,145"/>

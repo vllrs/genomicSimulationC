@@ -1,9 +1,12 @@
 <map id="gsc_delete_group" name="gsc_delete_group">
-<area shape="rect" id="node1" title="Deletes all genotypes belonging to a particular group." alt="" coords="5,84,129,112"/>
-<area shape="rect" id="node2" href="$group__supporters.html#gafa617e95d5ed52b4e25434a20006809c" title="A function to tidy the internal storage of genotypes after addition or deletion of genotypes in the g..." alt="" coords="177,76,319,120"/>
+<area shape="rect" id="node1" title="Deletes all genotypes belonging to a particular group." alt="" coords="5,161,129,189"/>
+<area shape="rect" id="node2" href="$group__supporters.html#gafa617e95d5ed52b4e25434a20006809c" title="A function to tidy the internal storage of genotypes after addition or deletion of genotypes in the g..." alt="" coords="177,153,319,197"/>
 <area shape="rect" id="node3" href="$group__deletors.html#ga9c647cacb393998930c560962c1f7f6d" title="Delete the gsc_AlleleMatrix linked list from m onwards and frees its memory." alt="" coords="377,5,541,33"/>
-<area shape="rect" id="node4" href="$group__deletors.html#gae46ff71b819d28408e8b55dd4281a4f3" title="Move all details of the genotype at one gsc_GenoLocation to another gsc_GenoLocation." alt="" coords="389,57,528,85"/>
-<area shape="rect" id="node5" href="$sim-operations_8c.html#adf656d2e43014ca8dd4f5d39adeb68f6" title="Sets the current cursor position in a gsc_GappyIterator to the next empty position,..." alt="" coords="378,109,540,137"/>
-<area shape="rect" id="node7" href="$sim-operations_8c.html#af5486daced98d9bab2126b9d7af11356" title="Sets the current cursor position in a gsc_GappyIterator to the next filled position,..." alt="" coords="367,161,550,189"/>
-<area shape="rect" id="node6" href="$sim-operations_8c.html#a6d94248d1163c9c40e2910e578ce4708" title="Sets the current cursor position in a gsc_GappyIterator to the next valid position,..." alt="" coords="598,136,768,164"/>
+<area shape="rect" id="node4" href="$group__liteget.html#ga5e1e89782604c9ab47f196e1da233362" title="Get the alleles of a genotype." alt="" coords="403,57,514,85"/>
+<area shape="rect" id="node5" href="$group__liteget.html#ga22a270ae73aaa86d93212a4a40f999dc" title="Get the name of a genotype." alt="" coords="406,109,512,137"/>
+<area shape="rect" id="node6" href="$group__iterators.html#ga16615a5663b4d3bd768d8380f820aa66" title="Get an gsc_AlleleMatrix by index in the linked list." alt="" coords="375,161,542,189"/>
+<area shape="rect" id="node7" href="$group__deletors.html#gae46ff71b819d28408e8b55dd4281a4f3" title="Move all details of the genotype at one gsc_GenoLocation to another gsc_GenoLocation." alt="" coords="389,213,528,241"/>
+<area shape="rect" id="node8" href="$sim-operations_8c.html#adf656d2e43014ca8dd4f5d39adeb68f6" title="Sets the current cursor position in a gsc_GappyIterator to the next empty position,..." alt="" coords="378,265,540,293"/>
+<area shape="rect" id="node10" href="$sim-operations_8c.html#af5486daced98d9bab2126b9d7af11356" title="Sets the current cursor position in a gsc_GappyIterator to the next filled position,..." alt="" coords="367,317,550,345"/>
+<area shape="rect" id="node9" href="$sim-operations_8c.html#a6d94248d1163c9c40e2910e578ce4708" title="Sets the current cursor position in a gsc_GappyIterator to the next valid position,..." alt="" coords="598,292,768,320"/>
 </map>

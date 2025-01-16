@@ -21,7 +21,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">genomicSimulationC<span id="projectnumber">&#160;0.2.5.05</span>
+   <div id="projectname">genomicSimulationC<span id="projectnumber">&#160;0.2.5.11</span>
    </div>
   </td>
  </tr>
@@ -76,9 +76,9 @@ Functions</h2></td></tr>
 <tr class="memitem:ga897c7abb536f30f0cbc1baf2abcd2067"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__maths.html#ga897c7abb536f30f0cbc1baf2abcd2067">gsc_randpoi</a> (rnd_pcg_t *rng, double lambda)</td></tr>
 <tr class="memdesc:ga897c7abb536f30f0cbc1baf2abcd2067"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generates randomly a number from the Poisson distribution with parameter <code>lambda</code>, using the Knuth approach.  <a href="group__maths.html#ga897c7abb536f30f0cbc1baf2abcd2067">More...</a><br /></td></tr>
 <tr class="separator:ga897c7abb536f30f0cbc1baf2abcd2067"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gae001e0609ac52df335530f9473cb57e1"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structgsc___decimal_matrix.html">gsc_DecimalMatrix</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__maths.html#gae001e0609ac52df335530f9473cb57e1">gsc_generate_zero_dmatrix</a> (const int r, const int c)</td></tr>
-<tr class="memdesc:gae001e0609ac52df335530f9473cb57e1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generates a matrix of c columns, r rows with all 0.  <a href="group__maths.html#gae001e0609ac52df335530f9473cb57e1">More...</a><br /></td></tr>
-<tr class="separator:gae001e0609ac52df335530f9473cb57e1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga9c1e4641b679df1d6ec3d885ef6d1fd2"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structgsc___decimal_matrix.html">gsc_DecimalMatrix</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__maths.html#ga9c1e4641b679df1d6ec3d885ef6d1fd2">gsc_generate_zero_dmatrix</a> (const size_t r, const size_t c)</td></tr>
+<tr class="memdesc:ga9c1e4641b679df1d6ec3d885ef6d1fd2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generates a matrix of c columns, r rows with all 0.  <a href="group__maths.html#ga9c1e4641b679df1d6ec3d885ef6d1fd2">More...</a><br /></td></tr>
+<tr class="separator:ga9c1e4641b679df1d6ec3d885ef6d1fd2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga6fdcedf004c9d08e5135d30deb5b12fa"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__maths.html#ga6fdcedf004c9d08e5135d30deb5b12fa">gsc_add_matrixvector_product_to_dmatrix</a> (<a class="el" href="structgsc___decimal_matrix.html">gsc_DecimalMatrix</a> *result, const <a class="el" href="structgsc___decimal_matrix.html">gsc_DecimalMatrix</a> *a, const double *b)</td></tr>
 <tr class="memdesc:ga6fdcedf004c9d08e5135d30deb5b12fa"><td class="mdescLeft">&#160;</td><td class="mdescRight">Multiply a <a class="el" href="structgsc___decimal_matrix.html" title="A row-major heap matrix that contains floating point numbers.">gsc_DecimalMatrix</a> to a vector, and add that product to the first column of a provided <a class="el" href="structgsc___decimal_matrix.html" title="A row-major heap matrix that contains floating point numbers.">gsc_DecimalMatrix</a>.  <a href="group__maths.html#ga6fdcedf004c9d08e5135d30deb5b12fa">More...</a><br /></td></tr>
 <tr class="separator:ga6fdcedf004c9d08e5135d30deb5b12fa"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -150,7 +150,7 @@ Functions</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>0 on success, nonzero on failure. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="sim-operations_8c_source.html#l04312">4312</a> of file <a class="el" href="sim-operations_8c_source.html">sim-operations.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="sim-operations_8c_source.html#l04493">4493</a> of file <a class="el" href="sim-operations_8c_source.html">sim-operations.c</a>.</p>
 <div id="dynsection-0" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-0-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
 <div id="dynsection-0-summary" class="dynsummary" style="display:block;">
@@ -158,25 +158,24 @@ Functions</h2></td></tr>
 <div id="dynsection-0-content" class="dyncontent" style="display:none;">
 <div class="center"><img src="group__maths_gadaec2ba547549392530e91e50a3c985d_icgraph.png" border="0" usemap="#agroup__maths_gadaec2ba547549392530e91e50a3c985d_icgraph" alt=""/></div>
 <map name="agroup__maths_gadaec2ba547549392530e91e50a3c985d_icgraph" id="agroup__maths_gadaec2ba547549392530e91e50a3c985d_icgraph">
-<area shape="rect" title="Multiply two sets of a gsc_DecimalMatrix and vector, and add both products to the first column of a p..." alt="" coords="1292,80,1478,124"/>
-<area shape="rect" href="group__calculators.html#ga5eb332e54b2f90f399a28a65cdb25e36" title="Calculate the fitness metric/breeding value for a set of genotypes." alt="" coords="1079,88,1244,116"/>
-<area shape="rect" href="group__calculators.html#gac94e98cc238a772aaa6151400df71629" title="Calculate the fitness metric/breeding value for every genotype in the simulation or every genotype in..." alt="" coords="898,57,1025,85"/>
-<area shape="rect" href="group__savers.html#ga710981b758de78c6dd9f4e5ab61971fc" title="Calculate and print breeding values to a file." alt="" coords="892,117,1031,145"/>
-<area shape="rect" href="group__collgetters.html#ga25310a2e8c9fbfabca0c90a355f0d522" title="Gets the breeding values/breeding values/fitnesses of each member of the group." alt="" coords="700,5,833,33"/>
-<area shape="rect" href="group__calculators.html#ga3b43d07c08ed861ed0f22a69bb57b94a" title="Takes the top_n individuals in the group with the best breeding values/fitnesses and puts them in a n..." alt="" coords="504,33,617,61"/>
-<area shape="rect" href="group__crossers.html#gab19b3eb80b5fe460d17c93e0c27f7aaf" title="Find the top m percent of a group and perform random crosses between those top individuals." alt="" coords="26,52,174,96"/>
-<area shape="rect" href="sim-operations_8c.html#a7072c6a3834472e7fbd768c0275fdc54" title="save&#45;as&#45;you&#45;go (breeding values)" alt="" coords="689,109,844,153"/>
-<area shape="rect" href="group__savers.html#ga6148ecde2587d6d37c313cfb88401771" title="Prints breeding values of genotypes in the simulation to a file." alt="" coords="716,177,817,205"/>
-<area shape="rect" href="group__crossers.html#ga28b0fcf60b6a8f6e8ca470f7b5d0a4b7" title="Make new genotypes (generic function)" alt="" coords="479,133,641,177"/>
-<area shape="rect" href="group__crossers.html#ga15af204958dc69717334c46b19219a2d" title="Creates an identical copy of each member of a group." alt="" coords="274,37,400,65"/>
-<area shape="rect" href="group__crossers.html#ga6c230330ca9a9db9459d4477512a21af" title="Creates a doubled haploid from each member of a group." alt="" coords="243,89,431,117"/>
-<area shape="rect" href="group__crossers.html#ga03af5446006203244dd3080cf75af26f" title="Performs random crosses among members of a group." alt="" coords="245,141,429,169"/>
-<area shape="rect" href="group__crossers.html#ga652376b5a34d24f239e5fc0b167c067b" title="Performs random crosses where the first parent comes from one group and the second from another." alt="" coords="245,193,429,237"/>
-<area shape="rect" href="group__crossers.html#ga4450224009587f4cd4a972413423c96e" title="Performs the crosses of pairs of parents whose indexes are provided in an array." alt="" coords="243,261,431,289"/>
-<area shape="rect" href="group__crossers.html#gab625453074798be6ba8677a5d4986edf" title="Selfs each member of a group for a certain number of generations." alt="" coords="276,313,398,341"/>
-<area shape="rect" href="group__crossers.html#gaa70fd79312587d8e9fc166c64612cbce" title="Perform crosses between all pairs of parents in the group from_group and allocates the resulting offs..." alt="" coords="8,193,192,237"/>
-<area shape="rect" href="group__crossers.html#ga5c0be901d03d0e5dd3d74bc19a4bea70" title="Perform crosses between pairs of parents identified by name in a file and allocate the resulting offs..." alt="" coords="5,261,195,289"/>
-<area shape="rect" href="group__crossers.html#ga2b8100d2d30cf1ada0db8403663076ff" title="Perform crosses between previously&#45;generated offspring of pairs of parents identified by name in a fi..." alt="" coords="10,313,190,357"/>
+<area shape="rect" title="Multiply two sets of a gsc_DecimalMatrix and vector, and add both products to the first column of a p..." alt="" coords="1292,103,1478,147"/>
+<area shape="rect" href="group__calculators.html#ga5eb332e54b2f90f399a28a65cdb25e36" title="Calculate the fitness metric/breeding value for a set of genotypes." alt="" coords="1079,111,1244,139"/>
+<area shape="rect" href="group__calculators.html#ga30689b0f03641259091a72d065951e29" title="Calculate the fitness metric/breeding value for every genotype in the simulation or every genotype in..." alt="" coords="898,80,1025,108"/>
+<area shape="rect" href="group__savers.html#ga710981b758de78c6dd9f4e5ab61971fc" title="Calculate and print breeding values to a file." alt="" coords="892,140,1031,168"/>
+<area shape="rect" href="group__collgetters.html#gaeb456f1672fa37415f985e07baae49a6" title="Gets the breeding values/breeding values/fitnesses of each member of the group." alt="" coords="700,28,833,56"/>
+<area shape="rect" href="group__calculators.html#ga70ea35197fe4dc0eedf17e1c7bb993cb" title="Takes the top_n individuals in the group with the best breeding values/fitnesses and puts them in a n..." alt="" coords="710,80,823,108"/>
+<area shape="rect" href="sim-operations_8c.html#a240267fbee56d8075f7b8fe10c81aaa4" title="save&#45;as&#45;you&#45;go (breeding values)" alt="" coords="689,132,844,176"/>
+<area shape="rect" href="group__savers.html#ga51cba5fcfb6d036614262c57b88a1ee1" title="Prints breeding values of genotypes in the simulation to a file." alt="" coords="716,200,817,228"/>
+<area shape="rect" href="group__crossers.html#gaa5a1b4a1a80f8baf5b5730d7b7db0b77" title="Make new genotypes (generic function)" alt="" coords="479,132,641,176"/>
+<area shape="rect" href="group__crossers.html#gaa3907b6b8ad3de641916b2df83e43a01" title="Creates an identical copy of each member of a group." alt="" coords="274,5,400,33"/>
+<area shape="rect" href="group__crossers.html#ga6c230330ca9a9db9459d4477512a21af" title="Creates a doubled haploid from each member of a group." alt="" coords="243,57,431,85"/>
+<area shape="rect" href="group__crossers.html#ga4bfb4f901f7a921e6a3a2f1d8a9ac249" title="Performs random crosses among members of a group." alt="" coords="245,109,429,137"/>
+<area shape="rect" href="group__crossers.html#gaa43222283d6fb3745f5fab73b36af22d" title="Performs random crosses where the first parent comes from one group and the second from another." alt="" coords="245,161,429,205"/>
+<area shape="rect" href="group__crossers.html#gafe3072701f2dea2a505dd8fc9e8bc936" title="Performs the crosses of pairs of parents whose indexes are provided in an array." alt="" coords="243,229,431,257"/>
+<area shape="rect" href="group__crossers.html#gab625453074798be6ba8677a5d4986edf" title="Selfs each member of a group for a certain number of generations." alt="" coords="276,281,398,309"/>
+<area shape="rect" href="group__crossers.html#gaa70fd79312587d8e9fc166c64612cbce" title="Perform crosses between all pairs of parents in the group from_group and allocates the resulting offs..." alt="" coords="8,161,192,205"/>
+<area shape="rect" href="group__crossers.html#ga5c0be901d03d0e5dd3d74bc19a4bea70" title="Perform crosses between pairs of parents identified by name in a file and allocate the resulting offs..." alt="" coords="5,229,195,257"/>
+<area shape="rect" href="group__crossers.html#ga2b8100d2d30cf1ada0db8403663076ff" title="Perform crosses between previously&#45;generated offspring of pairs of parents identified by name in a fi..." alt="" coords="10,281,190,325"/>
 </map>
 </div>
 
@@ -227,7 +226,7 @@ Functions</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>0 on success, nonzero on failure. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="sim-operations_8c_source.html#l04262">4262</a> of file <a class="el" href="sim-operations_8c_source.html">sim-operations.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="sim-operations_8c_source.html#l04440">4440</a> of file <a class="el" href="sim-operations_8c_source.html">sim-operations.c</a>.</p>
 <div id="dynsection-1" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-1-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
 <div id="dynsection-1-summary" class="dynsummary" style="display:block;">
@@ -235,32 +234,31 @@ Functions</h2></td></tr>
 <div id="dynsection-1-content" class="dyncontent" style="display:none;">
 <div class="center"><img src="group__maths_ga6fdcedf004c9d08e5135d30deb5b12fa_icgraph.png" border="0" usemap="#agroup__maths_ga6fdcedf004c9d08e5135d30deb5b12fa_icgraph" alt=""/></div>
 <map name="agroup__maths_ga6fdcedf004c9d08e5135d30deb5b12fa_icgraph" id="agroup__maths_ga6fdcedf004c9d08e5135d30deb5b12fa_icgraph">
-<area shape="rect" title="Multiply a gsc_DecimalMatrix to a vector, and add that product to the first column of a provided gsc_..." alt="" coords="1292,80,1440,124"/>
-<area shape="rect" href="group__calculators.html#ga5eb332e54b2f90f399a28a65cdb25e36" title="Calculate the fitness metric/breeding value for a set of genotypes." alt="" coords="1079,88,1244,116"/>
-<area shape="rect" href="group__calculators.html#gac94e98cc238a772aaa6151400df71629" title="Calculate the fitness metric/breeding value for every genotype in the simulation or every genotype in..." alt="" coords="898,57,1025,85"/>
-<area shape="rect" href="group__savers.html#ga710981b758de78c6dd9f4e5ab61971fc" title="Calculate and print breeding values to a file." alt="" coords="892,117,1031,145"/>
-<area shape="rect" href="group__collgetters.html#ga25310a2e8c9fbfabca0c90a355f0d522" title="Gets the breeding values/breeding values/fitnesses of each member of the group." alt="" coords="700,5,833,33"/>
-<area shape="rect" href="group__calculators.html#ga3b43d07c08ed861ed0f22a69bb57b94a" title="Takes the top_n individuals in the group with the best breeding values/fitnesses and puts them in a n..." alt="" coords="504,33,617,61"/>
-<area shape="rect" href="group__crossers.html#gab19b3eb80b5fe460d17c93e0c27f7aaf" title="Find the top m percent of a group and perform random crosses between those top individuals." alt="" coords="26,52,174,96"/>
-<area shape="rect" href="sim-operations_8c.html#a7072c6a3834472e7fbd768c0275fdc54" title="save&#45;as&#45;you&#45;go (breeding values)" alt="" coords="689,109,844,153"/>
-<area shape="rect" href="group__savers.html#ga6148ecde2587d6d37c313cfb88401771" title="Prints breeding values of genotypes in the simulation to a file." alt="" coords="716,177,817,205"/>
-<area shape="rect" href="group__crossers.html#ga28b0fcf60b6a8f6e8ca470f7b5d0a4b7" title="Make new genotypes (generic function)" alt="" coords="479,133,641,177"/>
-<area shape="rect" href="group__crossers.html#ga15af204958dc69717334c46b19219a2d" title="Creates an identical copy of each member of a group." alt="" coords="274,37,400,65"/>
-<area shape="rect" href="group__crossers.html#ga6c230330ca9a9db9459d4477512a21af" title="Creates a doubled haploid from each member of a group." alt="" coords="243,89,431,117"/>
-<area shape="rect" href="group__crossers.html#ga03af5446006203244dd3080cf75af26f" title="Performs random crosses among members of a group." alt="" coords="245,141,429,169"/>
-<area shape="rect" href="group__crossers.html#ga652376b5a34d24f239e5fc0b167c067b" title="Performs random crosses where the first parent comes from one group and the second from another." alt="" coords="245,193,429,237"/>
-<area shape="rect" href="group__crossers.html#ga4450224009587f4cd4a972413423c96e" title="Performs the crosses of pairs of parents whose indexes are provided in an array." alt="" coords="243,261,431,289"/>
-<area shape="rect" href="group__crossers.html#gab625453074798be6ba8677a5d4986edf" title="Selfs each member of a group for a certain number of generations." alt="" coords="276,313,398,341"/>
-<area shape="rect" href="group__crossers.html#gaa70fd79312587d8e9fc166c64612cbce" title="Perform crosses between all pairs of parents in the group from_group and allocates the resulting offs..." alt="" coords="8,193,192,237"/>
-<area shape="rect" href="group__crossers.html#ga5c0be901d03d0e5dd3d74bc19a4bea70" title="Perform crosses between pairs of parents identified by name in a file and allocate the resulting offs..." alt="" coords="5,261,195,289"/>
-<area shape="rect" href="group__crossers.html#ga2b8100d2d30cf1ada0db8403663076ff" title="Perform crosses between previously&#45;generated offspring of pairs of parents identified by name in a fi..." alt="" coords="10,313,190,357"/>
+<area shape="rect" title="Multiply a gsc_DecimalMatrix to a vector, and add that product to the first column of a provided gsc_..." alt="" coords="1292,103,1440,147"/>
+<area shape="rect" href="group__calculators.html#ga5eb332e54b2f90f399a28a65cdb25e36" title="Calculate the fitness metric/breeding value for a set of genotypes." alt="" coords="1079,111,1244,139"/>
+<area shape="rect" href="group__calculators.html#ga30689b0f03641259091a72d065951e29" title="Calculate the fitness metric/breeding value for every genotype in the simulation or every genotype in..." alt="" coords="898,80,1025,108"/>
+<area shape="rect" href="group__savers.html#ga710981b758de78c6dd9f4e5ab61971fc" title="Calculate and print breeding values to a file." alt="" coords="892,140,1031,168"/>
+<area shape="rect" href="group__collgetters.html#gaeb456f1672fa37415f985e07baae49a6" title="Gets the breeding values/breeding values/fitnesses of each member of the group." alt="" coords="700,28,833,56"/>
+<area shape="rect" href="group__calculators.html#ga70ea35197fe4dc0eedf17e1c7bb993cb" title="Takes the top_n individuals in the group with the best breeding values/fitnesses and puts them in a n..." alt="" coords="710,80,823,108"/>
+<area shape="rect" href="sim-operations_8c.html#a240267fbee56d8075f7b8fe10c81aaa4" title="save&#45;as&#45;you&#45;go (breeding values)" alt="" coords="689,132,844,176"/>
+<area shape="rect" href="group__savers.html#ga51cba5fcfb6d036614262c57b88a1ee1" title="Prints breeding values of genotypes in the simulation to a file." alt="" coords="716,200,817,228"/>
+<area shape="rect" href="group__crossers.html#gaa5a1b4a1a80f8baf5b5730d7b7db0b77" title="Make new genotypes (generic function)" alt="" coords="479,132,641,176"/>
+<area shape="rect" href="group__crossers.html#gaa3907b6b8ad3de641916b2df83e43a01" title="Creates an identical copy of each member of a group." alt="" coords="274,5,400,33"/>
+<area shape="rect" href="group__crossers.html#ga6c230330ca9a9db9459d4477512a21af" title="Creates a doubled haploid from each member of a group." alt="" coords="243,57,431,85"/>
+<area shape="rect" href="group__crossers.html#ga4bfb4f901f7a921e6a3a2f1d8a9ac249" title="Performs random crosses among members of a group." alt="" coords="245,109,429,137"/>
+<area shape="rect" href="group__crossers.html#gaa43222283d6fb3745f5fab73b36af22d" title="Performs random crosses where the first parent comes from one group and the second from another." alt="" coords="245,161,429,205"/>
+<area shape="rect" href="group__crossers.html#gafe3072701f2dea2a505dd8fc9e8bc936" title="Performs the crosses of pairs of parents whose indexes are provided in an array." alt="" coords="243,229,431,257"/>
+<area shape="rect" href="group__crossers.html#gab625453074798be6ba8677a5d4986edf" title="Selfs each member of a group for a certain number of generations." alt="" coords="276,281,398,309"/>
+<area shape="rect" href="group__crossers.html#gaa70fd79312587d8e9fc166c64612cbce" title="Perform crosses between all pairs of parents in the group from_group and allocates the resulting offs..." alt="" coords="8,161,192,205"/>
+<area shape="rect" href="group__crossers.html#ga5c0be901d03d0e5dd3d74bc19a4bea70" title="Perform crosses between pairs of parents identified by name in a file and allocate the resulting offs..." alt="" coords="5,229,195,257"/>
+<area shape="rect" href="group__crossers.html#ga2b8100d2d30cf1ada0db8403663076ff" title="Perform crosses between previously&#45;generated offspring of pairs of parents identified by name in a fi..." alt="" coords="10,281,190,325"/>
 </map>
 </div>
 
 </div>
 </div>
-<a id="gae001e0609ac52df335530f9473cb57e1" name="gae001e0609ac52df335530f9473cb57e1"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#gae001e0609ac52df335530f9473cb57e1">&#9670;&nbsp;</a></span>gsc_generate_zero_dmatrix()</h2>
+<a id="ga9c1e4641b679df1d6ec3d885ef6d1fd2" name="ga9c1e4641b679df1d6ec3d885ef6d1fd2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga9c1e4641b679df1d6ec3d885ef6d1fd2">&#9670;&nbsp;</a></span>gsc_generate_zero_dmatrix()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -268,13 +266,13 @@ Functions</h2></td></tr>
         <tr>
           <td class="memname"><a class="el" href="structgsc___decimal_matrix.html">gsc_DecimalMatrix</a> gsc_generate_zero_dmatrix </td>
           <td>(</td>
-          <td class="paramtype">const int&#160;</td>
+          <td class="paramtype">const size_t&#160;</td>
           <td class="paramname"><em>r</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const int&#160;</td>
+          <td class="paramtype">const size_t&#160;</td>
           <td class="paramname"><em>c</em>&#160;</td>
         </tr>
         <tr>
@@ -295,14 +293,14 @@ Functions</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>a <a class="el" href="structgsc___decimal_matrix.html" title="A row-major heap matrix that contains floating point numbers.">gsc_DecimalMatrix</a> with r rows, c cols, and a matrix of the correct size, with all values zeroed. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="sim-operations_8c_source.html#l04232">4232</a> of file <a class="el" href="sim-operations_8c_source.html">sim-operations.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="sim-operations_8c_source.html#l04410">4410</a> of file <a class="el" href="sim-operations_8c_source.html">sim-operations.c</a>.</p>
 <div id="dynsection-2" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-2-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
 <div id="dynsection-2-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-2-content" class="dyncontent" style="display:none;">
-<div class="center"><img src="group__maths_gae001e0609ac52df335530f9473cb57e1_cgraph.png" border="0" usemap="#agroup__maths_gae001e0609ac52df335530f9473cb57e1_cgraph" alt=""/></div>
-<map name="agroup__maths_gae001e0609ac52df335530f9473cb57e1_cgraph" id="agroup__maths_gae001e0609ac52df335530f9473cb57e1_cgraph">
+<div class="center"><img src="group__maths_ga9c1e4641b679df1d6ec3d885ef6d1fd2_cgraph.png" border="0" usemap="#agroup__maths_ga9c1e4641b679df1d6ec3d885ef6d1fd2_cgraph" alt=""/></div>
+<map name="agroup__maths_ga9c1e4641b679df1d6ec3d885ef6d1fd2_cgraph" id="agroup__maths_ga9c1e4641b679df1d6ec3d885ef6d1fd2_cgraph">
 <area shape="rect" title="Generates a matrix of c columns, r rows with all 0." alt="" coords="5,5,187,33"/>
 <area shape="rect" href="sim-operations_8c.html#aaaf3ebc75feaf901829232712e55677b" title="Replace calls to malloc direct with this function." alt="" coords="235,5,356,33"/>
 </map>
@@ -312,28 +310,27 @@ Functions</h2></td></tr>
 <div id="dynsection-3-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-3-content" class="dyncontent" style="display:none;">
-<div class="center"><img src="group__maths_gae001e0609ac52df335530f9473cb57e1_icgraph.png" border="0" usemap="#agroup__maths_gae001e0609ac52df335530f9473cb57e1_icgraph" alt=""/></div>
-<map name="agroup__maths_gae001e0609ac52df335530f9473cb57e1_icgraph" id="agroup__maths_gae001e0609ac52df335530f9473cb57e1_icgraph">
-<area shape="rect" title="Generates a matrix of c columns, r rows with all 0." alt="" coords="1292,73,1474,101"/>
-<area shape="rect" href="group__calculators.html#gafbf562b4479f030957c8955ada159b0e" title="Calculates the number of times at each marker that a particular allele appears." alt="" coords="1093,5,1231,49"/>
-<area shape="rect" href="group__calculators.html#gac94e98cc238a772aaa6151400df71629" title="Calculate the fitness metric/breeding value for every genotype in the simulation or every genotype in..." alt="" coords="898,73,1025,101"/>
-<area shape="rect" href="group__calculators.html#ga5eb332e54b2f90f399a28a65cdb25e36" title="Calculate the fitness metric/breeding value for a set of genotypes." alt="" coords="1079,125,1244,153"/>
-<area shape="rect" href="group__collgetters.html#ga25310a2e8c9fbfabca0c90a355f0d522" title="Gets the breeding values/breeding values/fitnesses of each member of the group." alt="" coords="700,21,833,49"/>
-<area shape="rect" href="group__calculators.html#ga3b43d07c08ed861ed0f22a69bb57b94a" title="Takes the top_n individuals in the group with the best breeding values/fitnesses and puts them in a n..." alt="" coords="504,49,617,77"/>
-<area shape="rect" href="group__crossers.html#gab19b3eb80b5fe460d17c93e0c27f7aaf" title="Find the top m percent of a group and perform random crosses between those top individuals." alt="" coords="26,68,174,112"/>
-<area shape="rect" href="group__savers.html#ga710981b758de78c6dd9f4e5ab61971fc" title="Calculate and print breeding values to a file." alt="" coords="892,133,1031,161"/>
-<area shape="rect" href="sim-operations_8c.html#a7072c6a3834472e7fbd768c0275fdc54" title="save&#45;as&#45;you&#45;go (breeding values)" alt="" coords="689,125,844,169"/>
-<area shape="rect" href="group__savers.html#ga6148ecde2587d6d37c313cfb88401771" title="Prints breeding values of genotypes in the simulation to a file." alt="" coords="716,193,817,221"/>
-<area shape="rect" href="group__crossers.html#ga28b0fcf60b6a8f6e8ca470f7b5d0a4b7" title="Make new genotypes (generic function)" alt="" coords="479,149,641,193"/>
-<area shape="rect" href="group__crossers.html#ga15af204958dc69717334c46b19219a2d" title="Creates an identical copy of each member of a group." alt="" coords="274,53,400,81"/>
-<area shape="rect" href="group__crossers.html#ga6c230330ca9a9db9459d4477512a21af" title="Creates a doubled haploid from each member of a group." alt="" coords="243,105,431,133"/>
-<area shape="rect" href="group__crossers.html#ga03af5446006203244dd3080cf75af26f" title="Performs random crosses among members of a group." alt="" coords="245,157,429,185"/>
-<area shape="rect" href="group__crossers.html#ga652376b5a34d24f239e5fc0b167c067b" title="Performs random crosses where the first parent comes from one group and the second from another." alt="" coords="245,209,429,253"/>
-<area shape="rect" href="group__crossers.html#ga4450224009587f4cd4a972413423c96e" title="Performs the crosses of pairs of parents whose indexes are provided in an array." alt="" coords="243,277,431,305"/>
-<area shape="rect" href="group__crossers.html#gab625453074798be6ba8677a5d4986edf" title="Selfs each member of a group for a certain number of generations." alt="" coords="276,329,398,357"/>
-<area shape="rect" href="group__crossers.html#gaa70fd79312587d8e9fc166c64612cbce" title="Perform crosses between all pairs of parents in the group from_group and allocates the resulting offs..." alt="" coords="8,209,192,253"/>
-<area shape="rect" href="group__crossers.html#ga5c0be901d03d0e5dd3d74bc19a4bea70" title="Perform crosses between pairs of parents identified by name in a file and allocate the resulting offs..." alt="" coords="5,277,195,305"/>
-<area shape="rect" href="group__crossers.html#ga2b8100d2d30cf1ada0db8403663076ff" title="Perform crosses between previously&#45;generated offspring of pairs of parents identified by name in a fi..." alt="" coords="10,329,190,373"/>
+<div class="center"><img src="group__maths_ga9c1e4641b679df1d6ec3d885ef6d1fd2_icgraph.png" border="0" usemap="#agroup__maths_ga9c1e4641b679df1d6ec3d885ef6d1fd2_icgraph" alt=""/></div>
+<map name="agroup__maths_ga9c1e4641b679df1d6ec3d885ef6d1fd2_icgraph" id="agroup__maths_ga9c1e4641b679df1d6ec3d885ef6d1fd2_icgraph">
+<area shape="rect" title="Generates a matrix of c columns, r rows with all 0." alt="" coords="1292,80,1474,108"/>
+<area shape="rect" href="group__calculators.html#ga2eaf7918fe1253fdf95b9ab81a192c96" title="Calculates the number of times at each marker that a particular allele appears." alt="" coords="1093,12,1231,56"/>
+<area shape="rect" href="group__calculators.html#ga30689b0f03641259091a72d065951e29" title="Calculate the fitness metric/breeding value for every genotype in the simulation or every genotype in..." alt="" coords="898,80,1025,108"/>
+<area shape="rect" href="group__calculators.html#ga5eb332e54b2f90f399a28a65cdb25e36" title="Calculate the fitness metric/breeding value for a set of genotypes." alt="" coords="1079,132,1244,160"/>
+<area shape="rect" href="group__collgetters.html#gaeb456f1672fa37415f985e07baae49a6" title="Gets the breeding values/breeding values/fitnesses of each member of the group." alt="" coords="700,28,833,56"/>
+<area shape="rect" href="group__calculators.html#ga70ea35197fe4dc0eedf17e1c7bb993cb" title="Takes the top_n individuals in the group with the best breeding values/fitnesses and puts them in a n..." alt="" coords="710,80,823,108"/>
+<area shape="rect" href="group__savers.html#ga710981b758de78c6dd9f4e5ab61971fc" title="Calculate and print breeding values to a file." alt="" coords="892,140,1031,168"/>
+<area shape="rect" href="sim-operations_8c.html#a240267fbee56d8075f7b8fe10c81aaa4" title="save&#45;as&#45;you&#45;go (breeding values)" alt="" coords="689,132,844,176"/>
+<area shape="rect" href="group__savers.html#ga51cba5fcfb6d036614262c57b88a1ee1" title="Prints breeding values of genotypes in the simulation to a file." alt="" coords="716,200,817,228"/>
+<area shape="rect" href="group__crossers.html#gaa5a1b4a1a80f8baf5b5730d7b7db0b77" title="Make new genotypes (generic function)" alt="" coords="479,132,641,176"/>
+<area shape="rect" href="group__crossers.html#gaa3907b6b8ad3de641916b2df83e43a01" title="Creates an identical copy of each member of a group." alt="" coords="274,5,400,33"/>
+<area shape="rect" href="group__crossers.html#ga6c230330ca9a9db9459d4477512a21af" title="Creates a doubled haploid from each member of a group." alt="" coords="243,57,431,85"/>
+<area shape="rect" href="group__crossers.html#ga4bfb4f901f7a921e6a3a2f1d8a9ac249" title="Performs random crosses among members of a group." alt="" coords="245,109,429,137"/>
+<area shape="rect" href="group__crossers.html#gaa43222283d6fb3745f5fab73b36af22d" title="Performs random crosses where the first parent comes from one group and the second from another." alt="" coords="245,161,429,205"/>
+<area shape="rect" href="group__crossers.html#gafe3072701f2dea2a505dd8fc9e8bc936" title="Performs the crosses of pairs of parents whose indexes are provided in an array." alt="" coords="243,229,431,257"/>
+<area shape="rect" href="group__crossers.html#gab625453074798be6ba8677a5d4986edf" title="Selfs each member of a group for a certain number of generations." alt="" coords="276,281,398,309"/>
+<area shape="rect" href="group__crossers.html#gaa70fd79312587d8e9fc166c64612cbce" title="Perform crosses between all pairs of parents in the group from_group and allocates the resulting offs..." alt="" coords="8,161,192,205"/>
+<area shape="rect" href="group__crossers.html#ga5c0be901d03d0e5dd3d74bc19a4bea70" title="Perform crosses between pairs of parents identified by name in a file and allocate the resulting offs..." alt="" coords="5,229,195,257"/>
+<area shape="rect" href="group__crossers.html#ga2b8100d2d30cf1ada0db8403663076ff" title="Perform crosses between previously&#45;generated offspring of pairs of parents identified by name in a fi..." alt="" coords="10,281,190,325"/>
 </map>
 </div>
 
@@ -377,7 +374,7 @@ Functions</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>a random integer generated from the Poisson distribution with parameter lambda. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="sim-operations_8c_source.html#l00191">191</a> of file <a class="el" href="sim-operations_8c_source.html">sim-operations.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="sim-operations_8c_source.html#l00195">195</a> of file <a class="el" href="sim-operations_8c_source.html">sim-operations.c</a>.</p>
 <div id="dynsection-4" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-4-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
 <div id="dynsection-4-summary" class="dynsummary" style="display:block;">
@@ -388,17 +385,16 @@ Functions</h2></td></tr>
 <area shape="rect" title="Generates randomly a number from the Poisson distribution with parameter lambda, using the Knuth appr..." alt="" coords="905,88,996,116"/>
 <area shape="rect" href="group__meiosis.html#ga6a07e899a26f8aff2b241e3a6f7d8665" title="Get the alleles of the outcome of producing a doubled haploid from a gamete from a given parent." alt="" coords="705,45,857,89"/>
 <area shape="rect" href="group__meiosis.html#ga923d9402fffe6eacac7971b703343073" title="Fills a char* with the simulated result of meiosis (reduction and recombination) from the marker alle..." alt="" coords="706,117,856,145"/>
-<area shape="rect" href="sim-operations_8c.html#aceb894a2f5c45552c2eb297e0a475af9" title="offspringGenerator function parameter for gsc_make_doubled_haploids." alt="" coords="479,20,657,64"/>
+<area shape="rect" href="sim-operations_8c.html#a226a60f8e133bcbb389863cd4dbd1898" title="offspringGenerator function parameter for gsc_make_doubled_haploids." alt="" coords="479,20,657,64"/>
 <area shape="rect" href="group__crossers.html#ga6c230330ca9a9db9459d4477512a21af" title="Creates a doubled haploid from each member of a group." alt="" coords="243,5,431,33"/>
-<area shape="rect" href="sim-operations_8c.html#a229d43c61eb4fbdb464edd843eacfffd" title="offspringGenerator function parameter for gsc_make_random_crosses." alt="" coords="479,109,657,153"/>
-<area shape="rect" href="sim-operations_8c.html#aaaf499677f08b2daef64d0b322e9ca13" title="offspringGenerator function parameter for gsc_self_n_times." alt="" coords="479,199,657,243"/>
-<area shape="rect" href="group__crossers.html#ga03af5446006203244dd3080cf75af26f" title="Performs random crosses among members of a group." alt="" coords="245,57,429,85"/>
-<area shape="rect" href="group__crossers.html#ga652376b5a34d24f239e5fc0b167c067b" title="Performs random crosses where the first parent comes from one group and the second from another." alt="" coords="245,109,429,153"/>
-<area shape="rect" href="group__crossers.html#ga4450224009587f4cd4a972413423c96e" title="Performs the crosses of pairs of parents whose indexes are provided in an array." alt="" coords="243,177,431,205"/>
-<area shape="rect" href="group__crossers.html#gab19b3eb80b5fe460d17c93e0c27f7aaf" title="Find the top m percent of a group and perform random crosses between those top individuals." alt="" coords="26,45,174,89"/>
-<area shape="rect" href="group__crossers.html#gaa70fd79312587d8e9fc166c64612cbce" title="Perform crosses between all pairs of parents in the group from_group and allocates the resulting offs..." alt="" coords="8,113,192,157"/>
-<area shape="rect" href="group__crossers.html#ga5c0be901d03d0e5dd3d74bc19a4bea70" title="Perform crosses between pairs of parents identified by name in a file and allocate the resulting offs..." alt="" coords="5,181,195,209"/>
-<area shape="rect" href="group__crossers.html#ga2b8100d2d30cf1ada0db8403663076ff" title="Perform crosses between previously&#45;generated offspring of pairs of parents identified by name in a fi..." alt="" coords="10,233,190,277"/>
+<area shape="rect" href="sim-operations_8c.html#aa16bd09b22305a169b4ca8e54432f966" title="offspringGenerator function parameter for all crossing functions" alt="" coords="479,109,657,153"/>
+<area shape="rect" href="sim-operations_8c.html#a42606fdc7adae265c1663ef40d45226b" title="offspringGenerator function parameter for gsc_self_n_times." alt="" coords="479,199,657,243"/>
+<area shape="rect" href="group__crossers.html#ga4bfb4f901f7a921e6a3a2f1d8a9ac249" title="Performs random crosses among members of a group." alt="" coords="245,57,429,85"/>
+<area shape="rect" href="group__crossers.html#gaa43222283d6fb3745f5fab73b36af22d" title="Performs random crosses where the first parent comes from one group and the second from another." alt="" coords="245,109,429,153"/>
+<area shape="rect" href="group__crossers.html#gafe3072701f2dea2a505dd8fc9e8bc936" title="Performs the crosses of pairs of parents whose indexes are provided in an array." alt="" coords="243,177,431,205"/>
+<area shape="rect" href="group__crossers.html#gaa70fd79312587d8e9fc166c64612cbce" title="Perform crosses between all pairs of parents in the group from_group and allocates the resulting offs..." alt="" coords="8,109,192,153"/>
+<area shape="rect" href="group__crossers.html#ga5c0be901d03d0e5dd3d74bc19a4bea70" title="Perform crosses between pairs of parents identified by name in a file and allocate the resulting offs..." alt="" coords="5,177,195,205"/>
+<area shape="rect" href="group__crossers.html#ga2b8100d2d30cf1ada0db8403663076ff" title="Perform crosses between previously&#45;generated offspring of pairs of parents identified by name in a fi..." alt="" coords="10,229,190,273"/>
 <area shape="rect" href="group__crossers.html#gab625453074798be6ba8677a5d4986edf" title="Selfs each member of a group for a certain number of generations." alt="" coords="276,229,398,257"/>
 </map>
 </div>

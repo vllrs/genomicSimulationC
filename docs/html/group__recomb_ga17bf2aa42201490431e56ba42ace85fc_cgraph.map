@@ -3,11 +3,11 @@
 <area shape="rect" id="node2" href="$group__recomb.html#gaecfe54dacdba616a25212ff12a32398c" title="Identify markers in the genotype of offspring where recombination from its parents occured." alt="" coords="250,125,500,153"/>
 <area shape="rect" id="node6" href="$group__recomb.html#gaf955aa7d648a243e559ac23040e35fc5" title="Identify markers in the genotype of offspring where recombination from its parents occured,..." alt="" coords="250,73,500,101"/>
 <area shape="rect" id="node8" href="$group__supporters.html#ga31fba32c2f869b50d97669e3e322d338" title="Opens a table file and reads the number of columns and rows (including headers) separated by sep into..." alt="" coords="293,177,457,205"/>
-<area shape="rect" id="node9" href="$group__search.html#ga6bf46b86dfd6f562de44b86f64ba6eda" title="Get the alleles of a genotype by its index." alt="" coords="293,229,457,257"/>
-<area shape="rect" id="node10" href="$group__search.html#ga7cab70998890225a5cac0d4f08850a55" title="Get the id of a genotype by its index." alt="" coords="305,281,445,309"/>
-<area shape="rect" id="node11" href="$group__search.html#ga292d9c26b8d027c931a84fd09a32518f" title="Search for a genotype with a particular name in a linked list of gsc_AlleleMatrix,..." alt="" coords="294,333,456,361"/>
-<area shape="rect" id="node3" href="$group__supporters.html#gaaa359f6aab15a4c27d344e1118e87457" title="Function to identify the lookup index of a recombination map identifier." alt="" coords="548,73,702,101"/>
-<area shape="rect" id="node4" href="$group__recomb.html#gaeac78d574a417dfcdad5ef091b464951" title="Simple operator to determine if at marker i, two genotypes share at least one allele." alt="" coords="549,177,702,205"/>
+<area shape="rect" id="node9" href="$group__search.html#ga560870b592f5936255e9bd2a55e7eb56" title="Get the alleles of a genotype by its index." alt="" coords="293,229,457,257"/>
+<area shape="rect" id="node10" href="$group__search.html#gad771fc548df03810adee69ab36cfce9d" title="Get the id of a genotype by its index." alt="" coords="305,281,445,309"/>
+<area shape="rect" id="node11" href="$group__search.html#gad6c28080cf3e1f85fd78229aba53bf78" title="Search for a genotype with a particular name in a linked list of gsc_AlleleMatrix,..." alt="" coords="294,333,456,361"/>
+<area shape="rect" id="node3" href="$group__supporters.html#ga3a07c81d30aa7738de1672420031b3da" title="Function to identify the lookup index of a recombination map identifier." alt="" coords="548,73,702,101"/>
+<area shape="rect" id="node4" href="$group__recomb.html#gaf0e7e94bc07626bc3bc8daa75f1f97d5" title="Simple operator to determine if at marker i, two genotypes share at least one allele." alt="" coords="549,177,702,205"/>
 <area shape="rect" id="node5" href="$sim-operations_8c.html#aaaf3ebc75feaf901829232712e55677b" title="Replace calls to malloc direct with this function." alt="" coords="565,125,686,153"/>
-<area shape="rect" id="node7" href="$group__recomb.html#gaf2a329b02429066eb2a7d077def64c51" title="Simple operator to determine if at markers with indexes i to i+w inclusive, two genotypes share at le..." alt="" coords="549,5,702,49"/>
+<area shape="rect" id="node7" href="$group__recomb.html#ga15abba4990dd06b76ac652745b80fb09" title="Simple operator to determine if at markers with indexes i to i+w inclusive, two genotypes share at le..." alt="" coords="549,5,702,49"/>
 </map>
