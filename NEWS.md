@@ -39,6 +39,7 @@ Latest News       {#news}
 - Removed unused struct MarkerPosition.
 - BREAKING CHANGE: Removed function `make_n_crosses_from_top_m_percent` for disobeying standard genomicSimulation rules of division of functionality. A section has been added to the Templates section of the documentation with a drop-in replacement of this function.
 - Polish and improve the Templates page of the documentation.
+- Helper function `shuffle_up_to` is now size-agnostic and can shuffle arrays of any type, instead of only integer arrays.
 
 
 # genomicSimulation v0.2.5

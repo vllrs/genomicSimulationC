@@ -21,7 +21,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">genomicSimulationC<span id="projectnumber">&#160;0.2.5.11</span>
+   <div id="projectname">genomicSimulationC<span id="projectnumber">&#160;0.2.5.12</span>
    </div>
   </td>
  </tr>
@@ -82,9 +82,9 @@ Functions</h2></td></tr>
 <tr class="memitem:ga5230d5bd9791204d2dded825ee280074"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__supporters.html#ga5230d5bd9791204d2dded825ee280074">gsc_get_from_ordered_str_list</a> (const char *target, const size_t listLen, const char **list)</td></tr>
 <tr class="memdesc:ga5230d5bd9791204d2dded825ee280074"><td class="mdescLeft">&#160;</td><td class="mdescRight">Binary search through a list of strings.  <a href="group__supporters.html#ga5230d5bd9791204d2dded825ee280074">More...</a><br /></td></tr>
 <tr class="separator:ga5230d5bd9791204d2dded825ee280074"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga9abc3063bbcf64c48211aa24cfbb8bff"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__supporters.html#ga9abc3063bbcf64c48211aa24cfbb8bff">gsc_shuffle_up_to</a> (rnd_pcg_t *rng, unsigned int *sequence, const size_t total_n, const size_t n_to_shuffle)</td></tr>
-<tr class="memdesc:ga9abc3063bbcf64c48211aa24cfbb8bff"><td class="mdescLeft">&#160;</td><td class="mdescRight">Produce a random ordering of the first n elements in an array of integers using a (partial) Fisher-Yates shuffle.  <a href="group__supporters.html#ga9abc3063bbcf64c48211aa24cfbb8bff">More...</a><br /></td></tr>
-<tr class="separator:ga9abc3063bbcf64c48211aa24cfbb8bff"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga4929f1ad6756e3c710ad0781baca0f42"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__supporters.html#ga4929f1ad6756e3c710ad0781baca0f42">gsc_shuffle_up_to</a> (rnd_pcg_t *rng, void *sequence, const size_t item_size, const size_t total_n, const size_t n_to_shuffle)</td></tr>
+<tr class="memdesc:ga4929f1ad6756e3c710ad0781baca0f42"><td class="mdescLeft">&#160;</td><td class="mdescRight">Produce a random ordering of the first n elements in an array using a (partial) Fisher-Yates shuffle.  <a href="group__supporters.html#ga4929f1ad6756e3c710ad0781baca0f42">More...</a><br /></td></tr>
+<tr class="separator:ga4929f1ad6756e3c710ad0781baca0f42"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gafd6535362ff9898f871cd4e1098d2ee6"><td class="memItemLeft" align="right" valign="top">unsigned int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__supporters.html#gafd6535362ff9898f871cd4e1098d2ee6">gsc_randomdraw_replacementrules</a> (<a class="el" href="structgsc___sim_data.html">gsc_SimData</a> *d, unsigned int max, unsigned int cap, unsigned int *member_uses, unsigned int noCollision)</td></tr>
 <tr class="memdesc:gafd6535362ff9898f871cd4e1098d2ee6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Randomly pick a number in a range, optionally with a cap on how many times a number can be picked, and optionally required to be different to the last pick.  <a href="group__supporters.html#gafd6535362ff9898f871cd4e1098d2ee6">More...</a><br /></td></tr>
 <tr class="separator:gafd6535362ff9898f871cd4e1098d2ee6"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -200,7 +200,7 @@ Functions</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="sim-operations_8c_source.html#l01024">1024</a> of file <a class="el" href="sim-operations_8c_source.html">sim-operations.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="sim-operations_8c_source.html#l01041">1041</a> of file <a class="el" href="sim-operations_8c_source.html">sim-operations.c</a>.</p>
 <div id="dynsection-0" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-0-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
 <div id="dynsection-0-summary" class="dynsummary" style="display:block;">
@@ -271,7 +271,7 @@ Functions</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="sim-operations_8c_source.html#l00804">804</a> of file <a class="el" href="sim-operations_8c_source.html">sim-operations.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="sim-operations_8c_source.html#l00821">821</a> of file <a class="el" href="sim-operations_8c_source.html">sim-operations.c</a>.</p>
 <div id="dynsection-1" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-1-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
 <div id="dynsection-1-summary" class="dynsummary" style="display:block;">
@@ -330,7 +330,7 @@ Functions</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="sim-operations_8c_source.html#l00722">722</a> of file <a class="el" href="sim-operations_8c_source.html">sim-operations.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="sim-operations_8c_source.html#l00739">739</a> of file <a class="el" href="sim-operations_8c_source.html">sim-operations.c</a>.</p>
 <div id="dynsection-2" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-2-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
 <div id="dynsection-2-summary" class="dynsummary" style="display:block;">
@@ -396,7 +396,7 @@ Functions</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="sim-operations_8c_source.html#l00748">748</a> of file <a class="el" href="sim-operations_8c_source.html">sim-operations.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="sim-operations_8c_source.html#l00765">765</a> of file <a class="el" href="sim-operations_8c_source.html">sim-operations.c</a>.</p>
 <div id="dynsection-3" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-3-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
 <div id="dynsection-3-summary" class="dynsummary" style="display:block;">
@@ -477,7 +477,7 @@ Functions</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="sim-operations_8c_source.html#l00863">863</a> of file <a class="el" href="sim-operations_8c_source.html">sim-operations.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="sim-operations_8c_source.html#l00880">880</a> of file <a class="el" href="sim-operations_8c_source.html">sim-operations.c</a>.</p>
 <div id="dynsection-4" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-4-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
 <div id="dynsection-4-summary" class="dynsummary" style="display:block;">
@@ -552,7 +552,7 @@ Functions</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="sim-operations_8c_source.html#l00941">941</a> of file <a class="el" href="sim-operations_8c_source.html">sim-operations.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="sim-operations_8c_source.html#l00958">958</a> of file <a class="el" href="sim-operations_8c_source.html">sim-operations.c</a>.</p>
 <div id="dynsection-5" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-5-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
 <div id="dynsection-5-summary" class="dynsummary" style="display:block;">
@@ -596,7 +596,7 @@ Functions</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="sim-operations_8c_source.html#l01343">1343</a> of file <a class="el" href="sim-operations_8c_source.html">sim-operations.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="sim-operations_8c_source.html#l01360">1360</a> of file <a class="el" href="sim-operations_8c_source.html">sim-operations.c</a>.</p>
 <div id="dynsection-6" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-6-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
 <div id="dynsection-6-summary" class="dynsummary" style="display:block;">
@@ -681,7 +681,7 @@ Functions</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>the label id of the new label </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="sim-operations_8c_source.html#l00605">605</a> of file <a class="el" href="sim-operations_8c_source.html">sim-operations.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="sim-operations_8c_source.html#l00622">622</a> of file <a class="el" href="sim-operations_8c_source.html">sim-operations.c</a>.</p>
 <div id="dynsection-8" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-8-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
 <div id="dynsection-8-summary" class="dynsummary" style="display:block;">
@@ -994,7 +994,7 @@ gsc_get_from_ordered_uint_list() </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>the index in d-&gt;e where the data for this effect set is stored, or GSC_NA_IDX if the effect set with that id could not be found. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="sim-operations_8c_source.html#l03906">3906</a> of file <a class="el" href="sim-operations_8c_source.html">sim-operations.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="sim-operations_8c_source.html#l03923">3923</a> of file <a class="el" href="sim-operations_8c_source.html">sim-operations.c</a>.</p>
 <div id="dynsection-11" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-11-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
 <div id="dynsection-11-summary" class="dynsummary" style="display:block;">
@@ -1074,7 +1074,7 @@ gsc_get_from_ordered_uint_list() </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>1/truthy if the marker was located and its index saved to <em>outindex</em>, 0/falsy if the marker could not be located. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="sim-operations_8c_source.html#l05240">5240</a> of file <a class="el" href="sim-operations_8c_source.html">sim-operations.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="sim-operations_8c_source.html#l05257">5257</a> of file <a class="el" href="sim-operations_8c_source.html">sim-operations.c</a>.</p>
 <div id="dynsection-12" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-12-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
 <div id="dynsection-12-summary" class="dynsummary" style="display:block;">
@@ -1135,7 +1135,7 @@ gsc_get_from_ordered_uint_list() </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>the index in d-&gt;label_ids, d-&gt;label_defaults, and the -&gt;labels table in <a class="el" href="structgsc___allele_matrix.html">gsc_AlleleMatrix</a> where the data for this label is stored, or GSC_NA_IDX if the label with that id could not be found. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="sim-operations_8c_source.html#l03874">3874</a> of file <a class="el" href="sim-operations_8c_source.html">sim-operations.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="sim-operations_8c_source.html#l03891">3891</a> of file <a class="el" href="sim-operations_8c_source.html">sim-operations.c</a>.</p>
 <div id="dynsection-13" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-13-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
 <div id="dynsection-13-summary" class="dynsummary" style="display:block;">
@@ -1192,7 +1192,7 @@ gsc_get_from_ordered_uint_list() </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>the index in g-&gt;maps where the information for this map is stored, or GSC_NA_IDX if the map with that id could not be found. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="sim-operations_8c_source.html#l03938">3938</a> of file <a class="el" href="sim-operations_8c_source.html">sim-operations.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="sim-operations_8c_source.html#l03955">3955</a> of file <a class="el" href="sim-operations_8c_source.html">sim-operations.c</a>.</p>
 <div id="dynsection-14" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-14-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
 <div id="dynsection-14-summary" class="dynsummary" style="display:block;">
@@ -1245,7 +1245,7 @@ gsc_get_from_ordered_uint_list() </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>the number of digits to print <code>i</code> </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="sim-operations_8c_source.html#l01098">1098</a> of file <a class="el" href="sim-operations_8c_source.html">sim-operations.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="sim-operations_8c_source.html#l01115">1115</a> of file <a class="el" href="sim-operations_8c_source.html">sim-operations.c</a>.</p>
 <div id="dynsection-15" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-15-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
 <div id="dynsection-15-summary" class="dynsummary" style="display:block;">
@@ -1313,7 +1313,7 @@ gsc_get_from_ordered_uint_list() </dd>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="sim-operations_8c_source.html#l03763">3763</a> of file <a class="el" href="sim-operations_8c_source.html">sim-operations.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="sim-operations_8c_source.html#l03780">3780</a> of file <a class="el" href="sim-operations_8c_source.html">sim-operations.c</a>.</p>
 <div id="dynsection-16" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-16-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
 <div id="dynsection-16-summary" class="dynsummary" style="display:block;">
@@ -1374,7 +1374,7 @@ gsc_get_from_ordered_uint_list() </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>the next sequential currently-unused marker effect set id, an integer greater than 0. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="sim-operations_8c_source.html#l03824">3824</a> of file <a class="el" href="sim-operations_8c_source.html">sim-operations.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="sim-operations_8c_source.html#l03841">3841</a> of file <a class="el" href="sim-operations_8c_source.html">sim-operations.c</a>.</p>
 <div id="dynsection-18" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-18-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
 <div id="dynsection-18-summary" class="dynsummary" style="display:block;">
@@ -1418,7 +1418,7 @@ gsc_get_from_ordered_uint_list() </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>the next sequential currently-unused group number. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="sim-operations_8c_source.html#l03729">3729</a> of file <a class="el" href="sim-operations_8c_source.html">sim-operations.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="sim-operations_8c_source.html#l03746">3746</a> of file <a class="el" href="sim-operations_8c_source.html">sim-operations.c</a>.</p>
 <div id="dynsection-19" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-19-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
 <div id="dynsection-19-summary" class="dynsummary" style="display:block;">
@@ -1493,7 +1493,7 @@ gsc_get_from_ordered_uint_list() </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>the next sequential currently-unused label id, an integer greater than 0. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="sim-operations_8c_source.html#l03800">3800</a> of file <a class="el" href="sim-operations_8c_source.html">sim-operations.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="sim-operations_8c_source.html#l03817">3817</a> of file <a class="el" href="sim-operations_8c_source.html">sim-operations.c</a>.</p>
 <div id="dynsection-21" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-21-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
 <div id="dynsection-21-summary" class="dynsummary" style="display:block;">
@@ -1533,7 +1533,7 @@ gsc_get_from_ordered_uint_list() </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>the next sequential currently-unused recombination map id, an integer greater than 0. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="sim-operations_8c_source.html#l03848">3848</a> of file <a class="el" href="sim-operations_8c_source.html">sim-operations.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="sim-operations_8c_source.html#l03865">3865</a> of file <a class="el" href="sim-operations_8c_source.html">sim-operations.c</a>.</p>
 <div id="dynsection-22" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-22-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
 <div id="dynsection-22-summary" class="dynsummary" style="display:block;">
@@ -1606,7 +1606,7 @@ gsc_get_from_ordered_uint_list() </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>the next sequential currently-unused (according to the memberships in <em>existing_groups</em>) group number. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="sim-operations_8c_source.html#l03691">3691</a> of file <a class="el" href="sim-operations_8c_source.html">sim-operations.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="sim-operations_8c_source.html#l03708">3708</a> of file <a class="el" href="sim-operations_8c_source.html">sim-operations.c</a>.</p>
 <div id="dynsection-23" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-23-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
 <div id="dynsection-23-summary" class="dynsummary" style="display:block;">
@@ -1683,7 +1683,7 @@ gsc_get_from_ordered_uint_list() </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>Random integer from the range 0 (inclusive) to <em>max</em> (exclusive) that fulfils the <em>cap</em> and <em>noCollision</em> conditions, or GSC_NA_GLOBALX if input parameters made it impossible to draw any number. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="sim-operations_8c_source.html#l08204">8204</a> of file <a class="el" href="sim-operations_8c_source.html">sim-operations.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="sim-operations_8c_source.html#l08221">8221</a> of file <a class="el" href="sim-operations_8c_source.html">sim-operations.c</a>.</p>
 <div id="dynsection-24" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-24-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
 <div id="dynsection-24-summary" class="dynsummary" style="display:block;">
@@ -1701,8 +1701,8 @@ gsc_get_from_ordered_uint_list() </dd>
 
 </div>
 </div>
-<a id="ga9abc3063bbcf64c48211aa24cfbb8bff" name="ga9abc3063bbcf64c48211aa24cfbb8bff"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ga9abc3063bbcf64c48211aa24cfbb8bff">&#9670;&nbsp;</a></span>gsc_shuffle_up_to()</h2>
+<a id="ga4929f1ad6756e3c710ad0781baca0f42" name="ga4929f1ad6756e3c710ad0781baca0f42"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga4929f1ad6756e3c710ad0781baca0f42">&#9670;&nbsp;</a></span>gsc_shuffle_up_to()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -1716,8 +1716,14 @@ gsc_get_from_ordered_uint_list() </dd>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">unsigned int *&#160;</td>
+          <td class="paramtype">void *&#160;</td>
           <td class="paramname"><em>sequence</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const size_t&#160;</td>
+          <td class="paramname"><em>item_size</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -1739,27 +1745,40 @@ gsc_get_from_ordered_uint_list() </dd>
       </table>
 </div><div class="memdoc">
 
-<p>Produce a random ordering of the first n elements in an array of integers using a (partial) Fisher-Yates shuffle. </p>
+<p>Produce a random ordering of the first n elements in an array using a (partial) Fisher-Yates shuffle. </p>
 <p >Modified from <a href="https://benpfaff.org/writings/clc/shuffle.html">https://benpfaff.org/writings/clc/shuffle.html</a></p>
+<p >After calling this function, the first 'n_to_shuffle' elements in the array will be randomly ordered by a Fischer-Yates shuffle. Every entry in the array could end up at any position, but the post-shuffle positions have only been calculated for the first 'n_to_shuffle' entries.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">d</td><td><a class="el" href="structgsc___sim_data.html" title="Composite type that is used to run crossing simulations.">gsc_SimData</a>, only used for pointer to random number generator </td></tr>
     <tr><td class="paramname">sequence</td><td>the array </td></tr>
-    <tr><td class="paramname">total_n</td><td>length of the array </td></tr>
-    <tr><td class="paramname">n_to_shuffle</td><td>After calling this function, the first n_to_shuffle integers in the array will be randomly ordered by a Fischer-Yates shuffle. Every entry in the array could end up at any position, but the post-shuffle positions have only been calculated for the first 'n_to_shuffle' entries. </td></tr>
+    <tr><td class="paramname">item_size</td><td>sizeof each element in the array </td></tr>
+    <tr><td class="paramname">total_n</td><td>number of elements in the array </td></tr>
+    <tr><td class="paramname">n_to_shuffle</td><td>the number of elements in the array to guarantee to be in randomly sorted order after the function is finished. (The remainder of the elements in the array will only be partially shuffled). </td></tr>
   </table>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="sim-operations_8c_source.html#l00530">530</a> of file <a class="el" href="sim-operations_8c_source.html">sim-operations.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="sim-operations_8c_source.html#l00535">535</a> of file <a class="el" href="sim-operations_8c_source.html">sim-operations.c</a>.</p>
 <div id="dynsection-25" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
-  <img id="dynsection-25-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
+  <img id="dynsection-25-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
 <div id="dynsection-25-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-25-content" class="dyncontent" style="display:none;">
-<div class="center"><img src="group__supporters_ga9abc3063bbcf64c48211aa24cfbb8bff_icgraph.png" border="0" usemap="#agroup__supporters_ga9abc3063bbcf64c48211aa24cfbb8bff_icgraph" alt=""/></div>
-<map name="agroup__supporters_ga9abc3063bbcf64c48211aa24cfbb8bff_icgraph" id="agroup__supporters_ga9abc3063bbcf64c48211aa24cfbb8bff_icgraph">
-<area shape="rect" title="Produce a random ordering of the first n elements in an array of integers using a (partial) Fisher&#45;Ya..." alt="" coords="225,5,350,33"/>
+<div class="center"><img src="group__supporters_ga4929f1ad6756e3c710ad0781baca0f42_cgraph.png" border="0" usemap="#agroup__supporters_ga4929f1ad6756e3c710ad0781baca0f42_cgraph" alt=""/></div>
+<map name="agroup__supporters_ga4929f1ad6756e3c710ad0781baca0f42_cgraph" id="agroup__supporters_ga4929f1ad6756e3c710ad0781baca0f42_cgraph">
+<area shape="rect" title="Produce a random ordering of the first n elements in an array using a (partial) Fisher&#45;Yates shuffle." alt="" coords="5,5,131,33"/>
+<area shape="rect" href="sim-operations_8c.html#aaaf3ebc75feaf901829232712e55677b" title="Replace calls to malloc direct with this function." alt="" coords="179,5,300,33"/>
+</map>
+</div>
+<div id="dynsection-26" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-26-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
+<div id="dynsection-26-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-26-content" class="dyncontent" style="display:none;">
+<div class="center"><img src="group__supporters_ga4929f1ad6756e3c710ad0781baca0f42_icgraph.png" border="0" usemap="#agroup__supporters_ga4929f1ad6756e3c710ad0781baca0f42_icgraph" alt=""/></div>
+<map name="agroup__supporters_ga4929f1ad6756e3c710ad0781baca0f42_icgraph" id="agroup__supporters_ga4929f1ad6756e3c710ad0781baca0f42_icgraph">
+<area shape="rect" title="Produce a random ordering of the first n elements in an array using a (partial) Fisher&#45;Yates shuffle." alt="" coords="225,5,350,33"/>
 <area shape="rect" href="group__groupmod.html#ga47292b150273a395fe282f86c0f78e0b" title="Split a group into two groups of equal size (or size differing only by one, if the original group had..." alt="" coords="5,5,177,33"/>
 </map>
 </div>

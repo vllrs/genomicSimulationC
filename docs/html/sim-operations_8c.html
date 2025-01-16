@@ -21,7 +21,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">genomicSimulationC<span id="projectnumber">&#160;0.2.5.11</span>
+   <div id="projectname">genomicSimulationC<span id="projectnumber">&#160;0.2.5.12</span>
    </div>
   </td>
  </tr>
@@ -113,9 +113,9 @@ Functions</h2></td></tr>
 <tr class="memitem:ga5230d5bd9791204d2dded825ee280074"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__supporters.html#ga5230d5bd9791204d2dded825ee280074">gsc_get_from_ordered_str_list</a> (const char *target, const size_t listLen, const char **list)</td></tr>
 <tr class="memdesc:ga5230d5bd9791204d2dded825ee280074"><td class="mdescLeft">&#160;</td><td class="mdescRight">Binary search through a list of strings.  <a href="group__supporters.html#ga5230d5bd9791204d2dded825ee280074">More...</a><br /></td></tr>
 <tr class="separator:ga5230d5bd9791204d2dded825ee280074"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga9abc3063bbcf64c48211aa24cfbb8bff"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__supporters.html#ga9abc3063bbcf64c48211aa24cfbb8bff">gsc_shuffle_up_to</a> (rnd_pcg_t *rng, unsigned int *sequence, const size_t total_n, const size_t n_to_shuffle)</td></tr>
-<tr class="memdesc:ga9abc3063bbcf64c48211aa24cfbb8bff"><td class="mdescLeft">&#160;</td><td class="mdescRight">Produce a random ordering of the first n elements in an array of integers using a (partial) Fisher-Yates shuffle.  <a href="group__supporters.html#ga9abc3063bbcf64c48211aa24cfbb8bff">More...</a><br /></td></tr>
-<tr class="separator:ga9abc3063bbcf64c48211aa24cfbb8bff"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga4929f1ad6756e3c710ad0781baca0f42"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__supporters.html#ga4929f1ad6756e3c710ad0781baca0f42">gsc_shuffle_up_to</a> (rnd_pcg_t *rng, void *sequence, const size_t item_size, const size_t total_n, const size_t n_to_shuffle)</td></tr>
+<tr class="memdesc:ga4929f1ad6756e3c710ad0781baca0f42"><td class="mdescLeft">&#160;</td><td class="mdescRight">Produce a random ordering of the first n elements in an array using a (partial) Fisher-Yates shuffle.  <a href="group__supporters.html#ga4929f1ad6756e3c710ad0781baca0f42">More...</a><br /></td></tr>
+<tr class="separator:ga4929f1ad6756e3c710ad0781baca0f42"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a368b4ddb966aef02950fe327d46f051b"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="sim-operations_8c.html#a368b4ddb966aef02950fe327d46f051b">gsc_set_names</a> (<a class="el" href="structgsc___allele_matrix.html">gsc_AlleleMatrix</a> *a, const char *prefix, const int suffix, const unsigned int from_index)</td></tr>
 <tr class="memdesc:a368b4ddb966aef02950fe327d46f051b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Fills the designated section of the <code>.names</code> array in an <a class="el" href="structgsc___allele_matrix.html">gsc_AlleleMatrix</a> with the pattern "`prefix`index".  <a href="sim-operations_8c.html#a368b4ddb966aef02950fe327d46f051b">More...</a><br /></td></tr>
 <tr class="separator:a368b4ddb966aef02950fe327d46f051b"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -749,7 +749,7 @@ Variables</h2></td></tr>
 
 <p>Create a new <a class="el" href="structgsc___empty_list_navigator.html" title="A structure to hold an initially empty AlleleMatrix list whose genotypes can be accessed sequentially...">gsc_EmptyListNavigator</a>, including an empty AlleleMatrix suitable for inserting into the provided SimData once the emptylist is finalised. </p>
 
-<p class="definition">Definition at line <a class="el" href="sim-operations_8c_source.html#l06339">6339</a> of file <a class="el" href="sim-operations_8c_source.html">sim-operations.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="sim-operations_8c_source.html#l06356">6356</a> of file <a class="el" href="sim-operations_8c_source.html">sim-operations.c</a>.</p>
 <div id="dynsection-0" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-0-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
 <div id="dynsection-0-summary" class="dynsummary" style="display:block;">
@@ -805,7 +805,7 @@ Variables</h2></td></tr>
 <p>Push emptylist edited genotypes into the SimData. </p>
 <p >This is the expected final step in use of <a class="el" href="structgsc___empty_list_navigator.html" title="A structure to hold an initially empty AlleleMatrix list whose genotypes can be accessed sequentially...">gsc_EmptyListNavigator</a> </p>
 
-<p class="definition">Definition at line <a class="el" href="sim-operations_8c_source.html#l06414">6414</a> of file <a class="el" href="sim-operations_8c_source.html">sim-operations.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="sim-operations_8c_source.html#l06431">6431</a> of file <a class="el" href="sim-operations_8c_source.html">sim-operations.c</a>.</p>
 <div id="dynsection-2" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-2-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
 <div id="dynsection-2-summary" class="dynsummary" style="display:block;">
@@ -868,7 +868,7 @@ Variables</h2></td></tr>
 <p>Reset the cursor of a <a class="el" href="structgsc___empty_list_navigator.html" title="A structure to hold an initially empty AlleleMatrix list whose genotypes can be accessed sequentially...">gsc_EmptyListNavigator</a> to the first genotype. </p>
 <dl class="section return"><dt>Returns</dt><dd>GenoLocation for the first sequential genotype in the emptylist </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="sim-operations_8c_source.html#l06356">6356</a> of file <a class="el" href="sim-operations_8c_source.html">sim-operations.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="sim-operations_8c_source.html#l06373">6373</a> of file <a class="el" href="sim-operations_8c_source.html">sim-operations.c</a>.</p>
 <div id="dynsection-4" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-4-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
 <div id="dynsection-4-summary" class="dynsummary" style="display:block;">
@@ -923,7 +923,7 @@ Variables</h2></td></tr>
 <p>Get the next sequential genotype in an <a class="el" href="structgsc___empty_list_navigator.html" title="A structure to hold an initially empty AlleleMatrix list whose genotypes can be accessed sequentially...">gsc_EmptyListNavigator</a>. </p>
 <dl class="section return"><dt>Returns</dt><dd>GenoLocation for the next sequential genotype in the emptylist </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="sim-operations_8c_source.html#l06375">6375</a> of file <a class="el" href="sim-operations_8c_source.html">sim-operations.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="sim-operations_8c_source.html#l06392">6392</a> of file <a class="el" href="sim-operations_8c_source.html">sim-operations.c</a>.</p>
 <div id="dynsection-6" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-6-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
 <div id="dynsection-6-summary" class="dynsummary" style="display:block;">
@@ -988,7 +988,7 @@ Variables</h2></td></tr>
 
 <p>Kernel for scaffold functions that require printing an integer to a file (as opposed to saving the integer in a different place) </p>
 
-<p class="definition">Definition at line <a class="el" href="sim-operations_8c_source.html#l10805">10805</a> of file <a class="el" href="sim-operations_8c_source.html">sim-operations.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="sim-operations_8c_source.html#l10822">10822</a> of file <a class="el" href="sim-operations_8c_source.html">sim-operations.c</a>.</p>
 <div id="dynsection-8" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-8-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
 <div id="dynsection-8-summary" class="dynsummary" style="display:block;">
@@ -1058,7 +1058,7 @@ Variables</h2></td></tr>
 
 <p>Kernel for scaffold functions that require printing a string to a file (as opposed to saving the string in a different place) </p>
 
-<p class="definition">Definition at line <a class="el" href="sim-operations_8c_source.html#l10798">10798</a> of file <a class="el" href="sim-operations_8c_source.html">sim-operations.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="sim-operations_8c_source.html#l10815">10815</a> of file <a class="el" href="sim-operations_8c_source.html">sim-operations.c</a>.</p>
 <div id="dynsection-9" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-9-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
 <div id="dynsection-9-summary" class="dynsummary" style="display:block;">
@@ -1124,7 +1124,7 @@ Variables</h2></td></tr>
 <p >Used to compare a pair of doubles to sort in ascending order </p><dl class="section see"><dt>See also</dt><dd><a class="el" href="group__calculators.html#ga70ea35197fe4dc0eedf17e1c7bb993cb" title="Takes the top_n individuals in the group with the best breeding values/fitnesses and puts them in a n...">gsc_split_by_bv()</a></dd></dl>
 <p>Sorts lower numbers before higher numbers. If they are equal, their order after comparison is undefined. </p>
 
-<p class="definition">Definition at line <a class="el" href="sim-operations_8c_source.html#l01130">1130</a> of file <a class="el" href="sim-operations_8c_source.html">sim-operations.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="sim-operations_8c_source.html#l01147">1147</a> of file <a class="el" href="sim-operations_8c_source.html">sim-operations.c</a>.</p>
 <div id="dynsection-10" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-10-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
 <div id="dynsection-10-summary" class="dynsummary" style="display:block;">
@@ -1189,7 +1189,7 @@ Variables</h2></td></tr>
 <p >Used to compare a pair of doubles* to sort them in ascending order of the doubles they point to. </p><dl class="section see"><dt>See also</dt><dd><a class="el" href="group__calculators.html#ga70ea35197fe4dc0eedf17e1c7bb993cb" title="Takes the top_n individuals in the group with the best breeding values/fitnesses and puts them in a n...">gsc_split_by_bv()</a></dd></dl>
 <p>Sorts lower numbers before higher numbers. If they are equal, their order after comparison is undefined. </p>
 
-<p class="definition">Definition at line <a class="el" href="sim-operations_8c_source.html#l01147">1147</a> of file <a class="el" href="sim-operations_8c_source.html">sim-operations.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="sim-operations_8c_source.html#l01164">1164</a> of file <a class="el" href="sim-operations_8c_source.html">sim-operations.c</a>.</p>
 <div id="dynsection-11" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-11-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
 <div id="dynsection-11-summary" class="dynsummary" style="display:block;">
@@ -1242,7 +1242,7 @@ Variables</h2></td></tr>
 <p >Used to compare a pair of doubles* to sort them in descending order of the doubles they point to. </p><dl class="section see"><dt>See also</dt><dd><a class="el" href="group__calculators.html#ga70ea35197fe4dc0eedf17e1c7bb993cb" title="Takes the top_n individuals in the group with the best breeding values/fitnesses and puts them in a n...">gsc_split_by_bv()</a></dd></dl>
 <p>Sorts higher numbers before lower numbers. If they are equal, their order after comparison is undefined. </p>
 
-<p class="definition">Definition at line <a class="el" href="sim-operations_8c_source.html#l01114">1114</a> of file <a class="el" href="sim-operations_8c_source.html">sim-operations.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="sim-operations_8c_source.html#l01131">1131</a> of file <a class="el" href="sim-operations_8c_source.html">sim-operations.c</a>.</p>
 <div id="dynsection-12" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-12-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
 <div id="dynsection-12-summary" class="dynsummary" style="display:block;">
@@ -1299,7 +1299,7 @@ Variables</h2></td></tr>
 
 <p>Apply <a class="el" href="structgsc___gen_options.html" title="A type that contains choices of settings for gsc_SimData functions that create a new gsc_AlleleMatrix...">gsc_GenOptions</a> naming scheme and <a class="el" href="structgsc___pedigree_i_d.html" title="A type representing a program-lifetime-unique identifier for a genotype, to be used in tracking pedig...">gsc_PedigreeID</a> allocation to a single <a class="el" href="structgsc___allele_matrix.html">gsc_AlleleMatrix</a>. </p>
 
-<p class="definition">Definition at line <a class="el" href="sim-operations_8c_source.html#l07817">7817</a> of file <a class="el" href="sim-operations_8c_source.html">sim-operations.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="sim-operations_8c_source.html#l07834">7834</a> of file <a class="el" href="sim-operations_8c_source.html">sim-operations.c</a>.</p>
 <div id="dynsection-13" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-13-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
 <div id="dynsection-13-summary" class="dynsummary" style="display:block;">
@@ -1385,7 +1385,7 @@ Variables</h2></td></tr>
 <p>save-as-you-go (breeding values) </p>
 <p >Calculates and saves breeding values of genotypes in an <a class="el" href="structgsc___allele_matrix.html">gsc_AlleleMatrix</a> to a file. Performs null-checks on file pointer and <em>effIndex</em>, and fails silently if checks do. </p>
 
-<p class="definition">Definition at line <a class="el" href="sim-operations_8c_source.html#l07791">7791</a> of file <a class="el" href="sim-operations_8c_source.html">sim-operations.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="sim-operations_8c_source.html#l07808">7808</a> of file <a class="el" href="sim-operations_8c_source.html">sim-operations.c</a>.</p>
 <div id="dynsection-15" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-15-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
 <div id="dynsection-15-summary" class="dynsummary" style="display:block;">
@@ -1483,7 +1483,7 @@ Variables</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="sim-operations_8c_source.html#l07731">7731</a> of file <a class="el" href="sim-operations_8c_source.html">sim-operations.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="sim-operations_8c_source.html#l07748">7748</a> of file <a class="el" href="sim-operations_8c_source.html">sim-operations.c</a>.</p>
 <div id="dynsection-17" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-17-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
 <div id="dynsection-17-summary" class="dynsummary" style="display:block;">
@@ -1555,7 +1555,7 @@ Variables</h2></td></tr>
 <p>save-as-you-go (genotypes/alleles) </p>
 <p >Saves genotypes in an <a class="el" href="structgsc___allele_matrix.html">gsc_AlleleMatrix</a> to a file. Performs null-checks on file pointer and fails silently if checks do. </p>
 
-<p class="definition">Definition at line <a class="el" href="sim-operations_8c_source.html#l07806">7806</a> of file <a class="el" href="sim-operations_8c_source.html">sim-operations.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="sim-operations_8c_source.html#l07823">7823</a> of file <a class="el" href="sim-operations_8c_source.html">sim-operations.c</a>.</p>
 <div id="dynsection-19" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-19-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
 <div id="dynsection-19-summary" class="dynsummary" style="display:block;">
@@ -1636,7 +1636,7 @@ Variables</h2></td></tr>
 
 <p>Opens file for writing save-as-you-go genotypes in accordance with <a class="el" href="structgsc___gen_options.html" title="A type that contains choices of settings for gsc_SimData functions that create a new gsc_AlleleMatrix...">gsc_GenOptions</a>. </p>
 
-<p class="definition">Definition at line <a class="el" href="sim-operations_8c_source.html#l07752">7752</a> of file <a class="el" href="sim-operations_8c_source.html">sim-operations.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="sim-operations_8c_source.html#l07769">7769</a> of file <a class="el" href="sim-operations_8c_source.html">sim-operations.c</a>.</p>
 <div id="dynsection-21" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-21-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
 <div id="dynsection-21-summary" class="dynsummary" style="display:block;">
@@ -1722,7 +1722,7 @@ Variables</h2></td></tr>
 <p>save-as-you-go (pedigrees) </p>
 <p >Saves pedigrees in <a class="el" href="structgsc___allele_matrix.html">gsc_AlleleMatrix</a> <em>tosave</em> to a file. Performs null-checks on file pointer <em>fp</em>, and fails silently if checks do. </p>
 
-<p class="definition">Definition at line <a class="el" href="sim-operations_8c_source.html#l07776">7776</a> of file <a class="el" href="sim-operations_8c_source.html">sim-operations.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="sim-operations_8c_source.html#l07793">7793</a> of file <a class="el" href="sim-operations_8c_source.html">sim-operations.c</a>.</p>
 <div id="dynsection-23" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-23-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
 <div id="dynsection-23-summary" class="dynsummary" style="display:block;">
@@ -1797,7 +1797,7 @@ Variables</h2></td></tr>
 
 <p>Opens file for writing save-as-you-go pedigrees in accordance with <a class="el" href="structgsc___gen_options.html" title="A type that contains choices of settings for gsc_SimData functions that create a new gsc_AlleleMatrix...">gsc_GenOptions</a>. </p>
 
-<p class="definition">Definition at line <a class="el" href="sim-operations_8c_source.html#l07711">7711</a> of file <a class="el" href="sim-operations_8c_source.html">sim-operations.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="sim-operations_8c_source.html#l07728">7728</a> of file <a class="el" href="sim-operations_8c_source.html">sim-operations.c</a>.</p>
 <div id="dynsection-25" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-25-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
 <div id="dynsection-25-summary" class="dynsummary" style="display:block;">
@@ -1849,7 +1849,7 @@ Variables</h2></td></tr>
 <dl class="section see"><dt>See also</dt><dd><a class="el" href="group__structs.html#ga169da3c2b32a6f9afd92e2e0801ad741" title="Represent possible representations of alleles at a marker in a genotype file.">gsc_GenotypeFileCellStyle</a></dd></dl>
 <p>For IUPAC encoding: <a href="https://genome.ucsc.edu/goldenPath/help/iupac.html">https://genome.ucsc.edu/goldenPath/help/iupac.html</a> </p>
 
-<p class="definition">Definition at line <a class="el" href="sim-operations_8c_source.html#l06188">6188</a> of file <a class="el" href="sim-operations_8c_source.html">sim-operations.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="sim-operations_8c_source.html#l06205">6205</a> of file <a class="el" href="sim-operations_8c_source.html">sim-operations.c</a>.</p>
 <div id="dynsection-26" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-26-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
 <div id="dynsection-26-summary" class="dynsummary" style="display:block;">
@@ -1923,7 +1923,7 @@ Variables</h2></td></tr>
 <p>Parse a string and save it as the alleles of a genotype at a particular location and genetic marker. </p>
 <p >If the style in which the allele string is encoded does not denote phase, linkage phase is randomly chosen. </p>
 
-<p class="definition">Definition at line <a class="el" href="sim-operations_8c_source.html#l06247">6247</a> of file <a class="el" href="sim-operations_8c_source.html">sim-operations.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="sim-operations_8c_source.html#l06264">6264</a> of file <a class="el" href="sim-operations_8c_source.html">sim-operations.c</a>.</p>
 <div id="dynsection-27" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-27-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
 <div id="dynsection-27-summary" class="dynsummary" style="display:block;">
@@ -2005,7 +2005,7 @@ Variables</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>a format specification for the genotype matrix, with details about the style of allele encoding used in the body of the matrix added if those were not already supplied. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="sim-operations_8c_source.html#l06535">6535</a> of file <a class="el" href="sim-operations_8c_source.html">sim-operations.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="sim-operations_8c_source.html#l06552">6552</a> of file <a class="el" href="sim-operations_8c_source.html">sim-operations.c</a>.</p>
 <div id="dynsection-28" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-28-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
 <div id="dynsection-28-summary" class="dynsummary" style="display:block;">
@@ -2085,7 +2085,7 @@ Variables</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>GSC_TRUE if there is a corner cell, GSC_FALSE if there is not a corner cell, and GSC_NA if this was unable to be determined. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="sim-operations_8c_source.html#l06677">6677</a> of file <a class="el" href="sim-operations_8c_source.html">sim-operations.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="sim-operations_8c_source.html#l06694">6694</a> of file <a class="el" href="sim-operations_8c_source.html">sim-operations.c</a>.</p>
 <div id="dynsection-30" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-30-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
 <div id="dynsection-30-summary" class="dynsummary" style="display:block;">
@@ -2176,7 +2176,7 @@ Variables</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>a format specification for the genotype matrix, with the field defining whether there is a header row in the matrix added, if that were not already supplied. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="sim-operations_8c_source.html#l06615">6615</a> of file <a class="el" href="sim-operations_8c_source.html">sim-operations.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="sim-operations_8c_source.html#l06632">6632</a> of file <a class="el" href="sim-operations_8c_source.html">sim-operations.c</a>.</p>
 <div id="dynsection-31" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-31-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
 <div id="dynsection-31-summary" class="dynsummary" style="display:block;">
@@ -2281,7 +2281,7 @@ Variables</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>a format specification for the genotype matrix, with details about the orientation of the matrix added if those were not already supplied. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="sim-operations_8c_source.html#l06454">6454</a> of file <a class="el" href="sim-operations_8c_source.html">sim-operations.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="sim-operations_8c_source.html#l06471">6471</a> of file <a class="el" href="sim-operations_8c_source.html">sim-operations.c</a>.</p>
 <div id="dynsection-33" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-33-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
 <div id="dynsection-33-summary" class="dynsummary" style="display:block;">
@@ -2346,7 +2346,7 @@ Variables</h2></td></tr>
 <p>Comparator function for qsort. </p>
 <p >Used to compare a pair of pointers to strings to sort them in alphabetical order of the strings. </p>
 
-<p class="definition">Definition at line <a class="el" href="sim-operations_8c_source.html#l01160">1160</a> of file <a class="el" href="sim-operations_8c_source.html">sim-operations.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="sim-operations_8c_source.html#l01177">1177</a> of file <a class="el" href="sim-operations_8c_source.html">sim-operations.c</a>.</p>
 <div id="dynsection-35" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-35-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
 <div id="dynsection-35-summary" class="dynsummary" style="display:block;">
@@ -2400,7 +2400,7 @@ Variables</h2></td></tr>
 
 <p>Save an EffectMatrix to the SimData and allocate it an EffectID. </p>
 
-<p class="definition">Definition at line <a class="el" href="sim-operations_8c_source.html#l05608">5608</a> of file <a class="el" href="sim-operations_8c_source.html">sim-operations.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="sim-operations_8c_source.html#l05625">5625</a> of file <a class="el" href="sim-operations_8c_source.html">sim-operations.c</a>.</p>
 <div id="dynsection-36" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-36-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
 <div id="dynsection-36-summary" class="dynsummary" style="display:block;">
@@ -2465,7 +2465,7 @@ Variables</h2></td></tr>
 
 <p>Save a RecombinationMap to the SimData and allocate it a mapID. </p>
 
-<p class="definition">Definition at line <a class="el" href="sim-operations_8c_source.html#l05580">5580</a> of file <a class="el" href="sim-operations_8c_source.html">sim-operations.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="sim-operations_8c_source.html#l05597">5597</a> of file <a class="el" href="sim-operations_8c_source.html">sim-operations.c</a>.</p>
 <div id="dynsection-38" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-38-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
 <div id="dynsection-38-summary" class="dynsummary" style="display:block;">
@@ -2539,7 +2539,7 @@ Variables</h2></td></tr>
 
 <p>Check if a marker index is found in a particular LinkageGroup, and provide its distance along the chromosome/linkage group if so. </p>
 
-<p class="definition">Definition at line <a class="el" href="sim-operations_8c_source.html#l10302">10302</a> of file <a class="el" href="sim-operations_8c_source.html">sim-operations.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="sim-operations_8c_source.html#l10319">10319</a> of file <a class="el" href="sim-operations_8c_source.html">sim-operations.c</a>.</p>
 <div id="dynsection-40" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-40-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
 <div id="dynsection-40-summary" class="dynsummary" style="display:block;">
@@ -2607,7 +2607,7 @@ Variables</h2></td></tr>
 <a class="el" href="group__crossers.html#gaa3907b6b8ad3de641916b2df83e43a01" title="Creates an identical copy of each member of a group.">gsc_make_clones</a></dd></dl>
 <p>Generates new alleles by making a clone of its parent. Only looks at the first parent and does not check it is valid. </p>
 
-<p class="definition">Definition at line <a class="el" href="sim-operations_8c_source.html#l08735">8735</a> of file <a class="el" href="sim-operations_8c_source.html">sim-operations.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="sim-operations_8c_source.html#l08752">8752</a> of file <a class="el" href="sim-operations_8c_source.html">sim-operations.c</a>.</p>
 <div id="dynsection-41" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-41-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
 <div id="dynsection-41-summary" class="dynsummary" style="display:block;">
@@ -2693,7 +2693,7 @@ Variables</h2></td></tr>
 <p>Generates new alleles from two separate parents. Does not check they are valid parents.</p>
 <p ><em>datastore</em> parameter goes unused </p>
 
-<p class="definition">Definition at line <a class="el" href="sim-operations_8c_source.html#l08064">8064</a> of file <a class="el" href="sim-operations_8c_source.html">sim-operations.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="sim-operations_8c_source.html#l08081">8081</a> of file <a class="el" href="sim-operations_8c_source.html">sim-operations.c</a>.</p>
 <div id="dynsection-43" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-43-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
 <div id="dynsection-43-summary" class="dynsummary" style="display:block;">
@@ -2779,7 +2779,7 @@ Variables</h2></td></tr>
 <a class="el" href="group__crossers.html#ga6c230330ca9a9db9459d4477512a21af" title="Creates a doubled haploid from each member of a group.">gsc_make_doubled_haploids</a></dd></dl>
 <p>Generates new alleles by making a doubled haploid. Only looks at the first parent and does not check it is valid. </p>
 
-<p class="definition">Definition at line <a class="el" href="sim-operations_8c_source.html#l08636">8636</a> of file <a class="el" href="sim-operations_8c_source.html">sim-operations.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="sim-operations_8c_source.html#l08653">8653</a> of file <a class="el" href="sim-operations_8c_source.html">sim-operations.c</a>.</p>
 <div id="dynsection-45" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-45-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
 <div id="dynsection-45-summary" class="dynsummary" style="display:block;">
@@ -2861,7 +2861,7 @@ Variables</h2></td></tr>
 <p>Datastore should be a pointer to an unsigned int containing the number of generations to self for.</p>
 <p >Generates new alleles by selfing from one parent. Only looks at the first parent and does not check it is valid. </p>
 
-<p class="definition">Definition at line <a class="el" href="sim-operations_8c_source.html#l08538">8538</a> of file <a class="el" href="sim-operations_8c_source.html">sim-operations.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="sim-operations_8c_source.html#l08555">8555</a> of file <a class="el" href="sim-operations_8c_source.html">sim-operations.c</a>.</p>
 <div id="dynsection-47" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-47-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
 <div id="dynsection-47-summary" class="dynsummary" style="display:block;">
@@ -2927,7 +2927,7 @@ Variables</h2></td></tr>
 <p>Comparator function for qsort. </p>
 <p >Used to compare a pair of gsc_MapFileUnits to sort them in ascending order of chromosome number. </p>
 
-<p class="definition">Definition at line <a class="el" href="sim-operations_8c_source.html#l01169">1169</a> of file <a class="el" href="sim-operations_8c_source.html">sim-operations.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="sim-operations_8c_source.html#l01186">1186</a> of file <a class="el" href="sim-operations_8c_source.html">sim-operations.c</a>.</p>
 <div id="dynsection-49" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-49-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
 <div id="dynsection-49-summary" class="dynsummary" style="display:block;">
@@ -2982,7 +2982,7 @@ Variables</h2></td></tr>
 <p>Comparator function for qsort. </p>
 <p >Used to compare a pair of gsc_MapFileUnits to sort them in ascending order of position. </p>
 
-<p class="definition">Definition at line <a class="el" href="sim-operations_8c_source.html#l01179">1179</a> of file <a class="el" href="sim-operations_8c_source.html">sim-operations.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="sim-operations_8c_source.html#l01196">1196</a> of file <a class="el" href="sim-operations_8c_source.html">sim-operations.c</a>.</p>
 <div id="dynsection-50" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-50-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
 <div id="dynsection-50-summary" class="dynsummary" style="display:block;">
@@ -3048,7 +3048,7 @@ Variables</h2></td></tr>
 
 <p>Kernel for gsc_scaffold_save_genotype_info, when the goal is to save the allele counts of a particular allele for each genetic marker. </p>
 
-<p class="definition">Definition at line <a class="el" href="sim-operations_8c_source.html#l10597">10597</a> of file <a class="el" href="sim-operations_8c_source.html">sim-operations.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="sim-operations_8c_source.html#l10614">10614</a> of file <a class="el" href="sim-operations_8c_source.html">sim-operations.c</a>.</p>
 <div id="dynsection-51" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-51-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
 <div id="dynsection-51-summary" class="dynsummary" style="display:block;">
@@ -3112,7 +3112,7 @@ Variables</h2></td></tr>
 
 <p>Kernel for gsc_scaffold_save_genotype_info, when the goal is to save the (phased) allele pairs of each genotype. </p>
 
-<p class="definition">Definition at line <a class="el" href="sim-operations_8c_source.html#l10586">10586</a> of file <a class="el" href="sim-operations_8c_source.html">sim-operations.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="sim-operations_8c_source.html#l10603">10603</a> of file <a class="el" href="sim-operations_8c_source.html">sim-operations.c</a>.</p>
 <div id="dynsection-52" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-52-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
 <div id="dynsection-52-summary" class="dynsummary" style="display:block;">
@@ -3204,7 +3204,7 @@ Variables</h2></td></tr>
 <p>Very similar to <a class="el" href="sim-operations_8c.html#aafe958ddf4ee8c990c521d6ebf60db71">gsc_helper_parentchooser_selfing</a>, but also accesses the datastore to see if it needs to inherit the name from its parent.</p>
 <p >Locates the next group member. Guarantees <em>parents</em> contains two valid gsc_GenoLocations (which are the same) at the time it returns a truthy value. </p>
 
-<p class="definition">Definition at line <a class="el" href="sim-operations_8c_source.html#l08708">8708</a> of file <a class="el" href="sim-operations_8c_source.html">sim-operations.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="sim-operations_8c_source.html#l08725">8725</a> of file <a class="el" href="sim-operations_8c_source.html">sim-operations.c</a>.</p>
 <div id="dynsection-54" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-54-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
 <div id="dynsection-54-summary" class="dynsummary" style="display:block;">
@@ -3284,7 +3284,7 @@ Variables</h2></td></tr>
 <a class="el" href="group__crossers.html#ga4bfb4f901f7a921e6a3a2f1d8a9ac249" title="Performs random crosses among members of a group.">gsc_make_random_crosses</a></dd></dl>
 <p>Chooses parents randomly without overruning parent usage caps and without permitting selfing. Guarantees <em>parents</em> contains two valid gsc_GenoLocations at the time it returns a truthy value. </p>
 
-<p class="definition">Definition at line <a class="el" href="sim-operations_8c_source.html#l08012">8012</a> of file <a class="el" href="sim-operations_8c_source.html">sim-operations.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="sim-operations_8c_source.html#l08029">8029</a> of file <a class="el" href="sim-operations_8c_source.html">sim-operations.c</a>.</p>
 <div id="dynsection-56" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-56-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
 <div id="dynsection-56-summary" class="dynsummary" style="display:block;">
@@ -3366,7 +3366,7 @@ Variables</h2></td></tr>
 <a class="el" href="group__crossers.html#gaa43222283d6fb3745f5fab73b36af22d" title="Performs random crosses where the first parent comes from one group and the second from another.">gsc_make_random_crosses_between</a></dd></dl>
 <p>Chooses parents randomly without overruning parent usage caps and without permitting selfing. First and second parent come from different groups and may have different usage caps. Guarantees <em>parents</em> contains two valid gsc_GenoLocations at the time it returns a truthy value. </p>
 
-<p class="definition">Definition at line <a class="el" href="sim-operations_8c_source.html#l08242">8242</a> of file <a class="el" href="sim-operations_8c_source.html">sim-operations.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="sim-operations_8c_source.html#l08259">8259</a> of file <a class="el" href="sim-operations_8c_source.html">sim-operations.c</a>.</p>
 <div id="dynsection-58" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-58-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
 <div id="dynsection-58-summary" class="dynsummary" style="display:block;">
@@ -3448,7 +3448,7 @@ Variables</h2></td></tr>
 <a class="el" href="group__crossers.html#gafe3072701f2dea2a505dd8fc9e8bc936" title="Performs the crosses of pairs of parents whose indexes are provided in an array.">gsc_make_targeted_crosses</a></dd></dl>
 <p>Locates the next pair of parents in the provided sequence of combinations. Guarantees <em>parents</em> contains two valid gsc_GenoLocations at the time it returns a truthy value. </p>
 
-<p class="definition">Definition at line <a class="el" href="sim-operations_8c_source.html#l08399">8399</a> of file <a class="el" href="sim-operations_8c_source.html">sim-operations.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="sim-operations_8c_source.html#l08416">8416</a> of file <a class="el" href="sim-operations_8c_source.html">sim-operations.c</a>.</p>
 <div id="dynsection-60" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-60-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
 <div id="dynsection-60-summary" class="dynsummary" style="display:block;">
@@ -3534,7 +3534,7 @@ Variables</h2></td></tr>
 <a class="el" href="group__crossers.html#ga6c230330ca9a9db9459d4477512a21af" title="Creates a doubled haploid from each member of a group.">gsc_make_doubled_haploids</a></dd></dl>
 <p>Locates the next group member. Guarantees <em>parents</em> contains two valid gsc_GenoLocations (which are the same) at the time it returns a truthy value. </p>
 
-<p class="definition">Definition at line <a class="el" href="sim-operations_8c_source.html#l08514">8514</a> of file <a class="el" href="sim-operations_8c_source.html">sim-operations.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="sim-operations_8c_source.html#l08531">8531</a> of file <a class="el" href="sim-operations_8c_source.html">sim-operations.c</a>.</p>
 <div id="dynsection-62" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-62-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
 <div id="dynsection-62-summary" class="dynsummary" style="display:block;">
@@ -3629,7 +3629,7 @@ Variables</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>GSC_TRUE (1) if the cell has a valid header, GSC_FALSE (0) if the cell has no header and GSC_NA (-1) if the cell does not have 3 columns or there is some other formatting error. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="sim-operations_8c_source.html#l05324">5324</a> of file <a class="el" href="sim-operations_8c_source.html">sim-operations.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="sim-operations_8c_source.html#l05341">5341</a> of file <a class="el" href="sim-operations_8c_source.html">sim-operations.c</a>.</p>
 <div id="dynsection-64" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-64-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
 <div id="dynsection-64-summary" class="dynsummary" style="display:block;">
@@ -3716,7 +3716,7 @@ Variables</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>number of lines successfully read from the file </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="sim-operations_8c_source.html#l05414">5414</a> of file <a class="el" href="sim-operations_8c_source.html">sim-operations.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="sim-operations_8c_source.html#l05431">5431</a> of file <a class="el" href="sim-operations_8c_source.html">sim-operations.c</a>.</p>
 <div id="dynsection-66" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-66-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
 <div id="dynsection-66-summary" class="dynsummary" style="display:block;">
@@ -3802,7 +3802,7 @@ Variables</h2></td></tr>
 <p >(helper function)</p>
 <dl class="section return"><dt>Returns</dt><dd>0 if the parameters fail these checks, number of members of <em>from_group</em> otherwise. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="sim-operations_8c_source.html#l08078">8078</a> of file <a class="el" href="sim-operations_8c_source.html">sim-operations.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="sim-operations_8c_source.html#l08095">8095</a> of file <a class="el" href="sim-operations_8c_source.html">sim-operations.c</a>.</p>
 <div id="dynsection-68" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-68-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
 <div id="dynsection-68-summary" class="dynsummary" style="display:block;">
@@ -3872,7 +3872,7 @@ Variables</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="sim-operations_8c_source.html#l05640">5640</a> of file <a class="el" href="sim-operations_8c_source.html">sim-operations.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="sim-operations_8c_source.html#l05657">5657</a> of file <a class="el" href="sim-operations_8c_source.html">sim-operations.c</a>.</p>
 <div id="dynsection-70" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-70-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
 <div id="dynsection-70-summary" class="dynsummary" style="display:block;">
@@ -3959,7 +3959,7 @@ Variables</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="sim-operations_8c_source.html#l03397">3397</a> of file <a class="el" href="sim-operations_8c_source.html">sim-operations.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="sim-operations_8c_source.html#l03414">3414</a> of file <a class="el" href="sim-operations_8c_source.html">sim-operations.c</a>.</p>
 <div id="dynsection-72" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-72-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
 <div id="dynsection-72-summary" class="dynsummary" style="display:block;">
@@ -4032,7 +4032,7 @@ Variables</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="sim-operations_8c_source.html#l03190">3190</a> of file <a class="el" href="sim-operations_8c_source.html">sim-operations.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="sim-operations_8c_source.html#l03207">3207</a> of file <a class="el" href="sim-operations_8c_source.html">sim-operations.c</a>.</p>
 <div id="dynsection-73" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-73-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
 <div id="dynsection-73-summary" class="dynsummary" style="display:block;">
@@ -4106,7 +4106,7 @@ Variables</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="sim-operations_8c_source.html#l03462">3462</a> of file <a class="el" href="sim-operations_8c_source.html">sim-operations.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="sim-operations_8c_source.html#l03479">3479</a> of file <a class="el" href="sim-operations_8c_source.html">sim-operations.c</a>.</p>
 <div id="dynsection-74" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-74-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
 <div id="dynsection-74-summary" class="dynsummary" style="display:block;">
@@ -4173,7 +4173,7 @@ Variables</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="sim-operations_8c_source.html#l02947">2947</a> of file <a class="el" href="sim-operations_8c_source.html">sim-operations.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="sim-operations_8c_source.html#l02964">2964</a> of file <a class="el" href="sim-operations_8c_source.html">sim-operations.c</a>.</p>
 <div id="dynsection-75" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-75-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
 <div id="dynsection-75-summary" class="dynsummary" style="display:block;">
@@ -4252,7 +4252,7 @@ Variables</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="sim-operations_8c_source.html#l02866">2866</a> of file <a class="el" href="sim-operations_8c_source.html">sim-operations.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="sim-operations_8c_source.html#l02883">2883</a> of file <a class="el" href="sim-operations_8c_source.html">sim-operations.c</a>.</p>
 <div id="dynsection-77" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-77-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
 <div id="dynsection-77-summary" class="dynsummary" style="display:block;">
@@ -4331,7 +4331,7 @@ Variables</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="sim-operations_8c_source.html#l02875">2875</a> of file <a class="el" href="sim-operations_8c_source.html">sim-operations.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="sim-operations_8c_source.html#l02892">2892</a> of file <a class="el" href="sim-operations_8c_source.html">sim-operations.c</a>.</p>
 <div id="dynsection-79" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-79-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
 <div id="dynsection-79-summary" class="dynsummary" style="display:block;">
@@ -4416,7 +4416,7 @@ Variables</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="sim-operations_8c_source.html#l02842">2842</a> of file <a class="el" href="sim-operations_8c_source.html">sim-operations.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="sim-operations_8c_source.html#l02859">2859</a> of file <a class="el" href="sim-operations_8c_source.html">sim-operations.c</a>.</p>
 <div id="dynsection-81" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-81-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
 <div id="dynsection-81-summary" class="dynsummary" style="display:block;">
@@ -4485,7 +4485,7 @@ Variables</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="sim-operations_8c_source.html#l03024">3024</a> of file <a class="el" href="sim-operations_8c_source.html">sim-operations.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="sim-operations_8c_source.html#l03041">3041</a> of file <a class="el" href="sim-operations_8c_source.html">sim-operations.c</a>.</p>
 <div id="dynsection-82" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-82-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
 <div id="dynsection-82-summary" class="dynsummary" style="display:block;">
@@ -4553,7 +4553,7 @@ Variables</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>new number of markers in markerlist, either <em>n_markers_in_list</em> or smaller. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="sim-operations_8c_source.html#l05549">5549</a> of file <a class="el" href="sim-operations_8c_source.html">sim-operations.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="sim-operations_8c_source.html#l05566">5566</a> of file <a class="el" href="sim-operations_8c_source.html">sim-operations.c</a>.</p>
 <div id="dynsection-83" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-83-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
 <div id="dynsection-83-summary" class="dynsummary" style="display:block;">
@@ -4630,7 +4630,7 @@ Variables</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="sim-operations_8c_source.html#l05279">5279</a> of file <a class="el" href="sim-operations_8c_source.html">sim-operations.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="sim-operations_8c_source.html#l05296">5296</a> of file <a class="el" href="sim-operations_8c_source.html">sim-operations.c</a>.</p>
 <div id="dynsection-85" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-85-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
 <div id="dynsection-85-summary" class="dynsummary" style="display:block;">
@@ -4713,7 +4713,7 @@ Rows with more entries than the first will have their excess entries ignored. Ro
 </ul>
 <dl class="section return"><dt>Returns</dt><dd>group number for the set of genotypes loaded from the file </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="sim-operations_8c_source.html#l06745">6745</a> of file <a class="el" href="sim-operations_8c_source.html">sim-operations.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="sim-operations_8c_source.html#l06762">6762</a> of file <a class="el" href="sim-operations_8c_source.html">sim-operations.c</a>.</p>
 <div id="dynsection-87" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-87-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
 <div id="dynsection-87-summary" class="dynsummary" style="display:block;">
@@ -4837,7 +4837,7 @@ Rows with more entries than the first will have their excess entries ignored. Ro
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="sim-operations_8c_source.html#l08852">8852</a> of file <a class="el" href="sim-operations_8c_source.html">sim-operations.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="sim-operations_8c_source.html#l08869">8869</a> of file <a class="el" href="sim-operations_8c_source.html">sim-operations.c</a>.</p>
 
 </div>
 </div>
@@ -4893,56 +4893,56 @@ Rows with more entries than the first will have their excess entries ignored. Ro
 <div id="dynsection-89-content" class="dyncontent" style="display:none;">
 <div class="center"><img src="sim-operations_8c_aaaf3ebc75feaf901829232712e55677b_icgraph.png" border="0" usemap="#asim-operations_8c_aaaf3ebc75feaf901829232712e55677b_icgraph" alt=""/></div>
 <map name="asim-operations_8c_aaaf3ebc75feaf901829232712e55677b_icgraph" id="asim-operations_8c_aaaf3ebc75feaf901829232712e55677b_icgraph">
-<area shape="rect" title="Replace calls to malloc direct with this function." alt="" coords="968,909,1089,937"/>
-<area shape="rect" href="group__recomb.html#gaecfe54dacdba616a25212ff12a32398c" title="Identify markers in the genotype of offspring where recombination from its parents occured." alt="" coords="669,57,920,85"/>
-<area shape="rect" href="group__recomb.html#gaf955aa7d648a243e559ac23040e35fc5" title="Identify markers in the genotype of offspring where recombination from its parents occured,..." alt="" coords="669,5,920,33"/>
+<area shape="rect" title="Replace calls to malloc direct with this function." alt="" coords="968,935,1089,963"/>
+<area shape="rect" href="group__recomb.html#gaecfe54dacdba616a25212ff12a32398c" title="Identify markers in the genotype of offspring where recombination from its parents occured." alt="" coords="669,5,920,33"/>
+<area shape="rect" href="group__recomb.html#gaf955aa7d648a243e559ac23040e35fc5" title="Identify markers in the genotype of offspring where recombination from its parents occured,..." alt="" coords="669,57,920,85"/>
 <area shape="rect" href="group__calculators.html#gae63afe0edeaf9eab31a0328fc72fc600" title="Takes a look at the currently&#45;loaded effect values and creates a string containing the allele with th..." alt="" coords="719,109,870,153"/>
 <area shape="rect" href="group__calculators.html#ga145430273fd296e49528a27489f0e520" title="Calculates the highest&#45;breeding&#45;value haplotype that can be created from the alleles present in a giv..." alt="" coords="719,177,870,221"/>
 <area shape="rect" href="group__supporters.html#gac926561083ce538188ff2cccc9580d42" title="Copy a vector of strings into the genotype name field." alt="" coords="717,245,872,289"/>
-<area shape="rect" href="group__loaders.html#ga104fcea7a8f69cb80c136ab45c4eab76" title="Creator for an empty gsc_AlleleMatrix object of a given size." alt="" coords="694,909,895,937"/>
-<area shape="rect" href="sim-operations_8c.html#aca78dbac4d7154e95b6ddca575937d77" title="Loads a genotype file, with or without existing genome model in the SimData." alt="" coords="208,643,358,687"/>
-<area shape="rect" href="sim-operations_8c.html#a67c2447b0d771997a444efe026cf0600" title="Get the next sequential genotype in an gsc_EmptyListNavigator." alt="" coords="447,793,600,837"/>
-<area shape="rect" href="group__crossers.html#ga4bfb4f901f7a921e6a3a2f1d8a9ac249" title="Performs random crosses among members of a group." alt="" coords="191,1080,375,1108"/>
-<area shape="rect" href="group__crossers.html#gaa43222283d6fb3745f5fab73b36af22d" title="Performs random crosses where the first parent comes from one group and the second from another." alt="" coords="191,1371,375,1415"/>
-<area shape="rect" href="group__loaders.html#gab37984b371a35d44dbce9d954bbf2366" title="Creator for an empty gsc_SimData object on the heap." alt="" coords="704,1308,885,1336"/>
-<area shape="rect" href="group__calculators.html#ga44e3a2d5e4041091deec1954b4f62a86" title="Divide the genotype into blocks where each block contains all markers within a 1/n length section of ..." alt="" coords="718,1360,871,1404"/>
-<area shape="rect" href="group__supporters.html#gab82b3920fa4760dad88332ee430e7cf2" title="Initialises a new custom label." alt="" coords="720,1428,869,1456"/>
-<area shape="rect" href="group__iterators.html#gaa26377edd1339407af2070924d3596de" title="Create a Random Access Iterator." alt="" coords="693,1204,896,1232"/>
-<area shape="rect" href="group__loaders.html#gada5c2aaacd8b8a145493a0db5c017068" title="Parse a list of markers/chrs/positions into a gsc_RecombinationMap and save to SimData." alt="" coords="443,365,603,409"/>
-<area shape="rect" href="group__loaders.html#gac180eb5f1d27907a69314e68cc0d37af" title="Load a genetic map to a gsc_SimData object." alt="" coords="222,373,344,401"/>
-<area shape="rect" href="group__loaders.html#ga5cbe0b821180b257b21d9551ec797f20" title="Create a uniformly&#45;spaced gsc_RecombinationMap from a list of marker names and save to SimData." alt="" coords="435,485,611,529"/>
-<area shape="rect" href="group__deletors.html#ga27c2247d05e610fc83a83a5bae3d8d94" title="Deletes a particular set of marker effects from memory." alt="" coords="730,1480,859,1508"/>
-<area shape="rect" href="group__deletors.html#ga060559de8b20b9a1dbbd73297a6c4079" title="Clears memory of this label from the simulation and all its genotypes." alt="" coords="735,1532,854,1560"/>
-<area shape="rect" href="group__deletors.html#ga6075a65332dee0dc0032f29cad35fd74" title="Deletes a particular recombination map from memory." alt="" coords="692,1584,897,1612"/>
-<area shape="rect" href="sim-operations_8c.html#a52e6f87fe92eca15a0f4da957c5f8e19" title="Reset the cursor of a gsc_EmptyListNavigator to the first genotype." alt="" coords="447,553,600,597"/>
-<area shape="rect" href="group__maths.html#ga9c1e4641b679df1d6ec3d885ef6d1fd2" title="Generates a matrix of c columns, r rows with all 0." alt="" coords="704,1636,885,1664"/>
-<area shape="rect" href="group__collgetters.html#ga9e31fa104eccb5ed54832b21b7c5d73e" title="Gets the full pedigree string (as per gsc_save_group_full_pedigree() ) of each member of the group." alt="" coords="710,1688,879,1716"/>
-<area shape="rect" href="sim-operations_8c.html#a3717c5ed02cf2a321b7424dc0e668e19" title="Save an EffectMatrix to the SimData and allocate it an EffectID." alt="" coords="723,536,866,580"/>
-<area shape="rect" href="group__loaders.html#ga176416bff8f5e258dbe1619637c8b831" title="Populates a gsc_SimData combination with effect values." alt="" coords="460,433,587,461"/>
-<area shape="rect" href="sim-operations_8c.html#a337459fb31ef07b88a77068780ab746e" title="Save a RecombinationMap to the SimData and allocate it a mapID." alt="" coords="695,416,894,460"/>
-<area shape="rect" href="sim-operations_8c.html#ab0152d52dcce6514ebba0fa08810ee8a" title="offspringGenerator function parameter for gsc_make_clones." alt="" coords="434,913,612,957"/>
-<area shape="rect" href="group__calculators.html#gaf6f32f41ae7ca27c1a48f8947919794a" title="Given a file containing definitions of blocks of markers, process that file and return a struct conta..." alt="" coords="735,1740,854,1768"/>
-<area shape="rect" href="group__iterators.html#gaaccc34724148be204eb4d8515000dfd5" title="Get a location by index using a gsc_RandomAccessIterator." alt="" coords="732,1152,857,1180"/>
-<area shape="rect" href="sim-operations_8c.html#a3bbb853ca13c593a940d86882dda2361" title="Prints a matrix of genotype information to a file." alt="" coords="688,1792,901,1820"/>
-<area shape="rect" href="sim-operations_8c.html#a368b4ddb966aef02950fe327d46f051b" title="Fills the designated section of the .names array in an gsc_AlleleMatrix with the pattern &quot;`prefix`ind..." alt="" coords="738,1844,851,1872"/>
-<area shape="rect" href="group__structs.html#ga85446dd929940e823745067d0a1d1d5d" title="Allocate memory to store a deep copy of a gsc_TableFileCell, if previously only a shallow copy." alt="" coords="432,621,615,649"/>
-<area shape="rect" href="group__structs.html#ga9b389be1c0eada385d1015e445886c05" title="Read forwards in TableFileReader and return the next cell&#39;s contents, as well as how many column gaps..." alt="" coords="459,673,588,717"/>
+<area shape="rect" href="group__loaders.html#ga104fcea7a8f69cb80c136ab45c4eab76" title="Creator for an empty gsc_AlleleMatrix object of a given size." alt="" coords="694,636,895,664"/>
+<area shape="rect" href="sim-operations_8c.html#aca78dbac4d7154e95b6ddca575937d77" title="Loads a genotype file, with or without existing genome model in the SimData." alt="" coords="208,567,358,611"/>
+<area shape="rect" href="sim-operations_8c.html#a67c2447b0d771997a444efe026cf0600" title="Get the next sequential genotype in an gsc_EmptyListNavigator." alt="" coords="447,567,600,611"/>
+<area shape="rect" href="group__crossers.html#ga4bfb4f901f7a921e6a3a2f1d8a9ac249" title="Performs random crosses among members of a group." alt="" coords="191,1383,375,1411"/>
+<area shape="rect" href="group__crossers.html#gaa43222283d6fb3745f5fab73b36af22d" title="Performs random crosses where the first parent comes from one group and the second from another." alt="" coords="191,1088,375,1132"/>
+<area shape="rect" href="group__loaders.html#gab37984b371a35d44dbce9d954bbf2366" title="Creator for an empty gsc_SimData object on the heap." alt="" coords="704,1339,885,1367"/>
+<area shape="rect" href="group__calculators.html#ga44e3a2d5e4041091deec1954b4f62a86" title="Divide the genotype into blocks where each block contains all markers within a 1/n length section of ..." alt="" coords="718,1391,871,1435"/>
+<area shape="rect" href="group__supporters.html#gab82b3920fa4760dad88332ee430e7cf2" title="Initialises a new custom label." alt="" coords="720,1459,869,1487"/>
+<area shape="rect" href="group__iterators.html#gaa26377edd1339407af2070924d3596de" title="Create a Random Access Iterator." alt="" coords="693,1131,896,1159"/>
+<area shape="rect" href="group__loaders.html#gada5c2aaacd8b8a145493a0db5c017068" title="Parse a list of markers/chrs/positions into a gsc_RecombinationMap and save to SimData." alt="" coords="443,823,603,867"/>
+<area shape="rect" href="group__loaders.html#gac180eb5f1d27907a69314e68cc0d37af" title="Load a genetic map to a gsc_SimData object." alt="" coords="222,831,344,859"/>
+<area shape="rect" href="group__loaders.html#ga5cbe0b821180b257b21d9551ec797f20" title="Create a uniformly&#45;spaced gsc_RecombinationMap from a list of marker names and save to SimData." alt="" coords="435,755,611,799"/>
+<area shape="rect" href="group__deletors.html#ga27c2247d05e610fc83a83a5bae3d8d94" title="Deletes a particular set of marker effects from memory." alt="" coords="730,1511,859,1539"/>
+<area shape="rect" href="group__deletors.html#ga060559de8b20b9a1dbbd73297a6c4079" title="Clears memory of this label from the simulation and all its genotypes." alt="" coords="735,1563,854,1591"/>
+<area shape="rect" href="group__deletors.html#ga6075a65332dee0dc0032f29cad35fd74" title="Deletes a particular recombination map from memory." alt="" coords="692,1615,897,1643"/>
+<area shape="rect" href="sim-operations_8c.html#a52e6f87fe92eca15a0f4da957c5f8e19" title="Reset the cursor of a gsc_EmptyListNavigator to the first genotype." alt="" coords="447,687,600,731"/>
+<area shape="rect" href="group__maths.html#ga9c1e4641b679df1d6ec3d885ef6d1fd2" title="Generates a matrix of c columns, r rows with all 0." alt="" coords="704,1667,885,1695"/>
+<area shape="rect" href="group__collgetters.html#ga9e31fa104eccb5ed54832b21b7c5d73e" title="Gets the full pedigree string (as per gsc_save_group_full_pedigree() ) of each member of the group." alt="" coords="710,1719,879,1747"/>
+<area shape="rect" href="sim-operations_8c.html#a3717c5ed02cf2a321b7424dc0e668e19" title="Save an EffectMatrix to the SimData and allocate it an EffectID." alt="" coords="723,313,866,357"/>
+<area shape="rect" href="group__loaders.html#ga176416bff8f5e258dbe1619637c8b831" title="Populates a gsc_SimData combination with effect values." alt="" coords="460,343,587,371"/>
+<area shape="rect" href="sim-operations_8c.html#a337459fb31ef07b88a77068780ab746e" title="Save a RecombinationMap to the SimData and allocate it a mapID." alt="" coords="695,791,894,835"/>
+<area shape="rect" href="sim-operations_8c.html#ab0152d52dcce6514ebba0fa08810ee8a" title="offspringGenerator function parameter for gsc_make_clones." alt="" coords="434,943,612,987"/>
+<area shape="rect" href="group__calculators.html#gaf6f32f41ae7ca27c1a48f8947919794a" title="Given a file containing definitions of blocks of markers, process that file and return a struct conta..." alt="" coords="735,1771,854,1799"/>
+<area shape="rect" href="group__iterators.html#gaaccc34724148be204eb4d8515000dfd5" title="Get a location by index using a gsc_RandomAccessIterator." alt="" coords="732,1235,857,1263"/>
+<area shape="rect" href="sim-operations_8c.html#a3bbb853ca13c593a940d86882dda2361" title="Prints a matrix of genotype information to a file." alt="" coords="688,1823,901,1851"/>
+<area shape="rect" href="sim-operations_8c.html#a368b4ddb966aef02950fe327d46f051b" title="Fills the designated section of the .names array in an gsc_AlleleMatrix with the pattern &quot;`prefix`ind..." alt="" coords="738,1875,851,1903"/>
+<area shape="rect" href="group__supporters.html#ga4929f1ad6756e3c710ad0781baca0f42" title="Produce a random ordering of the first n elements in an array using a (partial) Fisher&#45;Yates shuffle." alt="" coords="732,1183,857,1211"/>
+<area shape="rect" href="group__structs.html#ga85446dd929940e823745067d0a1d1d5d" title="Allocate memory to store a deep copy of a gsc_TableFileCell, if previously only a shallow copy." alt="" coords="432,395,615,423"/>
+<area shape="rect" href="group__structs.html#ga9b389be1c0eada385d1015e445886c05" title="Read forwards in TableFileReader and return the next cell&#39;s contents, as well as how many column gaps..." alt="" coords="459,447,588,491"/>
 <area shape="rect" href="group__recomb.html#ga17bf2aa42201490431e56ba42ace85fc" title="Provides guesses as to the location of recombination events that led to the creation of certain genot..." alt="" coords="425,24,621,68"/>
-<area shape="rect" href="sim-operations_8c.html#a14bf1934790250afa4e708fe902c44a0" title="Create a new gsc_EmptyListNavigator, including an empty AlleleMatrix suitable for inserting into the ..." alt="" coords="425,861,621,889"/>
-<area shape="rect" href="group__crossers.html#gaa5a1b4a1a80f8baf5b5730d7b7db0b77" title="Make new genotypes (generic function)" alt="" coords="442,981,604,1025"/>
-<area shape="rect" href="group__loaders.html#ga394371951741d8c2db18a85069d6b61e" title="Populates a gsc_SimData object with marker allele data, a genetic map, and (optionally) marker effect..." alt="" coords="5,433,141,461"/>
-<area shape="rect" href="group__crossers.html#gaa3907b6b8ad3de641916b2df83e43a01" title="Creates an identical copy of each member of a group." alt="" coords="220,956,346,984"/>
-<area shape="rect" href="group__crossers.html#gafe3072701f2dea2a505dd8fc9e8bc936" title="Performs the crosses of pairs of parents whose indexes are provided in an array." alt="" coords="189,1177,377,1205"/>
-<area shape="rect" href="group__groupmod.html#gad7acd8960fc510d4aebb587ad35878f7" title="Take a list of indexes and allocate the genotypes at those indexes to a new group." alt="" coords="447,1357,599,1385"/>
-<area shape="rect" href="group__groupmod.html#ga47292b150273a395fe282f86c0f78e0b" title="Split a group into two groups of equal size (or size differing only by one, if the original group had..." alt="" coords="438,1305,609,1333"/>
-<area shape="rect" href="group__calculators.html#ga2eaf7918fe1253fdf95b9ab81a192c96" title="Calculates the number of times at each marker that a particular allele appears." alt="" coords="454,1716,592,1760"/>
-<area shape="rect" href="group__calculators.html#ga30689b0f03641259091a72d065951e29" title="Calculate the fitness metric/breeding value for every genotype in the simulation or every genotype in..." alt="" coords="219,1637,347,1665"/>
-<area shape="rect" href="group__calculators.html#ga5eb332e54b2f90f399a28a65cdb25e36" title="Calculate the fitness metric/breeding value for a set of genotypes." alt="" coords="441,1664,606,1692"/>
-<area shape="rect" href="sim-operations_8c.html#a0fcef09a211d57fadb1dfa0b6d102901" title="parentChooser function parameter for gsc_make_random_crosses." alt="" coords="437,1101,610,1145"/>
-<area shape="rect" href="sim-operations_8c.html#a2cee0d2e90de12744fd077b20a7db9bd" title="parentChooser function parameter for gsc_make_random_crosses_between." alt="" coords="436,1237,611,1281"/>
-<area shape="rect" href="sim-operations_8c.html#a2c3d189234e1ac86e27a1ccaace3c363" title="parentChooser function parameter for gsc_make_targeted_crosses." alt="" coords="437,1169,610,1213"/>
-<area shape="rect" href="group__savers.html#ga37bba3dd2808aad1e2e8df7581d74561" title="Prints allele counts of simulated genotypes to a file." alt="" coords="448,1784,598,1828"/>
-<area shape="rect" href="group__savers.html#gad5a9b943294b42f094bd347f990967cb" title="Prints simulated genotypes to a file." alt="" coords="433,1852,613,1880"/>
+<area shape="rect" href="sim-operations_8c.html#a14bf1934790250afa4e708fe902c44a0" title="Create a new gsc_EmptyListNavigator, including an empty AlleleMatrix suitable for inserting into the ..." alt="" coords="425,635,621,663"/>
+<area shape="rect" href="group__crossers.html#gaa5a1b4a1a80f8baf5b5730d7b7db0b77" title="Make new genotypes (generic function)" alt="" coords="442,1063,604,1107"/>
+<area shape="rect" href="group__loaders.html#ga394371951741d8c2db18a85069d6b61e" title="Populates a gsc_SimData object with marker allele data, a genetic map, and (optionally) marker effect..." alt="" coords="5,575,141,603"/>
+<area shape="rect" href="group__crossers.html#gaa3907b6b8ad3de641916b2df83e43a01" title="Creates an identical copy of each member of a group." alt="" coords="220,993,346,1021"/>
+<area shape="rect" href="group__crossers.html#gafe3072701f2dea2a505dd8fc9e8bc936" title="Performs the crosses of pairs of parents whose indexes are provided in an array." alt="" coords="189,1181,377,1209"/>
+<area shape="rect" href="group__groupmod.html#gad7acd8960fc510d4aebb587ad35878f7" title="Take a list of indexes and allocate the genotypes at those indexes to a new group." alt="" coords="447,1284,599,1312"/>
+<area shape="rect" href="group__groupmod.html#ga47292b150273a395fe282f86c0f78e0b" title="Split a group into two groups of equal size (or size differing only by one, if the original group had..." alt="" coords="438,1336,609,1364"/>
+<area shape="rect" href="group__calculators.html#ga2eaf7918fe1253fdf95b9ab81a192c96" title="Calculates the number of times at each marker that a particular allele appears." alt="" coords="454,1644,592,1688"/>
+<area shape="rect" href="group__calculators.html#ga30689b0f03641259091a72d065951e29" title="Calculate the fitness metric/breeding value for every genotype in the simulation or every genotype in..." alt="" coords="219,1737,347,1765"/>
+<area shape="rect" href="group__calculators.html#ga5eb332e54b2f90f399a28a65cdb25e36" title="Calculate the fitness metric/breeding value for a set of genotypes." alt="" coords="441,1764,606,1792"/>
+<area shape="rect" href="sim-operations_8c.html#a0fcef09a211d57fadb1dfa0b6d102901" title="parentChooser function parameter for gsc_make_random_crosses." alt="" coords="437,1524,610,1568"/>
+<area shape="rect" href="sim-operations_8c.html#a2cee0d2e90de12744fd077b20a7db9bd" title="parentChooser function parameter for gsc_make_random_crosses_between." alt="" coords="436,1388,611,1432"/>
+<area shape="rect" href="sim-operations_8c.html#a2c3d189234e1ac86e27a1ccaace3c363" title="parentChooser function parameter for gsc_make_targeted_crosses." alt="" coords="437,1456,610,1500"/>
+<area shape="rect" href="group__savers.html#ga37bba3dd2808aad1e2e8df7581d74561" title="Prints allele counts of simulated genotypes to a file." alt="" coords="448,1816,598,1860"/>
 </map>
 </div>
 
@@ -4975,7 +4975,7 @@ Rows with more entries than the first will have their excess entries ignored. Ro
 <p>Sets the current cursor position in a <a class="el" href="structgsc___gappy_iterator.html" title="A structure to iterate forwards through all positions in the gsc_AlleleMatrix linked list in gsc_SimD...">gsc_GappyIterator</a> to the next empty position, if the cursor is not already an empty position. </p>
 <p >Empty positions do not contain genotypes. This function does not change the cursor position if the curstor is already on a gap. </p>
 
-<p class="definition">Definition at line <a class="el" href="sim-operations_8c_source.html#l01274">1274</a> of file <a class="el" href="sim-operations_8c_source.html">sim-operations.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="sim-operations_8c_source.html#l01291">1291</a> of file <a class="el" href="sim-operations_8c_source.html">sim-operations.c</a>.</p>
 <div id="dynsection-90" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-90-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
 <div id="dynsection-90-summary" class="dynsummary" style="display:block;">
@@ -5043,7 +5043,7 @@ Rows with more entries than the first will have their excess entries ignored. Ro
 <p>Sets the current cursor position in a <a class="el" href="structgsc___gappy_iterator.html" title="A structure to iterate forwards through all positions in the gsc_AlleleMatrix linked list in gsc_SimD...">gsc_GappyIterator</a> to the next filled position, if the cursor is not already a filled position. </p>
 <p >Non-gap positions do contain genotypes. This function does not change the cursor position if the curstor is already on a non-gap. </p>
 
-<p class="definition">Definition at line <a class="el" href="sim-operations_8c_source.html#l01303">1303</a> of file <a class="el" href="sim-operations_8c_source.html">sim-operations.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="sim-operations_8c_source.html#l01320">1320</a> of file <a class="el" href="sim-operations_8c_source.html">sim-operations.c</a>.</p>
 <div id="dynsection-92" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-92-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
 <div id="dynsection-92-summary" class="dynsummary" style="display:block;">
@@ -5111,7 +5111,7 @@ Rows with more entries than the first will have their excess entries ignored. Ro
 <p>Sets the current cursor position in a <a class="el" href="structgsc___gappy_iterator.html" title="A structure to iterate forwards through all positions in the gsc_AlleleMatrix linked list in gsc_SimD...">gsc_GappyIterator</a> to the next valid position, if the cursor is not already a valid position. </p>
 <p >Valid positions in the linked list of AlleleMatrices may contain genotypes or not. </p>
 
-<p class="definition">Definition at line <a class="el" href="sim-operations_8c_source.html#l01254">1254</a> of file <a class="el" href="sim-operations_8c_source.html">sim-operations.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="sim-operations_8c_source.html#l01271">1271</a> of file <a class="el" href="sim-operations_8c_source.html">sim-operations.c</a>.</p>
 <div id="dynsection-94" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-94-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
 <div id="dynsection-94-summary" class="dynsummary" style="display:block;">
@@ -5204,7 +5204,7 @@ Rows with more entries than the first will have their excess entries ignored. Ro
 <p>Identifies and saves (recursively) the pedigree of a pair of parents. </p>
 <p >This is a generic scaffold for the following functions: </p><dl class="section see"><dt>See also</dt><dd><a class="el" href="group__savers.html#ga23f6de68db1db7fd293a1e3207eeef6c" title="Prints pedigrees to a file.">gsc_save_utility_pedigrees</a> with full_pedigree = true and in future, for a function to save these pedigrees to in-memory strings </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="sim-operations_8c_source.html#l10731">10731</a> of file <a class="el" href="sim-operations_8c_source.html">sim-operations.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="sim-operations_8c_source.html#l10748">10748</a> of file <a class="el" href="sim-operations_8c_source.html">sim-operations.c</a>.</p>
 <div id="dynsection-95" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-95-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
 <div id="dynsection-95-summary" class="dynsummary" style="display:block;">
@@ -5314,7 +5314,7 @@ Rows with more entries than the first will have their excess entries ignored. Ro
 <dd>
 <a class="el" href="group__savers.html#ga37bba3dd2808aad1e2e8df7581d74561" title="Prints allele counts of simulated genotypes to a file.">gsc_save_utility_allele_counts</a> </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="sim-operations_8c_source.html#l10465">10465</a> of file <a class="el" href="sim-operations_8c_source.html">sim-operations.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="sim-operations_8c_source.html#l10482">10482</a> of file <a class="el" href="sim-operations_8c_source.html">sim-operations.c</a>.</p>
 <div id="dynsection-97" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-97-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
 <div id="dynsection-97-summary" class="dynsummary" style="display:block;">
@@ -5418,7 +5418,7 @@ Rows with more entries than the first will have their excess entries ignored. Ro
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="sim-operations_8c_source.html#l00563">563</a> of file <a class="el" href="sim-operations_8c_source.html">sim-operations.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="sim-operations_8c_source.html#l00580">580</a> of file <a class="el" href="sim-operations_8c_source.html">sim-operations.c</a>.</p>
 <div id="dynsection-99" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-99-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
 <div id="dynsection-99-summary" class="dynsummary" style="display:block;">

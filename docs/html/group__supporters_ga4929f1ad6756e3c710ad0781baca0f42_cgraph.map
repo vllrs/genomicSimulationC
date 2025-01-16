@@ -1,0 +1,4 @@
+<map id="gsc_shuffle_up_to" name="gsc_shuffle_up_to">
+<area shape="rect" id="node1" title="Produce a random ordering of the first n elements in an array using a (partial) Fisher&#45;Yates shuffle." alt="" coords="5,5,131,33"/>
+<area shape="rect" id="node2" href="$sim-operations_8c.html#aaaf3ebc75feaf901829232712e55677b" title="Replace calls to malloc direct with this function." alt="" coords="179,5,300,33"/>
+</map>

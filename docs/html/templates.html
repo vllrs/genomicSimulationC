@@ -21,7 +21,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">genomicSimulationC<span id="projectnumber">&#160;0.2.5.11</span>
+   <div id="projectname">genomicSimulationC<span id="projectnumber">&#160;0.2.5.12</span>
    </div>
   </td>
  </tr>
@@ -457,7 +457,11 @@ Load a genetic map, a set of founder genotypes, and a set of additive trait effe
 <div class="line">map1 &lt;- init$mapID</div>
 </div><!-- fragment --> </td></tr>
 </table>
-<p >@</p>
+<p >This provides an introduction to three types of identifiers you will use in genomicSimulation. They are easier to distinguish in the C version, since they are defined as different types (<code>GroupNum</code> and <code>EffectID</code> and <code>MapID</code>). In the R environment, all genomicSimulation identifiers are integer values. An R user has to remember (or use variable names to help them remember) which one is which.</p><ul>
+<li><code>GroupNum</code>: represents a group of candidates, eg your founder population or your F1 crosses.</li>
+<li><code>EffectID</code>: represents a set of additive trait effects. You can have multiple of these sets of marker effects loaded to represent different traits. Each time you calculate breeding values, you choose which set of marker effects to use. By default it will use the first loaded set of marker effects.</li>
+<li><code>MapID</code>: represents a particular arrangement of your simulation's tracked genetic markers in terms of chromosome positions and recombination frequencies. You can have multiple maps loaded at a time. Each time you generate offspring, you can choose which map to use to generate gametes from the parents. By default it will use the first loaded map.</li>
+</ul>
 <h2><a class="anchor" id="autotoc_md37"></a>
 Load another set of additive trait effects</h2>
 <p >This assumes the simulation is set up, that is, one of <b>Load a genetic map and a set of founder genotypes</b>, <b>Load a genetic map and several sets of founder genotypes</b>, <b>Load a genetic map, a set of founder genotypes, and a set of additive trait effects</b> or equivalent has been carried out. If the simulation is not yet set up and you wish to load trait effect values, see the section above, titled <b>Load a genetic map, a set of founder genotypes, and a set of additive trait effects</b>.</p>
@@ -767,6 +771,8 @@ Split offspring into male and female</h2>
 <div class="line">rm(temporary)</div>
 </div><!-- fragment --> </td></tr>
 </table>
+<p >As an alternative, you could create a custom label to track the animal's sex (eg. the label having value 1 for a female, 2 for a male). Sex could be initially set by passing a vector of 1s and 2s (random or otherwise) to <code>change_label_to_values</code> (C)/<code>change.label.to.values</code> (R). Afterwards, <code>split_by_label_value</code> (C)/<code>break.group.by.label.value</code> (R) can be used to separate the males and females as needed, and as needed <code>combine_groups</code> (C)/<code>combine.groups</code> (R) can merge the populations back together.</p>
+<p >However, for most simulations of breeding programs (it is likely every generation would require separating out the males and females before crossing them), it would be more computationally efficient to maintain two separate "male" and "female" groups, rather than using a custom label and repeatedly merging and unmerging the groups.</p>
 <h2><a class="anchor" id="autotoc_md48"></a>
 Introducing fresh blood to male and female kernels</h2>
 <p >Suppose the <code>offspring_f</code> and <code>offspring_m</code> groups exist, as created in the previous section <b>Split offspring into male and female</b>.</p>
@@ -1034,8 +1040,7 @@ Culling or fitness-based animal loss</h2>
 <div class="line">num_males_will_lose &lt;- round(male.mortality * length(info.males$Index))</div>
 <div class="line">index_of_lost_males &lt;- info.males[order(info.males$GEBV, decreasing=FALSE),]$Index[1:num_males_will_lose]</div>
 <div class="line">                                                     # &lt;-- info tables contain invalid position indexes now</div>
-<div class="line">lost_males &lt;- make.group(index_of_lost_males)        # &lt;-- !! make.group uses invalid position indexes</div>
-<div class="line"># so the animals selected to be lost_males may not correspond to the ones we intended to select. </div>
+<div class="line">lost_males &lt;- make.group(index_of_lost_males)        # &lt;-- !! make.group uses invalid position indexes, so the animals selected to be lost_males may not correspond to the ones we intended to select. </div>
 <div class="line">delete.group(lost_males)</div>
 <div class="line">rm(lost_males)</div>
 </div><!-- fragment --> </td><td>To fix this, you could simply rearrange the script so that you only run <code>delete.group</code> once all interactions with the <code>info</code> tables are done: <div class="fragment"><div class="line">female.mortality &lt;- 0.06</div>
@@ -1164,7 +1169,7 @@ Making specific chosen matings</h2>
 <div class="line">crossingPlan[1][2] = bull1_index;</div>
 <div class="line"> </div>
 <div class="line"><a class="code hl_define" href="group__shortnames.html#gadb2ef9b75828b244e0b3e1cb3680d7ca">GroupNum</a> offspring = <a class="code hl_define" href="group__shortnames.html#ga56e71147b1f8a71151ef81b4a828aa9b">make_targeted_crosses</a>(d, 3, crossingPlan[0], crossingPlan[1], <a class="code hl_define" href="group__shortnames.html#ga3710da75e403e5a3da4e2deade0d50af">NO_MAP</a>, <a class="code hl_define" href="group__shortnames.html#ga3710da75e403e5a3da4e2deade0d50af">NO_MAP</a>, <a class="code hl_define" href="group__shortnames.html#ga4af98a71b0736f81c32df8e5e4fd6a83">BASIC_OPT</a>);</div>
-<div class="ttc" id="agroup__search_html_gad6c28080cf3e1f85fd78229aba53bf78"><div class="ttname"><a href="group__search.html#gad6c28080cf3e1f85fd78229aba53bf78">gsc_get_index_of_name</a></div><div class="ttdeci">unsigned int gsc_get_index_of_name(const gsc_AlleleMatrix *start, const char *name)</div><div class="ttdoc">Search for a genotype with a particular name in a linked list of gsc_AlleleMatrix,...</div><div class="ttdef"><b>Definition:</b> <a href="sim-operations_8c_source.html#l02381">sim-operations.c:2381</a></div></div>
+<div class="ttc" id="agroup__search_html_gad6c28080cf3e1f85fd78229aba53bf78"><div class="ttname"><a href="group__search.html#gad6c28080cf3e1f85fd78229aba53bf78">gsc_get_index_of_name</a></div><div class="ttdeci">unsigned int gsc_get_index_of_name(const gsc_AlleleMatrix *start, const char *name)</div><div class="ttdoc">Search for a genotype with a particular name in a linked list of gsc_AlleleMatrix,...</div><div class="ttdef"><b>Definition:</b> <a href="sim-operations_8c_source.html#l02398">sim-operations.c:2398</a></div></div>
 <div class="ttc" id="agroup__shortnames_html_ga56e71147b1f8a71151ef81b4a828aa9b"><div class="ttname"><a href="group__shortnames.html#ga56e71147b1f8a71151ef81b4a828aa9b">make_targeted_crosses</a></div><div class="ttdeci">#define make_targeted_crosses</div><div class="ttdef"><b>Definition:</b> <a href="sim-operations_8h_source.html#l00340">sim-operations.h:340</a></div></div>
 </div><!-- fragment --> </td><td><div class="fragment"><div class="line"># The R version of the function (make.targeted.crosses) can be passed the indexes of these parent animals, like in the C version, </div>
 <div class="line"># or it can use the names of the parent animals.</div>

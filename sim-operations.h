@@ -1,9 +1,9 @@
 #ifndef SIM_OPERATIONS_H
 #define SIM_OPERATIONS_H
 /* 
-genomicSimulationC v0.2.5.11
+genomicSimulationC v0.2.5.12
 
-    Last edit: 19 December 2024
+    Last edit: 16 Jan 2025
 	License: MIT License
 
 Copyright (c) 2021 Kira Villiers
@@ -1090,7 +1090,7 @@ size_t gsc_get_from_unordered_str_list(const char* target, const size_t listLen,
 size_t gsc_get_from_ordered_str_list(const char* target, const size_t listLen, const char** list);
 
 
-void gsc_shuffle_up_to(rnd_pcg_t* rng, GSC_GLOBALX_T* sequence, const size_t total_n, const size_t n_to_shuffle);
+void gsc_shuffle_up_to(rnd_pcg_t* rng, void* sequence, const size_t item_size, const size_t total_n, const size_t n_to_shuffle);
 GSC_GLOBALX_T gsc_randomdraw_replacementrules(gsc_SimData* d, GSC_GLOBALX_T max, GSC_GLOBALX_T cap, 
                                               GSC_GLOBALX_T* member_uses, GSC_GLOBALX_T noCollision);
 

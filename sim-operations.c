@@ -1,7 +1,7 @@
 #ifndef SIM_OPERATIONS
 #define SIM_OPERATIONS
 #include "sim-operations.h"
-/* genomicSimulationC v0.2.5.11 - last edit 19 December 2024 */
+/* genomicSimulationC v0.2.5.12 - last edit 16 Jan 2025 */
 
 /** Default parameter values for GenOptions, to help with quick scripts and prototypes.
  *
@@ -514,34 +514,51 @@ size_t gsc_get_from_ordered_str_list(const char* target,
 }
 
 
-/** Produce a random ordering of the first n elements in an array of integers
+/** Produce a random ordering of the first n elements in an array
  * using a (partial) Fisher-Yates shuffle.
  *
  * Modified from https://benpfaff.org/writings/clc/shuffle.html
  *
- * @param d gsc_SimData, only used for pointer to random number generator
- * @param sequence the array
- * @param total_n length of the array
- * @param n_to_shuffle After calling this function, the first n_to_shuffle
- * integers in the array will be randomly ordered by a Fischer-Yates shuffle. 
+ * After calling this function, the first 'n_to_shuffle'
+ * elements in the array will be randomly ordered by a Fischer-Yates shuffle. 
  * Every entry in the array could end up at any position, but the post-shuffle
  * positions have only been calculated for the first 'n_to_shuffle' entries.
+ *
+ * @param d gsc_SimData, only used for pointer to random number generator
+ * @param sequence the array
+ * @param item_size sizeof each element in the array
+ * @param total_n number of elements in the array
+ * @param n_to_shuffle the number of elements in the array to guarantee 
+ * to be in randomly sorted order after the function is finished. (The 
+ * remainder of the elements in the array will only be partially shuffled).
  */
 void gsc_shuffle_up_to(rnd_pcg_t* rng, 
-                       GSC_GLOBALX_T* sequence, 
+                       void* sequence, 
+                       const size_t item_size,
                        const size_t total_n, 
                        const size_t n_to_shuffle) {
 	if (n_to_shuffle > 1) {
+	    
+	    size_t tmp_spot;
+	    void* tmp = &tmp_spot;
+	    if (item_size > sizeof(tmp_spot)) {
+	        tmp = gsc_malloc_wrap(item_size, GSC_TRUE);
+	    }
+	    
         size_t maxi = total_n > n_to_shuffle ? n_to_shuffle - 1 : total_n - 1;
 		size_t i;
-        for (i = 0; i < maxi; ++i) {
+        for (i = 0; i <= maxi; ++i) {
 			// items before i are already shuffled
             size_t j = i + rnd_pcg_range(rng,0,total_n - i - 1);
 
 			// add the next chosen value to the end of the shuffle
-            GSC_GLOBALX_T t = sequence[j];
-			sequence[j] = sequence[i];
-			sequence[i] = t;
+			memcpy(&tmp,                   sequence + j*item_size, item_size);
+			memcpy(sequence + j*item_size, sequence + i*item_size, item_size);
+			memcpy(sequence + i*item_size, &tmp,                   item_size);
+		}
+		
+		if (item_size > sizeof(tmp_spot)) {
+		    free(tmp);
 		}
 	}
 }
@@ -3105,7 +3122,7 @@ gsc_GroupNum gsc_split_evenly_into_two(gsc_SimData* d,
     for (GSC_GLOBALX_T i = 0; i < size; ++i) {
 		allocations[i] = i;
 	}
-    gsc_shuffle_up_to(&d->rng, allocations, size, even_half);
+    gsc_shuffle_up_to(&d->rng, allocations, sizeof(allocations[0]), size, even_half);
 
     gsc_GroupNum new_group = gsc_get_new_group_num(d);
 	
