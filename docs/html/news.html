@@ -21,7 +21,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">genomicSimulationC<span id="projectnumber">&#160;0.2.5.12</span>
+   <div id="projectname">genomicSimulationC<span id="projectnumber">&#160;0.2.6</span>
    </div>
   </td>
  </tr>
@@ -67,30 +67,34 @@ $(function() {
 <div class="contents">
 <div class="textblock"><p ><a class="anchor" id="md_NEWS"></a></p>
 <h1><a class="anchor" id="autotoc_md3"></a>
-genomicSimulation (development version)</h1>
+genomicSimulation v0.2.6</h1>
 <h2><a class="anchor" id="autotoc_md4"></a>
 New Features</h2>
 <ul>
 <li>BREAKING CHANGE: <code>load_genotypefile</code> and <code>load_data_files</code> now take an extra final parameter of type <code>FileFormatSpec</code>. This parameters allows users to specify some or all of the layout and formatting details of an input genotype file. During the loading process, the sections tasked with detecting the already-specified features of the layout are then skipped.</li>
 <li>BREAKING CHANGE: Introduced new type aliases: <code>GSC_ID_T</code>, <code>GSC_GLOBALX_T</code>, <code>GSC_LOCALX_T</code>, <code>GSC_GENOLEN_T</code>. Some function type signatures may have changed, as they are now using these type aliases, and the type aliases have consistent definitions across all functions in the library.</li>
+<li><code>make_targeted_crosses</code> will now skip invalid pairings, where one or more parents does not exist, instead of halting execution at the first invalid pairing. If any pairings were skipped, it will print a debug message listing the number of invalid pairings detected.</li>
+<li>Improved Makefile. It now supports both debug and release builds.</li>
 </ul>
 <h2><a class="anchor" id="autotoc_md5"></a>
 Bug Fixes</h2>
 <ul>
 <li>Log messages printed during genotype file loading now accurately reflect the number of markers per genotype that were successfully loaded. Previously, it incorrectly printed out the total number of markers in the stored genetic map, while claiming it was the number of markers in the genotype file that had been accurately matched to the map.</li>
 <li>Input genotype files now have <code>fclose</code> called on them after being parsed.</li>
+<li>Fixed memory leaks in <code>load_genotypefile</code> and <code>delete_simdata</code> introduced in v0.2.5.</li>
 <li>Fixed segmentation fault when calling <code>make_clones</code> with <code>inherit_names = GSC_TRUE</code> on genotypes with no names.</li>
+<li>More edge cases covered in <code>condense_allele_matrix</code>, to patch a rare memory leak.</li>
 <li>Fixed memory access error in <code>make_random_crosses_between</code> when the function was called with breeding caps on both groups.</li>
 <li><code>get_index_of_name</code> no longer tries to compare its target name to the names of nameless genotypes. Also, it now prints a warning and returns an invalid value when it cannot find the target name, instead of calling exit().</li>
+<li>Group RandomAccessIterators no longer request memory for their cache structures before checking if there are actually that many members in the group. This fixes a bug where passing a large invalid <code>n</code> to <code>next_get_nth</code> would cause the iterator to hang, trying to request incredibly large blocks of memory.</li>
 </ul>
 <h2><a class="anchor" id="autotoc_md6"></a>
 Improvements</h2>
 <ul>
-<li>Improvements to the genotype matrix layout detection processes, to cover more edge cases and to use a decision tree that is easier to understand from outside.</li>
-<li>Improvements to input file loading tests, to cover more cases and be easier to expand further in future.</li>
-<li>Add tests of allele count matrix calculation.</li>
-<li>Improved documentation in Templates and in docstrings of valid input file formats and of how automatic genotype file layout detection works.</li>
-<li>Improved Makefile. It now supports both debug and release builds. Fixed compilation warnings, including initialising an EffectID with an integer and potentially uninitialised variable accesses. Fixed memory leaks in <code>load_genotypefile</code> and <code>delete_simdata</code> introduced in v0.2.5.</li>
+<li>Polish and improve the Templates page of the documentation.</li>
+<li>Improvements to the genotype matrix layout detection processes, to cover more edge cases and use a more comprehensible decision tree.</li>
+<li>Improvements to input file loading tests and allele count matrix calculation tests.</li>
+<li>Helper function <code>shuffle_up_to</code> is now size-agnostic and can shuffle arrays of any type, instead of only integer arrays.</li>
 <li>BREAKING CHANGE: The file output interface (functions with prefix <code>save_</code>) has undergone a simplification and rewrite. There is now one function per data type, which offers whole-simulation vs single-group output and output file format choices as parameters, much like the R version of genomicSimulation (as opposed to separate function whether the output was for a single group or all genotypes, and also different functions per ouput formats). All user-facing functions now take a file name instead of a file pointer. See below for details.<ul>
 <li>BREAKING CHANGE: <code>save_markerblocks</code> now offers two file output formats, but neither exactly matches the old file format. To create a marker blocks file with the old format, call <code>save_markerblocks</code> without a map, then run &lsquo;sed 's/^/0\t0\tb0\tb\t/&rsquo; f.txt | sed '1i\Chrom\tPos\tName\tClass\tMarkers'<code>.</code></li>
 <li><code>BREAKING CHANGE:</code>save_names_header<code>,</code>save_allele_matrix<code>,</code>save_transposed_allele_matrix<code>,</code>save_group_genotypes<code>, and</code>save_transposed_group_genotypes<code>have been replaced with the single function</code>save_genotypes<code>.</code></li>
@@ -101,17 +105,15 @@ Improvements</h2>
 </li>
 <li><code>BREAKING CHANGE: Several features among the calculation functions interface (functions with prefix</code>calculate_<code>) have undergone a restructure and rewrite.<ul>
 <li>BREAKING CHANGE:calculate_group_count_matrix<code>,</code>calculate_count_matrix<code>, and</code>calculate_full_count_matrix<code>have been combined into the single function (with updated function signature)</code>calculate_allele_counts<code>.</code></li>
-<li><code>BREAKING CHANGE:</code>calculate_bvs<code>and</code>calculate_group_bvs<code>have been combined into the single function (with updated function signature)</code>calculate_bvs<code>.</code></li>
+<li><code>BREAKING CHANGE:</code>calculate_bvs<code>and</code>calculate_group_bvs<code>have been combined into the single function (with updated function signature)</code>calculate_bvs`. <br  />
+</li>
 </ul>
 </code></li>
-<li><code><code>More informative error message when calling</code>split_by_bv<code>on a nonexistent group.</code></code></li>
-<li><code><code>More edge cases covered in</code>condense_allele_matrix`, to patch a rare memory leak.</code></li>
 <li><code>BREAKING CHANGE: Now using _Bool type for true/false values. The GSC_LOGICVAL type is used only for variables that need three values: true/false/invalid. GSC_UNINIT has been renamed to GSC_NA.</code></li>
 <li><code>The dimensions of a DecimalMatrix are now stored in larger size_t variables.</code></li>
-<li><code>Removed unused struct MarkerPosition.</code></li>
 <li><code>BREAKING CHANGE: Removed function <code>make_n_crosses_from_top_m_percent</code> for disobeying standard genomicSimulation rules of division of functionality. A section has been added to the Templates section of the documentation with a drop-in replacement of this function.</code></li>
-<li><code>Polish and improve the Templates page of the documentation.</code></li>
-<li><code>Helper function <code>shuffle_up_to</code> is now size-agnostic and can shuffle arrays of any type, instead of only integer arrays.</code></li>
+<li><code>More informative error message when calling <code>split_by_bv</code> on a nonexistent group.</code></li>
+<li><code>Removed unused struct MarkerPosition.</code></li>
 </ul>
 <p ><code></code></p>
 <h1><a class="anchor" id="autotoc_md7"></a>

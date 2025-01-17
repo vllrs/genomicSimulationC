@@ -1,8 +1,7 @@
 <map id="gsc_helper_parentchooser_cross_randomly_between" name="gsc_helper_parentchooser_cross_randomly_between">
-<area shape="rect" id="node1" title="parentChooser function parameter for gsc_make_random_crosses_between." alt="" coords="5,76,181,120"/>
-<area shape="rect" id="node2" href="$group__iterators.html#gaaccc34724148be204eb4d8515000dfd5" title="Get a location by index using a gsc_RandomAccessIterator." alt="" coords="279,57,404,85"/>
-<area shape="rect" id="node6" href="$group__supporters.html#gafd6535362ff9898f871cd4e1098d2ee6" title="Randomly pick a number in a range, optionally with a cap on how many times a number can be picked,..." alt="" coords="229,109,454,137"/>
-<area shape="rect" id="node3" href="$group__liteget.html#gae5d12aca851dd2358b63dc60b8ac6e5f" title="Get the current group membership of a genotype." alt="" coords="533,5,639,33"/>
-<area shape="rect" id="node4" href="$group__iterators.html#ga16615a5663b4d3bd768d8380f820aa66" title="Get an gsc_AlleleMatrix by index in the linked list." alt="" coords="502,57,669,85"/>
-<area shape="rect" id="node5" href="$sim-operations_8c.html#aaaf3ebc75feaf901829232712e55677b" title="Replace calls to malloc direct with this function." alt="" coords="525,109,646,137"/>
+<area shape="rect" id="node1" title="parentChooser function parameter for gsc_make_random_crosses_between." alt="" coords="5,49,181,93"/>
+<area shape="rect" id="node2" href="$group__iterators.html#gaaccc34724148be204eb4d8515000dfd5" title="Get a location by index using a gsc_RandomAccessIterator." alt="" coords="279,31,404,59"/>
+<area shape="rect" id="node5" href="$group__supporters.html#gafd6535362ff9898f871cd4e1098d2ee6" title="Randomly pick a number in a range, optionally with a cap on how many times a number can be picked,..." alt="" coords="229,83,454,111"/>
+<area shape="rect" id="node3" href="$group__iterators.html#ga16615a5663b4d3bd768d8380f820aa66" title="Get an gsc_AlleleMatrix by index in the linked list." alt="" coords="502,5,669,33"/>
+<area shape="rect" id="node4" href="$sim-operations_8c.html#aaaf3ebc75feaf901829232712e55677b" title="Replace calls to malloc direct with this function." alt="" coords="525,57,646,85"/>
 </map>

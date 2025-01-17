@@ -21,7 +21,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">genomicSimulationC<span id="projectnumber">&#160;0.2.5.12</span>
+   <div id="projectname">genomicSimulationC<span id="projectnumber">&#160;0.2.6</span>
    </div>
   </td>
  </tr>
@@ -803,7 +803,7 @@ Details</h1>
 <dd>
 <a class="el" href="group__loaders.html#ga394371951741d8c2db18a85069d6b61e" title="Populates a gsc_SimData object with marker allele data, a genetic map, and (optionally) marker effect...">gsc_load_data_files</a> </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="sim-operations_8c_source.html#l06738">6738</a> of file <a class="el" href="sim-operations_8c_source.html">sim-operations.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="sim-operations_8c_source.html#l06682">6682</a> of file <a class="el" href="sim-operations_8c_source.html">sim-operations.c</a>.</p>
 
 </div>
 </div>
@@ -826,7 +826,7 @@ Details</h1>
 <p>Classify the character under the cursor of a TableFileReader as cell contents or otherwise. </p>
 <p >Does not update <em>tbl-&gt;cursor</em>, so repeated calls of this same function without updating the cursor in between will return the same result. </p>
 
-<p class="definition">Definition at line <a class="el" href="sim-operations_8c_source.html#l05106">5106</a> of file <a class="el" href="sim-operations_8c_source.html">sim-operations.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="sim-operations_8c_source.html#l05050">5050</a> of file <a class="el" href="sim-operations_8c_source.html">sim-operations.c</a>.</p>
 <div id="dynsection-1" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-1-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
 <div id="dynsection-1-summary" class="dynsummary" style="display:block;">
@@ -868,7 +868,7 @@ Details</h1>
 <p>Read another buffer's worth of characters from a <a class="el" href="structgsc___table_file_reader.html" title="Stream reader for files of some tabular format.">gsc_TableFileReader</a>'s file. </p>
 <dl class="section warning"><dt>Warning</dt><dd>This overwrites any characters previously saved in the TableFileReader buffer. The pointers of any <em><a class="el" href="structgsc___table_file_cell.html" title="Represent a cell read by a gsc_TableFileReader.">gsc_TableFileCell</a></em> read from this table may become invalid if they are shallow copies. If you need to retain any cell values, consider using <em><a class="el" href="group__structs.html#ga85446dd929940e823745067d0a1d1d5d" title="Allocate memory to store a deep copy of a gsc_TableFileCell, if previously only a shallow copy.">gsc_tablefilecell_deep_copy()</a></em> before calling this function. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="sim-operations_8c_source.html#l05092">5092</a> of file <a class="el" href="sim-operations_8c_source.html">sim-operations.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="sim-operations_8c_source.html#l05036">5036</a> of file <a class="el" href="sim-operations_8c_source.html">sim-operations.c</a>.</p>
 <div id="dynsection-2" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-2-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
 <div id="dynsection-2-summary" class="dynsummary" style="display:block;">
@@ -911,7 +911,7 @@ Details</h1>
 <p >The deep copy will be a null-terminated string even if the shallow copy was not null-terminated.</p>
 <p >After this call, the cell is stored in heap memory and will need to be freed once the cell is no longer needed. Schema for doing this: if (!mycell.isCellShallow) { GSC_FREE(mycell.cell); } </p>
 
-<p class="definition">Definition at line <a class="el" href="sim-operations_8c_source.html#l05135">5135</a> of file <a class="el" href="sim-operations_8c_source.html">sim-operations.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="sim-operations_8c_source.html#l05079">5079</a> of file <a class="el" href="sim-operations_8c_source.html">sim-operations.c</a>.</p>
 <div id="dynsection-3" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-3-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
 <div id="dynsection-3-summary" class="dynsummary" style="display:block;">
@@ -961,7 +961,7 @@ Details</h1>
 
 <p>Close a <a class="el" href="structgsc___table_file_reader.html" title="Stream reader for files of some tabular format.">gsc_TableFileReader</a>'s file pointer. </p>
 
-<p class="definition">Definition at line <a class="el" href="sim-operations_8c_source.html#l05080">5080</a> of file <a class="el" href="sim-operations_8c_source.html">sim-operations.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="sim-operations_8c_source.html#l05024">5024</a> of file <a class="el" href="sim-operations_8c_source.html">sim-operations.c</a>.</p>
 <div id="dynsection-5" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-5-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
 <div id="dynsection-5-summary" class="dynsummary" style="display:block;">
@@ -1000,7 +1000,7 @@ Details</h1>
 <p>Open a file for reading with <a class="el" href="structgsc___table_file_reader.html" title="Stream reader for files of some tabular format.">gsc_TableFileReader</a>. </p>
 <p >On successfully opening file, fills the TableFileReader buffer for the first time. </p>
 
-<p class="definition">Definition at line <a class="el" href="sim-operations_8c_source.html#l05060">5060</a> of file <a class="el" href="sim-operations_8c_source.html">sim-operations.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="sim-operations_8c_source.html#l05004">5004</a> of file <a class="el" href="sim-operations_8c_source.html">sim-operations.c</a>.</p>
 <div id="dynsection-6" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-6-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
 <div id="dynsection-6-summary" class="dynsummary" style="display:block;">
@@ -1039,7 +1039,7 @@ Details</h1>
 <p>Read forwards in TableFileReader and return the next cell's contents, as well as how many column gaps and newlines preceeded it. </p>
 <p >Cells can be of unlimited length, as long as they fit in memory. </p>
 
-<p class="definition">Definition at line <a class="el" href="sim-operations_8c_source.html#l05150">5150</a> of file <a class="el" href="sim-operations_8c_source.html">sim-operations.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="sim-operations_8c_source.html#l05094">5094</a> of file <a class="el" href="sim-operations_8c_source.html">sim-operations.c</a>.</p>
 <div id="dynsection-7" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-7-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
 <div id="dynsection-7-summary" class="dynsummary" style="display:block;">

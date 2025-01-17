@@ -1,52 +1,52 @@
 <map id="gsc_make_random_crosses" name="gsc_make_random_crosses">
-<area shape="rect" id="node1" title="Performs random crosses among members of a group." alt="" coords="5,567,190,595"/>
-<area shape="rect" id="node2" href="$group__iterators.html#gaa26377edd1339407af2070924d3596de" title="Create a Random Access Iterator." alt="" coords="238,326,440,354"/>
-<area shape="rect" id="node3" href="$sim-operations_8c.html#aaaf3ebc75feaf901829232712e55677b" title="Replace calls to malloc direct with this function." alt="" coords="1075,98,1197,126"/>
-<area shape="rect" id="node4" href="$group__deletors.html#ga3e88311f64b089f3d7a336f4efee3b05" title="Deletes a gsc_RandomAccessIterator object and frees its memory." alt="" coords="238,661,440,689"/>
-<area shape="rect" id="node5" href="$group__supporters.html#ga3a07c81d30aa7738de1672420031b3da" title="Function to identify the lookup index of a recombination map identifier." alt="" coords="262,713,416,741"/>
-<area shape="rect" id="node6" href="$sim-operations_8c.html#aa16bd09b22305a169b4ca8e54432f966" title="offspringGenerator function parameter for all crossing functions" alt="" coords="250,593,428,637"/>
-<area shape="rect" id="node11" href="$sim-operations_8c.html#a0fcef09a211d57fadb1dfa0b6d102901" title="parentChooser function parameter for gsc_make_random_crosses." alt="" coords="502,82,675,126"/>
-<area shape="rect" id="node16" href="$sim-operations_8c.html#ae9f10c91e8c7f77b536ef19e2222182c" title="Check input parameters of random crossing functions." alt="" coords="252,942,426,986"/>
-<area shape="rect" id="node18" href="$group__crossers.html#gaa5a1b4a1a80f8baf5b5730d7b7db0b77" title="Make new genotypes (generic function)" alt="" coords="258,525,420,569"/>
-<area shape="rect" id="node7" href="$group__meiosis.html#ga923d9402fffe6eacac7971b703343073" title="Fills a char* with the simulated result of meiosis (reduction and recombination) from the marker alle..." alt="" coords="514,1102,663,1130"/>
-<area shape="rect" id="node10" href="$group__liteget.html#ga5e1e89782604c9ab47f196e1da233362" title="Get the alleles of a genotype." alt="" coords="1338,994,1449,1022"/>
-<area shape="rect" id="node8" href="$sim-operations_8c.html#a50de1f9769153df70263edc86de41fa5" title="Comparator function for qsort." alt="" coords="775,1098,925,1142"/>
-<area shape="rect" id="node9" href="$group__maths.html#ga897c7abb536f30f0cbc1baf2abcd2067" title="Generates randomly a number from the Poisson distribution with parameter lambda, using the Knuth appr..." alt="" coords="804,1166,896,1194"/>
-<area shape="rect" id="node12" href="$group__iterators.html#gaaccc34724148be204eb4d8515000dfd5" title="Get a location by index using a gsc_RandomAccessIterator." alt="" coords="788,98,912,126"/>
-<area shape="rect" id="node15" href="$group__supporters.html#gafd6535362ff9898f871cd4e1098d2ee6" title="Randomly pick a number in a range, optionally with a cap on how many times a number can be picked,..." alt="" coords="737,46,963,74"/>
-<area shape="rect" id="node13" href="$group__liteget.html#gae5d12aca851dd2358b63dc60b8ac6e5f" title="Get the current group membership of a genotype." alt="" coords="1341,151,1447,179"/>
-<area shape="rect" id="node14" href="$group__iterators.html#ga16615a5663b4d3bd768d8380f820aa66" title="Get an gsc_AlleleMatrix by index in the linked list." alt="" coords="1052,150,1220,178"/>
-<area shape="rect" id="node17" href="$group__collgetters.html#gafd291a4e0e38f9cf8963c3cd972fe8a7" title="Function to count the number of genotypes that currently belong to the specified group." alt="" coords="520,1154,657,1182"/>
-<area shape="rect" id="node19" href="$group__supporters.html#gafa617e95d5ed52b4e25434a20006809c" title="A function to tidy the internal storage of genotypes after addition or deletion of genotypes in the g..." alt="" coords="779,426,921,470"/>
-<area shape="rect" id="node20" href="$group__deletors.html#ga9c647cacb393998930c560962c1f7f6d" title="Delete the gsc_AlleleMatrix linked list from m onwards and frees its memory." alt="" coords="1054,254,1218,282"/>
-<area shape="rect" id="node26" href="$group__loaders.html#ga104fcea7a8f69cb80c136ab45c4eab76" title="Creator for an empty gsc_AlleleMatrix object of a given size." alt="" coords="488,202,689,230"/>
-<area shape="rect" id="node27" href="$group__liteget.html#ga0ce82f67cb5e35a1c73bef54138202f6" title="Get the persistent id of a genotype." alt="" coords="1094,735,1178,763"/>
-<area shape="rect" id="node28" href="$group__supporters.html#ga22609353c4951dcf3ed54537ecb6eeda" title="Function to identify the next sequential integer that does not identify a group that currently has me..." alt="" coords="505,562,673,590"/>
-<area shape="rect" id="node33" href="$sim-operations_8c.html#ab77b79416783c53492b3c2b0e3f5c7ea" title="Apply gsc_GenOptions naming scheme and gsc_PedigreeID allocation to a single gsc_AlleleMatrix." alt="" coords="512,254,666,298"/>
-<area shape="rect" id="node36" href="$sim-operations_8c.html#a240267fbee56d8075f7b8fe10c81aaa4" title="save&#45;as&#45;you&#45;go (breeding values)" alt="" coords="512,753,666,797"/>
-<area shape="rect" id="node42" href="$sim-operations_8c.html#abada6cc420c61761415131a3ebfb890e" title="Opens file for writing save&#45;as&#45;you&#45;go breeding values in accordance with gsc_GenOptions." alt="" coords="512,374,666,418"/>
-<area shape="rect" id="node44" href="$sim-operations_8c.html#a0fe1d1ace12db253637f9df278cf1639" title="save&#45;as&#45;you&#45;go (genotypes/alleles)" alt="" coords="512,821,666,865"/>
-<area shape="rect" id="node47" href="$sim-operations_8c.html#a311c08610c1a020fb05be94297d6f28f" title="Opens file for writing save&#45;as&#45;you&#45;go genotypes in accordance with gsc_GenOptions." alt="" coords="509,889,669,933"/>
-<area shape="rect" id="node48" href="$sim-operations_8c.html#aa66b6b0ec2f03012e39df20c6f35b532" title="save&#45;as&#45;you&#45;go (pedigrees)" alt="" coords="512,685,666,729"/>
-<area shape="rect" id="node50" href="$sim-operations_8c.html#a2013669171acf8fd19e0ca77c75a3753" title="Opens file for writing save&#45;as&#45;you&#45;go pedigrees in accordance with gsc_GenOptions." alt="" coords="511,494,667,538"/>
-<area shape="rect" id="node21" href="$group__liteget.html#ga22a270ae73aaa86d93212a4a40f999dc" title="Get the name of a genotype." alt="" coords="1083,683,1189,711"/>
-<area shape="rect" id="node22" href="$group__deletors.html#gae46ff71b819d28408e8b55dd4281a4f3" title="Move all details of the genotype at one gsc_GenoLocation to another gsc_GenoLocation." alt="" coords="1066,410,1206,438"/>
-<area shape="rect" id="node23" href="$sim-operations_8c.html#adf656d2e43014ca8dd4f5d39adeb68f6" title="Sets the current cursor position in a gsc_GappyIterator to the next empty position,..." alt="" coords="1055,306,1217,334"/>
-<area shape="rect" id="node25" href="$sim-operations_8c.html#af5486daced98d9bab2126b9d7af11356" title="Sets the current cursor position in a gsc_GappyIterator to the next filled position,..." alt="" coords="1044,358,1228,386"/>
-<area shape="rect" id="node24" href="$sim-operations_8c.html#a6d94248d1163c9c40e2910e578ce4708" title="Sets the current cursor position in a gsc_GappyIterator to the next valid position,..." alt="" coords="1309,333,1478,361"/>
-<area shape="rect" id="node29" href="$group__collgetters.html#gaf76f5cdc38c881c9ee8eee32a1770e83" title="Identify group numbers that currently have members." alt="" coords="767,511,933,539"/>
-<area shape="rect" id="node30" href="$group__collgetters.html#gaf344362b92201c509c3efd9fba21f6a9" title="Identify group numbers that currently have members, and how many members they have." alt="" coords="1057,462,1215,506"/>
-<area shape="rect" id="node31" href="$group__iterators.html#ga630ba7f8e864238e296cb9480dfbc728" title="Get the next location from a bidirectional iterator." alt="" coords="1329,786,1458,814"/>
-<area shape="rect" id="node32" href="$group__iterators.html#gaa4fa2aec3b7f49f9925fe82c8ff38dcd" title="Initialise a Bidirectional iterator to the start of its sequence." alt="" coords="1526,805,1670,849"/>
-<area shape="rect" id="node34" href="$sim-operations_8c.html#a368b4ddb966aef02950fe327d46f051b" title="Fills the designated section of the .names array in an gsc_AlleleMatrix with the pattern &quot;`prefix`ind..." alt="" coords="793,253,907,281"/>
-<area shape="rect" id="node35" href="$group__supporters.html#ga34ea6f4aea77b6bd95506ca071226544" title="Count and return the number of digits in i." alt="" coords="1060,202,1212,230"/>
-<area shape="rect" id="node37" href="$group__iterators.html#ga5cca400276ca83acceaab36d5f79aab1" title=" " alt="" coords="769,821,931,865"/>
-<area shape="rect" id="node38" href="$group__deletors.html#ga83d81991036aca26e2ec5b03f8b33b8a" title="Deletes a gsc_BidirectionalIterator object." alt="" coords="757,717,943,745"/>
-<area shape="rect" id="node39" href="$group__savers.html#ga710981b758de78c6dd9f4e5ab61971fc" title="Calculate and print breeding values to a file." alt="" coords="780,769,920,797"/>
-<area shape="rect" id="node40" href="$group__calculators.html#ga5eb332e54b2f90f399a28a65cdb25e36" title="Calculate the fitness metric/breeding value for a set of genotypes." alt="" coords="1053,839,1219,867"/>
-<area shape="rect" id="node41" href="$group__deletors.html#ga99bbd9355f031efae628b27e6ae72f6a" title="Deletes a gsc_DecimalMatrix and frees its memory." alt="" coords="1327,890,1461,918"/>
-<area shape="rect" id="node43" href="$group__supporters.html#gaaccd39d5505c6a05a95fb8469662c9a0" title="Function to identify the lookup index of a marker effect set identifier." alt="" coords="766,374,934,402"/>
-<area shape="rect" id="node45" href="$group__savers.html#gad5a9b943294b42f094bd347f990967cb" title="Prints simulated genotypes to a file." alt="" coords="760,897,940,925"/>
-<area shape="rect" id="node46" href="$sim-operations_8c.html#a223d292e567ad088b1582c24b9d894ab" title="Kernel for gsc_scaffold_save_genotype_info, when the goal is to save the (phased) allele pairs of eac..." alt="" coords="1011,994,1261,1022"/>
-<area shape="rect" id="node49" href="$group__savers.html#ga23f6de68db1db7fd293a1e3207eeef6c" title="Prints pedigrees to a file." alt="" coords="762,581,938,609"/>
+<area shape="rect" id="node1" title="Performs random crosses among members of a group." alt="" coords="5,242,190,270"/>
+<area shape="rect" id="node2" href="$group__iterators.html#gaa26377edd1339407af2070924d3596de" title="Create a Random Access Iterator." alt="" coords="238,55,440,83"/>
+<area shape="rect" id="node3" href="$sim-operations_8c.html#aaaf3ebc75feaf901829232712e55677b" title="Replace calls to malloc direct with this function." alt="" coords="1300,259,1421,287"/>
+<area shape="rect" id="node4" href="$group__deletors.html#ga3e88311f64b089f3d7a336f4efee3b05" title="Deletes a gsc_RandomAccessIterator object and frees its memory." alt="" coords="238,159,440,187"/>
+<area shape="rect" id="node5" href="$group__supporters.html#ga3a07c81d30aa7738de1672420031b3da" title="Function to identify the lookup index of a recombination map identifier." alt="" coords="262,211,416,239"/>
+<area shape="rect" id="node6" href="$sim-operations_8c.html#aa16bd09b22305a169b4ca8e54432f966" title="offspringGenerator function parameter for all crossing functions" alt="" coords="250,399,428,443"/>
+<area shape="rect" id="node11" href="$sim-operations_8c.html#a0fcef09a211d57fadb1dfa0b6d102901" title="parentChooser function parameter for gsc_make_random_crosses." alt="" coords="252,263,426,307"/>
+<area shape="rect" id="node15" href="$sim-operations_8c.html#ae9f10c91e8c7f77b536ef19e2222182c" title="Check input parameters of random crossing functions." alt="" coords="252,331,426,375"/>
+<area shape="rect" id="node17" href="$group__crossers.html#gaa5a1b4a1a80f8baf5b5730d7b7db0b77" title="Make new genotypes (generic function)" alt="" coords="258,875,420,919"/>
+<area shape="rect" id="node7" href="$group__meiosis.html#ga923d9402fffe6eacac7971b703343073" title="Fills a char* with the simulated result of meiosis (reduction and recombination) from the marker alle..." alt="" coords="526,345,675,373"/>
+<area shape="rect" id="node10" href="$group__liteget.html#ga5e1e89782604c9ab47f196e1da233362" title="Get the alleles of a genotype." alt="" coords="1305,786,1416,814"/>
+<area shape="rect" id="node8" href="$sim-operations_8c.html#a50de1f9769153df70263edc86de41fa5" title="Comparator function for qsort." alt="" coords="779,329,929,373"/>
+<area shape="rect" id="node9" href="$group__maths.html#ga897c7abb536f30f0cbc1baf2abcd2067" title="Generates randomly a number from the Poisson distribution with parameter lambda, using the Knuth appr..." alt="" coords="808,277,900,305"/>
+<area shape="rect" id="node12" href="$group__iterators.html#gaaccc34724148be204eb4d8515000dfd5" title="Get a location by index using a gsc_RandomAccessIterator." alt="" coords="539,241,663,269"/>
+<area shape="rect" id="node14" href="$group__supporters.html#gafd6535362ff9898f871cd4e1098d2ee6" title="Randomly pick a number in a range, optionally with a cap on how many times a number can be picked,..." alt="" coords="488,189,713,217"/>
+<area shape="rect" id="node13" href="$group__iterators.html#ga16615a5663b4d3bd768d8380f820aa66" title="Get an gsc_AlleleMatrix by index in the linked list." alt="" coords="770,501,938,529"/>
+<area shape="rect" id="node16" href="$group__collgetters.html#gafd291a4e0e38f9cf8963c3cd972fe8a7" title="Function to count the number of genotypes that currently belong to the specified group." alt="" coords="532,293,669,321"/>
+<area shape="rect" id="node18" href="$group__supporters.html#gafa617e95d5ed52b4e25434a20006809c" title="A function to tidy the internal storage of genotypes after addition or deletion of genotypes in the g..." alt="" coords="530,721,672,765"/>
+<area shape="rect" id="node19" href="$group__deletors.html#ga9c647cacb393998930c560962c1f7f6d" title="Delete the gsc_AlleleMatrix linked list from m onwards and frees its memory." alt="" coords="772,605,936,633"/>
+<area shape="rect" id="node25" href="$group__loaders.html#ga104fcea7a8f69cb80c136ab45c4eab76" title="Creator for an empty gsc_AlleleMatrix object of a given size." alt="" coords="1019,294,1221,322"/>
+<area shape="rect" id="node26" href="$group__liteget.html#ga0ce82f67cb5e35a1c73bef54138202f6" title="Get the persistent id of a genotype." alt="" coords="1318,1115,1402,1143"/>
+<area shape="rect" id="node27" href="$group__supporters.html#ga22609353c4951dcf3ed54537ecb6eeda" title="Function to identify the next sequential integer that does not identify a group that currently has me..." alt="" coords="517,1267,685,1295"/>
+<area shape="rect" id="node32" href="$sim-operations_8c.html#ab77b79416783c53492b3c2b0e3f5c7ea" title="Apply gsc_GenOptions naming scheme and gsc_PedigreeID allocation to a single gsc_AlleleMatrix." alt="" coords="524,466,678,510"/>
+<area shape="rect" id="node35" href="$sim-operations_8c.html#a240267fbee56d8075f7b8fe10c81aaa4" title="save&#45;as&#45;you&#45;go (breeding values)" alt="" coords="524,1199,678,1243"/>
+<area shape="rect" id="node41" href="$sim-operations_8c.html#abada6cc420c61761415131a3ebfb890e" title="Opens file for writing save&#45;as&#45;you&#45;go breeding values in accordance with gsc_GenOptions." alt="" coords="524,875,678,919"/>
+<area shape="rect" id="node43" href="$sim-operations_8c.html#a0fe1d1ace12db253637f9df278cf1639" title="save&#45;as&#45;you&#45;go (genotypes/alleles)" alt="" coords="524,1063,678,1107"/>
+<area shape="rect" id="node47" href="$sim-operations_8c.html#a311c08610c1a020fb05be94297d6f28f" title="Opens file for writing save&#45;as&#45;you&#45;go genotypes in accordance with gsc_GenOptions." alt="" coords="521,943,681,987"/>
+<area shape="rect" id="node48" href="$sim-operations_8c.html#aa66b6b0ec2f03012e39df20c6f35b532" title="save&#45;as&#45;you&#45;go (pedigrees)" alt="" coords="524,1131,678,1175"/>
+<area shape="rect" id="node50" href="$sim-operations_8c.html#a2013669171acf8fd19e0ca77c75a3753" title="Opens file for writing save&#45;as&#45;you&#45;go pedigrees in accordance with gsc_GenOptions." alt="" coords="523,807,679,851"/>
+<area shape="rect" id="node20" href="$group__liteget.html#ga22a270ae73aaa86d93212a4a40f999dc" title="Get the name of a genotype." alt="" coords="1307,1039,1413,1067"/>
+<area shape="rect" id="node21" href="$group__deletors.html#gae46ff71b819d28408e8b55dd4281a4f3" title="Move all details of the genotype at one gsc_GenoLocation to another gsc_GenoLocation." alt="" coords="784,709,924,737"/>
+<area shape="rect" id="node22" href="$sim-operations_8c.html#adf656d2e43014ca8dd4f5d39adeb68f6" title="Sets the current cursor position in a gsc_GappyIterator to the next empty position,..." alt="" coords="773,761,935,789"/>
+<area shape="rect" id="node24" href="$sim-operations_8c.html#af5486daced98d9bab2126b9d7af11356" title="Sets the current cursor position in a gsc_GappyIterator to the next filled position,..." alt="" coords="762,813,946,841"/>
+<area shape="rect" id="node23" href="$sim-operations_8c.html#a6d94248d1163c9c40e2910e578ce4708" title="Sets the current cursor position in a gsc_GappyIterator to the next valid position,..." alt="" coords="1035,787,1205,815"/>
+<area shape="rect" id="node28" href="$group__collgetters.html#gaf76f5cdc38c881c9ee8eee32a1770e83" title="Identify group numbers that currently have members." alt="" coords="771,1251,937,1279"/>
+<area shape="rect" id="node29" href="$group__collgetters.html#gaf344362b92201c509c3efd9fba21f6a9" title="Identify group numbers that currently have members, and how many members they have." alt="" coords="1041,1226,1199,1270"/>
+<area shape="rect" id="node30" href="$group__iterators.html#ga630ba7f8e864238e296cb9480dfbc728" title="Get the next location from a bidirectional iterator." alt="" coords="1296,1234,1425,1262"/>
+<area shape="rect" id="node31" href="$group__iterators.html#gaa4fa2aec3b7f49f9925fe82c8ff38dcd" title="Initialise a Bidirectional iterator to the start of its sequence." alt="" coords="1475,1226,1619,1270"/>
+<area shape="rect" id="node33" href="$sim-operations_8c.html#a368b4ddb966aef02950fe327d46f051b" title="Fills the designated section of the .names array in an gsc_AlleleMatrix with the pattern &quot;`prefix`ind..." alt="" coords="797,449,911,477"/>
+<area shape="rect" id="node34" href="$group__supporters.html#ga34ea6f4aea77b6bd95506ca071226544" title="Count and return the number of digits in i." alt="" coords="1044,449,1196,477"/>
+<area shape="rect" id="node36" href="$group__iterators.html#ga5cca400276ca83acceaab36d5f79aab1" title=" " alt="" coords="773,1131,935,1175"/>
+<area shape="rect" id="node37" href="$group__deletors.html#ga83d81991036aca26e2ec5b03f8b33b8a" title="Deletes a gsc_BidirectionalIterator object." alt="" coords="761,1199,947,1227"/>
+<area shape="rect" id="node38" href="$group__savers.html#ga710981b758de78c6dd9f4e5ab61971fc" title="Calculate and print breeding values to a file." alt="" coords="784,1303,924,1331"/>
+<area shape="rect" id="node39" href="$group__calculators.html#ga5eb332e54b2f90f399a28a65cdb25e36" title="Calculate the fitness metric/breeding value for a set of genotypes." alt="" coords="1037,1346,1203,1374"/>
+<area shape="rect" id="node40" href="$group__deletors.html#ga99bbd9355f031efae628b27e6ae72f6a" title="Deletes a gsc_DecimalMatrix and frees its memory." alt="" coords="1293,1371,1427,1399"/>
+<area shape="rect" id="node42" href="$group__supporters.html#gaaccd39d5505c6a05a95fb8469662c9a0" title="Function to identify the lookup index of a marker effect set identifier." alt="" coords="770,917,938,945"/>
+<area shape="rect" id="node44" href="$group__savers.html#gad5a9b943294b42f094bd347f990967cb" title="Prints simulated genotypes to a file." alt="" coords="764,969,944,997"/>
+<area shape="rect" id="node45" href="$sim-operations_8c.html#a223d292e567ad088b1582c24b9d894ab" title="Kernel for gsc_scaffold_save_genotype_info, when the goal is to save the (phased) allele pairs of eac..." alt="" coords="995,917,1245,945"/>
+<area shape="rect" id="node46" href="$sim-operations_8c.html#a3bbb853ca13c593a940d86882dda2361" title="Prints a matrix of genotype information to a file." alt="" coords="1013,969,1227,997"/>
+<area shape="rect" id="node49" href="$group__savers.html#ga23f6de68db1db7fd293a1e3207eeef6c" title="Prints pedigrees to a file." alt="" coords="1032,1174,1208,1202"/>
 </map>
