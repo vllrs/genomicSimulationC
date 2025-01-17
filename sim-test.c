@@ -2550,6 +2550,8 @@ int test_crossing(SimData *d, GroupNum g0) {
     GroupNum gall = test_crossing_unidirectional(d, g0);
 
     test_crossing_randomly(d, g0);
+	
+	test_targeted_crossing(d, g0);
 
 	FILE* fp;
 	if ((fp = fopen("a-test-plan.txt", "w")) == NULL) {
@@ -2721,6 +2723,95 @@ GroupNum test_crossing_selfing(SimData *d, GroupNum g1) {
 
 	return g1selfed;
 }
+
+int test_targeted_crossing(SimData* d, GroupNum g1) {
+	// Test setup is nice and simple.
+	GSC_GLOBALX_T ixs[6];
+	assert(get_group_indexes(d,g1,0,ixs) == 6);
+	assert(ixs[0] == 0 && ixs[1] == 1 && ixs[2] == 2 && ixs[3] == 3 && ixs[4] == 4 && ixs[5] == 5);
+	PedigreeID ids[6];
+	assert(get_group_ids(d,g1,0,ids) == 6);
+	
+	// Make (good) targeted crosses
+	GenOptions gopt = BASIC_OPT;
+    gopt.will_track_pedigree = GSC_TRUE;
+	GSC_GLOBALX_T combos[2][3];
+    combos[0][0] = 0; combos[1][0] = 0;
+    combos[0][1] = 1; combos[1][1] = 2;
+    combos[0][2] = 1; combos[1][2] = 5;
+    GroupNum f1 = make_targeted_crosses(d, 3, combos[0], combos[1], NO_MAP, NO_MAP, gopt);
+	
+	// Check the outcomes
+	int numoffspring = 0;
+    BidirectionalIterator it = create_bidirectional_iter(d, f1);
+	GenoLocation loc = set_bidirectional_iter_to_start(&it);
+	while (IS_VALID_LOCATION(loc)) {
+		++numoffspring;
+		
+		assert(numoffspring <= 3);
+		assert(get_first_parent(loc).id == ids[combos[0][numoffspring-1]].id);
+		assert(get_second_parent(loc).id == ids[combos[1][numoffspring-1]].id);
+		switch (numoffspring) {
+			case 1:
+				assert(strncmp(get_alleles(loc),"TTAATT",sizeof(char)*6)==0);
+				break;
+			case 2:
+				assert(strncmp(get_alleles(loc),"TTAATT",sizeof(char)*6)==0 || strncmp(get_alleles(loc),"TTAATA",sizeof(char)*6)==0);
+				break;
+			case 3:
+				assert(strncmp(get_alleles(loc),"TTAATT",sizeof(char)*6)==0 || strncmp(get_alleles(loc),"TAAATT",sizeof(char)*6)==0);
+				break;
+		}
+		
+		loc = next_forwards(&it);
+	}
+	assert(numoffspring == 3);
+	
+	delete_group(d, f1);
+	delete_bidirectional_iter(&it);
+	
+	// What if the combos are not good:
+	gopt.family_size = 3;
+	combos[0][1] = NA_GLOBALX - 100;
+	f1 = make_targeted_crosses(d, 3, combos[0], combos[1], NO_MAP, NO_MAP, gopt);
+
+	// Check the surviving outcomes
+	numoffspring = 0;
+	int numpairings = 0;
+    BidirectionalIterator it2 = create_bidirectional_iter(d, f1);
+	loc = set_bidirectional_iter_to_start(&it2);
+	while (IS_VALID_LOCATION(loc)) {
+		if (numoffspring % gopt.family_size == 0) {
+			++numpairings;
+		}
+		++numoffspring;
+		
+		assert(numpairings <= 2);
+		switch (numpairings) {
+			case 1:
+				assert(get_first_parent(loc).id == ids[combos[0][numpairings-1]].id);
+				assert(get_second_parent(loc).id == ids[combos[1][numpairings-1]].id);
+				assert(strncmp(get_alleles(loc),"TTAATT",sizeof(char)*6)==0);
+				break;
+			case 2: // matches case 3 of previous checking, since pairing 2 was invalid.
+				assert(get_first_parent(loc).id == ids[combos[0][2]].id);
+				assert(get_second_parent(loc).id == ids[combos[1][2]].id);
+				assert(strncmp(get_alleles(loc),"TTAATT",sizeof(char)*6)==0 || strncmp(get_alleles(loc),"TAAATT",sizeof(char)*6)==0);
+				break;
+		}
+		
+		loc = next_forwards(&it2);
+	}
+	assert(numpairings == 2);
+	assert(numoffspring == 2*gopt.family_size);
+	
+	delete_group(d,f1);
+	delete_bidirectional_iter(&it2);
+	
+	printf("...made specific targeted crosses\n");
+	return 0;
+}
+
 
 int test_crossing_randomly(SimData *d, GroupNum g1) {
     // we test it correctly does its crossing randomly (requiring a bit of human input)

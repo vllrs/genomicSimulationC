@@ -1,7 +1,7 @@
 #ifndef SIM_OPERATIONS
 #define SIM_OPERATIONS
 #include "sim-operations.h"
-/* genomicSimulationC v0.2.5.12 - last edit 16 Jan 2025 */
+/* genomicSimulationC v0.2.5.13 - last edit 17 Jan 2025 */
 
 /** Default parameter values for GenOptions, to help with quick scripts and prototypes.
  *
@@ -1995,55 +1995,29 @@ gsc_GenoLocation gsc_next_backwards(gsc_BidirectionalIterator* it) {
  * GSC_INVALID_GENO_LOCATION if the index is invalid.
  */
 gsc_GenoLocation gsc_next_get_nth(gsc_RandomAccessIterator* it, const GSC_GLOBALX_T n) {
-    // Step 0: First check n is in our group index range as far as we know it
-    // (If it->groupSize is 0 then the group is empty)
-    if (it->groupSize == 0 || 
-            (it->groupSize != GSC_NA_GLOBALX && it->groupSize <= n)) {
-        return GSC_INVALID_GENO_LOCATION;
-    }
-
-    // Step 1: Check if we have it in the cache.
-    if (n < it->cacheSize) {
-        // 'n' is less than or equal to our current furthest cached group member.
-
-        if (GSC_IS_VALID_LOCATION(it->cache[n])) {
-            return it->cache[n];
-        }
-
-        // Otherwise we do not have it cached, but we will enter it into the cache in the next section
-
-    } else {
-        // We need to expand the cache to fit it.
-        GSC_GLOBALX_T newCacheSize = it->cacheSize;
-        if (it->cacheSize == 0) {
-            newCacheSize = 50;
-        }
-        while (newCacheSize < n+1) {
-            newCacheSize = newCacheSize << 1;
-        }
-        gsc_GenoLocation* newCache = gsc_malloc_wrap(sizeof(gsc_GenoLocation)*newCacheSize,GSC_TRUE);
-        GSC_GLOBALX_T i = 0;
-        for (; i < it->cacheSize; ++i) {
-            newCache[i] = it->cache[i];
-        }
-        for (; i < newCacheSize; ++i) {
-            newCache[i] = GSC_INVALID_GENO_LOCATION;
-        }
-        GSC_FREE(it->cache);
-        it->cacheSize = newCacheSize;
-        it->cache = newCache;
-    }
-
     // Validity checks for a random access iterator: largestCached must exist,
     // is indeed cached and belongs to the same group
-    if (it->largestCached == GSC_NA_GLOBALX || 
+    /*if (it->largestCached == GSC_NA_GLOBALX || 
             (!GSC_IS_VALID_LOCATION(it->cache[it->largestCached]) &&
             (it->group.num == GSC_NO_GROUP.num || 
              it->group.num != gsc_get_group(it->cache[it->largestCached]).num))) {
         return GSC_INVALID_GENO_LOCATION;
+    }*/
+	
+	// Step 0: Fail immediately if we know there aren't this many candidates in the group.
+    if (it->groupSize != GSC_NA_GLOBALX && it->groupSize <= n) {
+        return GSC_INVALID_GENO_LOCATION;
     }
+	
+    // Step 1: Check if we have it in the cache.
+    if (n < it->cacheSize) {
+        // 'n' is less than or equal to our current furthest cached group member.
 
-    // Step 2: Actually finding the nth group member.
+        if (GSC_IS_VALID_LOCATION(it->cache[n])) { return it->cache[n]; }
+        // Otherwise we do not have it cached, but we will enter it into the cache in the next section
+	}
+
+	// Step 2: The effort of actually finding the nth group member.
     if (it->group.num == GSC_NO_GROUP.num) {
         // Assuming all non-end gsc_AlleleMatrix are filled to CONTIG_WIDTH
         gsc_GenoLocation expectedLocation = {
@@ -2061,97 +2035,67 @@ gsc_GenoLocation gsc_next_get_nth(gsc_RandomAccessIterator* it, const GSC_GLOBAL
 
         gsc_AlleleMatrix* currentAM;
         GSC_GLOBALX_T groupN;
-        GSC_LOCALX_T localPos;
-        if (it->largestCached < n) {
-            // Search forwards from largestCached
-            currentAM = it->cache[it->largestCached].localAM;
-            groupN = it->largestCached;
-            localPos = it->cache[it->largestCached].localPos + 1;
-            while (1) {
-                for (; localPos < currentAM->n_genotypes; ++localPos) {
-                    // If we found a group member, cache it and count upwards towards n
-                    if (currentAM->groups[localPos].num == it->group.num) {
-                        it->largestCached = ++groupN;
-                        it->cache[groupN] = (gsc_GenoLocation) {
-                            .localAM = currentAM,
-                            .localPos = localPos
-                        };
-                        if (groupN == n) {
-                            return it->cache[n];
-                        }
-                    }
-                }
+		GSC_LOCALX_T localPos;
 
-                if (currentAM->next == NULL || currentAM->next->n_genotypes == 0) {
-                    // We are at the end of the iterator and have not found n
-                    it->groupSize = groupN + 1;
-                    return GSC_INVALID_GENO_LOCATION;
-                } else {
-                    currentAM = currentAM->next;
-                    localPos = 0;
-                }
+		if (!GSC_IS_VALID_LOCATION(it->cache[it->largestCached])) {
+			// Cache is invalid. You should throw out the iterator and replace with a new one.
+			return GSC_INVALID_GENO_LOCATION;
+		}
+		
+		// Search forwards from largestCached
+		currentAM = it->cache[it->largestCached].localAM;
+		groupN = it->largestCached;
+		localPos = it->cache[it->largestCached].localPos + 1;
+		
+		while (1) {
+			for (; localPos < currentAM->n_genotypes; ++localPos) {
+				// If we found a group member, cache it and count upwards towards n
+				if (currentAM->groups[localPos].num == it->group.num) {
+					it->largestCached = ++groupN;
+					
+					// Do we need to expand the cache to hold this?
+					if (it->largestCached >= it->cacheSize) {
+						GSC_GLOBALX_T newCacheSize = it->cacheSize;
+						if (it->cacheSize == 0) { 
+							newCacheSize = 25; 
+						} else {
+							newCacheSize = newCacheSize << 1;
+						}
+						gsc_GenoLocation* newCache = gsc_malloc_wrap(sizeof(gsc_GenoLocation)*newCacheSize,GSC_TRUE);
+						// initialise
+						memcpy(newCache, it->cache, sizeof(*newCache)*it->cacheSize);
+						for (GSC_GLOBALX_T i = it->cacheSize; i < newCacheSize; ++i) {
+							newCache[i] = GSC_INVALID_GENO_LOCATION;
+						}
+						// clean
+						GSC_FREE(it->cache);
+						it->cache = newCache;
+						it->cacheSize = newCacheSize;
+					}
+					
+					// Store this additional group member.
+					it->cache[groupN] = (gsc_GenoLocation) {
+						.localAM = currentAM,
+						.localPos = localPos
+					};
+					if (groupN == n) {
+						return it->cache[n];
+					}
+				}
+			}
 
-           }
+			if (currentAM->next == NULL || currentAM->next->n_genotypes == 0) {
+				// We are at the end of the iterator and have not found n
+				it->groupSize = groupN + 1;
+				return GSC_INVALID_GENO_LOCATION;
+			} else {
+				currentAM = currentAM->next;
+				localPos = 0;
+			}
 
-        } else {
-            // With current method of filling cache, this branch will never be taken
+		}
+	}
 
-            // Search backwards from largestCached for one gsc_AlleleMatrix, to take advantage of that pointer
-            if (it->cache[it->largestCached].localAM != it->d->m) {
-                currentAM = it->cache[it->largestCached].localAM;
-                groupN = it->largestCached;
-                localPos = it->cache[it->largestCached].localPos;
-                for (; localPos >= 0; --localPos) {
-                    // If we found a group member, cache it and count down towards n
-                    if (currentAM->groups[localPos].num == it->group.num) {
-                        --groupN;
-                        it->cache[groupN] = (gsc_GenoLocation) {
-                            .localAM = currentAM,
-                            .localPos = localPos
-                        };
-                        if (groupN == n) {
-                            return it->cache[n];
-                        }
-                    }
-                }
-            }
-
-            // Then search forwards from start
-            currentAM = it->d->m;
-            localPos = 0;
-            groupN = -1; // overwrite everything
-            while (currentAM != it->cache[it->largestCached].localAM) {
-                for (; localPos < currentAM->n_genotypes; ++localPos) {
-                    // If we found a group member, cache it and count upwards towards n
-                    if (currentAM->groups[localPos].num == it->group.num) {
-                        ++groupN;
-                        it->cache[groupN] = (gsc_GenoLocation) {
-                            .localAM = currentAM,
-                            .localPos = localPos
-                        };
-                        if (groupN == n) {
-                            return it->cache[n];
-                        }
-                    }
-                }
-
-                if (currentAM->next == NULL || currentAM->next->n_genotypes == 0) {
-                    // We are at the end of the iterator and have not found n. Also we didn't reach
-                    // 'largestCached' yet. Something is wrong with the iterator
-                    it->groupSize = groupN + 1;
-                    return GSC_INVALID_GENO_LOCATION;
-                } else {
-                    currentAM = currentAM->next;
-                    localPos = 0;
-                }
-            }
-
-            // We were somehow unable to find the nth group member. Something is probably wrong
-            // with the iterator
-            return GSC_INVALID_GENO_LOCATION;
-
-        }
-    }
 }
 
 /** Returns the name of the genotype with a given id.
@@ -7871,6 +7815,7 @@ union gsc_datastore_make_genotypes {
 		GSC_ID_T map2_index;
 		GSC_GLOBALX_T* first_parents;
 		GSC_GLOBALX_T* second_parents;
+		GSC_GLOBALX_T bad_pairings;
 	} targeted;
 	struct {
 		GSC_ID_T map_index;
@@ -8418,23 +8363,26 @@ static int gsc_helper_parentchooser_cross_targeted(void* parentIterator,
                                                    GSC_GLOBALX_T* counter,
                                                    gsc_ParentChoice parents[static 2]) {
 	gsc_RandomAccessIterator* it = (gsc_RandomAccessIterator*) parentIterator;
-    if (*counter >= datastore->targeted.n_crosses) {
-        return GSC_FALSE;
-    }
 	
-	if (datastore->targeted.first_parents[*counter] == GSC_NA_GLOBALX || 
-        datastore->targeted.second_parents[*counter] == GSC_NA_GLOBALX) {
-		// because gsc_next_get_nth expects a size_t but our crossing plan is passed as integers.
-		fprintf(stderr, "Parent chooser found invalid indexes in crossing plan");
-		return GSC_FALSE;
+	while (*counter < datastore->targeted.n_crosses) {
+		if  (datastore->targeted.first_parents[*counter] != GSC_NA_GLOBALX && 
+			 datastore->targeted.second_parents[*counter] != GSC_NA_GLOBALX) {
+			// We only try to "get nth" if it seems like a potentially reasonable value
+			parents[0].loc = gsc_next_get_nth(it, datastore->targeted.first_parents[*counter]);
+			parents[1].loc = gsc_next_get_nth(it, datastore->targeted.second_parents[*counter]);
+			parents[0].mapindex = datastore->targeted.map1_index;
+			parents[1].mapindex = datastore->targeted.map2_index;
+			
+			if (GSC_IS_VALID_LOCATION(parents[0].loc) && GSC_IS_VALID_LOCATION(parents[1].loc)) {
+				return GSC_TRUE;
+			}
+		}
+		
+		// If this was not a valid pair of parents, skip them and move on to the next pair.
+		++ datastore->targeted.bad_pairings;
+		++ (*counter);
 	}
-    parents[0].loc = gsc_next_get_nth(it, datastore->targeted.first_parents[*counter]);
-    parents[1].loc = gsc_next_get_nth(it, datastore->targeted.second_parents[*counter]);
-    parents[0].mapindex = datastore->targeted.map1_index;
-    parents[1].mapindex = datastore->targeted.map2_index;
-
-	// This will cut short gsc_scaffold_make_new_genotypes execution if either parent is invalid.
-    return GSC_IS_VALID_LOCATION(parents[0].loc) && GSC_IS_VALID_LOCATION(parents[1].loc);
+	return GSC_FALSE; 
 }
 
 /** Performs the crosses of pairs of parents whose indexes are provided in an
@@ -8487,6 +8435,7 @@ gsc_GroupNum gsc_make_targeted_crosses(gsc_SimData* d,
     
     union gsc_datastore_make_genotypes paramstore;
     paramstore.targeted.n_crosses = n_combinations;
+	paramstore.targeted.bad_pairings = 0;
     paramstore.targeted.map1_index = 0;
     paramstore.targeted.map2_index = 0;
     // casting away const but is being used as readonly
@@ -8516,6 +8465,12 @@ gsc_GroupNum gsc_make_targeted_crosses(gsc_SimData* d,
                                                              gsc_helper_make_offspring_cross );
 
 	gsc_delete_randomaccess_iter(&parentit);
+	if (paramstore.targeted.bad_pairings > 0) {
+		fprintf(stderr,"Targeted crossing failed for %lu out of the %lu requested pairings due to one or both genotype indexes being invalid\n", (long unsigned int) paramstore.targeted.bad_pairings, (long unsigned int) n_combinations);
+	}
+	if (n_combinations - paramstore.targeted.bad_pairings == 0) {
+		return GSC_NO_GROUP;
+	} 
 	return offspring;
 }
 

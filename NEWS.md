@@ -15,6 +15,7 @@ Latest News       {#news}
 - Fixed segmentation fault when calling `make_clones` with `inherit_names = GSC_TRUE` on genotypes with no names.
 - Fixed memory access error in `make_random_crosses_between` when the function was called with breeding caps on both groups.
 - `get_index_of_name` no longer tries to compare its target name to the names of nameless genotypes. Also, it now prints a warning and returns an invalid value when it cannot find the target name, instead of calling exit().
+- Group RandomAccessIterators no longer request memory for their cache structures before checking if there are actually that many members in the group. This fixes a bug where passing a large invalid `n` to `next_get_nth` would cause the iterator to hang, trying to request incredibly large blocks of memory.
 
 ## Improvements 
 
@@ -40,6 +41,7 @@ Latest News       {#news}
 - BREAKING CHANGE: Removed function `make_n_crosses_from_top_m_percent` for disobeying standard genomicSimulation rules of division of functionality. A section has been added to the Templates section of the documentation with a drop-in replacement of this function.
 - Polish and improve the Templates page of the documentation.
 - Helper function `shuffle_up_to` is now size-agnostic and can shuffle arrays of any type, instead of only integer arrays.
+- `make_targeted_crosses` will now skip invalid pairings, where one or more parents does not exist, instead of halting execution at the first invalid pairing. If any pairings were skipped, it will print a debug message listing the number of invalid pairings detected.
 
 
 # genomicSimulation v0.2.5

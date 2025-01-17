@@ -650,6 +650,7 @@ GroupNum test_crossing_unidirectional(SimData *d, GroupNum g0);
 GroupNum test_crossing_from_file(SimData *d, char* fname);
 GroupNum test_crossing_selfing(SimData *d, GroupNum g1);
 int test_crossing_randomly(SimData *d, GroupNum g1);
+int test_targeted_crossing(SimData* d, GroupNum g1);
 
 int test_deletors(SimData *d, GroupNum g0);
 
