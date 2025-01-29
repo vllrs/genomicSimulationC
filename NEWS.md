@@ -1,6 +1,12 @@
 Latest News       {#news}
 ===========
 
+# genomicSimulation (development version)
+
+## Improvements
+
+- Generalisation of header-parsing logic of `load_mapfile` and `load_effectfile`, to prepare for accepting further columns in future.
+
 # genomicSimulation v0.2.6
 
 ## New Features

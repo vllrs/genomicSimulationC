@@ -675,6 +675,22 @@ int test_maploaders2(void) {
     assert(load_mapfile(d,filename).id == NO_MAP.id);
     assert(d->genome.n_markers == 5);
 	remove(filename);
+	
+	// Too many columns on first row
+	++it; filename[it / 26] = (it % 26) + 'A';
+    f1 = TEST1_MAPLOADERS[it];
+    write_to_file(filename, f1);
+    assert(load_mapfile(d,filename).id == NO_MAP.id);
+    assert(d->genome.n_markers == 5);
+	remove(filename);
+	
+	// Too few columns on first row
+	++it; filename[it / 26] = (it % 26) + 'A';
+    f1 = TEST1_MAPLOADERS[it];
+    write_to_file(filename, f1);
+    assert(load_mapfile(d,filename).id == NO_MAP.id);
+    assert(d->genome.n_markers == 5);
+	remove(filename);
 
     delete_simdata(d);
 	

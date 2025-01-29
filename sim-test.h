@@ -303,6 +303,14 @@ const char* const TEST1_MAPLOADERS[] = {
 	// Single line and no valid markers
 	"pos marker chr\n"
     "110 fake5 3\n"
+	,
+	// Too many columns on first row
+	"pos marker chr pos\n"
+    "110 fake5 3 109.9\n"
+	,
+	// Too few columns on first row
+	"chr pos\n"
+	"3N 110"
 };
 
 const char* const TEST1_GENOMATRIX_LOADERS[] = {

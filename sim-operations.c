@@ -1,7 +1,7 @@
 #ifndef SIM_OPERATIONS
 #define SIM_OPERATIONS
 #include "sim-operations.h"
-/* genomicSimulationC v0.2.6 - last edit 17 Jan 2025 */
+/* genomicSimulationC v0.2.6.01 - last edit 29 Jan 2025 */
 
 /** Default parameter values for GenOptions, to help with quick scripts and prototypes.
  *
@@ -5254,91 +5254,98 @@ static gsc_TableFileCell gsc_helper_tablefilereader_get_next_cell_wqueue(gsc_Tab
 
 /** Header row reading and processing for map and effect set files.
  *
- * Task 1: identifies if there is a header (in which case the returned queue
- * will not contain the header cells) or there is no header (in which case
- * the returned queue will contain the first row of cells).
+ * Its tasks are: to read the first ( @a ncell + 1) cells from the file, if they
+ * have not already been read, and save them in @a unprocessedqueue, and subsequently
+ * to check that the header row indeed has @a ncell cells, that those @a ncell cells 
+ * contain the values from @a canonical_titles in some permutation, and to save the 
+ * permutation in which those titles appear into @a col_order.
  *
- * The first three cells are identified as a header row if there is a newline
- * after the third cell (and none between the first three cells), and the
- * entries in those three header cells correspond to the strings in the
- * @a canonical_titles parameter, in any order. If the first row does match the
- * requirements of a header row, the ordering of those @a canonical_titles
- * in the header row will be saved to @a col_order.
- *
- * The function returns the number of cells read but not processed. These cells read
- * but not processed (i.e. not any identified header cells) will be saved to
- * @a unprocessedqueue. At maximum 4 cells will be read, so @a unprocessedqueue
- * must be a pointer with a location for space for at least 4 TableFileCells.
- *
- * @param canonical_titles vector of three column titles, which the three potential
- * header cells will be matched against
+ * @param tf file from which to read cells, if they are not already present in @a unprocessedqueue
+ * @param ncell expected number of cells in the header file. Also expected to be the length of
+ * the @a canonical_titles and @a col_order vectors. It is expected that the memory pointed to by
+ * @a unprocessedqueue has space to store at least (@a ncell + 1) cells.
+ * @param canonical_titles vector of the column titles which the potential header cell 
+ * values will be matched against.
  * @param col_order if the first row is determined to be a header row, entry i in this
- * vector will be filled with the column number (1, 2, or 3) that corresponds to the
- * i-th title in @a canonical_titles
- * @param unprocessedqueue vector of length at least 4 which will be overwritten with the
- * cells that were read but determined to not be part of the header.
- * @param queuesize space to save number of entries in the queue @a unprocessedqueue after
- * execution of this function
+ * vector will be filled with the index (zero-based) in the header row that corresponds to
+ * the i-th title in @a canonical_titles
+ * @param unprocessedqueue vector of capacity to store at least ( @a ncell + 1) cells, with
+ * the first value in the queue being the first cell from the file. After this function has run,
+ * it will be filled with the first ( @a ncell + 1) cells read from the file, or less if EOF 
+ * is reached sooner. @a queuesize will be updated to match.
+ * @param queuesize number of values stored in @a unprocessedqueue. This will be updated if the
+ * function needs to read more cells from the file to make up the ( @a ncell + 1) cells it needs
+ * to evaluate header existence and ordering. 
  * @returns GSC_TRUE (1) if the cell has a valid header, GSC_FALSE (0) if the cell has no header
- * and GSC_NA (-1) if the cell does not have 3 columns or there is some other formatting error.
+ * and GSC_NA (-1) if the first row does not have @a ncell columns or there is 
+ * some other formatting error.
  */
-static GSC_LOGICVAL gsc_helper_parse_3cell_header(gsc_TableFileReader* tf, 
+static GSC_LOGICVAL gsc_helper_parse_ncell_header(gsc_TableFileReader* tf, 
+												  int ncell,
                                                   const char** canonical_titles, 
                                                   int* col_order,
                                                   gsc_TableFileCell* unprocessedqueue, 
                                                   size_t* queuesize) {
-    const int ncells = 3;
-
-    // assume unprocessedqueue has at least 4 spaces, titles has 3 entries and so does col_order
-    size_t newest = 0;
-    size_t onelinefile = GSC_FALSE;
-    for (; newest < ncells; ++newest) {
-        unprocessedqueue[newest] = gsc_tablefilereader_get_next_cell(tf);
-        if ((unprocessedqueue[newest]).eof) {
-            if (newest + 1 < ncells) {
-                if (!((unprocessedqueue[newest]).isCellShallow)) { GSC_FREE((unprocessedqueue[newest]).cell); }
-                *queuesize = newest; // newest does not exist in return group
-                return GSC_NA;
-            } else { // column 3 has eof at the end of it. That's okay.
-                onelinefile = GSC_TRUE;
-                *queuesize = newest + 1;
-            }
-        } else if ((unprocessedqueue[newest]).predNewline) {
-            *queuesize = newest+1; // newest index included in return group
-            return GSC_NA;
-        }
-        gsc_tablefilecell_deep_copy(unprocessedqueue + newest);
-    }
-     if (!onelinefile) {
-        unprocessedqueue[newest] = gsc_tablefilereader_get_next_cell(tf); // four cell
-        *queuesize = newest + 1;
-     }
-
-    // Check which ordering of the three titles it is.
-    for (int i1 = 0; i1 < ncells; ++i1) {
-        if (strcmp((unprocessedqueue[i1]).cell,canonical_titles[0]) == 0) {
-            for (int inc = 1; inc < ncells; ++inc) {
-                int i2 = (i1 + inc) % ncells;
-                int i3 = (i1 + (ncells - inc)) % ncells;
-                if (strcmp((unprocessedqueue[i2]).cell,canonical_titles[1]) == 0 &&
-                        strcmp((unprocessedqueue[i3]).cell,canonical_titles[2]) == 0) {
-                    col_order[0] = i1 + 1;
-                    col_order[1] = i2 + 1;
-                    col_order[2] = i3 + 1;
-                    GSC_FREE((unprocessedqueue[0]).cell);
-                    GSC_FREE((unprocessedqueue[1]).cell);
-                    GSC_FREE((unprocessedqueue[2]).cell);
-                    unprocessedqueue[0] = unprocessedqueue[3];
-                    *queuesize = 1;
-                    return GSC_TRUE;
-                }
-            }
-        }
-    }
-
-    return GSC_FALSE;
+	
+	_Bool onelinefile = 0;
+	for (int i = 0; i < ncell; ++i) {
+		// Read the next cell if it hasn't been read yet
+		if (*queuesize <= i) {
+			unprocessedqueue[i] = gsc_tablefilereader_get_next_cell(tf);
+			(*queuesize)++;
+		}
+		
+		// Check header length validity
+		if ((unprocessedqueue[i]).eof) {
+			if (i + 1 < ncell) { // the header row is too short (by EOF)
+				return GSC_NA;
+			} else { // there is an EOF after the nth column. That's okay.
+				onelinefile = 1;
+			}
+		} else if ((unprocessedqueue[i]).predNewline) { // the header row is too short (by newline)
+			return GSC_NA;
+		}
+	}
+	
+	// Check the header row ends there
+	if (!onelinefile) {
+		if (*queuesize <= ncell) {
+			unprocessedqueue[ncell] = gsc_tablefilereader_get_next_cell(tf);
+			(*queuesize)++;
+		}
+		if ((unprocessedqueue[ncell]).predNewline == 0) {
+			return GSC_NA;
+		}
+	}
+	
+	// Check ordering of titles.
+	// Step 1: Initialise
+	for (int i = 0; i < ncell; ++i) {
+		col_order[i] = i;
+	}
+	
+	// Step 2: Check and save actual ordering of titles
+	for (int title_ix = 0; title_ix < ncell; ++title_ix) {
+		_Bool found_match = 0;
+		size_t title_len = strlen(canonical_titles[title_ix]);
+		for (int header_ix = title_ix; header_ix < ncell; ++ header_ix) {
+			int header_queueix = col_order[header_ix];
+			if (unprocessedqueue[header_queueix].cell_len == title_len &&
+				strncmp(unprocessedqueue[header_queueix].cell,canonical_titles[title_ix],title_len) == 0) {
+				// find the position of the column that does have this title in col_order
+				// and swap it into the appropriate location
+				if (header_ix != title_ix) {
+					col_order[header_ix] = col_order[title_ix];
+					col_order[title_ix] = header_queueix;
+				}
+				found_match = 1;
+				break;
+			}
+		}
+		if (!found_match) { return GSC_FALSE; } // assume no header row exists
+	}
+	return GSC_TRUE;
 }
-
 /** Extract the contents of a genetic map file.
  *
  * By default, the file's columns are assumed to be in the order:
@@ -5382,21 +5389,33 @@ static size_t gsc_helper_parse_mapfile(const char* filename, struct gsc_MapfileU
 
     gsc_TableFileCell cellsread[4] = { 0 };
     gsc_TableFileCell* cellqueue = cellsread;
-    size_t queue_size;
-    const char* titles[] = { "marker", "chr", "pos"};
-    int colnums[] = { 1, 2, 3 };
-    GSC_LOGICVAL header = gsc_helper_parse_3cell_header(&tf, titles, colnums, cellqueue, &queue_size);
+    size_t queue_size = 0;
+    const char* titles[3] = { "marker", "chr", "pos"};
+    int colnums[3];
+	int marker_colnum, chr_colnum, pos_colnum;
+    GSC_LOGICVAL header = gsc_helper_parse_ncell_header(&tf, 3, titles, colnums, cellqueue, &queue_size);
     if (header == GSC_TRUE) {
         printf("(Loading %s) Format: map file with header\n", filename);
+		marker_colnum = colnums[0] + 1, chr_colnum = colnums[1] + 1, pos_colnum = colnums[2] + 1;
     } else if (header == GSC_FALSE) {
         printf("(Loading %s) Format: map file without header\n", filename);
+		marker_colnum = 1, chr_colnum = 2, pos_colnum = 3;
     } else {
         printf("(Loading %s) Failure: Cannot identify the expected 3 columns of the map file\n", filename);
-        gsc_tablefilereader_close(&tf);
+        for (int i = 0; i < queue_size; ++i) {
+			if (!cellqueue[i].isCellShallow) { GSC_FREE(cellqueue[i].cell); }
+		}
+		gsc_tablefilereader_close(&tf);
         return 0;
     }
-    int marker_colnum = colnums[0], chr_colnum = colnums[1], pos_colnum = colnums[2];
 
+	if (header) {
+		cellqueue += 3;
+		queue_size -= 3;
+		if (!cellsread[0].isCellShallow) { GSC_FREE(cellsread[0].cell); }
+		if (!cellsread[1].isCellShallow) { GSC_FREE(cellsread[1].cell); }
+		if (!cellsread[2].isCellShallow) { GSC_FREE(cellsread[2].cell); }
+	}
     _Bool goodrow = (header) ? 0 : 1; // discard first row if it's a header, keep if it's not.
     size_t goodrow_counter = 0;
 
@@ -6003,22 +6022,30 @@ gsc_EffectID gsc_load_effectfile(gsc_SimData* d, const char* filename) {
 
     gsc_TableFileCell cellsread[4] = { 0 };
     gsc_TableFileCell* cellqueue = cellsread;
-    const char* titles[] = { "marker", "allele", "eff"};
-    int colnums[] = { 1, 2, 3 };
-    size_t queuesize;
-    GSC_LOGICVAL header = gsc_helper_parse_3cell_header(&tf, titles, colnums, cellqueue, &queuesize);
+    const char* titles[3] = { "marker", "allele", "eff"};
+    int colnums[3];
+	int marker_colnum, allele_colnum, eff_colnum;
+    size_t queuesize = 0;
+    GSC_LOGICVAL header = gsc_helper_parse_ncell_header(&tf, 3, titles, colnums, cellqueue, &queuesize);
     if (header == GSC_TRUE) {
         printf("(Loading %s) Format: effect file with header\n", filename);
+		marker_colnum = colnums[0] + 1, allele_colnum = colnums[1] + 1, eff_colnum = colnums[2] + 1;
     } else if (header == GSC_FALSE) {
         printf("(Loading %s) Format: effect file without header\n", filename);
+		marker_colnum = 1, allele_colnum = 2, eff_colnum = 3;
     } else {
         printf("(Loading %s) Failure: Cannot identify the expected 3 columns of the effect file\n", filename);
         gsc_tablefilereader_close(&tf);
         return NO_EFFECTSET;
     }
-    int marker_colnum = colnums[0], allele_colnum = colnums[1], eff_colnum = colnums[2];
-	
 
+	if (header) {
+		cellqueue += 3;
+		queuesize -= 3;
+		if (!cellsread[0].isCellShallow) { GSC_FREE(cellsread[0].cell); }
+		if (!cellsread[1].isCellShallow) { GSC_FREE(cellsread[1].cell); }
+		if (!cellsread[2].isCellShallow) { GSC_FREE(cellsread[2].cell); }
+	}
     _Bool goodrow = (header) ? 0 : 1; // discard first row if it's a header, keep if it's not.
     size_t goodrow_counter = 0;
     GSC_ID_T allele_counter = 0;
