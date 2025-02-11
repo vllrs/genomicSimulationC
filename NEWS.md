@@ -6,6 +6,22 @@ Latest News       {#news}
 ## Improvements
 
 - Generalisation of header-parsing logic of `load_mapfile` and `load_effectfile`, to prepare for accepting further columns in future.
+- BREAKING CHANGE: `calculate_local_bvs` now returns local BVs in a vector and can be called with a group number or NO_GROUP, like other `calculate_` functions. The ability to print a matrix of local BVs to a file will be re-added soon. Removed `calculate_group_local_bvs` as its function was subsumed.
+- `EffectMatrix` has been replaced with new struct `MarkerEffects`. To match, `gsc_delete_effect_matrix` has been renamed to `gsc_delete_effect_set`.
+
+The MarkerEffects struct changes the format in which we store marker effects, and also allows us to store a "centering" value for each marker/allele pair that will be subtracted from the count of that allele before multiplying by the effects. That is, the BV calculation method was changed from:
+
+$$\sum_{m \in map}\left( \sum_{a \in alleles} \{0,1,2\}_{\text{count}} \times e_{m,a} \right)$$
+
+to:
+
+$$\sum_{m \in map}\left( \sum_{a \in alleles} \left(\{0,1,2\}_{\text{count}} - c_{m,a}\right) \times e_{m,a} \right)$$
+
+where $e_{m,a}$ is the effect value for allele $a$ at marker $m$, and $c_{m,a}$ is the centering value for the same. 
+
+This change was made so that BV calculations with GBLUP marker effects could be done correctly. However, the mathematical implications of this formula are ... interesting. For example, the optimal genotype is no longer necessarily the doubled version of the optimal haplotype: not expected for what are theoretically still additive effects!
+
+Currently in a temporary state. I will be altering this system to something else. While it lets you simulate dominance effects, it does so in a very odd way (so many degrees of freedom!) so the reworking of this feature will not implement it yet. We'll keep that functionality on the to-do list.
 
 # genomicSimulation v0.2.6
 

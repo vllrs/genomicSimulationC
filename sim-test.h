@@ -17,6 +17,9 @@ const char HELPER_EFF[] = "m1 A -0.8\n" "m2 A -0.1\n"
     "am3 A 0.1\n" "m1 T 0.9\n"
     "am3 T -0.1\n" "m2 T -0.5";
 const char HELPER_EFF2[] = "m1 A 1\n";
+const char HELPER_EFF3[] = "m1 A -0.8 0.2\n" "m1 T 0.9 -0.2\n"
+	"m2 A -0.1 -0.4\n" "m2 T -0.5 0.4\n"
+	"am3 A 0.1 0\n" "am3 T -0.1 0.12\n";
 const char HELPER_PLAN[] = "G01\tG02\tG03\tG05\n"
 	"G01\tG03\tG05\tG06\n" "G05\tG06\tG01\tG04";
 
@@ -605,6 +608,19 @@ const char* const TEST1_EFFLOADERS[] = {
 	,
 	// only one row no header
 	"first a 0.5\n"
+	,
+	// No header, with centering column
+	"second A 1e2 1\n"
+	"first A 0.5  1\n"
+	"first T -0.5  2\n"
+	"second T 1e-2  3\n"
+	,
+	// Rearranged columns with centering column
+	"eff center allele marker\n"
+	"1e2 0.43 A second\n"
+	"0.5 -0.7 A first\n"
+	"1e-2 1.1 T second\n"
+    "-0.5 0.75 T first\n"
 	,
 	// Discard markers not tracked by the simulation
 	"marker eff allele \n"

@@ -86,12 +86,12 @@ int test_savers(unsigned int rseed) {
     remove(fname);
 
     fname = "t5.txt";
-    save_allele_counts(fname,d,NO_GROUP,'A',GSC_TRUE);
+    save_allele_counts(fname,d,NO_GROUP,'A',NO_EFFECTSET,GSC_TRUE);
     assert(compareFileToString(fname, TEST1_TRUTH_save_count_matrix)==0);
     remove(fname);
 
     fname = "t6.txt";
-    save_allele_counts(fname,d,printingGroup,'T',GSC_TRUE);
+    save_allele_counts(fname,d,printingGroup,'T',NO_EFFECTSET,GSC_TRUE);
     assert(compareFileToString(fname, TEST1_TRUTH_save_count_matrix_of_group)==0);
     remove(fname);
 
@@ -123,15 +123,16 @@ int test_savers(unsigned int rseed) {
     assert(compareFileToString(fname, TEST1_TRUTH_save_marker_blocks_chrinfo)==0);
     remove(fname);
 
-    fname = "t3c.txt";
-    calculate_local_bvs(d,exampleMB,effSet1,fname);
+    /* @@ TODO: reinstate local breeding value tests
+	fname = "t3c.txt";
+    DecimalMatrix lbv = calculate_local_bvs(d,exampleMB,effSet1,fname);
     assert(compareFileToString(fname, TEST1_TRUTH_save_local_bvs)==0);
     remove(fname);
 
     fname = "t4c.txt";
     calculate_group_local_bvs(d,exampleMB,effSet1,fname,printingGroup);
     assert(compareFileToString(fname, TEST1_TRUTH_save_group_local_bvs)==0);
-    remove(fname);
+    remove(fname);*/
 
     delete_markerblocks(&exampleMB);
 
@@ -224,14 +225,18 @@ int test_effloaders2(void) {
     fflush(stdout);
     assert(d->n_eff_sets == it);
     assert(d->eff_set_ids[it-1].id == it);
-    assert(d->e[it-1].effect_names[0] == 'A');
-    assert(d->e[it-1].effect_names[1] == 'T');
-    assert(d->e[it-1].effects.rows == 2);
-    assert(d->e[it-1].effects.cols == d->genome.n_markers);
-    assert(fabs(d->e[it-1].effects.matrix[0][0] - 0.5) < TOL);
-    assert(fabs(d->e[it-1].effects.matrix[1][0] - - 0.5) < TOL);
-    assert(fabs(d->e[it-1].effects.matrix[0][1] - 1e2) < TOL);
-    assert(fabs(d->e[it-1].effects.matrix[1][1] - 1e-2) < TOL);
+	assert(d->e[it-1].n_markers == 2);
+	assert(d->e[it-1].cumn_alleles[0] == 2);
+	assert(d->e[it-1].cumn_alleles[1] == 4);
+    assert(d->e[it-1].allele[0] == 'A');
+    assert(d->e[it-1].allele[1] == 'T');
+	assert(d->e[it-1].allele[2] == 'A');
+    assert(d->e[it-1].allele[3] == 'T');
+	assert(d->e[it-1].center == NULL);
+    assert(fabs(d->e[it-1].eff[0] - 0.5) < TOL);
+    assert(fabs(d->e[it-1].eff[1] - - 0.5) < TOL);
+    assert(fabs(d->e[it-1].eff[2] - 1e2) < TOL);
+    assert(fabs(d->e[it-1].eff[3] - 1e-2) < TOL);
 	remove(filename);
 
     // tabs, no final newline
@@ -242,14 +247,18 @@ int test_effloaders2(void) {
     fflush(stdout);
     assert(d->n_eff_sets == it);
     assert(d->eff_set_ids[it-1].id == it);
-    assert(d->e[it-1].effect_names[0] == 'A');
-    assert(d->e[it-1].effect_names[1] == 'T');
-    assert(d->e[it-1].effects.rows == 2);
-    assert(d->e[it-1].effects.cols == d->genome.n_markers);
-    assert(fabs(d->e[it-1].effects.matrix[0][0] - 0.5) < TOL);
-    assert(fabs(d->e[it-1].effects.matrix[1][0] - - 0.5) < TOL);
-    assert(fabs(d->e[it-1].effects.matrix[0][1] - 1e2) < TOL);
-    assert(fabs(d->e[it-1].effects.matrix[1][1] - 1e-2) < TOL);
+	assert(d->e[it-1].n_markers == 2);
+	assert(d->e[it-1].cumn_alleles[0] == 2);
+	assert(d->e[it-1].cumn_alleles[1] == 4);
+    assert(d->e[it-1].allele[0] == 'A');
+    assert(d->e[it-1].allele[1] == 'T');
+	assert(d->e[it-1].allele[2] == 'A');
+    assert(d->e[it-1].allele[3] == 'T');
+	assert(d->e[it-1].center == NULL);
+    assert(fabs(d->e[it-1].eff[0] - 0.5) < TOL);
+    assert(fabs(d->e[it-1].eff[1] - - 0.5) < TOL);
+    assert(fabs(d->e[it-1].eff[2] - 1e2) < TOL);
+    assert(fabs(d->e[it-1].eff[3] - 1e-2) < TOL);
 	remove(filename);
 
     // mixed spacing
@@ -260,14 +269,18 @@ int test_effloaders2(void) {
     fflush(stdout);
     assert(d->n_eff_sets == it);
     assert(d->eff_set_ids[it-1].id == it);
-    assert(d->e[it-1].effect_names[0] == 'A');
-    assert(d->e[it-1].effect_names[1] == 'T');
-    assert(d->e[it-1].effects.rows == 2);
-    assert(d->e[it-1].effects.cols == d->genome.n_markers);
-    assert(fabs(d->e[it-1].effects.matrix[0][0] - 0.5) < TOL);
-    assert(fabs(d->e[it-1].effects.matrix[1][0] - - 0.5) < TOL);
-    assert(fabs(d->e[it-1].effects.matrix[0][1] - 1e2) < TOL);
-    assert(fabs(d->e[it-1].effects.matrix[1][1] - 1e-2) < TOL);
+	assert(d->e[it-1].n_markers == 2);
+	assert(d->e[it-1].cumn_alleles[0] == 2);
+	assert(d->e[it-1].cumn_alleles[1] == 4);
+    assert(d->e[it-1].allele[0] == 'A');
+    assert(d->e[it-1].allele[1] == 'T');
+	assert(d->e[it-1].allele[2] == 'A');
+    assert(d->e[it-1].allele[3] == 'T');
+	assert(d->e[it-1].center == NULL);
+    assert(fabs(d->e[it-1].eff[0] - 0.5) < TOL);
+    assert(fabs(d->e[it-1].eff[1] - - 0.5) < TOL);
+    assert(fabs(d->e[it-1].eff[2] - 1e2) < TOL);
+    assert(fabs(d->e[it-1].eff[3] - 1e-2) < TOL);
 	remove(filename);
 	
     // rearranged rows
@@ -278,14 +291,18 @@ int test_effloaders2(void) {
     fflush(stdout);
     assert(d->n_eff_sets == it);
     assert(d->eff_set_ids[it-1].id == it);
-    assert(d->e[it-1].effect_names[0] == 'A');
-    assert(d->e[it-1].effect_names[1] == 'T');
-    assert(d->e[it-1].effects.rows == 2);
-    assert(d->e[it-1].effects.cols == d->genome.n_markers);
-    assert(fabs(d->e[it-1].effects.matrix[0][0] - 0.5) < TOL);
-    assert(fabs(d->e[it-1].effects.matrix[1][0] - - 0.5) < TOL);
-    assert(fabs(d->e[it-1].effects.matrix[0][1] - 1e2) < TOL);
-    assert(fabs(d->e[it-1].effects.matrix[1][1] - 1e-2) < TOL);
+	assert(d->e[it-1].n_markers == 2);
+	assert(d->e[it-1].cumn_alleles[0] == 2);
+	assert(d->e[it-1].cumn_alleles[1] == 4);
+    assert(d->e[it-1].allele[0] == 'A');
+    assert(d->e[it-1].allele[1] == 'T');
+	assert(d->e[it-1].allele[2] == 'A');
+    assert(d->e[it-1].allele[3] == 'T');
+	assert(d->e[it-1].center == NULL);
+    assert(fabs(d->e[it-1].eff[0] - 0.5) < TOL);
+    assert(fabs(d->e[it-1].eff[1] - - 0.5) < TOL);
+    assert(fabs(d->e[it-1].eff[2] - 1e2) < TOL);
+    assert(fabs(d->e[it-1].eff[3] - 1e-2) < TOL);
 	remove(filename);
 	
     // no header
@@ -296,14 +313,18 @@ int test_effloaders2(void) {
     fflush(stdout);
     assert(d->n_eff_sets == it);
     assert(d->eff_set_ids[it-1].id == it);
-    assert(d->e[it-1].effect_names[0] == 'A');
-    assert(d->e[it-1].effect_names[1] == 'T');
-    assert(d->e[it-1].effects.rows == 2);
-    assert(d->e[it-1].effects.cols == d->genome.n_markers);
-    assert(fabs(d->e[it-1].effects.matrix[0][0] - 0.5) < TOL);
-    assert(fabs(d->e[it-1].effects.matrix[1][0] - - 0.5) < TOL);
-    assert(fabs(d->e[it-1].effects.matrix[0][1] - 1e2) < TOL);
-    assert(fabs(d->e[it-1].effects.matrix[1][1] - 1e-2) < TOL);
+	assert(d->e[it-1].n_markers == 2);
+	assert(d->e[it-1].cumn_alleles[0] == 2);
+	assert(d->e[it-1].cumn_alleles[1] == 4);
+    assert(d->e[it-1].allele[0] == 'A');
+    assert(d->e[it-1].allele[1] == 'T');
+	assert(d->e[it-1].allele[2] == 'A');
+    assert(d->e[it-1].allele[3] == 'T');
+	assert(d->e[it-1].center == NULL);
+    assert(fabs(d->e[it-1].eff[0] - 0.5) < TOL);
+    assert(fabs(d->e[it-1].eff[1] - - 0.5) < TOL);
+    assert(fabs(d->e[it-1].eff[2] - 1e2) < TOL);
+    assert(fabs(d->e[it-1].eff[3] - 1e-2) < TOL);
 	remove(filename);
 	
     // rearranged columns
@@ -314,14 +335,18 @@ int test_effloaders2(void) {
     fflush(stdout);
     assert(d->n_eff_sets == it);
     assert(d->eff_set_ids[it-1].id == it);
-    assert(d->e[it-1].effect_names[0] == 'A');
-    assert(d->e[it-1].effect_names[1] == 'T');
-    assert(d->e[it-1].effects.rows == 2);
-    assert(d->e[it-1].effects.cols == d->genome.n_markers);
-    assert(fabs(d->e[it-1].effects.matrix[0][0] - 0.5) < TOL);
-    assert(fabs(d->e[it-1].effects.matrix[1][0] - - 0.5) < TOL);
-    assert(fabs(d->e[it-1].effects.matrix[0][1] - 1e2) < TOL);
-    assert(fabs(d->e[it-1].effects.matrix[1][1] - 1e-2) < TOL);
+	assert(d->e[it-1].n_markers == 2);
+	assert(d->e[it-1].cumn_alleles[0] == 2);
+	assert(d->e[it-1].cumn_alleles[1] == 4);
+    assert(d->e[it-1].allele[0] == 'A');
+    assert(d->e[it-1].allele[1] == 'T');
+	assert(d->e[it-1].allele[2] == 'A');
+    assert(d->e[it-1].allele[3] == 'T');
+	assert(d->e[it-1].center == NULL);
+    assert(fabs(d->e[it-1].eff[0] - 0.5) < TOL);
+    assert(fabs(d->e[it-1].eff[1] - - 0.5) < TOL);
+    assert(fabs(d->e[it-1].eff[2] - 1e2) < TOL);
+    assert(fabs(d->e[it-1].eff[3] - 1e-2) < TOL);
 	remove(filename);
 	
     // assorted alleles
@@ -332,17 +357,18 @@ int test_effloaders2(void) {
     fflush(stdout);
     assert(d->n_eff_sets == it);
     assert(d->eff_set_ids[it-1].id == it);
-    assert(d->e[it-1].effect_names[0] == '8');
-    assert(d->e[it-1].effect_names[1] == 'A');
-    assert(d->e[it-1].effect_names[2] == 'T');
-    assert(d->e[it-1].effects.rows == 3);
-    assert(d->e[it-1].effects.cols == d->genome.n_markers);
-    assert(fabs(d->e[it-1].effects.matrix[1][0] - 0.5) < TOL);
-    assert(fabs(d->e[it-1].effects.matrix[1][1] - 0) < TOL);
-    assert(fabs(d->e[it-1].effects.matrix[2][0] - - 0.5) < TOL);
-    assert(fabs(d->e[it-1].effects.matrix[2][1] - 1e2) < TOL);
-    assert(fabs(d->e[it-1].effects.matrix[0][1] - 1e-2) < TOL);
-    assert(fabs(d->e[it-1].effects.matrix[0][0] - 0) < TOL);
+	assert(d->e[it-1].n_markers == 2);
+	assert(d->e[it-1].cumn_alleles[0] == 2);
+	assert(d->e[it-1].cumn_alleles[1] == 4);
+    assert(d->e[it-1].allele[0] == 'A');
+    assert(d->e[it-1].allele[1] == 'T');
+	assert(d->e[it-1].allele[2] == '8');
+    assert(d->e[it-1].allele[3] == 'T');
+	assert(d->e[it-1].center == NULL);
+    assert(fabs(d->e[it-1].eff[0] - 0.5) < TOL);
+    assert(fabs(d->e[it-1].eff[1] - - 0.5) < TOL);
+    assert(fabs(d->e[it-1].eff[2] - 1e-2) < TOL);
+    assert(fabs(d->e[it-1].eff[3] - 1e2) < TOL);
 	remove(filename);
 	
     // only one row
@@ -353,11 +379,12 @@ int test_effloaders2(void) {
     fflush(stdout);
     assert(d->n_eff_sets == it);
     assert(d->eff_set_ids[it-1].id == it);
-    assert(d->e[it-1].effect_names[0] == 'A');
-    assert(d->e[it-1].effects.rows == 1);
-    assert(d->e[it-1].effects.cols == d->genome.n_markers);
-    assert(fabs(d->e[it-1].effects.matrix[0][0] - 0.5) < TOL);
-    assert(fabs(d->e[it-1].effects.matrix[0][1] - 0) < TOL);
+	assert(d->e[it-1].n_markers == 2);
+	assert(d->e[it-1].cumn_alleles[0] == 1);
+	assert(d->e[it-1].cumn_alleles[1] == 1);
+    assert(d->e[it-1].allele[0] == 'A');
+	assert(d->e[it-1].center == NULL);
+    assert(fabs(d->e[it-1].eff[0] - 0.5) < TOL);
 	remove(filename);
 	
     // only one row no header
@@ -368,11 +395,64 @@ int test_effloaders2(void) {
     fflush(stdout);
     assert(d->n_eff_sets == it);
     assert(d->eff_set_ids[it-1].id == it);
-    assert(d->e[it-1].effect_names[0] == 'a');
-    assert(d->e[it-1].effects.rows == 1);
-    assert(d->e[it-1].effects.cols == d->genome.n_markers);
-    assert(fabs(d->e[it-1].effects.matrix[0][0] - 0.5) < TOL);
-    assert(fabs(d->e[it-1].effects.matrix[0][1] - 0) < TOL);
+	assert(d->e[it-1].n_markers == 2);
+	assert(d->e[it-1].cumn_alleles[0] == 1);
+	assert(d->e[it-1].cumn_alleles[1] == 1);
+    assert(d->e[it-1].allele[0] == 'a');
+	assert(d->e[it-1].center == NULL);
+    assert(fabs(d->e[it-1].eff[0] - 0.5) < TOL);
+	remove(filename);
+	
+	// No header, with centering column
+	++it; filename[it / 26] = (it % 26) + 'A';
+    f1 = TEST1_EFFLOADERS[it-1];
+    write_to_file(filename, f1);
+    assert(load_effectfile(d,filename).id == it);
+    fflush(stdout);
+    assert(d->n_eff_sets == it);
+    assert(d->eff_set_ids[it-1].id == it);
+	assert(d->e[it-1].n_markers == 2);
+	assert(d->e[it-1].cumn_alleles[0] == 2);
+	assert(d->e[it-1].cumn_alleles[1] == 4);
+    assert(d->e[it-1].allele[0] == 'A');
+    assert(d->e[it-1].allele[1] == 'T');
+	assert(d->e[it-1].allele[2] == 'A');
+    assert(d->e[it-1].allele[3] == 'T');
+	assert(d->e[it-1].center != NULL);
+	assert(fabs(d->e[it-1].center[0] - 1) < TOL);
+    assert(fabs(d->e[it-1].center[1] - 2) < TOL);
+    assert(fabs(d->e[it-1].center[2] - 1) < TOL);
+    assert(fabs(d->e[it-1].center[3] - 3) < TOL);
+    assert(fabs(d->e[it-1].eff[0] - 0.5) < TOL);
+    assert(fabs(d->e[it-1].eff[1] - - 0.5) < TOL);
+    assert(fabs(d->e[it-1].eff[2] - 1e2) < TOL);
+    assert(fabs(d->e[it-1].eff[3] - 1e-2) < TOL);
+	remove(filename);
+	
+	// Rearranged columns with centering column
+	++it; filename[it / 26] = (it % 26) + 'A';
+    f1 = TEST1_EFFLOADERS[it-1];
+    write_to_file(filename, f1);
+    assert(load_effectfile(d,filename).id == it);
+    fflush(stdout);
+    assert(d->n_eff_sets == it);
+    assert(d->eff_set_ids[it-1].id == it);
+	assert(d->e[it-1].n_markers == 2);
+	assert(d->e[it-1].cumn_alleles[0] == 2);
+	assert(d->e[it-1].cumn_alleles[1] == 4);
+    assert(d->e[it-1].allele[0] == 'A');
+    assert(d->e[it-1].allele[1] == 'T');
+	assert(d->e[it-1].allele[2] == 'A');
+    assert(d->e[it-1].allele[3] == 'T');
+	assert(d->e[it-1].center != NULL);
+	assert(fabs(d->e[it-1].center[0] - (-0.7)) < TOL);
+    assert(fabs(d->e[it-1].center[1] - 0.75) < TOL);
+    assert(fabs(d->e[it-1].center[2] - 0.43) < TOL);
+    assert(fabs(d->e[it-1].center[3] - 1.1) < TOL);
+    assert(fabs(d->e[it-1].eff[0] - 0.5) < TOL);
+    assert(fabs(d->e[it-1].eff[1] - - 0.5) < TOL);
+    assert(fabs(d->e[it-1].eff[2] - 1e2) < TOL);
+    assert(fabs(d->e[it-1].eff[3] - 1e-2) < TOL);
 	remove(filename);
 	
     // discard markers not tracked by the simulation
@@ -383,14 +463,16 @@ int test_effloaders2(void) {
     fflush(stdout);
     assert(d->n_eff_sets == it);
     assert(d->eff_set_ids[it-1].id == it);
-    assert(d->e[it-1].effect_names[0] == 'A');
-    assert(d->e[it-1].effect_names[1] == 'T');
-    assert(d->e[it-1].effects.rows == 2);
-    assert(d->e[it-1].effects.cols == d->genome.n_markers);
-    assert(fabs(d->e[it-1].effects.matrix[0][0] - 0.5) < TOL);
-    assert(fabs(d->e[it-1].effects.matrix[1][0] - - 0.5) < TOL);
-    assert(fabs(d->e[it-1].effects.matrix[0][1] - 1e2) < TOL);
-    assert(fabs(d->e[it-1].effects.matrix[1][1] - 0) < TOL);
+	assert(d->e[it-1].n_markers == 2);
+	assert(d->e[it-1].cumn_alleles[0] == 2);
+	assert(d->e[it-1].cumn_alleles[1] == 3);
+    assert(d->e[it-1].allele[0] == 'A');
+    assert(d->e[it-1].allele[1] == 'T');
+	assert(d->e[it-1].allele[2] == 'A');
+	assert(d->e[it-1].center == NULL);
+    assert(fabs(d->e[it-1].eff[0] - 0.5) < TOL);
+    assert(fabs(d->e[it-1].eff[1] - - 0.5) < TOL);
+    assert(fabs(d->e[it-1].eff[2] - 1e2) < TOL);
 	remove(filename);
 	
     // file with too many columns on one row
@@ -401,11 +483,14 @@ int test_effloaders2(void) {
     fflush(stdout);
     assert(d->n_eff_sets == it);
     assert(d->eff_set_ids[it-1].id == it);
-    assert(d->e[it-1].effect_names[0] == 'T');
-    assert(d->e[it-1].effects.rows == 1);
-    assert(d->e[it-1].effects.cols == d->genome.n_markers);
-    assert(fabs(d->e[it-1].effects.matrix[0][0] - - 0.5) < TOL);
-    assert(fabs(d->e[it-1].effects.matrix[0][1] - 1e-2) < TOL);
+	assert(d->e[it-1].n_markers == 2);
+	assert(d->e[it-1].cumn_alleles[0] == 1);
+	assert(d->e[it-1].cumn_alleles[1] == 2);
+    assert(d->e[it-1].allele[0] == 'T');
+    assert(d->e[it-1].allele[1] == 'T');
+	assert(d->e[it-1].center == NULL);
+    assert(fabs(d->e[it-1].eff[0] - - 0.5) < TOL);
+    assert(fabs(d->e[it-1].eff[1] - 1e-2) < TOL);
 	remove(filename);
 	
     // file with a duplicated marker/allele pair
@@ -416,14 +501,20 @@ int test_effloaders2(void) {
     fflush(stdout);
     assert(d->n_eff_sets == it);
     assert(d->eff_set_ids[it-1].id == it);
-    assert(d->e[it-1].effect_names[0] == 'A');
-    assert(d->e[it-1].effect_names[1] == 'T');
-    assert(d->e[it-1].effects.rows == 2);
-    assert(d->e[it-1].effects.cols == d->genome.n_markers);
-    assert(fabs(d->e[it-1].effects.matrix[0][0] - 0) < TOL);
-    assert(fabs(d->e[it-1].effects.matrix[0][1] - 1e2) < TOL);
-    assert(fabs(d->e[it-1].effects.matrix[1][0] - - 0.5) < TOL);
-    assert(fabs(d->e[it-1].effects.matrix[1][1] - 1e-2) < TOL);
+	// Behaviour is slightly changed during EffectMatrix -> MarkerEffects conversion.
+	// Now we do not check for duplicates, but they aren't used in calculations. They're deadweight
+	assert(d->e[it-1].n_markers == 2);
+	assert(d->e[it-1].cumn_alleles[0] == 2);
+	assert(d->e[it-1].cumn_alleles[1] == 4);
+    assert(d->e[it-1].allele[0] == 'T');
+    assert(d->e[it-1].allele[1] == 'T');
+	assert(d->e[it-1].allele[2] == 'A');
+    assert(d->e[it-1].allele[3] == 'T');
+	assert(d->e[it-1].center == NULL);
+    assert(fabs(d->e[it-1].eff[0] - 0.5) < TOL);
+    assert(fabs(d->e[it-1].eff[1] - - 0.5) < TOL);
+    assert(fabs(d->e[it-1].eff[2] - 1e2) < TOL);
+    assert(fabs(d->e[it-1].eff[3] - 1e-2) < TOL);
 	remove(filename);
 	
     // file with no valid lines
@@ -1614,54 +1705,54 @@ GroupNum test_loaders(SimData* d) {
     delete_recombination_map(d,m2);
 
     assert(d->n_eff_sets == 1);
-    assert(d->e[0].effects.rows == 2);
-    assert(d->e[0].effects.cols == 3);
-	// don't mind which order the effects are in so just figure it out, then check based on that.
-	int apos = 0;
-    if (d->e[0].effect_names[0] == 'A') {
-        assert(d->e[0].effect_names[0] == 'A');
-        assert(d->e[0].effect_names[1] == 'T');
-	} else {
-		apos = 1;
-        assert(d->e[0].effect_names[0] == 'T');
-        assert(d->e[0].effect_names[1] == 'A');
-	}
-    assert(fabs(d->e[0].effects.matrix[apos][0] - (-0.8)) < TOL);
-    assert(fabs(d->e[0].effects.matrix[apos][1] - (-0.1)) < TOL);
-    assert(fabs(d->e[0].effects.matrix[apos][2] - (0.1)) < TOL);
-	int tpos = 1 - apos;
-    assert(fabs(d->e[0].effects.matrix[tpos][0] - (0.9)) < TOL);
-    assert(fabs(d->e[0].effects.matrix[tpos][1] - (-0.5)) < TOL);
-    assert(fabs(d->e[0].effects.matrix[tpos][2] - (-0.1)) < TOL);
+	assert(d->e[0].n_markers == 3);
+	assert(d->e[0].cumn_alleles[0] = 2);
+	assert(d->e[0].cumn_alleles[1] = 4);
+	assert(d->e[0].cumn_alleles[2] = 6);
+	assert(d->e[0].allele[0] == 'A');
+	assert(d->e[0].allele[1] == 'T');
+	assert(d->e[0].allele[2] == 'A');
+	assert(d->e[0].allele[3] == 'T');
+	assert(d->e[0].allele[4] == 'A');
+	assert(d->e[0].allele[5] == 'T');
+	assert(d->e[0].center == NULL);
+	assert(fabs(d->e[0].eff[0] - (-0.8)) < TOL);
+	assert(fabs(d->e[0].eff[1] - (0.9)) < TOL);
+	assert(fabs(d->e[0].eff[2] - (-0.1)) < TOL);
+	assert(fabs(d->e[0].eff[3] - (-0.5)) < TOL);
+	assert(fabs(d->e[0].eff[4] - (0.1)) < TOL);
+	assert(fabs(d->e[0].eff[5] - (-0.1)) < TOL);
     printf("...marker effects loaded correctly\n");
 
     assert(load_effectfile(d, "a-test-eff2.txt").id==2);
     assert(d->n_eff_sets == 2);
-    assert(d->e[0].effects.rows == 2);
-    assert(d->e[0].effects.cols == 3);
-    // don't mind which order the effects are in so just figure it out, then check based on that.
-    if (d->e[0].effect_names[0] == 'A') {
-        assert(d->e[0].effect_names[0] == 'A');
-        assert(d->e[0].effect_names[1] == 'T');
-    } else {
-        apos = 1;
-        assert(d->e[0].effect_names[0] == 'T');
-        assert(d->e[0].effect_names[1] == 'A');
-    }
-    assert(fabs(d->e[0].effects.matrix[apos][0] - (-0.8)) < TOL);
-    assert(fabs(d->e[0].effects.matrix[apos][1] - (-0.1)) < TOL);
-    assert(fabs(d->e[0].effects.matrix[apos][2] - (0.1)) < TOL);
-    assert(fabs(d->e[0].effects.matrix[tpos][0] - (0.9)) < TOL);
-    assert(fabs(d->e[0].effects.matrix[tpos][1] - (-0.5)) < TOL);
-    assert(fabs(d->e[0].effects.matrix[tpos][2] - (-0.1)) < TOL);
+	// Check original set...
+	assert(d->e[0].n_markers == 3);
+	assert(d->e[0].cumn_alleles[0] = 2);
+	assert(d->e[0].cumn_alleles[1] = 4);
+	assert(d->e[0].cumn_alleles[2] = 6);
+	assert(d->e[0].allele[0] == 'A');
+	assert(d->e[0].allele[1] == 'T');
+	assert(d->e[0].allele[2] == 'A');
+	assert(d->e[0].allele[3] == 'T');
+	assert(d->e[0].allele[4] == 'A');
+	assert(d->e[0].allele[5] == 'T');
+	assert(d->e[0].center == NULL);
+	assert(fabs(d->e[0].eff[0] - (-0.8)) < TOL);
+	assert(fabs(d->e[0].eff[1] - (0.9)) < TOL);
+	assert(fabs(d->e[0].eff[2] - (-0.1)) < TOL);
+	assert(fabs(d->e[0].eff[3] - (-0.5)) < TOL);
+	assert(fabs(d->e[0].eff[4] - (0.1)) < TOL);
+	assert(fabs(d->e[0].eff[5] - (-0.1)) < TOL);
 
-    assert(d->e[1].effects.rows == 1);
-    assert(d->e[1].effects.cols == 3);
-    assert(d->e[1].effect_names[0] == 'A');
-    assert(fabs(d->e[1].effects.matrix[apos][0] - 1) < TOL);
-    assert(fabs(d->e[1].effects.matrix[apos][1] - 0) < TOL);
-    assert(fabs(d->e[1].effects.matrix[apos][2] - 0) < TOL);
-
+	// Check second set...
+	assert(d->e[1].n_markers == 3);
+	assert(d->e[1].cumn_alleles[0] = 1);
+	assert(d->e[1].cumn_alleles[1] = 1);
+	assert(d->e[1].cumn_alleles[2] = 1);
+	assert(d->e[1].allele[0] == 'A');
+	assert(d->e[0].center == NULL);
+	assert(fabs(d->e[1].eff[0] - (1.)) < TOL);
     printf("...second set of marker effects loaded correctly\n");
     remove("a-test-eff2.txt");
 
@@ -2417,10 +2508,10 @@ GroupNum test_grouping(SimData *d, GroupNum g0) {
 }
 
 int test_count_calculators(SimData *d, GroupNum g0) {
-    DecimalMatrix dec = calculate_allele_counts(d, g0, 'A');
+    DecimalMatrix dec = calculate_allele_counts(d, g0, 'A', NO_EFFECTSET);
 
-    assert(dec.rows == 6);
-    assert(dec.cols == 3);
+    assert(dec.dim1 == 6);
+    assert(dec.dim2 == 3);
     assert(strcmp(d->genome.marker_names[0], "m1") == 0);
     assert(strcmp(d->genome.marker_names[1], "m2") == 0);
     assert(strcmp(d->genome.marker_names[2], "am3") == 0);
@@ -2452,10 +2543,10 @@ int test_count_calculators(SimData *d, GroupNum g0) {
     delete_dmatrix(&dec);
 
     // & check for an allele whose counts should all be 0
-    dec = calculate_allele_counts(d, g0, '\t');
+    dec = calculate_allele_counts(d, g0, 'X', NO_EFFECTSET);
 
-    assert(dec.rows == 6);
-    assert(dec.cols == d->m->n_markers && d->m->n_markers == 3);
+    assert(dec.dim1 == 6);
+    assert(dec.dim2 == d->m->n_markers && d->m->n_markers == 3);
     for (int row = 0; row < 6; ++row) {
         for (int col = 0; col < d->m->n_markers; ++col) {
             assert(dec.matrix[row][col] == 0);
@@ -2463,14 +2554,55 @@ int test_count_calculators(SimData *d, GroupNum g0) {
     }
 
     delete_dmatrix(&dec);
+	
+	// & check it works if you have centering
+	char filename[] = "effset_wcenter.txt";
+	write_to_file(filename, HELPER_EFF3);
+	EffectID eff3 = load_effectfile(d, filename);
+	dec = calculate_allele_counts(d, g0, 'A', eff3);
+
+    assert(dec.dim1 == 6);
+    assert(dec.dim2 == 3);
+    assert(strcmp(d->genome.marker_names[0], "m1") == 0);
+    assert(strcmp(d->genome.marker_names[1], "m2") == 0);
+    assert(strcmp(d->genome.marker_names[2], "am3") == 0);
+
+    assert(fabs(dec.matrix[0][0] - (0 - 0.2)) < TOL);
+	assert(fabs(dec.matrix[0][1] - (2 - (-0.4))) < TOL);
+	assert(fabs(dec.matrix[0][2] - (0 - 0)) < TOL);
+	
+	assert(fabs(dec.matrix[1][0] - (0 - 0.2)) < TOL);
+	assert(fabs(dec.matrix[1][1] - (2 - (-0.4))) < TOL);
+	assert(fabs(dec.matrix[1][2] - (0 - 0)) < TOL);
+	
+	assert(fabs(dec.matrix[2][0] - (0 - 0.2)) < TOL);
+	assert(fabs(dec.matrix[2][1] - (2 - (-0.4))) < TOL);
+	assert(fabs(dec.matrix[2][2] - (1 - 0)) < TOL);
+	
+	assert(fabs(dec.matrix[3][0] - (1 - 0.2)) < TOL);
+	assert(fabs(dec.matrix[3][1] - (2 - (-0.4))) < TOL);
+	assert(fabs(dec.matrix[3][2] - (1 - 0)) < TOL);
+	
+	assert(fabs(dec.matrix[4][0] - (0 - 0.2)) < TOL);
+	assert(fabs(dec.matrix[4][1] - (0 - (-0.4))) < TOL);
+	assert(fabs(dec.matrix[4][2] - (0 - 0)) < TOL);
+
+	assert(fabs(dec.matrix[5][0] - (1 - 0.2)) < TOL);
+	assert(fabs(dec.matrix[5][1] - (2 - (-0.4))) < TOL);
+	assert(fabs(dec.matrix[5][2] - (0 - 0)) < TOL);
+
+    delete_dmatrix(&dec);
+	delete_eff_set(d, eff3);
+	remove(filename);
+	
     return 0;
 }
 
 int test_effect_calculators(SimData *d, GroupNum g0) {
     DecimalMatrix dec = calculate_bvs(d, g0, (EffectID){.id=1});
 
-	assert(dec.rows == 1);
-	assert(dec.cols == 6);
+	assert(dec.dim1 == 1);
+	assert(dec.dim2 == 6);
     assert(fabs(dec.matrix[0][0] - 1.4) < TOL);
     assert(fabs(dec.matrix[0][1] - 1.4) < TOL);
     assert(fabs(dec.matrix[0][2] - 1.6) < TOL);
@@ -2482,8 +2614,8 @@ int test_effect_calculators(SimData *d, GroupNum g0) {
     // and with the second set of effects:
     DecimalMatrix dec2 = calculate_bvs(d, g0, (EffectID){.id=2});
 
-    assert(dec2.rows == 1);
-    assert(dec2.cols == 6);
+    assert(dec2.dim1 == 1);
+    assert(dec2.dim2 == 6);
     assert(fabs(dec2.matrix[0][0] - 0) < TOL);
     assert(fabs(dec2.matrix[0][1] - 0) < TOL);
     assert(fabs(dec2.matrix[0][2] - 0) < TOL);
@@ -2507,6 +2639,25 @@ int test_effect_calculators(SimData *d, GroupNum g0) {
     delete_dmatrix(&dec3);
 
     remove("a-test-eff3.txt");
+	
+	// & check it works if you have centering
+	char filename[] = "effset_wcenter.txt";
+	write_to_file(filename, HELPER_EFF3);
+	EffectID eff3 = load_effectfile(d, filename);
+	dec = calculate_bvs(d, g0, eff3);
+	
+	assert(dec.dim1 == 1);
+	assert(dec.dim2 == 6);
+    assert(fabs(dec.matrix[0][0] - 1.912) < TOL);
+    assert(fabs(dec.matrix[0][1] - 1.912) < TOL);
+    assert(fabs(dec.matrix[0][2] - 2.112) < TOL);
+    assert(fabs(dec.matrix[0][3] - 0.412) < TOL);
+    assert(fabs(dec.matrix[0][4] - 1.112) < TOL);
+    assert(fabs(dec.matrix[0][5] - 0.212) < TOL);
+	
+	delete_dmatrix(&dec);
+	delete_eff_set(d, eff3);
+	remove(filename);
 
     printf("...GEBVs calculated correctly\n");
 
@@ -2515,28 +2666,54 @@ int test_effect_calculators(SimData *d, GroupNum g0) {
 
 int test_optimal_calculators(SimData *d, GroupNum g0) {
     EffectID eff_set = {.id = 1};
-    char* ig = calculate_optimal_haplotype(d, eff_set);
+	GSC_ID_T eff_set_ix = get_index_of_eff_set(d, eff_set);
+	assert(eff_set_ix != GSC_NA_IDX);
+	MarkerEffects* e = d->e + eff_set_ix;
+	assert(e->center == NULL);
+	//double optional_center[6] = {0.1,  -0.1, 0.5, -0.5, 0.2, 0.7};
+	
+	e->center = NULL;
+    char ig[4];
+	calculate_optimal_haplotype(d, eff_set, '-', ig);
     assert(ig[0] == 'T');
     assert(ig[1] == 'A');
     assert(ig[2] == 'A');
-    free(ig);
-
+	assert(ig[3] == '\0');
+	
+	/*e->center = optional_center;
+	char ig2[4];
+	calculate_optimal_haplotype(d, eff_set, '-', ig2);
+    assert(ig2[0] == 'T');
+    assert(ig2[1] == 'T');
+    assert(ig2[2] == 'A');
+	assert(ig2[3] == '\0');
+	*/
+	e->center = NULL;
     double optimal = calculate_optimal_bv(d, eff_set);
     assert(fabs(optimal - 1.8) < TOL);
     assert(fabs(calculate_optimal_bv(d, (EffectID){.id=2}) - 2) < TOL);
-
     double unoptimal = calculate_minimal_bv(d, eff_set);
     assert(fabs(unoptimal + 2.8) < TOL);
-    //assert(fabs(calculate_minimal_bv(d, 1) - 0) < TOL); // this function actually doesn't work when not all alleles have marker effects for somewhere in the genome
-
-    char* founderhaplo = calculate_optimal_possible_haplotype(d, g0, eff_set);
+	
+	/*e->center = optional_center;
+	double optimal2 = calculate_optimal_bv(d, eff_set);
+    assert(fabs(optimal2 - 1.8) < TOL);
+    double unoptimal2 = calculate_minimal_bv(d, eff_set);
+    assert(fabs(unoptimal2 + 2.8) < TOL);
+	*/
+	e->center = NULL;
+    char founderhaplo[4];
+	calculate_optimal_possible_haplotype(d, g0, eff_set, '-', founderhaplo);
     assert(founderhaplo[0] == 'T');
     assert(founderhaplo[1] == 'A');
     assert(founderhaplo[2] == 'A');
-    free(founderhaplo);
-    founderhaplo = calculate_optimal_possible_haplotype(d, g0, (EffectID){.id=2});
+	assert(founderhaplo[3] == '\0');
+    
+    calculate_optimal_possible_haplotype(d, g0, (EffectID){.id=2}, '-', founderhaplo);
     assert(founderhaplo[0] == 'A');
-    free(founderhaplo);
+	assert(founderhaplo[1] == '-');
+	assert(founderhaplo[2] == '-');
+	assert(founderhaplo[3] == '\0');
 
     double founderoptimal = calculate_optimal_possible_bv(d, g0, eff_set);
     assert(fabs(founderoptimal - 1.8) < TOL);
@@ -2544,11 +2721,12 @@ int test_optimal_calculators(SimData *d, GroupNum g0) {
 
     GSC_GLOBALX_T factorout[2] = {4,5};
     GroupNum g0partial = make_group_from(d,2, factorout);
-    char* founderhaplo2 = calculate_optimal_possible_haplotype(d, g0partial, eff_set);
+    char founderhaplo2[4];
+	calculate_optimal_possible_haplotype(d, g0partial, eff_set, '-', founderhaplo2);
     assert(founderhaplo2[0] == 'T');
     assert(founderhaplo2[1] == 'A');
     assert(founderhaplo2[2] == 'T');
-    free(founderhaplo2);
+	assert(founderhaplo2[3] == '\0');
 
     double founderoptimal2 = calculate_optimal_possible_bv(d, g0partial, eff_set);
     assert(fabs(founderoptimal2 - 1.4) < TOL);
@@ -2556,6 +2734,8 @@ int test_optimal_calculators(SimData *d, GroupNum g0) {
     GroupNum recombine[2] = {g0,g0partial};
     GroupNum newg0 = combine_groups(d,2,recombine);
     assert(g0.num == newg0.num); // for validity of further tests
+	
+	
 
     printf("...Optimal genotype and GEBV calculated correctly\n");
 
@@ -2930,8 +3110,10 @@ int test_deletors(SimData *d, GroupNum g0) {
     delete_eff_set(d, (EffectID){.id=1});
     assert(d->n_eff_sets == 1);
     assert(d->e != NULL);
-    assert(d->e[0].effects.rows == 1); // check identity
-    assert((d->e[0].effects.matrix[0][0] - 1) < TOL); // check identity
+    assert(d->e[0].cumn_alleles[0] == 1); // check identity of surviving effect set
+	assert(d->e[0].cumn_alleles[1] == 1);
+	assert(d->e[0].cumn_alleles[2] == 1);
+    assert((d->e[0].eff[0] - 1) < TOL); // check identity
 
     printf("...marker effects set cleared correctly\n");
 
