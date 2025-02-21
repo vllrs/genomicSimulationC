@@ -3843,9 +3843,11 @@ int main(int argc, char* argv[]) {
     //Small test that it can load a larger file alright.
     d = create_empty_simdata(randomSeed);
     struct MultiIDSet init =
-            load_data_files(d, "./gt_parents_mr2_50-trimto-5000.txt",
+            load_data_files(d, 
+			 NULL, //"./gt_parents_mr2_50-trimto-5000.txt",
              "./genetic-map_5112-trimto5000.txt",
-             "./qtl_mr2.eff-processed.txt",DETECT_FILE_FORMAT);
+             NULL, //"./qtl_mr2.eff-processed.txt",
+			 DETECT_FILE_FORMAT);
              
     GroupNum g2 = split_by_bv(d, init.group, init.effSet, 5, GSC_FALSE);
     

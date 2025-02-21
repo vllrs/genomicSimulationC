@@ -13,6 +13,10 @@ Latest News       {#news}
 - BREAKING CHANGE: `calculate_local_bvs` now returns local BVs in a vector and can be called with a group number or NO_GROUP, like other `calculate_` functions. The ability to print a matrix of local BVs to a file will be re-added soon. Removed `calculate_group_local_bvs` as its function was subsumed.
 - `EffectMatrix` has been replaced with new struct `MarkerEffects`. To match, `gsc_delete_effect_matrix` has been renamed to `gsc_delete_effect_set`.
 
+## Bug Fixes
+
+- Fix a segfault that occured when calling `load_data_files` with `genotype_file = NULL`.
+
 # genomicSimulation v0.2.6
 
 ## New Features
