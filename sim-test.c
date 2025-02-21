@@ -1,20 +1,20 @@
 #include "sim-test.h"
 
 float calculate_heterozygosity(SimData* d, GroupNum group_number) {
-	size_t hetcount = 0;
+    size_t hetcount = 0;
     size_t gn = get_group_size(d, group_number);
     assert(gn < 1000);
     char* galleles[1000];
     get_group_genes(d, group_number, gn, galleles);
 
-	// uses subjects as the first index
-	for (size_t i = 0; i < gn; i++) {
+    // uses subjects as the first index
+    for (size_t i = 0; i < gn; i++) {
         for (size_t j = 0; j < d->genome.n_markers; j += 2) {
-			if (galleles[i][j] != galleles[i][j + 1]) {
-				hetcount += 1;
-			}
-		}
-	}
+            if (galleles[i][j] != galleles[i][j + 1]) {
+                hetcount += 1;
+            }
+        }
+    }
 
     return (float) hetcount / (gn * d->genome.n_markers);
 }
@@ -86,12 +86,12 @@ int test_savers(unsigned int rseed) {
     remove(fname);
 
     fname = "t5.txt";
-    save_allele_counts(fname,d,NO_GROUP,'A',NO_EFFECTSET,GSC_TRUE);
+    save_allele_counts(fname,d,NO_GROUP,'A',GSC_TRUE);
     assert(compareFileToString(fname, TEST1_TRUTH_save_count_matrix)==0);
     remove(fname);
 
     fname = "t6.txt";
-    save_allele_counts(fname,d,printingGroup,'T',NO_EFFECTSET,GSC_TRUE);
+    save_allele_counts(fname,d,printingGroup,'T',GSC_TRUE);
     assert(compareFileToString(fname, TEST1_TRUTH_save_count_matrix_of_group)==0);
     remove(fname);
 
@@ -124,7 +124,7 @@ int test_savers(unsigned int rseed) {
     remove(fname);
 
     /* @@ TODO: reinstate local breeding value tests
-	fname = "t3c.txt";
+    fname = "t3c.txt";
     DecimalMatrix lbv = calculate_local_bvs(d,exampleMB,effSet1,fname);
     assert(compareFileToString(fname, TEST1_TRUTH_save_local_bvs)==0);
     remove(fname);
@@ -225,19 +225,19 @@ int test_effloaders2(void) {
     fflush(stdout);
     assert(d->n_eff_sets == it);
     assert(d->eff_set_ids[it-1].id == it);
-	assert(d->e[it-1].n_markers == 2);
-	assert(d->e[it-1].cumn_alleles[0] == 2);
-	assert(d->e[it-1].cumn_alleles[1] == 4);
+    assert(d->e[it-1].n_markers == 2);
+    assert(d->e[it-1].cumn_alleles[0] == 2);
+    assert(d->e[it-1].cumn_alleles[1] == 4);
     assert(d->e[it-1].allele[0] == 'A');
     assert(d->e[it-1].allele[1] == 'T');
-	assert(d->e[it-1].allele[2] == 'A');
+    assert(d->e[it-1].allele[2] == 'A');
     assert(d->e[it-1].allele[3] == 'T');
-	assert(d->e[it-1].center == NULL);
+    assert(d->e[it-1].centre == NULL);
     assert(fabs(d->e[it-1].eff[0] - 0.5) < TOL);
     assert(fabs(d->e[it-1].eff[1] - - 0.5) < TOL);
     assert(fabs(d->e[it-1].eff[2] - 1e2) < TOL);
     assert(fabs(d->e[it-1].eff[3] - 1e-2) < TOL);
-	remove(filename);
+    remove(filename);
 
     // tabs, no final newline
     ++it; filename[it / 26] = (it % 26) + 'A';
@@ -247,19 +247,19 @@ int test_effloaders2(void) {
     fflush(stdout);
     assert(d->n_eff_sets == it);
     assert(d->eff_set_ids[it-1].id == it);
-	assert(d->e[it-1].n_markers == 2);
-	assert(d->e[it-1].cumn_alleles[0] == 2);
-	assert(d->e[it-1].cumn_alleles[1] == 4);
+    assert(d->e[it-1].n_markers == 2);
+    assert(d->e[it-1].cumn_alleles[0] == 2);
+    assert(d->e[it-1].cumn_alleles[1] == 4);
     assert(d->e[it-1].allele[0] == 'A');
     assert(d->e[it-1].allele[1] == 'T');
-	assert(d->e[it-1].allele[2] == 'A');
+    assert(d->e[it-1].allele[2] == 'A');
     assert(d->e[it-1].allele[3] == 'T');
-	assert(d->e[it-1].center == NULL);
+    assert(d->e[it-1].centre == NULL);
     assert(fabs(d->e[it-1].eff[0] - 0.5) < TOL);
     assert(fabs(d->e[it-1].eff[1] - - 0.5) < TOL);
     assert(fabs(d->e[it-1].eff[2] - 1e2) < TOL);
     assert(fabs(d->e[it-1].eff[3] - 1e-2) < TOL);
-	remove(filename);
+    remove(filename);
 
     // mixed spacing
     ++it; filename[it / 26] = (it % 26) + 'A';
@@ -269,20 +269,20 @@ int test_effloaders2(void) {
     fflush(stdout);
     assert(d->n_eff_sets == it);
     assert(d->eff_set_ids[it-1].id == it);
-	assert(d->e[it-1].n_markers == 2);
-	assert(d->e[it-1].cumn_alleles[0] == 2);
-	assert(d->e[it-1].cumn_alleles[1] == 4);
+    assert(d->e[it-1].n_markers == 2);
+    assert(d->e[it-1].cumn_alleles[0] == 2);
+    assert(d->e[it-1].cumn_alleles[1] == 4);
     assert(d->e[it-1].allele[0] == 'A');
     assert(d->e[it-1].allele[1] == 'T');
-	assert(d->e[it-1].allele[2] == 'A');
+    assert(d->e[it-1].allele[2] == 'A');
     assert(d->e[it-1].allele[3] == 'T');
-	assert(d->e[it-1].center == NULL);
+    assert(d->e[it-1].centre == NULL);
     assert(fabs(d->e[it-1].eff[0] - 0.5) < TOL);
     assert(fabs(d->e[it-1].eff[1] - - 0.5) < TOL);
     assert(fabs(d->e[it-1].eff[2] - 1e2) < TOL);
     assert(fabs(d->e[it-1].eff[3] - 1e-2) < TOL);
-	remove(filename);
-	
+    remove(filename);
+    
     // rearranged rows
     ++it; filename[it / 26] = (it % 26) + 'A';
     f1 = TEST1_EFFLOADERS[it-1];
@@ -291,20 +291,20 @@ int test_effloaders2(void) {
     fflush(stdout);
     assert(d->n_eff_sets == it);
     assert(d->eff_set_ids[it-1].id == it);
-	assert(d->e[it-1].n_markers == 2);
-	assert(d->e[it-1].cumn_alleles[0] == 2);
-	assert(d->e[it-1].cumn_alleles[1] == 4);
+    assert(d->e[it-1].n_markers == 2);
+    assert(d->e[it-1].cumn_alleles[0] == 2);
+    assert(d->e[it-1].cumn_alleles[1] == 4);
     assert(d->e[it-1].allele[0] == 'A');
     assert(d->e[it-1].allele[1] == 'T');
-	assert(d->e[it-1].allele[2] == 'A');
+    assert(d->e[it-1].allele[2] == 'A');
     assert(d->e[it-1].allele[3] == 'T');
-	assert(d->e[it-1].center == NULL);
+    assert(d->e[it-1].centre == NULL);
     assert(fabs(d->e[it-1].eff[0] - 0.5) < TOL);
     assert(fabs(d->e[it-1].eff[1] - - 0.5) < TOL);
     assert(fabs(d->e[it-1].eff[2] - 1e2) < TOL);
     assert(fabs(d->e[it-1].eff[3] - 1e-2) < TOL);
-	remove(filename);
-	
+    remove(filename);
+    
     // no header
     ++it; filename[it / 26] = (it % 26) + 'A';
     f1 = TEST1_EFFLOADERS[it-1];
@@ -313,20 +313,20 @@ int test_effloaders2(void) {
     fflush(stdout);
     assert(d->n_eff_sets == it);
     assert(d->eff_set_ids[it-1].id == it);
-	assert(d->e[it-1].n_markers == 2);
-	assert(d->e[it-1].cumn_alleles[0] == 2);
-	assert(d->e[it-1].cumn_alleles[1] == 4);
+    assert(d->e[it-1].n_markers == 2);
+    assert(d->e[it-1].cumn_alleles[0] == 2);
+    assert(d->e[it-1].cumn_alleles[1] == 4);
     assert(d->e[it-1].allele[0] == 'A');
     assert(d->e[it-1].allele[1] == 'T');
-	assert(d->e[it-1].allele[2] == 'A');
+    assert(d->e[it-1].allele[2] == 'A');
     assert(d->e[it-1].allele[3] == 'T');
-	assert(d->e[it-1].center == NULL);
+    assert(d->e[it-1].centre == NULL);
     assert(fabs(d->e[it-1].eff[0] - 0.5) < TOL);
     assert(fabs(d->e[it-1].eff[1] - - 0.5) < TOL);
     assert(fabs(d->e[it-1].eff[2] - 1e2) < TOL);
     assert(fabs(d->e[it-1].eff[3] - 1e-2) < TOL);
-	remove(filename);
-	
+    remove(filename);
+    
     // rearranged columns
     ++it; filename[it / 26] = (it % 26) + 'A';
     f1 = TEST1_EFFLOADERS[it-1];
@@ -335,20 +335,20 @@ int test_effloaders2(void) {
     fflush(stdout);
     assert(d->n_eff_sets == it);
     assert(d->eff_set_ids[it-1].id == it);
-	assert(d->e[it-1].n_markers == 2);
-	assert(d->e[it-1].cumn_alleles[0] == 2);
-	assert(d->e[it-1].cumn_alleles[1] == 4);
+    assert(d->e[it-1].n_markers == 2);
+    assert(d->e[it-1].cumn_alleles[0] == 2);
+    assert(d->e[it-1].cumn_alleles[1] == 4);
     assert(d->e[it-1].allele[0] == 'A');
     assert(d->e[it-1].allele[1] == 'T');
-	assert(d->e[it-1].allele[2] == 'A');
+    assert(d->e[it-1].allele[2] == 'A');
     assert(d->e[it-1].allele[3] == 'T');
-	assert(d->e[it-1].center == NULL);
+    assert(d->e[it-1].centre == NULL);
     assert(fabs(d->e[it-1].eff[0] - 0.5) < TOL);
     assert(fabs(d->e[it-1].eff[1] - - 0.5) < TOL);
     assert(fabs(d->e[it-1].eff[2] - 1e2) < TOL);
     assert(fabs(d->e[it-1].eff[3] - 1e-2) < TOL);
-	remove(filename);
-	
+    remove(filename);
+    
     // assorted alleles
     ++it; filename[it / 26] = (it % 26) + 'A';
     f1 = TEST1_EFFLOADERS[it-1];
@@ -357,20 +357,20 @@ int test_effloaders2(void) {
     fflush(stdout);
     assert(d->n_eff_sets == it);
     assert(d->eff_set_ids[it-1].id == it);
-	assert(d->e[it-1].n_markers == 2);
-	assert(d->e[it-1].cumn_alleles[0] == 2);
-	assert(d->e[it-1].cumn_alleles[1] == 4);
+    assert(d->e[it-1].n_markers == 2);
+    assert(d->e[it-1].cumn_alleles[0] == 2);
+    assert(d->e[it-1].cumn_alleles[1] == 4);
     assert(d->e[it-1].allele[0] == 'A');
     assert(d->e[it-1].allele[1] == 'T');
-	assert(d->e[it-1].allele[2] == '8');
+    assert(d->e[it-1].allele[2] == '8');
     assert(d->e[it-1].allele[3] == 'T');
-	assert(d->e[it-1].center == NULL);
+    assert(d->e[it-1].centre == NULL);
     assert(fabs(d->e[it-1].eff[0] - 0.5) < TOL);
     assert(fabs(d->e[it-1].eff[1] - - 0.5) < TOL);
     assert(fabs(d->e[it-1].eff[2] - 1e-2) < TOL);
     assert(fabs(d->e[it-1].eff[3] - 1e2) < TOL);
-	remove(filename);
-	
+    remove(filename);
+    
     // only one row
     ++it; filename[it / 26] = (it % 26) + 'A';
     f1 = TEST1_EFFLOADERS[it-1];
@@ -379,14 +379,14 @@ int test_effloaders2(void) {
     fflush(stdout);
     assert(d->n_eff_sets == it);
     assert(d->eff_set_ids[it-1].id == it);
-	assert(d->e[it-1].n_markers == 2);
-	assert(d->e[it-1].cumn_alleles[0] == 1);
-	assert(d->e[it-1].cumn_alleles[1] == 1);
+    assert(d->e[it-1].n_markers == 2);
+    assert(d->e[it-1].cumn_alleles[0] == 1);
+    assert(d->e[it-1].cumn_alleles[1] == 1);
     assert(d->e[it-1].allele[0] == 'A');
-	assert(d->e[it-1].center == NULL);
+    assert(d->e[it-1].centre == NULL);
     assert(fabs(d->e[it-1].eff[0] - 0.5) < TOL);
-	remove(filename);
-	
+    remove(filename);
+    
     // only one row no header
     ++it; filename[it / 26] = (it % 26) + 'A';
     f1 = TEST1_EFFLOADERS[it-1];
@@ -395,66 +395,62 @@ int test_effloaders2(void) {
     fflush(stdout);
     assert(d->n_eff_sets == it);
     assert(d->eff_set_ids[it-1].id == it);
-	assert(d->e[it-1].n_markers == 2);
-	assert(d->e[it-1].cumn_alleles[0] == 1);
-	assert(d->e[it-1].cumn_alleles[1] == 1);
+    assert(d->e[it-1].n_markers == 2);
+    assert(d->e[it-1].cumn_alleles[0] == 1);
+    assert(d->e[it-1].cumn_alleles[1] == 1);
     assert(d->e[it-1].allele[0] == 'a');
-	assert(d->e[it-1].center == NULL);
+    assert(d->e[it-1].centre == NULL);
     assert(fabs(d->e[it-1].eff[0] - 0.5) < TOL);
-	remove(filename);
-	
-	// No header, with centering column
-	++it; filename[it / 26] = (it % 26) + 'A';
+    remove(filename);
+    
+    // No header, with centring column
+    ++it; filename[it / 26] = (it % 26) + 'A';
     f1 = TEST1_EFFLOADERS[it-1];
     write_to_file(filename, f1);
     assert(load_effectfile(d,filename).id == it);
     fflush(stdout);
     assert(d->n_eff_sets == it);
     assert(d->eff_set_ids[it-1].id == it);
-	assert(d->e[it-1].n_markers == 2);
-	assert(d->e[it-1].cumn_alleles[0] == 2);
-	assert(d->e[it-1].cumn_alleles[1] == 4);
+    assert(d->e[it-1].n_markers == 2);
+	assert(d->e[it-1].centre != NULL);
+	assert(fabs(d->e[it-1].centre[0] - (1*0.5 + 2*(-0.5))) < TOL);
+	assert(fabs(d->e[it-1].centre[1] - (1*1e2 + 3*1e-2)) < TOL);
+    assert(d->e[it-1].cumn_alleles[0] == 2);
+    assert(d->e[it-1].cumn_alleles[1] == 4);
     assert(d->e[it-1].allele[0] == 'A');
     assert(d->e[it-1].allele[1] == 'T');
-	assert(d->e[it-1].allele[2] == 'A');
+    assert(d->e[it-1].allele[2] == 'A');
     assert(d->e[it-1].allele[3] == 'T');
-	assert(d->e[it-1].center != NULL);
-	assert(fabs(d->e[it-1].center[0] - 1) < TOL);
-    assert(fabs(d->e[it-1].center[1] - 2) < TOL);
-    assert(fabs(d->e[it-1].center[2] - 1) < TOL);
-    assert(fabs(d->e[it-1].center[3] - 3) < TOL);
     assert(fabs(d->e[it-1].eff[0] - 0.5) < TOL);
     assert(fabs(d->e[it-1].eff[1] - - 0.5) < TOL);
     assert(fabs(d->e[it-1].eff[2] - 1e2) < TOL);
     assert(fabs(d->e[it-1].eff[3] - 1e-2) < TOL);
-	remove(filename);
-	
-	// Rearranged columns with centering column
-	++it; filename[it / 26] = (it % 26) + 'A';
+    remove(filename);
+    
+    // Rearranged columns with centring column
+    ++it; filename[it / 26] = (it % 26) + 'A';
     f1 = TEST1_EFFLOADERS[it-1];
     write_to_file(filename, f1);
     assert(load_effectfile(d,filename).id == it);
     fflush(stdout);
     assert(d->n_eff_sets == it);
     assert(d->eff_set_ids[it-1].id == it);
-	assert(d->e[it-1].n_markers == 2);
-	assert(d->e[it-1].cumn_alleles[0] == 2);
-	assert(d->e[it-1].cumn_alleles[1] == 4);
+    assert(d->e[it-1].n_markers == 2);
+	assert(d->e[it-1].centre != NULL);
+	assert(fabs(d->e[it-1].centre[0] - ((-0.7)*0.5 + 0.75*(-0.5))) < TOL);
+	assert(fabs(d->e[it-1].centre[1] - (0.43*1e2 + 1.1*1e-2)) < TOL);
+    assert(d->e[it-1].cumn_alleles[0] == 2);
+    assert(d->e[it-1].cumn_alleles[1] == 4);
     assert(d->e[it-1].allele[0] == 'A');
     assert(d->e[it-1].allele[1] == 'T');
-	assert(d->e[it-1].allele[2] == 'A');
+    assert(d->e[it-1].allele[2] == 'A');
     assert(d->e[it-1].allele[3] == 'T');
-	assert(d->e[it-1].center != NULL);
-	assert(fabs(d->e[it-1].center[0] - (-0.7)) < TOL);
-    assert(fabs(d->e[it-1].center[1] - 0.75) < TOL);
-    assert(fabs(d->e[it-1].center[2] - 0.43) < TOL);
-    assert(fabs(d->e[it-1].center[3] - 1.1) < TOL);
     assert(fabs(d->e[it-1].eff[0] - 0.5) < TOL);
     assert(fabs(d->e[it-1].eff[1] - - 0.5) < TOL);
     assert(fabs(d->e[it-1].eff[2] - 1e2) < TOL);
     assert(fabs(d->e[it-1].eff[3] - 1e-2) < TOL);
-	remove(filename);
-	
+    remove(filename);
+    
     // discard markers not tracked by the simulation
     ++it; filename[it / 26] = (it % 26) + 'A';
     f1 = TEST1_EFFLOADERS[it-1];
@@ -463,18 +459,18 @@ int test_effloaders2(void) {
     fflush(stdout);
     assert(d->n_eff_sets == it);
     assert(d->eff_set_ids[it-1].id == it);
-	assert(d->e[it-1].n_markers == 2);
-	assert(d->e[it-1].cumn_alleles[0] == 2);
-	assert(d->e[it-1].cumn_alleles[1] == 3);
+    assert(d->e[it-1].n_markers == 2);
+    assert(d->e[it-1].cumn_alleles[0] == 2);
+    assert(d->e[it-1].cumn_alleles[1] == 3);
     assert(d->e[it-1].allele[0] == 'A');
     assert(d->e[it-1].allele[1] == 'T');
-	assert(d->e[it-1].allele[2] == 'A');
-	assert(d->e[it-1].center == NULL);
+    assert(d->e[it-1].allele[2] == 'A');
+    assert(d->e[it-1].centre == NULL);
     assert(fabs(d->e[it-1].eff[0] - 0.5) < TOL);
     assert(fabs(d->e[it-1].eff[1] - - 0.5) < TOL);
     assert(fabs(d->e[it-1].eff[2] - 1e2) < TOL);
-	remove(filename);
-	
+    remove(filename);
+    
     // file with too many columns on one row
     ++it; filename[it / 26] = (it % 26) + 'A';
     f1 = TEST1_EFFLOADERS[it-1];
@@ -483,16 +479,16 @@ int test_effloaders2(void) {
     fflush(stdout);
     assert(d->n_eff_sets == it);
     assert(d->eff_set_ids[it-1].id == it);
-	assert(d->e[it-1].n_markers == 2);
-	assert(d->e[it-1].cumn_alleles[0] == 1);
-	assert(d->e[it-1].cumn_alleles[1] == 2);
+    assert(d->e[it-1].n_markers == 2);
+    assert(d->e[it-1].cumn_alleles[0] == 1);
+    assert(d->e[it-1].cumn_alleles[1] == 2);
     assert(d->e[it-1].allele[0] == 'T');
     assert(d->e[it-1].allele[1] == 'T');
-	assert(d->e[it-1].center == NULL);
+    assert(d->e[it-1].centre == NULL);
     assert(fabs(d->e[it-1].eff[0] - - 0.5) < TOL);
     assert(fabs(d->e[it-1].eff[1] - 1e-2) < TOL);
-	remove(filename);
-	
+    remove(filename);
+    
     // file with a duplicated marker/allele pair
     ++it; filename[it / 26] = (it % 26) + 'A';
     f1 = TEST1_EFFLOADERS[it-1];
@@ -501,22 +497,22 @@ int test_effloaders2(void) {
     fflush(stdout);
     assert(d->n_eff_sets == it);
     assert(d->eff_set_ids[it-1].id == it);
-	// Behaviour is slightly changed during EffectMatrix -> MarkerEffects conversion.
-	// Now we do not check for duplicates, but they aren't used in calculations. They're deadweight
-	assert(d->e[it-1].n_markers == 2);
-	assert(d->e[it-1].cumn_alleles[0] == 2);
-	assert(d->e[it-1].cumn_alleles[1] == 4);
+    // Behaviour is slightly changed during EffectMatrix -> MarkerEffects conversion.
+    // Now we do not check for duplicates, but they aren't used in calculations. They're deadweight
+    assert(d->e[it-1].n_markers == 2);
+    assert(d->e[it-1].cumn_alleles[0] == 2);
+    assert(d->e[it-1].cumn_alleles[1] == 4);
     assert(d->e[it-1].allele[0] == 'T');
     assert(d->e[it-1].allele[1] == 'T');
-	assert(d->e[it-1].allele[2] == 'A');
+    assert(d->e[it-1].allele[2] == 'A');
     assert(d->e[it-1].allele[3] == 'T');
-	assert(d->e[it-1].center == NULL);
+    assert(d->e[it-1].centre == NULL);
     assert(fabs(d->e[it-1].eff[0] - 0.5) < TOL);
     assert(fabs(d->e[it-1].eff[1] - - 0.5) < TOL);
     assert(fabs(d->e[it-1].eff[2] - 1e2) < TOL);
     assert(fabs(d->e[it-1].eff[3] - 1e-2) < TOL);
-	remove(filename);
-	
+    remove(filename);
+    
     // file with no valid lines
     ++it; filename[it / 26] = (it % 26) + 'A';
     f1 = TEST1_EFFLOADERS[it-1];
@@ -524,8 +520,8 @@ int test_effloaders2(void) {
     assert(load_effectfile(d,filename).id == NO_EFFECTSET.id);
     fflush(stdout);
     assert(d->n_eff_sets == it-1);
-	remove(filename);
-	
+    remove(filename);
+    
     delete_simdata(d);
 
     return 0;
@@ -617,7 +613,7 @@ int test_maploaders2(void) {
     tmp = load_mapfile(d,filename);
     assert(tmp.id == 1);
     delete_recombination_map(d, tmp);
-	remove(filename);
+    remove(filename);
 
     // First real test: mixed spacing
     ++it; filename[it / 26] = (it % 26) + 'A';
@@ -629,8 +625,8 @@ int test_maploaders2(void) {
     fwrite(f1, sizeof(char), strlen(f1), fp);
     fclose(fp);
     check_mapfile(d, filename, it);
-	remove(filename);
-	
+    remove(filename);
+    
     // No final line
     ++it; filename[it / 26] = (it % 26) + 'A';
     f1 = TEST1_MAPLOADERS[it];
@@ -641,8 +637,8 @@ int test_maploaders2(void) {
     fwrite(f1, sizeof(char), strlen(f1), fp);
     fclose(fp);
     check_mapfile(d, filename, it);
-	remove(filename);
-	
+    remove(filename);
+    
     // rearranged column order
     ++it; filename[it / 26] = (it % 26) + 'A';
     f1 = TEST1_MAPLOADERS[it];
@@ -653,7 +649,7 @@ int test_maploaders2(void) {
     fwrite(f1, sizeof(char), strlen(f1), fp);
     fclose(fp);
     check_mapfile(d, filename, it);
-	remove(filename);
+    remove(filename);
 
     // No header line
     ++it; filename[it / 26] = (it % 26) + 'A';
@@ -665,8 +661,8 @@ int test_maploaders2(void) {
     fwrite(f1, sizeof(char), strlen(f1), fp);
     fclose(fp);
     check_mapfile(d, filename, it);
-	remove(filename);
-	
+    remove(filename);
+    
     // Mix order
     ++it; filename[it / 26] = (it % 26) + 'A';
     f1 = TEST1_MAPLOADERS[it];
@@ -678,7 +674,7 @@ int test_maploaders2(void) {
     fclose(fp);
     check_mapfile(d, filename, it);
     remove(filename);
-	
+    
     // Discard extra markers, leave out a missing marker, and change chromosomes and positions
     ++it; filename[it / 26] = (it % 26) + 'A';
     f1 = TEST1_MAPLOADERS[it];
@@ -715,7 +711,7 @@ int test_maploaders2(void) {
     assert(d->genome.maps[it-1].chrs[0].map.reorder.marker_indexes[0] == 3);
     assert(d->genome.maps[it-1].chrs[0].map.reorder.marker_indexes[1] == 2);
     remove(filename);
-	
+    
     // Too many columns in one place
     ++it; filename[it / 26] = (it % 26) + 'A';
     f1 = TEST1_MAPLOADERS[it];
@@ -734,7 +730,7 @@ int test_maploaders2(void) {
     assert(d->genome.maps[it-1].chrs[1].map.reorder.marker_indexes[0] == 4);
     assert(d->genome.maps[it-1].chrs[1].map.reorder.marker_indexes[1] == 3);
     remove(filename);
-	
+    
     // Single line map with header. A single line map doesn't seem very useful but we may as well check against crashes
     ++it; filename[it / 26] = (it % 26) + 'A';
     f1 = TEST1_MAPLOADERS[it];
@@ -746,7 +742,7 @@ int test_maploaders2(void) {
     assert(d->genome.maps[it-1].chrs[0].map.simple.n_markers == 1);
     assert(d->genome.maps[it-1].chrs[0].map.simple.first_marker_index == 1);
     remove(filename);
-	
+    
     // single line map without header
     ++it; filename[it / 26] = (it % 26) + 'A';
     f1 = TEST1_MAPLOADERS[it];
@@ -757,34 +753,34 @@ int test_maploaders2(void) {
     assert(d->genome.maps[it-1].chrs[0].type == GSC_LINKAGEGROUP_SIMPLE);
     assert(d->genome.maps[it-1].chrs[0].map.simple.n_markers == 1);
     assert(d->genome.maps[it-1].chrs[0].map.simple.first_marker_index == 1);
-	remove(filename);
-	
+    remove(filename);
+    
     // Single line inappropriate map
     ++it; filename[it / 26] = (it % 26) + 'A';
     f1 = TEST1_MAPLOADERS[it];
     write_to_file(filename, f1);
     assert(load_mapfile(d,filename).id == NO_MAP.id);
     assert(d->genome.n_markers == 5);
-	remove(filename);
-	
-	// Too many columns on first row
-	++it; filename[it / 26] = (it % 26) + 'A';
+    remove(filename);
+    
+    // Too many columns on first row
+    ++it; filename[it / 26] = (it % 26) + 'A';
     f1 = TEST1_MAPLOADERS[it];
     write_to_file(filename, f1);
     assert(load_mapfile(d,filename).id == NO_MAP.id);
     assert(d->genome.n_markers == 5);
-	remove(filename);
-	
-	// Too few columns on first row
-	++it; filename[it / 26] = (it % 26) + 'A';
+    remove(filename);
+    
+    // Too few columns on first row
+    ++it; filename[it / 26] = (it % 26) + 'A';
     f1 = TEST1_MAPLOADERS[it];
     write_to_file(filename, f1);
     assert(load_mapfile(d,filename).id == NO_MAP.id);
     assert(d->genome.n_markers == 5);
-	remove(filename);
+    remove(filename);
 
     delete_simdata(d);
-	
+    
     return 0;
 
 }
@@ -895,14 +891,14 @@ m2 AT AA TT
 
     // vertical first, tabs, with corner, with endline. "B"
     ++it; filename[it / 26] = (it % 26) + 'A';
-	assert(it == 1);
+    assert(it == 1);
     f1 = TEST1_GENOMATRIX_LOADERS[it-1];
     write_to_file(filename, f1);
     load_genotypefile(d,filename,define_matrix_format_details(GSC_NA,GSC_FALSE,GSC_GENOTYPECELLSTYLE_UNKNOWN));
     check_genotypes(d,it,0);
     check_matrix_with_different_specification_levels(seed, filename, fmap, GSC_FALSE,
                                                      GSC_TRUE,GSC_FALSE,GSC_GENOTYPECELLSTYLE_PAIR);
-	remove(filename);
+    remove(filename);
 
     // tabs, wcorner, wendline C
     ++it; filename[it / 26] = (it % 26) + 'A';
@@ -912,79 +908,79 @@ m2 AT AA TT
     check_genotypes(d,it,0);
     check_matrix_with_different_specification_levels(seed,filename,fmap,1,
                                                      GSC_TRUE,GSC_TRUE,GSC_GENOTYPECELLSTYLE_PAIR);
-	remove(filename);
-	
+    remove(filename);
+    
     // spaces, wcorner, wendline D
     ++it; filename[it / 26] = it+ 'A';
     f1 = TEST1_GENOMATRIX_LOADERS[it-1];
     write_to_file(filename, f1);
     load_genotypefile(d,filename,DETECT_FILE_FORMAT);
     check_genotypes(d,it,0);
-	remove(filename);
-	
+    remove(filename);
+    
     // spaces, wcorner, wrendline E
     ++it; filename[it / 26] = it+ 'A';
     f1 = TEST1_GENOMATRIX_LOADERS[it-1];
     write_to_file(filename, f1);
     load_genotypefile(d,filename,DETECT_FILE_FORMAT);
     check_genotypes(d,it,0);
-	remove(filename);
-	
+    remove(filename);
+    
     // mixed endlines and spacings, wcorner, wrendline F
     ++it; filename[it / 26] = it+ 'A';
     f1 = TEST1_GENOMATRIX_LOADERS[it-1];
     write_to_file(filename, f1);
     load_genotypefile(d,filename,DETECT_FILE_FORMAT);
     check_genotypes(d,it,0);
-	remove(filename);
-	
+    remove(filename);
+    
     // tabs, noendline, wcorner G
     ++it; filename[it / 26] = it+ 'A';
     f1 = TEST1_GENOMATRIX_LOADERS[it-1];
     write_to_file(filename, f1);
     load_genotypefile(d,filename,DETECT_FILE_FORMAT);
     check_genotypes(d,it,0);
-	remove(filename);
-	
+    remove(filename);
+    
     // spaces, noendline, wcorner H
     ++it; filename[it / 26] = it+ 'A';
     f1 = TEST1_GENOMATRIX_LOADERS[it-1];
     write_to_file(filename, f1);
     load_genotypefile(d,filename,DETECT_FILE_FORMAT);
     check_genotypes(d,it,0);
-	remove(filename);
-	
+    remove(filename);
+    
     // spaces, noendline, nocorner I
     ++it; filename[it / 26] = it+ 'A';
     f1 = TEST1_GENOMATRIX_LOADERS[it-1];
     write_to_file(filename, f1);
     load_genotypefile(d,filename,DETECT_FILE_FORMAT);
     check_genotypes(d,it,0);
-	remove(filename);
-	
+    remove(filename);
+    
     // tabs, noendline, nocorner J
     ++it; filename[it / 26] = it+ 'A';
     f1 = TEST1_GENOMATRIX_LOADERS[it-1];
     write_to_file(filename, f1);
     load_genotypefile(d,filename,DETECT_FILE_FORMAT);
     check_genotypes(d,it,0);
-	remove(filename);
-	
+    remove(filename);
+    
     // K
     ++it; filename[it / 26] = it+ 'A';
     f1 = TEST1_GENOMATRIX_LOADERS[it-1];
     write_to_file(filename, f1);
     load_genotypefile(d,filename,DETECT_FILE_FORMAT);
     check_genotypes(d,it,0);
-	remove(filename);
-	
+    remove(filename);
+    
     // tabs, nocorner, wendline L
     ++it; filename[it / 26] = it+ 'A';
     f1 = TEST1_GENOMATRIX_LOADERS[it-1];
     write_to_file(filename, f1);
     load_genotypefile(d,filename,DETECT_FILE_FORMAT);
     check_genotypes(d,it,0);
-	remove(filename);
+    remove(filename);
 
     // vertical, tabs, noendline M
     ++it; filename[it / 26] = (it % 26) + 'A';
@@ -992,8 +988,8 @@ m2 AT AA TT
     write_to_file(filename, f1);
     load_genotypefile(d,filename,DETECT_FILE_FORMAT);
     check_genotypes(d,it,0);
-	remove(filename);
-	
+    remove(filename);
+    
     // vertical, tabs, nocorner, noendline N
     ++it; filename[it / 26] = (it % 26) + 'A';
     f1 = TEST1_GENOMATRIX_LOADERS[it-1];
@@ -1002,7 +998,7 @@ m2 AT AA TT
     check_genotypes(d,it,0);
     check_matrix_with_different_specification_levels(seed,filename,fmap,1,
                                                      GSC_TRUE,GSC_FALSE,GSC_GENOTYPECELLSTYLE_PAIR);
-	remove(filename);
+    remove(filename);
 
     // vertical, tabs, nocorner O
     ++it; filename[it / 26] = (it % 26) + 'A';
@@ -1010,24 +1006,24 @@ m2 AT AA TT
     write_to_file(filename, f1);
     load_genotypefile(d,filename,DETECT_FILE_FORMAT);
     check_genotypes(d,it,0);
-	remove(filename);
-	
+    remove(filename);
+    
     // vertical, commas, nocorner P
     ++it; filename[it / 26] = (it % 26) + 'A';
     f1 = TEST1_GENOMATRIX_LOADERS[it-1];
     write_to_file(filename, f1);
     load_genotypefile(d,filename,DETECT_FILE_FORMAT);
     check_genotypes(d,it,0);
-	remove(filename);
-	
+    remove(filename);
+    
     // vertical, commas, corner, ignore extra Q
     ++it; filename[it / 26] = (it % 26) + 'A';
     f1 = TEST1_GENOMATRIX_LOADERS[it-1];
     write_to_file(filename, f1);
     load_genotypefile(d,filename,DETECT_FILE_FORMAT);
     check_genotypes(d,it,0);
-	remove(filename);
-	
+    remove(filename);
+    
     // vertical, commas, corner, ignore extra, noendline R
     ++it; filename[it / 26] = (it % 26) + 'A';
     f1 = TEST1_GENOMATRIX_LOADERS[it-1]; 
@@ -1035,48 +1031,48 @@ m2 AT AA TT
     load_genotypefile(d,filename,DETECT_FILE_FORMAT);
     fflush(stdout);
     check_genotypes(d,it,0);
-	remove(filename);
-	
+    remove(filename);
+    
     // vertical, slashpairs S
     ++it; filename[it / 26] = (it % 26) + 'A';
     f1 = TEST1_GENOMATRIX_LOADERS[it-1]; 
     write_to_file(filename, f1);
     load_genotypefile(d,filename,DETECT_FILE_FORMAT);
     check_genotypes(d,it,0);
-	remove(filename);
-	
+    remove(filename);
+    
     // horizontal, slashpairs T
     ++it; filename[it / 26] = (it % 26) + 'A';
     f1 = TEST1_GENOMATRIX_LOADERS[it-1]; 
     write_to_file(filename, f1);
     load_genotypefile(d,filename,DETECT_FILE_FORMAT);
     check_genotypes(d,it,0);
-	remove(filename);
-	
+    remove(filename);
+    
     // horizontal, rearranged markers U
     ++it; filename[it / 26] = it+ 'A';
     f1 = TEST1_GENOMATRIX_LOADERS[it-1];  
     write_to_file(filename, f1);
     load_genotypefile(d,filename,DETECT_FILE_FORMAT);
     check_genotypes(d,it,0);
-	remove(filename);
-	
+    remove(filename);
+    
     // vertical, rearranged markers V
     ++it; filename[it / 26] = it+ 'A';
     f1 = TEST1_GENOMATRIX_LOADERS[it-1];
     write_to_file(filename, f1);
     load_genotypefile(d,filename,DETECT_FILE_FORMAT);
     check_genotypes(d,it,0);
-	remove(filename);
-	
+    remove(filename);
+    
     // vertical, rearranged markers and extra fake marker W
     ++it; filename[it / 26] = (it % 26) + 'A';
     f1 = TEST1_GENOMATRIX_LOADERS[it-1]; 
     write_to_file(filename, f1);
     load_genotypefile(d,filename,DETECT_FILE_FORMAT);
     check_genotypes(d,it,0);
-	remove(filename);
-	
+    remove(filename);
+    
     // horizontal, extra fake marker X
     ++it; filename[it / 26] = (it % 26) + 'A';
     f1 = TEST1_GENOMATRIX_LOADERS[it-1];
@@ -1085,7 +1081,7 @@ m2 AT AA TT
     check_genotypes(d,it,0);
     check_matrix_with_different_specification_levels(seed,filename,fmap,1,
                                                      GSC_TRUE,GSC_FALSE,GSC_GENOTYPECELLSTYLE_PAIR);
-	remove(filename);
+    remove(filename);
 
     // horizontal, extra fake marker centrally Y
     ++it; filename[it / 26] = it+ 'A';
@@ -1093,48 +1089,48 @@ m2 AT AA TT
     write_to_file(filename, f1);
     load_genotypefile(d,filename,DETECT_FILE_FORMAT);
     check_genotypes(d,it,0);
-	remove(filename);
-	
+    remove(filename);
+    
     // vertical, blank names Z
     ++it; filename[it / 26] = (it % 26) + 'A';
     f1 = TEST1_GENOMATRIX_LOADERS[it-1]; 
     write_to_file(filename, f1);
     load_genotypefile(d,filename,DETECT_FILE_FORMAT);
     check_genotypes(d,it,1);
-	remove(filename);
-	
+    remove(filename);
+    
     // Markers as rows, no genotype names
     ++it; filename[it / 26] = (it % 26) + 'A';
     f1 = TEST1_GENOMATRIX_LOADERS[it-1];
     write_to_file(filename, f1);
     load_genotypefile(d,filename,DETECT_FILE_FORMAT);
     check_genotypes(d,it,1);
-	remove(filename);
-	
+    remove(filename);
+    
     // Markers as rows, no genotype names v2
     ++it; filename[it / 26] = (it % 26) + 'A';
     f1 = TEST1_GENOMATRIX_LOADERS[it-1];
     write_to_file(filename, f1);
     load_genotypefile(d,filename,DETECT_FILE_FORMAT);
     check_genotypes(d,it,1);
-	remove(filename);
-	
+    remove(filename);
+    
     // Markers as columns, no genotype names "ZC"
     ++it; filename[it / 26] = (it % 26) + 'A';
     f1 = TEST1_GENOMATRIX_LOADERS[it-1];
     write_to_file(filename, f1);
     load_genotypefile(d,filename,DETECT_FILE_FORMAT);
     check_genotypes(d,it,1);
-	remove(filename);
-	
+    remove(filename);
+    
     // Markers as columns, no genotype names v2 "ZD"
     ++it; filename[it / 26] = (it % 26) + 'A';
     f1 = TEST1_GENOMATRIX_LOADERS[it-1];
     write_to_file(filename, f1);
     load_genotypefile(d,filename,DETECT_FILE_FORMAT);
     check_genotypes(d,it,1);
-	remove(filename);
-	
+    remove(filename);
+    
     // temporarily create new SimData with map.
     f1 = TEST1_2MARKER_MAP; 
     write_to_file(filename, f1);
@@ -1142,8 +1138,8 @@ m2 AT AA TT
     load_mapfile(d2, "2marker-map.txt");
     assert(d2->genome.n_markers == 2);
     int cid = 0;
-	remove(filename);
-	
+    remove(filename);
+    
     // horizontal, single-line w header
     ++it; filename[it / 26] = (it % 26) + 'A';
     f1 = TEST1_GENOMATRIX_LOADERS[it-1]; 
@@ -1176,8 +1172,8 @@ m2 AT AA TT
         assert(d2->m->pedigrees[1][i].id == 0);
     }
     delete_group(d2,(GroupNum){.num=1});
-	remove(filename);
-	
+    remove(filename);
+    
     // horizontal, single line no header
     ++it; filename[it / 26] = (it % 26) + 'A';
     f1 = TEST1_GENOMATRIX_LOADERS[it-1];
@@ -1209,7 +1205,7 @@ m2 AT AA TT
         assert(d2->m->pedigrees[1][i].id == 0);
     }
     delete_group(d2,(GroupNum){.num=1});
-	remove(filename);
+    remove(filename);
 
     // horizontal, single column
     ++it; filename[it / 26] = (it % 26) + 'A';
@@ -1237,8 +1233,8 @@ m2 AT AA TT
         assert(d2->m->pedigrees[1][i].id == 0);
     }
     delete_group(d2,(GroupNum){.num=1});
-	remove(filename);
-	
+    remove(filename);
+    
     // horizontal, single column, noheader
     ++it; filename[it / 26] = (it % 26) + 'A';
     f1 = TEST1_GENOMATRIX_LOADERS[it-1];
@@ -1265,8 +1261,8 @@ m2 AT AA TT
         assert(d2->m->pedigrees[1][i].id == 0);
     }
     delete_group(d2,(GroupNum){.num=1});
-	remove(filename);
-	
+    remove(filename);
+    
     // vertical, single line
     ++it; filename[it / 26] = (it % 26) + 'A';
     f1 = TEST1_GENOMATRIX_LOADERS[it-1]; 
@@ -1293,8 +1289,8 @@ m2 AT AA TT
         assert(d2->m->pedigrees[1][i].id == 0);
     }
     delete_group(d2,(GroupNum){.num=1});
-	remove(filename);
-	
+    remove(filename);
+    
     // vertical singleline noheader -> fails, can't guarantee marker order.
     //++it; filename[it / 26] = (it % 26) + 'A';
     /*f1 = TEST1_GENOMATRIX_LOADERS[it-1]; "g1,AA,TA\n";
@@ -1326,7 +1322,7 @@ m2 AT AA TT
         assert(d2->m->pedigrees[1][i].id == 0);
     }
     delete_group(d2,(GroupNum){.num=1});
-	remove(filename);*/
+    remove(filename);*/
 
     // vertical singlecolumn
     ++it; filename[it / 26] = (it % 26) + 'A';
@@ -1355,7 +1351,7 @@ m2 AT AA TT
         assert(d2->m->pedigrees[1][i].id == 0);
     }
     delete_group(d2,(GroupNum){.num=1});
-	remove(filename);
+    remove(filename);
 
     // Markers rows, single row no header
     ++it; filename[it / 26] = (it % 26) + 'A';
@@ -1390,8 +1386,8 @@ m2 AT AA TT
         assert(d2->m->pedigrees[1][i].id == 0);
     }
     delete_group(d2,(GroupNum){.num=1});
-	remove(filename);
-	
+    remove(filename);
+    
     // Markers rows, single row no body
     ++it; filename[it / 26] = (it % 26) + 'A';
     f1 = TEST1_GENOMATRIX_LOADERS[it-1];
@@ -1425,8 +1421,8 @@ m2 AT AA TT
         assert(d2->m->pedigrees[1][i].id == 0);
     }
     delete_group(d2,(GroupNum){.num=1});
-	remove(filename);
-	
+    remove(filename);
+    
     // Markers as columns, single row, no body
     ++it; filename[it / 26] = (it % 26) + 'A';
     f1 = TEST1_GENOMATRIX_LOADERS[it-1];
@@ -1443,8 +1439,8 @@ m2 AT AA TT
     assert(d2->m->next == NULL);
     assert(d2->m->n_genotypes == 0);
     assert(d2->m->n_markers == 2);
-	remove(filename);
-	
+    remove(filename);
+    
     // Markers as rows, single column, no body
     ++it; filename[it / 26] = (it % 26) + 'A';
     f1 = TEST1_GENOMATRIX_LOADERS[it-1];
@@ -1461,8 +1457,8 @@ m2 AT AA TT
     assert(d2->m->next == NULL);
     assert(d2->m->n_genotypes == 0);
     assert(d2->m->n_markers == 2);
-	remove(filename);
-	
+    remove(filename);
+    
     // Markers as rows, no marker name matches
     ++it; filename[it / 26] = (it % 26) + 'A';
     f1 = TEST1_GENOMATRIX_LOADERS[it-1];
@@ -1496,8 +1492,8 @@ m2 AT AA TT
         assert(d2->m->pedigrees[1][i].id == 0);
     }
     delete_group(d2,(GroupNum){.num=1});
-	remove(filename);
-	
+    remove(filename);
+    
     // Markers as columns, no marker name matches
     ++it; filename[it / 26] = (it % 26) + 'A';
     f1 = TEST1_GENOMATRIX_LOADERS[it-1];
@@ -1531,8 +1527,8 @@ m2 AT AA TT
         assert(d2->m->pedigrees[1][i].id == 0);
     }
     delete_group(d2,(GroupNum){.num=1});
-	remove(filename);
-	
+    remove(filename);
+    
     // Check counts work
     ++it; filename[it / 26] = (it % 26) + 'A';
     f1 = TEST1_GENOMATRIX_LOADERS[it-1]; 
@@ -1563,8 +1559,8 @@ m2 AT AA TT
         assert(d2->m->pedigrees[1][i].id == 0);
     }
     delete_group(d2,(GroupNum){.num=1});
-	remove(filename);
-	
+    remove(filename);
+    
     // Check encodings work
     ++it; filename[it / 26] = (it % 26) + 'A';
     f1 = TEST1_GENOMATRIX_LOADERS[it-1];
@@ -1607,8 +1603,8 @@ m2 AT AA TT
         assert(d2->m->pedigrees[1][i].id == 0);
     }
     delete_group(d2,(GroupNum){.num=1});
-	remove(filename);
-	
+    remove(filename);
+    
     delete_simdata(d2);
 
     delete_simdata(d);
@@ -1705,61 +1701,61 @@ GroupNum test_loaders(SimData* d) {
     delete_recombination_map(d,m2);
 
     assert(d->n_eff_sets == 1);
-	assert(d->e[0].n_markers == 3);
-	assert(d->e[0].cumn_alleles[0] = 2);
-	assert(d->e[0].cumn_alleles[1] = 4);
-	assert(d->e[0].cumn_alleles[2] = 6);
-	assert(d->e[0].allele[0] == 'A');
-	assert(d->e[0].allele[1] == 'T');
-	assert(d->e[0].allele[2] == 'A');
-	assert(d->e[0].allele[3] == 'T');
-	assert(d->e[0].allele[4] == 'A');
-	assert(d->e[0].allele[5] == 'T');
-	assert(d->e[0].center == NULL);
-	assert(fabs(d->e[0].eff[0] - (-0.8)) < TOL);
-	assert(fabs(d->e[0].eff[1] - (0.9)) < TOL);
-	assert(fabs(d->e[0].eff[2] - (-0.1)) < TOL);
-	assert(fabs(d->e[0].eff[3] - (-0.5)) < TOL);
-	assert(fabs(d->e[0].eff[4] - (0.1)) < TOL);
-	assert(fabs(d->e[0].eff[5] - (-0.1)) < TOL);
+    assert(d->e[0].n_markers == 3);
+    assert(d->e[0].cumn_alleles[0] = 2);
+    assert(d->e[0].cumn_alleles[1] = 4);
+    assert(d->e[0].cumn_alleles[2] = 6);
+    assert(d->e[0].allele[0] == 'A');
+    assert(d->e[0].allele[1] == 'T');
+    assert(d->e[0].allele[2] == 'A');
+    assert(d->e[0].allele[3] == 'T');
+    assert(d->e[0].allele[4] == 'A');
+    assert(d->e[0].allele[5] == 'T');
+    assert(d->e[0].centre == NULL);
+    assert(fabs(d->e[0].eff[0] - (-0.8)) < TOL);
+    assert(fabs(d->e[0].eff[1] - (0.9)) < TOL);
+    assert(fabs(d->e[0].eff[2] - (-0.1)) < TOL);
+    assert(fabs(d->e[0].eff[3] - (-0.5)) < TOL);
+    assert(fabs(d->e[0].eff[4] - (0.1)) < TOL);
+    assert(fabs(d->e[0].eff[5] - (-0.1)) < TOL);
     printf("...marker effects loaded correctly\n");
 
     assert(load_effectfile(d, "a-test-eff2.txt").id==2);
     assert(d->n_eff_sets == 2);
-	// Check original set...
-	assert(d->e[0].n_markers == 3);
-	assert(d->e[0].cumn_alleles[0] = 2);
-	assert(d->e[0].cumn_alleles[1] = 4);
-	assert(d->e[0].cumn_alleles[2] = 6);
-	assert(d->e[0].allele[0] == 'A');
-	assert(d->e[0].allele[1] == 'T');
-	assert(d->e[0].allele[2] == 'A');
-	assert(d->e[0].allele[3] == 'T');
-	assert(d->e[0].allele[4] == 'A');
-	assert(d->e[0].allele[5] == 'T');
-	assert(d->e[0].center == NULL);
-	assert(fabs(d->e[0].eff[0] - (-0.8)) < TOL);
-	assert(fabs(d->e[0].eff[1] - (0.9)) < TOL);
-	assert(fabs(d->e[0].eff[2] - (-0.1)) < TOL);
-	assert(fabs(d->e[0].eff[3] - (-0.5)) < TOL);
-	assert(fabs(d->e[0].eff[4] - (0.1)) < TOL);
-	assert(fabs(d->e[0].eff[5] - (-0.1)) < TOL);
+    // Check original set...
+    assert(d->e[0].n_markers == 3);
+    assert(d->e[0].cumn_alleles[0] = 2);
+    assert(d->e[0].cumn_alleles[1] = 4);
+    assert(d->e[0].cumn_alleles[2] = 6);
+    assert(d->e[0].allele[0] == 'A');
+    assert(d->e[0].allele[1] == 'T');
+    assert(d->e[0].allele[2] == 'A');
+    assert(d->e[0].allele[3] == 'T');
+    assert(d->e[0].allele[4] == 'A');
+    assert(d->e[0].allele[5] == 'T');
+    assert(d->e[0].centre == NULL);
+    assert(fabs(d->e[0].eff[0] - (-0.8)) < TOL);
+    assert(fabs(d->e[0].eff[1] - (0.9)) < TOL);
+    assert(fabs(d->e[0].eff[2] - (-0.1)) < TOL);
+    assert(fabs(d->e[0].eff[3] - (-0.5)) < TOL);
+    assert(fabs(d->e[0].eff[4] - (0.1)) < TOL);
+    assert(fabs(d->e[0].eff[5] - (-0.1)) < TOL);
 
-	// Check second set...
-	assert(d->e[1].n_markers == 3);
-	assert(d->e[1].cumn_alleles[0] = 1);
-	assert(d->e[1].cumn_alleles[1] = 1);
-	assert(d->e[1].cumn_alleles[2] = 1);
-	assert(d->e[1].allele[0] == 'A');
-	assert(d->e[0].center == NULL);
-	assert(fabs(d->e[1].eff[0] - (1.)) < TOL);
+    // Check second set...
+    assert(d->e[1].n_markers == 3);
+    assert(d->e[1].cumn_alleles[0] = 1);
+    assert(d->e[1].cumn_alleles[1] = 1);
+    assert(d->e[1].cumn_alleles[2] = 1);
+    assert(d->e[1].allele[0] == 'A');
+    assert(d->e[0].centre == NULL);
+    assert(fabs(d->e[1].eff[0] - (1.)) < TOL);
     printf("...second set of marker effects loaded correctly\n");
     remove("a-test-eff2.txt");
 
     assert(d->current_id.id == 6);
     assert(d->m); // != NULL
-	assert(d->m->n_markers == 3);
-	assert(d->m->n_genotypes == 6);
+    assert(d->m->n_markers == 3);
+    assert(d->m->n_genotypes == 6);
     assert(d->m->ids[0].id == 1);
     assert(d->m->ids[1].id == 2);
     assert(d->m->ids[2].id == 3);
@@ -1780,28 +1776,28 @@ GroupNum test_loaders(SimData* d) {
     assert(d->m->groups[5].num == g0.num);
     assert(g0.num > 0);
 
-	// might not be important that thele load in this order but we'll ask for it anyway.
-	assert(strcmp(d->m->names[0], "G01") == 0);
-	assert(strcmp(d->m->names[1], "G02") == 0);
-	assert(strcmp(d->m->names[2], "G03") == 0);
-	assert(strcmp(d->m->names[3], "G04") == 0);
-	assert(strcmp(d->m->names[4], "G05") == 0);
-	assert(strcmp(d->m->names[5], "G06") == 0);
-	assert(strncmp(d->m->alleles[0],"TTAATT", 6) == 0); // G01
-	assert(strncmp(d->m->alleles[1],"TTAATT", 6) == 0); // G02
-	assert(strncmp(d->m->alleles[2],"TTAATA", 6) == 0); // G03
-	assert(strncmp(d->m->alleles[3],"TAAATA", 6) == 0); // G04
-	assert(strncmp(d->m->alleles[4],"TTTTTT", 6) == 0); // G05
-	assert(strncmp(d->m->alleles[5],"ATAATT", 6) == 0); // G06
-	printf("...genotypes loaded correctly\n");
+    // might not be important that thele load in this order but we'll ask for it anyway.
+    assert(strcmp(d->m->names[0], "G01") == 0);
+    assert(strcmp(d->m->names[1], "G02") == 0);
+    assert(strcmp(d->m->names[2], "G03") == 0);
+    assert(strcmp(d->m->names[3], "G04") == 0);
+    assert(strcmp(d->m->names[4], "G05") == 0);
+    assert(strcmp(d->m->names[5], "G06") == 0);
+    assert(strncmp(d->m->alleles[0],"TTAATT", 6) == 0); // G01
+    assert(strncmp(d->m->alleles[1],"TTAATT", 6) == 0); // G02
+    assert(strncmp(d->m->alleles[2],"TTAATA", 6) == 0); // G03
+    assert(strncmp(d->m->alleles[3],"TAAATA", 6) == 0); // G04
+    assert(strncmp(d->m->alleles[4],"TTTTTT", 6) == 0); // G05
+    assert(strncmp(d->m->alleles[5],"ATAATT", 6) == 0); // G06
+    printf("...genotypes loaded correctly\n");
 
 
     GroupNum g1 = load_genotypefile(d, "a-test.txt",DETECT_FILE_FORMAT);
 
-	assert(d->m != NULL);
+    assert(d->m != NULL);
     assert(d->current_id.id == 12);
-	assert(d->m->n_markers == 3);
-	assert(d->m->n_genotypes == 12);
+    assert(d->m->n_markers == 3);
+    assert(d->m->n_genotypes == 12);
     assert(d->m->groups[0].num == g0.num);
     assert(d->m->groups[1].num == g0.num);
     assert(d->m->groups[2].num == g0.num);
@@ -1832,7 +1828,7 @@ GroupNum test_loaders(SimData* d) {
 
     delete_group(d, g1);
 
-	return g0;
+    return g0;
 }
 
 GroupNum test_labels(SimData *d, GroupNum g0) {
@@ -2508,7 +2504,7 @@ GroupNum test_grouping(SimData *d, GroupNum g0) {
 }
 
 int test_count_calculators(SimData *d, GroupNum g0) {
-    DecimalMatrix dec = calculate_allele_counts(d, g0, 'A', NO_EFFECTSET);
+    DecimalMatrix dec = calculate_allele_counts(d, g0, 'A');
 
     assert(dec.dim1 == 6);
     assert(dec.dim2 == 3);
@@ -2543,7 +2539,7 @@ int test_count_calculators(SimData *d, GroupNum g0) {
     delete_dmatrix(&dec);
 
     // & check for an allele whose counts should all be 0
-    dec = calculate_allele_counts(d, g0, 'X', NO_EFFECTSET);
+    dec = calculate_allele_counts(d, g0, 'X');
 
     assert(dec.dim1 == 6);
     assert(dec.dim2 == d->m->n_markers && d->m->n_markers == 3);
@@ -2554,55 +2550,15 @@ int test_count_calculators(SimData *d, GroupNum g0) {
     }
 
     delete_dmatrix(&dec);
-	
-	// & check it works if you have centering
-	char filename[] = "effset_wcenter.txt";
-	write_to_file(filename, HELPER_EFF3);
-	EffectID eff3 = load_effectfile(d, filename);
-	dec = calculate_allele_counts(d, g0, 'A', eff3);
-
-    assert(dec.dim1 == 6);
-    assert(dec.dim2 == 3);
-    assert(strcmp(d->genome.marker_names[0], "m1") == 0);
-    assert(strcmp(d->genome.marker_names[1], "m2") == 0);
-    assert(strcmp(d->genome.marker_names[2], "am3") == 0);
-
-    assert(fabs(dec.matrix[0][0] - (0 - 0.2)) < TOL);
-	assert(fabs(dec.matrix[0][1] - (2 - (-0.4))) < TOL);
-	assert(fabs(dec.matrix[0][2] - (0 - 0)) < TOL);
-	
-	assert(fabs(dec.matrix[1][0] - (0 - 0.2)) < TOL);
-	assert(fabs(dec.matrix[1][1] - (2 - (-0.4))) < TOL);
-	assert(fabs(dec.matrix[1][2] - (0 - 0)) < TOL);
-	
-	assert(fabs(dec.matrix[2][0] - (0 - 0.2)) < TOL);
-	assert(fabs(dec.matrix[2][1] - (2 - (-0.4))) < TOL);
-	assert(fabs(dec.matrix[2][2] - (1 - 0)) < TOL);
-	
-	assert(fabs(dec.matrix[3][0] - (1 - 0.2)) < TOL);
-	assert(fabs(dec.matrix[3][1] - (2 - (-0.4))) < TOL);
-	assert(fabs(dec.matrix[3][2] - (1 - 0)) < TOL);
-	
-	assert(fabs(dec.matrix[4][0] - (0 - 0.2)) < TOL);
-	assert(fabs(dec.matrix[4][1] - (0 - (-0.4))) < TOL);
-	assert(fabs(dec.matrix[4][2] - (0 - 0)) < TOL);
-
-	assert(fabs(dec.matrix[5][0] - (1 - 0.2)) < TOL);
-	assert(fabs(dec.matrix[5][1] - (2 - (-0.4))) < TOL);
-	assert(fabs(dec.matrix[5][2] - (0 - 0)) < TOL);
-
-    delete_dmatrix(&dec);
-	delete_eff_set(d, eff3);
-	remove(filename);
-	
+    
     return 0;
 }
 
 int test_effect_calculators(SimData *d, GroupNum g0) {
     DecimalMatrix dec = calculate_bvs(d, g0, (EffectID){.id=1});
 
-	assert(dec.dim1 == 1);
-	assert(dec.dim2 == 6);
+    assert(dec.dim1 == 1);
+    assert(dec.dim2 == 6);
     assert(fabs(dec.matrix[0][0] - 1.4) < TOL);
     assert(fabs(dec.matrix[0][1] - 1.4) < TOL);
     assert(fabs(dec.matrix[0][2] - 1.6) < TOL);
@@ -2639,81 +2595,314 @@ int test_effect_calculators(SimData *d, GroupNum g0) {
     delete_dmatrix(&dec3);
 
     remove("a-test-eff3.txt");
+    
+    // & check it works if you have centering
+    char filename[] = "effset_wcenter.txt";
+    write_to_file(filename, HELPER_EFF3);
+    EffectID eff3 = load_effectfile(d, filename);
+	// just analyse the structure of this effect set, then we'll get onto calculating bvs
+	GSC_ID_T eff3ix = get_index_of_eff_set(d, eff3);
+    assert(eff3ix != GSC_NA_IDX);
+	assert(d->e[eff3ix].n_markers == 3);
+	assert(d->e[eff3ix].centre != NULL);
+	assert(fabs(d->e[eff3ix].centre[0] - (0.2*(-0.8) + (-0.2)*0.9)) < TOL);
+	assert(fabs(d->e[eff3ix].centre[1] - (0.1*0.4 + (-0.5)*0.4)) < TOL);
+	assert(fabs(d->e[eff3ix].centre[2] - ((-0.1)*0.12)) < TOL);
+    assert(d->e[eff3ix].cumn_alleles[0] == 2);
+    assert(d->e[eff3ix].cumn_alleles[1] == 4);
+	assert(d->e[eff3ix].cumn_alleles[2] == 6);
+    assert(d->e[eff3ix].allele[0] == 'A');
+    assert(d->e[eff3ix].allele[1] == 'T');
+	assert(d->e[eff3ix].allele[2] == 'A');
+    assert(d->e[eff3ix].allele[3] == 'T');
+	assert(d->e[eff3ix].allele[4] == 'A');
+    assert(d->e[eff3ix].allele[5] == 'T');
+    assert(fabs(d->e[eff3ix].eff[0] - -0.8) < TOL);
+    assert(fabs(d->e[eff3ix].eff[1] - 0.9) < TOL);
+    assert(fabs(d->e[eff3ix].eff[2] - -0.1) < TOL);
+    assert(fabs(d->e[eff3ix].eff[3] - -0.5) < TOL);
+	assert(fabs(d->e[eff3ix].eff[4] - 0.1) < TOL);
+    assert(fabs(d->e[eff3ix].eff[5] - -0.1) < TOL);
 	
-	// & check it works if you have centering
-	char filename[] = "effset_wcenter.txt";
-	write_to_file(filename, HELPER_EFF3);
-	EffectID eff3 = load_effectfile(d, filename);
-	dec = calculate_bvs(d, g0, eff3);
-	
-	assert(dec.dim1 == 1);
-	assert(dec.dim2 == 6);
+    dec = calculate_bvs(d, g0, eff3);
+    assert(dec.dim1 == 1);
+    assert(dec.dim2 == 6);
     assert(fabs(dec.matrix[0][0] - 1.912) < TOL);
     assert(fabs(dec.matrix[0][1] - 1.912) < TOL);
     assert(fabs(dec.matrix[0][2] - 2.112) < TOL);
     assert(fabs(dec.matrix[0][3] - 0.412) < TOL);
     assert(fabs(dec.matrix[0][4] - 1.112) < TOL);
     assert(fabs(dec.matrix[0][5] - 0.212) < TOL);
-	
 	delete_dmatrix(&dec);
-	delete_eff_set(d, eff3);
-	remove(filename);
+	
+	// Change those centres
+	double centre[3] = {1.00032, 2.00032, -3.0003};
+	assert(change_eff_set_centres_to_values(d, eff3, 3, centre) == 1);
+	assert(fabs(d->e[eff3ix].centre[0] - centre[0]) < TOL);
+	assert(fabs(d->e[eff3ix].centre[1] - centre[1]) < TOL);
+	assert(fabs(d->e[eff3ix].centre[2] - centre[2]) < TOL);
+	
+	dec = calculate_bvs(d, g0, eff3);
+    assert(dec.dim1 == 1);
+    assert(dec.dim2 == 6);
+    assert(fabs(dec.matrix[0][0] - (1.4 - 0.00034)) < TOL);
+    assert(fabs(dec.matrix[0][1] - (1.4 - 0.00034)) < TOL);
+    assert(fabs(dec.matrix[0][2] - (1.6 - 0.00034)) < TOL);
+    assert(fabs(dec.matrix[0][3] - ((-0.1) - 0.00034)) < TOL);
+    assert(fabs(dec.matrix[0][4] - (0.6 - 0.00034)) < TOL);
+    assert(fabs(dec.matrix[0][5] - (-0.3  - 0.00034)) < TOL);
+	delete_dmatrix(&dec);
+
+	// Change em again
+    const char* names[3] = {"am3", "m1", "m2"};
+	double centre2[] = {0.1, 0.4, 0.9};
+	assert(change_eff_set_centre_of_markers(d, eff3, 3, names, centre2) == 3);
+	assert(fabs(d->e[eff3ix].centre[0] - centre2[1]) < TOL);
+	assert(fabs(d->e[eff3ix].centre[1] - centre2[2]) < TOL);
+	assert(fabs(d->e[eff3ix].centre[2] - centre2[0]) < TOL);
+	// hm. maybe this
+	double betternum = -0.7/3.;
+	assert(change_eff_set_centre_of_markers(d, eff3, 1, names+1, &betternum) == 1);
+	assert(fabs(d->e[eff3ix].centre[0] - betternum) < TOL);
+	assert(fabs(d->e[eff3ix].centre[1] - centre2[2]) < TOL);
+	assert(fabs(d->e[eff3ix].centre[2] - centre2[0]) < TOL);
+	
+	dec = calculate_bvs(d, g0, eff3);
+    assert(dec.dim1 == 1);
+    assert(dec.dim2 == 6);
+    assert(fabs(dec.matrix[0][0] - (1.4 - (2.3/3))) < TOL);
+    assert(fabs(dec.matrix[0][1] - (1.4 - (2.3/3))) < TOL);
+    assert(fabs(dec.matrix[0][2] - (1.6 - (2.3/3))) < TOL);
+    assert(fabs(dec.matrix[0][3] - ((-0.1) - (2.3/3))) < TOL);
+    assert(fabs(dec.matrix[0][4] - (0.6 - (2.3/3))) < TOL);
+    assert(fabs(dec.matrix[0][5] - (-0.3  - (2.3/3))) < TOL);
+	delete_dmatrix(&dec);
+	
+	// And now test the third centre-changing function
+	double acentres[4] = {-1,-2,-3,-4};
+	// First, overwrite previous centres
+	assert(change_eff_set_centre_of_allele_count(d, eff3, 2, names, acentres, 'A', 1) == 2);
+	assert(fabs(d->e[eff3ix].centre[0] - (-2*-0.8)) < TOL);
+	assert(fabs(d->e[eff3ix].centre[1] - 0) < TOL);
+	assert(fabs(d->e[eff3ix].centre[2] - (-1*0.1)) < TOL);
+	
+	double sumcentre = (-2*-0.8) + (-1*0.1);
+	dec = calculate_bvs(d, g0, eff3);
+    assert(dec.dim1 == 1);
+    assert(dec.dim2 == 6);
+    assert(fabs(dec.matrix[0][0] - (1.4 - sumcentre)) < TOL);
+    assert(fabs(dec.matrix[0][1] - (1.4 - sumcentre)) < TOL);
+    assert(fabs(dec.matrix[0][2] - (1.6 - sumcentre)) < TOL);
+    assert(fabs(dec.matrix[0][3] - ((-0.1) - sumcentre)) < TOL);
+    assert(fabs(dec.matrix[0][4] - (0.6 - sumcentre)) < TOL);
+    assert(fabs(dec.matrix[0][5] - (-0.3 - sumcentre)) < TOL);
+	delete_dmatrix(&dec);
+	
+	// now, add to these centres
+	assert(change_eff_set_centre_of_allele_count(d, eff3, 2, names+1, acentres+2, 'T', 0) == 2);
+	assert(fabs(d->e[eff3ix].centre[0] - (-2*-0.8 + -3*0.9)) < TOL);
+	assert(fabs(d->e[eff3ix].centre[1] - (-4*-0.5)) < TOL);
+	assert(fabs(d->e[eff3ix].centre[2] - (-1*0.1)) < TOL);
+	
+	sumcentre = (-2*-0.8) + (-3*0.9) + (-4*-0.5) + (-1*0.1);
+	dec = calculate_bvs(d, g0, eff3);
+    assert(dec.dim1 == 1);
+    assert(dec.dim2 == 6);
+    assert(fabs(dec.matrix[0][0] - (1.4 - sumcentre)) < TOL);
+    assert(fabs(dec.matrix[0][1] - (1.4 - sumcentre)) < TOL);
+    assert(fabs(dec.matrix[0][2] - (1.6 - sumcentre)) < TOL);
+    assert(fabs(dec.matrix[0][3] - ((-0.1) - sumcentre)) < TOL);
+    assert(fabs(dec.matrix[0][4] - (0.6 - sumcentre)) < TOL);
+    assert(fabs(dec.matrix[0][5] - (-0.3 - sumcentre)) < TOL);
+	delete_dmatrix(&dec);
+    
+    delete_dmatrix(&dec);
+    delete_eff_set(d, eff3);
+    remove(filename);
 
     printf("...GEBVs calculated correctly\n");
 
-	return 0;
+    return 0;
+}
+
+int test_local_effect_calculators(RND_U32 seed) {
+    write_to_file("locals_geno.txt", HELPER2_GENOTYPES);
+    write_to_file("locals_map.txt", HELPER2_MAP);
+    write_to_file("locals_eff.txt", HELPER2_EFF);
+    write_to_file("locals_blocks.txt", HELPER2_BLOCKS);
+    
+    SimData* d = create_empty_simdata(seed);
+    struct MultiIDSet init =
+        load_data_files(d, "locals_geno.txt",
+         "locals_map.txt",
+         "locals_eff.txt",DETECT_FILE_FORMAT);
+         
+    // Evenlength block creation
+    MarkerBlocks b = create_evenlength_blocks_each_chr(d, init.map, 1);
+	assert(b.num_blocks == 3);
+    assert(b.num_markers_in_block[0] == 2);
+    assert(b.num_markers_in_block[1] == 3);
+    assert(b.num_markers_in_block[2] == 1);
+    assert(b.markers_in_block[0][0] == 0);
+	assert(b.markers_in_block[0][1] == 1);
+    assert(b.markers_in_block[1][0] == 2);
+	assert(b.markers_in_block[1][1] == 3);
+	assert(b.markers_in_block[1][2] == 4);
+    assert(b.markers_in_block[2][0] == 5);
+
+	DecimalMatrix dec = calculate_local_bvs(d, init.group, b, init.effSet);
+	assert(dec.dim2 == 3); // blocks
+    assert(dec.dim1 == 12); // haplotypes
+	assert(fabs(dec.matrix[0][0] - 1.1) < TOL);
+	assert(fabs(dec.matrix[1][0] - 1.1) < TOL);
+	assert(fabs(dec.matrix[2][0] - 1.1) < TOL);
+	assert(fabs(dec.matrix[3][0] - 1.1) < TOL);
+	assert(fabs(dec.matrix[4][0] - 1.1) < TOL);
+	assert(fabs(dec.matrix[5][0] - 1.1) < TOL);
+	assert(fabs(dec.matrix[6][0] - 1.1) < TOL);
+	assert(fabs(dec.matrix[7][0] - 1.1 - 1) < TOL);
+	assert(fabs(dec.matrix[8][0]) < TOL);
+	assert(fabs(dec.matrix[9][0]) < TOL);
+	assert(fabs(dec.matrix[10][0] - 1.1 - 1) < TOL);
+	assert(fabs(dec.matrix[11][0] - 1.1) < TOL);
+	assert(fabs(dec.matrix[0][1] - 2.000110) < TOL);
+	assert(fabs(dec.matrix[1][1] - 2.000101) < TOL);
+	assert(fabs(dec.matrix[2][1] - 2.000011) < TOL);
+	assert(fabs(dec.matrix[3][1] - 3.000111) < TOL);
+	assert(fabs(dec.matrix[4][1] - 0) < TOL);
+	assert(fabs(dec.matrix[5][1] - 2.000110) < TOL);
+	assert(fabs(dec.matrix[6][1] - 2.000011) < TOL);
+	assert(fabs(dec.matrix[7][1] - 1.000100) < TOL);
+	assert(fabs(dec.matrix[8][1] - 1.000001) < TOL);
+	assert(fabs(dec.matrix[9][1] - 1.000001) < TOL);
+	assert(fabs(dec.matrix[10][1] - 1.000100) < TOL);
+	assert(fabs(dec.matrix[11][1] - 0) < TOL);
+	assert(fabs(dec.matrix[0][2] - 0) < TOL);
+	assert(fabs(dec.matrix[1][2] - 0) < TOL);
+	assert(fabs(dec.matrix[2][2] - 0) < TOL);
+	assert(fabs(dec.matrix[3][2] - 0) < TOL);
+	assert(fabs(dec.matrix[4][2] - 0) < TOL);
+	assert(fabs(dec.matrix[5][2] - 1.001) < TOL);
+	assert(fabs(dec.matrix[6][2] - 0) < TOL);
+	assert(fabs(dec.matrix[7][2] - 1.001) < TOL);
+	assert(fabs(dec.matrix[8][2] - 0) < TOL);
+	assert(fabs(dec.matrix[9][2] - 0) < TOL);
+	assert(fabs(dec.matrix[10][2] - 0) < TOL);
+	assert(fabs(dec.matrix[11][2] - 0) < TOL);
+	delete_dmatrix(&dec);
+	
+	// Try adding centering and see how it plays
+	assert(change_eff_set_centres_to_values(d, init.effSet, 6, HELPER2_CENTRES) == 1);
+	dec = calculate_local_bvs(d, init.group, b, init.effSet);
+	assert(dec.dim2 == 3); // blocks
+    assert(dec.dim1 == 12); // haplotypes
+	assert(fabs(dec.matrix[0][0] - 1.1 + HELPER2_CENTRES[0] + HELPER2_CENTRES[1]) < TOL);
+	assert(fabs(dec.matrix[1][0] - 1.1 + HELPER2_CENTRES[0] + HELPER2_CENTRES[1]) < TOL);
+	assert(fabs(dec.matrix[2][0] - 1.1 + HELPER2_CENTRES[0] + HELPER2_CENTRES[1]) < TOL);
+	assert(fabs(dec.matrix[3][0] - 1.1 + HELPER2_CENTRES[0] + HELPER2_CENTRES[1]) < TOL);
+	assert(fabs(dec.matrix[4][0] - 1.1 + HELPER2_CENTRES[0] + HELPER2_CENTRES[1]) < TOL);
+	assert(fabs(dec.matrix[5][0] - 1.1 + HELPER2_CENTRES[0] + HELPER2_CENTRES[1]) < TOL);
+	assert(fabs(dec.matrix[6][0] - 1.1 + HELPER2_CENTRES[0] + HELPER2_CENTRES[1]) < TOL);
+	assert(fabs(dec.matrix[7][0] - 1.1 - 1 + HELPER2_CENTRES[0] + HELPER2_CENTRES[1]) < TOL);
+	assert(fabs(dec.matrix[8][0] + HELPER2_CENTRES[0] + HELPER2_CENTRES[1]) < TOL);
+	assert(fabs(dec.matrix[9][0] + HELPER2_CENTRES[0] + HELPER2_CENTRES[1]) < TOL);
+	assert(fabs(dec.matrix[10][0] - 1.1 - 1 + HELPER2_CENTRES[0] + HELPER2_CENTRES[1]) < TOL);
+	assert(fabs(dec.matrix[11][0] - 1.1 + HELPER2_CENTRES[0] + HELPER2_CENTRES[1]) < TOL);
+	double block2centre = HELPER2_CENTRES[2] + HELPER2_CENTRES[3] + HELPER2_CENTRES[4];
+	assert(fabs(dec.matrix[0][1] - 2.000110 + block2centre) < TOL);
+	assert(fabs(dec.matrix[1][1] - 2.000101 + block2centre) < TOL);
+	assert(fabs(dec.matrix[2][1] - 2.000011 + block2centre) < TOL);
+	assert(fabs(dec.matrix[3][1] - 3.000111 + block2centre) < TOL);
+	assert(fabs(dec.matrix[4][1] - 0 + block2centre) < TOL);
+	assert(fabs(dec.matrix[5][1] - 2.000110 + block2centre) < TOL);
+	assert(fabs(dec.matrix[6][1] - 2.000011 + block2centre) < TOL);
+	assert(fabs(dec.matrix[7][1] - 1.000100 + block2centre) < TOL);
+	assert(fabs(dec.matrix[8][1] - 1.000001 + block2centre) < TOL);
+	assert(fabs(dec.matrix[9][1] - 1.000001 + block2centre) < TOL);
+	assert(fabs(dec.matrix[10][1] - 1.000100 + block2centre) < TOL);
+	assert(fabs(dec.matrix[11][1] - 0 + block2centre) < TOL);
+	assert(fabs(dec.matrix[0][2] - 0 + HELPER2_CENTRES[5]) < TOL);
+	assert(fabs(dec.matrix[1][2] - 0 + HELPER2_CENTRES[5]) < TOL);
+	assert(fabs(dec.matrix[2][2] - 0 + HELPER2_CENTRES[5]) < TOL);
+	assert(fabs(dec.matrix[3][2] - 0 + HELPER2_CENTRES[5]) < TOL);
+	assert(fabs(dec.matrix[4][2] - 0 + HELPER2_CENTRES[5]) < TOL);
+	assert(fabs(dec.matrix[5][2] - 1.001 + HELPER2_CENTRES[5]) < TOL);
+	assert(fabs(dec.matrix[6][2] - 0 + HELPER2_CENTRES[5]) < TOL);
+	assert(fabs(dec.matrix[7][2] - 1.001 + HELPER2_CENTRES[5]) < TOL);
+	assert(fabs(dec.matrix[8][2] - 0 + HELPER2_CENTRES[5]) < TOL);
+	assert(fabs(dec.matrix[9][2] - 0 + HELPER2_CENTRES[5]) < TOL);
+	assert(fabs(dec.matrix[10][2] - 0 + HELPER2_CENTRES[5]) < TOL);
+	assert(fabs(dec.matrix[11][2] - 0 + HELPER2_CENTRES[5]) < TOL);
+	delete_dmatrix(&dec);
+
+	delete_markerblocks(&b);
+         
+    // load_blocks(d, "locals_blocks.txt");
+         
+		 
+		 
+	// Cleanup
+    remove("locals_geno.txt");
+    remove("locals_map.txt");
+    remove("locals_eff.txt");
+    remove("locals_blocks.txt");
+    delete_simdata(d);
+    
+    printf("...Local GEBVs calculated correctly\n");
+    
+    return 0;
 }
 
 int test_optimal_calculators(SimData *d, GroupNum g0) {
     EffectID eff_set = {.id = 1};
-	GSC_ID_T eff_set_ix = get_index_of_eff_set(d, eff_set);
-	assert(eff_set_ix != GSC_NA_IDX);
-	MarkerEffects* e = d->e + eff_set_ix;
-	assert(e->center == NULL);
-	//double optional_center[6] = {0.1,  -0.1, 0.5, -0.5, 0.2, 0.7};
-	
-	e->center = NULL;
+    GSC_ID_T eff_set_ix = get_index_of_eff_set(d, eff_set);
+    assert(eff_set_ix != GSC_NA_IDX);
+    MarkerEffects* e = d->e + eff_set_ix;
+    assert(e->centre == NULL);
+    double optional_centre[3] = {0.1,  -0.1, 0.5};
+    
+    e->centre = NULL;
     char ig[4];
-	calculate_optimal_haplotype(d, eff_set, '-', ig);
+    calculate_optimal_haplotype(d, eff_set, '-', ig);
     assert(ig[0] == 'T');
     assert(ig[1] == 'A');
     assert(ig[2] == 'A');
-	assert(ig[3] == '\0');
-	
-	/*e->center = optional_center;
-	char ig2[4];
-	calculate_optimal_haplotype(d, eff_set, '-', ig2);
+    assert(ig[3] == '\0');
+    
+    e->centre = optional_centre;
+    char ig2[4];
+    calculate_optimal_haplotype(d, eff_set, '-', ig2);
     assert(ig2[0] == 'T');
-    assert(ig2[1] == 'T');
+    assert(ig2[1] == 'A');
     assert(ig2[2] == 'A');
-	assert(ig2[3] == '\0');
-	*/
-	e->center = NULL;
+    assert(ig2[3] == '\0');
+    
+    e->centre = NULL;
     double optimal = calculate_optimal_bv(d, eff_set);
     assert(fabs(optimal - 1.8) < TOL);
     assert(fabs(calculate_optimal_bv(d, (EffectID){.id=2}) - 2) < TOL);
     double unoptimal = calculate_minimal_bv(d, eff_set);
     assert(fabs(unoptimal + 2.8) < TOL);
-	
-	/*e->center = optional_center;
-	double optimal2 = calculate_optimal_bv(d, eff_set);
-    assert(fabs(optimal2 - 1.8) < TOL);
+    
+    e->centre = optional_centre;
+    double optimal2 = calculate_optimal_bv(d, eff_set);
+    assert(fabs(optimal2 - 1.3) < TOL);
     double unoptimal2 = calculate_minimal_bv(d, eff_set);
-    assert(fabs(unoptimal2 + 2.8) < TOL);
-	*/
-	e->center = NULL;
+    assert(fabs(unoptimal2 + 3.3) < TOL);
+    
+    e->centre = NULL;
     char founderhaplo[4];
-	calculate_optimal_possible_haplotype(d, g0, eff_set, '-', founderhaplo);
+    calculate_optimal_possible_haplotype(d, g0, eff_set, '-', founderhaplo);
     assert(founderhaplo[0] == 'T');
     assert(founderhaplo[1] == 'A');
     assert(founderhaplo[2] == 'A');
-	assert(founderhaplo[3] == '\0');
+    assert(founderhaplo[3] == '\0');
     
     calculate_optimal_possible_haplotype(d, g0, (EffectID){.id=2}, '-', founderhaplo);
     assert(founderhaplo[0] == 'A');
-	assert(founderhaplo[1] == '-');
-	assert(founderhaplo[2] == '-');
-	assert(founderhaplo[3] == '\0');
+    assert(founderhaplo[1] == '-');
+    assert(founderhaplo[2] == '-');
+    assert(founderhaplo[3] == '\0');
 
     double founderoptimal = calculate_optimal_possible_bv(d, g0, eff_set);
     assert(fabs(founderoptimal - 1.8) < TOL);
@@ -2722,20 +2911,37 @@ int test_optimal_calculators(SimData *d, GroupNum g0) {
     GSC_GLOBALX_T factorout[2] = {4,5};
     GroupNum g0partial = make_group_from(d,2, factorout);
     char founderhaplo2[4];
-	calculate_optimal_possible_haplotype(d, g0partial, eff_set, '-', founderhaplo2);
+    calculate_optimal_possible_haplotype(d, g0partial, eff_set, '-', founderhaplo2);
     assert(founderhaplo2[0] == 'T');
     assert(founderhaplo2[1] == 'A');
     assert(founderhaplo2[2] == 'T');
-	assert(founderhaplo2[3] == '\0');
+    assert(founderhaplo2[3] == '\0');
 
     double founderoptimal2 = calculate_optimal_possible_bv(d, g0partial, eff_set);
     assert(fabs(founderoptimal2 - 1.4) < TOL);
-
+	
+	e->centre = optional_centre;
+	calculate_optimal_possible_haplotype(d, g0, eff_set, '-', founderhaplo);
+    assert(founderhaplo[0] == 'T');
+    assert(founderhaplo[1] == 'A');
+    assert(founderhaplo[2] == 'A');
+    assert(founderhaplo[3] == '\0');
+    
+    calculate_optimal_possible_haplotype(d, g0, (EffectID){.id=2}, '-', founderhaplo);
+    assert(founderhaplo[0] == 'A');
+    assert(founderhaplo[1] == '-');
+    assert(founderhaplo[2] == '-');
+    assert(founderhaplo[3] == '\0');
+	
+	founderoptimal2 = calculate_optimal_possible_bv(d, g0partial, eff_set);
+    assert(fabs(founderoptimal2 - 0.9) < TOL);
+	
+	e->centre = NULL;
     GroupNum recombine[2] = {g0,g0partial};
     GroupNum newg0 = combine_groups(d,2,recombine);
     assert(g0.num == newg0.num); // for validity of further tests
-	
-	
+    
+    
 
     printf("...Optimal genotype and GEBV calculated correctly\n");
 
@@ -2746,25 +2952,25 @@ int test_crossing(SimData *d, GroupNum g0) {
     GroupNum gall = test_crossing_unidirectional(d, g0);
 
     test_crossing_randomly(d, g0);
-	
-	test_targeted_crossing(d, g0);
+    
+    test_targeted_crossing(d, g0);
 
-	FILE* fp;
-	if ((fp = fopen("a-test-plan.txt", "w")) == NULL) {
-		fprintf(stderr, "Failed to create file.\n");
-		exit(1);
-	}
-	fwrite(HELPER_PLAN, sizeof(char), strlen(HELPER_PLAN), fp);
-	fclose(fp);
+    FILE* fp;
+    if ((fp = fopen("a-test-plan.txt", "w")) == NULL) {
+        fprintf(stderr, "Failed to create file.\n");
+        exit(1);
+    }
+    fwrite(HELPER_PLAN, sizeof(char), strlen(HELPER_PLAN), fp);
+    fclose(fp);
     GroupNum gfile = test_crossing_from_file(d, "a-test-plan.txt");
-	remove("a-test-plan.txt");
+    remove("a-test-plan.txt");
 
     GroupNum gselfed = test_crossing_selfing(d, g0);
 
     assert(gselfed.num != g0.num && gfile.num != gall.num && gfile.num != g0.num && gfile.num != gselfed.num);
-	printf("...group number allocations are correct\n");
+    printf("...group number allocations are correct\n");
 
-	return 0;
+    return 0;
 }
 
 GroupNum test_crossing_unidirectional(SimData *d, GroupNum g0) {
@@ -2777,14 +2983,14 @@ GroupNum test_crossing_unidirectional(SimData *d, GroupNum g0) {
                     .will_save_bvs_to_file={.id=1},
                     .will_save_alleles_to_file=GSC_TRUE,
                     .will_save_to_simdata=GSC_TRUE};
-	//AlleleMatrix* a = make_all_unidirectional_crosses(&sd, 0, g);
-	//sd.m->next_gen = a;
+    //AlleleMatrix* a = make_all_unidirectional_crosses(&sd, 0, g);
+    //sd.m->next_gen = a;
     GroupNum g1 = make_all_unidirectional_crosses(d, g0, NO_MAP, g);
 
     assert(g1.num != g0.num);
-	assert(d->m->n_genotypes == 21);
-	assert(d->m->n_markers == 3);
-	//assert(strcmp(sd.m->name, "F1g") == 0);
+    assert(d->m->n_genotypes == 21);
+    assert(d->m->n_markers == 3);
+    //assert(strcmp(sd.m->name, "F1g") == 0);
     assert(strcmp(d->m->names[6], "F113") == 0);
     assert(strcmp(d->m->names[7], "F114") == 0);
     assert(strcmp(d->m->names[8], "F115") == 0);
@@ -2815,28 +3021,28 @@ GroupNum test_crossing_unidirectional(SimData *d, GroupNum g0) {
     assert(d->m->pedigrees[0][18].id == 4 && d->m->pedigrees[1][18].id == 5);
     assert(d->m->pedigrees[0][19].id == 4 && d->m->pedigrees[1][19].id == 6);
     assert(d->m->pedigrees[0][20].id == 5 && d->m->pedigrees[1][20].id == 6);
-	assert(strncmp(d->m->alleles[6], "TTAATT", 6) == 0); // G01 x G02
-	assert(strncmp(d->m->alleles[9], "TTATTT", 6) == 0); // G01 x G05
-	assert(strncmp(d->m->alleles[11], "TTAATT", 6) == 0 || strncmp(d->m->alleles[11], "TTAATA", 6) == 0);
-	printf("...crossed all pairs correctly\n");
-	// does not check that crossing over is happening.
+    assert(strncmp(d->m->alleles[6], "TTAATT", 6) == 0); // G01 x G02
+    assert(strncmp(d->m->alleles[9], "TTATTT", 6) == 0); // G01 x G05
+    assert(strncmp(d->m->alleles[11], "TTAATT", 6) == 0 || strncmp(d->m->alleles[11], "TTAATA", 6) == 0);
+    printf("...crossed all pairs correctly\n");
+    // does not check that crossing over is happening.
 
 
-	// @should check that the saved files are correct too before deleting them
+    // @should check that the saved files are correct too before deleting them
     remove("atestF1-bv.txt");
-	remove("atestF1-genotype.txt");
-	remove("atestF1-pedigree.txt");
+    remove("atestF1-genotype.txt");
+    remove("atestF1-pedigree.txt");
 
-	return g1;
+    return g1;
 }
 
 GroupNum test_crossing_from_file(SimData *d, char* fname) {
-	// check we can load a plan from a file.
-	GenOptions g2 = BASIC_OPT;
-	g2.will_track_pedigree = GSC_TRUE;
-	g2.family_size = 2;
-	//g2.will_save_pedigree_to_file = GSC_TRUE;
-	//2.filename_prefix = "atest-dc";
+    // check we can load a plan from a file.
+    GenOptions g2 = BASIC_OPT;
+    g2.will_track_pedigree = GSC_TRUE;
+    g2.family_size = 2;
+    //g2.will_save_pedigree_to_file = GSC_TRUE;
+    //2.filename_prefix = "atest-dc";
     GroupNum bp = make_double_crosses_from_file(d, fname, NO_MAP, NO_MAP, g2);
     assert(d->m->pedigrees[0][21].id == d->m->ids[6].id && d->m->pedigrees[1][21].id == 23);
     assert(d->m->pedigrees[0][23].id == d->m->ids[7].id && d->m->pedigrees[1][23].id == 27);
@@ -2844,31 +3050,31 @@ GroupNum test_crossing_from_file(SimData *d, char* fname) {
     assert(d->m->pedigrees[0][22].id == 13 && d->m->pedigrees[1][22].id == 23);
     assert(d->m->pedigrees[0][24].id == 14 && d->m->pedigrees[1][24].id == 27);
     assert(d->m->pedigrees[0][26].id == 27 && d->m->pedigrees[1][26].id == 15);
-	assert(d->m->n_genotypes == 27);
-	assert(d->m->n_markers == 3);
-	printf("...crossed combinations from file correctly\n");
+    assert(d->m->n_genotypes == 27);
+    assert(d->m->n_markers == 3);
+    printf("...crossed combinations from file correctly\n");
 
-	return bp;
+    return bp;
 }
 
 GroupNum test_crossing_selfing(SimData *d, GroupNum g1) {
     int oldsize = d->m->n_genotypes;
     GenOptions opt = BASIC_OPT;
     opt.will_track_pedigree = GSC_TRUE;
-	float h1 = calculate_heterozygosity(d, g1);
+    float h1 = calculate_heterozygosity(d, g1);
     GroupNum g1selfed = self_n_times(d, 5, g1, NO_MAP, opt);
-	float h2 = calculate_heterozygosity(d,  g1selfed);
+    float h2 = calculate_heterozygosity(d,  g1selfed);
 
     assert(g1selfed.num != g1.num);
-	//printf("Heterozygousity reduction from selfing: %f %f\n", h2, h1);
-	assert(h1 - h2 > 0);
+    //printf("Heterozygousity reduction from selfing: %f %f\n", h2, h1);
+    assert(h1 - h2 > 0);
     assert(d->m->n_genotypes == oldsize + 6);
-	assert(d->m->n_markers == 3);
+    assert(d->m->n_markers == 3);
     assert(d->m->groups[oldsize].num == g1selfed.num && d->m->groups[oldsize + 5].num == g1selfed.num
             && d->m->groups[oldsize + 6].num != g1selfed.num);
     assert(d->m->pedigrees[0][oldsize + 0].id == d->m->ids[0].id && d->m->pedigrees[1][oldsize + 0].id == d->m->ids[0].id);
     assert(d->m->pedigrees[0][oldsize + 4].id == d->m->ids[4].id && d->m->pedigrees[1][oldsize + 4].id == d->m->ids[4].id);
-	printf("...selfing function correctly reduced heterozygosity by %f%%\n", (h2-h1)*100);
+    printf("...selfing function correctly reduced heterozygosity by %f%%\n", (h2-h1)*100);
 
     // test doubled haploids
     GroupNum g1dhap = make_doubled_haploids(d, g1, (MapID){.id=1}, opt);
@@ -2917,95 +3123,95 @@ GroupNum test_crossing_selfing(SimData *d, GroupNum g1) {
     delete_group(d, gap);
     delete_group(d, g2clones);
 
-	return g1selfed;
+    return g1selfed;
 }
 
 int test_targeted_crossing(SimData* d, GroupNum g1) {
-	// Test setup is nice and simple.
-	GSC_GLOBALX_T ixs[6];
-	assert(get_group_indexes(d,g1,0,ixs) == 6);
-	assert(ixs[0] == 0 && ixs[1] == 1 && ixs[2] == 2 && ixs[3] == 3 && ixs[4] == 4 && ixs[5] == 5);
-	PedigreeID ids[6];
-	assert(get_group_ids(d,g1,0,ids) == 6);
-	
-	// Make (good) targeted crosses
-	GenOptions gopt = BASIC_OPT;
+    // Test setup is nice and simple.
+    GSC_GLOBALX_T ixs[6];
+    assert(get_group_indexes(d,g1,0,ixs) == 6);
+    assert(ixs[0] == 0 && ixs[1] == 1 && ixs[2] == 2 && ixs[3] == 3 && ixs[4] == 4 && ixs[5] == 5);
+    PedigreeID ids[6];
+    assert(get_group_ids(d,g1,0,ids) == 6);
+    
+    // Make (good) targeted crosses
+    GenOptions gopt = BASIC_OPT;
     gopt.will_track_pedigree = GSC_TRUE;
-	GSC_GLOBALX_T combos[2][3];
+    GSC_GLOBALX_T combos[2][3];
     combos[0][0] = 0; combos[1][0] = 0;
     combos[0][1] = 1; combos[1][1] = 2;
     combos[0][2] = 1; combos[1][2] = 5;
     GroupNum f1 = make_targeted_crosses(d, 3, combos[0], combos[1], NO_MAP, NO_MAP, gopt);
-	
-	// Check the outcomes
-	int numoffspring = 0;
+    
+    // Check the outcomes
+    int numoffspring = 0;
     BidirectionalIterator it = create_bidirectional_iter(d, f1);
-	GenoLocation loc = set_bidirectional_iter_to_start(&it);
-	while (IS_VALID_LOCATION(loc)) {
-		++numoffspring;
-		
-		assert(numoffspring <= 3);
-		assert(get_first_parent(loc).id == ids[combos[0][numoffspring-1]].id);
-		assert(get_second_parent(loc).id == ids[combos[1][numoffspring-1]].id);
-		switch (numoffspring) {
-			case 1:
-				assert(strncmp(get_alleles(loc),"TTAATT",sizeof(char)*6)==0);
-				break;
-			case 2:
-				assert(strncmp(get_alleles(loc),"TTAATT",sizeof(char)*6)==0 || strncmp(get_alleles(loc),"TTAATA",sizeof(char)*6)==0);
-				break;
-			case 3:
-				assert(strncmp(get_alleles(loc),"TTAATT",sizeof(char)*6)==0 || strncmp(get_alleles(loc),"TAAATT",sizeof(char)*6)==0);
-				break;
-		}
-		
-		loc = next_forwards(&it);
-	}
-	assert(numoffspring == 3);
-	
-	delete_group(d, f1);
-	delete_bidirectional_iter(&it);
-	
-	// What if the combos are not good:
-	gopt.family_size = 3;
-	combos[0][1] = NA_GLOBALX - 100;
-	f1 = make_targeted_crosses(d, 3, combos[0], combos[1], NO_MAP, NO_MAP, gopt);
+    GenoLocation loc = set_bidirectional_iter_to_start(&it);
+    while (IS_VALID_LOCATION(loc)) {
+        ++numoffspring;
+        
+        assert(numoffspring <= 3);
+        assert(get_first_parent(loc).id == ids[combos[0][numoffspring-1]].id);
+        assert(get_second_parent(loc).id == ids[combos[1][numoffspring-1]].id);
+        switch (numoffspring) {
+            case 1:
+                assert(strncmp(get_alleles(loc),"TTAATT",sizeof(char)*6)==0);
+                break;
+            case 2:
+                assert(strncmp(get_alleles(loc),"TTAATT",sizeof(char)*6)==0 || strncmp(get_alleles(loc),"TTAATA",sizeof(char)*6)==0);
+                break;
+            case 3:
+                assert(strncmp(get_alleles(loc),"TTAATT",sizeof(char)*6)==0 || strncmp(get_alleles(loc),"TAAATT",sizeof(char)*6)==0);
+                break;
+        }
+        
+        loc = next_forwards(&it);
+    }
+    assert(numoffspring == 3);
+    
+    delete_group(d, f1);
+    delete_bidirectional_iter(&it);
+    
+    // What if the combos are not good:
+    gopt.family_size = 3;
+    combos[0][1] = NA_GLOBALX - 100;
+    f1 = make_targeted_crosses(d, 3, combos[0], combos[1], NO_MAP, NO_MAP, gopt);
 
-	// Check the surviving outcomes
-	numoffspring = 0;
-	int numpairings = 0;
+    // Check the surviving outcomes
+    numoffspring = 0;
+    int numpairings = 0;
     BidirectionalIterator it2 = create_bidirectional_iter(d, f1);
-	loc = set_bidirectional_iter_to_start(&it2);
-	while (IS_VALID_LOCATION(loc)) {
-		if (numoffspring % gopt.family_size == 0) {
-			++numpairings;
-		}
-		++numoffspring;
-		
-		assert(numpairings <= 2);
-		switch (numpairings) {
-			case 1:
-				assert(get_first_parent(loc).id == ids[combos[0][numpairings-1]].id);
-				assert(get_second_parent(loc).id == ids[combos[1][numpairings-1]].id);
-				assert(strncmp(get_alleles(loc),"TTAATT",sizeof(char)*6)==0);
-				break;
-			case 2: // matches case 3 of previous checking, since pairing 2 was invalid.
-				assert(get_first_parent(loc).id == ids[combos[0][2]].id);
-				assert(get_second_parent(loc).id == ids[combos[1][2]].id);
-				assert(strncmp(get_alleles(loc),"TTAATT",sizeof(char)*6)==0 || strncmp(get_alleles(loc),"TAAATT",sizeof(char)*6)==0);
-				break;
-		}
-		
-		loc = next_forwards(&it2);
-	}
-	assert(numpairings == 2);
-	assert(numoffspring == 2*gopt.family_size);
-	
-	delete_group(d,f1);
-	delete_bidirectional_iter(&it2);
-	
-	printf("...made specific targeted crosses\n");
-	return 0;
+    loc = set_bidirectional_iter_to_start(&it2);
+    while (IS_VALID_LOCATION(loc)) {
+        if (numoffspring % gopt.family_size == 0) {
+            ++numpairings;
+        }
+        ++numoffspring;
+        
+        assert(numpairings <= 2);
+        switch (numpairings) {
+            case 1:
+                assert(get_first_parent(loc).id == ids[combos[0][numpairings-1]].id);
+                assert(get_second_parent(loc).id == ids[combos[1][numpairings-1]].id);
+                assert(strncmp(get_alleles(loc),"TTAATT",sizeof(char)*6)==0);
+                break;
+            case 2: // matches case 3 of previous checking, since pairing 2 was invalid.
+                assert(get_first_parent(loc).id == ids[combos[0][2]].id);
+                assert(get_second_parent(loc).id == ids[combos[1][2]].id);
+                assert(strncmp(get_alleles(loc),"TTAATT",sizeof(char)*6)==0 || strncmp(get_alleles(loc),"TAAATT",sizeof(char)*6)==0);
+                break;
+        }
+        
+        loc = next_forwards(&it2);
+    }
+    assert(numpairings == 2);
+    assert(numoffspring == 2*gopt.family_size);
+    
+    delete_group(d,f1);
+    delete_bidirectional_iter(&it2);
+    
+    printf("...made specific targeted crosses\n");
+    return 0;
 }
 
 
@@ -3091,90 +3297,90 @@ int test_deletors(SimData *d, GroupNum g0) {
         assert(groups1[i].num == groups1b[i].num);
     }
 
-	delete_group(d, g0);
+    delete_group(d, g0);
     GroupNum groups2[1000];
     int ngroups2 = get_existing_groups(d, groups2);
     assert(d->n_groups == ngroups2);
 
-	assert(ngroups1 - ngroups2 == 1);
-	for (int i = 0; i < ngroups1; ++i) {
+    assert(ngroups1 - ngroups2 == 1);
+    for (int i = 0; i < ngroups1; ++i) {
         if (i == ngroups1 - 1 || groups1[i].num != groups2[i].num) {
             assert(groups1[i].num == g0.num);
             assert(groups1b[i].num == g0.num);
             assert(groupcounts1b[i] == 6);
-			break;
-		}
-	}
-	printf("...group of genotypes cleared correctly\n");
+            break;
+        }
+    }
+    printf("...group of genotypes cleared correctly\n");
 
     delete_eff_set(d, (EffectID){.id=1});
     assert(d->n_eff_sets == 1);
     assert(d->e != NULL);
     assert(d->e[0].cumn_alleles[0] == 1); // check identity of surviving effect set
-	assert(d->e[0].cumn_alleles[1] == 1);
-	assert(d->e[0].cumn_alleles[2] == 1);
+    assert(d->e[0].cumn_alleles[1] == 1);
+    assert(d->e[0].cumn_alleles[2] == 1);
     assert((d->e[0].eff[0] - 1) < TOL); // check identity
 
     printf("...marker effects set cleared correctly\n");
 
-	printf("...SimData cleared correctly\n");
+    printf("...SimData cleared correctly\n");
 
-	return 0;
+    return 0;
 }
 
 int test_block_generator(SimData *d) {
     MarkerBlocks b = create_evenlength_blocks_each_chr(d, NO_MAP, 2);
 
-	assert(b.num_blocks == 4);
-	assert(b.num_markers_in_block[0] == 1);
-	assert(b.num_markers_in_block[1] == 1);
-	assert(b.num_markers_in_block[2] == 1);
-	assert(b.num_markers_in_block[3] == 0);
-	assert(b.markers_in_block[0][0] == 0);
-	assert(b.markers_in_block[1][0] == 1);
-	assert(b.markers_in_block[2][0] == 2);
-	assert(b.markers_in_block[3] == NULL);
+    assert(b.num_blocks == 4);
+    assert(b.num_markers_in_block[0] == 1);
+    assert(b.num_markers_in_block[1] == 1);
+    assert(b.num_markers_in_block[2] == 1);
+    assert(b.num_markers_in_block[3] == 0);
+    assert(b.markers_in_block[0][0] == 0);
+    assert(b.markers_in_block[1][0] == 1);
+    assert(b.markers_in_block[2][0] == 2);
+    assert(b.markers_in_block[3] == NULL);
 
-	printf("...chr slicer correctly deals with multi-marker and single-marker chrs\n");
+    printf("...chr slicer correctly deals with multi-marker and single-marker chrs\n");
 
-	/*printf("\nNum blocks: %d", b.num_blocks);
-	for (int i = 0; i < b.num_blocks; ++i) {
-		printf("\n%d: ", b.num_markers_in_block[i]);
-		for (int j = 0; j < b.num_markers_in_block[i]; ++j) {
-			printf("%d ", b.markers_in_block[i][j]);
-		}
-	}
-	fflush(stdout);*/
+    /*printf("\nNum blocks: %d", b.num_blocks);
+    for (int i = 0; i < b.num_blocks; ++i) {
+        printf("\n%d: ", b.num_markers_in_block[i]);
+        for (int j = 0; j < b.num_markers_in_block[i]; ++j) {
+            printf("%d ", b.markers_in_block[i][j]);
+        }
+    }
+    fflush(stdout);*/
 
-	delete_markerblocks(&b);
+    delete_markerblocks(&b);
 
-	printf("...MarkerBlocks deletor works\n");
+    printf("...MarkerBlocks deletor works\n");
 
     b = create_evenlength_blocks_each_chr(d, NO_MAP, 4);
 
-	assert(b.num_blocks == 8);
-	assert(b.num_markers_in_block[0] == 1);
-	assert(b.num_markers_in_block[1] == 0);
-	assert(b.num_markers_in_block[2] == 0);
-	assert(b.num_markers_in_block[3] == 1);
-	assert(b.num_markers_in_block[4] == 1);
-	assert(b.num_markers_in_block[5] == 0);
-	assert(b.num_markers_in_block[6] == 0);
-	assert(b.num_markers_in_block[7] == 0);
-	assert(b.markers_in_block[0][0] == 0);
-	assert(b.markers_in_block[1] == NULL);
-	assert(b.markers_in_block[2] == NULL);
-	assert(b.markers_in_block[3][0] == 1);
-	assert(b.markers_in_block[4][0] == 2);
-	assert(b.markers_in_block[5] == NULL);
-	assert(b.markers_in_block[6] == NULL);
-	assert(b.markers_in_block[7] == NULL);
+    assert(b.num_blocks == 8);
+    assert(b.num_markers_in_block[0] == 1);
+    assert(b.num_markers_in_block[1] == 0);
+    assert(b.num_markers_in_block[2] == 0);
+    assert(b.num_markers_in_block[3] == 1);
+    assert(b.num_markers_in_block[4] == 1);
+    assert(b.num_markers_in_block[5] == 0);
+    assert(b.num_markers_in_block[6] == 0);
+    assert(b.num_markers_in_block[7] == 0);
+    assert(b.markers_in_block[0][0] == 0);
+    assert(b.markers_in_block[1] == NULL);
+    assert(b.markers_in_block[2] == NULL);
+    assert(b.markers_in_block[3][0] == 1);
+    assert(b.markers_in_block[4][0] == 2);
+    assert(b.markers_in_block[5] == NULL);
+    assert(b.markers_in_block[6] == NULL);
+    assert(b.markers_in_block[7] == NULL);
 
-	printf("...chr slicer correctly deals with empty blocks\n");
+    printf("...chr slicer correctly deals with empty blocks\n");
 
-	delete_markerblocks(&b);
+    delete_markerblocks(&b);
 
-	return 0;
+    return 0;
 }
 
 int test_iterators(SimData* d, GroupNum gp) {
@@ -3487,21 +3693,21 @@ int subfunctiontest_meiosis(int seed) {
 
 // Returns 0 if matching.
 int compareFiles(char* f1, char* f2) {
-	FILE* fp1 = fopen(f1, "r");
-	FILE* fp2 = fopen(f2, "r");
+    FILE* fp1 = fopen(f1, "r");
+    FILE* fp2 = fopen(f2, "r");
 
-	char c1, c2;
+    char c1, c2;
 
-	do {
-		c1 = fgetc(fp1);
-		c2 = fgetc(fp2);
+    do {
+        c1 = fgetc(fp1);
+        c2 = fgetc(fp2);
 
-		if (c1 != c2) return -1;
+        if (c1 != c2) return -1;
 
-	} while (c1 != EOF && c2 != EOF);
+    } while (c1 != EOF && c2 != EOF);
 
-	if (c1 == EOF && c2 == EOF) return 0;
-	else return -1;
+    if (c1 == EOF && c2 == EOF) return 0;
+    else return -1;
 }
 
 int compareFileToString(char* filename, const char* target) {
@@ -3577,20 +3783,20 @@ int main(int argc, char* argv[]) {
         randomSeed = strtol(argv[1], 0, 0);
     }
 
-	printf("Testing functionality ...");
+    printf("Testing functionality ...");
 
-	// test random number generators
+    // test random number generators
 
-	// test matrix operations
+    // test matrix operations
 
-	// test SimData loaders
+    // test SimData loaders
     printf("\nNow testing loader functions:\n");
     SimData* d = create_empty_simdata(randomSeed);
     GroupNum g0 = test_loaders(d);
     test_genoloaders2();
     test_maploaders2();
     test_effloaders2();
-	printf("\t\t-> Loader functions all clear\n");
+    printf("\t\t-> Loader functions all clear\n");
 
     printf("\nNow testing group manipulation functions:\n");
     g0 = test_grouping(d, g0);
@@ -3600,44 +3806,45 @@ int main(int argc, char* argv[]) {
     printf("\nNow testing data access functions:\n");
     test_data_access(d, g0);
 
-	// test effect calculators
-	printf("\nNow testing GEBV calculator:\n");
-	test_count_calculators(d, g0);
+    // test effect calculators
+    printf("\nNow testing GEBV calculator:\n");
+    test_count_calculators(d, g0);
     test_effect_calculators(d, g0);
+	test_local_effect_calculators(randomSeed + 2);
     test_optimal_calculators(d, g0);
-	printf("\t\t-> GEBV calculators all clear\n");
+    printf("\t\t-> GEBV calculators all clear\n");
 
-	// test crossers
-	printf("\nNow testing crossing functions:\n");
+    // test crossers
+    printf("\nNow testing crossing functions:\n");
     test_crossing(d, g0);
     subfunctiontest_meiosis(randomSeed);
-	printf("\t\t-> Crossing functions all clear\n");
+    printf("\t\t-> Crossing functions all clear\n");
 
-	//test blocking
-	printf("\nNow testing blocking functions:\n");
-	test_block_generator(d);
-	printf("\t\t-> Blocking functions all clear\n");
+    //test blocking
+    printf("\nNow testing blocking functions:\n");
+    test_block_generator(d);
+    printf("\t\t-> Blocking functions all clear\n");
 
-	//test file savers
-	printf("\nNow testing saver functions:\n");
+    //test file savers
+    printf("\nNow testing saver functions:\n");
     test_savers(randomSeed);
     printf("\t\t-> Saver functions all clear\n");
 
-	// test SimData deletors.
-	printf("\nNow testing deletor functions:\n");
-	test_deletors(d, g0);
-	printf("\t\t-> Deletor functions all clear\n");
+    // test SimData deletors.
+    printf("\nNow testing deletor functions:\n");
+    test_deletors(d, g0);
+    printf("\t\t-> Deletor functions all clear\n");
 
     delete_simdata(d);
 
     printf("\n------- All tests passed. -------\n");
 
 
-	//Small test that it can load a larger file alright.
+    //Small test that it can load a larger file alright.
     d = create_empty_simdata(randomSeed);
     struct MultiIDSet init =
             load_data_files(d, "./gt_parents_mr2_50-trimto-5000.txt",
-			 "./genetic-map_5112-trimto5000.txt",
+             "./genetic-map_5112-trimto5000.txt",
              "./qtl_mr2.eff-processed.txt",DETECT_FILE_FORMAT);
              
     GroupNum g2 = split_by_bv(d, init.group, init.effSet, 5, GSC_FALSE);
@@ -3646,7 +3853,7 @@ int main(int argc, char* argv[]) {
     
     delete_simdata(d);
 
-	printf("\nAll done\n");
+    printf("\nAll done\n");
 
-	return 0;
+    return 0;
 }

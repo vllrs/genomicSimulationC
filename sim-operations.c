@@ -1,7 +1,7 @@
 #ifndef SIM_OPERATIONS
 #define SIM_OPERATIONS
 #include "sim-operations.h"
-/* genomicSimulationC v0.2.6.02 - last edit 3 Feb 2025 */
+/* genomicSimulationC v0.2.6.03 - last edit 21 Feb 2025 */
 
 /** Default parameter values for GenOptions, to help with quick scripts and prototypes.
  *
@@ -1031,6 +1031,8 @@ void gsc_change_names_to_values(gsc_SimData* d,
  *  If no marker name is provided, changes the allele symbol in all markers tracked by the
  *  simulation.
  *
+ * @shortnamed{change_allele_symbol}
+ *
  * @param d SimData on which to perform the operation
  * @param which_marker if null, any occurences of that allele symbol in any marker tracked by the
  * simulation will be changed. If the name of a marker, replace all occurences of that allele symbol at
@@ -1105,6 +1107,195 @@ void gsc_change_allele_symbol(gsc_SimData* d,
 
     printf("Changed allele %c to %c %lu times across %lu markers and %lu genotypes\n", 
            from, to, (long unsigned int)nalleles, (long unsigned int)nmarkers, (long unsigned int)ngenos);
+}
+
+/** Replace the centring values of all markers in an effect set
+ *
+ * Given that you have a list of values, one per genetic marker, ordered in genome order,
+ * this function can be used to directly copy those values into the marker centres of a 
+ * given marker effect set.
+ *
+ * For alternative functions to change the centre values of a marker effect set:
+ * @see gsc_change_eff_set_centre_of_markers
+ * @see gsc_change_eff_set_centre_of_allele_count
+ *
+ * @shortnamed{change_eff_set_centres_to_values}
+ *
+ * @param d SimData in which the marker effect set is held
+ * @param effset identifier of the marker effect set whose centring values are to be changed
+ * @param n_values length of the vector @a values. It should be equal to d->genome.n_markers, 
+ * because this function directly copies the values and does not match them to specific markers.
+ * @param values A vector of values, one per marker, which are to be subtracted from the breeding
+ * value contribution of the corresponding marker when calculating breeding values.
+ * @returns true if it successfully updated the centres to @a values, false (with informative error
+ * message) if it failed to do so.
+ */
+_Bool gsc_change_eff_set_centres_to_values(gsc_SimData* d,
+                                           const gsc_EffectID effset,
+                                           const GSC_GENOLEN_T n_values,
+                                           const double* values) {
+    const GSC_ID_T effIndex = gsc_get_index_of_eff_set(d, effset);
+    if (effIndex == GSC_NA_IDX) {
+        fprintf(stderr,"Nonexistent effect set with id %lu\n", (long unsigned int) effset.id);
+        return 0;
+    }
+    
+    if (n_values != d->e[effIndex].n_markers) {
+        fprintf(stderr,"Cannot use these values as marker effect centres because the number of values is not equal to the number of markers in the effect set\n");
+        return 0;
+    }
+
+    if (d->e[effIndex].centre == NULL) {
+        d->e[effIndex].centre = gsc_malloc_wrap(sizeof(*d->e[effIndex].centre)*d->e[effIndex].n_markers, GSC_TRUE);
+    }
+    memcpy(d->e[effIndex].centre, values, sizeof(*d->e[effIndex].centre)*d->e[effIndex].n_markers);
+    return 1;
+}
+
+/** Replace the centring values of specific markers in an effect set
+ *
+ * Takes a list of pairs of marker names and centring values, and for each pair, locates 
+ * the marker in the genome and replaces its previous centre value (if any) in the marker 
+ * effect set with the new centre value. 
+ *
+ * For alternative functions to change the centre values of a marker effect set:
+ * @see gsc_change_eff_set_centres_to_values
+ * @see gsc_change_eff_set_centre_of_allele_count
+ *
+ * @shortnamed{change_eff_set_centre_of_markers}
+ *
+ * @param d SimData in which the marker effect set is held
+ * @param effset identifier of the marker effect set whose centring values are to be changed
+ * @param n_markers length of the vectors @a marker_names and @a centres
+ * @param marker_names A vector of marker names for which you want to replace any
+ * previously-existing centring value with the value from the corresponding position in @a centres
+ * @param centres A vector of values that are to be subtracted from the breeding value
+ * contribution of the corresponding marker in @a marker_names when calculating breeding values
+ * @returns the number of markers that successfully had their marker effect centres updated
+ */
+GSC_GENOLEN_T gsc_change_eff_set_centre_of_markers(gsc_SimData* d,
+                                                   const gsc_EffectID effset,
+                                                   const GSC_GENOLEN_T n_markers,
+                                                   const char** marker_names,
+                                                   const double* centres) {
+    const GSC_ID_T effIndex = gsc_get_index_of_eff_set(d, effset);
+    if (effIndex == GSC_NA_IDX) {
+        fprintf(stderr,"Nonexistent effect set with id %lu\n", (long unsigned int) effset.id);
+        return 0;
+    }
+    
+    gsc_MarkerEffects* e = d->e + effIndex;
+    if (e->centre == NULL) {
+        e->centre = gsc_malloc_wrap(sizeof(*e->centre)*e->n_markers, GSC_TRUE);
+        for (GSC_GENOLEN_T i = 0; i < e->n_markers; ++i) {
+            e->centre[i] = 0.;
+        }
+    }
+    
+    GSC_GENOLEN_T successes = 0;
+    for (GSC_GENOLEN_T ix = 0; ix < n_markers; ++ix) {
+        GSC_GENOLEN_T markerix;
+        if (gsc_get_index_of_genetic_marker(marker_names[ix], d->genome, &markerix)) {
+            ++successes;
+        } else {
+            fprintf(stderr,"Could not find marker named %s in the list of tracked markers\n", marker_names[ix]);
+            continue;
+        }
+        e->centre[markerix] = centres[ix]; // the significant line
+    }
+    return successes;
+}
+
+/** Replace the centring values of specific markers in an effect set
+ *
+ * If your breeding value calculation requires you to centre the allele count values before 
+ * multiplying the resulting value with the marker effect, then this function will convert 
+ * and store those centring values in a genomicSimulation marker effect set.
+ *
+ * This function is similar to @a gsc_change_eff_set_centre_of_markers, except it 
+ * multiplies the provided centring values by the effect of a given allele before saving.
+ * 
+ * Specifically: For a set of genetic markers m that have effects for allele a:
+ *
+ * \f$EBV = \sum_{m}\left[(x_{ma} - centre_{ma})\times e_{ma}\right] = \sum_{m}\left[x_{ma}e_{ma} - centre_{ma}e_{ma}\right]\f$
+ *
+ * the product \f$centre_{ma}e_{ma}\f$ of the centre (passed into this function) and marker effect
+ * of the allele can be saved as the gsc_MarkerEffects.centre[m] value that genomicSimulation
+ * uses to store centring values.
+ *
+ * For alternative functions to change the centre values of a marker effect set:
+ * @see gsc_change_eff_set_centres_to_values
+ * @see gsc_change_eff_set_centre_of_markers
+ *
+ * @shortnamed{change_eff_set_centre_of_allele_count}
+ *
+ * @param d SimData in which the marker effect set is held
+ * @param effset identifier of the marker effect set whose centring values are to be changed
+ * @param n_markers length of the vectors @a marker_names and @a centres
+ * @param marker_names A vector of marker names for which you want to replace any
+ * previously-existing centring value with the value from the corresponding position in @a centres
+ * @param centres A vector of values that are to be subtracted from the breeding value
+ * contribution of the corresponding marker in @a marker_names when calculating breeding values
+ * @param allele multiply the centres by the marker effects corresponding to this allele 
+ * @param reset_centres If truthy, the centring value of marker m from @a marker_names 
+ * will be set to exactly the product of centres[m] and the marker effect of @a allele at
+ * marker m. If falsy, the product of centres[m] and the marker effect of @a allele at
+ * marker m will be added to the existing centring value for marker m. 
+ * @returns the number of markers that successfully had their marker effect centres updated
+ */
+GSC_GENOLEN_T gsc_change_eff_set_centre_of_allele_count(gsc_SimData* d,
+                                                        const gsc_EffectID effset,
+                                                        const GSC_GENOLEN_T n_markers,
+                                                        const char** marker_names,
+                                                        const double* centres,
+                                                        const char allele,
+                                                        const _Bool reset_centres) {
+    const GSC_ID_T effIndex = gsc_get_index_of_eff_set(d, effset);
+    if (effIndex == GSC_NA_IDX) {
+        fprintf(stderr,"Nonexistent effect set with id %lu\n", (long unsigned int) effset.id);
+        return 0;
+    }
+    
+    gsc_MarkerEffects* e = d->e + effIndex;
+    if (e->centre == NULL) {
+        e->centre = gsc_malloc_wrap(sizeof(*e->centre)*e->n_markers, GSC_TRUE);
+        for (GSC_GENOLEN_T i = 0; i < e->n_markers; ++i) {
+            e->centre[i] = 0.;
+        }
+    } else if (reset_centres) {
+        for (GSC_GENOLEN_T i = 0; i < e->n_markers; ++i) {
+            e->centre[i] = 0.;
+        }
+    }
+    
+    GSC_GENOLEN_T successes = 0;
+    for (GSC_GENOLEN_T ix = 0; ix < n_markers; ++ix) {
+        GSC_GENOLEN_T markerix;
+        if (gsc_get_index_of_genetic_marker(marker_names[ix], d->genome, &markerix)) {
+            // We have the marker. Let's find the effect of this allele
+            _Bool found = 0;
+            for (GSC_GENOLEN_T a = ((markerix > 0) ? e->cumn_alleles[markerix-1] : 0); 
+                    a < e->cumn_alleles[markerix]; ++a) {
+                if (e->allele[a] == allele) {
+                    found = 1;
+                    
+                    // the significant lines:
+                    double mcentre = centres[ix] * e->eff[a];
+                    e->centre[markerix] = reset_centres ? mcentre : mcentre + e->centre[markerix]; 
+                    break;
+                }
+            }
+            if (!found) {
+                fprintf(stderr,"Could not find effect value for allele %c at marker %s\n", allele, marker_names[ix]);
+            } else {
+                ++successes;
+            }
+        } else {
+            fprintf(stderr,"Could not find marker named %s in the list of tracked markers\n", marker_names[ix]);
+            continue;
+        }
+    }
+    return successes;
 }
 
 /** Count and return the number of digits in `i`.
@@ -3844,6 +4035,7 @@ gsc_MapID gsc_get_new_map_id( const gsc_SimData* d) {
 GSC_ID_T gsc_get_index_of_label( const gsc_SimData* d, const gsc_LabelID label ) {
     if (d->n_labels == 0) { return GSC_NA_IDX; } // immediate fail
     if (d->n_labels == 1) { return (d->label_ids[0].id == label.id) ? 0 : GSC_NA_IDX ; }
+    if (label.id == GSC_NO_LABEL.id) { return GSC_NA_IDX; }
 
     // If there's at least two labels then we binary search.
     GSC_ID_T first = 0;
@@ -3876,6 +4068,7 @@ GSC_ID_T gsc_get_index_of_label( const gsc_SimData* d, const gsc_LabelID label )
 GSC_ID_T gsc_get_index_of_eff_set( const gsc_SimData* d, const gsc_EffectID eff_set_id ) {
     if (d->n_eff_sets == 0) { return GSC_NA_IDX; } // immediate fail
     if (d->n_eff_sets == 1) { return (d->eff_set_ids[0].id == eff_set_id.id) ? 0 : GSC_NA_IDX ; }
+    if (eff_set_id.id == GSC_NO_EFFECTSET.id) { return GSC_NA_IDX; }
 
     // If there's at least two labels then we binary search.
     GSC_ID_T first = 0;
@@ -3908,6 +4101,7 @@ GSC_ID_T gsc_get_index_of_eff_set( const gsc_SimData* d, const gsc_EffectID eff_
 GSC_ID_T gsc_get_index_of_map( const SimData* d, const gsc_MapID map ) {
     if (d->genome.n_maps == 0) { return GSC_NA_IDX; } // immediate fail
     if (d->genome.n_maps == 1) { return (d->genome.map_ids[0].id == map.id) ? 0 : GSC_NA_IDX ; }
+    if (map.id == GSC_NO_MAP.id) { return GSC_NA_IDX; }
 
     // If there's at least two labels then we binary search.
     GSC_ID_T first = 0;
@@ -4156,11 +4350,11 @@ GSC_GLOBALX_T gsc_get_group_bvs(const gsc_SimData* d,
                                 double* output) {
     gsc_DecimalMatrix dm_bvs = gsc_calculate_bvs(d, group_id, effID );
 
-	if (group_size == 0 || group_size == GSC_NA_GLOBALX) {
-		group_size = dm_bvs.dim2;
-	}
+    if (group_size == 0 || group_size == GSC_NA_GLOBALX) {
+        group_size = dm_bvs.dim2;
+    }
 
-	memcpy(output, dm_bvs.matrix[0], sizeof(*output)*group_size);
+    memcpy(output, dm_bvs.matrix[0], sizeof(*output)*group_size);
 
     gsc_delete_dmatrix(&dm_bvs);
     return group_size;
@@ -4380,23 +4574,23 @@ gsc_DecimalMatrix gsc_generate_zero_dmatrix(const size_t r, const size_t c) {
     zeros.dim1 = r;
     zeros.dim2 = c;
 
-	if (r > 0) {
-		zeros.matrix = gsc_malloc_wrap(sizeof(*zeros.matrix) * r,GSC_TRUE);
-		if (c > 0) {
-			for (size_t i = 0; i < r; ++i) {
-				zeros.matrix[i] = gsc_malloc_wrap(sizeof(*(zeros.matrix[i])) * c,GSC_TRUE);
-				for (size_t j = 0; j < c; ++j) {
-					zeros.matrix[i][j] = 0.0;
-				}
-			}
-		} else {
-			for (size_t i = 0; i < r; ++i) {
-				zeros.matrix[i] = NULL;
-			}
-		}
-	} else {
-		zeros.matrix = NULL;
-	}
+    if (r > 0) {
+        zeros.matrix = gsc_malloc_wrap(sizeof(*zeros.matrix) * r,GSC_TRUE);
+        if (c > 0) {
+            for (size_t i = 0; i < r; ++i) {
+                zeros.matrix[i] = gsc_malloc_wrap(sizeof(*(zeros.matrix[i])) * c,GSC_TRUE);
+                for (size_t j = 0; j < c; ++j) {
+                    zeros.matrix[i][j] = 0.0;
+                }
+            }
+        } else {
+            for (size_t i = 0; i < r; ++i) {
+                zeros.matrix[i] = NULL;
+            }
+        }
+    } else {
+        zeros.matrix = NULL;
+    }
     return zeros;
 }
 
@@ -4789,23 +4983,23 @@ void gsc_delete_allele_matrix(gsc_AlleleMatrix* m) {
  * @param m pointer to the structure whose data is to be cleared and memory freed.
  */
 void gsc_delete_effects_table(gsc_MarkerEffects* m) {
-	m->n_markers = 0;
-	if (m->cumn_alleles != NULL) {
-		GSC_FREE(m->cumn_alleles);
-		m->cumn_alleles = NULL;
-	}
-	if (m->allele != NULL) {
-		GSC_FREE(m->allele);
-		m->allele = NULL;
-	}
-	if (m->center != NULL) {
-		GSC_FREE(m->center);
-		m->center = NULL;
-	}
-	if (m->eff != NULL) {
-		GSC_FREE(m->eff);
-		m->eff = NULL;
-	}
+    m->n_markers = 0;
+    if (m->centre != NULL) {
+        GSC_FREE(m->centre);
+        m->centre = NULL;
+    }
+    if (m->cumn_alleles != NULL) {
+        GSC_FREE(m->cumn_alleles);
+        m->cumn_alleles = NULL;
+    }
+    if (m->allele != NULL) {
+        GSC_FREE(m->allele);
+        m->allele = NULL;
+    }
+    if (m->eff != NULL) {
+        GSC_FREE(m->eff);
+        m->eff = NULL;
+    }
 }
 
 /** Deletes a gsc_SimData object and frees its memory.
@@ -5963,19 +6157,21 @@ gsc_MapID gsc_load_mapfile(SimData* d, const char* filename) {
  * data loaded), this function will be unable to match any marker names so
  * will fail to load any marker effects.
  *
- * The file's format should be:
+ * The file's format should be a three-column file with optional header row and optional 
+ * fourth column "centre":
  *
- * marker allele eff
+ * marker allele eff centre
  *
- * [marker] [allele] [effect]
+ * [marker] [allele] [effect] [centre or 0]
  *
- * [marker] [allele] [effect]
+ * [marker] [allele] [effect] [centre or 0]
  *
  * ...
  *
  * The header line is optional. If no header line is provided, it is assumed that the columns are in
- * the above order (marker, then allele, then marker effect). If a header is provided, the columns
- * "marker", "allele", and "eff" can be in any order.
+ * the above order (marker, then allele, then marker effect, then (if applicable) allele count centre). 
+ * If a header is provided, the columns "marker", "allele", "eff", and (if applicable) "centre" 
+ * can be in any order.
  *
  * Extra columns are not permitted. Columns may be space-separated or tab-separated.
  * Column separators need not be consistent throughout the file, and may be made of
@@ -6005,70 +6201,70 @@ gsc_EffectID gsc_load_effectfile(gsc_SimData* d, const char* filename) {
     gsc_TableFileCell* cellqueue = cellsread;
     size_t queuesize = 0;
     int row1len = gsc_helper_read_first_row(&tf, 3, 4, cellqueue, &queuesize);
-    
-    const char* titles[4] = { "marker", "allele", "eff", "center"};
+
+    const char* titles[4] = { "marker", "allele", "eff", "centre"};
     int colnums[4];
-    int marker_colnum, allele_colnum, eff_colnum, center_colnum;
+    int marker_colnum, allele_colnum, eff_colnum, centre_colnum;
     GSC_LOGICVAL header = gsc_helper_parse_ncell_header(row1len, cellqueue, 3, titles, 1, titles+3, colnums);
     if (header == GSC_TRUE) {
         printf("(Loading %s) Format: effect file with header\n", filename);
         marker_colnum = colnums[0] + 1, allele_colnum = colnums[1] + 1, eff_colnum = colnums[2] + 1;
-        center_colnum = colnums[3] + 1; // might be 0 if the column does not exist.
+        centre_colnum = colnums[3] + 1; // might be 0 if the column does not exist.
     } else if (header == GSC_FALSE) {
         printf("(Loading %s) Format: effect file without header\n", filename);
         marker_colnum = 1, allele_colnum = 2, eff_colnum = 3;
         // 3 + 1: number of official titles plus the one from the second line
-        center_colnum = (row1len > 3) ? 4 : 0;
+        centre_colnum = (row1len > 3) ? 4 : 0;
     } else {
         printf("(Loading %s) Failure: Cannot identify the 3 required columns of the effect file\n", filename);
         gsc_tablefilereader_close(&tf);
         return NO_EFFECTSET;
     }
     
-    if (center_colnum > 0) {
-        printf("(Loading %s) The file has %d columns. Identified optional column \"center\"\n", filename, row1len);
+    if (centre_colnum > 0) {
+        printf("(Loading %s) The file has %d columns. Identified optional column \"centre\"\n", filename, row1len);
     }
 
     if (header) {
         cellqueue += row1len;
         queuesize -= row1len;
-		for (int i = 0; i < row1len; ++i) {
-			if (!cellsread[i].isCellShallow) { GSC_FREE(cellsread[i].cell); }
-		}
+        for (int i = 0; i < row1len; ++i) {
+            if (!cellsread[i].isCellShallow) { GSC_FREE(cellsread[i].cell); }
+        }
     }
     _Bool goodrow = (header) ? 0 : 1; // discard first row if it's a header, keep if it's not.
 
-	GSC_CREATE_BUFFER(raweffects,struct gsc_EffectfileUnit,d->genome.n_markers);
-	GSC_GENOLEN_T n_effects = 0;
-	
-	char* conversionflag;
+    GSC_CREATE_BUFFER(raweffects,struct gsc_EffectfileUnit,d->genome.n_markers);
+    GSC_GENOLEN_T n_effects = 0;
+    
+    char* conversionflag;
     gsc_TableFileCell ncell;
-	
-	do {
+    
+    do {
         ncell = gsc_helper_tablefilereader_get_next_cell_wqueue(&tf, &cellqueue, &queuesize);
 
         if (ncell.cell != NULL) { // so that we can cope with missing final newline
-			if (ncell.predNewline) {
-				// save predecessor row then update row/col position
-				if (goodrow && col >= row1len) {
-					++n_effects;
-					if (n_effects >= raweffectscap) {
-						GSC_STRETCH_BUFFER(raweffects,2*n_effects);
-					}
-				}
-				
-				row += ncell.predNewline;
+            if (ncell.predNewline) {
+                // save predecessor row then update row/col position
+                if (goodrow && col >= row1len) {
+                    ++n_effects;
+                    if (n_effects >= raweffectscap) {
+                        GSC_STRETCH_BUFFER(raweffects,2*n_effects);
+                    }
+                }
+                
+                row += ncell.predNewline;
                 goodrow = 1;
                 col = 1;
-			}
-			col += (ncell.predCol > 0) ? 1 : 0; // multiple column spacers treated as one
-			
-			if (ncell.cell_len == 0) {
+            }
+            col += (ncell.predCol > 0) ? 1 : 0; // multiple column spacers treated as one
+            
+            if (ncell.cell_len == 0) {
                 goodrow = 0;
             } else if (col == marker_colnum) {
                 char tmp = ncell.cell[ncell.cell_len]; ncell.cell[ncell.cell_len] = '\0';
                 _Bool validmarker = gsc_get_index_of_genetic_marker(ncell.cell,d->genome,
-																	&(raweffects[n_effects].markerix));
+                                                                    &(raweffects[n_effects].markerix));
                 ncell.cell[ncell.cell_len] = tmp;
                 if (!validmarker) {
                     goodrow = 0;
@@ -6080,8 +6276,8 @@ gsc_EffectID gsc_load_effectfile(gsc_SimData* d, const char* filename) {
                     goodrow = 0;
                     //fprintf(stderr,"Entry at row %i column %i of file %s was too long to represent a single allele\n", row, allele_colnum, filename);
                 } else {
-					raweffects[n_effects].allele = ncell.cell[0];
-				}
+                    raweffects[n_effects].allele = ncell.cell[0];
+                }
 
             } else if (col == eff_colnum) {
                 char tmp = ncell.cell[ncell.cell_len]; ncell.cell[ncell.cell_len] = '\0';
@@ -6091,86 +6287,93 @@ gsc_EffectID gsc_load_effectfile(gsc_SimData* d, const char* filename) {
                     goodrow = 0;
                     //fprintf(stderr,"Entry at row %i column %i of file %s could not be parsed as a numeric value\n", row, eff_colnum, filename);
                 }
-				
-			} else if (col == center_colnum) {
-				char tmp = ncell.cell[ncell.cell_len]; ncell.cell[ncell.cell_len] = '\0';
-                raweffects[n_effects].center = strtod(ncell.cell,&conversionflag);
+                
+            } else if (col == centre_colnum) {
+                char tmp = ncell.cell[ncell.cell_len]; ncell.cell[ncell.cell_len] = '\0';
+                raweffects[n_effects].centre = strtod(ncell.cell,&conversionflag);
                 ncell.cell[ncell.cell_len] = tmp;
                 if (conversionflag != ncell.cell + ncell.cell_len) { // unsuccessful read
                     goodrow = 0;
                     //fprintf(stderr,"Entry at row %i column %i of file %s could not be parsed as a numeric value\n", row, eff_colnum, filename);
                 }
-
+            
             } else {
                 goodrow = 0;
             }
-			
+            
             // Reset
             if (!ncell.isCellShallow) { GSC_FREE(ncell.cell); }
         }
-    } while (!ncell.eof);			
-	
-	if (goodrow && col >= row1len) { // the final row, potentially.
-		++n_effects;
-	}
+    } while (!ncell.eof);           
+    
+    if (goodrow && col >= row1len) { // the final row, potentially.
+        ++n_effects;
+    }
 
     printf("(Loading %s) %lu effect value(s) were loaded. Failed to parse %lu line(s).\n", 
            filename, (long unsigned int) n_effects, (long unsigned int) (row - header - n_effects));
     gsc_tablefilereader_close(&tf);
 
     if (n_effects == 0) {
-		GSC_DELETE_BUFFER(raweffects);
+        GSC_DELETE_BUFFER(raweffects);
         return GSC_NO_EFFECTSET;
-	}
-		
-	// now sort the raweffects based on markerix
-	qsort(raweffects,n_effects,sizeof(*raweffects),gsc_helper_effectfileunit_ascending_mix_comparer);
-	
-	// Create empty marker effects 
-	gsc_MarkerEffects e = { 0 };
-	e.n_markers = d->genome.n_markers;
-	e.cumn_alleles = gsc_malloc_wrap(sizeof(*e.cumn_alleles)*e.n_markers, GSC_TRUE);
-	e.allele = gsc_malloc_wrap(sizeof(*e.allele)*n_effects, GSC_TRUE);
-	e.center = (center_colnum) ? gsc_malloc_wrap(sizeof(*e.center)*n_effects, GSC_TRUE) : NULL;
-	e.eff = gsc_malloc_wrap(sizeof(*e.eff)*n_effects, GSC_TRUE);
-	
-	// Populate MarkerEffects
-	if (center_colnum) { // conditional moved outside of inner loop
-		GSC_GENOLEN_T markerix_current = 0;
-		for (GSC_GENOLEN_T i = 0; i < n_effects; ++i) {
-			if (raweffects[i].markerix != markerix_current) {
-				for (GSC_GENOLEN_T j = markerix_current; j < raweffects[i].markerix; ++j) {
-					e.cumn_alleles[j] = i;
-				}
-				markerix_current = raweffects[i].markerix;
-			}
-			
-			e.allele[i] = raweffects[i].allele;
-			e.center[i] = raweffects[i].center; // this line is only difference between the two branches
-			e.eff[i] = raweffects[i].eff;
-		}
-		for (GSC_GENOLEN_T j = markerix_current; j < e.n_markers; ++j) {
-			e.cumn_alleles[j] = n_effects;
-		}
-	} else {
-		GSC_GENOLEN_T markerix_current = 0;
-		for (GSC_GENOLEN_T i = 0; i < n_effects; ++i) {
-			if (raweffects[i].markerix != markerix_current) {
-				for (GSC_GENOLEN_T j = markerix_current; j < raweffects[i].markerix; ++j) {
-					e.cumn_alleles[j] = i;
-				}
-				markerix_current = raweffects[i].markerix;
-			}
-			
-			e.allele[i] = raweffects[i].allele;
-			e.eff[i] = raweffects[i].eff;
-		}
-		for (GSC_GENOLEN_T j = markerix_current; j < e.n_markers; ++j) {
-			e.cumn_alleles[j] = n_effects;
-		}
-	}
-		
-	GSC_DELETE_BUFFER(raweffects);
+    }
+        
+    // now sort the raweffects based on markerix
+    qsort(raweffects,n_effects,sizeof(*raweffects),gsc_helper_effectfileunit_ascending_mix_comparer);
+    
+    // Create empty marker effects 
+    gsc_MarkerEffects e = { 0 };
+    e.n_markers = d->genome.n_markers;
+    e.cumn_alleles = gsc_malloc_wrap(sizeof(*e.cumn_alleles)*e.n_markers, GSC_TRUE);
+    e.allele = gsc_malloc_wrap(sizeof(*e.allele)*n_effects, GSC_TRUE);
+    e.eff = gsc_malloc_wrap(sizeof(*e.eff)*n_effects, GSC_TRUE);
+    if (centre_colnum) {
+        e.centre = gsc_malloc_wrap(sizeof(*e.centre)*e.n_markers, GSC_TRUE);
+        for (GSC_GENOLEN_T i = 0; i < e.n_markers; ++i) {
+            e.centre[i] = 0;
+        }
+    } else {
+        e.centre = NULL;
+    }
+    
+    // Populate MarkerEffects
+    if (centre_colnum) { // conditional moved outside of inner loop
+        GSC_GENOLEN_T markerix_current = 0;
+        for (GSC_GENOLEN_T i = 0; i < n_effects; ++i) {
+            if (raweffects[i].markerix != markerix_current) {
+                for (GSC_GENOLEN_T j = markerix_current; j < raweffects[i].markerix; ++j) {
+                    e.cumn_alleles[j] = i;
+                }
+                markerix_current = raweffects[i].markerix;
+            }
+            
+            e.allele[i] = raweffects[i].allele;
+            e.eff[i] = raweffects[i].eff;
+            e.centre[markerix_current] += raweffects[i].centre * raweffects[i].eff; // line that differs
+        }
+        for (GSC_GENOLEN_T j = markerix_current; j < e.n_markers; ++j) {
+            e.cumn_alleles[j] = n_effects;
+        }
+    } else {
+        GSC_GENOLEN_T markerix_current = 0;
+        for (GSC_GENOLEN_T i = 0; i < n_effects; ++i) {
+            if (raweffects[i].markerix != markerix_current) {
+                for (GSC_GENOLEN_T j = markerix_current; j < raweffects[i].markerix; ++j) {
+                    e.cumn_alleles[j] = i;
+                }
+                markerix_current = raweffects[i].markerix;
+            }
+            
+            e.allele[i] = raweffects[i].allele;
+            e.eff[i] = raweffects[i].eff;
+        }
+        for (GSC_GENOLEN_T j = markerix_current; j < e.n_markers; ++j) {
+            e.cumn_alleles[j] = n_effects;
+        }
+    }
+        
+    GSC_DELETE_BUFFER(raweffects);
     return gsc_helper_insert_eff_set_into_simdata(d, e);
 }
 
@@ -9160,67 +9363,51 @@ gsc_DecimalMatrix gsc_calculate_utility_bvs(gsc_BidirectionalIterator* targets,
         fprintf(stderr, "Either targets or marker effects were not provided\n"); 
         return gsc_generate_zero_dmatrix(0, 0);
     }
-	gsc_MarkerEffects e = *effset; // trivial line. just for easier typing
+    gsc_MarkerEffects e = *effset; // trivial line. just for easier typing
 
     GSC_CREATE_BUFFER(sum, double, 50);
     GSC_GLOBALX_T n_genotypes = 0;
-	
-	gsc_GenoLocation loc = gsc_set_bidirectional_iter_to_start(targets);
-	if (e.center == NULL) {
-		while (IS_VALID_LOCATION(loc)) {
-			if (n_genotypes >= sumcap) {
-				GSC_STRETCH_BUFFER(sum, 2*n_genotypes);
-			}
-			
-			sum[n_genotypes] = 0;
-			
-			//RPACKINSERT R_CheckUserInterrupt();
-			char* genotype = gsc_get_alleles(loc);
-			for (GSC_GENOLEN_T m = 0; m < e.n_markers; ++m) {
-				double msum = 0.;
-				
-				for (GSC_GENOLEN_T eix = ((m > 0) ? e.cumn_alleles[m-1] : 0); eix < e.cumn_alleles[m]; ++eix) {
-					double asum = ( (e.allele[eix] == genotype[2*m]) + 
-								    (e.allele[eix] == genotype[2*m+1])  ) * e.eff[eix];
-					msum += asum; // accumulate action
-				}
-				
-				sum[n_genotypes] += msum; // accumulate action
-			}
-			
-			++n_genotypes;
-			loc = gsc_next_forwards(targets);
-		}
-	} else { // adding centering in a separate branch for theoretical performance re branching
-		while (IS_VALID_LOCATION(loc)) {
-			if (n_genotypes >= sumcap) {
-				GSC_STRETCH_BUFFER(sum, 2*n_genotypes);
-			}
-			
-			sum[n_genotypes] = 0;
-			
-			//RPACKINSERT R_CheckUserInterrupt();
-			char* genotype = gsc_get_alleles(loc);
-			for (GSC_GENOLEN_T m = 0; m < e.n_markers; ++m) {
-				double msum = 0.;
-				
-				for (GSC_GENOLEN_T eix = ((m > 0) ? e.cumn_alleles[m-1] : 0); eix < e.cumn_alleles[m]; ++eix) {
-					double asum = ( (e.allele[eix] == genotype[2*m]) + 
-								    (e.allele[eix] == genotype[2*m+1]) - e.center[eix] ) * e.eff[eix];
-					msum += asum; // accumulate action
-				}
-				
-				sum[n_genotypes] += msum; // accumulate action
-			}
-			
-			++n_genotypes;
-			loc = gsc_next_forwards(targets);
-		}
-	}
-	
-	gsc_DecimalMatrix out = gsc_generate_zero_dmatrix(1, 0);
+    
+    gsc_GenoLocation loc = gsc_set_bidirectional_iter_to_start(targets);
+    while (IS_VALID_LOCATION(loc)) {
+        if (n_genotypes >= sumcap) {
+            GSC_STRETCH_BUFFER(sum, 2*n_genotypes);
+        }
+        
+        sum[n_genotypes] = 0;
+        
+        //RPACKINSERT R_CheckUserInterrupt();
+        char* genotype = gsc_get_alleles(loc);
+        for (GSC_GENOLEN_T m = 0; m < e.n_markers; ++m) {
+            double msum = 0.;
+            
+            for (GSC_GENOLEN_T eix = ((m > 0) ? e.cumn_alleles[m-1] : 0); eix < e.cumn_alleles[m]; ++eix) {
+                double asum = ( (e.allele[eix] == genotype[2*m]) + 
+                                (e.allele[eix] == genotype[2*m+1])  ) * e.eff[eix];
+                msum += asum; // accumulate action
+            }
+            
+            sum[n_genotypes] += msum; // accumulate action
+        }
+        
+        ++n_genotypes;
+        loc = gsc_next_forwards(targets);
+    }
+    
+    if (e.centre != NULL) {
+        double summedcentres = 0.;
+        for (GSC_GENOLEN_T m = 0; m < e.n_markers; ++m) {
+            summedcentres += e.centre[m];
+        }
+        
+        for (GSC_GLOBALX_T i = 0; i < n_genotypes; ++i) {
+            sum[i] -= summedcentres;
+        }
+    }
+    
+    gsc_DecimalMatrix out = gsc_generate_zero_dmatrix(1, 0);
     GSC_FINALISE_BUFFER(sum,out.matrix[0],n_genotypes);
-	out.dim2 = n_genotypes;
+    out.dim2 = n_genotypes;
     return out;
 }
 
@@ -9235,9 +9422,6 @@ gsc_DecimalMatrix gsc_calculate_utility_bvs(gsc_BidirectionalIterator* targets,
  * @param group NO_GROUP to count alleles of all genotypes in the simulation, or a 
  * specific group identifier to count only the alleles of members of that group.
  * @param allele the single-character allele to be counting.
- * @param effset NO_EFFECTSET to calculate a raw count matrix (0/1/2 copies of the allele),
- * or the EffectID in @a d of a set of marker effects if you would like to apply the centering
- * values (see: MarkerEffects.center) to the raw counts.
  * @returns a (num genotypes x num markers) gsc_DecimalMatrix, with each cell 
  * containing the number of incidences of the allele.
  * The first axis of the DecimalMatrix corresponds to candidate genotypes, 
@@ -9245,76 +9429,34 @@ gsc_DecimalMatrix gsc_calculate_utility_bvs(gsc_BidirectionalIterator* targets,
  * */
 gsc_DecimalMatrix gsc_calculate_allele_counts(const gsc_SimData* d, 
                                               const gsc_GroupNum group, 
-                                              const char allele,
-											  const gsc_EffectID effset) {
-    _Bool withcentering = 0;
-	gsc_MarkerEffects e;
-	if (effset.id != GSC_NO_EFFECTSET.id) {
-		const GSC_ID_T effIndex = gsc_get_index_of_eff_set(d, effset);
-		if (effIndex == GSC_NA_IDX) {
-			fprintf(stderr,"Nonexistent effect set with id %lu\n", (long unsigned int) effset.id);
-			return gsc_generate_zero_dmatrix(0, 0);
-		}
-		e = d->e[effIndex];
-		if (e.center != NULL) {
-			withcentering = 1;
-		}
-	}
-	
+                                              const char allele) {
     GSC_CREATE_BUFFER(counts, double*, 50);
     GSC_GLOBALX_T n_genotypes = 0;
     // casing away const but I promise not to use the iterator to change anything
     gsc_BidirectionalIterator it = gsc_create_bidirectional_iter((gsc_SimData*) d, group);
 
     gsc_GenoLocation loc = gsc_set_bidirectional_iter_to_start(&it);
-	if (withcentering) {
-		while (IS_VALID_LOCATION(loc)) {
-			if (n_genotypes >= countscap) {
-				GSC_STRETCH_BUFFER(counts, 2*n_genotypes);
-			}
-			
-			//RPACKINSERT R_CheckUserInterrupt();
-			counts[n_genotypes] = gsc_malloc_wrap(sizeof(*counts[n_genotypes])*d->genome.n_markers, GSC_TRUE);
-			char* genotype = gsc_get_alleles(loc);
-			for (GSC_GENOLEN_T m = 0; m < d->genome.n_markers; ++m) { // loop parallelisable
-				counts[n_genotypes][m] = (genotype[2*m] == allele) + (genotype[2*m+1] == allele);
-				
-				// This extra loop applies the centering
-				for (GSC_GENOLEN_T eix = ((m > 0) ? e.cumn_alleles[m-1] : 0); eix < e.cumn_alleles[m]; ++eix) {
-					if (e.allele[eix] == allele) { 
-						counts[n_genotypes][m] -= e.center[eix]; 
-						break;
-					} 
-				}
-			}
-			
-			++n_genotypes;
-			loc = gsc_next_forwards(&it);
-		}
-
-	} else { // Identical but without that centering process in the inner loop
-		while (IS_VALID_LOCATION(loc)) {
-			if (n_genotypes >= countscap) {
-				GSC_STRETCH_BUFFER(counts, 2*n_genotypes);
-			}
-			
-			//RPACKINSERT R_CheckUserInterrupt();
-			counts[n_genotypes] = gsc_malloc_wrap(sizeof(*counts[n_genotypes])*d->genome.n_markers, GSC_TRUE);
-			char* genotype = gsc_get_alleles(loc);
-			for (GSC_GENOLEN_T m = 0; m < d->genome.n_markers; ++m) { // loop parallelisable
-				counts[n_genotypes][m] = (genotype[2*m] == allele) + (genotype[2*m+1] == allele);
-			}
-			
-			++n_genotypes;
-			loc = gsc_next_forwards(&it);
-		}
-	}
+    while (IS_VALID_LOCATION(loc)) {
+        if (n_genotypes >= countscap) {
+            GSC_STRETCH_BUFFER(counts, 2*n_genotypes);
+        }
+        
+        //RPACKINSERT R_CheckUserInterrupt();
+        counts[n_genotypes] = gsc_malloc_wrap(sizeof(*counts[n_genotypes])*d->genome.n_markers, GSC_TRUE);
+        char* genotype = gsc_get_alleles(loc);
+        for (GSC_GENOLEN_T m = 0; m < d->genome.n_markers; ++m) { // loop parallelisable
+            counts[n_genotypes][m] = (genotype[2*m] == allele) + (genotype[2*m+1] == allele);
+        }
+        
+        ++n_genotypes;
+        loc = gsc_next_forwards(&it);
+    }
     gsc_delete_bidirectional_iter(&it);
 
-	gsc_DecimalMatrix out;
+    gsc_DecimalMatrix out;
     GSC_FINALISE_BUFFER(counts,out.matrix,n_genotypes);
-	out.dim1 = n_genotypes;
-	out.dim2 = d->genome.n_markers;
+    out.dim1 = n_genotypes;
+    out.dim2 = d->genome.n_markers;
     return out;
 }
 
@@ -9595,9 +9737,9 @@ gsc_MarkerBlocks gsc_load_blocks(const gsc_SimData* d, const char* block_file) {
  * right haplotype of every candidate investigated across all the chromosome blocks.
 */
 gsc_DecimalMatrix gsc_calculate_local_bvs(const gsc_SimData* d, 
-												const gsc_GroupNum group,
-												const gsc_MarkerBlocks b, 
-												const gsc_EffectID effID) {
+                                                const gsc_GroupNum group,
+                                                const gsc_MarkerBlocks b, 
+                                                const gsc_EffectID effID) {
     const GSC_ID_T effIndex = gsc_get_index_of_eff_set(d, effID);
     if (effIndex == GSC_NA_IDX) {
         fprintf(stderr,"Nonexistent effect set with id %lu\n", (long unsigned int) effID.id);
@@ -9631,104 +9773,106 @@ gsc_DecimalMatrix gsc_calculate_local_bvs(const gsc_SimData* d,
  * Candidates and chromsome blocks are ordered as they are in @a it and @a b respectively.
  */
 gsc_DecimalMatrix gsc_calculate_utility_local_bvs(gsc_BidirectionalIterator* targets, 
-												  gsc_MarkerBlocks b,
-												  gsc_MarkerEffects e) {
-	GSC_CREATE_BUFFER(bvs, double*, 50);
+                                                  gsc_MarkerBlocks b,
+                                                  gsc_MarkerEffects e) {
+    GSC_CREATE_BUFFER(bvs, double*, 50);
     GSC_GLOBALX_T n_genotypes = 0;
     
     gsc_GenoLocation loc = gsc_set_bidirectional_iter_to_start(targets);
-	if (e.center == NULL) {
-		// for each group member
-		while (IS_VALID_LOCATION(loc)) {
-			GSC_GLOBALX_T hap1 = 2*n_genotypes;
-			GSC_GLOBALX_T hap2 = hap1 + 1;
-			
-			if (hap1 >= bvscap) {
-				GSC_STRETCH_BUFFER(bvs, 2*hap1);
-			}
-			
-			//RPACKINSERT R_CheckUserInterrupt();
-			bvs[hap1] = gsc_malloc_wrap(sizeof(*bvs[hap1])*b.num_blocks, GSC_TRUE);
-			bvs[hap2] = gsc_malloc_wrap(sizeof(*bvs[hap2])*b.num_blocks, GSC_TRUE);
-			char* genotype = gsc_get_alleles(loc);
-			
-			// for each block
-			for (GSC_ID_T j = 0; j < b.num_blocks; ++j) {
-				//RPACKINSERT R_CheckUserInterrupt();
-				bvs[hap1][j] = 0.;
-				bvs[hap2][j] = 0.;
+    if (e.centre == NULL) {
+        // for each group member
+        while (IS_VALID_LOCATION(loc)) {
+            GSC_GLOBALX_T hap1 = 2*n_genotypes;
+            GSC_GLOBALX_T hap2 = hap1 + 1;
+            
+            if (hap1 >= bvscap) {
+                GSC_STRETCH_BUFFER(bvs, 2*hap1);
+            }
+            
+            //RPACKINSERT R_CheckUserInterrupt();
+            bvs[hap1] = gsc_malloc_wrap(sizeof(*bvs[hap1])*b.num_blocks, GSC_TRUE);
+            bvs[hap2] = gsc_malloc_wrap(sizeof(*bvs[hap2])*b.num_blocks, GSC_TRUE);
+            char* genotype = gsc_get_alleles(loc);
+            
+            // for each block
+            for (GSC_ID_T j = 0; j < b.num_blocks; ++j) {
+                //RPACKINSERT R_CheckUserInterrupt();
+                bvs[hap1][j] = 0.;
+                bvs[hap2][j] = 0.;
 
-				// calculate the local BV
-				for (GSC_GENOLEN_T k = 0; k < b.num_markers_in_block[j]; ++k) {
-					GSC_GENOLEN_T markerix = b.markers_in_block[j][k];
-					_Bool gotallele1 = 0;
-					_Bool gotallele2 = 0;
-					
-					for (GSC_GENOLEN_T eix = ((markerix > 0) ? e.cumn_alleles[markerix-1] : 0); 
-						   eix < e.cumn_alleles[markerix]; ++eix) {			
-						if (!gotallele1 && e.allele[eix] == genotype[2*markerix]) { 
-							bvs[hap1][j] += e.eff[eix];
-							gotallele1 = 1;
-						}
-						if (!gotallele2 && e.allele[eix] == genotype[2*markerix + 1]) { 
-							bvs[hap2][j] += e.eff[eix];
-							gotallele2 = 1;
-						}
-					}
-				}
-			}
-			
-			++n_genotypes;
-			loc = gsc_next_forwards(targets);
-		}
-	} else { // adding centering in a separate branch for theoretical performance re branching
-		while (IS_VALID_LOCATION(loc)) {
-			GSC_GLOBALX_T hap1 = 2*n_genotypes;
-			GSC_GLOBALX_T hap2 = hap1 + 1;
-			
-			if (hap1 >= bvscap) {
-				GSC_STRETCH_BUFFER(bvs, 2*hap1);
-			}
-			
-			bvs[hap1] = gsc_malloc_wrap(sizeof(*bvs[hap1])*b.num_blocks, GSC_TRUE);
-			bvs[hap2] = gsc_malloc_wrap(sizeof(*bvs[hap2])*b.num_blocks, GSC_TRUE);
-			char* genotype = gsc_get_alleles(loc);
-			
-			// for each block
-			for (GSC_ID_T j = 0; j < b.num_blocks; ++j) {
-				//RPACKINSERT R_CheckUserInterrupt();
-				bvs[hap1][j] = 0.;
-				bvs[hap2][j] = 0.;
+                // calculate the local BV
+                for (GSC_GENOLEN_T k = 0; k < b.num_markers_in_block[j]; ++k) {
+                    GSC_GENOLEN_T markerix = b.markers_in_block[j][k];
+                    _Bool gotallele1 = 0;
+                    _Bool gotallele2 = 0;
+                    
+                    for (GSC_GENOLEN_T eix = ((markerix > 0) ? e.cumn_alleles[markerix-1] : 0); 
+                           eix < e.cumn_alleles[markerix]; ++eix) {         
+                        if (!gotallele1 && e.allele[eix] == genotype[2*markerix]) { 
+                            bvs[hap1][j] += e.eff[eix];
+                            gotallele1 = 1;
+                        }
+                        if (!gotallele2 && e.allele[eix] == genotype[2*markerix + 1]) { 
+                            bvs[hap2][j] += e.eff[eix];
+                            gotallele2 = 1;
+                        }
+                    }
+                }
+            }
+            
+            ++n_genotypes;
+            loc = gsc_next_forwards(targets);
+        }
+    } else { // adding centering in a separate branch for theoretical performance re branching
+        while (IS_VALID_LOCATION(loc)) {
+            GSC_GLOBALX_T hap1 = 2*n_genotypes;
+            GSC_GLOBALX_T hap2 = hap1 + 1;
+            
+            if (hap1 >= bvscap) {
+                GSC_STRETCH_BUFFER(bvs, 2*hap1);
+            }
+            
+            bvs[hap1] = gsc_malloc_wrap(sizeof(*bvs[hap1])*b.num_blocks, GSC_TRUE);
+            bvs[hap2] = gsc_malloc_wrap(sizeof(*bvs[hap2])*b.num_blocks, GSC_TRUE);
+            char* genotype = gsc_get_alleles(loc);
+            
+            // for each block
+            for (GSC_ID_T j = 0; j < b.num_blocks; ++j) {
+                //RPACKINSERT R_CheckUserInterrupt();
+                bvs[hap1][j] = 0.;
+                bvs[hap2][j] = 0.;
 
-				// calculate the local BV
-				for (GSC_GENOLEN_T k = 0; k < b.num_markers_in_block[j]; ++k) {
-					GSC_GENOLEN_T markerix = b.markers_in_block[j][k];
-					_Bool gotallele1 = 0;
-					_Bool gotallele2 = 0;
-					
-					for (GSC_GENOLEN_T eix = ((markerix > 0) ? e.cumn_alleles[markerix-1] : 0); 
-						   eix < e.cumn_alleles[markerix]; ++eix) {	
-						if (!gotallele1 && e.allele[eix] == genotype[2*markerix]) { 
-							bvs[hap1][j] += (1 - e.center[eix]) * e.eff[eix];
-							gotallele1 = 1;
-						}
-						if (!gotallele2 && e.allele[eix] == genotype[2*markerix + 1]) { 
-							bvs[hap2][j] += (1 - e.center[eix]) * e.eff[eix];
-							gotallele2 = 1;
-						}
-					}
-				}
-			}
-			
-			++n_genotypes;
-			loc = gsc_next_forwards(targets);
-		}		
-	} 
+                // calculate the local BV
+                for (GSC_GENOLEN_T k = 0; k < b.num_markers_in_block[j]; ++k) {
+                    GSC_GENOLEN_T markerix = b.markers_in_block[j][k];
+                    _Bool gotallele1 = 0;
+                    _Bool gotallele2 = 0;
+                    
+                    for (GSC_GENOLEN_T eix = ((markerix > 0) ? e.cumn_alleles[markerix-1] : 0); 
+                           eix < e.cumn_alleles[markerix]; ++eix) { 
+                        if (!gotallele1 && e.allele[eix] == genotype[2*markerix]) { 
+                            bvs[hap1][j] += e.eff[eix];
+                            gotallele1 = 1;
+                        }
+                        if (!gotallele2 && e.allele[eix] == genotype[2*markerix + 1]) { 
+                            bvs[hap2][j] += e.eff[eix];
+                            gotallele2 = 1;
+                        }
+                    }
+                    bvs[hap1][j] -= e.centre[markerix];
+                    bvs[hap2][j] -= e.centre[markerix];
+                }
+            }
+            
+            ++n_genotypes;
+            loc = gsc_next_forwards(targets);
+        }       
+    } 
 
-	gsc_DecimalMatrix out;
+    gsc_DecimalMatrix out;
     GSC_FINALISE_BUFFER(bvs,out.matrix,2*n_genotypes);
-	out.dim1 = 2*n_genotypes;
-	out.dim2 = b.num_blocks;
+    out.dim1 = 2*n_genotypes;
+    out.dim2 = b.num_blocks;
     return out;
 }
 
@@ -9753,63 +9897,38 @@ gsc_DecimalMatrix gsc_calculate_utility_local_bvs(gsc_BidirectionalIterator* tar
  * the optimal allele at each marker will be saved.
  */
 void gsc_calculate_optimal_haplotype(const gsc_SimData* d, 
-									  const gsc_EffectID effID, 
-									  const char symbol_na,
-									  char* opt_haplotype) {
+                                      const gsc_EffectID effID, 
+                                      const char symbol_na,
+                                      char* opt_haplotype) {
     const GSC_ID_T effIndex = gsc_get_index_of_eff_set(d, effID);
     if (effIndex == GSC_NA_IDX) {
         fprintf(stderr,"Nonexistent effect set with id %lu\n", (long unsigned int) effID.id);
         memset(opt_haplotype, 0, sizeof(char)*(d->genome.n_markers + 1));
-		return;
+        return;
     }
     gsc_MarkerEffects e = d->e[effIndex];
 
-	if (e.center == NULL) {
-		for (GSC_GENOLEN_T m_ix = 0; m_ix < d->genome.n_markers; ++m_ix) {
-			char best_allele;
-			double best_score;
-			GSC_GENOLEN_T e_ix = (m_ix > 0) ? e.cumn_alleles[m_ix-1] : 0;
-			if (e_ix >= e.cumn_alleles[m_ix]) {
-				// we have no marker effects for alleles at this marker
-				best_allele = symbol_na;
-			} else { // do have marker effects. initialise the max.
-				best_allele = e.allele[e_ix];
-				best_score = e.eff[e_ix];
-				++ e_ix;
-			}
-			for (; e_ix < e.cumn_alleles[m_ix]; ++e_ix) {
-				if (e.eff[e_ix] > best_score) {
-					best_score = e.eff[e_ix];
-					best_allele = e.allele[e_ix];
-				}
-			}			
-			
-			opt_haplotype[m_ix] = best_allele;
-		}
-	} else { // separate case for when there are centering values
-		for (GSC_GENOLEN_T m_ix = 0; m_ix < d->genome.n_markers; ++m_ix) {
-			char best_allele;
-			double best_score;
-			GSC_GENOLEN_T e_ix = (m_ix > 0) ? e.cumn_alleles[m_ix-1] : 0;
-			if (e_ix >= e.cumn_alleles[m_ix]) {
-				// we have no marker effects for alleles at this marker
-				best_allele = symbol_na;
-			} else { // do have marker effects. initialise the max.
-				best_allele = e.allele[e_ix];
-				best_score = (1 - e.center[e_ix]) * e.eff[e_ix];
-				++ e_ix;
-			}
-			for (; e_ix < e.cumn_alleles[m_ix]; ++e_ix) {
-				double score = (1 - e.center[e_ix]) * e.eff[e_ix];
-				if (score > best_score) {
-					best_score = score;
-					best_allele = e.allele[e_ix];
-				}
-			}			
-			
-			opt_haplotype[m_ix] = best_allele;
-		}
-	}
+    for (GSC_GENOLEN_T m_ix = 0; m_ix < d->genome.n_markers; ++m_ix) {
+        char best_allele;
+        double best_score;
+        GSC_GENOLEN_T e_ix = (m_ix > 0) ? e.cumn_alleles[m_ix-1] : 0;
+        if (e_ix >= e.cumn_alleles[m_ix]) {
+            // we have no marker effects for alleles at this marker
+            best_allele = symbol_na;
+        } else { // do have marker effects. initialise the max.
+            best_allele = e.allele[e_ix];
+            best_score = e.eff[e_ix];
+            ++ e_ix;
+        }
+        for (; e_ix < e.cumn_alleles[m_ix]; ++e_ix) {
+            if (e.eff[e_ix] > best_score) {
+                best_score = e.eff[e_ix];
+                best_allele = e.allele[e_ix];
+            }
+        }           
+        
+        opt_haplotype[m_ix] = best_allele;
+    }
     opt_haplotype[d->genome.n_markers] = '\0';
 }
 
@@ -9839,78 +9958,54 @@ void gsc_calculate_optimal_haplotype(const gsc_SimData* d,
 void gsc_calculate_optimal_possible_haplotype(const gsc_SimData* d, 
                                                const gsc_GroupNum group, 
                                                const gsc_EffectID effID,
-											   const char symbol_na,
-											   char* opt_haplotype) {
+                                               const char symbol_na,
+                                               char* opt_haplotype) {
     const GSC_ID_T effIndex = gsc_get_index_of_eff_set(d, effID);
     if (effIndex == GSC_NA_IDX) {
         fprintf(stderr,"Nonexistent effect set with id %lu\n", (long unsigned int) effID.id);
         memset(opt_haplotype, 0, sizeof(char)*(d->genome.n_markers + 1));
-		return;
+        return;
     }
     gsc_MarkerEffects e = d->e[effIndex];
     
-	GSC_CREATE_BUFFER(checked,_Bool,e.cumn_alleles[e.n_markers-1]);
-	memset(checked, 0, sizeof(_Bool)*e.cumn_alleles[e.n_markers-1]);
-	
-	GSC_CREATE_BUFFER(best_score,double,d->genome.n_markers);
-	for (GSC_GENOLEN_T m = 0; m < d->genome.n_markers; ++m) {
-		best_score[m] = NAN;
-		opt_haplotype[m] = symbol_na;
-	}
-	
-	gsc_BidirectionalIterator it = gsc_create_bidirectional_iter((gsc_SimData*) d, group);
+    GSC_CREATE_BUFFER(checked,_Bool,e.cumn_alleles[e.n_markers-1]);
+    memset(checked, 0, sizeof(_Bool)*e.cumn_alleles[e.n_markers-1]);
+    
+    GSC_CREATE_BUFFER(best_score,double,d->genome.n_markers);
+    for (GSC_GENOLEN_T m = 0; m < d->genome.n_markers; ++m) {
+        best_score[m] = NAN;
+        opt_haplotype[m] = symbol_na;
+    }
+    
+    gsc_BidirectionalIterator it = gsc_create_bidirectional_iter((gsc_SimData*) d, group);
     gsc_GenoLocation loc = gsc_set_bidirectional_iter_to_start(&it);
-	if (e.center == NULL) {
-		while (IS_VALID_LOCATION(loc)) {
-			char* genotype = gsc_get_alleles(loc);
-			// Loop through markers
-			for (GSC_GENOLEN_T m = 0; m < d->genome.n_markers; ++m) {
-				// Loop through alleles at that marker
-				for (GSC_GENOLEN_T e_ix = ((m > 0) ? e.cumn_alleles[m-1] : 0); 
-						e_ix < e.cumn_alleles[m]; ++e_ix) {
-					if (!checked[e_ix] && (genotype[2*m] == e.allele[e_ix] || 
-										   genotype[2*m+1] == e.allele[e_ix])) {
-						// Let's check if this allele is better
-						double score = 2 * e.eff[e_ix];
-						if (isnan(best_score[m]) || score > best_score[m]) {
-							best_score[m] = score;
-							opt_haplotype[m] = e.allele[e_ix];
-						}
-						checked[e_ix] = 1;
-					}
-				}
-			}
-			loc = gsc_next_forwards(&it);
-		}
-	} else { // separate branch for performance re inner loop branching if centering is involved
-		while (IS_VALID_LOCATION(loc)) {
-			char* genotype = gsc_get_alleles(loc);
-			// Loop through markers
-			for (GSC_GENOLEN_T m = 0; m < d->genome.n_markers; ++m) {
-				// Loop through alleles at that marker
-				for (GSC_GENOLEN_T e_ix = ((m > 0) ? e.cumn_alleles[m-1] : 0); 
-						e_ix < e.cumn_alleles[m]; ++e_ix) {
-					if (!checked[e_ix] && (genotype[2*m] == e.allele[e_ix] || 
-										   genotype[2*m+1] == e.allele[e_ix])) {
-						// Let's check if this allele is better
-						double score = (2 - e.center[e_ix]) * e.eff[e_ix];
-						if (isnan(best_score[m]) || score > best_score[m]) {
-							best_score[m] = score;
-							opt_haplotype[m] = e.allele[e_ix];
-						}
-						checked[e_ix] = 1;
-					}
-				}
-			}
-			loc = gsc_next_forwards(&it);
-		}
-	}
-	
-	gsc_delete_bidirectional_iter(&it);
-	GSC_DELETE_BUFFER(checked);
-	GSC_DELETE_BUFFER(best_score);
-	
-	opt_haplotype[d->genome.n_markers] = '\0';
+    while (IS_VALID_LOCATION(loc)) {
+        char* genotype = gsc_get_alleles(loc);
+        // Loop through markers
+        for (GSC_GENOLEN_T m = 0; m < d->genome.n_markers; ++m) {
+            // Loop through alleles at that marker
+            for (GSC_GENOLEN_T e_ix = ((m > 0) ? e.cumn_alleles[m-1] : 0); 
+                    e_ix < e.cumn_alleles[m]; ++e_ix) {
+                if (!checked[e_ix] && (genotype[2*m] == e.allele[e_ix] || 
+                                       genotype[2*m+1] == e.allele[e_ix])) {
+                    // Let's check if this allele is better
+                    double score = 2 * e.eff[e_ix];
+                    if (isnan(best_score[m]) || score > best_score[m]) {
+                        best_score[m] = score;
+                        opt_haplotype[m] = e.allele[e_ix];
+                    }
+                    checked[e_ix] = 1;
+                }
+            }
+        }
+        loc = gsc_next_forwards(&it);
+    }
+    
+    gsc_delete_bidirectional_iter(&it);
+    GSC_DELETE_BUFFER(checked);
+    GSC_DELETE_BUFFER(best_score);
+    
+    opt_haplotype[d->genome.n_markers] = '\0';
 }
 
 
@@ -9935,41 +10030,31 @@ double gsc_calculate_optimal_bv(const gsc_SimData* d, const gsc_EffectID effID) 
         return 0;
     }
     gsc_MarkerEffects e = d->e[effIndex];
-	
-	double best_gebv = 0.;
-	if (e.center == NULL) {
-		for (GSC_GENOLEN_T m_ix = 0; m_ix < d->genome.n_markers; ++m_ix) {
-			double best_score = 0;
-			GSC_GENOLEN_T e_ix = (m_ix > 0) ? e.cumn_alleles[m_ix-1] : 0;
-			if (e_ix < e.cumn_alleles[m_ix]) { // we have marker effects for this marker. initialise
-				best_score = e.eff[e_ix];
-				++e_ix;
-			}
-			for (; e_ix < e.cumn_alleles[m_ix]; ++e_ix) {
-				if (e.eff[e_ix] > best_score) {
-					best_score = e.eff[e_ix];
-				}
-			}			
-			
-			best_gebv += (2*best_score);
-		}
-	} else { // separate case for when there are centering values for inner loop branching considerations
-		for (GSC_GENOLEN_T m_ix = 0; m_ix < d->genome.n_markers; ++m_ix) {
-			double best_score = 0;
-			GSC_GENOLEN_T e_ix = (m_ix > 0) ? e.cumn_alleles[m_ix-1] : 0;
-			if (e_ix < e.cumn_alleles[m_ix]) { // we have marker effects for this marker. initialise
-				best_score = (2 - e.center[e_ix]) * e.eff[e_ix];
-				++e_ix;
-			}
-			for (; e_ix < e.cumn_alleles[m_ix]; ++e_ix) {
-				if (e.eff[e_ix] > best_score) {
-					best_score = (2 - e.center[e_ix]) * e.eff[e_ix];
-				}
-			}			
-			
-			best_gebv += best_score;
-		}
-	}
+    
+    double best_gebv = 0.;
+    for (GSC_GENOLEN_T m_ix = 0; m_ix < e.n_markers; ++m_ix) {
+        double best_score = 0;
+        GSC_GENOLEN_T e_ix = (m_ix > 0) ? e.cumn_alleles[m_ix-1] : 0;
+        if (e_ix < e.cumn_alleles[m_ix]) { // we have marker effects for this marker. initialise
+            best_score = e.eff[e_ix];
+            ++e_ix;
+        }
+        for (; e_ix < e.cumn_alleles[m_ix]; ++e_ix) {
+            if (e.eff[e_ix] > best_score) {
+                best_score = e.eff[e_ix];
+            }
+        }           
+        
+        best_gebv += (2*best_score);
+    }
+    
+    if (e.centre != NULL) {
+        double summedcentres = 0.;
+        for (GSC_GENOLEN_T m = 0; m < e.n_markers; ++m) {
+            summedcentres += e.centre[m];
+        }
+        best_gebv -= summedcentres;
+    }
 
     return best_gebv;
 }
@@ -9993,72 +10078,57 @@ double gsc_calculate_optimal_possible_bv(const gsc_SimData* d,
         return 0;
     }
     gsc_MarkerEffects e = d->e[effIndex];
-	
-	GSC_CREATE_BUFFER(checked,_Bool,e.cumn_alleles[e.n_markers-1]);
-	memset(checked, 0, sizeof(_Bool)*e.cumn_alleles[e.n_markers-1]);
-	
-	GSC_CREATE_BUFFER(best_score,double,d->genome.n_markers);
-	for (GSC_GENOLEN_T m = 0; m < d->genome.n_markers; ++m) {
-		best_score[m] = NAN;
-	}
-	
-	gsc_BidirectionalIterator it = gsc_create_bidirectional_iter((gsc_SimData*) d, group);
+    
+    GSC_CREATE_BUFFER(checked,_Bool,e.cumn_alleles[e.n_markers-1]);
+    memset(checked, 0, sizeof(_Bool)*e.cumn_alleles[e.n_markers-1]);
+    
+    GSC_CREATE_BUFFER(best_score,double,d->genome.n_markers);
+    for (GSC_GENOLEN_T m = 0; m < d->genome.n_markers; ++m) {
+        best_score[m] = NAN;
+    }
+    
+    gsc_BidirectionalIterator it = gsc_create_bidirectional_iter((gsc_SimData*) d, group);
     gsc_GenoLocation loc = gsc_set_bidirectional_iter_to_start(&it);
-	if (e.center == NULL) {
-		while (IS_VALID_LOCATION(loc)) {
-			char* genotype = gsc_get_alleles(loc);
-			// Loop through markers
-			for (GSC_GENOLEN_T m = 0; m < d->genome.n_markers; ++m) {
-				// Loop through alleles at that marker
-				for (GSC_GENOLEN_T e_ix = ((m > 0) ? e.cumn_alleles[m-1] : 0); 
-						e_ix < e.cumn_alleles[m]; ++e_ix) {
-					if (!checked[e_ix] && (genotype[2*m] == e.allele[e_ix] || 
-										   genotype[2*m+1] == e.allele[e_ix])) {
-						// Let's check if this allele is better
-						double score = 2 * e.eff[e_ix];
-						if (isnan(best_score[m]) || score > best_score[m]) {
-							best_score[m] = score;
-						}
-						checked[e_ix] = 1;
-					}
-				}
-			}
-			loc = gsc_next_forwards(&it);
-		}
-	} else { // separate branch for performance re inner loop branching if centering is involved
-		while (IS_VALID_LOCATION(loc)) {
-			char* genotype = gsc_get_alleles(loc);
-			// Loop through markers
-			for (GSC_GENOLEN_T m = 0; m < d->genome.n_markers; ++m) {
-				// Loop through alleles at that marker
-				for (GSC_GENOLEN_T e_ix = ((m > 0) ? e.cumn_alleles[m-1] : 0); 
-						e_ix < e.cumn_alleles[m]; ++e_ix) {
-					if (!checked[e_ix] && (genotype[2*m] == e.allele[e_ix] || 
-										   genotype[2*m+1] == e.allele[e_ix])) {
-						// Let's check if this allele is better
-						double score = (2 - e.center[e_ix]) * e.eff[e_ix];
-						if (isnan(best_score[m]) || score > best_score[m]) {
-							best_score[m] = score;
-						}
-						checked[e_ix] = 1;
-					}
-				}
-			}
-			loc = gsc_next_forwards(&it);
-		}
-	}
-	
-	// sum up at the end
-	double optimal_bv = 0.; 
-	for (GSC_GENOLEN_T m = 0; m < d->genome.n_markers; ++m) {
-		if (!isnan(best_score[m])) {
-			optimal_bv += best_score[m];
-		}
-	}
-	
-	gsc_delete_bidirectional_iter(&it);
-	GSC_DELETE_BUFFER(checked);
-	GSC_DELETE_BUFFER(best_score);
+    while (IS_VALID_LOCATION(loc)) {
+        char* genotype = gsc_get_alleles(loc);
+        // Loop through markers
+        for (GSC_GENOLEN_T m = 0; m < e.n_markers; ++m) {
+            // Loop through alleles at that marker
+            for (GSC_GENOLEN_T e_ix = ((m > 0) ? e.cumn_alleles[m-1] : 0); 
+                    e_ix < e.cumn_alleles[m]; ++e_ix) {
+                if (!checked[e_ix] && (genotype[2*m] == e.allele[e_ix] || 
+                                       genotype[2*m+1] == e.allele[e_ix])) {
+                    // Let's check if this allele is better
+                    double score = 2 * e.eff[e_ix];
+                    if (isnan(best_score[m]) || score > best_score[m]) {
+                        best_score[m] = score;
+                    }
+                    checked[e_ix] = 1;
+                }
+            }
+        }
+        loc = gsc_next_forwards(&it);
+    }
+    
+    // sum up at the end
+    double optimal_bv = 0; 
+    for (GSC_GENOLEN_T m = 0; m < e.n_markers; ++m) {
+        if (!isnan(best_score[m])) {
+            optimal_bv += best_score[m];
+        }
+    }
+    
+    if (e.centre != NULL) {
+        double summedcentres = 0.;
+        for (GSC_GENOLEN_T m = 0; m < e.n_markers; ++m) {
+            summedcentres += e.centre[m];
+        }
+        optimal_bv -= summedcentres;
+    }
+    
+    gsc_delete_bidirectional_iter(&it);
+    GSC_DELETE_BUFFER(checked);
+    GSC_DELETE_BUFFER(best_score);
     return optimal_bv;
 }
 
@@ -10079,41 +10149,31 @@ double gsc_calculate_minimal_bv(const gsc_SimData* d, const gsc_EffectID effID) 
         return 0;
     }
     gsc_MarkerEffects e = d->e[effIndex];
-	
-	double worst_gebv = 0.;
-	if (e.center == NULL) {
-		for (GSC_GENOLEN_T m_ix = 0; m_ix < d->genome.n_markers; ++m_ix) {
-			double worst_score = 0;
-			GSC_GENOLEN_T e_ix = (m_ix > 0) ? e.cumn_alleles[m_ix-1] : 0;
-			if (e_ix < e.cumn_alleles[m_ix]) { // we have marker effects for this marker. initialise
-				worst_score = e.eff[e_ix];
-				++e_ix;
-			}
-			for (; e_ix < e.cumn_alleles[m_ix]; ++e_ix) {
-				if (e.eff[e_ix] < worst_score) {
-					worst_score = e.eff[e_ix];
-				}
-			}			
-			
-			worst_gebv += (2*worst_score);
-		}
-	} else { // separate case for when there are centering values
-		for (GSC_GENOLEN_T m_ix = 0; m_ix < d->genome.n_markers; ++m_ix) {
-			double worst_score = 0;
-			GSC_GENOLEN_T e_ix = (m_ix > 0) ? e.cumn_alleles[m_ix-1] : 0;
-			if (e_ix < e.cumn_alleles[m_ix]) { // we have marker effects for this marker. initialise
-				worst_score = (2 - e.center[e_ix]) * e.eff[e_ix];
-				++e_ix;
-			}
-			for (; e_ix < e.cumn_alleles[m_ix]; ++e_ix) {
-				if (e.eff[e_ix] < worst_score) {
-					worst_score = (2 - e.center[e_ix]) * e.eff[e_ix];
-				}
-			}			
-			
-			worst_gebv += worst_score;
-		}
-	}
+    
+    double worst_gebv = 0.;
+    for (GSC_GENOLEN_T m_ix = 0; m_ix < e.n_markers; ++m_ix) {
+        double worst_score = 0;
+        GSC_GENOLEN_T e_ix = (m_ix > 0) ? e.cumn_alleles[m_ix-1] : 0;
+        if (e_ix < e.cumn_alleles[m_ix]) { // we have marker effects for this marker. initialise
+            worst_score = e.eff[e_ix];
+            ++e_ix;
+        }
+        for (; e_ix < e.cumn_alleles[m_ix]; ++e_ix) {
+            if (e.eff[e_ix] < worst_score) {
+                worst_score = e.eff[e_ix];
+            }
+        }           
+        
+        worst_gebv += (2*worst_score);
+    }
+    
+    if (e.centre != NULL) {
+        double summedcentres = 0.;
+        for (GSC_GENOLEN_T m = 0; m < e.n_markers; ++m) {
+            summedcentres += e.centre[m];
+        }
+        worst_gebv -= summedcentres;
+    }
 
     return worst_gebv;
 }
@@ -10207,9 +10267,6 @@ void gsc_save_genotypes(const char* fname,
  * @param groupID group number of the group of genotypes to save allele counts for, 
  * or NO_GROUP to save allele counts for all genotypes in the simulation.
  * @param allele the allele to count occurences of
- * @param effset set of marker effects from which to take centering values for the allele
- * counts, if centered allele counts are desired. If raw allele counts (0 or 1 or 2) are 
- * preferred, set this value to NO_EFFECTSET. 
  * @param markers_as_rows If true, genetic markers will be rows in the output 
  * matrix, and genotypes will be columns. If false, genetic markers will be columns 
  * in the output matrix, and genotypes will be rows.
@@ -10218,20 +10275,8 @@ void gsc_save_allele_counts(const char* fname,
                             const gsc_SimData* d, 
                             const gsc_GroupNum groupID, 
                             const char allele, 
-							const gsc_EffectID effset,
                             const _Bool markers_as_rows) {
-	
-	gsc_MarkerEffects* e = NULL;
-	if (effset.id != GSC_NO_EFFECTSET.id) {
-		const GSC_ID_T effIndex = gsc_get_index_of_eff_set(d, effset);
-		if (effIndex == GSC_NA_IDX) {
-			fprintf(stderr,"Nonexistent effect set with id %lu\n", (long unsigned int) effset.id);
-			return;
-		}
-		e = &d->e[effIndex];
-	}
-	
-	FILE* f;
+    FILE* f;
     if ((f = fopen(fname, "w")) == NULL) {
         fprintf(stderr, "Failed to open file %s for writing output\n", fname); return;
     }
@@ -10240,7 +10285,7 @@ void gsc_save_allele_counts(const char* fname,
     gsc_BidirectionalIterator it = gsc_create_bidirectional_iter((gsc_SimData*) d, groupID);
 
     gsc_save_utility_allele_counts(f, &it, d->genome.n_markers, d->genome.marker_names, 
-                                   markers_as_rows, allele, e);
+                                   markers_as_rows, allele);
 
     delete_bidirectional_iter(&it);
     fclose(f);
@@ -10749,17 +10794,9 @@ void gsc_save_utility_allele_counts(FILE* f,
                                     GSC_GENOLEN_T n_markers, 
                                     char** const marker_names, 
                                     const _Bool markers_as_rows, 
-                                    const char allele,
-									const gsc_MarkerEffects* eff) {
-	if (eff != NULL && eff->center != NULL) {
-		// For the moment this still does the exact same as the other case
-		gsc_scaffold_save_genotype_info(f, targets, n_markers, marker_names, markers_as_rows, 
-			&gsc_helper_output_countmatrix_cell, (void*)&allele);
-	} else {
-		gsc_scaffold_save_genotype_info(f, targets, n_markers, marker_names, markers_as_rows, 
-			&gsc_helper_output_countmatrix_cell, (void*)&allele);
-	}
-    
+                                    const char allele) {
+    gsc_scaffold_save_genotype_info(f, targets, n_markers, marker_names, markers_as_rows, 
+            &gsc_helper_output_countmatrix_cell, (void*)&allele); 
 }
 
 /** Identifies and saves (recursively) the pedigree of a pair of parents
