@@ -17,6 +17,7 @@ Latest News       {#news}
 ## Bug Fixes
 
 - Fix a segfault that occured when calling `load_data_files` with `genotype_file = NULL`.
+- Fix a segfault that occured when trying to create iterators for a simulation object with no loaded genotypes.
 
 # genomicSimulation v0.2.6
 

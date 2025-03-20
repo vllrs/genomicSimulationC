@@ -1,7 +1,7 @@
 #ifndef SIM_OPERATIONS
 #define SIM_OPERATIONS
 #include "sim-operations.h"
-/* genomicSimulationC v0.2.6.04 - last edit 21 Feb 2025 */
+/* genomicSimulationC v0.2.6.05 - last edit 20 Mar 2025 */
 
 /** Default parameter values for GenOptions, to help with quick scripts and prototypes.
  *
@@ -1697,7 +1697,18 @@ gsc_RandomAccessIterator gsc_create_randomaccess_iter( gsc_SimData* d, const gsc
     // - is this group empty? (randomAccess should know if group size is 0)
     // - what is the first genotype index in this group?
 
-    if (group.num == GSC_NO_GROUP.num) { // scanning all genotypes
+    if (firstAM == NULL) {
+        return (gsc_RandomAccessIterator) {
+            .d = d,
+            .group = group,
+
+            .largestCached = 0,
+            .groupSize = 0, // NA represents unknown, 0 represents empty
+            .cacheSize = 0,
+            .cache = NULL
+        };
+
+    } else if (group.num == GSC_NO_GROUP.num) { // scanning all genotypes
         while (firstAM->n_genotypes == 0) {
             if (firstAM->next == NULL) {
                 // gsc_SimData is empty. Nowhere to go.
@@ -1769,6 +1780,7 @@ gsc_RandomAccessIterator gsc_create_randomaccess_iter( gsc_SimData* d, const gsc
 gsc_AlleleMatrix* gsc_get_nth_AlleleMatrix(gsc_AlleleMatrix* listStart, const unsigned int n) {
     unsigned int currentIndex = 0;
     gsc_AlleleMatrix* am = listStart;
+    if (am == NULL) return NULL;
     while (currentIndex < n) {
         if (am->next == NULL) {
             return NULL;
@@ -1799,8 +1811,10 @@ gsc_GenoLocation gsc_set_bidirectional_iter_to_start(gsc_BidirectionalIterator* 
     // Want to know:
     // - is this group empty? (iterator should know if it is at the end as well as at the start)
     // - what is the first genotype index in this group?
-
-    if (it->group.num == GSC_NO_GROUP.num) {
+    if (firstAM == NULL) {
+        return GSC_INVALID_GENO_LOCATION;
+        
+    } else if (it->group.num == GSC_NO_GROUP.num) {
         while (firstAM->n_genotypes == 0) {
             if (firstAM->next == NULL) {
                 anyExist = 0; // gsc_SimData is empty.
@@ -1878,7 +1892,10 @@ gsc_GenoLocation gsc_set_bidirectional_iter_to_end(gsc_BidirectionalIterator* it
     // - is this group empty? (iterator should know if it is at the end as well as at the start)
     // - what is the first genotype index in this group?
 
-    if (it->group.num == GSC_NO_GROUP.num) {
+    if (lastAM == NULL) {
+        return GSC_INVALID_GENO_LOCATION;
+        
+    } if (it->group.num == GSC_NO_GROUP.num) {
         while (lastAM->next != NULL && lastAM->next->n_genotypes != 0) {
             lastAM = lastAM->next;
             lastAMIndex++;
@@ -2785,12 +2802,14 @@ gsc_GroupNum gsc_make_group_from(gsc_SimData* d,
     if (invalidLocations > 0) {
         fprintf(stderr,"%lu indexes were invalid\n",(long unsigned int)invalidLocations);
     }
+    gsc_delete_randomaccess_iter(&it);
+    
     if (invalidLocations < index_list_len) {
         d->n_groups++;
+        return newGroup;
+    } else {
+        return GSC_NO_GROUP;
     }
-
-    gsc_delete_randomaccess_iter(&it);
-    return newGroup;
 }
 
 /** Allocates the genotypes with a particular value of a label to a new group.
