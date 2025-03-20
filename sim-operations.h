@@ -1,7 +1,7 @@
 #ifndef SIM_OPERATIONS_H
 #define SIM_OPERATIONS_H
 /* 
-genomicSimulationC v0.2.6.05
+genomicSimulationC v0.2.6.06
 
     Last edit: 20 Mar 2025
     License: MIT License
@@ -1231,6 +1231,7 @@ gsc_MapID gsc_load_mapfile(gsc_SimData* d, const char* filename);
 gsc_MapID gsc_create_recombmap_from_markerlist(gsc_SimData* d, GSC_GENOLEN_T n_markers, struct gsc_MapfileUnit* markerlist);
 gsc_MapID gsc_create_uniformspaced_recombmap(gsc_SimData* d, GSC_GENOLEN_T n_markers, char** markernames, 
                                              double expected_n_recombinations);
+gsc_MapID gsc_create_unlinked_recombmap(gsc_SimData* d, GSC_GENOLEN_T n_markers, char** markernames);
 
 gsc_EffectID gsc_load_effectfile(gsc_SimData* d, const char* filename);
 

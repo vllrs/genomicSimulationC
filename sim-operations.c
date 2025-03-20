@@ -1,7 +1,7 @@
 #ifndef SIM_OPERATIONS
 #define SIM_OPERATIONS
 #include "sim-operations.h"
-/* genomicSimulationC v0.2.6.05 - last edit 20 Mar 2025 */
+/* genomicSimulationC v0.2.6.06 - last edit 20 Mar 2025 */
 
 /** Default parameter values for GenOptions, to help with quick scripts and prototypes.
  *
@@ -5993,14 +5993,18 @@ gsc_MapID gsc_create_uniformspaced_recombmap(gsc_SimData* d,
                                              GSC_GENOLEN_T n_markers, 
                                              char** markernames, 
                                              double expected_n_recombinations) {
+    if (d->genome.n_markers == 0) { 
+        fprintf(stderr, "Cannot create a recombination map if there is no genome\n");
+        return NO_MAP;
+    } 
+    
     gsc_RecombinationMap map = {.n_chr=1, .chrs=gsc_malloc_wrap(sizeof(gsc_LinkageGroup)*1, GSC_TRUE) };
 
     if (markernames == NULL) {
-        if (d->genome.n_markers == 0) return NO_MAP;
-
         double* lgdists = gsc_malloc_wrap(sizeof(double)*d->genome.n_markers,GSC_TRUE);
-        double lgdist = 1./d->genome.n_markers;
-        for (GSC_GENOLEN_T i = 0; i < d->genome.n_markers; ++i) { lgdists[i] = lgdist; }
+        double lgdist = 1./(d->genome.n_markers-1);
+        lgdists[0] = 0;
+        for (GSC_GENOLEN_T i = 1; i < d->genome.n_markers; ++i) { lgdists[i] = lgdists[i-1] + lgdist; }
 
         map.chrs[0].type = GSC_LINKAGEGROUP_SIMPLE;
         map.chrs[0].map.simple.expected_n_crossovers = expected_n_recombinations;
@@ -6012,7 +6016,7 @@ gsc_MapID gsc_create_uniformspaced_recombmap(gsc_SimData* d,
 
         // markernames could still be simple or reordered compared to the d->genome, so need to check that first.
         _Bool found_first = 0;
-        GSC_GENOLEN_T could_not_match;
+        GSC_GENOLEN_T could_not_match = 0;
         GSC_GENOLEN_T firsts_coord_in_genome = d->genome.n_markers;
         GSC_GENOLEN_T chrmarker_ix = 0;
 
@@ -6058,8 +6062,9 @@ gsc_MapID gsc_create_uniformspaced_recombmap(gsc_SimData* d,
         }
 
         double* lgdists = gsc_malloc_wrap(sizeof(double)*chrmarker_ix,GSC_TRUE);
-        double lgdist = 1./n_markers;
-        for (GSC_GENOLEN_T i = 0; i < chrmarker_ix; ++i) { lgdists[i] = lgdist; }
+        double lgdist = 1./(chrmarker_ix-1);
+        lgdists[0] = 0;
+        for (GSC_GENOLEN_T i = 1; i < chrmarker_ix; ++i) { lgdists[i] = lgdists[i-1] + lgdist; }
 
         if (marker_coords == NULL) {
             map.chrs[0].type = GSC_LINKAGEGROUP_SIMPLE;
@@ -6074,10 +6079,96 @@ gsc_MapID gsc_create_uniformspaced_recombmap(gsc_SimData* d,
             map.chrs[0].map.reorder.marker_indexes = marker_coords;
             map.chrs[0].map.reorder.dists = lgdists;
         }
+        
+        if (could_not_match > 0) {
+            fprintf(stderr, "%d of the marker names do not appear in the genome", could_not_match);
+        }
+        
     }
 
     return gsc_helper_insert_recombmap_into_simdata(d,map);
 }
+
+
+/** Create a gsc_RecombinationMap with independent assortment of alleles across a list of marker names,
+ * and save it to SimData
+ *
+ * The recombination map produced has the same number of chromosomes/linkage groups as the total 
+ * number of markers, therefore the allele inherited for each marker is independent of the 
+ * allele inherited for the other markers. Alternatively, chance of crossover between two "adjacent"
+ * markers is exactly 0.5. 
+ *
+ * If @a markernames is NULL, @a n_markers is ignored and the single-marker-per-linkage-group
+ * recombination map is created from all markers listed in @a d->genome.
+ *
+ * @param d SimData into which to load this RecombinationMap
+ * @param n_markers length of @a markernames
+ * @param markernames names of the markers to create this simple recombination map from.
+ * @return gsc_MapID of the gsc_RecombinationMap that was just loaded into the simulation.
+ */
+gsc_MapID gsc_create_unlinked_recombmap(gsc_SimData* d, GSC_GENOLEN_T n_markers, char** markernames) {
+    if (d->genome.n_markers == 0) { 
+        fprintf(stderr, "Cannot create a recombination map if there is no genome\n");
+        return NO_MAP;
+    } 
+    
+    if (markernames == NULL) {
+        n_markers = d->genome.n_markers;
+        //markernames = d->genome.marker_names;
+        
+        gsc_RecombinationMap map = {.n_chr=n_markers, 
+                                    .chrs=gsc_malloc_wrap(sizeof(gsc_LinkageGroup)*n_markers, GSC_TRUE) };
+        
+        for (GSC_GENOLEN_T i = 0; i < n_markers; ++i) {
+            map.chrs[i].type = GSC_LINKAGEGROUP_SIMPLE;
+            map.chrs[i].map.simple.n_markers = 1;
+            map.chrs[i].map.simple.first_marker_index = i;
+ 
+            // Lines below are dependent on pulling crossover counts from Poisson dist in generate_gamete, 
+            // so that .expected_n_crossovers = 0 means .dists will never be accessed
+            map.chrs[i].map.simple.expected_n_crossovers = 0; 
+            map.chrs[i].map.simple.dists = NULL;
+        }
+        return gsc_helper_insert_recombmap_into_simdata(d,map);
+        
+    } else { // we've been given a list of markers. Our task is slightly more complex. 
+        
+        // First find all marker name indexes:
+        GSC_CREATE_BUFFER(m_ix, GSC_GENOLEN_T, n_markers);
+        GSC_GENOLEN_T n_good = 0;
+        GSC_GENOLEN_T could_not_match = 0;
+        for (GSC_GENOLEN_T m = 0; m < n_markers; ++m) {
+             if (markernames[m] == NULL) {
+                could_not_match++;
+            } else if (!gsc_get_index_of_genetic_marker(markernames[m], d->genome, &m_ix[n_good] )) {
+                could_not_match++;
+            } else {
+                ++n_good;
+            }
+        }
+        if (could_not_match > 0) {
+            fprintf(stderr, "%d of the marker names do not appear in the genome", could_not_match);
+        }
+        
+        // Then create and populate the map 
+        gsc_RecombinationMap map = {.n_chr=n_good, 
+                                    .chrs=gsc_malloc_wrap(sizeof(gsc_LinkageGroup)*n_good, GSC_TRUE) };
+        for (GSC_GENOLEN_T i = 0; i < n_good; ++i) {
+            map.chrs[i].type = GSC_LINKAGEGROUP_SIMPLE;
+            map.chrs[i].map.simple.n_markers = 1;
+            map.chrs[i].map.simple.first_marker_index = m_ix[i];
+ 
+            // Lines below are dependent on pulling crossover counts from Poisson dist in generate_gamete, 
+            // so that .expected_n_crossovers = 0 means .dists will never be accessed
+            map.chrs[i].map.simple.expected_n_crossovers = 0;
+            map.chrs[i].map.simple.dists = NULL;
+        }
+        
+        GSC_DELETE_BUFFER(m_ix);
+        return gsc_helper_insert_recombmap_into_simdata(d,map);
+    }
+}
+
 
 /** Load a genetic map to a gsc_SimData object.
  *
@@ -6683,7 +6774,7 @@ static struct gsc_GenotypeFile_MatrixFormat gsc_helper_genotypefile_matrix_detec
         // Default to markers being rows
 
         printf("(Loading %s) Format axis: genetic markers are -rows-, founder lines are |columns| (by assumption when no genetic map is loaded)\n", filenameforlog);
-        printf("(Loading %s) No genetic map is loaded, will invent a map with equal spacing of these genetic markers (1cM apart)\n", filenameforlog);
+        printf("(Loading %s) No genetic map is loaded, will invent a map where all markers are unlinked/show independent assortment\n", filenameforlog);
         format.markers_as_rows = GSC_TRUE;
 
     } else if (format.has_header == GSC_FALSE) {
@@ -7064,7 +7155,7 @@ static gsc_GroupNum gsc_load_genotypefile_matrix(gsc_SimData* d,
             d->genome.n_markers = nmarkersread;
             d->genome.marker_names = gsc_malloc_wrap(sizeof(*d->genome.marker_names)*d->genome.n_markers, GSC_TRUE);
             d->genome.names_alphabetical = gsc_malloc_wrap(sizeof(*d->genome.names_alphabetical)*d->genome.n_markers, GSC_TRUE);
-            gsc_create_uniformspaced_recombmap(d,0,NULL,d->genome.n_markers);
+            gsc_create_unlinked_recombmap(d,0,NULL); // create based on the markers we've saved in 'genome'
             
         } else { // markers as columns
             if (!format_detected.has_header) { // you should not be able to get here. // assert(format_detected.has_header == GSC_TRUE);
@@ -7083,7 +7174,7 @@ static gsc_GroupNum gsc_load_genotypefile_matrix(gsc_SimData* d,
                 d->genome.names_alphabetical[j] = &d->genome.marker_names[j];
             }
             qsort(d->genome.names_alphabetical,d->genome.n_markers,sizeof(*d->genome.names_alphabetical),gsc_helper_indirect_alphabetical_str_comparer);
-            gsc_create_uniformspaced_recombmap(d,0,NULL,d->genome.n_markers); // create based on the markers we've saved in 'genome'
+            gsc_create_unlinked_recombmap(d,0,NULL); // create based on the markers we've saved in 'genome'
         }
     }
 
