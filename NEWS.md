@@ -12,6 +12,7 @@ Latest News       {#news}
 - Generalisation of header-parsing logic of `load_mapfile` and `load_effectfile`, to prepare for accepting further columns in future.
 - BREAKING CHANGE: `calculate_local_bvs` now returns local BVs in a vector and can be called with a group number or NO_GROUP, like other `calculate_` functions. The ability to print a matrix of local BVs to a file will be re-added soon. Removed `calculate_group_local_bvs` as its function was subsumed.
 - `EffectMatrix` has been replaced with new struct `MarkerEffects`. To match, `gsc_delete_effect_matrix` has been renamed to `gsc_delete_effect_set`.
+- Makefile has a new target "sharedlib" (run `make sharedlib`) to compile genomicSimulation as a shared library, rather than a standalone executable that runs the test suite.
 
 ## Bug Fixes
 
