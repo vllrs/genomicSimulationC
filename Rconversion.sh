@@ -5,13 +5,18 @@
 #    -> removes C random generators
 #    -> replaces C standard libraries with R library equivalents
 
+# I am:
+version='v2' # v2 is the first numbered version. Prior versions are anonymous
+
 echo ">>> Deleting lines from sim-operations.c:"
 awk 'NR>=179 && NR<=213' ./sim-operations.c
 
 awk 'NR<179 || NR>213' ./sim-operations.c | sed \
+    -e "5i /* Converted using Rconversion.sh $version */" \
 	-e 's+//RPACKINSERT ++g' \
 	-e 's/fprintf(stderr,\(.*\)); exit([0-9]);/error(\1);/g' \
-	-e 's/fprintf(stderr,/warning(/g' \
+	-e 's/fprintf(stderr,"/Rprintf("NOTE! /g' \
+	-e 's/fprintf(stderr, "/Rprintf("NOTE! /g' \
 	-e 's/rnd_pcg_seed( &d->rng, RNGseed )//g' \
 	-e 's/RND_U32 RNGseed//g' \
 	-e 's/gsc_shuffle_up_to([^,]*,/shuffle_up_to(/g' \
@@ -29,6 +34,7 @@ echo ">>> Deleting lines from sim-operations.h:"
 awk 'NR>=1097 && NR<=1118' ./sim-operations.h
 
 awk 'NR<1097 || NR>1118' ./sim-operations.h | sed \
+    -e "5i /* Converted using Rconversion.sh $version */" \
 	-e 's+#include "lib/rnd.h"++g' \
 	-e 's/RND_U32 RNGseed//g' \
 	-e 's+rnd_pcg_t rng;+//CRANDOMGENERATOR+g' \

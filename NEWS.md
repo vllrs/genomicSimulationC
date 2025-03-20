@@ -13,6 +13,8 @@ Latest News       {#news}
 - BREAKING CHANGE: `calculate_local_bvs` now returns local BVs in a vector and can be called with a group number or NO_GROUP, like other `calculate_` functions. The ability to print a matrix of local BVs to a file will be re-added soon. Removed `calculate_group_local_bvs` as its function was subsumed.
 - `EffectMatrix` has been replaced with new struct `MarkerEffects`. To match, `gsc_delete_effect_matrix` has been renamed to `gsc_delete_effect_set`.
 - Makefile has a new target "sharedlib" (run `make sharedlib`) to compile genomicSimulation as a shared library, rather than a standalone executable that runs the test suite.
+- The conversion script that creates the library for the genomicSimulation R package now converts `fprintf(stderr, "msg")` to `Rprintf("NOTE! msg")`, instead of `warning("msg")`, so that non-stopping errors like these are still printed if a segfault occurs. (By default, R hides `warning` messages until the end of execution scope, and so loses them if a segfault occurs). 
+- The conversion script that creates the library for the genomicSimulation R package now adds a tag to converted files below the version number, noting that they have been through the conversion process, and what version of the conversion script converted them. The first version-numbered conversion script is version "v2".
 
 ## Bug Fixes
 
