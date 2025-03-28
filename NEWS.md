@@ -21,6 +21,7 @@ Latest News       {#news}
 
 - Fix a segfault that occured when calling `load_data_files` with `genotype_file = NULL`.
 - Fix a segfault that occured when trying to create iterators for a simulation object with no loaded genotypes.
+- Fix a bug where marker names had trailing spaces (and therefore, when loading more input files later, could not be matched) when automatically generating a genetic map from a genotype file. 
 
 # genomicSimulation v0.2.6
 

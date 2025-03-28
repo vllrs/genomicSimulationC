@@ -1,7 +1,7 @@
 #ifndef SIM_OPERATIONS
 #define SIM_OPERATIONS
 #include "sim-operations.h"
-/* genomicSimulationC v0.2.6.06 - last edit 20 Mar 2025 */
+/* genomicSimulationC v0.2.6.07 - last edit 28 Mar 2025 */
 
 /** Default parameter values for GenOptions, to help with quick scripts and prototypes.
  *
@@ -7198,10 +7198,10 @@ static gsc_GroupNum gsc_load_genotypefile_matrix(gsc_SimData* d,
 
             if (ncell.cell != NULL) {
                 if (ncell.predNewline || first) {
-                    char tmp = ncell.cell[ncell.cell_len]; ncell.cell[ncell.cell_len] = '\0';
+                    
                     
                     if (build_map_from_rows) {
-                        have_valid_marker = 1;
+                        ++nvalidmarker;
                         if (first) {
                             markerix = 0;
                         } else {
@@ -7211,11 +7211,15 @@ static gsc_GroupNum gsc_load_genotypefile_matrix(gsc_SimData* d,
                         d->genome.marker_names[markerix] = ncell.cell;
                         ncell.isCellShallow = GSC_TRUE; // prevent deletion
                     } else {
+						char tmp = ncell.cell[ncell.cell_len]; ncell.cell[ncell.cell_len] = '\0';
+						
                         have_valid_marker = gsc_get_index_of_genetic_marker(ncell.cell, d->genome, &markerix);
+						
+						nvalidmarker += have_valid_marker;
+						ncell.cell[ncell.cell_len] = tmp;
                     }
                     
-                    nvalidmarker += have_valid_marker;
-                    ncell.cell[ncell.cell_len] = tmp;
+                    
                     // Then, after reading first row, detect what our expected row length is, if defaults don't suit.
                     if (row == 1 && format_detected.has_header) { 
                         if (column + 1 != ncellsfirstrow && column + 1 != ncellsfirstrow + 1) {

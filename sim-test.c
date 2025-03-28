@@ -3980,7 +3980,7 @@ int main(int argc, char* argv[]) {
             load_data_files(d, 
 			 "./gt_parents_mr2_50-trimto-5000.txt",
              NULL, //"./genetic-map_5112-trimto5000.txt",
-             NULL, //"./qtl_mr2.eff-processed.txt",
+             "./qtl_mr2.eff-processed.txt",
 			 DETECT_FILE_FORMAT);
              
     //GroupNum g2 = split_by_bv(d, init.group, init.effSet, 5, GSC_FALSE);
