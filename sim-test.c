@@ -228,15 +228,29 @@ int test_effloaders2(void) {
     assert(d->e[it-1].n_markers == 2);
     assert(d->e[it-1].cumn_alleles[0] == 2);
     assert(d->e[it-1].cumn_alleles[1] == 4);
-    assert(d->e[it-1].allele[0] == 'A');
-    assert(d->e[it-1].allele[1] == 'T');
-    assert(d->e[it-1].allele[2] == 'A');
-    assert(d->e[it-1].allele[3] == 'T');
+	if (d->e[it-1].allele[0] == 'T') { 
+		assert(d->e[it-1].allele[1] == 'A');
+		assert(d->e[it-1].allele[0] == 'T'); //redundant
+		assert(fabs(d->e[it-1].eff[1] - 0.5) < TOL);
+		assert(fabs(d->e[it-1].eff[0] - - 0.5) < TOL);
+	} else {
+		assert(d->e[it-1].allele[0] == 'A');
+		assert(d->e[it-1].allele[1] == 'T');
+		assert(fabs(d->e[it-1].eff[0] - 0.5) < TOL);
+		assert(fabs(d->e[it-1].eff[1] - - 0.5) < TOL);
+	}
+	if (d->e[it-1].allele[2] == 'T') { 
+		assert(d->e[it-1].allele[3] == 'A');
+		assert(d->e[it-1].allele[2] == 'T'); //redundant
+		assert(fabs(d->e[it-1].eff[3] - 1e2) < TOL);
+		assert(fabs(d->e[it-1].eff[2] - 1e-2) < TOL);
+	} else {
+		assert(d->e[it-1].allele[2] == 'A');
+		assert(d->e[it-1].allele[3] == 'T');
+		assert(fabs(d->e[it-1].eff[2] - 1e2) < TOL);
+		assert(fabs(d->e[it-1].eff[3] - 1e-2) < TOL);
+	}
     assert(d->e[it-1].centre == NULL);
-    assert(fabs(d->e[it-1].eff[0] - 0.5) < TOL);
-    assert(fabs(d->e[it-1].eff[1] - - 0.5) < TOL);
-    assert(fabs(d->e[it-1].eff[2] - 1e2) < TOL);
-    assert(fabs(d->e[it-1].eff[3] - 1e-2) < TOL);
     remove(filename);
 
     // tabs, no final newline
@@ -250,15 +264,29 @@ int test_effloaders2(void) {
     assert(d->e[it-1].n_markers == 2);
     assert(d->e[it-1].cumn_alleles[0] == 2);
     assert(d->e[it-1].cumn_alleles[1] == 4);
-    assert(d->e[it-1].allele[0] == 'A');
-    assert(d->e[it-1].allele[1] == 'T');
-    assert(d->e[it-1].allele[2] == 'A');
-    assert(d->e[it-1].allele[3] == 'T');
+	if (d->e[it-1].allele[0] == 'T') { 
+		assert(d->e[it-1].allele[1] == 'A');
+		assert(d->e[it-1].allele[0] == 'T'); //redundant
+		assert(fabs(d->e[it-1].eff[1] - 0.5) < TOL);
+		assert(fabs(d->e[it-1].eff[0] - - 0.5) < TOL);
+	} else {
+		assert(d->e[it-1].allele[0] == 'A');
+		assert(d->e[it-1].allele[1] == 'T');
+		assert(fabs(d->e[it-1].eff[0] - 0.5) < TOL);
+		assert(fabs(d->e[it-1].eff[1] - - 0.5) < TOL);
+	}
+	if (d->e[it-1].allele[2] == 'T') { 
+		assert(d->e[it-1].allele[3] == 'A');
+		assert(d->e[it-1].allele[2] == 'T'); //redundant
+		assert(fabs(d->e[it-1].eff[3] - 1e2) < TOL);
+		assert(fabs(d->e[it-1].eff[2] - 1e-2) < TOL);
+	} else {
+		assert(d->e[it-1].allele[2] == 'A');
+		assert(d->e[it-1].allele[3] == 'T');
+		assert(fabs(d->e[it-1].eff[2] - 1e2) < TOL);
+		assert(fabs(d->e[it-1].eff[3] - 1e-2) < TOL);
+	}
     assert(d->e[it-1].centre == NULL);
-    assert(fabs(d->e[it-1].eff[0] - 0.5) < TOL);
-    assert(fabs(d->e[it-1].eff[1] - - 0.5) < TOL);
-    assert(fabs(d->e[it-1].eff[2] - 1e2) < TOL);
-    assert(fabs(d->e[it-1].eff[3] - 1e-2) < TOL);
     remove(filename);
 
     // mixed spacing
@@ -272,15 +300,29 @@ int test_effloaders2(void) {
     assert(d->e[it-1].n_markers == 2);
     assert(d->e[it-1].cumn_alleles[0] == 2);
     assert(d->e[it-1].cumn_alleles[1] == 4);
-    assert(d->e[it-1].allele[0] == 'A');
-    assert(d->e[it-1].allele[1] == 'T');
-    assert(d->e[it-1].allele[2] == 'A');
-    assert(d->e[it-1].allele[3] == 'T');
+	if (d->e[it-1].allele[0] == 'T') { 
+		assert(d->e[it-1].allele[1] == 'A');
+		assert(d->e[it-1].allele[0] == 'T'); //redundant
+		assert(fabs(d->e[it-1].eff[1] - 0.5) < TOL);
+		assert(fabs(d->e[it-1].eff[0] - - 0.5) < TOL);
+	} else {
+		assert(d->e[it-1].allele[0] == 'A');
+		assert(d->e[it-1].allele[1] == 'T');
+		assert(fabs(d->e[it-1].eff[0] - 0.5) < TOL);
+		assert(fabs(d->e[it-1].eff[1] - - 0.5) < TOL);
+	}
+	if (d->e[it-1].allele[2] == 'T') { 
+		assert(d->e[it-1].allele[3] == 'A');
+		assert(d->e[it-1].allele[2] == 'T'); //redundant
+		assert(fabs(d->e[it-1].eff[3] - 1e2) < TOL);
+		assert(fabs(d->e[it-1].eff[2] - 1e-2) < TOL);
+	} else {
+		assert(d->e[it-1].allele[2] == 'A');
+		assert(d->e[it-1].allele[3] == 'T');
+		assert(fabs(d->e[it-1].eff[2] - 1e2) < TOL);
+		assert(fabs(d->e[it-1].eff[3] - 1e-2) < TOL);
+	}
     assert(d->e[it-1].centre == NULL);
-    assert(fabs(d->e[it-1].eff[0] - 0.5) < TOL);
-    assert(fabs(d->e[it-1].eff[1] - - 0.5) < TOL);
-    assert(fabs(d->e[it-1].eff[2] - 1e2) < TOL);
-    assert(fabs(d->e[it-1].eff[3] - 1e-2) < TOL);
     remove(filename);
     
     // rearranged rows
@@ -294,15 +336,29 @@ int test_effloaders2(void) {
     assert(d->e[it-1].n_markers == 2);
     assert(d->e[it-1].cumn_alleles[0] == 2);
     assert(d->e[it-1].cumn_alleles[1] == 4);
-    assert(d->e[it-1].allele[0] == 'A');
-    assert(d->e[it-1].allele[1] == 'T');
-    assert(d->e[it-1].allele[2] == 'A');
-    assert(d->e[it-1].allele[3] == 'T');
+	if (d->e[it-1].allele[0] == 'T') { 
+		assert(d->e[it-1].allele[1] == 'A');
+		assert(d->e[it-1].allele[0] == 'T'); //redundant
+		assert(fabs(d->e[it-1].eff[1] - 0.5) < TOL);
+		assert(fabs(d->e[it-1].eff[0] - - 0.5) < TOL);
+	} else {
+		assert(d->e[it-1].allele[0] == 'A');
+		assert(d->e[it-1].allele[1] == 'T');
+		assert(fabs(d->e[it-1].eff[0] - 0.5) < TOL);
+		assert(fabs(d->e[it-1].eff[1] - - 0.5) < TOL);
+	}
+	if (d->e[it-1].allele[2] == 'T') { 
+		assert(d->e[it-1].allele[3] == 'A');
+		assert(d->e[it-1].allele[2] == 'T'); //redundant
+		assert(fabs(d->e[it-1].eff[3] - 1e2) < TOL);
+		assert(fabs(d->e[it-1].eff[2] - 1e-2) < TOL);
+	} else {
+		assert(d->e[it-1].allele[2] == 'A');
+		assert(d->e[it-1].allele[3] == 'T');
+		assert(fabs(d->e[it-1].eff[2] - 1e2) < TOL);
+		assert(fabs(d->e[it-1].eff[3] - 1e-2) < TOL);
+	}
     assert(d->e[it-1].centre == NULL);
-    assert(fabs(d->e[it-1].eff[0] - 0.5) < TOL);
-    assert(fabs(d->e[it-1].eff[1] - - 0.5) < TOL);
-    assert(fabs(d->e[it-1].eff[2] - 1e2) < TOL);
-    assert(fabs(d->e[it-1].eff[3] - 1e-2) < TOL);
     remove(filename);
     
     // no header
@@ -316,15 +372,29 @@ int test_effloaders2(void) {
     assert(d->e[it-1].n_markers == 2);
     assert(d->e[it-1].cumn_alleles[0] == 2);
     assert(d->e[it-1].cumn_alleles[1] == 4);
-    assert(d->e[it-1].allele[0] == 'A');
-    assert(d->e[it-1].allele[1] == 'T');
-    assert(d->e[it-1].allele[2] == 'A');
-    assert(d->e[it-1].allele[3] == 'T');
+	if (d->e[it-1].allele[0] == 'T') { 
+		assert(d->e[it-1].allele[1] == 'A');
+		assert(d->e[it-1].allele[0] == 'T'); //redundant
+		assert(fabs(d->e[it-1].eff[1] - 0.5) < TOL);
+		assert(fabs(d->e[it-1].eff[0] - - 0.5) < TOL);
+	} else {
+		assert(d->e[it-1].allele[0] == 'A');
+		assert(d->e[it-1].allele[1] == 'T');
+		assert(fabs(d->e[it-1].eff[0] - 0.5) < TOL);
+		assert(fabs(d->e[it-1].eff[1] - - 0.5) < TOL);
+	}
+	if (d->e[it-1].allele[2] == 'T') { 
+		assert(d->e[it-1].allele[3] == 'A');
+		assert(d->e[it-1].allele[2] == 'T'); //redundant
+		assert(fabs(d->e[it-1].eff[3] - 1e2) < TOL);
+		assert(fabs(d->e[it-1].eff[2] - 1e-2) < TOL);
+	} else {
+		assert(d->e[it-1].allele[2] == 'A');
+		assert(d->e[it-1].allele[3] == 'T');
+		assert(fabs(d->e[it-1].eff[2] - 1e2) < TOL);
+		assert(fabs(d->e[it-1].eff[3] - 1e-2) < TOL);
+	}
     assert(d->e[it-1].centre == NULL);
-    assert(fabs(d->e[it-1].eff[0] - 0.5) < TOL);
-    assert(fabs(d->e[it-1].eff[1] - - 0.5) < TOL);
-    assert(fabs(d->e[it-1].eff[2] - 1e2) < TOL);
-    assert(fabs(d->e[it-1].eff[3] - 1e-2) < TOL);
     remove(filename);
     
     // rearranged columns
@@ -338,15 +408,29 @@ int test_effloaders2(void) {
     assert(d->e[it-1].n_markers == 2);
     assert(d->e[it-1].cumn_alleles[0] == 2);
     assert(d->e[it-1].cumn_alleles[1] == 4);
-    assert(d->e[it-1].allele[0] == 'A');
-    assert(d->e[it-1].allele[1] == 'T');
-    assert(d->e[it-1].allele[2] == 'A');
-    assert(d->e[it-1].allele[3] == 'T');
+	if (d->e[it-1].allele[0] == 'T') { 
+		assert(d->e[it-1].allele[1] == 'A');
+		assert(d->e[it-1].allele[0] == 'T'); //redundant
+		assert(fabs(d->e[it-1].eff[1] - 0.5) < TOL);
+		assert(fabs(d->e[it-1].eff[0] - - 0.5) < TOL);
+	} else {
+		assert(d->e[it-1].allele[0] == 'A');
+		assert(d->e[it-1].allele[1] == 'T');
+		assert(fabs(d->e[it-1].eff[0] - 0.5) < TOL);
+		assert(fabs(d->e[it-1].eff[1] - - 0.5) < TOL);
+	}
+	if (d->e[it-1].allele[2] == 'T') { 
+		assert(d->e[it-1].allele[3] == 'A');
+		assert(d->e[it-1].allele[2] == 'T'); //redundant
+		assert(fabs(d->e[it-1].eff[3] - 1e2) < TOL);
+		assert(fabs(d->e[it-1].eff[2] - 1e-2) < TOL);
+	} else {
+		assert(d->e[it-1].allele[2] == 'A');
+		assert(d->e[it-1].allele[3] == 'T');
+		assert(fabs(d->e[it-1].eff[2] - 1e2) < TOL);
+		assert(fabs(d->e[it-1].eff[3] - 1e-2) < TOL);
+	}
     assert(d->e[it-1].centre == NULL);
-    assert(fabs(d->e[it-1].eff[0] - 0.5) < TOL);
-    assert(fabs(d->e[it-1].eff[1] - - 0.5) < TOL);
-    assert(fabs(d->e[it-1].eff[2] - 1e2) < TOL);
-    assert(fabs(d->e[it-1].eff[3] - 1e-2) < TOL);
     remove(filename);
     
     // assorted alleles
@@ -360,15 +444,29 @@ int test_effloaders2(void) {
     assert(d->e[it-1].n_markers == 2);
     assert(d->e[it-1].cumn_alleles[0] == 2);
     assert(d->e[it-1].cumn_alleles[1] == 4);
-    assert(d->e[it-1].allele[0] == 'A');
-    assert(d->e[it-1].allele[1] == 'T');
-    assert(d->e[it-1].allele[2] == '8');
-    assert(d->e[it-1].allele[3] == 'T');
+	if (d->e[it-1].allele[0] == 'T') { 
+		assert(d->e[it-1].allele[1] == 'A');
+		assert(d->e[it-1].allele[0] == 'T'); //redundant
+		assert(fabs(d->e[it-1].eff[1] - 0.5) < TOL);
+		assert(fabs(d->e[it-1].eff[0] - - 0.5) < TOL);
+	} else {
+		assert(d->e[it-1].allele[0] == 'A');
+		assert(d->e[it-1].allele[1] == 'T');
+		assert(fabs(d->e[it-1].eff[0] - 0.5) < TOL);
+		assert(fabs(d->e[it-1].eff[1] - - 0.5) < TOL);
+	}
+	if (d->e[it-1].allele[2] == 'T') { 
+		assert(d->e[it-1].allele[3] == '8');
+		assert(d->e[it-1].allele[2] == 'T'); //redundant
+		assert(fabs(d->e[it-1].eff[3] - 1e-2) < TOL);
+		assert(fabs(d->e[it-1].eff[2] - 1e2) < TOL);
+	} else {
+		assert(d->e[it-1].allele[2] == '8');
+		assert(d->e[it-1].allele[3] == 'T');
+		assert(fabs(d->e[it-1].eff[2] - 1e-2) < TOL);
+		assert(fabs(d->e[it-1].eff[3] - 1e2) < TOL);
+	}
     assert(d->e[it-1].centre == NULL);
-    assert(fabs(d->e[it-1].eff[0] - 0.5) < TOL);
-    assert(fabs(d->e[it-1].eff[1] - - 0.5) < TOL);
-    assert(fabs(d->e[it-1].eff[2] - 1e-2) < TOL);
-    assert(fabs(d->e[it-1].eff[3] - 1e2) < TOL);
     remove(filename);
     
     // only one row
@@ -417,14 +515,28 @@ int test_effloaders2(void) {
 	assert(fabs(d->e[it-1].centre[1] - (1*1e2 + 3*1e-2)) < TOL);
     assert(d->e[it-1].cumn_alleles[0] == 2);
     assert(d->e[it-1].cumn_alleles[1] == 4);
-    assert(d->e[it-1].allele[0] == 'A');
-    assert(d->e[it-1].allele[1] == 'T');
-    assert(d->e[it-1].allele[2] == 'A');
-    assert(d->e[it-1].allele[3] == 'T');
-    assert(fabs(d->e[it-1].eff[0] - 0.5) < TOL);
-    assert(fabs(d->e[it-1].eff[1] - - 0.5) < TOL);
-    assert(fabs(d->e[it-1].eff[2] - 1e2) < TOL);
-    assert(fabs(d->e[it-1].eff[3] - 1e-2) < TOL);
+		if (d->e[it-1].allele[0] == 'T') { 
+		assert(d->e[it-1].allele[1] == 'A');
+		assert(d->e[it-1].allele[0] == 'T'); //redundant
+		assert(fabs(d->e[it-1].eff[1] - 0.5) < TOL);
+		assert(fabs(d->e[it-1].eff[0] - - 0.5) < TOL);
+	} else {
+		assert(d->e[it-1].allele[0] == 'A');
+		assert(d->e[it-1].allele[1] == 'T');
+		assert(fabs(d->e[it-1].eff[0] - 0.5) < TOL);
+		assert(fabs(d->e[it-1].eff[1] - - 0.5) < TOL);
+	}
+	if (d->e[it-1].allele[2] == 'T') { 
+		assert(d->e[it-1].allele[3] == 'A');
+		assert(d->e[it-1].allele[2] == 'T'); //redundant
+		assert(fabs(d->e[it-1].eff[3] - 1e2) < TOL);
+		assert(fabs(d->e[it-1].eff[2] - 1e-2) < TOL);
+	} else {
+		assert(d->e[it-1].allele[2] == 'A');
+		assert(d->e[it-1].allele[3] == 'T');
+		assert(fabs(d->e[it-1].eff[2] - 1e2) < TOL);
+		assert(fabs(d->e[it-1].eff[3] - 1e-2) < TOL);
+	}
     remove(filename);
     
     // Rearranged columns with centring column
@@ -441,14 +553,28 @@ int test_effloaders2(void) {
 	assert(fabs(d->e[it-1].centre[1] - (0.43*1e2 + 1.1*1e-2)) < TOL);
     assert(d->e[it-1].cumn_alleles[0] == 2);
     assert(d->e[it-1].cumn_alleles[1] == 4);
-    assert(d->e[it-1].allele[0] == 'A');
-    assert(d->e[it-1].allele[1] == 'T');
-    assert(d->e[it-1].allele[2] == 'A');
-    assert(d->e[it-1].allele[3] == 'T');
-    assert(fabs(d->e[it-1].eff[0] - 0.5) < TOL);
-    assert(fabs(d->e[it-1].eff[1] - - 0.5) < TOL);
-    assert(fabs(d->e[it-1].eff[2] - 1e2) < TOL);
-    assert(fabs(d->e[it-1].eff[3] - 1e-2) < TOL);
+	if (d->e[it-1].allele[0] == 'T') { 
+		assert(d->e[it-1].allele[1] == 'A');
+		assert(d->e[it-1].allele[0] == 'T'); //redundant
+		assert(fabs(d->e[it-1].eff[1] - 0.5) < TOL);
+		assert(fabs(d->e[it-1].eff[0] - - 0.5) < TOL);
+	} else {
+		assert(d->e[it-1].allele[0] == 'A');
+		assert(d->e[it-1].allele[1] == 'T');
+		assert(fabs(d->e[it-1].eff[0] - 0.5) < TOL);
+		assert(fabs(d->e[it-1].eff[1] - - 0.5) < TOL);
+	}
+	if (d->e[it-1].allele[2] == 'T') { 
+		assert(d->e[it-1].allele[3] == 'A');
+		assert(d->e[it-1].allele[2] == 'T'); //redundant
+		assert(fabs(d->e[it-1].eff[3] - 1e2) < TOL);
+		assert(fabs(d->e[it-1].eff[2] - 1e-2) < TOL);
+	} else {
+		assert(d->e[it-1].allele[2] == 'A');
+		assert(d->e[it-1].allele[3] == 'T');
+		assert(fabs(d->e[it-1].eff[2] - 1e2) < TOL);
+		assert(fabs(d->e[it-1].eff[3] - 1e-2) < TOL);
+	}
     remove(filename);
     
     // discard markers not tracked by the simulation
@@ -462,12 +588,19 @@ int test_effloaders2(void) {
     assert(d->e[it-1].n_markers == 2);
     assert(d->e[it-1].cumn_alleles[0] == 2);
     assert(d->e[it-1].cumn_alleles[1] == 3);
-    assert(d->e[it-1].allele[0] == 'A');
-    assert(d->e[it-1].allele[1] == 'T');
+		if (d->e[it-1].allele[0] == 'T') { 
+		assert(d->e[it-1].allele[1] == 'A');
+		assert(d->e[it-1].allele[0] == 'T'); //redundant
+		assert(fabs(d->e[it-1].eff[1] - 0.5) < TOL);
+		assert(fabs(d->e[it-1].eff[0] - - 0.5) < TOL);
+	} else {
+		assert(d->e[it-1].allele[0] == 'A');
+		assert(d->e[it-1].allele[1] == 'T');
+		assert(fabs(d->e[it-1].eff[0] - 0.5) < TOL);
+		assert(fabs(d->e[it-1].eff[1] - - 0.5) < TOL);
+	}
     assert(d->e[it-1].allele[2] == 'A');
     assert(d->e[it-1].centre == NULL);
-    assert(fabs(d->e[it-1].eff[0] - 0.5) < TOL);
-    assert(fabs(d->e[it-1].eff[1] - - 0.5) < TOL);
     assert(fabs(d->e[it-1].eff[2] - 1e2) < TOL);
     remove(filename);
     
@@ -497,20 +630,27 @@ int test_effloaders2(void) {
     fflush(stdout);
     assert(d->n_eff_sets == it);
     assert(d->eff_set_ids[it-1].id == it);
-    // Behaviour is slightly changed during EffectMatrix -> MarkerEffects conversion.
-    // Now we do not check for duplicates, but they aren't used in calculations. They're deadweight
+    // Behaviour is slightly changed during EffectMatrix -> MarkerEffects update.
+    // Now: we do not check for duplicates, but they aren't used in calculations. They're deadweight
     assert(d->e[it-1].n_markers == 2);
     assert(d->e[it-1].cumn_alleles[0] == 2);
     assert(d->e[it-1].cumn_alleles[1] == 4);
     assert(d->e[it-1].allele[0] == 'T');
     assert(d->e[it-1].allele[1] == 'T');
-    assert(d->e[it-1].allele[2] == 'A');
-    assert(d->e[it-1].allele[3] == 'T');
-    assert(d->e[it-1].centre == NULL);
     assert(fabs(d->e[it-1].eff[0] - 0.5) < TOL);
     assert(fabs(d->e[it-1].eff[1] - - 0.5) < TOL);
-    assert(fabs(d->e[it-1].eff[2] - 1e2) < TOL);
-    assert(fabs(d->e[it-1].eff[3] - 1e-2) < TOL);
+	if (d->e[it-1].allele[2] == 'T') { 
+		assert(d->e[it-1].allele[3] == 'A');
+		assert(d->e[it-1].allele[2] == 'T'); //redundant
+		assert(fabs(d->e[it-1].eff[3] - 1e2) < TOL);
+		assert(fabs(d->e[it-1].eff[2] - 1e-2) < TOL);
+	} else {
+		assert(d->e[it-1].allele[2] == 'A');
+		assert(d->e[it-1].allele[3] == 'T');
+		assert(fabs(d->e[it-1].eff[2] - 1e2) < TOL);
+		assert(fabs(d->e[it-1].eff[3] - 1e-2) < TOL);
+	}
+    assert(d->e[it-1].centre == NULL);
     remove(filename);
     
     // file with no valid lines
@@ -1839,19 +1979,40 @@ GroupNum test_loaders(SimData* d) {
     assert(d->e[0].cumn_alleles[0] == 2);
     assert(d->e[0].cumn_alleles[1] == 4);
     assert(d->e[0].cumn_alleles[2] == 6);
-    assert(d->e[0].allele[0] == 'A');
-    assert(d->e[0].allele[1] == 'T');
-    assert(d->e[0].allele[2] == 'A');
-    assert(d->e[0].allele[3] == 'T');
-    assert(d->e[0].allele[4] == 'A');
-    assert(d->e[0].allele[5] == 'T');
+	if (d->e[0].allele[0] == 'T') { // allele ordering doesn't matter but is different on my Windows and Linux tests
+		assert(d->e[0].allele[1] == 'A');
+		assert(d->e[0].allele[0] == 'T'); //redundant
+		assert(fabs(d->e[0].eff[1] - (-0.8)) < TOL);
+		assert(fabs(d->e[0].eff[0] - (0.9)) < TOL);
+	} else {
+		assert(d->e[0].allele[0] == 'A');
+		assert(d->e[0].allele[1] == 'T');
+		assert(fabs(d->e[0].eff[0] - (-0.8)) < TOL);
+		assert(fabs(d->e[0].eff[1] - (0.9)) < TOL);
+	}
+    if (d->e[0].allele[2] == 'T') {
+		assert(d->e[0].allele[3] == 'A');
+		assert(d->e[0].allele[2] == 'T'); //redundant
+		assert(fabs(d->e[0].eff[3] - (-0.1)) < TOL);
+		assert(fabs(d->e[0].eff[2] - (-0.5)) < TOL);
+	} else {
+		assert(d->e[0].allele[2] == 'A');
+		assert(d->e[0].allele[3] == 'T');
+		assert(fabs(d->e[0].eff[2] - (-0.1)) < TOL);
+		assert(fabs(d->e[0].eff[3] - (-0.5)) < TOL);
+	}
+    if (d->e[0].allele[4] == 'T') {
+		assert(d->e[0].allele[5] == 'A');
+		assert(d->e[0].allele[4] == 'T'); //redundant
+		assert(fabs(d->e[0].eff[5] - (0.1)) < TOL);
+		assert(fabs(d->e[0].eff[4] - (-0.1)) < TOL);
+	} else {
+		assert(d->e[0].allele[4] == 'A');
+		assert(d->e[0].allele[5] == 'T');
+		assert(fabs(d->e[0].eff[4] - (0.1)) < TOL);
+		assert(fabs(d->e[0].eff[5] - (-0.1)) < TOL);
+	}
     assert(d->e[0].centre == NULL);
-    assert(fabs(d->e[0].eff[0] - (-0.8)) < TOL);
-    assert(fabs(d->e[0].eff[1] - (0.9)) < TOL);
-    assert(fabs(d->e[0].eff[2] - (-0.1)) < TOL);
-    assert(fabs(d->e[0].eff[3] - (-0.5)) < TOL);
-    assert(fabs(d->e[0].eff[4] - (0.1)) < TOL);
-    assert(fabs(d->e[0].eff[5] - (-0.1)) < TOL);
     printf("...marker effects loaded correctly\n");
 
     assert(load_effectfile(d, "a-test-eff2.txt").id==2);
@@ -1861,19 +2022,40 @@ GroupNum test_loaders(SimData* d) {
     assert(d->e[0].cumn_alleles[0] == 2);
     assert(d->e[0].cumn_alleles[1] == 4);
     assert(d->e[0].cumn_alleles[2] == 6);
-    assert(d->e[0].allele[0] == 'A');
-    assert(d->e[0].allele[1] == 'T');
-    assert(d->e[0].allele[2] == 'A');
-    assert(d->e[0].allele[3] == 'T');
-    assert(d->e[0].allele[4] == 'A');
-    assert(d->e[0].allele[5] == 'T');
+	if (d->e[0].allele[0] == 'T') { // allele ordering doesn't matter but is different on my Windows and Linux tests
+		assert(d->e[0].allele[1] == 'A');
+		assert(d->e[0].allele[0] == 'T'); //redundant
+		assert(fabs(d->e[0].eff[1] - (-0.8)) < TOL);
+		assert(fabs(d->e[0].eff[0] - (0.9)) < TOL);
+	} else {
+		assert(d->e[0].allele[0] == 'A');
+		assert(d->e[0].allele[1] == 'T');
+		assert(fabs(d->e[0].eff[0] - (-0.8)) < TOL);
+		assert(fabs(d->e[0].eff[1] - (0.9)) < TOL);
+	}
+    if (d->e[0].allele[2] == 'T') {
+		assert(d->e[0].allele[3] == 'A');
+		assert(d->e[0].allele[2] == 'T'); //redundant
+		assert(fabs(d->e[0].eff[3] - (-0.1)) < TOL);
+		assert(fabs(d->e[0].eff[2] - (-0.5)) < TOL);
+	} else {
+		assert(d->e[0].allele[2] == 'A');
+		assert(d->e[0].allele[3] == 'T');
+		assert(fabs(d->e[0].eff[2] - (-0.1)) < TOL);
+		assert(fabs(d->e[0].eff[3] - (-0.5)) < TOL);
+	}
+    if (d->e[0].allele[4] == 'T') {
+		assert(d->e[0].allele[5] == 'A');
+		assert(d->e[0].allele[4] == 'T'); //redundant
+		assert(fabs(d->e[0].eff[5] - (0.1)) < TOL);
+		assert(fabs(d->e[0].eff[4] - (-0.1)) < TOL);
+	} else {
+		assert(d->e[0].allele[4] == 'A');
+		assert(d->e[0].allele[5] == 'T');
+		assert(fabs(d->e[0].eff[4] - (0.1)) < TOL);
+		assert(fabs(d->e[0].eff[5] - (-0.1)) < TOL);
+	}
     assert(d->e[0].centre == NULL);
-    assert(fabs(d->e[0].eff[0] - (-0.8)) < TOL);
-    assert(fabs(d->e[0].eff[1] - (0.9)) < TOL);
-    assert(fabs(d->e[0].eff[2] - (-0.1)) < TOL);
-    assert(fabs(d->e[0].eff[3] - (-0.5)) < TOL);
-    assert(fabs(d->e[0].eff[4] - (0.1)) < TOL);
-    assert(fabs(d->e[0].eff[5] - (-0.1)) < TOL);
 
     // Check second set...
     assert(d->e[1].n_markers == 3);
@@ -2745,18 +2927,39 @@ int test_effect_calculators(SimData *d, GroupNum g0) {
     assert(d->e[eff3ix].cumn_alleles[0] == 2);
     assert(d->e[eff3ix].cumn_alleles[1] == 4);
 	assert(d->e[eff3ix].cumn_alleles[2] == 6);
-    assert(d->e[eff3ix].allele[0] == 'A');
-    assert(d->e[eff3ix].allele[1] == 'T');
-	assert(d->e[eff3ix].allele[2] == 'A');
-    assert(d->e[eff3ix].allele[3] == 'T');
-	assert(d->e[eff3ix].allele[4] == 'A');
-    assert(d->e[eff3ix].allele[5] == 'T');
-    assert(fabs(d->e[eff3ix].eff[0] - -0.8) < TOL);
-    assert(fabs(d->e[eff3ix].eff[1] - 0.9) < TOL);
-    assert(fabs(d->e[eff3ix].eff[2] - -0.1) < TOL);
-    assert(fabs(d->e[eff3ix].eff[3] - -0.5) < TOL);
-	assert(fabs(d->e[eff3ix].eff[4] - 0.1) < TOL);
-    assert(fabs(d->e[eff3ix].eff[5] - -0.1) < TOL);
+	if (d->e[eff3ix].allele[0] == 'T') { 
+		assert(d->e[eff3ix].allele[1] == 'A');
+		assert(d->e[eff3ix].allele[0] == 'T'); //redundant
+		assert(fabs(d->e[eff3ix].eff[1] - -0.8) < TOL);
+		assert(fabs(d->e[eff3ix].eff[0] - 0.9) < TOL);
+	} else {
+		assert(d->e[eff3ix].allele[0] == 'A');
+		assert(d->e[eff3ix].allele[1] == 'T');
+		assert(fabs(d->e[eff3ix].eff[0] - -0.8) < TOL);
+		assert(fabs(d->e[eff3ix].eff[1] - 0.9) < TOL);
+	}
+	if (d->e[eff3ix].allele[2] == 'T') { 
+		assert(d->e[eff3ix].allele[3] == 'A');
+		assert(d->e[eff3ix].allele[2] == 'T'); //redundant
+		assert(fabs(d->e[eff3ix].eff[3] - -0.1) < TOL);
+		assert(fabs(d->e[eff3ix].eff[2] - -0.5) < TOL);
+	} else {
+		assert(d->e[eff3ix].allele[2] == 'A');
+		assert(d->e[eff3ix].allele[3] == 'T');
+		assert(fabs(d->e[eff3ix].eff[2] - -0.1) < TOL);
+		assert(fabs(d->e[eff3ix].eff[3] - -0.5) < TOL);
+	}
+	if (d->e[eff3ix].allele[4] == 'T') { 
+		assert(d->e[eff3ix].allele[5] == 'A');
+		assert(d->e[eff3ix].allele[4] == 'T'); //redundant
+		assert(fabs(d->e[eff3ix].eff[5] - 0.1) < TOL);
+		assert(fabs(d->e[eff3ix].eff[4] - -0.1) < TOL);
+	} else {
+		assert(d->e[eff3ix].allele[4] == 'A');
+		assert(d->e[eff3ix].allele[5] == 'T');
+		assert(fabs(d->e[eff3ix].eff[4] - 0.1) < TOL);
+		assert(fabs(d->e[eff3ix].eff[5] - -0.1) < TOL);
+	}
 	
     dec = calculate_bvs(d, g0, eff3);
     assert(dec.dim1 == 1);
