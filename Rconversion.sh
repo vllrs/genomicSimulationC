@@ -12,9 +12,10 @@ echo ">>> Deleting lines from sim-operations.c:"
 awk 'NR>=179 && NR<=213' ./sim-operations.c
 
 awk 'NR<179 || NR>213' ./sim-operations.c | sed \
-    -e "5i /* Converted using Rconversion.sh $version */" \
+    -e "5i // Converted using Rconversion.sh $version" \
 	-e 's+//RPACKINSERT ++g' \
 	-e 's/fprintf(stderr,\(.*\)); exit([0-9]);/error(\1);/g' \
+	-e 's/printf("/Rprintf("/g' \
 	-e 's/fprintf(stderr,"/Rprintf("NOTE! /g' \
 	-e 's/fprintf(stderr, "/Rprintf("NOTE! /g' \
 	-e 's/rnd_pcg_seed( &d->rng, RNGseed )//g' \
@@ -24,7 +25,7 @@ awk 'NR<179 || NR>213' ./sim-operations.c | sed \
 	-e 's/rnd_pcg_range([^,]*,0,1)/(unif_rand() > 0.5)/g' \
 	-e 's/rnd_pcg_range([^,]*,0,\(.*\));/round(unif_rand() * (\1));/g' \
 	-e 's/rnd_pcg_nextf([^,]*);/unif_rand();/g' \
-	-e 's/printf("/Rprintf("/g' -e 's+srand+//srand+g' \
+	-e 's+srand+//srand+g' \
 	-e 's+((double)rand() / (double)RAND_MAX)+unif_rand()+g' \
 	-e 's/size_t/unsigned int/g' \
 	-e 's/SIZE_MAX/UINT_MAX/g' \
@@ -34,7 +35,7 @@ echo ">>> Deleting lines from sim-operations.h:"
 awk 'NR>=1097 && NR<=1118' ./sim-operations.h
 
 awk 'NR<1097 || NR>1118' ./sim-operations.h | sed \
-    -e "5i /* Converted using Rconversion.sh $version */" \
+    -e "5i // Converted using Rconversion.sh $version" \
 	-e 's+#include "lib/rnd.h"++g' \
 	-e 's/RND_U32 RNGseed//g' \
 	-e 's+rnd_pcg_t rng;+//CRANDOMGENERATOR+g' \
