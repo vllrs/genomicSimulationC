@@ -123,19 +123,21 @@ int test_savers(unsigned int rseed) {
     assert(compareFileToString(fname, TEST1_TRUTH_save_marker_blocks_chrinfo)==0);
     remove(fname);
 
-    /* @@ TODO: reinstate local breeding value tests
+	// Local breeding value calculation and write-to-file tests (reinstated)
     fname = "t3c.txt";
-    DecimalMatrix lbv = calculate_local_bvs(d,exampleMB,effSet1,fname);
+    save_local_bvs(fname,d,NO_GROUP,exampleMB,effSet1,1);
     assert(compareFileToString(fname, TEST1_TRUTH_save_local_bvs)==0);
     remove(fname);
 
     fname = "t4c.txt";
-    calculate_group_local_bvs(d,exampleMB,effSet1,fname,printingGroup);
+    save_local_bvs(fname,d,printingGroup,exampleMB,effSet1,1);
     assert(compareFileToString(fname, TEST1_TRUTH_save_group_local_bvs)==0);
-    remove(fname);*/
+    remove(fname);
 
-    delete_markerblocks(&exampleMB);
-
+	fname = "t5c.txt";
+    save_local_bvs(fname,d,printingGroup,exampleMB,effSet1,0);
+    assert(compareFileToString(fname, TEST1_TRUTH_save_group_local_bvs_nonames)==0);
+    remove(fname);
 
     printf("...breeding value file savers produce the expected output formats\n");
 

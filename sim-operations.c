@@ -10473,13 +10473,94 @@ void gsc_save_bvs(const char* fname,
         fprintf(stderr, "Marker effect set %lu does not exist: cannot calculate breeding values\n", (long unsigned int) effID.id); return;
     }
 
-    // casing away const but I promise not to use the iterator to change anything
+    // casting away const but I promise not to use the iterator to change anything
     gsc_BidirectionalIterator it = gsc_create_bidirectional_iter((gsc_SimData*) d, groupID);
 
     gsc_save_utility_bvs(f, &it, &d->e[effix]);
 
     delete_bidirectional_iter(&it);
     fclose(f);
+}
+
+/** Prints local breeding values of candidates to a file 
+ *
+ * The output is a space-separated table, with columns representing blocks of markers
+ * (ordered as they appear in the input @a b), and pairs of rows representing the first
+ * and second haplotype of each candidate in the group, or in the entire simulation if 
+ * @a groupID is @a NO_GROUP. Optionally, there will be a header column, containing the 
+ * candidate name followed by _1 for its first haplotype, and its name followed by _2 
+ * for its second haplotype.
+ *
+ * @shortnamed{save_local_bvs}
+ *
+ * @param fname name of the file to which the output will be saved. Any prior 
+ * file contents will be overwritten.
+ * @param d pointer to the gsc_SimData in which the genotypes whose local breeding values
+ * will be calculated can be found.
+ * @param groupID group number of the group of genotypes whose local breeding values will be saved, 
+ * or NO_GROUP to save local breeding values of all genotypes in the simulation.
+ * @param effID identifier of the set of marker effects in @a d that will be 
+ * used to calculate the local breeding values.
+ * @param b Set of chromosome blocks over which local breeding values should be calculated
+ * @param headers true if a header column containing candidate names with suffixes _1 and _2
+ * should be included in the output file, false if no header column should be printed.
+*/
+void gsc_save_local_bvs(const char* fname, 
+						const gsc_SimData* d, 
+						const gsc_GroupNum groupID, 
+						const gsc_MarkerBlocks b,
+						const gsc_EffectID effID, 
+						const _Bool headers) {
+	FILE* f;
+    if ((f = fopen(fname, "w")) == NULL) {
+        fprintf(stderr, "Failed to open file %s for writing output\n", fname); return;
+    }
+
+	gsc_DecimalMatrix dec = gsc_calculate_local_bvs(d, groupID, b, effID);
+
+	if (headers) {
+		// Re: headers:
+		// 1. rows shall be genotype names with _1 or _2 appended
+		// 2. blocks don't have names right now. They shall remain nameless.
+		GSC_CREATE_BUFFER(ghapnames,char*,dec.dim1);
+		GSC_GLOBALX_T i = 0;
+		// casting away const but I promise not to use the iterator to change anything
+		gsc_BidirectionalIterator it = gsc_create_bidirectional_iter((gsc_SimData*) d, groupID);
+		gsc_GenoLocation loc = gsc_set_bidirectional_iter_to_start(&it);
+		while (IS_VALID_LOCATION(loc)) {
+			char* name = gsc_get_name(loc);
+			int len = (name == NULL) ? 0 : strlen(name); // if name is null, the header will just be "_1" and "_2".
+			ghapnames[i] = gsc_malloc_wrap(sizeof(char)*(len+3), GSC_TRUE);
+			ghapnames[i+1] = gsc_malloc_wrap(sizeof(char)*(len+3), GSC_TRUE);
+
+			strncpy(ghapnames[i], name, sizeof(char)*len);
+			ghapnames[i][len] = '_'; ghapnames[i][len+1] = '1'; ghapnames[i][len+2] = '\0';
+			strncpy(ghapnames[i+1], name, sizeof(char)*len);
+			ghapnames[i+1][len] = '_'; ghapnames[i+1][len+1] = '2'; ghapnames[i+1][len+2] = '\0';
+
+			i += 2;
+			if (i >= dec.dim1) {
+				break;
+			}
+
+			loc = gsc_next_forwards(&it);
+		}
+		for (; i < dec.dim1; ++i) { // zero trailing entries if something went wrong.
+			ghapnames[i] = NULL;
+		}
+		gsc_save_utility_dmatrix(f, &dec, ghapnames, NULL, 0);
+		for (size_t i = 0; i < dec.dim1; ++i) {
+            if (ghapnames[i] != NULL) {
+                GSC_FREE(ghapnames[i]);
+            }
+        }
+        GSC_DELETE_BUFFER(ghapnames);
+	} else {
+		gsc_save_utility_dmatrix(f, &dec, NULL, NULL, 0);
+	}
+
+	gsc_delete_dmatrix(&dec);
+	fclose(f);
 }
 
 /** Check if a marker index is found in a particular LinkageGroup, and provide 
@@ -11175,6 +11256,73 @@ void gsc_save_utility_bvs(FILE* f,
     }
 
     gsc_delete_dmatrix(&bvs);
+    fflush(f);
+    return;
+}
+
+/** Output the contents of a matrix to a file
+ *
+ * The matrix will be tab-separated and the orientation of
+ * the matrix output can be chosen via the parameter @a dim1_is_columns.
+ *
+ * @param f file pointer opened for writing to put the output
+ * @param dec matrix whose contents should be saved to the file
+ * @param row_headers A vector of same length as the number of rows
+ * in the matrix, that should be inserted as the first column in 
+ * the output file, or NULL to print the matrix without row headers.
+ * @param col_headers A vector of the same length as the number of
+ * columns in the matrix, that should be inserted as the first row in
+ * the output file, or NULL to print the matrix without column headers.
+ * @param dim1_is_columns true if dim1 of @a dec should be columns and
+ * dim2 be rows; false for dim1 to be rows and dim2 to be columns.
+ */
+void gsc_save_utility_dmatrix(FILE* f,
+							  DecimalMatrix* dec,
+							  char** row_headers,
+							  char** col_headers,
+                              _Bool dim1_is_columns) {
+    if (dec == NULL || dec->dim1 == 0 || dec->dim2 == 0) { return; }
+    
+    if (col_headers) {
+        size_t ncols = (dim1_is_columns) ? dec->dim1 : dec->dim2;
+        fwrite(col_headers[0], sizeof(char), strlen(col_headers[0]), f);
+        for (size_t col = 1; col < ncols; ++col) {
+            fwrite("\t", sizeof(char), 1, f);
+            fwrite(col_headers[col], sizeof(char), strlen(col_headers[col]), f);
+        }
+        fwrite("\n", sizeof(char), 1, f);
+    }
+
+    if (dim1_is_columns) {
+        for (size_t row = 0; row < dec->dim2; ++row) {
+            if (row_headers) {
+                fwrite(row_headers[row], sizeof(char), strlen(row_headers[row]), f);
+                fwrite("\t", sizeof(char), 1, f);
+            }
+            
+            fprintf(f,"%lf",dec->matrix[0][row]);
+            for (size_t col = 1; col < dec->dim1; ++col) {
+                fwrite("\t", sizeof(char), 1, f);
+                fprintf(f,"%lf",dec->matrix[col][row]);
+            }
+            fwrite("\n", sizeof(char), 1, f);
+        }
+    } else {
+        for (size_t row = 0; row < dec->dim1; ++row) {
+            if (row_headers) {
+                fwrite(row_headers[row], sizeof(char), strlen(row_headers[row]), f);
+                fwrite("\t", sizeof(char), 1, f);
+            }
+            
+            fprintf(f,"%lf",dec->matrix[row][0]);
+            for (size_t col = 1; col < dec->dim2; ++col) {
+                fwrite("\t", sizeof(char), 1, f);
+                fprintf(f,"%lf",dec->matrix[row][col]);
+            }
+            fwrite("\n", sizeof(char), 1, f);
+        }
+    }
+    
     fflush(f);
     return;
 }
