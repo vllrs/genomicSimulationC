@@ -1,7 +1,7 @@
 #ifndef SIM_OPERATIONS
 #define SIM_OPERATIONS
 #include "sim-operations.h"
-/* genomicSimulationC v0.2.6.07 - last edit 28 Mar 2025 */
+/* genomicSimulationC v0.2.6.08 - last edit 24 Apr 2025 */
 
 /** Default parameter values for GenOptions, to help with quick scripts and prototypes.
  *
@@ -9637,101 +9637,100 @@ gsc_MarkerBlocks gsc_create_evenlength_blocks_each_chr(const gsc_SimData* d,
     }
 
     GSC_CREATE_BUFFER(temp_markers_in_block, GSC_GENOLEN_T, 128);
-    GSC_GENOLEN_T bi = 0;
 
     for (GSC_GENOLEN_T chr = 0; chr < map.n_chr; ++chr) {
-        size_t current_block_filling = 0; //counter of how many blocks we have in this chr so far
-        double chrpos = 0;
-        bi = 0;
-
-        // loop through each marker in this chromosome
+        GSC_GENOLEN_T firstblockix = chr*n;
+        GSC_GENOLEN_T blockix = firstblockix;
+        double pos_along = 0;
+        
         switch (map.chrs[chr].type) {
         case GSC_LINKAGEGROUP_SIMPLE:
             if (map.chrs[chr].map.simple.n_markers == 1) {
-                GSC_ID_T b = chr*n + 0;
-                blocks.markers_in_block[b] = gsc_malloc_wrap(sizeof(*blocks.markers_in_block[b]), GSC_TRUE);
-                blocks.markers_in_block[b][0] = map.chrs[chr].map.simple.first_marker_index;
-                ++(blocks.num_markers_in_block[b]);
-            } else {
-                for (GSC_GENOLEN_T i = 0; i < map.chrs[chr].map.simple.n_markers; ++i) {
+                blocks.num_markers_in_block[firstblockix] = 1;
+                blocks.markers_in_block[firstblockix] = gsc_malloc_wrap(sizeof(**blocks.markers_in_block), GSC_TRUE);
+                blocks.markers_in_block[firstblockix][0] = map.chrs[chr].map.simple.first_marker_index;
+            } else if (map.chrs[chr].map.simple.n_markers > 1) {
+                // For floating point reasons we manually allocate first marker to first block
+                blocks.num_markers_in_block[blockix] = 1;
+                temp_markers_in_block[0] = map.chrs[chr].map.simple.first_marker_index;
+                
+                for (GSC_GENOLEN_T m = 1; m < map.chrs[chr].map.simple.n_markers; ++m) {
                     //RPACKINSERT R_CheckUserInterrupt();
-                    chrpos += map.chrs[chr].map.simple.dists[i];
-                    while (current_block_filling < n - 1 && chrpos > current_block_filling / n) {
-                        GSC_ID_T b = chr*n + current_block_filling;
-                        if (blocks.num_markers_in_block[b] > 0) {
-                            GSC_GENOLEN_T bcapacity = sizeof(*blocks.markers_in_block[b])*blocks.num_markers_in_block[b];
-                            blocks.markers_in_block[b] = gsc_malloc_wrap(bcapacity, GSC_TRUE);
-                            memcpy(blocks.markers_in_block[b],temp_markers_in_block,bcapacity);
+                    pos_along += map.chrs[chr].map.simple.dists[m];
+                    
+                    while (blockix - firstblockix < n-1 && pos_along > (blockix - firstblockix + 1) / (float)n) {
+                        // Save this block and move on to the next one.
+                        if (blocks.num_markers_in_block[blockix] > 0) {
+                            size_t bcapacity = sizeof(**blocks.markers_in_block) * blocks.num_markers_in_block[blockix];
+                            blocks.markers_in_block[blockix] = gsc_malloc_wrap(bcapacity, GSC_TRUE);
+                            memcpy(blocks.markers_in_block[blockix],temp_markers_in_block,bcapacity);
                         }
-
-                        ++current_block_filling;
-                        bi = 0;
+                        ++blockix;
                     }
-
-                    // save marker
-                    if (bi >= temp_markers_in_blockcap) {
-                        GSC_STRETCH_BUFFER(temp_markers_in_block,2*bi);
+                    
+                    // Add this marker to the block.
+                    int currentn = blocks.num_markers_in_block[blockix];
+                    if (currentn >= temp_markers_in_blockcap) {
+                        GSC_STRETCH_BUFFER(temp_markers_in_block,2*currentn);
                     }
-                    temp_markers_in_block[bi] = map.chrs[chr].map.simple.first_marker_index + i;
-                    ++(blocks.num_markers_in_block[chr*n + current_block_filling]);
-                    ++bi;
-
+                    temp_markers_in_block[currentn] = map.chrs[chr].map.simple.first_marker_index + m;
+                    ++(blocks.num_markers_in_block[blockix]);
                 }
-
-                GSC_ID_T b = chr*n + current_block_filling;
-                if (blocks.num_markers_in_block[b] > 0) {
-                    GSC_GENOLEN_T bcapacity = sizeof(*blocks.markers_in_block[b])*blocks.num_markers_in_block[b];
-                    blocks.markers_in_block[b] = gsc_malloc_wrap(bcapacity, GSC_TRUE);
-                    memcpy(blocks.markers_in_block[b],temp_markers_in_block,bcapacity);
+                
+                // Save last filled block
+                if (blocks.num_markers_in_block[blockix] > 0) {
+                    size_t bcapacity = sizeof(**blocks.markers_in_block) * blocks.num_markers_in_block[blockix];
+                    blocks.markers_in_block[blockix] = gsc_malloc_wrap(bcapacity, GSC_TRUE);
+                    memcpy(blocks.markers_in_block[blockix],temp_markers_in_block,bcapacity);
                 }
             }
             break;
-
+        
         case GSC_LINKAGEGROUP_REORDER:
-            if (map.chrs[chr].map.simple.n_markers == 1) {
-                GSC_ID_T b = chr*n + 0;
-                blocks.markers_in_block[b] = gsc_malloc_wrap(sizeof(*blocks.markers_in_block[b]), GSC_TRUE);
-                blocks.markers_in_block[b][0] = map.chrs[chr].map.reorder.marker_indexes[0];
-                ++(blocks.num_markers_in_block[b]);
-            } else {
-                for (GSC_GENOLEN_T i = 0; i < map.chrs[chr].map.reorder.n_markers; ++i) {
+            if (map.chrs[chr].map.reorder.n_markers == 1) {
+                blocks.num_markers_in_block[firstblockix] = 1;
+                blocks.markers_in_block[firstblockix] = gsc_malloc_wrap(sizeof(**blocks.markers_in_block), GSC_TRUE);
+                blocks.markers_in_block[firstblockix][0] = map.chrs[chr].map.reorder.marker_indexes[0];
+            } else if (map.chrs[chr].map.reorder.n_markers > 1) {
+                // For floating point reasons we manually allocate first marker to first block
+                blocks.num_markers_in_block[blockix] = 1;
+                temp_markers_in_block[0] = map.chrs[chr].map.reorder.marker_indexes[0];
+            
+                for (GSC_GENOLEN_T m = 1; m < map.chrs[chr].map.reorder.n_markers; ++m) {
                     //RPACKINSERT R_CheckUserInterrupt();
-                    chrpos += map.chrs[chr].map.reorder.dists[i];
-                    while (current_block_filling < n - 1 && chrpos > current_block_filling / n) {
-                        GSC_ID_T b = chr*n + current_block_filling;
-                        if (blocks.num_markers_in_block[b] > 0) {
-                            GSC_GENOLEN_T bcapacity = sizeof(*blocks.markers_in_block[b])*blocks.num_markers_in_block[b];
-                            blocks.markers_in_block[b] = gsc_malloc_wrap(bcapacity, GSC_TRUE);
-                            memcpy(blocks.markers_in_block[b],temp_markers_in_block,bcapacity);
+                    pos_along += map.chrs[chr].map.reorder.dists[m];
+                    
+                    while (blockix - firstblockix < n-1 && pos_along > (blockix - firstblockix + 1) / (float)n) {
+                        // Save this block and move on to the next one.
+                        if (blocks.num_markers_in_block[blockix] > 0) {
+                            size_t bcapacity = sizeof(**blocks.markers_in_block) * blocks.num_markers_in_block[blockix];
+                            blocks.markers_in_block[blockix] = gsc_malloc_wrap(bcapacity, GSC_TRUE);
+                            memcpy(blocks.markers_in_block[blockix],temp_markers_in_block,bcapacity);
                         }
-
-                        ++current_block_filling;
-                        bi = 0;
+                        ++blockix;
                     }
-
-                    // save marker
-                    if (bi >= temp_markers_in_blockcap) {
-                        GSC_STRETCH_BUFFER(temp_markers_in_block,2*bi);
+                    
+                    // Add this marker to the block.
+                    int currentn = blocks.num_markers_in_block[blockix];
+                    if (currentn >= temp_markers_in_blockcap) {
+                        GSC_STRETCH_BUFFER(temp_markers_in_block,2*currentn);
                     }
-                    temp_markers_in_block[bi] = map.chrs[chr].map.reorder.marker_indexes[i];
-                    ++(blocks.num_markers_in_block[chr*n + current_block_filling]);
-                    ++bi;
-
+                    temp_markers_in_block[currentn] = map.chrs[chr].map.reorder.marker_indexes[m];
+                    ++(blocks.num_markers_in_block[blockix]);
                 }
-
-                GSC_ID_T b = chr*n + current_block_filling;
-                if (blocks.num_markers_in_block[b] > 0) {
-                    GSC_GENOLEN_T bcapacity = sizeof(*blocks.markers_in_block[b])*blocks.num_markers_in_block[b];
-                    blocks.markers_in_block[b] = gsc_malloc_wrap(bcapacity, GSC_TRUE);
-                    memcpy(blocks.markers_in_block[b],temp_markers_in_block,bcapacity);
+                
+                // Save last filled block
+                if (blocks.num_markers_in_block[blockix] > 0) {
+                    size_t bcapacity = sizeof(**blocks.markers_in_block) * blocks.num_markers_in_block[blockix];
+                    blocks.markers_in_block[blockix] = gsc_malloc_wrap(bcapacity, GSC_TRUE);
+                    memcpy(blocks.markers_in_block[blockix],temp_markers_in_block,bcapacity);
                 }
             }
             break;
         }
-
     }
 
-   GSC_DELETE_BUFFER(temp_markers_in_block);
+    GSC_DELETE_BUFFER(temp_markers_in_block);
 
     return blocks;
 }
