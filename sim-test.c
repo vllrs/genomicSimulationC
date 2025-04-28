@@ -3759,6 +3759,36 @@ int test_block_generator(SimData *d) {
     printf("...chr slicer correctly deals with empty blocks\n");
 
     delete_markerblocks(&b);
+	
+	
+	// But now let's test a bigger map
+	FILE* f = fopen("map2.txt", "w");
+	fputs("marker chr pos\n", f);
+	for (int i = 0; i < 100; ++i) {
+		fprintf(f, "m%d 1 %d\n", i, i);
+	}
+	fclose(f);
+	
+	SimData* d2 = create_empty_simdata(100);
+	load_data_files(d2, NULL, "map2.txt", NULL, DETECT_FILE_FORMAT);
+	
+	b = create_evenlength_blocks_each_chr(d2, NO_MAP, 5);
+	assert(b.num_blocks == 5);
+	assert(b.num_markers_in_block[0] == 20);
+	assert(b.num_markers_in_block[1] == 20);
+	assert(b.num_markers_in_block[2] == 20);
+	assert(b.num_markers_in_block[3] == 20);
+	assert(b.num_markers_in_block[4] == 20);
+	int i = 0;
+	for (; i < 20; ++i) { assert(b.markers_in_block[0][i] == i); }
+	for (; i < 40; ++i) { assert(b.markers_in_block[1][i-20] == i); }
+	for (; i < 60; ++i) { assert(b.markers_in_block[2][i-40] == i); }
+	for (; i < 80; ++i) { assert(b.markers_in_block[3][i-60] == i); }
+	for (; i < 100; ++i) { assert(b.markers_in_block[4][i-80] == i); }
+	
+	delete_markerblocks(&b);
+	delete_simdata(d2);
+	remove("map2.txt");
 
     return 0;
 }
