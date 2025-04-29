@@ -23,6 +23,7 @@ Latest News       {#news}
 - Fix a segfault that occured when trying to create iterators for a simulation object with no loaded genotypes.
 - Fix a bug where marker names had trailing spaces (and therefore, when loading more input files later, could not be matched) when automatically generating a genetic map from a genotype file. 
 - Fix a bug in `create_evenlength_blocks_each_chr` where too many markers would be allocated to the last block because genetic distances were being cumulatively summed even though they were already cumulative values. This bug would date back to v0.2.5, when ability to load multiple recombination maps was added.
+- Memory allocations of size 0 are no longer requested when attempting to use a MarkerBlocks struct that has been deleted.
 
 # genomicSimulation v0.2.6
 

@@ -1,7 +1,7 @@
 #ifndef SIM_OPERATIONS
 #define SIM_OPERATIONS
 #include "sim-operations.h"
-/* genomicSimulationC v0.2.6.09 - last edit 28 Apr 2025 */
+/* genomicSimulationC v0.2.6.10 - last edit 29 Apr 2025 */
 
 /** Default parameter values for GenOptions, to help with quick scripts and prototypes.
  *
@@ -9887,6 +9887,15 @@ gsc_DecimalMatrix gsc_calculate_local_bvs(const gsc_SimData* d,
 gsc_DecimalMatrix gsc_calculate_utility_local_bvs(gsc_BidirectionalIterator* targets, 
                                                   gsc_MarkerBlocks b,
                                                   gsc_MarkerEffects e) {
+    if (b.num_blocks == 0) {
+        GSC_GENOLEN_T ntargets = 0;
+        gsc_GenoLocation loc = gsc_set_bidirectional_iter_to_start(targets);
+        while (IS_VALID_LOCATION(loc)) {
+            ++ntargets; loc = gsc_next_forwards(targets);
+        }
+        return gsc_generate_zero_dmatrix(2*ntargets, 0);
+    }
+    
     GSC_CREATE_BUFFER(bvs, double*, 50);
     GSC_GLOBALX_T n_genotypes = 0;
     

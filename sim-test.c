@@ -3129,6 +3129,14 @@ int test_local_effect_calculators(RND_U32 seed) {
     assert(b2.markers_in_block[9][0] == 4);
     assert(b2.markers_in_block[10][0] == 5);
     delete_markerblocks(&b2);
+	
+	// check no misbehaviour when using a deleted MarkerBlock
+	DecimalMatrix empty = calculate_local_bvs(d, init.group, b2, init.effSet);
+	assert(empty.dim1 == 12);
+	assert(empty.dim2 == 0);
+	for (int i = 0; i < empty.dim1; ++i) {
+		assert(empty.matrix[i] == NULL);
+	}
 
 	DecimalMatrix dec = calculate_local_bvs(d, init.group, b, init.effSet);
 	assert(dec.dim2 == 3); // blocks
