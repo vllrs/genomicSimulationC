@@ -1,7 +1,0 @@
-<map id="gsc_create_uniformspaced_recombmap" name="gsc_create_uniformspaced_recombmap">
-<area shape="rect" id="node1" title="Create a uniformly&#45;spaced gsc_RecombinationMap from a list of marker names and save to SimData." alt="" coords="5,73,182,117"/>
-<area shape="rect" id="node2" href="$group__supporters.html#gad57230a4c812ba8a6deed26100beae7b" title="Return whether or not a marker name is present in the tracked markers, and at what index." alt="" coords="243,5,415,49"/>
-<area shape="rect" id="node3" href="$sim-operations_8c.html#a337459fb31ef07b88a77068780ab746e" title="Save a RecombinationMap to the SimData and allocate it a mapID." alt="" coords="230,73,428,117"/>
-<area shape="rect" id="node5" href="$sim-operations_8c.html#aaaf3ebc75feaf901829232712e55677b" title="Replace calls to malloc direct with this function." alt="" coords="489,137,610,165"/>
-<area shape="rect" id="node4" href="$group__supporters.html#ga48ab10327d06674174428ca2db0b32ed" title="Function to identify the next sequential integer that is not already allocated to a map ID in the sim..." alt="" coords="476,81,622,109"/>
-</map>

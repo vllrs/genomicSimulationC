@@ -1,5 +1,0 @@
-<map id="gsc_load_mapfile" name="gsc_load_mapfile">
-<area shape="rect" id="node1" title="Load a genetic map to a gsc_SimData object." alt="" coords="386,5,507,33"/>
-<area shape="rect" id="node2" href="$group__loaders.html#ga394371951741d8c2db18a85069d6b61e" title="Populates a gsc_SimData object with marker allele data, a genetic map, and (optionally) marker effect..." alt="" coords="203,5,338,33"/>
-<area shape="rect" id="node3" href="$group__loaders.html#ga50888a3ffcd2853e07bb4c1b6f0d067a" title="Load a set of genotypes to a gsc_SimData object." alt="" coords="5,5,155,33"/>
-</map>

@@ -1,6 +1,0 @@
-<map id="gsc_MultiIDSet" name="gsc_MultiIDSet">
-<area shape="rect" id="node1" title="Simple crate that stores a GroupNum, a MapID, and an EffectID." alt="" coords="129,97,238,125"/>
-<area shape="rect" id="node2" href="$structgsc___group_num.html" title="A type representing the identifier of a group of genotypes." alt="" coords="5,5,117,33"/>
-<area shape="rect" id="node3" href="$structgsc___map_i_d.html" title="A type representing a particular loaded recombination map." alt="" coords="141,5,227,33"/>
-<area shape="rect" id="node4" href="$structgsc___effect_i_d.html" title="A type representing a particular loaded set of marker effects." alt="" coords="251,5,346,33"/>
-</map>

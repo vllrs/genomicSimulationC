@@ -1,6 +1,0 @@
-<map id="gsc_scaffold_split_by_somequality" name="gsc_scaffold_split_by_somequality">
-<area shape="rect" id="node1" title="Split by some quality (generic function)" alt="" coords="221,57,345,101"/>
-<area shape="rect" id="node2" href="$group__groupmod.html#ga4e2399c23a2a123d275f3cffbe46c74f" title="Split a group into families by their pedigrees." alt="" coords="13,5,165,33"/>
-<area shape="rect" id="node3" href="$group__groupmod.html#gadf875ab8f9f992dba4497258291b1ccd" title="Split a group into families of half&#45;siblings by shared first or second parent." alt="" coords="16,57,162,101"/>
-<area shape="rect" id="node4" href="$group__groupmod.html#ga8a45ea8ea9d072484ba1f1ac0c360cc4" title="Split a group into n one&#45;member groups." alt="" coords="5,125,173,153"/>
-</map>

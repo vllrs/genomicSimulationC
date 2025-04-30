@@ -1,5 +1,0 @@
-<map id="gsc_helper_is_marker_in_chr" name="gsc_helper_is_marker_in_chr">
-<area shape="rect" id="node1" title="Check if a marker index is found in a particular LinkageGroup, and provide its distance along the chr..." alt="" coords="460,5,608,49"/>
-<area shape="rect" id="node2" href="$group__savers.html#gaf17b391180e41d0b030404e49c8416bb" title="Prints the markers contained in a set of blocks to a file." alt="" coords="214,13,412,41"/>
-<area shape="rect" id="node3" href="$group__savers.html#gabb38b85b4074a41e7de110aa7a289b6a" title="Prints the markers contained in a set of blocks to a file." alt="" coords="5,13,166,41"/>
-</map>

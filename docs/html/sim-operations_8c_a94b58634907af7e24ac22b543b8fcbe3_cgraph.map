@@ -1,6 +1,0 @@
-<map id="gsc_helper_parentchooser_cloning" name="gsc_helper_parentchooser_cloning">
-<area shape="rect" id="node1" title="parentChooser function parameter for gsc_make_clones." alt="" coords="5,24,179,68"/>
-<area shape="rect" id="node2" href="$group__liteget.html#ga22a270ae73aaa86d93212a4a40f999dc" title="Get the name of a genotype." alt="" coords="238,5,345,33"/>
-<area shape="rect" id="node3" href="$group__iterators.html#ga630ba7f8e864238e296cb9480dfbc728" title="Get the next location from a bidirectional iterator." alt="" coords="227,57,356,85"/>
-<area shape="rect" id="node4" href="$group__iterators.html#gaa4fa2aec3b7f49f9925fe82c8ff38dcd" title="Initialise a Bidirectional iterator to the start of its sequence." alt="" coords="404,49,547,93"/>
-</map>

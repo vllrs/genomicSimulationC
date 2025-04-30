@@ -1,6 +1,0 @@
-<map id="gsc_delete_effect_matrix" name="gsc_delete_effect_matrix">
-<area shape="rect" id="node1" title="Deletes an gsc_EffectMatrix object and frees its memory." alt="" coords="191,57,356,85"/>
-<area shape="rect" id="node2" href="$group__loaders.html#ga982b122b76326694fd0f26babeb027e7" title="Clear a gsc_SimData object on the heap." alt="" coords="9,5,139,33"/>
-<area shape="rect" id="node3" href="$group__deletors.html#ga27c2247d05e610fc83a83a5bae3d8d94" title="Deletes a particular set of marker effects from memory." alt="" coords="9,57,139,85"/>
-<area shape="rect" id="node4" href="$group__deletors.html#ga1f4bef6ea148aaa0a1fa30681b29fe50" title="Deletes a gsc_SimData object and frees its memory." alt="" coords="5,109,143,137"/>
-</map>

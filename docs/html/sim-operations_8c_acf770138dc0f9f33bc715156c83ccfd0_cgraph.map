@@ -1,4 +1,0 @@
-<map id="gsc_helper_str_markerlist_leftjoin" name="gsc_helper_str_markerlist_leftjoin">
-<area shape="rect" id="node1" title="Discard markers whose names are not present in a gsc_KnownGenome." alt="" coords="5,5,176,49"/>
-<area shape="rect" id="node2" href="$group__supporters.html#gad57230a4c812ba8a6deed26100beae7b" title="Return whether or not a marker name is present in the tracked markers, and at what index." alt="" coords="224,5,395,49"/>
-</map>

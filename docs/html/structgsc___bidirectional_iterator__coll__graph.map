@@ -1,6 +1,0 @@
-<map id="gsc_BidirectionalIterator" name="gsc_BidirectionalIterator">
-<area shape="rect" id="node1" title="A structure to iterate forwards and backwards through all genotypes in a gsc_SimData or through only ..." alt="" coords="64,221,224,249"/>
-<area shape="rect" id="node2" href="$structgsc___allele_matrix.html" title=" " alt="" coords="5,113,123,141"/>
-<area shape="rect" id="node3" href="$structgsc___pedigree_i_d.html" title="A type representing a program&#45;lifetime&#45;unique identifier for a genotype, to be used in tracking pedig..." alt="" coords="8,5,120,33"/>
-<area shape="rect" id="node4" href="$structgsc___group_num.html" title="A type representing the identifier of a group of genotypes." alt="" coords="156,5,268,33"/>
-</map>

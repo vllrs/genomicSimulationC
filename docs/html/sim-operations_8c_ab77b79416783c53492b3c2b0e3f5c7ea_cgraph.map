@@ -1,6 +1,0 @@
-<map id="gsc_helper_genoptions_give_names_and_ids" name="gsc_helper_genoptions_give_names_and_ids">
-<area shape="rect" id="node1" title="Apply gsc_GenOptions naming scheme and gsc_PedigreeID allocation to a single gsc_AlleleMatrix." alt="" coords="5,24,160,68"/>
-<area shape="rect" id="node2" href="$sim-operations_8c.html#a368b4ddb966aef02950fe327d46f051b" title="Fills the designated section of the .names array in an gsc_AlleleMatrix with the pattern &quot;`prefix`ind..." alt="" coords="208,32,321,60"/>
-<area shape="rect" id="node3" href="$group__supporters.html#ga34ea6f4aea77b6bd95506ca071226544" title="Count and return the number of digits in i." alt="" coords="369,5,520,33"/>
-<area shape="rect" id="node4" href="$sim-operations_8c.html#aaaf3ebc75feaf901829232712e55677b" title="Replace calls to malloc direct with this function." alt="" coords="384,57,505,85"/>
-</map>

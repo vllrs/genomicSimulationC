@@ -1,4 +1,0 @@
-<map id="gsc_save_pedigrees" name="gsc_save_pedigrees">
-<area shape="rect" id="node1" title="Prints pedigrees of genotypes in the simulation to a file." alt="" coords="223,5,361,33"/>
-<area shape="rect" id="node2" href="$group__collgetters.html#ga9e31fa104eccb5ed54832b21b7c5d73e" title="Gets the full pedigree string (as per gsc_save_group_full_pedigree() ) of each member of the group." alt="" coords="5,5,175,33"/>
-</map>

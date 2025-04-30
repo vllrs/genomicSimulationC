@@ -1,9 +1,0 @@
-<map id="gsc_change_allele_symbol" name="gsc_change_allele_symbol">
-<area shape="rect" id="node1" title="Replace all occurences of a given allele with a different symbol representation." alt="" coords="5,125,183,153"/>
-<area shape="rect" id="node2" href="$group__iterators.html#ga05da8d96593f8404938cc24f659db049" title="Create a bidirectional iterator." alt="" coords="231,13,417,41"/>
-<area shape="rect" id="node4" href="$group__deletors.html#ga83d81991036aca26e2ec5b03f8b33b8a" title="Deletes a gsc_BidirectionalIterator object." alt="" coords="231,65,417,93"/>
-<area shape="rect" id="node5" href="$group__supporters.html#gac77f7337a190c68f84bb95181f365cca" title="Return whether or not a marker name is present in the tracked markers, and at what index." alt="" coords="238,117,410,161"/>
-<area shape="rect" id="node6" href="$group__iterators.html#ga630ba7f8e864238e296cb9480dfbc728" title="Get the next location from a bidirectional iterator." alt="" coords="259,185,389,213"/>
-<area shape="rect" id="node7" href="$group__iterators.html#gaa4fa2aec3b7f49f9925fe82c8ff38dcd" title="Initialise a Bidirectional iterator to the start of its sequence." alt="" coords="474,203,617,247"/>
-<area shape="rect" id="node3" href="$group__iterators.html#ga5cca400276ca83acceaab36d5f79aab1" title=" " alt="" coords="465,5,626,49"/>
-</map>

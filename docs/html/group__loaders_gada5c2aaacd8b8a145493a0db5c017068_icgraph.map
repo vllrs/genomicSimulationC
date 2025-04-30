@@ -1,6 +1,0 @@
-<map id="gsc_create_recombmap_from_markerlist" name="gsc_create_recombmap_from_markerlist">
-<area shape="rect" id="node1" title="Parse a list of markers/chrs/positions into a gsc_RecombinationMap and save to SimData." alt="" coords="555,5,716,49"/>
-<area shape="rect" id="node2" href="$group__loaders.html#gac180eb5f1d27907a69314e68cc0d37af" title="Load a genetic map to a gsc_SimData object." alt="" coords="386,13,507,41"/>
-<area shape="rect" id="node3" href="$group__loaders.html#ga394371951741d8c2db18a85069d6b61e" title="Populates a gsc_SimData object with marker allele data, a genetic map, and (optionally) marker effect..." alt="" coords="203,13,338,41"/>
-<area shape="rect" id="node4" href="$group__loaders.html#ga50888a3ffcd2853e07bb4c1b6f0d067a" title="Load a set of genotypes to a gsc_SimData object." alt="" coords="5,13,155,41"/>
-</map>

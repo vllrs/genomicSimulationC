@@ -1,6 +1,0 @@
-<map id="gsc_helper_genotypefile_matrix_detect_cornercell_presence" name="gsc_helper_genotypefile_matrix_detect_cornercell_presence">
-<area shape="rect" id="node1" title="Determine whether a genotype matrix has a corner cell or not." alt="" coords="583,5,754,65"/>
-<area shape="rect" id="node2" href="$sim-operations_8c.html#aca78dbac4d7154e95b6ddca575937d77" title="Loads a genotype file, with or without existing genome model in the SimData." alt="" coords="386,13,535,57"/>
-<area shape="rect" id="node3" href="$group__loaders.html#ga394371951741d8c2db18a85069d6b61e" title="Populates a gsc_SimData object with marker allele data, a genetic map, and (optionally) marker effect..." alt="" coords="203,21,338,49"/>
-<area shape="rect" id="node4" href="$group__loaders.html#ga50888a3ffcd2853e07bb4c1b6f0d067a" title="Load a set of genotypes to a gsc_SimData object." alt="" coords="5,21,155,49"/>
-</map>

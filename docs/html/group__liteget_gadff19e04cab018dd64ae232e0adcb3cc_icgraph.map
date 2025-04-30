@@ -1,8 +1,0 @@
-<map id="gsc_set_name" name="gsc_set_name">
-<area shape="rect" id="node1" title="Set the name of a genotype." alt="" coords="612,48,719,76"/>
-<area shape="rect" id="node2" href="$sim-operations_8c.html#ab0152d52dcce6514ebba0fa08810ee8a" title="offspringGenerator function parameter for gsc_make_clones." alt="" coords="386,5,564,49"/>
-<area shape="rect" id="node4" href="$sim-operations_8c.html#aca78dbac4d7154e95b6ddca575937d77" title="Loads a genotype file, with or without existing genome model in the SimData." alt="" coords="401,73,550,117"/>
-<area shape="rect" id="node3" href="$group__crossers.html#gaa3907b6b8ad3de641916b2df83e43a01" title="Creates an identical copy of each member of a group." alt="" coords="207,13,334,41"/>
-<area shape="rect" id="node5" href="$group__loaders.html#ga394371951741d8c2db18a85069d6b61e" title="Populates a gsc_SimData object with marker allele data, a genetic map, and (optionally) marker effect..." alt="" coords="203,81,338,109"/>
-<area shape="rect" id="node6" href="$group__loaders.html#ga50888a3ffcd2853e07bb4c1b6f0d067a" title="Load a set of genotypes to a gsc_SimData object." alt="" coords="5,81,155,109"/>
-</map>

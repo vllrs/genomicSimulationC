@@ -1,4 +1,0 @@
-<map id="gsc_get_group_ids" name="gsc_get_group_ids">
-<area shape="rect" id="node1" title="Gets the ids of each member of the group." alt="" coords="5,5,136,33"/>
-<area shape="rect" id="node2" href="$group__collgetters.html#gae9131a8c72149706f67f6e4a48add79c" title="Function to count the number of genotypes that currently belong to the specified group." alt="" coords="184,5,321,33"/>
-</map>

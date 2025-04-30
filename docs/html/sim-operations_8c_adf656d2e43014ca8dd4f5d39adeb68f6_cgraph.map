@@ -1,4 +1,0 @@
-<map id="gsc_nextgappy_get_gap" name="gsc_nextgappy_get_gap">
-<area shape="rect" id="node1" title="Sets the current cursor position in a gsc_GappyIterator to the next empty position,..." alt="" coords="5,5,168,33"/>
-<area shape="rect" id="node2" href="$sim-operations_8c.html#a6d94248d1163c9c40e2910e578ce4708" title="Sets the current cursor position in a gsc_GappyIterator to the next valid position,..." alt="" coords="216,5,385,33"/>
-</map>

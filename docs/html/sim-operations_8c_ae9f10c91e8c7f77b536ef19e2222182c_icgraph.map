@@ -1,5 +1,0 @@
-<map id="gsc_helper_random_cross_checks" name="gsc_helper_random_cross_checks">
-<area shape="rect" id="node1" title="Check input parameters of random crossing functions." alt="" coords="238,28,411,72"/>
-<area shape="rect" id="node2" href="$group__crossers.html#ga4bfb4f901f7a921e6a3a2f1d8a9ac249" title="Performs random crosses among members of a group." alt="" coords="5,5,190,33"/>
-<area shape="rect" id="node3" href="$group__crossers.html#gaa43222283d6fb3745f5fab73b36af22d" title="Performs random crosses where the first parent comes from one group and the second from another." alt="" coords="5,57,190,101"/>
-</map>

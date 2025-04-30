@@ -1,4 +1,0 @@
-<map id="gsc_tablefilecell_deep_copy" name="gsc_tablefilecell_deep_copy">
-<area shape="rect" id="node1" title="Allocate memory to store a deep copy of a gsc_TableFileCell, if previously only a shallow copy." alt="" coords="5,5,189,33"/>
-<area shape="rect" id="node2" href="$sim-operations_8c.html#aaaf3ebc75feaf901829232712e55677b" title="Replace calls to malloc direct with this function." alt="" coords="237,5,358,33"/>
-</map>

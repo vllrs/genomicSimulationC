@@ -1,5 +1,0 @@
-<map id="gsc_helper_sort_markerlist" name="gsc_helper_sort_markerlist">
-<area shape="rect" id="node1" title="Sort markerlist by chromosome name, and by position within each chromosome." alt="" coords="5,48,183,76"/>
-<area shape="rect" id="node2" href="$sim-operations_8c.html#aaa406c38a85c3953b1cda622ff535d12" title="Comparator function for qsort." alt="" coords="231,5,404,49"/>
-<area shape="rect" id="node3" href="$sim-operations_8c.html#a6899282e8507284be584200d05e786cf" title="Comparator function for qsort." alt="" coords="236,73,399,117"/>
-</map>

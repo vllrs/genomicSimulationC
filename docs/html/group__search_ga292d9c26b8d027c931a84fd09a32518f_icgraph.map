@@ -1,5 +1,0 @@
-<map id="gsc_get_index_of_name" name="gsc_get_index_of_name">
-<area shape="rect" id="node1" title="Search for a genotype with a particular name in a linked list of gsc_AlleleMatrix,..." alt="" coords="250,44,411,72"/>
-<area shape="rect" id="node2" href="$group__recomb.html#ga17bf2aa42201490431e56ba42ace85fc" title="Provides guesses as to the location of recombination events that led to the creation of certain genot..." alt="" coords="5,5,202,49"/>
-<area shape="rect" id="node3" href="$group__crossers.html#ga5c0be901d03d0e5dd3d74bc19a4bea70" title="Perform crosses between pairs of parents identified by name in a file and allocate the resulting offs..." alt="" coords="9,73,198,101"/>
-</map>

@@ -1,4 +1,0 @@
-<map id="gsc_calculate_optimal_bv" name="gsc_calculate_optimal_bv">
-<area shape="rect" id="node1" title="Takes a look at the currently&#45;loaded effect values and returns the highest possible breeding value an..." alt="" coords="5,5,175,33"/>
-<area shape="rect" id="node2" href="$group__supporters.html#gaaccd39d5505c6a05a95fb8469662c9a0" title="Function to identify the lookup index of a marker effect set identifier." alt="" coords="223,5,390,33"/>
-</map>

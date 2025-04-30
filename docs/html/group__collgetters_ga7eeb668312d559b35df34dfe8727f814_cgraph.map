@@ -1,5 +1,0 @@
-<map id="gsc_get_group_parent_names" name="gsc_get_group_parent_names">
-<area shape="rect" id="node1" title="Gets the names of either the first or second parent of each member of the group." alt="" coords="5,5,155,49"/>
-<area shape="rect" id="node2" href="$group__search.html#ga5c7cd898a40e515c3164c98821068978" title="Returns the name of the genotype with a given id." alt="" coords="203,13,343,41"/>
-<area shape="rect" id="node3" href="$group__supporters.html#ga094a7c1d7f83050cce4d00fdcc89d6b3" title="Binary search through list of unsigned integers." alt="" coords="391,5,540,49"/>
-</map>

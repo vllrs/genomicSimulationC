@@ -1,6 +1,0 @@
-<map id="gsc_load_blocks" name="gsc_load_blocks">
-<area shape="rect" id="node1" title="Given a file containing definitions of blocks of markers, process that file and return a struct conta..." alt="" coords="5,65,124,93"/>
-<area shape="rect" id="node2" href="$group__supporters.html#ga31fba32c2f869b50d97669e3e322d338" title="Opens a table file and reads the number of columns and rows (including headers) separated by sep into..." alt="" coords="176,5,339,33"/>
-<area shape="rect" id="node3" href="$group__supporters.html#gad57230a4c812ba8a6deed26100beae7b" title="Return whether or not a marker name is present in the tracked markers, and at what index." alt="" coords="172,57,343,101"/>
-<area shape="rect" id="node4" href="$sim-operations_8c.html#aaaf3ebc75feaf901829232712e55677b" title="Replace calls to malloc direct with this function." alt="" coords="197,125,318,153"/>
-</map>

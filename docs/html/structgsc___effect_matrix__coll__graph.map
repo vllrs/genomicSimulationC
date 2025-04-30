@@ -1,4 +1,0 @@
-<map id="gsc_EffectMatrix" name="gsc_EffectMatrix">
-<area shape="rect" id="node1" title="A type that stores a matrix of effect values and their names." alt="" coords="12,97,131,125"/>
-<area shape="rect" id="node2" href="$structgsc___decimal_matrix.html" title="A row&#45;major heap matrix that contains floating point numbers." alt="" coords="5,5,138,33"/>
-</map>

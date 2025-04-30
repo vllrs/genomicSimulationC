@@ -1,7 +1,0 @@
-<map id="gsc_delete_recombination_map_nointegrity" name="gsc_delete_recombination_map_nointegrity">
-<area shape="rect" id="node1" title="Deletes and clears the memory of a gsc_RecombinationMap struct." alt="" coords="443,49,615,93"/>
-<area shape="rect" id="node2" href="$group__deletors.html#gaf28e802f4bf8149f58a49c6262b02f4c" title="Deletes and clears the memory of a gsc_KnownGenome object and its children." alt="" coords="224,31,362,59"/>
-<area shape="rect" id="node5" href="$group__deletors.html#ga6075a65332dee0dc0032f29cad35fd74" title="Deletes a particular recombination map from memory." alt="" coords="191,83,395,111"/>
-<area shape="rect" id="node3" href="$group__loaders.html#ga982b122b76326694fd0f26babeb027e7" title="Clear a gsc_SimData object on the heap." alt="" coords="9,5,139,33"/>
-<area shape="rect" id="node4" href="$group__deletors.html#ga1f4bef6ea148aaa0a1fa30681b29fe50" title="Deletes a gsc_SimData object and frees its memory." alt="" coords="5,57,143,85"/>
-</map>

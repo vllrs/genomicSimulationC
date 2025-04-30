@@ -1,7 +1,0 @@
-<map id="gsc_get_file_dimensions" name="gsc_get_file_dimensions">
-<area shape="rect" id="node1" title="Opens a table file and reads the number of columns and rows (including headers) separated by sep into..." alt="" coords="250,100,413,128"/>
-<area shape="rect" id="node2" href="$group__recomb.html#ga17bf2aa42201490431e56ba42ace85fc" title="Provides guesses as to the location of recombination events that led to the creation of certain genot..." alt="" coords="5,5,202,49"/>
-<area shape="rect" id="node3" href="$group__calculators.html#gaf6f32f41ae7ca27c1a48f8947919794a" title="Given a file containing definitions of blocks of markers, process that file and return a struct conta..." alt="" coords="44,73,163,101"/>
-<area shape="rect" id="node4" href="$group__crossers.html#ga5c0be901d03d0e5dd3d74bc19a4bea70" title="Perform crosses between pairs of parents identified by name in a file and allocate the resulting offs..." alt="" coords="9,125,198,153"/>
-<area shape="rect" id="node5" href="$group__crossers.html#ga2b8100d2d30cf1ada0db8403663076ff" title="Perform crosses between previously&#45;generated offspring of pairs of parents identified by name in a fi..." alt="" coords="14,177,193,221"/>
-</map>

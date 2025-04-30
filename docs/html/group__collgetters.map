@@ -1,4 +1,0 @@
-<map id="Collective Data Access Functions" name="Collective Data Access Functions">
-<area shape="rect" id="node1" title="These functions return vector data, rather than data on a single genotype or single group." alt="" coords="220,5,375,48"/>
-<area shape="rect" id="node2" href="$group__getters.html" title="For non&#45;persistent access to simulation results and contents." alt="" coords="5,5,172,48"/>
-</map>
