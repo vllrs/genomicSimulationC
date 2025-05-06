@@ -1,7 +1,7 @@
 #ifndef SIM_OPERATIONS
 #define SIM_OPERATIONS
 #include "sim-operations.h"
-/* genomicSimulationC v0.2.6.11 - last edit 6 May 2025 */
+/* genomicSimulationC v0.2.6.12 - last edit 6 May 2025 */
 
 /** Default parameter values for GenOptions, to help with quick scripts and prototypes.
  *
@@ -5973,7 +5973,7 @@ gsc_MapID gsc_create_recombmap_from_markerlist(gsc_SimData* d,
         return NO_MAP;
     }
     if (n_sparse_chr > 0) {
-        fprintf(stderr,"%d of this map's chromosomes are very sparse (averaging less than 1 marker"
+        fprintf(stderr,"%d of this map's chromosomes are very sparse (averaging less than 1 marker "
             "per 5 Morgans of distance). If the map is not expected to be this sparse, check that "
             "positions in the map file are in centimorgans, not base pairs.\n", n_sparse_chr);
     }
@@ -6088,7 +6088,7 @@ gsc_MapID gsc_create_uniformspaced_recombmap(gsc_SimData* d,
         }
         
         if (could_not_match > 0) {
-            fprintf(stderr, "%d of the marker names do not appear in the genome", could_not_match);
+            fprintf(stderr, "%d of the marker names do not appear in the genome\n", could_not_match);
         }
         
     }
@@ -6251,6 +6251,16 @@ gsc_MapID gsc_load_mapfile(SimData* d, const char* filename) {
             d->genome.names_alphabetical[i] = &(d->genome.marker_names[i]);
         }
         qsort(d->genome.names_alphabetical,d->genome.n_markers,sizeof(*d->genome.names_alphabetical),gsc_helper_indirect_alphabetical_str_comparer);
+
+        // Want to raise a warning if any marker names are repeated. One quick scan through.
+        int n_dups = 0;
+        for (GSC_GENOLEN_T i = 1; i < d->genome.n_markers; ++i) {
+            if (strcmp(*d->genome.names_alphabetical[i-1],*d->genome.names_alphabetical[i]) == 0) { ++n_dups; }
+        }
+        if (n_dups > 0) {
+            fprintf(stderr,"%d marker names were duplicates. It is recommended to remove duplicate names from the map file "
+                "because data will only be loaded into one of the duplicates.\n", n_dups);
+        }
 
         freeMapNames = 0;
         //printf( "Warning: loading genetic map before loading any founder genotypes. Many simulation operations will not yet run.\n");
