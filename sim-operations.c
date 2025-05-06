@@ -1,7 +1,7 @@
 #ifndef SIM_OPERATIONS
 #define SIM_OPERATIONS
 #include "sim-operations.h"
-/* genomicSimulationC v0.2.6.10 - last edit 29 Apr 2025 */
+/* genomicSimulationC v0.2.6.11 - last edit 6 May 2025 */
 
 /** Default parameter values for GenOptions, to help with quick scripts and prototypes.
  *
@@ -5886,6 +5886,7 @@ gsc_MapID gsc_create_recombmap_from_markerlist(gsc_SimData* d,
     GSC_GENOLEN_T current_marker = 0;
     GSC_GENOLEN_T first_marker;
     GSC_GENOLEN_T n_bad_chr = 0;
+    GSC_GENOLEN_T n_sparse_chr = 0;
     for (GSC_GENOLEN_T chr_ix = 0; chr_ix < map.n_chr; ++chr_ix) {      
         first_marker = current_marker;
         double chrdist = markerlist[first_marker + chr_nmembers[chr_ix] - 1].pos - markerlist[first_marker].pos;
@@ -5963,12 +5964,18 @@ gsc_MapID gsc_create_recombmap_from_markerlist(gsc_SimData* d,
             map.chrs[chr_ix_actual].map.reorder.marker_indexes = marker_coords;
             map.chrs[chr_ix_actual].map.reorder.dists = lgdists;
         }
+        if (chrdist >= 5000*n_goodmembers) { ++n_sparse_chr; }
     }
     GSC_DELETE_BUFFER(chr_nmembers);
     map.n_chr = map.n_chr-n_bad_chr;
     if (map.n_chr == 0) {
         GSC_FREE(map.chrs);
         return NO_MAP;
+    }
+    if (n_sparse_chr > 0) {
+        fprintf(stderr,"%d of this map's chromosomes are very sparse (averaging less than 1 marker"
+            "per 5 Morgans of distance). If the map is not expected to be this sparse, check that "
+            "positions in the map file are in centimorgans, not base pairs.\n", n_sparse_chr);
     }
     return gsc_helper_insert_recombmap_into_simdata(d, map);
 }

@@ -1,9 +1,9 @@
 #ifndef SIM_OPERATIONS_H
 #define SIM_OPERATIONS_H
 /* 
-genomicSimulationC v0.2.6.10
+genomicSimulationC v0.2.6.11
 
-    Last edit: 29 Apr 2025
+    Last edit: 6 May 2025
     License: MIT License
 
 Copyright (c) 2021 Kira Villiers
