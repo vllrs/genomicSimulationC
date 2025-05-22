@@ -38,17 +38,19 @@ othergene 10 8.3e-1
 etc 15 1.203e2
 ```
 
-The header line is optional. If there is a header line, the three columns "marker" "chr" and "pos" may be rearranged into any ordering. If the header is not provided, the order is assumed to be marker name in the first column, followed by chromosome in the second column, followed by position in the third.
+Note that genomicSimulation takes genetic maps, not physical maps. Marker positions should be in centimorgans (and therefore correspond to crossover probabilities), not physical base pair counts. genomicSimulation will use these positions and the distances between them when simulating meiosis, to calculate the probability of recombination occurring between markers.
 
-Regarding marker names: For all genomicSimulation features to work, genetic markers must have names. There is no issue with purely numeric names.
+The header line is optional. If there is a header line, any permutation of the three columns "marker", "chr", and "pos" is allowed. If the header is not provided, the order is assumed to be: marker name in the first column, followed by chromosome in the second column, followed by position in the third.
 
-Regarding chromosomes/linkage group: any alphanumeric combination may be used to denote a chromosome/linkage group, for example '9' or '1A'. There is no limit on the number of unique chromosomes/linkage groups in the map.
+The column "marker", containing marker names: Genetic markers should have names. These names can be entirely numeric. Though genomicSimulation will run without visible errors if some markers share names, this will cause issues when loading the genotype matrix: non-unique marker names may cause intended genotype data to be overwritten with alleles from a different marker with the same name, or to be left blank because the intended data was placed at the wrong marker. Therefore, it is recommended that marker names are unique.
 
-Regarding marker position: this represents the position in centimorgans of each marker along its linkage group. (Distance of 1 cM = expected probability of 0.01 chromosomal crossovers in that range.)
+The column "chr", containing chromosome/linkage group names: any alphanumeric combination (of letters A-Z and digits 0-9) may be used to denote a chromosome/linkage group, for example '9' or '1A'. This alphanumeric name is case-insensitive ('1a' is the same chromosome as '1A'). There is no limit on the number of unique chromosomes/linkage groups in the map. It is recommended that these alphanumeric names are 6 characters or less, as (depending on the size of the underlying "unsigned long" type in C code compiled on your system) the simulation may not be able to tell apart chromosomes with longer names.
 
-The cells in the map file may be separated by spaces, tabs, commas, or any combination thereof. Cell spacers do not need to be consistent across the file, but therefore marker names/linkage group names cannot contain spaces, tabs, or commas. 
+The column "pos", containing marker positions: should be the position in centimorgans of each marker along its chromosome/linkage group. (Distance of 1 cM = expected probability of 0.01 chromosomal crossovers in that range.)
 
-The order in which genetic markers are presented in the file does not matter. If a marker is duplicated in the file, it will be recorded twice as two separate markers in the same position and with the same name.  However, because loading genotypes depends on searching for markers by name, if two markers have the same name, genotypes may not be loaded correctly. Therefore it is suggested that all markers have unique names.
+Cells/table entries in the file may be separated by spaces, tabs, commas, or any combination thereof. Cell spacers do not need to be consistent across the file, but therefore marker names and linkage group names cannot contain spaces, tabs, or commas. 
+
+The order in which genetic markers are presented in the file does not matter.
 
 ### Genotype matrix files
 
@@ -75,17 +77,17 @@ marker3	T/T	T/T	T/A	T/A	T/T	T/T
 marker2	A/A	A/A	A/A	A/A	T/T	A/A
 ```
 
-The genotype matrix can be row-major or column-major (that is, the genetic markers may be rows, or columns). The program will determine the orientation by attempting to match row and column headers with names of markers tracked by the simulation (extracted from a genetic map file). If the simulation does not yet have a list of tracked markers (that is, no genetic map has been simultaneously or previously provided), then it defaults to assuming that rows represent genetic markers.  
+The genotype matrix can be row-major or column-major (that is, the genetic markers may be rows, or columns). The program will determine the orientation by attempting to match row and column headers with the names of genetic markers that the simulation extracted from the first genetic map file. If the simulation does not yet have a list of tracked markers (that is, no genetic map has been simultaneously or previously provided), then it defaults to assuming that rows represent genetic markers.  
 
-The order in which genetic markers are presented in the file does not matter. Candidate genotypes, however, will be saved internally in the simulation in the order that they appear in the file. Candidate genotype names do not need to be unique. Candidate genotype names are optional, if candidates are stored as columns. genomicSimulation cannot read a gentoype matrix with no row headers, so if candidates are stored as rows, then they are required to have names.
+The order in which genetic markers are presented in the file does not matter. Candidate genotypes, however, will be saved internally in the simulation in the order that they appear in the file. 
 
-Genetic markers' names are required. 
+Genetic markers' names are required, whether they are row headers or column headers. Candidate/genotype names are optional if candidates correspond to columns, but genomicSimulation cannot read a gentoype matrix with no row headers, so if candidates are stored as rows, they are required to have names in the first column. Candidate names do not have to be unique.
 
-When there are both row and column headers, the first/corner cell (the one that contained the value "name" in the first example above) can be deleted or can contain any text. Its value will be ignored. 
+When there are both row and column headers, the first cell/corner cell (the one that contained the value "name" in the first example above) can contain any text, can be empty, or can not exist at all (i.e. the header row can be one cell shorter than the other rows). In any case, the corner cell is ignored.
 
-The table cells in the genotype matrix file may be separated by spaces, tabs, commas, or any combination thereof. Cell spacers do not need to be consistent across the file. 
+The table cells in the genotype matrix file may be separated by spaces, tabs, commas, or any combination thereof. Cell spacers do not need to be consistent across the file. This does mean, however, that candidate names, marker names, the value of the corner cell, and the alleles in the table, cannot contain spaces, tabs or commas.
 
-There are several options for how the alleles at each marker can be presented. All allele pair cells in the same genotype matrix must be in the same format. The format of the allele pairs in the genotype matrix is automatically detected. There are four acceptable formats for allele pairs in the genotype matrix:
+There are several options for presenting the allele pairs in the table that genomicSimulation can process. All cells in the body of a genotype matrix must use the same format. The format of the allele pairs in the genotype matrix is automatically detected, if it is not defined in the optional `format` parameter (see the function: `define.matrix.format.details`). There are four acceptable formats for allele pairs in the genotype matrix:
 
 1. Any pair of characters (eg. "AA", "TA", "nW"). Each character is an allele. This is a format that specifies allele phase (ie. "AT" and "TA" are different genotypes).
 2. Any pair of characters, separated by a forwards slash "/" character (eg. "A/A", "T/A", "n/W"). The two characters either side of the slash are the alleles. This is a format that specifies allele phase (ie. "AT" and "TA" are different genotypes).
@@ -138,17 +140,17 @@ or
 specialgene G 1.0
 ```
 
-A single marker effect file represents the allele effects for one trait. Multiple files like this can be loaded in order to calculate breeding values for multiple traits separately.
+One marker effect file represents the allele effects for one trait. Multiple files like this can be loaded, to represent (by allowing breeding value calculation for) multiple traits.
 
-The header line is optional. If there is a header line, the three columns "marker" "allele" and "eff" may be rearranged into any ordering. If the header is not provided, the order is assumed to be marker name in the first column, followed by allele, followed by additive effect value.
+The header line is optional. If there is a header line, the three columns "marker", "allele", and "eff" can appear in any order. If the header is not provided, the order is assumed to be marker name in the first column, followed by allele, followed by additive effect value.
 
 The order of the rows in the file does not matter. If multiple rows exist in the file for the same marker name/allele combination, only the last row's additive effect value will be saved. 
 
-Regarding marker names: Only rows in this file whose marker name matches a marker name from a previously- or simultaneously-loaded map file or genotype matrix file will be loaded. 
+The column "marker", containing marker names: Rows whose marker name does not match a marker name from the primary (first-loaded) map will be ignored/skipped.
 
-Regarding allele: This column should be the allele (non-space character, eg "A") that this effect value corresponds to. 
+The column "allele", containing the symbol representing an allele: This column should be the allele (a non-space, non-tab, non-comma character, eg "A") that this effect value corresponds to. 
 
-Regarding allele effect: This column should be a decimal representing the additive effect value of the same-row allele for the same-row marker. It can be positive or negative or zero, and can be represented by an integer, a decimal, or scientific notation. 
+The column "eff", containing the marker effect of this allele: This column should be a decimal representing the additive effect value of the same-row allele for the same-row marker. It can be positive or negative or zero, and can be represented by a decimal, a whole number, or scientific notation. 
 
 Cells may be separated by spaces, tabs, commas, or any combination thereof. Cell spacers do not need to be consistent across the file. 
 

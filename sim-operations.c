@@ -1,7 +1,7 @@
 #ifndef SIM_OPERATIONS
 #define SIM_OPERATIONS
 #include "sim-operations.h"
-/* genomicSimulationC v0.2.6.12 - last edit 6 May 2025 */
+/* genomicSimulationC v0.2.6.13 - last edit 6 May 2025 */
 
 /** Default parameter values for GenOptions, to help with quick scripts and prototypes.
  *
@@ -5858,28 +5858,33 @@ gsc_MapID gsc_create_recombmap_from_markerlist(gsc_SimData* d,
 
     GSC_CREATE_BUFFER(chr_nmembers,GSC_GENOLEN_T,40);
     memset(chr_nmembers,0,sizeof(*chr_nmembers)*40);
+    GSC_CREATE_BUFFER(chr_ids,unsigned long,40);
     chr_nmembers[0] = 1;
     GSC_GENOLEN_T n_chr = 1;
-    unsigned long current_chr = markerlist[0].chr;
+    chr_ids[n_chr-1] = markerlist[0].chr;
     for (GSC_GENOLEN_T i = 1; i < n_markers; ++i) {
         while (i < n_markers && markerlist[i].name == NULL) {
             ++i;
         }
-        if (current_chr != markerlist[i].chr) {
+        if (chr_ids[n_chr-1] != markerlist[i].chr) {
             // First of next
             if (n_chr >= chr_nmemberscap) {
+                GSC_STRETCH_BUFFER(chr_ids,2*n_chr);
                 GSC_STRETCH_BUFFER(chr_nmembers,2*n_chr);
                 memset(chr_nmembers+n_chr,0,sizeof(*chr_nmembers)*n_chr);
             }
             ++n_chr;
-            current_chr = markerlist[i].chr;
+            chr_ids[n_chr-1] = markerlist[i].chr;
             chr_nmembers[n_chr-1] = 1;
         } else {
             ++(chr_nmembers[n_chr-1]);
         }
     }
 
-    gsc_RecombinationMap map = {.n_chr=n_chr, .chrs=gsc_malloc_wrap(sizeof(gsc_LinkageGroup) * n_chr, GSC_TRUE) };
+    gsc_RecombinationMap map = {.n_chr=n_chr, 
+                                .chr_names=NULL,
+                                .chrs=gsc_malloc_wrap(sizeof(gsc_LinkageGroup) * n_chr, GSC_TRUE) };
+    GSC_FINALISE_BUFFER(chr_ids,map.chr_names,n_chr);
 
     // Populate the map. Each chr/linkage group may be "Simple" or "Reordered"
     GSC_GENOLEN_T could_not_match = 0;

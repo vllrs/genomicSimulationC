@@ -4274,6 +4274,21 @@ int main(int argc, char* argv[]) {
     make_random_crosses_between(d, init.group, g2, 25, 100, 5, init.map, init.map, BASIC_OPT);
     
     delete_simdata(d);
+	
+	// Check chr names are as expected
+	d = create_empty_simdata(randomSeed);
+	init =
+            load_data_files(d, 
+			 "genos.txt",
+			 "helper_map_fancychrs.txt",
+             NULL,
+			 DETECT_FILE_FORMAT);
+	
+	for (int i = 0; i < d->genome.maps[0].n_chr; ++i) {
+		printf("%lu\n",d->genome.maps[0].chr_names[i]);
+	}
+	printf("%zu\n",sizeof(unsigned long));
+	delete_simdata(d);
 
     printf("\nAll done\n");
 

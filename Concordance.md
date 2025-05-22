@@ -11,6 +11,8 @@ This can also be interpreted as the list of user-facing functions in genomicSimu
 | load_genotypefile | load.genotypes |
 | load_mapfile | load.map |
 | load_effectfile | load.effects |
+| change_eff_set_centres_to_values | change.eff.set.centres |
+| change_eff_set_centres_of_allele_count | change.eff.set.centres.of.allele |
 | define_matrix_format_details | define.matrix.format.details |
 | delete_group | delete.group |
 | delete_recombination_map | delete.recombination.map |
@@ -19,6 +21,8 @@ This can also be interpreted as the list of user-facing functions in genomicSimu
 | calculate_optimal_bv | see.optimal.GEBV |
 | calculate_optimal_haplotype | see.optimal.haplotype |
 | create_new_label | create.new.label |
+| load_blocks | create.markerblocks |
+| create_evenlength_blocks_each_chr | create.markerblocks.from.chrsplit |
 | ~ ||
 | make_all_unidirectional_crosses | make.all.unidirectional.crosses |
 | make_crosses_from_file | make.crosses.from.file |
@@ -63,10 +67,13 @@ This can also be interpreted as the list of user-facing functions in genomicSimu
 | make_group_from | make.group |
 | combine_groups | combine.groups |
 | ~ ||
+| calculate_allele_counts | see.group.gene.data(allele) |
+| calculate_bvs | see.GEBVs |
+| calculate_local_bvs | see.local.GEBVs |
+| ~ ||
 | save_allele_counts | save.allele.counts |
 | save_bvs | save.GEBVs |
+| save_local_bvs | save.local.GEBVs |
 | save_genotypes | save.genotypes |
 | save_pedigrees | save.pedigrees |
-| create_evenlength_blocks_each_chr; calculate_group_local_bvs | save.local.GEBVs.blocks.from.chrsplit |
-| read_block_file; calculate_group_local_bvs | save.local.GEBVs.blocks.from.file |
 | calculate_recombinations_from_file | find.crossovers |
