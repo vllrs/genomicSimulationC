@@ -9,6 +9,7 @@ Latest News       {#news}
 - CHANGE: when initialising the simulation with a genotype file but no map file, the default behaviour is now to generate a map where each genetic marker from the genotype file belongs to a separate chromosome/linkage group, and therefore each marker's inheritance is unlinked/independent of the inheritance of alleles at other markers. The old default (generated map where all markers are on the same chromosome, 1cM apart) is still available via function `gsc_create_uniformspaced_recombmap`. The new behaviour is available via function `gsc_create_unlinked_recombmap`.
 - A warning is now displayed if a map is loaded that has a very large chromosome length to number of markers ratio, which might correspond to loading a map with (invalid) base pair positions instead of (correct) centimorgan positions.
 - A warning is now displayed if the primary map contains duplicate marker names, because data from further input files will only be loaded into one of the duplicates.
+- The simulation internally now does store chromosome names, not just chromosome orderings.
 
 ## Improvements
 
@@ -26,6 +27,7 @@ Latest News       {#news}
 - Fix a bug where marker names had trailing spaces (and therefore, when loading more input files later, could not be matched) when automatically generating a genetic map from a genotype file. 
 - Fix a bug in `create_evenlength_blocks_each_chr` where too many markers would be allocated to the last block because genetic distances were being cumulatively summed even though they were already cumulative values. This bug would date back to v0.2.5, when ability to load multiple recombination maps was added.
 - Memory allocations of size 0 are no longer requested when attempting to use a MarkerBlocks struct that has been deleted.
+- `SimData.n_groups` is no longer decremented if a call is made to `delete_group` for a group number with zero members (a nonexistent group). 
 
 # genomicSimulation v0.2.6
 
