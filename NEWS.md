@@ -28,6 +28,7 @@ Latest News       {#news}
 - Fix a bug in `create_evenlength_blocks_each_chr` where too many markers would be allocated to the last block because genetic distances were being cumulatively summed even though they were already cumulative values. This bug would date back to v0.2.5, when ability to load multiple recombination maps was added.
 - Memory allocations of size 0 are no longer requested when attempting to use a MarkerBlocks struct that has been deleted.
 - `SimData.n_groups` is no longer decremented if a call is made to `delete_group` for a group number with zero members (a nonexistent group). 
+- Fix a bug during genotype file loading where alleles would not be saved to the SimData if the program was creating a genetic map from the markers in the file. 
 
 # genomicSimulation v0.2.6
 
