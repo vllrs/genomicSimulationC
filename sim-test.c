@@ -139,6 +139,7 @@ int test_savers(unsigned int rseed) {
     assert(compareFileToString(fname, TEST1_TRUTH_save_group_local_bvs_nonames)==0);
     remove(fname);
 
+	delete_markerblocks(&exampleMB);
     printf("...breeding value file savers produce the expected output formats\n");
 
 
@@ -674,11 +675,11 @@ static void check_mapfile(SimData* d, char* filename, int it) {
     fflush(stdout);
 
     assert(d->genome.n_markers == 5);
-    assert(strcmp(d->genome.marker_names[0],"first") == 0);
-    assert(strcmp(d->genome.marker_names[1],"second") == 0);
-    assert(strcmp(d->genome.marker_names[2],"3rd") == 0);
-    assert(strcmp(d->genome.marker_names[3],"fourth") == 0);
-    assert(strcmp(d->genome.marker_names[4],"5") == 0);
+    assert(strcmp(d->genome.marker_names[0],"3rd") == 0);
+    assert(strcmp(d->genome.marker_names[1],"fourth") == 0);
+    assert(strcmp(d->genome.marker_names[2],"5") == 0);
+    assert(strcmp(d->genome.marker_names[3],"first") == 0);
+    assert(strcmp(d->genome.marker_names[4],"second") == 0);
     assert(strcmp(d->genome.names_alphabetical[0][0],"3rd") == 0);
     assert(strcmp(d->genome.names_alphabetical[1][0],"5") == 0);
     assert(strcmp(d->genome.names_alphabetical[2][0],"first") == 0);
@@ -690,31 +691,33 @@ static void check_mapfile(SimData* d, char* filename, int it) {
         assert(d->genome.map_ids[i].id == i+1);
     }
     assert(d->genome.maps[it-1].n_chr == 2);
-    assert(d->genome.maps[it-1].chrs[0].type == GSC_LINKAGEGROUP_SIMPLE);
-    assert(d->genome.maps[it-1].chrs[1].type == GSC_LINKAGEGROUP_REORDER);
-    assert(d->genome.maps[it-1].chrs[0].map.simple.n_markers == 2);
-    assert(fabs(d->genome.maps[it-1].chrs[0].map.simple.expected_n_crossovers - 0.4) < TOL);
-    assert(fabs(d->genome.maps[it-1].chrs[0].map.simple.dists[0] - 0) < TOL);
-    assert(fabs(d->genome.maps[it-1].chrs[0].map.simple.dists[1] - 1) < TOL);
-    assert(d->genome.maps[it-1].chrs[0].map.simple.first_marker_index == 0);
-    assert(d->genome.maps[it-1].chrs[1].map.reorder.n_markers == 3);
-    assert(fabs(d->genome.maps[it-1].chrs[1].map.reorder.expected_n_crossovers - 0.1) < TOL);
-    assert(fabs(d->genome.maps[it-1].chrs[1].map.reorder.dists[0] - 0) < TOL);
-    assert(fabs(d->genome.maps[it-1].chrs[1].map.reorder.dists[1] - 0.83) < TOL);
-    assert(fabs(d->genome.maps[it-1].chrs[1].map.reorder.dists[2] - 1) < TOL);
-    assert(d->genome.maps[it-1].chrs[1].map.reorder.marker_indexes[0] == 4);
-    assert(d->genome.maps[it-1].chrs[1].map.reorder.marker_indexes[1] == 2);
-    assert(d->genome.maps[it-1].chrs[1].map.reorder.marker_indexes[2] == 3);
+	assert(strcmp(d->genome.maps[it-1].chr_names[0],"1A") == 0);
+	assert(strcmp(d->genome.maps[it-1].chr_names[1],"3") == 0);
+    assert(d->genome.maps[it-1].chrs[1].type == GSC_LINKAGEGROUP_SIMPLE);
+    assert(d->genome.maps[it-1].chrs[0].type == GSC_LINKAGEGROUP_REORDER);
+    assert(d->genome.maps[it-1].chrs[1].map.simple.n_markers == 2);
+    assert(fabs(d->genome.maps[it-1].chrs[1].map.simple.expected_n_crossovers - 0.4) < TOL);
+    assert(fabs(d->genome.maps[it-1].chrs[1].map.simple.dists[0] - 0) < TOL);
+    assert(fabs(d->genome.maps[it-1].chrs[1].map.simple.dists[1] - 1) < TOL);
+    assert(d->genome.maps[it-1].chrs[1].map.simple.first_marker_index == 3);
+    assert(d->genome.maps[it-1].chrs[0].map.reorder.n_markers == 3);
+    assert(fabs(d->genome.maps[it-1].chrs[0].map.reorder.expected_n_crossovers - 0.1) < TOL);
+    assert(fabs(d->genome.maps[it-1].chrs[0].map.reorder.dists[0] - 0) < TOL);
+    assert(fabs(d->genome.maps[it-1].chrs[0].map.reorder.dists[1] - 0.83) < TOL);
+    assert(fabs(d->genome.maps[it-1].chrs[0].map.reorder.dists[2] - 1) < TOL);
+    assert(d->genome.maps[it-1].chrs[0].map.reorder.marker_indexes[0] == 2);
+    assert(d->genome.maps[it-1].chrs[0].map.reorder.marker_indexes[1] == 0);
+    assert(d->genome.maps[it-1].chrs[0].map.reorder.marker_indexes[2] == 1);
 
     SimData* d2 = create_empty_simdata(3);
     assert(load_mapfile(d2, filename).id == 1);
 
     assert(d2->genome.n_markers == 5);
-    assert(strcmp(d2->genome.marker_names[0],"first") == 0);
-    assert(strcmp(d2->genome.marker_names[1],"second") == 0);
-    assert(strcmp(d2->genome.marker_names[3],"3rd") == 0);
-    assert(strcmp(d2->genome.marker_names[4],"fourth") == 0);
-    assert(strcmp(d2->genome.marker_names[2],"5") == 0);
+	assert(strcmp(d2->genome.marker_names[0],"5") == 0);
+	assert(strcmp(d2->genome.marker_names[1],"3rd") == 0);
+    assert(strcmp(d2->genome.marker_names[2],"fourth") == 0);
+    assert(strcmp(d2->genome.marker_names[3],"first") == 0);
+    assert(strcmp(d2->genome.marker_names[4],"second") == 0);
     assert(strcmp(d2->genome.names_alphabetical[0][0],"3rd") == 0);
     assert(strcmp(d2->genome.names_alphabetical[1][0],"5") == 0);
     assert(strcmp(d2->genome.names_alphabetical[2][0],"first") == 0);
@@ -722,30 +725,32 @@ static void check_mapfile(SimData* d, char* filename, int it) {
     assert(strcmp(d2->genome.names_alphabetical[4][0],"second") == 0);
     assert(d2->genome.n_maps == 1);
     assert(d2->genome.maps[0].n_chr == 2);
+	assert(strcmp(d2->genome.maps[0].chr_names[0],"1A") == 0);
+	assert(strcmp(d2->genome.maps[0].chr_names[1],"3") == 0);
     assert(d2->genome.maps[0].chrs[0].type == GSC_LINKAGEGROUP_SIMPLE);
     assert(d2->genome.maps[0].chrs[1].type == GSC_LINKAGEGROUP_SIMPLE);
-    assert(d2->genome.maps[0].chrs[0].map.simple.n_markers == 2);
-    assert(fabs(d2->genome.maps[0].chrs[0].map.simple.expected_n_crossovers - 0.4) < TOL);
-    assert(fabs(d2->genome.maps[0].chrs[0].map.simple.dists[0] - 0) < TOL);
-    assert(fabs(d2->genome.maps[0].chrs[0].map.simple.dists[1] - 1) < TOL);
-    assert(d2->genome.maps[0].chrs[0].map.simple.first_marker_index == 0);
-    assert(d2->genome.maps[0].chrs[1].map.simple.n_markers == 3);
-    assert(fabs(d2->genome.maps[0].chrs[1].map.simple.expected_n_crossovers - 0.1) < TOL);
+    assert(d2->genome.maps[0].chrs[1].map.simple.n_markers == 2);
+    assert(fabs(d2->genome.maps[0].chrs[1].map.simple.expected_n_crossovers - 0.4) < TOL);
     assert(fabs(d2->genome.maps[0].chrs[1].map.simple.dists[0] - 0) < TOL);
-    assert(fabs(d2->genome.maps[0].chrs[1].map.simple.dists[1] - 0.83) < TOL);
-    assert(fabs(d2->genome.maps[0].chrs[1].map.simple.dists[2] - 1) < TOL);
-    assert(d2->genome.maps[0].chrs[1].map.simple.first_marker_index == 2);
+    assert(fabs(d2->genome.maps[0].chrs[1].map.simple.dists[1] - 1) < TOL);
+    assert(d2->genome.maps[0].chrs[1].map.simple.first_marker_index == 3);
+    assert(d2->genome.maps[0].chrs[0].map.simple.n_markers == 3);
+    assert(fabs(d2->genome.maps[0].chrs[0].map.simple.expected_n_crossovers - 0.1) < TOL);
+    assert(fabs(d2->genome.maps[0].chrs[0].map.simple.dists[0] - 0) < TOL);
+    assert(fabs(d2->genome.maps[0].chrs[0].map.simple.dists[1] - 0.83) < TOL);
+    assert(fabs(d2->genome.maps[0].chrs[0].map.simple.dists[2] - 1) < TOL);
+    assert(d2->genome.maps[0].chrs[0].map.simple.first_marker_index == 0);
     
     // test some simple automatic maps too are as expected
     GSC_GENOLEN_T nmaps = 2;
     assert(gsc_create_uniformspaced_recombmap(d2, 0, NULL, 10.5).id == nmaps);
     
     assert(d2->genome.n_markers == 5);
-    assert(strcmp(d2->genome.marker_names[0],"first") == 0);
-    assert(strcmp(d2->genome.marker_names[1],"second") == 0);
-    assert(strcmp(d2->genome.marker_names[3],"3rd") == 0);
-    assert(strcmp(d2->genome.marker_names[4],"fourth") == 0);
-    assert(strcmp(d2->genome.marker_names[2],"5") == 0);
+	assert(strcmp(d2->genome.marker_names[0],"5") == 0);
+	assert(strcmp(d2->genome.marker_names[1],"3rd") == 0);
+    assert(strcmp(d2->genome.marker_names[2],"fourth") == 0);
+    assert(strcmp(d2->genome.marker_names[3],"first") == 0);
+    assert(strcmp(d2->genome.marker_names[4],"second") == 0);
     assert(strcmp(d2->genome.names_alphabetical[0][0],"3rd") == 0);
     assert(strcmp(d2->genome.names_alphabetical[1][0],"5") == 0);
     assert(strcmp(d2->genome.names_alphabetical[2][0],"first") == 0);
@@ -753,19 +758,21 @@ static void check_mapfile(SimData* d, char* filename, int it) {
     assert(strcmp(d2->genome.names_alphabetical[4][0],"second") == 0);
     assert(d2->genome.n_maps == nmaps);
     assert(d2->genome.maps[0].n_chr == 2); // first map
+	assert(strcmp(d2->genome.maps[0].chr_names[0],"1A") == 0);
+	assert(strcmp(d2->genome.maps[0].chr_names[1],"3") == 0);
     assert(d2->genome.maps[0].chrs[0].type == GSC_LINKAGEGROUP_SIMPLE);
     assert(d2->genome.maps[0].chrs[1].type == GSC_LINKAGEGROUP_SIMPLE);
-    assert(d2->genome.maps[0].chrs[0].map.simple.n_markers == 2);
-    assert(fabs(d2->genome.maps[0].chrs[0].map.simple.expected_n_crossovers - 0.4) < TOL);
-    assert(fabs(d2->genome.maps[0].chrs[0].map.simple.dists[0] - 0) < TOL);
-    assert(fabs(d2->genome.maps[0].chrs[0].map.simple.dists[1] - 1) < TOL);
-    assert(d2->genome.maps[0].chrs[0].map.simple.first_marker_index == 0);
-    assert(d2->genome.maps[0].chrs[1].map.simple.n_markers == 3);
-    assert(fabs(d2->genome.maps[0].chrs[1].map.simple.expected_n_crossovers - 0.1) < TOL);
+    assert(d2->genome.maps[0].chrs[1].map.simple.n_markers == 2);
+    assert(fabs(d2->genome.maps[0].chrs[1].map.simple.expected_n_crossovers - 0.4) < TOL);
     assert(fabs(d2->genome.maps[0].chrs[1].map.simple.dists[0] - 0) < TOL);
-    assert(fabs(d2->genome.maps[0].chrs[1].map.simple.dists[1] - 0.83) < TOL);
-    assert(fabs(d2->genome.maps[0].chrs[1].map.simple.dists[2] - 1) < TOL);
-    assert(d2->genome.maps[0].chrs[1].map.simple.first_marker_index == 2);
+    assert(fabs(d2->genome.maps[0].chrs[1].map.simple.dists[1] - 1) < TOL);
+    assert(d2->genome.maps[0].chrs[1].map.simple.first_marker_index == 3);
+    assert(d2->genome.maps[0].chrs[0].map.simple.n_markers == 3);
+    assert(fabs(d2->genome.maps[0].chrs[0].map.simple.expected_n_crossovers - 0.1) < TOL);
+    assert(fabs(d2->genome.maps[0].chrs[0].map.simple.dists[0] - 0) < TOL);
+    assert(fabs(d2->genome.maps[0].chrs[0].map.simple.dists[1] - 0.83) < TOL);
+    assert(fabs(d2->genome.maps[0].chrs[0].map.simple.dists[2] - 1) < TOL);
+    assert(d2->genome.maps[0].chrs[0].map.simple.first_marker_index == 0);
     
     assert(d2->genome.maps[nmaps-1].n_chr == 1); // all-marker uniform-spaced map
     assert(d2->genome.maps[nmaps-1].chrs[0].type == GSC_LINKAGEGROUP_SIMPLE);
@@ -791,20 +798,20 @@ static void check_mapfile(SimData* d, char* filename, int it) {
     assert(fabs(d2->genome.maps[nmaps-1].chrs[0].map.reorder.dists[0] - 0) < TOL);
     assert(fabs(d2->genome.maps[nmaps-1].chrs[0].map.reorder.dists[1] - 1./2) < TOL);
     assert(fabs(d2->genome.maps[nmaps-1].chrs[0].map.reorder.dists[2] - 1) < TOL);
-    assert(d2->genome.maps[nmaps-1].chrs[0].map.reorder.marker_indexes[0] == 0);
-    assert(d2->genome.maps[nmaps-1].chrs[0].map.reorder.marker_indexes[1] == 2);
-    assert(d2->genome.maps[nmaps-1].chrs[0].map.reorder.marker_indexes[2] == 1);
+    assert(d2->genome.maps[nmaps-1].chrs[0].map.reorder.marker_indexes[0] == 3);
+    assert(d2->genome.maps[nmaps-1].chrs[0].map.reorder.marker_indexes[1] == 0);
+    assert(d2->genome.maps[nmaps-1].chrs[0].map.reorder.marker_indexes[2] == 4);
     
     // test independent/unlinked map 
     ++nmaps;
     assert(gsc_create_unlinked_recombmap(d2, 0, NULL).id == nmaps);
     
     assert(d2->genome.n_markers == 5);
-    assert(strcmp(d2->genome.marker_names[0],"first") == 0);
-    assert(strcmp(d2->genome.marker_names[1],"second") == 0);
-    assert(strcmp(d2->genome.marker_names[3],"3rd") == 0);
-    assert(strcmp(d2->genome.marker_names[4],"fourth") == 0);
-    assert(strcmp(d2->genome.marker_names[2],"5") == 0);
+	assert(strcmp(d2->genome.marker_names[0],"5") == 0);
+	assert(strcmp(d2->genome.marker_names[1],"3rd") == 0);
+    assert(strcmp(d2->genome.marker_names[2],"fourth") == 0);
+    assert(strcmp(d2->genome.marker_names[3],"first") == 0);
+    assert(strcmp(d2->genome.marker_names[4],"second") == 0);
     assert(strcmp(d2->genome.names_alphabetical[0][0],"3rd") == 0);
     assert(strcmp(d2->genome.names_alphabetical[1][0],"5") == 0);
     assert(strcmp(d2->genome.names_alphabetical[2][0],"first") == 0);
@@ -849,25 +856,27 @@ static void check_mapfile(SimData* d, char* filename, int it) {
     assert(fabs(d2->genome.maps[nmaps-1].chrs[0].map.simple.expected_n_crossovers - 0) < TOL);
     assert(fabs(d2->genome.maps[nmaps-1].chrs[1].map.simple.expected_n_crossovers - 0) < TOL);
     assert(fabs(d2->genome.maps[nmaps-1].chrs[2].map.simple.expected_n_crossovers - 0) < TOL);
-    assert(d2->genome.maps[nmaps-1].chrs[0].map.simple.first_marker_index == 0);
-    assert(d2->genome.maps[nmaps-1].chrs[1].map.simple.first_marker_index == 2);
-    assert(d2->genome.maps[nmaps-1].chrs[2].map.simple.first_marker_index == 1);
+    assert(d2->genome.maps[nmaps-1].chrs[0].map.simple.first_marker_index == 3);
+    assert(d2->genome.maps[nmaps-1].chrs[1].map.simple.first_marker_index == 0);
+    assert(d2->genome.maps[nmaps-1].chrs[2].map.simple.first_marker_index == 4);
 
     // & double-check first map is unchanged.
     assert(d2->genome.maps[0].n_chr == 2);
+	assert(strcmp(d2->genome.maps[0].chr_names[0],"1A") == 0);
+	assert(strcmp(d2->genome.maps[0].chr_names[1],"3") == 0);
     assert(d2->genome.maps[0].chrs[0].type == GSC_LINKAGEGROUP_SIMPLE);
     assert(d2->genome.maps[0].chrs[1].type == GSC_LINKAGEGROUP_SIMPLE);
-    assert(d2->genome.maps[0].chrs[0].map.simple.n_markers == 2);
-    assert(fabs(d2->genome.maps[0].chrs[0].map.simple.expected_n_crossovers - 0.4) < TOL);
-    assert(fabs(d2->genome.maps[0].chrs[0].map.simple.dists[0] - 0) < TOL);
-    assert(fabs(d2->genome.maps[0].chrs[0].map.simple.dists[1] - 1) < TOL);
-    assert(d2->genome.maps[0].chrs[0].map.simple.first_marker_index == 0);
-    assert(d2->genome.maps[0].chrs[1].map.simple.n_markers == 3);
-    assert(fabs(d2->genome.maps[0].chrs[1].map.simple.expected_n_crossovers - 0.1) < TOL);
+    assert(d2->genome.maps[0].chrs[1].map.simple.n_markers == 2);
+    assert(fabs(d2->genome.maps[0].chrs[1].map.simple.expected_n_crossovers - 0.4) < TOL);
     assert(fabs(d2->genome.maps[0].chrs[1].map.simple.dists[0] - 0) < TOL);
-    assert(fabs(d2->genome.maps[0].chrs[1].map.simple.dists[1] - 0.83) < TOL);
-    assert(fabs(d2->genome.maps[0].chrs[1].map.simple.dists[2] - 1) < TOL);
-    assert(d2->genome.maps[0].chrs[1].map.simple.first_marker_index == 2);
+    assert(fabs(d2->genome.maps[0].chrs[1].map.simple.dists[1] - 1) < TOL);
+    assert(d2->genome.maps[0].chrs[1].map.simple.first_marker_index == 3);
+    assert(d2->genome.maps[0].chrs[0].map.simple.n_markers == 3);
+    assert(fabs(d2->genome.maps[0].chrs[0].map.simple.expected_n_crossovers - 0.1) < TOL);
+    assert(fabs(d2->genome.maps[0].chrs[0].map.simple.dists[0] - 0) < TOL);
+    assert(fabs(d2->genome.maps[0].chrs[0].map.simple.dists[1] - 0.83) < TOL);
+    assert(fabs(d2->genome.maps[0].chrs[0].map.simple.dists[2] - 1) < TOL);
+    assert(d2->genome.maps[0].chrs[0].map.simple.first_marker_index == 0);
     
     delete_simdata(d2);
 }
@@ -957,11 +966,11 @@ int test_maploaders2(void) {
     write_to_file(filename, f1);
     assert(load_mapfile(d,filename).id == it);
     assert(d->genome.n_markers == 5);
-    assert(strcmp(d->genome.marker_names[0],"first") == 0);
-    assert(strcmp(d->genome.marker_names[1],"second") == 0);
-    assert(strcmp(d->genome.marker_names[2],"3rd") == 0);
-    assert(strcmp(d->genome.marker_names[3],"fourth") == 0);
-    assert(strcmp(d->genome.marker_names[4],"5") == 0);
+    assert(strcmp(d->genome.marker_names[0],"3rd") == 0);
+    assert(strcmp(d->genome.marker_names[1],"fourth") == 0);
+    assert(strcmp(d->genome.marker_names[2],"5") == 0);
+    assert(strcmp(d->genome.marker_names[3],"first") == 0);
+    assert(strcmp(d->genome.marker_names[4],"second") == 0);
     assert(strcmp(d->genome.names_alphabetical[0][0],"3rd") == 0);
     assert(strcmp(d->genome.names_alphabetical[1][0],"5") == 0);
     assert(strcmp(d->genome.names_alphabetical[2][0],"first") == 0);
@@ -972,20 +981,22 @@ int test_maploaders2(void) {
         assert(d->genome.map_ids[i].id == i+1);
     }
     assert(d->genome.maps[it-1].n_chr == 2);
+	assert(strcmp(d->genome.maps[it-1].chr_names[0],"1B") == 0);
+	assert(strcmp(d->genome.maps[it-1].chr_names[1],"3") == 0);
     assert(d->genome.maps[it-1].chrs[0].type == GSC_LINKAGEGROUP_REORDER);
     assert(d->genome.maps[it-1].chrs[1].type == GSC_LINKAGEGROUP_REORDER);
+    assert(d->genome.maps[it-1].chrs[0].map.reorder.n_markers == 2);
+    assert(fabs(d->genome.maps[it-1].chrs[0].map.reorder.expected_n_crossovers - 0.4) < TOL);
+    assert(fabs(d->genome.maps[it-1].chrs[0].map.reorder.dists[0] - 0) < TOL);
+    assert(fabs(d->genome.maps[it-1].chrs[0].map.reorder.dists[1] - 1) < TOL);
+    assert(d->genome.maps[it-1].chrs[0].map.reorder.marker_indexes[0] == 4);
+    assert(d->genome.maps[it-1].chrs[0].map.reorder.marker_indexes[1] == 3);
     assert(d->genome.maps[it-1].chrs[1].map.reorder.n_markers == 2);
-    assert(fabs(d->genome.maps[it-1].chrs[1].map.reorder.expected_n_crossovers - 0.4) < TOL);
+    assert(fabs(d->genome.maps[it-1].chrs[1].map.reorder.expected_n_crossovers - 0.083) < TOL);
     assert(fabs(d->genome.maps[it-1].chrs[1].map.reorder.dists[0] - 0) < TOL);
     assert(fabs(d->genome.maps[it-1].chrs[1].map.reorder.dists[1] - 1) < TOL);
     assert(d->genome.maps[it-1].chrs[1].map.reorder.marker_indexes[0] == 1);
     assert(d->genome.maps[it-1].chrs[1].map.reorder.marker_indexes[1] == 0);
-    assert(d->genome.maps[it-1].chrs[0].map.reorder.n_markers == 2);
-    assert(fabs(d->genome.maps[it-1].chrs[0].map.reorder.expected_n_crossovers - 0.083) < TOL);
-    assert(fabs(d->genome.maps[it-1].chrs[0].map.reorder.dists[0] - 0) < TOL);
-    assert(fabs(d->genome.maps[it-1].chrs[0].map.reorder.dists[1] - 1) < TOL);
-    assert(d->genome.maps[it-1].chrs[0].map.reorder.marker_indexes[0] == 3);
-    assert(d->genome.maps[it-1].chrs[0].map.reorder.marker_indexes[1] == 2);
     remove(filename);
     
     // Too many columns in one place
@@ -995,16 +1006,18 @@ int test_maploaders2(void) {
     assert(load_mapfile(d,filename).id == it);
     assert(d->genome.n_markers == 5);
     assert(d->genome.maps[it-1].n_chr == 2);
-    assert(d->genome.maps[it-1].chrs[1].type == GSC_LINKAGEGROUP_REORDER);
-    assert(d->genome.maps[it-1].chrs[0].type == GSC_LINKAGEGROUP_SIMPLE);
-    assert(d->genome.maps[it-1].chrs[0].map.simple.n_markers == 2);
-    assert(d->genome.maps[it-1].chrs[0].map.simple.first_marker_index == 0);
-    assert(d->genome.maps[it-1].chrs[1].map.reorder.n_markers == 2);
-    assert(fabs(d->genome.maps[it-1].chrs[1].map.reorder.expected_n_crossovers - 0.1) < TOL);
-    assert(fabs(d->genome.maps[it-1].chrs[1].map.reorder.dists[0] - 0) < TOL);
-    assert(fabs(d->genome.maps[it-1].chrs[1].map.reorder.dists[1] - 1) < TOL);
-    assert(d->genome.maps[it-1].chrs[1].map.reorder.marker_indexes[0] == 4);
-    assert(d->genome.maps[it-1].chrs[1].map.reorder.marker_indexes[1] == 3);
+	assert(strcmp(d->genome.maps[it-1].chr_names[0],"1A") == 0);
+	assert(strcmp(d->genome.maps[it-1].chr_names[1],"3") == 0);
+    assert(d->genome.maps[it-1].chrs[0].type == GSC_LINKAGEGROUP_REORDER);
+    assert(d->genome.maps[it-1].chrs[1].type == GSC_LINKAGEGROUP_SIMPLE);
+    assert(d->genome.maps[it-1].chrs[1].map.simple.n_markers == 2);
+    assert(d->genome.maps[it-1].chrs[1].map.simple.first_marker_index == 3);
+    assert(d->genome.maps[it-1].chrs[0].map.reorder.n_markers == 2);
+    assert(fabs(d->genome.maps[it-1].chrs[0].map.reorder.expected_n_crossovers - 0.1) < TOL);
+    assert(fabs(d->genome.maps[it-1].chrs[0].map.reorder.dists[0] - 0) < TOL);
+    assert(fabs(d->genome.maps[it-1].chrs[0].map.reorder.dists[1] - 1) < TOL);
+    assert(d->genome.maps[it-1].chrs[0].map.reorder.marker_indexes[0] == 2);
+    assert(d->genome.maps[it-1].chrs[0].map.reorder.marker_indexes[1] == 1);
     remove(filename);
     
     // Single line map with header. A single line map doesn't seem very useful but we may as well check against crashes
@@ -1014,9 +1027,10 @@ int test_maploaders2(void) {
     assert(load_mapfile(d,filename).id == it);
     assert(d->genome.n_markers == 5);
     assert(d->genome.maps[it-1].n_chr == 1);
+	assert(strcmp(d->genome.maps[it-1].chr_names[0],"1A") == 0);
     assert(d->genome.maps[it-1].chrs[0].type == GSC_LINKAGEGROUP_SIMPLE);
     assert(d->genome.maps[it-1].chrs[0].map.simple.n_markers == 1);
-    assert(d->genome.maps[it-1].chrs[0].map.simple.first_marker_index == 1);
+    assert(d->genome.maps[it-1].chrs[0].map.simple.first_marker_index == 4);
     remove(filename);
     
     // single line map without header
@@ -1026,9 +1040,10 @@ int test_maploaders2(void) {
     assert(load_mapfile(d,filename).id == it);
     assert(d->genome.n_markers == 5);
     assert(d->genome.maps[it-1].n_chr == 1);
+	assert(strcmp(d->genome.maps[it-1].chr_names[0],"1A") == 0);
     assert(d->genome.maps[it-1].chrs[0].type == GSC_LINKAGEGROUP_SIMPLE);
     assert(d->genome.maps[it-1].chrs[0].map.simple.n_markers == 1);
-    assert(d->genome.maps[it-1].chrs[0].map.simple.first_marker_index == 1);
+    assert(d->genome.maps[it-1].chrs[0].map.simple.first_marker_index == 4);
     remove(filename);
     
     // Single line inappropriate map
@@ -3137,6 +3152,7 @@ int test_local_effect_calculators(RND_U32 seed) {
 	for (int i = 0; i < empty.dim1; ++i) {
 		assert(empty.matrix[i] == NULL);
 	}
+	delete_dmatrix(&empty);
 
 	DecimalMatrix dec = calculate_local_bvs(d, init.group, b, init.effSet);
 	assert(dec.dim2 == 3); // blocks
@@ -4299,12 +4315,12 @@ int main(int argc, char* argv[]) {
     assert(strcmp(d->m->names[3], "G04") == 0);
     assert(strcmp(d->m->names[4], "G05") == 0);
     assert(strcmp(d->m->names[5], "G06") == 0);
-    assert(strncmp(d->m->alleles[0],"TTTTAA", 6) == 0); // G01
-    assert(strncmp(d->m->alleles[1],"TTTTAA", 6) == 0); // G02
-    assert(strncmp(d->m->alleles[2],"TTTAAA", 6) == 0); // G03
-    assert(strncmp(d->m->alleles[3],"TATAAA", 6) == 0); // G04
+    assert(strncmp(d->m->alleles[0],"TTAATT", 6) == 0); // G01
+    assert(strncmp(d->m->alleles[1],"TTAATT", 6) == 0); // G02
+    assert(strncmp(d->m->alleles[2],"TTAATA", 6) == 0); // G03
+    assert(strncmp(d->m->alleles[3],"TAAATA", 6) == 0); // G04
     assert(strncmp(d->m->alleles[4],"TTTTTT", 6) == 0); // G05
-    assert(strncmp(d->m->alleles[5],"ATTTAA", 6) == 0); // G06
+    assert(strncmp(d->m->alleles[5],"ATAATT", 6) == 0); // G06
     
     
     delete_simdata(d);

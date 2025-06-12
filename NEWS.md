@@ -9,7 +9,7 @@ Latest News       {#news}
 - CHANGE: when initialising the simulation with a genotype file but no map file, the default behaviour is now to generate a map where each genetic marker from the genotype file belongs to a separate chromosome/linkage group, and therefore each marker's inheritance is unlinked/independent of the inheritance of alleles at other markers. The old default (generated map where all markers are on the same chromosome, 1cM apart) is still available via function `gsc_create_uniformspaced_recombmap`. The new behaviour is available via function `gsc_create_unlinked_recombmap`.
 - A warning is now displayed if a map is loaded that has a very large chromosome length to number of markers ratio, which might correspond to loading a map with (invalid) base pair positions instead of (correct) centimorgan positions.
 - A warning is now displayed if the primary map contains duplicate marker names, because data from further input files will only be loaded into one of the duplicates.
-- The simulation internally now does store chromosome names, not just chromosome orderings.
+- The simulation now does store chromosome names internally, not just chromosome orderings.
 
 ## Improvements
 
