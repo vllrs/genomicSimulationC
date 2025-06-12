@@ -9,9 +9,9 @@
 version='v2' # v2 is the first numbered version. Prior versions are anonymous
 
 echo ">>> Deleting lines from sim-operations.c:"
-awk 'NR>=179 && NR<=213' ./sim-operations.c
+awk 'NR>=185 && NR<=219' ./sim-operations.c
 
-awk 'NR<179 || NR>213' ./sim-operations.c | sed \
+awk 'NR<185 || NR>219' ./sim-operations.c | sed \
     -e "5i // Converted using Rconversion.sh $version" \
 	-e 's+//RPACKINSERT ++g' \
 	-e 's/fprintf(stderr,\(.*\)); exit([0-9]);/error(\1);/g' \
