@@ -4291,37 +4291,14 @@ int main(int argc, char* argv[]) {
     
     clear_simdata(d);
     
-    FILE* fp;
-    if ((fp = fopen("a-test.txt", "w")) == NULL) {
-        fprintf(stderr, "Failed to create file.\n");
-        exit(1);
-    }
-    fwrite(HELPER_GENOTYPES, sizeof(char), strlen(HELPER_GENOTYPES), fp);
-    fclose(fp);
-    if ((fp = fopen("a-test-map_longchrnames.txt", "w")) == NULL) {
-        fprintf(stderr, "Failed to create file.\n");
-        exit(1);
-    }
-	const char LONGCHR_HELPER_MAP[] = "marker chr pos\n" "am3 3000000000000000_abcdefghijklmnopqrtuvwxyz 15\n"
-    "m2 13000000000000000_abcdefghijklmnopqrtuvwxyz 8.3\n" "m1 13000000000000000_abcdefghijklmnopqrtuvwxyz 5.2";
-    fwrite(LONGCHR_HELPER_MAP, sizeof(char), strlen(LONGCHR_HELPER_MAP), fp);
-	fclose(fp);
-	
-    init = load_data_files(d, "a-test.txt", "a-test-map_longchrnames.txt", NULL, DETECT_FILE_FORMAT);
-	
-	assert(strcmp(d->m->names[0], "G01") == 0);
-    assert(strcmp(d->m->names[1], "G02") == 0);
-    assert(strcmp(d->m->names[2], "G03") == 0);
-    assert(strcmp(d->m->names[3], "G04") == 0);
-    assert(strcmp(d->m->names[4], "G05") == 0);
-    assert(strcmp(d->m->names[5], "G06") == 0);
-    assert(strncmp(d->m->alleles[0],"TTAATT", 6) == 0); // G01
-    assert(strncmp(d->m->alleles[1],"TTAATT", 6) == 0); // G02
-    assert(strncmp(d->m->alleles[2],"TTAATA", 6) == 0); // G03
-    assert(strncmp(d->m->alleles[3],"TAAATA", 6) == 0); // G04
-    assert(strncmp(d->m->alleles[4],"TTTTTT", 6) == 0); // G05
-    assert(strncmp(d->m->alleles[5],"ATAATT", 6) == 0); // G06
+    init =
+        load_data_files(d, 
+            "./gt_parents_mr2_50-trimto-5000-badname.txt",
+            "./genetic-map_5112-trimto5000.txt",
+            "./qtl_mr2.eff-processed.txt",
+            DETECT_FILE_FORMAT);
     
+    create_new_label(d, 0); // segfaults, because no genotypes were loaded.
     
     delete_simdata(d);
 

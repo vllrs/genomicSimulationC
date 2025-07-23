@@ -29,6 +29,7 @@ Latest News       {#news}
 - Memory allocations of size 0 are no longer requested when attempting to use a MarkerBlocks struct that has been deleted.
 - `SimData.n_groups` is no longer decremented if a call is made to `delete_group` for a group number with zero members (a nonexistent group). 
 - Fix a bug during genotype file loading where alleles would not be saved to the SimData if the program was creating a genetic map from the markers in the file. 
+- Fix a bug where the simulation would crash on the first command run after a simulation-initialisation where a genotype file was provided, but genomicSimulation failed to load any genotypes from it (which could be caused by an incorrect genotype file name or an incorrect genotype file format)
 
 # genomicSimulation v0.2.6
 
