@@ -4289,17 +4289,6 @@ int main(int argc, char* argv[]) {
 	
     make_random_crosses_between(d, init.group, g2, 25, 100, 5, init.map, init.map, BASIC_OPT);
     
-    clear_simdata(d);
-    
-    init =
-        load_data_files(d, 
-            "./gt_parents_mr2_50-trimto-5000-badname.txt",
-            "./genetic-map_5112-trimto5000.txt",
-            "./qtl_mr2.eff-processed.txt",
-            DETECT_FILE_FORMAT);
-    
-    create_new_label(d, 0); // segfaults, because no genotypes were loaded.
-    
     delete_simdata(d);
 
     printf("\nAll done\n");

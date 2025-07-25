@@ -1,7 +1,9 @@
 Latest News       {#news}
 ===========
 
-# genomicSimulation (development version)
+# genomicSimulation v0.3
+
+This release would be v0.2.7 in the old numbering scheme, but the numbering scheme is being simplified.
 
 ## New Features
 
@@ -13,12 +15,13 @@ Latest News       {#news}
 
 ## Improvements
 
+- Small improvements in speed of breeding value calculation.
 - Generalisation of header-parsing logic of `load_mapfile` and `load_effectfile`, to prepare for accepting further columns in future.
 - BREAKING CHANGE: `calculate_local_bvs` now returns local BVs in a DecimalMatrix and can be called with a group number or NO_GROUP, like other `calculate_` functions. Removed `calculate_group_local_bvs` as its function was subsumed. To calculate and save local BVs to a file, use the function `save_local_bvs`.
-- `EffectMatrix` has been replaced with new struct `MarkerEffects`. To match, `gsc_delete_effect_matrix` has been renamed to `gsc_delete_effect_set`.
-- Makefile has a new target "sharedlib" (run `make sharedlib`) to compile genomicSimulation as a shared library, rather than a standalone executable that runs the test suite.
+- BREAKING CHANGE: `EffectMatrix` has been replaced with new struct `MarkerEffects`. To match, `gsc_delete_effect_matrix` has been renamed to `gsc_delete_effect_set`.
 - The conversion script that creates the library for the genomicSimulation R package now converts `fprintf(stderr, "msg")` to `Rprintf("NOTE! msg")`, instead of `warning("msg")`, so that non-stopping errors like these are still printed if a segfault occurs. (By default, R hides `warning` messages until the end of execution scope, and so loses them if a segfault occurs). 
 - The conversion script that creates the library for the genomicSimulation R package now adds a tag to converted files below the version number, noting that they have been through the conversion process, and what version of the conversion script converted them. The first version-numbered conversion script is version "v2".
+- Makefile has a new target "sharedlib" (run `make sharedlib`) to compile genomicSimulation as a shared library, rather than a standalone executable that runs the test suite.
 
 ## Bug Fixes
 
