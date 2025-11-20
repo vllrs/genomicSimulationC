@@ -32,9 +32,9 @@ awk 'NR<185 || NR>219' ./sim-operations.c | sed \
 	> ../sim-operations-for-R.c
 	
 echo ">>> Deleting lines from sim-operations.h:"
-awk 'NR>=1099 && NR<=1120' ./sim-operations.h
+awk 'NR>=1087 && NR<=1108' ./sim-operations.h
 
-awk 'NR<1099 || NR>1120' ./sim-operations.h | sed \
+awk 'NR<1087 || NR>1108' ./sim-operations.h | sed \
     -e "5i // Converted using Rconversion.sh $version" \
 	-e 's+#include "lib/rnd.h"++g' \
 	-e 's/RND_U32 RNGseed//g' \

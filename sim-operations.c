@@ -1,7 +1,7 @@
 #ifndef SIM_OPERATIONS
 #define SIM_OPERATIONS
 #include "sim-operations.h"
-/* genomicSimulationC v0.3 - last edit 23 July 2025 */
+/* genomicSimulationC v0.3.010 - last edit 20 Nov 2025 */
 
 /** Default parameter values for GenOptions, to help with quick scripts and prototypes.
  *
@@ -587,16 +587,25 @@ static void gsc_set_names(gsc_AlleleMatrix* a,
                           const char* prefix, 
                           const int suffix, 
                           const GSC_LOCALX_T from_index) {
-    char sname[NAME_LENGTH];
-    char format[NAME_LENGTH];
+    char* format;
     if (prefix == NULL) {
         // make it an empty string instead, so it is not displayed as (null)
         prefix = "";
     }
-    // use sname to save the number of digits to pad by:
-    sprintf(sname, "%%0%dd", gsc_get_integer_digits(a->n_genotypes - from_index));  // Creates: %0[n]d
-    sprintf(format, "%s%s", prefix, sname);
 
+    int digits = gsc_get_integer_digits(suffix + from_index);
+    if (suffix < 0) { 
+        int altmaxdigits = gsc_get_integer_digits(suffix);
+        if (altmaxdigits > digits) { digits = altmaxdigits; }
+    }
+    char* formatsuffix = gsc_malloc_wrap(sizeof(char)*(3 + gsc_get_integer_digits(digits) + 1), GSC_TRUE);
+    sprintf(formatsuffix, "%%0%dd", digits);  // Creates: %0[n]d
+    
+    format = gsc_malloc_wrap(sizeof(char)*(strlen(prefix) + strlen(formatsuffix) + 1), GSC_TRUE);
+    strcpy(format, prefix);
+    strcat(format, formatsuffix);
+    GSC_FREE(formatsuffix);
+    
     int livingsuffix = suffix;
     ++livingsuffix;
     for (GSC_LOCALX_T i = from_index; i < a->n_genotypes; ++i) {
@@ -606,12 +615,13 @@ static void gsc_set_names(gsc_AlleleMatrix* a,
         }
 
         // save new name
-        sprintf(sname, format, livingsuffix);
-        a->names[i] = gsc_malloc_wrap(sizeof(char) * (strlen(sname) + 1),GSC_TRUE);
-        strcpy(a->names[i], sname);
+        a->names[i] = gsc_malloc_wrap(sizeof(char)*(strlen(format) + digits + 1), GSC_TRUE);
+        sprintf(a->names[i], format, livingsuffix);
 
         ++livingsuffix;
     }
+
+    GSC_FREE(format);
 }
 
 /** Initialises a new custom label.
@@ -2630,6 +2640,40 @@ gsc_PedigreeID gsc_get_id_of_index(const gsc_AlleleMatrix* start,
 
         if ((m = m->next) == NULL) {
             fprintf(stderr, "Didn't find the index %lu\n", (long unsigned int) index);
+            return GSC_NO_PEDIGREE;
+        }
+    }
+}
+
+/** Search for a genotype with a particular name in a linked
+ * list of gsc_AlleleMatrix, and return its pedigree ID in the list.
+ *
+ * This function must check every genotype in the linked list for matches, so will be
+ * relatively slow.
+ *
+ * @param start Pointer to the first of a linked list of gsc_AlleleMatrixes in which
+ * the genotype is assumed to be found.
+ * @param name a string to match to the name of the target
+ * @returns the PedigreeID of the first sequentially
+ * located genotype whose name is the same as the provided name, or GSC_NO_PEDIGREE if the name
+ * could not be found.
+ */
+gsc_PedigreeID gsc_get_id_of_name( const gsc_AlleleMatrix* start, const char* name) {
+    if (start == NULL) {
+        fprintf(stderr,"Invalid start parameter: gsc_AlleleMatrix* `start` must exist\n");
+        return GSC_NO_PEDIGREE;
+    }
+    const gsc_AlleleMatrix* m = start;
+
+    while (1) {
+        for (GSC_LOCALX_T j = 0; j < m->n_genotypes; ++j) {
+            if (m->names[j] != NULL && strcmp(m->names[j], name) == 0) {
+                return m->ids[j];
+            }
+        }
+
+        if ((m = m->next) == NULL) {
+            fprintf(stderr, "Didn't find the name %s\n", name);
             return GSC_NO_PEDIGREE;
         }
     }
@@ -8047,16 +8091,17 @@ void gsc_generate_clone(gsc_SimData* d,
 /** Opens file for writing save-as-you-go pedigrees in accordance with gsc_GenOptions */
 static FILE* gsc_helper_genoptions_save_pedigrees_setup(const gsc_GenOptions g) {
     FILE* fp = NULL;
-    if (g.will_save_pedigree_to_file) {                     
-        char tmpname_p[NAME_LENGTH];
-        if (g.filename_prefix != NULL) {
-            strncpy(tmpname_p, g.filename_prefix,
-                    sizeof(char)*(NAME_LENGTH-13));
-        } else {
-            strcpy(tmpname_p, "out");
-        }
-        strcat(tmpname_p, "-pedigree.txt");
-        fp = fopen(tmpname_p, "w"); 
+    if (g.will_save_pedigree_to_file) { 
+        const char* prefix = g.filename_prefix;
+        char suffix[] = "-pedigree.txt";
+        char* tmpname_p;
+        if (prefix == NULL) { prefix = "out"; }
+        int prefixlen = strlen(prefix);
+        tmpname_p = gsc_malloc_wrap(sizeof(char)*(prefixlen + strlen(suffix) + 1), GSC_TRUE);
+        strcpy(tmpname_p, prefix);
+        strcat(tmpname_p, suffix);
+        fp = fopen(tmpname_p, "w");
+        GSC_FREE(tmpname_p);
     }
     return fp;
 }
@@ -8072,15 +8117,16 @@ static FILE* gsc_helper_genoptions_save_bvs_setup(const gsc_SimData* d,
     if (g.will_save_bvs_to_file.id != GSC_NO_EFFECTSET.id) {
         *effIndexp = gsc_get_index_of_eff_set(d,g.will_save_bvs_to_file);
         if (*effIndexp != GSC_NA_IDX) {
-            char tmpname_b[NAME_LENGTH];
-            if (g.filename_prefix != NULL) {
-                strncpy(tmpname_b, g.filename_prefix, 
-                        sizeof(char)*(NAME_LENGTH-7));
-            } else {
-                strcpy(tmpname_b, "out");
-            }
-            strcat(tmpname_b, "-bv.txt");
+            const char* prefix = g.filename_prefix;
+            char suffix[] = "-bv.txt";
+            char* tmpname_b;
+            if (prefix == NULL) { prefix = "out"; }
+            int prefixlen = strlen(prefix);
+            tmpname_b = gsc_malloc_wrap(sizeof(char)*(prefixlen + strlen(suffix) + 1), GSC_TRUE);
+            strcpy(tmpname_b, prefix);
+            strcat(tmpname_b, suffix);
             fe = fopen(tmpname_b, "w");
+            GSC_FREE(tmpname_b);
         }
     }
     return fe;
@@ -8090,15 +8136,17 @@ static FILE* gsc_helper_genoptions_save_genotypes_setup(const gsc_SimData* d,
                                                         const gsc_GenOptions g) {
     FILE* fg = NULL;
     if (g.will_save_alleles_to_file) {
-        char tmpname_g[NAME_LENGTH];
-        if (g.filename_prefix != NULL) {
-            strncpy(tmpname_g, g.filename_prefix,
-                    sizeof(char)*(NAME_LENGTH-13));
-        } else {
-            strcpy(tmpname_g, "out");
-        }
-        strcat(tmpname_g, "-genotype.txt");
+        const char* prefix = g.filename_prefix;
+        char suffix[] = "-genotype.txt";
+        char* tmpname_g;
+        if (prefix == NULL) { prefix = "out"; }
+        int prefixlen = strlen(prefix);
+        tmpname_g = gsc_malloc_wrap(sizeof(char)*(prefixlen + strlen(suffix) + 1), GSC_TRUE);
+        strcpy(tmpname_g, prefix);
+        strcat(tmpname_g, suffix);
         fg = fopen(tmpname_g, "w");
+        GSC_FREE(tmpname_g);
+        
         // Save genetic markers as header row.
         gsc_save_utility_genotypes(fg, NULL, d->genome.n_markers, d->genome.marker_names, GSC_FALSE);
     }
@@ -9236,6 +9284,7 @@ gsc_GroupNum gsc_make_crosses_from_file(gsc_SimData* d,
                                         const gsc_MapID map1, 
                                         const gsc_MapID map2, 
                                         const gsc_GenOptions g) {
+    // NOTE: currently has no checking that table is the correct size
     struct gsc_TableSize t = gsc_get_file_dimensions(input_file, '\t');
     if (t.num_rows < 1) {
         fprintf(stderr, "No crosses exist in that file\n");
@@ -9243,22 +9292,21 @@ gsc_GroupNum gsc_make_crosses_from_file(gsc_SimData* d,
     }
 
     //open file
-    FILE* fp;
-    if ((fp = fopen(input_file, "r")) == NULL) {
-        fprintf(stderr, "Failed to open file %s.\n", input_file); exit(1);
-    }
+    gsc_TableFileReader tb = gsc_tablefilereader_create(input_file);
 
     GSC_CREATE_BUFFER(combos0,GSC_GLOBALX_T,t.num_rows);
     GSC_CREATE_BUFFER(combos1,GSC_GLOBALX_T,t.num_rows);
     GSC_GLOBALX_T* combinations[2] = {combos0,combos1};
-    char buffer[2][NAME_LENGTH];
+
     // for each row in file
     GSC_GLOBALX_T bufferi = 0;
     for (int filei = 0; filei < t.num_rows; ++filei) {
-        // load the four grandparents
-        fscanf(fp, "%s %s \n", buffer[0], buffer[1]);
-        combinations[0][bufferi] = gsc_get_index_of_name(d->m, buffer[0]);
-        combinations[1][bufferi] = gsc_get_index_of_name(d->m, buffer[1]);
+        for (int ix = 0; ix < 2; ++ix) {
+            gsc_TableFileCell c = gsc_tablefilereader_get_next_cell(&tb);
+            char tmp = c.cell[c.cell_len]; c.cell[c.cell_len] = '\0';
+            combinations[ix][bufferi] = gsc_get_index_of_name(d->m, c.cell);
+            c.cell[c.cell_len] = tmp;
+        }
         if (combinations[0][bufferi] < 0 || combinations[1][bufferi] < 0) {
             fprintf(stderr, "Parents on file %s line %lu could not be found\n", input_file, (long unsigned int) filei);
         } else {
@@ -9266,7 +9314,7 @@ gsc_GroupNum gsc_make_crosses_from_file(gsc_SimData* d,
         }
     }
 
-    fclose(fp);
+    gsc_tablefilereader_close(&tb);
     gsc_GroupNum out = gsc_make_targeted_crosses(d, bufferi, combinations[0], combinations[1], map1, map2, g);
     GSC_DELETE_BUFFER(combos0);
     GSC_DELETE_BUFFER(combos1);
@@ -9310,6 +9358,7 @@ gsc_GroupNum gsc_make_double_crosses_from_file(gsc_SimData* d,
                                                const gsc_MapID map1, 
                                                const gsc_MapID map2, 
                                                const gsc_GenOptions g) {
+    // NOTE: currently has no checking that table is the correct size
     struct gsc_TableSize t = gsc_get_file_dimensions(input_file, '\t');
     if (t.num_rows < 1) {
         fprintf(stderr, "No crosses exist in that file\n");
@@ -9317,23 +9366,22 @@ gsc_GroupNum gsc_make_double_crosses_from_file(gsc_SimData* d,
     }
 
     //open file
-    FILE* fp;
-    if ((fp = fopen(input_file, "r")) == NULL) {
-        fprintf(stderr, "Failed to open file %s.\n", input_file); exit(1);
-    }
-
+    gsc_TableFileReader tb = gsc_tablefilereader_create(input_file);
+    
     GSC_CREATE_BUFFER(combos0,GSC_GLOBALX_T,t.num_rows);
     GSC_CREATE_BUFFER(combos1,GSC_GLOBALX_T,t.num_rows);
     GSC_GLOBALX_T* combinations[2] = {combos0,combos1};
-    char buffer[4][NAME_LENGTH];
-    const char* to_buffer[] = {buffer[0], buffer[1], buffer[2], buffer[3]};
     gsc_PedigreeID g0_id[4];
     GSC_GLOBALX_T f1_i[2];
     // for each row in file
     for (GSC_GLOBALX_T i = 0; i < t.num_rows; ++i) {
         // load the four grandparents
-        fscanf(fp, "%s %s %s %s \n", buffer[0], buffer[1], buffer[2], buffer[3]);
-        gsc_get_ids_of_names(d->m, 4, to_buffer, g0_id);
+        for (int ix = 0; ix < 4; ++ix) {
+            gsc_TableFileCell c = gsc_tablefilereader_get_next_cell(&tb);
+            char tmp = c.cell[c.cell_len]; c.cell[c.cell_len] = '\0';
+            g0_id[ix] = gsc_get_id_of_name(d->m, c.cell);
+            c.cell[c.cell_len] = tmp;
+        }
         if (g0_id[0].id == GSC_NO_PEDIGREE.id || g0_id[1].id == GSC_NO_PEDIGREE.id || g0_id[2].id == GSC_NO_PEDIGREE.id || g0_id[3].id == GSC_NO_PEDIGREE.id) {
             fprintf(stderr, "Could not go ahead with the line %lu cross - g0 names not in records\n", 
                     (long unsigned int) i);
@@ -9368,7 +9416,7 @@ gsc_GroupNum gsc_make_double_crosses_from_file(gsc_SimData* d,
 
     }
 
-    fclose(fp);
+    gsc_tablefilereader_close(&tb);
     gsc_GroupNum out = gsc_make_targeted_crosses(d, t.num_rows, combinations[0], combinations[1], 
                                                  map1, map2, g);
     GSC_DELETE_BUFFER(combos0);

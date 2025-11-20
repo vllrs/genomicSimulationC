@@ -1,6 +1,10 @@
 Latest News       {#news}
 ===========
 
+## Improvements 
+
+- Removed NAME_LENGTH parameter. Genotype and file names now have no maximum length (as long as it's still within what your computer can tolerate!)
+
 # genomicSimulation v0.3
 
 This release would be v0.2.7 in the old numbering scheme, but the numbering scheme is being simplified.
