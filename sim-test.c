@@ -3359,15 +3359,7 @@ int test_crossing(SimData *d, GroupNum g0) {
     
     test_targeted_crossing(d, g0);
 
-    FILE* fp;
-    if ((fp = fopen("a-test-plan.txt", "w")) == NULL) {
-        fprintf(stderr, "Failed to create file.\n");
-        exit(1);
-    }
-    fwrite(HELPER_PLAN, sizeof(char), strlen(HELPER_PLAN), fp);
-    fclose(fp);
-    GroupNum gfile = test_crossing_from_file(d, "a-test-plan.txt");
-    remove("a-test-plan.txt");
+    GroupNum gfile = test_crossing_from_file(d);
 
     GroupNum gselfed = test_crossing_selfing(d, g0);
 
@@ -3440,7 +3432,44 @@ GroupNum test_crossing_unidirectional(SimData *d, GroupNum g0) {
     return g1;
 }
 
-GroupNum test_crossing_from_file(SimData *d, char* fname) {
+GroupNum test_crossing_from_file(SimData *d) {
+    FILE* fp;
+    char fname[] = "a-test-plan.txt";
+    int n_existing = d->m->n_genotypes;
+    assert(d->m->n_markers == 3);
+
+    if ((fp = fopen(fname, "w")) == NULL) {
+        fprintf(stderr, "Failed to create file.\n");
+        exit(1);
+    }
+    fwrite(HELPER_PLAN, sizeof(char), strlen(HELPER_PLAN), fp);
+    fclose(fp);
+
+    GenOptions g1 = BASIC_OPT;
+    g1.will_track_pedigree = GSC_TRUE;
+
+    GroupNum filecrosses = make_crosses_from_file(d, fname, NO_MAP, NO_MAP, g1);
+    assert(strcmp(d->m->names[0], "G01") == 0);
+    assert(strcmp(d->m->names[1], "G02") == 0);
+    assert(strcmp(d->m->names[2], "G03") == 0);
+    assert(strcmp(d->m->names[3], "G04") == 0);
+    assert(strcmp(d->m->names[4], "G05") == 0);
+    assert(strcmp(d->m->names[5], "G06") == 0);
+    assert(d->m->n_genotypes == n_existing + 3);
+    assert(d->m->pedigrees[0][n_existing].id == d->m->ids[0].id && d->m->pedigrees[1][n_existing].id == d->m->ids[1].id);
+    assert(d->m->pedigrees[0][n_existing+1].id == d->m->ids[2].id && d->m->pedigrees[1][n_existing+1].id == d->m->ids[4].id);
+    assert(d->m->pedigrees[0][n_existing+2].id == d->m->ids[3].id && d->m->pedigrees[1][n_existing+2].id == d->m->ids[0].id);
+    delete_group(d, filecrosses);
+    assert(d->m->n_genotypes == n_existing);
+    
+    // & check for a double-crossing plan
+    if ((fp = fopen(fname, "w")) == NULL) {
+        fprintf(stderr, "Failed to create file.\n");
+        exit(1);
+    }
+    fwrite(HELPER_PLAN_GP, sizeof(char), strlen(HELPER_PLAN_GP), fp);
+    fclose(fp);
+
     // check we can load a plan from a file.
     GenOptions g2 = BASIC_OPT;
     g2.will_track_pedigree = GSC_TRUE;
@@ -3448,16 +3477,17 @@ GroupNum test_crossing_from_file(SimData *d, char* fname) {
     //g2.will_save_pedigree_to_file = GSC_TRUE;
     //2.filename_prefix = "atest-dc";
     GroupNum bp = make_double_crosses_from_file(d, fname, NO_MAP, NO_MAP, g2);
-    assert(d->m->pedigrees[0][21].id == d->m->ids[6].id && d->m->pedigrees[1][21].id == 23);
-    assert(d->m->pedigrees[0][23].id == d->m->ids[7].id && d->m->pedigrees[1][23].id == 27);
-    assert(d->m->pedigrees[0][25].id == d->m->ids[20].id && d->m->pedigrees[1][25].id == 15);
-    assert(d->m->pedigrees[0][22].id == 13 && d->m->pedigrees[1][22].id == 23);
-    assert(d->m->pedigrees[0][24].id == 14 && d->m->pedigrees[1][24].id == 27);
-    assert(d->m->pedigrees[0][26].id == 27 && d->m->pedigrees[1][26].id == 15);
-    assert(d->m->n_genotypes == 27);
+    assert(d->m->pedigrees[0][n_existing].id == d->m->ids[6].id && d->m->pedigrees[1][n_existing].id == 23);
+    assert(d->m->pedigrees[0][n_existing+2].id == d->m->ids[7].id && d->m->pedigrees[1][n_existing+2].id == 27);
+    assert(d->m->pedigrees[0][n_existing+4].id == d->m->ids[20].id && d->m->pedigrees[1][n_existing+4].id == 15);
+    assert(d->m->pedigrees[0][n_existing+1].id == 13 && d->m->pedigrees[1][n_existing+1].id == 23);
+    assert(d->m->pedigrees[0][n_existing+3].id == 14 && d->m->pedigrees[1][n_existing+3].id == 27);
+    assert(d->m->pedigrees[0][n_existing+5].id == 27 && d->m->pedigrees[1][n_existing+5].id == 15);
+    assert(d->m->n_genotypes == n_existing + 6);
     assert(d->m->n_markers == 3);
     printf("...crossed combinations from file correctly\n");
 
+    remove(fname);
     return bp;
 }
 

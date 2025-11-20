@@ -20,7 +20,9 @@ const char HELPER_EFF2[] = "m1 A 1\n";
 const char HELPER_EFF3[] = "m1 A -0.8 0.2\n" "m1 T 0.9 -0.2\n"
     "m2 A -0.1 -0.4\n" "m2 T -0.5 0.4\n"
     "am3 A 0.1 0\n" "am3 T -0.1 0.12\n";
-const char HELPER_PLAN[] = "G01\tG02\tG03\tG05\n"
+const char HELPER_PLAN[] = "G01 G02\nG03 G05\n"
+    "G05 G07\nG04 G01\n";
+const char HELPER_PLAN_GP[] = "G01\tG02\tG03\tG05\n"
     "G01\tG03\tG05\tG06\n" "G05\tG06\tG01\tG04";
 
 // Helper2 has twice(!) the number of markers. It's for testing marker blocks/local GEBV calculation.
@@ -703,7 +705,7 @@ int test_getters(SimData* d, GroupNum gp);
 
 int test_crossing(SimData *d, GroupNum g0);
 GroupNum test_crossing_unidirectional(SimData *d, GroupNum g0);
-GroupNum test_crossing_from_file(SimData *d, char* fname);
+GroupNum test_crossing_from_file(SimData *d);
 GroupNum test_crossing_selfing(SimData *d, GroupNum g1);
 int test_crossing_randomly(SimData *d, GroupNum g1);
 int test_targeted_crossing(SimData* d, GroupNum g1);

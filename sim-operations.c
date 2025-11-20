@@ -1,7 +1,7 @@
 #ifndef SIM_OPERATIONS
 #define SIM_OPERATIONS
 #include "sim-operations.h"
-/* genomicSimulationC v0.3.010 - last edit 20 Nov 2025 */
+/* genomicSimulationC v0.3.011 - last edit 20 Nov 2025 */
 
 /** Default parameter values for GenOptions, to help with quick scripts and prototypes.
  *
@@ -9284,38 +9284,63 @@ gsc_GroupNum gsc_make_crosses_from_file(gsc_SimData* d,
                                         const gsc_MapID map1, 
                                         const gsc_MapID map2, 
                                         const gsc_GenOptions g) {
-    // NOTE: currently has no checking that table is the correct size
-    struct gsc_TableSize t = gsc_get_file_dimensions(input_file, '\t');
-    if (t.num_rows < 1) {
-        fprintf(stderr, "No crosses exist in that file\n");
-        return GSC_NO_GROUP;
-    }
-
     //open file
     gsc_TableFileReader tb = gsc_tablefilereader_create(input_file);
 
-    GSC_CREATE_BUFFER(combos0,GSC_GLOBALX_T,t.num_rows);
-    GSC_CREATE_BUFFER(combos1,GSC_GLOBALX_T,t.num_rows);
+    GSC_CREATE_BUFFER(combos0,GSC_GLOBALX_T, 100);
+    GSC_CREATE_BUFFER(combos1,GSC_GLOBALX_T, 100);
     GSC_GLOBALX_T* combinations[2] = {combos0,combos1};
+    combinations[0][0] = GSC_NA_GLOBALX; combinations[1][0] = GSC_NA_GLOBALX;
 
-    // for each row in file
-    GSC_GLOBALX_T bufferi = 0;
-    for (int filei = 0; filei < t.num_rows; ++filei) {
-        for (int ix = 0; ix < 2; ++ix) {
-            gsc_TableFileCell c = gsc_tablefilereader_get_next_cell(&tb);
+    gsc_TableFileCell c;
+    GSC_GLOBALX_T row = 1, frow = 1; // frow stores row in file, row stores row in "combinations"
+    int col = 1;
+    int EXPECTED_N_COL = 2;
+    do {
+        c = gsc_tablefilereader_get_next_cell(&tb);
+
+        if (c.predCol) { ++col; }
+        if (col == EXPECTED_N_COL + 1) {
+            fprintf(stderr, "Too many columns in file %s line %lu: ignoring extra values\n", input_file, (long unsigned int) frow);
+        } // cols above 3 will not print this message 
+        
+        if (c.predNewline) {
+            if (col < EXPECTED_N_COL) {
+                fprintf(stderr, "Too few columns in file %s line %lu: ignoring this row\n", input_file, (long unsigned int) frow);
+                combinations[0][row-1] = GSC_NA_GLOBALX; combinations[1][row-1] = GSC_NA_GLOBALX;
+            } else if (combinations[0][row-1] == GSC_NA_GLOBALX || combinations[1][row-1] == GSC_NA_GLOBALX) {
+                fprintf(stderr, "Parents on file %s line %lu do not (all) exist: ignoring this row\n", input_file, (long unsigned int) frow);
+                combinations[0][row-1] = GSC_NA_GLOBALX; combinations[1][row-1] = GSC_NA_GLOBALX;
+            } else {
+                ++row;
+            }
+        
+            ++frow;
+            col = 1;
+        }
+        if (row > combos0cap) {
+            GSC_STRETCH_BUFFER(combos0, 2*combos0cap);
+            GSC_STRETCH_BUFFER(combos1, 2*combos1cap);
+            combinations[0] = combos0; combinations[1] = combos1;
+        }
+
+        if (col <= EXPECTED_N_COL && c.cell != NULL) {
             char tmp = c.cell[c.cell_len]; c.cell[c.cell_len] = '\0';
-            combinations[ix][bufferi] = gsc_get_index_of_name(d->m, c.cell);
+            combinations[col-1][row-1] = gsc_get_index_of_name(d->m, c.cell);
             c.cell[c.cell_len] = tmp;
         }
-        if (combinations[0][bufferi] < 0 || combinations[1][bufferi] < 0) {
-            fprintf(stderr, "Parents on file %s line %lu could not be found\n", input_file, (long unsigned int) filei);
-        } else {
-            ++bufferi;
-        }
-    }
 
+        if (!c.isCellShallow) { GSC_FREE(c.cell); }
+    } while (!c.eof);
+
+    if (c.predNewline) { --row; } // trailing newlines shouldn't increase row count
+    if (combinations[0][row-1] == GSC_NA_GLOBALX || combinations[1][row-1] == GSC_NA_GLOBALX) {
+        fprintf(stderr, "Parents on file %s line %lu do not (all) exist: ignoring this row\n", input_file, (long unsigned int) frow);
+        --row;
+    } 
+    
     gsc_tablefilereader_close(&tb);
-    gsc_GroupNum out = gsc_make_targeted_crosses(d, bufferi, combinations[0], combinations[1], map1, map2, g);
+    gsc_GroupNum out = gsc_make_targeted_crosses(d, row, combinations[0], combinations[1], map1, map2, g);
     GSC_DELETE_BUFFER(combos0);
     GSC_DELETE_BUFFER(combos1);
     return out;
@@ -9358,66 +9383,94 @@ gsc_GroupNum gsc_make_double_crosses_from_file(gsc_SimData* d,
                                                const gsc_MapID map1, 
                                                const gsc_MapID map2, 
                                                const gsc_GenOptions g) {
-    // NOTE: currently has no checking that table is the correct size
-    struct gsc_TableSize t = gsc_get_file_dimensions(input_file, '\t');
-    if (t.num_rows < 1) {
-        fprintf(stderr, "No crosses exist in that file\n");
-        return GSC_NO_GROUP;
-    }
-
     //open file
     gsc_TableFileReader tb = gsc_tablefilereader_create(input_file);
     
-    GSC_CREATE_BUFFER(combos0,GSC_GLOBALX_T,t.num_rows);
-    GSC_CREATE_BUFFER(combos1,GSC_GLOBALX_T,t.num_rows);
+    GSC_CREATE_BUFFER(combos0,GSC_GLOBALX_T,100);
+    GSC_CREATE_BUFFER(combos1,GSC_GLOBALX_T,100);
     GSC_GLOBALX_T* combinations[2] = {combos0,combos1};
     gsc_PedigreeID g0_id[4];
     GSC_GLOBALX_T f1_i[2];
-    // for each row in file
-    for (GSC_GLOBALX_T i = 0; i < t.num_rows; ++i) {
-        // load the four grandparents
-        for (int ix = 0; ix < 4; ++ix) {
-            gsc_TableFileCell c = gsc_tablefilereader_get_next_cell(&tb);
-            char tmp = c.cell[c.cell_len]; c.cell[c.cell_len] = '\0';
-            g0_id[ix] = gsc_get_id_of_name(d->m, c.cell);
-            c.cell[c.cell_len] = tmp;
+
+    gsc_TableFileCell c;
+    GSC_GLOBALX_T row = 1, frow = 1; // frow stores row in file, row stores row in "combinations"
+    int col = 1;
+    int EXPECTED_N_COL = 4;
+    do {
+        c = gsc_tablefilereader_get_next_cell(&tb);
+
+        if (c.predCol) { ++col; }
+        if (col == EXPECTED_N_COL + 1) {
+            fprintf(stderr, "Too many columns in file %s line %lu: ignoring extra values\n", input_file, (long unsigned int) frow);
+        } // cols above 3 will not print this message 
+        
+        if (c.predNewline) {
+            if (col < EXPECTED_N_COL) {
+                fprintf(stderr, "Too few columns in file %s line %lu: ignoring this row\n", input_file, (long unsigned int) frow);
+                combinations[0][row-1] = GSC_NA_GLOBALX; combinations[1][row-1] = GSC_NA_GLOBALX;
+            } else if (combinations[0][row-1] == GSC_NA_GLOBALX || combinations[1][row-1] == GSC_NA_GLOBALX) {
+                //fprintf(stderr, "Parents on file %s line %lu do not (all) exist: ignoring this row\n", input_file, (long unsigned int) frow);
+                combinations[0][row-1] = GSC_NA_GLOBALX; combinations[1][row-1] = GSC_NA_GLOBALX;
+            } else {
+                ++row;
+            }
+        
+            ++frow;
+            col = 1;
         }
-        if (g0_id[0].id == GSC_NO_PEDIGREE.id || g0_id[1].id == GSC_NO_PEDIGREE.id || g0_id[2].id == GSC_NO_PEDIGREE.id || g0_id[3].id == GSC_NO_PEDIGREE.id) {
-            fprintf(stderr, "Could not go ahead with the line %lu cross - g0 names not in records\n", 
-                    (long unsigned int) i);
-            combinations[0][i] = GSC_NA_GLOBALX;
-            combinations[1][i] = GSC_NA_GLOBALX;
-            continue;
+        if (row > combos0cap) {
+            GSC_STRETCH_BUFFER(combos0, 2*combos0cap);
+            GSC_STRETCH_BUFFER(combos1, 2*combos1cap);
+            combinations[0] = combos0; combinations[1] = combos1;
         }
 
-        // identify two parents
-        f1_i[0] = gsc_get_index_of_child(d->m, g0_id[0], g0_id[1]);
-        f1_i[1] = gsc_get_index_of_child(d->m, g0_id[2], g0_id[3]);
-        if (f1_i[0] < 0 || f1_i[1] < 0) {
-            // try different permutations of the four grandparents.
-            f1_i[0] = gsc_get_index_of_child(d->m, g0_id[0], g0_id[2]);
-            f1_i[1] = gsc_get_index_of_child(d->m, g0_id[1], g0_id[3]);
-            if (f1_i[0] < 0 || f1_i[1] < 0) {
-                f1_i[0] = gsc_get_index_of_child(d->m, g0_id[0], g0_id[3]);
-                f1_i[1] = gsc_get_index_of_child(d->m, g0_id[1], g0_id[2]);
-                if (f1_i[0] < 0 || f1_i[1] < 0) {
-                    fprintf(stderr, "Could not go ahead with the line %lu cross - f1 children do not exist for this quartet\n", 
-                             (long unsigned int) i);
-                    combinations[0][i] = GSC_NA_GLOBALX;
-                    combinations[1][i] = GSC_NA_GLOBALX;
-                    continue;
+        if (col <= EXPECTED_N_COL && c.cell != NULL) {
+            char tmp = c.cell[c.cell_len]; c.cell[c.cell_len] = '\0';
+            g0_id[col-1] = gsc_get_id_of_name(d->m, c.cell);
+            c.cell[c.cell_len] = tmp;
+        }
+
+        if (col == EXPECTED_N_COL) { // take the four grandparent IDs of this row and turn into a set of parents to cross
+            if (g0_id[0].id == GSC_NO_PEDIGREE.id || g0_id[1].id == GSC_NO_PEDIGREE.id ||
+                g0_id[2].id == GSC_NO_PEDIGREE.id || g0_id[3].id == GSC_NO_PEDIGREE.id) {
+                fprintf(stderr, "Could not go ahead with the line %lu cross - g0 names not in records\n", 
+                    (long unsigned int) frow);
+                combinations[0][row-1] = GSC_NA_GLOBALX;
+                combinations[1][row-1] = GSC_NA_GLOBALX;
+            } else {
+                f1_i[0] = gsc_get_index_of_child(d->m, g0_id[0], g0_id[1]);
+                f1_i[1] = gsc_get_index_of_child(d->m, g0_id[2], g0_id[3]);
+                if (f1_i[0] == GSC_NA_GLOBALX || f1_i[1] == GSC_NA_GLOBALX) {
+                    // try different permutations of the four grandparents.
+                    f1_i[0] = gsc_get_index_of_child(d->m, g0_id[0], g0_id[2]);
+                    f1_i[1] = gsc_get_index_of_child(d->m, g0_id[1], g0_id[3]);
+                    if (f1_i[0] == GSC_NA_GLOBALX || f1_i[1] == GSC_NA_GLOBALX) {
+                        f1_i[0] = gsc_get_index_of_child(d->m, g0_id[0], g0_id[3]);
+                        f1_i[1] = gsc_get_index_of_child(d->m, g0_id[1], g0_id[2]);
+                        if (f1_i[0] == GSC_NA_GLOBALX || f1_i[1] == GSC_NA_GLOBALX) {
+                            fprintf(stderr, "Could not go ahead with the line %lu cross - f1 children do not exist for this quartet\n", 
+                                    (long unsigned int) frow);
+                        }
+                    }
                 }
+
+                combinations[0][row-1] = f1_i[0];
+                combinations[1][row-1] = f1_i[1];
             }
         }
 
-        //add them to a combinations list
-        combinations[0][i] = f1_i[0];
-        combinations[1][i] = f1_i[1];
+        if (!c.isCellShallow) { GSC_FREE(c.cell); }
+    } while (!c.eof);
 
+    if (c.predNewline) { --row; } // trailing newlines shouldn't increase row count
+    if (combinations[0][row-1] == GSC_NA_GLOBALX || combinations[1][row-1] == GSC_NA_GLOBALX) {
+        fprintf(stderr, "Parents on file %s line %lu do not (all) exist: ignoring this row\n", input_file, (long unsigned int) frow);
+        --row;
     }
 
+
     gsc_tablefilereader_close(&tb);
-    gsc_GroupNum out = gsc_make_targeted_crosses(d, t.num_rows, combinations[0], combinations[1], 
+    gsc_GroupNum out = gsc_make_targeted_crosses(d, row, combinations[0], combinations[1], 
                                                  map1, map2, g);
     GSC_DELETE_BUFFER(combos0);
     GSC_DELETE_BUFFER(combos1);
